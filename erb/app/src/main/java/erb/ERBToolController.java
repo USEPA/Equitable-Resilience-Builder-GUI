@@ -39,7 +39,7 @@ public class ERBToolController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		listOfAllPanelLabels = createListOfAllPanelLabels();
-
+		setAllPanelLabelsHoverAction();
 	}
 
 	@FXML
