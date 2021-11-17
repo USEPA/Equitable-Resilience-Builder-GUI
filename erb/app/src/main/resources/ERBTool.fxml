@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<VBox fx:id="erbVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="menuHBox" prefHeight="26.0" prefWidth="808.0" spacing="20.0" style="-fx-background-color: #F9F9F9; -fx-background-insets: 5; -fx-border-color: #E0E0E0;">
+         <children>
+            <Label fx:id="panel1Label" onMouseClicked="#panel1LabelAction" text="Welcome" />
+            <Label fx:id="panel2Label" onMouseClicked="#panel2LabelAction" text="Chapter 1" />
+            <Label fx:id="panel3Label" onMouseClicked="#panel3LabelAction" text="Chapter 2" />
+            <Label fx:id="panel4Label" onMouseClicked="#panel4LabelAction" text="Chaper 3" />
+            <Label fx:id="panel5Label" onMouseClicked="#panel5LabelAction" text="Chapter 4" />
+            <Label fx:id="panel6Label" onMouseClicked="#panel6LabelAction" text="Chapter 5" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </children>
 </VBox>
-
