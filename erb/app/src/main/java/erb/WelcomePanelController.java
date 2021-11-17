@@ -20,8 +20,10 @@ public class WelcomePanelController implements Initializable{
 	@FXML
 	VBox welcomeContentVBox;
 	
-	public WelcomePanelController() {
-		
+	private ERBToolController erbToolController;
+	
+	public WelcomePanelController(ERBToolController erbToolController) {
+		this.erbToolController = erbToolController;
 	}
 	
 	@Override

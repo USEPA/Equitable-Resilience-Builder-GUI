@@ -20,8 +20,10 @@ public class Chapter2PanelController implements Initializable{
 	@FXML
 	VBox chapter2ContentVBox;
 	
-	public Chapter2PanelController() {
-		
+	private ERBToolController erbToolController;
+	
+	public Chapter2PanelController(ERBToolController erbToolController) {
+		this.erbToolController = erbToolController;
 	}
 	
 	@Override
