@@ -4,6 +4,9 @@
 package erb;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application{
@@ -18,6 +21,14 @@ public class App extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		 System.out.println(new App().getGreeting());
+		System.out.println(new App().getGreeting());
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBTool.fxml"));
+		ERBToolController erbToolController = new ERBToolController();
+		fxmlLoader.setController(erbToolController);
+		Parent rootParent = (Parent) fxmlLoader.load();
+		Scene scene = new Scene(rootParent);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Equitable Resilience Builder");
+		primaryStage.show();
 	}
 }
