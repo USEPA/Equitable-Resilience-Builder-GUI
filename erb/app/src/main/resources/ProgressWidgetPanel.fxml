@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="widgetHBox" alignment="CENTER_RIGHT" prefHeight="50.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="widgetImageView" fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" />
+   </children>
+</HBox>
+
