@@ -116,6 +116,27 @@ public class ERBToolController implements Initializable {
 			unHighlightNode(label);
 		}
 	}
+	
+	/**
+	 * Remove all children from the erbVBox, besides the menu bar
+	 */
+	public void removeERBVBoxChildren() {
+		int numberOfChildren = erbVBox.getChildren().size();
+		for (int i = 0; i < numberOfChildren; i++) {
+			Node node = erbVBox.getChildren().get(i);
+			if (!node.getId().contentEquals("menuHBox")) {
+				erbVBox.getChildren().remove(i);
+			}
+		}
+	}
+	
+	public void removeERBVBoxChild(Node child) {
+		erbVBox.getChildren().remove(child);
+	}
+	
+	public void addERBVBoxChild(Node child, int index) {
+		erbVBox.getChildren().add(index, child);
+	}
 
 	public ArrayList<Label> createListOfAllPanelLabels() {
 		ArrayList<Label> listOfAllPanelLabels = new ArrayList<Label>();
