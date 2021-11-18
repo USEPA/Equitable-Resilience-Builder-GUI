@@ -40,6 +40,8 @@ public class ERBToolController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		listOfAllPanelLabels = createListOfAllPanelLabels();
 		setAllPanelLabelsHoverAction();
+		
+		panel1LabelAction(); //Loads the first panel as default
 	}
 
 	@FXML
