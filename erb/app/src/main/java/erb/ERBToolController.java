@@ -2,12 +2,14 @@ package erb;
 
 import java.net.URL;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class ERBToolController implements Initializable {
@@ -49,7 +51,18 @@ public class ERBToolController implements Initializable {
 		selectedPanelLabel = panel1Label;
 		unHighlightAllMenuLabels();
 		highlightNode(panel1Label);
-
+		
+		//Load welcome panel onto panel 1
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/WelcomePanel.fxml"));
+			WelcomePanelController welcomePanelController = new WelcomePanelController(this);
+			fxmlLoader.setController(welcomePanelController);
+			VBox vBox = fxmlLoader.load();
+			removeERBVBoxChildren();
+			addERBVBoxChild(vBox, 1);
+			VBox.setVgrow(vBox, Priority.ALWAYS);
+		}catch (Exception e) {
+		}
 	}
 
 	@FXML
@@ -57,7 +70,18 @@ public class ERBToolController implements Initializable {
 		selectedPanelLabel = panel2Label;
 		unHighlightAllMenuLabels();
 		highlightNode(panel2Label);
-
+		
+		//Load chapter1 panel onto panel 2
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chapter1Panel.fxml"));
+			Chapter1PanelController chapter1PanelController = new Chapter1PanelController(this);
+			fxmlLoader.setController(chapter1PanelController);
+			VBox vBox = fxmlLoader.load();
+			removeERBVBoxChildren();
+			addERBVBoxChild(vBox, 1);
+			VBox.setVgrow(vBox, Priority.ALWAYS);
+		} catch (Exception e) {
+		}
 	}
 
 	@FXML
@@ -66,6 +90,17 @@ public class ERBToolController implements Initializable {
 		unHighlightAllMenuLabels();
 		highlightNode(panel3Label);
 
+		//Load chapter2 panel onto panel 3
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chapter2Panel.fxml"));
+			Chapter2PanelController chapter2PanelController = new Chapter2PanelController(this);
+			fxmlLoader.setController(chapter2PanelController);
+			VBox vBox = fxmlLoader.load();
+			removeERBVBoxChildren();
+			addERBVBoxChild(vBox, 1);
+			VBox.setVgrow(vBox, Priority.ALWAYS);
+		}catch (Exception e) {
+		}
 	}
 
 	@FXML
@@ -74,6 +109,17 @@ public class ERBToolController implements Initializable {
 		unHighlightAllMenuLabels();
 		highlightNode(panel4Label);
 
+		//Load chapter3 panel onto panel 4
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chapter3Panel.fxml"));
+			Chapter3PanelController chapter3PanelController = new Chapter3PanelController(this);
+			fxmlLoader.setController(chapter3PanelController);
+			VBox vBox = fxmlLoader.load();
+			removeERBVBoxChildren();
+			addERBVBoxChild(vBox, 1);
+			VBox.setVgrow(vBox, Priority.ALWAYS);
+		}catch (Exception e) {
+		}
 	}
 
 	@FXML
@@ -81,7 +127,18 @@ public class ERBToolController implements Initializable {
 		selectedPanelLabel = panel5Label;
 		unHighlightAllMenuLabels();
 		highlightNode(panel5Label);
-
+		
+		//Load chapter4 panel onto panel 5
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chapter4Panel.fxml"));
+			Chapter4PanelController chapter4PanelController = new Chapter4PanelController(this);
+			fxmlLoader.setController(chapter4PanelController);
+			VBox vBox = fxmlLoader.load();
+			removeERBVBoxChildren();
+			addERBVBoxChild(vBox, 1);
+			VBox.setVgrow(vBox, Priority.ALWAYS);
+		}catch (Exception e) {
+		}
 	}
 
 	@FXML
@@ -89,7 +146,18 @@ public class ERBToolController implements Initializable {
 		selectedPanelLabel = panel6Label;
 		unHighlightAllMenuLabels();
 		highlightNode(panel6Label);
-
+		
+		//Load chapter5 panel onto panel 6
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chapter5Panel.fxml"));
+			Chapter5PanelController chapter5PanelController = new Chapter5PanelController(this);
+			fxmlLoader.setController(chapter5PanelController);
+			VBox vBox = fxmlLoader.load();
+			removeERBVBoxChildren();
+			addERBVBoxChild(vBox, 1);
+			VBox.setVgrow(vBox, Priority.ALWAYS);
+		} catch (Exception e) {
+		}
 	}
 
 	public void setAllPanelLabelsHoverAction() {
