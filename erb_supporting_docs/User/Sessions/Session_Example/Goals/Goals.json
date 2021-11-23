@@ -1,0 +1,18 @@
+{
+	"goal":[
+		{
+			"id": 1001,
+			"title": "exampleGoal1",
+			"isStatic": true,
+			"description": "This is an example goal",
+			"chapterAssignment": "Chapter1"
+		},
+		{
+			"id": 1002,
+			"title": "exampleGoal2",
+			"isStatic": true,
+			"description": "This is another example goal",
+			"chapterAssignment": "Chapter2"
+		}
+	]
+}
