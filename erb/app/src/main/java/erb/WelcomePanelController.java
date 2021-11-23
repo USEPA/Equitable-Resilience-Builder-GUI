@@ -1,5 +1,6 @@
 package erb;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -32,6 +33,7 @@ public class WelcomePanelController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		fillTreeView();
 		addProgressWidget();
+		addNavigationPanel();
 	}
 	
 	public void addProgressWidget() {
@@ -42,6 +44,18 @@ public class WelcomePanelController implements Initializable{
 			Node node = fxmlLoader.load();
 			welcomeContentVBox.getChildren().add(0, node);
 		}catch (Exception e) {
+		}
+	}
+	
+	public void addNavigationPanel() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/NavigationPanel.fxml"));
+		NavigationPanelController navigationPanelController= new NavigationPanelController(erbToolController);
+		fxmlLoader.setController(navigationPanelController);
+		try {
+			Node node = fxmlLoader.load();
+			navigationPanelController.backButton.setVisible(false);
+			welcomeVBox.getChildren().add(1, node);
+		} catch (IOException e) {
 		}
 	}
 	

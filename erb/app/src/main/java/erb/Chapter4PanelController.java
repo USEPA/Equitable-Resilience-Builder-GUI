@@ -33,6 +33,7 @@ public class Chapter4PanelController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		fillTreeView();
 		addProgressWidget();
+		addNavigationPanel();
 	}
 	
 	public void addProgressWidget() {
@@ -42,6 +43,17 @@ public class Chapter4PanelController implements Initializable{
 		try {
 			Node node = fxmlLoader.load();
 			chapter4ContentVBox.getChildren().add(0, node);
+		} catch (IOException e) {
+		}
+	}
+	
+	public void addNavigationPanel() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/NavigationPanel.fxml"));
+		NavigationPanelController navigationPanelController= new NavigationPanelController(erbToolController);
+		fxmlLoader.setController(navigationPanelController);
+		try {
+			Node node = fxmlLoader.load();
+			chapter4VBox.getChildren().add(1, node);
 		} catch (IOException e) {
 		}
 	}
