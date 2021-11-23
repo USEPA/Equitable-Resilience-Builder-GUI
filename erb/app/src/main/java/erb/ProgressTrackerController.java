@@ -1,7 +1,11 @@
 package erb;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import org.json.simple.JSONObject;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -44,10 +48,21 @@ public class ProgressTrackerController implements Initializable{
 	}
 	
 	public void addStaticGoals() {
+		ParserJSON parserJSON = new ParserJSON();
+		ArrayList<JSONObject> jsonObjects = parserJSON.parseFile("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\Dev_Docs\\Eclipse_Repo\\Clone_11_17_2021\\MetroCERI\\erb_supporting_docs\\User\\Sessions\\Session_Example\\Goals\\Goals.json", "goals");
 		
+		for(JSONObject jsonObject: jsonObjects) {
+			System.out.println("Goal = " + jsonObject);
+		}
 	}
 	
 	public void addStaticTasks() {
+		ParserJSON parserJSON = new ParserJSON();
+		ArrayList<JSONObject> jsonObjects = parserJSON.parseFile("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\Dev_Docs\\Eclipse_Repo\\Clone_11_17_2021\\MetroCERI\\erb_supporting_docs\\User\\Sessions\\Session_Example\\Tasks\\Tasks.json", "tasks");
+		
+		for(JSONObject jsonObject: jsonObjects) {
+			System.out.println("Task = " + jsonObject);
+		}
 		
 	}
 	
