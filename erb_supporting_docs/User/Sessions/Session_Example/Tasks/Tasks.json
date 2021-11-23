@@ -1,0 +1,18 @@
+{
+    "tasks":[
+        {
+			"id": 2001,
+			"title": "exampleTask1",
+			"isStatic": true,
+			"description": "This is an example task",
+			"chapterAssignment": "Chapter1"
+		},
+		{
+			"id": 2002,
+			"title": "exampleTask2",
+			"isStatic": true,
+			"description": "This is another example task",
+			"chapterAssignment": "Chapter2"
+		}
+    ]
+}
