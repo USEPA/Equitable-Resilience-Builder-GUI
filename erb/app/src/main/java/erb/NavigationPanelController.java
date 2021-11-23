@@ -30,17 +30,17 @@ public class NavigationPanelController implements Initializable {
 	@FXML
 	public void backButtonAction() {
 		String sourceId = getSourceIdForButtonAction();
-		if (sourceId.toLowerCase().contains("panel1".toLowerCase())) {
+		if (sourceId.toLowerCase().contains("welcome".toLowerCase())) {
 			//No back option
-		} else if (sourceId.toLowerCase().contains("panel2".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter1".toLowerCase())) {
 			erbToolController.panel1LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel3".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter2".toLowerCase())) {
 			erbToolController.panel2LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel4".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter3".toLowerCase())) {
 			erbToolController.panel3LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel5".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter4".toLowerCase())) {
 			erbToolController.panel4LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel6".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter5".toLowerCase())) {
 			erbToolController.panel5LabelAction();
 		}
 	}
@@ -48,17 +48,17 @@ public class NavigationPanelController implements Initializable {
 	@FXML
 	public void nextButtonAction() {
 		String sourceId = getSourceIdForButtonAction();
-		if (sourceId.toLowerCase().contains("panel1".toLowerCase())) {
+		if (sourceId.toLowerCase().contains("welcome".toLowerCase())) {
 			erbToolController.panel2LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel2".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter1".toLowerCase())) {
 			erbToolController.panel3LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel3".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter2".toLowerCase())) {
 			erbToolController.panel4LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel4".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter3".toLowerCase())) {
 			erbToolController.panel5LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel5".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter4".toLowerCase())) {
 			erbToolController.panel6LabelAction();
-		} else if (sourceId.toLowerCase().contains("panel6".toLowerCase())) {
+		} else if (sourceId.toLowerCase().contains("chapter5".toLowerCase())) {
 			//No next option
 		}
 	}
