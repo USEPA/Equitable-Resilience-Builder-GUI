@@ -16,8 +16,10 @@ public class ProgressWidgetPanelController implements Initializable{
 	@FXML
 	ImageView widgetImageView;
 	
-	public ProgressWidgetPanelController() {
-		
+	ERBToolController erbToolController;
+	
+	public ProgressWidgetPanelController(ERBToolController erbToolController) {
+		this.erbToolController = erbToolController;
 	}
 	
 	@Override

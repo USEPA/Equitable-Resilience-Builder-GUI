@@ -38,7 +38,7 @@ public class Chapter1PanelController implements Initializable{
 	
 	public void addProgressWidget() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
-		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController();
+		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(erbToolController);
 		fxmlLoader.setController(progressWidgetPanelController);
 		try {
 			Node node = fxmlLoader.load();
