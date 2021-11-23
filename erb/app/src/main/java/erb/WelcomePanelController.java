@@ -3,7 +3,9 @@ package erb;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
@@ -29,6 +31,18 @@ public class WelcomePanelController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillTreeView();
+		addProgressWidget();
+	}
+	
+	public void addProgressWidget() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
+		ProgressWidgetPanelController progressWidgetPanelController = new ProgressWidgetPanelController();
+		fxmlLoader.setController(progressWidgetPanelController);
+		try {
+			Node node = fxmlLoader.load();
+			welcomeContentVBox.getChildren().add(0, node);
+		}catch (Exception e) {
+		}
 	}
 	
 	public void fillTreeView() {
