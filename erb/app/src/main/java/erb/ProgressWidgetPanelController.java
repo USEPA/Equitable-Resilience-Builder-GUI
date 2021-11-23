@@ -2,15 +2,19 @@ package erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class ProgressWidgetPanelController implements Initializable{
 
@@ -30,16 +34,32 @@ public class ProgressWidgetPanelController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		widgetImageView.setImage(new Image(getClass().getResourceAsStream("/ProgressWidget.PNG")));
-		widgetImageView.setOnMouseClicked(e -> progressWidgetClicked(e));
 		Tooltip.install(widgetImageView, new Tooltip("Click here to view progress."));
+		widgetImageView.setOnMouseClicked(e -> progressWidgetClicked(e));
 	}
 	
 	public void progressWidgetClicked(Event event) {
-		ProgressTrackerController progressTrackerController = erbToolController.getProgressTrackerController();
-		Stage stage = new Stage();
-		stage.setScene(progressTrackerController.getScene());
-		stage.setTitle("Progress Tracker");
-		stage.show();
+		VBox progressTrackerVBox = erbToolController.getProgressTrackerController().progressTrackerVBox;
+		if(contentContainsProgressTracker(progressTrackerVBox)) {
+			cleanContentVBox();
+		}else {
+			VBox.setVgrow(progressTrackerVBox, Priority.ALWAYS);
+			contentVBox.getChildren().add(1, progressTrackerVBox);
+		}
+	}
+	
+	public void cleanContentVBox() {
+		int numChildren = contentVBox.getChildren().size();
+		for(int i =0; i < numChildren; i++) {
+			Node node = contentVBox.getChildren().get(i);
+			if(!node.getId().contentEquals("widgetHBox")) {
+				contentVBox.getChildren().remove(node);
+			}
+		}
+	}
+	
+	public boolean contentContainsProgressTracker(VBox progressTrackerVBox) {
+		return contentVBox.getChildren().contains(progressTrackerVBox);
 	}
 
 }
