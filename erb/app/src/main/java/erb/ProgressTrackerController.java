@@ -29,6 +29,14 @@ public class ProgressTrackerController implements Initializable{
 	@FXML
 	VBox chapter5TasksVBox;
 	
+	TaskTracker taskTracker;
+	GoalTracker goalTracker;
+	
+	public ProgressTrackerController(TaskTracker taskTracker, GoalTracker goalTracker) {
+		this.taskTracker = taskTracker;
+		this.goalTracker = goalTracker;
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		

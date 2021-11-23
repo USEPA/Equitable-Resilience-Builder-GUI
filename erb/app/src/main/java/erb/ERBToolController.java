@@ -33,9 +33,14 @@ public class ERBToolController implements Initializable {
 
 	private Label selectedPanelLabel;
 	private ArrayList<Label> listOfAllPanelLabels;
-
+	
+	TaskTracker taskTracker = new TaskTracker();
+	GoalTracker goalTracker = new GoalTracker();
+	
+	ProgressTrackerController progressTrackerController;
+	
 	public ERBToolController() {
-
+		initializeProgressTracker();
 	}
 
 	@Override
@@ -45,7 +50,7 @@ public class ERBToolController implements Initializable {
 		
 		panel1LabelAction(); //Loads the first panel as default
 	}
-
+	
 	@FXML
 	public void panel1LabelAction() {
 		selectedPanelLabel = panel1Label;
@@ -215,6 +220,16 @@ public class ERBToolController implements Initializable {
 		listOfAllPanelLabels.add(panel5Label);
 		listOfAllPanelLabels.add(panel6Label);
 		return listOfAllPanelLabels;
+	}
+	
+	public void initializeProgressTracker() {
+		progressTrackerController = new ProgressTrackerController(taskTracker, goalTracker);
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressTracker.fxml"));
+		fxmlLoader.setController(progressTrackerController);
+		try {
+			fxmlLoader.load();
+		} catch (Exception e) {
+		}
 	}
 
 }
