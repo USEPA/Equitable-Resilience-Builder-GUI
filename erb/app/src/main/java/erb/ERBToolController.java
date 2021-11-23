@@ -231,5 +231,17 @@ public class ERBToolController implements Initializable {
 		} catch (Exception e) {
 		}
 	}
+	
+	public GoalTracker getGoalTracker() {
+		return goalTracker;
+	}
+	
+	public TaskTracker getTaskTracker() {
+		return taskTracker;
+	}
+	
+	public ProgressTrackerController getProgressTrackerController() {
+		return progressTrackerController;
+	}
 
 }
