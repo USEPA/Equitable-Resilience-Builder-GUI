@@ -2,7 +2,6 @@ package erb;
 
 public class ERBTask {
 
-
 	int id;
 	String title;
 	boolean isStatic;
