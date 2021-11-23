@@ -43,6 +43,16 @@ public class ProgressTrackerController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		scene = new Scene(progressTrackerVBox);
+		addStaticGoals();
+		addStaticTasks();
+	}
+	
+	public void addStaticGoals() {
+		
+	}
+	
+	public void addStaticTasks() {
+		
 	}
 	
 	@FXML
