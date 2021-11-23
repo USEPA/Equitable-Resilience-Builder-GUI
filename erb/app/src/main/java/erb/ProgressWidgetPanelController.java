@@ -2,9 +2,6 @@ package erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,9 +39,11 @@ public class ProgressWidgetPanelController implements Initializable{
 		VBox progressTrackerVBox = erbToolController.getProgressTrackerController().progressTrackerVBox;
 		if(contentContainsProgressTracker(progressTrackerVBox)) {
 			cleanContentVBox();
+			Tooltip.install(widgetImageView, new Tooltip("Click here to view progress."));
 		}else {
 			VBox.setVgrow(progressTrackerVBox, Priority.ALWAYS);
 			contentVBox.getChildren().add(1, progressTrackerVBox);
+			Tooltip.install(widgetImageView, new Tooltip("Click here to hide progress."));
 		}
 	}
 	
