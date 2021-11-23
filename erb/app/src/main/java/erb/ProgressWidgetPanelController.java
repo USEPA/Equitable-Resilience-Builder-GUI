@@ -8,6 +8,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 public class ProgressWidgetPanelController implements Initializable{
 
@@ -30,7 +31,11 @@ public class ProgressWidgetPanelController implements Initializable{
 	}
 	
 	public void progressWidgetClicked() {
-
+		ProgressTrackerController progressTrackerController = erbToolController.getProgressTrackerController();
+		Stage stage = new Stage();
+		stage.setScene(progressTrackerController.getScene());
+		stage.setTitle("Progress Tracker");
+		stage.show();
 	}
 
 }
