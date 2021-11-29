@@ -3,13 +3,13 @@ package erb;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import org.json.simple.JSONObject;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 
 public class ProgressTrackerController implements Initializable{
@@ -17,7 +17,7 @@ public class ProgressTrackerController implements Initializable{
 	@FXML
 	VBox progressTrackerVBox;
 	@FXML
-	ListView<String> goalsListView;
+	ListView<CheckBox> goalsListView;
 	@FXML
 	Button addNewGoalButton;
 	@FXML
@@ -42,9 +42,11 @@ public class ProgressTrackerController implements Initializable{
 	}
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) {		
 		parseSavedGoals();
+		addAllGoalsToProgressTracker();
 		parseSavedTasks();
+		addAllTasksToProgressTracker();
 	}
 	
 	public void parseSavedGoals() {
@@ -73,6 +75,54 @@ public class ProgressTrackerController implements Initializable{
 			erbTask.setChapterAssignment(jsonObject.get("chapterAssignment").toString());
 			taskTracker.addTask(erbTask);
 		}
+	}
+	
+	public void addAllGoalsToProgressTracker() {
+		for(ERBGoal erbGoal: goalTracker.getAllGoals()) {
+			addGoalToListView(erbGoal);
+		}
+	}
+	
+	public void addAllTasksToProgressTracker() {
+		for(ERBTask erbTask: taskTracker.getAllTasks()) {
+			addTaskToTaskVBox(erbTask);
+		}
+	}
+	
+	public void addGoalToListView(ERBGoal erbGoal) {
+		CheckBox goalCheckBox = createGoalCheckBox(erbGoal);
+		goalsListView.getItems().add(goalCheckBox);
+	}
+	
+	public void addTaskToTaskVBox(ERBTask erbTask) {
+		CheckBox taskCheckBox = createTaskCheckBox(erbTask);
+		if(erbTask.getChapterAssignment().contentEquals("Chapter1")) {
+			chapter1TasksVBox.getChildren().add(taskCheckBox);
+		}else if(erbTask.getChapterAssignment().contentEquals("Chapter2")) {
+			chapter2TasksVBox.getChildren().add(taskCheckBox);
+		}else if(erbTask.getChapterAssignment().contentEquals("Chapter3")) {
+			chapter3TasksVBox.getChildren().add(taskCheckBox);
+		}else if(erbTask.getChapterAssignment().contentEquals("Chapter4")) {
+			chapter4TasksVBox.getChildren().add(taskCheckBox);
+		}else if(erbTask.getChapterAssignment().contentEquals("Chapter5")) {
+			chapter5TasksVBox.getChildren().add(taskCheckBox);
+		}
+	}
+	
+	public CheckBox createTaskCheckBox(ERBTask erbTask) {
+		CheckBox checkBox = new CheckBox();
+		checkBox.setText(erbTask.getTitle());
+		Tooltip.install(checkBox, new Tooltip(erbTask.getDescription()));
+		checkBox.setId(String.valueOf(erbTask.getId()));
+		return checkBox;
+	}
+	
+	public CheckBox createGoalCheckBox(ERBGoal erbGoal) {
+		CheckBox checkBox = new CheckBox();
+		checkBox.setText(erbGoal.getTitle());
+		Tooltip.install(checkBox, new Tooltip(erbGoal.getDescription()));
+		checkBox.setId(String.valueOf(erbGoal.getId()));
+		return checkBox;
 	}
 	
 	@FXML
