@@ -1,11 +1,14 @@
 package erb;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import org.json.simple.JSONObject;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
@@ -95,17 +98,36 @@ public class ProgressTrackerController implements Initializable{
 	}
 	
 	public void addTaskToTaskVBox(ERBTask erbTask) {
-		CheckBox taskCheckBox = createTaskCheckBox(erbTask);
-		if(erbTask.getChapterAssignment().contentEquals("Chapter1")) {
-			chapter1TasksVBox.getChildren().add(taskCheckBox);
-		}else if(erbTask.getChapterAssignment().contentEquals("Chapter2")) {
-			chapter2TasksVBox.getChildren().add(taskCheckBox);
-		}else if(erbTask.getChapterAssignment().contentEquals("Chapter3")) {
-			chapter3TasksVBox.getChildren().add(taskCheckBox);
-		}else if(erbTask.getChapterAssignment().contentEquals("Chapter4")) {
-			chapter4TasksVBox.getChildren().add(taskCheckBox);
-		}else if(erbTask.getChapterAssignment().contentEquals("Chapter5")) {
-			chapter5TasksVBox.getChildren().add(taskCheckBox);
+//		CheckBox taskCheckBox = createTaskCheckBox(erbTask);
+//		if(erbTask.getChapterAssignment().contentEquals("Chapter1")) {
+//			chapter1TasksVBox.getChildren().add(taskCheckBox);
+//		}else if(erbTask.getChapterAssignment().contentEquals("Chapter2")) {
+//			chapter2TasksVBox.getChildren().add(taskCheckBox);
+//		}else if(erbTask.getChapterAssignment().contentEquals("Chapter3")) {
+//			chapter3TasksVBox.getChildren().add(taskCheckBox);
+//		}else if(erbTask.getChapterAssignment().contentEquals("Chapter4")) {
+//			chapter4TasksVBox.getChildren().add(taskCheckBox);
+//		}else if(erbTask.getChapterAssignment().contentEquals("Chapter5")) {
+//			chapter5TasksVBox.getChildren().add(taskCheckBox);
+//		}
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Task.fxml"));
+			TaskController taskController = new TaskController(erbTask);
+			fxmlLoader.setController(taskController);
+			Parent parent = fxmlLoader.load();
+			if (erbTask.getChapterAssignment().contentEquals("Chapter1")) {
+				chapter1TasksVBox.getChildren().add(parent);
+			} else if (erbTask.getChapterAssignment().contentEquals("Chapter2")) {
+				chapter2TasksVBox.getChildren().add(parent);
+			} else if (erbTask.getChapterAssignment().contentEquals("Chapter3")) {
+				chapter3TasksVBox.getChildren().add(parent);
+			} else if (erbTask.getChapterAssignment().contentEquals("Chapter4")) {
+				chapter4TasksVBox.getChildren().add(parent);
+			} else if (erbTask.getChapterAssignment().contentEquals("Chapter5")) {
+				chapter5TasksVBox.getChildren().add(parent);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
