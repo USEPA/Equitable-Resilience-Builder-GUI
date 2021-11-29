@@ -43,11 +43,11 @@ public class ProgressTrackerController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		parseStaticGoals();
-		parseStaticTasks();
+		parseSavedGoals();
+		parseSavedTasks();
 	}
 	
-	public void parseStaticGoals() {
+	public void parseSavedGoals() {
 		ParserJSON parserJSON = new ParserJSON();
 		ArrayList<JSONObject> jsonObjects = parserJSON.parseFile("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\Dev_Docs\\Eclipse_Repo\\Clone_11_17_2021\\MetroCERI\\erb_supporting_docs\\User\\Sessions\\Session_Example\\Goals\\Goals.json", "goals");
 		for(JSONObject jsonObject: jsonObjects) {
@@ -61,7 +61,7 @@ public class ProgressTrackerController implements Initializable{
 		}
 	}
 	
-	public void parseStaticTasks() {
+	public void parseSavedTasks() {
 		ParserJSON parserJSON = new ParserJSON();
 		ArrayList<JSONObject> jsonObjects = parserJSON.parseFile("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\Dev_Docs\\Eclipse_Repo\\Clone_11_17_2021\\MetroCERI\\erb_supporting_docs\\User\\Sessions\\Session_Example\\Tasks\\Tasks.json", "tasks");
 		for(JSONObject jsonObject: jsonObjects) {
