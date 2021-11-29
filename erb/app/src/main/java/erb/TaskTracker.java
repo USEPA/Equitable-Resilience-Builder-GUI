@@ -59,4 +59,8 @@ public class TaskTracker {
 		}
 		return nonStaticTasks;
 	}
+	
+	public ArrayList<ERBTask> getAllTasks(){
+		return listOfAllTasks;
+	}
 }

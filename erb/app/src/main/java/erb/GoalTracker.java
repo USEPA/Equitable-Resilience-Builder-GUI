@@ -60,4 +60,8 @@ public class GoalTracker {
 		return nonStaticGoals;
 	}
 	
+	public ArrayList<ERBGoal> getAllGoals(){
+		return listOfAllGoals;
+	}
+	
 }
