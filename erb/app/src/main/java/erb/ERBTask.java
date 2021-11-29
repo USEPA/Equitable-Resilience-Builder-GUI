@@ -59,4 +59,13 @@ public class ERBTask {
 	public void setChapterAssignment(String chapterAssignment) {
 		this.chapterAssignment = chapterAssignment;
 	}
+	
+	public String toString() {
+		return "------Task---- " + "\n" +
+				"id = " + id + "\n" + 
+				"title = " + title + "\n" +
+				"isStatic = " + isStatic + "\n" +
+				"description = " + description + "\n" +
+				"chapterAssignment = " + chapterAssignment + "\n";
+	}
 }

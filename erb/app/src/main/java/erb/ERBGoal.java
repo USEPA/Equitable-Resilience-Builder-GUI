@@ -66,5 +66,14 @@ public class ERBGoal {
 	public void setChapterAssignment(String chapterAssignment) {
 		this.chapterAssignment = chapterAssignment;
 	}
+	
+	public String toString() {
+		return "------Goal---- " + "\n" +
+				"id = " + id + "\n" + 
+				"title = " + title + "\n" +
+				"isStatic = " + isStatic + "\n" +
+				"description = " + description + "\n" +
+				"chapterAssignment = " + chapterAssignment + "\n";
+	}
 		
 }
