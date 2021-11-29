@@ -2,16 +2,16 @@
     "tasks":[
         {
 			"id": 2001,
-			"title": "exampleTask1",
+			"title": "Identify Hazards",
 			"isStatic": true,
-			"description": "This is an example task",
-			"chapterAssignment": "Chapter1"
+			"description": "Gather information on hazards, disasters, and threats that your community may face",
+			"chapterAssignment": "Chapter3"
 		},
 		{
 			"id": 2002,
-			"title": "exampleTask2",
+			"title": "Engage Community",
 			"isStatic": true,
-			"description": "This is another example task",
+			"description": "Reach out and create connections, build and maintain relationships, and listen to community members' stories and experiences",
 			"chapterAssignment": "Chapter2"
 		}
     ]

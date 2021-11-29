@@ -2,16 +2,16 @@
 	"goals":[
 		{
 			"id": 1001,
-			"title": "exampleGoal1",
+			"title": "Assess Risk",
 			"isStatic": true,
-			"description": "This is an example goal",
-			"chapterAssignment": "Chapter1"
+			"description": "Assess your community's resilience to risks.",
+			"chapterAssignment": "Chapter4"
 		},
 		{
 			"id": 1002,
-			"title": "exampleGoal2",
+			"title": "Build Relationships",
 			"isStatic": true,
-			"description": "This is another example goal",
+			"description": "Build relationsips among public, private and civic organizations and community members.",
 			"chapterAssignment": "Chapter2"
 		}
 	]
