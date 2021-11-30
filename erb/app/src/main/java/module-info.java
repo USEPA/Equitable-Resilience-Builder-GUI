@@ -4,6 +4,7 @@ module erb {
 	requires javafx.graphics;
 	requires org.json;
 	requires json.simple;
+	requires javafx.base;
 	opens erb to javafx.fxml;
 	exports erb;
 }
