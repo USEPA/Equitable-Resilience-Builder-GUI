@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Control;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
@@ -139,9 +140,22 @@ public class ProgressTrackerController implements Initializable{
 		return checkBox;
 	}
 	
-	public CheckBox createGoalCheckBox(ERBGoal erbGoal) {
+	public CheckBox createGoalCheckBox(ERBGoal erbGoal) {		
 		CheckBox checkBox = new CheckBox();
 		checkBox.setText(erbGoal.getTitle());
+		
+		//Pref
+		checkBox.setPrefHeight(Control.USE_COMPUTED_SIZE);
+		checkBox.setPrefWidth(Control.USE_COMPUTED_SIZE);
+		//Max
+		checkBox.setMaxHeight(Control.USE_COMPUTED_SIZE);
+		checkBox.setMaxWidth(goalsListView.getPrefWidth() - 25);
+		//Min
+		checkBox.setMinHeight(Control.USE_COMPUTED_SIZE);
+		checkBox.setMinWidth(Control.USE_COMPUTED_SIZE);
+		
+		checkBox.setWrapText(true);
+		checkBox.setStyle("-fx-background-color: transparent");
 		Tooltip.install(checkBox, new Tooltip(erbGoal.getDescription()));
 		checkBox.setId(String.valueOf(erbGoal.getId()));
 		return checkBox;
