@@ -2,17 +2,17 @@
 	"goals":[
 		{
 			"id": 1001,
-			"title": "Assess Risk",
+			"title": "Identify 4 important areas to improve equitable resilience.",
 			"isStatic": true,
-			"description": "Assess your community's resilience to risks.",
-			"chapterAssignment": "Chapter4"
+			"description": "",
+			"chapterAssignment": ""
 		},
 		{
 			"id": 1002,
-			"title": "Build Relationships",
+			"title": "Build a network of organizations active in resilience",
 			"isStatic": true,
-			"description": "Build relationsips among public, private and civic organizations and community members.",
-			"chapterAssignment": "Chapter2"
+			"description": "",
+			"chapterAssignment": ""
 		}
 	]
 }

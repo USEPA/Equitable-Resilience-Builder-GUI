@@ -2,17 +2,17 @@
     "tasks":[
         {
 			"id": 2001,
-			"title": "Identify Hazards",
+			"title": "Lay out goals.",
 			"isStatic": true,
-			"description": "Gather information on hazards, disasters, and threats that your community may face",
-			"chapterAssignment": "Chapter3"
+			"description": "",
+			"chapterAssignment": "Chapter1"
 		},
 		{
 			"id": 2002,
-			"title": "Engage Community",
+			"title": "Meet with team to plan project.",
 			"isStatic": true,
-			"description": "Reach out and create connections, build and maintain relationships, and listen to community members' stories and experiences",
-			"chapterAssignment": "Chapter2"
+			"description": "",
+			"chapterAssignment": "Chapter1"
 		}
     ]
 }
