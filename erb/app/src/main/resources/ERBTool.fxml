@@ -10,39 +10,39 @@
    <children>
       <HBox fx:id="menuHBox" alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="808.0" spacing="20.0" style="-fx-background-color: #F9F9F9; -fx-background-insets: 5; -fx-border-color: #E0E0E0;">
          <children>
-            <HBox HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                <children>
                   <Label fx:id="panel1Label" onMouseClicked="#panel1LabelAction" prefHeight="18.0" prefWidth="57.0" text="Welcome" />
                </children>
             </HBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <HBox HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="panel2Label" onMouseClicked="#panel2LabelAction" prefHeight="18.0" prefWidth="86.0" text="Getting Started" />
+                  <Label fx:id="panel2Label" onMouseClicked="#panel2LabelAction" prefHeight="18.0" prefWidth="86.0" text="Chapter 1:&#13;Getting Started" />
                </children>
             </HBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <HBox HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="panel3Label" onMouseClicked="#panel3LabelAction" prefHeight="18.0" prefWidth="114.0" text="Engage Community" />
+                  <Label fx:id="panel3Label" onMouseClicked="#panel3LabelAction" prefHeight="18.0" prefWidth="114.0" text="Chapter 2:&#13;Engage Community" />
                </children>
             </HBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <HBox HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="panel4Label" onMouseClicked="#panel4LabelAction" prefHeight="18.0" prefWidth="165.0" text="Hazards &amp; Social Vulnerability" />
+                  <Label fx:id="panel4Label" onMouseClicked="#panel4LabelAction" prefHeight="18.0" prefWidth="165.0" text="Chapter 3:&#13;Hazards &amp; Social Vulnerability" />
                </children>
             </HBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <HBox HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="panel5Label" onMouseClicked="#panel5LabelAction" text="Measure Resilience" />
+                  <Label fx:id="panel5Label" onMouseClicked="#panel5LabelAction" text="Chapter 4:&#13;Measure Resilience" />
                </children>
             </HBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <HBox HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="panel6Label" onMouseClicked="#panel6LabelAction" text="Determine Actions" />
+                  <Label fx:id="panel6Label" onMouseClicked="#panel6LabelAction" text="Chapter 5:&#13;Determine Actions" />
                </children>
             </HBox>
          </children>
