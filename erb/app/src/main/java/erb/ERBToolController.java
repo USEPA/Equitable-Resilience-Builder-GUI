@@ -40,7 +40,11 @@ public class ERBToolController implements Initializable {
 //	ProgressTrackerController progressTrackerController;
 	ProgressTracker_CopyController progressTrackerController;
 	
-	public ERBToolController() {
+	App app;
+	ContainerController containerController;
+	public ERBToolController(App app) {
+		this.app = app;
+
 		initializeProgressTracker();
 	}
 
@@ -48,8 +52,6 @@ public class ERBToolController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		listOfAllPanelLabels = createListOfAllPanelLabels();
 		setAllPanelLabelsHoverAction();
-		
-		panel1LabelAction(); //Loads the first panel as default
 	}
 	
 	@FXML
