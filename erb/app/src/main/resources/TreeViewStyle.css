@@ -1,0 +1,23 @@
+#welcomeTreeView .tree-cell{
+	-fx-text-fill: #0f71c7;
+}
+
+#chapter1TreeView .tree-cell{
+	-fx-text-fill: #ef7777;
+}
+
+#chapter2TreeView .tree-cell{
+	-fx-text-fill: #87b472;
+}
+
+#chapter3TreeView .tree-cell{
+	-fx-text-fill: #1ccbea;
+}
+
+#chapter4TreeView .tree-cell{
+	-fx-text-fill: #d699ff;
+}
+
+#chapter5TreeView .tree-cell{
+	-fx-text-fill: #fc9e2a;
+}
