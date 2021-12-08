@@ -54,7 +54,6 @@ public class WelcomePanelController implements Initializable{
 		fxmlLoader.setController(navigationPanelController);
 		try {
 			Node node = fxmlLoader.load();
-			navigationPanelController.backButton.setVisible(false);
 			welcomeVBox.getChildren().add(1, node);
 		} catch (IOException e) {
 		}
