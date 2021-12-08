@@ -5,10 +5,12 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class ContainerController implements Initializable{
 
+	
 	public ContainerController() {
 		
 	}
@@ -29,6 +31,7 @@ public class ContainerController implements Initializable{
 	public void loadContent(Node node) {
 		cleanVBox(containerVBox);
 		containerVBox.getChildren().add(node);
+		VBox.setVgrow(node, Priority.ALWAYS);
 	}
 
 }
