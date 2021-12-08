@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="openingVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="930.0" spacing="15.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="openingVBox" spacing="15.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -50,31 +50,31 @@
          <children>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 1" textFill="#72b769" />
+                  <Label text="Chapter 1" textFill="#ef7777" />
                   <ProgressIndicator fx:id="chapter1ProgressIndicator" prefWidth="38.0" progress="0.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 2" textFill="#6b75c1" />
+                  <Label text="Chapter 2" textFill="#87b472" />
                   <ProgressIndicator fx:id="chapter2ProgressIndicator" progress="0.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 3" textFill="#ff7ff0" />
+                  <Label text="Chapter 3" textFill="#1ccbea" />
                   <ProgressIndicator fx:id="chapter3ProgressIndicator" progress="0.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 4" textFill="#f77777" />
+                  <Label text="Chapter 4" textFill="#d699ff" />
                   <ProgressIndicator fx:id="chapter4ProgressIndicator" progress="0.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 5" textFill="#6bb9bf" />
+                  <Label text="Chapter 5" textFill="#fc9e2a" />
                   <ProgressIndicator fx:id="chapter5ProgressIndicator" progress="0.0" />
                </children>
             </VBox>
