@@ -11,6 +11,15 @@ import javafx.stage.Stage;
 
 public class App extends Application{
     
+	Parent erbRoot;
+	ERBToolController erbToolController;
+	
+	Parent openingRoot;
+	OpeningPanelController openingPanelController;
+	
+	Parent containerRoot;
+	ContainerController containerController;
+	
 	public String getGreeting() {
         return "Launching ERB";
     }
@@ -22,22 +31,69 @@ public class App extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println(new App().getGreeting());
-//		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBTool.fxml"));
-//		ERBToolController erbToolController = new ERBToolController();
-//		fxmlLoader.setController(erbToolController);
-//		Parent rootParent = (Parent) fxmlLoader.load();
-//		Scene scene = new Scene(rootParent);
-//		primaryStage.setScene(scene);
-//		primaryStage.setTitle("Equitable Resilience Builder");
-//		primaryStage.show();
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Container.fxml"));
-		ContainerController containerController = new ContainerController();
+		containerController = new ContainerController();
 		fxmlLoader.setController(containerController);
-		Parent rootParent = (Parent) fxmlLoader.load();
-		Scene scene = new Scene(rootParent);
+		containerRoot = (Parent) fxmlLoader.load();
+		Scene scene = new Scene(containerRoot);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Equitable Resilience Builder");
 		primaryStage.show();
+		
+		initERBTool();
+		initOpeningPanel();
+		
+		containerController.loadContent(getOpeningRoot());
+		
 	}
+	
+	public void initERBTool() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBTool.fxml"));
+			erbToolController = new ERBToolController(this);
+			fxmlLoader.setController(erbToolController);
+			erbRoot = fxmlLoader.load();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	public void initOpeningPanel() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/OpeningPanel.fxml"));
+			openingPanelController = new OpeningPanelController(this);
+			fxmlLoader.setController(openingPanelController);
+			openingRoot = fxmlLoader.load();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+
+	public Parent getErbRoot() {
+		return erbRoot;
+	}
+
+	public ERBToolController getErbToolController() {
+		return erbToolController;
+	}
+
+	public Parent getOpeningRoot() {
+		return openingRoot;
+	}
+
+	public OpeningPanelController getOpeningPanelController() {
+		return openingPanelController;
+	}
+
+	public Parent getContainerRoot() {
+		return containerRoot;
+	}
+
+	public ContainerController getContainerController() {
+		return containerController;
+	}
+	
 }
