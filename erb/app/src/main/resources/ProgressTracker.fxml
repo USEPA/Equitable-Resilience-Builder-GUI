@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="progressTrackerVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="progressTrackerVBox" prefHeight="547.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="507.0" prefWidth="816.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="534.0" prefWidth="190.0" spacing="5.0">
+            <VBox prefHeight="526.0" prefWidth="129.0" spacing="5.0">
                <children>
                   <HBox>
                      <children>
@@ -69,7 +69,7 @@
                               <Separator prefWidth="200.0" />
                               <ScrollPane style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <VBox fx:id="chapter1TasksVBox" prefHeight="200.0" prefWidth="100.0" />
+                                    <VBox fx:id="chapter1TasksVBox" prefHeight="450.0" prefWidth="70.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -84,7 +84,7 @@
                               <Separator prefWidth="200.0" />
                               <ScrollPane style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <VBox fx:id="chapter2TasksVBox" prefHeight="200.0" prefWidth="100.0" />
+                                    <VBox fx:id="chapter2TasksVBox" prefHeight="450.0" prefWidth="70.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -99,7 +99,7 @@
                               <Separator prefWidth="200.0" />
                               <ScrollPane style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <VBox fx:id="chapter3TasksVBox" prefHeight="200.0" prefWidth="100.0" />
+                                    <VBox fx:id="chapter3TasksVBox" prefHeight="450.0" prefWidth="70.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -114,7 +114,7 @@
                               <Separator prefWidth="200.0" />
                               <ScrollPane style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <VBox fx:id="chapter4TasksVBox" prefHeight="200.0" prefWidth="100.0" />
+                                    <VBox fx:id="chapter4TasksVBox" prefHeight="450.0" prefWidth="70.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -129,7 +129,7 @@
                               <Separator prefWidth="200.0" />
                               <ScrollPane style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <VBox fx:id="chapter5TasksVBox" prefHeight="200.0" prefWidth="100.0" />
+                                    <VBox fx:id="chapter5TasksVBox" prefHeight="450.0" prefWidth="70.0" />
                                  </content>
                               </ScrollPane>
                            </children>
