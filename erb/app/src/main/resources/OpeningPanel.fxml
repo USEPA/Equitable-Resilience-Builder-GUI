@@ -82,7 +82,7 @@
       </HBox>
       <HBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="goButton" mnemonicParsing="false" text="Go" />
+            <Button fx:id="goButton" mnemonicParsing="false" onAction="#goButtonAction" text="Go" />
          </children>
       </HBox>
    </children>

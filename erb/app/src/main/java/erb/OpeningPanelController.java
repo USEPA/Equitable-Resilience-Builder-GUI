@@ -11,10 +11,6 @@ import javafx.scene.layout.VBox;
 
 public class OpeningPanelController implements Initializable{
 
-	public OpeningPanelController() {
-		
-	}
-	
 	@FXML
 	VBox openingVBox;
 	@FXML
@@ -37,7 +33,27 @@ public class OpeningPanelController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
 	}
+	
+	boolean isNewSession = true;
+	
+	App app;
+	ContainerController containerController;
+	public OpeningPanelController(App app) {
+		this.app = app;
+	}
+	
+	@FXML
+	public void goButtonAction() {
+		if(isNewSession) {
+			app.getErbToolController().panel1LabelAction();
+			app.getContainerController().loadContent(app.getErbRoot());
+			
+		}
+	}
+	
+	
+	
+
 
 }
