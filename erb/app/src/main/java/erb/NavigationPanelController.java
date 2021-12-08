@@ -31,7 +31,7 @@ public class NavigationPanelController implements Initializable {
 	public void backButtonAction() {
 		String sourceId = getSourceIdForButtonAction();
 		if (sourceId.toLowerCase().contains("welcome".toLowerCase())) {
-			//No back option
+			erbToolController.getApp().getContainerController().loadContent(erbToolController.getApp().getOpeningRoot());
 		} else if (sourceId.toLowerCase().contains("chapter1".toLowerCase())) {
 			erbToolController.panel1LabelAction();
 		} else if (sourceId.toLowerCase().contains("chapter2".toLowerCase())) {
