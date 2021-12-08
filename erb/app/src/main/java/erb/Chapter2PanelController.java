@@ -34,11 +34,12 @@ public class Chapter2PanelController implements Initializable{
 		fillTreeView();
 		addProgressWidget();
 		addNavigationPanel();
+		chapter2TreeView.getStylesheets().add("/TreeViewStyle.css");
 	}
 	
 	public void addProgressWidget() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
-		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(chapter2ContentVBox, erbToolController);
+		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(chapter2ContentVBox, chapter2HBox, chapter2TreeView, erbToolController);
 		fxmlLoader.setController(progressWidgetPanelController);
 		try {
 			Node node = fxmlLoader.load();
@@ -61,9 +62,10 @@ public class Chapter2PanelController implements Initializable{
 	public void fillTreeView() {
 		TreeItem<String> root = new TreeItem<String>("Chapter 2");
 		root.setExpanded(true);
-		root.getChildren().add(new TreeItem<String>("Engage Community"));
-		root.getChildren().add(new TreeItem<String>("Community Assessment"));
+		root.getChildren().add(new TreeItem<String>("About"));
+		root.getChildren().add(new TreeItem<String>("Community Engagement"));
 		root.getChildren().add(new TreeItem<String>("Storytelling"));
+		root.getChildren().add(new TreeItem<String>("Build Relationships"));
 		root.getChildren().add(new TreeItem<String>("Reflection"));
 
 		chapter2TreeView.setRoot(root);

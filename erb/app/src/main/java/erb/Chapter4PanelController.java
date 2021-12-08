@@ -34,11 +34,12 @@ public class Chapter4PanelController implements Initializable{
 		fillTreeView();
 		addProgressWidget();
 		addNavigationPanel();
+		chapter4TreeView.getStylesheets().add("/TreeViewStyle.css");
 	}
 	
 	public void addProgressWidget() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
-		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(chapter4ContentVBox, erbToolController);
+		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(chapter4ContentVBox, chapter4HBox, chapter4TreeView, erbToolController);
 		fxmlLoader.setController(progressWidgetPanelController);
 		try {
 			Node node = fxmlLoader.load();
@@ -61,7 +62,8 @@ public class Chapter4PanelController implements Initializable{
 	public void fillTreeView() {
 		TreeItem<String> root = new TreeItem<String>("Chapter 4");
 		root.setExpanded(true);
-		root.getChildren().add(new TreeItem<String>("Measure Indicators"));
+		root.getChildren().add(new TreeItem<String>("About"));
+		root.getChildren().add(new TreeItem<String>("Prepare to Measure Indicators"));
 		root.getChildren().add(new TreeItem<String>("Sort Indicators"));
 		root.getChildren().add(new TreeItem<String>("Score Indicators"));
 		root.getChildren().add(new TreeItem<String>("Visualize Indicators"));

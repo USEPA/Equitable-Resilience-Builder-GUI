@@ -34,11 +34,12 @@ public class Chapter3PanelController implements Initializable{
 		fillTreeView();
 		addProgressWidget();
 		addNavigationPanel();
+		chapter3TreeView.getStylesheets().add("/TreeViewStyle.css");
 	}
 	
 	public void addProgressWidget() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
-		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(chapter3ContentVBox, erbToolController);
+		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(chapter3ContentVBox, chapter3HBox, chapter3TreeView, erbToolController);
 		fxmlLoader.setController(progressWidgetPanelController);
 		try {
 			Node node = fxmlLoader.load();
@@ -61,9 +62,12 @@ public class Chapter3PanelController implements Initializable{
 	public void fillTreeView() {
 		TreeItem<String> root = new TreeItem<String>("Chapter 3");
 		root.setExpanded(true);
-		root.getChildren().add(new TreeItem<String>("Describe Hazards"));
-		root.getChildren().add(new TreeItem<String>("Gather Data"));
-		root.getChildren().add(new TreeItem<String>("Workshop"));
+		root.getChildren().add(new TreeItem<String>("About"));
+		root.getChildren().add(new TreeItem<String>("Gather Hazard Information"));
+		root.getChildren().add(new TreeItem<String>("Gather Equity and Resilience Information"));
+		root.getChildren().add(new TreeItem<String>("Storytelling"));
+		root.getChildren().add(new TreeItem<String>("Map HDT"));
+		root.getChildren().add(new TreeItem<String>("Identify HDT"));
 		root.getChildren().add(new TreeItem<String>("Reflection"));
 
 		chapter3TreeView.setRoot(root);

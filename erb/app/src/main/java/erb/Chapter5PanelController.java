@@ -34,11 +34,12 @@ public class Chapter5PanelController implements Initializable{
 		fillTreeView();
 		addProgressWidget();
 		addNavigationPanel();
+		chapter5TreeView.getStylesheets().add("/TreeViewStyle.css");
 	}
 	
 	public void addProgressWidget() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
-		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(chapter5ContentVBox, erbToolController);
+		ProgressWidgetPanelController progressWidgetPanelController= new ProgressWidgetPanelController(chapter5ContentVBox, chapter5HBox, chapter5TreeView,  erbToolController);
 		fxmlLoader.setController(progressWidgetPanelController);
 		try {
 			Node node = fxmlLoader.load();
@@ -62,10 +63,10 @@ public class Chapter5PanelController implements Initializable{
 	public void fillTreeView() {
 		TreeItem<String> root = new TreeItem<String>("Chapter 5");
 		root.setExpanded(true);
-		root.getChildren().add(new TreeItem<String>("Reflect & Plan"));
-		root.getChildren().add(new TreeItem<String>("Select Top Concerns"));
+		root.getChildren().add(new TreeItem<String>("About"));
+		root.getChildren().add(new TreeItem<String>("Review & Plan"));
 		root.getChildren().add(new TreeItem<String>("Identify Actions"));
-		root.getChildren().add(new TreeItem<String>("Evaluate Actions"));
+		root.getChildren().add(new TreeItem<String>("Prioritize Actions"));
 		root.getChildren().add(new TreeItem<String>("Reflection"));
 
 		chapter5TreeView.setRoot(root);

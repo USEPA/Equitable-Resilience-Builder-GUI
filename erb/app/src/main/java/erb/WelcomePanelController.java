@@ -34,11 +34,12 @@ public class WelcomePanelController implements Initializable{
 		fillTreeView();
 		addProgressWidget();
 		addNavigationPanel();
+		welcomeTreeView.getStylesheets().add("/TreeViewStyle.css");
 	}
 	
 	public void addProgressWidget() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
-		ProgressWidgetPanelController progressWidgetPanelController = new ProgressWidgetPanelController(welcomeContentVBox, erbToolController);
+		ProgressWidgetPanelController progressWidgetPanelController = new ProgressWidgetPanelController(welcomeContentVBox, welcomeHBox, welcomeTreeView, erbToolController);
 		fxmlLoader.setController(progressWidgetPanelController);
 		try {
 			Node node = fxmlLoader.load();
