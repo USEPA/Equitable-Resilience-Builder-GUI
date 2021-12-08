@@ -37,7 +37,8 @@ public class ERBToolController implements Initializable {
 	TaskTracker taskTracker = new TaskTracker();
 	GoalTracker goalTracker = new GoalTracker();
 	
-	ProgressTrackerController progressTrackerController;
+//	ProgressTrackerController progressTrackerController;
+	ProgressTracker_CopyController progressTrackerController;
 	
 	public ERBToolController() {
 		initializeProgressTracker();
@@ -223,8 +224,10 @@ public class ERBToolController implements Initializable {
 	}
 	
 	public void initializeProgressTracker() {
-		progressTrackerController = new ProgressTrackerController(taskTracker, goalTracker);
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressTracker.fxml"));
+//		progressTrackerController = new ProgressTrackerController(taskTracker, goalTracker);
+//		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressTracker.fxml"));
+		progressTrackerController = new ProgressTracker_CopyController(taskTracker, goalTracker);
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressTracker_Copy.fxml"));
 		fxmlLoader.setController(progressTrackerController);
 		try {
 			fxmlLoader.load();
@@ -240,7 +243,11 @@ public class ERBToolController implements Initializable {
 		return taskTracker;
 	}
 	
-	public ProgressTrackerController getProgressTrackerController() {
+//	public ProgressTrackerController getProgressTrackerController() {
+//		return progressTrackerController;
+//	}
+	
+	public ProgressTracker_CopyController getProgressTrackerController() {
 		return progressTrackerController;
 	}
 
