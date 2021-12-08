@@ -253,4 +253,7 @@ public class ERBToolController implements Initializable {
 		return progressTrackerController;
 	}
 
+	public App getApp() {
+		return app;
+	}
 }
