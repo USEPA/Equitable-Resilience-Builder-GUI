@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?> 
+<project name="Session_Example">
+	<chapter3>
+		<step3 status="accessed"></step3>
+		<step4 status="current"></step4>
+		<step5 status="not yet accessed"></step5>
+	</chapter3>
+</project>

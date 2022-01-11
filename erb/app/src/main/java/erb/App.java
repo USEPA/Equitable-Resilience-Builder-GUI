@@ -44,7 +44,9 @@ public class App extends Application{
 		initERBTool();
 		initOpeningPanel();
 		
-		containerController.loadContent(getOpeningRoot());
+//		containerController.loadContent(getOpeningRoot());
+		getErbToolController().panel1LabelAction();
+		containerController.loadContent(getErbRoot());
 		
 	}
 	

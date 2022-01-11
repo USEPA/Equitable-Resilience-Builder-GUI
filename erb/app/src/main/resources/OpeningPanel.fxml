@@ -22,59 +22,64 @@
          </children>
       </HBox>
       <Separator prefWidth="200.0" />
-      <HBox>
+      <HBox alignment="CENTER_LEFT">
          <children>
-            <HBox alignment="CENTER" spacing="15.0" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Begin a new session">
+                  <Label text="Previous Session:">
                      <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="newSessionButton" mnemonicParsing="false" text="New Session" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" spacing="15.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label text="Select a previous session to resume">
-                     <font>
-                        <Font size="14.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
                   <ChoiceBox fx:id="previousSessionChoiceBox" prefWidth="150.0" />
                </children>
             </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="15.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="newSessionButton" mnemonicParsing="false" text="New Session" />
+                  <Button mnemonicParsing="false" text="Delete Session" />
+               </children>
+            </HBox>
          </children>
       </HBox>
-      <HBox prefHeight="150.0" prefWidth="910.0">
+      <HBox>
+         <children>
+            <Label text="Chapter Status">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox>
          <children>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 1" textFill="#ef7777" />
+                  <Label prefWidth="138.0" text="Chapter 1: Getting Started" textFill="#ef7777" wrapText="true" />
                   <ProgressIndicator fx:id="chapter1ProgressIndicator" prefWidth="38.0" progress="0.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 2" textFill="#87b472" />
+                  <Label text="Chapter 2: Engage Community" textFill="#87b472" wrapText="true" />
                   <ProgressIndicator fx:id="chapter2ProgressIndicator" progress="0.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 3" textFill="#1ccbea" />
+                  <Label text="Chapter 3: Hazards &amp; Social Vulnerability" textFill="#1ccbea" wrapText="true" />
                   <ProgressIndicator fx:id="chapter3ProgressIndicator" progress="0.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 4" textFill="#d699ff" />
+                  <Label text="Chapter 4: Measure Resilience" textFill="#d699ff" wrapText="true" />
                   <ProgressIndicator fx:id="chapter4ProgressIndicator" progress="0.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chapter 5" textFill="#fc9e2a" />
+                  <Label text="Chapter 5: Determine Actions" textFill="#fc9e2a" />
                   <ProgressIndicator fx:id="chapter5ProgressIndicator" progress="0.0" />
                </children>
             </VBox>

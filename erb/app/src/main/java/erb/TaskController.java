@@ -28,8 +28,8 @@ public class TaskController implements Initializable{
 		label.setText(erbTask.getTitle());
 		Tooltip.install(label, new Tooltip(erbTask.getDescription()));
 		taskVBox.setId(String.valueOf(erbTask.getId()));
-		label.prefWidthProperty().bind(taskVBox.widthProperty());
-		label.prefHeightProperty().bind(taskVBox.heightProperty());
+//		label.prefWidthProperty().bind(taskVBox.widthProperty());
+//		label.prefHeightProperty().bind(taskVBox.heightProperty());
 		setLabelColor();
 		setProgressIndicatorId();
 		progressIndicator.getStylesheets().add("/ProgressIndicator.css");
