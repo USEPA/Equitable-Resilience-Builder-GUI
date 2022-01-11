@@ -31,4 +31,25 @@ public class Chapter_Handler {
 			return null;
 		}
 	}
+	
+	public void addProgressWidgetPanel(VBox contentVBox) {
+		Parent progressWidgetPanelParent = loadProgressWidgetPanel();
+		if(progressWidgetPanelParent != null) {
+			contentVBox.getChildren().add(0, progressWidgetPanelParent);
+		}
+	}
+	
+	private Parent loadProgressWidgetPanel() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
+			ProgressWidgetPanelController progressWidgetPanelController = new ProgressWidgetPanelController();
+			fxmlLoader.setController(progressWidgetPanelController);
+			Parent rootParent = fxmlLoader.load();
+			return rootParent;
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
