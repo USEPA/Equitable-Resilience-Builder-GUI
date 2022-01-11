@@ -26,5 +26,6 @@ public class Chap4Step3Controller implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		chapter_Handler.addNavigationPanel(panelVBox, wizardContainerController);
 		chapter_Handler.addProgressWidgetPanel(contentVBox);
+		chapter_Handler.addGlossaryWidgetPanel(contentVBox);
 	}
 }
