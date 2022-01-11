@@ -31,7 +31,7 @@ dependencies {
 }
 
 javafx{
-	modules = ['javafx.fxml', 'javafx.controls']
+	modules = ['javafx.fxml', 'javafx.controls', 'javafx.graphics']
 }
 
 application {
@@ -43,3 +43,14 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+run {
+    applicationDefaultJvmArgs = ['--add-exports=javafx.graphics/com.sun.javafx.scene=org.controlsfx.controls',
+                                                                '--add-exports=javafx.graphics/com.sun.javafx.scene.traversal=org.controlsfx.controls',
+    ]
+
+    jvmArgs = ['--add-exports=javafx.graphics/com.sun.javafx.scene=org.controlsfx.controls',
+                                '--add-exports=javafx.graphics/com.sun.javafx.scene.traversal=org.controlsfx.controls',
+    ]
+}
+
