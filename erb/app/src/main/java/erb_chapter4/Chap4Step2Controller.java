@@ -11,6 +11,8 @@ import javafx.scene.layout.VBox;
 public class Chap4Step2Controller implements Initializable{
 
 	@FXML
+	VBox panelVBox;
+	@FXML
 	VBox contentVBox;
 	
 	WizardContainerController wizardContainerController;
@@ -22,6 +24,6 @@ public class Chap4Step2Controller implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		chapter_Handler.addNavigationPanel(contentVBox, wizardContainerController);
+		chapter_Handler.addNavigationPanel(panelVBox, wizardContainerController);
 	}
 }
