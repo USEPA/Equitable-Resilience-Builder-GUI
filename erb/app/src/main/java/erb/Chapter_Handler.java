@@ -73,4 +73,24 @@ public class Chapter_Handler {
 			return null;
 		}
 	}
+	
+	public void addBreadCrumbPanel(VBox contentVBox) {
+		Parent breadCrumbPanelParent = loadBreadCrumbPanel();
+		if(breadCrumbPanelParent != null) {
+			contentVBox.getChildren().add(2, breadCrumbPanelParent);
+		}
+	}
+	
+	private Parent loadBreadCrumbPanel() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/BreadCrumbPanel.fxml"));
+			BreadCrumbPanelController breadCrumbPanelController = new BreadCrumbPanelController();
+			fxmlLoader.setController(breadCrumbPanelController);
+			Parent rootParent = fxmlLoader.load();
+			return rootParent;
+		}catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
 }
