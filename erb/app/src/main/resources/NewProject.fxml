@@ -42,7 +42,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Label text="Explore the ERB">
+                        <Label text="Begin ERB process">
                            <font>
                               <Font size="14.0" />
                            </font></Label>

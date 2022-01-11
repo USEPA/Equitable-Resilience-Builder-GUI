@@ -45,9 +45,12 @@ public class NewProjectController implements Initializable{
 	@FXML
 	public void exploreButtonAction() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Explore.fxml"));
-			ExploreController exploreController = new ExploreController(mainStage);
-			fxmlLoader.setController(exploreController);
+			Wizard wizard = new Wizard();
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/WizardContainer.fxml"));
+			WizardContainerController wizardContainerController = new WizardContainerController(wizard);
+			fxmlLoader.setController(wizardContainerController);
+			wizard.setWizardContainerController(wizardContainerController);
+			wizard.setSequentialPanels();
 			Parent rootParent = fxmlLoader.load();
 			Scene scene = new Scene(rootParent);
 			mainStage.setScene(scene);
