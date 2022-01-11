@@ -4,22 +4,10 @@
 package erb;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application{
     
-	Parent erbRoot;
-	ERBToolController erbToolController;
-	
-	Parent openingRoot;
-	OpeningPanelController openingPanelController;
-	
-	Parent containerRoot;
-	ContainerController containerController;
-	
 	public String getGreeting() {
         return "Launching ERB";
     }
@@ -30,72 +18,7 @@ public class App extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println(new App().getGreeting());
-		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Container.fxml"));
-		containerController = new ContainerController();
-		fxmlLoader.setController(containerController);
-		containerRoot = (Parent) fxmlLoader.load();
-		Scene scene = new Scene(containerRoot);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Equitable Resilience Builder");
-		primaryStage.show();
-		
-		initERBTool();
-		initOpeningPanel();
-		
-//		containerController.loadContent(getOpeningRoot());
-		getErbToolController().panel1LabelAction();
-		containerController.loadContent(getErbRoot());
-		
-	}
-	
-	public void initERBTool() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBTool.fxml"));
-			erbToolController = new ERBToolController(this);
-			fxmlLoader.setController(erbToolController);
-			erbRoot = fxmlLoader.load();
-		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}
-	
-	public void initOpeningPanel() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/OpeningPanel.fxml"));
-			openingPanelController = new OpeningPanelController(this);
-			fxmlLoader.setController(openingPanelController);
-			openingRoot = fxmlLoader.load();
-		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}
-
-	public Parent getErbRoot() {
-		return erbRoot;
-	}
-
-	public ERBToolController getErbToolController() {
-		return erbToolController;
-	}
-
-	public Parent getOpeningRoot() {
-		return openingRoot;
-	}
-
-	public OpeningPanelController getOpeningPanelController() {
-		return openingPanelController;
-	}
-
-	public Parent getContainerRoot() {
-		return containerRoot;
-	}
-
-	public ContainerController getContainerController() {
-		return containerController;
+		System.out.println(new App().getGreeting());		
 	}
 	
 }
