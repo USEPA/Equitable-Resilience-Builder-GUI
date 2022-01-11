@@ -27,5 +27,6 @@ public class Chap5Step1Controller implements Initializable{
 		chapter_Handler.addNavigationPanel(panelVBox, wizardContainerController);
 		chapter_Handler.addProgressWidgetPanel(contentVBox);
 		chapter_Handler.addGlossaryWidgetPanel(contentVBox);
+		chapter_Handler.addBreadCrumbPanel(contentVBox);
 	}
 }
