@@ -25,5 +25,6 @@ public class Chap1Step5Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		chapter_Handler.addNavigationPanel(panelVBox, wizardContainerController);
+		chapter_Handler.addProgressWidgetPanel(contentVBox);
 	}
 }
