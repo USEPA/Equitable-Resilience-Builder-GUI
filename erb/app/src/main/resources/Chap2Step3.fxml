@@ -8,7 +8,7 @@
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
          <children>
-            <Label text="Chap 2 Step 3: Plan workshops for chapter 3,4 and 5" />
+            <Label text="Chap 2 Step 3: Plan workshops for chapter 3,4 and 5" textFill="#bd7fc9"/>
          </children>
       </VBox>
    </children>

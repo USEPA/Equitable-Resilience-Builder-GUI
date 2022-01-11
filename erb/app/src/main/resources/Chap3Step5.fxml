@@ -8,7 +8,7 @@
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
          <children>
-            <Label text="Chap 3 Step 5: Discuss root causes of inequities" />
+            <Label text="Chap 3 Step 5: Discuss root causes of inequities" textFill="#9182EC"/>
          </children>
       </VBox>
    </children>
