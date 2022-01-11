@@ -52,4 +52,25 @@ public class Chapter_Handler {
 			return null;
 		}
 	}
+	
+	public void addGlossaryWidgetPanel(VBox contentVBox) {
+		Parent glossaryWidgetPanelParent = loadGlossaryWidgetPanel();
+		if(glossaryWidgetPanelParent != null) {
+			contentVBox.getChildren().add(1, glossaryWidgetPanelParent);
+		}
+	}
+	
+	private Parent loadGlossaryWidgetPanel() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GlossaryWidgetPanel.fxml"));
+			GlossaryWidgetPanelController glossaryWidgetPanelController = new GlossaryWidgetPanelController();
+			fxmlLoader.setController(glossaryWidgetPanelController);
+			Parent rootParent = fxmlLoader.load();
+			return rootParent;
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
