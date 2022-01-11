@@ -12,4 +12,5 @@ build/
 
 erb/.settings/*.prefs
 erb/app/.settings/*.prefs
-
+.gradle/
+.settings/
