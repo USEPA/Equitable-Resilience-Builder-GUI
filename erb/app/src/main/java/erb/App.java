@@ -3,22 +3,72 @@
  */
 package erb;
 
+import java.io.IOException;
+
+import erb.App;
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-public class App extends Application{
-    
+public class App extends Application {
+
 	public String getGreeting() {
-        return "Launching ERB";
-    }
+		return "Launching ERB";
+	}
 
-    public static void main(String[] args) {
-       Application.launch(args);
-    }
+	public static void main(String[] args) {
+		Application.launch(args);
+	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println(new App().getGreeting());		
+		// TODO Auto-generated method stub
+		System.out.println(new App().getGreeting());
+		VBox splashScreen;
+		try {
+			splashScreen = FXMLLoader.load(getClass().getResource("/SplashScreen.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+		Scene scene = new Scene(splashScreen);
+		primaryStage.setScene(scene);
+
+		FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), splashScreen);
+		fadeIn.setFromValue(0);
+		fadeIn.setToValue(1);
+		fadeIn.setCycleCount(1);
+		FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), splashScreen);
+		fadeOut.setFromValue(1);
+		fadeOut.setToValue(0);
+		fadeOut.setCycleCount(1);
+		fadeIn.play();
+		primaryStage.setTitle("Equitable Resilience Builder");
+		primaryStage.show();
+
+		fadeIn.setOnFinished((e) -> {
+			fadeOut.play();
+		});
+		fadeOut.setOnFinished((e) -> {
+			try {
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+				MainController mainController = new MainController(primaryStage);
+				fxmlLoader.setController(mainController);
+				Parent rootParent = fxmlLoader.load();
+				Scene mainScene = new Scene(rootParent);
+				primaryStage.setScene(mainScene);
+				primaryStage.setTitle("Welcome");
+				primaryStage.show();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		});
 	}
-	
+
 }
