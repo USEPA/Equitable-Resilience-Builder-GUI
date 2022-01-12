@@ -2,6 +2,9 @@ package erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -40,6 +43,17 @@ public class WizardContainerController implements Initializable{
 	public int getCurrentWizardPanelIndex() {
 		Node currentNode = wizardVBox.getChildren().get(0);
 		return wizard.getIndex(currentNode);	
+	}
+	
+	public int getCurrentChapter() {
+		Node currentNode = wizardVBox.getChildren().get(0);
+		Pattern pattern = Pattern.compile("([0-9]\\.)");
+		Matcher matcher = pattern.matcher(currentNode.getAccessibleText());
+		if(matcher.find()) {
+			int chapNum = Integer.parseInt(matcher.group(0).replaceAll("\\.", ""));
+			return chapNum;
+		}
+		return -1;
 	}
 	
 	public int getMaxWizardPanelIndex() {
