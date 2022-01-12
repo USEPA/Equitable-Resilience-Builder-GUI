@@ -89,24 +89,24 @@ public class Chapter_Handler {
 		}
 	}
 	
-	public void addBreadCrumbPanel(VBox contentVBox, int chapterNum) {
-		Parent breadCrumbPanelParent = loadBreadCrumbPanel(chapterNum);
+	public void addBreadCrumbPanel(VBox contentVBox, int chapterNum, WizardContainerController wizardContainerController, Wizard wizard) {
+		Parent breadCrumbPanelParent = loadBreadCrumbPanel(chapterNum, wizardContainerController, wizard);
 		if(breadCrumbPanelParent != null) {
 			contentVBox.getChildren().add(2, breadCrumbPanelParent);
 		}
 	}
 	
-	public void addBreadCrumbPanel(HBox hBox, int chapterNum) {
-		Parent breadCrumbPanelParent = loadBreadCrumbPanel(chapterNum);
+	public void addBreadCrumbPanel(HBox hBox, int chapterNum, WizardContainerController wizardContainerController, Wizard wizard) {
+		Parent breadCrumbPanelParent = loadBreadCrumbPanel(chapterNum, wizardContainerController, wizard);
 		if(breadCrumbPanelParent != null) {
 			hBox.getChildren().add(0, breadCrumbPanelParent);
 		}
 	}
 	
-	private Parent loadBreadCrumbPanel(int chapterNum) {
+	private Parent loadBreadCrumbPanel(int chapterNum, WizardContainerController wizardContainerController, Wizard wizard) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/BreadCrumbPanel.fxml"));
-			BreadCrumbPanelController breadCrumbPanelController = new BreadCrumbPanelController(chapterNum);
+			BreadCrumbPanelController breadCrumbPanelController = new BreadCrumbPanelController(chapterNum, wizardContainerController, wizard);
 			fxmlLoader.setController(breadCrumbPanelController);
 			Parent rootParent = fxmlLoader.load();
 			return rootParent;
