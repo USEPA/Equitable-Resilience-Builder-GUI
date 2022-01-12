@@ -19,8 +19,10 @@ public class NavigationPanelController implements Initializable{
 	Button nextButton;
 	
 	WizardContainerController wizardContainerController;
-	public NavigationPanelController(WizardContainerController wizardContainerController) {
+	Wizard wizard;
+	public NavigationPanelController(WizardContainerController wizardContainerController, Wizard wizard) {
 		this.wizardContainerController = wizardContainerController;
+		this.wizard = wizard;
 	}
 	
 	@Override
@@ -30,28 +32,12 @@ public class NavigationPanelController implements Initializable{
 	
 	@FXML
 	public void previousButtonAction() {
-		int currentPanelIndex = wizardContainerController.getCurrentWizardPanelIndex();
-		if(currentPanelIndex >= 0) {
-			int previousPanelIndex = currentPanelIndex -1 ;
-			if(previousPanelIndex >= 0) {
-				wizardContainerController.loadWizardPanel(previousPanelIndex);
-			}else {
-				Alerts alerts = new Alerts();
-				Optional<ButtonType> result = alerts.showReturnToMainMenuAlert();
-				System.out.println(result.get());
-			}
-		}
+
 	}
 	
 	@FXML
 	public void nextButtonAction() {
-		int currentPanelIndex = wizardContainerController.getCurrentWizardPanelIndex();
-		if(currentPanelIndex >= 0) {
-			int nextPanelIndex = currentPanelIndex + 1;
-			if(nextPanelIndex <= wizardContainerController.getMaxWizardPanelIndex()) {
-				wizardContainerController.loadWizardPanel(nextPanelIndex);
-			}
-		}
+
 	}
 
 }
