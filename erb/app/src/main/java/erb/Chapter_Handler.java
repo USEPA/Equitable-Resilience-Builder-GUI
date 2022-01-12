@@ -2,6 +2,7 @@ package erb;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class Chapter_Handler {
@@ -39,6 +40,13 @@ public class Chapter_Handler {
 		}
 	}
 	
+	public void addProgressWidgetPanel(HBox hBox) {
+		Parent progressWidgetPanelParent = loadProgressWidgetPanel();
+		if(progressWidgetPanelParent != null) {
+			hBox.getChildren().add(1, progressWidgetPanelParent);
+		}
+	}
+	
 	private Parent loadProgressWidgetPanel() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProgressWidgetPanel.fxml"));
@@ -60,6 +68,13 @@ public class Chapter_Handler {
 		}
 	}
 	
+	public void addGlossaryWidgetPanel(HBox hBox) {
+		Parent glossaryWidgetPanelParent = loadGlossaryWidgetPanel();
+		if(glossaryWidgetPanelParent != null) {
+			hBox.getChildren().add(2, glossaryWidgetPanelParent);
+		}
+	}
+	
 	private Parent loadGlossaryWidgetPanel() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GlossaryWidgetPanel.fxml"));
@@ -74,17 +89,24 @@ public class Chapter_Handler {
 		}
 	}
 	
-	public void addBreadCrumbPanel(VBox contentVBox) {
-		Parent breadCrumbPanelParent = loadBreadCrumbPanel();
+	public void addBreadCrumbPanel(VBox contentVBox, int chapterNum) {
+		Parent breadCrumbPanelParent = loadBreadCrumbPanel(chapterNum);
 		if(breadCrumbPanelParent != null) {
 			contentVBox.getChildren().add(2, breadCrumbPanelParent);
 		}
 	}
 	
-	private Parent loadBreadCrumbPanel() {
+	public void addBreadCrumbPanel(HBox hBox, int chapterNum) {
+		Parent breadCrumbPanelParent = loadBreadCrumbPanel(chapterNum);
+		if(breadCrumbPanelParent != null) {
+			hBox.getChildren().add(0, breadCrumbPanelParent);
+		}
+	}
+	
+	private Parent loadBreadCrumbPanel(int chapterNum) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/BreadCrumbPanel.fxml"));
-			BreadCrumbPanelController breadCrumbPanelController = new BreadCrumbPanelController();
+			BreadCrumbPanelController breadCrumbPanelController = new BreadCrumbPanelController(chapterNum);
 			fxmlLoader.setController(breadCrumbPanelController);
 			Parent rootParent = fxmlLoader.load();
 			return rootParent;
