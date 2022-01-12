@@ -150,6 +150,15 @@ public class Wizard {
 		}
 		return -1;
 	}
+	
+	public int getIndex(String panelAccessibleText) {
+		for(Node node: listOfPanelsInWizard) {
+			if(node.getAccessibleText().contentEquals(panelAccessibleText)) {
+				return getIndex(node);
+			}
+		}
+		return -1;
+	}
 
 	public ArrayList<Node> getListOfPanelsInWizard() {
 		return listOfPanelsInWizard;
@@ -457,12 +466,5 @@ public class Wizard {
 		}
 	}
 	
-	public int getPanelIndex(String panelAccessibleText) {
-		for(Node node: listOfPanelsInWizard) {
-			if(node.getAccessibleText().contentEquals(panelAccessibleText)) {
-				return getIndex(node);
-			}
-		}
-		return -1;
-	}
+
 }
