@@ -11,18 +11,18 @@ public class Chapter_Handler {
 		
 	}
 	
-	public void addNavigationPanel(VBox contentVBox, WizardContainerController wizardContainerController) {
-		Parent navigationPanelParent = loadNavigationPanel(wizardContainerController);
+	public void addNavigationPanel(VBox contentVBox, WizardContainerController wizardContainerController, Wizard wizard) {
+		Parent navigationPanelParent = loadNavigationPanel(wizardContainerController, wizard);
 		if(navigationPanelParent != null) {
 			int numChildren = contentVBox.getChildren().size();
 			contentVBox.getChildren().add(numChildren, navigationPanelParent);
 		}
 	}
 	
-	private Parent loadNavigationPanel(WizardContainerController wizardContainerController) {
+	private Parent loadNavigationPanel(WizardContainerController wizardContainerController, Wizard wizard) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/NavigationPanel.fxml"));
-			NavigationPanelController navigationPanelController = new NavigationPanelController(wizardContainerController);
+			NavigationPanelController navigationPanelController = new NavigationPanelController(wizardContainerController, wizard);
 			fxmlLoader.setController(navigationPanelController);
 			Parent rootParent = fxmlLoader.load();
 			return rootParent;
@@ -32,14 +32,7 @@ public class Chapter_Handler {
 			return null;
 		}
 	}
-	
-	public void addProgressWidgetPanel(VBox contentVBox) {
-		Parent progressWidgetPanelParent = loadProgressWidgetPanel();
-		if(progressWidgetPanelParent != null) {
-			contentVBox.getChildren().add(0, progressWidgetPanelParent);
-		}
-	}
-	
+		
 	public void addProgressWidgetPanel(HBox hBox) {
 		Parent progressWidgetPanelParent = loadProgressWidgetPanel();
 		if(progressWidgetPanelParent != null) {
@@ -60,14 +53,7 @@ public class Chapter_Handler {
 			return null;
 		}
 	}
-	
-	public void addGlossaryWidgetPanel(VBox contentVBox) {
-		Parent glossaryWidgetPanelParent = loadGlossaryWidgetPanel();
-		if(glossaryWidgetPanelParent != null) {
-			contentVBox.getChildren().add(1, glossaryWidgetPanelParent);
-		}
-	}
-	
+		
 	public void addGlossaryWidgetPanel(HBox hBox) {
 		Parent glossaryWidgetPanelParent = loadGlossaryWidgetPanel();
 		if(glossaryWidgetPanelParent != null) {
@@ -88,14 +74,7 @@ public class Chapter_Handler {
 			return null;
 		}
 	}
-	
-	public void addBreadCrumbPanel(VBox contentVBox, int chapterNum, WizardContainerController wizardContainerController, Wizard wizard) {
-		Parent breadCrumbPanelParent = loadBreadCrumbPanel(chapterNum, wizardContainerController, wizard);
-		if(breadCrumbPanelParent != null) {
-			contentVBox.getChildren().add(2, breadCrumbPanelParent);
-		}
-	}
-	
+		
 	public void addBreadCrumbPanel(HBox hBox, int chapterNum, WizardContainerController wizardContainerController, Wizard wizard) {
 		Parent breadCrumbPanelParent = loadBreadCrumbPanel(chapterNum, wizardContainerController, wizard);
 		if(breadCrumbPanelParent != null) {
