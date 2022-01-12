@@ -3,6 +3,7 @@ package erb_chapter2;
 import java.net.URL;
 import java.util.ResourceBundle;
 import erb.Chapter_Handler;
+import erb.Wizard;
 import erb.WizardContainerController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,8 +20,10 @@ public class Chap2Step2Controller implements Initializable{
 	HBox headerHBox;
 	
 	WizardContainerController wizardContainerController;
-	public Chap2Step2Controller(WizardContainerController wizardContainerController) {
+	Wizard wizard;
+	public Chap2Step2Controller(WizardContainerController wizardContainerController, Wizard wizard) {
 		this.wizardContainerController = wizardContainerController;
+		this.wizard = wizard;
 	}
 	
 	Chapter_Handler chapter_Handler = new Chapter_Handler();
@@ -31,7 +34,7 @@ public class Chap2Step2Controller implements Initializable{
 //		chapter_Handler.addProgressWidgetPanel(contentVBox);
 //		chapter_Handler.addGlossaryWidgetPanel(contentVBox);
 //		chapter_Handler.addBreadCrumbPanel(contentVBox);
-		chapter_Handler.addBreadCrumbPanel(headerHBox, 2);
+		chapter_Handler.addBreadCrumbPanel(headerHBox, 2, wizardContainerController, wizard);
 		chapter_Handler.addProgressWidgetPanel(headerHBox);
 		chapter_Handler.addGlossaryWidgetPanel(headerHBox);
 	}
