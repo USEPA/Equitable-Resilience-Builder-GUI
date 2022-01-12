@@ -17,8 +17,9 @@ public class BreadCrumbPanelController implements Initializable{
 	
 	BreadCrumbBar<String> breadCrumbBar;
 	
-	public BreadCrumbPanelController() {
-		
+	int chapterNum;
+	public BreadCrumbPanelController(int chapterNum) {
+		this.chapterNum = chapterNum;
 	}
 
 	@Override
@@ -29,13 +30,45 @@ public class BreadCrumbPanelController implements Initializable{
 	
 	public void setBreadCrumbBar() {
 		Label selectedCrumbLabel = new Label();
-
 		breadCrumbBar = new BreadCrumbBar<>();
 		breadCrumbVBox.getChildren().addAll(breadCrumbBar, selectedCrumbLabel);
-
-		TreeItem<String> model = BreadCrumbBar.buildTreeModel("Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5");
-		breadCrumbBar.setSelectedCrumb(model);
+		if(chapterNum == 1) {
+			breadCrumbBar.setSelectedCrumb(getChapter1BreadCrumbs());
+		}else if (chapterNum ==2) {
+			breadCrumbBar.setSelectedCrumb(getChapter2BreadCrumbs());
+		}else if (chapterNum ==3) {
+			breadCrumbBar.setSelectedCrumb(getChapter3BreadCrumbs());
+		}else if (chapterNum == 4) {
+			breadCrumbBar.setSelectedCrumb(getChapter4BreadCrumbs());
+		}else if (chapterNum == 5) {
+			breadCrumbBar.setSelectedCrumb(getChapter5BreadCrumbs());
+		}
 		breadCrumbBar.setOnCrumbAction(e -> handleBreadCrumbEvent(e));
+	}
+	
+	public TreeItem<String> getChapter1BreadCrumbs() {
+		TreeItem<String> model = BreadCrumbBar.buildTreeModel("Chapter 1", "Step 1", "Step 2", "Step 3", "Step 4", "Reflect");
+		return model;
+	}
+	
+	public TreeItem<String> getChapter2BreadCrumbs() {
+		TreeItem<String> model = BreadCrumbBar.buildTreeModel("Chapter 2", "Step 1", "Step 2", "Step 3", "Step 4", "Reflect");
+		return model;
+	}
+	
+	public TreeItem<String> getChapter3BreadCrumbs() {
+		TreeItem<String> model = BreadCrumbBar.buildTreeModel("Chapter 3", "Step 1", "Step 2", "Step 3", "Step 4", "Step 5", "Reflect");
+		return model;
+	}
+	
+	public TreeItem<String> getChapter4BreadCrumbs() {
+		TreeItem<String> model = BreadCrumbBar.buildTreeModel("Chapter 4", "Step 1", "Step 2", "Step 3", "Reflect");
+		return model;
+	}
+	
+	public TreeItem<String> getChapter5BreadCrumbs() {
+		TreeItem<String> model = BreadCrumbBar.buildTreeModel("Chapter 5", "Step 1", "Step 2", "Step 3", "Step 4", "Reflect");
+		return model;
 	}
 	
 	public void handleBreadCrumbEvent(BreadCrumbActionEvent<String> event) {
