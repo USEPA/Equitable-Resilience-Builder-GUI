@@ -31,7 +31,7 @@ bread-crumb-bar {
 .crumb:focused
 {
     /*-fx-background-color: rgba(0,0,0,0.1);*/
-    -fx-background-color: red;
+    -fx-background-color: #B7B7B7;
     -fx-border-color: null;
     -fx-font-size: 1.11em;
     -fx-text-fill: rgba(0,0,0,0.5);
