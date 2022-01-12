@@ -32,13 +32,14 @@ import javafx.scene.Node;
 
 public class Wizard {
 	
-	WizardContainerController wizardContainerController;
-	ArrayList<Node> listOfPanelsInWizard = new ArrayList<Node>();
-	HashMap<Integer, Node> mapOfPanelsInWizard = new HashMap<Integer, Node>();
-	
+
 	public Wizard () {
 		
 	}
+	
+	WizardContainerController wizardContainerController;
+	ArrayList<Node> listOfPanelsInWizard = new ArrayList<Node>();
+	HashMap<Integer, Node> mapOfPanelsInWizard = new HashMap<Integer, Node>();
 	
 	public void addPanel(Node node) {
 		if(node != null) {

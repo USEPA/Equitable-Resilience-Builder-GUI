@@ -12,16 +12,17 @@ import javafx.stage.Stage;
 
 public class NewProjectController implements Initializable{
 
-	@FXML
-	Button customizeButton;
-	@FXML
-	Button exploreButton;
-	
 	Stage mainStage;
+	
 	public NewProjectController(Stage mainStage) {
 		this.mainStage = mainStage;
 	}
 	
+	@FXML
+	Button customizeButton;
+	@FXML
+	Button exploreButton;
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		

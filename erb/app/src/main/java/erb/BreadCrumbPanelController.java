@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -15,23 +14,23 @@ import org.controlsfx.control.BreadCrumbBar.BreadCrumbActionEvent;
 
 public class BreadCrumbPanelController implements Initializable{
 
-	@FXML
-	VBox breadCrumbVBox;
+	Wizard wizard;
+	int chapterNum;
+	WizardContainerController wizardContainerController;
+
+	public BreadCrumbPanelController(int chapterNum, WizardContainerController wizardContainerController, Wizard wizard) {
+		this.wizard = wizard;
+		this.chapterNum = chapterNum;
+		this.wizardContainerController = wizardContainerController;
+	}
 	
 	BreadCrumbBar<String> breadCrumbBar;
 	
-	int chapterNum;
-	WizardContainerController wizardContainerController;
-	Wizard wizard;
-	public BreadCrumbPanelController(int chapterNum, WizardContainerController wizardContainerController, Wizard wizard) {
-		this.chapterNum = chapterNum;
-		this.wizardContainerController = wizardContainerController;
-		this.wizard = wizard;
-	}
-
+	@FXML
+	VBox breadCrumbVBox;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		setBreadCrumbBar();
 	}
 	
@@ -98,7 +97,7 @@ public class BreadCrumbPanelController implements Initializable{
 			String selectedCrumbStepNumber = matcher.group(0);
 			return chapterNum + "." + selectedCrumbStepNumber;
 		}
-		return "";
+		return null;
 	}
 	
 	public void clearOldBreadCrumbBar() {

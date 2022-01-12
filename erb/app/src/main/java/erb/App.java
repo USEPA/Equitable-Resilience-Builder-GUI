@@ -4,7 +4,6 @@
 package erb;
 
 import java.io.IOException;
-
 import erb.App;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;

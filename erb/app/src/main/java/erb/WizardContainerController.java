@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -13,14 +12,15 @@ import javafx.scene.layout.VBox;
 
 public class WizardContainerController implements Initializable{
 	
-	@FXML
-	VBox wizardVBox;
-	
 	Wizard wizard;
+	
 	public WizardContainerController(Wizard wizard) {
 		this.wizard = wizard;
 	}
 	
+	@FXML
+	VBox wizardVBox;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		loadWizardPanel(0);

@@ -15,19 +15,20 @@ import javafx.stage.Stage;
 
 public class MainController implements Initializable{
 	
+	Stage mainStage;
+	
+	public MainController(Stage mainStage) {
+		this.mainStage = mainStage;
+	}
+
+	String pathToERBFileSystem = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\Dev_Docs\\File_System\\erb_supporting_docs";
+	
 	@FXML
 	Button newProjectLaunchButton;
 	@FXML
 	Button previousProjectLaunchButton;
 	@FXML
 	ChoiceBox<String> previousProjectChoiceBox;
-	
-	Stage mainStage;
-	public MainController(Stage mainStage) {
-		this.mainStage = mainStage;
-	}
-	
-	String pathToERBFileSystem = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\Dev_Docs\\File_System\\erb_supporting_docs";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

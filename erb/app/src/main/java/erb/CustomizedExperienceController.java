@@ -14,6 +14,12 @@ import javafx.stage.Stage;
 
 public class CustomizedExperienceController implements Initializable{
 
+	Stage mainStage;
+	
+	public CustomizedExperienceController(Stage mainStage) {
+		this.mainStage = mainStage;
+	}
+	
 	@FXML
 	RadioButton customOption1RadioButton;
 	@FXML
@@ -24,11 +30,6 @@ public class CustomizedExperienceController implements Initializable{
 	Button customizedLaunchButton;
 	@FXML
 	ToggleGroup customOptions;
-	
-	Stage mainStage;
-	public CustomizedExperienceController(Stage mainStage) {
-		this.mainStage = mainStage;
-	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
