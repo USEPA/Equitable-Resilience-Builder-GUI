@@ -86,7 +86,7 @@ public class BreadCrumbPanelController implements Initializable{
 	
 	public void handleBreadCrumbEvent(BreadCrumbActionEvent<String> event) {
 		String selectedCrumbPanelId = getSelectedBreadCrumbBarId(event);
-		int panelId = wizard.getPanelIndex(selectedCrumbPanelId);
+		int panelId = wizard.getIndex(selectedCrumbPanelId);
 		wizardContainerController.loadWizardPanel(panelId);
 	}
 	
