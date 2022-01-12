@@ -2,12 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox fx:id="panelVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
          <children>
+            <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
             <Label text="Chap 2 Step 4: Create a relationship tracker for the ERB" textFill="#bd7fc9"/>
          </children>
       </VBox>
