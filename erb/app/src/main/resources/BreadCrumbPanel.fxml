@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 
-
-<VBox fx:id="breadCrumbVBox" minHeight="40.0" minWidth="50.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" />
+<HBox fx:id="breadCrumbHBox" alignment="CENTER" spacing="2.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="step1Button" mnemonicParsing="false" onAction="#step1ButtonAction" text="Step 1" />
+      <Label fx:id="arrowLabel1" text="&gt;" />
+      <Button fx:id="step2Button" mnemonicParsing="false" onAction="#step2ButtonAction" text="Step 2" />
+      <Label fx:id="arrowLabel2" text="&gt;" />
+      <Button fx:id="step3Button" mnemonicParsing="false" onAction="#step3ButtonAction" text="Step 3" />
+      <Label fx:id="arrowLabel3" text="&gt;" />
+      <Button fx:id="step4Button" mnemonicParsing="false" onAction="#step4ButtonAction" text="Step 4" />
+      <Label fx:id="arrowLabel4" text="&gt;" />
+      <Button fx:id="step5Button" mnemonicParsing="false" onAction="#step5ButtonAction" text="Step 5" />
+      <Label fx:id="arrowLabel5" text="&gt;" />
+      <Button fx:id="step6Button" mnemonicParsing="false" onAction="#step6ButtonAction" text="Step 6" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>
