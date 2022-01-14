@@ -8,12 +8,12 @@
    <children>
       <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
          <children>
-            <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" prefHeight="30.0" prefWidth="65.0" text="Previous" />
+            <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" prefHeight="30.0" prefWidth="65.0" text="&lt;-" />
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
          <children>
-            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="30.0" prefWidth="65.0" text="Next" />
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="30.0" prefWidth="65.0" text="-&gt;" />
          </children>
       </HBox>
    </children>

@@ -1,9 +1,11 @@
 package erb;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
@@ -31,12 +33,56 @@ public class NavigationPanelController implements Initializable{
 	
 	@FXML
 	public void previousButtonAction() {
-
+		int currentChapter = wizardContainerController.getCurrentChapter();
+		Node currentNode = wizardContainerController.getCurrentWizardPanel();
+		ArrayList<Node> listOfPanelsForChapter = wizard.getListOfPanels(currentChapter);
+		
+		int indexOfPanelWithinChapter = getIndexOfPanelWithinChapter(currentNode, listOfPanelsForChapter);
+		if (indexOfPanelWithinChapter >= 0) {
+			if (indexOfPanelWithinChapter == 0) {
+				int previousChapter = currentChapter - 1;
+				if (previousChapter > 0) {
+					ArrayList<Node> listOfPanelsForPreviousChapter = wizard.getListOfPanels(previousChapter);
+					String accessibleTextOfPanelToLoad = previousChapter + "." + (listOfPanelsForPreviousChapter.size());
+					wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+				}
+			} else {
+				Node panelToLoad = listOfPanelsForChapter.get(indexOfPanelWithinChapter - 1);
+				wizardContainerController.loadWizardPanel(panelToLoad.getAccessibleText());
+			}
+		}
 	}
 	
 	@FXML
 	public void nextButtonAction() {
-
+		int currentChapter = wizardContainerController.getCurrentChapter();
+		Node currentNode = wizardContainerController.getCurrentWizardPanel();
+		ArrayList<Node> listOfPanelsForChapter = wizard.getListOfPanels(currentChapter);
+		
+		int indexOfPanelWithinChapter = getIndexOfPanelWithinChapter(currentNode, listOfPanelsForChapter);
+		if (indexOfPanelWithinChapter >= 0) {
+			if (indexOfPanelWithinChapter == listOfPanelsForChapter.size()-1) {
+				int nextChapter = currentChapter + 1;
+				if (nextChapter > 0 && nextChapter <= 5) {
+					String accessibleTextOfPanelToLoad = nextChapter + ".1";
+					wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+				}
+			} else {
+				Node panelToLoad = listOfPanelsForChapter.get(indexOfPanelWithinChapter + 1);
+				wizardContainerController.loadWizardPanel(panelToLoad.getAccessibleText());
+			}
+		}
+	}
+	
+	public int getIndexOfPanelWithinChapter(Node currentNode, ArrayList<Node> listOfPanelsForChapter) {
+		int indexOfPanelWithinChapter = -1;
+		for (int i = 0; i < listOfPanelsForChapter.size(); i++) {
+			Node chapterPanelNode = listOfPanelsForChapter.get(i);
+			if (chapterPanelNode == currentNode) {
+				indexOfPanelWithinChapter = i;
+			}
+		}
+		return indexOfPanelWithinChapter;
 	}
 
 }
