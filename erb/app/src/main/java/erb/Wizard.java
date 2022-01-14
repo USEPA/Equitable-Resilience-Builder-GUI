@@ -227,6 +227,21 @@ public class Wizard {
 		}	
 	}
 	
+	public ArrayList<Node> getListOfPanels(int chapterNumber){
+		if(chapterNumber == 1) {
+			return getListOfChapter1PanelsInWizard();
+		}else if (chapterNumber == 2) {
+			return getListOfChapter2PanelsInWizard();
+		}else if (chapterNumber == 3) {
+			return getListOfChapter3PanelsInWizard();
+		}else if (chapterNumber == 4) {
+			return getListOfChapter4PanelsInWizard();
+		}else if (chapterNumber == 5) {
+			return getListOfChapter5PanelsInWizard();
+		}
+		return null;
+	}
+	
 	public ArrayList<Node> getListOfPanelsInWizard() {
 		return listOfPanelsInWizard;
 	}

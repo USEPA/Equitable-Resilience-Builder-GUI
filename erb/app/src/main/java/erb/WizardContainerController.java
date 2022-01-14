@@ -60,6 +60,10 @@ public class WizardContainerController implements Initializable{
 		}
 	}
 	
+	public Node getCurrentWizardPanel() {
+		return wizardVBox.getChildren().get(0);
+	}
+	
 	public int getCurrentWizardPanelIndex() {
 		Node currentPanelNode = wizardVBox.getChildren().get(0);
 		if(currentPanelNode != null) {
