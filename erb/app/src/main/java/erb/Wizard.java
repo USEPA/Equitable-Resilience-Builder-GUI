@@ -57,7 +57,7 @@ public class Wizard {
 		}
 	}
 	
-	public void setPreviousProjectPanels(Wizard wizard, PreviousProject previousProject) {
+	public void setPanelsFromPreviousProject(Wizard wizard, PreviousProject previousProject) {
 		String projectType = previousProject.getProjectType();
 		if (projectType.contains("customOption")) {
 			if (projectType.contains("1")) {
@@ -140,27 +140,73 @@ public class Wizard {
 	}
 	
 	public Node getPanel(int index) {
-		return mapOfPanelsInWizard.get(index);
+		if (mapOfPanelsInWizard != null && mapOfPanelsInWizard.size() > 0) {
+			return mapOfPanelsInWizard.get(index);
+		} else {
+			return null;
+		}
 	}
 	
-	public int getIndex(Node panel) {
-		for (int key : mapOfPanelsInWizard.keySet()) {
-			if (mapOfPanelsInWizard.get(key) == panel) {
-				return key;
+	public Node getPanel(String panelAccessibleText) {
+		if (listOfPanelsInWizard != null && listOfPanelsInWizard.size() > 0) {
+			for (Node node : listOfPanelsInWizard) {
+				if (node.getAccessibleText().contentEquals(panelAccessibleText)) {
+					return node;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public int getPanelIndex(Node panel) {
+		if (mapOfPanelsInWizard != null && mapOfPanelsInWizard.size() > 0) {
+			for (int key : mapOfPanelsInWizard.keySet()) {
+				if (mapOfPanelsInWizard.get(key) == panel) {
+					return key;
+				}
 			}
 		}
 		return -1;
 	}
 	
-	public int getIndex(String panelAccessibleText) {
-		for(Node node: listOfPanelsInWizard) {
-			if(node.getAccessibleText().contentEquals(panelAccessibleText)) {
-				return getIndex(node);
+	public int getPanelIndex(String panelAccessibleText) {
+		if (listOfPanelsInWizard != null && listOfPanelsInWizard.size() > 0) {
+			for (Node node : listOfPanelsInWizard) {
+				if (node.getAccessibleText().contentEquals(panelAccessibleText)) {
+					return getPanelIndex(node);
+				}
 			}
 		}
 		return -1;
 	}
-
+	
+	public String getPanelAccessibleText(Node panel) {
+		if (mapOfPanelsInWizard != null && mapOfPanelsInWizard.size() > 0) {
+			for (int key : mapOfPanelsInWizard.keySet()) {
+				if (mapOfPanelsInWizard.get(key) == panel) {
+					return mapOfPanelsInWizard.get(key).getAccessibleText();
+				}
+			}
+		}
+		return null;
+	}
+	
+	public String getPanelAccessibleText(int index) {
+		if (mapOfPanelsInWizard != null && mapOfPanelsInWizard.size() > 0) {
+			return mapOfPanelsInWizard.get(index).getAccessibleText();
+		} else {
+			return null;
+		}
+	}
+	
+	public int getMaxWizardPanelIndex() {
+		if(mapOfPanelsInWizard != null && mapOfPanelsInWizard.size() > 0) {
+			return mapOfPanelsInWizard.size() -1;
+		}else {
+			return -1;
+		}	
+	}
+	
 	public ArrayList<Node> getListOfPanelsInWizard() {
 		return listOfPanelsInWizard;
 	}
@@ -175,10 +221,6 @@ public class Wizard {
 
 	public void setWizardContainerController(WizardContainerController wizardContainerController) {
 		this.wizardContainerController = wizardContainerController;
-	}
-	
-	public int getMaxWizardPanelIndex() {
-		return mapOfPanelsInWizard.size() -1;
 	}
 	
 	public void addChapter1Step1() {
@@ -466,6 +508,5 @@ public class Wizard {
 			e.printStackTrace();
 		}
 	}
-	
 
 }

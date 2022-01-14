@@ -31,33 +31,64 @@ public class WizardContainerController implements Initializable{
 		addContent(wizardPanelIndex);
 	}
 	
+	public void loadWizardPanel(String wizardPanelAccessibleText) {
+		clearContent();
+		addContent(wizardPanelAccessibleText);
+	}
+	
 	private void clearContent() {
 		wizardVBox.getChildren().clear();
 	}
 	
 	private void addContent(int wizardPanelIndex) {
-		wizardVBox.getChildren().add(wizard.getMapOfPanelsInWizard().get(wizardPanelIndex));
-		VBox.setVgrow(wizard.getMapOfPanelsInWizard().get(wizardPanelIndex), Priority.ALWAYS);
+		Node panelToAdd = wizard.getPanel(wizardPanelIndex);
+		if (panelToAdd != null) {
+			wizardVBox.getChildren().add(panelToAdd);
+			VBox.setVgrow(panelToAdd, Priority.ALWAYS);
+		} else {
+			System.out.println("ERROR: Panel to add is null");
+		}
+	}
+	
+	private void addContent(String wizardPanelAccessibleText) {
+		Node panelToAdd = wizard.getPanel(wizardPanelAccessibleText);
+		if(panelToAdd != null) {
+			wizardVBox.getChildren().add(panelToAdd);
+			VBox.setVgrow(panelToAdd, Priority.ALWAYS);
+		}else {
+			System.out.println("ERROR: Panel to add is null");
+		}
 	}
 	
 	public int getCurrentWizardPanelIndex() {
-		Node currentNode = wizardVBox.getChildren().get(0);
-		return wizard.getIndex(currentNode);	
+		Node currentPanelNode = wizardVBox.getChildren().get(0);
+		if(currentPanelNode != null) {
+			return wizard.getPanelIndex(currentPanelNode);	
+		}else {
+			return -1;
+		}
+	}
+	
+	public String getCurrentWizardPanelAccessibleText() {
+		Node currentPanelNode = wizardVBox.getChildren().get(0);
+		if(currentPanelNode != null) {
+			return wizard.getPanelAccessibleText(currentPanelNode);	
+		}else {
+			return null;
+		}
 	}
 	
 	public int getCurrentChapter() {
-		Node currentNode = wizardVBox.getChildren().get(0);
-		Pattern pattern = Pattern.compile("([0-9]\\.)");
-		Matcher matcher = pattern.matcher(currentNode.getAccessibleText());
-		if(matcher.find()) {
-			int chapNum = Integer.parseInt(matcher.group(0).replaceAll("\\.", ""));
-			return chapNum;
+		Node currentPanelNode = wizardVBox.getChildren().get(0);
+		if(currentPanelNode != null) {
+			Pattern pattern = Pattern.compile("([0-9]\\.)");
+			Matcher matcher = pattern.matcher(currentPanelNode.getAccessibleText());
+			if(matcher.find()) {
+				int chapNum = Integer.parseInt(matcher.group(0).replaceAll("\\.", ""));
+				return chapNum;
+			}
 		}
 		return -1;
-	}
-	
-	public int getMaxWizardPanelIndex() {
-		return wizard.getMaxWizardPanelIndex();
 	}
 	
 }

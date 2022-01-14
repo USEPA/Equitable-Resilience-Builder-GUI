@@ -60,7 +60,7 @@ public class MainController implements Initializable{
 				fxmlLoader.setController(wizardContainerController);
 				wizard.setWizardContainerController(wizardContainerController);
 				PreviousProject previousProject = getPreviousProjectSelected();
-				wizard.setPreviousProjectPanels(wizard, previousProject);
+				wizard.setPanelsFromPreviousProject(wizard, previousProject);
 				Parent rootParent = fxmlLoader.load();
 				wizardContainerController.loadWizardPanel(previousProject.getCurrentWizardPanelIndex());
 				Scene scene = new Scene(rootParent);
