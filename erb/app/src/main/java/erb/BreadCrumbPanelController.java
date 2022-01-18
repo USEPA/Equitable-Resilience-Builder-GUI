@@ -59,6 +59,8 @@ public class BreadCrumbPanelController implements Initializable{
 		}else if (chapterNum == 5) {
 			setChapter5Controls();
 		}
+		
+		breadCrumbHBox.getStylesheets().add("/BreadCrumb.css");
 	}
 	
 	@FXML
