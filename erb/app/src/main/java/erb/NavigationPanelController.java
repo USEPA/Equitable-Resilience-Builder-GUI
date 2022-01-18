@@ -6,8 +6,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Polygon;
 
 public class NavigationPanelController implements Initializable{
 
@@ -22,17 +22,17 @@ public class NavigationPanelController implements Initializable{
 	@FXML
 	HBox navigationHBox;
 	@FXML
-	Button previousButton;
+	Polygon leftFacingPolygon; //Previous
 	@FXML
-	Button nextButton;
-	
+	Polygon rightFacingPolygon; //Next
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		leftFacingPolygon.setOnMouseClicked(e-> loadPreviousPanel());
+		rightFacingPolygon.setOnMouseClicked(e-> loadNextPanel());
 	}
 	
-	@FXML
-	public void previousButtonAction() {
+	public void loadPreviousPanel() {
 		int currentChapter = wizardContainerController.getCurrentChapter();
 		Node currentNode = wizardContainerController.getCurrentWizardPanel();
 		ArrayList<Node> listOfPanelsForChapter = wizard.getListOfPanels(currentChapter);
@@ -53,8 +53,7 @@ public class NavigationPanelController implements Initializable{
 		}
 	}
 	
-	@FXML
-	public void nextButtonAction() {
+	public void loadNextPanel() {
 		int currentChapter = wizardContainerController.getCurrentChapter();
 		Node currentNode = wizardContainerController.getCurrentWizardPanel();
 		ArrayList<Node> listOfPanelsForChapter = wizard.getListOfPanels(currentChapter);

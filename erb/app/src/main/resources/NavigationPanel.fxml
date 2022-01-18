@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Polygon?>
 
-<HBox fx:id="navigationHBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="navigationHBox" spacing="5.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
          <children>
-            <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" prefHeight="30.0" prefWidth="65.0" text="&lt;-" />
+            <Polygon fx:id="leftFacingPolygon" points="-50.0, 21.014907836914062, -28.4000244140625, 31.414936065673828, -28.4000244140625, 11.414923667907715" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
          <children>
-            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="30.0" prefWidth="65.0" text="-&gt;" />
+            <Polygon fx:id="rightFacingPolygon" points="-50.0, 40.0, -28.400062561035156, 29.814939498901367, -50.00003433227539, 19.414955139160156" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
    </children>
