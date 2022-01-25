@@ -34,9 +34,9 @@
                      <children>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="About">
+                              <Label text="About" textFill="#9182ec">
                                  <font>
-                                    <Font name="Georgia" size="15.0" />
+                                    <Font name="Georgia Bold" size="15.0" />
                                  </font>
                               </Label>
                               <Separator />
@@ -49,9 +49,9 @@
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Resources">
+                              <Label text="Resources" textFill="#9182ec">
                                  <font>
-                                    <Font name="Georgia" size="15.0" />
+                                    <Font name="Georgia Bold" size="15.0" />
                                  </font>
                               </Label>
                               <Separator />
@@ -66,9 +66,9 @@
                      <children>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Steps">
+                              <Label text="Steps" textFill="#9182ec">
                                  <font>
-                                    <Font name="Georgia" size="15.0" />
+                                    <Font name="Georgia Bold" size="15.0" />
                                  </font>
                               </Label>
                               <Separator />
@@ -144,9 +144,9 @@
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Goals">
+                              <Label text="Goals" textFill="#9182ec">
                                  <font>
-                                    <Font name="Georgia" size="15.0" />
+                                    <Font name="Georgia Bold" size="15.0" />
                                  </font>
                               </Label>
                               <Separator />
