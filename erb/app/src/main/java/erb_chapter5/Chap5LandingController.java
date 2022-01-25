@@ -1,4 +1,4 @@
-package erb_chapter1;
+package erb_chapter5;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,12 +13,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class Chap1LandingController implements Initializable{
+public class Chap5LandingController implements Initializable{
 
 	Wizard wizard;
 	WizardContainerController wizardContainerController;
 	
-	public Chap1LandingController(WizardContainerController wizardContainerController, Wizard wizard) {
+	public Chap5LandingController(WizardContainerController wizardContainerController, Wizard wizard) {
 		this.wizard = wizard;
 		this.wizardContainerController = wizardContainerController;
 	}
@@ -34,14 +34,19 @@ public class Chap1LandingController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		chapter_Handler.addNavigationPanel(panelVBox, wizardContainerController, wizard);
+		chapter_Handler.addNavigationPanel(contentVBox, wizardContainerController, wizard);
 		setGoalsTextFlow();
 	}
 	
 	public void setGoalsTextFlow() {
 		Text text = new Text(
-		"- Familiarize yourself with the ERB process" + "\n" +
-		"- Complete your equitable resilience project planning");
+		"- Empower community to take action on equitable resilience" + "\n" +
+		"- Co-create a short list of equitable resilience actions that are most [relevant (achievable, appropriate, meaningful, impactful] to your community" + "\n" +
+		"- Build relationships among social actors and institutions to advance resilience"	+ "\n" +
+		"- Make the case for investing in resilience" + "\n" + 
+		"- Obtain necessary input for your immediate task (e.g. update hazard mitigation plan)" + "\n" + 
+		"- Build capacity for long term resilience progress" + "\n" + 
+		"- Feel prepared to take the next steps towards implementation of resilience actions");
 		text.setFont(Font.font ("Georgia", 13));
 		goalsTextFlow.getChildren().add(text);
 	}

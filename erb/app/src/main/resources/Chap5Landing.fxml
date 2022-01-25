@@ -11,18 +11,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox fx:id="panelVBox" accessibleText="1.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="panelVBox" accessibleText="5.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="contentVBox" prefWidth="737.0" VBox.vgrow="ALWAYS">
+      <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
          <children>
             <VBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <Label text="Chapter 1" textFill="#f77d7d">
+                  <Label text="Chapter 5" textFill="#71D67B">
                      <font>
                         <Font name="Georgia Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Pane prefHeight="5.0" style="-fx-background-color: #f77d7d;" />
+                  <Pane prefHeight="5.0" style="-fx-background-color: #71D67B;" />
                </children>
                <padding>
                   <Insets bottom="20.0" />
@@ -40,7 +40,7 @@
                                  </font>
                               </Label>
                               <Separator />
-                              <Label text="This chapter will help to you get started and plan your ERB journey" wrapText="true">
+                              <Label text="Identify the most powerful actions that will build equitable resilience" wrapText="true">
                                  <font>
                                     <Font name="Georgia" size="13.0" />
                                  </font>
@@ -79,7 +79,7 @@
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
                                                 <Hyperlink text="1. " />
-                                                <Label text="Frame the problem">
+                                                <Label text="Craft ‘how might we’ statements" wrapText="true">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
                                                    </font>
@@ -89,7 +89,7 @@
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
                                                 <Hyperlink text="2. " />
-                                                <Label text="Establish your goals">
+                                                <Label text="Prepare for community workshop" wrapText="true">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
                                                    </font>
@@ -99,7 +99,7 @@
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
                                                 <Hyperlink text="3. " />
-                                                <Label text="Gather a core team">
+                                                <Label text="Run the community workshop" wrapText="true">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
                                                    </font>
@@ -109,17 +109,17 @@
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
                                                 <Hyperlink text="4. " />
-                                                <Label text="Project plan">
+                                                <Label text="Create list of equitable resilience actions" wrapText="true">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
                                                    </font>
                                                 </Label>
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT">
+                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="82.0">
                                              <children>
                                                 <Hyperlink text="5. " />
-                                                <Label text="Reflect">
+                                                <Label text="Reflect" wrapText="true">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
                                                    </font>
@@ -132,7 +132,7 @@
                               </ScrollPane>
                            </children>
                         </VBox>
- 						<VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                        <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
                               <Label text="Goals">
                                  <font>

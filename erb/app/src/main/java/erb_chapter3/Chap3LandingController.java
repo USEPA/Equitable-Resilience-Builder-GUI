@@ -1,8 +1,7 @@
-package erb_chapter1;
+package erb_chapter3;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import erb.Chapter_Handler;
 import erb.Wizard;
 import erb.WizardContainerController;
@@ -13,12 +12,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class Chap1LandingController implements Initializable{
+public class Chap3LandingController implements Initializable{
 
 	Wizard wizard;
 	WizardContainerController wizardContainerController;
 	
-	public Chap1LandingController(WizardContainerController wizardContainerController, Wizard wizard) {
+	public Chap3LandingController(WizardContainerController wizardContainerController, Wizard wizard) {
 		this.wizard = wizard;
 		this.wizardContainerController = wizardContainerController;
 	}
@@ -34,14 +33,16 @@ public class Chap1LandingController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		chapter_Handler.addNavigationPanel(panelVBox, wizardContainerController, wizard);
+		chapter_Handler.addNavigationPanel(contentVBox, wizardContainerController, wizard);
 		setGoalsTextFlow();
 	}
 	
 	public void setGoalsTextFlow() {
 		Text text = new Text(
-		"- Familiarize yourself with the ERB process" + "\n" +
-		"- Complete your equitable resilience project planning");
+		"- Increase understanding of the hazards, disasters, and threats the community may face" + "\n" +
+		"- Increase shared understanding of what social vulnerability in your community means and why it exists" + "\n" +
+		"- Build/improve relationships between different groups in the community"	+ "\n" +
+		"- Build/improve relationships between government and community members");
 		text.setFont(Font.font ("Georgia", 13));
 		goalsTextFlow.getChildren().add(text);
 	}

@@ -1,8 +1,7 @@
-package erb_chapter1;
+package erb_chapter2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import erb.Chapter_Handler;
 import erb.Wizard;
 import erb.WizardContainerController;
@@ -13,12 +12,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class Chap1LandingController implements Initializable{
+public class Chap2LandingController implements Initializable{
 
 	Wizard wizard;
 	WizardContainerController wizardContainerController;
 	
-	public Chap1LandingController(WizardContainerController wizardContainerController, Wizard wizard) {
+	public Chap2LandingController(WizardContainerController wizardContainerController, Wizard wizard) {
 		this.wizard = wizard;
 		this.wizardContainerController = wizardContainerController;
 	}
@@ -40,8 +39,10 @@ public class Chap1LandingController implements Initializable{
 	
 	public void setGoalsTextFlow() {
 		Text text = new Text(
-		"- Familiarize yourself with the ERB process" + "\n" +
-		"- Complete your equitable resilience project planning");
+		"- Learn and reflect on which community groups and coalitions already exist and learn how to best engage different members of the community" + "\n" +
+		"- Create a plan to engage with community members throughout the ERB process" + "\n" +
+		"- Plan the workshops for activities in chapters 3,4, and 5"	+ "\n" +
+		"- Begin the process of tracking a relationship throughout the process in the relationship tracker");
 		text.setFont(Font.font ("Georgia", 13));
 		goalsTextFlow.getChildren().add(text);
 	}
