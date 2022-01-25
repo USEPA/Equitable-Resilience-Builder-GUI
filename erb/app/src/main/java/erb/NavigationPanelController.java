@@ -43,7 +43,7 @@ public class NavigationPanelController implements Initializable{
 				int previousChapter = currentChapter - 1;
 				if (previousChapter > 0) {
 					ArrayList<Node> listOfPanelsForPreviousChapter = wizard.getListOfPanels(previousChapter);
-					String accessibleTextOfPanelToLoad = previousChapter + "." + (listOfPanelsForPreviousChapter.size());
+					String accessibleTextOfPanelToLoad = previousChapter + "." + (listOfPanelsForPreviousChapter.size()-1);
 					wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
 				}
 			} else {
@@ -63,7 +63,7 @@ public class NavigationPanelController implements Initializable{
 			if (indexOfPanelWithinChapter == listOfPanelsForChapter.size()-1) {
 				int nextChapter = currentChapter + 1;
 				if (nextChapter > 0 && nextChapter <= 5) {
-					String accessibleTextOfPanelToLoad = nextChapter + ".1";
+					String accessibleTextOfPanelToLoad = nextChapter + ".0";
 					wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
 				}
 			} else {
