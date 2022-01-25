@@ -53,15 +53,15 @@ public class App extends Application {
 		fadeIn.setOnFinished((e) -> {
 			fadeOut.play();
 		});
-		fadeOut.setOnFinished((e) -> {
+		fadeOut.setOnFinished((e) -> {		
 			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Main.fxml"));
-				MainController mainController = new MainController(primaryStage);
-				fxmlLoader.setController(mainController);
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBLanding.fxml"));
+				ERBLandingController erbLandingController = new ERBLandingController(primaryStage);
+				fxmlLoader.setController(erbLandingController);
 				Parent rootParent = fxmlLoader.load();
 				Scene mainScene = new Scene(rootParent);
 				primaryStage.setScene(mainScene);
-				primaryStage.setTitle("Welcome");
+				primaryStage.setTitle("ERB");
 				primaryStage.show();
 			} catch (Exception e2) {
 				// TODO: handle exception
