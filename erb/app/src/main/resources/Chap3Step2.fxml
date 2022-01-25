@@ -1,16 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox fx:id="panelVBox" accessibleText="3.2" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
+      <VBox fx:id="contentVBox" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
-            <Label text="Chap 3 Step 2: Gather data and information about equity" textFill="#9182EC"/>
+            <VBox>
+               <children>
+                  <Label text="Chapter 3" textFill="#9182EC">
+                     <font>
+                        <Font name="Georgia" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Gather data and information about equity" textFill="#9182ec">
+                     <font>
+                        <Font name="Georgia" size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
+               </children>
+            </VBox>
+            <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="About: In the Hazards and Social Vulnerability Workshop, you will be discussing with members of your community how different population groups are impacted by HDT. Before the workshop, explore existing data sources that might be able to shed light on vulnerability and equity issues you may or may not be aware of. Mapping tools are helpful for zooming in quickly on your area to see what data is available." wrapText="true">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="First, take a look at the list of">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Hyperlink text="equity indicators">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font>
+                              </Hyperlink>
+                           </children>
+                        </HBox>
+                        <Label text="that you will be using in Chapter 4 to measure your community's equitable resilience. Use these as a guide as you explore existing equity data sources and maps. Which indicator questions can you answer using your data sources?" wrapText="true">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Add information you find to your presentation for the workshop to share with your core team and community members." wrapText="true">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Links to equity data sources and maps:">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink text="Census equity tools">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text=" EPA's">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Hyperlink text="EJ Screen">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font>
+                              </Hyperlink>
+                           </children>
+                        </HBox>
+                        <Label text=" State level EJ maps">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text=" Your local comprehensive plan">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="Download our">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Hyperlink text="guide">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Label text="to using these data sources">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
          </children>
       </VBox>
    </children>
@@ -18,4 +135,3 @@
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
 </VBox>
-

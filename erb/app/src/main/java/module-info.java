@@ -5,6 +5,7 @@ module erb {
 	requires transitive javafx.controls;
 	requires transitive javafx.graphics;
 	requires org.controlsfx.controls;
+	requires java.desktop;
 	opens erb to javafx.fxml;
 	opens erb_chapter1 to javafx.fxml;
 	opens erb_chapter2 to javafx.fxml;
