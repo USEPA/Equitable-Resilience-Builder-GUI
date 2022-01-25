@@ -2,26 +2,32 @@ package erb;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import erb_chapter1.Chap1LandingController;
 import erb_chapter1.Chap1Step1Controller;
 import erb_chapter1.Chap1Step2Controller;
 import erb_chapter1.Chap1Step3Controller;
 import erb_chapter1.Chap1Step4Controller;
 import erb_chapter1.Chap1Step5Controller;
+import erb_chapter2.Chap2LandingController;
 import erb_chapter2.Chap2Step1Controller;
 import erb_chapter2.Chap2Step2Controller;
 import erb_chapter2.Chap2Step3Controller;
 import erb_chapter2.Chap2Step4Controller;
 import erb_chapter2.Chap2Step5Controller;
+import erb_chapter3.Chap3LandingController;
 import erb_chapter3.Chap3Step1Controller;
 import erb_chapter3.Chap3Step2Controller;
 import erb_chapter3.Chap3Step3Controller;
 import erb_chapter3.Chap3Step4Controller;
 import erb_chapter3.Chap3Step5Controller;
 import erb_chapter3.Chap3Step6Controller;
+import erb_chapter4.Chap4LandingController;
 import erb_chapter4.Chap4Step1Controller;
 import erb_chapter4.Chap4Step2Controller;
 import erb_chapter4.Chap4Step3Controller;
 import erb_chapter4.Chap4Step4Controller;
+import erb_chapter5.Chap5LandingController;
 import erb_chapter5.Chap5Step1Controller;
 import erb_chapter5.Chap5Step2Controller;
 import erb_chapter5.Chap5Step3Controller;
@@ -120,6 +126,7 @@ public class Wizard {
 	}
 	
 	private void addChapter1PanelsSequentially() {
+		addChapter1Landing();
 		addChapter1Step1();
 		addChapter1Step2();
 		addChapter1Step3();
@@ -128,6 +135,7 @@ public class Wizard {
 	}
 	
 	private void addChapter2PanelsSequentially() {
+		addChapter2Landing();
 		addChapter2Step1();
 		addChapter2Step2();
 		addChapter2Step3();
@@ -136,6 +144,7 @@ public class Wizard {
 	}
 	
 	private void addChapter3PanelsSequentially() {
+		addChapter3Landing();
 		addChapter3Step1();
 		addChapter3Step2();
 		addChapter3Step3();
@@ -145,6 +154,7 @@ public class Wizard {
 	}
 	
 	private void addChapter4PanelsSequentially() {
+		addChapter4Landing();
 		addChapter4Step1();
 		addChapter4Step2();
 		addChapter4Step3();
@@ -152,6 +162,7 @@ public class Wizard {
 	}
 	
 	private void addChapter5PanelsSequentially() {
+		addChapter5Landing();
 		addChapter5Step1();
 		addChapter5Step2();
 		addChapter5Step3();
@@ -278,6 +289,17 @@ public class Wizard {
 		this.wizardContainerController = wizardContainerController;
 	}
 	
+	public void addChapter1Landing() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chap1Landing.fxml"));
+			Chap1LandingController chap1LandingController = new Chap1LandingController(wizardContainerController, this);
+			fxmlLoader.setController(chap1LandingController);
+			addPanel(fxmlLoader.load(), 1);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void addChapter1Step1() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chap1Step1.fxml"));
@@ -333,6 +355,17 @@ public class Wizard {
 		}
 	}
 	
+	public void addChapter2Landing() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chap2Landing.fxml"));
+			Chap2LandingController chap2LandingController = new Chap2LandingController(wizardContainerController, this);
+			fxmlLoader.setController(chap2LandingController);
+			addPanel(fxmlLoader.load(), 2);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void addChapter2Step1() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chap2Step1.fxml"));
@@ -383,6 +416,17 @@ public class Wizard {
 			Chap2Step5Controller chap2Step5Controller = new Chap2Step5Controller(wizardContainerController, this);
 			fxmlLoader.setController(chap2Step5Controller);
 			addPanel(fxmlLoader.load(), 2);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void addChapter3Landing() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chap3Landing.fxml"));
+			Chap3LandingController chap3LandingController = new Chap3LandingController(wizardContainerController, this);
+			fxmlLoader.setController(chap3LandingController);
+			addPanel(fxmlLoader.load(), 3);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -454,6 +498,17 @@ public class Wizard {
 		}
 	}
 	
+	public void addChapter4Landing() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chap4Landing.fxml"));
+			Chap4LandingController chap4LandingController = new Chap4LandingController(wizardContainerController, this);
+			fxmlLoader.setController(chap4LandingController);
+			addPanel(fxmlLoader.load(), 4);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void addChapter4Step1() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chap4Step1.fxml"));
@@ -493,6 +548,17 @@ public class Wizard {
 			Chap4Step4Controller chap4Step4Controller = new Chap4Step4Controller(wizardContainerController, this);
 			fxmlLoader.setController(chap4Step4Controller);
 			addPanel(fxmlLoader.load(), 4);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void addChapter5Landing() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Chap5Landing.fxml"));
+			Chap5LandingController chap5LandingController = new Chap5LandingController(wizardContainerController, this);
+			fxmlLoader.setController(chap5LandingController);
+			addPanel(fxmlLoader.load(), 5);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
