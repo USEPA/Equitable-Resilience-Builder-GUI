@@ -10,9 +10,9 @@
    <children>
       <HBox alignment="CENTER">
          <children>
-            <Label text="Welcome to the ERB">
+            <Label text="Welcome to the ERB" textFill="#030303">
                <font>
-                  <Font size="30.0" />
+                  <Font name="Georgia" size="35.0" />
                </font>
             </Label>
          </children>
@@ -21,7 +21,7 @@
          <children>
             <Label text="(Equitable Resilience Builder)">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Georgia" size="25.0" />
                </font>
             </Label>
          </children>
