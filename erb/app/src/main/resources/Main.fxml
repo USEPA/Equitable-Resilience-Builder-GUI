@@ -15,7 +15,7 @@
          <children>
             <Label text="Equitable Resilience Builder">
                <font>
-                  <Font size="25.0" />
+                  <Font name="Georgia" size="30.0" />
                </font>
             </Label>
          </children>
@@ -29,11 +29,11 @@
                      <children>
                         <Label text="New Project">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Georgia" size="15.0" />
                            </font></Label>
                         <Button fx:id="newProjectLaunchButton" mnemonicParsing="false" onAction="#newProjectLaunchButtonAction" text="Launch">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="Georgia" size="13.0" />
                            </font></Button>
                      </children>
                   </HBox>
@@ -45,12 +45,12 @@
                      <children>
                         <Label text="Previous Project">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Georgia" size="15.0" />
                            </font></Label>
                         <ChoiceBox fx:id="previousProjectChoiceBox" prefWidth="150.0" />
                         <Button fx:id="previousProjectLaunchButton" mnemonicParsing="false" onAction="#previousProjectLaunchButtonAction" text="Launch">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="Georgia" size="13.0" />
                            </font></Button>
                      </children>
                   </HBox>

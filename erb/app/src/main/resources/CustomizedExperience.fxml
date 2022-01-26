@@ -16,7 +16,7 @@
          <children>
             <Label text="Equitable Resilience Builder">
                <font>
-                  <Font size="25.0" />
+                  <Font name="Georgia" size="30.0" />
                </font>
             </Label>
          </children>
@@ -28,7 +28,7 @@
                <children>
                   <Label text="Choose your customized experience:">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Georgia" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -40,16 +40,16 @@
                         <ToggleGroup fx:id="customOptions" />
                      </toggleGroup>
                      <font>
-                        <Font size="13.0" />
+                        <Font name="Georgia" size="15.0" />
                      </font>
                   </RadioButton>
                   <RadioButton fx:id="customOption2RadioButton" mnemonicParsing="false" text="Starting a resilience plan from scratch" toggleGroup="$customOptions">
                      <font>
-                        <Font size="13.0" />
+                        <Font name="Georgia" size="15.0" />
                      </font></RadioButton>
                   <RadioButton fx:id="customOption3RadioButton" mnemonicParsing="false" text="Focus on particular sector or hazard" toggleGroup="$customOptions">
                      <font>
-                        <Font size="13.0" />
+                        <Font name="Georgia" size="15.0" />
                      </font></RadioButton>
                </children>
                <padding>
@@ -65,7 +65,7 @@
          <children>
             <Button fx:id="customizedLaunchButton" mnemonicParsing="false" onAction="#customizedLaunchButtonAction" text="Launch">
                <font>
-                  <Font size="13.0" />
+                  <Font name="Georgia" size="15.0" />
                </font></Button>
          </children>
       </HBox>

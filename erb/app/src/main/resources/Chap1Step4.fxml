@@ -4,13 +4,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox fx:id="panelVBox" accessibleText="1.4" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
          <children>
             <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
-				<Label text="Chap 1 Step 4: Project plan" textFill="#f77d7d"/>
+				<Label text="Chap 1 Step 4: Project plan" textFill="#f77d7d">
+               <font>
+                  <Font name="Georgia" size="13.0" />
+               </font></Label>
 			</children>
 		</VBox>
 	</children>
@@ -18,4 +22,3 @@
 		<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 	</padding>
 </VBox>
-

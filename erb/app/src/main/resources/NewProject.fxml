@@ -14,7 +14,7 @@
          <children>
             <Label text="Equitable Resilience Builder">
                <font>
-                  <Font size="25.0" />
+                  <Font name="Georgia" size="30.0" />
                </font>
             </Label>
          </children>
@@ -28,11 +28,11 @@
                      <children>
                         <Label text="Customize your experince">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Georgia" size="15.0" />
                            </font></Label>
                         <Button fx:id="customizeButton" mnemonicParsing="false" onAction="#customizeButtonAction" text="Launch">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="Georgia" size="13.0" />
                            </font></Button>
                      </children>
                   </HBox>
@@ -44,11 +44,11 @@
                      <children>
                         <Label text="Begin ERB process">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Georgia" size="15.0" />
                            </font></Label>
                         <Button fx:id="exploreButton" mnemonicParsing="false" onAction="#exploreButtonAction" text="Launch">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="Georgia" size="13.0" />
                            </font></Button>
                      </children>
                   </HBox>

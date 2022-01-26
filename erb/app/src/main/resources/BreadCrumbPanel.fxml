@@ -8,32 +8,50 @@
 
 <HBox fx:id="breadCrumbHBox" alignment="CENTER" spacing="2.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="step1Button" mnemonicParsing="false" onAction="#step1ButtonAction" text="Step 1" />
+      <Button fx:id="step1Button" mnemonicParsing="false" onAction="#step1ButtonAction" text="Step 1">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font></Button>
       <Label fx:id="arrowLabel1" text="&gt;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Button fx:id="step2Button" mnemonicParsing="false" onAction="#step2ButtonAction" text="Step 2" />
+      <Button fx:id="step2Button" mnemonicParsing="false" onAction="#step2ButtonAction" text="Step 2">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font></Button>
       <Label fx:id="arrowLabel2" text="&gt;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Button fx:id="step3Button" mnemonicParsing="false" onAction="#step3ButtonAction" text="Step 3" />
+      <Button fx:id="step3Button" mnemonicParsing="false" onAction="#step3ButtonAction" text="Step 3">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font></Button>
       <Label fx:id="arrowLabel3" text="&gt;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Button fx:id="step4Button" mnemonicParsing="false" onAction="#step4ButtonAction" text="Step 4" />
+      <Button fx:id="step4Button" mnemonicParsing="false" onAction="#step4ButtonAction" text="Step 4">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font></Button>
       <Label fx:id="arrowLabel4" text="&gt;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Button fx:id="step5Button" mnemonicParsing="false" onAction="#step5ButtonAction" text="Step 5" />
+      <Button fx:id="step5Button" mnemonicParsing="false" onAction="#step5ButtonAction" text="Step 5">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font></Button>
       <Label fx:id="arrowLabel5" text="&gt;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Button fx:id="step6Button" mnemonicParsing="false" onAction="#step6ButtonAction" text="Step 6" />
+      <Button fx:id="step6Button" mnemonicParsing="false" onAction="#step6ButtonAction" text="Step 6">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font></Button>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

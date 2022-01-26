@@ -55,8 +55,14 @@
                                  </font>
                               </Label>
                               <Separator />
-                              <Hyperlink text="Resource 1" />
-                              <Hyperlink text="Resource 2" />
+                              <Hyperlink text="Resource 1">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font></Hyperlink>
+                              <Hyperlink text="Resource 2">
+                                 <font>
+                                    <Font name="Georgia" size="13.0" />
+                                 </font></Hyperlink>
                            </children>
                         </VBox>
                      </children>
@@ -78,7 +84,10 @@
                                        <children>
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
-                                                <Hyperlink text="1. " />
+                                                <Hyperlink text="1. ">
+                                                   <font>
+                                                      <Font name="Georgia" size="13.0" />
+                                                   </font></Hyperlink>
                                                 <Label text="Create a community engagement plan">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
@@ -88,7 +97,10 @@
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
-                                                <Hyperlink text="2. " />
+                                                <Hyperlink text="2. ">
+                                                   <font>
+                                                      <Font name="Georgia" size="13.0" />
+                                                   </font></Hyperlink>
                                                 <Label text="Conduct a stakeholder analysis">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
@@ -98,7 +110,10 @@
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
-                                                <Hyperlink text="3. " />
+                                                <Hyperlink text="3. ">
+                                                   <font>
+                                                      <Font name="Georgia" size="13.0" />
+                                                   </font></Hyperlink>
                                                 <Label text="Plan workshops">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
@@ -108,7 +123,10 @@
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
-                                                <Hyperlink text="4. " />
+                                                <Hyperlink text="4. ">
+                                                   <font>
+                                                      <Font name="Georgia" size="13.0" />
+                                                   </font></Hyperlink>
                                                 <Label text="Create a relationship tracker for the ERB">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
@@ -118,7 +136,10 @@
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT">
                                              <children>
-                                                <Hyperlink text="5. " />
+                                                <Hyperlink text="5. ">
+                                                   <font>
+                                                      <Font name="Georgia" size="13.0" />
+                                                   </font></Hyperlink>
                                                 <Label text="Reflect">
                                                    <font>
                                                       <Font name="Georgia" size="13.0" />
