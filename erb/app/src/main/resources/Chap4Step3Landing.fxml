@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="panelVBox" accessibleText="4.3.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
+          <children>
+            <Label text="Landing Chap 4 Step 3: Sort and visualize indicators" textFill="#81DDC3">
+               <font>
+                  <Font name="Georgia" size="13.0" />
+               </font></Label>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
