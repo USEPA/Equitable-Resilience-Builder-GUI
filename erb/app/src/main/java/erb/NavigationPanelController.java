@@ -42,9 +42,16 @@ public class NavigationPanelController implements Initializable{
 			if (indexOfPanelWithinChapter == 0) {
 				int previousChapter = currentChapter - 1;
 				if (previousChapter > 0) {
-					ArrayList<Node> listOfPanelsForPreviousChapter = wizard.getListOfPanels(previousChapter);
-					String accessibleTextOfPanelToLoad = previousChapter + "." + (listOfPanelsForPreviousChapter.size()-1);
-					wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+					int numberOfStepsInChapter = wizard.getNumberOfSteps(previousChapter);
+					int numberOfSubStepsInStep = wizard.getNumberOfSubsteps(previousChapter, numberOfStepsInChapter);
+					if(numberOfSubStepsInStep >=1) {
+						String accessibleTextOfPanelToLoad = previousChapter + "." + numberOfStepsInChapter + "." + numberOfSubStepsInStep;
+						wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+					}else {
+						String accessibleTextOfPanelToLoad = previousChapter + "." + numberOfStepsInChapter + ".1"; 
+						wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+					}
+
 				}
 			} else {
 				Node panelToLoad = listOfPanelsForChapter.get(indexOfPanelWithinChapter - 1);

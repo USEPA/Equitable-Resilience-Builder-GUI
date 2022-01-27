@@ -2,8 +2,6 @@ package erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -84,15 +82,17 @@ public class WizardContainerController implements Initializable{
 	
 	public int getCurrentChapter() {
 		Node currentPanelNode = wizardVBox.getChildren().get(0);
-		if(currentPanelNode != null) {
-			Pattern pattern = Pattern.compile("([0-9]\\.)");
-			Matcher matcher = pattern.matcher(currentPanelNode.getAccessibleText());
-			if(matcher.find()) {
-				int chapNum = Integer.parseInt(matcher.group(0).replaceAll("\\.", ""));
-				return chapNum;
-			}
-		}
-		return -1;
+		return wizard.getChapter(currentPanelNode);
+	}
+	
+	public int getCurrentStep() {
+		Node currentPanelNode = wizardVBox.getChildren().get(0);
+		return wizard.getStep(currentPanelNode);
+	}
+	
+	public int getCurrentSubStep() {
+		Node currentPanelNode = wizardVBox.getChildren().get(0);
+		return wizard.getSubStep(currentPanelNode);
 	}
 	
 }
