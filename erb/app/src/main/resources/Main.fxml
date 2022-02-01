@@ -9,29 +9,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="836.0" style="-fx-background-color: #FBFBFB;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Equitable Resilience Builder">
+            <Label text="Equitable Resilience Builder" textFill="#4b4b4b">
                <font>
                   <Font name="Georgia" size="30.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Separator prefWidth="200.0" />
+      <Separator prefWidth="200.0" style="-fx-background-color: #AAAAAA;" />
       <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="25.0">
                      <children>
-                        <Label text="New Project">
+                        <Label text="New Project" textFill="#4b4b4b">
                            <font>
                               <Font name="Georgia" size="15.0" />
                            </font></Label>
-                        <Button fx:id="newProjectLaunchButton" mnemonicParsing="false" onAction="#newProjectLaunchButtonAction" text="Launch">
+                        <Button fx:id="newProjectLaunchButton" mnemonicParsing="false" onAction="#newProjectLaunchButtonAction" style="-fx-background-color: #DDDDDD; -fx-border-color: #FFFFFF;" text="Launch" textFill="#4b4b4b">
                            <font>
                               <Font name="Georgia" size="13.0" />
                            </font></Button>
@@ -43,12 +43,12 @@
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="25.0">
                      <children>
-                        <Label text="Previous Project">
+                        <Label text="Previous Project" textFill="#4b4b4b">
                            <font>
                               <Font name="Georgia" size="15.0" />
                            </font></Label>
                         <ChoiceBox fx:id="previousProjectChoiceBox" prefWidth="150.0" />
-                        <Button fx:id="previousProjectLaunchButton" mnemonicParsing="false" onAction="#previousProjectLaunchButtonAction" text="Launch">
+                        <Button fx:id="previousProjectLaunchButton" mnemonicParsing="false" onAction="#previousProjectLaunchButtonAction" style="-fx-background-color: #DDDDDD; -fx-border-color: #FFFFFF;" text="Launch" textFill="#4b4b4b">
                            <font>
                               <Font name="Georgia" size="13.0" />
                            </font></Button>

@@ -2,26 +2,41 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="874.0" spacing="15.0" style="-fx-background-color: #FBFBFB;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER">
+      <VBox>
          <children>
-            <Label text="Welcome to the ERB" textFill="#030303">
-               <font>
-                  <Font name="Georgia" size="35.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Welcome to the ERB" textFill="#4b4b4b">
+                     <font>
+                        <Font name="Georgia" size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="(Equitable Resilience Builder)" textFill="#4b4b4b">
+                     <font>
+                        <Font name="Georgia" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
-      </HBox>
-      <HBox alignment="CENTER">
+      </VBox>
+      <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
+      <HBox alignment="TOP_CENTER" prefHeight="20.0" prefWidth="874.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label text="(Equitable Resilience Builder)">
+            <Label text="EPA">
                <font>
-                  <Font name="Georgia" size="25.0" />
+                  <Font name="Georgia" size="15.0" />
                </font>
             </Label>
          </children>

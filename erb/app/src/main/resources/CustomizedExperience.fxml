@@ -10,23 +10,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="827.0" style="-fx-background-color: #FBFBFB;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Equitable Resilience Builder">
+            <Label text="Equitable Resilience Builder" textFill="#4b4b4b">
                <font>
                   <Font name="Georgia" size="30.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Separator prefWidth="200.0" />
+      <Separator prefWidth="200.0" style="-fx-background-color: #AAAAAA;" />
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" VBox.vgrow="ALWAYS">
          <children>
             <HBox prefWidth="200.0">
                <children>
-                  <Label text="Choose your customized experience:">
+                  <Label text="Choose your customized experience:" textFill="#4b4b4b">
                      <font>
                         <Font name="Georgia" size="20.0" />
                      </font>
@@ -35,7 +35,7 @@
             </HBox>
             <VBox alignment="CENTER_LEFT" prefWidth="100.0" spacing="30.0">
                <children>
-                  <RadioButton fx:id="customOption1RadioButton" mnemonicParsing="false" text="Improving social vulnerability/equity in my HMP">
+                  <RadioButton fx:id="customOption1RadioButton" mnemonicParsing="false" text="Improving social vulnerability/equity in my HMP" textFill="#4b4b4b">
                      <toggleGroup>
                         <ToggleGroup fx:id="customOptions" />
                      </toggleGroup>
@@ -43,11 +43,11 @@
                         <Font name="Georgia" size="15.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="customOption2RadioButton" mnemonicParsing="false" text="Starting a resilience plan from scratch" toggleGroup="$customOptions">
+                  <RadioButton fx:id="customOption2RadioButton" mnemonicParsing="false" text="Starting a resilience plan from scratch" textFill="#4b4b4b" toggleGroup="$customOptions">
                      <font>
                         <Font name="Georgia" size="15.0" />
                      </font></RadioButton>
-                  <RadioButton fx:id="customOption3RadioButton" mnemonicParsing="false" text="Focus on particular sector or hazard" toggleGroup="$customOptions">
+                  <RadioButton fx:id="customOption3RadioButton" mnemonicParsing="false" text="Focus on particular sector or hazard" textFill="#4b4b4b" toggleGroup="$customOptions">
                      <font>
                         <Font name="Georgia" size="15.0" />
                      </font></RadioButton>
@@ -63,7 +63,7 @@
       </VBox>
       <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
          <children>
-            <Button fx:id="customizedLaunchButton" mnemonicParsing="false" onAction="#customizedLaunchButtonAction" text="Launch">
+            <Button fx:id="customizedLaunchButton" mnemonicParsing="false" onAction="#customizedLaunchButtonAction" style="-fx-background-color: #DDDDDD; -fx-border-color: #FFFFFF;" text="Launch" textFill="#4b4b4b">
                <font>
                   <Font name="Georgia" size="15.0" />
                </font></Button>
