@@ -10,7 +10,7 @@
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
           <children>
-            <Label text="Landing Chap 4 Step 1: Review built, natural, and social indicators" textFill="#81DDC3">
+            <Label text="Landing Chap 4 Step 1: Review built, natural, and social indicators" textFill="#5f76a4">
                <font>
                   <Font name="Georgia" size="13.0" />
                </font></Label>

@@ -13,12 +13,12 @@
          <children>
             <VBox>
                <children>
-                  <Label text="Chapter 3" textFill="#9182EC">
+                  <Label text="Chapter 3" textFill="#8c638d">
                      <font>
                         <Font name="Georgia" size="18.0" />
                      </font>
                   </Label>
-                  <Label text="Identify vulnerabilities and impacts of hazards and disasters." textFill="#9182ec">
+                  <Label text="Identify vulnerabilities and impacts of hazards and disasters." textFill="#8c638d">
                      <font>
                         <Font name="Georgia" size="15.0" />
                      </font>

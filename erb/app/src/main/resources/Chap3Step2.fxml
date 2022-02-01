@@ -13,14 +13,9 @@
          <children>
             <VBox>
                <children>
-                  <Label text="Chapter 3" textFill="#9182EC">
+                  <Label text="Chapter 3: Gather data and information about equity" textFill="#8c638d" wrapText="true">
                      <font>
                         <Font name="Georgia" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label text="Gather data and information about equity" textFill="#9182ec">
-                     <font>
-                        <Font name="Georgia" size="15.0" />
                      </font>
                   </Label>
                   <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
@@ -28,15 +23,6 @@
             </VBox>
             <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="About: In the Hazards and Social Vulnerability Workshop, you will be discussing with members of your community how different population groups are impacted by HDT. Before the workshop, explore existing data sources that might be able to shed light on vulnerability and equity issues you may or may not be aware of. Mapping tools are helpful for zooming in quickly on your area to see what data is available." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
                   <VBox VBox.vgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER_LEFT">

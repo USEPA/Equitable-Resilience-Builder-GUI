@@ -17,12 +17,12 @@
          <children>
             <VBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <Label text="Chapter 1" textFill="#f77d7d">
+                  <Label text="Chapter 1" textFill="#C67B7B">
                      <font>
                         <Font name="Georgia Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Pane prefHeight="5.0" style="-fx-background-color: #f77d7d;" />
+                  <Pane prefHeight="5.0" style="-fx-background-color: #C67B7B;" />
                </children>
                <padding>
                   <Insets bottom="20.0" />
@@ -34,7 +34,7 @@
                      <children>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="About" textFill="#f77d7d">
+                              <Label text="About" textFill="#C67B7B">
                                  <font>
                                     <Font name="Georgia Bold" size="15.0" />
                                  </font>
@@ -49,7 +49,7 @@
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Resources" textFill="#f77d7d">
+                              <Label text="Resources" textFill="#C67B7B">
                                  <font>
                                     <Font name="Georgia Bold" size="15.0" />
                                  </font>
@@ -72,7 +72,7 @@
                      <children>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Steps" textFill="#f77d7d">
+                              <Label text="Steps" textFill="#C67B7B">
                                  <font>
                                     <Font name="Georgia Bold" size="15.0" />
                                  </font>
@@ -149,7 +149,7 @@
                         </VBox>
  						<VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Goals" textFill="#f77d7d">
+                              <Label text="Goals" textFill="#C67B7B">
                                  <font>
                                     <Font name="Georgia Bold" size="15.0" />
                                  </font>

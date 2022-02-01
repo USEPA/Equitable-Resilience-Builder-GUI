@@ -10,7 +10,7 @@
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
           <children>
-            <Label text="Landing Chap 2 Step 4: Create a relationship tracker for the ERB" textFill="#bd7fc9">
+            <Label text="Landing Chap 2 Step 4: Create a relationship tracker for the ERB" textFill="#8aa165">
                <font>
                   <Font name="Georgia" size="13.0" />
                </font></Label>

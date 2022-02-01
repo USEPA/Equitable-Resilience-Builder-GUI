@@ -13,14 +13,9 @@
          <children>
             <VBox>
                <children>
-                  <Label text="Chapter 3" textFill="#9182EC">
+                  <Label text="Chapter 3: Gather information about hazards, disasters, and threats" textFill="#8c638d" wrapText="true">
                      <font>
                         <Font name="Georgia" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label text="Gather information about hazards, disasters, and threats" textFill="#9182ec">
-                     <font>
-                        <Font name="Georgia" size="15.0" />
                      </font>
                   </Label>
                   <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
@@ -30,11 +25,6 @@
                <children>
                   <VBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="About: In this step, you'll gather information on hazards, disasters, and threats that your community may face to inform the social vulnerability you will do next, as well as the action plan in Chapter 5. You may have some of this information already if your community has a Hazard Mitigation Plan (HMP)." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
                         <HBox alignment="CENTER_LEFT">
                            <children>
                               <Label text="Download a worksheet for this step">

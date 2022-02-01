@@ -11,7 +11,7 @@
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
          <children>
             <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
-				<Label text="Chap 1 Step 5: Reflect" textFill="#f77d7d">
+				<Label text="Chap 1 Step 5: Reflect" textFill="#C67B7B">
                <font>
                   <Font name="Georgia" size="13.0" />
                </font></Label>

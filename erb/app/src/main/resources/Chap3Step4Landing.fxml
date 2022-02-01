@@ -10,7 +10,7 @@
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
           <children>
-            <Label text="Landing Chap 3 Step 4: Identify vulnerabilities and impacts of hazards and disasters" textFill="#9182ec">
+            <Label text="Landing Chap 3 Step 4: Identify vulnerabilities and impacts of hazards and disasters" textFill="#8c638d">
                <font>
                   <Font name="Georgia" size="13.0" />
                </font></Label>
