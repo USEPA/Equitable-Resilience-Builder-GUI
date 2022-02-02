@@ -13,11 +13,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
-public class MainController implements Initializable{
+public class ProjectSelectionController implements Initializable{
 	
 	Stage mainStage;
 	
-	public MainController(Stage mainStage) {
+	public ProjectSelectionController(Stage mainStage) {
 		this.mainStage = mainStage;
 	}
 

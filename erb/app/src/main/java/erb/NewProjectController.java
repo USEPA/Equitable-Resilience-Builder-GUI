@@ -31,8 +31,8 @@ public class NewProjectController implements Initializable{
 	@FXML
 	public void customizeButtonAction() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CustomizedExperience.fxml"));
-			CustomizedExperienceController customizedExperienceController = new CustomizedExperienceController(mainStage);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CustomizedProject.fxml"));
+			CustomizedProjectController customizedExperienceController = new CustomizedProjectController(mainStage);
 			fxmlLoader.setController(customizedExperienceController);
 			Parent rootParent = fxmlLoader.load();
 			Scene scene = new Scene(rootParent);

@@ -12,11 +12,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-public class CustomizedExperienceController implements Initializable{
+public class CustomizedProjectController implements Initializable{
 
 	Stage mainStage;
 	
-	public CustomizedExperienceController(Stage mainStage) {
+	public CustomizedProjectController(Stage mainStage) {
 		this.mainStage = mainStage;
 	}
 	

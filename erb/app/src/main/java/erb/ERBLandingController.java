@@ -29,8 +29,8 @@ public class ERBLandingController implements Initializable{
 	@FXML
 	public void launchButtonAction() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Main.fxml"));
-			MainController mainController = new MainController(mainStage);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProjectSelection.fxml"));
+			ProjectSelectionController mainController = new ProjectSelectionController(mainStage);
 			fxmlLoader.setController(mainController);
 			Parent rootParent = fxmlLoader.load();
 			Scene mainScene = new Scene(rootParent);
