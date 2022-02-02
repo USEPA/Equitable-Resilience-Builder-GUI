@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -10,10 +12,54 @@
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
           <children>
-            <Label text="Landing Chap 3 Step 6: Reflect" textFill="#8c638d">
-               <font>
-                  <Font name="Georgia" size="13.0" />
-               </font></Label>
+            <VBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label text="Chapter 3 Step 6: Reflect" textFill="#8c638d" wrapText="true">
+                     <font>
+                        <Font name="Georgia Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="5.0" style="-fx-background-color: #8c638d;" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </VBox>
+            <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="About" textFill="#8c638d">
+                           <font>
+                              <Font name="Georgia Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Separator />
+                        <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label wrapText="true">
+                                 <font>
+                                    <Font name="Georgia" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" />
+                  <VBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Resources" textFill="#8c638d">
+                           <font>
+                              <Font name="Georgia Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Separator />
+                        <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

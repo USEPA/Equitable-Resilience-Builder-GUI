@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -13,12 +14,16 @@
          <children>
             <VBox>
                <children>
-                  <Label text="Chapter 3: Gather data and information about equity" textFill="#8c638d" wrapText="true">
+                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
+                  <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
+                  <Label text="3.2: Gather data and information about equity" textFill="#8c638d" wrapText="true">
                      <font>
                         <Font name="Georgia" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </Label>
-                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
                </children>
             </VBox>
             <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">

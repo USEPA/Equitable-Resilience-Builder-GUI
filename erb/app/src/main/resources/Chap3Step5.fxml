@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -12,17 +13,16 @@
          <children>
             <VBox>
                <children>
-                  <Label text="Chapter 3" textFill="#8c638d">
+                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
+                  <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
+                  <Label text="3.5: Discuss root causes of inequities." textFill="#8c638d">
                      <font>
                         <Font name="Georgia" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </Label>
-                  <Label text="Discuss root causes of inequities." textFill="#8c638d">
-                     <font>
-                        <Font name="Georgia" size="15.0" />
-                     </font>
-                  </Label>
-                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
                </children>
             </VBox>
             <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -30,15 +30,6 @@
                   <VBox VBox.vgrow="ALWAYS">
                      <children>
                         <Label text="Workshop Acitivy #3: Describe who may be most impacted, how and why" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Using the stories, data, and mapping activies, now you will identify the population groups in your community that are most impacted and discuss how and why. Later in Chapter 5, you will identify actions that can be taken to reduce these vulnerabilities." wrapText="true">
                            <font>
                               <Font name="Georgia" size="13.0" />
                            </font>
