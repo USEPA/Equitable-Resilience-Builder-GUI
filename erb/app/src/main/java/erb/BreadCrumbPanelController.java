@@ -65,37 +65,37 @@ public class BreadCrumbPanelController implements Initializable{
 	
 	@FXML
 	public void step1ButtonAction() {
-		String panelAccessibleTextId = chapterNum + ".1";
+		String panelAccessibleTextId = chapterNum + ".1.0";
 		wizardContainerController.loadWizardPanel(panelAccessibleTextId);
 	}
 	
 	@FXML
 	public void step2ButtonAction() {
-		String panelAccessibleTextId = chapterNum + ".2";
+		String panelAccessibleTextId = chapterNum + ".2.0";
 		wizardContainerController.loadWizardPanel(panelAccessibleTextId);
 	}
 	
 	@FXML
 	public void step3ButtonAction() {
-		String panelAccessibleTextId = chapterNum + ".3";
+		String panelAccessibleTextId = chapterNum + ".3.0";
 		wizardContainerController.loadWizardPanel(panelAccessibleTextId);
 	}
 	
 	@FXML
 	public void step4ButtonAction() {
-		String panelAccessibleTextId = chapterNum + ".4";
+		String panelAccessibleTextId = chapterNum + ".4.0";
 		wizardContainerController.loadWizardPanel(panelAccessibleTextId);
 	}
 	
 	@FXML
 	public void step5ButtonAction() {
-		String panelAccessibleTextId = chapterNum + ".5";
+		String panelAccessibleTextId = chapterNum + ".5.0";
 		wizardContainerController.loadWizardPanel(panelAccessibleTextId);
 	}
 	
 	@FXML
 	public void step6ButtonAction() {
-		String panelAccessibleTextId = chapterNum + ".6";
+		String panelAccessibleTextId = chapterNum + ".6.0";
 		wizardContainerController.loadWizardPanel(panelAccessibleTextId);
 	}
 	
