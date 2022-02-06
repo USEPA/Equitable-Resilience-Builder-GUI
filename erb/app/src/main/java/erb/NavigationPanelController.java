@@ -52,6 +52,8 @@ public class NavigationPanelController implements Initializable{
 						wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
 					}
 
+				}else {
+					wizardContainerController.loadWizardPanel("0.0");
 				}
 			} else {
 				Node panelToLoad = listOfPanelsForChapter.get(indexOfPanelWithinChapter - 1);
