@@ -34,7 +34,17 @@ public class WizardLandingController implements Initializable{
 	}
 	
 	public void chapterImageSelected(int chapterNum) {
-
+		if(chapterNum == 1) {
+			wizardContainerController.loadWizardPanel("1.0");
+		} else if (chapterNum == 2) {
+			wizardContainerController.loadWizardPanel("2.0");
+		} else if (chapterNum == 3) {
+			wizardContainerController.loadWizardPanel("3.0");
+		} else if (chapterNum == 4) {
+			wizardContainerController.loadWizardPanel("4.0");
+		} else if (chapterNum == 5) {
+			wizardContainerController.loadWizardPanel("5.0");
+		}
 	}
 
 }
