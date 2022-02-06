@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -11,10 +12,14 @@
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
          <children>
             <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
+            <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
             <Label text="Chap 2 Step 4: Create a relationship tracker for the ERB" textFill="#8aa165">
                <font>
-                  <Font name="Georgia" size="13.0" />
-               </font></Label>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
          </children>
       </VBox>
    </children>
