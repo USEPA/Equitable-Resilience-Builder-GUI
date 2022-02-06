@@ -131,6 +131,7 @@ public class Wizard {
 	}
 	
 	public void setSequentialPanels() {
+		addWizardLanding();
 		addChapter1PanelsSequentially();
 		addChapter2PanelsSequentially();
 		addChapter3PanelsSequentially();
@@ -237,7 +238,7 @@ public class Wizard {
 	public Node getPanel(String panelAccessibleText) {
 		if (listOfPanelsInWizard != null && listOfPanelsInWizard.size() > 0) {
 			for (Node node : listOfPanelsInWizard) {
-				if (node.getAccessibleText().contentEquals(panelAccessibleText)) {
+				if (node.getAccessibleText() != null && node.getAccessibleText().contentEquals(panelAccessibleText)) {
 					return node;
 				}
 			}
@@ -424,6 +425,18 @@ public class Wizard {
 
 	public void setWizardContainerController(WizardContainerController wizardContainerController) {
 		this.wizardContainerController = wizardContainerController;
+	}
+	
+	public void addWizardLanding() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/WizardLanding.fxml"));
+			WizardLandingController wizardLandingController = new WizardLandingController(wizardContainerController);
+			fxmlLoader.setController(wizardLandingController);
+			addPanel(fxmlLoader.load(), -1);
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 	
 	public void addChapter1Landing() {
