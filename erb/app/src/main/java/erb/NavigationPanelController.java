@@ -74,6 +74,8 @@ public class NavigationPanelController implements Initializable{
 				if (nextChapter > 0 && nextChapter <= 5) {
 					String accessibleTextOfPanelToLoad = nextChapter + ".0";
 					wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+				}else if (nextChapter > 0) {
+					wizardContainerController.loadWizardPanel("0.0.0");
 				}
 			} else {
 				Node panelToLoad = listOfPanelsForChapter.get(indexOfPanelWithinChapter + 1);
