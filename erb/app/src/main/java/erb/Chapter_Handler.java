@@ -36,7 +36,7 @@ public class Chapter_Handler {
 	public void addProgressWidgetPanel(HBox hBox) {
 		Parent progressWidgetPanelParent = loadProgressWidgetPanel();
 		if(progressWidgetPanelParent != null) {
-			hBox.getChildren().add(1, progressWidgetPanelParent);
+			hBox.getChildren().add(0, progressWidgetPanelParent);
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class Chapter_Handler {
 	public void addGlossaryWidgetPanel(HBox hBox) {
 		Parent glossaryWidgetPanelParent = loadGlossaryWidgetPanel();
 		if(glossaryWidgetPanelParent != null) {
-			hBox.getChildren().add(2, glossaryWidgetPanelParent);
+			hBox.getChildren().add(1, glossaryWidgetPanelParent);
 		}
 	}
 	
