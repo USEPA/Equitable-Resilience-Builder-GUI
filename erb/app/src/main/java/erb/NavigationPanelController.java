@@ -47,17 +47,21 @@ public class NavigationPanelController implements Initializable{
 					if(numberOfSubStepsInStep >=1) {
 						String accessibleTextOfPanelToLoad = previousChapter + "." + numberOfStepsInChapter + "." + numberOfSubStepsInStep;
 						wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+						wizardContainerController.updateSelectedTreeItem(accessibleTextOfPanelToLoad);
 					}else {
 						String accessibleTextOfPanelToLoad = previousChapter + "." + numberOfStepsInChapter + ".1"; 
 						wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+						wizardContainerController.updateSelectedTreeItem(accessibleTextOfPanelToLoad);
 					}
 
 				}else {
 					wizardContainerController.loadWizardPanel("0.0");
+					wizardContainerController.updateSelectedTreeItem("0.0");
 				}
 			} else {
 				Node panelToLoad = listOfPanelsForChapter.get(indexOfPanelWithinChapter - 1);
 				wizardContainerController.loadWizardPanel(panelToLoad.getAccessibleText());
+				wizardContainerController.updateSelectedTreeItem(panelToLoad.getAccessibleText());
 			}
 		}
 	}
@@ -74,12 +78,15 @@ public class NavigationPanelController implements Initializable{
 				if (nextChapter > 0 && nextChapter <= 5) {
 					String accessibleTextOfPanelToLoad = nextChapter + ".0";
 					wizardContainerController.loadWizardPanel(accessibleTextOfPanelToLoad);
+					wizardContainerController.updateSelectedTreeItem(accessibleTextOfPanelToLoad);
 				}else if (nextChapter > 0) {
 					wizardContainerController.loadWizardPanel("0.0.0");
+					wizardContainerController.updateSelectedTreeItem("0.0.0");
 				}
 			} else {
 				Node panelToLoad = listOfPanelsForChapter.get(indexOfPanelWithinChapter + 1);
 				wizardContainerController.loadWizardPanel(panelToLoad.getAccessibleText());
+				wizardContainerController.updateSelectedTreeItem(panelToLoad.getAccessibleText());
 			}
 		}
 	}
