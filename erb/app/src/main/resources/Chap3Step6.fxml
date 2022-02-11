@@ -13,8 +13,8 @@
          <children>
             <VBox>
                <children>
-                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
-                  <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
+                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" spacing="20.0" />
+                  <Separator prefWidth="200.0" />
                   <Label text="3.6: Reflect" textFill="#8c638d">
                      <font>
                         <Font name="Georgia" size="18.0" />
