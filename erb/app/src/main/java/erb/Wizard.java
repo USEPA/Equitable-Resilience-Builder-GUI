@@ -61,12 +61,13 @@ import erb_chapter5.Chap5Step5Controller;
 import erb_chapter5.Chap5Step5LandingController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.stage.Stage;
 
 public class Wizard {
 	
-
-	public Wizard () {
-		
+	Stage mainStage;
+	public Wizard (Stage mainStage) {
+		this.mainStage = mainStage;
 	}
 	
 	int numberOfStepsInChapter1 = 5;
@@ -430,7 +431,7 @@ public class Wizard {
 	public void addWizardLanding() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/WizardLanding.fxml"));
-			WizardLandingController wizardLandingController = new WizardLandingController(wizardContainerController);
+			WizardLandingController wizardLandingController = new WizardLandingController(wizardContainerController, mainStage);
 			fxmlLoader.setController(wizardLandingController);
 			addPanel(fxmlLoader.load(), -1);
 		}catch (Exception e) {

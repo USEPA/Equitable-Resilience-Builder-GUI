@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ProjectSelectionController implements Initializable{
@@ -29,10 +30,56 @@ public class ProjectSelectionController implements Initializable{
 	Button previousProjectLaunchButton;
 	@FXML
 	ChoiceBox<String> previousProjectChoiceBox;
+	@FXML
+	Label glossaryLabel;
+	@FXML
+	Label resourcesLabel;
+	@FXML
+	Label erbLandingLabel;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillPreviousProjectChoiceBox();
+		
+		glossaryLabel.setOnMouseEntered(e-> handleLabelHighlight(glossaryLabel));
+		glossaryLabel.setOnMouseExited(e-> handleLabelUnHighlight(glossaryLabel));
+		glossaryLabel.setOnMouseClicked(e-> handleLabelClicked(glossaryLabel));
+
+		resourcesLabel.setOnMouseEntered(e-> handleLabelHighlight(resourcesLabel));
+		resourcesLabel.setOnMouseExited(e-> handleLabelUnHighlight(resourcesLabel));
+		resourcesLabel.setOnMouseClicked(e-> handleLabelClicked(resourcesLabel));
+		
+		erbLandingLabel.setOnMouseEntered(e-> handleLabelHighlight(erbLandingLabel));
+		erbLandingLabel.setOnMouseExited(e-> handleLabelUnHighlight(erbLandingLabel));
+		erbLandingLabel.setOnMouseClicked(e-> handleLabelClicked(erbLandingLabel));
+	}
+	
+	public void handleLabelHighlight(Label label) {	
+		//Highlight
+		label.setStyle("-fx-background-color: #A2A2A2");
+	}
+	
+	public void handleLabelUnHighlight(Label label) {	
+		//Un-highlight 
+		label.setStyle("-fx-background-color: transparent");
+	}
+	
+	public void handleLabelClicked(Label label) {
+		if(label == erbLandingLabel) {
+			try {
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBLanding.fxml"));
+				ERBLandingController erbLandingController = new ERBLandingController(mainStage);
+				fxmlLoader.setController(erbLandingController);
+				Parent rootParent = fxmlLoader.load();
+				Scene mainScene = new Scene(rootParent);
+				mainStage.setScene(mainScene);
+				mainStage.setTitle("ERB");
+				mainStage.show();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@FXML
@@ -54,7 +101,7 @@ public class ProjectSelectionController implements Initializable{
 	public void previousProjectLaunchButtonAction() {
 		if(previousProjectChoiceBox.getSelectionModel().getSelectedIndex() >= 0) {
 			try {
-				Wizard wizard = new Wizard();
+				Wizard wizard = new Wizard(mainStage);
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/WizardContainer.fxml"));
 				WizardContainerController wizardContainerController = new WizardContainerController(wizard);
 				fxmlLoader.setController(wizardContainerController);
