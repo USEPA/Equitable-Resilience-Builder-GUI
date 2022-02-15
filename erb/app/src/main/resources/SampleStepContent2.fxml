@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox spacing="25.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Objective:">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text=" Identify a few top areas of need in equitable resilience based on your results so far to select discussion topics for the community workshop on resilience actions. ​">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Why:">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="The workshop will more likely lead to tangible actions if you can focus the conversation on a few topics. This doesn't mean it's the only conversation you'll have about resilience actions! You can adapt this process for future conversations on different topics.​" wrapText="true">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Who:">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="The project core team">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Where:">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="In person or virtual meeting​">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Time needed:">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="About an hour and a half​">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Materials needed:">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="Easel pad, sticky notes and dots, and markers (alt: whiteboard and dry erase pens or virtual whiteboard), stakeholder analysis from Ch. 2,  visualization from Ch. 4, SVA table from Ch. 3, hazards ID from Ch. 3.​" wrapText="true">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Outputs:">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="3 to 5 'how might we statements'  on problems your community might work to solve to build equitable resilience on a few key topics.​" wrapText="true">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="To download a template for generating 'how might we' statements on equitable resilience, click here.​" wrapText="true">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</VBox>
