@@ -10,7 +10,7 @@
    <children>
       <HBox VBox.vgrow="ALWAYS">
          <children>
-            <VBox>
+            <VBox minWidth="225.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="40.0" style="-fx-background-color: #E8E8E8;">
                      <children>
