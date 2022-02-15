@@ -37,7 +37,7 @@
                         <Separator />
                         <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="As you were exploring data sources, you may have found a map of your community that shows what neighborhoods may be impacted by HDT, or that showed demogrpahic information about where priority populations live. You can use this information to identify what neighborhoods may be vulnerable to HDT and may need more assistance in addressing existing issues." wrapText="true">
+                              <Label text="As you were exploring data sources, you may have found a map of your community that shows what neighborhoods may be impacted by HDT, or that showed demographic information about where priority populations live. You can use this information to identify what neighborhoods may be vulnerable to HDT and may need more assistance in addressing existing issues." wrapText="true">
                                  <font>
                                     <Font name="Georgia" size="15.0" />
                                  </font>

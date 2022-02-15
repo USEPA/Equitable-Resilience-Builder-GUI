@@ -80,7 +80,7 @@
                      <children>
                         <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="This chapter helps you plan the community engagement that will provide the foundation for your ERB planning process. It describes methods for engaging differnt members of your community to empower their participation in information sharing and learning" wrapText="true">
+                              <Label text="This chapter helps you plan the community engagement that will provide the foundation for your ERB planning process. It describes methods for engaging different members of your community to empower their participation in information sharing and learning" wrapText="true">
                                  <font>
                                     <Font name="Georgia" size="15.0" />
                                  </font>

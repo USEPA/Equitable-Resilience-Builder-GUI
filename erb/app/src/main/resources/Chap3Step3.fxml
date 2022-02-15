@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
@@ -24,112 +23,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-               </children>
-            </VBox>
-            <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <HBox alignment="CENTER_LEFT">
-                           <children>
-                              <Label text="Download the">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Hyperlink text="worksheet">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Label text="for this">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" activity and see ">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Hyperlink text="Chapter 2">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Label text="for more on storytelling.">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <VBox>
-                     <children>
-                        <Label text="Storytelling prompts:" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="-Describe a time when you experienced a hazard, disaster or threat." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="-How did this event impact your wellbeing?">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin></Label>
-                        <Label text="-Did you observe disparate effects across your community?">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="-Have you experienced or obserevd the imoacts of climate change on your life and/or in your community?">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="-What is the most concerning to you related to hazards, disasters, and threats?">
-                         <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Discussion and report -out:">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="-What are similarities and differences in what people have experienced?">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="-What do we notice about the reasons for different impacts and experiences?">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </children>

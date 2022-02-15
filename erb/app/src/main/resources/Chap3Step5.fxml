@@ -25,69 +25,6 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Workshop Acitivy #3: Describe who may be most impacted, how and why" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="In order to address social vulnerability and improve equitable resilience, it's necessary to understand what causes disparate impacts. Thinking about the data you've explored, the stories you've heard, and the impacts you've identified, discuss the reasons why these disparate impacts occur and capture your insights in a table like the one below. Look at the previous table and discuss the reasions why those impacts happen (use sticky notes for &quot;why&quot; and then identify clusters)." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox>
-                     <children>
-                        <Label text="Download and complete the activity template on social vulnerability as a group activity with community members. Use the major hazards you identified in the last step and the priority populations from equity data and storytelling. Your activity may look like the example below." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Completing this activity as a group alongside people who experience vulnerabilities helps to:">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="-Ensure you understand the vulnerabilities accurately and with sensitivity and nuance.">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="-Identify actions that will make a meaningful difference for the people most affected.">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="-Build meaningful connections and relationships necessary to facilitate equitable actions">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
          </children>
       </VBox>
    </children>

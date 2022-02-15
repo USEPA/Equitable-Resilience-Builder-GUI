@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
@@ -24,66 +23,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-               </children>
-            </VBox>
-            <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Also, HDT sometimes cause cascading impacts, when the effects spill over from one location or sector to another. Flooding in one area disrupts transportation or energy systems, which then disrupts energy or water distribution to the entire community." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <HBox alignment="CENTER_LEFT">
-                           <children>
-                              <Label text="Download the">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Hyperlink text="mapping activity worksheet">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Label text="to:">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="-Create a map and add information from community memebers about existing conditions and impacts from HDT." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="-Discuss the connections between different HDT and which have the potential to cause cascading impacts.">
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="10.0" layoutY="61.0" text="-Identify the main HDT you want to address in this project, which you will need for the next activity..">
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </children>
