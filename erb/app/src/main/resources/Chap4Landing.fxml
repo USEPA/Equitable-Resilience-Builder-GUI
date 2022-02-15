@@ -98,7 +98,7 @@
                                  </font>
                               </Label>
                               <Separator />
-                              <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                  <content>
                                     <VBox>
                                        <children>
@@ -162,9 +162,9 @@
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
+                              <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <VBox minWidth="75.0" HBox.hgrow="ALWAYS">
+                                    <VBox prefWidth="104.0" HBox.hgrow="ALWAYS">
                                        <children>
                                           <Label text="Objectives" textFill="#5f76a4">
                                              <font>
@@ -172,14 +172,14 @@
                                              </font>
                                           </Label>
                                           <Separator />
-                                          <ScrollPane fitToWidth="true" prefHeight="200.0" style="-fx-background-color: transparent;">
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                              <content>
                                                 <TextFlow fx:id="goalsTextFlow" />
                                              </content>
                                           </ScrollPane>
                                        </children>
                                     </VBox>
-                                    <VBox minWidth="75.0" HBox.hgrow="ALWAYS">
+                                    <VBox prefWidth="115.0" HBox.hgrow="ALWAYS">
                                        <children>
                                           <Label text="Outputs" textFill="#5f76a4">
                                              <font>
@@ -187,7 +187,7 @@
                                              </font>
                                           </Label>
                                           <Separator />
-                                          <ScrollPane fitToWidth="true" prefHeight="200.0" style="-fx-background-color: transparent;">
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                              <content>
                                                 <TextFlow fx:id="goalsTextFlow1" />
                                              </content>
