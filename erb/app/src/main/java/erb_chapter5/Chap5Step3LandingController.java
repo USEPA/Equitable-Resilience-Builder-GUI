@@ -2,7 +2,7 @@ package erb_chapter5;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import erb.Chapter_Handler;
+import erb.Panel_Handler;
 import erb.Wizard;
 import erb.WizardContainerController;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ public class Chap5Step3LandingController implements Initializable{
 		this.wizardContainerController = wizardContainerController;
 	}
 	
-	Chapter_Handler chapter_Handler = new Chapter_Handler();
+	Panel_Handler chapter_Handler = new Panel_Handler();
 	
 	@FXML
 	VBox panelVBox;

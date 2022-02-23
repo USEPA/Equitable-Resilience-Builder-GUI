@@ -7,13 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class Chapter_Handler {
+public class Panel_Handler {
 
-	public Chapter_Handler() {
+	public Panel_Handler() {
 		
 	}
 	
-	private Logger logger = LogManager.getLogger(Chapter_Handler.class);
+	private Logger logger = LogManager.getLogger(Panel_Handler.class);
 	
 	public void addNavigationPanel(VBox contentVBox, WizardContainerController wizardContainerController, Wizard wizard) {
 		Parent navigationPanelParent = loadNavigationPanel(wizardContainerController, wizard);

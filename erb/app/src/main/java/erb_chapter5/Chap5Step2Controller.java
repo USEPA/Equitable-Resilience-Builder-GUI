@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import erb.Chapter_Handler;
+import erb.Panel_Handler;
 import erb.Wizard;
 import erb.WizardContainerController;
 import javafx.fxml.FXML;
@@ -25,7 +25,7 @@ public class Chap5Step2Controller implements Initializable{
 		this.wizardContainerController = wizardContainerController;
 	}
 	
-	Chapter_Handler chapter_Handler = new Chapter_Handler();
+	Panel_Handler chapter_Handler = new Panel_Handler();
 	private Logger logger = LogManager.getLogger(Chap5Step2Controller.class);
 
 	@FXML

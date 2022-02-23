@@ -18,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 
 public class App extends Application {
 
+	Content_Handler content_Handler = new Content_Handler();
 	private Logger logger = LogManager.getLogger(App.class);
 	
 	public String getGreeting() {
@@ -31,6 +32,8 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println(new App().getGreeting());
+		content_Handler.initContent();
+		
 		VBox splashScreen;
 		try {
 			splashScreen = FXMLLoader.load(getClass().getResource("/SplashScreen.fxml"));
