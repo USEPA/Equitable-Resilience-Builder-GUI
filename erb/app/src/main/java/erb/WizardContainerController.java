@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -23,6 +25,7 @@ public class WizardContainerController implements Initializable{
 	}
 	
 	ArrayList<TreeItem<String>> listOfTreeItems = new ArrayList<TreeItem<String>>();
+	private Logger logger = LogManager.getLogger(WizardContainerController.class);
 	
 	@FXML
 	VBox wizardVBox;
@@ -55,7 +58,7 @@ public class WizardContainerController implements Initializable{
 			wizardVBox.getChildren().add(panelToAdd);
 			VBox.setVgrow(panelToAdd, Priority.ALWAYS);
 		} else {
-			System.out.println("ERROR: Panel to add is null");
+			logger.error("Panel to add is null");
 		}
 	}
 	
@@ -65,7 +68,7 @@ public class WizardContainerController implements Initializable{
 			wizardVBox.getChildren().add(panelToAdd);
 			VBox.setVgrow(panelToAdd, Priority.ALWAYS);
 		}else {
-			System.out.println("ERROR: Panel to add is null");
+			logger.error("Panel to add is null");
 		}
 	}
 	

@@ -32,7 +32,6 @@ public class Chap4Step2Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		chapter_Handler.addNavigationPanel(panelVBox, wizardContainerController, wizard);
-//		chapter_Handler.addBreadCrumbPanel(headerHBox, 4, wizardContainerController, wizard);
 		chapter_Handler.addProgressWidgetPanel(headerHBox);
 		chapter_Handler.addGlossaryWidgetPanel(headerHBox);
 	}

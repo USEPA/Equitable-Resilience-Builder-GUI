@@ -2,6 +2,8 @@ package erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +20,8 @@ public class NewProjectController implements Initializable{
 	public NewProjectController(Stage mainStage) {
 		this.mainStage = mainStage;
 	}
+	
+	private Logger logger = LogManager.getLogger(NewProjectController.class);
 	
 	@FXML
 	Button customizeButton;
@@ -66,8 +70,7 @@ public class NewProjectController implements Initializable{
 				mainStage.setScene(mainScene);
 				mainStage.show();
 			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 	}
@@ -82,8 +85,7 @@ public class NewProjectController implements Initializable{
 			Scene scene = new Scene(rootParent);
 			mainStage.setScene(scene);
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 	
@@ -100,8 +102,7 @@ public class NewProjectController implements Initializable{
 			Scene scene = new Scene(rootParent);
 			mainStage.setScene(scene);
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 }

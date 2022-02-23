@@ -13,9 +13,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class App extends Application {
 
+	private Logger logger = LogManager.getLogger(App.class);
+	
 	public String getGreeting() {
 		return "Launching ERB";
 	}
@@ -26,13 +30,12 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
 		System.out.println(new App().getGreeting());
 		VBox splashScreen;
 		try {
 			splashScreen = FXMLLoader.load(getClass().getResource("/SplashScreen.fxml"));
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.fatal(e.getMessage());
 			return;
 		}
 		Scene scene = new Scene(splashScreen);
@@ -64,10 +67,8 @@ public class App extends Application {
 				primaryStage.setTitle("ERB");
 				primaryStage.show();
 			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
+				logger.fatal(e2.getMessage());
 			}
 		});
 	}
-
 }

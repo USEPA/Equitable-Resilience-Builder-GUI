@@ -3,6 +3,8 @@ package erb;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,6 +25,7 @@ public class PreviousProject {
 	String projectType;
 	Document documentToParse;
 	int currentWizardPanelIndex;
+	private Logger logger = LogManager.getLogger(PreviousProject.class);
 	
 	public void parsePreviousProject() {
 		initDOM("Project_Progress.xml");
@@ -62,8 +65,7 @@ public class PreviousProject {
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			documentToParse = documentBuilder.parse(fileToParse);
 		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 

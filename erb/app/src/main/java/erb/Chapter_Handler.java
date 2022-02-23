@@ -1,5 +1,7 @@
 package erb;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
@@ -10,6 +12,8 @@ public class Chapter_Handler {
 	public Chapter_Handler() {
 		
 	}
+	
+	private Logger logger = LogManager.getLogger(Chapter_Handler.class);
 	
 	public void addNavigationPanel(VBox contentVBox, WizardContainerController wizardContainerController, Wizard wizard) {
 		Parent navigationPanelParent = loadNavigationPanel(wizardContainerController, wizard);
@@ -27,8 +31,7 @@ public class Chapter_Handler {
 			Parent rootParent = fxmlLoader.load();
 			return rootParent;
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			return null;
 		}
 	}
@@ -48,8 +51,7 @@ public class Chapter_Handler {
 			Parent rootParent = fxmlLoader.load();
 			return rootParent;
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			return null;
 		}
 	}
@@ -69,8 +71,7 @@ public class Chapter_Handler {
 			Parent rootParent = fxmlLoader.load();
 			return rootParent;
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			return null;
 		}
 	}
@@ -90,7 +91,7 @@ public class Chapter_Handler {
 			Parent rootParent = fxmlLoader.load();
 			return rootParent;
 		}catch (Exception e) {
-			// TODO: handle exception
+			logger.error(e.getMessage());
 			return null;
 		}
 	}

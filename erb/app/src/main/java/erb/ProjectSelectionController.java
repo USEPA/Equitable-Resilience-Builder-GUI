@@ -4,6 +4,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +25,7 @@ public class ProjectSelectionController implements Initializable{
 	}
 
 	String pathToERBFileSystem = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\Dev_Docs\\File_System\\erb_supporting_docs";
+	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
 	
 	@FXML
 	Button newProjectLaunchButton;
@@ -76,8 +79,7 @@ public class ProjectSelectionController implements Initializable{
 				mainStage.setTitle("ERB");
 				mainStage.show();
 			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 	}
@@ -92,8 +94,7 @@ public class ProjectSelectionController implements Initializable{
 			Scene scene = new Scene(rootParent);
 			mainStage.setScene(scene);
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 	
@@ -113,8 +114,7 @@ public class ProjectSelectionController implements Initializable{
 				Scene scene = new Scene(rootParent);
 				mainStage.setScene(scene);
 			}catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 	}

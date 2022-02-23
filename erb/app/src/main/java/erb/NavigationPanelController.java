@@ -18,7 +18,7 @@ public class NavigationPanelController implements Initializable{
 		this.wizard = wizard;
 		this.wizardContainerController = wizardContainerController;
 	}
-	
+		
 	@FXML
 	HBox navigationHBox;
 	@FXML

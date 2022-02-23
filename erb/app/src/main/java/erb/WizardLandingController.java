@@ -2,6 +2,10 @@ package erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +24,8 @@ public class WizardLandingController implements Initializable{
 		this.wizardContainerController = wizardContainerController;
 	}
 	
+	private Logger logger = LogManager.getLogger(WizardLandingController.class);
+
 	@FXML
 	ImageView chap1ImageView;
 	@FXML
@@ -85,8 +91,7 @@ public class WizardLandingController implements Initializable{
 				mainStage.setScene(mainScene);
 				mainStage.show();
 			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}else if (label == erbLandingLabel) {
 			try {
@@ -99,8 +104,7 @@ public class WizardLandingController implements Initializable{
 				mainStage.setTitle("ERB");
 				mainStage.show();
 			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 	}

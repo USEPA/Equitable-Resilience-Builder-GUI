@@ -2,19 +2,18 @@ package erb_chapter5;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import erb.Chapter_Handler;
-import erb.ERBLandingController;
 import erb.Wizard;
 import erb.WizardContainerController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class Chap5Step2Controller implements Initializable{
 
@@ -27,6 +26,7 @@ public class Chap5Step2Controller implements Initializable{
 	}
 	
 	Chapter_Handler chapter_Handler = new Chapter_Handler();
+	private Logger logger = LogManager.getLogger(Chap5Step2Controller.class);
 
 	@FXML
 	VBox panelVBox;
@@ -44,7 +44,6 @@ public class Chap5Step2Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		chapter_Handler.addNavigationPanel(panelVBox, wizardContainerController, wizard);
-//		chapter_Handler.addBreadCrumbPanel(headerHBox, 5, wizardContainerController, wizard);
 		chapter_Handler.addProgressWidgetPanel(headerHBox);
 		chapter_Handler.addGlossaryWidgetPanel(headerHBox);
 		radioButton1.setSelected(true);
@@ -59,8 +58,7 @@ public class Chap5Step2Controller implements Initializable{
 			stepContentVBox.getChildren().clear();
 			stepContentVBox.getChildren().add(rootParent);
 		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 	
@@ -72,8 +70,7 @@ public class Chap5Step2Controller implements Initializable{
 			stepContentVBox.getChildren().clear();
 			stepContentVBox.getChildren().add(rootParent);
 		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 }

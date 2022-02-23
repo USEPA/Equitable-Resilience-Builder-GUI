@@ -2,6 +2,8 @@ package erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +19,8 @@ public class ERBLandingController implements Initializable{
 	public ERBLandingController(Stage mainStage) {
 		this.mainStage = mainStage;
 	}
+	
+	private Logger logger = LogManager.getLogger(ERBLandingController.class);
 	
 	@FXML
 	Button launchButton;
@@ -61,9 +65,7 @@ public class ERBLandingController implements Initializable{
 			mainStage.setScene(mainScene);
 			mainStage.show();
 		} catch (Exception e2) {
-			// TODO: handle exception
-			e2.printStackTrace();
+			logger.error(e2.getMessage());
 		}
 	}
-
 }
