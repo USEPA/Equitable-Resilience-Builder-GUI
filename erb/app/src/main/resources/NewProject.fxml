@@ -8,23 +8,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="770.0" style="-fx-background-color: #FBFBFB;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FBFBFB;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" spacing="25.0" style="-fx-background-color: #E8E8E8;">
          <children>
-            <Label text="Equitable Resilience Builder" textFill="#4b4b4b">
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label fx:id="resourcesLabel" text="Resources" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label fx:id="glossaryLabel" text="Glossary" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label fx:id="projectSelectionLabel" text="Project Selection" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <VBox alignment="CENTER_LEFT" prefHeight="100.0">
+         <children>
+            <Label text="Equitable Resilience" textFill="#4b4b4b">
                <font>
-                  <Font name="Georgia" size="30.0" />
+                  <Font name="Georgia" size="25.0" />
                </font>
             </Label>
+            <Label text="Builder" textFill="#4b4b4b">
+               <font>
+                  <Font name="Georgia" size="25.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="1.0" style="-fx-background-color: #AAAAAA;" />
          </children>
-      </HBox>
-      <Separator prefWidth="200.0" style="-fx-background-color: #AAAAAA;" />
-      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      </VBox>
+      <HBox VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <VBox HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
+                  <HBox spacing="25.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Label text="Customize your experince" textFill="#4b4b4b">
                            <font>
@@ -38,9 +57,9 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <VBox HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
+                  <HBox spacing="25.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Label text="Begin ERB process" textFill="#4b4b4b">
                            <font>
@@ -55,9 +74,6 @@
                </children>
             </VBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
       </HBox>
    </children>
    <padding>

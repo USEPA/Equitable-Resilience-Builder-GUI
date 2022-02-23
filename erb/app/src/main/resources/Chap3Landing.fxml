@@ -49,20 +49,40 @@
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Resources" textFill="#8c638d">
-                                 <font>
-                                    <Font name="Georgia Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Separator />
-                              <Hyperlink text="Resource 1">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font></Hyperlink>
-                              <Hyperlink text="Resource 2">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font></Hyperlink>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label text="You will need" textFill="#8c638d">
+                                             <font>
+                                                <Font name="Georgia Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator />
+                                       </children>
+                                    </VBox>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Resources" textFill="#8c638d">
+                                             <font>
+                                                <Font name="Georgia Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator />
+                                          <Hyperlink text="Resource 1">
+                                             <font>
+                                                <Font name="Georgia" size="13.0" />
+                                             </font>
+                                          </Hyperlink>
+                                          <Hyperlink text="Resource 2">
+                                             <font>
+                                                <Font name="Georgia" size="13.0" />
+                                             </font>
+                                          </Hyperlink>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>
@@ -78,7 +98,7 @@
                                  </font>
                               </Label>
                               <Separator />
-                              <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                                  <content>
                                     <VBox>
                                        <children>
@@ -168,17 +188,40 @@
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Goals" textFill="#8c638d">
-                                 <font>
-                                    <Font name="Georgia Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Separator />
-                              <ScrollPane fitToWidth="true" prefHeight="200.0" style="-fx-background-color: transparent;">
-                                 <content>
-                                    <TextFlow fx:id="goalsTextFlow" />
-                                 </content>
-                              </ScrollPane>
+                              <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox prefWidth="104.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Objectives" textFill="#8c638d">
+                                             <font>
+                                                <Font name="Georgia Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator />
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <TextFlow fx:id="goalsTextFlow" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefWidth="115.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Outputs" textFill="#8c638d">
+                                             <font>
+                                                <Font name="Georgia Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator />
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <TextFlow fx:id="goalsTextFlow1" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>

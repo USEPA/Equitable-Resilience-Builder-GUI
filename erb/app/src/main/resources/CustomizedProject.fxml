@@ -10,19 +10,35 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="827.0" style="-fx-background-color: #FBFBFB;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FBFBFB;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" spacing="25.0" style="-fx-background-color: #E8E8E8;">
          <children>
-            <Label text="Equitable Resilience Builder" textFill="#4b4b4b">
-               <font>
-                  <Font name="Georgia" size="30.0" />
-               </font>
-            </Label>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label fx:id="resourcesLabel" text="Resources" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label fx:id="glossaryLabel" text="Glossary" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label fx:id="projectSelectionLabel" text="Project Selection" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
          </children>
       </HBox>
-      <Separator prefWidth="200.0" style="-fx-background-color: #AAAAAA;" />
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" VBox.vgrow="ALWAYS">
+      <VBox alignment="CENTER_LEFT" prefHeight="100.0">
+         <children>
+            <Label text="Equitable Resilience" textFill="#4b4b4b">
+               <font>
+                  <Font name="Georgia" size="25.0" />
+               </font>
+            </Label>
+            <Label text="Builder" textFill="#4b4b4b">
+               <font>
+                  <Font name="Georgia" size="25.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="1.0" style="-fx-background-color: #AAAAAA;" />
+         </children>
+      </VBox>
+      <VBox spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
             <HBox prefWidth="200.0">
                <children>
@@ -33,7 +49,7 @@
                   </Label>
                </children>
             </HBox>
-            <VBox alignment="CENTER_LEFT" prefWidth="100.0" spacing="30.0">
+            <VBox spacing="25.0" VBox.vgrow="ALWAYS">
                <children>
                   <RadioButton fx:id="customOption1RadioButton" mnemonicParsing="false" text="Improving social vulnerability/equity in my HMP" textFill="#4b4b4b">
                      <toggleGroup>
@@ -57,11 +73,8 @@
                </padding>
             </VBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
       </VBox>
-      <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+      <HBox alignment="CENTER_RIGHT">
          <children>
             <Button fx:id="customizedLaunchButton" mnemonicParsing="false" onAction="#customizedLaunchButtonAction" style="-fx-background-color: #DDDDDD; -fx-border-color: #FFFFFF;" text="Launch" textFill="#4b4b4b">
                <font>

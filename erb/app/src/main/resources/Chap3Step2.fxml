@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
@@ -14,8 +13,8 @@
          <children>
             <VBox>
                <children>
-                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
-                  <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
+                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" spacing="20.0" />
+                  <Separator prefWidth="200.0" />
                   <Label text="3.2: Gather data and information about equity" textFill="#8c638d" wrapText="true">
                      <font>
                         <Font name="Georgia" size="18.0" />
@@ -24,99 +23,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-               </children>
-            </VBox>
-            <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <HBox alignment="CENTER_LEFT">
-                           <children>
-                              <Label text="First, take a look at the list of">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Hyperlink text="equity indicators">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Hyperlink>
-                           </children>
-                        </HBox>
-                        <Label text="that you will be using in Chapter 4 to measure your community's equitable resilience. Use these as a guide as you explore existing equity data sources and maps. Which indicator questions can you answer using your data sources?" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox>
-                     <children>
-                        <Label text="Add information you find to your presentation for the workshop to share with your core team and community members." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Links to equity data sources and maps:">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Hyperlink text="Census equity tools">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Hyperlink>
-                        <HBox alignment="CENTER_LEFT">
-                           <children>
-                              <Label text=" EPA's">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Hyperlink text="EJ Screen">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Hyperlink>
-                           </children>
-                        </HBox>
-                        <Label text=" State level EJ maps">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text=" Your local comprehensive plan">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT">
-                           <children>
-                              <Label text="Download our">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Hyperlink text="guide">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Label text="to using these data sources">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </children>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
@@ -14,8 +13,8 @@
          <children>
             <VBox>
                <children>
-                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
-                  <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
+                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" spacing="20.0" />
+                  <Separator prefWidth="200.0" />
                   <Label text="3.1: Gather information about hazards, disasters, and threats" textFill="#8c638d" wrapText="true">
                      <font>
                         <Font name="Georgia" size="18.0" />
@@ -24,66 +23,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-               </children>
-            </VBox>
-            <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <HBox alignment="CENTER_LEFT">
-                           <children>
-                              <Label text="Download a worksheet for this step">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Hyperlink text="here.">
-                                 <font>
-                                    <Font name="Georgia" size="13.0" />
-                                 </font>
-                              </Hyperlink>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Questions to Explore:">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="1. What are the most significant climate change risks in your community over the next 50 years (or however many years you plan over)?" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="2. What other risks do you know of that are relevant for your community, but that you do not have adequate information about, such as cyber security threats?" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="3. How much are conditions expected to change in the next 10, 30 and 50 years?" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="4. List the potential impacts from each hazard.">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Use the data and information you find to put together a presentation to share with your core work team and other community memebers during your Hazards and Social Vulnerability Workshop ( you may refer to your community engagement plan in Chapter 2)." wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </children>

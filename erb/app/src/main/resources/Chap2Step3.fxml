@@ -11,8 +11,8 @@
    <children>
       <VBox fx:id="contentVBox" VBox.vgrow="ALWAYS">
          <children>
-            <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
-            <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
+            <HBox fx:id="headerHBox" alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" spacing="20.0" />
+            <Separator prefWidth="200.0" />
             <Label text="2.3: Plan workshops for chapter 3,4 and 5" textFill="#8aa165">
                <font>
                   <Font name="Georgia" size="18.0" />

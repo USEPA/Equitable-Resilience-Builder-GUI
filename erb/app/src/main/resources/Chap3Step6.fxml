@@ -13,8 +13,8 @@
          <children>
             <VBox>
                <children>
-                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" spacing="20.0" />
-                  <Separator prefWidth="200.0" style="-fx-background-color: #000000;" />
+                  <HBox fx:id="headerHBox" alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" spacing="20.0" />
+                  <Separator prefWidth="200.0" />
                   <Label text="3.6: Reflect" textFill="#8c638d">
                      <font>
                         <Font name="Georgia" size="18.0" />
@@ -23,71 +23,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-               </children>
-            </VBox>
-            <VBox prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Congrats, you accomplished a lot in this chapter!" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="-Gathered data on HDT and equity and shared it with community members">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label layoutX="20.0" layoutY="40.0" text="-Learned from community members about their experiences with HDT.">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label layoutX="10.0" layoutY="55.0" text="-Brought community members together to share and learn from each other.">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="Possible next steps" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="-Meet with your core team to discuss how this chapter went and determine any follow up steps.">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="-Let community members who you engaged with know how you plan to follow up.">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="85.0">
-                     <children>
-                        <Label text="Now you're ready for the next chaper" wrapText="true">
-                           <font>
-                              <Font name="Georgia" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </children>
