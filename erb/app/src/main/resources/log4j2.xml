@@ -5,7 +5,7 @@
 			<PatternLayout
 				pattern="| %-5p | %d{yyyy-MM-dd HH:mm:ss} | %F:%L | %m%n" />
 		</Console>
-		<File name="Debug" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//Dev_Docs//Eclipse_Repo//Clone_Dev//MetroCERI//erb_supporting_docs//Logs//debug.log">
+		<File name="Debug" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//debug.log">
 			<PatternLayout
 				pattern="| %-5p | %d{yyyy-MM-dd HH:mm:ss} | %F:%L | %m%n" />
 			<filters>
@@ -18,7 +18,7 @@
 				<ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY" />
 			</filters>
 		</File>
-		<File name="Info" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//Dev_Docs//Eclipse_Repo//Clone_Dev//MetroCERI//erb_supporting_docs//Logs//info.log">
+		<File name="Info" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//info.log">
 			<PatternLayout
 				pattern="| %-5p | %d{yyyy-MM-dd HH:mm:ss} | %F:%L | %m%n" />
 			<filters>
@@ -30,7 +30,7 @@
 				 <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
 			</filters>
 		</File>
-		<File name="Warn" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//Dev_Docs//Eclipse_Repo//Clone_Dev//MetroCERI//erb_supporting_docs//Logs//warn.log">
+		<File name="Warn" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//warn.log">
 			<PatternLayout
 				pattern="| %-5p | %d{yyyy-MM-dd HH:mm:ss} | %F:%L | %m%n" />
 			<filters>
@@ -41,7 +41,7 @@
 				 <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
 			</filters>
 		</File>
-		<File name="Error" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//Dev_Docs//Eclipse_Repo//Clone_Dev//MetroCERI//erb_supporting_docs//Logs//error.log">
+		<File name="Error" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//error.log">
 			<PatternLayout
 				pattern="| %-5p | %d{yyyy-MM-dd HH:mm:ss} | %F:%L | %m%n" />
 			<filters>
@@ -51,7 +51,7 @@
 				 <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />
 			</filters>
 		</File>
-		<File name="Fatal" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//Dev_Docs//Eclipse_Repo//Clone_Dev//MetroCERI//erb_supporting_docs//Logs//fatal.log">
+		<File name="Fatal" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//fatal.log">
 			<PatternLayout
 				pattern="| %-5p | %d{yyyy-MM-dd HH:mm:ss} | %F:%L | %m%n" />
 			<filters>

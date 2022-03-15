@@ -6,17 +6,17 @@ public class Chapter {
 	
 	int chapterNum;
 	String numericName;
-	String genericName;
+	String stringName;
 	String descriptionName;
 	
-	public Chapter(int chapterNum, String numericName, String genericName, String descriptionName) {
+	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName) {
 		this.chapterNum = chapterNum;
 		this.numericName = numericName;
-		this.genericName = genericName;
+		this.stringName = stringName;
 		this.descriptionName = descriptionName;
 	}	
 
-	ArrayList<Step> steps = new ArrayList<Step>();
+	ArrayList<Activity> userSelectedActivities = new ArrayList<Activity>();
 	
 	public int getChapterNum() {
 		return chapterNum;
@@ -30,11 +30,11 @@ public class Chapter {
 	public void setNumericName(String numericName) {
 		this.numericName = numericName;
 	}
-	public String getGenericName() {
-		return genericName;
+	public String getStringName() {
+		return stringName;
 	}
-	public void setGenericName(String genericName) {
-		this.genericName = genericName;
+	public void setStringName(String stringName) {
+		this.stringName = stringName;
 	}
 	public String getDescriptionName() {
 		return descriptionName;
@@ -42,24 +42,41 @@ public class Chapter {
 	public void setDescriptionName(String descriptionName) {
 		this.descriptionName = descriptionName;
 	}
-	public ArrayList<Step> getSteps() {
-		return steps;
+	public ArrayList<Activity> getUserSelectedActivities() {
+		return userSelectedActivities;
 	}
-	public void setSteps(ArrayList<Step> steps) {
-		this.steps = steps;
+	public void setUserSelectedActivities(ArrayList<Activity> userSelectedActivities) {
+		this.userSelectedActivities = userSelectedActivities;
 	}
-	public void addStep(Step step) {
-		steps.add(step);
+
+	public void addUserSelectedActivity(Activity activity) {
+		userSelectedActivities.add(activity);
 	}
-	public int getNumberOfSteps() {
-		return steps.size();
+	
+	public void removeUserSelectedActivity(Activity activity) {
+		userSelectedActivities.remove(activity);
 	}
-	public Step getStep(int stepNum) {
-		for(Step step: steps) {
-			if(step.getStepNum() == stepNum) {
-				return step;
-			}
+	
+	public int getNumberOfUserSelectedActivities() {
+		return userSelectedActivities.size();
+	}
+	
+	public String getUserSelectedActivitiesString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("\n");
+		for(Activity activity : userSelectedActivities) {
+			stringBuilder.append(activity.toString());
 		}
-		return null;
+		return stringBuilder.toString();
 	}
+	
+	public String toString() {
+		return  "----------Chapter---------" + "\n" +
+				"Chapter Num: " + chapterNum + "\n" + 
+				"Numeric Name: " + numericName + "\n" + 
+				"String Name: " + stringName + "\n" + 
+				"Description Name: " + descriptionName + "\n" +
+				"--User Selected Activities-- " + getUserSelectedActivitiesString() + "----";
+	}
+	
 }

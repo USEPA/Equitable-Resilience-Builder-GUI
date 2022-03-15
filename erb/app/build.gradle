@@ -25,8 +25,17 @@ dependencies {
 }
 
 javafx{
-	modules = ['javafx.fxml', 'javafx.controls', 'javafx.graphics']
+	modules = ['javafx.fxml', 'javafx.controls', 'javafx.graphics', 'javafx.web']
 }
+
+//run {
+//    jvmArgs = ['--add-exports=javafx.web/com.sun.webkit=ALL-UNAMED']
+//}
+
+//run {
+//    applicationDefaultJvmArgs = ['--add-exports=javafx.web/com.sun.webkit=ALL-UNAMED'] 
+//     jvmArgs = ['--add-exports=javafx.web/com.sun.webkit=ALL-UNAMED']
+//}
 
 application {
     mainClass = 'erb.App'

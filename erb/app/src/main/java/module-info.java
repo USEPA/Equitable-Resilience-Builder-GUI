@@ -5,11 +5,8 @@ module erb {
 	requires javafx.fxml;
 	requires transitive javafx.controls;
 	requires org.apache.logging.log4j;
+	requires javafx.web;
+	requires javafx.base;
 	opens erb to javafx.fxml;
-	opens erb_chapter1 to javafx.fxml;
-	opens erb_chapter2 to javafx.fxml;
-	opens erb_chapter3 to javafx.fxml;
-	opens erb_chapter4 to javafx.fxml;
-	opens erb_chapter5 to javafx.fxml;
 	exports erb;
 }

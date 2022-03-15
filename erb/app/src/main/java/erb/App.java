@@ -3,22 +3,17 @@
  */
 package erb;
 
-import java.io.IOException;
 import erb.App;
-import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class App extends Application {
 
-	Content_Handler content_Handler = new Content_Handler();
 	private Logger logger = LogManager.getLogger(App.class);
 	
 	public String getGreeting() {
@@ -31,47 +26,17 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println(new App().getGreeting());
-		content_Handler.initContent();
-		
-		VBox splashScreen;
+		logger.info(getGreeting());
 		try {
-			splashScreen = FXMLLoader.load(getClass().getResource("/SplashScreen.fxml"));
-		} catch (IOException e) {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EngagementSetup.fxml"));
+			EngagementSetupController engagementSetupController = new EngagementSetupController();
+			fxmlLoader.setController(engagementSetupController);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (Exception e) {
 			logger.fatal(e.getMessage());
-			return;
 		}
-		Scene scene = new Scene(splashScreen);
-		primaryStage.setScene(scene);
-
-		FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), splashScreen);
-		fadeIn.setFromValue(0);
-		fadeIn.setToValue(1);
-		fadeIn.setCycleCount(1);
-		FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), splashScreen);
-		fadeOut.setFromValue(1);
-		fadeOut.setToValue(0);
-		fadeOut.setCycleCount(1);
-		fadeIn.play();
-		primaryStage.setTitle("Equitable Resilience Builder");
-		primaryStage.show();
-
-		fadeIn.setOnFinished((e) -> {
-			fadeOut.play();
-		});
-		fadeOut.setOnFinished((e) -> {		
-			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBLanding.fxml"));
-				ERBLandingController erbLandingController = new ERBLandingController(primaryStage);
-				fxmlLoader.setController(erbLandingController);
-				Parent rootParent = fxmlLoader.load();
-				Scene mainScene = new Scene(rootParent);
-				primaryStage.setScene(mainScene);
-				primaryStage.setTitle("ERB");
-				primaryStage.show();
-			} catch (Exception e2) {
-				logger.fatal(e2.getMessage());
-			}
-		});
 	}
 }
