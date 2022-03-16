@@ -13,6 +13,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,9 +25,13 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.TitledPane;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 public class EngagementSetupController implements Initializable {
@@ -37,13 +43,9 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	TextArea activityTypeDescriptionTextField;
 	@FXML
-	Button addActivityButton;
-	@FXML
-	Button removeActivityButton;
-	@FXML
 	Button addChapterButton;
 	@FXML
-	TreeView<String> selectedActivitiesTreeView;
+	VBox selectedActivitesVBox;
 	@FXML
 	ListView<Activity> customizedActivitiesListView;
 	@FXML
@@ -61,11 +63,12 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	Button assignButton;
 	
-	ArrayList<Chapter> chaptersInTree = new ArrayList<Chapter>();
-	TreeItem<String> rootTreeItem = new TreeItem<String>("Activities");
+	String selectedChapter = null;
+	
+	ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>();
 	ArrayList<Activity> customizedActivities = new ArrayList<Activity>();
 	ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();
-	ArrayList<TreeItem<String>> allTreeItems = new ArrayList<TreeItem<String>>();
+	ArrayList<ChapterTitledPaneController> chapterTitledPaneControllers = new ArrayList<ChapterTitledPaneController>();
 
 	private Logger logger = LogManager.getLogger(EngagementSetupController.class);
 
@@ -84,8 +87,7 @@ public class EngagementSetupController implements Initializable {
 	}
 	
 	public void handleControls() {
-		rootTreeItem.setExpanded(true);
-		selectedActivitiesTreeView.setRoot(rootTreeItem);
+		setActivityTypeListViewDrag(activitityTypeListView);
 		fileNameHyperlink.setOnMouseClicked(e-> fileNameHyperlinkClicked());
 		activitityTypeListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> updateActivityTypeDescriptionTextArea());
 		customizedActivitiesListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> updateCustomizedActivityInfo());
@@ -117,6 +119,7 @@ public class EngagementSetupController implements Initializable {
 	
 	public void fillCustomizedActivitiesListView(String activityTypeName) {
 		customizedActivitiesListView.getItems().clear();
+		clearCustomizedActivityInfo();
 		for (Activity customActivity : customizedActivities) {
 			if (customActivity.getActivityType().getLongName().contentEquals(activityTypeName)) {
 				if(!customizedActivitiesListView.getItems().contains(customActivity)) {
@@ -155,71 +158,50 @@ public class EngagementSetupController implements Initializable {
 			logger.fatal(e.getMessage());
 		}
 	}
-	
-	@FXML
-	public void addActivityButtonAction() {
-		ActivityType selectedActivityType = activitityTypeListView.getSelectionModel().getSelectedItem();
-		String selectedChapter = selectedActivitiesTreeView.getSelectionModel().getSelectedItem().getValue();
-		if (selectedActivityType.getLongName().length() > 0 && selectedChapter != null) {
-			TreeItem<String> activityTypeTreeItem = new TreeItem<String>(selectedActivityType.getLongName());
-			TreeItem<String> chapterTreeItem = getTreeItem(selectedChapter);
-			if(chapterTreeItem!= null) {
-				allTreeItems.add(activityTypeTreeItem);
-				chapterTreeItem.getChildren().add(activityTypeTreeItem);
-			}
-		} else {
-			logger.error("Selected Activity Type = " + selectedActivityType + " | Selected Chapter = " + selectedChapter);
-		}
-	}
-	
-	@FXML
-	public void removeActivityButtonAction() {
-
-	}
-	
+				
 	@FXML
 	public void addChapterButtonAction() {
-		int chapterNum = chaptersInTree.size() + 1;
+		int chapterNum = chaptersCreated.size() + 1;
 		Chapter chapter = new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "");
-		TreeItem<String> chapterTreeItem = new TreeItem<String>(chapter.getStringName());
-		chapterTreeItem.setExpanded(true);
-		rootTreeItem.getChildren().add(chapterTreeItem);
-		allTreeItems.add(chapterTreeItem);
-		chaptersInTree.add(chapter);
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ChapterTitledPane.fxml"));
+			ChapterTitledPaneController chapterTitledPaneController = new ChapterTitledPaneController(chapter.getStringName());
+			fxmlLoader.setController(chapterTitledPaneController);
+			TitledPane pane = fxmlLoader.load();
+			ListView<SelectedActivity> titledPaneListView = chapterTitledPaneController.getTitledPaneListView();
+			setSelectedActivityListViewDrag(titledPaneListView);
+			titledPaneListView.setOnMouseClicked(e -> selectedActivityListViewClicked(titledPaneListView, chapterTitledPaneController.getPaneTitle()));
+			VBox.setVgrow(pane, Priority.ALWAYS);
+			selectedActivitesVBox.getChildren().add(pane);
+			chaptersCreated.add(chapter);
+			chapterTitledPaneControllers.add(chapterTitledPaneController);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
-	
+
 	@FXML
 	public void assignButtonAction() {
 		Activity selectedCustomizedActivity = customizedActivitiesListView.getSelectionModel().getSelectedItem();
-		for(Activity customActivity : customizedActivities) {
-			if(customActivity.getLongName().contentEquals(selectedCustomizedActivity.getLongName())) {
-				String parentName = selectedActivitiesTreeView.getSelectionModel().getSelectedItem().getParent().getValue();
-				Chapter chapter =  getChapter(parentName);
-				if(chapter != null) {
-					chapter.addUserSelectedActivity(selectedCustomizedActivity);
-				}
-			}
-		}
-		printAllChapters();
-	}
-	
-	public void printAllChapters() {
-		for(Chapter chapter: chaptersInTree) {
-			System.out.println(chapter.toString());
-		}
-	}
-	
-	@FXML
-	public void treeItemSelected() {
-		TreeItem<String> selectedTreeItem = selectedActivitiesTreeView.getSelectionModel().getSelectedItem();
-		if (selectedTreeItem != null) {
-			if(!selectedTreeItem.getValue().contains("Chapter") && !selectedTreeItem.getValue().contentEquals("Activities")) {
-				fillCustomizedActivitiesListView(selectedTreeItem.getValue());
-				setCustomizedActivityListViewCellFactory();
+		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
+			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
+				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
+				selectedActivity.setActivityGUID(selectedCustomizedActivity.getGUID());
+				selectedActivity.setShowName(selectedCustomizedActivity.getLongName());
+				chapterTitledPaneController.setTitledPaneListViewCellFactory();
 			}
 		}
 	}
 	
+	public void selectedActivityListViewClicked(ListView<SelectedActivity> titledPaneListView, String paneTitle) {
+		SelectedActivity selectedActivity = titledPaneListView.getSelectionModel().getSelectedItem();
+		if(selectedActivity != null) {
+			selectedChapter = paneTitle;
+			fillCustomizedActivitiesListView(selectedActivity.getActivityType());
+			setCustomizedActivityListViewCellFactory();
+		}
+	}
+		
 	public void fileNameHyperlinkClicked() {
 		try {
 			String fileName = fileNameHyperlink.getText().trim();
@@ -232,36 +214,6 @@ public class EngagementSetupController implements Initializable {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-	}
-	
-	public Chapter getChapter(String chapterName) {
-		for(Chapter chapter: chaptersInTree) {
-			if(chapter.getStringName().contentEquals(chapterName)) {
-				return chapter;
-			}
-		}
-		logger.debug("Chapter returned is null");
-		return null;
-	}
-	
-	public TreeItem<String> getTreeItem(String chapterName){
-		for(TreeItem<String> treeItem: allTreeItems) {
-			if(treeItem.getValue().contentEquals(chapterName)) {
-				return treeItem;
-			}
-		}
-		logger.debug("TreeView returned is null");
-		return null;
-	}
-	
-	public ActivityType getActivityType(String activityTypeName) {
-		for(ActivityType activityType: activityTypes) {
-			if(activityType.getLongName().contentEquals(activityTypeName)) {
-				return activityType;
-			}
-		}
-		logger.debug("ActivityType returned is null.");
-		return null;
 	}
 	
 	public void updateActivityTypeDescriptionTextArea() {
@@ -288,7 +240,104 @@ public class EngagementSetupController implements Initializable {
 			}
 		}
 	}
-		
+	
+	public void clearCustomizedActivityInfo() {
+		shortNameTextField.setText(null);
+		longNameTextField.setText(null);
+		descriptionTextField.setText(null);
+		directionsTextField.setText(null);
+		objectivesTextField.setText(null);
+		fileNameHyperlink.setText(null);
+	}
+	
+	public Chapter getChapter(String chapterName) {
+		for(Chapter chapter: chaptersCreated) {
+			if(chapter.getStringName().contentEquals(chapterName)) {
+				return chapter;
+			}
+		}
+		logger.debug("Chapter returned is null");
+		return null;
+	}
+	
+	public ActivityType getActivityType(String activityTypeName) {
+		for(ActivityType activityType: activityTypes) {
+			if(activityType.getLongName().contentEquals(activityTypeName)) {
+				return activityType;
+			}
+		}
+		logger.debug("ActivityType returned is null.");
+		return null;
+	}
+	
+	void setActivityTypeListViewDrag(ListView<ActivityType> listView) {
+		String TAB_DRAG_KEY = "listView";
+		ObjectProperty<ListView<ActivityType>> draggingTab = new SimpleObjectProperty<ListView<ActivityType>>();
+		listView.setOnDragDetected(event-> {
+			Dragboard dragboard = listView.startDragAndDrop(TransferMode.MOVE);
+			ClipboardContent clipboardContent = new ClipboardContent();
+			clipboardContent.putString(TAB_DRAG_KEY);
+			dragboard.setContent(clipboardContent);
+			draggingTab.set(listView);
+			event.consume();
+		});
+	}
+	
+	void setSelectedActivityListViewDrag(ListView<SelectedActivity> draggedListView) {
+		String TAB_DRAG_KEY = "listView";
+		ObjectProperty<ListView<SelectedActivity>> draggingTab = new SimpleObjectProperty<ListView<SelectedActivity>>();
+		draggedListView.setOnDragOver(event-> {
+			event.acceptTransferModes(TransferMode.MOVE);
+			event.consume();
+		});
+		draggedListView.setOnDragDropped(event-> {
+			Dragboard db = event.getDragboard();
+			boolean success = false;
+			if(db.hasString()) {			
+				Object source = event.getGestureSource();				
+				boolean equals = false;
+				if(source == draggedListView) equals = true;
+				
+				if(equals == true) { //Would handle drag and drop within titled pane
+//					Pane parent = (Pane) draggedListView.getParent();
+//					System.out.println("Drag Drop Parent: " + parent);					
+//					System.out.println("Selected Item: " + draggedListView.getSelectionModel().getSelectedIndex());
+//					int sourceIndex = parent.getChildren().indexOf(source);		
+//					System.out.println("Drag Source index: " + sourceIndex);
+//					int targetIndex = parent.getChildren().indexOf(draggedListView);				
+//					System.out.println("Drag Target index: " + targetIndex);
+//					List<javafx.scene.Node> nodes = new ArrayList<>(parent.getChildren());
+//					if (sourceIndex >= 0) {
+//						if (sourceIndex < targetIndex) {
+//							Collections.rotate(nodes.subList(sourceIndex, targetIndex + 1), -1);
+//						} else {
+//							Collections.rotate(nodes.subList(targetIndex, sourceIndex + 1), 1);
+//						}
+//					}
+//					parent.getChildren().clear();
+//					parent.getChildren().addAll(nodes);
+				}else {
+					@SuppressWarnings("unchecked")
+					ListView<ActivityType> sourceListView = (ListView<ActivityType>) source;
+					ActivityType selectedActivityType = (ActivityType) sourceListView.getSelectionModel().getSelectedItem();
+					SelectedActivity selectedActivity = new SelectedActivity(selectedActivityType.getLongName(), selectedActivityType.getLongName());
+					draggedListView.getItems().add(selectedActivity);
+				}
+				success = true;
+			}
+			event.setDropCompleted(success);
+			event.consume();
+		});
+		draggedListView.setOnDragDetected(event-> {
+			Dragboard dragboard = draggedListView.startDragAndDrop(TransferMode.MOVE);
+			ClipboardContent clipboardContent = new ClipboardContent();
+			clipboardContent.putString(TAB_DRAG_KEY);
+			dragboard.setContent(clipboardContent);
+			draggingTab.set(draggedListView);
+			event.consume();
+		});
+	}
+	
 	public void parseActivityTypes() {
 		activityTypes.clear();
 		File activityTypesFile = new File(pathToERBFolder + "\\Activities\\Activity_Types.xml");
