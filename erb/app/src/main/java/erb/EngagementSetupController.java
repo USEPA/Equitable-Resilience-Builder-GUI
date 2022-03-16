@@ -18,16 +18,18 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -143,18 +145,72 @@ public class EngagementSetupController implements Initializable {
 			}
 		});
 	}
-		
-	public void loadPathway() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBPathway.fxml"));
-			ERBPathwayController erbPathwayController = new ERBPathwayController(customizedActivities.get(0));
-			fxmlLoader.setController(erbPathwayController);
-			Parent root = fxmlLoader.load();
-			erbPathwayHBox.getChildren().add(root);
-		} catch (Exception e) {
-			logger.fatal(e.getMessage());
+	
+	public void setTitledPaneListViewCellFactory(ListView<SelectedActivity> titledPaneListView) {
+		titledPaneListView.setCellFactory(new Callback<ListView<SelectedActivity>, ListCell<SelectedActivity>>() {
+			@Override
+			public ListCell<SelectedActivity> call(ListView<SelectedActivity> param) {
+				ListCell<SelectedActivity> cell = new ListCell<SelectedActivity>() {
+					@Override
+					protected void updateItem(SelectedActivity item, boolean empty) {
+						super.updateItem(item, empty);
+						if (item != null) {
+							setText(item.getShowName());
+							setContextMenu(createContextMenu());
+						}
+					}
+				};
+				return cell;
+			}
+		});
+	}
+	
+	public ContextMenu createContextMenu() {
+		ContextMenu contextMenu = new ContextMenu();
+		MenuItem removeMenuItem = new MenuItem("Remove");
+		removeMenuItem.setOnAction(e-> removeMenuItemAction());
+		contextMenu.getItems().add(removeMenuItem);
+		return contextMenu;
+	}
+	
+	public void removeMenuItemAction() {
+		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
+			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
+				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
+				chapterTitledPaneController.getTitledPaneListView().getItems().remove(selectedActivity);
+				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
+				customizedActivitiesListView.getItems().clear();
+//				removePathway(selectedActivity);
+			}
 		}
 	}
+	
+//	public void removePathway(SelectedActivity selectedActivity) {
+//		VBox vBoxToRemove = null;
+//		for (int i = 0; i < erbPathwayHBox.getChildren().size(); i++) {
+//			VBox vBox = (VBox) erbPathwayHBox.getChildren().get(i);
+//			if (selectedActivity.getActivityGUID() != null) {
+//				if (vBox.getId().contentEquals(selectedActivity.getActivityGUID())) {
+//					vBoxToRemove = vBox;
+//				}
+//			}
+//		}
+//		if (vBoxToRemove != null) {
+//			erbPathwayHBox.getChildren().remove(vBoxToRemove);
+//		}
+//	}
+		
+//	public void loadPathway(Activity activity) {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBPathway.fxml"));
+//			ERBPathwayController erbPathwayController = new ERBPathwayController(activity);
+//			fxmlLoader.setController(erbPathwayController);
+//			Parent root = fxmlLoader.load();
+//			erbPathwayHBox.getChildren().add(root);
+//		} catch (Exception e) {
+//			logger.fatal(e.getMessage());
+//		}
+//	}
 				
 	@FXML
 	public void addChapterButtonAction() {
@@ -174,8 +230,9 @@ public class EngagementSetupController implements Initializable {
 			
 			//Handle access to the TitledPaneListView in this class
 			ListView<SelectedActivity> titledPaneListView = chapterTitledPaneController.getTitledPaneListView();
+			setTitledPaneListViewCellFactory(titledPaneListView);
 			setSelectedActivityListViewDrag(titledPaneListView);
-			titledPaneListView.setOnMouseClicked(e -> selectedActivityListViewClicked(titledPaneListView, chapterTitledPaneController.getPaneTitle()));
+			titledPaneListView.setOnMouseClicked(e -> selectedActivityListViewClicked(e, titledPaneListView, chapterTitledPaneController.getPaneTitle()));
 			
 			//Store the ChapterTitledPaneController for the user created chapter
 			chapterTitledPaneControllers.add(chapterTitledPaneController);
@@ -193,9 +250,11 @@ public class EngagementSetupController implements Initializable {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
 			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
 				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
+//				removePathway(selectedActivity);
 				selectedActivity.setActivityGUID(selectedCustomizedActivity.getGUID());
 				selectedActivity.setShowName(selectedCustomizedActivity.getLongName());
-				chapterTitledPaneController.setTitledPaneListViewCellFactory();
+				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
+//				loadPathway(getCustomizedActivity(selectedActivity.getActivityGUID()));
 			}
 		}
 	}
@@ -206,9 +265,9 @@ public class EngagementSetupController implements Initializable {
 	 * @param titledPaneListView
 	 * @param paneTitle
 	 */
-	public void selectedActivityListViewClicked(ListView<SelectedActivity> titledPaneListView, String paneTitle) {
+	public void selectedActivityListViewClicked(MouseEvent mouseEvent, ListView<SelectedActivity> titledPaneListView, String paneTitle) {
 		SelectedActivity selectedActivity = titledPaneListView.getSelectionModel().getSelectedItem();
-		if(selectedActivity != null) {
+		if (selectedActivity != null) {
 			selectedChapter = paneTitle;
 			fillCustomizedActivitiesListView(selectedActivity.getActivityType());
 			setCustomizedActivityListViewCellFactory();
@@ -289,6 +348,16 @@ public class EngagementSetupController implements Initializable {
 			}
 		}
 		logger.debug("ActivityType returned is null.");
+		return null;
+	}
+	
+	public Activity getCustomizedActivity(String GUID) {
+		for(Activity activity: customizedActivities) {
+			if(activity.getGUID().contentEquals(GUID)) {
+				return activity;
+			}
+		}
+		logger.debug("Customized Activity returned is null.");
 		return null;
 	}
 	

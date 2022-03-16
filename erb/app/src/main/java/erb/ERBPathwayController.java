@@ -15,10 +15,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 
 public class ERBPathwayController implements Initializable{
 
+	@FXML
+	VBox vBox;
 	@FXML
 	WebView webView;
 	
@@ -37,6 +40,7 @@ public class ERBPathwayController implements Initializable{
 		createHTMLFileForActivity();
 		createDataJSFileForActivity();
 		loadWebViewContent();
+		vBox.setId(activity.getGUID());
 	}
 	
 	public void loadWebViewContent() {

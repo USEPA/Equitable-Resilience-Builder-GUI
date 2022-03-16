@@ -5,11 +5,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 
 public class ChapterTitledPaneController implements Initializable{
 
@@ -29,27 +27,8 @@ public class ChapterTitledPaneController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		titledPane.setExpanded(true);
 		titledPane.setText(paneTitle);
-		setTitledPaneListViewCellFactory();
 	}
-	
-	public void setTitledPaneListViewCellFactory() {
-		titledPaneListView.setCellFactory(new Callback<ListView<SelectedActivity>, ListCell<SelectedActivity>>() {
-			@Override
-			public ListCell<SelectedActivity> call(ListView<SelectedActivity> param) {
-				ListCell<SelectedActivity> cell = new ListCell<SelectedActivity>() {
-					@Override
-					protected void updateItem(SelectedActivity item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item != null) {
-							setText(item.getShowName());
-						}
-					}
-				};
-				return cell;
-			}
-		});
-	}
-	
+		
 	public void addLabel(String labelText) {
 		Label label = new Label(labelText);
 		titledPaneVBox.getChildren().add(label);

@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <WebView fx:id="webView" maxHeight="-1.0" maxWidth="-1.0" minHeight="115.0" minWidth="115.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
    </children>
