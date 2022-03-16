@@ -63,16 +63,13 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	Button assignButton;
 	
-	String selectedChapter = null;
-	
-	ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>();
-	ArrayList<Activity> customizedActivities = new ArrayList<Activity>();
-	ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();
-	ArrayList<ChapterTitledPaneController> chapterTitledPaneControllers = new ArrayList<ChapterTitledPaneController>();
-
+	String selectedChapter = null;	//Tracks the current user selected chapter they are adding activities to
+	ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>();	//List of Chapter objects created by the user
+	ArrayList<Activity> customizedActivities = new ArrayList<Activity>();	//List of Activities parsed from .xml file
+	ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();	//List of ActivityTypes parsed from .xml file
 	private Logger logger = LogManager.getLogger(EngagementSetupController.class);
-
 	String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	ArrayList<ChapterTitledPaneController> chapterTitledPaneControllers = new ArrayList<ChapterTitledPaneController>(); //List of ChapterTitledPaneControllers for all chapters created by the user
 
 	public EngagementSetupController() {
 		parseActivityTypes();
@@ -161,25 +158,35 @@ public class EngagementSetupController implements Initializable {
 				
 	@FXML
 	public void addChapterButtonAction() {
-		int chapterNum = chaptersCreated.size() + 1;
-		Chapter chapter = new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "");
 		try {
+			//Create and store a new Chapter object to represent the user added chapter
+			int chapterNum = chaptersCreated.size() + 1;
+			Chapter chapter = new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "");
+			chaptersCreated.add(chapter);
+
+			//Load and add the TitledPane to the selected activities vbox
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ChapterTitledPane.fxml"));
 			ChapterTitledPaneController chapterTitledPaneController = new ChapterTitledPaneController(chapter.getStringName());
 			fxmlLoader.setController(chapterTitledPaneController);
 			TitledPane pane = fxmlLoader.load();
+			VBox.setVgrow(pane, Priority.ALWAYS);
+			selectedActivitesVBox.getChildren().add(pane);
+			
+			//Handle access to the TitledPaneListView in this class
 			ListView<SelectedActivity> titledPaneListView = chapterTitledPaneController.getTitledPaneListView();
 			setSelectedActivityListViewDrag(titledPaneListView);
 			titledPaneListView.setOnMouseClicked(e -> selectedActivityListViewClicked(titledPaneListView, chapterTitledPaneController.getPaneTitle()));
-			VBox.setVgrow(pane, Priority.ALWAYS);
-			selectedActivitesVBox.getChildren().add(pane);
-			chaptersCreated.add(chapter);
+			
+			//Store the ChapterTitledPaneController for the user created chapter
 			chapterTitledPaneControllers.add(chapterTitledPaneController);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
 
+	/**
+	 * Handles users assigning a customized activity to a selected activity. Updates the GUID and the show name to reflect the assigned customized activity.
+	 */
 	@FXML
 	public void assignButtonAction() {
 		Activity selectedCustomizedActivity = customizedActivitiesListView.getSelectionModel().getSelectedItem();
@@ -193,6 +200,12 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Handles users clicking a selected activity. Calls a method to update the list of customized activities based on the type of selected activity the user has clicked. 
+	 * 
+	 * @param titledPaneListView
+	 * @param paneTitle
+	 */
 	public void selectedActivityListViewClicked(ListView<SelectedActivity> titledPaneListView, String paneTitle) {
 		SelectedActivity selectedActivity = titledPaneListView.getSelectionModel().getSelectedItem();
 		if(selectedActivity != null) {
@@ -201,7 +214,10 @@ public class EngagementSetupController implements Initializable {
 			setCustomizedActivityListViewCellFactory();
 		}
 	}
-		
+	
+	/**
+	 * Handles users clicked the file hyperlink. Opens the hyper linked document.
+	 */
 	public void fileNameHyperlinkClicked() {
 		try {
 			String fileName = fileNameHyperlink.getText().trim();
@@ -216,6 +232,9 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Updates the activity type description according to the selected activity type.
+	 */
 	public void updateActivityTypeDescriptionTextArea() {
 		ActivityType selectedActivityType = activitityTypeListView.getSelectionModel().getSelectedItem();
 		for(ActivityType activityType: activityTypes) {
@@ -225,6 +244,9 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Updates the customized activity fields according to the selected customized activity information.
+	 */
 	public void updateCustomizedActivityInfo() {
 		Activity selectedCustomizedActivity = customizedActivitiesListView.getSelectionModel().getSelectedItem();
 		if (selectedCustomizedActivity != null) {

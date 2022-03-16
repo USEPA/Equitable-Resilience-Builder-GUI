@@ -47,6 +47,9 @@ public class ERBPathwayController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Creates an HTML file with a specified activity GUID.
+	 */
 	public void createHTMLFileForActivity() {
 		File sourceIndexHTMLFile = new File(pathToRadialData + "\\index.html");
 		if (sourceIndexHTMLFile.exists()) {
@@ -66,6 +69,9 @@ public class ERBPathwayController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Updates the link to the data JS in the HTML by referencing the data with the activity GUID.
+	 */
 	public void updateDataLinkInHTML() {
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(htmlFile));
@@ -92,6 +98,9 @@ public class ERBPathwayController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Creates data JS file using activity GUID containing data from the specified activity.
+	 */
 	public void createDataJSFileForActivity() {
 		File dataJSFile = new File(pathToRadialData + "\\data-" + activity.getGUID() + ".js");
 		if (!dataJSFile.exists()) {
@@ -118,6 +127,13 @@ public class ERBPathwayController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Copies contents of file from sourceFile to destFile.
+	 * 
+	 * @param sourceFile
+	 * @param destFile
+	 * @return
+	 */
 	public boolean copyFile(File sourceFile, File destFile) {
 		InputStream is = null;
 		OutputStream os = null;
