@@ -2,6 +2,7 @@ package erb;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -64,6 +66,8 @@ public class EngagementSetupController implements Initializable {
 	Hyperlink fileNameHyperlink;
 	@FXML
 	Button assignButton;
+	@FXML
+	Button doEngagementButton;
 	
 	String selectedChapter = null;	//Tracks the current user selected chapter they are adding activities to
 	ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>();	//List of Chapter objects created by the user
@@ -255,6 +259,90 @@ public class EngagementSetupController implements Initializable {
 				selectedActivity.setShowName(selectedCustomizedActivity.getLongName());
 				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
 //				loadPathway(getCustomizedActivity(selectedActivity.getActivityGUID()));
+			}
+		}
+	}
+	
+	@FXML
+	public void doEngagementButtonAction() {
+		addFinalSelectedActivitiesToChapters();
+		storeFinalSelectedActivitiesAndChapters();
+	}
+	
+	public void storeFinalSelectedActivitiesAndChapters() {
+		try {
+			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\Data.xml");
+			PrintWriter printWriter = new PrintWriter(dataFile);
+			if(chaptersCreated.size() > 0) {
+				printWriter.println("<chapters>");
+				for(Chapter chapter : chaptersCreated) {
+					printWriter.println("<chapter " + getChapterXMLInfo(chapter) + ">");
+					for(Activity activity : chapter.getUserSelectedActivities()) {
+						printWriter.println("<activity " + getActivityXMLInfo(activity) + ">");
+						printWriter.println("<activityType " + getActivityTypeXMLInfo(activity) + "></activityType>");
+						printWriter.println("</activity>");
+					}
+					printWriter.println("</chapter>");
+				}
+				printWriter.println("</chapters>");
+			}
+			printWriter.close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	public String getActivityTypeXMLInfo(Activity activity) {
+		String q = "\"";
+		if (activity != null) {
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.append("longName=" + q + activity.getActivityType().getLongName() + q + " ");
+			stringBuilder.append("shortName=" + q + activity.getActivityType().getShortName() + q + " ");
+			stringBuilder.append("description=" + q + activity.getActivityType().getDescription() + q + " ");
+			stringBuilder.append("fileExt=" + q + activity.getActivityType().getFileExt() + q);
+			return stringBuilder.toString();
+		} else {
+			return "";
+		}
+	}
+	
+	public String getActivityXMLInfo(Activity activity) {
+		String q = "\"";
+		if (activity != null) {
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.append("shortName=" + q + activity.getShortName() + q + " ");
+			stringBuilder.append("longName=" + q + activity.getLongName() + q + " ");
+			stringBuilder.append("fileName=" + q + activity.getFileName() + q + " ");
+			stringBuilder.append("directions=" + q + activity.getDirections() + q + " ");
+			stringBuilder.append("objectives=" + q + activity.getObjectives() + q + " ");
+			stringBuilder.append("description=" + q + activity.getDescription() + q);
+			return stringBuilder.toString();
+		} else {
+			return "";
+		}
+	}
+	
+	public String getChapterXMLInfo(Chapter chapter) {
+		String q = "\"";
+		if(chapter != null) {
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.append("chapterNum=" + q + chapter.getChapterNum() + q + " ");
+			stringBuilder.append("numericName=" + q + chapter.getNumericName() + q + " ");
+			stringBuilder.append("stringName=" + q + chapter.getStringName() + q + " " );
+			stringBuilder.append("description=" + q + chapter.getDescriptionName() + q);
+			return stringBuilder.toString();
+		}else {
+			return "";
+		}
+	}
+	
+	public void addFinalSelectedActivitiesToChapters() {
+		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
+			Chapter chapter = getChapter(chapterTitledPaneController.getPaneTitle());
+			ListView<SelectedActivity> listView = chapterTitledPaneController.getTitledPaneListView();
+			ObservableList<SelectedActivity> selectedActivities = listView.getItems();
+			for (SelectedActivity selectedActivity : selectedActivities) {
+				chapter.addUserSelectedActivity(getCustomizedActivity(selectedActivity.getActivityGUID()));
 			}
 		}
 	}
