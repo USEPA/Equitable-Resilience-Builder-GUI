@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.TreeItem;
 import javafx.scene.shape.Circle;
 
 public class ERBPathwayDiagramController implements Initializable{
@@ -27,8 +28,10 @@ public class ERBPathwayDiagramController implements Initializable{
 	Label activityLabel;
 	
 	Activity activity;
-	public ERBPathwayDiagramController(Activity activity) {
+	EngagementActionController engagementActionController;
+	public ERBPathwayDiagramController(Activity activity, EngagementActionController engagementActionController) {
 		this.activity = activity;
+		this.engagementActionController = engagementActionController;
 	}
 	
 	@Override
@@ -97,6 +100,17 @@ public class ERBPathwayDiagramController implements Initializable{
 	@FXML
 	public void topLeftCircleClicked() {
 		
+	}
+	
+	@FXML
+	public void centerCircleClicked() {
+		String activityGUID = activity.getGUID();
+		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
+			if(engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
+				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+				engagementActionController.treeViewClicked();
+			}
+		}
 	}
 
 }

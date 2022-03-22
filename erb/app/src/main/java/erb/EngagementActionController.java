@@ -3,6 +3,7 @@ package erb;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -42,6 +43,7 @@ public class EngagementActionController implements Initializable{
 	String currentChapter = null; //Tracks the current user selected chapter
 	ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
+	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>();
 	String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 
 	public EngagementActionController() {
@@ -132,7 +134,7 @@ public class EngagementActionController implements Initializable{
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					try {
 						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBPathwayDiagram.fxml"));
-						ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity);
+						ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity, this);
 						fxmlLoader.setController(erbPathwayDiagramController);
 						Parent root = fxmlLoader.load();
 						pathwayHBox.getChildren().add(root);
@@ -148,12 +150,15 @@ public class EngagementActionController implements Initializable{
 		TreeItem<String> rootTreeItem = new TreeItem<String>("ERB");
 		rootTreeItem.setExpanded(true);
 		treeView.setRoot(rootTreeItem);
+		treeMap.put(rootTreeItem, "0");
 		for (Chapter chapter : dataChapters) {
 			TreeItem<String> chapterTreeItem = new TreeItem<String>(chapter.getStringName());
 			rootTreeItem.getChildren().add(chapterTreeItem);
+			treeMap.put(chapterTreeItem, chapter.getNumericName());
 			for (Activity activity : chapter.getUserSelectedActivities()) {
 				TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
 				chapterTreeItem.getChildren().add(activityTreeItem);
+				treeMap.put(activityTreeItem, activity.getGUID());
 			}
 		}
 	}
@@ -203,7 +208,15 @@ public class EngagementActionController implements Initializable{
 		logger.debug("Chapter returned is null");
 		return null;
 	}
+		
+	public TreeView<String> getTreeView() {
+		return treeView;
+	}
 	
+	public HashMap<TreeItem<String>, String> getTreeMap() {
+		return treeMap;
+	}
+
 	/**
 	 * Parses the chapter data that was create by the user in pt. 1 of the tool
 	 */

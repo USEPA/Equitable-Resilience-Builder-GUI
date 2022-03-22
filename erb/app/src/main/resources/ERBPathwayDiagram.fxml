@@ -42,7 +42,7 @@
       <HBox alignment="CENTER" maxHeight="25.0" minHeight="25.0">
          <children>
             <Line endX="-50.0" startX="-100.0" />
-            <Circle fx:id="centerCircle" fill="WHITE" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #EDF7B2;" />
+            <Circle fx:id="centerCircle" fill="WHITE" onMouseClicked="#centerCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #EDF7B2;" />
             <Line endX="-50.0" startX="-100.0" />
          </children>
       </HBox>
