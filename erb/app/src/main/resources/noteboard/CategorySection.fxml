@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="categoryHBox" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER_LEFT">
+         <children>
+            <Label fx:id="categoryLabel" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="Georgia" size="15.0" />
+               </font>
+               </Label>
+         </children>
+      </VBox>
+      <HBox fx:id="postItHBox" alignment="CENTER_LEFT" minHeight="50.0" minWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>

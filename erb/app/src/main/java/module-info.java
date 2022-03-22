@@ -8,5 +8,6 @@ module com.epa.erb {
 	requires javafx.web;
 	requires javafx.base;
 	opens com.epa.erb to javafx.fxml;
+	opens com.epa.erb.noteboard to javafx.fxml;
 	exports com.epa.erb;
 }

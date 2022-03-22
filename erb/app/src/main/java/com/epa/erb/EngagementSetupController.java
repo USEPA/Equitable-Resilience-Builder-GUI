@@ -197,7 +197,7 @@ public class EngagementSetupController implements Initializable {
 			chaptersCreated.add(chapter);
 
 			//Load and add the TitledPane to the selected activities vbox
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ChapterTitledPane.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ChapterTitledPane.fxml"));
 			ChapterTitledPaneController chapterTitledPaneController = new ChapterTitledPaneController(chapter.getStringName());
 			fxmlLoader.setController(chapterTitledPaneController);
 			TitledPane pane = fxmlLoader.load();

@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class EngagementActionController implements Initializable{
 
@@ -33,6 +34,8 @@ public class EngagementActionController implements Initializable{
 	HBox pathwayHBox;
 	@FXML
 	TreeView<String> treeView;
+	@FXML
+	VBox contentVBox;
 	@FXML
 	Button previousButton;
 	@FXML
@@ -133,7 +136,7 @@ public class EngagementActionController implements Initializable{
 				pathwayHBox.getChildren().clear();
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					try {
-						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBPathwayDiagram.fxml"));
+						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBPathwayDiagram.fxml"));
 						ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity, this);
 						fxmlLoader.setController(erbPathwayDiagramController);
 						Parent root = fxmlLoader.load();

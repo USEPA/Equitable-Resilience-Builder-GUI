@@ -28,7 +28,7 @@ public class App extends Application {
 		logger.info(getGreeting());
 		
 //		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EngagementSetup.fxml"));
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/EngagementSetup.fxml"));
 //			EngagementSetupController engagementSetupController = new EngagementSetupController();
 //			fxmlLoader.setController(engagementSetupController);
 //			Parent root = fxmlLoader.load();
@@ -40,7 +40,7 @@ public class App extends Application {
 //		}
 		
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EngagementAction.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController();
 			fxmlLoader.setController(engagementActionController);
 			Parent root = fxmlLoader.load();
