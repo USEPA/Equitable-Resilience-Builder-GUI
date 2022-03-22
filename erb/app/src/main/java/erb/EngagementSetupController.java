@@ -184,37 +184,9 @@ public class EngagementSetupController implements Initializable {
 				chapterTitledPaneController.getTitledPaneListView().getItems().remove(selectedActivity);
 				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
 				customizedActivitiesListView.getItems().clear();
-//				removePathway(selectedActivity);
 			}
 		}
 	}
-	
-//	public void removePathway(SelectedActivity selectedActivity) {
-//		VBox vBoxToRemove = null;
-//		for (int i = 0; i < erbPathwayHBox.getChildren().size(); i++) {
-//			VBox vBox = (VBox) erbPathwayHBox.getChildren().get(i);
-//			if (selectedActivity.getActivityGUID() != null) {
-//				if (vBox.getId().contentEquals(selectedActivity.getActivityGUID())) {
-//					vBoxToRemove = vBox;
-//				}
-//			}
-//		}
-//		if (vBoxToRemove != null) {
-//			erbPathwayHBox.getChildren().remove(vBoxToRemove);
-//		}
-//	}
-		
-//	public void loadPathway(Activity activity) {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBPathway.fxml"));
-//			ERBPathwayController erbPathwayController = new ERBPathwayController(activity);
-//			fxmlLoader.setController(erbPathwayController);
-//			Parent root = fxmlLoader.load();
-//			erbPathwayHBox.getChildren().add(root);
-//		} catch (Exception e) {
-//			logger.fatal(e.getMessage());
-//		}
-//	}
 				
 	@FXML
 	public void addChapterButtonAction() {
@@ -254,11 +226,9 @@ public class EngagementSetupController implements Initializable {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
 			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
 				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
-//				removePathway(selectedActivity);
 				selectedActivity.setActivityGUID(selectedCustomizedActivity.getGUID());
 				selectedActivity.setShowName(selectedCustomizedActivity.getLongName());
 				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
-//				loadPathway(getCustomizedActivity(selectedActivity.getActivityGUID()));
 			}
 		}
 	}

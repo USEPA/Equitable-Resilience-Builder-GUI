@@ -39,9 +39,8 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	Button nextButton;
 	
-	String currentChapter = null;
-	ArrayList<Chapter> dataChapters = new ArrayList<Chapter>();
-	ArrayList<TreeItem<String>> allTreeItems = new ArrayList<TreeItem<String>>();
+	String currentChapter = null; //Tracks the current user selected chapter
+	ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 
@@ -53,6 +52,10 @@ public class EngagementActionController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		fillTreeView();
 		handleNavigationButtonsShown(null, null);
+		handleControls();
+	}
+	
+	public void handleControls() {
 		treeView.setOnMouseClicked(e-> treeViewClicked());
 	}
 	
@@ -103,11 +106,11 @@ public class EngagementActionController implements Initializable{
 				String parentTreeItemValue = parentTreeItem.getValue().trim();
 				String selectedTreeItemValue = selectedTreeItem.getValue().trim();
 				if (selectedTreeItemValue.length() > 0) {
-					if (parentTreeItemValue.contentEquals("ERB")) {
+					if (parentTreeItemValue.contentEquals("ERB")) { //Is Chapter 
 						currentChapter = selectedTreeItemValue;
 						loadChapterPathway(selectedTreeItemValue);
 						handleNavigationButtonsShown(selectedTreeItem, null);
-					} else {
+					} else { //Is Activity
 						currentChapter = parentTreeItemValue;
 						loadChapterPathway(parentTreeItemValue);
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
@@ -116,6 +119,42 @@ public class EngagementActionController implements Initializable{
 			}
 		} else {
 			handleNavigationButtonsShown(null, null);
+		}
+	}
+	
+	public void loadChapterPathway(String chapterName) {
+		pathwayHBox.getChildren().remove(erbPathwayLabel);
+		Chapter chapter = getChapter(chapterName);
+		if (chapter != null) {
+			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) {
+				chapterLabel.setText(chapter.getStringName());
+				pathwayHBox.getChildren().clear();
+				for (Activity activity : chapter.getUserSelectedActivities()) {
+					try {
+						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBPathwayDiagram.fxml"));
+						ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity);
+						fxmlLoader.setController(erbPathwayDiagramController);
+						Parent root = fxmlLoader.load();
+						pathwayHBox.getChildren().add(root);
+					} catch (Exception e) {
+						logger.error(e.getMessage());
+					}
+				}
+			}
+		}
+	}
+	
+	public void fillTreeView() {
+		TreeItem<String> rootTreeItem = new TreeItem<String>("ERB");
+		rootTreeItem.setExpanded(true);
+		treeView.setRoot(rootTreeItem);
+		for (Chapter chapter : dataChapters) {
+			TreeItem<String> chapterTreeItem = new TreeItem<String>(chapter.getStringName());
+			rootTreeItem.getChildren().add(chapterTreeItem);
+			for (Activity activity : chapter.getUserSelectedActivities()) {
+				TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
+				chapterTreeItem.getChildren().add(activityTreeItem);
+			}
 		}
 	}
 	
@@ -155,54 +194,19 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	public void loadChapterPathway(String chapterName) {
-		pathwayHBox.getChildren().remove(erbPathwayLabel);
-		Chapter chapter = getChapter(chapterName);
-		if (chapter != null) {
-			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) {
-				chapterLabel.setText(chapter.getStringName());
-				pathwayHBox.getChildren().clear();
-				for (Activity activity : chapter.getUserSelectedActivities()) {
-					try {
-						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ERBPathwayDiagram.fxml"));
-						ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity);
-						fxmlLoader.setController(erbPathwayDiagramController);
-						Parent root = fxmlLoader.load();
-						pathwayHBox.getChildren().add(root);
-					} catch (Exception e) {
-						logger.error(e.getMessage());
-					}
-				}
-			}
-		}
-	}
-	
-	public void fillTreeView() {
-		TreeItem<String> rootTreeItem = new TreeItem<String>("ERB");
-		allTreeItems.add(rootTreeItem);
-		rootTreeItem.setExpanded(true);
-		treeView.setRoot(rootTreeItem);
-		for (Chapter chapter : dataChapters) {
-			TreeItem<String> chapterTreeItem = new TreeItem<String>(chapter.getStringName());
-			allTreeItems.add(chapterTreeItem);
-			rootTreeItem.getChildren().add(chapterTreeItem);
-			for (Activity activity : chapter.getUserSelectedActivities()) {
-				TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
-				allTreeItems.add(activityTreeItem);
-				chapterTreeItem.getChildren().add(activityTreeItem);
-			}
-		}
-	}
-	
 	public Chapter getChapter(String chapterName) {
 		for(Chapter chapter : dataChapters) {
 			if(chapter.getStringName().contentEquals(chapterName)) {
 				return chapter;
 			}
 		}
+		logger.debug("Chapter returned is null");
 		return null;
 	}
 	
+	/**
+	 * Parses the chapter data that was create by the user in pt. 1 of the tool
+	 */
 	public void parseDataFromSetup() {
 		File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\Data.xml");
 		if (dataFile.exists() && dataFile.canRead()) {

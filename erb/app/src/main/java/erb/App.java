@@ -27,10 +27,23 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		logger.info(getGreeting());
+		
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EngagementSetup.fxml"));
+//			EngagementSetupController engagementSetupController = new EngagementSetupController();
+//			fxmlLoader.setController(engagementSetupController);
+//			Parent root = fxmlLoader.load();
+//			Scene scene = new Scene(root);
+//			primaryStage.setScene(scene);
+//			primaryStage.show();
+//		} catch (Exception e) {
+//			logger.fatal(e.getMessage());
+//		}
+		
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EngagementSetup.fxml"));
-			EngagementSetupController engagementSetupController = new EngagementSetupController();
-			fxmlLoader.setController(engagementSetupController);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EngagementAction.fxml"));
+			EngagementActionController engagementActionController = new EngagementActionController();
+			fxmlLoader.setController(engagementActionController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);

@@ -55,6 +55,12 @@ public class ERBPathwayDiagramController implements Initializable{
 		tooltip5.setStyle("-fx-background-color: #F7DBB2; -fx-text-fill: black;");
 	}
 	
+	/**
+	 * Takes a string and breaks it into a new string with multiple line breaks
+	 * 
+	 * @param string
+	 * @return
+	 */
 	public String splitString(String string) {
 		if (string.length() > 50) {
 			String regex = ".{1,50}\\s";
@@ -92,7 +98,5 @@ public class ERBPathwayDiagramController implements Initializable{
 	public void topLeftCircleClicked() {
 		
 	}
-	
-	
 
 }
