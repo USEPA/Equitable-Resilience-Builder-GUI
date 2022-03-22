@@ -1,4 +1,4 @@
-package com.epa.erb;
+package com.epa.erb.engagement_setup;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -14,6 +14,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.epa.erb.Activity;
+import com.epa.erb.ActivityType;
+import com.epa.erb.Chapter;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
@@ -197,7 +202,7 @@ public class EngagementSetupController implements Initializable {
 			chaptersCreated.add(chapter);
 
 			//Load and add the TitledPane to the selected activities vbox
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ChapterTitledPane.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/ChapterTitledPane.fxml"));
 			ChapterTitledPaneController chapterTitledPaneController = new ChapterTitledPaneController(chapter.getStringName());
 			fxmlLoader.setController(chapterTitledPaneController);
 			TitledPane pane = fxmlLoader.load();

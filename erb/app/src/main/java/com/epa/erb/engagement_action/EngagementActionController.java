@@ -1,4 +1,4 @@
-package com.epa.erb;
+package com.epa.erb.engagement_action;
 
 import java.io.File;
 import java.net.URL;
@@ -13,6 +13,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.epa.erb.Activity;
+import com.epa.erb.ActivityType;
+import com.epa.erb.Chapter;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -136,7 +141,7 @@ public class EngagementActionController implements Initializable{
 				pathwayHBox.getChildren().clear();
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					try {
-						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBPathwayDiagram.fxml"));
+						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBPathwayDiagram.fxml"));
 						ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity, this);
 						fxmlLoader.setController(erbPathwayDiagramController);
 						Parent root = fxmlLoader.load();

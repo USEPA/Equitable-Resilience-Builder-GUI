@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.epa.erb.engagement_action.EngagementActionController;
+
 public class App extends Application {
 
 	private Logger logger = LogManager.getLogger(App.class);
@@ -28,7 +30,7 @@ public class App extends Application {
 		logger.info(getGreeting());
 		
 //		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/EngagementSetup.fxml"));
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/EngagementSetup.fxml"));
 //			EngagementSetupController engagementSetupController = new EngagementSetupController();
 //			fxmlLoader.setController(engagementSetupController);
 //			Parent root = fxmlLoader.load();
@@ -40,7 +42,7 @@ public class App extends Application {
 //		}
 		
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/EngagementAction.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController();
 			fxmlLoader.setController(engagementActionController);
 			Parent root = fxmlLoader.load();

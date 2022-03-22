@@ -1,4 +1,4 @@
-package com.epa.erb;
+package com.epa.erb.engagement_setup;
 
 public class SelectedActivity {
 

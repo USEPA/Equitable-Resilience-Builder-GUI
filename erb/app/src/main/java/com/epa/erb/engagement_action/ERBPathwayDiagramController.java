@@ -1,10 +1,13 @@
-package com.epa.erb;
+package com.epa.erb.engagement_action;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.epa.erb.Activity;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -41,7 +44,7 @@ public class ERBPathwayDiagramController implements Initializable{
 	}
 	
 	private void setToolTips() {
-		Tooltip tooltip1 = new Tooltip(activity.shortName);
+		Tooltip tooltip1 = new Tooltip(activity.getShortName());
 		Tooltip.install(centerCircle, tooltip1);
 		tooltip1.setStyle("-fx-background-color: #EDF7B2; -fx-text-fill: black;");
 		Tooltip tooltip2 = new Tooltip(splitString(activity.getLongName()));
