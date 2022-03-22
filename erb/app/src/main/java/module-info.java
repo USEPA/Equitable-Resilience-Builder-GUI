@@ -1,4 +1,4 @@
-module erb {
+module com.epa.erb {
 	requires java.xml;
 	requires java.desktop;
 	requires transitive javafx.graphics;
@@ -7,6 +7,6 @@ module erb {
 	requires org.apache.logging.log4j;
 	requires javafx.web;
 	requires javafx.base;
-	opens erb to javafx.fxml;
-	exports erb;
+	opens com.epa.erb to javafx.fxml;
+	exports com.epa.erb;
 }

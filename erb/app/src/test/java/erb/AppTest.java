@@ -4,6 +4,9 @@
 package erb;
 
 import org.junit.jupiter.api.Test;
+
+import com.epa.erb.App;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {

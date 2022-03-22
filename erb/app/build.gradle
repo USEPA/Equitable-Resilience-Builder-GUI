@@ -38,7 +38,7 @@ javafx{
 //}
 
 application {
-    mainClass = 'erb.App'
-    mainModule = 'erb'
+    mainClass = 'com.epa.erb.App'
+    mainModule = 'com.epa.erb'
 }
 
