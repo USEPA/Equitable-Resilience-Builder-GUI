@@ -69,13 +69,13 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	Button doEngagementButton;
 	
-	String selectedChapter = null;	//Tracks the current user selected chapter they are adding activities to
-	ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>();	//List of Chapter objects created by the user
-	ArrayList<Activity> customizedActivities = new ArrayList<Activity>();	//List of Activities parsed from .xml file
-	ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();	//List of ActivityTypes parsed from .xml file
+	private String selectedChapter = null;	//Tracks the current user selected chapter they are adding activities to
+	private ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>();	//List of Chapter objects created by the user
+	private ArrayList<Activity> customizedActivities = new ArrayList<Activity>();	//List of Activities parsed from .xml file
+	private ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();	//List of ActivityTypes parsed from .xml file
 	private Logger logger = LogManager.getLogger(EngagementSetupController.class);
-	String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
-	ArrayList<ChapterTitledPaneController> chapterTitledPaneControllers = new ArrayList<ChapterTitledPaneController>(); //List of ChapterTitledPaneControllers for all chapters created by the user
+	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	private ArrayList<ChapterTitledPaneController> chapterTitledPaneControllers = new ArrayList<ChapterTitledPaneController>(); //List of ChapterTitledPaneControllers for all chapters created by the user
 
 	public EngagementSetupController() {
 		parseActivityTypes();
@@ -89,20 +89,20 @@ public class EngagementSetupController implements Initializable {
 		setActivityTypeListViewCellFactory();
 	}
 	
-	public void handleControls() {
+	private void handleControls() {
 		setActivityTypeListViewDrag(activitityTypeListView);
 		fileNameHyperlink.setOnMouseClicked(e-> fileNameHyperlinkClicked());
 		activitityTypeListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> updateActivityTypeDescriptionTextArea());
 		customizedActivitiesListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> updateCustomizedActivityInfo());
 	}
 	
-	public void fillActivitiesListView() {
+	private void fillActivitiesListView() {
 		for (ActivityType activityType : activityTypes) {
 			activitityTypeListView.getItems().add(activityType);
 		}
 	}
 
-	public void setActivityTypeListViewCellFactory() {
+	private void setActivityTypeListViewCellFactory() {
 		activitityTypeListView.setCellFactory(new Callback<ListView<ActivityType>, ListCell<ActivityType>>() {
 			@Override
 			public ListCell<ActivityType> call(ListView<ActivityType> param) {
@@ -120,7 +120,7 @@ public class EngagementSetupController implements Initializable {
 		});
 	}
 	
-	public void fillCustomizedActivitiesListView(String activityTypeName) {
+	private void fillCustomizedActivitiesListView(String activityTypeName) {
 		customizedActivitiesListView.getItems().clear();
 		clearCustomizedActivityInfo();
 		for (Activity customActivity : customizedActivities) {
@@ -132,7 +132,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	public void setCustomizedActivityListViewCellFactory() {
+	private void setCustomizedActivityListViewCellFactory() {
 		customizedActivitiesListView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
 			@Override
 			public ListCell<Activity> call(ListView<Activity> param) {
@@ -150,7 +150,7 @@ public class EngagementSetupController implements Initializable {
 		});
 	}
 	
-	public void setTitledPaneListViewCellFactory(ListView<SelectedActivity> titledPaneListView) {
+	void setTitledPaneListViewCellFactory(ListView<SelectedActivity> titledPaneListView) {
 		titledPaneListView.setCellFactory(new Callback<ListView<SelectedActivity>, ListCell<SelectedActivity>>() {
 			@Override
 			public ListCell<SelectedActivity> call(ListView<SelectedActivity> param) {
@@ -169,7 +169,7 @@ public class EngagementSetupController implements Initializable {
 		});
 	}
 	
-	public ContextMenu createContextMenu() {
+	private ContextMenu createContextMenu() {
 		ContextMenu contextMenu = new ContextMenu();
 		MenuItem removeMenuItem = new MenuItem("Remove");
 		removeMenuItem.setOnAction(e-> removeMenuItemAction());
@@ -177,7 +177,7 @@ public class EngagementSetupController implements Initializable {
 		return contextMenu;
 	}
 	
-	public void removeMenuItemAction() {
+	private void removeMenuItemAction() {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
 			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
 				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
@@ -239,7 +239,7 @@ public class EngagementSetupController implements Initializable {
 		storeFinalSelectedActivitiesAndChapters();
 	}
 	
-	public void storeFinalSelectedActivitiesAndChapters() {
+	private void storeFinalSelectedActivitiesAndChapters() {
 		try {
 			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\Data.xml");
 			PrintWriter printWriter = new PrintWriter(dataFile);
@@ -262,7 +262,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	public String getActivityTypeXMLInfo(Activity activity) {
+	private String getActivityTypeXMLInfo(Activity activity) {
 		String q = "\"";
 		if (activity != null) {
 			StringBuilder stringBuilder = new StringBuilder();
@@ -276,7 +276,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	public String getActivityXMLInfo(Activity activity) {
+	private String getActivityXMLInfo(Activity activity) {
 		String q = "\"";
 		if (activity != null) {
 			StringBuilder stringBuilder = new StringBuilder();
@@ -292,7 +292,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	public String getChapterXMLInfo(Chapter chapter) {
+	private String getChapterXMLInfo(Chapter chapter) {
 		String q = "\"";
 		if(chapter != null) {
 			StringBuilder stringBuilder = new StringBuilder();
@@ -306,7 +306,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	public void addFinalSelectedActivitiesToChapters() {
+	private void addFinalSelectedActivitiesToChapters() {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
 			Chapter chapter = getChapter(chapterTitledPaneController.getPaneTitle());
 			ListView<SelectedActivity> listView = chapterTitledPaneController.getTitledPaneListView();
@@ -323,7 +323,7 @@ public class EngagementSetupController implements Initializable {
 	 * @param titledPaneListView
 	 * @param paneTitle
 	 */
-	public void selectedActivityListViewClicked(MouseEvent mouseEvent, ListView<SelectedActivity> titledPaneListView, String paneTitle) {
+	private void selectedActivityListViewClicked(MouseEvent mouseEvent, ListView<SelectedActivity> titledPaneListView, String paneTitle) {
 		SelectedActivity selectedActivity = titledPaneListView.getSelectionModel().getSelectedItem();
 		if (selectedActivity != null) {
 			selectedChapter = paneTitle;
@@ -335,7 +335,7 @@ public class EngagementSetupController implements Initializable {
 	/**
 	 * Handles users clicked the file hyperlink. Opens the hyper linked document.
 	 */
-	public void fileNameHyperlinkClicked() {
+	private void fileNameHyperlinkClicked() {
 		try {
 			String fileName = fileNameHyperlink.getText().trim();
 			File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\" + fileName);
@@ -352,7 +352,7 @@ public class EngagementSetupController implements Initializable {
 	/**
 	 * Updates the activity type description according to the selected activity type.
 	 */
-	public void updateActivityTypeDescriptionTextArea() {
+	private void updateActivityTypeDescriptionTextArea() {
 		ActivityType selectedActivityType = activitityTypeListView.getSelectionModel().getSelectedItem();
 		for(ActivityType activityType: activityTypes) {
 			if(activityType.getLongName().contentEquals(selectedActivityType.getLongName())) {
@@ -364,7 +364,7 @@ public class EngagementSetupController implements Initializable {
 	/**
 	 * Updates the customized activity fields according to the selected customized activity information.
 	 */
-	public void updateCustomizedActivityInfo() {
+	private void updateCustomizedActivityInfo() {
 		Activity selectedCustomizedActivity = customizedActivitiesListView.getSelectionModel().getSelectedItem();
 		if (selectedCustomizedActivity != null) {
 			for (Activity customActivity : customizedActivities) {
@@ -380,7 +380,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	public void clearCustomizedActivityInfo() {
+	private void clearCustomizedActivityInfo() {
 		shortNameTextField.setText(null);
 		longNameTextField.setText(null);
 		descriptionTextField.setText(null);
@@ -389,7 +389,7 @@ public class EngagementSetupController implements Initializable {
 		fileNameHyperlink.setText(null);
 	}
 	
-	public Chapter getChapter(String chapterName) {
+	private Chapter getChapter(String chapterName) {
 		for(Chapter chapter: chaptersCreated) {
 			if(chapter.getStringName().contentEquals(chapterName)) {
 				return chapter;
@@ -399,7 +399,7 @@ public class EngagementSetupController implements Initializable {
 		return null;
 	}
 	
-	public ActivityType getActivityType(String activityTypeName) {
+	private ActivityType getActivityType(String activityTypeName) {
 		for(ActivityType activityType: activityTypes) {
 			if(activityType.getLongName().contentEquals(activityTypeName)) {
 				return activityType;
@@ -409,7 +409,7 @@ public class EngagementSetupController implements Initializable {
 		return null;
 	}
 	
-	public Activity getCustomizedActivity(String GUID) {
+	private Activity getCustomizedActivity(String GUID) {
 		for(Activity activity: customizedActivities) {
 			if(activity.getGUID().contentEquals(GUID)) {
 				return activity;
@@ -487,7 +487,7 @@ public class EngagementSetupController implements Initializable {
 		});
 	}
 	
-	public void parseActivityTypes() {
+	private void parseActivityTypes() {
 		activityTypes.clear();
 		File activityTypesFile = new File(pathToERBFolder + "\\Activities\\Activity_Types.xml");
 		if (activityTypesFile.exists() && activityTypesFile.canRead()) {
@@ -518,7 +518,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 
-	public void parseAvailableActivities() {
+	private void parseAvailableActivities() {
 		customizedActivities.clear();
 		File activitesFile = new File(pathToERBFolder + "\\Activities\\Available_Activites.xml");
 		if (activitesFile.exists() && activitesFile.canRead()) {

@@ -40,7 +40,7 @@ public class ERBPathwayDiagramController implements Initializable{
 		activityLabel.setText(activity.getShortName());
 	}
 	
-	public void setToolTips() {
+	private void setToolTips() {
 		Tooltip tooltip1 = new Tooltip(activity.shortName);
 		Tooltip.install(centerCircle, tooltip1);
 		tooltip1.setStyle("-fx-background-color: #EDF7B2; -fx-text-fill: black;");
@@ -64,7 +64,7 @@ public class ERBPathwayDiagramController implements Initializable{
 	 * @param string
 	 * @return
 	 */
-	public String splitString(String string) {
+	private String splitString(String string) {
 		if (string.length() > 50) {
 			String regex = ".{1,50}\\s";
 			Matcher m = Pattern.compile(regex).matcher(string);

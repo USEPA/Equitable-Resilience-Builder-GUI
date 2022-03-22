@@ -28,7 +28,7 @@ public class Activity {
 	
 	ArrayList<ActivityAttribute> activityAttributes = new ArrayList<ActivityAttribute>();
 	
-	public void setActivityAttributes() {
+	void setActivityAttributes() {
 		activityAttributes.add(new ActivityAttribute("A", "Activity Type", 0, "Activity Type: " + activityType.getLongName(), "FE4040"));
 		activityAttributes.add(new ActivityAttribute("S", "Short Name", 0, "Short Name: " + shortName, "FEB040"));
 		activityAttributes.add(new ActivityAttribute("L", "Long Name", 0, "Long Name: " + longName, "9AFE40"));
