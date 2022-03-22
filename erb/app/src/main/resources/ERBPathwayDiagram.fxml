@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+<VBox prefHeight="75.0" prefWidth="125.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox>
+         <children>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Circle fx:id="topLeftCircle" fill="WHITE" onMouseClicked="#topLeftCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #B2C1F7;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Circle fx:id="topRightCircle" fill="WHITE" onMouseClicked="#topRightCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #F7B2E0;" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox prefWidth="31.0" />
+                  <Line endX="-117.0" endY="10.5" rotate="85.0" startX="-100.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Line endX="-117.0" endY="11.0" rotate="-25.0" startX="-100.0" />
+                  <HBox prefHeight="12.0" prefWidth="31.0" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" maxHeight="25.0" minHeight="25.0">
+         <children>
+            <Line endX="-50.0" startX="-100.0" />
+            <Circle fx:id="centerCircle" fill="WHITE" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #EDF7B2;" />
+            <Line endX="-50.0" startX="-100.0" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox prefWidth="31.0" />
+                  <Line endX="-117.0" endY="10.5" rotate="-25.0" startX="-100.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Line endX="-117.0" endY="10.5" rotate="85.0" startX="-100.0" />
+                  <HBox prefWidth="31.0" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Circle fx:id="bottomLeftCircle" fill="WHITE" onMouseClicked="#bottomLeftCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #B2F7D1;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Circle fx:id="bottomRightCircle" fill="WHITE" onMouseClicked="#bottomRightCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #F7DBB2;" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="activityLabel" />
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" top="5.0" />
+   </padding>
+</VBox>
