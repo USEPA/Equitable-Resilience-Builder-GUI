@@ -10,8 +10,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.engagement_setup.EngagementSetupController;
 
 public class App extends Application {
 

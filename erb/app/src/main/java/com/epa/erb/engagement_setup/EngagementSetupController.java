@@ -2,12 +2,15 @@ package com.epa.erb.engagement_setup;
 
 import java.awt.Desktop;
 import java.io.File;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
@@ -244,72 +247,121 @@ public class EngagementSetupController implements Initializable {
 	private void storeFinalSelectedActivitiesAndChapters() {
 		try {
 			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\Data.xml");
-			PrintWriter printWriter = new PrintWriter(dataFile);
-			if(chaptersCreated.size() > 0) {
-				printWriter.println("<chapters>");
-				for(Chapter chapter : chaptersCreated) {
-					printWriter.println("<chapter " + getChapterXMLInfo(chapter) + ">");
-					for(Activity activity : chapter.getUserSelectedActivities()) {
-						printWriter.println("<activity " + getActivityXMLInfo(activity) + ">");
-						printWriter.println("<activityType " + getActivityTypeXMLInfo(activity) + "></activityType>");
-						printWriter.println("</activity>");
-					}
-					printWriter.println("</chapter>");
+			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+			Document document = documentBuilder.newDocument();
+			Element rootElement = document.createElement("chapters");
+			document.appendChild(rootElement);
+			for(Chapter chapter: chaptersCreated) {
+				Element chapterElement = document.createElement("chapter");
+				chapterElement.setAttribute("chapterNum", Integer.toString(chapter.getChapterNum()));
+				chapterElement.setAttribute("numericName", chapter.getNumericName());
+				chapterElement.setAttribute("stringName", chapter.getStringName());
+				chapterElement.setAttribute("description", chapter.getDescriptionName());
+				for(Activity activity: chapter.getUserSelectedActivities()) {
+					Element activityElement = document.createElement("activity");
+					activityElement.setAttribute("shortName", activity.getShortName());
+					activityElement.setAttribute("longName", activity.getLongName());
+					activityElement.setAttribute("fileName", activity.getFileName());
+					activityElement.setAttribute("directions", activity.getDirections());
+					activityElement.setAttribute("objectives", activity.getObjectives());
+					activityElement.setAttribute("description", activity.getDescription());
+					activityElement.setAttribute("materials", activity.getMaterials());
+					activityElement.setAttribute("time", activity.getTime());
+					activityElement.setAttribute("who", activity.getWho());
+					
+					Element activityTypeElement = document.createElement("activityType");
+					activityTypeElement.setAttribute("longName", activity.getActivityType().getLongName());
+					activityTypeElement.setAttribute("shortName", activity.getActivityType().getShortName());
+					activityTypeElement.setAttribute("description",activity.getActivityType().getDescription());
+					activityTypeElement.setAttribute("fileExt", activity.getActivityType().getFileExt());
+					
+					activityElement.appendChild(activityTypeElement);
+					chapterElement.appendChild(activityElement);
 				}
-				printWriter.println("</chapters>");
+				rootElement.appendChild(chapterElement);
 			}
-			printWriter.close();
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource domSource = new DOMSource(document);
+			
+			StreamResult file = new StreamResult(dataFile);
+			transformer.transform(domSource, file);
+			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
 	
-	private String getActivityTypeXMLInfo(Activity activity) {
-		String q = "\"";
-		if (activity != null) {
-			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append("longName=" + q + activity.getActivityType().getLongName() + q + " ");
-			stringBuilder.append("shortName=" + q + activity.getActivityType().getShortName() + q + " ");
-			stringBuilder.append("description=" + q + activity.getActivityType().getDescription() + q + " ");
-			stringBuilder.append("fileExt=" + q + activity.getActivityType().getFileExt() + q);
-			return stringBuilder.toString();
-		} else {
-			return "";
-		}
-	}
+//	private void storeFinalSelectedActivitiesAndChapters() {
+//		try {
+//			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\Data.xml");
+//			PrintWriter printWriter = new PrintWriter(dataFile);
+//			if(chaptersCreated.size() > 0) {
+//				printWriter.println("<chapters>");
+//				for(Chapter chapter : chaptersCreated) {
+//					printWriter.println("<chapter " + getChapterXMLInfo(chapter) + ">");
+//					for(Activity activity : chapter.getUserSelectedActivities()) {
+//						printWriter.println("<activity " + getActivityXMLInfo(activity) + ">");
+//						printWriter.println("<activityType " + getActivityTypeXMLInfo(activity) + "></activityType>");
+//						printWriter.println("</activity>");
+//					}
+//					printWriter.println("</chapter>");
+//				}
+//				printWriter.println("</chapters>");
+//			}
+//			printWriter.close();
+//		} catch (Exception e) {
+//			logger.error(e.getMessage());
+//		}
+//	}
 	
-	private String getActivityXMLInfo(Activity activity) {
-		String q = "\"";
-		if (activity != null) {
-			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append("shortName=" + q + activity.getShortName() + q + " ");
-			stringBuilder.append("longName=" + q + activity.getLongName() + q + " ");
-			stringBuilder.append("fileName=" + q + activity.getFileName() + q + " ");
-			stringBuilder.append("directions=" + q + activity.getDirections() + q + " ");
-			stringBuilder.append("objectives=" + q + activity.getObjectives() + q + " ");
-			stringBuilder.append("description=" + q + activity.getDescription() + q + " ");
-			stringBuilder.append("materials=" + q + activity.getMaterials() + q + " ");
-			stringBuilder.append("time=" + q + activity.getTime() + q + " ");
-			stringBuilder.append("who=" + q + activity.getWho() + q);
-			return stringBuilder.toString();
-		} else {
-			return "";
-		}
-	}
-	
-	private String getChapterXMLInfo(Chapter chapter) {
-		String q = "\"";
-		if(chapter != null) {
-			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append("chapterNum=" + q + chapter.getChapterNum() + q + " ");
-			stringBuilder.append("numericName=" + q + chapter.getNumericName() + q + " ");
-			stringBuilder.append("stringName=" + q + chapter.getStringName() + q + " " );
-			stringBuilder.append("description=" + q + chapter.getDescriptionName() + q);
-			return stringBuilder.toString();
-		}else {
-			return "";
-		}
-	}
+//	private String getActivityTypeXMLInfo(Activity activity) {
+//		String q = "\"";
+//		if (activity != null) {
+//			StringBuilder stringBuilder = new StringBuilder();
+//			stringBuilder.append("longName=" + q + activity.getActivityType().getLongName() + q + " ");
+//			stringBuilder.append("shortName=" + q + activity.getActivityType().getShortName() + q + " ");
+//			stringBuilder.append("description=" + q + activity.getActivityType().getDescription() + q + " ");
+//			stringBuilder.append("fileExt=" + q + activity.getActivityType().getFileExt() + q);
+//			return stringBuilder.toString();
+//		} else {
+//			return "";
+//		}
+//	}
+//	
+//	private String getActivityXMLInfo(Activity activity) {
+//		String q = "\"";
+//		if (activity != null) {
+//			StringBuilder stringBuilder = new StringBuilder();
+//			stringBuilder.append("shortName=" + q + activity.getShortName().replace("\r", "&#xD;") + q + " ");
+//			stringBuilder.append("longName=" + q + activity.getLongName().replace("\r", "&#xD;") + q + " ");
+//			stringBuilder.append("fileName=" + q + activity.getFileName().replace("\r", "&#xD;") + q + " ");
+//			stringBuilder.append("directions=" + q + activity.getDirections().replace("\r", "&#xD;") + q + " ");
+//			stringBuilder.append("objectives=" + q + activity.getObjectives().replace("\r", "&#xD;") + q + " ");
+//			stringBuilder.append("description=" + q + activity.getDescription().replace("\r", "&#xD;") + q + " ");
+//			stringBuilder.append("materials=" + q + activity.getMaterials().replace("\r", "&#xD;") + q + " ");
+//			stringBuilder.append("time=" + q + activity.getTime().replace("\r", "&#xD;") + q + " ");
+//			stringBuilder.append("who=" + q + activity.getWho().replace("\r", "&#xD;") + q);
+//			return stringBuilder.toString();
+//		} else {
+//			return "";
+//		}
+//	}
+//	
+//	private String getChapterXMLInfo(Chapter chapter) {
+//		String q = "\"";
+//		if(chapter != null) {
+//			StringBuilder stringBuilder = new StringBuilder();
+//			stringBuilder.append("chapterNum=" + q + chapter.getChapterNum() + q + " ");
+//			stringBuilder.append("numericName=" + q + chapter.getNumericName() + q + " ");
+//			stringBuilder.append("stringName=" + q + chapter.getStringName() + q + " " );
+//			stringBuilder.append("description=" + q + chapter.getDescriptionName() + q);
+//			return stringBuilder.toString();
+//		}else {
+//			return "";
+//		}
+//	}
 	
 	private void addFinalSelectedActivitiesToChapters() {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
