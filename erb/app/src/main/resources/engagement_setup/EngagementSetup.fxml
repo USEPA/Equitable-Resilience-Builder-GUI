@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -74,13 +73,13 @@
                   <VBox>
                      <children>
                         <Label text="Short Name:" />
-                        <TextField fx:id="shortNameTextField" />
+                        <TextArea fx:id="shortNameTextField" wrapText="true" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Long Name:" />
-                        <TextField fx:id="longNameTextField" />
+                        <TextArea fx:id="longNameTextField" wrapText="true" />
                      </children>
                   </VBox>
                   <VBox>

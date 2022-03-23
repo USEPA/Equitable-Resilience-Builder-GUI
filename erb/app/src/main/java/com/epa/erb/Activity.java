@@ -1,6 +1,5 @@
 package com.epa.erb;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class Activity {
@@ -12,9 +11,12 @@ public class Activity {
 	String directions;
 	String objectives;
 	String description;
+	String materials;
+	String time;
+	String who;
 	String GUID;
 	
-	public Activity(ActivityType activityType, String shortName, String longName, String fileName, String directions, String objectives, String description) {
+	public Activity(ActivityType activityType, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who) {
 		this.activityType = activityType;
 		this.shortName = shortName;
 		this.longName = longName;
@@ -22,20 +24,10 @@ public class Activity {
 		this.directions = directions;
 		this.objectives = objectives;
 		this.description = description;
+		this.materials = materials;
+		this.time = time;
+		this.who = who;
 		GUID = generateUniqueId();
-		setActivityAttributes();
-	}
-	
-	ArrayList<ActivityAttribute> activityAttributes = new ArrayList<ActivityAttribute>();
-	
-	void setActivityAttributes() {
-		activityAttributes.add(new ActivityAttribute("A", "Activity Type", 0, "Activity Type: " + activityType.getLongName(), "FE4040"));
-		activityAttributes.add(new ActivityAttribute("S", "Short Name", 0, "Short Name: " + shortName, "FEB040"));
-		activityAttributes.add(new ActivityAttribute("L", "Long Name", 0, "Long Name: " + longName, "9AFE40"));
-		activityAttributes.add(new ActivityAttribute("F", "File Name", 0, "File Name: " + fileName, "40FEC3"));
-		activityAttributes.add(new ActivityAttribute("D1", "Directions", 0, "Directions" + directions, "40D4FE"));
-		activityAttributes.add(new ActivityAttribute("O", "Objectives", 0, "Objectives: " + objectives, "C641FF"));
-		activityAttributes.add(new ActivityAttribute("D2", "Description", 0, "Description: " + description, "FF41C2"));
 	}
 
 	public ActivityType getActivityType() {
@@ -93,15 +85,35 @@ public class Activity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-		
+			
+	public String getMaterials() {
+		return materials;
+	}
+
+	public void setMaterials(String materials) {
+		this.materials = materials;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getWho() {
+		return who;
+	}
+
+	public void setWho(String who) {
+		this.who = who;
+	}
+
 	public String getGUID() {
 		return GUID;
 	}
 
-	public ArrayList<ActivityAttribute> getActivityAttributes() {
-		return activityAttributes;
-	}
-	
 	public String generateUniqueId() {
 		UUID uuid = UUID.randomUUID();
 		return String.valueOf(uuid);

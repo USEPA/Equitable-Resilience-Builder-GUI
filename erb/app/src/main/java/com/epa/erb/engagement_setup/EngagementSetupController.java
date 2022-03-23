@@ -14,11 +14,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
@@ -32,7 +30,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -58,9 +55,9 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	ListView<Activity> customizedActivitiesListView;
 	@FXML
-	TextField shortNameTextField;
+	TextArea shortNameTextField;
 	@FXML
-	TextField longNameTextField;
+	TextArea longNameTextField;
 	@FXML
 	TextArea descriptionTextField;
 	@FXML
@@ -290,7 +287,10 @@ public class EngagementSetupController implements Initializable {
 			stringBuilder.append("fileName=" + q + activity.getFileName() + q + " ");
 			stringBuilder.append("directions=" + q + activity.getDirections() + q + " ");
 			stringBuilder.append("objectives=" + q + activity.getObjectives() + q + " ");
-			stringBuilder.append("description=" + q + activity.getDescription() + q);
+			stringBuilder.append("description=" + q + activity.getDescription() + q + " ");
+			stringBuilder.append("materials=" + q + activity.getMaterials() + q + " ");
+			stringBuilder.append("time=" + q + activity.getTime() + q + " ");
+			stringBuilder.append("who=" + q + activity.getWho() + q);
 			return stringBuilder.toString();
 		} else {
 			return "";
@@ -342,7 +342,7 @@ public class EngagementSetupController implements Initializable {
 	 */
 	private void fileNameHyperlinkClicked() {
 		try {
-			String fileName = fileNameHyperlink.getText().trim();
+			String fileName = fileNameHyperlink.getAccessibleText().trim();
 			File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\" + fileName);
 			if (file.exists() && Desktop.isDesktopSupported()) {
 				Desktop.getDesktop().open(file);
@@ -374,12 +374,13 @@ public class EngagementSetupController implements Initializable {
 		if (selectedCustomizedActivity != null) {
 			for (Activity customActivity : customizedActivities) {
 				if (customActivity.getLongName().contentEquals(selectedCustomizedActivity.getLongName())) {
-					shortNameTextField.setText(customActivity.getShortName());
-					longNameTextField.setText(customActivity.getLongName());
-					descriptionTextField.setText(customActivity.getDescription());
-					directionsTextField.setText(customActivity.getDirections());
-					objectivesTextField.setText(customActivity.getObjectives());
-					fileNameHyperlink.setText(customActivity.getFileName());
+					shortNameTextField.setText(customActivity.getShortName().replace("\r", "\n"));
+					longNameTextField.setText(customActivity.getLongName().replace("\r", "\n"));
+					descriptionTextField.setText(customActivity.getDescription().replace("\r", "\n"));
+					directionsTextField.setText(customActivity.getDirections().replace("\r", "\n"));
+					objectivesTextField.setText(customActivity.getObjectives().replace("\r", "\n"));
+					fileNameHyperlink.setText(customActivity.getFileName().substring(2, customActivity.getFileName().length()));
+					fileNameHyperlink.setAccessibleText(customActivity.getFileName());
 				}
 			}
 		}
@@ -546,8 +547,11 @@ public class EngagementSetupController implements Initializable {
 						String directions = activityElement.getAttribute("directions");
 						String objectives = activityElement.getAttribute("objectives");
 						String description = activityElement.getAttribute("description");
+						String materials = activityElement.getAttribute("materials");
+						String time = activityElement.getAttribute("time");
+						String who = activityElement.getAttribute("who");
 						Activity activity = new Activity(activityType, shortName, longName, fileName, directions,
-								objectives, description);
+								objectives, description, materials, time, who);
 						customizedActivities.add(activity);
 					}
 				}

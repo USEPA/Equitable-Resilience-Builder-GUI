@@ -260,6 +260,9 @@ public class EngagementActionController implements Initializable{
 								String activityDirections = activityElement.getAttribute("directions");
 								String activityObjectives = activityElement.getAttribute("objectives");
 								String activityDescription = activityElement.getAttribute("description");
+								String activityMaterials= activityElement.getAttribute("materials");
+								String activityTime = activityElement.getAttribute("time");
+								String activityWho = activityElement.getAttribute("who");
 								NodeList activityTypeNodeList = activityNode.getChildNodes();
 								for (int k = 0; k < activityTypeNodeList.getLength(); k++) {
 									Node activityTypeNode = activityTypeNodeList.item(k);
@@ -275,7 +278,7 @@ public class EngagementActionController implements Initializable{
 												activityTypeShortName, activityTypeDescription, activityTypeFileExt);
 										Activity activity = new Activity(activityType, activityShortName,
 												activityLongName, activityFileName, activityDirections,
-												activityObjectives, activityDescription);
+												activityObjectives, activityDescription, activityMaterials, activityTime, activityWho);
 										chapter.addUserSelectedActivity(activity);
 									}
 								}
