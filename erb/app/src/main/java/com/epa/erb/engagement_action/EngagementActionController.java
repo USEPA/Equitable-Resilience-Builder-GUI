@@ -53,7 +53,7 @@ public class EngagementActionController implements Initializable{
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>();
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
-
+	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	public EngagementActionController() {
 		parseDataFromSetup();
 	}
@@ -116,7 +116,7 @@ public class EngagementActionController implements Initializable{
 				String parentTreeItemValue = parentTreeItem.getValue().trim();
 				String selectedTreeItemValue = selectedTreeItem.getValue().trim();
 				if (selectedTreeItemValue.length() > 0) {
-					if (parentTreeItemValue.contentEquals("ERB")) { //Is Chapter 
+					if (parentTreeItemValue.contains("ERB")) { //Is Chapter 
 						currentChapter = selectedTreeItemValue;
 						loadChapterPathway(selectedTreeItemValue);
 						handleNavigationButtonsShown(selectedTreeItem, null);
@@ -139,23 +139,42 @@ public class EngagementActionController implements Initializable{
 			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) {
 				chapterLabel.setText(chapter.getStringName());
 				pathwayHBox.getChildren().clear();
+				int count =0;
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					try {
 						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBPathwayDiagram.fxml"));
 						ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity, this);
 						fxmlLoader.setController(erbPathwayDiagramController);
 						Parent root = fxmlLoader.load();
+						if(chapter.getNumberOfUserSelectedActivities() ==1) {
+							erbPathwayDiagramController.hideLeftLeadingLine();
+							erbPathwayDiagramController.hideRightLeadingLine();
+							erbPathwayDiagramController.setCircleLabel("R");
+							erbPathwayDiagramController.setCircleColor("#EDF7B2");
+						}else if(count == chapter.getNumberOfUserSelectedActivities()-1) {
+							erbPathwayDiagramController.hideRightLeadingLine();
+							erbPathwayDiagramController.setCircleLabel("C");
+							erbPathwayDiagramController.setCircleColor("#B2F7D1");
+						} else if(count ==0) {
+							erbPathwayDiagramController.hideLeftLeadingLine();
+							erbPathwayDiagramController.setCircleLabel("R");
+							erbPathwayDiagramController.setCircleColor("#EDF7B2");
+						} else {
+							erbPathwayDiagramController.setCircleLabel("S");
+							erbPathwayDiagramController.setCircleColor("#B2C1F7");
+						}
 						pathwayHBox.getChildren().add(root);
 					} catch (Exception e) {
 						logger.error(e.getMessage());
 					}
+					count++;
 				}
 			}
 		}
 	}
 	
 	private void fillTreeView() {
-		TreeItem<String> rootTreeItem = new TreeItem<String>("ERB");
+		TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
 		rootTreeItem.setExpanded(true);
 		treeView.setRoot(rootTreeItem);
 		treeMap.put(rootTreeItem, "0");
