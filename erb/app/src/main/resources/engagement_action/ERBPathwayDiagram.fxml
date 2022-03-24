@@ -122,7 +122,7 @@
          <children>
             <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                <children>
-                  <Polygon points="27.584793090820312, -18.399887084960938, 56.38479995727539, -18.399871826171875, 41.18477249145508, -43.99970245361328" rotate="90.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Polygon points="28.0, -17.5, 56.0, -17.5, 41.5, -45.5" rotate="90.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </VBox>
             <VBox alignment="CENTER">
