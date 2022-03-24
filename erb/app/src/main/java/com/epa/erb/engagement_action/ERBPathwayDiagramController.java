@@ -73,20 +73,21 @@ public class ERBPathwayDiagramController implements Initializable{
 		diagramHBox.getChildren().remove(arrowVBox);
 	}
 	
-	public void setCircleLabel(String text) {
-		centerCircleLabel.setText(text);
-	}
-	
-	public void setCircleColor(String color) {
-		centerCircle.setStyle("-fx-fill:" + color + ";");
-	}
-	
 	private void setToolTips() {
 		Tooltip tooltip1 = new Tooltip(activity.getLongName());
 		if(activity.getLongName().length() == 0) {centerCircleLabel.setVisible(false);}
 		Tooltip.install(centerCircle, tooltip1);
 		Tooltip.install(centerCircleLabel, tooltip1);
-		tooltip1.setStyle("-fx-background-color: white; -fx-text-fill: black;");
+		if(activity.getStatus().contentEquals("ready")) {
+			tooltip1.setStyle("-fx-background-color:  #EDF7B2; -fx-text-fill: black;");
+			centerCircleLabel.setText("R");
+		}else if (activity.getStatus().contentEquals("skip")) {
+			tooltip1.setStyle("-fx-background-color:  #B2C1F7; -fx-text-fill: black;");
+			centerCircleLabel.setText("S");
+		}else if (activity.getStatus().contentEquals("complete")) {
+			tooltip1.setStyle("-fx-background-color:  #B2F7D1; -fx-text-fill: black;");
+			centerCircleLabel.setText("C");
+		}
 		
 		Tooltip tooltip2 = new Tooltip(splitString(activity.getMaterials().trim()));
 		if(activity.getMaterials().length() == 0) {topLeftCircleLabel.setVisible(false);}
