@@ -149,19 +149,10 @@ public class EngagementActionController implements Initializable{
 						if(chapter.getNumberOfUserSelectedActivities() ==1) {
 							erbPathwayDiagramController.hideLeftLeadingLine();
 							erbPathwayDiagramController.hideRightLeadingLine();
-							erbPathwayDiagramController.setCircleLabel("R");
-							erbPathwayDiagramController.setCircleColor("#EDF7B2");
 						}else if(count == chapter.getNumberOfUserSelectedActivities()-1) {
 							erbPathwayDiagramController.hideRightLeadingLine();
-							erbPathwayDiagramController.setCircleLabel("C");
-							erbPathwayDiagramController.setCircleColor("#B2F7D1");
 						} else if(count ==0) {
 							erbPathwayDiagramController.hideLeftLeadingLine();
-							erbPathwayDiagramController.setCircleLabel("R");
-							erbPathwayDiagramController.setCircleColor("#EDF7B2");
-						} else {
-							erbPathwayDiagramController.setCircleLabel("S");
-							erbPathwayDiagramController.setCircleColor("#B2C1F7");
 						}
 						pathwayHBox.getChildren().add(root);
 					} catch (Exception e) {
@@ -273,6 +264,7 @@ public class EngagementActionController implements Initializable{
 							// Activity
 							if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element activityElement = (Element) activityNode;
+								String activityStatus = activityElement.getAttribute("status");
 								String activityShortName = activityElement.getAttribute("shortName");
 								String activityLongName = activityElement.getAttribute("longName");
 								String activityFileName = activityElement.getAttribute("fileName");
@@ -295,7 +287,7 @@ public class EngagementActionController implements Initializable{
 										String activityTypeFileExt = activityTypeElement.getAttribute("fileExt");
 										ActivityType activityType = new ActivityType(activityTypeLongName,
 												activityTypeShortName, activityTypeDescription, activityTypeFileExt);
-										Activity activity = new Activity(activityType, activityShortName,
+										Activity activity = new Activity(activityType, activityStatus, activityShortName,
 												activityLongName, activityFileName, activityDirections,
 												activityObjectives, activityDescription, activityMaterials, activityTime, activityWho);
 										chapter.addUserSelectedActivity(activity);

@@ -261,6 +261,7 @@ public class EngagementSetupController implements Initializable {
 				chapterElement.setAttribute("description", chapter.getDescriptionName());
 				for(Activity activity: chapter.getUserSelectedActivities()) {
 					Element activityElement = document.createElement("activity");
+					activityElement.setAttribute("status", activity.getStatus());
 					activityElement.setAttribute("shortName", activity.getShortName());
 					activityElement.setAttribute("longName", activity.getLongName());
 					activityElement.setAttribute("fileName", activity.getFileName());
@@ -524,6 +525,7 @@ public class EngagementSetupController implements Initializable {
 						Element activityElement = (Element) activityNode;
 						String activityTypeName = activityElement.getAttribute("activityType");
 						ActivityType activityType = getActivityType(activityTypeName);
+						String status = activityElement.getAttribute("status");
 						String shortName = activityElement.getAttribute("shortName");
 						String longName = activityElement.getAttribute("longName");
 						String fileName = activityElement.getAttribute("fileName");
@@ -533,7 +535,7 @@ public class EngagementSetupController implements Initializable {
 						String materials = activityElement.getAttribute("materials");
 						String time = activityElement.getAttribute("time");
 						String who = activityElement.getAttribute("who");
-						Activity activity = new Activity(activityType, shortName, longName, fileName, directions,
+						Activity activity = new Activity(activityType, status, shortName, longName, fileName, directions,
 								objectives, description, materials, time, who);
 						customizedActivities.add(activity);
 					}

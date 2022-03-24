@@ -5,6 +5,7 @@ import java.util.UUID;
 public class Activity {
 	
 	ActivityType activityType;
+	String status;
 	String shortName;
 	String longName;
 	String fileName;
@@ -16,8 +17,9 @@ public class Activity {
 	String who;
 	String GUID;
 	
-	public Activity(ActivityType activityType, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who) {
+	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who) {
 		this.activityType = activityType;
+		this.status = status;
 		this.shortName = shortName;
 		this.longName = longName;
 		this.fileName = fileName;
@@ -36,6 +38,14 @@ public class Activity {
 
 	public void setActivityType(ActivityType activityType) {
 		this.activityType = activityType;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getShortName() {
