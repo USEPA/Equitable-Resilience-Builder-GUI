@@ -184,36 +184,36 @@ public class EngagementActionController implements Initializable{
 	private void handleNavigationButtonsShown(TreeItem<String> selectedTreeItem, TreeItem<String> parentTreeItem) {
 		if (selectedTreeItem != null) {
 			if (parentTreeItem == null) {
-				previousButton.setVisible(false);
-				skipButton.setVisible(false);
-				nextButton.setVisible(true);
+				previousButton.setDisable(true);
+				skipButton.setDisable(true);
+				nextButton.setDisable(false);
 			} else {
 				int numberOfChildrenInParent = parentTreeItem.getChildren().size();
 				if (numberOfChildrenInParent > 1) {
 					int indexOfSelectedItem = parentTreeItem.getChildren().indexOf(selectedTreeItem);
 					if (indexOfSelectedItem == 0) {
-						previousButton.setVisible(false);
-						skipButton.setVisible(false); //true
-						nextButton.setVisible(true);
+						previousButton.setDisable(true);
+						skipButton.setDisable(true); //true
+						nextButton.setDisable(false);
 					} else if (indexOfSelectedItem == parentTreeItem.getChildren().size() - 1) {
-						previousButton.setVisible(true);
-						skipButton.setVisible(false);
-						nextButton.setVisible(false);
+						previousButton.setDisable(false);
+						skipButton.setDisable(true);
+						nextButton.setDisable(true);
 					} else {
-						previousButton.setVisible(true);
-						skipButton.setVisible(false); //true
-						nextButton.setVisible(true);
+						previousButton.setDisable(false);
+						skipButton.setDisable(true); //true
+						nextButton.setDisable(false);
 					}
 				} else {
-					previousButton.setVisible(false);
-					skipButton.setVisible(false);
-					nextButton.setVisible(false);
+					previousButton.setDisable(true);
+					skipButton.setDisable(true);
+					nextButton.setDisable(true);
 				}
 			}
 		} else {
-			previousButton.setVisible(false);
-			skipButton.setVisible(false);
-			nextButton.setVisible(false);
+			previousButton.setDisable(true);
+			skipButton.setDisable(true);
+			nextButton.setDisable(true);
 		}
 	}
 	
