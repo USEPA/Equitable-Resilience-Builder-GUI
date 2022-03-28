@@ -32,6 +32,8 @@ import javafx.scene.layout.VBox;
 public class EngagementActionController implements Initializable{
 
 	@FXML
+	HBox headingHBox;
+	@FXML
 	Label chapterLabel;
 	@FXML
 	Label erbPathwayLabel;
@@ -47,6 +49,8 @@ public class EngagementActionController implements Initializable{
 	Button skipButton;
 	@FXML
 	Button nextButton;
+	@FXML
+	VBox keyVBox;
 	
 	private String currentChapter = null; //Tracks the current user selected chapter
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
@@ -63,11 +67,13 @@ public class EngagementActionController implements Initializable{
 		fillTreeView();
 		handleNavigationButtonsShown(null, null);
 		handleControls();
+		loadChapterERBPathway();
 	}
 	
 	private void handleControls() {
 		treeView.setOnMouseClicked(e-> treeViewClicked());
 	}
+	
 	
 	@FXML
 	public void previousButtonAction() {
@@ -118,13 +124,17 @@ public class EngagementActionController implements Initializable{
 				if (selectedTreeItemValue.length() > 0) {
 					if (parentTreeItemValue.contains("ERB")) { //Is Chapter 
 						currentChapter = selectedTreeItemValue;
-						loadChapterPathway(selectedTreeItemValue);
+						loadActivityERBPathway(selectedTreeItemValue);
 						handleNavigationButtonsShown(selectedTreeItem, null);
 					} else { //Is Activity
 						currentChapter = parentTreeItemValue;
-						loadChapterPathway(parentTreeItemValue);
+						loadActivityERBPathway(parentTreeItemValue);
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
 					}
+				}
+			} else {
+				if(selectedTreeItem != null) {
+					loadChapterERBPathway();
 				}
 			}
 		} else {
@@ -132,13 +142,42 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void loadChapterPathway(String chapterName) {
-		pathwayHBox.getChildren().remove(erbPathwayLabel);
+	private void loadChapterERBPathway() {
+		pathwayHBox.getChildren().clear();
+		headingHBox.getChildren().remove(keyVBox);
+		chapterLabel.setText("Chapters");
+		int count = 0;
+		for (Chapter chapter : dataChapters) {
+			try {
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBChapterDiagram.fxml"));
+				ERBChapterDiagramController erbChapterDiagramController = new ERBChapterDiagramController(chapter);
+				fxmlLoader.setController(erbChapterDiagramController);
+				Parent root = fxmlLoader.load();
+				if(dataChapters.size() == 1 && count == 0) {
+					erbChapterDiagramController.hideLeftLeadingLine();
+					erbChapterDiagramController.hideRightLeadingLine();
+				} else if(count == dataChapters.size()-1) {
+					erbChapterDiagramController.hideRightLeadingLine();
+				} else if(count ==0) {
+					erbChapterDiagramController.hideLeftLeadingLine();
+				}
+				pathwayHBox.getChildren().add(root);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+			count++;
+		}
+	}
+
+	private void loadActivityERBPathway(String chapterName) {
+		if(!headingHBox.getChildren().contains(keyVBox)) {
+			headingHBox.getChildren().add(1,keyVBox);
+		}
 		Chapter chapter = getChapter(chapterName);
 		if (chapter != null) {
 			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) {
-				chapterLabel.setText(chapter.getStringName());
 				pathwayHBox.getChildren().clear();
+				chapterLabel.setText(chapter.getStringName());
 				int count =0;
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					try {
@@ -156,6 +195,7 @@ public class EngagementActionController implements Initializable{
 						}
 						pathwayHBox.getChildren().add(root);
 					} catch (Exception e) {
+						e.printStackTrace();
 						logger.error(e.getMessage());
 					}
 					count++;

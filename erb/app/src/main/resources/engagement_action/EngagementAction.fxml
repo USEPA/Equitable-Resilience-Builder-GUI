@@ -12,7 +12,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox>
+      <HBox fx:id="headingHBox">
          <children>
             <VBox HBox.hgrow="ALWAYS">
                <children>
@@ -36,7 +36,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="202.0" spacing="2.0">
+            <VBox fx:id="keyVBox" alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="202.0" spacing="2.0">
                <children>
                   <Label text="Key">
                      <font>
