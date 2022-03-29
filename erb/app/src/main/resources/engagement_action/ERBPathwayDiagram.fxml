@@ -22,7 +22,7 @@
                               <StackPane>
                                  <children>
                                     <Circle fx:id="topLeftCircle" fill="WHITE" onMouseClicked="#topLeftCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #B895EB;" />
-                                    <Label fx:id="topLeftCircleLabel" text="M" />
+                                    <Label fx:id="topLeftCircleLabel" onMouseClicked="#topLeftCircleLabelClicked" text="M" />
                                  </children>
                               </StackPane>
                            </children>
@@ -32,7 +32,7 @@
                               <StackPane>
                                  <children>
                                     <Circle fx:id="topRightCircle" fill="WHITE" onMouseClicked="#topRightCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #F7B2E0;" />
-                                    <Label fx:id="topRightCircleLabel" text="D" />
+                                    <Label fx:id="topRightCircleLabel" onMouseClicked="#topRightCircleLabelClicked" text="D" />
                                  </children>
                               </StackPane>
                            </children>
@@ -90,7 +90,7 @@
                               <StackPane>
                                  <children>
                                     <Circle fx:id="bottomLeftCircle" fill="WHITE" onMouseClicked="#bottomLeftCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #EB8787;" />
-                                    <Label fx:id="bottomLeftCircleLabel" text="I" />
+                                    <Label fx:id="bottomLeftCircleLabel" onMouseClicked="#bottomLeftCircleLabelClicked" text="I" />
                                  </children>
                               </StackPane>
                            </children>
@@ -100,7 +100,7 @@
                               <StackPane>
                                  <children>
                                     <Circle fx:id="bottomRightCircle" fill="WHITE" onMouseClicked="#bottomRightCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #F7DBB2;" />
-                                    <Label fx:id="bottomRightCircleLabel" text="O" />
+                                    <Label fx:id="bottomRightCircleLabel" onMouseClicked="#bottomRightCircleLabelClicked" text="O" />
                                  </children>
                               </StackPane>
                            </children>
