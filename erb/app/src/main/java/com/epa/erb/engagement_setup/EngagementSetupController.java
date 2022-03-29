@@ -79,9 +79,10 @@ public class EngagementSetupController implements Initializable {
 	private ArrayList<Activity> customizedActivities = new ArrayList<Activity>();	//List of Activities parsed from .xml file
 	private ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();	//List of ActivityTypes parsed from .xml file
 	private Logger logger = LogManager.getLogger(EngagementSetupController.class);
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
-	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private ArrayList<ChapterTitledPaneController> chapterTitledPaneControllers = new ArrayList<ChapterTitledPaneController>(); //List of ChapterTitledPaneControllers for all chapters created by the user
+
+	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 
 	public EngagementSetupController() {
 		parseActivityTypes();
@@ -130,7 +131,7 @@ public class EngagementSetupController implements Initializable {
 		customizedActivitiesListView.getItems().clear();
 		clearCustomizedActivityInfo();
 		for (Activity customActivity : customizedActivities) {
-			if (customActivity.getActivityType().getLongName().contentEquals(activityTypeName)) {
+			if (customActivity.getActivityType().getLongName().contentEquals(activityTypeName) && !customActivity.getShortName().contentEquals("Plan") && !customActivity.getShortName().contentEquals("Reflect")) {
 				if(!customizedActivitiesListView.getItems().contains(customActivity)) {
 					customizedActivitiesListView.getItems().add(customActivity);
 				}
@@ -245,6 +246,9 @@ public class EngagementSetupController implements Initializable {
 		storeFinalSelectedActivitiesAndChapters();
 	}
 	
+	/**
+	 * Writes the chapter data to an xml file to save for pt 2 of the tool
+	 */
 	private void storeFinalSelectedActivitiesAndChapters() {
 		try {
 			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\Data.xml");
@@ -295,14 +299,19 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Add all user selected activities to the user created chapters. Also adds the Plan activity and Reflect activity
+	 */
 	private void addFinalSelectedActivitiesToChapters() {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
 			Chapter chapter = getChapter(chapterTitledPaneController.getPaneTitle());
 			ListView<SelectedActivity> listView = chapterTitledPaneController.getTitledPaneListView();
+			chapter.addUserSelectedActivity(getCustomizedPlanActivity());
 			ObservableList<SelectedActivity> selectedActivities = listView.getItems();
 			for (SelectedActivity selectedActivity : selectedActivities) {
 				chapter.addUserSelectedActivity(getCustomizedActivity(selectedActivity.getActivityGUID()));
 			}
+			chapter.addUserSelectedActivity(getCustomizedReflectActivity());
 		}
 	}
 	
@@ -406,6 +415,26 @@ public class EngagementSetupController implements Initializable {
 			}
 		}
 		logger.debug("Customized Activity returned is null.");
+		return null;
+	}
+		
+	private Activity getCustomizedPlanActivity() {
+		for(Activity activity: customizedActivities) {
+			if(activity.getShortName().contentEquals("Plan")) {
+				return activity;
+			}
+		}
+		logger.debug("Customized Plan Activity returned is null.");
+		return null;
+	}
+	
+	private Activity getCustomizedReflectActivity() {
+		for(Activity activity: customizedActivities) {
+			if(activity.getShortName().contentEquals("Reflect")) {
+				return activity;
+			}
+		}
+		logger.debug("Customized Reflect Activity returned is null.");
 		return null;
 	}
 	

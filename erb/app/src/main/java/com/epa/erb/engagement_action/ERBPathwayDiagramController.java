@@ -5,15 +5,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import com.epa.erb.Activity;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -21,31 +18,31 @@ import javafx.scene.shape.Line;
 public class ERBPathwayDiagramController implements Initializable{
 
 	@FXML
-	HBox diagramHBox;
-	@FXML
-	Circle centerCircle;
+	VBox diagramVBox;
 	@FXML
 	Circle topLeftCircle;
 	@FXML
+	Label topLeftCircleLabel;
+	@FXML
 	Circle topRightCircle;
-	@FXML
-	Circle bottomLeftCircle;
-	@FXML
-	Circle bottomRightCircle;
-	@FXML
-	Label centerCircleLabel;
 	@FXML
 	Label topRightCircleLabel;
 	@FXML
-	Label bottomRightCircleLabel;
+	Line leftLeadingLine;
 	@FXML
-	Label topLeftCircleLabel;
+	Circle centerCircle;
+	@FXML
+	Label centerCircleLabel;
+	@FXML
+	Line rightLeadingLine;
+	@FXML
+	Circle bottomLeftCircle;
 	@FXML
 	Label bottomLeftCircleLabel;
 	@FXML
-	Line leftLeadingLine;
+	Circle bottomRightCircle;
 	@FXML
-	Line rightLeadingLine;
+	Label bottomRightCircleLabel;	
 	@FXML
 	VBox arrowVBox;
 	@FXML
@@ -53,6 +50,7 @@ public class ERBPathwayDiagramController implements Initializable{
 	
 	Activity activity;
 	EngagementActionController engagementActionController;
+	
 	public ERBPathwayDiagramController(Activity activity, EngagementActionController engagementActionController) {
 		this.activity = activity;
 		this.engagementActionController = engagementActionController;
@@ -70,7 +68,7 @@ public class ERBPathwayDiagramController implements Initializable{
 	
 	public void hideRightLeadingLine() {
 		rightLeadingLine.setVisible(false);
-		diagramHBox.getChildren().remove(arrowVBox);
+		arrowVBox.setVisible(false);
 	}
 	
 	private void setToolTips() {
@@ -181,7 +179,5 @@ public class ERBPathwayDiagramController implements Initializable{
 			}
 		}
 	}
-	
-	
 
 }

@@ -9,131 +9,128 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polygon?>
 
-<HBox fx:id="diagramHBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="diagramVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="75.0" prefWidth="125.0">
+      <HBox>
          <children>
-            <HBox>
+            <VBox>
                <children>
-                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                  <HBox>
                      <children>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Circle fx:id="topLeftCircle" fill="WHITE" onMouseClicked="#topLeftCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #B895EB;" />
+                                    <Label fx:id="topLeftCircleLabel" text="M" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Circle fx:id="topRightCircle" fill="WHITE" onMouseClicked="#topRightCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #F7B2E0;" />
+                                    <Label fx:id="topRightCircleLabel" text="D" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox prefWidth="31.0" />
+                              <Line endX="-117.0" endY="10.5" rotate="85.0" startX="-100.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Line endX="-117.0" endY="11.0" rotate="-25.0" startX="-100.0" />
+                              <HBox prefHeight="12.0" prefWidth="31.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Line fx:id="leftLeadingLine" endX="-50.0" startX="-100.0" />
                         <StackPane>
                            <children>
-                              <Circle fx:id="topLeftCircle" fill="WHITE" onMouseClicked="#topLeftCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #B895EB;" />
-                              <Label fx:id="topLeftCircleLabel" text="M" />
+                              <Circle fx:id="centerCircle" fill="WHITE" onMouseClicked="#centerCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #EDF7B2;" />
+                              <Label fx:id="centerCircleLabel" onMouseClicked="#centerCircleLabelClicked" />
                            </children>
                         </StackPane>
+                        <Line fx:id="rightLeadingLine" endX="-50.0" startX="-100.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                  <HBox>
                      <children>
-                        <StackPane>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
-                              <Circle fx:id="topRightCircle" fill="WHITE" onMouseClicked="#topRightCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #F7B2E0;" />
-                              <Label fx:id="topRightCircleLabel" text="D" />
+                              <HBox prefWidth="31.0" />
+                              <Line endX="-117.0" endY="10.5" rotate="-25.0" startX="-100.0" />
                            </children>
-                        </StackPane>
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <HBox prefWidth="31.0" />
-                        <Line endX="-117.0" endY="10.5" rotate="85.0" startX="-100.0" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Line endX="-117.0" endY="11.0" rotate="-25.0" startX="-100.0" />
-                        <HBox prefHeight="12.0" prefWidth="31.0" />
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" maxHeight="25.0" minHeight="25.0">
-               <children>
-                  <Line fx:id="leftLeadingLine" endX="-50.0" startX="-100.0" />
-                  <StackPane prefHeight="150.0" prefWidth="200.0">
-                     <children>
-                        <Circle fx:id="centerCircle" fill="WHITE" onMouseClicked="#centerCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #EDF7B2;" />
-                        <Label fx:id="centerCircleLabel" onMouseClicked="#centerCircleLabelClicked" />
-                     </children>
-                  </StackPane>
-                  <Line fx:id="rightLeadingLine" endX="-50.0" startX="-100.0" />
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <HBox prefWidth="31.0" />
-                        <Line endX="-117.0" endY="10.5" rotate="-25.0" startX="-100.0" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Line endX="-117.0" endY="10.5" rotate="85.0" startX="-100.0" />
-                        <HBox prefWidth="31.0" />
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <StackPane>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
-                              <Circle fx:id="bottomLeftCircle" fill="WHITE" onMouseClicked="#bottomLeftCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #EB8787;" />
-                              <Label fx:id="bottomLeftCircleLabel" text="I" />
+                              <Line endX="-117.0" endY="10.5" rotate="85.0" startX="-100.0" />
+                              <HBox prefWidth="31.0" />
                            </children>
-                        </StackPane>
+                        </HBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                  <HBox>
                      <children>
-                        <StackPane>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
-                              <Circle fx:id="bottomRightCircle" fill="WHITE" onMouseClicked="#bottomRightCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #F7DBB2;" />
-                              <Label fx:id="bottomRightCircleLabel" text="O" />
+                              <StackPane>
+                                 <children>
+                                    <Circle fx:id="bottomLeftCircle" fill="WHITE" onMouseClicked="#bottomLeftCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #EB8787;" />
+                                    <Label fx:id="bottomLeftCircleLabel" text="I" />
+                                 </children>
+                              </StackPane>
                            </children>
-                        </StackPane>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Circle fx:id="bottomRightCircle" fill="WHITE" onMouseClicked="#bottomRightCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #F7DBB2;" />
+                                    <Label fx:id="bottomRightCircleLabel" text="O" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
                      </children>
                   </HBox>
-               </children>
-            </HBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label fx:id="activityLabel" />
                </children>
                <padding>
-                  <Insets top="2.0" />
+                  <Insets bottom="5.0" top="5.0" />
                </padding>
             </VBox>
-         </children>
-         <padding>
-            <Insets bottom="5.0" top="5.0" />
-         </padding>
-      </VBox>
-      <VBox fx:id="arrowVBox">
-         <children>
-            <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+            <VBox fx:id="arrowVBox" alignment="CENTER_LEFT">
                <children>
                   <Polygon points="28.0, -17.5, 56.0, -17.5, 41.5, -45.5" rotate="90.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </VBox>
-            <VBox alignment="CENTER">
-               <children>
-                  <Label fx:id="activityLabel1" />
-               </children>
-               <padding>
-                  <Insets top="2.0" />
-               </padding>
-            </VBox>
          </children>
+      </HBox>
+      <VBox>
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label fx:id="activityLabel" />
+                  <HBox prefWidth="20.0" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="2.0" />
+         </padding>
       </VBox>
    </children>
-</HBox>
+</VBox>

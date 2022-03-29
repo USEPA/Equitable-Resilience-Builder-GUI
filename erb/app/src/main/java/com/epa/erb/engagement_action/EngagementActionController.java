@@ -13,11 +13,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -55,9 +53,11 @@ public class EngagementActionController implements Initializable{
 	private String currentChapter = null; //Tracks the current user selected chapter
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>();
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //Holds the tree items mapped to a chapter name or activity GUID
+	
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	
 	public EngagementActionController() {
 		parseDataFromSetup();
 	}
@@ -73,7 +73,6 @@ public class EngagementActionController implements Initializable{
 	private void handleControls() {
 		treeView.setOnMouseClicked(e-> treeViewClicked());
 	}
-	
 	
 	@FXML
 	public void previousButtonAction() {
