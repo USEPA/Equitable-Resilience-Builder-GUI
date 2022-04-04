@@ -168,6 +168,7 @@ public class EngagementActionController implements Initializable{
 				if (selectedTreeItemValue.length() > 0) {
 					if (parentTreeItemValue.contains("ERB")) { //Is Chapter 
 						currentChapter = selectedTreeItemValue;
+						contentVBox.getChildren().clear();
 						loadActivityERBPathway(selectedTreeItemValue);
 						handleNavigationButtonsShown(selectedTreeItem, null);
 					} else { //Is Activity
@@ -179,6 +180,7 @@ public class EngagementActionController implements Initializable{
 				}
 			} else {
 				if(selectedTreeItem != null) {
+					contentVBox.getChildren().clear();
 					loadChapterERBPathway();
 				}
 			}
