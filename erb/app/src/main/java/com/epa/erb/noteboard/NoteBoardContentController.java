@@ -3,12 +3,15 @@ package com.epa.erb.noteboard;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -25,11 +28,12 @@ public class NoteBoardContentController implements Initializable{
 	@FXML
 	Pane note;
 	
-	ArrayList<String> categories = new ArrayList<String>();
-	
 	public NoteBoardContentController() {
 		
 	}
+	
+	ArrayList<String> categories = new ArrayList<String>();
+	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -38,7 +42,7 @@ public class NoteBoardContentController implements Initializable{
 		createCategoryRows();
 	}
 	
-	public void fillCategories() {
+	private void fillCategories() {
 		categories.add("Flood");
 		categories.add("Heat");
 		categories.add("Radiological Disease");
@@ -50,7 +54,7 @@ public class NoteBoardContentController implements Initializable{
 		
 	}
 	
-	public void createCategoryRows() {
+	private void createCategoryRows() {
 		for (String category : categories) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/CategorySection.fxml"));
@@ -63,12 +67,12 @@ public class NoteBoardContentController implements Initializable{
 				VBox.setVgrow(catHBox, Priority.ALWAYS);
 				mainVBox.getChildren().add(catHBox);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 	}
 	
-	int indexToMove = -1;
+	private int indexToMove = -1;
 	private static final String TAB_DRAG_KEY = "pane";
 	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
 	void setDrag(Pane p) {

@@ -50,7 +50,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	VBox arrowVBox;
 	@FXML
 	Label activityLabel;
-
+	
 	Activity activity;
 	EngagementActionController engagementActionController;
 
@@ -65,11 +65,11 @@ public class ERBPathwayDiagramController implements Initializable {
 		activityLabel.setText(activity.getShortName());
 	}
 
-	public void hideLeftLeadingLine() {
+	void hideLeftLeadingLine() {
 		leftLeadingLine.setVisible(false);
 	}
 
-	public void hideRightLeadingLine() {
+	void hideRightLeadingLine() {
 		rightLeadingLine.setVisible(false);
 		arrowVBox.setVisible(false);
 	}
@@ -229,7 +229,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		}
 	}
 	
-	public void showPopup(String title, String text, String color) {
+	private void showPopup(String title, String text, String color) {
 		Label label = new Label(splitString(activity.getObjectives()));
 		label.setPadding(new Insets(5, 5, 5, 5));
 		VBox vBox = new VBox();

@@ -15,22 +15,23 @@ public class CategorySectionController implements Initializable {
 	HBox categoryHBox;
 	@FXML
 	HBox postItHBox;
-
+	
+	String categoryName;
+	
+	public CategorySectionController(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
 	
-	String categoryName;
-	public CategorySectionController(String categoryName) {
-		this.categoryName = categoryName;
-	}
-	
-	public void initCategorySection() {
+	void initCategorySection() {
 		categoryLabel.setText(categoryName);
 	}
 
-	public HBox getPostItHBox() {
+   HBox getPostItHBox() {
 		return postItHBox;
 	}
 	

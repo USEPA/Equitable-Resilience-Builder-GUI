@@ -18,7 +18,6 @@ public class PostItNoteEditsController implements Initializable{
 	@FXML
 	Button saveButton;
 	
-	boolean fillContent;
 	PostItNoteController postItNoteController;
 	
 	public PostItNoteEditsController(PostItNoteController postItNoteController) {
@@ -37,19 +36,19 @@ public class PostItNoteEditsController implements Initializable{
 		postItNoteController.closeEditsStage();
 	}
 	
-	public String parseColorAsHex(Color color) {
+	private String parseColorAsHex(Color color) {
 		String colorAsString = color.toString();
 		String colorAsHexString = colorAsString.replaceAll("0x", "");
 		colorAsHexString = colorAsHexString.substring(0, colorAsHexString.length()-2);
 		return colorAsHexString;
 	}
 	
-	public void setColor(String color) {
+	void setColor(String color) {
 		Color colorToSelect = Color.web(color, 1.0);
 		colorPicker.setValue(colorToSelect);
 	}
 	
-	public void setText(String text) {
+	void setText(String text) {
 		postItNoteTextArea.setText(text);
 	}
 

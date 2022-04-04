@@ -74,6 +74,10 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	Button doEngagementButton;
 	
+	public EngagementSetupController() {
+		
+	}
+	
 	private String selectedChapter = null;	//Tracks the current user selected chapter they are adding activities to
 	private ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>();	//List of Chapter objects created by the user
 	private ArrayList<Activity> customizedActivities = new ArrayList<Activity>();	//List of Activities parsed from .xml file
@@ -83,14 +87,11 @@ public class EngagementSetupController implements Initializable {
 
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
-
-	public EngagementSetupController() {
-		parseActivityTypes();
-		parseAvailableActivities();
-	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		parseActivityTypes();
+		parseAvailableActivities();
 		handleControls();
 		fillActivitiesListView();
 		setActivityTypeListViewCellFactory();

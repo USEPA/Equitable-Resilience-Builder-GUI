@@ -40,11 +40,11 @@ public class ERBChapterDiagramController implements Initializable{
 		chapterLabel.setText(chapter.getStringName());
 	}
 	
-	public void hideLeftLeadingLine() {
+	void hideLeftLeadingLine() {
 		leftLeadingLine.setVisible(false);
 	}
 	
-	public void hideRightLeadingLine() {
+	void hideRightLeadingLine() {
 		rightLeadingLine.setVisible(false);
 		arrowVBox.setVisible(false);
 	}

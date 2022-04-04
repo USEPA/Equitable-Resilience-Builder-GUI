@@ -2,12 +2,13 @@ package com.epa.erb.noteboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseButton;
@@ -27,18 +28,20 @@ public class PostItNoteController implements Initializable{
 	@FXML
 	ScrollPane scrollPane;
 	
-	Stage editsStage = null;
 	
 	public PostItNoteController() {
 
 	}
+	
+	Stage editsStage = null;
+	private Logger logger = LogManager.getLogger(PostItNoteController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initPostItNote();		
 	}
 	
-	public void initPostItNote() {
+	private void initPostItNote() {
 		postItNotePane.setId("postedNote");
 		postItNotePane.setStyle("-fx-background-color: #FFFFFF");
 		scrollPane.setStyle("-fx-background-color: #FFFFFF");
@@ -47,6 +50,7 @@ public class PostItNoteController implements Initializable{
 		postItNotePane.setPrefWidth(0);
 	}
 	
+	@FXML
 	public void postItNoteClicked(MouseEvent mouseEvent) {
 		if(mouseEvent.getClickCount() ==2) {
 			postItNoteDoubleClicked(mouseEvent);
@@ -55,7 +59,7 @@ public class PostItNoteController implements Initializable{
 		}
 	}
 	
-	public void postItNoteDoubleClicked(MouseEvent mouseEvent) {
+	private void postItNoteDoubleClicked(MouseEvent mouseEvent) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
 			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(this);
@@ -70,11 +74,11 @@ public class PostItNoteController implements Initializable{
 			editsStage.setScene(scene);
 			editsStage.showAndWait();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 	
-	public void postItNoteRightClicked(MouseEvent mouseEvent) {
+	private void postItNoteRightClicked(MouseEvent mouseEvent) {
 		ContextMenu contextMenu = new ContextMenu();
 		MenuItem menuItem = new MenuItem("Remove");
 		contextMenu.getItems().add(menuItem);
@@ -83,23 +87,23 @@ public class PostItNoteController implements Initializable{
 		menuItem.setOnAction(e -> removePostItNote());
 	}
 	
-	public void removePostItNote() {
+	private void removePostItNote() {
 		HBox postItHBox = (HBox) postItNotePane.getParent();
 		postItHBox.getChildren().remove(postItNotePane);
 	}
 	
-	public void setPostItNoteText(String text) {
+	void setPostItNoteText(String text) {
 		Text textToAdd = new Text(text);
 		textFlow.getChildren().add(textToAdd);
 	}
 	
-	public void setPostItNoteColor(String color) {
+	void setPostItNoteColor(String color) {
 		postItNotePane.setStyle("-fx-background-color: " + "#" + color);
 		scrollPane.setStyle("-fx-background-color: " + "#" + color);
 		textFlow.setStyle("-fx-background-color: " + "#" + color);
 	}
 	
-	public void closeEditsStage() {
+	void closeEditsStage() {
 		if(editsStage != null) {
 			editsStage.close();
 		}

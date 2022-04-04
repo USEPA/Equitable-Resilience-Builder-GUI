@@ -17,7 +17,6 @@ import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 import com.epa.erb.noteboard.NoteBoardContentController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -53,6 +52,10 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	VBox keyVBox;
 	
+	public EngagementActionController() {
+		
+	}
+	
 	private String currentChapter = null; //Tracks the current user selected chapter
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
@@ -61,12 +64,9 @@ public class EngagementActionController implements Initializable{
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 	
-	public EngagementActionController() {
-		parseDataFromSetup();
-	}
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		parseDataFromSetup();
 		fillTreeView();
 		handleNavigationButtonsShown(null, null);
 		handleControls();
@@ -75,7 +75,7 @@ public class EngagementActionController implements Initializable{
 		loadSampleNB();
 	}
 	
-	public void loadSampleWK() {
+	private void loadSampleWK() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/WorksheetContent.fxml"));
 			WorksheetContentController worksheetContentController = new WorksheetContentController(dataChapters.get(0).getUserSelectedActivities().get(0));
@@ -84,11 +84,11 @@ public class EngagementActionController implements Initializable{
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 	
-	public void loadSampleNB() {
+	private void loadSampleNB() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
 			NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
@@ -97,7 +97,7 @@ public class EngagementActionController implements Initializable{
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 	
@@ -225,7 +225,6 @@ public class EngagementActionController implements Initializable{
 						}
 						pathwayHBox.getChildren().add(root);
 					} catch (Exception e) {
-						e.printStackTrace();
 						logger.error(e.getMessage());
 					}
 					count++;
