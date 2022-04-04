@@ -49,7 +49,7 @@
                         </HBox>
                         <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
-                              <ImageView fx:id="exampleContentImageView" fitHeight="200.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="exampleContentImageView" fitHeight="300.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../../../../../../ERB/EngagementActionTool/SampleContentExample.png" />
                                  </image>
