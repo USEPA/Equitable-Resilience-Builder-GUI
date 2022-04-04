@@ -19,7 +19,7 @@
                         <Line fx:id="leftLeadingLine" endX="-50.0" startX="-100.0" />
                         <StackPane>
                            <children>
-                              <Circle fx:id="centerCircle" fill="WHITE" radius="21.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #A9A9A9;" />
+                              <Circle fx:id="centerCircle" fill="WHITE" radius="21.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #80BFCD;" />
                               <Label fx:id="centerCircleLabel" />
                            </children>
                         </StackPane>

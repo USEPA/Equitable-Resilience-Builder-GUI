@@ -15,10 +15,10 @@ public class CategorySectionController implements Initializable {
 	HBox categoryHBox;
 	@FXML
 	HBox postItHBox;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 	}
 	
 	String categoryName;
@@ -30,4 +30,8 @@ public class CategorySectionController implements Initializable {
 		categoryLabel.setText(categoryName);
 	}
 
+	public HBox getPostItHBox() {
+		return postItHBox;
+	}
+	
 }

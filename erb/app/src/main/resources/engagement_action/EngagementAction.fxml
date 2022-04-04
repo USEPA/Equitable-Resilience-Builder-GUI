@@ -109,10 +109,7 @@
             <TreeView fx:id="treeView" prefHeight="200.0" />
             <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox fx:id="contentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #D1D1D1;" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label text="CONTENT HERE" />
-                     </children></VBox>
+                  <VBox fx:id="contentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
                   <HBox>
                      <children>
                         <HBox HBox.hgrow="ALWAYS">

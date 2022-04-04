@@ -16,6 +16,8 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
+import com.epa.erb.noteboard.NoteBoardContentController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class EngagementActionController implements Initializable{
@@ -68,6 +71,34 @@ public class EngagementActionController implements Initializable{
 		handleNavigationButtonsShown(null, null);
 		handleControls();
 		loadChapterERBPathway();
+		
+		loadSampleNB();
+	}
+	
+	public void loadSampleWK() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/WorksheetContent.fxml"));
+			WorksheetContentController worksheetContentController = new WorksheetContentController(dataChapters.get(0).getUserSelectedActivities().get(0));
+			fxmlLoader.setController(worksheetContentController);
+			Parent root = fxmlLoader.load();
+			contentVBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadSampleNB() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
+			fxmlLoader.setController(noteBoardContentController);
+			Parent root = fxmlLoader.load();
+			contentVBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void handleControls() {

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
 
-<VBox fx:id="postItNoteVBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="postItNotePane" maxHeight="115.0" maxWidth="115.0" minHeight="115.0" minWidth="115.0" onMouseClicked="#postItNoteClicked" prefHeight="115.0" prefWidth="115.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="postItLabel" />
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" style="-fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+         <content>
+            <TextFlow fx:id="textFlow" style="-fx-background-color: #FFFFFF;" />
+         </content>
+      </ScrollPane>
    </children>
 </VBox>
