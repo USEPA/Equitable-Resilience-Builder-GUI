@@ -7,6 +7,7 @@ module com.epa.erb {
 	requires org.apache.logging.log4j;
 	requires javafx.web;
 	requires javafx.base;
+	requires java.base;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.noteboard to javafx.fxml;
 	opens com.epa.erb.engagement_action to javafx.fxml;
