@@ -6,8 +6,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -44,23 +49,43 @@ public class PostItNoteController implements Initializable{
 	
 	public void postItNoteClicked(MouseEvent mouseEvent) {
 		if(mouseEvent.getClickCount() ==2) {
-			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
-				PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(this);
-				fxmlLoader.setController(postItNoteEditsController);
-				editsStage = new Stage();
-				Scene scene = new Scene(fxmlLoader.load());
-				if(textFlow.getChildren().size() > 0) { //Already contains content
-					Text text = (Text) textFlow.getChildren().get(0);
-					postItNoteEditsController.setText(text.getText());
-					postItNoteEditsController.setColor(textFlow.getStyle().replace("-fx-background-color: ", ""));
-				}
-				editsStage.setScene(scene);
-				editsStage.showAndWait();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			postItNoteDoubleClicked(mouseEvent);
+		} else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
+			postItNoteRightClicked(mouseEvent);
 		}
+	}
+	
+	public void postItNoteDoubleClicked(MouseEvent mouseEvent) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
+			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(this);
+			fxmlLoader.setController(postItNoteEditsController);
+			editsStage = new Stage();
+			Scene scene = new Scene(fxmlLoader.load());
+			if(textFlow.getChildren().size() > 0) { //Already contains content
+				Text text = (Text) textFlow.getChildren().get(0);
+				postItNoteEditsController.setText(text.getText());
+				postItNoteEditsController.setColor(textFlow.getStyle().replace("-fx-background-color: ", ""));
+			}
+			editsStage.setScene(scene);
+			editsStage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void postItNoteRightClicked(MouseEvent mouseEvent) {
+		ContextMenu contextMenu = new ContextMenu();
+		MenuItem menuItem = new MenuItem("Remove");
+		contextMenu.getItems().add(menuItem);
+		
+		scrollPane.setContextMenu(contextMenu);
+		menuItem.setOnAction(e -> removePostItNote());
+	}
+	
+	public void removePostItNote() {
+		HBox postItHBox = (HBox) postItNotePane.getParent();
+		postItHBox.getChildren().remove(postItNotePane);
 	}
 	
 	public void setPostItNoteText(String text) {
