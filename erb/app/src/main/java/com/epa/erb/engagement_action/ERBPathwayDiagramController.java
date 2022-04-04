@@ -108,16 +108,16 @@ public class ERBPathwayDiagramController implements Initializable {
 		Tooltip.install(topRightCircleLabel, tooltip3);
 		tooltip3.setStyle("-fx-background-color: #F7B2E0; -fx-text-fill: black;");
 
-		Tooltip tooltip4 = new Tooltip(splitString(activity.getDirections().trim()));
-		if (activity.getDirections().length() == 0) {
+		Tooltip tooltip4 = new Tooltip(splitString(activity.getWho().trim()));
+		if (activity.getWho().length() == 0) {
 			bottomLeftCircleLabel.setVisible(false);
 		}
 		Tooltip.install(bottomLeftCircle, tooltip4);
 		Tooltip.install(bottomLeftCircleLabel, tooltip4);
 		tooltip4.setStyle("-fx-background-color: #EB8787; -fx-text-fill: black;");
 
-		Tooltip tooltip5 = new Tooltip(splitString(activity.getObjectives().trim()));
-		if (activity.getObjectives().length() == 0) {
+		Tooltip tooltip5 = new Tooltip(splitString(activity.getTime().trim()));
+		if (activity.getTime().length() == 0) {
 			bottomRightCircleLabel.setVisible(false);
 		}
 		Tooltip.install(bottomRightCircle, tooltip5);
@@ -153,37 +153,37 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void bottomRightCircleClicked() {
-		if (activity.getObjectives().length() > 0) {
-			showPopup("Objective", activity.getObjectives(), "#F7DBB2");
-		}
+//		if (activity.getTime().length() > 0) {
+//			showPopup("Time", activity.getTime(), "#F7DBB2");
+//		}
 	}
 
 	@FXML
 	public void bottomRightCircleLabelClicked() {
-		if (activity.getObjectives().length() > 0) {
-			showPopup("Objective", activity.getObjectives(), "#F7DBB2");
+		if (activity.getTime().length() > 0) {
+			showPopup("Time", activity.getTime(), "#F7DBB2");
 		}
 	}
 
 	@FXML
 	public void bottomLeftCircleClicked() {
-		if (activity.getDirections().length() > 0) {
-			showPopup("Instructions", activity.getDirections(), "#EB8787");
-		}
+//		if (activity.getWho().length() > 0) {
+//			showPopup("Who", activity.getWho(), "#EB8787");
+//		}
 	}
 
 	@FXML
 	public void bottomLeftCircleLabelClicked() {
-		if (activity.getDirections().length() > 0) {
-			showPopup("Instructions", activity.getDirections(), "#EB8787");
+		if (activity.getWho().length() > 0) {
+			showPopup("Who", activity.getWho(), "#EB8787");
 		}
 	}
 
 	@FXML
 	public void topRightCircleClicked() {
-		if (activity.getDescription().length() > 0) {
-			showPopup("Description", activity.getDescription(), "#F7B2E0");
-		}
+//		if (activity.getDescription().length() > 0) {
+//			showPopup("Description", activity.getDescription(), "#F7B2E0");
+//		}
 	}
 
 	@FXML
@@ -195,9 +195,9 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void topLeftCircleClicked() {
-		if (activity.getMaterials().length() > 0) {
-			showPopup("Materials", activity.getMaterials(), "#B895EB");
-		}
+//		if (activity.getMaterials().length() > 0) {
+//			showPopup("Materials", activity.getMaterials(), "#B895EB");
+//		}
 	}
 
 	@FXML
@@ -230,7 +230,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 	
 	private void showPopup(String title, String text, String color) {
-		Label label = new Label(splitString(activity.getObjectives()));
+		Label label = new Label(splitString(text));
 		label.setPadding(new Insets(5, 5, 5, 5));
 		VBox vBox = new VBox();
 		vBox.getChildren().add(label);
