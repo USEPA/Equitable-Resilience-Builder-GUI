@@ -17,6 +17,8 @@ import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 import com.epa.erb.noteboard.NoteBoardContentController;
+import com.epa.erb.worksheet.WorksheetContentController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -72,7 +74,6 @@ public class EngagementActionController implements Initializable{
 		handleControls();
 		loadChapterERBPathway();
 		
-		loadSampleNB();
 	}
 	
 	private void loadSampleWK() {
@@ -93,6 +94,19 @@ public class EngagementActionController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
 			NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
 			fxmlLoader.setController(noteBoardContentController);
+			Parent root = fxmlLoader.load();
+			contentVBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	private void loadSampleContent() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/SampleContent.fxml"));
+			SampleContentController sampleContentController = new SampleContentController();
+			fxmlLoader.setController(sampleContentController);
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
@@ -159,6 +173,7 @@ public class EngagementActionController implements Initializable{
 					} else { //Is Activity
 						currentChapter = parentTreeItemValue;
 						loadActivityERBPathway(parentTreeItemValue);
+						loadActivityContentPanel(selectedTreeItem);
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
 					}
 				}
@@ -169,6 +184,14 @@ public class EngagementActionController implements Initializable{
 			}
 		} else {
 			handleNavigationButtonsShown(null, null);
+		}
+	}
+	
+	private void loadActivityContentPanel(TreeItem<String> selectedTreeItem) {
+		if(selectedTreeItem.getValue().contentEquals("Social Vulnerability Activity Template")) {
+			loadSampleContent();
+		} else {
+			contentVBox.getChildren().clear();
 		}
 	}
 	

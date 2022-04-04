@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fitToHeight="true" fitToWidth="true" minHeight="350.0" minWidth="500.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox alignment="CENTER">
+            <VBox alignment="CENTER" minWidth="100.0">
                <children>
                   <StackPane>
                      <children>
