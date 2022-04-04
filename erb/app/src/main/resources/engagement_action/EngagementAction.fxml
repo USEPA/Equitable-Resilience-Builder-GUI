@@ -64,13 +64,13 @@
                   <HBox spacing="20.0">
                      <children>
                         <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #EB8787;" />
-                        <Label text="Instructions" />
+                        <Label text="Who" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
                         <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #F7DBB2;" />
-                        <Label text="Objective" />
+                        <Label text="Time" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
