@@ -46,6 +46,8 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	VBox contentVBox;
 	@FXML
+	VBox attributeVBox;
+	@FXML
 	Button previousButton;
 	@FXML
 	Button skipButton;
@@ -112,6 +114,23 @@ public class EngagementActionController implements Initializable{
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
+		}
+	}
+	
+	public void loadAttributeInfo(String attributeLabel, String attributeText, String attributeColor) {
+		if (attributeText.trim().length() > 0) {
+			try {
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/AttributePane.fxml"));
+				AttributePanelController attributePanelController = new AttributePanelController();
+				fxmlLoader.setController(attributePanelController);
+				Parent root = fxmlLoader.load();
+				attributePanelController.setAttributeLabel(attributeLabel);
+				attributePanelController.setAttributeTextFlow(attributeText);
+				attributePanelController.setAttributeLabelColor(attributeColor);
+				attributeVBox.getChildren().add(root);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
 		}
 	}
 	
@@ -191,6 +210,14 @@ public class EngagementActionController implements Initializable{
 	
 	private void loadActivityContentPanel(TreeItem<String> selectedTreeItem) {
 		if(selectedTreeItem.getValue().contentEquals("Social Vulnerability Activity Template")) {
+			String GUID = treeMap.get(selectedTreeItem);
+			Activity selectedActivity = getActivity(GUID);
+			loadAttributeInfo("Objective", selectedActivity.getObjectives(), "#92A6EF");
+			loadAttributeInfo("Instructions", "1. On a white board, list the hazards of concern to your community in a column down the left side, and draw horizontal lines between them. (see example)" + "\n" + 
+					"2. Reflect on the stories and data that were shared at the beginning of the workshop. Who were the groups of people that were mentioned who experienced impacts from hazards and disasters? What were the impacts they experienced?" + "\n" + 
+					"3. As you go, add additional who's and what's for current or potential future impacts" + "\n" +
+					"4. After about 30 minutes or when the discussion is at a lull, begin discussing why these impacts happen. Give everyone a few minutes to think and write some \"why's\" on pink post-it notes. Then have people place the pink notes near the blue and yellow notes, and share their thoughts with the group" + "\n" +
+					"5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases", "#86E596");
 			loadSampleContent();
 		} else {
 			contentVBox.getChildren().clear();
@@ -318,6 +345,18 @@ public class EngagementActionController implements Initializable{
 			}
 		}
 		logger.debug("Chapter returned is null");
+		return null;
+	}
+	
+	private Activity getActivity(String GUID) {
+		for(Chapter chapter: dataChapters) {
+			for(Activity activity : chapter.getUserSelectedActivities()) {
+				if(activity.getGUID().contentEquals(GUID)) {
+					return activity;
+				}
+			}
+		}
+		logger.debug("Activity returned is null");
 		return null;
 	}
 		

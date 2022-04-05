@@ -109,7 +109,16 @@
             <TreeView fx:id="treeView" prefHeight="200.0" />
             <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox fx:id="contentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <HBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="contentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+                        <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="200.0" minWidth="200.0" style="-fx-background-color: transparent;">
+                           <content>
+                              <VBox fx:id="attributeVBox" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
                   <HBox>
                      <children>
                         <HBox HBox.hgrow="ALWAYS">

@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.TextFlow?>
 
 <HBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -58,56 +57,6 @@
                         </HBox>
                      </children>
                   </HBox>
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
-      <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="200.0" style="-fx-background-color: transparent;">
-         <content>
-            <VBox>
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <HBox style="-fx-background-color: #92A6EF;">
-                           <children>
-                              <Label text="Objective" HBox.hgrow="ALWAYS">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                           <content>
-                              <TextFlow fx:id="objectiveTextFlow">
-                                 <padding>
-                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                 </padding></TextFlow>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <HBox style="-fx-background-color: #86E596;">
-                           <children>
-                              <Label text="Instructions">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                           <content>
-                              <TextFlow fx:id="instructionsTextFlow">
-                                 <padding>
-                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                 </padding></TextFlow>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </content>
