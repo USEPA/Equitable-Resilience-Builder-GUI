@@ -72,6 +72,7 @@ public class PostItNoteController implements Initializable{
 				postItNoteEditsController.setColor(textFlow.getStyle().replace("-fx-background-color: ", ""));
 			}
 			editsStage.setScene(scene);
+			editsStage.setTitle("Post It Note Edits");
 			editsStage.showAndWait();
 		} catch (Exception e) {
 			logger.error(e.getMessage());

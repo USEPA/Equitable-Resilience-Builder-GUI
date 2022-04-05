@@ -20,7 +20,7 @@
             </Label>
          </children>
       </HBox>
-      <TextArea fx:id="postItNoteTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Text Here" wrapText="true" />
+      <TextArea fx:id="postItNoteTextArea" prefHeight="100.0" prefWidth="250.0" promptText="Post It content here" wrapText="true" />
       <ColorPicker fx:id="colorPicker" />
       <HBox alignment="CENTER">
          <children>
