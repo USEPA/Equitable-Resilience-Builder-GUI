@@ -213,6 +213,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void loadActivityContentPanel(TreeItem<String> selectedTreeItem) {
+		contentVBox.getChildren().clear();
+		cleanAttributeVBox();	
 		if(selectedTreeItem.getValue().contentEquals("Social Vulnerability Activity Template")) {
 			String GUID = treeMap.get(selectedTreeItem);
 			Activity selectedActivity = getActivity(GUID);
@@ -229,9 +231,6 @@ public class EngagementActionController implements Initializable{
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), "#92A6EF");
 			loadAttributeInfo("Instructions", selectedActivity.getDirections(), "#86E596");
 			loadSampleWK(selectedActivity);
-		} else {
-			contentVBox.getChildren().clear();
-			cleanAttributeVBox();						
 		}
 	}
 	
