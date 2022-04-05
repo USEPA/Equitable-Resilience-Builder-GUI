@@ -190,6 +190,7 @@ public class EngagementActionController implements Initializable{
 					if (parentTreeItemValue.contains("ERB")) { //Is Chapter 
 						currentChapter = selectedTreeItemValue;
 						contentVBox.getChildren().clear();
+						cleanAttributeVBox();						
 						loadActivityERBPathway(selectedTreeItemValue);
 						handleNavigationButtonsShown(selectedTreeItem, null);
 					} else { //Is Activity
@@ -202,6 +203,7 @@ public class EngagementActionController implements Initializable{
 			} else {
 				if(selectedTreeItem != null) {
 					contentVBox.getChildren().clear();
+					cleanAttributeVBox();						
 					loadChapterERBPathway();
 				}
 			}
@@ -223,6 +225,7 @@ public class EngagementActionController implements Initializable{
 			loadSampleContent();
 		} else {
 			contentVBox.getChildren().clear();
+			cleanAttributeVBox();						
 		}
 	}
 	
@@ -370,6 +373,11 @@ public class EngagementActionController implements Initializable{
 			logger.debug("Selected GUID is null");
 			return null;
 		}
+	}
+	
+	void cleanAttributeVBox() {
+		attributeVBox.getChildren().clear();
+		listOfAttributePanelControllers.clear();
 	}
 	
 	boolean containsAttribute(String attributeLabel) {
