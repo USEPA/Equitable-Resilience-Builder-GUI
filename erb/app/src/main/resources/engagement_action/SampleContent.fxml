@@ -30,20 +30,14 @@
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </padding>
                   </HBox>
-                  <HBox fx:id="activityContentHBox" VBox.vgrow="ALWAYS">
-                     <children>
-                        <HBox minWidth="50.0">
-                           <children>
-                              <Label text="Activity" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </HBox>
                   <HBox spacing="50.0">
                      <children>
-                        <HBox minWidth="50.0">
+                        <HBox minWidth="75.0">
                            <children>
-                              <Label text="Example" />
+                              <Label text="Example">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
@@ -53,6 +47,18 @@
                                     <Image url="@../../../../../../../../../../ERB/EngagementActionTool/SampleContentExample.png" />
                                  </image>
                               </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="activityContentHBox" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox minWidth="75.0">
+                           <children>
+                              <Label text="Activity">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                      </children>
