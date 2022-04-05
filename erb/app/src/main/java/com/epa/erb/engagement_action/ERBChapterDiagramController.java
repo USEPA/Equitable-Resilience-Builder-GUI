@@ -24,8 +24,6 @@ public class ERBChapterDiagramController implements Initializable{
 	@FXML
 	Line rightLeadingLine;
 	@FXML
-	Label chapterLabel;
-	@FXML
 	VBox arrowVBox;
 	
 	Chapter chapter;
@@ -37,7 +35,6 @@ public class ERBChapterDiagramController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		centerCircleLabel.setText(Integer.toString(chapter.getChapterNum()));
-		chapterLabel.setText(chapter.getStringName());
 	}
 	
 	void hideLeftLeadingLine() {

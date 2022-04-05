@@ -269,7 +269,7 @@ public class EngagementActionController implements Initializable{
 		if (chapter != null) {
 			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) {
 				pathwayHBox.getChildren().clear();
-				chapterLabel.setText(chapter.getStringName());
+				chapterLabel.setText(chapter.getStringName() + " Activities");
 				int count =0;
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					try {

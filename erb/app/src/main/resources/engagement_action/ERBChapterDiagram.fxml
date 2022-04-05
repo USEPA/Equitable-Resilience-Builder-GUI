@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -33,21 +34,10 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT">
-               <children>
-                  <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label fx:id="chapterLabel" />
-                     </children>
-                  </VBox>
-                  <VBox fx:id="arrowVBox1" alignment="CENTER_LEFT">
-                     <children>
-                        <Polygon points="28.0, -17.5, 56.0, -17.5, 41.5, -45.5" rotate="90.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: transparent; -fx-stroke: transparent;" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
          </children>
       </VBox>
    </children>
+   <padding>
+      <Insets bottom="5.0" top="5.0" />
+   </padding>
 </HBox>
