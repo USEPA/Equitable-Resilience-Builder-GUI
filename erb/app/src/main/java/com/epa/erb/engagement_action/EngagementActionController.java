@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
@@ -54,6 +55,10 @@ public class EngagementActionController implements Initializable{
 	Button nextButton;
 	@FXML
 	VBox keyVBox;
+	@FXML
+	HBox mainHBox;
+	@FXML
+	ScrollPane attributeScrollPane;
 	
 	public EngagementActionController() {
 		
@@ -76,6 +81,40 @@ public class EngagementActionController implements Initializable{
 		handleControls();
 		loadChapterERBPathway();
 		
+	}
+	
+	private void loadERBLandingContent() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ChapterLanding.fxml"));
+			ChapterLandingController chapterLandingController = new ChapterLandingController(dataChapters);
+			fxmlLoader.setController(chapterLandingController);
+			Parent root = fxmlLoader.load();
+			chapterLandingController.setAboutText();
+			chapterLandingController.setActivitiesText();
+			chapterLandingController.setHeadingLabel();
+			contentVBox.getChildren().clear();
+			contentVBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	private void loadChapterLandingContent(Chapter chapter) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ChapterLanding.fxml"));
+			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter);
+			fxmlLoader.setController(chapterLandingController);
+			Parent root = fxmlLoader.load();
+			chapterLandingController.setAboutText();
+			chapterLandingController.setActivitiesText();
+			chapterLandingController.setHeadingLabel();
+			contentVBox.getChildren().clear();
+			contentVBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 	
 	private void loadSampleWK(Activity activity) {
@@ -190,11 +229,16 @@ public class EngagementActionController implements Initializable{
 					if (parentTreeItemValue.contains("ERB")) { //Is Chapter 
 						currentChapter = selectedTreeItemValue;
 						contentVBox.getChildren().clear();
-						cleanAttributeVBox();						
+						cleanAttributeVBox();
+						mainHBox.getChildren().remove(attributeScrollPane);
+						loadChapterLandingContent(getChapter(currentChapter));
 						loadActivityERBPathway(selectedTreeItemValue);
 						handleNavigationButtonsShown(selectedTreeItem, null);
 					} else { //Is Activity
 						currentChapter = parentTreeItemValue;
+						if(!mainHBox.getChildren().contains(attributeScrollPane)) {
+							mainHBox.getChildren().add(1,attributeScrollPane);
+						}
 						loadActivityERBPathway(parentTreeItemValue);
 						loadActivityContentPanel(selectedTreeItem);
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
@@ -205,6 +249,7 @@ public class EngagementActionController implements Initializable{
 					contentVBox.getChildren().clear();
 					cleanAttributeVBox();						
 					loadChapterERBPathway();
+					loadERBLandingContent();
 				}
 			}
 		} else {
