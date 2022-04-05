@@ -128,6 +128,7 @@ public class EngagementActionController implements Initializable{
 				attributePanelController.setAttributeTextFlow(attributeText);
 				attributePanelController.setAttributeLabelColor(attributeColor);
 				attributeVBox.getChildren().add(root);
+				VBox.setVgrow(root, Priority.ALWAYS);
 				listOfAttributePanelControllers.add(attributePanelController);
 			} catch (Exception e) {
 				logger.error(e.getMessage());
