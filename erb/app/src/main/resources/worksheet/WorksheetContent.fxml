@@ -40,53 +40,6 @@
                   </HBox>
                </children>
             </VBox>
-            <Separator orientation="VERTICAL" />
-            <VBox>
-               <children>
-                  <HBox>
-                     <children>
-                        <Label text="Who: ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="whoLabel" text="whoLabel">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Label text="Time: ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="timeLabel" text="timeLabel">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Label text="Status: ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="statusLabel" text="statusLabel">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
          </children>
       </HBox>
    </children>

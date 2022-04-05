@@ -24,12 +24,6 @@ public class WorksheetContentController implements Initializable{
 	Button saveButton;
 	@FXML
 	Button printButton;
-	@FXML
-	Label whoLabel;
-	@FXML
-	Label timeLabel;
-	@FXML
-	Label statusLabel;
 		
 	Activity activity;
 	
@@ -55,9 +49,6 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private void fillActivityInfo() {
-		whoLabel.setText(activity.getWho());
-		timeLabel.setText(activity.getTime());
-		statusLabel.setText(activity.getStatus());
 		activityNameLabel.setText(activity.getLongName());
 	}
 

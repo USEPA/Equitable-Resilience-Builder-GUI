@@ -17,7 +17,7 @@ import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 //import com.epa.erb.noteboard.NoteBoardContentController;
-//import com.epa.erb.worksheet.WorksheetContentController;
+import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -78,18 +78,18 @@ public class EngagementActionController implements Initializable{
 		
 	}
 	
-//	private void loadSampleWK() {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/WorksheetContent.fxml"));
-//			WorksheetContentController worksheetContentController = new WorksheetContentController(dataChapters.get(0).getUserSelectedActivities().get(0));
-//			fxmlLoader.setController(worksheetContentController);
-//			Parent root = fxmlLoader.load();
-//			contentVBox.getChildren().add(root);
-//			VBox.setVgrow(root, Priority.ALWAYS);
-//		}catch (Exception e) {
-//			logger.error(e.getMessage());
-//		}
-//	}
+	private void loadSampleWK(Activity activity) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/WorksheetContent.fxml"));
+			WorksheetContentController worksheetContentController = new WorksheetContentController(activity);
+			fxmlLoader.setController(worksheetContentController);
+			Parent root = fxmlLoader.load();
+			contentVBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
 //	
 //	private void loadSampleNB() {
 //		try {
@@ -223,6 +223,12 @@ public class EngagementActionController implements Initializable{
 					"4. After about 30 minutes or when the discussion is at a lull, begin discussing why these impacts happen. Give everyone a few minutes to think and write some \"why's\" on pink post-it notes. Then have people place the pink notes near the blue and yellow notes, and share their thoughts with the group" + "\n" +
 					"5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases", "#86E596");
 			loadSampleContent();
+		} else if (selectedTreeItem.getValue().contentEquals("Mapping Activity Instructions")) {
+			String GUID = treeMap.get(selectedTreeItem);
+			Activity selectedActivity = getActivity(GUID);
+			loadAttributeInfo("Objective", selectedActivity.getObjectives(), "#92A6EF");
+			loadAttributeInfo("Instructions", selectedActivity.getDirections(), "#86E596");
+			loadSampleWK(selectedActivity);
 		} else {
 			contentVBox.getChildren().clear();
 			cleanAttributeVBox();						

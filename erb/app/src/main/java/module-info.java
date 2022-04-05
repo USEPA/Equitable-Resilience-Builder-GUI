@@ -10,6 +10,7 @@ module com.epa.erb {
 	requires java.base;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.noteboard to javafx.fxml;
+	opens com.epa.erb.worksheet to javafx.fxml;
 	opens com.epa.erb.engagement_action to javafx.fxml;
 	opens com.epa.erb.engagement_setup to javafx.fxml;
 	exports com.epa.erb;
