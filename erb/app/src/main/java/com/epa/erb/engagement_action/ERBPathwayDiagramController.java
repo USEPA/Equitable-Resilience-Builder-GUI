@@ -8,15 +8,12 @@ import java.util.regex.Pattern;
 import com.epa.erb.Activity;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.stage.Stage;
 
 public class ERBPathwayDiagramController implements Initializable {
 
@@ -153,57 +150,53 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void bottomRightCircleClicked() {
-//		if (activity.getTime().length() > 0) {
-//			showPopup("Time", activity.getTime(), "#F7DBB2");
-//		}
+
 	}
 
 	@FXML
 	public void bottomRightCircleLabelClicked() {
-		if (activity.getTime().length() > 0) {
-			showPopup("Time", activity.getTime(), "#F7DBB2");
+		String selectedGUID = engagementActionController.getSelectedGUID();
+		if (selectedGUID.contentEquals(activity.getGUID())) {
+			engagementActionController.loadAttributeInfo("Time", activity.getTime(), "#F7DBB2");
 		}
 	}
 
 	@FXML
 	public void bottomLeftCircleClicked() {
-//		if (activity.getWho().length() > 0) {
-//			showPopup("Who", activity.getWho(), "#EB8787");
-//		}
+
 	}
 
 	@FXML
 	public void bottomLeftCircleLabelClicked() {
-		if (activity.getWho().length() > 0) {
-			showPopup("Who", activity.getWho(), "#EB8787");
+		String selectedGUID = engagementActionController.getSelectedGUID();
+		if (selectedGUID.contentEquals(activity.getGUID())) {
+			engagementActionController.loadAttributeInfo("Who", activity.getWho(), "#EB8787");
 		}
 	}
 
 	@FXML
 	public void topRightCircleClicked() {
-//		if (activity.getDescription().length() > 0) {
-//			showPopup("Description", activity.getDescription(), "#F7B2E0");
-//		}
+
 	}
 
 	@FXML
 	public void topRightCircleLabelClicked() {
-		if (activity.getDescription().length() > 0) {
-			showPopup("Description", activity.getDescription(), "#F7B2E0");
+		String selectedGUID = engagementActionController.getSelectedGUID();
+		if (selectedGUID.contentEquals(activity.getGUID())) {
+			engagementActionController.loadAttributeInfo("Description", activity.getDescription(), "#F7B2E0");
 		}
 	}
 
 	@FXML
 	public void topLeftCircleClicked() {
-//		if (activity.getMaterials().length() > 0) {
-//			showPopup("Materials", activity.getMaterials(), "#B895EB");
-//		}
+
 	}
 
 	@FXML
 	public void topLeftCircleLabelClicked() {
-		if (activity.getMaterials().length() > 0) {
-			showPopup("Materials", activity.getMaterials(), "#B895EB");
+		String selectedGUID = engagementActionController.getSelectedGUID();
+		if (selectedGUID.contentEquals(activity.getGUID())) {
+			engagementActionController.loadAttributeInfo("Materials", activity.getMaterials(), "#B895EB");
 		}
 	}
 
@@ -228,18 +221,4 @@ public class ERBPathwayDiagramController implements Initializable {
 			}
 		}
 	}
-	
-	private void showPopup(String title, String text, String color) {
-		Label label = new Label(splitString(text));
-		label.setPadding(new Insets(5, 5, 5, 5));
-		VBox vBox = new VBox();
-		vBox.getChildren().add(label);
-		vBox.setStyle("-fx-background-color: " + color);
-		Scene scene = new Scene(vBox);
-		Stage stage = new Stage();
-		stage.setScene(scene);
-		stage.setTitle(activity.getLongName() + ": " + title);
-		stage.showAndWait();
-	}
-
 }

@@ -30,7 +30,7 @@ public class AttributePanelController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
-	
+
 	public void setAttributeTextFlow(String attributeTextFlowString) {
 		Text text = new Text(attributeTextFlowString);
 		attributeTextFlow.getChildren().add(text);
@@ -42,6 +42,10 @@ public class AttributePanelController implements Initializable{
 	
 	public void setAttributeLabelColor(String attributeLabelColorString) {
 		attributeLabelHBox.setStyle("-fx-background-color: " + attributeLabelColorString + ";");
+	}
+	
+	public String getAttributeLabelText() {
+		return attributeLabel.getText();
 	}
 
 }

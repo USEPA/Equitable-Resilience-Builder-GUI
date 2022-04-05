@@ -16,9 +16,8 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
-import com.epa.erb.noteboard.NoteBoardContentController;
-import com.epa.erb.worksheet.WorksheetContentController;
-
+//import com.epa.erb.noteboard.NoteBoardContentController;
+//import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -64,6 +63,7 @@ public class EngagementActionController implements Initializable{
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //Holds the tree items mapped to a chapter name or activity GUID
+	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //Holds all of the attribute panel that are loaded
 	
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
@@ -78,31 +78,31 @@ public class EngagementActionController implements Initializable{
 		
 	}
 	
-	private void loadSampleWK() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/WorksheetContent.fxml"));
-			WorksheetContentController worksheetContentController = new WorksheetContentController(dataChapters.get(0).getUserSelectedActivities().get(0));
-			fxmlLoader.setController(worksheetContentController);
-			Parent root = fxmlLoader.load();
-			contentVBox.getChildren().add(root);
-			VBox.setVgrow(root, Priority.ALWAYS);
-		}catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-	}
-	
-	private void loadSampleNB() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
-			fxmlLoader.setController(noteBoardContentController);
-			Parent root = fxmlLoader.load();
-			contentVBox.getChildren().add(root);
-			VBox.setVgrow(root, Priority.ALWAYS);
-		}catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-	}
+//	private void loadSampleWK() {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/WorksheetContent.fxml"));
+//			WorksheetContentController worksheetContentController = new WorksheetContentController(dataChapters.get(0).getUserSelectedActivities().get(0));
+//			fxmlLoader.setController(worksheetContentController);
+//			Parent root = fxmlLoader.load();
+//			contentVBox.getChildren().add(root);
+//			VBox.setVgrow(root, Priority.ALWAYS);
+//		}catch (Exception e) {
+//			logger.error(e.getMessage());
+//		}
+//	}
+//	
+//	private void loadSampleNB() {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
+//			NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
+//			fxmlLoader.setController(noteBoardContentController);
+//			Parent root = fxmlLoader.load();
+//			contentVBox.getChildren().add(root);
+//			VBox.setVgrow(root, Priority.ALWAYS);
+//		}catch (Exception e) {
+//			logger.error(e.getMessage());
+//		}
+//	}
 	
 	private void loadSampleContent() {
 		try {
@@ -118,7 +118,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	public void loadAttributeInfo(String attributeLabel, String attributeText, String attributeColor) {
-		if (attributeText.trim().length() > 0) {
+		if (attributeText.trim().length() > 0 && !containsAttribute(attributeLabel)) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/AttributePane.fxml"));
 				AttributePanelController attributePanelController = new AttributePanelController();
@@ -128,6 +128,7 @@ public class EngagementActionController implements Initializable{
 				attributePanelController.setAttributeTextFlow(attributeText);
 				attributePanelController.setAttributeLabelColor(attributeColor);
 				attributeVBox.getChildren().add(root);
+				listOfAttributePanelControllers.add(attributePanelController);
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
@@ -358,6 +359,25 @@ public class EngagementActionController implements Initializable{
 		}
 		logger.debug("Activity returned is null");
 		return null;
+	}
+	
+	String getSelectedGUID() {
+		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();
+		if(treeItem != null) {
+			return treeMap.get(treeItem);
+		} else {
+			logger.debug("Selected GUID is null");
+			return null;
+		}
+	}
+	
+	boolean containsAttribute(String attributeLabel) {
+		for(AttributePanelController attributePanelController : listOfAttributePanelControllers) {
+			if(attributePanelController.getAttributeLabelText().contentEquals(attributeLabel)) {
+				return true;
+			}
+		}
+		return false;
 	}
 		
 	TreeView<String> getTreeView() {
