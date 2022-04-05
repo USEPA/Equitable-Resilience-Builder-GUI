@@ -28,7 +28,7 @@
                   </HBox>
                   <VBox fx:id="arrowVBox" alignment="CENTER_LEFT">
                      <children>
-                        <Polygon points="28.0, -17.5, 56.0, -17.5, 41.5, -45.5" rotate="90.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Polygon points="26.5, -15.5, 56.0, -15.5, 41.5, -45.5" rotate="90.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </VBox>
                </children>
