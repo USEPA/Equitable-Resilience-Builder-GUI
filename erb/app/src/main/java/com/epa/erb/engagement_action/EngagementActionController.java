@@ -322,7 +322,7 @@ public class EngagementActionController implements Initializable{
 		for (Chapter chapter : dataChapters) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBChapterDiagram.fxml"));
-				ERBChapterDiagramController erbChapterDiagramController = new ERBChapterDiagramController(chapter);
+				ERBChapterDiagramController erbChapterDiagramController = new ERBChapterDiagramController(chapter, this);
 				fxmlLoader.setController(erbChapterDiagramController);
 				Parent root = fxmlLoader.load();
 				if(dataChapters.size() == 1 && count == 0) {

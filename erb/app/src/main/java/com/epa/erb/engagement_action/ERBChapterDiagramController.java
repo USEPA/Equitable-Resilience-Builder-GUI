@@ -8,6 +8,7 @@ import com.epa.erb.Constants;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
@@ -29,9 +30,11 @@ public class ERBChapterDiagramController implements Initializable{
 	VBox arrowVBox;
 	
 	Chapter chapter;
+	EngagementActionController engagementActionController;
 	
-	public ERBChapterDiagramController(Chapter chapter) {
+	public ERBChapterDiagramController(Chapter chapter, EngagementActionController engagementActionController) {
 		this.chapter = chapter;
+		this.engagementActionController = engagementActionController;
 	}
 	
 	private Constants constants = new Constants();
@@ -50,6 +53,30 @@ public class ERBChapterDiagramController implements Initializable{
 	void hideRightLeadingLine() {
 		rightLeadingLine.setVisible(false);
 		arrowVBox.setVisible(false);
+	}
+	
+	@FXML
+	public void centerCircleClicked() {
+		System.out.println("HERE 1");
+		String activityGUID = chapter.getNumericName();
+		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
+			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
+				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+				engagementActionController.treeViewClicked();
+			}
+		}
+	}
+
+	@FXML
+	public void centerCircleLabelClicked() {
+		System.out.println("HERE 2");
+		String activityGUID = chapter.getNumericName();
+		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
+			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
+				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+				engagementActionController.treeViewClicked();
+			}
+		}
 	}
 
 }

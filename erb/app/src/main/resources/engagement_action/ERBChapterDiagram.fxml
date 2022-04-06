@@ -20,8 +20,8 @@
                         <Line fx:id="leftLeadingLine" endX="-50.0" startX="-100.0" />
                         <StackPane>
                            <children>
-                              <Circle fx:id="centerCircle" fill="WHITE" radius="21.0" stroke="BLACK" strokeType="INSIDE"/>
-                              <Label fx:id="centerCircleLabel" />
+                              <Circle fx:id="centerCircle" fill="WHITE" onMouseClicked="#centerCircleClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label fx:id="centerCircleLabel" onMouseClicked="#centerCircleLabelClicked" />
                            </children>
                         </StackPane>
                         <Line fx:id="rightLeadingLine" endX="-50.0" startX="-100.0" />
