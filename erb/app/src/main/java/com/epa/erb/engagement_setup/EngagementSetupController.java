@@ -95,10 +95,10 @@ public class EngagementSetupController implements Initializable {
 		handleControls();
 		fillActivitiesListView();
 		setActivityTypeListViewCellFactory();
+		setActivityTypeListViewDrag(activitityTypeListView);
 	}
 	
 	private void handleControls() {
-		setActivityTypeListViewDrag(activitityTypeListView);
 		fileNameHyperlink.setOnMouseClicked(e-> fileNameHyperlinkClicked());
 		activitityTypeListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> updateActivityTypeDescriptionTextArea());
 		customizedActivitiesListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> updateCustomizedActivityInfo());
@@ -129,8 +129,8 @@ public class EngagementSetupController implements Initializable {
 	}
 	
 	private void fillCustomizedActivitiesListView(String activityTypeName) {
-		customizedActivitiesListView.getItems().clear();
 		clearCustomizedActivityInfo();
+		cleanCustomizedActivitiesListView();
 		for (Activity customActivity : customizedActivities) {
 			if (customActivity.getActivityType().getLongName().contentEquals(activityTypeName) && !customActivity.getShortName().contentEquals("Plan") && !customActivity.getShortName().contentEquals("Reflect")) {
 				if(!customizedActivitiesListView.getItems().contains(customActivity)) {
@@ -186,16 +186,10 @@ public class EngagementSetupController implements Initializable {
 	}
 	
 	private void removeMenuItemAction() {
-		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
-			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
-				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
-				chapterTitledPaneController.getTitledPaneListView().getItems().remove(selectedActivity);
-				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
-				customizedActivitiesListView.getItems().clear();
-			}
-		}
+		removeChapterTitledPane();
+		cleanCustomizedActivitiesListView();
 	}
-				
+					
 	@FXML
 	public void addChapterButtonAction() {
 		try {
@@ -380,6 +374,16 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
+	private void removeChapterTitledPane() {
+		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
+			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
+				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
+				chapterTitledPaneController.getTitledPaneListView().getItems().remove(selectedActivity);
+				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
+			}
+		}
+	}
+	
 	private void clearCustomizedActivityInfo() {
 		shortNameTextField.setText(null);
 		longNameTextField.setText(null);
@@ -389,55 +393,7 @@ public class EngagementSetupController implements Initializable {
 		fileNameHyperlink.setText(null);
 	}
 	
-	private Chapter getChapter(String chapterName) {
-		for(Chapter chapter: chaptersCreated) {
-			if(chapter.getStringName().contentEquals(chapterName)) {
-				return chapter;
-			}
-		}
-		logger.debug("Chapter returned is null");
-		return null;
-	}
-	
-	private ActivityType getActivityType(String activityTypeName) {
-		for(ActivityType activityType: activityTypes) {
-			if(activityType.getLongName().contentEquals(activityTypeName)) {
-				return activityType;
-			}
-		}
-		logger.debug("ActivityType returned is null.");
-		return null;
-	}
-	
-	private Activity getCustomizedActivity(String GUID) {
-		for(Activity activity: customizedActivities) {
-			if(activity.getGUID().contentEquals(GUID)) {
-				return activity;
-			}
-		}
-		logger.debug("Customized Activity returned is null.");
-		return null;
-	}
-		
-	private Activity getCustomizedPlanActivity() {
-		for(Activity activity: customizedActivities) {
-			if(activity.getShortName().contentEquals("Plan")) {
-				return activity;
-			}
-		}
-		logger.debug("Customized Plan Activity returned is null.");
-		return null;
-	}
-	
-	private Activity getCustomizedReflectActivity() {
-		for(Activity activity: customizedActivities) {
-			if(activity.getShortName().contentEquals("Reflect")) {
-				return activity;
-			}
-		}
-		logger.debug("Customized Reflect Activity returned is null.");
-		return null;
-	}
+
 	
 	void setActivityTypeListViewDrag(ListView<ActivityType> listView) {
 		String TAB_DRAG_KEY = "listView";
@@ -468,23 +424,6 @@ public class EngagementSetupController implements Initializable {
 				if(source == draggedListView) equals = true;
 				
 				if(equals == true) { //Would handle drag and drop within titled pane
-//					Pane parent = (Pane) draggedListView.getParent();
-//					System.out.println("Drag Drop Parent: " + parent);					
-//					System.out.println("Selected Item: " + draggedListView.getSelectionModel().getSelectedIndex());
-//					int sourceIndex = parent.getChildren().indexOf(source);		
-//					System.out.println("Drag Source index: " + sourceIndex);
-//					int targetIndex = parent.getChildren().indexOf(draggedListView);				
-//					System.out.println("Drag Target index: " + targetIndex);
-//					List<javafx.scene.Node> nodes = new ArrayList<>(parent.getChildren());
-//					if (sourceIndex >= 0) {
-//						if (sourceIndex < targetIndex) {
-//							Collections.rotate(nodes.subList(sourceIndex, targetIndex + 1), -1);
-//						} else {
-//							Collections.rotate(nodes.subList(targetIndex, sourceIndex + 1), 1);
-//						}
-//					}
-//					parent.getChildren().clear();
-//					parent.getChildren().addAll(nodes);
 				}else {
 					@SuppressWarnings("unchecked")
 					ListView<ActivityType> sourceListView = (ListView<ActivityType>) source;
@@ -576,6 +515,60 @@ public class EngagementSetupController implements Initializable {
 		} else {
 			logger.error(activitesFile.getPath() + " either does not exist or cannot be read");
 		}
+	}
+	
+	void cleanCustomizedActivitiesListView() {
+		customizedActivitiesListView.getItems().clear();
+	}
+	
+	private Chapter getChapter(String chapterName) {
+		for(Chapter chapter: chaptersCreated) {
+			if(chapter.getStringName().contentEquals(chapterName)) {
+				return chapter;
+			}
+		}
+		logger.debug("Chapter returned is null");
+		return null;
+	}
+	
+	private ActivityType getActivityType(String activityTypeName) {
+		for(ActivityType activityType: activityTypes) {
+			if(activityType.getLongName().contentEquals(activityTypeName)) {
+				return activityType;
+			}
+		}
+		logger.debug("ActivityType returned is null.");
+		return null;
+	}
+	
+	private Activity getCustomizedActivity(String GUID) {
+		for(Activity activity: customizedActivities) {
+			if(activity.getGUID().contentEquals(GUID)) {
+				return activity;
+			}
+		}
+		logger.debug("Customized Activity returned is null.");
+		return null;
+	}
+		
+	private Activity getCustomizedPlanActivity() {
+		for(Activity activity: customizedActivities) {
+			if(activity.getShortName().contentEquals("Plan")) {
+				return activity;
+			}
+		}
+		logger.debug("Customized Plan Activity returned is null.");
+		return null;
+	}
+	
+	private Activity getCustomizedReflectActivity() {
+		for(Activity activity: customizedActivities) {
+			if(activity.getShortName().contentEquals("Reflect")) {
+				return activity;
+			}
+		}
+		logger.debug("Customized Reflect Activity returned is null.");
+		return null;
 	}
 	
 }

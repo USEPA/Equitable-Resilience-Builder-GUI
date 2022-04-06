@@ -13,8 +13,6 @@ import com.epa.erb.Activity;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.print.Printer;
-import javafx.print.PrinterJob;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
@@ -36,7 +34,6 @@ public class WorksheetContentController implements Initializable{
 	Button printButton;
 		
 	Activity activity;
-	
 	public WorksheetContentController(Activity activity) {
 		this.activity = activity;
 	}
@@ -48,6 +45,10 @@ public class WorksheetContentController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		loadPDFToWebView();
 		fillActivityInfo();
+		handleControls();
+	}
+	
+	private void handleControls() {
 		saveButton.setDisable(true);
 	}
 	
@@ -57,12 +58,10 @@ public class WorksheetContentController implements Initializable{
 			String url = getClass().getResource("/pdfjs-2.8.335-dist/web/viewer.html").toExternalForm();
 			webEngine.setJavaScriptEnabled(true);
 			webEngine.load(url);
-			
 			webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
 				@Override
 				public void changed(ObservableValue ov, State oldState, State newState) {
 					if (newState == Worker.State.SUCCEEDED) {
-						System.out.println("called");
 						try {
 							byte[] data = FileUtils.readFileToByteArray(new File(pathToERBFolder + "\\Javascript\\PDFViewer\\Sample_Hyperlink.pdf"));
 							String base64 = Base64.getEncoder().encodeToString(data);
@@ -84,10 +83,8 @@ public class WorksheetContentController implements Initializable{
 
 	@FXML
 	public void printButtonAction() {
-		System.out.println(Printer.getAllPrinters() + " D= " + Printer.getDefaultPrinter());
-		PrinterJob printerJob = PrinterJob.createPrinterJob(Printer.getDefaultPrinter());
-		File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\3_Mapping.docx");
-		//printerJob.printPage(file);
+//		PrinterJob printerJob = PrinterJob.createPrinterJob(Printer.getDefaultPrinter());
+//		File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\3_Mapping.docx");
 	}
 	
 	@FXML

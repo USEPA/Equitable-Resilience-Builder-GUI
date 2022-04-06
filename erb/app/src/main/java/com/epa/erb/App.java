@@ -29,6 +29,8 @@ public class App extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		logger.info(getGreeting());
 		
+		//Run part 1
+		
 //		try {
 //			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/EngagementSetup.fxml"));
 //			EngagementSetupController engagementSetupController = new EngagementSetupController();
@@ -41,6 +43,8 @@ public class App extends Application {
 //		} catch (Exception e) {
 //			logger.fatal(e.getMessage());
 //		}
+		
+		//Run part 2
 		
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));

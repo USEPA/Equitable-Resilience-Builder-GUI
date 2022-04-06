@@ -6,7 +6,6 @@ public class ActivityType {
 	String shortName;
 	String description;
 	String fileExt;
-	
 	public ActivityType(String longName, String shortName, String description, String fileExt) {
 		this.longName = longName;
 		this.shortName = shortName;

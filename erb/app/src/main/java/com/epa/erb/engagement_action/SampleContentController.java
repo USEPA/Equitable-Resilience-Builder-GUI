@@ -2,6 +2,8 @@ package com.epa.erb.engagement_action;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +24,8 @@ public class SampleContentController implements Initializable{
 		
 	}
 	
+	private Logger logger = LogManager.getLogger(SampleContentController.class);
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		loadNoteBoard();
@@ -35,8 +39,8 @@ public class SampleContentController implements Initializable{
 			Parent root = fxmlLoader.load();
 			activityContentHBox.getChildren().add(1, root);
 			HBox.setHgrow(root, Priority.ALWAYS);
-		}catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
 	

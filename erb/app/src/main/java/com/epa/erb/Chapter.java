@@ -8,7 +8,6 @@ public class Chapter {
 	String numericName;
 	String stringName;
 	String descriptionName;
-	
 	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName) {
 		this.chapterNum = chapterNum;
 		this.numericName = numericName;

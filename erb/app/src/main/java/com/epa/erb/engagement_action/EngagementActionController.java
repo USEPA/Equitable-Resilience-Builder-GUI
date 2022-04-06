@@ -17,7 +17,6 @@ import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
-//import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,7 +96,11 @@ public class EngagementActionController implements Initializable{
 		handleNavigationButtonsShown(null, null);
 		handleControls();
 		loadChapterERBPathway();
-		setKeyColors();
+		initializeStyle();
+		initializeTreeViewSelection();
+	}
+	
+	private void initializeTreeViewSelection() {
 		String activityGUID = "0";
 		for (TreeItem<String> treeItem : getTreeMap().keySet()) {
 			if (getTreeMap().get(treeItem) == activityGUID) {
@@ -107,7 +110,11 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void setKeyColors() {
+	private void handleControls() {
+		treeView.setOnMouseClicked(e-> treeViewClicked());
+	}
+	
+	private void initializeStyle() {
 		materialKeyPane.setStyle("-fx-background-color: " + constants.getMaterialsColor() + ";");
 		descriptionKeyPane.setStyle("-fx-background-color: " + constants.getDescriptionColor() + ";");
 		whoKeyPane.setStyle("-fx-background-color: " + constants.getWhoColor() + ";");
@@ -126,7 +133,6 @@ public class EngagementActionController implements Initializable{
 			chapterLandingController.setAboutText();
 			chapterLandingController.setActivitiesText();
 			chapterLandingController.setHeadingLabel();
-			contentVBox.getChildren().clear();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -143,7 +149,6 @@ public class EngagementActionController implements Initializable{
 			chapterLandingController.setAboutText();
 			chapterLandingController.setActivitiesText();
 			chapterLandingController.setHeadingLabel();
-			contentVBox.getChildren().clear();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -163,19 +168,6 @@ public class EngagementActionController implements Initializable{
 			logger.error(e.getMessage());
 		}
 	}
-//	
-//	private void loadSampleNB() {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-//			NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
-//			fxmlLoader.setController(noteBoardContentController);
-//			Parent root = fxmlLoader.load();
-//			contentVBox.getChildren().add(root);
-//			VBox.setVgrow(root, Priority.ALWAYS);
-//		}catch (Exception e) {
-//			logger.error(e.getMessage());
-//		}
-//	}
 	
 	private void loadSampleContent() {
 		try {
@@ -197,9 +189,7 @@ public class EngagementActionController implements Initializable{
 				AttributePanelController attributePanelController = new AttributePanelController();
 				fxmlLoader.setController(attributePanelController);
 				Parent root = fxmlLoader.load();
-				attributePanelController.setAttributeLabel(attributeLabel);
-				attributePanelController.setAttributeTextFlow(attributeText);
-				attributePanelController.setAttributeLabelColor(attributeColor);
+				attributePanelController.setAttributeFields(attributeText,attributeLabel, attributeColor);
 				attributeVBox.getChildren().add(root);
 				VBox.setVgrow(root, Priority.ALWAYS);
 				listOfAttributePanelControllers.add(attributePanelController);
@@ -207,10 +197,6 @@ public class EngagementActionController implements Initializable{
 				logger.error(e.getMessage());
 			}
 		}
-	}
-	
-	private void handleControls() {
-		treeView.setOnMouseClicked(e-> treeViewClicked());
 	}
 	
 	@FXML
@@ -241,13 +227,12 @@ public class EngagementActionController implements Initializable{
 				if (parentTreeItem.getValue().contains("ERB")) {
 					TreeItem<String> itemToSelect = selectedTreeItem.getChildren().get(0);
 					treeView.getSelectionModel().select(itemToSelect);
-					treeViewClicked();
 				} else {
 					int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
 					TreeItem<String> itemToSelect = parentTreeItem.getChildren().get(currentIndex + 1);
 					treeView.getSelectionModel().select(itemToSelect);
-					treeViewClicked();
 				}
+				treeViewClicked();
 			}
 		}
 	}
@@ -260,29 +245,27 @@ public class EngagementActionController implements Initializable{
 				String parentTreeItemValue = parentTreeItem.getValue().trim();
 				String selectedTreeItemValue = selectedTreeItem.getValue().trim();
 				if (selectedTreeItemValue.length() > 0) {
-					if (parentTreeItemValue.contains("ERB")) { //Is Chapter 
-						currentChapter = selectedTreeItemValue;
-						contentVBox.getChildren().clear();
-						cleanAttributeVBox();
-						mainHBox.getChildren().remove(attributeScrollPane);
-						loadChapterLandingContent(getChapter(currentChapter));
-						loadActivityERBPathway(selectedTreeItemValue);
+					Chapter currentChapter = getChapter(selectedTreeItemValue);
+					cleanContentVBox();
+					cleanAttributeVBox();
+					addColorKey(1);
+					loadActivityERBPathway(currentChapter);
+					if (parentTreeItemValue.contains("ERB")) { // Is Chapter						
+						removeAttributePane();
+						loadChapterLandingContent(currentChapter);
 						handleNavigationButtonsShown(selectedTreeItem, null);
-					} else { //Is Activity
-						currentChapter = parentTreeItemValue;
-						if(!mainHBox.getChildren().contains(attributeScrollPane)) {
-							mainHBox.getChildren().add(1,attributeScrollPane);
-						}
-						loadActivityERBPathway(parentTreeItemValue);
+					} else { // Is Activity
+						addAttributePanel(1);
 						loadActivityContentPanel(selectedTreeItem);
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
 					}
 				}
 			} else {
-				if(selectedTreeItem != null) {
-					contentVBox.getChildren().clear();
+				if (selectedTreeItem != null) {
+					cleanContentVBox();
 					cleanAttributeVBox();
-					mainHBox.getChildren().remove(attributeScrollPane);
+					removeAttributePane();
+					removeColorKey();
 					loadChapterERBPathway();
 					loadERBLandingContent();
 				}
@@ -293,11 +276,9 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void loadActivityContentPanel(TreeItem<String> selectedTreeItem) {
-		contentVBox.getChildren().clear();
-		cleanAttributeVBox();	
+		String GUID = treeMap.get(selectedTreeItem);
+		Activity selectedActivity = getActivity(GUID);
 		if(selectedTreeItem.getValue().contentEquals("Social Vulnerability Activity Template")) {
-			String GUID = treeMap.get(selectedTreeItem);
-			Activity selectedActivity = getActivity(GUID);
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
 			loadAttributeInfo("Instructions", "1. On a white board, list the hazards of concern to your community in a column down the left side, and draw horizontal lines between them. (see example)" + "\n" + 
 					"2. Reflect on the stories and data that were shared at the beginning of the workshop. Who were the groups of people that were mentioned who experienced impacts from hazards and disasters? What were the impacts they experienced?" + "\n" + 
@@ -306,8 +287,6 @@ public class EngagementActionController implements Initializable{
 					"5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases", constants.getInstructionsColor());
 			loadSampleContent();
 		} else if (selectedTreeItem.getValue().contentEquals("Mapping Activity Instructions")) {
-			String GUID = treeMap.get(selectedTreeItem);
-			Activity selectedActivity = getActivity(GUID);
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
 			loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 			loadSampleWK(selectedActivity);
@@ -315,24 +294,16 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void loadChapterERBPathway() {
-		pathwayHBox.getChildren().clear();
-		headingHBox.getChildren().remove(keyVBox);
-		chapterLabel.setText("Chapters");
+		cleanPathwayHBox();
+		setChapterLabelText("Chapters");
 		int count = 0;
 		for (Chapter chapter : dataChapters) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBChapterDiagram.fxml"));
-				ERBChapterDiagramController erbChapterDiagramController = new ERBChapterDiagramController(chapter, this);
+				ERBChapterDiagramController erbChapterDiagramController = new ERBChapterDiagramController(chapter,this);
 				fxmlLoader.setController(erbChapterDiagramController);
 				Parent root = fxmlLoader.load();
-				if(dataChapters.size() == 1 && count == 0) {
-					erbChapterDiagramController.hideLeftLeadingLine();
-					erbChapterDiagramController.hideRightLeadingLine();
-				} else if(count == dataChapters.size()-1) {
-					erbChapterDiagramController.hideRightLeadingLine();
-				} else if(count ==0) {
-					erbChapterDiagramController.hideLeftLeadingLine();
-				}
+				handleChapterDiagramLines(count, erbChapterDiagramController);
 				pathwayHBox.getChildren().add(root);
 			} catch (Exception e) {
 				logger.error(e.getMessage());
@@ -340,31 +311,32 @@ public class EngagementActionController implements Initializable{
 			count++;
 		}
 	}
-
-	private void loadActivityERBPathway(String chapterName) {
-		if(!headingHBox.getChildren().contains(keyVBox)) {
-			headingHBox.getChildren().add(1,keyVBox);
+	
+	private void handleChapterDiagramLines(int count, ERBChapterDiagramController erbChapterDiagramController) {
+		if(dataChapters.size() == 1 && count == 0) {
+			erbChapterDiagramController.hideLeftLeadingLine();
+			erbChapterDiagramController.hideRightLeadingLine();
+		} else if(count == dataChapters.size()-1) {
+			erbChapterDiagramController.hideRightLeadingLine();
+		} else if(count ==0) {
+			erbChapterDiagramController.hideLeftLeadingLine();
 		}
-		Chapter chapter = getChapter(chapterName);
+	}
+
+
+	private void loadActivityERBPathway(Chapter chapter) {
 		if (chapter != null) {
-			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) {
-				pathwayHBox.getChildren().clear();
-				chapterLabel.setText(chapter.getStringName() + " Activities");
-				int count =0;
+			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) { // If a new chapter is selected
+				cleanPathwayHBox();
+				setChapterLabelText(chapter.getStringName() + " Activities");
+				int count = 0;
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					try {
 						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBPathwayDiagram.fxml"));
 						ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity, this);
 						fxmlLoader.setController(erbPathwayDiagramController);
 						Parent root = fxmlLoader.load();
-						if(chapter.getNumberOfUserSelectedActivities() ==1) {
-							erbPathwayDiagramController.hideLeftLeadingLine();
-							erbPathwayDiagramController.hideRightLeadingLine();
-						}else if(count == chapter.getNumberOfUserSelectedActivities()-1) {
-							erbPathwayDiagramController.hideRightLeadingLine();
-						} else if(count ==0) {
-							erbPathwayDiagramController.hideLeftLeadingLine();
-						}
+						handleActivityDiagramLines(chapter, count, erbPathwayDiagramController);
 						pathwayHBox.getChildren().add(root);
 					} catch (Exception e) {
 						logger.error(e.getMessage());
@@ -372,6 +344,17 @@ public class EngagementActionController implements Initializable{
 					count++;
 				}
 			}
+		}
+	}
+	
+	private void handleActivityDiagramLines(Chapter chapter, int count,  ERBPathwayDiagramController erbPathwayDiagramController) {
+		if (chapter.getNumberOfUserSelectedActivities() == 1) {
+			erbPathwayDiagramController.hideLeftLeadingLine();
+			erbPathwayDiagramController.hideRightLeadingLine();
+		} else if (count == chapter.getNumberOfUserSelectedActivities() - 1) {
+			erbPathwayDiagramController.hideRightLeadingLine();
+		} else if (count == 0) {
+			erbPathwayDiagramController.hideLeftLeadingLine();
 		}
 	}
 	
@@ -428,60 +411,6 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private Chapter getChapter(String chapterName) {
-		for(Chapter chapter : dataChapters) {
-			if(chapter.getStringName().contentEquals(chapterName)) {
-				return chapter;
-			}
-		}
-		logger.debug("Chapter returned is null");
-		return null;
-	}
-	
-	private Activity getActivity(String GUID) {
-		for(Chapter chapter: dataChapters) {
-			for(Activity activity : chapter.getUserSelectedActivities()) {
-				if(activity.getGUID().contentEquals(GUID)) {
-					return activity;
-				}
-			}
-		}
-		logger.debug("Activity returned is null");
-		return null;
-	}
-	
-	String getSelectedGUID() {
-		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();
-		if(treeItem != null) {
-			return treeMap.get(treeItem);
-		} else {
-			logger.debug("Selected GUID is null");
-			return null;
-		}
-	}
-	
-	void cleanAttributeVBox() {
-		attributeVBox.getChildren().clear();
-		listOfAttributePanelControllers.clear();
-	}
-	
-	boolean containsAttribute(String attributeLabel) {
-		for(AttributePanelController attributePanelController : listOfAttributePanelControllers) {
-			if(attributePanelController.getAttributeLabelText().contentEquals(attributeLabel)) {
-				return true;
-			}
-		}
-		return false;
-	}
-		
-	TreeView<String> getTreeView() {
-		return treeView;
-	}
-	
-	HashMap<TreeItem<String>, String> getTreeMap() {
-		return treeMap;
-	}
-
 	/**
 	 * Parses the chapter data that was create by the user in pt. 1 of the tool
 	 */
@@ -551,6 +480,92 @@ public class EngagementActionController implements Initializable{
 		} else {
 			logger.error(dataFile.getPath() + " either does not exist or cannot be read");
 		}
+	}
+	
+	void cleanAttributeVBox() {
+		attributeVBox.getChildren().clear();
+		listOfAttributePanelControllers.clear();
+	}
+	
+	void cleanPathwayHBox() {
+		pathwayHBox.getChildren().clear();
+	}
+
+	void cleanContentVBox() {
+		contentVBox.getChildren().clear();
+	}
+	
+	void addColorKey(int index) {
+		if(!headingHBox.getChildren().contains(keyVBox)) {
+			headingHBox.getChildren().add(index, keyVBox);
+		}
+	}
+	
+	void removeColorKey() {
+		headingHBox.getChildren().remove(keyVBox);
+	}
+	
+	void addAttributePanel(int index) {
+		if(!mainHBox.getChildren().contains(attributeScrollPane)) {
+			mainHBox.getChildren().add(index, attributeScrollPane);
+		}
+	}
+	
+	void removeAttributePane() {
+		mainHBox.getChildren().remove(attributeScrollPane);
+	}
+	
+	boolean containsAttribute(String attributeLabel) {
+		for(AttributePanelController attributePanelController : listOfAttributePanelControllers) {
+			if(attributePanelController.getAttributeLabelText().contentEquals(attributeLabel)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private Chapter getChapter(String chapterName) {
+		for(Chapter chapter : dataChapters) {
+			if(chapter.getStringName().contentEquals(chapterName)) {
+				return chapter;
+			}
+		}
+		logger.debug("Chapter returned is null");
+		return null;
+	}
+	
+	private Activity getActivity(String GUID) {
+		for(Chapter chapter: dataChapters) {
+			for(Activity activity : chapter.getUserSelectedActivities()) {
+				if(activity.getGUID().contentEquals(GUID)) {
+					return activity;
+				}
+			}
+		}
+		logger.debug("Activity returned is null");
+		return null;
+	}
+	
+	String getSelectedGUID() {
+		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();
+		if(treeItem != null) {
+			return treeMap.get(treeItem);
+		} else {
+			logger.debug("Selected GUID is null");
+			return null;
+		}
+	}
+	
+	void setChapterLabelText(String chapterLabelText) {
+		chapterLabel.setText(chapterLabelText);
+	}
+		
+	TreeView<String> getTreeView() {
+		return treeView;
+	}
+	
+	HashMap<TreeItem<String>, String> getTreeMap() {
+		return treeMap;
 	}
 	
 }

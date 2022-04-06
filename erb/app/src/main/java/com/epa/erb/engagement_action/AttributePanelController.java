@@ -30,6 +30,13 @@ public class AttributePanelController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
+	
+	public void setAttributeFields(String attributeTextFlowString, String attributeLabelString, String attributeLabelColorString) {
+		setAttributeTextFlow(attributeTextFlowString);
+		setAttributeLabel(attributeLabelString);
+		setAttributeLabelColor(attributeLabelColorString);
+		
+	}
 
 	public void setAttributeTextFlow(String attributeTextFlowString) {
 		Text text = new Text(attributeTextFlowString);

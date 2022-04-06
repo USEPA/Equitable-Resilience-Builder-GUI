@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -63,7 +62,30 @@ public class ERBPathwayDiagramController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setToolTips();
+		handleControls();
+		initializeStyle();
+	}
+	
+	private void handleControls() {
 		activityLabel.setText(activity.getShortName());
+		if (activity.getLongName().length() == 0) {
+			centerCircleLabel.setVisible(false);
+		}
+		if (activity.getMaterials().length() == 0) {
+			topLeftCircleLabel.setVisible(false);
+		}
+		if (activity.getDescription().length() == 0) {
+			topRightCircleLabel.setVisible(false);
+		}
+		if (activity.getWho().length() == 0) {
+			bottomLeftCircleLabel.setVisible(false);
+		}
+		if (activity.getTime().length() == 0) {
+			bottomRightCircleLabel.setVisible(false);
+		}
+	}
+	
+	private void initializeStyle() {
 		topLeftCircle.setStyle("-fx-fill: " + constants.getMaterialsColor() + ";");
 		topRightCircle.setStyle("-fx-fill: " + constants.getDescriptionColor() + ";");
 		centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
@@ -81,54 +103,33 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 
 	private void setToolTips() {
-		Tooltip tooltip1 = new Tooltip(activity.getLongName());
-		if (activity.getLongName().length() == 0) {
-			centerCircleLabel.setVisible(false);
-		}
-		Tooltip.install(centerCircle, tooltip1);
-		Tooltip.install(centerCircleLabel, tooltip1);
+		//Center Circle
 		if (activity.getStatus().contentEquals("ready")) {
-			tooltip1.setStyle("-fx-background-color: " + constants.getReadyStatusColor() +  "; -fx-text-fill: black;");
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getReadyStatusColor());
 			centerCircleLabel.setText("R");
 		} else if (activity.getStatus().contentEquals("skip")) {
-			tooltip1.setStyle("-fx-background-color: " + constants.getSkippedStatusColor() +"; -fx-text-fill: black;");
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getSkippedStatusColor());
 			centerCircleLabel.setText("S");
 		} else if (activity.getStatus().contentEquals("complete")) {
-			tooltip1.setStyle("-fx-background-color: " + constants.getCompleteStatusColor() + "; -fx-text-fill: black;");
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getCompleteStatusColor());
 			centerCircleLabel.setText("C");
 		}
-
-		Tooltip tooltip2 = new Tooltip(splitString(activity.getMaterials().trim()));
-		if (activity.getMaterials().length() == 0) {
-			topLeftCircleLabel.setVisible(false);
-		}
-		Tooltip.install(topLeftCircle, tooltip2);
-		Tooltip.install(topLeftCircleLabel, tooltip2);
-		tooltip2.setStyle("-fx-background-color: " + constants.getMaterialsColor() + " ; -fx-text-fill: black;");
-
-		Tooltip tooltip3 = new Tooltip(splitString(activity.getDescription().trim()));
-		if (activity.getDescription().length() == 0) {
-			topRightCircleLabel.setVisible(false);
-		}
-		Tooltip.install(topRightCircle, tooltip3);
-		Tooltip.install(topRightCircleLabel, tooltip3);
-		tooltip3.setStyle("-fx-background-color: " + constants.getDescriptionColor() + " ; -fx-text-fill: black;");
-
-		Tooltip tooltip4 = new Tooltip(splitString(activity.getWho().trim()));
-		if (activity.getWho().length() == 0) {
-			bottomLeftCircleLabel.setVisible(false);
-		}
-		Tooltip.install(bottomLeftCircle, tooltip4);
-		Tooltip.install(bottomLeftCircleLabel, tooltip4);
-		tooltip4.setStyle("-fx-background-color: " + constants.getWhoColor() + " ; -fx-text-fill: black;");
-
-		Tooltip tooltip5 = new Tooltip(splitString(activity.getTime().trim()));
-		if (activity.getTime().length() == 0) {
-			bottomRightCircleLabel.setVisible(false);
-		}
-		Tooltip.install(bottomRightCircle, tooltip5);
-		Tooltip.install(bottomRightCircleLabel, tooltip5);
-		tooltip5.setStyle("-fx-background-color: " + constants.getTimeColor() + " ; -fx-text-fill: black;");
+		
+		//Top Left Circle
+		createToolTip(splitString(activity.getMaterials().trim()), topLeftCircle, topLeftCircleLabel, constants.getMaterialsColor());
+		//Top Right Circle
+		createToolTip(splitString(activity.getDescription().trim()), topRightCircle, topRightCircleLabel, constants.getDescriptionColor());
+		//Bottom Left Circle
+		createToolTip(splitString(activity.getWho()), bottomLeftCircle, bottomLeftCircleLabel, constants.getWhoColor());
+		//Bottom Right Circle
+		createToolTip(splitString(activity.getTime()), bottomRightCircle, bottomRightCircleLabel, constants.getTimeColor());
+	}
+	
+	private void createToolTip(String toolTipText, Circle circle, Label circleLabel, String color) {
+		Tooltip tooltip = new Tooltip(toolTipText);
+		Tooltip.install(circle, tooltip);
+		Tooltip.install(circleLabel, tooltip);
+		tooltip.setStyle("-fx-background-color: " + color + " ; -fx-text-fill: black;");
 	}
 
 	/**
@@ -158,23 +159,13 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 
 	@FXML
-	public void bottomRightCircleClicked() {
-
-	}
-
-	@FXML
 	public void bottomRightCircleLabelClicked() {
 		String selectedGUID = engagementActionController.getSelectedGUID();
 		if (selectedGUID.contentEquals(activity.getGUID())) {
 			engagementActionController.loadAttributeInfo("Time", activity.getTime(), constants.getTimeColor());
 		}
 	}
-
-	@FXML
-	public void bottomLeftCircleClicked() {
-
-	}
-
+	
 	@FXML
 	public void bottomLeftCircleLabelClicked() {
 		String selectedGUID = engagementActionController.getSelectedGUID();
@@ -184,21 +175,11 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 
 	@FXML
-	public void topRightCircleClicked() {
-
-	}
-
-	@FXML
 	public void topRightCircleLabelClicked() {
 		String selectedGUID = engagementActionController.getSelectedGUID();
 		if (selectedGUID.contentEquals(activity.getGUID())) {
 			engagementActionController.loadAttributeInfo("Description", activity.getDescription(), constants.getDescriptionColor());
 		}
-	}
-
-	@FXML
-	public void topLeftCircleClicked() {
-
 	}
 
 	@FXML

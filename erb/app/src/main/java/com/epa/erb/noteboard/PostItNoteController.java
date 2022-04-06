@@ -4,9 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.Constants;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,15 +41,18 @@ public class PostItNoteController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initPostItNote();	
+		initializeStyle();
+	}
+	
+	private void initializeStyle() {
+		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
+		postItNotePane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
+		scrollPane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 	}
 	
 	private void initPostItNote() {
 		postItNotePane.setId("postedNote");
-		postItNotePane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
-		scrollPane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
-		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
-		
 		postItNotePane.setPrefWidth(0);
 	}
 	
@@ -71,16 +72,20 @@ public class PostItNoteController implements Initializable{
 			fxmlLoader.setController(postItNoteEditsController);
 			editsStage = new Stage();
 			Scene scene = new Scene(fxmlLoader.load());
-			if(textFlow.getChildren().size() > 0) { //Already contains content
-				Text text = (Text) textFlow.getChildren().get(0);
-				postItNoteEditsController.setText(text.getText());
-				postItNoteEditsController.setColor(textFlow.getStyle().replace("-fx-background-color: ", ""));
-			}
 			editsStage.setScene(scene);
 			editsStage.setTitle("Post It Note Edits");
+			handlePostItNoteEditsInfo(postItNoteEditsController);
 			editsStage.showAndWait();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+		}
+	}
+	
+	private void handlePostItNoteEditsInfo(PostItNoteEditsController postItNoteEditsController) {
+		if(textFlow.getChildren().size() > 0) { //Already contains content
+			Text text = (Text) textFlow.getChildren().get(0);
+			postItNoteEditsController.setText(text.getText());
+			postItNoteEditsController.setColor(textFlow.getStyle().replace("-fx-background-color: ", ""));
 		}
 	}
 	
@@ -88,7 +93,6 @@ public class PostItNoteController implements Initializable{
 		ContextMenu contextMenu = new ContextMenu();
 		MenuItem menuItem = new MenuItem("Remove");
 		contextMenu.getItems().add(menuItem);
-		
 		scrollPane.setContextMenu(contextMenu);
 		menuItem.setOnAction(e -> removePostItNote());
 	}

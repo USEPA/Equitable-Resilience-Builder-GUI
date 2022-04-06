@@ -3,12 +3,9 @@ package com.epa.erb.noteboard;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.Constants;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -51,13 +48,15 @@ public class NoteBoardContentController implements Initializable{
 		setDrag(note);
 		fillCategories();
 		createCategoryRows();
-		
+		initializeStyle();
+	}
+	
+	private void initializeStyle() {
 		layer1Pane.setStyle("-fx-background-color: " + constants.getLayer1ColorString() + ";");
 		layer2Pane.setStyle("-fx-background-color: " + constants.getLayer2ColorString() + ";");
 		layer3Pane.setStyle("-fx-background-color: " + constants.getLayer3ColorString() + ";");
 		layer4Pane.setStyle("-fx-background-color: " + constants.getLayer4ColorString() + ";");
 		note.setStyle("-fx-background-color: " + constants.getLayer5ColorString() + ";");
-
 	}
 	
 	private void fillCategories() {
@@ -79,8 +78,7 @@ public class NoteBoardContentController implements Initializable{
 				CategorySectionController categorySectionController = new CategorySectionController((category));
 				fxmlLoader.setController(categorySectionController);
 				HBox catHBox = fxmlLoader.load();
-				HBox postItHBox = categorySectionController.getPostItHBox(); 
-				setDrag(postItHBox);
+				setDrag(categorySectionController.getPostItHBox());
 				categorySectionController.initCategorySection();
 				VBox.setVgrow(catHBox, Priority.ALWAYS);
 				mainVBox.getChildren().add(catHBox);

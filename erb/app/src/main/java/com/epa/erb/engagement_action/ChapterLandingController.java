@@ -3,11 +3,9 @@ package com.epa.erb.engagement_action;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -33,14 +31,12 @@ public class ChapterLandingController implements Initializable {
 	
 	Chapter chapter;
 	EngagementActionController engagementActionController;
-	
 	public ChapterLandingController(Chapter chapter, EngagementActionController engagementActionController) {
 		this.chapter = chapter;
 		this.engagementActionController = engagementActionController;
 	}
 	
 	ArrayList<Chapter> listOfAllChapters;
-	
 	public ChapterLandingController(ArrayList<Chapter> listOfAllChapters, EngagementActionController engagementActionController) {
 		this.listOfAllChapters = listOfAllChapters;
 		this.engagementActionController = engagementActionController;
@@ -50,11 +46,15 @@ public class ChapterLandingController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		initializeStyle();
+	}
+	
+	private void initializeStyle() {
 		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		getStartedButton.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	public void setHeadingLabel() {
+	void setHeadingLabel() {
 		if(chapter != null) {
 			headingLabel.setText("Welcome to " + chapter.getStringName());
 		} else {
@@ -62,38 +62,40 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 	
-	public void setAboutText() {
+	void setAboutText() {
+		Text text = getAboutText();
+		text.setFont(Font.font(15));
+		aboutTextFlow.getChildren().add(text);
+	}
+	
+	Text getAboutText() {
 		if (chapter != null) {
-			Text text = new Text(chapter.getDescriptionName());
-			text.setFont(Font.font(15));
-			aboutTextFlow.getChildren().add(text);
+			return new Text(chapter.getDescriptionName());
 		} else {
-			Text text = new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
-			text.setFont(Font.font(15));
-			aboutTextFlow.getChildren().add(text);
+			return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
 		}
 	}
 
-	public void setActivitiesText() {
+	void setActivitiesText() {
+		Text text = getActivitiesText();
+		text.setFont(Font.font(15));
+		activitiesTextFlow.getChildren().add(text);
+	}
+	
+	Text getActivitiesText() {
+		StringBuilder stringBuilder = new StringBuilder();
 		if (chapter != null) {
-			StringBuilder stringBuilder = new StringBuilder();
 			for (Activity activity : chapter.getUserSelectedActivities()) {
 				stringBuilder.append(activity.getLongName() + "\n");
 			}
-			Text text = new Text(stringBuilder.toString());
-			text.setFont(Font.font(15));
-			activitiesTextFlow.getChildren().add(text);
 		} else {
-			StringBuilder stringBuilder = new StringBuilder();
-			for(Chapter chapter : listOfAllChapters) {
+			for (Chapter chapter : listOfAllChapters) {
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					stringBuilder.append(activity.getLongName() + "\n");
 				}
 			}
-			Text text = new Text(stringBuilder.toString());
-			text.setFont(Font.font(15));
-			activitiesTextFlow.getChildren().add(text);
 		}
+		return new Text(stringBuilder.toString());
 	}
 	
 	@FXML

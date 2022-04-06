@@ -18,7 +18,6 @@ public class ChapterTitledPaneController implements Initializable{
 	ListView<SelectedActivity> titledPaneListView;
 	
 	String paneTitle;
-	
 	public ChapterTitledPaneController(String paneTitle) {
 		this.paneTitle = paneTitle;
 	}

@@ -16,7 +16,6 @@ public class Activity {
 	String time;
 	String who;
 	String GUID;
-	
 	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who) {
 		this.activityType = activityType;
 		this.status = status;

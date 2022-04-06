@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -41,9 +40,12 @@ public class ERBChapterDiagramController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		initializeStyle();
 		centerCircleLabel.setText(Integer.toString(chapter.getChapterNum()));
+	}
+	
+	private void initializeStyle() {
 		centerCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-
 	}
 	
 	void hideLeftLeadingLine() {
@@ -57,7 +59,6 @@ public class ERBChapterDiagramController implements Initializable{
 	
 	@FXML
 	public void centerCircleClicked() {
-		System.out.println("HERE 1");
 		String activityGUID = chapter.getNumericName();
 		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
 			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
@@ -66,17 +67,4 @@ public class ERBChapterDiagramController implements Initializable{
 			}
 		}
 	}
-
-	@FXML
-	public void centerCircleLabelClicked() {
-		System.out.println("HERE 2");
-		String activityGUID = chapter.getNumericName();
-		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
-				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-				engagementActionController.treeViewClicked();
-			}
-		}
-	}
-
 }

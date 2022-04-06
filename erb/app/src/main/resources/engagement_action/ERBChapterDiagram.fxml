@@ -21,7 +21,7 @@
                         <StackPane>
                            <children>
                               <Circle fx:id="centerCircle" fill="WHITE" onMouseClicked="#centerCircleClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label fx:id="centerCircleLabel" onMouseClicked="#centerCircleLabelClicked" />
+                              <Label fx:id="centerCircleLabel" onMouseClicked="#centerCircleClicked" />
                            </children>
                         </StackPane>
                         <Line fx:id="rightLeadingLine" endX="-50.0" startX="-100.0" />
