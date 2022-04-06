@@ -6,9 +6,12 @@ import java.util.ResourceBundle;
 
 import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
+import com.epa.erb.Constants;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -17,6 +20,8 @@ public class ChapterLandingController implements Initializable {
 
 	@FXML
 	Label headingLabel;
+	@FXML
+	HBox headingLabelHBox;
 	@FXML
 	TextFlow aboutTextFlow;
 	@FXML
@@ -34,10 +39,11 @@ public class ChapterLandingController implements Initializable {
 		this.listOfAllChapters = listOfAllChapters;
 	}
 	
+	private Constants constants = new Constants();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	public void setHeadingLabel() {

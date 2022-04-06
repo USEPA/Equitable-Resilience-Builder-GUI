@@ -9,7 +9,7 @@
    <children>
       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" style="-fx-border-color: transparent;" VBox.vgrow="ALWAYS">
          <content>
-            <TextFlow fx:id="textFlow" style="-fx-background-color: #FFFFFF;" />
+            <TextFlow fx:id="textFlow" />
          </content>
       </ScrollPane>
    </children>

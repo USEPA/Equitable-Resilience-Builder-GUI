@@ -3,6 +3,8 @@ package com.epa.erb.engagement_action;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.Chapter;
+import com.epa.erb.Constants;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -32,9 +34,13 @@ public class ERBChapterDiagramController implements Initializable{
 		this.chapter = chapter;
 	}
 	
+	private Constants constants = new Constants();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		centerCircleLabel.setText(Integer.toString(chapter.getChapterNum()));
+		centerCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
+
 	}
 	
 	void hideLeftLeadingLine() {

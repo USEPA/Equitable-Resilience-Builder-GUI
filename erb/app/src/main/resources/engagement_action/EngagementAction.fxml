@@ -51,25 +51,25 @@
                   <Separator />
                   <HBox spacing="20.0">
                      <children>
-                        <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #B895Eb;" />
+                        <Pane fx:id="materialKeyPane" prefHeight="18.0" prefWidth="30.0" />
                         <Label text="Materials" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
-                        <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #F7B2E0;" />
+                        <Pane fx:id="descriptionKeyPane" prefHeight="18.0" prefWidth="30.0" />
                         <Label text="Description" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
-                        <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #EB8787;" />
+                        <Pane fx:id="whoKeyPane" prefHeight="18.0" prefWidth="30.0" />
                         <Label text="Who" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
-                        <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #F7DBB2;" />
+                        <Pane fx:id="timeKeyPane" prefHeight="18.0" prefWidth="30.0"/>
                         <Label text="Time" />
                      </children>
                   </HBox>
@@ -81,19 +81,19 @@
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
-                        <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #B2F7D1;" />
+                        <Pane fx:id="completeKeyPane" prefHeight="18.0" prefWidth="30.0"/>
                         <Label text="Complete" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
-                        <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #EDF7B2;" />
+                        <Pane fx:id="readyKeyPane" prefHeight="18.0" prefWidth="30.0" />
                         <Label text="Ready" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
-                        <Pane prefHeight="18.0" prefWidth="30.0" style="-fx-background-color: #B2C1F7;" />
+                        <Pane fx:id="skippedKeyPane" prefHeight="18.0" prefWidth="30.0" />
                         <Label text="Skipped" />
                      </children>
                   </HBox>

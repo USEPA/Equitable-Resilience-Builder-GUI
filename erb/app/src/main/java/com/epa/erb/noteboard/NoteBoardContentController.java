@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.epa.erb.Constants;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -26,13 +28,22 @@ public class NoteBoardContentController implements Initializable{
 	@FXML
 	VBox mainVBox;
 	@FXML
-	Pane note;
+	Pane layer1Pane;
+	@FXML
+	Pane layer2Pane;
+	@FXML
+	Pane layer3Pane;
+	@FXML
+	Pane layer4Pane;
+	@FXML
+	Pane note; //layer 5
 	
 	public NoteBoardContentController() {
 		
 	}
 	
 	ArrayList<String> categories = new ArrayList<String>();
+	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
 	
 	@Override
@@ -40,6 +51,13 @@ public class NoteBoardContentController implements Initializable{
 		setDrag(note);
 		fillCategories();
 		createCategoryRows();
+		
+		layer1Pane.setStyle("-fx-background-color: " + constants.getLayer1ColorString() + ";");
+		layer2Pane.setStyle("-fx-background-color: " + constants.getLayer2ColorString() + ";");
+		layer3Pane.setStyle("-fx-background-color: " + constants.getLayer3ColorString() + ";");
+		layer4Pane.setStyle("-fx-background-color: " + constants.getLayer4ColorString() + ";");
+		note.setStyle("-fx-background-color: " + constants.getLayer5ColorString() + ";");
+
 	}
 	
 	private void fillCategories() {

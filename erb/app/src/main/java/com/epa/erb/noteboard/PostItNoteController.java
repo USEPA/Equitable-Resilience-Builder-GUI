@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.epa.erb.Constants;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,18 +37,20 @@ public class PostItNoteController implements Initializable{
 	}
 	
 	Stage editsStage = null;
+	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(PostItNoteController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		initPostItNote();		
+		initPostItNote();	
+		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 	}
 	
 	private void initPostItNote() {
 		postItNotePane.setId("postedNote");
-		postItNotePane.setStyle("-fx-background-color: #FFFFFF");
-		scrollPane.setStyle("-fx-background-color: #FFFFFF");
-		textFlow.setStyle("-fx-background-color: #FFFFFF");
+		postItNotePane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
+		scrollPane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
+		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		
 		postItNotePane.setPrefWidth(0);
 	}

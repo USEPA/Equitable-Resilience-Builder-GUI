@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
+import com.epa.erb.Constants;
 //import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
@@ -28,6 +29,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
@@ -56,6 +58,20 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	VBox keyVBox;
 	@FXML
+	Pane materialKeyPane;
+	@FXML
+	Pane descriptionKeyPane;
+	@FXML
+	Pane whoKeyPane;
+	@FXML
+	Pane completeKeyPane;
+	@FXML
+	Pane readyKeyPane;
+	@FXML
+	Pane skippedKeyPane;
+	@FXML
+	Pane timeKeyPane;
+	@FXML
 	HBox mainHBox;
 	@FXML
 	ScrollPane attributeScrollPane;
@@ -65,6 +81,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private String currentChapter = null; //Tracks the current user selected chapter
+	private Constants constants = new Constants();
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //Holds the tree items mapped to a chapter name or activity GUID
@@ -80,7 +97,17 @@ public class EngagementActionController implements Initializable{
 		handleNavigationButtonsShown(null, null);
 		handleControls();
 		loadChapterERBPathway();
-		
+		setKeyColors();
+	}
+	
+	private void setKeyColors() {
+		materialKeyPane.setStyle("-fx-background-color: " + constants.getMaterialsColor() + ";");
+		descriptionKeyPane.setStyle("-fx-background-color: " + constants.getDescriptionColor() + ";");
+		whoKeyPane.setStyle("-fx-background-color: " + constants.getWhoColor() + ";");
+		completeKeyPane.setStyle("-fx-background-color: " + constants.getCompleteStatusColor() + ";");
+		readyKeyPane.setStyle("-fx-background-color: " + constants.getReadyStatusColor() + ";");
+		skippedKeyPane.setStyle("-fx-background-color: " + constants.getSkippedStatusColor() + ";");
+		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
 	}
 	
 	private void loadERBLandingContent() {
@@ -263,18 +290,18 @@ public class EngagementActionController implements Initializable{
 		if(selectedTreeItem.getValue().contentEquals("Social Vulnerability Activity Template")) {
 			String GUID = treeMap.get(selectedTreeItem);
 			Activity selectedActivity = getActivity(GUID);
-			loadAttributeInfo("Objective", selectedActivity.getObjectives(), "#92A6EF");
+			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
 			loadAttributeInfo("Instructions", "1. On a white board, list the hazards of concern to your community in a column down the left side, and draw horizontal lines between them. (see example)" + "\n" + 
 					"2. Reflect on the stories and data that were shared at the beginning of the workshop. Who were the groups of people that were mentioned who experienced impacts from hazards and disasters? What were the impacts they experienced?" + "\n" + 
 					"3. As you go, add additional who's and what's for current or potential future impacts" + "\n" +
 					"4. After about 30 minutes or when the discussion is at a lull, begin discussing why these impacts happen. Give everyone a few minutes to think and write some \"why's\" on pink post-it notes. Then have people place the pink notes near the blue and yellow notes, and share their thoughts with the group" + "\n" +
-					"5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases", "#86E596");
+					"5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases", constants.getInstructionsColor());
 			loadSampleContent();
 		} else if (selectedTreeItem.getValue().contentEquals("Mapping Activity Instructions")) {
 			String GUID = treeMap.get(selectedTreeItem);
 			Activity selectedActivity = getActivity(GUID);
-			loadAttributeInfo("Objective", selectedActivity.getObjectives(), "#92A6EF");
-			loadAttributeInfo("Instructions", selectedActivity.getDirections(), "#86E596");
+			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
+			loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 			loadSampleWK(selectedActivity);
 		}
 	}

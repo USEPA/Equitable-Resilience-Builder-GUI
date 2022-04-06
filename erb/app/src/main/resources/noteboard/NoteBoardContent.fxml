@@ -16,11 +16,11 @@
                <children>
                   <StackPane>
                      <children>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #F7B2E0;" />
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="95.0" prefWidth="95.0" style="-fx-background-color: B895EB;" />
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-background-color: EB8787;" />
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="85.0" prefWidth="85.0" style="-fx-background-color: #B2F7D1;" />
-                        <Pane fx:id="note" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: B2C1F7;" />
+                        <Pane fx:id="layer1Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="100.0" prefWidth="100.0" />
+                        <Pane fx:id="layer2Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="95.0" prefWidth="95.0" />
+                        <Pane fx:id="layer3Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="90.0" prefWidth="90.0" />
+                        <Pane fx:id="layer4Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="85.0" prefWidth="85.0" />
+                        <Pane fx:id="note" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="80.0" prefWidth="80.0" />
                      </children>
                   </StackPane>
                </children>

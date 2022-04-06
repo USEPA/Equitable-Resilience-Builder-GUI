@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.epa.erb.Activity;
+import com.epa.erb.Constants;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -55,11 +57,18 @@ public class ERBPathwayDiagramController implements Initializable {
 		this.activity = activity;
 		this.engagementActionController = engagementActionController;
 	}
+	
+	private Constants constants = new Constants();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setToolTips();
 		activityLabel.setText(activity.getShortName());
+		topLeftCircle.setStyle("-fx-fill: " + constants.getMaterialsColor() + ";");
+		topRightCircle.setStyle("-fx-fill: " + constants.getDescriptionColor() + ";");
+		centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
+		bottomLeftCircle.setStyle("-fx-fill: " + constants.getWhoColor() + ";");
+		bottomRightCircle.setStyle("-fx-fill: " + constants.getTimeColor() + ";");
 	}
 
 	void hideLeftLeadingLine() {
@@ -79,13 +88,13 @@ public class ERBPathwayDiagramController implements Initializable {
 		Tooltip.install(centerCircle, tooltip1);
 		Tooltip.install(centerCircleLabel, tooltip1);
 		if (activity.getStatus().contentEquals("ready")) {
-			tooltip1.setStyle("-fx-background-color:  #EDF7B2; -fx-text-fill: black;");
+			tooltip1.setStyle("-fx-background-color: " + constants.getReadyStatusColor() +  "; -fx-text-fill: black;");
 			centerCircleLabel.setText("R");
 		} else if (activity.getStatus().contentEquals("skip")) {
-			tooltip1.setStyle("-fx-background-color:  #B2C1F7; -fx-text-fill: black;");
+			tooltip1.setStyle("-fx-background-color: " + constants.getSkippedStatusColor() +"; -fx-text-fill: black;");
 			centerCircleLabel.setText("S");
 		} else if (activity.getStatus().contentEquals("complete")) {
-			tooltip1.setStyle("-fx-background-color:  #B2F7D1; -fx-text-fill: black;");
+			tooltip1.setStyle("-fx-background-color: " + constants.getCompleteStatusColor() + "; -fx-text-fill: black;");
 			centerCircleLabel.setText("C");
 		}
 
@@ -95,7 +104,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		}
 		Tooltip.install(topLeftCircle, tooltip2);
 		Tooltip.install(topLeftCircleLabel, tooltip2);
-		tooltip2.setStyle("-fx-background-color: #B895EB; -fx-text-fill: black;");
+		tooltip2.setStyle("-fx-background-color: " + constants.getMaterialsColor() + " ; -fx-text-fill: black;");
 
 		Tooltip tooltip3 = new Tooltip(splitString(activity.getDescription().trim()));
 		if (activity.getDescription().length() == 0) {
@@ -103,7 +112,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		}
 		Tooltip.install(topRightCircle, tooltip3);
 		Tooltip.install(topRightCircleLabel, tooltip3);
-		tooltip3.setStyle("-fx-background-color: #F7B2E0; -fx-text-fill: black;");
+		tooltip3.setStyle("-fx-background-color: " + constants.getDescriptionColor() + " ; -fx-text-fill: black;");
 
 		Tooltip tooltip4 = new Tooltip(splitString(activity.getWho().trim()));
 		if (activity.getWho().length() == 0) {
@@ -111,7 +120,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		}
 		Tooltip.install(bottomLeftCircle, tooltip4);
 		Tooltip.install(bottomLeftCircleLabel, tooltip4);
-		tooltip4.setStyle("-fx-background-color: #EB8787; -fx-text-fill: black;");
+		tooltip4.setStyle("-fx-background-color: " + constants.getWhoColor() + " ; -fx-text-fill: black;");
 
 		Tooltip tooltip5 = new Tooltip(splitString(activity.getTime().trim()));
 		if (activity.getTime().length() == 0) {
@@ -119,7 +128,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		}
 		Tooltip.install(bottomRightCircle, tooltip5);
 		Tooltip.install(bottomRightCircleLabel, tooltip5);
-		tooltip5.setStyle("-fx-background-color: #F7DBB2; -fx-text-fill: black;");
+		tooltip5.setStyle("-fx-background-color: " + constants.getTimeColor() + " ; -fx-text-fill: black;");
 	}
 
 	/**
@@ -157,7 +166,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void bottomRightCircleLabelClicked() {
 		String selectedGUID = engagementActionController.getSelectedGUID();
 		if (selectedGUID.contentEquals(activity.getGUID())) {
-			engagementActionController.loadAttributeInfo("Time", activity.getTime(), "#F7DBB2");
+			engagementActionController.loadAttributeInfo("Time", activity.getTime(), constants.getTimeColor());
 		}
 	}
 
@@ -170,7 +179,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void bottomLeftCircleLabelClicked() {
 		String selectedGUID = engagementActionController.getSelectedGUID();
 		if (selectedGUID.contentEquals(activity.getGUID())) {
-			engagementActionController.loadAttributeInfo("Who", activity.getWho(), "#EB8787");
+			engagementActionController.loadAttributeInfo("Who", activity.getWho(), constants.getWhoColor());
 		}
 	}
 
@@ -183,7 +192,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void topRightCircleLabelClicked() {
 		String selectedGUID = engagementActionController.getSelectedGUID();
 		if (selectedGUID.contentEquals(activity.getGUID())) {
-			engagementActionController.loadAttributeInfo("Description", activity.getDescription(), "#F7B2E0");
+			engagementActionController.loadAttributeInfo("Description", activity.getDescription(), constants.getDescriptionColor());
 		}
 	}
 
@@ -196,7 +205,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void topLeftCircleLabelClicked() {
 		String selectedGUID = engagementActionController.getSelectedGUID();
 		if (selectedGUID.contentEquals(activity.getGUID())) {
-			engagementActionController.loadAttributeInfo("Materials", activity.getMaterials(), "#B895EB");
+			engagementActionController.loadAttributeInfo("Materials", activity.getMaterials(), constants.getMaterialsColor());
 		}
 	}
 
