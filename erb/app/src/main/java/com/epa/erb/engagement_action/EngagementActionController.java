@@ -85,6 +85,7 @@ public class EngagementActionController implements Initializable{
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //Holds the tree items mapped to a chapter name or activity GUID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //Holds all of the attribute panel that are loaded
+	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
 	
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
@@ -249,18 +250,19 @@ public class EngagementActionController implements Initializable{
 					cleanContentVBox();
 					cleanAttributeVBox();
 					addColorKey(1);
-					System.out.println(treeMap.get(selectedTreeItem));
 					if (parentTreeItemValue.contains("ERB")) { // Is Chapter						
 						removeAttributePane();
 						loadChapterLandingContent(currentChapter);
 						handleNavigationButtonsShown(selectedTreeItem, null);
+						loadActivityERBPathway(currentChapter);
 					} else { // Is Activity
 						currentChapter = getChapter(parentTreeItemValue);
 						addAttributePanel(1);
 						loadActivityContentPanel(selectedTreeItem);
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
+						loadActivityERBPathway(currentChapter);
+						highlightSelectedActivityDiagram(selectedTreeItem);
 					}
-					loadActivityERBPathway(currentChapter);
 				}
 			} else {
 				if (selectedTreeItem != null) {
@@ -274,6 +276,18 @@ public class EngagementActionController implements Initializable{
 			}
 		} else {
 			handleNavigationButtonsShown(null, null);
+		}
+	}
+	
+	private void highlightSelectedActivityDiagram(TreeItem<String> selectedTreeItem) {
+		String GUID = treeMap.get(selectedTreeItem);
+		Activity selectedActivity = getActivity(GUID);
+		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
+			if(erbPathwayDiagramController.getActivity() == selectedActivity) {
+				erbPathwayDiagramController.highlightDiagram();
+			} else {
+				erbPathwayDiagramController.unHighlightDiagram();
+			}
 		}
 	}
 	
@@ -330,6 +344,7 @@ public class EngagementActionController implements Initializable{
 		if (chapter != null) {
 			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) { // If a new chapter is selected
 				cleanPathwayHBox();
+				cleanListOfActivityDiagrams();
 				setChapterLabelText(chapter.getStringName() + " Activities");
 				int count = 0;
 				for (Activity activity : chapter.getUserSelectedActivities()) {
@@ -340,6 +355,7 @@ public class EngagementActionController implements Initializable{
 						Parent root = fxmlLoader.load();
 						handleActivityDiagramLines(chapter, count, erbPathwayDiagramController);
 						pathwayHBox.getChildren().add(root);
+						listOfPathwayDiagramControllers.add(erbPathwayDiagramController);
 					} catch (Exception e) {
 						logger.error(e.getMessage());
 					}
@@ -495,6 +511,10 @@ public class EngagementActionController implements Initializable{
 
 	void cleanContentVBox() {
 		contentVBox.getChildren().clear();
+	}
+	
+	void cleanListOfActivityDiagrams() {
+		listOfPathwayDiagramControllers.clear();
 	}
 	
 	void addColorKey(int index) {

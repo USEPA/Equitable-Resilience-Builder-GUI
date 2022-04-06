@@ -7,24 +7,24 @@ public class Constants {
 	}
 	
 	//Status
-	String readyStatusColor = "#EDF7B2"; 		//Yellow
-	String completeStatusColor = "#B2F7D1"; 	//Mint Green
-	String skippedStatusColor = "#B2C1F7"; 		//Light Blue 
+	String readyStatusColor = "#EDF7B2"; 				//Yellow
+	String completeStatusColor = "#B2F7D1"; 			//Mint Green
+	String skippedStatusColor = "#B2C1F7"; 				//Light Blue 
 
 	//Attributes
-	String materialsColor = "#B895EB";			//Purple
-	String descriptionColor = "#F7B2E0"; 		//Pink
-	String objectivesColor = "#92A6EF"; 		//Blue
-	String instructionsColor = "#86E596"; 		//Light Green
-	String whoColor = "#EB8787"; 				//Red
-	String timeColor = "#F7DBB2";				//Orange
+	String materialsColor = "#B895EB";					//Purple
+	String descriptionColor = "#F7B2E0"; 				//Pink
+	String objectivesColor = "#92A6EF"; 				//Blue
+	String instructionsColor = "#86E596"; 				//Light Green
+	String whoColor = "#EB8787"; 						//Red
+	String timeColor = "#F7DBB2";						//Orange
 	String shortNameColor = "";
 	String longNameColor = "";
 	String fileNameColor = "";
 	String activityTypeColor = "";
 
 	//Chapters
-	String allChaptersColor	= "#80BFCD"; 		//Dark Turquoise
+	String allChaptersColor	= "#80BFCD"; 				//Dark Turquoise
 
     //Post-It Notes Stack
 		//----Gray
@@ -35,14 +35,14 @@ public class Constants {
 	//String layer5ColorString = "#999999";
 
 		//----Color
-	String layer1ColorString = "#F7B2E0";		//Pink
-	String layer2ColorString = "#B895EB";		//Purple
-	String layer3ColorString = "#EB8787";		//Red
-	String layer4ColorString = "#B2F7D1";		//Mint Green
-	String layer5ColorString = "#B2C1F7";		//Light Blue
+	String layer1ColorString = "#F7B2E0";				//Pink
+	String layer2ColorString = "#B895EB";				//Purple
+	String layer3ColorString = "#EB8787";				//Red
+	String layer4ColorString = "#B2F7D1";				//Mint Green
+	String layer5ColorString = "#B2C1F7";				//Light Blue
 	
 	//Post-It Note Single
-	String postItNoteColor = "#FFFFFF"; 		//White
+	String postItNoteColor = "#FFFFFF"; 				//White
 	
 	//-------------------------------------------------------------------------
 

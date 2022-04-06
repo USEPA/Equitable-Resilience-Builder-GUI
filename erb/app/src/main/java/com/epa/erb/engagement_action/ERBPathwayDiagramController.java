@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -210,5 +211,18 @@ public class ERBPathwayDiagramController implements Initializable {
 				engagementActionController.treeViewClicked();
 			}
 		}
+	}
+	
+	public void highlightDiagram() {
+		DropShadow dropShadow = new DropShadow();
+		diagramVBox.setEffect(dropShadow);
+	}
+	
+	public void unHighlightDiagram() {
+		diagramVBox.setStyle(null);
+	}
+	
+	public Activity getActivity() {
+		return activity;
 	}
 }
