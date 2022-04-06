@@ -249,16 +249,18 @@ public class EngagementActionController implements Initializable{
 					cleanContentVBox();
 					cleanAttributeVBox();
 					addColorKey(1);
-					loadActivityERBPathway(currentChapter);
+					System.out.println(treeMap.get(selectedTreeItem));
 					if (parentTreeItemValue.contains("ERB")) { // Is Chapter						
 						removeAttributePane();
 						loadChapterLandingContent(currentChapter);
 						handleNavigationButtonsShown(selectedTreeItem, null);
 					} else { // Is Activity
+						currentChapter = getChapter(parentTreeItemValue);
 						addAttributePanel(1);
 						loadActivityContentPanel(selectedTreeItem);
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
 					}
+					loadActivityERBPathway(currentChapter);
 				}
 			} else {
 				if (selectedTreeItem != null) {
