@@ -10,7 +10,9 @@ import com.epa.erb.Constants;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -26,17 +28,22 @@ public class ChapterLandingController implements Initializable {
 	TextFlow aboutTextFlow;
 	@FXML
 	TextFlow activitiesTextFlow;
+	@FXML
+	Button getStartedButton;
 	
 	Chapter chapter;
+	EngagementActionController engagementActionController;
 	
-	public ChapterLandingController(Chapter chapter) {
+	public ChapterLandingController(Chapter chapter, EngagementActionController engagementActionController) {
 		this.chapter = chapter;
+		this.engagementActionController = engagementActionController;
 	}
 	
 	ArrayList<Chapter> listOfAllChapters;
 	
-	public ChapterLandingController(ArrayList<Chapter> listOfAllChapters) {
+	public ChapterLandingController(ArrayList<Chapter> listOfAllChapters, EngagementActionController engagementActionController) {
 		this.listOfAllChapters = listOfAllChapters;
+		this.engagementActionController = engagementActionController;
 	}
 	
 	private Constants constants = new Constants();
@@ -44,6 +51,7 @@ public class ChapterLandingController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+		getStartedButton.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	public void setHeadingLabel() {
@@ -85,6 +93,17 @@ public class ChapterLandingController implements Initializable {
 			Text text = new Text(stringBuilder.toString());
 			text.setFont(Font.font(15));
 			activitiesTextFlow.getChildren().add(text);
+		}
+	}
+	
+	@FXML
+	public void getStartedButtonAction() {
+		String activityGUID = chapter.getUserSelectedActivities().get(0).getGUID();
+		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
+			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
+				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+				engagementActionController.treeViewClicked();
+			}
 		}
 	}
 

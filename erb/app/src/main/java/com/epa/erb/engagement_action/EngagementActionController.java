@@ -98,6 +98,13 @@ public class EngagementActionController implements Initializable{
 		handleControls();
 		loadChapterERBPathway();
 		setKeyColors();
+		String activityGUID = "0";
+		for (TreeItem<String> treeItem : getTreeMap().keySet()) {
+			if (getTreeMap().get(treeItem) == activityGUID) {
+				getTreeView().getSelectionModel().select(treeItem);
+				treeViewClicked();
+			}
+		}
 	}
 	
 	private void setKeyColors() {
@@ -113,7 +120,7 @@ public class EngagementActionController implements Initializable{
 	private void loadERBLandingContent() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ChapterLanding.fxml"));
-			ChapterLandingController chapterLandingController = new ChapterLandingController(dataChapters);
+			ChapterLandingController chapterLandingController = new ChapterLandingController(dataChapters, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
 			chapterLandingController.setAboutText();
@@ -130,7 +137,7 @@ public class EngagementActionController implements Initializable{
 	private void loadChapterLandingContent(Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ChapterLanding.fxml"));
-			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter);
+			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
 			chapterLandingController.setAboutText();
@@ -274,7 +281,8 @@ public class EngagementActionController implements Initializable{
 			} else {
 				if(selectedTreeItem != null) {
 					contentVBox.getChildren().clear();
-					cleanAttributeVBox();						
+					cleanAttributeVBox();
+					mainHBox.getChildren().remove(attributeScrollPane);
 					loadChapterERBPathway();
 					loadERBLandingContent();
 				}
