@@ -36,6 +36,7 @@ public class App extends Application {
 //			Parent root = fxmlLoader.load();
 //			Scene scene = new Scene(root);
 //			primaryStage.setScene(scene);
+//		    primaryStage.setTitle("ERB: Equitable Resilience Builder");
 //			primaryStage.show();
 //		} catch (Exception e) {
 //			logger.fatal(e.getMessage());
@@ -48,6 +49,7 @@ public class App extends Application {
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("ERB: Equitable Resilience Builder");
 			primaryStage.show();
 		} catch (Exception e) {
 			logger.fatal(e.getMessage());
