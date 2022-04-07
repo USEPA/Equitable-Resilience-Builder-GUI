@@ -74,18 +74,9 @@ public class PostItNoteController implements Initializable{
 			Scene scene = new Scene(fxmlLoader.load());
 			editsStage.setScene(scene);
 			editsStage.setTitle("Post It Note Edits");
-			handlePostItNoteEditsInfo(postItNoteEditsController);
 			editsStage.showAndWait();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-		}
-	}
-	
-	private void handlePostItNoteEditsInfo(PostItNoteEditsController postItNoteEditsController) {
-		if(textFlow.getChildren().size() > 0) { //Already contains content
-			Text text = (Text) textFlow.getChildren().get(0);
-			postItNoteEditsController.setText(text.getText());
-			postItNoteEditsController.setColor(textFlow.getStyle().replace("-fx-background-color: ", ""));
 		}
 	}
 	
@@ -104,6 +95,7 @@ public class PostItNoteController implements Initializable{
 	
 	void setPostItNoteText(String text) {
 		Text textToAdd = new Text(text);
+		textFlow.getChildren().clear();
 		textFlow.getChildren().add(textToAdd);
 	}
 	
@@ -117,6 +109,10 @@ public class PostItNoteController implements Initializable{
 		if(editsStage != null) {
 			editsStage.close();
 		}
+	}
+	
+	public TextFlow getTextFlow() {
+		return textFlow;
 	}
 
 }

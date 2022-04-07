@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class PostItNoteEditsController implements Initializable{
 
@@ -19,14 +20,33 @@ public class PostItNoteEditsController implements Initializable{
 	Button saveButton;
 	
 	PostItNoteController postItNoteController;
-	
 	public PostItNoteEditsController(PostItNoteController postItNoteController) {
 		this.postItNoteController = postItNoteController;
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		checkForExistingText();
+		checkForExistingColor();
 		colorPicker.getStylesheets().add(getClass().getResource("/noteboard/ColorPicker.css").toString());
+	}
+	
+	public void checkForExistingText() {
+		if (postItNoteController.getTextFlow().getChildren().size() > 0) {
+			Text text = (Text) postItNoteController.getTextFlow().getChildren().get(0);
+			if (text != null) {
+				String postItString = text.getText();
+				postItNoteTextArea.setText(postItString);
+			}
+		}
+	}
+	
+	public void checkForExistingColor() {
+		if(postItNoteController.getTextFlow().getStyle() != null) {
+			String color = postItNoteController.getTextFlow().getStyle().replace("-fx-background-color: ", "");
+			color = color.replace(";", "");
+			setColor(color);
+		}
 	}
 	
 	@FXML

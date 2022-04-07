@@ -31,32 +31,32 @@ public class App extends Application {
 		
 		//Run part 1
 		
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/EngagementSetup.fxml"));
-			EngagementSetupController engagementSetupController = new EngagementSetupController();
-			fxmlLoader.setController(engagementSetupController);
-			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-		    primaryStage.setTitle("ERB: Equitable Resilience Builder");
-			primaryStage.show();
-		} catch (Exception e) {
-			logger.fatal(e.getMessage());
-		}
-		
-		//Run part 2
-		
 //		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-//			EngagementActionController engagementActionController = new EngagementActionController();
-//			fxmlLoader.setController(engagementActionController);
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/EngagementSetup.fxml"));
+//			EngagementSetupController engagementSetupController = new EngagementSetupController();
+//			fxmlLoader.setController(engagementSetupController);
 //			Parent root = fxmlLoader.load();
 //			Scene scene = new Scene(root);
 //			primaryStage.setScene(scene);
-//			primaryStage.setTitle("ERB: Equitable Resilience Builder");
+//		    primaryStage.setTitle("ERB: Equitable Resilience Builder");
 //			primaryStage.show();
 //		} catch (Exception e) {
 //			logger.fatal(e.getMessage());
 //		}
+		
+		//Run part 2
+		
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+			EngagementActionController engagementActionController = new EngagementActionController();
+			fxmlLoader.setController(engagementActionController);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("ERB: Equitable Resilience Builder");
+			primaryStage.show();
+		} catch (Exception e) {
+			logger.fatal(e.getMessage());
+		}
 	}
 }
