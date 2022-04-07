@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -20,10 +21,12 @@ public class AttributePanelController implements Initializable{
 	Label attributeLabel;
 	@FXML
 	TextFlow attributeTextFlow;
+	@FXML
+	Button closeButton;
 	
-	
-	public AttributePanelController() {
-		
+	EngagementActionController engagementActionController;
+	public AttributePanelController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
 	}
 	
 	@Override
@@ -31,11 +34,18 @@ public class AttributePanelController implements Initializable{
 		
 	}
 	
+	@FXML
+	public void closeButtonAction() {
+		VBox attributePanel = (VBox) engagementActionController.getAttributeScrollPane().getContent();
+		attributePanel.getChildren().remove(attributePanelVBox);
+		engagementActionController.removeAttributePanelController(this);
+	}
+	
 	public void setAttributeFields(String attributeTextFlowString, String attributeLabelString, String attributeLabelColorString) {
 		setAttributeTextFlow(attributeTextFlowString);
 		setAttributeLabel(attributeLabelString);
 		setAttributeLabelColor(attributeLabelColorString);
-		
+		setAttributeCloseButtonColor(attributeLabelColorString);
 	}
 
 	public void setAttributeTextFlow(String attributeTextFlowString) {
@@ -49,6 +59,10 @@ public class AttributePanelController implements Initializable{
 	
 	public void setAttributeLabelColor(String attributeLabelColorString) {
 		attributeLabelHBox.setStyle("-fx-background-color: " + attributeLabelColorString + ";");
+	}
+	
+	public void setAttributeCloseButtonColor(String attributeLabelColorString) {
+		closeButton.setStyle("-fx-background-color: " + attributeLabelColorString + ";");
 	}
 	
 	public String getAttributeLabelText() {

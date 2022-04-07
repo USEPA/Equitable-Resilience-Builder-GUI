@@ -187,7 +187,7 @@ public class EngagementActionController implements Initializable{
 		if (attributeText.trim().length() > 0 && !containsAttribute(attributeLabel)) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/AttributePane.fxml"));
-				AttributePanelController attributePanelController = new AttributePanelController();
+				AttributePanelController attributePanelController = new AttributePanelController(this);
 				fxmlLoader.setController(attributePanelController);
 				Parent root = fxmlLoader.load();
 				attributePanelController.setAttributeFields(attributeText,attributeLabel, attributeColor);
@@ -537,6 +537,10 @@ public class EngagementActionController implements Initializable{
 		mainHBox.getChildren().remove(attributeScrollPane);
 	}
 	
+	void removeAttributePanelController(AttributePanelController attributePanelController) {
+		listOfAttributePanelControllers.remove(attributePanelController);
+	}
+	
 	boolean containsAttribute(String attributeLabel) {
 		for(AttributePanelController attributePanelController : listOfAttributePanelControllers) {
 			if(attributePanelController.getAttributeLabelText().contentEquals(attributeLabel)) {
@@ -589,5 +593,9 @@ public class EngagementActionController implements Initializable{
 	HashMap<TreeItem<String>, String> getTreeMap() {
 		return treeMap;
 	}
-	
+
+	public ScrollPane getAttributeScrollPane() {
+		return attributeScrollPane;
+	}
+		
 }
