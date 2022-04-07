@@ -12,7 +12,7 @@
    <children>
       <HBox fx:id="attributeLabelHBox">
          <children>
-            <HBox HBox.hgrow="ALWAYS">
+            <HBox alignment="BOTTOM_LEFT" HBox.hgrow="ALWAYS">
                <children>
                   <Label fx:id="attributeLabel" text="Attribute Label">
                      <font>
@@ -23,9 +23,9 @@
             </HBox>
             <HBox alignment="TOP_RIGHT">
                <children>
-                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonAction" text="X">
+                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonAction" style="-fx-border-color: transparent;" text="X">
                      <font>
-                        <Font size="9.0" />
+                        <Font size="8.0" />
                      </font>
                   </Button>
                </children>
