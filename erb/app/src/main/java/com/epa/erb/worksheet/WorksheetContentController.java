@@ -95,7 +95,7 @@ public class WorksheetContentController implements Initializable{
 	@FXML
 	public void openButtonAction() {
 		try {
-			String fileName = "3_Mapping.docx";
+			String fileName = activity.getFileName();
 			File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\" + fileName);
 			if (file.exists() && Desktop.isDesktopSupported()) {
 				Desktop.getDesktop().open(file);
