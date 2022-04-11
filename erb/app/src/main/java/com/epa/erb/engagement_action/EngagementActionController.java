@@ -80,6 +80,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private String currentChapter = null; //Tracks the current user selected chapter
+	private Activity currentActivity = null; //Tracks the current user selected chapter
 	private Constants constants = new Constants();
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
@@ -246,26 +247,38 @@ public class EngagementActionController implements Initializable{
 				String parentTreeItemValue = parentTreeItem.getValue().trim();
 				String selectedTreeItemValue = selectedTreeItem.getValue().trim();
 				if (selectedTreeItemValue.length() > 0) {
-					cleanContentVBox();
-					cleanAttributeVBox();
-					addColorKey(1);
 					if (parentTreeItemValue.contains("ERB")) { // Is Chapter
 						Chapter currentChapter = getChapter(selectedTreeItemValue);
+						currentActivity = null;
+						cleanContentVBox();
+						cleanAttributeVBox();
+						addColorKey(1);
 						removeAttributePane();
 						loadChapterLandingContent(currentChapter);
 						handleNavigationButtonsShown(selectedTreeItem, null);
 						loadActivityERBPathway(currentChapter);
 					} else { // Is Activity
 						Chapter currentChapter = getChapter(parentTreeItemValue);
+						String GUID = treeMap.get(selectedTreeItem);
+						Activity selectedActivity = getActivity(GUID);
 						addAttributePanel(1);
-						loadActivityContentPanel(selectedTreeItem);
+						addColorKey(1);
+						if(currentActivity != selectedActivity) { //If a new activity is selected
+							cleanContentVBox();
+							cleanAttributeVBox();
+							loadActivityContentPanel(selectedTreeItem);
+							loadActivityERBPathway(currentChapter);
+							highlightSelectedActivityDiagram(selectedTreeItem);
+							currentActivity = selectedActivity;
+						}
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
-						loadActivityERBPathway(currentChapter);
-						highlightSelectedActivityDiagram(selectedTreeItem);
 					}
+				} else {
+					currentActivity = null;
 				}
 			} else {
 				if (selectedTreeItem != null) {
+					currentActivity = null;
 					cleanContentVBox();
 					cleanAttributeVBox();
 					removeAttributePane();
@@ -275,6 +288,7 @@ public class EngagementActionController implements Initializable{
 				}
 			}
 		} else {
+			currentActivity = null;
 			handleNavigationButtonsShown(null, null);
 		}
 	}
@@ -294,18 +308,24 @@ public class EngagementActionController implements Initializable{
 	private void loadActivityContentPanel(TreeItem<String> selectedTreeItem) {
 		String GUID = treeMap.get(selectedTreeItem);
 		Activity selectedActivity = getActivity(GUID);
-		if(selectedTreeItem.getValue().contentEquals("Social Vulnerability Activity Template")) {
-			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
-			loadAttributeInfo("Instructions", "1. On a white board, list the hazards of concern to your community in a column down the left side, and draw horizontal lines between them. (see example)" + "\n" + 
-					"2. Reflect on the stories and data that were shared at the beginning of the workshop. Who were the groups of people that were mentioned who experienced impacts from hazards and disasters? What were the impacts they experienced?" + "\n" + 
-					"3. As you go, add additional who's and what's for current or potential future impacts" + "\n" +
-					"4. After about 30 minutes or when the discussion is at a lull, begin discussing why these impacts happen. Give everyone a few minutes to think and write some \"why's\" on pink post-it notes. Then have people place the pink notes near the blue and yellow notes, and share their thoughts with the group" + "\n" +
-					"5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases", constants.getInstructionsColor());
-			loadSampleContent();
-		} else if (selectedTreeItem.getValue().contentEquals("Mapping Activity Instructions")) {
+		if (selectedActivity.getActivityType().getDescription().contentEquals("worksheet")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
 			loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 			loadSampleWK(selectedActivity);
+		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
+			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
+			loadAttributeInfo("Instructions",
+					"1. On a white board, list the hazards of concern to your community in a column down the left side, and draw horizontal lines between them. (see example)"
+							+ "\n"
+							+ "2. Reflect on the stories and data that were shared at the beginning of the workshop. Who were the groups of people that were mentioned who experienced impacts from hazards and disasters? What were the impacts they experienced?"
+							+ "\n"
+							+ "3. As you go, add additional who's and what's for current or potential future impacts"
+							+ "\n"
+							+ "4. After about 30 minutes or when the discussion is at a lull, begin discussing why these impacts happen. Give everyone a few minutes to think and write some \"why's\" on pink post-it notes. Then have people place the pink notes near the blue and yellow notes, and share their thoughts with the group"
+							+ "\n"
+							+ "5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases",
+					constants.getInstructionsColor());
+			loadSampleContent();
 		}
 	}
 	

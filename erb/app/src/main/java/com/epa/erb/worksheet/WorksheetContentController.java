@@ -63,9 +63,12 @@ public class WorksheetContentController implements Initializable{
 				public void changed(ObservableValue ov, State oldState, State newState) {
 					if (newState == Worker.State.SUCCEEDED) {
 						try {
-							byte[] data = FileUtils.readFileToByteArray(new File(pathToERBFolder + "\\Javascript\\PDFViewer\\Sample_Hyperlink.pdf"));
-							String base64 = Base64.getEncoder().encodeToString(data);
-							webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
+							if(activity.getFileName() != null && activity.getFileName().length() > 0) {
+								String fileName = activity.getFileName().replace(".docx", ".pdf");
+								byte[] data = FileUtils.readFileToByteArray(new File(pathToERBFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName));
+								String base64 = Base64.getEncoder().encodeToString(data);
+								webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
+							}
 						} catch (Exception e) {
 							logger.error(e.getMessage());
 						}
