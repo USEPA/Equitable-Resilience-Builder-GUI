@@ -1,5 +1,6 @@
 package com.epa.erb;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Activity {
@@ -30,6 +31,8 @@ public class Activity {
 		this.who = who;
 		GUID = generateUniqueId();
 	}
+	
+	ArrayList<Activity> listOfLinkedActivities = new ArrayList<Activity>();
 
 	public ActivityType getActivityType() {
 		return activityType;
@@ -121,6 +124,18 @@ public class Activity {
 
 	public String getGUID() {
 		return GUID;
+	}
+	
+	public ArrayList<Activity> getListOfLinkedActivities(){
+		return listOfLinkedActivities;
+	}
+	
+	public void addLinkedActivity(Activity activity) {
+		listOfLinkedActivities.add(activity);
+	}
+	
+	public void removeLinkedActivity(Activity activity) {
+		listOfLinkedActivities.remove(activity);
 	}
 
 	public String generateUniqueId() {
