@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -23,9 +24,9 @@ public class ChapterLandingController implements Initializable {
 	@FXML
 	HBox headingLabelHBox;
 	@FXML
-	TextFlow aboutTextFlow;
+	TextArea aboutTextArea;
 	@FXML
-	TextFlow activitiesTextFlow;
+	TextArea activitiesTextArea;
 	@FXML
 	Button getStartedButton;
 	
@@ -65,7 +66,7 @@ public class ChapterLandingController implements Initializable {
 	void setAboutText() {
 		Text text = getAboutText();
 		text.setFont(Font.font(15));
-		aboutTextFlow.getChildren().add(text);
+		aboutTextArea.setText(text.getText());
 	}
 	
 	Text getAboutText() {
@@ -79,7 +80,7 @@ public class ChapterLandingController implements Initializable {
 	void setActivitiesText() {
 		Text text = getActivitiesText();
 		text.setFont(Font.font(15));
-		activitiesTextFlow.getChildren().add(text);
+		activitiesTextArea.setText(text.getText());
 	}
 	
 	Text getActivitiesText() {

@@ -255,7 +255,7 @@ public class EngagementActionController implements Initializable{
 						addColorKey(1);
 						removeAttributePane();
 						loadChapterLandingContent(currentChapter);
-						handleNavigationButtonsShown(selectedTreeItem, null);
+						handleNavigationButtonsShown(null, null);
 						loadActivityERBPathway(currentChapter);
 					} else { // Is Activity
 						Chapter currentChapter = getChapter(parentTreeItemValue);
