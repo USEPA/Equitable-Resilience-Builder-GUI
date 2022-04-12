@@ -13,6 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.effect.Glow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -214,12 +217,12 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 	
 	public void highlightDiagram() {
-		DropShadow dropShadow = new DropShadow();
-		diagramVBox.setEffect(dropShadow);
+		diagramVBox.setEffect(null);
 	}
 	
 	public void unHighlightDiagram() {
-		diagramVBox.setStyle(null);
+		GaussianBlur gaussianBlur = new GaussianBlur();
+		diagramVBox.setEffect(gaussianBlur);
 	}
 	
 	public Activity getActivity() {
