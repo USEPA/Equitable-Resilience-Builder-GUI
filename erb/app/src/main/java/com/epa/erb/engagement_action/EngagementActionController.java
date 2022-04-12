@@ -310,10 +310,12 @@ public class EngagementActionController implements Initializable{
 		Activity selectedActivity = getActivity(GUID);
 		if (selectedActivity.getActivityType().getDescription().contentEquals("worksheet")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
+			loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
 			loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 			loadSampleWK(selectedActivity);
 		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
+			loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
 			loadAttributeInfo("Instructions",
 					"1. On a white board, list the hazards of concern to your community in a column down the left side, and draw horizontal lines between them. (see example)"
 							+ "\n"

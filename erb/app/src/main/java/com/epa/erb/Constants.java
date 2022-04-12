@@ -14,7 +14,7 @@ public class Constants {
 	//Attributes
 	String materialsColor = "#B895EB";					//Purple
 	String descriptionColor = "#F7B2E0"; 				//Pink
-	String objectivesColor = "#92A6EF"; 				//Blue
+	String objectivesColor = "#6B8BFF"; 				//Blue
 	String instructionsColor = "#86E596"; 				//Light Green
 	String whoColor = "#EB8787"; 						//Red
 	String timeColor = "#F7DBB2";						//Orange
@@ -22,6 +22,8 @@ public class Constants {
 	String longNameColor = "";
 	String fileNameColor = "";
 	String activityTypeColor = "";
+	String linksColor = "#E88AFF";						//Magenta
+	String guidColor = "";
 
 	//Chapters
 	String allChaptersColor	= "#80BFCD"; 				//Dark Turquoise
@@ -96,6 +98,14 @@ public class Constants {
 
 	public String getActivityTypeColor() {
 		return activityTypeColor;
+	}
+	
+	public String getLinksColor() {
+		return linksColor;
+	}
+
+	public String getGuidColor() {
+		return guidColor;
 	}
 
 	public String getAllChaptersColor() {

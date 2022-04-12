@@ -134,6 +134,14 @@ public class Activity {
 		return GUID;
 	}
 	
+	public String getLinksString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for(Activity activity : listOfLinkedActivities) {
+			stringBuilder.append("- " + activity.getLongName() + "\n");
+		}
+		return stringBuilder.toString();
+	}
+	
 	public ArrayList<String> getListOfLinkedActivityGUIDS(){
 		return listOfLinkedActivityGUIDS;
 	}
