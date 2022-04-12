@@ -38,6 +38,6 @@
       </VBox>
    </children>
    <padding>
-      <Insets bottom="5.0" top="5.0" />
+      <Insets bottom="10.0" top="10.0" />
    </padding>
 </HBox>
