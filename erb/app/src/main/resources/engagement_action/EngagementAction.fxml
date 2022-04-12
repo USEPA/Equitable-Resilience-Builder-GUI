@@ -69,7 +69,7 @@
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
-                        <Pane fx:id="timeKeyPane" prefHeight="18.0" prefWidth="30.0"/>
+                        <Pane fx:id="timeKeyPane" prefHeight="18.0" prefWidth="30.0" />
                         <Label text="Time" />
                      </children>
                   </HBox>
@@ -81,7 +81,7 @@
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
-                        <Pane fx:id="completeKeyPane" prefHeight="18.0" prefWidth="30.0"/>
+                        <Pane fx:id="completeKeyPane" prefHeight="18.0" prefWidth="30.0" />
                         <Label text="Complete" />
                      </children>
                   </HBox>
@@ -104,6 +104,7 @@
             </VBox>
          </children>
       </HBox>
+      <Pane maxHeight="2.0" minHeight="2.0" prefHeight="2.0" style="-fx-background-color: #CCCCCC;" />
       <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
             <TreeView fx:id="treeView" prefHeight="200.0" />
