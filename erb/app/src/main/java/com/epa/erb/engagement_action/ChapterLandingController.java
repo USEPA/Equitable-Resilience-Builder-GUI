@@ -87,12 +87,16 @@ public class ChapterLandingController implements Initializable {
 		StringBuilder stringBuilder = new StringBuilder();
 		if (chapter != null) {
 			for (Activity activity : chapter.getUserSelectedActivities()) {
-				stringBuilder.append(activity.getLongName() + "\n");
+				stringBuilder.append("- " + activity.getLongName() + "\n");
 			}
 		} else {
 			for (Chapter chapter : listOfAllChapters) {
 				for (Activity activity : chapter.getUserSelectedActivities()) {
-					stringBuilder.append(activity.getLongName() + "\n");
+					if (activity.getShortName().contentEquals("Reflect") || activity.getShortName().contentEquals("Plan")) {
+						stringBuilder.append("- " + chapter.getStringName() + " " + activity.getLongName() + "\n");
+					} else {
+						stringBuilder.append("- " + activity.getLongName() + "\n");
+					}
 				}
 			}
 		}
