@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+
+<HBox fx:id="diagramHBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox>
+         <children>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Line fx:id="leftLeadingLine" endX="-50.0" startX="-100.0" />
+                        <StackPane>
+                           <children>
+                              <Circle fx:id="centerCircle" fill="WHITE" onMouseClicked="#centerCircleClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label fx:id="centerCircleLabel" onMouseClicked="#centerCircleClicked" />
+                           </children>
+                        </StackPane>
+                        <Line fx:id="rightLeadingLine" endX="-50.0" startX="-100.0" />
+                     </children>
+                  </HBox>
+                  <VBox fx:id="arrowVBox" alignment="CENTER_LEFT">
+                     <children>
+                        <Polygon points="26.5, -15.5, 56.0, -15.5, 41.5, -45.5" rotate="90.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" top="10.0" />
+   </padding>
+</HBox>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox fx:id="postItNotePane" maxHeight="115.0" maxWidth="115.0" minHeight="115.0" minWidth="115.0" onMouseClicked="#postItNoteClicked" prefHeight="115.0" prefWidth="115.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" style="-fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+         <content>
+            <TextFlow fx:id="textFlow" />
+         </content>
+      </ScrollPane>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</VBox>

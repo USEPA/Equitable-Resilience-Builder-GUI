@@ -1,15 +1,19 @@
-module erb {
+module com.epa.erb {
 	requires java.xml;
 	requires java.desktop;
 	requires transitive javafx.graphics;
 	requires javafx.fxml;
 	requires transitive javafx.controls;
 	requires org.apache.logging.log4j;
-	opens erb to javafx.fxml;
-	opens erb_chapter1 to javafx.fxml;
-	opens erb_chapter2 to javafx.fxml;
-	opens erb_chapter3 to javafx.fxml;
-	opens erb_chapter4 to javafx.fxml;
-	opens erb_chapter5 to javafx.fxml;
-	exports erb;
+	requires javafx.web;
+	requires javafx.base;
+	requires java.base;
+	requires jdk.compiler;
+	requires org.apache.commons.io;
+	opens com.epa.erb to javafx.fxml;
+	opens com.epa.erb.noteboard to javafx.fxml;
+	opens com.epa.erb.worksheet to javafx.fxml;
+	opens com.epa.erb.engagement_action to javafx.fxml;
+	opens com.epa.erb.engagement_setup to javafx.fxml;
+	exports com.epa.erb;
 }

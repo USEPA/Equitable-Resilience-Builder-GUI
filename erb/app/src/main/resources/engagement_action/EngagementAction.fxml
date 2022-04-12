@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="headingHBox">
+         <children>
+            <VBox HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label fx:id="chapterLabel">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                     <content>
+                        <HBox fx:id="pathwayHBox" alignment="CENTER_LEFT">
+                           <children>
+                              <Label fx:id="erbPathwayLabel" text="ERB Pathway">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+            <VBox fx:id="keyVBox" alignment="CENTER_LEFT" minWidth="120.0" spacing="2.0">
+               <children>
+                  <Label text="Key">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Separator />
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane fx:id="materialKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                        <Label text="Materials" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane fx:id="descriptionKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                        <Label text="Description" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane fx:id="whoKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                        <Label text="Who" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane fx:id="timeKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                        <Label text="Time" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane prefHeight="18.0" prefWidth="30.0" />
+                        <Label />
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane fx:id="completeKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                        <Label text="Complete" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane fx:id="readyKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                        <Label text="Ready" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane fx:id="skippedKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                        <Label text="Skipped" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <Pane maxHeight="2.0" minHeight="2.0" prefHeight="2.0" style="-fx-background-color: #CCCCCC;" />
+      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TreeView fx:id="treeView" prefHeight="200.0" />
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox fx:id="mainHBox" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="contentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+                        <ScrollPane fx:id="attributeScrollPane" fitToHeight="true" fitToWidth="true" maxWidth="200.0" minWidth="200.0" style="-fx-background-color: transparent;">
+                           <content>
+                              <VBox fx:id="attributeVBox" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <HBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" text="Previous" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="skipButton" mnemonicParsing="false" onAction="#skipButtonAction" text="Skip" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="3.0" right="3.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>
