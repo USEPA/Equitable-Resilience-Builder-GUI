@@ -470,14 +470,14 @@ public class EngagementActionController implements Initializable{
 						String chapterNumericName = chapterElement.getAttribute("numericName");
 						String chapterStringName = chapterElement.getAttribute("stringName");
 						String chapterDescription = chapterElement.getAttribute("description");
-						Chapter chapter = new Chapter(chapterNum, chapterNumericName, chapterStringName,
-								chapterDescription);
+						Chapter chapter = new Chapter(chapterNum, chapterNumericName, chapterStringName,chapterDescription);
 						NodeList activityNodeList = chapterNode.getChildNodes();
 						for (int j = 0; j < activityNodeList.getLength(); j++) {
 							Node activityNode = activityNodeList.item(j);
 							// Activity
 							if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element activityElement = (Element) activityNode;
+								String activityGUID = activityElement.getAttribute("guid");
 								String activityStatus = activityElement.getAttribute("status");
 								String activityShortName = activityElement.getAttribute("shortName");
 								String activityLongName = activityElement.getAttribute("longName");
@@ -488,7 +488,23 @@ public class EngagementActionController implements Initializable{
 								String activityMaterials= activityElement.getAttribute("materials");
 								String activityTime = activityElement.getAttribute("time");
 								String activityWho = activityElement.getAttribute("who");
-								NodeList activityTypeNodeList = activityNode.getChildNodes();
+								
+								//Create new activity
+								Activity activity = new Activity();
+								activity.setStatus(activityStatus);
+								activity.setShortName(activityShortName);
+								activity.setLongName(activityLongName);
+								activity.setFileName(activityFileName);
+								activity.setDirections(activityDirections);
+								activity.setGUID(activityGUID);
+								activity.setObjectives(activityObjectives);
+								activity.setDescription(activityDescription);
+								activity.setMaterials(activityMaterials);
+								activity.setTime(activityTime);
+								activity.setWho(activityWho);
+								activity.setGUID(activityGUID);
+								
+								NodeList activityTypeNodeList = activityElement.getElementsByTagName("activityType");
 								for (int k = 0; k < activityTypeNodeList.getLength(); k++) {
 									Node activityTypeNode = activityTypeNodeList.item(k);
 									// ActivityType
@@ -496,27 +512,56 @@ public class EngagementActionController implements Initializable{
 										Element activityTypeElement = (Element) activityTypeNode;
 										String activityTypeLongName = activityTypeElement.getAttribute("longName");
 										String activityTypeShortName = activityTypeElement.getAttribute("shortName");
-										String activityTypeDescription = activityTypeElement
-												.getAttribute("description");
+										String activityTypeDescription = activityTypeElement.getAttribute("description");
 										String activityTypeFileExt = activityTypeElement.getAttribute("fileExt");
-										ActivityType activityType = new ActivityType(activityTypeLongName,
-												activityTypeShortName, activityTypeDescription, activityTypeFileExt);
-										Activity activity = new Activity(activityType, activityStatus, activityShortName,
-												activityLongName, activityFileName, activityDirections,
-												activityObjectives, activityDescription, activityMaterials, activityTime, activityWho);
-										chapter.addUserSelectedActivity(activity);
+										ActivityType activityType = new ActivityType(activityTypeLongName,activityTypeShortName, activityTypeDescription, activityTypeFileExt);
+										activity.setActivityType(activityType);
 									}
 								}
+								
+								NodeList linkedGUIDSNodeList = activityElement.getElementsByTagName("linkedGUIDS");
+								for (int k = 0; k < linkedGUIDSNodeList.getLength(); k++) {
+									Node linkedGUIDSNode = linkedGUIDSNodeList.item(k);
+									// Linked GUIDS
+									if (linkedGUIDSNode.getNodeType() == Node.ELEMENT_NODE) {
+										Element linkedGUIDSElement = (Element) linkedGUIDSNode;
+										NodeList linkNodeList = linkedGUIDSElement.getElementsByTagName("link");
+										for(int l=0; l <linkNodeList.getLength(); l++) {
+											Node linkNode = linkNodeList.item(l);
+											//Link
+											if(linkNode.getNodeType() == Node.ELEMENT_NODE) {
+												Element linkElement = (Element) linkNode;
+												String linkGUID = linkElement.getAttribute("guid");
+												activity.addLinkedActivityGUID(linkGUID);
+											}
+										}
+									}
+								}
+								chapter.addUserSelectedActivity(activity);
 							}
 						}
 						dataChapters.add(chapter);
 					}
 				}
+				setLinkActivities();
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
 		} else {
 			logger.error(dataFile.getPath() + " either does not exist or cannot be read");
+		}
+	}
+	
+	void setLinkActivities() {
+		for (Chapter chapter : dataChapters) {
+			for (Activity activity : chapter.getUserSelectedActivities()) {
+				if (activity.getListOfLinkedActivityGUIDS().size() > 0) {
+					for (String activityGUID : activity.getListOfLinkedActivityGUIDS()) {
+						Activity linkedActivity = getActivity(activityGUID);
+						activity.addLinkedActivity(linkedActivity);
+					}
+				}
+			}
 		}
 	}
 	

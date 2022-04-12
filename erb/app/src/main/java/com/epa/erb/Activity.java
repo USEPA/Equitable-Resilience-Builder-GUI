@@ -1,7 +1,6 @@
 package com.epa.erb;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Activity {
 	
@@ -17,7 +16,7 @@ public class Activity {
 	String time;
 	String who;
 	String GUID;
-	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who) {
+	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String GUID) {
 		this.activityType = activityType;
 		this.status = status;
 		this.shortName = shortName;
@@ -29,9 +28,14 @@ public class Activity {
 		this.materials = materials;
 		this.time = time;
 		this.who = who;
-		GUID = generateUniqueId();
+		this.GUID = GUID;
 	}
 	
+	public Activity() {
+		
+	}
+	
+	ArrayList<String> listOfLinkedActivityGUIDS = new ArrayList<String>();
 	ArrayList<Activity> listOfLinkedActivities = new ArrayList<Activity>();
 
 	public ActivityType getActivityType() {
@@ -122,10 +126,22 @@ public class Activity {
 		this.who = who;
 	}
 
+	public void setGUID(String gUID) {
+		GUID = gUID;
+	}
+
 	public String getGUID() {
 		return GUID;
 	}
 	
+	public ArrayList<String> getListOfLinkedActivityGUIDS(){
+		return listOfLinkedActivityGUIDS;
+	}
+	
+	public void addLinkedActivityGUID(String guid) {
+		listOfLinkedActivityGUIDS.add(guid);
+	}
+		
 	public ArrayList<Activity> getListOfLinkedActivities(){
 		return listOfLinkedActivities;
 	}
@@ -134,15 +150,6 @@ public class Activity {
 		listOfLinkedActivities.add(activity);
 	}
 	
-	public void removeLinkedActivity(Activity activity) {
-		listOfLinkedActivities.remove(activity);
-	}
-
-	public String generateUniqueId() {
-		UUID uuid = UUID.randomUUID();
-		return String.valueOf(uuid);
-	}
-
 	public String toString() {
 		return  "--ActivityType-- " + "\n" + activityType.toString() +  "\n" + "----" + "\n" +
 				"ShortName: " + shortName + "\n" + 
