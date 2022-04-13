@@ -10,12 +10,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
+import javafx.util.Callback;
 
 public class ChapterLandingController implements Initializable {
 
@@ -26,7 +28,7 @@ public class ChapterLandingController implements Initializable {
 	@FXML
 	TextArea aboutTextArea;
 	@FXML
-	TextArea activitiesTextArea;
+	ListView<Activity> activitiesListView;
 	@FXML
 	Button getStartedButton;
 	
@@ -77,30 +79,42 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 
-	void setActivitiesText() {
-		Text text = getActivitiesText();
-		text.setFont(Font.font(15));
-		activitiesTextArea.setText(text.getText());
-	}
-	
-	Text getActivitiesText() {
-		StringBuilder stringBuilder = new StringBuilder();
+	void setActivitiesListView() {
+		cleanActivitiesListView();
 		if (chapter != null) {
 			for (Activity activity : chapter.getUserSelectedActivities()) {
-				stringBuilder.append("- " + activity.getLongName() + "\n");
+				activitiesListView.getItems().add(activity);
 			}
 		} else {
 			for (Chapter chapter : listOfAllChapters) {
 				for (Activity activity : chapter.getUserSelectedActivities()) {
-					if (activity.getShortName().contentEquals("Reflect") || activity.getShortName().contentEquals("Plan")) {
-						stringBuilder.append("- " + chapter.getStringName() + " " + activity.getLongName() + "\n");
+					if (activity.getShortName().contentEquals("Reflect")|| activity.getShortName().contentEquals("Plan")) {
+						activitiesListView.getItems().add(activity);
 					} else {
-						stringBuilder.append("- " + activity.getLongName() + "\n");
+						activitiesListView.getItems().add(activity);
 					}
 				}
 			}
 		}
-		return new Text(stringBuilder.toString());
+		setActivityListViewCellFactory();
+	}
+	
+	private void setActivityListViewCellFactory() {
+		activitiesListView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
+			@Override
+			public ListCell<Activity> call(ListView<Activity> param) {
+				ListCell<Activity> cell = new ListCell<Activity>() {
+					@Override
+					protected void updateItem(Activity item, boolean empty) {
+						super.updateItem(item, empty);
+						if (item != null) {
+							setText("- " + item.getLongName());
+						}
+					}
+				};
+				return cell;
+			}
+		});
 	}
 	
 	@FXML
@@ -112,6 +126,10 @@ public class ChapterLandingController implements Initializable {
 				engagementActionController.treeViewClicked();
 			}
 		}
+	}
+	
+	void cleanActivitiesListView() {
+		activitiesListView.getItems().clear();
 	}
 
 }

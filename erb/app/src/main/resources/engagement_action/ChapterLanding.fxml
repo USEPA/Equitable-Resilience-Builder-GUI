@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
@@ -65,10 +66,7 @@
                   </HBox>
                   <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                      <content>
-                        <TextArea fx:id="activitiesTextArea" editable="false" style="-fx-background-color: transparent;" wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font></TextArea>
+                        <ListView fx:id="activitiesListView" style="-fx-background-color: transparent;" />
                      </content>
                   </ScrollPane>
                </children>

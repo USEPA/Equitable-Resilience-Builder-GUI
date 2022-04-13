@@ -133,7 +133,7 @@ public class EngagementActionController implements Initializable{
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
 			chapterLandingController.setAboutText();
-			chapterLandingController.setActivitiesText();
+			chapterLandingController.setActivitiesListView();
 			chapterLandingController.setHeadingLabel();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
@@ -149,7 +149,7 @@ public class EngagementActionController implements Initializable{
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
 			chapterLandingController.setAboutText();
-			chapterLandingController.setActivitiesText();
+			chapterLandingController.setActivitiesListView();
 			chapterLandingController.setHeadingLabel();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
