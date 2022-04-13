@@ -6,24 +6,24 @@ public class Constants {
 		
 	}
 	
+	//Activity Attributes
+	String activityTypeColor = "";
 	//Status
 	String readyStatusColor = "#EDF7B2"; 				//Yellow
 	String completeStatusColor = "#B2F7D1"; 			//Mint Green
-	String skippedStatusColor = "#B2C1F7"; 				//Light Blue 
-
-	//Attributes
-	String materialsColor = "#B895EB";					//Purple
-	String descriptionColor = "#F7B2E0"; 				//Pink
-	String objectivesColor = "#6B8BFF"; 				//Blue
-	String instructionsColor = "#86E596"; 				//Light Green
-	String whoColor = "#EB8787"; 						//Red
-	String timeColor = "#F7DBB2";						//Orange
+	String skippedStatusColor = "#B2C1F7"; 				//Light Blue
+	//--
 	String shortNameColor = "";
 	String longNameColor = "";
 	String fileNameColor = "";
-	String activityTypeColor = "";
+	String instructionsColor = "#86E596"; 				//Light Green
+	String objectivesColor = "#6B8BFF"; 				//Blue
+	String descriptionColor = "#F7B2E0"; 				//Pink	
+	String materialsColor = "#B895EB";					//Purple
+	String timeColor = "#F7DBB2";						//Orange
+	String whoColor = "#EB8787"; 						//Red
+	String activityIDColor = "";
 	String linksColor = "#E88AFF";						//Magenta
-	String guidColor = "";
 
 	//Chapters
 	String allChaptersColor	= "#80BFCD"; 				//Dark Turquoise
@@ -104,8 +104,8 @@ public class Constants {
 		return linksColor;
 	}
 
-	public String getGuidColor() {
-		return guidColor;
+	public String getActivityIDColor() {
+		return activityIDColor;
 	}
 
 	public String getAllChaptersColor() {

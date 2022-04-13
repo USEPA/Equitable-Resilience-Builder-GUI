@@ -220,7 +220,7 @@ public class EngagementSetupController implements Initializable {
 	}
 
 	/**
-	 * Handles users assigning a customized activity to a selected activity. Updates the GUID and the show name to reflect the assigned customized activity.
+	 * Handles users assigning a customized activity to a selected activity. Updates the activityID and the show name to reflect the assigned customized activity.
 	 */
 	@FXML
 	public void assignButtonAction() {
@@ -228,7 +228,7 @@ public class EngagementSetupController implements Initializable {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
 			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
 				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
-				selectedActivity.setActivityGUID(selectedCustomizedActivity.getGUID());
+				selectedActivity.setActivityID(selectedCustomizedActivity.getActivityID());
 				selectedActivity.setShowName(selectedCustomizedActivity.getLongName());
 				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
 			}
@@ -261,7 +261,6 @@ public class EngagementSetupController implements Initializable {
 				for(Activity activity: chapter.getUserSelectedActivities()) {
 					Element activityElement = document.createElement("activity");
 					activityElement.setAttribute("status", activity.getStatus());
-					activityElement.setAttribute("guid", activity.getGUID());
 					activityElement.setAttribute("shortName", activity.getShortName());
 					activityElement.setAttribute("longName", activity.getLongName());
 					activityElement.setAttribute("fileName", activity.getFileName());
@@ -271,6 +270,7 @@ public class EngagementSetupController implements Initializable {
 					activityElement.setAttribute("materials", activity.getMaterials());
 					activityElement.setAttribute("time", activity.getTime());
 					activityElement.setAttribute("who", activity.getWho());
+					activityElement.setAttribute("activityID", activity.getActivityID());
 					
 					Element activityTypeElement = document.createElement("activityType");
 					activityTypeElement.setAttribute("longName", activity.getActivityType().getLongName());
@@ -278,15 +278,15 @@ public class EngagementSetupController implements Initializable {
 					activityTypeElement.setAttribute("description",activity.getActivityType().getDescription());
 					activityTypeElement.setAttribute("fileExt", activity.getActivityType().getFileExt());
 					
-					Element linkedGUIDSElement = document.createElement("linkedGUIDS");
+					Element linkedIDSElement = document.createElement("linkedActivityIDS");
 					for(Activity linkedActivity : activity.getListOfLinkedActivities()) {
 						Element linkElement = document.createElement("link");
-						linkElement.setAttribute("guid", linkedActivity.getGUID());
-						linkedGUIDSElement.appendChild(linkElement);
+						linkElement.setAttribute("activityID", linkedActivity.getActivityID());
+						linkedIDSElement.appendChild(linkElement);
 					}
 					
 					activityElement.appendChild(activityTypeElement);
-					activityElement.appendChild(linkedGUIDSElement);
+					activityElement.appendChild(linkedIDSElement);
 					chapterElement.appendChild(activityElement);
 				}
 				rootElement.appendChild(chapterElement);
@@ -313,7 +313,7 @@ public class EngagementSetupController implements Initializable {
 			chapter.addUserSelectedActivity(getCustomizedPlanActivity());
 			ObservableList<SelectedActivity> selectedActivities = listView.getItems();
 			for (SelectedActivity selectedActivity : selectedActivities) {
-				chapter.addUserSelectedActivity(getCustomizedActivity(selectedActivity.getActivityGUID()));
+				chapter.addUserSelectedActivity(getCustomizedActivity(selectedActivity.getActivityID()));
 			}
 			chapter.addUserSelectedActivity(getCustomizedReflectActivity());
 		}
@@ -503,7 +503,6 @@ public class EngagementSetupController implements Initializable {
 						Element activityElement = (Element) activityNode;
 						String activityTypeName = activityElement.getAttribute("activityType");
 						ActivityType activityType = getActivityType(activityTypeName);
-						String GUID = activityElement.getAttribute("guid");
 						String status = activityElement.getAttribute("status");
 						String shortName = activityElement.getAttribute("shortName");
 						String longName = activityElement.getAttribute("longName");
@@ -514,23 +513,24 @@ public class EngagementSetupController implements Initializable {
 						String materials = activityElement.getAttribute("materials");
 						String time = activityElement.getAttribute("time");
 						String who = activityElement.getAttribute("who");
+						String activityID = activityElement.getAttribute("activityID");
 						Activity activity = new Activity(activityType, status, shortName, longName, fileName, directions,
-								objectives, description, materials, time, who, GUID);
+								objectives, description, materials, time, who, activityID);
 						customizedActivities.add(activity);
-						NodeList linkedGUIDNodeList = activityElement.getElementsByTagName("linkedGUIDS");
-						for(int j =0; j < linkedGUIDNodeList.getLength(); j++) {
-							Node linkedGUIDNode = linkedGUIDNodeList.item(j);
-							//LinkedGUIDS
-							if(linkedGUIDNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element linkedGUIDElement = (Element) linkedGUIDNode;
-								NodeList linksNodeList = linkedGUIDElement.getElementsByTagName("link");
+						NodeList linkedActivityIDNodeList = activityElement.getElementsByTagName("linkedActivityIDS");
+						for(int j =0; j < linkedActivityIDNodeList.getLength(); j++) {
+							Node linkedActivityIDNode = linkedActivityIDNodeList.item(j);
+							//Linked ActivityIDS
+							if(linkedActivityIDNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element linkedActivityIDElement = (Element) linkedActivityIDNode;
+								NodeList linksNodeList = linkedActivityIDElement.getElementsByTagName("link");
 								for(int k=0; k < linksNodeList.getLength(); k++) {
 									Node linkNode = linksNodeList.item(k);
 									//Link
 									if(linkNode.getNodeType() == Node.ELEMENT_NODE) {
 										Element linkElement = (Element) linkNode;
-										String linkGUID = linkElement.getAttribute("guid");
-										activity.addLinkedActivityGUID(linkGUID);
+										String linkID = linkElement.getAttribute("activityID");
+										activity.addLinkedActivityID(linkID);
 									}
 								}
 							}
@@ -548,9 +548,9 @@ public class EngagementSetupController implements Initializable {
 	
 	void setLinkActivities() {
 		for (Activity activity : customizedActivities) {
-			if (activity.getListOfLinkedActivityGUIDS().size() > 0) {
-				for (String activityGUID : activity.getListOfLinkedActivityGUIDS()) {
-					Activity linkedActivity = getCustomizedActivity(activityGUID);
+			if (activity.getListOfLinkedActivityIDS().size() > 0) {
+				for (String activityID : activity.getListOfLinkedActivityIDS()) {
+					Activity linkedActivity = getCustomizedActivity(activityID);
 					activity.addLinkedActivity(linkedActivity);
 				}
 			}
@@ -581,9 +581,9 @@ public class EngagementSetupController implements Initializable {
 		return null;
 	}
 	
-	private Activity getCustomizedActivity(String GUID) {
+	private Activity getCustomizedActivity(String activityID) {
 		for(Activity activity: customizedActivities) {
-			if(activity.getGUID().contentEquals(GUID)) {
+			if(activity.getActivityID().contentEquals(activityID)) {
 				return activity;
 			}
 		}

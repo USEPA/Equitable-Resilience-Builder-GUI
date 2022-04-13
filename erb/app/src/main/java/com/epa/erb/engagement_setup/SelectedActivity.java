@@ -4,17 +4,17 @@ public class SelectedActivity {
 
 	String showName; 
 	String activityType;
-	String activityGUID;
+	String activityID;
 	
 	public SelectedActivity(String showName, String activityType) {
 		this.showName = showName;
 		this.activityType = activityType;
 	}
 	
-	public SelectedActivity(String showName, String activityType, String activityGUID) {
+	public SelectedActivity(String showName, String activityType, String activityID) {
 		this.showName = showName;
 		this.activityType = activityType;
-		this.activityGUID = activityGUID;
+		this.activityID = activityID;
 	}
 
 	public String getShowName() {
@@ -33,11 +33,11 @@ public class SelectedActivity {
 		this.activityType = activityType;
 	}
 
-	public String getActivityGUID() {
-		return activityGUID;
+	public String getActivityID() {
+		return activityID;
 	}
 
-	public void setActivityGUID(String activityGUID) {
-		this.activityGUID = activityGUID;
+	public void setActivityID(String activityID) {
+		this.activityID = activityID;
 	}
 }

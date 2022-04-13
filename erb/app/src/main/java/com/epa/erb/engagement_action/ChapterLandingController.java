@@ -119,9 +119,9 @@ public class ChapterLandingController implements Initializable {
 	
 	@FXML
 	public void getStartedButtonAction() {
-		String activityGUID = chapter.getUserSelectedActivities().get(0).getGUID();
+		String activityID = chapter.getUserSelectedActivities().get(0).getActivityID();
 		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
+			if (engagementActionController.getTreeMap().get(treeItem) == activityID) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 				engagementActionController.treeViewClicked();
 			}

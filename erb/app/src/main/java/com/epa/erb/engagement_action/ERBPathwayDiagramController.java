@@ -164,41 +164,41 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void bottomRightCircleLabelClicked() {
-		String selectedGUID = engagementActionController.getSelectedGUID();
-		if (selectedGUID.contentEquals(activity.getGUID())) {
+		String selectedActivityID = engagementActionController.getSelectedActivityID();
+		if (selectedActivityID.contentEquals(activity.getActivityID())) {
 			engagementActionController.loadAttributeInfo("Time", activity.getTime(), constants.getTimeColor());
 		}
 	}
 	
 	@FXML
 	public void bottomLeftCircleLabelClicked() {
-		String selectedGUID = engagementActionController.getSelectedGUID();
-		if (selectedGUID.contentEquals(activity.getGUID())) {
+		String selectedActivityID = engagementActionController.getSelectedActivityID();
+		if (selectedActivityID.contentEquals(activity.getActivityID())) {
 			engagementActionController.loadAttributeInfo("Who", activity.getWho(), constants.getWhoColor());
 		}
 	}
 
 	@FXML
 	public void topRightCircleLabelClicked() {
-		String selectedGUID = engagementActionController.getSelectedGUID();
-		if (selectedGUID.contentEquals(activity.getGUID())) {
+		String selectedActivityID = engagementActionController.getSelectedActivityID();
+		if (selectedActivityID.contentEquals(activity.getActivityID())) {
 			engagementActionController.loadAttributeInfo("Description", activity.getDescription(), constants.getDescriptionColor());
 		}
 	}
 
 	@FXML
 	public void topLeftCircleLabelClicked() {
-		String selectedGUID = engagementActionController.getSelectedGUID();
-		if (selectedGUID.contentEquals(activity.getGUID())) {
+		String selectedActivityID = engagementActionController.getSelectedActivityID();
+		if (selectedActivityID.contentEquals(activity.getActivityID())) {
 			engagementActionController.loadAttributeInfo("Materials", activity.getMaterials(), constants.getMaterialsColor());
 		}
 	}
 
 	@FXML
 	public void centerCircleClicked() {
-		String activityGUID = activity.getGUID();
+		String selectedActivityID = activity.getActivityID();
 		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
+			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityID) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 				engagementActionController.treeViewClicked();
 			}
@@ -207,9 +207,9 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void centerCircleLabelClicked() {
-		String activityGUID = activity.getGUID();
+		String selectedActivityID = activity.getActivityID();
 		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
+			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityID) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 				engagementActionController.treeViewClicked();
 			}

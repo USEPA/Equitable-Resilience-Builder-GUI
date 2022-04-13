@@ -15,8 +15,8 @@ public class Activity {
 	String materials;
 	String time;
 	String who;
-	String GUID;
-	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String GUID) {
+	String activityID;
+	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID) {
 		this.activityType = activityType;
 		this.status = status;
 		this.shortName = shortName;
@@ -28,14 +28,14 @@ public class Activity {
 		this.materials = materials;
 		this.time = time;
 		this.who = who;
-		this.GUID = GUID;
+		this.activityID = activityID;
 	}
 	
 	public Activity() {
 		
 	}
 	
-	ArrayList<String> listOfLinkedActivityGUIDS = new ArrayList<String>();
+	ArrayList<String> listOfLinkedActivityIDS = new ArrayList<String>();
 	ArrayList<Activity> listOfLinkedActivities = new ArrayList<Activity>();
 
 	public ActivityType getActivityType() {
@@ -125,15 +125,15 @@ public class Activity {
 	public void setWho(String who) {
 		this.who = who;
 	}
-
-	public void setGUID(String gUID) {
-		GUID = gUID;
-	}
-
-	public String getGUID() {
-		return GUID;
-	}
 	
+	public String getActivityID() {
+		return activityID;
+	}
+
+	public void setActivityID(String activityID) {
+		this.activityID = activityID;
+	}
+
 	public String getLinksString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		for(Activity activity : listOfLinkedActivities) {
@@ -142,12 +142,12 @@ public class Activity {
 		return stringBuilder.toString();
 	}
 	
-	public ArrayList<String> getListOfLinkedActivityGUIDS(){
-		return listOfLinkedActivityGUIDS;
+	public ArrayList<String> getListOfLinkedActivityIDS(){
+		return listOfLinkedActivityIDS;
 	}
 	
-	public void addLinkedActivityGUID(String guid) {
-		listOfLinkedActivityGUIDS.add(guid);
+	public void addLinkedActivityID(String activityID) {
+		listOfLinkedActivityIDS.add(activityID);
 	}
 		
 	public ArrayList<Activity> getListOfLinkedActivities(){
@@ -165,8 +165,12 @@ public class Activity {
 				"FileName: " + fileName + "\n" + 
 				"Directions: " + directions + "\n" + 
 				"Objectives: " + objectives + "\n" + 
-				"Description: " + description + "\n" + 
-				"GUID: " + GUID + "\n";
+				"Description: " + description + "\n" +
+				"Materials: " + materials + "\n" + 
+				"Time: " + time + "\n" + 
+				"Who: " + who + "\n" +
+				"ActivityID: " + activityID + "\n" +
+				"LinkedActivityIDS: " + listOfLinkedActivityIDS;
 	}
 	
 }

@@ -84,7 +84,7 @@ public class EngagementActionController implements Initializable{
 	private Constants constants = new Constants();
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //Holds the tree items mapped to a chapter name or activity GUID
+	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //Holds the tree items mapped to a chapter name or activity ID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //Holds all of the attribute panel that are loaded
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
 	
@@ -103,9 +103,9 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void initializeTreeViewSelection() {
-		String activityGUID = "0";
+		String activityID = "0";
 		for (TreeItem<String> treeItem : getTreeMap().keySet()) {
-			if (getTreeMap().get(treeItem) == activityGUID) {
+			if (getTreeMap().get(treeItem) == activityID) {
 				getTreeView().getSelectionModel().select(treeItem);
 				treeViewClicked();
 			}
@@ -259,8 +259,8 @@ public class EngagementActionController implements Initializable{
 						loadActivityERBPathway(currentChapter);
 					} else { // Is Activity
 						Chapter currentChapter = getChapter(parentTreeItemValue);
-						String GUID = treeMap.get(selectedTreeItem);
-						Activity selectedActivity = getActivity(GUID);
+						String activityID = treeMap.get(selectedTreeItem);
+						Activity selectedActivity = getActivity(activityID);
 						addAttributePanel(1);
 						addColorKey(1);
 						if(currentActivity != selectedActivity) { //If a new activity is selected
@@ -294,8 +294,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void highlightSelectedActivityDiagram(TreeItem<String> selectedTreeItem) {
-		String GUID = treeMap.get(selectedTreeItem);
-		Activity selectedActivity = getActivity(GUID);
+		String activityID = treeMap.get(selectedTreeItem);
+		Activity selectedActivity = getActivity(activityID);
 		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
 			if(erbPathwayDiagramController.getActivity() == selectedActivity) {
 				erbPathwayDiagramController.highlightDiagram();
@@ -306,8 +306,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void loadActivityContentPanel(TreeItem<String> selectedTreeItem) {
-		String GUID = treeMap.get(selectedTreeItem);
-		Activity selectedActivity = getActivity(GUID);
+		String activityID = treeMap.get(selectedTreeItem);
+		Activity selectedActivity = getActivity(activityID);
 		if (selectedActivity.getActivityType().getDescription().contentEquals("worksheet")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
 			loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
@@ -410,7 +410,7 @@ public class EngagementActionController implements Initializable{
 			for (Activity activity : chapter.getUserSelectedActivities()) {
 				TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
 				chapterTreeItem.getChildren().add(activityTreeItem);
-				treeMap.put(activityTreeItem, activity.getGUID());
+				treeMap.put(activityTreeItem, activity.getActivityID());
 			}
 		}
 	}
@@ -479,7 +479,7 @@ public class EngagementActionController implements Initializable{
 							// Activity
 							if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element activityElement = (Element) activityNode;
-								String activityGUID = activityElement.getAttribute("guid");
+								String activityID = activityElement.getAttribute("activityID");
 								String activityStatus = activityElement.getAttribute("status");
 								String activityShortName = activityElement.getAttribute("shortName");
 								String activityLongName = activityElement.getAttribute("longName");
@@ -498,13 +498,12 @@ public class EngagementActionController implements Initializable{
 								activity.setLongName(activityLongName);
 								activity.setFileName(activityFileName);
 								activity.setDirections(activityDirections);
-								activity.setGUID(activityGUID);
 								activity.setObjectives(activityObjectives);
 								activity.setDescription(activityDescription);
 								activity.setMaterials(activityMaterials);
 								activity.setTime(activityTime);
 								activity.setWho(activityWho);
-								activity.setGUID(activityGUID);
+								activity.setActivityID(activityID);
 								
 								NodeList activityTypeNodeList = activityElement.getElementsByTagName("activityType");
 								for (int k = 0; k < activityTypeNodeList.getLength(); k++) {
@@ -521,20 +520,20 @@ public class EngagementActionController implements Initializable{
 									}
 								}
 								
-								NodeList linkedGUIDSNodeList = activityElement.getElementsByTagName("linkedGUIDS");
-								for (int k = 0; k < linkedGUIDSNodeList.getLength(); k++) {
-									Node linkedGUIDSNode = linkedGUIDSNodeList.item(k);
-									// Linked GUIDS
-									if (linkedGUIDSNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element linkedGUIDSElement = (Element) linkedGUIDSNode;
-										NodeList linkNodeList = linkedGUIDSElement.getElementsByTagName("link");
+								NodeList linkedActivityIDSNodeList = activityElement.getElementsByTagName("linkedActivityIDS");
+								for (int k = 0; k < linkedActivityIDSNodeList.getLength(); k++) {
+									Node linkedActivityIDSNode = linkedActivityIDSNodeList.item(k);
+									// Linked ActivityIDS
+									if (linkedActivityIDSNode.getNodeType() == Node.ELEMENT_NODE) {
+										Element linkedActivityIDSElement = (Element) linkedActivityIDSNode;
+										NodeList linkNodeList = linkedActivityIDSElement.getElementsByTagName("link");
 										for(int l=0; l <linkNodeList.getLength(); l++) {
 											Node linkNode = linkNodeList.item(l);
 											//Link
 											if(linkNode.getNodeType() == Node.ELEMENT_NODE) {
 												Element linkElement = (Element) linkNode;
-												String linkGUID = linkElement.getAttribute("guid");
-												activity.addLinkedActivityGUID(linkGUID);
+												String linkID = linkElement.getAttribute("activityID");
+												activity.addLinkedActivityID(linkID);
 											}
 										}
 									}
@@ -557,9 +556,9 @@ public class EngagementActionController implements Initializable{
 	void setLinkActivities() {
 		for (Chapter chapter : dataChapters) {
 			for (Activity activity : chapter.getUserSelectedActivities()) {
-				if (activity.getListOfLinkedActivityGUIDS().size() > 0) {
-					for (String activityGUID : activity.getListOfLinkedActivityGUIDS()) {
-						Activity linkedActivity = getActivity(activityGUID);
+				if (activity.getListOfLinkedActivityIDS().size() > 0) {
+					for (String activityID : activity.getListOfLinkedActivityIDS()) {
+						Activity linkedActivity = getActivity(activityID);
 						activity.addLinkedActivity(linkedActivity);
 					}
 				}
@@ -627,10 +626,10 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
-	private Activity getActivity(String GUID) {
+	private Activity getActivity(String activityID) {
 		for(Chapter chapter: dataChapters) {
 			for(Activity activity : chapter.getUserSelectedActivities()) {
-				if(activity.getGUID().contentEquals(GUID)) {
+				if(activity.getActivityID().contentEquals(activityID)) {
 					return activity;
 				}
 			}
@@ -639,12 +638,12 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
-	String getSelectedGUID() {
+	String getSelectedActivityID() {
 		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();
 		if(treeItem != null) {
 			return treeMap.get(treeItem);
 		} else {
-			logger.debug("Selected GUID is null");
+			logger.debug("Selected Activity ID is null");
 			return null;
 		}
 	}
