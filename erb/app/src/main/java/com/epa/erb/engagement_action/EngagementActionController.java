@@ -479,7 +479,6 @@ public class EngagementActionController implements Initializable{
 							// Activity
 							if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element activityElement = (Element) activityNode;
-								String activityID = activityElement.getAttribute("activityID");
 								String activityStatus = activityElement.getAttribute("status");
 								String activityShortName = activityElement.getAttribute("shortName");
 								String activityLongName = activityElement.getAttribute("longName");
@@ -490,6 +489,8 @@ public class EngagementActionController implements Initializable{
 								String activityMaterials= activityElement.getAttribute("materials");
 								String activityTime = activityElement.getAttribute("time");
 								String activityWho = activityElement.getAttribute("who");
+								String activityID = activityElement.getAttribute("activityID");
+								String activityGUID = activityElement.getAttribute("guid");
 								
 								//Create new activity
 								Activity activity = new Activity();
@@ -504,6 +505,7 @@ public class EngagementActionController implements Initializable{
 								activity.setTime(activityTime);
 								activity.setWho(activityWho);
 								activity.setActivityID(activityID);
+								activity.setGUID(activityGUID);
 								
 								NodeList activityTypeNodeList = activityElement.getElementsByTagName("activityType");
 								for (int k = 0; k < activityTypeNodeList.getLength(); k++) {
@@ -545,11 +547,22 @@ public class EngagementActionController implements Initializable{
 					}
 				}
 				setLinkActivities();
+				printActivities();
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
 		} else {
 			logger.error(dataFile.getPath() + " either does not exist or cannot be read");
+		}
+	}
+	
+	void printActivities() {
+		for(Chapter chapter : dataChapters) {
+			System.out.println("-------------------------------------------------------------");
+			System.out.println(chapter.toString());
+			for(Activity activity : chapter.getUserSelectedActivities()) {
+				System.out.println(activity.toString());
+			}
 		}
 	}
 	

@@ -31,6 +31,23 @@ public class Activity {
 		this.activityID = activityID;
 	}
 	
+	String GUID;
+	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID, String GUID) {
+		this.activityType = activityType;
+		this.status = status;
+		this.shortName = shortName;
+		this.longName = longName;
+		this.fileName = fileName;
+		this.directions = directions;
+		this.objectives = objectives;
+		this.description = description;
+		this.materials = materials;
+		this.time = time;
+		this.who = who;
+		this.activityID = activityID;
+		this.GUID = GUID;
+	}
+		
 	public Activity() {
 		
 	}
@@ -133,6 +150,14 @@ public class Activity {
 	public void setActivityID(String activityID) {
 		this.activityID = activityID;
 	}
+	
+	public String getGUID() {
+		return GUID;
+	}
+
+	public void setGUID(String gUID) {
+		GUID = gUID;
+	}
 
 	public String getLinksString() {
 		StringBuilder stringBuilder = new StringBuilder();
@@ -170,6 +195,7 @@ public class Activity {
 				"Time: " + time + "\n" + 
 				"Who: " + who + "\n" +
 				"ActivityID: " + activityID + "\n" +
+				"GUID: " + GUID + "\n" +
 				"LinkedActivityIDS: " + listOfLinkedActivityIDS;
 	}
 	

@@ -75,7 +75,7 @@ public class Chapter {
 				"Numeric Name: " + numericName + "\n" + 
 				"String Name: " + stringName + "\n" + 
 				"Description Name: " + descriptionName + "\n" +
-				"--User Selected Activities-- " + getUserSelectedActivitiesString() + "----";
+				"User Selected Activities: " + userSelectedActivities.size();
 	}
 	
 }

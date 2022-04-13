@@ -5,6 +5,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -271,6 +272,7 @@ public class EngagementSetupController implements Initializable {
 					activityElement.setAttribute("time", activity.getTime());
 					activityElement.setAttribute("who", activity.getWho());
 					activityElement.setAttribute("activityID", activity.getActivityID());
+					activityElement.setAttribute("guid", generateGUID());
 					
 					Element activityTypeElement = document.createElement("activityType");
 					activityTypeElement.setAttribute("longName", activity.getActivityType().getLongName());
@@ -317,6 +319,11 @@ public class EngagementSetupController implements Initializable {
 			}
 			chapter.addUserSelectedActivity(getCustomizedReflectActivity());
 		}
+	}
+	
+	private String generateGUID() {
+		UUID uuid = UUID.randomUUID();
+		return String.valueOf(uuid);
 	}
 	
 	/**
@@ -401,8 +408,6 @@ public class EngagementSetupController implements Initializable {
 		objectivesTextField.setText(null);
 		fileNameHyperlink.setText(null);
 	}
-	
-
 	
 	void setActivityTypeListViewDrag(ListView<ActivityType> listView) {
 		String TAB_DRAG_KEY = "listView";
