@@ -12,10 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.effect.Glow;
-import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -164,41 +161,41 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void bottomRightCircleLabelClicked() {
-		String selectedActivityID = engagementActionController.getSelectedActivityID();
-		if (selectedActivityID.contentEquals(activity.getActivityID())) {
+		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
+		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
 			engagementActionController.loadAttributeInfo("Time", activity.getTime(), constants.getTimeColor());
-		}
+		}		
 	}
 	
 	@FXML
 	public void bottomLeftCircleLabelClicked() {
-		String selectedActivityID = engagementActionController.getSelectedActivityID();
-		if (selectedActivityID.contentEquals(activity.getActivityID())) {
+		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
+		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
 			engagementActionController.loadAttributeInfo("Who", activity.getWho(), constants.getWhoColor());
 		}
 	}
 
 	@FXML
 	public void topRightCircleLabelClicked() {
-		String selectedActivityID = engagementActionController.getSelectedActivityID();
-		if (selectedActivityID.contentEquals(activity.getActivityID())) {
+		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
+		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
 			engagementActionController.loadAttributeInfo("Description", activity.getDescription(), constants.getDescriptionColor());
 		}
 	}
 
 	@FXML
 	public void topLeftCircleLabelClicked() {
-		String selectedActivityID = engagementActionController.getSelectedActivityID();
-		if (selectedActivityID.contentEquals(activity.getActivityID())) {
+		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
+		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
 			engagementActionController.loadAttributeInfo("Materials", activity.getMaterials(), constants.getMaterialsColor());
 		}
 	}
 
 	@FXML
 	public void centerCircleClicked() {
-		String selectedActivityID = activity.getActivityID();
+		String selectedActivityGUID = activity.getGUID();
 		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityID) {
+			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityGUID) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 				engagementActionController.treeViewClicked();
 			}
@@ -207,9 +204,9 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void centerCircleLabelClicked() {
-		String selectedActivityID = activity.getActivityID();
+		String selectedActivityGUID = activity.getGUID();
 		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityID) {
+			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityGUID) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 				engagementActionController.treeViewClicked();
 			}

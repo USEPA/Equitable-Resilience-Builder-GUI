@@ -59,7 +59,7 @@ public class Chapter {
 	public int getNumberOfUserSelectedActivities() {
 		return userSelectedActivities.size();
 	}
-	
+		
 	public String getUserSelectedActivitiesString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("\n");

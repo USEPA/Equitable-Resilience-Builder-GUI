@@ -103,9 +103,9 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void initializeTreeViewSelection() {
-		String activityID = "0";
-		for (TreeItem<String> treeItem : getTreeMap().keySet()) {
-			if (getTreeMap().get(treeItem) == activityID) {
+		String activityGUID = "0";
+		for (TreeItem<String> treeItem : treeMap.keySet()) {
+			if (treeMap.get(treeItem) == activityGUID) {
 				getTreeView().getSelectionModel().select(treeItem);
 				treeViewClicked();
 			}
@@ -259,8 +259,8 @@ public class EngagementActionController implements Initializable{
 						loadActivityERBPathway(currentChapter);
 					} else { // Is Activity
 						Chapter currentChapter = getChapter(parentTreeItemValue);
-						String activityID = treeMap.get(selectedTreeItem);
-						Activity selectedActivity = getActivity(activityID);
+						String activityGUID = treeMap.get(selectedTreeItem);
+						Activity selectedActivity = getActivity(activityGUID);
 						addAttributePanel(1);
 						addColorKey(1);
 						if(currentActivity != selectedActivity) { //If a new activity is selected
@@ -294,8 +294,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void highlightSelectedActivityDiagram(TreeItem<String> selectedTreeItem) {
-		String activityID = treeMap.get(selectedTreeItem);
-		Activity selectedActivity = getActivity(activityID);
+		String activityGUID = treeMap.get(selectedTreeItem);
+		Activity selectedActivity = getActivity(activityGUID);
 		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
 			if(erbPathwayDiagramController.getActivity() == selectedActivity) {
 				erbPathwayDiagramController.highlightDiagram();
@@ -306,8 +306,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void loadActivityContentPanel(TreeItem<String> selectedTreeItem) {
-		String activityID = treeMap.get(selectedTreeItem);
-		Activity selectedActivity = getActivity(activityID);
+		String activityGUID = treeMap.get(selectedTreeItem);
+		Activity selectedActivity = getActivity(activityGUID);
 		if (selectedActivity.getActivityType().getDescription().contentEquals("worksheet")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
 			loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
@@ -410,7 +410,7 @@ public class EngagementActionController implements Initializable{
 			for (Activity activity : chapter.getUserSelectedActivities()) {
 				TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
 				chapterTreeItem.getChildren().add(activityTreeItem);
-				treeMap.put(activityTreeItem, activity.getActivityID());
+				treeMap.put(activityTreeItem, activity.getGUID());
 			}
 		}
 	}
@@ -507,6 +507,7 @@ public class EngagementActionController implements Initializable{
 								activity.setActivityID(activityID);
 								activity.setGUID(activityGUID);
 								
+								//Add activity type element to activity
 								NodeList activityTypeNodeList = activityElement.getElementsByTagName("activityType");
 								for (int k = 0; k < activityTypeNodeList.getLength(); k++) {
 									Node activityTypeNode = activityTypeNodeList.item(k);
@@ -522,6 +523,7 @@ public class EngagementActionController implements Initializable{
 									}
 								}
 								
+								//Add activity id links element to activity
 								NodeList linkedActivityIDSNodeList = activityElement.getElementsByTagName("linkedActivityIDS");
 								for (int k = 0; k < linkedActivityIDSNodeList.getLength(); k++) {
 									Node linkedActivityIDSNode = linkedActivityIDSNodeList.item(k);
@@ -546,8 +548,6 @@ public class EngagementActionController implements Initializable{
 						dataChapters.add(chapter);
 					}
 				}
-				setLinkActivities();
-				printActivities();
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
@@ -555,30 +555,7 @@ public class EngagementActionController implements Initializable{
 			logger.error(dataFile.getPath() + " either does not exist or cannot be read");
 		}
 	}
-	
-	void printActivities() {
-		for(Chapter chapter : dataChapters) {
-			System.out.println("-------------------------------------------------------------");
-			System.out.println(chapter.toString());
-			for(Activity activity : chapter.getUserSelectedActivities()) {
-				System.out.println(activity.toString());
-			}
-		}
-	}
-	
-	void setLinkActivities() {
-		for (Chapter chapter : dataChapters) {
-			for (Activity activity : chapter.getUserSelectedActivities()) {
-				if (activity.getListOfLinkedActivityIDS().size() > 0) {
-					for (String activityID : activity.getListOfLinkedActivityIDS()) {
-						Activity linkedActivity = getActivity(activityID);
-						activity.addLinkedActivity(linkedActivity);
-					}
-				}
-			}
-		}
-	}
-	
+		
 	void cleanAttributeVBox() {
 		attributeVBox.getChildren().clear();
 		listOfAttributePanelControllers.clear();
@@ -639,10 +616,10 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
-	private Activity getActivity(String activityID) {
+	private Activity getActivity(String guid) {
 		for(Chapter chapter: dataChapters) {
 			for(Activity activity : chapter.getUserSelectedActivities()) {
-				if(activity.getActivityID().contentEquals(activityID)) {
+				if(activity.getGUID().contentEquals(guid)) {
 					return activity;
 				}
 			}
@@ -651,12 +628,12 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
-	String getSelectedActivityID() {
+	String getSelectedActivityGUID() {
 		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();
-		if(treeItem != null) {
+		if (treeItem != null) {
 			return treeMap.get(treeItem);
 		} else {
-			logger.debug("Selected Activity ID is null");
+			logger.debug("Selected Activity GUID is null");
 			return null;
 		}
 	}
