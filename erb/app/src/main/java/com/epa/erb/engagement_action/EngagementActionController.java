@@ -17,6 +17,7 @@ import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
+import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -170,15 +171,15 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void loadSampleContent() {
+	private void loadSampleNB() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/SampleContent.fxml"));
-			SampleContentController sampleContentController = new SampleContentController();
-			fxmlLoader.setController(sampleContentController);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
+			fxmlLoader.setController(noteBoardContentController);
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
@@ -325,7 +326,7 @@ public class EngagementActionController implements Initializable{
 							+ "\n"
 							+ "5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases",
 					constants.getInstructionsColor());
-			loadSampleContent();
+			loadSampleNB();
 		}
 	}
 	
