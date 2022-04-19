@@ -2,6 +2,7 @@ package com.epa.erb.engagement_action;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
@@ -108,14 +109,33 @@ public class ChapterLandingController implements Initializable {
 					protected void updateItem(Activity item, boolean empty) {
 						super.updateItem(item, empty);
 						if (item != null) {
-							setText("- " + item.getLongName());
+							Chapter assignedChapter = engagementActionController.getChapter(item);
+							if (assignedChapter != null) {
+								setText(assignedChapter.getStringName() + ": " + item.getLongName());
+							} else {
+								setText(item.getLongName());
+							}
 							setFont(new Font(14.0));
 						}
 					}
 				};
+				cell.setOnMouseClicked(e -> activitySelectedInList());
 				return cell;
 			}
 		});
+	}
+	
+	public void activitySelectedInList() {
+		Activity selectedActivity = activitiesListView.getSelectionModel().getSelectedItem();
+		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeMap();
+		for(TreeItem<String> treeItem : treeMap.keySet()) {
+			if(treeItem.getValue().contentEquals(selectedActivity.getLongName())) {
+				if(treeMap.get(treeItem).contentEquals(selectedActivity.getGUID())){
+					engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+					engagementActionController.treeViewClicked();
+				}
+			}
+		}
 	}
 	
 	@FXML

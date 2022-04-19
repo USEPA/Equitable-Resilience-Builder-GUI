@@ -616,6 +616,18 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
+	Chapter getChapter(Activity activity) {
+		for(Chapter chapter : dataChapters) {
+			for(Activity chapterActivity: chapter.getUserSelectedActivities()) {
+				if(chapterActivity.getGUID().contentEquals(activity.getGUID())) {
+					return chapter;
+				}
+			}
+		}
+		logger.debug("Chapter returned is null");
+		return null;
+	}
+	
 	private Activity getActivity(String guid) {
 		for(Chapter chapter: dataChapters) {
 			for(Activity activity : chapter.getUserSelectedActivities()) {
