@@ -36,3 +36,5 @@ application {
     mainModule = 'com.epa.erb'
 }
 
+applicationDefaultJvmArgs = ["-Dprism.maxvram=2G"]
+
