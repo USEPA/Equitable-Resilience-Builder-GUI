@@ -109,6 +109,7 @@ public class ChapterLandingController implements Initializable {
 						super.updateItem(item, empty);
 						if (item != null) {
 							setText("- " + item.getLongName());
+							setFont(new Font(14.0));
 						}
 					}
 				};
