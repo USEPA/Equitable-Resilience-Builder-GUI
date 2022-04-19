@@ -309,10 +309,12 @@ public class EngagementActionController implements Initializable{
 		String activityGUID = treeMap.get(selectedTreeItem);
 		Activity selectedActivity = getActivity(activityGUID);
 		if (selectedActivity.getActivityType().getDescription().contentEquals("worksheet")) {
-			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
-			loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
-			loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
-			loadSampleWK(selectedActivity);
+			if (!selectedActivity.getLongName().contentEquals("Plan") && !selectedActivity.getLongName().contentEquals("Reflect")) {
+				loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
+				loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
+				loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
+				loadSampleWK(selectedActivity);
+			}
 		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
 			loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
