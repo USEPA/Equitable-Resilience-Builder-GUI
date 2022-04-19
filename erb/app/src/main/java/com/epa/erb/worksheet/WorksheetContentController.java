@@ -1,22 +1,35 @@
 package com.epa.erb.worksheet;
 
 import java.awt.Desktop;
+import java.awt.print.PrinterJob;
 import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.util.Base64;
 import java.util.ResourceBundle;
+import javax.print.PrintService;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.Copies;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.pdfbox.Loader;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.printing.PDFPageable;
 import javafx.beans.value.ChangeListener;
 import com.epa.erb.Activity;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import javafx.concurrent.Worker.State;
 import javafx.concurrent.Worker;
 
@@ -86,10 +99,51 @@ public class WorksheetContentController implements Initializable{
 
 	@FXML
 	public void printButtonAction() {
-//		PrinterJob printerJob = PrinterJob.createPrinterJob(Printer.getDefaultPrinter());
-//		File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\3_Mapping.docx");
+		showAndSelectPrintService();
 	}
 	
+	Stage printerStage = null;
+	public void showAndSelectPrintService() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/PrinterSelection.fxml"));
+			PrinterSelectionController printerSelectionController = new PrinterSelectionController(this);
+			fxmlLoader.setController(printerSelectionController);
+			Parent root = fxmlLoader.load();
+			printerStage = new Stage();
+			printerStage.setTitle("Printer Selection");
+			Scene scene = new Scene(root);
+			printerStage.setScene(scene);
+			printerStage.showAndWait();
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	public void closePrinterStage() {
+		if(printerStage != null) {
+			printerStage.close();
+		}
+	}
+	
+	public void print(PrintService printService) {
+		String fileName = activity.getFileName().replace(".docx", ".pdf");
+		File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
+		if (file.exists()) {
+			try {
+				FileInputStream fileInputStream = new FileInputStream(file.getPath());
+				PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
+				attributeSet.add(new Copies(1));
+				PDDocument pdDocument = Loader.loadPDF(fileInputStream);
+				PrinterJob printerJob = PrinterJob.getPrinterJob();
+				printerJob.setPrintService(printService);
+				printerJob.setPageable(new PDFPageable(pdDocument));
+				printerJob.print();
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		}
+	}
+		
 	@FXML
 	public void saveButtonAction() {
 		
