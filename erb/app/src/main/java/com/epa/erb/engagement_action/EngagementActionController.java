@@ -79,7 +79,6 @@ public class EngagementActionController implements Initializable{
 		
 	}
 	
-	private String currentChapter = null; //Tracks the current user selected chapter
 	private Activity currentActivity = null; //Tracks the current user selected chapter
 	private Constants constants = new Constants();
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
@@ -203,15 +202,13 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void previousButtonAction() {
-		if(currentChapter != null) {
-			TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-			TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
-			if(selectedTreeItem != null && parentTreeItem != null) {
-				int currentIndex =  parentTreeItem.getChildren().indexOf(selectedTreeItem);
-				TreeItem<String> itemToSelect = parentTreeItem.getChildren().get(currentIndex-1);
-				treeView.getSelectionModel().select(itemToSelect);
-				treeViewClicked();
-			}
+		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
+		if (selectedTreeItem != null && parentTreeItem != null) {
+			int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
+			TreeItem<String> itemToSelect = parentTreeItem.getChildren().get(currentIndex - 1);
+			treeView.getSelectionModel().select(itemToSelect);
+			treeViewClicked();
 		}
 	}
 	
@@ -222,20 +219,18 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void nextButtonAction() {
-		if (currentChapter != null) {
-			TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-			TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
-			if (selectedTreeItem != null && parentTreeItem != null) {
-				if (parentTreeItem.getValue().contains("ERB")) {
-					TreeItem<String> itemToSelect = selectedTreeItem.getChildren().get(0);
-					treeView.getSelectionModel().select(itemToSelect);
-				} else {
-					int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
-					TreeItem<String> itemToSelect = parentTreeItem.getChildren().get(currentIndex + 1);
-					treeView.getSelectionModel().select(itemToSelect);
-				}
-				treeViewClicked();
+		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
+		if (selectedTreeItem != null && parentTreeItem != null) {
+			if (parentTreeItem.getValue().contains("ERB")) {
+				TreeItem<String> itemToSelect = selectedTreeItem.getChildren().get(0);
+				treeView.getSelectionModel().select(itemToSelect);
+			} else {
+				int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
+				TreeItem<String> itemToSelect = parentTreeItem.getChildren().get(currentIndex + 1);
+				treeView.getSelectionModel().select(itemToSelect);
 			}
+			treeViewClicked();
 		}
 	}
 	
@@ -276,7 +271,7 @@ public class EngagementActionController implements Initializable{
 				} else {
 					currentActivity = null;
 				}
-			} else {
+			} else { //ERB Pathway 
 				if (selectedTreeItem != null) {
 					currentActivity = null;
 					cleanContentVBox();
@@ -285,6 +280,7 @@ public class EngagementActionController implements Initializable{
 					removeColorKey();
 					loadChapterERBPathway();
 					loadERBLandingContent();
+					handleNavigationButtonsShown(null, null);
 				}
 			}
 		} else {
