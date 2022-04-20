@@ -19,6 +19,7 @@ import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanController;
+import com.epa.erb.chapter.ReflectController;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
@@ -199,6 +200,19 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	private void loadChapterReflect(Chapter chapter) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Reflect.fxml"));
+			ReflectController reflectController = new ReflectController(chapter);
+			fxmlLoader.setController(reflectController);
+			Parent root = fxmlLoader.load();
+			contentVBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
 	public void loadAttributeInfo(String attributeLabel, String attributeText, String attributeColor) {
 		if (attributeText.trim().length() > 0 && !containsAttribute(attributeLabel)) {
 			try {
@@ -329,6 +343,9 @@ public class EngagementActionController implements Initializable{
 			} else if (selectedActivity.getLongName().contentEquals("Plan")) {
 				removeAttributePane();
 				loadChapterPlan(getChapter(selectedActivity));
+			} else if (selectedActivity.getLongName().contentEquals("Reflect")) {
+				removeAttributePane();
+				loadChapterReflect(getChapter(selectedActivity));
 			}
 		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
