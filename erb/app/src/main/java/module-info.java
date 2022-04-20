@@ -12,6 +12,7 @@ module com.epa.erb {
 	requires transitive javafx.graphics;
 	requires transitive javafx.controls;
 	opens com.epa.erb to javafx.fxml;
+	opens com.epa.erb.chapter to javafx.fxml;
 	opens com.epa.erb.noteboard to javafx.fxml;
 	opens com.epa.erb.worksheet to javafx.fxml;
 	opens com.epa.erb.engagement_action to javafx.fxml;

@@ -8,7 +8,6 @@ import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
