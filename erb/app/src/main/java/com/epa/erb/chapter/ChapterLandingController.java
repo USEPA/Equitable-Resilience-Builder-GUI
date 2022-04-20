@@ -31,8 +31,6 @@ public class ChapterLandingController implements Initializable {
 	TextArea aboutTextArea;
 	@FXML
 	ListView<Activity> activitiesListView;
-	@FXML
-	Button getStartedButton;
 	
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
@@ -56,7 +54,6 @@ public class ChapterLandingController implements Initializable {
 	
 	private void initializeStyle() {
 		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-		getStartedButton.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	public void setHeadingLabel() {
@@ -135,17 +132,6 @@ public class ChapterLandingController implements Initializable {
 					engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 					engagementActionController.treeViewClicked();
 				}
-			}
-		}
-	}
-	
-	@FXML
-	public void getStartedButtonAction() {
-		String activityGUID = chapter.getUserSelectedActivities().get(0).getGUID();
-		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
-				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-				engagementActionController.treeViewClicked();
 			}
 		}
 	}

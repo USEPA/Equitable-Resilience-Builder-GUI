@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
@@ -68,17 +67,5 @@
             </VBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER">
-         <children>
-            <Button fx:id="getStartedButton" mnemonicParsing="false" onAction="#getStartedButtonAction" text="Get Started">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-      </HBox>
    </children>
 </VBox>
