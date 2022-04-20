@@ -2,10 +2,10 @@ package com.epa.erb;
 
 public class ActivityType {
 	
-	String longName;
-	String shortName;
-	String description;
-	String fileExt;
+	private String longName;
+	private String shortName;
+	private String description;
+	private String fileExt;
 	public ActivityType(String longName, String shortName, String description, String fileExt) {
 		this.longName = longName;
 		this.shortName = shortName;

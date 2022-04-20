@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Chapter {
 	
-	int chapterNum;
-	String numericName;
-	String stringName;
-	String descriptionName;
+	private int chapterNum;
+	private String numericName;
+	private String stringName;
+	private String descriptionName;
 	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName) {
 		this.chapterNum = chapterNum;
 		this.numericName = numericName;
@@ -15,7 +15,7 @@ public class Chapter {
 		this.descriptionName = descriptionName;
 	}	
 
-	ArrayList<Activity> userSelectedActivities = new ArrayList<Activity>();
+	private ArrayList<Activity> userSelectedActivities = new ArrayList<Activity>();
 	
 	public int getChapterNum() {
 		return chapterNum;
@@ -58,15 +58,6 @@ public class Chapter {
 	
 	public int getNumberOfUserSelectedActivities() {
 		return userSelectedActivities.size();
-	}
-		
-	public String getUserSelectedActivitiesString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("\n");
-		for(Activity activity : userSelectedActivities) {
-			stringBuilder.append(activity.toString());
-		}
-		return stringBuilder.toString();
 	}
 	
 	public String toString() {

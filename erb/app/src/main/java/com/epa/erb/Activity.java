@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Activity {
 	
-	ActivityType activityType;
-	String status;
-	String shortName;
-	String longName;
-	String fileName;
-	String directions;
-	String objectives;
-	String description;
-	String materials;
-	String time;
-	String who;
-	String activityID;
+	private ActivityType activityType;
+	private String status;
+	private String shortName;
+	private String longName;
+	private String fileName;
+	private String directions;
+	private String objectives;
+	private String description;
+	private String materials;
+	private String time;
+	private String who;
+	private String activityID;
 	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID) {
 		this.activityType = activityType;
 		this.status = status;
@@ -31,7 +31,7 @@ public class Activity {
 		this.activityID = activityID;
 	}
 	
-	String GUID;
+	private String GUID;
 	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID, String GUID) {
 		this.activityType = activityType;
 		this.status = status;
@@ -52,8 +52,8 @@ public class Activity {
 		
 	}
 	
-	ArrayList<String> listOfLinkedActivityIDS = new ArrayList<String>();
-	ArrayList<Activity> listOfLinkedActivities = new ArrayList<Activity>();
+	private ArrayList<String> listOfLinkedActivityIDS = new ArrayList<String>();
+	private ArrayList<Activity> listOfLinkedActivities = new ArrayList<Activity>();
 
 	public ActivityType getActivityType() {
 		return activityType;

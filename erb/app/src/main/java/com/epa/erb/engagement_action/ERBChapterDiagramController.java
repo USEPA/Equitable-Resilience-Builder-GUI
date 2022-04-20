@@ -28,9 +28,8 @@ public class ERBChapterDiagramController implements Initializable{
 	@FXML
 	VBox arrowVBox;
 	
-	Chapter chapter;
-	EngagementActionController engagementActionController;
-	
+	private Chapter chapter;
+	private EngagementActionController engagementActionController;
 	public ERBChapterDiagramController(Chapter chapter, EngagementActionController engagementActionController) {
 		this.chapter = chapter;
 		this.engagementActionController = engagementActionController;

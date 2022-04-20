@@ -34,14 +34,14 @@ public class ChapterLandingController implements Initializable {
 	@FXML
 	Button getStartedButton;
 	
-	Chapter chapter;
-	EngagementActionController engagementActionController;
+	private Chapter chapter;
+	private EngagementActionController engagementActionController;
 	public ChapterLandingController(Chapter chapter, EngagementActionController engagementActionController) {
 		this.chapter = chapter;
 		this.engagementActionController = engagementActionController;
 	}
 	
-	ArrayList<Chapter> listOfAllChapters;
+	private ArrayList<Chapter> listOfAllChapters;
 	public ChapterLandingController(ArrayList<Chapter> listOfAllChapters, EngagementActionController engagementActionController) {
 		this.listOfAllChapters = listOfAllChapters;
 		this.engagementActionController = engagementActionController;
@@ -126,7 +126,7 @@ public class ChapterLandingController implements Initializable {
 		});
 	}
 	
-	public void activitySelectedInList() {
+	private void activitySelectedInList() {
 		Activity selectedActivity = activitiesListView.getSelectionModel().getSelectedItem();
 		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeMap();
 		for(TreeItem<String> treeItem : treeMap.keySet()) {
@@ -150,7 +150,7 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 	
-	void cleanActivitiesListView() {
+	private void cleanActivitiesListView() {
 		activitiesListView.getItems().clear();
 	}
 

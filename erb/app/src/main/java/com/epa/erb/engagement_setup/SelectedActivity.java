@@ -2,15 +2,14 @@ package com.epa.erb.engagement_setup;
 
 public class SelectedActivity {
 
-	String showName; 
-	String activityType;
-	String activityID;
-	
+	private String showName; 
+	private String activityType;
 	public SelectedActivity(String showName, String activityType) {
 		this.showName = showName;
 		this.activityType = activityType;
 	}
 	
+	private String activityID;
 	public SelectedActivity(String showName, String activityType, String activityID) {
 		this.showName = showName;
 		this.activityType = activityType;

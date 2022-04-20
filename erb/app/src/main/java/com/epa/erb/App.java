@@ -15,7 +15,7 @@ public class App extends Application {
 
 	private Logger logger = LogManager.getLogger(App.class);
 	
-	public String getGreeting() {
+	private String getGreeting() {
 		return "Launching ERB";
 	}
 

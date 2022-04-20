@@ -15,8 +15,8 @@ public class ChapterDescriptionController implements Initializable{
 	@FXML
 	Button saveButton;
 	
-	Chapter chapter;
-	ChapterTitledPaneController chapterTitledPaneController;
+	private Chapter chapter;
+	private ChapterTitledPaneController chapterTitledPaneController;
 	public ChapterDescriptionController(Chapter chapter, ChapterTitledPaneController chapterTitledPaneController) {
 		this.chapter = chapter;
 		this.chapterTitledPaneController = chapterTitledPaneController;
@@ -27,7 +27,7 @@ public class ChapterDescriptionController implements Initializable{
 		checkForExistingDescription();
 	}
 	
-	public void checkForExistingDescription() {
+	private void checkForExistingDescription() {
 		if(chapter.getDescriptionName() != null && chapter.getDescriptionName().length() > 0) {
 			descriptionTextArea.setText(chapter.getDescriptionName());
 		}

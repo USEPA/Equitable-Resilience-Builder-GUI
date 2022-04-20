@@ -29,12 +29,11 @@ public class PostItNoteController implements Initializable{
 	@FXML
 	ScrollPane scrollPane;
 	
-	
 	public PostItNoteController() {
 
 	}
 	
-	Stage editsStage = null;
+	private Stage editsStage = null;
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(PostItNoteController.class);
 	
@@ -111,7 +110,7 @@ public class PostItNoteController implements Initializable{
 		}
 	}
 	
-	public TextFlow getTextFlow() {
+	TextFlow getTextFlow() {
 		return textFlow;
 	}
 

@@ -24,7 +24,7 @@ public class AttributePanelController implements Initializable{
 	@FXML
 	Button closeButton;
 	
-	EngagementActionController engagementActionController;
+	private EngagementActionController engagementActionController;
 	public AttributePanelController(EngagementActionController engagementActionController) {
 		this.engagementActionController = engagementActionController;
 	}
@@ -41,31 +41,31 @@ public class AttributePanelController implements Initializable{
 		engagementActionController.removeAttributePanelController(this);
 	}
 	
-	public void setAttributeFields(String attributeTextFlowString, String attributeLabelString, String attributeLabelColorString) {
+	void setAttributeFields(String attributeTextFlowString, String attributeLabelString, String attributeLabelColorString) {
 		setAttributeTextFlow(attributeTextFlowString);
 		setAttributeLabel(attributeLabelString);
 		setAttributeLabelColor(attributeLabelColorString);
 		setAttributeCloseButtonColor(attributeLabelColorString);
 	}
 
-	public void setAttributeTextFlow(String attributeTextFlowString) {
+	private void setAttributeTextFlow(String attributeTextFlowString) {
 		Text text = new Text(attributeTextFlowString);
 		attributeTextFlow.getChildren().add(text);
 	}
 	
-	public void setAttributeLabel(String attributeLabelString) {
+	private void setAttributeLabel(String attributeLabelString) {
 		attributeLabel.setText(attributeLabelString);
 	}
 	
-	public void setAttributeLabelColor(String attributeLabelColorString) {
+	private void setAttributeLabelColor(String attributeLabelColorString) {
 		attributeLabelHBox.setStyle("-fx-background-color: " + attributeLabelColorString + ";");
 	}
 	
-	public void setAttributeCloseButtonColor(String attributeLabelColorString) {
+	private void setAttributeCloseButtonColor(String attributeLabelColorString) {
 		closeButton.setStyle("-fx-background-color: " + attributeLabelColorString + ";");
 	}
 	
-	public String getAttributeLabelText() {
+	String getAttributeLabelText() {
 		return attributeLabel.getText();
 	}
 

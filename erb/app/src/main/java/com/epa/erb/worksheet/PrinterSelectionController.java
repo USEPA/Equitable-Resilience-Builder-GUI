@@ -16,7 +16,7 @@ public class PrinterSelectionController implements Initializable{
 	@FXML
 	Button okButton;
 	
-	WorksheetContentController worksheetContentController;
+	private WorksheetContentController worksheetContentController;
 	public PrinterSelectionController(WorksheetContentController worksheetContentController) {
 		this.worksheetContentController = worksheetContentController;
 	}
@@ -26,7 +26,7 @@ public class PrinterSelectionController implements Initializable{
 		fillPrinterList();
 	}
 	
-	public void fillPrinterList() {
+	private void fillPrinterList() {
 		PrintService [] printServices = PrintServiceLookup.lookupPrintServices(null, null);
 		for(PrintService printService : printServices) {
 			printerList.getItems().add(printService.getName());

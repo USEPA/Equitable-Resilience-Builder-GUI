@@ -2,7 +2,6 @@ package com.epa.erb.chapter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import javafx.fxml.FXML;
@@ -26,7 +25,7 @@ public class PlanController implements Initializable{
 	@FXML
 	Circle thirdOptionCircle;
 	
-	Chapter chapter;
+	private Chapter chapter;
 	public PlanController(Chapter chapter) {
 		this.chapter = chapter;
 	}
@@ -39,7 +38,7 @@ public class PlanController implements Initializable{
 		setTitleLabel();
 	}
 	
-	public void handleControls() {
+	private void handleControls() {
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		titleHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		orderActivitiesCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
@@ -47,7 +46,7 @@ public class PlanController implements Initializable{
 		thirdOptionCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	public void setTitleLabel() {
+	private void setTitleLabel() {
 		titleLabel.setText("Planning for " + chapter.getStringName());
 	}
 	

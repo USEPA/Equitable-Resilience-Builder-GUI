@@ -87,7 +87,7 @@ public class EngagementActionController implements Initializable{
 	private Constants constants = new Constants();
 	private ArrayList<Chapter> dataChapters = new ArrayList<Chapter>(); //List of chapter objects parsed from .xml file 
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //Holds the tree items mapped to a chapter name or activity ID
+	private HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //Holds the tree items mapped to a chapter name or activity ID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //Holds all of the attribute panel that are loaded
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
 	
@@ -213,7 +213,7 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	public void loadAttributeInfo(String attributeLabel, String attributeText, String attributeColor) {
+	void loadAttributeInfo(String attributeLabel, String attributeText, String attributeColor) {
 		if (attributeText.trim().length() > 0 && !containsAttribute(attributeLabel)) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/AttributePane.fxml"));
@@ -590,40 +590,40 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 		
-	void cleanAttributeVBox() {
+	private void cleanAttributeVBox() {
 		attributeVBox.getChildren().clear();
 		listOfAttributePanelControllers.clear();
 	}
 	
-	void cleanPathwayHBox() {
+	private void cleanPathwayHBox() {
 		pathwayHBox.getChildren().clear();
 	}
 
-	void cleanContentVBox() {
+	private void cleanContentVBox() {
 		contentVBox.getChildren().clear();
 	}
 	
-	void cleanListOfActivityDiagrams() {
+	private void cleanListOfActivityDiagrams() {
 		listOfPathwayDiagramControllers.clear();
 	}
 	
-	void addColorKey(int index) {
+	private void addColorKey(int index) {
 		if(!headingHBox.getChildren().contains(keyVBox)) {
 			headingHBox.getChildren().add(index, keyVBox);
 		}
 	}
 	
-	void removeColorKey() {
+	private void removeColorKey() {
 		headingHBox.getChildren().remove(keyVBox);
 	}
 	
-	void addAttributePanel(int index) {
+	private void addAttributePanel(int index) {
 		if(!mainHBox.getChildren().contains(attributeScrollPane)) {
 			mainHBox.getChildren().add(index, attributeScrollPane);
 		}
 	}
 	
-	void removeAttributePane() {
+	private void removeAttributePane() {
 		mainHBox.getChildren().remove(attributeScrollPane);
 	}
 	
@@ -631,7 +631,7 @@ public class EngagementActionController implements Initializable{
 		listOfAttributePanelControllers.remove(attributePanelController);
 	}
 	
-	boolean containsAttribute(String attributeLabel) {
+	private boolean containsAttribute(String attributeLabel) {
 		for(AttributePanelController attributePanelController : listOfAttributePanelControllers) {
 			if(attributePanelController.getAttributeLabelText().contentEquals(attributeLabel)) {
 				return true;
@@ -683,8 +683,8 @@ public class EngagementActionController implements Initializable{
 			return null;
 		}
 	}
-	
-	void setChapterLabelText(String chapterLabelText) {
+		
+	private void setChapterLabelText(String chapterLabelText) {
 		chapterLabel.setText(chapterLabelText);
 	}
 		

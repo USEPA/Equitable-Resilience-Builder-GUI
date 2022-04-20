@@ -83,7 +83,7 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	Button saveDataButton;
 	
-	ERBMainController erbMainController;
+	private ERBMainController erbMainController;
 	public EngagementSetupController(ERBMainController erbMainController) {
 		this.erbMainController = erbMainController;
 	}
@@ -168,7 +168,7 @@ public class EngagementSetupController implements Initializable {
 		});
 	}
 	
-	void setTitledPaneListViewCellFactory(ListView<SelectedActivity> titledPaneListView) {
+	private void setTitledPaneListViewCellFactory(ListView<SelectedActivity> titledPaneListView) {
 		titledPaneListView.setCellFactory(new Callback<ListView<SelectedActivity>, ListCell<SelectedActivity>>() {
 			@Override
 			public ListCell<SelectedActivity> call(ListView<SelectedActivity> param) {
@@ -436,7 +436,7 @@ public class EngagementSetupController implements Initializable {
 		fileNameHyperlink.setText(null);
 	}
 	
-	void setActivityTypeListViewDrag(ListView<ActivityType> listView) {
+	private void setActivityTypeListViewDrag(ListView<ActivityType> listView) {
 		String TAB_DRAG_KEY = "listView";
 		ObjectProperty<ListView<ActivityType>> draggingTab = new SimpleObjectProperty<ListView<ActivityType>>();
 		listView.setOnDragDetected(event-> {
@@ -449,7 +449,7 @@ public class EngagementSetupController implements Initializable {
 		});
 	}
 	
-	void setSelectedActivityListViewDrag(ListView<SelectedActivity> draggedListView) {
+	private void setSelectedActivityListViewDrag(ListView<SelectedActivity> draggedListView) {
 		String TAB_DRAG_KEY = "listView";
 		ObjectProperty<ListView<SelectedActivity>> draggingTab = new SimpleObjectProperty<ListView<SelectedActivity>>();
 		draggedListView.setOnDragOver(event-> {
@@ -578,7 +578,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	void setLinkActivities() {
+	private void setLinkActivities() {
 		for (Activity activity : customizedActivities) {
 			if (activity.getListOfLinkedActivityIDS().size() > 0) {
 				for (String activityID : activity.getListOfLinkedActivityIDS()) {
@@ -589,7 +589,7 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	void cleanCustomizedActivitiesListView() {
+	private void cleanCustomizedActivitiesListView() {
 		customizedActivitiesListView.getItems().clear();
 	}
 	

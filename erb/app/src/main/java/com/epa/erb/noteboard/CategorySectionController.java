@@ -16,8 +16,7 @@ public class CategorySectionController implements Initializable {
 	@FXML
 	HBox postItHBox;
 	
-	String categoryName;
-	
+	private String categoryName;
 	public CategorySectionController(String categoryName) {
 		this.categoryName = categoryName;
 	}

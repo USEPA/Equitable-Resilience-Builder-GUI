@@ -7,44 +7,44 @@ public class Constants {
 	}
 	
 	//Activity Attributes
-	String activityTypeColor = "";
+	private String activityTypeColor = "";
 	//Status
-	String readyStatusColor = "#EDF7B2"; 				//Yellow
-	String completeStatusColor = "#B2F7D1"; 			//Mint Green
-	String skippedStatusColor = "#B2C1F7"; 				//Light Blue
+	private String readyStatusColor = "#EDF7B2"; 				//Yellow
+	private String completeStatusColor = "#B2F7D1"; 			//Mint Green
+	private String skippedStatusColor = "#B2C1F7"; 				//Light Blue
 	//--
-	String shortNameColor = "";
-	String longNameColor = "";
-	String fileNameColor = "";
-	String instructionsColor = "#86E596"; 				//Light Green
-	String objectivesColor = "#6B8BFF"; 				//Blue
-	String descriptionColor = "#F7B2E0"; 				//Pink	
-	String materialsColor = "#B895EB";					//Purple
-	String timeColor = "#F7DBB2";						//Orange
-	String whoColor = "#EB8787"; 						//Red
-	String activityIDColor = "";
-	String linksColor = "#E88AFF";						//Magenta
+	private String shortNameColor = "";
+	private String longNameColor = "";
+	private String fileNameColor = "";
+	private String instructionsColor = "#86E596"; 				//Light Green
+	private String objectivesColor = "#6B8BFF"; 				//Blue
+	private String descriptionColor = "#F7B2E0"; 				//Pink	
+	private String materialsColor = "#B895EB";					//Purple
+	private String timeColor = "#F7DBB2";						//Orange
+	private String whoColor = "#EB8787"; 						//Red
+	private String activityIDColor = "";
+	private String linksColor = "#E88AFF";						//Magenta
 
 	//Chapters
-	String allChaptersColor	= "#80BFCD"; 				//Dark Turquoise
+	private String allChaptersColor	= "#80BFCD"; 				//Dark Turquoise
 
     //Post-It Notes Stack
 		//----Gray
-	//String layer1ColorString = "#555555";
-	//String layer2ColorString = "#666666";
-	//String layer3ColorString = "#777777";
-	//String layer4ColorString = "#888888";
-	//String layer5ColorString = "#999999";
+	//private String layer1ColorString = "#555555";
+	//private String layer2ColorString = "#666666";
+	//private String layer3ColorString = "#777777";
+	//private String layer4ColorString = "#888888";
+	//private String layer5ColorString = "#999999";
 
 		//----Color
-	String layer1ColorString = "#F7B2E0";				//Pink
-	String layer2ColorString = "#B895EB";				//Purple
-	String layer3ColorString = "#EB8787";				//Red
-	String layer4ColorString = "#B2F7D1";				//Mint Green
-	String layer5ColorString = "#B2C1F7";				//Light Blue
+	private String layer1ColorString = "#F7B2E0";				//Pink
+	private String layer2ColorString = "#B895EB";				//Purple
+	private String layer3ColorString = "#EB8787";				//Red
+	private String layer4ColorString = "#B2F7D1";				//Mint Green
+	private String layer5ColorString = "#B2C1F7";				//Light Blue
 	
 	//Post-It Note Single
-	String postItNoteColor = "#FFFFFF"; 				//White
+	private String postItNoteColor = "#FFFFFF"; 				//White
 	
 	//-------------------------------------------------------------------------
 

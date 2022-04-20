@@ -19,7 +19,7 @@ public class PostItNoteEditsController implements Initializable{
 	@FXML
 	Button saveButton;
 	
-	PostItNoteController postItNoteController;
+	private PostItNoteController postItNoteController;
 	public PostItNoteEditsController(PostItNoteController postItNoteController) {
 		this.postItNoteController = postItNoteController;
 	}
@@ -31,7 +31,7 @@ public class PostItNoteEditsController implements Initializable{
 		colorPicker.getStylesheets().add(getClass().getResource("/noteboard/ColorPicker.css").toString());
 	}
 	
-	public void checkForExistingText() {
+	private void checkForExistingText() {
 		if (postItNoteController.getTextFlow().getChildren().size() > 0) {
 			Text text = (Text) postItNoteController.getTextFlow().getChildren().get(0);
 			if (text != null) {
@@ -41,7 +41,7 @@ public class PostItNoteEditsController implements Initializable{
 		}
 	}
 	
-	public void checkForExistingColor() {
+	private void checkForExistingColor() {
 		if(postItNoteController.getTextFlow().getStyle() != null) {
 			String color = postItNoteController.getTextFlow().getStyle().replace("-fx-background-color: ", "");
 			color = color.replace(";", "");

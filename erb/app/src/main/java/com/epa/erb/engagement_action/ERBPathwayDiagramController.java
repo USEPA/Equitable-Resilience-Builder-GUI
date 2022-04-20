@@ -50,9 +50,8 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	Label activityLabel;
 	
-	Activity activity;
-	EngagementActionController engagementActionController;
-
+	private Activity activity;
+	private EngagementActionController engagementActionController;
 	public ERBPathwayDiagramController(Activity activity, EngagementActionController engagementActionController) {
 		this.activity = activity;
 		this.engagementActionController = engagementActionController;
@@ -213,16 +212,16 @@ public class ERBPathwayDiagramController implements Initializable {
 		}
 	}
 	
-	public void highlightDiagram() {
+	void highlightDiagram() {
 		diagramVBox.setEffect(null);
 	}
 	
-	public void unHighlightDiagram() {
+	void unHighlightDiagram() {
 		GaussianBlur gaussianBlur = new GaussianBlur();
 		diagramVBox.setEffect(gaussianBlur);
 	}
 	
-	public Activity getActivity() {
+	Activity getActivity() {
 		return activity;
 	}
 }

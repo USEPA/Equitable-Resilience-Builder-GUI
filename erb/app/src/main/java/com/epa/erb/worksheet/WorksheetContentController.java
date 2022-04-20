@@ -46,7 +46,7 @@ public class WorksheetContentController implements Initializable{
 	@FXML
 	Button printButton;
 		
-	Activity activity;
+	private Activity activity;
 	public WorksheetContentController(Activity activity) {
 		this.activity = activity;
 	}
@@ -102,8 +102,8 @@ public class WorksheetContentController implements Initializable{
 		showAndSelectPrintService();
 	}
 	
-	Stage printerStage = null;
-	public void showAndSelectPrintService() {
+	private Stage printerStage = null;
+	private void showAndSelectPrintService() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/PrinterSelection.fxml"));
 			PrinterSelectionController printerSelectionController = new PrinterSelectionController(this);
@@ -119,13 +119,13 @@ public class WorksheetContentController implements Initializable{
 		}
 	}
 	
-	public void closePrinterStage() {
+	void closePrinterStage() {
 		if(printerStage != null) {
 			printerStage.close();
 		}
 	}
 	
-	public void print(PrintService printService) {
+	void print(PrintService printService) {
 		String fileName = activity.getFileName().replace(".docx", ".pdf");
 		File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
 		if (file.exists()) {

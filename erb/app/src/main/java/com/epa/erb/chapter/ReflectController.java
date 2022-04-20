@@ -25,7 +25,7 @@ public class ReflectController implements Initializable{
 	@FXML
 	Circle updateProgressCircle;
 	
-	Chapter chapter;
+	private Chapter chapter;
 	public ReflectController(Chapter chapter) {
 		this.chapter = chapter;
 	}
@@ -38,7 +38,7 @@ public class ReflectController implements Initializable{
 		setTitleLabel();
 	}
 	
-	public void handleControls() {
+	private void handleControls() {
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		titleHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		notesCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
@@ -46,7 +46,7 @@ public class ReflectController implements Initializable{
 		updateProgressCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	public void setTitleLabel() {
+	private void setTitleLabel() {
 		titleLabel.setText("Reflecting on " + chapter.getStringName());
 	}
 	

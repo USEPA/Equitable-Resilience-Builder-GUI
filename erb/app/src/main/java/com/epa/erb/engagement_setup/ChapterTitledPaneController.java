@@ -26,7 +26,7 @@ public class ChapterTitledPaneController implements Initializable{
 	@FXML
 	ListView<SelectedActivity> titledPaneListView;
 	
-	Chapter chapter;
+	private Chapter chapter;
 	public ChapterTitledPaneController(Chapter chapter) {
 		this.chapter = chapter;
 	}
@@ -40,7 +40,7 @@ public class ChapterTitledPaneController implements Initializable{
 		titledPane.setContextMenu(createPaneContextMenu());
 	}
 	
-	ContextMenu createPaneContextMenu() {
+	private ContextMenu createPaneContextMenu() {
 		ContextMenu contextMenu = new ContextMenu();
 		MenuItem menuItem = new MenuItem("Add Description");
 		contextMenu.getItems().add(menuItem);
@@ -49,7 +49,7 @@ public class ChapterTitledPaneController implements Initializable{
 	}
 	
 	private Stage descriptionStage;
-	void addChapterDescription() {
+	private void addChapterDescription() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/ChapterDescription.fxml"));
 			ChapterDescriptionController chapterDescriptionController = new ChapterDescriptionController(chapter, this);
@@ -69,15 +69,11 @@ public class ChapterTitledPaneController implements Initializable{
 		descriptionStage.close();
 	}
 			
-	public String getPaneTitle() {
+	String getPaneTitle() {
 		return titledPane.getText();
 	}
 
-	public VBox getTitledPaneVBox() {
-		return titledPaneVBox;
-	}
-
-	public ListView<SelectedActivity> getTitledPaneListView() {
+	ListView<SelectedActivity> getTitledPaneListView() {
 		return titledPaneListView;
 	}		
 }

@@ -38,13 +38,13 @@ public class ERBMainController implements Initializable{
 		handleControls();
 	}
 	
-	public void handleControls() {
+	private void handleControls() {
 		erbHeading1.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		erbHeading2.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	//ERB Tool Pt 1
-	Stage setupStage = null;
+	private Stage setupStage = null;
 	@FXML
 	public void setupLaunchButtonAction() {
 		try {
@@ -63,7 +63,7 @@ public class ERBMainController implements Initializable{
 	}
 	
 	//ERB Tool Pt 2
-	Stage actionStage = null;
+	private Stage actionStage = null;
 	@FXML
 	public void actionLaunchButtonAction() {
 		try {

@@ -39,7 +39,7 @@ public class NoteBoardContentController implements Initializable{
 		
 	}
 	
-	ArrayList<String> categories = new ArrayList<String>();
+	private ArrayList<String> categories = new ArrayList<String>();
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
 	
@@ -91,7 +91,7 @@ public class NoteBoardContentController implements Initializable{
 	private int indexToMove = -1;
 	private static final String TAB_DRAG_KEY = "pane";
 	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
-	void setDrag(Pane p) {
+	private void setDrag(Pane p) {
 		p.setOnDragOver(event-> {
 			event.acceptTransferModes(TransferMode.MOVE);
 			if (event.getTarget() != null) {
