@@ -9,7 +9,7 @@
    <children>
       <HBox alignment="CENTER" style="-fx-background-color: #80BFCD;">
          <children>
-            <Label text="Progress Tracker">
+            <Label text="ERB Progress Tracker">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
