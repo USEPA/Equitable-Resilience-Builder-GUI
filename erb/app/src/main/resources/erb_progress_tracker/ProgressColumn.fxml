@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <Label fx:id="chapterLabel" text="Chapter">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <Separator />
+      <VBox spacing="15.0" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <StackPane>
+                     <children>
+                        <Circle fx:id="planCircle" fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Arc fx:id="planArc" fill="DODGERBLUE" length="270.0" radiusX="60.0" radiusY="60.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" StackPane.alignment="CENTER" />
+                     </children>
+                  </StackPane>
+                  <Label text="Plan" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER">
+               <children>
+                  <StackPane>
+                     <children>
+                        <Circle fx:id="engageCircle" fill="WHITE" onMouseClicked="#engageClicked" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Arc fx:id="engageArc" fill="DODGERBLUE" length="360.0" onMouseClicked="#engageClicked" radiusX="60.0" radiusY="60.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+                     </children>
+                  </StackPane>
+                  <Label text="Engage" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER">
+               <children>
+                  <StackPane>
+                     <children>
+                        <Circle fx:id="reflectCircle" fill="DODGERBLUE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Arc fx:id="reflectArc" fill="WHITE" length="270.0" radiusX="60.0" radiusY="60.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+                     </children>
+                  </StackPane>
+                  <Label text="Reflect" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

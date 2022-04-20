@@ -35,6 +35,7 @@ public class App extends Application {
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("ERB: Equitable Resilience Builder");
+			primaryStage.setResizable(false);
 			primaryStage.show();
 		} catch (Exception e) {
 			logger.fatal(e.getMessage());

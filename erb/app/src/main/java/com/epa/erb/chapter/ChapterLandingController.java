@@ -4,12 +4,21 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.erb_progress_tracker.ProgressTrackerController;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -19,6 +28,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ChapterLandingController implements Initializable {
@@ -31,6 +41,8 @@ public class ChapterLandingController implements Initializable {
 	TextArea aboutTextArea;
 	@FXML
 	ListView<Activity> activitiesListView;
+	@FXML
+	Button viewProgressButton;
 	
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
@@ -46,6 +58,7 @@ public class ChapterLandingController implements Initializable {
 	}
 	
 	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(ChapterLandingController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -75,6 +88,23 @@ public class ChapterLandingController implements Initializable {
 			return new Text(chapter.getDescriptionName());
 		} else {
 			return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
+		}
+	}
+	
+	@FXML
+	public void viewProgressButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressTracker.fxml"));
+			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getDataChapters());
+			fxmlLoader.setController(progressTrackerController);
+			Parent root = fxmlLoader.load();
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("ERB Progress Tracker");
+			stage.showAndWait();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
 

@@ -699,5 +699,9 @@ public class EngagementActionController implements Initializable{
 	public ScrollPane getAttributeScrollPane() {
 		return attributeScrollPane;
 	}
+	
+	public ArrayList<Chapter> getDataChapters(){
+		return dataChapters;
+	}
 		
 }
