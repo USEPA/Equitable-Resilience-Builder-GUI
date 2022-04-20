@@ -17,6 +17,7 @@ import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
+import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
@@ -128,7 +129,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void loadERBLandingContent() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ChapterLanding.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
 			ChapterLandingController chapterLandingController = new ChapterLandingController(dataChapters, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
@@ -144,7 +145,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void loadChapterLandingContent(Chapter chapter) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ChapterLanding.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
@@ -235,7 +236,7 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	void treeViewClicked() {
+	public void treeViewClicked() {
 		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
 		if (selectedTreeItem != null) {
 			TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
@@ -615,7 +616,7 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
-	Chapter getChapter(Activity activity) {
+	public Chapter getChapter(Activity activity) {
 		for(Chapter chapter : dataChapters) {
 			for(Activity chapterActivity: chapter.getUserSelectedActivities()) {
 				if(chapterActivity.getGUID().contentEquals(activity.getGUID())) {
@@ -653,11 +654,11 @@ public class EngagementActionController implements Initializable{
 		chapterLabel.setText(chapterLabelText);
 	}
 		
-	TreeView<String> getTreeView() {
+	public TreeView<String> getTreeView() {
 		return treeView;
 	}
 	
-	HashMap<TreeItem<String>, String> getTreeMap() {
+	public HashMap<TreeItem<String>, String> getTreeMap() {
 		return treeMap;
 	}
 

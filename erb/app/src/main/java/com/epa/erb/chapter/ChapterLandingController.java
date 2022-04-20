@@ -1,4 +1,4 @@
-package com.epa.erb.engagement_action;
+package com.epa.erb.chapter;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
+import com.epa.erb.engagement_action.EngagementActionController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -58,7 +60,7 @@ public class ChapterLandingController implements Initializable {
 		getStartedButton.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	void setHeadingLabel() {
+	public void setHeadingLabel() {
 		if(chapter != null) {
 			headingLabel.setText("Welcome to " + chapter.getStringName());
 		} else {
@@ -66,7 +68,7 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 	
-	void setAboutText() {
+	public void setAboutText() {
 		Text text = getAboutText();
 		text.setFont(Font.font(15));
 		aboutTextArea.setText(text.getText());
@@ -80,7 +82,7 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 
-	void setActivitiesListView() {
+	public void setActivitiesListView() {
 		cleanActivitiesListView();
 		if (chapter != null) {
 			for (Activity activity : chapter.getUserSelectedActivities()) {
