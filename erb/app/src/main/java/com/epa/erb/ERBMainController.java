@@ -44,24 +44,26 @@ public class ERBMainController implements Initializable{
 	}
 	
 	//ERB Tool Pt 1
+	Stage setupStage = null;
 	@FXML
 	public void setupLaunchButtonAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/EngagementSetup.fxml"));
-			EngagementSetupController engagementSetupController = new EngagementSetupController();
+			EngagementSetupController engagementSetupController = new EngagementSetupController(this);
 			fxmlLoader.setController(engagementSetupController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setTitle("ERB: Equitable Resilience Builder");
-			stage.show();
+			setupStage = new Stage();
+			setupStage.setScene(scene);
+			setupStage.setTitle("ERB: Equitable Resilience Builder");
+			setupStage.show();
 		} catch (Exception e) {
 			logger.fatal(e.getMessage());
 		}
 	}
 	
 	//ERB Tool Pt 2
+	Stage actionStage = null;
 	@FXML
 	public void actionLaunchButtonAction() {
 		try {
@@ -70,13 +72,24 @@ public class ERBMainController implements Initializable{
 			fxmlLoader.setController(engagementActionController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setTitle("ERB: Equitable Resilience Builder");
-			stage.show();
+			actionStage = new Stage();
+			actionStage.setScene(scene);
+			actionStage.setTitle("ERB: Equitable Resilience Builder");
+			actionStage.show();
 		} catch (Exception e) {
 			logger.fatal(e.getMessage());
 		}
 	}
-
+	
+	public void closeSetupStage() {
+		if(setupStage != null) {
+			setupStage.close();
+		}
+	}
+	
+	public void closeActionStage() {
+		if(actionStage != null) {
+			actionStage.close();
+		}
+	}
 }
