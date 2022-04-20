@@ -1,4 +1,4 @@
-package com.epa.erb.erb_progress_tracker;
+package com.epa.erb.activity_progress_tracker;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,8 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 
-public class ProgressTrackerController implements Initializable {
+public class ProgressTrackerController implements Initializable{
 
 	@FXML
 	HBox progressContentHBox;
@@ -30,20 +31,20 @@ public class ProgressTrackerController implements Initializable {
 	}
 	
 	public void addProgressColumns() {
-		for(Chapter chapter : listOfAllChapters) {
+		for(Chapter chapter: listOfAllChapters) {
 			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressColumn.fxml"));
-				ProgressColumnController progressColumnController = new ProgressColumnController(chapter, listOfAllChapters);
-				loader.setController(progressColumnController);
-				Parent root = loader.load();
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/activity_progress_tracker/ProgressColumn.fxml"));
+				ProgressColumnController progressColumnController = new ProgressColumnController(chapter);
+				fxmlLoader.setController(progressColumnController);
+				Parent root = fxmlLoader.load();
 				progressContentHBox.getChildren().add(root);
-				//HBox.setHgrow(root, Priority.ALWAYS);
-			} catch (Exception e) {
+				HBox.setHgrow(root, Priority.ALWAYS);
+			}catch (Exception e) {
 				logger.error(e.getMessage());
 			}
 		}
 	}
-
+	
 	public ArrayList<Chapter> getListOfAllChapters() {
 		return listOfAllChapters;
 	}
@@ -51,5 +52,5 @@ public class ProgressTrackerController implements Initializable {
 	public void setListOfAllChapters(ArrayList<Chapter> listOfAllChapters) {
 		this.listOfAllChapters = listOfAllChapters;
 	}
-	
+
 }
