@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox>
+         <children>
+            <HBox fx:id="erbHeading" alignment="CENTER">
+               <children>
+                  <Label text="ERB">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="titleHeading" alignment="CENTER">
+               <children>
+                  <Label fx:id="titleLabel" text="Planning for Chapter ...">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane>
+               <children>
+                  <Circle fx:id="orderActivitiesCircle" onMouseClicked="#orderActivitiesCircleClicked" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="Order Activities" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <Label text="Order activites description" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" spacing="20.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label text="Gather supplies description" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <StackPane>
+               <children>
+                  <Circle fx:id="gatherSuppliesCircle" onMouseClicked="#gatherSuppliesCircleClicked" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="Gather Supplies" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane>
+               <children>
+                  <Circle fx:id="thirdOptionCircle" onMouseClicked="#thirdOptionCircleClicked" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="Third Option" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <Label text="Third option description" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

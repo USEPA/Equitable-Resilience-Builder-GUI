@@ -18,6 +18,7 @@ import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import com.epa.erb.chapter.ChapterLandingController;
+import com.epa.erb.chapter.PlanController;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
@@ -185,6 +186,19 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	private void loadChapterPlan(Chapter chapter) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Plan.fxml"));
+			PlanController planController = new PlanController(chapter);
+			fxmlLoader.setController(planController);
+			Parent root = fxmlLoader.load();
+			contentVBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
 	public void loadAttributeInfo(String attributeLabel, String attributeText, String attributeColor) {
 		if (attributeText.trim().length() > 0 && !containsAttribute(attributeLabel)) {
 			try {
@@ -255,12 +269,12 @@ public class EngagementActionController implements Initializable{
 						handleNavigationButtonsShown(null, null);
 						loadActivityERBPathway(currentChapter);
 					} else { // Is Activity
-						Chapter currentChapter = getChapter(parentTreeItemValue);
 						String activityGUID = treeMap.get(selectedTreeItem);
 						Activity selectedActivity = getActivity(activityGUID);
-						addAttributePanel(1);
-						addColorKey(1);
 						if(currentActivity != selectedActivity) { //If a new activity is selected
+							Chapter currentChapter = getChapter(parentTreeItemValue);
+							addAttributePanel(1);
+							addColorKey(1);
 							cleanContentVBox();
 							cleanAttributeVBox();
 							loadActivityContentPanel(selectedTreeItem);
@@ -312,6 +326,9 @@ public class EngagementActionController implements Initializable{
 				loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
 				loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 				loadSampleWK(selectedActivity);
+			} else if (selectedActivity.getLongName().contentEquals("Plan")) {
+				removeAttributePane();
+				loadChapterPlan(getChapter(selectedActivity));
 			}
 		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
