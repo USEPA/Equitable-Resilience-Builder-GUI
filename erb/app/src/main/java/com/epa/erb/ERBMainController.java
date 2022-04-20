@@ -13,6 +13,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 public class ERBMainController implements Initializable{
@@ -25,6 +28,10 @@ public class ERBMainController implements Initializable{
 	Button setupLaunchButton;
 	@FXML
 	Button actionLaunchButton;
+	@FXML
+	TextFlow setupTextFlow;
+	@FXML
+	TextFlow actionTextFlow;
 	
 	public ERBMainController() {
 		
@@ -36,11 +43,33 @@ public class ERBMainController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
+		fillSetupTextFlow();
+		fillActionTextFlow();
 	}
 	
 	private void handleControls() {
 		erbHeading1.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		erbHeading2.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+	}
+	
+	private void fillSetupTextFlow() {
+		String setupString = "The setup portion of the tool can be used to do the following: " + "\n" +
+							 "\t" + "-Create chapters, add activities to chapters, and assign chapter descriptions." + "\n" + 
+							 "\t" + "-View and add activity types to created chapters." + "\n" + 
+							 "\t" + "-View and assign available activities to corresponding activity types in created chapters.";
+		Text setupText = new Text(setupString);
+		setupText.setFont(new Font(15.0));
+		setupTextFlow.getChildren().add(setupText);
+	}
+	
+	private void fillActionTextFlow() {
+		String actionString = "The action portion of the tool can be used to do the following: " + "\n" +
+							"\t" + "-View all activites created for the ERB." + "\n" + 
+							"\t" + "-Engage in selected actitivites." + "\n" + 
+							"\t" + "-Track progress inside of the ERB.";
+		Text actionText = new Text(actionString);
+		actionText.setFont(new Font(15.0));
+		actionTextFlow.getChildren().add(actionText);
 	}
 	
 	//ERB Tool Pt 1
