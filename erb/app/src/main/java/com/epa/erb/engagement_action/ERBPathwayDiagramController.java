@@ -61,9 +61,9 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		setToolTips();
 		handleControls();
 		initializeStyle();
+		setToolTips();
 	}
 	
 	private void handleControls() {
@@ -107,7 +107,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		if (activity.getStatus().contentEquals("ready")) {
 			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getReadyStatusColor());
 			centerCircleLabel.setText("R");
-		} else if (activity.getStatus().contentEquals("skip")) {
+		} else if (activity.getStatus().contentEquals("skipped")) {
 			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getSkippedStatusColor());
 			centerCircleLabel.setText("S");
 		} else if (activity.getStatus().contentEquals("complete")) {
@@ -130,6 +130,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		Tooltip.install(circle, tooltip);
 		Tooltip.install(circleLabel, tooltip);
 		tooltip.setStyle("-fx-background-color: " + color + " ; -fx-text-fill: black;");
+		circle.setStyle("-fx-fill: " + color + ";");
 	}
 
 	/**
