@@ -1,5 +1,5 @@
 module com.epa.erb {
-	requires pdfbox;
+	//requires pdfbox;
 	requires java.xml;
 	requires javafx.fxml;
 	requires javafx.web;

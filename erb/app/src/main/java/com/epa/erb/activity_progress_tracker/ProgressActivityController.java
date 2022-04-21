@@ -40,6 +40,8 @@ public class ProgressActivityController implements Initializable{
 			activityCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
 		} else if (activity.getStatus().contentEquals("skipped")) {
 			activityCircle.setStyle("-fx-fill: " + constants.getSkippedStatusColor() + ";");
+		} else if (activity.getStatus().contentEquals("in progress")) {
+			activityCircle.setStyle("-fx-fill: " + constants.getInProgressStatusColor() + ";");
 		}
 	}
 	

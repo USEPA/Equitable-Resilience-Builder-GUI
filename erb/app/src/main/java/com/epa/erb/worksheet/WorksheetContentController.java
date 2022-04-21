@@ -1,7 +1,7 @@
 package com.epa.erb.worksheet;
 
 import java.awt.Desktop;
-import java.awt.print.PrinterJob;
+//import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
@@ -14,9 +14,9 @@ import javax.print.attribute.standard.Copies;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.pdfbox.Loader;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.printing.PDFPageable;
+//import org.apache.pdfbox.Loader;
+//import org.apache.pdfbox.pdmodel.PDDocument;
+//import org.apache.pdfbox.printing.PDFPageable;
 import javafx.beans.value.ChangeListener;
 import com.epa.erb.Activity;
 import javafx.beans.value.ObservableValue;
@@ -52,7 +52,9 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private Logger logger = LogManager.getLogger(WorksheetContentController.class);
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	
+	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	//private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -133,11 +135,11 @@ public class WorksheetContentController implements Initializable{
 				FileInputStream fileInputStream = new FileInputStream(file.getPath());
 				PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
 				attributeSet.add(new Copies(1));
-				PDDocument pdDocument = Loader.loadPDF(fileInputStream);
-				PrinterJob printerJob = PrinterJob.getPrinterJob();
-				printerJob.setPrintService(printService);
-				printerJob.setPageable(new PDFPageable(pdDocument));
-				printerJob.print();
+//				PDDocument pdDocument = Loader.loadPDF(fileInputStream);
+//				PrinterJob printerJob = PrinterJob.getPrinterJob();
+//				printerJob.setPrintService(printService);
+//				printerJob.setPageable(new PDFPageable(pdDocument));
+//				printerJob.print();
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}

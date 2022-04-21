@@ -97,6 +97,12 @@
                         <Label text="Skipped" />
                      </children>
                   </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Pane fx:id="inProgressKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                        <Label text="In Progress" />
+                     </children>
+                  </HBox>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
@@ -108,8 +114,25 @@
       <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
             <TreeView fx:id="treeView" prefHeight="200.0" />
-            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="controlsVBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
+                  <HBox fx:id="statusHBox">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button mnemonicParsing="false" text="Started" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button mnemonicParsing="false" text="Complete" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
                   <HBox fx:id="mainHBox" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox fx:id="contentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />

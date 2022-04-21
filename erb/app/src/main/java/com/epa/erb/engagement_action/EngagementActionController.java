@@ -73,9 +73,15 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	Pane skippedKeyPane;
 	@FXML
+	Pane inProgressKeyPane;
+	@FXML
 	Pane timeKeyPane;
 	@FXML
 	HBox mainHBox;
+	@FXML
+	HBox statusHBox;
+	@FXML
+	VBox controlsVBox;
 	@FXML
 	ScrollPane attributeScrollPane;
 	
@@ -91,8 +97,8 @@ public class EngagementActionController implements Initializable{
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //Holds all of the attribute panel that are loaded
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
 	
-	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	//private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -126,6 +132,7 @@ public class EngagementActionController implements Initializable{
 		completeKeyPane.setStyle("-fx-background-color: " + constants.getCompleteStatusColor() + ";");
 		readyKeyPane.setStyle("-fx-background-color: " + constants.getReadyStatusColor() + ";");
 		skippedKeyPane.setStyle("-fx-background-color: " + constants.getSkippedStatusColor() + ";");
+		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
 	}
 	
@@ -282,6 +289,7 @@ public class EngagementActionController implements Initializable{
 						loadChapterLandingContent(currentChapter);
 						handleNavigationButtonsShown(null, null);
 						loadActivityERBPathway(currentChapter);
+						removeStatusPanel();
 					} else { // Is Activity
 						String activityGUID = treeMap.get(selectedTreeItem);
 						Activity selectedActivity = getActivity(activityGUID);
@@ -311,6 +319,7 @@ public class EngagementActionController implements Initializable{
 					loadChapterERBPathway();
 					loadERBLandingContent();
 					handleNavigationButtonsShown(null, null);
+					removeStatusPanel();
 				}
 			}
 		} else {
@@ -340,12 +349,15 @@ public class EngagementActionController implements Initializable{
 				loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
 				loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 				loadSampleWK(selectedActivity);
+				addStatusPanel();
 			} else if (selectedActivity.getLongName().contentEquals("Plan")) {
 				removeAttributePane();
 				loadChapterPlan(getChapter(selectedActivity));
+				removeStatusPanel();
 			} else if (selectedActivity.getLongName().contentEquals("Reflect")) {
 				removeAttributePane();
 				loadChapterReflect(getChapter(selectedActivity));
+				removeStatusPanel();
 			}
 		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
@@ -362,6 +374,7 @@ public class EngagementActionController implements Initializable{
 							+ "5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases",
 					constants.getInstructionsColor());
 			loadSampleNB();
+			addStatusPanel();
 		}
 	}
 	
@@ -625,6 +638,18 @@ public class EngagementActionController implements Initializable{
 	
 	private void removeAttributePane() {
 		mainHBox.getChildren().remove(attributeScrollPane);
+	}
+	
+	private void removeStatusPanel() {
+		if(controlsVBox.getChildren().contains(statusHBox)) {
+			controlsVBox.getChildren().remove(statusHBox);
+		}
+	}
+	
+	private void addStatusPanel() {
+		if(!controlsVBox.getChildren().contains(statusHBox)) {
+			controlsVBox.getChildren().add(0, statusHBox);
+		}
 	}
 	
 	void removeAttributePanelController(AttributePanelController attributePanelController) {

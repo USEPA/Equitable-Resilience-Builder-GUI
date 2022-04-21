@@ -113,6 +113,9 @@ public class ERBPathwayDiagramController implements Initializable {
 		} else if (activity.getStatus().contentEquals("complete")) {
 			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getCompleteStatusColor());
 			centerCircleLabel.setText("C");
+		} else if (activity.getStatus().contentEquals("in progress")) {
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getInProgressStatusColor());
+			centerCircleLabel.setText("I");
 		}
 		
 		//Top Left Circle

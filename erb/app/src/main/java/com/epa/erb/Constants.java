@@ -9,7 +9,8 @@ public class Constants {
 	//Activity Attributes
 	private String activityTypeColor = "";
 	//Status
-	private String readyStatusColor = "#EDF7B2"; 				//Yellow
+	private String readyStatusColor = "#E3E3E3"; 				//Gray
+	private String inProgressStatusColor = "#EDF7B2"; 			//Yellow
 	private String completeStatusColor = "#B2F7D1"; 			//Mint Green
 	private String skippedStatusColor = "#B2C1F7"; 				//Light Blue
 	//--
@@ -50,6 +51,14 @@ public class Constants {
 
 	public String getReadyStatusColor() {
 		return readyStatusColor;
+	}
+
+	public String getInProgressStatusColor() {
+		return inProgressStatusColor;
+	}
+
+	public void setInProgressStatusColor(String inProgressStatusColor) {
+		this.inProgressStatusColor = inProgressStatusColor;
 	}
 
 	public String getCompleteStatusColor() {
