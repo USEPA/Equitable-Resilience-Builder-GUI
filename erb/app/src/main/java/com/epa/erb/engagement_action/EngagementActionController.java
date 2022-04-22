@@ -303,6 +303,7 @@ public class EngagementActionController implements Initializable{
 							loadActivityERBPathway(currentChapter);
 							highlightSelectedActivityDiagram(selectedTreeItem);
 							currentActivity = selectedActivity;
+							addStatusPanel();
 						}
 						handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
 					}
@@ -349,15 +350,12 @@ public class EngagementActionController implements Initializable{
 				loadAttributeInfo("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
 				loadAttributeInfo("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 				loadSampleWK(selectedActivity);
-				addStatusPanel();
 			} else if (selectedActivity.getLongName().contentEquals("Plan")) {
 				removeAttributePane();
 				loadChapterPlan(getChapter(selectedActivity));
-				removeStatusPanel();
 			} else if (selectedActivity.getLongName().contentEquals("Reflect")) {
 				removeAttributePane();
 				loadChapterReflect(getChapter(selectedActivity));
-				removeStatusPanel();
 			}
 		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
 			loadAttributeInfo("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
@@ -374,7 +372,6 @@ public class EngagementActionController implements Initializable{
 							+ "5. After about 15 minutes, introduce the phases of disaster mitigation-response-recovery. Use colored dots to label each of the \"why's\" with one or more phases",
 					constants.getInstructionsColor());
 			loadSampleNB();
-			addStatusPanel();
 		}
 	}
 	
