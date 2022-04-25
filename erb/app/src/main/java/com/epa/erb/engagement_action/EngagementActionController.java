@@ -96,8 +96,9 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	Button saveButton;
 	
-	public EngagementActionController() {
-		
+	private File projectDirectory;
+	public EngagementActionController(File projectDirectory) {
+		this.projectDirectory = projectDirectory;
 	}
 	
 	private Activity currentActivity = null; //Tracks the current user selected chapter
@@ -321,7 +322,7 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	public void saveButtonAction() {
 		try {
-			File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\Data.xml");
+			File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\" + projectDirectory.getName() + "\\Data.xml");
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document document = documentBuilder.newDocument();
@@ -606,7 +607,7 @@ public class EngagementActionController implements Initializable{
 	 * Parses the chapter data that was create by the user in pt. 1 of the tool
 	 */
 	private void parseDataFromSetup() {
-		File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\Data.xml");
+		File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName() + "\\Data.xml");
 		if (dataFile.exists() && dataFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

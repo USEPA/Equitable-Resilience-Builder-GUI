@@ -1,6 +1,8 @@
 package com.epa.erb;
 
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,6 +42,9 @@ public class ERBMainController implements Initializable{
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ERBMainController.class);
 	
+	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
@@ -72,13 +77,22 @@ public class ERBMainController implements Initializable{
 		actionTextFlow.getChildren().add(actionText);
 	}
 	
-	//ERB Tool Pt 1
 	private Stage setupStage = null;
 	@FXML
 	public void setupLaunchButtonAction() {
+	 	ArrayList<File> listOfProjects = getProjectDirectoriesInSetup();
+	 	if(listOfProjects.size() == 0) {
+	 		showProjectSelection(listOfProjects, false, true, false);
+	 	} else {
+	 		showProjectSelection(listOfProjects, false, true, false);
+	 	}
+	}
+	
+	//ERB Tool Pt 1
+	void loadSetupTool(File projectDirectory) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/EngagementSetup.fxml"));
-			EngagementSetupController engagementSetupController = new EngagementSetupController(this);
+			EngagementSetupController engagementSetupController = new EngagementSetupController(this, projectDirectory);
 			fxmlLoader.setController(engagementSetupController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
@@ -91,13 +105,20 @@ public class ERBMainController implements Initializable{
 		}
 	}
 	
-	//ERB Tool Pt 2
 	private Stage actionStage = null;
 	@FXML
 	public void actionLaunchButtonAction() {
+		ArrayList<File> listOfProjects = getProjectDirectoriesInAction();
+		if(listOfProjects.size() > 0) {
+	 		showProjectSelection(listOfProjects, true, false, true);
+	 	}
+	}
+	
+	//ERB Tool Pt 2
+	void loadActionTool(File projectDirectory) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController();
+			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory);
 			fxmlLoader.setController(engagementActionController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
@@ -107,6 +128,62 @@ public class ERBMainController implements Initializable{
 			actionStage.show();
 		} catch (Exception e) {
 			logger.fatal(e.getMessage());
+		}
+	}
+	
+	private Stage projectSelectionStage = null;
+	private void showProjectSelection(ArrayList<File> listOfProjects, boolean removeNewProjectOption, boolean setup, boolean action) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ProjectSelection.fxml"));
+			ProjectSelectionController projectSelectionController = new ProjectSelectionController(listOfProjects, this, setup, action);
+			fxmlLoader.setController(projectSelectionController);
+			Parent root = fxmlLoader.load();
+			if(removeNewProjectOption) projectSelectionController.removeNewProjectHBox();
+			Scene scene = new Scene(root);
+			projectSelectionStage = new Stage();
+			projectSelectionStage.setScene(scene);
+			projectSelectionStage.setTitle("Project Selection");
+			projectSelectionStage.showAndWait();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	private ArrayList<File> getProjectDirectoriesInSetup() {
+		ArrayList<File> projectDirectories = new ArrayList<File>();
+		File setupDirectory = new File(pathToERBFolder + "\\EngagementSetupTool");
+		if(setupDirectory.exists()) {
+			for(File file : setupDirectory.listFiles()) {
+				if(file.isDirectory()) {
+					System.out.println("SETUP PROJECT: " + file.getPath());
+					projectDirectories.add(file);
+				}
+			}
+		} else {
+			logger.debug(setupDirectory.getPath() + " does not exist. Returning empty list of projects in setup.");
+		}
+		return projectDirectories;
+	}
+	
+	private ArrayList<File> getProjectDirectoriesInAction(){
+		ArrayList<File> projectDirectories = new ArrayList<File>();
+		File actionDirectory = new File(pathToERBFolder + "\\EngagementActionTool");
+		if(actionDirectory.exists()) {
+			for(File file : actionDirectory.listFiles()) {
+				if(file.isDirectory()) {
+					System.out.println("ACTION PROJECT: " + file.getPath());
+					projectDirectories.add(file);
+				}
+			}
+		} else {
+			logger.debug(actionDirectory.getPath() + " does not exist. Returning empty list of projects in action.");
+		}
+		return projectDirectories;
+	}
+	
+	public void closeProjectSelectionStage() {
+		if(projectSelectionStage != null) {
+			projectSelectionStage.close();
 		}
 	}
 	

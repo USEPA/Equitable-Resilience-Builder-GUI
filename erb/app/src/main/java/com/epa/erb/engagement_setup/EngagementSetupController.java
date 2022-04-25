@@ -23,7 +23,6 @@ import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 import com.epa.erb.ERBMainController;
 import com.epa.erb.engagement_action.EngagementActionController;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
@@ -84,8 +83,10 @@ public class EngagementSetupController implements Initializable {
 	Button saveDataButton;
 	
 	private ERBMainController erbMainController;
-	public EngagementSetupController(ERBMainController erbMainController) {
+	private File projectDirectory;
+	public EngagementSetupController(ERBMainController erbMainController, File projectDirectory) {
 		this.erbMainController = erbMainController;
+		this.projectDirectory = projectDirectory;
 	}
 	
 	private String selectedChapter = null;	//Tracks the current user selected chapter they are adding activities to
@@ -250,7 +251,7 @@ public class EngagementSetupController implements Initializable {
 		erbMainController.closeSetupStage();
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController();
+			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory);
 			fxmlLoader.setController(engagementActionController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
@@ -274,7 +275,7 @@ public class EngagementSetupController implements Initializable {
 	 */
 	private void storeFinalSelectedActivitiesAndChapters() {
 		try {
-			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\Data.xml");
+			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName() + "\\Data.xml");
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document document = documentBuilder.newDocument();
