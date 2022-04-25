@@ -101,8 +101,24 @@ public class ERBPathwayDiagramController implements Initializable {
 		rightLeadingLine.setVisible(false);
 		arrowVBox.setVisible(false);
 	}
+	
+	void updateStatus() {
+		if (activity.getStatus().contentEquals("ready")) {
+			centerCircleLabel.setText("R");
+			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
+		} else if (activity.getStatus().contentEquals("skipped")) {
+			centerCircleLabel.setText("S");
+			centerCircle.setStyle("-fx-fill: " + constants.getSkippedStatusColor() + ";");
+		} else if (activity.getStatus().contentEquals("complete")) {
+			centerCircleLabel.setText("C");
+			centerCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
+		} else if (activity.getStatus().contentEquals("in progress")) {
+			centerCircleLabel.setText("I");
+			centerCircle.setStyle("-fx-fill: " + constants.getInProgressStatusColor() + ";");
+		}
+	}
 
-	private void setToolTips() {
+	void setToolTips() {
 		//Center Circle
 		if (activity.getStatus().contentEquals("ready")) {
 			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getReadyStatusColor());

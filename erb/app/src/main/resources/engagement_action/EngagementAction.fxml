@@ -122,12 +122,18 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Started" />
+                                    <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonAction" text="Started">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Button>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Complete" />
+                                    <Button fx:id="completeButton" mnemonicParsing="false" onAction="#completeButtonAction" text="Complete">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Button>
                                  </children>
                               </HBox>
                            </children>

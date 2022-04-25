@@ -9,6 +9,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.checkerframework.checker.units.qual.s;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -84,6 +85,10 @@ public class EngagementActionController implements Initializable{
 	VBox controlsVBox;
 	@FXML
 	ScrollPane attributeScrollPane;
+	@FXML
+	Button startButton;
+	@FXML
+	Button completeButton;
 	
 	public EngagementActionController() {
 		
@@ -235,6 +240,46 @@ public class EngagementActionController implements Initializable{
 				logger.error(e.getMessage());
 			}
 		}
+	}
+	
+	@FXML
+	public void startButtonAction() {
+		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		String GUID = treeMap.get(selectedTreeItem);
+		Activity activity = getActivity(GUID);
+		activity.setStatus("in progress"); //set status of activity
+		
+		ERBPathwayDiagramController erbPathwayDiagramController = null;
+		for(ERBPathwayDiagramController erbPD: listOfPathwayDiagramControllers) {
+			if(erbPD.getActivity().getGUID().contentEquals(GUID)) {
+				erbPathwayDiagramController = erbPD;
+			}
+		}
+		if(erbPathwayDiagramController != null) {
+			erbPathwayDiagramController.updateStatus(); //set status of erb diagram
+		}
+		
+		//set status in xml
+	}
+	
+	@FXML
+	public void completeButtonAction() {
+		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		String GUID = treeMap.get(selectedTreeItem);
+		Activity activity = getActivity(GUID);
+		activity.setStatus("complete"); //set status of activity
+		
+		ERBPathwayDiagramController erbPathwayDiagramController = null;
+		for(ERBPathwayDiagramController erbPD: listOfPathwayDiagramControllers) {
+			if(erbPD.getActivity().getGUID().contentEquals(GUID)) {
+				erbPathwayDiagramController = erbPD;
+			}
+		}
+		if(erbPathwayDiagramController != null) {
+			erbPathwayDiagramController.updateStatus(); //set status of erb diagram
+		}
+	
+		//set status in xml
 	}
 	
 	@FXML
