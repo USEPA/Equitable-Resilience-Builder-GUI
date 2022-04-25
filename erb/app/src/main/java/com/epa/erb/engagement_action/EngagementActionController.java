@@ -7,9 +7,13 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.checkerframework.checker.units.qual.s;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -89,6 +93,8 @@ public class EngagementActionController implements Initializable{
 	Button startButton;
 	@FXML
 	Button completeButton;
+	@FXML
+	Button saveButton;
 	
 	public EngagementActionController() {
 		
@@ -258,8 +264,6 @@ public class EngagementActionController implements Initializable{
 		if(erbPathwayDiagramController != null) {
 			erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		}
-		
-		//set status in xml
 	}
 	
 	@FXML
@@ -278,8 +282,6 @@ public class EngagementActionController implements Initializable{
 		if(erbPathwayDiagramController != null) {
 			erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		}
-	
-		//set status in xml
 	}
 	
 	@FXML
@@ -313,6 +315,66 @@ public class EngagementActionController implements Initializable{
 				treeView.getSelectionModel().select(itemToSelect);
 			}
 			treeViewClicked();
+		}
+	}
+	
+	@FXML
+	public void saveButtonAction() {
+		try {
+			File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\Data.xml");
+			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+			Document document = documentBuilder.newDocument();
+			Element rootElement = document.createElement("chapters");
+			document.appendChild(rootElement);
+			for(Chapter chapter : dataChapters) {
+				Element chapterElement = document.createElement("chapter");
+				chapterElement.setAttribute("chapterNum", Integer.toString(chapter.getChapterNum()));
+				chapterElement.setAttribute("numericName", chapter.getNumericName());
+				chapterElement.setAttribute("stringName", chapter.getStringName());
+				chapterElement.setAttribute("description", chapter.getDescriptionName());
+				for(Activity activity: chapter.getUserSelectedActivities()) {
+					Element activityElement = document.createElement("activity");
+					activityElement.setAttribute("status", activity.getStatus());
+					activityElement.setAttribute("shortName", activity.getShortName());
+					activityElement.setAttribute("longName", activity.getLongName());
+					activityElement.setAttribute("fileName", activity.getFileName());
+					activityElement.setAttribute("directions", activity.getDirections());
+					activityElement.setAttribute("objectives", activity.getObjectives());
+					activityElement.setAttribute("description", activity.getDescription());
+					activityElement.setAttribute("materials", activity.getMaterials());
+					activityElement.setAttribute("time", activity.getTime());
+					activityElement.setAttribute("who", activity.getWho());
+					activityElement.setAttribute("activityID", activity.getActivityID());
+					activityElement.setAttribute("guid", activity.getGUID());
+					
+					Element activityTypeElement = document.createElement("activityType");
+					activityTypeElement.setAttribute("longName", activity.getActivityType().getLongName());
+					activityTypeElement.setAttribute("shortName", activity.getActivityType().getShortName());
+					activityTypeElement.setAttribute("description",activity.getActivityType().getDescription());
+					activityTypeElement.setAttribute("fileExt", activity.getActivityType().getFileExt());
+					
+					Element linkedIDSElement = document.createElement("linkedActivityIDS");
+					for(Activity linkedActivity : activity.getListOfLinkedActivities()) {
+						Element linkElement = document.createElement("link");
+						linkElement.setAttribute("activityID", linkedActivity.getActivityID());
+						linkedIDSElement.appendChild(linkElement);
+					}
+					activityElement.appendChild(activityTypeElement);
+					activityElement.appendChild(linkedIDSElement);
+					chapterElement.appendChild(activityElement);
+				}
+				rootElement.appendChild(chapterElement);
+
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+				
+				StreamResult file = new StreamResult(dataFile);
+				transformer.transform(domSource, file);
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
 	
