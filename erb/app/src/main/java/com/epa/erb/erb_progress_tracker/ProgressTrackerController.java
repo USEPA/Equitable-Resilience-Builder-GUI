@@ -37,7 +37,6 @@ public class ProgressTrackerController implements Initializable {
 				loader.setController(progressColumnController);
 				Parent root = loader.load();
 				progressContentHBox.getChildren().add(root);
-				//HBox.setHgrow(root, Priority.ALWAYS);
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}

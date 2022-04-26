@@ -5,23 +5,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
-import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
+import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanController;
 import com.epa.erb.chapter.ReflectController;
@@ -321,62 +310,9 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-		try {
-			File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\" + projectDirectory.getName() + "\\Data.xml");
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.newDocument();
-			Element rootElement = document.createElement("chapters");
-			document.appendChild(rootElement);
-			for(Chapter chapter : dataChapters) {
-				Element chapterElement = document.createElement("chapter");
-				chapterElement.setAttribute("chapterNum", Integer.toString(chapter.getChapterNum()));
-				chapterElement.setAttribute("numericName", chapter.getNumericName());
-				chapterElement.setAttribute("stringName", chapter.getStringName());
-				chapterElement.setAttribute("description", chapter.getDescriptionName());
-				for(Activity activity: chapter.getUserSelectedActivities()) {
-					Element activityElement = document.createElement("activity");
-					activityElement.setAttribute("status", activity.getStatus());
-					activityElement.setAttribute("shortName", activity.getShortName());
-					activityElement.setAttribute("longName", activity.getLongName());
-					activityElement.setAttribute("fileName", activity.getFileName());
-					activityElement.setAttribute("directions", activity.getDirections());
-					activityElement.setAttribute("objectives", activity.getObjectives());
-					activityElement.setAttribute("description", activity.getDescription());
-					activityElement.setAttribute("materials", activity.getMaterials());
-					activityElement.setAttribute("time", activity.getTime());
-					activityElement.setAttribute("who", activity.getWho());
-					activityElement.setAttribute("activityID", activity.getActivityID());
-					activityElement.setAttribute("guid", activity.getGUID());
-					
-					Element activityTypeElement = document.createElement("activityType");
-					activityTypeElement.setAttribute("longName", activity.getActivityType().getLongName());
-					activityTypeElement.setAttribute("shortName", activity.getActivityType().getShortName());
-					activityTypeElement.setAttribute("description",activity.getActivityType().getDescription());
-					activityTypeElement.setAttribute("fileExt", activity.getActivityType().getFileExt());
-					
-					Element linkedIDSElement = document.createElement("linkedActivityIDS");
-					for(Activity linkedActivity : activity.getListOfLinkedActivities()) {
-						Element linkElement = document.createElement("link");
-						linkElement.setAttribute("activityID", linkedActivity.getActivityID());
-						linkedIDSElement.appendChild(linkElement);
-					}
-					activityElement.appendChild(activityTypeElement);
-					activityElement.appendChild(linkedIDSElement);
-					chapterElement.appendChild(activityElement);
-				}
-				rootElement.appendChild(chapterElement);
-
-				TransformerFactory transformerFactory = TransformerFactory.newInstance();
-				Transformer transformer = transformerFactory.newTransformer();
-				DOMSource domSource = new DOMSource(document);
-				
-				StreamResult file = new StreamResult(dataFile);
-				transformer.transform(domSource, file);
-			}
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+		File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\" + projectDirectory.getName() + "\\Data.xml");
+		XMLManager xmlManager = new XMLManager();
+		xmlManager.writeDataXML(dataFile, dataChapters, false);
 	}
 	
 	public void treeViewClicked() {
@@ -608,104 +544,8 @@ public class EngagementActionController implements Initializable{
 	 */
 	private void parseDataFromSetup() {
 		File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName() + "\\Data.xml");
-		if (dataFile.exists() && dataFile.canRead()) {
-			try {
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(dataFile);
-				doc.getDocumentElement().normalize();
-				NodeList chapterNodeList = doc.getElementsByTagName("chapter");
-				for (int i = 0; i < chapterNodeList.getLength(); i++) {
-					Node chapterNode = chapterNodeList.item(i);
-					// Chapter
-					if (chapterNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element chapterElement = (Element) chapterNode;
-						int chapterNum = Integer.parseInt(chapterElement.getAttribute("chapterNum"));
-						String chapterNumericName = chapterElement.getAttribute("numericName");
-						String chapterStringName = chapterElement.getAttribute("stringName");
-						String chapterDescription = chapterElement.getAttribute("description");
-						Chapter chapter = new Chapter(chapterNum, chapterNumericName, chapterStringName,chapterDescription);
-						NodeList activityNodeList = chapterNode.getChildNodes();
-						for (int j = 0; j < activityNodeList.getLength(); j++) {
-							Node activityNode = activityNodeList.item(j);
-							// Activity
-							if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element activityElement = (Element) activityNode;
-								String activityStatus = activityElement.getAttribute("status");
-								String activityShortName = activityElement.getAttribute("shortName");
-								String activityLongName = activityElement.getAttribute("longName");
-								String activityFileName = activityElement.getAttribute("fileName");
-								String activityDirections = activityElement.getAttribute("directions");
-								String activityObjectives = activityElement.getAttribute("objectives");
-								String activityDescription = activityElement.getAttribute("description");
-								String activityMaterials= activityElement.getAttribute("materials");
-								String activityTime = activityElement.getAttribute("time");
-								String activityWho = activityElement.getAttribute("who");
-								String activityID = activityElement.getAttribute("activityID");
-								String activityGUID = activityElement.getAttribute("guid");
-								
-								//Create new activity
-								Activity activity = new Activity();
-								activity.setStatus(activityStatus);
-								activity.setShortName(activityShortName);
-								activity.setLongName(activityLongName);
-								activity.setFileName(activityFileName);
-								activity.setDirections(activityDirections);
-								activity.setObjectives(activityObjectives);
-								activity.setDescription(activityDescription);
-								activity.setMaterials(activityMaterials);
-								activity.setTime(activityTime);
-								activity.setWho(activityWho);
-								activity.setActivityID(activityID);
-								activity.setGUID(activityGUID);
-								
-								//Add activity type element to activity
-								NodeList activityTypeNodeList = activityElement.getElementsByTagName("activityType");
-								for (int k = 0; k < activityTypeNodeList.getLength(); k++) {
-									Node activityTypeNode = activityTypeNodeList.item(k);
-									// ActivityType
-									if (activityTypeNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element activityTypeElement = (Element) activityTypeNode;
-										String activityTypeLongName = activityTypeElement.getAttribute("longName");
-										String activityTypeShortName = activityTypeElement.getAttribute("shortName");
-										String activityTypeDescription = activityTypeElement.getAttribute("description");
-										String activityTypeFileExt = activityTypeElement.getAttribute("fileExt");
-										ActivityType activityType = new ActivityType(activityTypeLongName,activityTypeShortName, activityTypeDescription, activityTypeFileExt);
-										activity.setActivityType(activityType);
-									}
-								}
-								
-								//Add activity id links element to activity
-								NodeList linkedActivityIDSNodeList = activityElement.getElementsByTagName("linkedActivityIDS");
-								for (int k = 0; k < linkedActivityIDSNodeList.getLength(); k++) {
-									Node linkedActivityIDSNode = linkedActivityIDSNodeList.item(k);
-									// Linked ActivityIDS
-									if (linkedActivityIDSNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element linkedActivityIDSElement = (Element) linkedActivityIDSNode;
-										NodeList linkNodeList = linkedActivityIDSElement.getElementsByTagName("link");
-										for(int l=0; l <linkNodeList.getLength(); l++) {
-											Node linkNode = linkNodeList.item(l);
-											//Link
-											if(linkNode.getNodeType() == Node.ELEMENT_NODE) {
-												Element linkElement = (Element) linkNode;
-												String linkID = linkElement.getAttribute("activityID");
-												activity.addLinkedActivityID(linkID);
-											}
-										}
-									}
-								}
-								chapter.addUserSelectedActivity(activity);
-							}
-						}
-						dataChapters.add(chapter);
-					}
-				}
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error(dataFile.getPath() + " either does not exist or cannot be read");
-		}
+		XMLManager xmlManager = new XMLManager();
+		dataChapters = xmlManager.parseDataXML(dataFile);
 	}
 		
 	private void cleanAttributeVBox() {
