@@ -10,17 +10,13 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.Chapter;
-import com.epa.erb.ERBMainController;
 import com.epa.erb.XMLManager;
-import com.epa.erb.engagement_action.EngagementActionController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Hyperlink;
@@ -36,7 +32,6 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class EngagementSetupController implements Initializable {
@@ -70,10 +65,8 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	Button saveDataButton;
 	
-	private ERBMainController erbMainController;
 	private File projectDirectory;
-	public EngagementSetupController(ERBMainController erbMainController, File projectDirectory) {
-		this.erbMainController = erbMainController;
+	public EngagementSetupController(File projectDirectory) {
 		this.projectDirectory = projectDirectory;
 	}
 	

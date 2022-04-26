@@ -92,7 +92,7 @@ public class ERBMainController implements Initializable{
 	void loadSetupTool(File projectDirectory) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/EngagementSetup.fxml"));
-			EngagementSetupController engagementSetupController = new EngagementSetupController(this, projectDirectory);
+			EngagementSetupController engagementSetupController = new EngagementSetupController(projectDirectory);
 			fxmlLoader.setController(engagementSetupController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
