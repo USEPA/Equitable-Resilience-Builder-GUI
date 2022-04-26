@@ -155,7 +155,6 @@ public class ERBMainController implements Initializable{
 		if(setupDirectory.exists()) {
 			for(File file : setupDirectory.listFiles()) {
 				if(file.isDirectory()) {
-					System.out.println("SETUP PROJECT: " + file.getPath());
 					projectDirectories.add(file);
 				}
 			}

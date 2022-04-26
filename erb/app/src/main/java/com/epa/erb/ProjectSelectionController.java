@@ -3,16 +3,19 @@ package com.epa.erb;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -56,16 +59,48 @@ public class ProjectSelectionController implements Initializable{
 	@FXML
 	public void doneButtonAction() {
 		String selectedProjectName = projectsListView.getSelectionModel().getSelectedItem();
-		if(selectedProjectName != null && selectedProjectName.length() > 0) {
+		if (selectedProjectName != null && selectedProjectName.length() > 0) {
 			File projectDirectory = getProjectDirectory(selectedProjectName);
-			if (setup) {
-				erbMainController.loadSetupTool(projectDirectory);
-			} else if (action) {
-				erbMainController.loadActionTool(projectDirectory);
+			if (projectDirectoryHasDataFile(projectDirectory)) {
+				Optional<ButtonType> result = showProjectDataExistsAlert();
+				if (result.get().getButtonData() == ButtonData.OTHER) {
+					if (result.get().getText().contains("Overwrite")) {
+						removeExistingProjectSetupData(projectDirectory);
+					}
+					loadTool(projectDirectory);
+				}
+			} else {
+				loadTool(projectDirectory);
 			}
 			erbMainController.closeProjectSelectionStage();
 		} else {
 			logger.debug("Cannot launch the setup tool. Selected project name = " + selectedProjectName);
+		}
+	}
+
+	private void removeExistingProjectSetupData(File projectDirectory) {
+		File setupDataFile = new File(projectDirectory.getPath() + "\\Data.xml");
+		if(setupDataFile.exists()) {
+			setupDataFile.delete();
+		}
+	}
+	
+	private Optional<ButtonType> showProjectDataExistsAlert() {
+		ButtonType loadButtonType = new ButtonType("Load existing data", ButtonData.OTHER);
+		ButtonType overwriteButtonType = new ButtonType("Overwrite existing data", ButtonData.OTHER);
+		ButtonType cancelButtonType = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+		Alert alert = new Alert(AlertType.CONFIRMATION, "This project contains data. How would you like to proceed?", loadButtonType, overwriteButtonType, cancelButtonType);
+		alert.setTitle("Project Selection");
+		alert.setHeaderText(null);
+		Optional<ButtonType> result = alert.showAndWait();
+		return result;
+	}
+	
+	private void loadTool(File projectDirectory) {
+		if (setup) {
+			erbMainController.loadSetupTool(projectDirectory);
+		} else if (action) {
+			erbMainController.loadActionTool(projectDirectory);
 		}
 	}
 	
@@ -111,6 +146,18 @@ public class ProjectSelectionController implements Initializable{
 		for (File file : listOfProjects) {
 			if(file.getName().contentEquals(projectNameToCreate)) {
 				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean projectDirectoryHasDataFile(File projectDirectory) {
+		File [] projectFiles = projectDirectory.listFiles();
+		if(projectFiles != null && projectFiles.length > 0) {
+			for(File projectFile : projectFiles) {
+				if(projectFile.getName().contentEquals("Data.xml")) {
+					return true;
+				}
 			}
 		}
 		return false;

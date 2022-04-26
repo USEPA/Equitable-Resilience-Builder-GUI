@@ -107,6 +107,9 @@ public class EngagementSetupController implements Initializable {
 		fillActivitiesListView();
 		setActivityTypeListViewCellFactory();
 		setActivityTypeListViewDrag(activitityTypeListView);
+		if(projectDirectoryHasDataFile(projectDirectory)) {
+			loadExisitingProjectData();
+		}
 	}
 	
 	private void handleControls() {
@@ -119,6 +122,118 @@ public class EngagementSetupController implements Initializable {
 		for (ActivityType activityType : activityTypes) {
 			activitityTypeListView.getItems().add(activityType);
 		}
+	}
+	
+	private void loadExisitingProjectData() {
+		System.out.println("LOAD");
+		File dataFile = new File(projectDirectory.getPath() + "\\Data.xml");
+		if (dataFile.exists() && dataFile.canRead()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(dataFile);
+				doc.getDocumentElement().normalize();
+				NodeList chapterNodeList = doc.getElementsByTagName("chapter");
+				for (int i = 0; i < chapterNodeList.getLength(); i++) {
+					Node chapterNode = chapterNodeList.item(i);
+					// Chapter
+					if (chapterNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element chapterElement = (Element) chapterNode;
+						int chapterNum = Integer.parseInt(chapterElement.getAttribute("chapterNum"));
+						String chapterNumericName = chapterElement.getAttribute("numericName");
+						String chapterStringName = chapterElement.getAttribute("stringName");
+						String chapterDescription = chapterElement.getAttribute("description");
+						Chapter chapter = new Chapter(chapterNum, chapterNumericName, chapterStringName,chapterDescription);
+						//CODE TO ADD CHAPTERS
+						chaptersCreated.add(chapter);
+						ChapterTitledPaneController chapterTitledPaneController = loadChapterTitledPaneController(chapter);
+						if (chapterTitledPaneController != null) {
+							handleTitledPaneListViewAccess(chapterTitledPaneController);
+							storeTitledPaneController(chapterTitledPaneController);
+						}
+						
+						NodeList activityNodeList = chapterNode.getChildNodes();
+						for (int j = 0; j < activityNodeList.getLength(); j++) {
+							Node activityNode = activityNodeList.item(j);
+							// Activity
+							if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element activityElement = (Element) activityNode;
+								String activityStatus = activityElement.getAttribute("status");
+								String activityShortName = activityElement.getAttribute("shortName");
+								String activityLongName = activityElement.getAttribute("longName");
+								String activityFileName = activityElement.getAttribute("fileName");
+								String activityDirections = activityElement.getAttribute("directions");
+								String activityObjectives = activityElement.getAttribute("objectives");
+								String activityDescription = activityElement.getAttribute("description");
+								String activityMaterials= activityElement.getAttribute("materials");
+								String activityTime = activityElement.getAttribute("time");
+								String activityWho = activityElement.getAttribute("who");
+								String activityID = activityElement.getAttribute("activityID");
+								String activityGUID = activityElement.getAttribute("guid");
+								
+								//Create new activity
+								Activity activity = new Activity();
+								activity.setStatus(activityStatus);
+								activity.setShortName(activityShortName);
+								activity.setLongName(activityLongName);
+								activity.setFileName(activityFileName);
+								activity.setDirections(activityDirections);
+								activity.setObjectives(activityObjectives);
+								activity.setDescription(activityDescription);
+								activity.setMaterials(activityMaterials);
+								activity.setTime(activityTime);
+								activity.setWho(activityWho);
+								activity.setActivityID(activityID);
+								activity.setGUID(activityGUID);
+								
+								//Add activity type element to activity
+								NodeList activityTypeNodeList = activityElement.getElementsByTagName("activityType");
+								for (int k = 0; k < activityTypeNodeList.getLength(); k++) {
+									Node activityTypeNode = activityTypeNodeList.item(k);
+									// ActivityType
+									if (activityTypeNode.getNodeType() == Node.ELEMENT_NODE) {
+										Element activityTypeElement = (Element) activityTypeNode;
+										String activityTypeLongName = activityTypeElement.getAttribute("longName");
+										String activityTypeShortName = activityTypeElement.getAttribute("shortName");
+										String activityTypeDescription = activityTypeElement.getAttribute("description");
+										String activityTypeFileExt = activityTypeElement.getAttribute("fileExt");
+										ActivityType activityType = new ActivityType(activityTypeLongName,activityTypeShortName, activityTypeDescription, activityTypeFileExt);
+										activity.setActivityType(activityType);
+									}
+								}
+								if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) {
+									// CODE TO LOAD ACTIVITIES
+									ActivityType activityType = activity.getActivityType();
+									SelectedActivity selectedActivity = new SelectedActivity(activityType.getLongName(), activityType.getLongName());
+									chapterTitledPaneController.getTitledPaneListView().getItems().add(selectedActivity);
+									selectedActivity.setActivityID(activity.getActivityID());
+									selectedActivity.setShowName(activity.getLongName());
+									setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
+								}
+							}
+						}
+					}
+				}
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(dataFile.getPath() + " either does not exist or cannot be read");
+		}
+		//Create chapters
+		//Add activities to chapters
+	}
+	
+	private boolean projectDirectoryHasDataFile(File projectDirectory) {
+		File [] projectFiles = projectDirectory.listFiles();
+		if(projectFiles != null && projectFiles.length > 0) {
+			for(File projectFile : projectFiles) {
+				if(projectFile.getName().contentEquals("Data.xml")) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	private void setActivityTypeListViewCellFactory() {
@@ -203,31 +318,49 @@ public class EngagementSetupController implements Initializable {
 					
 	@FXML
 	public void addChapterButtonAction() {
+		Chapter chapter = createChapter();
+		chaptersCreated.add(chapter);
+		ChapterTitledPaneController chapterTitledPaneController = loadChapterTitledPaneController(chapter);
+		if (chapterTitledPaneController != null) {
+			handleTitledPaneListViewAccess(chapterTitledPaneController);
+			storeTitledPaneController(chapterTitledPaneController);
+		}
+	}
+	
+	private Chapter createChapter() {
+		//Create and store a new Chapter object to represent the user added chapter
+		int chapterNum = chaptersCreated.size() + 1;
+		Chapter chapter = new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "");
+		return chapter;
+	}
+	
+	private ChapterTitledPaneController loadChapterTitledPaneController(Chapter chapter) {
+		// Load and add the TitledPane to the selected activities vbox
 		try {
-			//Create and store a new Chapter object to represent the user added chapter
-			int chapterNum = chaptersCreated.size() + 1;
-			Chapter chapter = new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "");
-			chaptersCreated.add(chapter);
-
-			//Load and add the TitledPane to the selected activities vbox
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/ChapterTitledPane.fxml"));
 			ChapterTitledPaneController chapterTitledPaneController = new ChapterTitledPaneController(chapter);
 			fxmlLoader.setController(chapterTitledPaneController);
 			TitledPane pane = fxmlLoader.load();
 			VBox.setVgrow(pane, Priority.ALWAYS);
 			selectedActivitesVBox.getChildren().add(pane);
-			
-			//Handle access to the TitledPaneListView in this class
-			ListView<SelectedActivity> titledPaneListView = chapterTitledPaneController.getTitledPaneListView();
-			setTitledPaneListViewCellFactory(titledPaneListView);
-			setSelectedActivityListViewDrag(titledPaneListView);
-			titledPaneListView.setOnMouseClicked(e -> selectedActivityListViewClicked(e, titledPaneListView, chapterTitledPaneController.getPaneTitle()));
-			
-			//Store the ChapterTitledPaneController for the user created chapter
-			chapterTitledPaneControllers.add(chapterTitledPaneController);
+			return chapterTitledPaneController;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
+	}
+	
+	private void handleTitledPaneListViewAccess(ChapterTitledPaneController chapterTitledPaneController) {
+		//Handle access to the TitledPaneListView in this class
+		ListView<SelectedActivity> titledPaneListView = chapterTitledPaneController.getTitledPaneListView();
+		setTitledPaneListViewCellFactory(titledPaneListView);
+		setSelectedActivityListViewDrag(titledPaneListView);
+		titledPaneListView.setOnMouseClicked(e -> selectedActivityListViewClicked(e, titledPaneListView, chapterTitledPaneController.getPaneTitle()));
+	}
+	
+	private void storeTitledPaneController(ChapterTitledPaneController chapterTitledPaneController) {
+		//Store the ChapterTitledPaneController for the user created chapter
+		chapterTitledPaneControllers.add(chapterTitledPaneController);
 	}
 
 	/**
