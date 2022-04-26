@@ -68,8 +68,6 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	Button assignButton;
 	@FXML
-	Button doEngagementButton;
-	@FXML
 	Button saveDataButton;
 	
 	private ERBMainController erbMainController;
@@ -296,27 +294,11 @@ public class EngagementSetupController implements Initializable {
 	}
 	
 	@FXML
-	public void doEngagementButtonAction() {
-		erbMainController.closeSetupStage();
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-//			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory);
-//			fxmlLoader.setController(engagementActionController);
-//			Parent root = fxmlLoader.load();
-//			Scene scene = new Scene(root);
-//			Stage stage = new Stage();
-//			stage.setScene(scene);
-//			stage.setTitle("ERB: Equitable Resilience Builder");
-//			stage.show();
-//		} catch (Exception e) {
-//			logger.fatal(e.getMessage());
-//		}
-	}
-	
-	@FXML
 	public void saveDataButtonAction() {
-		addFinalSelectedActivitiesToChapters();
-		storeFinalSelectedActivitiesAndChapters();
+		if(chaptersCreated.size() > 0) {
+			addFinalSelectedActivitiesToChapters();
+			storeFinalSelectedActivitiesAndChapters();
+		}
 	}
 	
 	/**

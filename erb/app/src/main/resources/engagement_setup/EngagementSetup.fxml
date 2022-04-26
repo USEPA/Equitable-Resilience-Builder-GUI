@@ -113,7 +113,6 @@
                   <HBox alignment="CENTER" spacing="20.0">
                      <children>
                         <Button fx:id="saveDataButton" mnemonicParsing="false" onAction="#saveDataButtonAction" text="Save Data" />
-                        <Button fx:id="doEngagementButton" mnemonicParsing="false" onAction="#doEngagementButtonAction" text="Do Engagement" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
