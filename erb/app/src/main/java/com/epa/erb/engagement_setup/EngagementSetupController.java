@@ -298,19 +298,19 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	public void doEngagementButtonAction() {
 		erbMainController.closeSetupStage();
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory);
-			fxmlLoader.setController(engagementActionController);
-			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setTitle("ERB: Equitable Resilience Builder");
-			stage.show();
-		} catch (Exception e) {
-			logger.fatal(e.getMessage());
-		}
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+//			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory);
+//			fxmlLoader.setController(engagementActionController);
+//			Parent root = fxmlLoader.load();
+//			Scene scene = new Scene(root);
+//			Stage stage = new Stage();
+//			stage.setScene(scene);
+//			stage.setTitle("ERB: Equitable Resilience Builder");
+//			stage.show();
+//		} catch (Exception e) {
+//			logger.fatal(e.getMessage());
+//		}
 	}
 	
 	@FXML
@@ -325,7 +325,7 @@ public class EngagementSetupController implements Initializable {
 	private void storeFinalSelectedActivitiesAndChapters() {
 			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName() + "\\Data.xml");
 			XMLManager xmlManager = new XMLManager();
-			xmlManager.writeDataXML(dataFile, chaptersCreated, true);
+			xmlManager.writeDataXML(dataFile, chaptersCreated);
 	}
 	
 	/**
@@ -334,10 +334,11 @@ public class EngagementSetupController implements Initializable {
 	private void addFinalSelectedActivitiesToChapters() {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
 			Chapter chapter = getChapter(chapterTitledPaneController.getPaneTitle());
+			chapter.getUserSelectedActivities().clear();
 			ListView<SelectedActivity> listView = chapterTitledPaneController.getTitledPaneListView();
 			chapter.addUserSelectedActivity(getCustomizedPlanActivity());
 			ObservableList<SelectedActivity> selectedActivities = listView.getItems();
-			for (SelectedActivity selectedActivity : selectedActivities) {
+			for (SelectedActivity selectedActivity : selectedActivities) {				
 				chapter.addUserSelectedActivity(getCustomizedActivity(selectedActivity.getActivityID()));
 			}
 			chapter.addUserSelectedActivity(getCustomizedReflectActivity());

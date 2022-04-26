@@ -256,7 +256,7 @@ public class XMLManager {
 		return null;
 	}
 
-	public boolean writeDataXML(File xmlFile, ArrayList<Chapter> chapters, boolean generateGUID) {
+	public boolean writeDataXML(File xmlFile, ArrayList<Chapter> chapters) {
 		try {
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -282,7 +282,7 @@ public class XMLManager {
 					activityElement.setAttribute("time", activity.getTime());
 					activityElement.setAttribute("who", activity.getWho());
 					activityElement.setAttribute("activityID", activity.getActivityID());
-					if(generateGUID) {
+					if(activity.getGUID() == null || activity.getGUID().length() == 0) {
 						activityElement.setAttribute("guid", generateGUID());
 					} else {
 						activityElement.setAttribute("guid", activity.getGUID());

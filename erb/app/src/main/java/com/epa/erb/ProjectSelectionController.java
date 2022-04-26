@@ -1,14 +1,24 @@
 package com.epa.erb;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
@@ -18,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ProjectSelectionController implements Initializable{
 
@@ -45,6 +56,8 @@ public class ProjectSelectionController implements Initializable{
 		this.action = action;
 	}
 	
+	File actionDataFile = null;
+	
 	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
 	
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
@@ -61,21 +74,101 @@ public class ProjectSelectionController implements Initializable{
 		String selectedProjectName = projectsListView.getSelectionModel().getSelectedItem();
 		if (selectedProjectName != null && selectedProjectName.length() > 0) {
 			File projectDirectory = getProjectDirectory(selectedProjectName);
-			if (projectDirectoryHasDataFile(projectDirectory)) {
-				Optional<ButtonType> result = showProjectDataExistsAlert();
-				if (result.get().getButtonData() == ButtonData.OTHER) {
-					if (result.get().getText().contains("Overwrite")) {
-						removeExistingProjectSetupData(projectDirectory);
-					}
-					loadTool(projectDirectory);
-				}
-			} else {
-				loadTool(projectDirectory);
+			if (setup) {
+				handleProjectSetupLogic(projectDirectory);
+				erbMainController.loadSetupTool(projectDirectory);
+			} else if (action) {
+				handleProjectActionLogic(projectDirectory);
+				erbMainController.loadActionTool(projectDirectory, actionDataFile);
 			}
 			erbMainController.closeProjectSelectionStage();
 		} else {
 			logger.debug("Cannot launch the setup tool. Selected project name = " + selectedProjectName);
 		}
+	}
+	
+	private void handleProjectActionLogic(File projectDirectory) {
+		File projectSetupDirectory = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName());
+		if(projectDirectoryHasDataFile(projectDirectory)) {
+			File setupFile = new File(projectSetupDirectory.getPath() + "\\Data.xml");
+			File actionFile = new File(projectDirectory.getPath() + "\\Data.xml");
+			if(setupFile.exists() && actionFile.exists()) {
+				if(!filesAreSame(setupFile, actionFile)) {
+					loadDateSelection(setupFile, actionFile);
+				}
+			}
+		} else {
+			if(projectDirectoryHasDataFile(projectSetupDirectory)) { //Copy data from setup
+				File sourceFile = new File(projectSetupDirectory.getPath() + "\\Data.xml");
+				File destFile = new File(projectDirectory.getPath() + "\\Data.xml");
+				copyFile(sourceFile, destFile);
+			} else { //Prompt user to create data in setup
+				showActionProjectDataNonExistentAlert();
+			}
+		}
+	}
+	
+	private Stage dataSelectionStage = null;
+	private void loadDateSelection(File setupFile, File actionFile) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/DataSelection.fxml"));
+			DataSelectionController dataSelectionController = new DataSelectionController(setupFile, actionFile, this);
+			fxmlLoader.setController(dataSelectionController);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			dataSelectionStage = new Stage();
+			dataSelectionStage.setScene(scene);
+			dataSelectionStage.setTitle("Data Selection");
+			dataSelectionStage.showAndWait();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	private boolean filesAreSame(File sourceFile, File destFile) {
+		try {
+			return FileUtils.contentEquals(sourceFile, destFile);
+		} catch (IOException e) {
+			logger.error(e.getMessage());
+			return false;
+		}
+	}
+	
+	private void copyFile(File sourceFile, File destFile) {
+		InputStream is = null;
+	    OutputStream os = null;
+	    try {
+	        is = new FileInputStream(sourceFile);
+	        os = new FileOutputStream(destFile);
+	        byte[] buffer = new byte[1024];
+	        int length;
+	        while ((length = is.read(buffer)) > 0) {
+	            os.write(buffer, 0, length);
+	        }
+	        is.close();
+	        os.close();
+	    } catch (IOException e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	private void handleProjectSetupLogic(File projectDirectory) {
+		if (projectDirectoryHasDataFile(projectDirectory)) {
+			Optional<ButtonType> result = showSetupProjectDataExistsAlert();
+			if (result.get().getButtonData() == ButtonData.OTHER) {
+				if (result.get().getText().contains("Overwrite")) {
+					removeExistingProjectSetupData(projectDirectory);
+				}
+			}
+		}
+	}
+	
+	private void showActionProjectDataNonExistentAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setContentText("There is no data for this project. Please use Pt.1 of the tool to create data.");
+		alert.setTitle("No Data Alert");
+		alert.showAndWait();
 	}
 
 	private void removeExistingProjectSetupData(File projectDirectory) {
@@ -85,7 +178,7 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
-	private Optional<ButtonType> showProjectDataExistsAlert() {
+	private Optional<ButtonType> showSetupProjectDataExistsAlert() {
 		ButtonType loadButtonType = new ButtonType("Load existing data", ButtonData.OTHER);
 		ButtonType overwriteButtonType = new ButtonType("Overwrite existing data", ButtonData.OTHER);
 		ButtonType cancelButtonType = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
@@ -94,14 +187,6 @@ public class ProjectSelectionController implements Initializable{
 		alert.setHeaderText(null);
 		Optional<ButtonType> result = alert.showAndWait();
 		return result;
-	}
-	
-	private void loadTool(File projectDirectory) {
-		if (setup) {
-			erbMainController.loadSetupTool(projectDirectory);
-		} else if (action) {
-			erbMainController.loadActionTool(projectDirectory);
-		}
 	}
 	
 	@FXML
@@ -163,6 +248,12 @@ public class ProjectSelectionController implements Initializable{
 		return false;
 	}
 	
+	void closeDataSelectionStage() {
+		if(dataSelectionStage != null) {
+			dataSelectionStage.close();
+		}
+	}
+	
 	void fillProjectsListView() {
 		projectsListView.getItems().clear();
 		for(File file : listOfProjects) {
@@ -174,6 +265,10 @@ public class ProjectSelectionController implements Initializable{
 		if(projectSelectionVBox.getChildren().contains(newProjectHBox)) {
 			projectSelectionVBox.getChildren().remove(newProjectHBox);
 		}
+	}
+	
+	void setActionDataFile(File dataFile) {
+		actionDataFile = dataFile;
 	}
 
 }

@@ -115,10 +115,10 @@ public class ERBMainController implements Initializable{
 	}
 	
 	//ERB Tool Pt 2
-	void loadActionTool(File projectDirectory) {
+	void loadActionTool(File projectDirectory, File dataFile) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory);
+			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory, dataFile);
 			fxmlLoader.setController(engagementActionController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
@@ -170,7 +170,6 @@ public class ERBMainController implements Initializable{
 		if(actionDirectory.exists()) {
 			for(File file : actionDirectory.listFiles()) {
 				if(file.isDirectory()) {
-					System.out.println("ACTION PROJECT: " + file.getPath());
 					projectDirectories.add(file);
 				}
 			}

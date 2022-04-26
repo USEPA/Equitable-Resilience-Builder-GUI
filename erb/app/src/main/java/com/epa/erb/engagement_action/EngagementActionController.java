@@ -86,8 +86,10 @@ public class EngagementActionController implements Initializable{
 	Button saveButton;
 	
 	private File projectDirectory;
-	public EngagementActionController(File projectDirectory) {
+	private File dataFile;
+	public EngagementActionController(File projectDirectory, File dataFile) {
 		this.projectDirectory = projectDirectory;
+		this.dataFile = dataFile;
 	}
 	
 	private Activity currentActivity = null; //Tracks the current user selected chapter
@@ -312,7 +314,7 @@ public class EngagementActionController implements Initializable{
 	public void saveButtonAction() {
 		File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\" + projectDirectory.getName() + "\\Data.xml");
 		XMLManager xmlManager = new XMLManager();
-		xmlManager.writeDataXML(dataFile, dataChapters, false);
+		xmlManager.writeDataXML(dataFile, dataChapters);
 	}
 	
 	public void treeViewClicked() {
@@ -543,7 +545,7 @@ public class EngagementActionController implements Initializable{
 	 * Parses the chapter data that was create by the user in pt. 1 of the tool
 	 */
 	private void parseDataFromSetup() {
-		File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName() + "\\Data.xml");
+		//File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName() + "\\Data.xml");
 		XMLManager xmlManager = new XMLManager();
 		dataChapters = xmlManager.parseDataXML(dataFile);
 	}
