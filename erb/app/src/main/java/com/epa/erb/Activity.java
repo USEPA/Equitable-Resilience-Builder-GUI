@@ -159,14 +159,6 @@ public class Activity {
 		GUID = gUID;
 	}
 
-	public String getLinksString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		for(Activity activity : listOfLinkedActivities) {
-			stringBuilder.append("- " + activity.getLongName() + "\n");
-		}
-		return stringBuilder.toString();
-	}
-	
 	public ArrayList<String> getListOfLinkedActivityIDS(){
 		return listOfLinkedActivityIDS;
 	}
@@ -181,6 +173,14 @@ public class Activity {
 	
 	public void addLinkedActivity(Activity activity) {
 		listOfLinkedActivities.add(activity);
+	}
+	
+	public String getLinksString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for(Activity activity : listOfLinkedActivities) {
+			stringBuilder.append("- " + activity.getLongName() + "\n");
+		}
+		return stringBuilder.toString();
 	}
 	
 	public String toString() {
@@ -198,5 +198,4 @@ public class Activity {
 				"GUID: " + GUID + "\n" +
 				"LinkedActivityIDS: " + listOfLinkedActivityIDS;
 	}
-	
 }

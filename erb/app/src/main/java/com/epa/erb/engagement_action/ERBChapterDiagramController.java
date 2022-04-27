@@ -20,11 +20,11 @@ public class ERBChapterDiagramController implements Initializable{
 	@FXML
 	Line leftLeadingLine;
 	@FXML
+	Line rightLeadingLine;
+	@FXML
 	Circle centerCircle;
 	@FXML
 	Label centerCircleLabel;
-	@FXML
-	Line rightLeadingLine;
 	@FXML
 	VBox arrowVBox;
 	

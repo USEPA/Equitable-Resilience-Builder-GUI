@@ -22,34 +22,34 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	VBox diagramVBox;
 	@FXML
+	VBox arrowVBox;
+	@FXML
 	Circle topLeftCircle;
-	@FXML
-	Label topLeftCircleLabel;
-	@FXML
-	Circle topRightCircle;
-	@FXML
-	Label topRightCircleLabel;
-	@FXML
-	Line leftLeadingLine;
 	@FXML
 	Circle centerCircle;
 	@FXML
-	Label centerCircleLabel;
-	@FXML
-	Line rightLeadingLine;
+	Circle topRightCircle;
 	@FXML
 	Circle bottomLeftCircle;
 	@FXML
-	Label bottomLeftCircleLabel;
-	@FXML
 	Circle bottomRightCircle;
+	@FXML
+	Label topLeftCircleLabel;
+	@FXML
+	Label topRightCircleLabel;
+	@FXML
+	Label bottomLeftCircleLabel;
 	@FXML
 	Label bottomRightCircleLabel;
 	@FXML
-	VBox arrowVBox;
-	@FXML
 	Label activityLabel;
-	
+	@FXML
+	Label centerCircleLabel;
+	@FXML
+	Line leftLeadingLine;
+	@FXML
+	Line rightLeadingLine;
+
 	private Activity activity;
 	private EngagementActionController engagementActionController;
 	public ERBPathwayDiagramController(Activity activity, EngagementActionController engagementActionController) {

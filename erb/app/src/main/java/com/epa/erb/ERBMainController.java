@@ -81,11 +81,7 @@ public class ERBMainController implements Initializable{
 	@FXML
 	public void setupLaunchButtonAction() {
 	 	ArrayList<File> listOfProjects = getProjectDirectoriesInSetup();
-	 	if(listOfProjects.size() == 0) {
-	 		showProjectSelection(listOfProjects, false, true, false);
-	 	} else {
-	 		showProjectSelection(listOfProjects, false, true, false);
-	 	}
+	 	showProjectSelection(listOfProjects, false, true, false);
 	}
 	
 	//ERB Tool Pt 1
@@ -138,7 +134,6 @@ public class ERBMainController implements Initializable{
 			ProjectSelectionController projectSelectionController = new ProjectSelectionController(listOfProjects, this, setup, action);
 			fxmlLoader.setController(projectSelectionController);
 			Parent root = fxmlLoader.load();
-			if(removeNewProjectOption) projectSelectionController.removeNewProjectHBox();
 			Scene scene = new Scene(root);
 			projectSelectionStage = new Stage();
 			projectSelectionStage.setScene(scene);

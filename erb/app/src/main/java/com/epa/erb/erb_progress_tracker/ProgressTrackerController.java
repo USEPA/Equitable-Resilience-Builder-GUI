@@ -29,7 +29,7 @@ public class ProgressTrackerController implements Initializable {
 		addProgressColumns();
 	}
 	
-	public void addProgressColumns() {
+	private void addProgressColumns() {
 		for(Chapter chapter : listOfAllChapters) {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressColumn.fxml"));

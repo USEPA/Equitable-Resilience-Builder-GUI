@@ -35,25 +35,37 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	HBox headingHBox;
 	@FXML
+	HBox pathwayHBox;
+	@FXML
+	HBox mainHBox;
+	@FXML
+	HBox statusHBox;
+	@FXML
 	Label chapterLabel;
 	@FXML
 	Label erbPathwayLabel;
-	@FXML
-	HBox pathwayHBox;
 	@FXML
 	TreeView<String> treeView;
 	@FXML
 	VBox contentVBox;
 	@FXML
+	VBox controlsVBox;
+	@FXML
 	VBox attributeVBox;
+	@FXML
+	VBox keyVBox;
+	@FXML
+	Button startButton;
+	@FXML
+	Button completeButton;
+	@FXML
+	Button saveButton;
 	@FXML
 	Button previousButton;
 	@FXML
 	Button skipButton;
 	@FXML
 	Button nextButton;
-	@FXML
-	VBox keyVBox;
 	@FXML
 	Pane materialKeyPane;
 	@FXML
@@ -71,19 +83,7 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	Pane timeKeyPane;
 	@FXML
-	HBox mainHBox;
-	@FXML
-	HBox statusHBox;
-	@FXML
-	VBox controlsVBox;
-	@FXML
 	ScrollPane attributeScrollPane;
-	@FXML
-	Button startButton;
-	@FXML
-	Button completeButton;
-	@FXML
-	Button saveButton;
 	
 	private File projectDirectory;
 	private File dataFile;
@@ -145,9 +145,6 @@ public class EngagementActionController implements Initializable{
 			ChapterLandingController chapterLandingController = new ChapterLandingController(dataChapters, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
-			chapterLandingController.setAboutText();
-			chapterLandingController.setActivitiesListView();
-			chapterLandingController.setHeadingLabel();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -161,9 +158,6 @@ public class EngagementActionController implements Initializable{
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
-			chapterLandingController.setAboutText();
-			chapterLandingController.setActivitiesListView();
-			chapterLandingController.setHeadingLabel();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {

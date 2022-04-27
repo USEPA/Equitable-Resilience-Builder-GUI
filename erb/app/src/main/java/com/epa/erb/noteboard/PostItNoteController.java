@@ -40,10 +40,10 @@ public class PostItNoteController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initPostItNote();	
-		initializeStyle();
+		handleControls();
 	}
 	
-	private void initializeStyle() {
+	private void handleControls() {
 		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		postItNotePane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		scrollPane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");

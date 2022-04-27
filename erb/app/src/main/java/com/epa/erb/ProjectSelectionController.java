@@ -36,9 +36,9 @@ public class ProjectSelectionController implements Initializable{
 	@FXML
 	Button createButton;
 	@FXML
-	ListView<String> projectsListView;
-	@FXML
 	Button doneButton;
+	@FXML
+	ListView<String> projectsListView;
 	@FXML
 	VBox projectSelectionVBox;
 	@FXML
@@ -56,16 +56,19 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	File actionDataFile = null;
-	
 	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
-	
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillProjectsListView();
+		handleControls();
+	}
+	
+	private void handleControls() {
 		newProjectTextField.setFocusTraversable(false);
+		if(action && !setup) removeNewProjectHBox();
 	}
 	
 	@FXML
@@ -86,23 +89,32 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
-	private void handleProjectActionLogic(File projectDirectory) {
-		File projectSetupDirectory = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName());
-		if(projectDirectoryHasDataFile(projectDirectory)) {
-			File setupFile = new File(projectSetupDirectory.getPath() + "\\Data.xml");
-			File actionFile = new File(projectDirectory.getPath() + "\\Data.xml");
-			if(setupFile.exists() && actionFile.exists()) {
-				if(!filesAreSame(setupFile, actionFile)) {
-					loadDateSelection(setupFile, actionFile);
+	private void handleProjectActionLogic(File projectActionDirectory) {
+		File projectSetupDirectory = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectActionDirectory.getName());
+		File setupFile = new File(projectSetupDirectory.getPath() + "\\Data.xml");
+		File actionFile = new File(projectActionDirectory.getPath() + "\\Data.xml");
+		if (projectDirectoryHasDataFile(projectActionDirectory)) { // If there is a data file in Action
+			if (setupFile.exists() && actionFile.exists()) { // If there is a data file in Setup & Action
+				if (!filesAreSame(setupFile, actionFile)) { // If data files are not the same
+					loadDateSelection(setupFile, actionFile); // Prompt user to choose data file
 				}
 			}
-		} else {
-			if(projectDirectoryHasDataFile(projectSetupDirectory)) { //Copy data from setup
-				File sourceFile = new File(projectSetupDirectory.getPath() + "\\Data.xml");
-				File destFile = new File(projectDirectory.getPath() + "\\Data.xml");
-				copyFile(sourceFile, destFile);
-			} else { //Prompt user to create data in setup
-				showActionProjectDataNonExistentAlert();
+		} else { // If there is not a data file in Action
+			if (projectDirectoryHasDataFile(projectSetupDirectory)) { // If there is a data file in Setup
+				copyFile(setupFile, actionFile); // Copy the data file in Setup to Action
+			} else { // If there is not a data file in Setup
+				showActionProjectDataNonExistentAlert(); // Prompt user to create data in setup
+			}
+		}
+	}
+	
+	private void handleProjectSetupLogic(File projectDirectory) {
+		if (projectDirectoryHasDataFile(projectDirectory)) { //If there is a data file in Setup
+			Optional<ButtonType> result = showSetupProjectDataExistsAlert(); //Prompt user to load or overwrite data
+			if (result.get().getButtonData() == ButtonData.OTHER) { 
+				if (result.get().getText().contains("Overwrite")) { //If overwrite
+					removeExistingProjectSetupData(projectDirectory); //Remove data
+				}
 			}
 		}
 	}
@@ -151,17 +163,6 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
-	private void handleProjectSetupLogic(File projectDirectory) {
-		if (projectDirectoryHasDataFile(projectDirectory)) {
-			Optional<ButtonType> result = showSetupProjectDataExistsAlert();
-			if (result.get().getButtonData() == ButtonData.OTHER) {
-				if (result.get().getText().contains("Overwrite")) {
-					removeExistingProjectSetupData(projectDirectory);
-				}
-			}
-		}
-	}
-	
 	private void showActionProjectDataNonExistentAlert() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText(null);
@@ -192,7 +193,7 @@ public class ProjectSelectionController implements Initializable{
 	public void createButtonAction() {
 		String projectNameText = newProjectTextField.getText();
 		if (projectNameText != null && projectNameText.length() > 0) {
-			if (!isDuplicateProjectName(projectNameText)) { // check for dupe name
+			if (!isDuplicateProjectName(projectNameText)) { // check for duplicate name
 				File newProjectDirectory = createNewProjectDirectories(projectNameText);
 				listOfProjects.add(newProjectDirectory);
 				fillProjectsListView();

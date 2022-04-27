@@ -20,30 +20,39 @@ public class Chapter {
 	public int getChapterNum() {
 		return chapterNum;
 	}
+	
 	public void setChapterNum(int chapterNum) {
 		this.chapterNum = chapterNum;
 	}
+	
 	public String getNumericName() {
 		return numericName;
 	}
+	
 	public void setNumericName(String numericName) {
 		this.numericName = numericName;
 	}
+	
 	public String getStringName() {
 		return stringName;
 	}
+	
 	public void setStringName(String stringName) {
 		this.stringName = stringName;
 	}
+	
 	public String getDescriptionName() {
 		return descriptionName;
 	}
+	
 	public void setDescriptionName(String descriptionName) {
 		this.descriptionName = descriptionName;
 	}
+	
 	public ArrayList<Activity> getUserSelectedActivities() {
 		return userSelectedActivities;
 	}
+	
 	public void setUserSelectedActivities(ArrayList<Activity> userSelectedActivities) {
 		this.userSelectedActivities = userSelectedActivities;
 	}

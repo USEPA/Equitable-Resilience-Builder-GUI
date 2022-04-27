@@ -4,16 +4,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.erb_progress_tracker.ProgressTrackerController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -62,10 +59,13 @@ public class ChapterLandingController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		initializeStyle();
+		handleControls();
+		setAboutText();
+		setActivitiesListView();
+		setHeadingLabel();
 	}
 	
-	private void initializeStyle() {
+	private void handleControls() {
 		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	

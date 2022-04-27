@@ -39,15 +39,19 @@ public class EngagementSetupController implements Initializable {
 	@FXML
 	HBox erbPathwayHBox;
 	@FXML
+	ListView<Activity> customizedActivitiesListView;
+	@FXML
 	ListView<ActivityType> activitityTypeListView;
 	@FXML
 	TextArea activityTypeDescriptionTextField;
 	@FXML
 	Button addChapterButton;
 	@FXML
-	VBox selectedActivitesVBox;
+	Button assignButton;
 	@FXML
-	ListView<Activity> customizedActivitiesListView;
+	Button saveDataButton;
+	@FXML
+	VBox selectedActivitesVBox;
 	@FXML
 	TextArea shortNameTextField;
 	@FXML
@@ -60,10 +64,6 @@ public class EngagementSetupController implements Initializable {
 	TextArea objectivesTextField;
 	@FXML
 	Hyperlink fileNameHyperlink;
-	@FXML
-	Button assignButton;
-	@FXML
-	Button saveDataButton;
 	
 	private File projectDirectory;
 	public EngagementSetupController(File projectDirectory) {

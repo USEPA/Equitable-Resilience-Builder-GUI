@@ -3,14 +3,11 @@ package com.epa.erb.erb_progress_tracker;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import com.epa.erb.activity_progress_tracker.ProgressTrackerController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,13 +27,13 @@ public class ProgressColumnController implements Initializable{
 	@FXML
 	Circle planCircle;
 	@FXML
-	Arc planArc;
+	Circle reflectCircle;
 	@FXML
 	Circle engageCircle;
 	@FXML
-	Arc engageArc;
+	Arc planArc;
 	@FXML
-	Circle reflectCircle;
+	Arc engageArc;
 	@FXML
 	Arc reflectArc;
 	
@@ -99,7 +96,7 @@ public class ProgressColumnController implements Initializable{
 		}
 	}
 	
-	public void setArc0(Arc arc, Circle circle) {
+	void setArc0(Arc arc, Circle circle) {
 		//Circle
 		circle.setStyle("-fx-fill: White;");
 		
@@ -110,7 +107,7 @@ public class ProgressColumnController implements Initializable{
 		StackPane.setAlignment(arc, Pos.CENTER_LEFT);
 	}
 	
-	public void setArc25(Arc arc, Circle circle) {
+	void setArc25(Arc arc, Circle circle) {
 		//Circle
 		circle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		
@@ -121,7 +118,7 @@ public class ProgressColumnController implements Initializable{
 		StackPane.setAlignment(arc, Pos.CENTER);
 	}
 	
-	public void setArc50(Arc arc, Circle circle) {
+	void setArc50(Arc arc, Circle circle) {
 		//Circle
 		circle.setStyle("-fx-fill: White;");
 		
@@ -132,7 +129,7 @@ public class ProgressColumnController implements Initializable{
 		StackPane.setAlignment(arc, Pos.CENTER_LEFT);
 	}
 	
-	public void setArc75(Arc arc, Circle circle) {
+	void setArc75(Arc arc, Circle circle) {
 		//Circle
 		circle.setStyle("-fx-fill: White;");
 		
@@ -143,7 +140,7 @@ public class ProgressColumnController implements Initializable{
 		StackPane.setAlignment(arc, Pos.CENTER);
 	}
 	
-	public void setArc100(Arc arc, Circle circle) {
+	void setArc100(Arc arc, Circle circle) {
 		//Circle
 		circle.setStyle("-fx-fill: White;");
 		

@@ -14,17 +14,17 @@ import javafx.scene.control.ToggleGroup;
 public class DataSelectionController implements Initializable{
 
 	@FXML
+	Button okButton;
+	@FXML
 	Label setupModifiedDateLabel;
-	@FXML
-	RadioButton setupDataRadioButton;
-	@FXML
-	ToggleGroup dataSelection;
 	@FXML
 	Label actionModifiedDateLabel;
 	@FXML
+	RadioButton setupDataRadioButton;
+	@FXML
 	RadioButton actionDataRadioButton;
 	@FXML
-	Button okButton;
+	ToggleGroup dataSelection;
 	
 	private File setupFile;
 	private File actionFile;
@@ -37,6 +37,10 @@ public class DataSelectionController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		handleControls();
+	}
+	
+	private void handleControls() {
 		Date setupDate = new Date(setupFile.lastModified());
 		setupModifiedDateLabel.setText(setupDate.toString());
 		Date actionDate = new Date(actionFile.lastModified());
