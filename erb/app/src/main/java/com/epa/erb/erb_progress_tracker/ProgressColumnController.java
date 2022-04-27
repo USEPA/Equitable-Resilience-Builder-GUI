@@ -8,16 +8,14 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import com.epa.erb.activity_progress_tracker.ProgressTrackerController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.Circle;
+import javafx.scene.control.ProgressIndicator;
 import javafx.stage.Stage;
 
 public class ProgressColumnController implements Initializable{
@@ -25,17 +23,11 @@ public class ProgressColumnController implements Initializable{
 	@FXML
 	Label chapterLabel;
 	@FXML
-	Circle planCircle;
+	ProgressIndicator planProgressIndicator;
 	@FXML
-	Circle reflectCircle;
+	ProgressIndicator engageProgressIndicator;
 	@FXML
-	Circle engageCircle;
-	@FXML
-	Arc planArc;
-	@FXML
-	Arc engageArc;
-	@FXML
-	Arc reflectArc;
+	ProgressIndicator reflectProgressIndicator;
 	
 	private Chapter chapter;
 	private ArrayList<Chapter> listOfAllChapters;
@@ -50,25 +42,46 @@ public class ProgressColumnController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		handlePlanArc();
+		handlePlanArc(0.0);
 		handleEngageArc();
-		handleReflectArc();
+		handleReflectArc(0.0);
 	}
 	
 	private void handleControls() {
 		chapterLabel.setText(chapter.getStringName());
+		planProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
+		engageProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
+		reflectProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	private void handlePlanArc() {
-		setArc75(planArc, planCircle);
+	void handlePlanArc(double progress) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				planProgressIndicator.setProgress(progress);
+			}
+		});
 	}
 	
 	private void handleEngageArc() {
-		setArc50(engageArc, engageCircle);
+		double numberOfActivitiesInChapter = chapter.getNumberOfUserSelectedActivities();
+		double numberOfCompletedActivitiesInChapter = chapter.getNumberOfCompleteActivities();
+		double complete = (numberOfCompletedActivitiesInChapter/numberOfActivitiesInChapter);		
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				engageProgressIndicator.setProgress(complete);
+			}
+		});
 	}
 	
-	private void handleReflectArc() {
-		setArc0(reflectArc, reflectCircle);
+	void handleReflectArc(double progress) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				reflectProgressIndicator.setProgress(progress);
+			}
+		});
 	}
 	
 	public Chapter getChapter() {
@@ -79,8 +92,26 @@ public class ProgressColumnController implements Initializable{
 		this.chapter = chapter;
 	}
 	
+	private Stage progressPlanAdjusterStage = null;
 	@FXML
-	public void engageClicked() {
+	public void planProgressIndicatorClicked() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressAdjuster.fxml"));
+			ProgressAdjusterController progressAdjusterController = new ProgressAdjusterController("Plan", this);
+			fxmlLoader.setController(progressAdjusterController);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			progressPlanAdjusterStage = new Stage();
+			progressPlanAdjusterStage.setScene(scene);
+			progressPlanAdjusterStage.setTitle("Progress Adjuster");
+			progressPlanAdjusterStage.showAndWait();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	@FXML
+	public void engageProgressIndicatorClicked() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/activity_progress_tracker/ProgressTracker.fxml"));
 			ProgressTrackerController progressTrackerController = new ProgressTrackerController(listOfAllChapters);
@@ -96,59 +127,42 @@ public class ProgressColumnController implements Initializable{
 		}
 	}
 	
-	void setArc0(Arc arc, Circle circle) {
-		//Circle
-		circle.setStyle("-fx-fill: White;");
-		
-		//Arc
-		arc.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		arc.setLength(0.0);
-		arc.setStartAngle(90.0);
-		StackPane.setAlignment(arc, Pos.CENTER_LEFT);
+	private Stage progressReflectAdjusterStage = null;
+	@FXML
+	public void reflectProgressIndicatorClicked() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressAdjuster.fxml"));
+			ProgressAdjusterController progressAdjusterController = new ProgressAdjusterController("Reflect", this);
+			fxmlLoader.setController(progressAdjusterController);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			progressReflectAdjusterStage = new Stage();
+			progressReflectAdjusterStage.setScene(scene);
+			progressReflectAdjusterStage.setTitle("Progress Adjuster");
+			progressReflectAdjusterStage.showAndWait();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 	
-	void setArc25(Arc arc, Circle circle) {
-		//Circle
-		circle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		
-		//Arc
-		arc.setStyle("-fx-fill: White;");
-		arc.setLength(270.0);
-		arc.setStartAngle(90.0);
-		StackPane.setAlignment(arc, Pos.CENTER);
+	public void closeProgressPlanAdjusterStage() {
+		if(progressPlanAdjusterStage != null) {
+			progressPlanAdjusterStage.close();
+		}
 	}
 	
-	void setArc50(Arc arc, Circle circle) {
-		//Circle
-		circle.setStyle("-fx-fill: White;");
-		
-		//Arc
-		arc.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		arc.setLength(180.0);
-		arc.setStartAngle(90.0);
-		StackPane.setAlignment(arc, Pos.CENTER_LEFT);
+	double getPlanProgress() {
+		return planProgressIndicator.getProgress();
 	}
 	
-	void setArc75(Arc arc, Circle circle) {
-		//Circle
-		circle.setStyle("-fx-fill: White;");
-		
-		//Arc
-		arc.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		arc.setLength(270.0);
-		arc.setStartAngle(90.0);
-		StackPane.setAlignment(arc, Pos.CENTER);
+	public void closeProgressReflectAdjusterStage() {
+		if(progressReflectAdjusterStage != null) {
+			progressReflectAdjusterStage.close();
+		}
 	}
 	
-	void setArc100(Arc arc, Circle circle) {
-		//Circle
-		circle.setStyle("-fx-fill: White;");
-		
-		//Arc
-		arc.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		arc.setLength(360.0);
-		arc.setStartAngle(90.0);
-		StackPane.setAlignment(arc, Pos.CENTER);
+	double getReflectProgress() {
+		return reflectProgressIndicator.getProgress();
 	}
-
+	
 }

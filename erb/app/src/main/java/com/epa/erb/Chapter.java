@@ -69,6 +69,46 @@ public class Chapter {
 		return userSelectedActivities.size();
 	}
 	
+	public int getNumberOfReadyActivities() {
+		int count = 0;
+		for(Activity activity: userSelectedActivities) {
+			if(activity.getStatus().contentEquals("ready")) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public int getNumberOfInProgressActivities() {
+		int count = 0;
+		for(Activity activity: userSelectedActivities) {
+			if(activity.getStatus().contentEquals("in progress")) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public int getNumberOfSkippedActivities() {
+		int count = 0;
+		for(Activity activity: userSelectedActivities) {
+			if(activity.getStatus().contentEquals("skipped")) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public int getNumberOfCompleteActivities() {
+		int count = 0;
+		for(Activity activity: userSelectedActivities) {
+			if(activity.getStatus().contentEquals("complete")) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
 	public String toString() {
 		return  "----------Chapter---------" + "\n" +
 				"Chapter Num: " + chapterNum + "\n" + 

@@ -2,12 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Arc?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
@@ -34,8 +33,7 @@
                <children>
                   <StackPane>
                      <children>
-                        <Circle fx:id="planCircle" fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Arc fx:id="planArc" fill="DODGERBLUE" length="270.0" radiusX="60.0" radiusY="60.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" StackPane.alignment="CENTER" />
+                        <ProgressIndicator fx:id="planProgressIndicator" minHeight="125.0" minWidth="125.0" onMouseClicked="#planProgressIndicatorClicked" progress="0.0" />
                      </children>
                   </StackPane>
                   <Label text="Plan" />
@@ -45,8 +43,7 @@
                <children>
                   <StackPane>
                      <children>
-                        <Circle fx:id="engageCircle" fill="WHITE" onMouseClicked="#engageClicked" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Arc fx:id="engageArc" fill="DODGERBLUE" length="360.0" onMouseClicked="#engageClicked" radiusX="60.0" radiusY="60.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+                        <ProgressIndicator fx:id="engageProgressIndicator" minHeight="125.0" minWidth="125.0" onMouseClicked="#engageProgressIndicatorClicked" progress="0.0" />
                      </children>
                   </StackPane>
                   <Label text="Engage" />
@@ -56,8 +53,7 @@
                <children>
                   <StackPane>
                      <children>
-                        <Circle fx:id="reflectCircle" fill="DODGERBLUE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Arc fx:id="reflectArc" fill="WHITE" length="270.0" radiusX="60.0" radiusY="60.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+                        <ProgressIndicator fx:id="reflectProgressIndicator" minHeight="125.0" minWidth="125.0" onMouseClicked="#reflectProgressIndicatorClicked" progress="0.0" />
                      </children>
                   </StackPane>
                   <Label text="Reflect" />

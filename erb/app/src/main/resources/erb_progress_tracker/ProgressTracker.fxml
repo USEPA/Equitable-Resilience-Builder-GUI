@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -16,6 +17,10 @@
             </Label>
          </children>
       </HBox>
-      <HBox fx:id="progressContentHBox" alignment="CENTER" prefHeight="100.0" prefWidth="770.0" VBox.vgrow="ALWAYS" />
+      <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+         <content>
+            <HBox fx:id="progressContentHBox" />
+         </content>
+      </ScrollPane>
    </children>
 </VBox>

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 
 public class ProgressTrackerController implements Initializable {
 
@@ -36,6 +37,7 @@ public class ProgressTrackerController implements Initializable {
 				ProgressColumnController progressColumnController = new ProgressColumnController(chapter, listOfAllChapters);
 				loader.setController(progressColumnController);
 				Parent root = loader.load();
+				HBox.setHgrow(root, Priority.ALWAYS);
 				progressContentHBox.getChildren().add(root);
 			} catch (Exception e) {
 				logger.error(e.getMessage());
