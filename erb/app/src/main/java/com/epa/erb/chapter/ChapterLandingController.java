@@ -95,7 +95,7 @@ public class ChapterLandingController implements Initializable {
 	public void viewProgressButtonAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressTracker.fxml"));
-			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getDataChapters());
+			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getDataChapters(), engagementActionController);
 			fxmlLoader.setController(progressTrackerController);
 			Parent root = fxmlLoader.load();
 			Stage stage = new Stage();

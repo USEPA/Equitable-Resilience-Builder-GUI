@@ -99,6 +99,24 @@ public class Chapter {
 		return userSelectedActivities.size();
 	}
 	
+	public Activity getPlanActivity() {
+		for(Activity activity : userSelectedActivities) {
+			if(activity.getLongName().contentEquals("Plan")) {
+				return activity;
+			}
+		}
+		return null;
+	}
+	
+	public Activity getReflectActivity(){
+		for(Activity activity : userSelectedActivities) {
+			if(activity.getLongName().contentEquals("Reflect")) {
+				return activity;
+			}
+		}
+		return null;
+	}
+	
 	public int getNumberOfReadyActivities() {
 		int count = 0;
 		for(Activity activity: userSelectedActivities) {
@@ -129,11 +147,13 @@ public class Chapter {
 		return count;
 	}
 	
-	public int getNumberOfCompleteActivities() {
+	public int getNumberOfCompletedActivities() {
 		int count = 0;
 		for(Activity activity: userSelectedActivities) {
 			if(activity.getStatus().contentEquals("complete")) {
-				count++;
+				if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) {
+					count++;
+				}
 			}
 		}
 		return count;

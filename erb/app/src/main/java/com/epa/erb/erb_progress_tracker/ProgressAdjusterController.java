@@ -50,10 +50,10 @@ public class ProgressAdjusterController implements Initializable{
 	@FXML
 	public void okButtonAction() {
 		if(headerString.contentEquals("Plan")) {
-			progressColumnController.handlePlanArc(slider.getValue()/100.0);
+			progressColumnController.handlePlanProgress(slider.getValue()/100.0);
 			progressColumnController.closeProgressPlanAdjusterStage();
 		} else if (headerString.contentEquals("Reflect")) {
-			progressColumnController.handleReflectArc(slider.getValue()/100.0);
+			progressColumnController.handleReflectProgress(slider.getValue()/100.0);
 			progressColumnController.closeProgressReflectAdjusterStage();
 		}
 

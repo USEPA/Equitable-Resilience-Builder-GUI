@@ -241,12 +241,7 @@ public class EngagementActionController implements Initializable{
 		Activity activity = getActivity(GUID);
 		activity.setStatus("in progress"); //set status of activity
 		
-		ERBPathwayDiagramController erbPathwayDiagramController = null;
-		for(ERBPathwayDiagramController erbPD: listOfPathwayDiagramControllers) {
-			if(erbPD.getActivity().getGUID().contentEquals(GUID)) {
-				erbPathwayDiagramController = erbPD;
-			}
-		}
+		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(GUID);
 		if(erbPathwayDiagramController != null) {
 			erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		}
@@ -259,12 +254,7 @@ public class EngagementActionController implements Initializable{
 		Activity activity = getActivity(GUID);
 		activity.setStatus("complete"); //set status of activity
 		
-		ERBPathwayDiagramController erbPathwayDiagramController = null;
-		for(ERBPathwayDiagramController erbPD: listOfPathwayDiagramControllers) {
-			if(erbPD.getActivity().getGUID().contentEquals(GUID)) {
-				erbPathwayDiagramController = erbPD;
-			}
-		}
+		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(GUID);
 		if(erbPathwayDiagramController != null) {
 			erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		}
@@ -648,6 +638,15 @@ public class EngagementActionController implements Initializable{
 			logger.debug("Selected Activity GUID is null");
 			return null;
 		}
+	}
+	
+	public ERBPathwayDiagramController getErbPathwayDiagramController(String GUID) {
+		for(ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
+			if(erbPathwayDiagramController.getActivity().getGUID().contentEquals(GUID)) {
+				return erbPathwayDiagramController;
+			}
+		}
+		return null;
 	}
 		
 	private void setChapterLabelText(String chapterLabelText) {

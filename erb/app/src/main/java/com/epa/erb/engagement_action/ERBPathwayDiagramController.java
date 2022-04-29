@@ -102,7 +102,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		arrowVBox.setVisible(false);
 	}
 	
-	void updateStatus() {
+	public void updateStatus() {
 		if (activity.getStatus().contentEquals("ready")) {
 			centerCircleLabel.setText("R");
 			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");

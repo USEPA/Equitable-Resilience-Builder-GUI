@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import com.epa.erb.activity_progress_tracker.ProgressTrackerController;
+import com.epa.erb.engagement_action.ERBPathwayDiagramController;
+import com.epa.erb.engagement_action.EngagementActionController;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,20 +35,38 @@ public class ProgressColumnController implements Initializable{
 	
 	private Chapter chapter;
 	private ArrayList<Chapter> listOfAllChapters;
-	public ProgressColumnController(Chapter chapter, ArrayList<Chapter> listOfAllChapters) {
+	private EngagementActionController engagementActionController;
+	public ProgressColumnController(Chapter chapter, ArrayList<Chapter> listOfAllChapters, EngagementActionController engagementActionController) {
 		this.chapter = chapter;
 		this.listOfAllChapters = listOfAllChapters;
+		this.engagementActionController = engagementActionController;
 	}
 	
+	private Activity planActivity = null;
+	private Activity reflectActivity = null;
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ProgressColumnController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		planActivity = chapter.getPlanActivity();
+		reflectActivity = chapter.getReflectActivity();
 		handleControls();
-		handlePlanArc(0.0);
-		handleEngageArc();
-		handleReflectArc(0.0);
+		setInitialProgress();
+	}
+	
+	private void setInitialProgress() {
+		if(planActivity.getStatus().contentEquals("complete")) {
+			handlePlanProgress(1.0);
+		} else {
+			handlePlanProgress(chapter.getPlanStatus());
+		}
+		handleEngageProgress();
+		if(reflectActivity.getStatus().contentEquals("complete")) {
+			handleReflectProgress(1.0);
+		} else {
+			handleReflectProgress(chapter.getReflectStatus());
+		}
 	}
 	
 	private void handleControls() {
@@ -54,19 +76,26 @@ public class ProgressColumnController implements Initializable{
 		reflectProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	void handlePlanArc(double progress) {
+	void handlePlanProgress(double progress) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 				planProgressIndicator.setProgress(progress);
+				if (progress > 0.0 && progress < 1.0) {
+					planActivity.setStatus("in progress");
+				} else if (progress == 1.0) {
+					planActivity.setStatus("complete");
+				}
 				chapter.setPlanStatus(progress/100.0);
+				ERBPathwayDiagramController erbPathwayDiagramController = engagementActionController.getErbPathwayDiagramController(planActivity.getGUID());
+				if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus();
 			}
 		});
 	}
 	
-	private void handleEngageArc() {
-		double numberOfActivitiesInChapter = chapter.getNumberOfUserSelectedActivities();
-		double numberOfCompletedActivitiesInChapter = chapter.getNumberOfCompleteActivities();
+	private void handleEngageProgress() {
+		double numberOfActivitiesInChapter = chapter.getNumberOfUserSelectedActivities() -2; //Subtract Plan & Reflect
+		double numberOfCompletedActivitiesInChapter = chapter.getNumberOfCompletedActivities();
 		double complete = (numberOfCompletedActivitiesInChapter/numberOfActivitiesInChapter);		
 		Platform.runLater(new Runnable() {
 			@Override
@@ -77,22 +106,21 @@ public class ProgressColumnController implements Initializable{
 		});
 	}
 	
-	void handleReflectArc(double progress) {
+	void handleReflectProgress(double progress) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 				reflectProgressIndicator.setProgress(progress);
+				if (progress > 0.0 && progress < 1.0) {
+					reflectActivity.setStatus("in progress");
+				} else if (progress == 1.0) {
+					reflectActivity.setStatus("complete");
+				}
 				chapter.setReflectStatus(progress/100.0);
+				ERBPathwayDiagramController erbPathwayDiagramController = engagementActionController.getErbPathwayDiagramController(reflectActivity.getGUID());
+				if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus();
 			}
 		});
-	}
-	
-	public Chapter getChapter() {
-		return chapter;
-	}
-
-	public void setChapter(Chapter chapter) {
-		this.chapter = chapter;
 	}
 	
 	private Stage progressPlanAdjusterStage = null;
