@@ -237,7 +237,7 @@ public class EngagementSetupController implements Initializable {
 	private Chapter createChapter() {
 		//Create and store a new Chapter object to represent the user added chapter
 		int chapterNum = chaptersCreated.size() + 1;
-		Chapter chapter = new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "");
+		Chapter chapter = new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "", 0.0, 0.0, 0.0);
 		return chapter;
 	}
 	

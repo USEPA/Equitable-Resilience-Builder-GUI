@@ -59,6 +59,7 @@ public class ProgressColumnController implements Initializable{
 			@Override
 			public void run() {
 				planProgressIndicator.setProgress(progress);
+				chapter.setPlanStatus(progress/100.0);
 			}
 		});
 	}
@@ -71,6 +72,7 @@ public class ProgressColumnController implements Initializable{
 			@Override
 			public void run() {
 				engageProgressIndicator.setProgress(complete);
+				chapter.setEngageStatus(complete);
 			}
 		});
 	}
@@ -80,6 +82,7 @@ public class ProgressColumnController implements Initializable{
 			@Override
 			public void run() {
 				reflectProgressIndicator.setProgress(progress);
+				chapter.setReflectStatus(progress/100.0);
 			}
 		});
 	}

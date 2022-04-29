@@ -166,8 +166,11 @@ public class XMLManager {
 						String chapterNumericName = chapterElement.getAttribute("numericName");
 						String chapterStringName = chapterElement.getAttribute("stringName");
 						String chapterDescription = chapterElement.getAttribute("description");
+						double planStatus = Double.parseDouble(chapterElement.getAttribute("planStatus"));
+						double engageStatus = Double.parseDouble(chapterElement.getAttribute("engageStatus"));
+						double reflectStatus = Double.parseDouble(chapterElement.getAttribute("reflectStatus"));
 						Chapter chapter = new Chapter(chapterNum, chapterNumericName, chapterStringName,
-								chapterDescription);
+								chapterDescription, planStatus, engageStatus, reflectStatus);
 						NodeList activityNodeList = chapterNode.getChildNodes();
 						for (int j = 0; j < activityNodeList.getLength(); j++) {
 							Node activityNode = activityNodeList.item(j);
@@ -269,6 +272,10 @@ public class XMLManager {
 				chapterElement.setAttribute("numericName", chapter.getNumericName());
 				chapterElement.setAttribute("stringName", chapter.getStringName());
 				chapterElement.setAttribute("description", chapter.getDescriptionName());
+				chapterElement.setAttribute("planStatus", String.valueOf(chapter.getPlanStatus()));
+				chapterElement.setAttribute("engageStatus", String.valueOf(chapter.getEngageStatus()));
+				chapterElement.setAttribute("reflectStatus", String.valueOf(chapter.getReflectStatus()));
+
 				for (Activity activity : chapter.getUserSelectedActivities()) {
 					Element activityElement = document.createElement("activity");
 					activityElement.setAttribute("status", activity.getStatus());

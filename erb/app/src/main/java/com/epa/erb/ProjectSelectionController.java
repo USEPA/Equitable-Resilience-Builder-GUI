@@ -80,8 +80,8 @@ public class ProjectSelectionController implements Initializable{
 				handleProjectSetupLogic(projectDirectory);
 				erbMainController.loadSetupTool(projectDirectory);
 			} else if (action) {
-				handleProjectActionLogic(projectDirectory);
-				erbMainController.loadActionTool(projectDirectory, actionDataFile);
+				boolean launch = handleProjectActionLogic(projectDirectory);
+				if(launch) erbMainController.loadActionTool(projectDirectory, actionDataFile);
 			}
 			erbMainController.closeProjectSelectionStage();
 		} else {
@@ -89,21 +89,25 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
-	private void handleProjectActionLogic(File projectActionDirectory) {
+	private boolean handleProjectActionLogic(File projectActionDirectory) {
 		File projectSetupDirectory = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectActionDirectory.getName());
 		File setupFile = new File(projectSetupDirectory.getPath() + "\\Data.xml");
 		File actionFile = new File(projectActionDirectory.getPath() + "\\Data.xml");
+		actionDataFile = actionFile;
 		if (projectDirectoryHasDataFile(projectActionDirectory)) { // If there is a data file in Action
 			if (setupFile.exists() && actionFile.exists()) { // If there is a data file in Setup & Action
 				if (!filesAreSame(setupFile, actionFile)) { // If data files are not the same
 					loadDateSelection(setupFile, actionFile); // Prompt user to choose data file
 				}
 			}
+			return true;
 		} else { // If there is not a data file in Action
 			if (projectDirectoryHasDataFile(projectSetupDirectory)) { // If there is a data file in Setup
 				copyFile(setupFile, actionFile); // Copy the data file in Setup to Action
+				return true;
 			} else { // If there is not a data file in Setup
 				showActionProjectDataNonExistentAlert(); // Prompt user to create data in setup
+				return false;
 			}
 		}
 	}

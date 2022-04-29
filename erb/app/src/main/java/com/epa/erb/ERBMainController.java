@@ -13,7 +13,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -107,6 +109,8 @@ public class ERBMainController implements Initializable{
 		ArrayList<File> listOfProjects = getProjectDirectoriesInAction();
 		if(listOfProjects.size() > 0) {
 	 		showProjectSelection(listOfProjects, true, false, true);
+	 	} else {
+	 		showProjectsNonExistentAlert();
 	 	}
 	}
 	
@@ -124,7 +128,16 @@ public class ERBMainController implements Initializable{
 			actionStage.show();
 		} catch (Exception e) {
 			logger.fatal(e.getMessage());
+			e.printStackTrace();
 		}
+	}
+	
+	private void showProjectsNonExistentAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setContentText("There are no existing projects. Please use Pt. 1 of the tool to create a new project.");
+		alert.setTitle("Alert");
+		alert.showAndWait();
 	}
 	
 	private Stage projectSelectionStage = null;

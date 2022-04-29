@@ -8,11 +8,17 @@ public class Chapter {
 	private String numericName;
 	private String stringName;
 	private String descriptionName;
-	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName) {
+	private double planStatus;
+	private double engageStatus;
+	private double reflectStatus;
+	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName, double planStatus, double engageStatus, double reflectStatus) {
 		this.chapterNum = chapterNum;
 		this.numericName = numericName;
 		this.stringName = stringName;
 		this.descriptionName = descriptionName;
+		this.planStatus = planStatus;
+		this.engageStatus = engageStatus;
+		this.reflectStatus = reflectStatus;
 	}	
 
 	private ArrayList<Activity> userSelectedActivities = new ArrayList<Activity>();
@@ -49,6 +55,30 @@ public class Chapter {
 		this.descriptionName = descriptionName;
 	}
 	
+	public double getPlanStatus() {
+		return planStatus;
+	}
+
+	public void setPlanStatus(double planStatus) {
+		this.planStatus = planStatus;
+	}
+
+	public double getEngageStatus() {
+		return engageStatus;
+	}
+
+	public void setEngageStatus(double engageStatus) {
+		this.engageStatus = engageStatus;
+	}
+
+	public double getReflectStatus() {
+		return reflectStatus;
+	}
+
+	public void setReflectStatus(double reflectStatus) {
+		this.reflectStatus = reflectStatus;
+	}
+
 	public ArrayList<Activity> getUserSelectedActivities() {
 		return userSelectedActivities;
 	}
