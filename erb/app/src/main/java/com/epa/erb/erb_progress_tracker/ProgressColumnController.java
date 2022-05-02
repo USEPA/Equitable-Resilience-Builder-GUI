@@ -85,6 +85,8 @@ public class ProgressColumnController implements Initializable{
 					planActivity.setStatus("in progress");
 				} else if (progress == 1.0) {
 					planActivity.setStatus("complete");
+				} else if(progress == 0.0) {
+					planActivity.setStatus("ready");
 				}
 				chapter.setPlanStatus(progress/100.0);
 				ERBPathwayDiagramController erbPathwayDiagramController = engagementActionController.getErbPathwayDiagramController(planActivity.getGUID());
@@ -115,6 +117,8 @@ public class ProgressColumnController implements Initializable{
 					reflectActivity.setStatus("in progress");
 				} else if (progress == 1.0) {
 					reflectActivity.setStatus("complete");
+				} else if(progress == 0.0) {
+					reflectActivity.setStatus("ready");
 				}
 				chapter.setReflectStatus(progress/100.0);
 				ERBPathwayDiagramController erbPathwayDiagramController = engagementActionController.getErbPathwayDiagramController(reflectActivity.getGUID());
