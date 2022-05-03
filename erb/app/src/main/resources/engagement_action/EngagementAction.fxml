@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -155,7 +156,25 @@
                               <VBox fx:id="contentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
                               <ScrollPane fx:id="attributeScrollPane" fitToHeight="true" fitToWidth="true" maxWidth="200.0" minWidth="200.0" style="-fx-background-color: transparent;">
                                  <content>
-                                    <VBox fx:id="attributeVBox" />
+                                    <HBox fx:id="attributeCollapseHBox" spacing="5.0">
+                                       <children>
+                                          <VBox alignment="TOP_CENTER" minWidth="18.0" onMouseClicked="#attributePanelCollapseClicked" style="-fx-background-color: #D5D5D5;">
+                                             <children>
+                                                <Label fx:id="attributePanelCollapseLabel" onMouseClicked="#attributePanelCollapseClicked" text="&gt;">
+                                                   <font>
+                                                      <Font name="System Bold" size="11.0" />
+                                                   </font></Label>
+                                             </children>
+                                             <effect>
+                                                <DropShadow />
+                                             </effect>
+                                             <padding>
+                                                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                             </padding>
+                                          </VBox>
+                                          <VBox fx:id="attributeVBox" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
                                  </content>
                               </ScrollPane>
                            </children>

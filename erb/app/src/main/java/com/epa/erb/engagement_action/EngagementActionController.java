@@ -41,9 +41,13 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	HBox statusHBox;
 	@FXML
+	HBox attributeCollapseHBox;
+	@FXML
 	Label chapterLabel;
 	@FXML
 	Label erbPathwayLabel;
+	@FXML
+	Label attributePanelCollapseLabel;
 	@FXML
 	TreeView<String> treeView;
 	@FXML
@@ -275,6 +279,33 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	public void skipButtonAction() {
 		
+	}
+	
+	@FXML
+	public void attributePanelCollapseClicked() {
+		String attributePanelCollapseString = attributePanelCollapseLabel.getText();
+		if(attributePanelCollapseString.contentEquals(">")) {
+			collapseAttributes();
+			attributeScrollPane.setMinWidth(0.0);
+			attributePanelCollapseLabel.setText("<");
+
+		} else if (attributePanelCollapseString.contentEquals("<")) {
+			unCollapseAttributes();
+			attributeScrollPane.setMinWidth(200.0);
+			attributePanelCollapseLabel.setText(">");
+		}
+	}
+	
+	private void collapseAttributes() {
+		if(attributeCollapseHBox.getChildren().contains(attributeVBox)) {
+			attributeCollapseHBox.getChildren().remove(attributeVBox);
+		}
+	}
+	
+	private void unCollapseAttributes() {
+		if(!attributeCollapseHBox.getChildren().contains(attributeVBox)) {
+			attributeCollapseHBox.getChildren().add(1, attributeVBox);
+		}
 	}
 	
 	@FXML
