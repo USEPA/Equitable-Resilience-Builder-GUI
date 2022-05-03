@@ -14,15 +14,12 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ChapterTitledPaneController implements Initializable{
 
 	@FXML
 	TitledPane titledPane;
-	@FXML
-	VBox titledPaneVBox;
 	@FXML
 	ListView<SelectedActivity> titledPaneListView;
 	
@@ -36,7 +33,7 @@ public class ChapterTitledPaneController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		titledPane.setExpanded(true);
-		titledPane.setText(chapter.getStringName());
+		setTitledPaneText(chapter.getStringName());
 		titledPane.setContextMenu(createPaneContextMenu());
 	}
 	
@@ -68,12 +65,37 @@ public class ChapterTitledPaneController implements Initializable{
 	void closeDescriptionStage() {
 		descriptionStage.close();
 	}
+	
+	void setTitledPaneText(String text) {
+		titledPane.setText(text);
+	}
 			
-	String getPaneTitle() {
+	String getTitledPaneText() {
 		return titledPane.getText();
 	}
 
-	ListView<SelectedActivity> getTitledPaneListView() {
+	public TitledPane getTitledPane() {
+		return titledPane;
+	}
+
+	public ListView<SelectedActivity> getTitledPaneListView() {
 		return titledPaneListView;
-	}		
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public Stage getDescriptionStage() {
+		return descriptionStage;
+	}
+
+	public void setDescriptionStage(Stage descriptionStage) {
+		this.descriptionStage = descriptionStage;
+	}
+
 }

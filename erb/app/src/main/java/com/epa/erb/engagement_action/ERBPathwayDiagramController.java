@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.epa.erb.Activity;
+import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +20,10 @@ import javafx.scene.shape.Line;
 
 public class ERBPathwayDiagramController implements Initializable {
 
+	@FXML
+	Line leftLeadingLine;
+	@FXML
+	Line rightLeadingLine;
 	@FXML
 	VBox diagramVBox;
 	@FXML
@@ -45,15 +50,13 @@ public class ERBPathwayDiagramController implements Initializable {
 	Label activityLabel;
 	@FXML
 	Label centerCircleLabel;
-	@FXML
-	Line leftLeadingLine;
-	@FXML
-	Line rightLeadingLine;
 
 	private Activity activity;
+	private Chapter chapter;
 	private EngagementActionController engagementActionController;
-	public ERBPathwayDiagramController(Activity activity, EngagementActionController engagementActionController) {
+	public ERBPathwayDiagramController(Activity activity, Chapter chapter, EngagementActionController engagementActionController) {
 		this.activity = activity;
+		this.chapter = chapter;
 		this.engagementActionController = engagementActionController;
 	}
 	
@@ -62,12 +65,14 @@ public class ERBPathwayDiagramController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		initializeStyle();
-		setToolTips();
+		setCircleColor();
+		setCircleToolTip();
+		hideLeadingLines();
+		setCenterCircleLetter();
+		setActivityLabelText(activity.getShortName());
 	}
 	
 	private void handleControls() {
-		activityLabel.setText(activity.getShortName());
 		if (activity.getLongName().length() == 0) {
 			centerCircleLabel.setVisible(false);
 		}
@@ -85,55 +90,36 @@ public class ERBPathwayDiagramController implements Initializable {
 		}
 	}
 	
-	private void initializeStyle() {
-		topLeftCircle.setStyle("-fx-fill: " + constants.getMaterialsColor() + ";");
-		topRightCircle.setStyle("-fx-fill: " + constants.getDescriptionColor() + ";");
-		centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
-		bottomLeftCircle.setStyle("-fx-fill: " + constants.getWhoColor() + ";");
-		bottomRightCircle.setStyle("-fx-fill: " + constants.getTimeColor() + ";");
+	private void hideLeadingLines() {
+		int index = getIndexOfActivityInChapter();
+		if (chapter.getNumberOfUserSelectedActivities() == 1) {
+			hideLeftLeadingLine();
+			hideRightLeadingLine();
+		} else if (index == chapter.getNumberOfUserSelectedActivities() - 1) {
+			hideRightLeadingLine();
+		} else if (index == 0) {
+			hideLeftLeadingLine();
+		}
 	}
 
-	void hideLeftLeadingLine() {
+	private void hideLeftLeadingLine() {
 		leftLeadingLine.setVisible(false);
 	}
 
-	void hideRightLeadingLine() {
+	private void hideRightLeadingLine() {
 		rightLeadingLine.setVisible(false);
 		arrowVBox.setVisible(false);
 	}
 	
 	public void updateStatus() {
-		if (activity.getStatus().contentEquals("ready")) {
-			centerCircleLabel.setText("R");
-			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
-		} else if (activity.getStatus().contentEquals("skipped")) {
-			centerCircleLabel.setText("S");
-			centerCircle.setStyle("-fx-fill: " + constants.getSkippedStatusColor() + ";");
-		} else if (activity.getStatus().contentEquals("complete")) {
-			centerCircleLabel.setText("C");
-			centerCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
-		} else if (activity.getStatus().contentEquals("in progress")) {
-			centerCircleLabel.setText("I");
-			centerCircle.setStyle("-fx-fill: " + constants.getInProgressStatusColor() + ";");
-		}
+		setCenterCircleLetter();
+		setCenterCircleToolTip();
+		setCenterCircleColor();
 	}
 
-	void setToolTips() {
+	private void setCircleToolTip() {	
 		//Center Circle
-		if (activity.getStatus().contentEquals("ready")) {
-			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getReadyStatusColor());
-			centerCircleLabel.setText("R");
-		} else if (activity.getStatus().contentEquals("skipped")) {
-			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getSkippedStatusColor());
-			centerCircleLabel.setText("S");
-		} else if (activity.getStatus().contentEquals("complete")) {
-			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getCompleteStatusColor());
-			centerCircleLabel.setText("C");
-		} else if (activity.getStatus().contentEquals("in progress")) {
-			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel, constants.getInProgressStatusColor());
-			centerCircleLabel.setText("I");
-		}
-		
+		setCenterCircleToolTip();
 		//Top Left Circle
 		createToolTip(splitString(activity.getMaterials().trim()), topLeftCircle, topLeftCircleLabel, constants.getMaterialsColor());
 		//Top Right Circle
@@ -144,6 +130,56 @@ public class ERBPathwayDiagramController implements Initializable {
 		createToolTip(splitString(activity.getTime()), bottomRightCircle, bottomRightCircleLabel, constants.getTimeColor());
 	}
 	
+	private void setCenterCircleToolTip() {
+		// Center Circle
+		if (activity.getStatus().contentEquals("ready")) {
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getReadyStatusColor());
+		} else if (activity.getStatus().contentEquals("skipped")) {
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getSkippedStatusColor());
+		} else if (activity.getStatus().contentEquals("complete")) {
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getCompleteStatusColor());
+		} else if (activity.getStatus().contentEquals("in progress")) {
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getInProgressStatusColor());
+		}
+	}
+	
+	private void setCenterCircleLetter() {
+		if (activity.getStatus().contentEquals("ready")) {
+			centerCircleLabel.setText("R");
+		} else if (activity.getStatus().contentEquals("skipped")) {
+			centerCircleLabel.setText("S");
+		} else if (activity.getStatus().contentEquals("complete")) {
+			centerCircleLabel.setText("C");
+		} else if (activity.getStatus().contentEquals("in progress")) {
+			centerCircleLabel.setText("I");
+		}
+	}
+	
+	private void setCircleColor() {
+		//Center Circle
+		setCenterCircleColor();
+		//Top Left Circle
+		topLeftCircle.setStyle("-fx-fill: " + constants.getMaterialsColor() + ";");
+		//Top Right Circle
+		topRightCircle.setStyle("-fx-fill: " + constants.getDescriptionColor() + ";");
+		//Bottom Left Circle
+		bottomLeftCircle.setStyle("-fx-fill: " + constants.getWhoColor() + ";");
+		//Bottom Right Circle
+		bottomRightCircle.setStyle("-fx-fill: " + constants.getTimeColor() + ";");
+	}
+	
+	private void setCenterCircleColor() {
+		if (activity.getStatus().contentEquals("ready")) {
+			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
+		} else if (activity.getStatus().contentEquals("skipped")) {
+			centerCircle.setStyle("-fx-fill: " + constants.getSkippedStatusColor() + ";");
+		} else if (activity.getStatus().contentEquals("complete")) {
+			centerCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
+		} else if (activity.getStatus().contentEquals("in progress")) {
+			centerCircle.setStyle("-fx-fill: " + constants.getInProgressStatusColor() + ";");
+		}
+	}
+	
 	private void createToolTip(String toolTipText, Circle circle, Label circleLabel, String color) {
 		Tooltip tooltip = new Tooltip(toolTipText);
 		Tooltip.install(circle, tooltip);
@@ -152,6 +188,60 @@ public class ERBPathwayDiagramController implements Initializable {
 		circle.setStyle("-fx-fill: " + color + ";");
 	}
 
+	@FXML
+	public void bottomRightCircleLabelClicked() {
+		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
+		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
+			engagementActionController.handleAttributePanelGeneration("Time", activity.getTime(), constants.getTimeColor());
+		}		
+	}
+	
+	@FXML
+	public void bottomLeftCircleLabelClicked() {
+		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
+		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
+			engagementActionController.handleAttributePanelGeneration("Who", activity.getWho(), constants.getWhoColor());
+		}
+	}
+
+	@FXML
+	public void topRightCircleLabelClicked() {
+		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
+		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
+			engagementActionController.handleAttributePanelGeneration("Description", activity.getDescription(), constants.getDescriptionColor());
+		}
+	}
+
+	@FXML
+	public void topLeftCircleLabelClicked() {
+		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
+		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
+			engagementActionController.handleAttributePanelGeneration("Materials", activity.getMaterials(), constants.getMaterialsColor());
+		}
+	}
+
+	@FXML
+	public void centerCircleClicked() {
+		String selectedActivityGUID = activity.getGUID();
+		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
+			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityGUID) {
+				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+				engagementActionController.treeViewClicked();
+			}
+		}
+	}
+	
+	private int getIndexOfActivityInChapter() {
+		int count = 0;
+		for (Activity a : chapter.getUserSelectedActivities()) {
+			if (a.getGUID().contentEquals(activity.getGUID())) {
+				return count;
+			}
+			count++;
+		}
+		return -1;
+	}
+	
 	/**
 	 * Takes a string and breaks it into a new string with multiple line breaks
 	 * 
@@ -177,60 +267,6 @@ public class ERBPathwayDiagramController implements Initializable {
 			return string;
 		}
 	}
-
-	@FXML
-	public void bottomRightCircleLabelClicked() {
-		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
-		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
-			engagementActionController.loadAttributeInfo("Time", activity.getTime(), constants.getTimeColor());
-		}		
-	}
-	
-	@FXML
-	public void bottomLeftCircleLabelClicked() {
-		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
-		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
-			engagementActionController.loadAttributeInfo("Who", activity.getWho(), constants.getWhoColor());
-		}
-	}
-
-	@FXML
-	public void topRightCircleLabelClicked() {
-		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
-		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
-			engagementActionController.loadAttributeInfo("Description", activity.getDescription(), constants.getDescriptionColor());
-		}
-	}
-
-	@FXML
-	public void topLeftCircleLabelClicked() {
-		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
-		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
-			engagementActionController.loadAttributeInfo("Materials", activity.getMaterials(), constants.getMaterialsColor());
-		}
-	}
-
-	@FXML
-	public void centerCircleClicked() {
-		String selectedActivityGUID = activity.getGUID();
-		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityGUID) {
-				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-				engagementActionController.treeViewClicked();
-			}
-		}
-	}
-
-	@FXML
-	public void centerCircleLabelClicked() {
-		String selectedActivityGUID = activity.getGUID();
-		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityGUID) {
-				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-				engagementActionController.treeViewClicked();
-			}
-		}
-	}
 	
 	void highlightDiagram() {
 		diagramVBox.setEffect(null);
@@ -241,7 +277,92 @@ public class ERBPathwayDiagramController implements Initializable {
 		diagramVBox.setEffect(gaussianBlur);
 	}
 	
-	Activity getActivity() {
+	private void setActivityLabelText(String text) {
+		activityLabel.setText(text);
+	}
+
+	public Line getLeftLeadingLine() {
+		return leftLeadingLine;
+	}
+
+	public Line getRightLeadingLine() {
+		return rightLeadingLine;
+	}
+
+	public VBox getDiagramVBox() {
+		return diagramVBox;
+	}
+
+	public VBox getArrowVBox() {
+		return arrowVBox;
+	}
+
+	public Circle getTopLeftCircle() {
+		return topLeftCircle;
+	}
+
+	public Circle getCenterCircle() {
+		return centerCircle;
+	}
+
+	public Circle getTopRightCircle() {
+		return topRightCircle;
+	}
+
+	public Circle getBottomLeftCircle() {
+		return bottomLeftCircle;
+	}
+
+	public Circle getBottomRightCircle() {
+		return bottomRightCircle;
+	}
+
+	public Label getTopLeftCircleLabel() {
+		return topLeftCircleLabel;
+	}
+
+	public Label getTopRightCircleLabel() {
+		return topRightCircleLabel;
+	}
+
+	public Label getBottomLeftCircleLabel() {
+		return bottomLeftCircleLabel;
+	}
+
+	public Label getBottomRightCircleLabel() {
+		return bottomRightCircleLabel;
+	}
+
+	public Label getActivityLabel() {
+		return activityLabel;
+	}
+
+	public Label getCenterCircleLabel() {
+		return centerCircleLabel;
+	}
+
+	public Activity getActivity() {
 		return activity;
 	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+
 }

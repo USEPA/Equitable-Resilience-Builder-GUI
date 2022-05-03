@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="engagementVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER_RIGHT">
+      <HBox fx:id="saveHBox" alignment="CENTER_RIGHT">
          <children>
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save">
                <font>
@@ -25,9 +25,9 @@
       </HBox>
       <HBox fx:id="headingHBox">
          <children>
-            <VBox HBox.hgrow="ALWAYS">
+            <VBox fx:id="erbPathwayVBox" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox>
+                  <VBox fx:id="chapterLabelVBox">
                      <children>
                         <Label fx:id="chapterLabel">
                            <font>
@@ -36,11 +36,11 @@
                         </Label>
                      </children>
                   </VBox>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="erbPathwayDiagramScrollPane" fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                      <content>
-                        <HBox fx:id="pathwayHBox" alignment="CENTER_LEFT">
+                        <HBox fx:id="erbPathwayDiagramHBox" alignment="CENTER_LEFT">
                            <children>
-                              <Label fx:id="erbPathwayLabel" text="ERB Pathway">
+                              <Label text="ERB Pathway">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
@@ -51,7 +51,7 @@
                   </ScrollPane>
                </children>
             </VBox>
-            <VBox fx:id="keyVBox" alignment="CENTER_LEFT" minWidth="120.0" spacing="2.0">
+            <VBox fx:id="erbKeyVBox" alignment="CENTER_LEFT" minWidth="120.0" spacing="2.0">
                <children>
                   <Label text="Key">
                      <font>
@@ -121,16 +121,16 @@
          </children>
       </HBox>
       <Pane maxHeight="2.0" minHeight="2.0" prefHeight="2.0" style="-fx-background-color: #CCCCCC;" />
-      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <HBox fx:id="bodyHBox" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
             <TreeView fx:id="treeView" prefHeight="200.0" />
-            <ScrollPane fitToHeight="true" fitToWidth="true" HBox.hgrow="ALWAYS">
+            <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" HBox.hgrow="ALWAYS">
                <content>
-                  <VBox fx:id="controlsVBox" prefHeight="200.0" prefWidth="100.0">
+                  <VBox fx:id="mainVBox" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <HBox fx:id="statusHBox">
                            <children>
-                              <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                              <HBox fx:id="startHBox" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonAction" text="Started">
                                        <font>
@@ -138,7 +138,7 @@
                                        </font></Button>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                              <HBox fx:id="completeHBox" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Button fx:id="completeButton" mnemonicParsing="false" onAction="#completeButtonAction" text="Complete">
                                        <font>
@@ -151,14 +151,14 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="mainHBox" VBox.vgrow="ALWAYS">
+                        <HBox fx:id="body2HBox" VBox.vgrow="ALWAYS">
                            <children>
                               <VBox fx:id="contentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-                              <ScrollPane fx:id="attributeScrollPane" fitToHeight="true" fitToWidth="true" maxWidth="200.0" minWidth="200.0" style="-fx-background-color: transparent;">
+                              <ScrollPane fx:id="attributePanelScrollPane" fitToHeight="true" fitToWidth="true" maxWidth="200.0" minWidth="200.0" style="-fx-background-color: transparent;">
                                  <content>
-                                    <HBox fx:id="attributeCollapseHBox" spacing="5.0">
+                                    <HBox fx:id="attributePanelHBox" spacing="5.0">
                                        <children>
-                                          <VBox alignment="TOP_CENTER" minWidth="18.0" onMouseClicked="#attributePanelCollapseClicked" style="-fx-background-color: #D5D5D5;">
+                                          <VBox fx:id="attributePanelCollapseVBox" alignment="TOP_CENTER" minWidth="18.0" onMouseClicked="#attributePanelCollapseClicked" style="-fx-background-color: #D5D5D5;">
                                              <children>
                                                 <Label fx:id="attributePanelCollapseLabel" onMouseClicked="#attributePanelCollapseClicked" text="&gt;">
                                                    <font>
@@ -172,26 +172,26 @@
                                                 <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                                              </padding>
                                           </VBox>
-                                          <VBox fx:id="attributeVBox" HBox.hgrow="ALWAYS" />
+                                          <VBox fx:id="attributePanelContentVBox" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                  </content>
                               </ScrollPane>
                            </children>
                         </HBox>
-                        <HBox>
+                        <HBox fx:id="navigationHBox">
                            <children>
-                              <HBox HBox.hgrow="ALWAYS">
+                              <HBox fx:id="previousHBox" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" text="Previous" />
                                  </children>
                               </HBox>
-                              <HBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+                              <HBox fx:id="skipHBox" alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Button fx:id="skipButton" mnemonicParsing="false" onAction="#skipButtonAction" text="Skip" />
                                  </children>
                               </HBox>
-                              <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                              <HBox fx:id="nextHBox" alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next" />
                                  </children>

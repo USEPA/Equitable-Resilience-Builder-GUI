@@ -14,59 +14,117 @@ import javafx.scene.text.TextFlow;
 public class AttributePanelController implements Initializable{
 
 	@FXML
+	Button closeButton;
+	@FXML
+	Label attributeLabel;
+	@FXML
 	VBox attributePanelVBox;
 	@FXML
 	HBox attributeLabelHBox;
 	@FXML
-	Label attributeLabel;
-	@FXML
 	TextFlow attributeTextFlow;
-	@FXML
-	Button closeButton;
-	
+
+	private String attributeTitle;
+	private String attributeContent;
+	private String attributeColor;
 	private EngagementActionController engagementActionController;
-	public AttributePanelController(EngagementActionController engagementActionController) {
+	public AttributePanelController(String attributeTitle, String attributeContent, String attributeColor, EngagementActionController engagementActionController) {
+		this.attributeTitle = attributeTitle;
+		this.attributeContent = attributeContent;
+		this.attributeColor = attributeColor;
 		this.engagementActionController = engagementActionController;
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		setAttributeFields(attributeTitle, attributeContent, attributeColor);
 	}
 	
 	@FXML
 	public void closeButtonAction() {
-		VBox attributePanel = (VBox) engagementActionController.getAttributeScrollPane().getContent();
+		VBox attributePanel = (VBox) engagementActionController.getAttributePanelScrollPane().getContent();
 		attributePanel.getChildren().remove(attributePanelVBox);
 		engagementActionController.removeAttributePanelController(this);
 	}
 	
 	void setAttributeFields(String attributeTextFlowString, String attributeLabelString, String attributeLabelColorString) {
-		setAttributeTextFlow(attributeTextFlowString);
-		setAttributeLabel(attributeLabelString);
+		setAttributeTextFlowText(attributeTextFlowString);
+		setAttributeLabelText(attributeLabelString);
 		setAttributeLabelColor(attributeLabelColorString);
 		setAttributeCloseButtonColor(attributeLabelColorString);
 	}
 
-	private void setAttributeTextFlow(String attributeTextFlowString) {
-		Text text = new Text(attributeTextFlowString);
+	private void setAttributeTextFlowText(String attributeText) {
+		Text text = new Text(attributeText);
 		attributeTextFlow.getChildren().add(text);
 	}
 	
-	private void setAttributeLabel(String attributeLabelString) {
-		attributeLabel.setText(attributeLabelString);
+	private void setAttributeLabelText(String text) {
+		attributeLabel.setText(text);
 	}
 	
-	private void setAttributeLabelColor(String attributeLabelColorString) {
-		attributeLabelHBox.setStyle("-fx-background-color: " + attributeLabelColorString + ";");
+	private void setAttributeLabelColor(String attributeLabelColor) {
+		attributeLabelHBox.setStyle("-fx-background-color: " + attributeLabelColor + ";");
 	}
 	
-	private void setAttributeCloseButtonColor(String attributeLabelColorString) {
-		closeButton.setStyle("-fx-background-color: " + attributeLabelColorString + ";");
+	private void setAttributeCloseButtonColor(String attributeLabelColor) {
+		closeButton.setStyle("-fx-background-color: " + attributeLabelColor + ";");
 	}
 	
 	String getAttributeLabelText() {
 		return attributeLabel.getText();
 	}
 
+	public Button getCloseButton() {
+		return closeButton;
+	}
+
+	public Label getAttributeLabel() {
+		return attributeLabel;
+	}
+
+	public VBox getAttributePanelVBox() {
+		return attributePanelVBox;
+	}
+
+	public HBox getAttributeLabelHBox() {
+		return attributeLabelHBox;
+	}
+	
+	public TextFlow getAttributeTextFlow() {
+		return attributeTextFlow;
+	}
+	
+	public String getAttributeTitle() {
+		return attributeTitle;
+	}
+
+	public void setAttributeTitle(String attributeTitle) {
+		this.attributeTitle = attributeTitle;
+	}
+
+	public String getAttributeContent() {
+		return attributeContent;
+	}
+
+	public void setAttributeContent(String attributeContent) {
+		this.attributeContent = attributeContent;
+	}
+
+	public String getAttributeColor() {
+		return attributeColor;
+	}
+
+	public void setAttributeColor(String attributeColor) {
+		this.attributeColor = attributeColor;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+	
 }

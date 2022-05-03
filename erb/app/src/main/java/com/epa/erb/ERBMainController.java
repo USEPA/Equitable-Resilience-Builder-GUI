@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -29,10 +28,6 @@ public class ERBMainController implements Initializable{
 	@FXML
 	HBox erbHeading2;
 	@FXML
-	Button setupLaunchButton;
-	@FXML
-	Button actionLaunchButton;
-	@FXML
 	TextFlow setupTextFlow;
 	@FXML
 	TextFlow actionTextFlow;
@@ -43,7 +38,6 @@ public class ERBMainController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ERBMainController.class);
-	
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 	
@@ -82,8 +76,8 @@ public class ERBMainController implements Initializable{
 	private Stage setupStage = null;
 	@FXML
 	public void setupLaunchButtonAction() {
-	 	ArrayList<File> listOfProjects = getProjectDirectoriesInSetup();
-	 	showProjectSelection(listOfProjects, false, true, false);
+	 	ArrayList<File> listOfProjectDirectoriesInSetup = getProjectDirectoriesInSetup();
+	 	showProjectSelection(listOfProjectDirectoriesInSetup, true, false);
 	}
 	
 	//ERB Tool Pt 1
@@ -106,19 +100,19 @@ public class ERBMainController implements Initializable{
 	private Stage actionStage = null;
 	@FXML
 	public void actionLaunchButtonAction() {
-		ArrayList<File> listOfProjects = getProjectDirectoriesInAction();
-		if(listOfProjects.size() > 0) {
-	 		showProjectSelection(listOfProjects, true, false, true);
+		ArrayList<File> listOfProjectDirectoriesInAction = getProjectDirectoriesInAction();
+		if(listOfProjectDirectoriesInAction.size() > 0) {
+	 		showProjectSelection(listOfProjectDirectoriesInAction, false, true);
 	 	} else {
 	 		showProjectsNonExistentAlert();
 	 	}
 	}
 	
 	//ERB Tool Pt 2
-	void loadActionTool(File projectDirectory, File dataFile) {
+	void loadActionTool(File projectDirectory, File dataFileToLoad) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory, dataFile);
+			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory, dataFileToLoad);
 			fxmlLoader.setController(engagementActionController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
@@ -128,7 +122,6 @@ public class ERBMainController implements Initializable{
 			actionStage.show();
 		} catch (Exception e) {
 			logger.fatal(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 	
@@ -141,10 +134,10 @@ public class ERBMainController implements Initializable{
 	}
 	
 	private Stage projectSelectionStage = null;
-	private void showProjectSelection(ArrayList<File> listOfProjects, boolean removeNewProjectOption, boolean setup, boolean action) {
+	private void showProjectSelection(ArrayList<File> listOfProjectDirectories, boolean setup, boolean action) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ProjectSelection.fxml"));
-			ProjectSelectionController projectSelectionController = new ProjectSelectionController(listOfProjects, this, setup, action);
+			ProjectSelectionController projectSelectionController = new ProjectSelectionController(listOfProjectDirectories, this, setup, action);
 			fxmlLoader.setController(projectSelectionController);
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
@@ -153,38 +146,38 @@ public class ERBMainController implements Initializable{
 			projectSelectionStage.setTitle("Project Selection");
 			projectSelectionStage.showAndWait();
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.fatal(e.getMessage());
 		}
 	}
 	
 	private ArrayList<File> getProjectDirectoriesInSetup() {
-		ArrayList<File> projectDirectories = new ArrayList<File>();
+		ArrayList<File> listOfProjectDirectoriesInSetup = new ArrayList<File>();
 		File setupDirectory = new File(pathToERBFolder + "\\EngagementSetupTool");
 		if(setupDirectory.exists()) {
 			for(File file : setupDirectory.listFiles()) {
 				if(file.isDirectory()) {
-					projectDirectories.add(file);
+					listOfProjectDirectoriesInSetup.add(file);
 				}
 			}
 		} else {
 			logger.debug(setupDirectory.getPath() + " does not exist. Returning empty list of projects in setup.");
 		}
-		return projectDirectories;
+		return listOfProjectDirectoriesInSetup;
 	}
 	
 	private ArrayList<File> getProjectDirectoriesInAction(){
-		ArrayList<File> projectDirectories = new ArrayList<File>();
+		ArrayList<File> listOfProjectDirectoriesInAction = new ArrayList<File>();
 		File actionDirectory = new File(pathToERBFolder + "\\EngagementActionTool");
 		if(actionDirectory.exists()) {
 			for(File file : actionDirectory.listFiles()) {
 				if(file.isDirectory()) {
-					projectDirectories.add(file);
+					listOfProjectDirectoriesInAction.add(file);
 				}
 			}
 		} else {
 			logger.debug(actionDirectory.getPath() + " does not exist. Returning empty list of projects in action.");
 		}
-		return projectDirectories;
+		return listOfProjectDirectoriesInAction;
 	}
 	
 	public void closeProjectSelectionStage() {
@@ -204,4 +197,21 @@ public class ERBMainController implements Initializable{
 			actionStage.close();
 		}
 	}
+
+	public HBox getErbHeading1() {
+		return erbHeading1;
+	}
+
+	public HBox getErbHeading2() {
+		return erbHeading2;
+	}
+
+	public TextFlow getSetupTextFlow() {
+		return setupTextFlow;
+	}
+
+	public TextFlow getActionTextFlow() {
+		return actionTextFlow;
+	}
+	
 }

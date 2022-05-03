@@ -19,11 +19,11 @@ public class PlanController implements Initializable{
 	@FXML
 	Label titleLabel;
 	@FXML
-	Circle orderActivitiesCircle;
+	Circle thirdOptionCircle;
 	@FXML
 	Circle gatherSuppliesCircle;
 	@FXML
-	Circle thirdOptionCircle;
+	Circle orderActivitiesCircle;
 	
 	private Chapter chapter;
 	public PlanController(Chapter chapter) {
@@ -35,19 +35,19 @@ public class PlanController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		setTitleLabel();
+		setTitleLabelText("Planning for " + chapter.getStringName());
 	}
 	
 	private void handleControls() {
+		thirdOptionCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
+		gatherSuppliesCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
+		orderActivitiesCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		titleHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-		orderActivitiesCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		gatherSuppliesCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		thirdOptionCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	private void setTitleLabel() {
-		titleLabel.setText("Planning for " + chapter.getStringName());
+	private void setTitleLabelText(String text) {
+		titleLabel.setText(text);
 	}
 	
 	@FXML
@@ -63,6 +63,38 @@ public class PlanController implements Initializable{
 	@FXML
 	public void thirdOptionCircleClicked() {
 		
+	}
+
+	public HBox getErbHeading() {
+		return erbHeading;
+	}
+
+	public HBox getTitleHeading() {
+		return titleHeading;
+	}
+
+	public Label getTitleLabel() {
+		return titleLabel;
+	}
+
+	public Circle getThirdOptionCircle() {
+		return thirdOptionCircle;
+	}
+
+	public Circle getGatherSuppliesCircle() {
+		return gatherSuppliesCircle;
+	}
+
+	public Circle getOrderActivitiesCircle() {
+		return orderActivitiesCircle;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
 	}
 
 }

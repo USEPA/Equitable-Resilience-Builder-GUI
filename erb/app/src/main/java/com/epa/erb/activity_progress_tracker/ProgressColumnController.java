@@ -29,8 +29,8 @@ public class ProgressColumnController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		setChapterLabel();
 		fillProgressColumn();
+		setChapterLabelText(chapter.getStringName());
 	}
 	
 	private void fillProgressColumn() {
@@ -47,10 +47,18 @@ public class ProgressColumnController implements Initializable{
 		}
 	}
 	
-	private void setChapterLabel() {
-		chapterLabel.setText(chapter.getStringName());
+	private void setChapterLabelText(String text) {
+		chapterLabel.setText(text);
 	}
 
+	public Label getChapterLabel() {
+		return chapterLabel;
+	}
+
+	public VBox getProgressColumn() {
+		return progressColumn;
+	}	
+	
 	public Chapter getChapter() {
 		return chapter;
 	}
@@ -58,4 +66,5 @@ public class ProgressColumnController implements Initializable{
 	public void setChapter(Chapter chapter) {
 		this.chapter = chapter;
 	}
+	
 }

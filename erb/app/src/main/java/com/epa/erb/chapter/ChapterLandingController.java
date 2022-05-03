@@ -16,7 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -38,8 +37,6 @@ public class ChapterLandingController implements Initializable {
 	TextArea aboutTextArea;
 	@FXML
 	ListView<Activity> activitiesListView;
-	@FXML
-	Button viewProgressButton;
 	
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
@@ -60,25 +57,28 @@ public class ChapterLandingController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		setAboutText();
-		setActivitiesListView();
-		setHeadingLabel();
+		setAboutTextAreaText(getAboutText());
+		setHeadingLabelText(getHeadingText());
+		fillActivitiesListView(getActivitiesForListView());
 	}
 	
 	private void handleControls() {
 		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	public void setHeadingLabel() {
-		if(chapter != null) {
-			headingLabel.setText("Welcome to " + chapter.getStringName());
+	public void setHeadingLabelText(String text) {
+		headingLabel.setText(text);
+	}
+	
+	String getHeadingText() {
+		if (chapter != null) {
+			return "Welcome to " + chapter.getStringName();
 		} else {
-			headingLabel.setText("Welcome to the ERB");
+			return "Welcome to the ERB";
 		}
 	}
 	
-	public void setAboutText() {
-		Text text = getAboutText();
+	public void setAboutTextAreaText(Text text) {
 		text.setFont(Font.font(15));
 		aboutTextArea.setText(text.getText());
 	}
@@ -95,7 +95,7 @@ public class ChapterLandingController implements Initializable {
 	public void viewProgressButtonAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressTracker.fxml"));
-			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getDataChapters(), engagementActionController);
+			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getListOfChapters(), engagementActionController);
 			fxmlLoader.setController(progressTrackerController);
 			Parent root = fxmlLoader.load();
 			Stage stage = new Stage();
@@ -108,24 +108,28 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 
-	public void setActivitiesListView() {
+	public void fillActivitiesListView(ArrayList<Activity> listOfActivities) {
 		cleanActivitiesListView();
-		if (chapter != null) {
+		for(Activity activity: listOfActivities) {
+			activitiesListView.getItems().add(activity);
+		}
+		setActivityListViewCellFactory();
+	}
+	
+	private ArrayList<Activity> getActivitiesForListView() {
+		ArrayList<Activity> activitiesForListView = new ArrayList<Activity>();
+		if (chapter != null) { //landing for a single chapter
 			for (Activity activity : chapter.getUserSelectedActivities()) {
-				activitiesListView.getItems().add(activity);
+				activitiesForListView.add(activity);
 			}
-		} else {
+		} else { //landing for erb showing all chapters
 			for (Chapter chapter : listOfAllChapters) {
 				for (Activity activity : chapter.getUserSelectedActivities()) {
-					if (activity.getShortName().contentEquals("Reflect")|| activity.getShortName().contentEquals("Plan")) {
-						activitiesListView.getItems().add(activity);
-					} else {
-						activitiesListView.getItems().add(activity);
-					}
+						activitiesForListView.add(activity);
 				}
 			}
 		}
-		setActivityListViewCellFactory();
+		return activitiesForListView;
 	}
 	
 	private void setActivityListViewCellFactory() {
@@ -137,7 +141,7 @@ public class ChapterLandingController implements Initializable {
 					protected void updateItem(Activity item, boolean empty) {
 						super.updateItem(item, empty);
 						if (item != null) {
-							Chapter assignedChapter = engagementActionController.getChapter(item);
+							Chapter assignedChapter = engagementActionController.getChapterForActivity(item);
 							if (assignedChapter != null) {
 								setText(assignedChapter.getStringName() + ": " + item.getLongName());
 							} else {
@@ -147,20 +151,20 @@ public class ChapterLandingController implements Initializable {
 						}
 					}
 				};
-				cell.setOnMouseClicked(e -> activitySelectedInList());
+				cell.setOnMouseClicked(e -> handleActivitySelectedInList());
 				return cell;
 			}
 		});
 	}
 	
-	private void activitySelectedInList() {
+	private void handleActivitySelectedInList() {
 		Activity selectedActivity = activitiesListView.getSelectionModel().getSelectedItem();
 		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeMap();
 		for(TreeItem<String> treeItem : treeMap.keySet()) {
-			if(treeItem.getValue().contentEquals(selectedActivity.getLongName())) {
-				if(treeMap.get(treeItem).contentEquals(selectedActivity.getGUID())){
-					engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-					engagementActionController.treeViewClicked();
+			if(treeItem.getValue().contentEquals(selectedActivity.getLongName())) { //if tree item value matches
+				if(treeMap.get(treeItem).contentEquals(selectedActivity.getGUID())){ //if tree item GUID matches
+					engagementActionController.getTreeView().getSelectionModel().select(treeItem); //select tree item
+					engagementActionController.treeViewClicked(); //handle tree item selected
 				}
 			}
 		}
@@ -168,6 +172,46 @@ public class ChapterLandingController implements Initializable {
 	
 	private void cleanActivitiesListView() {
 		activitiesListView.getItems().clear();
+	}
+
+	public Label getHeadingLabel() {
+		return headingLabel;
+	}
+
+	public HBox getHeadingLabelHBox() {
+		return headingLabelHBox;
+	}
+
+	public TextArea getAboutTextArea() {
+		return aboutTextArea;
+	}
+
+	public ListView<Activity> getActivitiesListView() {
+		return activitiesListView;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+
+	public ArrayList<Chapter> getListOfAllChapters() {
+		return listOfAllChapters;
+	}
+
+	public void setListOfAllChapters(ArrayList<Chapter> listOfAllChapters) {
+		this.listOfAllChapters = listOfAllChapters;
 	}
 
 }

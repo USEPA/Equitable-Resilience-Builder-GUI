@@ -12,10 +12,10 @@ import javafx.scene.shape.Circle;
 public class ProgressActivityController implements Initializable{
 
 	@FXML
-	Circle activityCircle;
-	@FXML
 	Label activityLabel;
-	
+	@FXML
+	Circle activityCircle;
+
 	private Activity activity;
 	public ProgressActivityController(Activity activity) {
 		this.activity = activity;
@@ -30,7 +30,7 @@ public class ProgressActivityController implements Initializable{
 	
 	private void handleControls() {
 		colorCircle();
-		setActivityLabel();
+		setActivityLabelText(activity.getShortName());
 	}
 	
 	private void colorCircle() {
@@ -45,8 +45,24 @@ public class ProgressActivityController implements Initializable{
 		}
 	}
 	
-	private void setActivityLabel() {
-		activityLabel.setText(activity.getShortName());
+	private void setActivityLabelText(String text) {
+		activityLabel.setText(text);
+	}
+
+	public Label getActivityLabel() {
+		return activityLabel;
+	}
+
+	public Circle getActivityCircle() {
+		return activityCircle;
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 
 }

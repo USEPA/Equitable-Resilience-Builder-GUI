@@ -5,16 +5,13 @@ import java.util.ResourceBundle;
 import com.epa.erb.Chapter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class ChapterDescriptionController implements Initializable{
 
 	@FXML
 	TextArea descriptionTextArea;
-	@FXML
-	Button saveButton;
-	
+
 	private Chapter chapter;
 	private ChapterTitledPaneController chapterTitledPaneController;
 	public ChapterDescriptionController(Chapter chapter, ChapterTitledPaneController chapterTitledPaneController) {
@@ -29,7 +26,7 @@ public class ChapterDescriptionController implements Initializable{
 	
 	private void checkForExistingDescription() {
 		if(chapter.getDescriptionName() != null && chapter.getDescriptionName().length() > 0) {
-			descriptionTextArea.setText(chapter.getDescriptionName());
+			setDescriptionTextAreaText(chapter.getDescriptionName());
 		}
 	}
 	
@@ -39,5 +36,29 @@ public class ChapterDescriptionController implements Initializable{
 		chapter.setDescriptionName(description);
 		chapterTitledPaneController.closeDescriptionStage();
 	}
+	
+	private void setDescriptionTextAreaText(String text) {
+		descriptionTextArea.setText(text);
+	}
 
+	public TextArea getDescriptionTextArea() {
+		return descriptionTextArea;
+	}
+	
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public ChapterTitledPaneController getChapterTitledPaneController() {
+		return chapterTitledPaneController;
+	}
+
+	public void setChapterTitledPaneController(ChapterTitledPaneController chapterTitledPaneController) {
+		this.chapterTitledPaneController = chapterTitledPaneController;
+	}
+	
 }

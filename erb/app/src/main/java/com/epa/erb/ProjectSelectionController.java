@@ -19,7 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
@@ -32,30 +31,26 @@ import javafx.stage.Stage;
 public class ProjectSelectionController implements Initializable{
 
 	@FXML
-	TextField newProjectTextField;
-	@FXML
-	Button createButton;
-	@FXML
-	Button doneButton;
-	@FXML
-	ListView<String> projectsListView;
+	HBox newProjectHBox;
 	@FXML
 	VBox projectSelectionVBox;
 	@FXML
-	HBox newProjectHBox;
+	TextField newProjectTextField;
+	@FXML
+	ListView<String> projectsListView;
 	
-	private ArrayList<File> listOfProjects;
-	private ERBMainController erbMainController;
 	private boolean setup;
 	private boolean action;
-	public ProjectSelectionController(ArrayList<File> listOfProjects, ERBMainController erbMainController, boolean setup, boolean action) {
-		this.listOfProjects = listOfProjects;
+	private ERBMainController erbMainController;
+	private ArrayList<File> listOfProjectDirectories;
+	public ProjectSelectionController(ArrayList<File> listOfProjectDirectories, ERBMainController erbMainController, boolean setup, boolean action) {
+		this.listOfProjectDirectories = listOfProjectDirectories;
 		this.erbMainController = erbMainController;
 		this.setup = setup;
 		this.action = action;
 	}
 	
-	File actionDataFile = null;
+	private File dataFileToLoadInActionTool = null;
 	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
@@ -74,50 +69,55 @@ public class ProjectSelectionController implements Initializable{
 	@FXML
 	public void doneButtonAction() {
 		String selectedProjectName = projectsListView.getSelectionModel().getSelectedItem();
-		if (selectedProjectName != null && selectedProjectName.length() > 0) {
-			File projectDirectory = getProjectDirectory(selectedProjectName);
-			if (setup) {
-				handleProjectSetupLogic(projectDirectory);
-				erbMainController.loadSetupTool(projectDirectory);
-			} else if (action) {
-				boolean launch = handleProjectActionLogic(projectDirectory);
-				if(launch) erbMainController.loadActionTool(projectDirectory, actionDataFile);
-			}
+		if (selectedProjectName != null && selectedProjectName.length() > 0) { //if selected project is not null
+			File projectDirectory = getProjectDirectory(selectedProjectName); //get project directory (accounts for setup or action)
+			if (projectDirectory != null) handleToolLogicAndLoad(projectDirectory);
 			erbMainController.closeProjectSelectionStage();
 		} else {
-			logger.debug("Cannot launch the setup tool. Selected project name = " + selectedProjectName);
+			logger.error("Cannot launch. Selected project name = " + selectedProjectName);
+		}
+	}
+	
+	private void handleToolLogicAndLoad(File projectDirectory) {
+		if (setup) {
+			handleProjectSetupLogic(projectDirectory);
+			erbMainController.loadSetupTool(projectDirectory);
+		} else if (action) {
+			boolean launch = handleProjectActionLogic(projectDirectory);
+			if (launch) { //if ok to launch
+				erbMainController.loadActionTool(projectDirectory, dataFileToLoadInActionTool);
+			}
 		}
 	}
 	
 	private boolean handleProjectActionLogic(File projectActionDirectory) {
 		File projectSetupDirectory = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectActionDirectory.getName());
-		File setupFile = new File(projectSetupDirectory.getPath() + "\\Data.xml");
-		File actionFile = new File(projectActionDirectory.getPath() + "\\Data.xml");
-		actionDataFile = actionFile;
-		if (projectDirectoryHasDataFile(projectActionDirectory)) { // If there is a data file in Action
-			if (setupFile.exists() && actionFile.exists()) { // If there is a data file in Setup & Action
-				if (!filesAreSame(setupFile, actionFile)) { // If data files are not the same
-					loadDateSelection(setupFile, actionFile); // Prompt user to choose data file
+		File setupDataFile = new File(projectSetupDirectory.getPath() + "\\Data.xml");
+		File actionDataFile = new File(projectActionDirectory.getPath() + "\\Data.xml");
+		if (projectDirectoryHasDataFile(projectActionDirectory)) { //if there is a data file in action
+			if (setupDataFile.exists() && actionDataFile.exists()) { //if there is a data file in setup & action
+				if (!filesAreSame(setupDataFile, actionDataFile)) { //if data files are not the same
+					loadDateSelection(setupDataFile, actionDataFile); //prompt user to choose data file
 				}
 			}
-			return true;
-		} else { // If there is not a data file in Action
-			if (projectDirectoryHasDataFile(projectSetupDirectory)) { // If there is a data file in Setup
-				copyFile(setupFile, actionFile); // Copy the data file in Setup to Action
-				return true;
-			} else { // If there is not a data file in Setup
-				showActionProjectDataNonExistentAlert(); // Prompt user to create data in setup
-				return false;
+			return true; //ok to launch
+		} else { //if there is not a data file in action
+			if (projectDirectoryHasDataFile(projectSetupDirectory)) { //if there is a data file in setup
+				copyFile(setupDataFile, actionDataFile); //copy the data file in setup -> action
+				return true; //ok to launch
+			} else { //if there is not a data file in setup
+				showActionProjectDataNonExistentAlert(); //prompt user to create data in setup
+				return false; //not ok to launch
 			}
 		}
 	}
 	
-	private void handleProjectSetupLogic(File projectDirectory) {
-		if (projectDirectoryHasDataFile(projectDirectory)) { //If there is a data file in Setup
-			Optional<ButtonType> result = showSetupProjectDataExistsAlert(); //Prompt user to load or overwrite data
-			if (result.get().getButtonData() == ButtonData.OTHER) { 
-				if (result.get().getText().contains("Overwrite")) { //If overwrite
-					removeExistingProjectSetupData(projectDirectory); //Remove data
+	private void handleProjectSetupLogic(File projectSetupDirectory) {
+		if (projectDirectoryHasDataFile(projectSetupDirectory)) { //if there is a data file in setup
+			Optional<ButtonType> result = showSetupProjectDataExistsAlert(); //prompt user to load or overwrite data
+			if (result.get().getButtonData() == ButtonData.OTHER) { //if not cancel button selected
+				if (result.get().getText().contains("Overwrite")) { //if overwrite
+					removeExistingProjectSetupData(projectSetupDirectory); //remove data file in setup
 				}
 			}
 		}
@@ -196,44 +196,63 @@ public class ProjectSelectionController implements Initializable{
 	@FXML
 	public void createButtonAction() {
 		String projectNameText = newProjectTextField.getText();
-		if (projectNameText != null && projectNameText.length() > 0) {
-			if (!isDuplicateProjectName(projectNameText)) { // check for duplicate name
-				File newProjectDirectory = createNewProjectDirectories(projectNameText);
-				listOfProjects.add(newProjectDirectory);
-				fillProjectsListView();
+		if (projectNameText != null && projectNameText.length() > 0) { //if new project name is not null
+			if (!isDuplicateProjectName(projectNameText)) { // if new project name is not a duplicate name
+				File newProjectDirectory = createNewProjectDirectories(projectNameText); //create new project directories
+				if (newProjectDirectory != null) { //if new project directory is not null
+					listOfProjectDirectories.add(newProjectDirectory);
+					fillProjectsListView();
+				}
 			}
 		} else {
-			logger.debug("Cannot create new project. Project name = " + projectNameText);
+			logger.error("Cannot create new project. Project name = " + projectNameText);
 		}
 	}
 	
 	private File getProjectDirectory(String projectName) {
-		for(File projectDirectory: listOfProjects) {
+		for(File projectDirectory: listOfProjectDirectories) {
 			if(projectDirectory.getName().contentEquals(projectName)) {
 				return projectDirectory;
 			}
 		}
-		logger.error("Project Directory returned was null.");
+		logger.debug("Project Directory returned was null.");
 		return null;
 	}
 	
 	private File createNewProjectDirectories(String newProjectName) {
-		//Action directory
+		File newProjectActionDirectory = createNewProjectActionDirectory(newProjectName);
+		File newProjectSetupDirectory = createNewProjectSetupDirectory(newProjectName);
+		if(setup) {
+			return newProjectSetupDirectory;
+		} else if (action) {
+			return newProjectActionDirectory;
+		} else {
+			logger.debug("New Project Directory returned was null.");
+			return null;
+		}
+	}
+	
+	private File createNewProjectSetupDirectory(String newProjectName) {
+		// Setup directory
 		File newProjectDirectory = new File(pathToERBFolder + "\\EngagementSetupTool\\" + newProjectName + "\\");
-		if(!newProjectDirectory.exists()) {
+		if (!newProjectDirectory.exists()) {
 			newProjectDirectory.mkdir();
 		}
-		//Setup directory
-		newProjectDirectory = new File(pathToERBFolder + "\\EngagementActionTool\\" + newProjectName + "\\");
-		if(!newProjectDirectory.exists()) {
+		return newProjectDirectory;
+	}
+	
+	private File createNewProjectActionDirectory(String newProjectName) {
+		// Action directory
+		File newProjectDirectory = new File(pathToERBFolder + "\\EngagementActionTool\\" + newProjectName + "\\");
+		if (!newProjectDirectory.exists()) {
 			newProjectDirectory.mkdir();
 		}
 		return newProjectDirectory;
 	}
 	
 	private boolean isDuplicateProjectName(String projectNameToCreate) {
-		for (File file : listOfProjects) {
-			if(file.getName().contentEquals(projectNameToCreate)) {
+		for (File projectDirectory : listOfProjectDirectories) {
+			if(projectDirectory.getName().contentEquals(projectNameToCreate)) {
 				return true;
 			}
 		}
@@ -260,8 +279,8 @@ public class ProjectSelectionController implements Initializable{
 	
 	void fillProjectsListView() {
 		projectsListView.getItems().clear();
-		for(File file : listOfProjects) {
-			projectsListView.getItems().add(file.getName());
+		for(File projectDirectory : listOfProjectDirectories) {
+			projectsListView.getItems().add(projectDirectory.getName());
 		}
 	}
 	
@@ -271,8 +290,60 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
-	void setActionDataFile(File dataFile) {
-		actionDataFile = dataFile;
+	public HBox getNewProjectHBox() {
+		return newProjectHBox;
 	}
 
+	public VBox getProjectSelectionVBox() {
+		return projectSelectionVBox;
+	}
+	
+	public TextField getNewProjectTextField() {
+		return newProjectTextField;
+	}
+	
+	public ListView<String> getProjectsListView() {
+		return projectsListView;
+	}
+	
+	public boolean isSetup() {
+		return setup;
+	}
+
+	public void setSetup(boolean setup) {
+		this.setup = setup;
+	}
+
+	public boolean isAction() {
+		return action;
+	}
+
+	public void setAction(boolean action) {
+		this.action = action;
+	}
+	
+	public ArrayList<File> getListOfProjectDirectories() {
+		return listOfProjectDirectories;
+	}
+
+	public void setListOfProjectDirectories(ArrayList<File> listOfProjectDirectories) {
+		this.listOfProjectDirectories = listOfProjectDirectories;
+	}
+
+	public ERBMainController getErbMainController() {
+		return erbMainController;
+	}
+
+	public void setErbMainController(ERBMainController erbMainController) {
+		this.erbMainController = erbMainController;
+	}
+
+	public File getDataFileToLoadInActionTool() {
+		return dataFileToLoadInActionTool;
+	}
+
+	public void setDataFileToLoadInActionTool(File dataFileToLoadInActionTool) {
+		this.dataFileToLoadInActionTool = dataFileToLoadInActionTool;
+	}
+	
 }

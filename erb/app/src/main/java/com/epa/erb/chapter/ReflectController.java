@@ -35,19 +35,19 @@ public class ReflectController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		setTitleLabel();
+		setTitleLabelText("Reflecting on " + chapter.getStringName());
 	}
 	
 	private void handleControls() {
-		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-		titleHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		notesCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		reviewDataCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		updateProgressCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
+		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+		titleHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
-	private void setTitleLabel() {
-		titleLabel.setText("Reflecting on " + chapter.getStringName());
+	private void setTitleLabelText(String text) {
+		titleLabel.setText(text);
 	}
 	
 	@FXML
@@ -65,4 +65,36 @@ public class ReflectController implements Initializable{
 		
 	}
 
+	public HBox getErbHeading() {
+		return erbHeading;
+	}
+
+	public HBox getTitleHeading() {
+		return titleHeading;
+	}
+
+	public Label getTitleLabel() {
+		return titleLabel;
+	}
+
+	public Circle getNotesCircle() {
+		return notesCircle;
+	}
+
+	public Circle getReviewDataCircle() {
+		return reviewDataCircle;
+	}
+
+	public Circle getUpdateProgressCircle() {
+		return updateProgressCircle;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+	
 }

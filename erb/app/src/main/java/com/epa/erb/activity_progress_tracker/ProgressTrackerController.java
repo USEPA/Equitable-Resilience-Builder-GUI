@@ -45,6 +45,10 @@ public class ProgressTrackerController implements Initializable{
 		}
 	}
 	
+	public HBox getProgressContentHBox() {
+		return progressContentHBox;
+	}
+
 	public ArrayList<Chapter> getListOfAllChapters() {
 		return listOfAllChapters;
 	}

@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -14,7 +13,7 @@ import javafx.scene.control.ToggleGroup;
 public class DataSelectionController implements Initializable{
 
 	@FXML
-	Button okButton;
+	ToggleGroup dataSelection;
 	@FXML
 	Label setupModifiedDateLabel;
 	@FXML
@@ -23,8 +22,6 @@ public class DataSelectionController implements Initializable{
 	RadioButton setupDataRadioButton;
 	@FXML
 	RadioButton actionDataRadioButton;
-	@FXML
-	ToggleGroup dataSelection;
 	
 	private File setupFile;
 	private File actionFile;
@@ -52,16 +49,60 @@ public class DataSelectionController implements Initializable{
 		RadioButton selectedRadioButton = getSelectedDataRadioButton();
 		if(selectedRadioButton != null) {
 			if(selectedRadioButton == setupDataRadioButton) {
-				projectSelectionController.setActionDataFile(setupFile);
+				projectSelectionController.setDataFileToLoadInActionTool(setupFile);
 			} else if (selectedRadioButton == actionDataRadioButton) {
-				projectSelectionController.setActionDataFile(actionFile);
+				projectSelectionController.setDataFileToLoadInActionTool(actionFile);
 			}
 			projectSelectionController.closeDataSelectionStage();
 		}
+	}
+	
+	public Label getSetupModifiedDateLabel() {
+		return setupModifiedDateLabel;
+	}
+
+	public Label getActionModifiedDateLabel() {
+		return actionModifiedDateLabel;
+	}
+	
+	public RadioButton getSetupDataRadioButton() {
+		return setupDataRadioButton;
+	}
+	
+	public RadioButton getActionDataRadioButton() {
+		return actionDataRadioButton;
 	}
 	
 	public RadioButton getSelectedDataRadioButton() {
 		return (RadioButton) dataSelection.getSelectedToggle();
 	}
 
+	public ToggleGroup getDataSelection() {
+		return dataSelection;
+	}
+
+	public File getSetupFile() {
+		return setupFile;
+	}
+
+	public void setSetupFile(File setupFile) {
+		this.setupFile = setupFile;
+	}
+
+	public File getActionFile() {
+		return actionFile;
+	}
+
+	public void setActionFile(File actionFile) {
+		this.actionFile = actionFile;
+	}
+
+	public ProjectSelectionController getProjectSelectionController() {
+		return projectSelectionController;
+	}
+
+	public void setProjectSelectionController(ProjectSelectionController projectSelectionController) {
+		this.projectSelectionController = projectSelectionController;
+	}
+	
 }

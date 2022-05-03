@@ -37,20 +37,6 @@ import javafx.util.Callback;
 public class EngagementSetupController implements Initializable {
 
 	@FXML
-	HBox erbPathwayHBox;
-	@FXML
-	ListView<Activity> customizedActivitiesListView;
-	@FXML
-	ListView<ActivityType> activitityTypeListView;
-	@FXML
-	TextArea activityTypeDescriptionTextField;
-	@FXML
-	Button addChapterButton;
-	@FXML
-	Button assignButton;
-	@FXML
-	Button saveDataButton;
-	@FXML
 	VBox selectedActivitesVBox;
 	@FXML
 	TextArea shortNameTextField;
@@ -64,19 +50,24 @@ public class EngagementSetupController implements Initializable {
 	TextArea objectivesTextField;
 	@FXML
 	Hyperlink fileNameHyperlink;
+	@FXML
+	TextArea activityTypeDescriptionTextField;
+	@FXML
+	ListView<Activity> customizedActivitiesListView;
+	@FXML
+	ListView<ActivityType> activitityTypeListView;
 	
 	private File projectDirectory;
 	public EngagementSetupController(File projectDirectory) {
 		this.projectDirectory = projectDirectory;
 	}
 	
-	private String selectedChapter = null;	//Tracks the current user selected chapter they are adding activities to
-	private ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>();	//List of Chapter objects created by the user
-	private ArrayList<Activity> customizedActivities = new ArrayList<Activity>();	//List of Activities parsed from .xml file
-	private ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();	//List of ActivityTypes parsed from .xml file
+	private String selectedChapter = null;	//tracks the current user selected chapter
 	private Logger logger = LogManager.getLogger(EngagementSetupController.class);
+	private ArrayList<Chapter> chaptersCreated = new ArrayList<Chapter>(); //list of chapter objects created by the user
+	private ArrayList<Activity> customizedActivities = new ArrayList<Activity>(); //list of activities parsed from .xml file
+	private ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>(); //list of activity types parsed from .xml file
 	private ArrayList<ChapterTitledPaneController> chapterTitledPaneControllers = new ArrayList<ChapterTitledPaneController>(); //List of ChapterTitledPaneControllers for all chapters created by the user
-
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 	
@@ -219,7 +210,7 @@ public class EngagementSetupController implements Initializable {
 	}
 	
 	private void removeMenuItemAction() {
-		removeChapterTitledPane();
+		removeChapterTitledPaneActivity();
 		cleanCustomizedActivitiesListView();
 	}
 					
@@ -242,7 +233,6 @@ public class EngagementSetupController implements Initializable {
 	}
 	
 	private ChapterTitledPaneController loadChapterTitledPaneController(Chapter chapter) {
-		// Load and add the TitledPane to the selected activities vbox
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/ChapterTitledPane.fxml"));
 			ChapterTitledPaneController chapterTitledPaneController = new ChapterTitledPaneController(chapter);
@@ -257,27 +247,25 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
+	//TODO: LEFT OFF HERE
+	
 	private void handleTitledPaneListViewAccess(ChapterTitledPaneController chapterTitledPaneController) {
 		//Handle access to the TitledPaneListView in this class
 		ListView<SelectedActivity> titledPaneListView = chapterTitledPaneController.getTitledPaneListView();
 		setTitledPaneListViewCellFactory(titledPaneListView);
 		setSelectedActivityListViewDrag(titledPaneListView);
-		titledPaneListView.setOnMouseClicked(e -> selectedActivityListViewClicked(e, titledPaneListView, chapterTitledPaneController.getPaneTitle()));
+		titledPaneListView.setOnMouseClicked(e -> selectedActivityListViewClicked(e, titledPaneListView, chapterTitledPaneController.getTitledPaneText()));
 	}
 	
 	private void storeTitledPaneController(ChapterTitledPaneController chapterTitledPaneController) {
-		//Store the ChapterTitledPaneController for the user created chapter
 		chapterTitledPaneControllers.add(chapterTitledPaneController);
 	}
 
-	/**
-	 * Handles users assigning a customized activity to a selected activity. Updates the activityID and the show name to reflect the assigned customized activity.
-	 */
 	@FXML
 	public void assignButtonAction() {
 		Activity selectedCustomizedActivity = customizedActivitiesListView.getSelectionModel().getSelectedItem();
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
-			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
+			if (chapterTitledPaneController.getTitledPaneText().contentEquals(selectedChapter)) {
 				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
 				selectedActivity.setActivityID(selectedCustomizedActivity.getActivityID());
 				selectedActivity.setShowName(selectedCustomizedActivity.getLongName());
@@ -294,38 +282,26 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	/**
-	 * Writes the chapter data to an xml file to save for pt 2 of the tool
-	 */
 	private void storeFinalSelectedActivitiesAndChapters() {
 			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName() + "\\Data.xml");
 			XMLManager xmlManager = new XMLManager();
 			xmlManager.writeDataXML(dataFile, chaptersCreated);
 	}
 	
-	/**
-	 * Add all user selected activities to the user created chapters. Also adds the Plan activity and Reflect activity
-	 */
 	private void addFinalSelectedActivitiesToChapters() {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
-			Chapter chapter = getChapter(chapterTitledPaneController.getPaneTitle());
+			Chapter chapter = getChapter(chapterTitledPaneController.getTitledPaneText());
 			chapter.getUserSelectedActivities().clear();
 			ListView<SelectedActivity> listView = chapterTitledPaneController.getTitledPaneListView();
 			chapter.addUserSelectedActivity(getCustomizedPlanActivity());
 			ObservableList<SelectedActivity> selectedActivities = listView.getItems();
-			for (SelectedActivity selectedActivity : selectedActivities) {				
+			for (SelectedActivity selectedActivity : selectedActivities) {
 				chapter.addUserSelectedActivity(getCustomizedActivity(selectedActivity.getActivityID()));
 			}
 			chapter.addUserSelectedActivity(getCustomizedReflectActivity());
 		}
 	}
 	
-	/**
-	 * Handles users clicking a selected activity. Calls a method to update the list of customized activities based on the type of selected activity the user has clicked. 
-	 * 
-	 * @param titledPaneListView
-	 * @param paneTitle
-	 */
 	private void selectedActivityListViewClicked(MouseEvent mouseEvent, ListView<SelectedActivity> titledPaneListView, String paneTitle) {
 		SelectedActivity selectedActivity = titledPaneListView.getSelectionModel().getSelectedItem();
 		if (selectedActivity != null) {
@@ -335,9 +311,6 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	/**
-	 * Handles users clicked the file hyperlink. Opens the hyper linked document.
-	 */
 	private void fileNameHyperlinkClicked() {
 		try {
 			String fileName = fileNameHyperlink.getAccessibleText().trim();
@@ -352,9 +325,6 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	/**
-	 * Updates the activity type description according to the selected activity type.
-	 */
 	private void updateActivityTypeDescriptionTextArea() {
 		ActivityType selectedActivityType = activitityTypeListView.getSelectionModel().getSelectedItem();
 		for(ActivityType activityType: activityTypes) {
@@ -364,9 +334,6 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	/**
-	 * Updates the customized activity fields according to the selected customized activity information.
-	 */
 	private void updateCustomizedActivityInfo() {
 		Activity selectedCustomizedActivity = customizedActivitiesListView.getSelectionModel().getSelectedItem();
 		if (selectedCustomizedActivity != null) {
@@ -384,9 +351,9 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	private void removeChapterTitledPane() {
+	private void removeChapterTitledPaneActivity() {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
-			if (chapterTitledPaneController.getPaneTitle().contentEquals(selectedChapter)) {
+			if (chapterTitledPaneController.getTitledPaneText().contentEquals(selectedChapter)) {
 				SelectedActivity selectedActivity = chapterTitledPaneController.getTitledPaneListView().getSelectionModel().getSelectedItem();
 				chapterTitledPaneController.getTitledPaneListView().getItems().remove(selectedActivity);
 				setTitledPaneListViewCellFactory(chapterTitledPaneController.getTitledPaneListView());
@@ -510,6 +477,74 @@ public class EngagementSetupController implements Initializable {
 		}
 		logger.debug("Customized Reflect Activity returned is null.");
 		return null;
+	}
+
+	public VBox getSelectedActivitesVBox() {
+		return selectedActivitesVBox;
+	}
+
+	public TextArea getShortNameTextField() {
+		return shortNameTextField;
+	}
+
+	public TextArea getLongNameTextField() {
+		return longNameTextField;
+	}
+
+	public TextArea getDescriptionTextField() {
+		return descriptionTextField;
+	}
+
+	public TextArea getDirectionsTextField() {
+		return directionsTextField;
+	}
+
+	public TextArea getObjectivesTextField() {
+		return objectivesTextField;
+	}
+
+	public Hyperlink getFileNameHyperlink() {
+		return fileNameHyperlink;
+	}
+
+	public TextArea getActivityTypeDescriptionTextField() {
+		return activityTypeDescriptionTextField;
+	}
+	
+	public ListView<Activity> getCustomizedActivitiesListView() {
+		return customizedActivitiesListView;
+	}
+
+	public ListView<ActivityType> getActivitityTypeListView() {
+		return activitityTypeListView;
+	}
+
+	public File getProjectDirectory() {
+		return projectDirectory;
+	}
+
+	public void setProjectDirectory(File projectDirectory) {
+		this.projectDirectory = projectDirectory;
+	}
+
+	public String getSelectedChapter() {
+		return selectedChapter;
+	}
+
+	public ArrayList<Chapter> getChaptersCreated() {
+		return chaptersCreated;
+	}
+
+	public ArrayList<Activity> getCustomizedActivities() {
+		return customizedActivities;
+	}
+
+	public ArrayList<ActivityType> getActivityTypes() {
+		return activityTypes;
+	}
+
+	public ArrayList<ChapterTitledPaneController> getChapterTitledPaneControllers() {
+		return chapterTitledPaneControllers;
 	}
 	
 }
