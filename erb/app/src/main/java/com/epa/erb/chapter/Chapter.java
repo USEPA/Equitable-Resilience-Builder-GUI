@@ -1,6 +1,7 @@
-package com.epa.erb;
+package com.epa.erb.chapter;
 
 import java.util.ArrayList;
+import com.epa.erb.Activity;
 
 public class Chapter {
 	

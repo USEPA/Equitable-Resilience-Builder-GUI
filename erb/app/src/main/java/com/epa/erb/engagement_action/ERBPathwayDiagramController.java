@@ -6,8 +6,9 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.epa.erb.Activity;
-import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
+import com.epa.erb.chapter.Chapter;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

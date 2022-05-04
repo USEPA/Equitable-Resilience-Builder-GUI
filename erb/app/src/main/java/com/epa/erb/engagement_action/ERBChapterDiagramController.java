@@ -3,8 +3,10 @@ package com.epa.erb.engagement_action;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import com.epa.erb.Chapter;
+
 import com.epa.erb.Constants;
+import com.epa.erb.chapter.Chapter;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
