@@ -1,13 +1,17 @@
 package com.epa.erb.goal;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import com.epa.erb.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class GoalCreationController implements Initializable{
 
@@ -20,14 +24,28 @@ public class GoalCreationController implements Initializable{
 	@FXML
 	ListView<?> selectedGoalsListView;
 
-	
-	public GoalCreationController() {
-		
+	private App app;
+	public GoalCreationController(App app) {
+		this.app = app;
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		populateGoalCategoryCheckBoxes();
+	}
+	
+	private void populateGoalCategoryCheckBoxes() {
+		ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
+		for(GoalCategory goalCategory : goalCategories) {
+			CheckBox goalCategoryCheckBox = createGoalCategoryCheckBox(goalCategory);
+			goalsVBox.getChildren().add(goalCategoryCheckBox);
+		}
+	}
+	
+	private CheckBox createGoalCategoryCheckBox(GoalCategory goalCategory) {
+		CheckBox checkBox = new CheckBox(goalCategory.getCategoryName());
+		checkBox.setFont(new Font(15.0));
+		return checkBox;
 	}
 	
 	@FXML

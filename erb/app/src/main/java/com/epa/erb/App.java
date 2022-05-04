@@ -8,12 +8,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.io.File;
+import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.epa.erb.goal.GoalCategory;
+import com.epa.erb.goal.GoalCreationController;
 
 public class App extends Application {
 
+	private ArrayList<Activity> activities;
+	private ArrayList<ActivityType> activityTypes;
+	private ArrayList<GoalCategory> goalCategories;
 	private Logger logger = LogManager.getLogger(App.class);
+	//private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\ERB_Static_Data";
 	
 	private String getGreeting() {
 		return "Launching ERB";
@@ -26,18 +35,80 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		logger.info(getGreeting());
-		
+		readAndStoreData();
+		loadGoalCreation();
+	}
+	
+	private Stage goalCreationStage = null;
+	private void loadGoalCreation() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBMain.fxml"));
-			ERBMainController erbMainController = new ERBMainController();
-			fxmlLoader.setController(erbMainController);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
+			GoalCreationController goalCreationController = new GoalCreationController(this);
+			fxmlLoader.setController(goalCreationController);
 			Parent root = fxmlLoader.load();
+			goalCreationStage = new Stage();
 			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("ERB: Equitable Resilience Builder");
-			primaryStage.show();
-		} catch (Exception e) {
-			logger.fatal(e.getMessage());
+			goalCreationStage.setScene(scene);
+			goalCreationStage.setTitle("Goals");
+			goalCreationStage.showAndWait();
+		}catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
+	
+	private void readAndStoreData() {
+		XMLManager xmlManager = new XMLManager();
+		File activityTypesFile = getActivityTypesFileToParse();
+		if(activityTypesFile != null) activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
+		File availableActivitiesFile = getAvailableActivitiesFileToParse();
+		if(availableActivitiesFile != null) activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
+		File goalCategoriesFile = getGoalCategoriesFileToParse();
+		if(goalCategoriesFile != null) goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
+	}
+	
+	private File getActivityTypesFileToParse() {
+		File activityTypesFile = new File(pathToERBStaticDataFolder + "\\Activities\\Activity_Types.xml");
+		if(activityTypesFile.exists()) {
+			return activityTypesFile;
+		} else {
+			return null;
+		}
+	}
+	
+	private File getAvailableActivitiesFileToParse() {
+		File availableActivitiesFile = new File(pathToERBStaticDataFolder + "\\Activities\\Available_Activities.xml");
+		if(availableActivitiesFile.exists()) {
+			return availableActivitiesFile;
+		} else {
+			return null;
+		}
+	}
+	
+	private File getGoalCategoriesFileToParse() {
+		File goalCategoriesFile = new File(pathToERBStaticDataFolder + "\\Goals\\Goal_Categories.xml");
+		if(goalCategoriesFile.exists()) {
+			return goalCategoriesFile;
+		} else {
+			return null;
+		}
+	}
+	
+	public void closeGoalCreationStage() {
+		if(goalCreationStage != null) {
+			goalCreationStage.close();
+		}
+	}
+
+	public ArrayList<Activity> getActivities() {
+		return activities;
+	}
+
+	public ArrayList<ActivityType> getActivityTypes() {
+		return activityTypes;
+	}
+
+	public ArrayList<GoalCategory> getGoalCategories() {
+		return goalCategories;
+	}
+	
 }

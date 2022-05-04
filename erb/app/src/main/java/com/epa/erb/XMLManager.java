@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.goal.GoalCategory;
 
 public class XMLManager {
 
@@ -24,6 +25,46 @@ public class XMLManager {
 	}
 
 	private Logger logger = LogManager.getLogger(XMLManager.class);
+	
+	public ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile){
+		if (xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList goalCategoryNodeList = doc.getElementsByTagName("goalCategory");
+				for (int i = 0; i < goalCategoryNodeList.getLength(); i++) {
+					Node goalCategoryNode = goalCategoryNodeList.item(i);
+					//Goal Category
+					if(goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element goalCategoryElement = (Element) goalCategoryNode;
+						String categoryName = goalCategoryElement.getAttribute("categoryName");
+						NodeList assignedActivityNodeList = goalCategoryElement.getElementsByTagName("assignedActivity");
+						ArrayList<String> listOfActivityIDs = new ArrayList<String>();
+						for(int j =0; j < assignedActivityNodeList.getLength(); j++) {
+							Node assignedActivityNode = assignedActivityNodeList.item(j);
+							//Assigned Activity
+							if(assignedActivityNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element assignedActivityElement = (Element) assignedActivityNode;
+								String activityID = assignedActivityElement.getAttribute("activityID");
+								listOfActivityIDs.add(activityID);
+							}
+						}
+						GoalCategory goalCategory = new GoalCategory(categoryName, listOfActivityIDs);
+						goalCategories.add(goalCategory);
+					}
+				}
+				return goalCategories;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
 	
 	public ArrayList<ActivityType> parseActivityTypesXML(File xmlFile) {
 		if (xmlFile.exists() && xmlFile.canRead()) {
