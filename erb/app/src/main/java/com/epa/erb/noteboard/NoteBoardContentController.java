@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import javafx.beans.property.ObjectProperty;
@@ -96,18 +95,21 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private int indexToMove = -1;
+	private int sourcePaneHashCode = -1;
 	private static final String TAB_DRAG_KEY = "pane";
 	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
 	private void setDrag(Pane p) {
 		p.setOnDragOver(event-> {
 			event.acceptTransferModes(TransferMode.MOVE);
-			if (event.getTarget() != null) {
-				if(event.getTarget().toString().contains("TextFlow")) {
-					TextFlow textFlow = (TextFlow) event.getTarget();
-					VBox noteVBox = (VBox) textFlow.getParent().getParent().getParent().getParent();
-					if(noteVBox.getId().contentEquals("postedNote")) {
-						Pane parentPane = (Pane) noteVBox.getParent();
-						indexToMove = parentPane.getChildren().indexOf(noteVBox);
+			Pane sourceNote = (Pane) event.getSource();
+			Pane sourcePane = (Pane) sourceNote.getParent();
+			Pane targetPane = (Pane) event.getTarget();
+			if (targetPane != null) {
+				if(targetPane.toString().contains("TextFlow")) {
+					VBox sourceNoteVBox = (VBox) sourceNote;
+					if(sourceNoteVBox.getId().contentEquals("postedNote")) {
+						sourcePaneHashCode = sourcePane.hashCode();
+						indexToMove = sourcePane.getChildren().indexOf(sourceNoteVBox);
 					}
 				}
 			}
@@ -117,34 +119,40 @@ public class NoteBoardContentController implements Initializable{
 			Dragboard db = event.getDragboard();
 			boolean success = false;
 			if(db.hasString()) {
-				Pane pane = p;
-				Pane sourcePane = (Pane) event.getGestureSource();
+				Pane targetPane = p;
+				Pane sourceNote = (Pane) event.getGestureSource();
 				//Adding a new post it
-				if(sourcePane.getId() != null && sourcePane.getId().contentEquals("note") && pane.getId() != null && pane.getId().contentEquals("postItHBox")) {
+				if(sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
 					try {
 						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNote.fxml"));
 						PostItNoteController postItNoteController = new PostItNoteController();
 						fxmlLoader.setController(postItNoteController);
 						Pane postedPane = fxmlLoader.load();	
 						setDrag(postedPane);
-						pane.getChildren().add(postedPane);
+						targetPane.getChildren().add(postedPane);
 					}catch (Exception e) {
-						e.printStackTrace();
+						logger.error(e.getMessage());
 					}
 					// Moving a post it
-				} else if (sourcePane.getId() != null && sourcePane.getId().contentEquals("postedNote") && pane.getId() != null && pane.getId().contentEquals("postItHBox")) {
-					if (indexToMove > -1) {
-						pane.getChildren().remove(sourcePane);
-						pane.getChildren().add(indexToMove, sourcePane);
+				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
+					if(sourcePaneHashCode == targetPane.hashCode()) {
+						if (indexToMove > -1) {
+							if (targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().remove(sourceNote);
+							if(!targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().add(indexToMove, sourceNote);
+						}
+					} else {
+						int numChildren = targetPane.getChildren().size();
+						if (targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().remove(sourceNote);
+						if(!targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().add(numChildren, sourceNote);
 					}
 				//Moving a post it
-				} else if(sourcePane.getId() != null && sourcePane.getId().contentEquals("postedNote") && pane.getId() != null && pane.getId().contentEquals("postedNote")) {
-					Pane parentPane = (Pane) sourcePane.getParent();
+				} else if(sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postedNote")) {
+					Pane sourceParentPane = (Pane) sourceNote.getParent();
 					TextFlow textFlow = (TextFlow) event.getTarget();
-					VBox noteVBox = (VBox) textFlow.getParent().getParent().getParent().getParent();
-					int targetIndex = parentPane.getChildren().indexOf(noteVBox);
-					parentPane.getChildren().remove(sourcePane);
-					parentPane.getChildren().add(targetIndex, sourcePane);
+					VBox noteVBox = (VBox) textFlow.getParent().getParent().getParent().getParent().getParent();
+					int targetIndex = sourceParentPane.getChildren().indexOf(noteVBox);
+					sourceParentPane.getChildren().remove(sourceNote);
+					sourceParentPane.getChildren().add(targetIndex, sourceNote);
 				}
 				success = true;
 			}
