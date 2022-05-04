@@ -36,38 +36,39 @@ import javafx.concurrent.Worker;
 public class WorksheetContentController implements Initializable{
 
 	@FXML
-	Label activityNameLabel;
-	@FXML
 	WebView webView;
-	@FXML
-	Button openButton;
 	@FXML
 	Button saveButton;
 	@FXML
-	Button printButton;
-		
+	Label activityNameLabel;
+
 	private Activity activity;
 	public WorksheetContentController(Activity activity) {
 		this.activity = activity;
 	}
 	
 	private Logger logger = LogManager.getLogger(WorksheetContentController.class);
-	
 	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		loadPDFToWebView();
-		fillActivityInfo();
 		handleControls();
+		setActivityNameLabelText();
+		loadPDFToWebView(getPDFFileToLoad());
 	}
 	
 	private void handleControls() {
 		saveButton.setDisable(true);
 	}
 	
-	private void loadPDFToWebView() {
+	private File getPDFFileToLoad() {
+		String fileName = activity.getFileName().replace(".docx", ".pdf");
+		File pdfFileToLoad = new File(pathToERBFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
+		return pdfFileToLoad;
+	}
+	
+	private void loadPDFToWebView(File pdfFileToLoad) {
 		try {
 			WebEngine webEngine = webView.getEngine();
 			String url = getClass().getResource("/pdfjs-2.8.335-dist/web/viewer.html").toExternalForm();
@@ -79,8 +80,7 @@ public class WorksheetContentController implements Initializable{
 					if (newState == Worker.State.SUCCEEDED) {
 						try {
 							if(activity.getFileName() != null && activity.getFileName().length() > 0) {
-								String fileName = activity.getFileName().replace(".docx", ".pdf");
-								byte[] data = FileUtils.readFileToByteArray(new File(pathToERBFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName));
+								byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
 								String base64 = Base64.getEncoder().encodeToString(data);
 								webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
 							}
@@ -95,54 +95,65 @@ public class WorksheetContentController implements Initializable{
 		}
 	}
 	
-	private void fillActivityInfo() {
+	private void setActivityNameLabelText() {
 		activityNameLabel.setText(activity.getLongName());
 	}
 
 	@FXML
 	public void printButtonAction() {
-		showAndSelectPrintService();
+		loadPrinterSelection();
 	}
 	
-	private Stage printerStage = null;
-	private void showAndSelectPrintService() {
+	private Stage printerSelectionStage = null;
+	private void loadPrinterSelection() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/PrinterSelection.fxml"));
 			PrinterSelectionController printerSelectionController = new PrinterSelectionController(this);
 			fxmlLoader.setController(printerSelectionController);
 			Parent root = fxmlLoader.load();
-			printerStage = new Stage();
-			printerStage.setTitle("Printer Selection");
+			printerSelectionStage = new Stage();
+			printerSelectionStage.setTitle("Printer Selection");
 			Scene scene = new Scene(root);
-			printerStage.setScene(scene);
-			printerStage.showAndWait();
+			printerSelectionStage.setScene(scene);
+			printerSelectionStage.showAndWait();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
 	
 	void closePrinterStage() {
-		if(printerStage != null) {
-			printerStage.close();
+		if(printerSelectionStage != null) {
+			printerSelectionStage.close();
 		}
 	}
 	
-	void print(PrintService printService) {
+	void handlePrinterSelected(PrintService printService) {
+		File fileToPrint = getFileToPrint();
+		printActivity(printService, fileToPrint);
+	}
+	
+	private File getFileToPrint() {
 		String fileName = activity.getFileName().replace(".docx", ".pdf");
 		File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
-		if (file.exists()) {
-			try {
-				FileInputStream fileInputStream = new FileInputStream(file.getPath());
-				PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
-				attributeSet.add(new Copies(1));
-//				PDDocument pdDocument = Loader.loadPDF(fileInputStream);
-//				PrinterJob printerJob = PrinterJob.getPrinterJob();
-//				printerJob.setPrintService(printService);
-//				printerJob.setPageable(new PDFPageable(pdDocument));
-//				printerJob.print();
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
+		if(file.exists()) {
+			return file;
+		} else {
+			return null;
+		}
+	}
+	
+	void printActivity(PrintService printService, File fileToPrint) {
+		try {
+			FileInputStream fileInputStream = new FileInputStream(fileToPrint.getPath());
+			PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
+			attributeSet.add(new Copies(1));
+//			PDDocument pdDocument = Loader.loadPDF(fileInputStream);
+//			PrinterJob printerJob = PrinterJob.getPrinterJob();
+//			printerJob.setPrintService(printService);
+//			printerJob.setPageable(new PDFPageable(pdDocument));
+//			printerJob.print();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
 		
@@ -153,9 +164,12 @@ public class WorksheetContentController implements Initializable{
 	
 	@FXML
 	public void openButtonAction() {
+		openActivity(activity);
+	}
+	
+	public void openActivity(Activity activity) {
 		try {
-			String fileName = activity.getFileName();
-			File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\" + fileName);
+			File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\" + activity.getFileName());
 			if (file.exists() && Desktop.isDesktopSupported()) {
 				Desktop.getDesktop().open(file);
 			} else {
@@ -165,4 +179,26 @@ public class WorksheetContentController implements Initializable{
 			logger.error(e.getMessage());
 		}
 	}
+
+	public WebView getWebView() {
+		return webView;
+	}
+
+	public Button getSaveButton() {
+		return saveButton;
+	}
+
+	public Label getActivityNameLabel() {
+		return activityNameLabel;
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+	
+	
 }

@@ -5,20 +5,17 @@ import java.util.ResourceBundle;
 import javafx.beans.Observable;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
 public class ProgressAdjusterController implements Initializable{
 
 	@FXML
+	Slider slider;
+	@FXML
 	Label headingLabel;
 	@FXML
 	Label progressPercentLabel;
-	@FXML
-	Slider slider;
-	@FXML
-	Button okButton;
 
 	private String headerString;
 	private ProgressColumnController progressColumnController;
@@ -30,16 +27,20 @@ public class ProgressAdjusterController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
+		setExistingSliderValue();
+		setHeadingLabelText(headerString);
 	}
 
 	private void handleControls() {
 		slider.valueProperty().addListener(e -> sliderValueChanged(e));
+	}
+	
+	private void setExistingSliderValue() {
 		if (headerString.contentEquals("Plan")) {
-			slider.setValue(progressColumnController.getPlanProgress() * 100.0);
+			setSliderValue(progressColumnController.getPlanProgress()*100);
 		} else if (headerString.contentEquals("Reflect")) {
-			slider.setValue(progressColumnController.getReflectProgress() * 100.0);
+			setSliderValue(progressColumnController.getReflectProgress() * 100.0);
 		}
-		headingLabel.setText(headerString);
 	}
 	
 	private void sliderValueChanged(Observable event) {
@@ -50,13 +51,47 @@ public class ProgressAdjusterController implements Initializable{
 	@FXML
 	public void okButtonAction() {
 		if(headerString.contentEquals("Plan")) {
-			progressColumnController.handlePlanProgress(slider.getValue()/100.0);
-			progressColumnController.closeProgressPlanAdjusterStage();
+			progressColumnController.handlePlanProgressChange(slider.getValue()/100.0);
 		} else if (headerString.contentEquals("Reflect")) {
-			progressColumnController.handleReflectProgress(slider.getValue()/100.0);
-			progressColumnController.closeProgressReflectAdjusterStage();
+			progressColumnController.handleReflectProgressChange(slider.getValue()/100.0);
 		}
-
+		progressColumnController.closeProgressAdjusterStage();
+	}
+	
+	private void setSliderValue(double percent) {
+		slider.setValue(percent);
+	}
+	
+	private void setHeadingLabelText(String text) {
+		headingLabel.setText(text);
 	}
 
+	public Slider getSlider() {
+		return slider;
+	}
+
+	public Label getHeadingLabel() {
+		return headingLabel;
+	}
+
+	public Label getProgressPercentLabel() {
+		return progressPercentLabel;
+	}
+
+	public String getHeaderString() {
+		return headerString;
+	}
+
+	public void setHeaderString(String headerString) {
+		this.headerString = headerString;
+	}
+
+	public ProgressColumnController getProgressColumnController() {
+		return progressColumnController;
+	}
+
+	public void setProgressColumnController(ProgressColumnController progressColumnController) {
+		this.progressColumnController = progressColumnController;
+	}
+	
 }

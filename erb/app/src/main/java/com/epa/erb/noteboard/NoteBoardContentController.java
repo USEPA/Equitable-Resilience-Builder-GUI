@@ -12,6 +12,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -25,6 +26,8 @@ import javafx.scene.text.TextFlow;
 public class NoteBoardContentController implements Initializable{
 
 	@FXML
+	Label activityNameLabel;
+	@FXML
 	VBox mainVBox;
 	@FXML
 	Pane layer1Pane;
@@ -36,8 +39,6 @@ public class NoteBoardContentController implements Initializable{
 	Pane layer4Pane;
 	@FXML
 	Pane note; //layer 5
-	@FXML
-	Label activityNameLabel;
 	
 	private Activity activity;
 	public NoteBoardContentController(Activity activity) {
@@ -53,11 +54,11 @@ public class NoteBoardContentController implements Initializable{
 		setDrag(note);
 		fillCategories();
 		createCategoryRows();
-		initializeStyle();
+		handleControls();
 		setActivityNameLabelText(activity.getLongName());
 	}
 	
-	private void initializeStyle() {
+	private void handleControls() {
 		layer1Pane.setStyle("-fx-background-color: " + constants.getLayer1ColorString() + ";");
 		layer2Pane.setStyle("-fx-background-color: " + constants.getLayer2ColorString() + ";");
 		layer3Pane.setStyle("-fx-background-color: " + constants.getLayer3ColorString() + ";");
@@ -79,18 +80,23 @@ public class NoteBoardContentController implements Initializable{
 	
 	private void createCategoryRows() {
 		for (String category : categories) {
-			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/CategorySection.fxml"));
-				CategorySectionController categorySectionController = new CategorySectionController((category));
-				fxmlLoader.setController(categorySectionController);
-				HBox catHBox = fxmlLoader.load();
-				setDrag(categorySectionController.getPostItHBox());
-				categorySectionController.initCategorySection();
-				VBox.setVgrow(catHBox, Priority.ALWAYS);
-				mainVBox.getChildren().add(catHBox);
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
+			Parent root = loadCategorySection(category);
+			VBox.setVgrow(root, Priority.ALWAYS);
+			mainVBox.getChildren().add(root);
+		}
+	}
+	
+	private Parent loadCategorySection(String category) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/CategorySection.fxml"));
+			CategorySectionController categorySectionController = new CategorySectionController((category));
+			fxmlLoader.setController(categorySectionController);
+			HBox catHBox = fxmlLoader.load();
+			setDrag(categorySectionController.getPostItHBox());
+			return catHBox;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
 		}
 	}
 	
@@ -173,4 +179,40 @@ public class NoteBoardContentController implements Initializable{
 		activityNameLabel.setText(text);
 	}
 
+	public Label getActivityNameLabel() {
+		return activityNameLabel;
+	}
+
+	public VBox getMainVBox() {
+		return mainVBox;
+	}
+
+	public Pane getLayer1Pane() {
+		return layer1Pane;
+	}
+
+	public Pane getLayer2Pane() {
+		return layer2Pane;
+	}
+
+	public Pane getLayer3Pane() {
+		return layer3Pane;
+	}
+
+	public Pane getLayer4Pane() {
+		return layer4Pane;
+	}
+
+	public Pane getNote() {
+		return note;
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+	
 }

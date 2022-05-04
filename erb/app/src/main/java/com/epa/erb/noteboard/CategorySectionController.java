@@ -12,8 +12,6 @@ public class CategorySectionController implements Initializable {
 	@FXML
 	Label categoryLabel;
 	@FXML
-	HBox categoryHBox;
-	@FXML
 	HBox postItHBox;
 	
 	private String categoryName;
@@ -23,15 +21,27 @@ public class CategorySectionController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		setCategoryLabelText(categoryName);
 	}
 	
-	void initCategorySection() {
-		categoryLabel.setText(categoryName);
+	void setCategoryLabelText(String text) {
+		categoryLabel.setText(text);
 	}
 
-   HBox getPostItHBox() {
+	public Label getCategoryLabel() {
+		return categoryLabel;
+	}
+
+	public HBox getPostItHBox() {
 		return postItHBox;
 	}
-	
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 }

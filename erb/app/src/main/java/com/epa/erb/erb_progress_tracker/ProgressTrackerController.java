@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,18 +34,27 @@ public class ProgressTrackerController implements Initializable {
 	}
 	
 	private void addProgressColumns() {
-		for(Chapter chapter : listOfAllChapters) {
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressColumn.fxml"));
-				ProgressColumnController progressColumnController = new ProgressColumnController(chapter, listOfAllChapters, engagementActionController);
-				loader.setController(progressColumnController);
-				Parent root = loader.load();
-				HBox.setHgrow(root, Priority.ALWAYS);
-				progressContentHBox.getChildren().add(root);
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
+		for (Chapter chapter : listOfAllChapters) {
+			Parent root = loadProgressColumn(chapter);
+			HBox.setHgrow(root, Priority.ALWAYS);
+			progressContentHBox.getChildren().add(root);
 		}
+	}
+	
+	private Parent loadProgressColumn(Chapter chapter) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressColumn.fxml"));
+			ProgressColumnController progressColumnController = new ProgressColumnController(chapter, listOfAllChapters, engagementActionController);
+			loader.setController(progressColumnController);
+			return loader.load();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+	}
+
+	public HBox getProgressContentHBox() {
+		return progressContentHBox;
 	}
 
 	public ArrayList<Chapter> getListOfAllChapters() {
@@ -55,6 +63,14 @@ public class ProgressTrackerController implements Initializable {
 
 	public void setListOfAllChapters(ArrayList<Chapter> listOfAllChapters) {
 		this.listOfAllChapters = listOfAllChapters;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
 	}
 	
 }

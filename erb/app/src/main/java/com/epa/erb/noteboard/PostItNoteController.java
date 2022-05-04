@@ -24,16 +24,16 @@ import javafx.stage.Stage;
 public class PostItNoteController implements Initializable{
 
 	@FXML
+	HBox plusHBox;
+	@FXML
+	Label numberLabel;
+	@FXML
 	VBox postItNotePane;
 	@FXML
 	TextFlow textFlow;
 	@FXML
 	ScrollPane scrollPane;
-	@FXML
-	HBox plusHBox;
-	@FXML
-	Label numberLabel;
-	
+
 	public PostItNoteController() {
 
 	}
@@ -78,6 +78,10 @@ public class PostItNoteController implements Initializable{
 	}
 	
 	private void postItNoteDoubleClicked(MouseEvent mouseEvent) {
+		loadPostItNoteEdits();
+	}
+	
+	private void loadPostItNoteEdits() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
 			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(this);
@@ -93,11 +97,15 @@ public class PostItNoteController implements Initializable{
 	}
 	
 	private void postItNoteRightClicked(MouseEvent mouseEvent) {
+		scrollPane.setContextMenu(createPostItContextMenu());
+	}
+	
+	private ContextMenu createPostItContextMenu() {
 		ContextMenu contextMenu = new ContextMenu();
 		MenuItem menuItem = new MenuItem("Remove");
 		contextMenu.getItems().add(menuItem);
-		scrollPane.setContextMenu(contextMenu);
 		menuItem.setOnAction(e -> removePostItNote());
+		return contextMenu;
 	}
 	
 	private void removePostItNote() {
@@ -111,7 +119,7 @@ public class PostItNoteController implements Initializable{
 		textFlow.getChildren().add(textToAdd);
 	}
 	
-	void setPostItNoteColor(String color) {
+	void setPostItContentsColor(String color) {
 		postItNotePane.setStyle("-fx-background-color: " + "#" + color);
 		scrollPane.setStyle("-fx-background-color: " + "#" + color);
 		textFlow.setStyle("-fx-background-color: " + "#" + color);
@@ -124,12 +132,28 @@ public class PostItNoteController implements Initializable{
 		}
 	}
 	
-	TextFlow getTextFlow() {
-		return textFlow;
-	}
-	
 	private void setNumberLabelText(String text) {
 		numberLabel.setText(text);
 	}
 
+	public HBox getPlusHBox() {
+		return plusHBox;
+	}
+
+	public Label getNumberLabel() {
+		return numberLabel;
+	}
+
+	public VBox getPostItNotePane() {
+		return postItNotePane;
+	}
+
+	public TextFlow getTextFlow() {
+		return textFlow;
+	}
+
+	public ScrollPane getScrollPane() {
+		return scrollPane;
+	}
+	
 }

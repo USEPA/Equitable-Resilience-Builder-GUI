@@ -17,7 +17,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListCell;
@@ -29,7 +28,6 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
@@ -76,12 +74,10 @@ public class EngagementSetupController implements Initializable {
 		parseActivityTypes();
 		parseAvailableActivities();
 		handleControls();
-		fillActivitiesListView();
+		fillActivityTypesListView();
 		setActivityTypeListViewCellFactory();
 		setActivityTypeListViewDrag(activitityTypeListView);
-		if(projectDirectoryHasDataFile(projectDirectory)) {
-			loadExisitingProjectData();
-		}
+		checkToLoadExistingProjectData(projectDirectory);
 	}
 	
 	private void handleControls() {
@@ -90,18 +86,21 @@ public class EngagementSetupController implements Initializable {
 		customizedActivitiesListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> updateCustomizedActivityInfo());
 	}
 	
-	private void fillActivitiesListView() {
-		for (ActivityType activityType : activityTypes) {
-			activitityTypeListView.getItems().add(activityType);
+	private void checkToLoadExistingProjectData(File projectDirectory) {
+		if(projectDirectoryHasDataFile(projectDirectory)) {
+			loadExisitingProjectData();
 		}
 	}
 	
 	private void loadExisitingProjectData() {
-		File dataFile = new File(projectDirectory.getPath() + "\\Data.xml");
+		File dataFileToLoad = new File(projectDirectory.getPath() + "\\Data.xml");
 		XMLManager xmlManager = new XMLManager();
-		ArrayList<Chapter> chapters = xmlManager.parseDataXML(dataFile);
-		for (Chapter chapter : chapters) {
-			// CODE TO ADD CHAPTERS
+		ArrayList<Chapter> chapters = xmlManager.parseDataXML(dataFileToLoad);
+		loadChapterDataIntoTool(chapters);
+	}
+	
+	private void loadChapterDataIntoTool(ArrayList<Chapter> chapters) {
+		for (Chapter chapter : chapters) { //add chapters
 			chaptersCreated.add(chapter);
 			ChapterTitledPaneController chapterTitledPaneController = loadChapterTitledPaneController(chapter);
 			if (chapterTitledPaneController != null) {
@@ -109,8 +108,7 @@ public class EngagementSetupController implements Initializable {
 				storeTitledPaneController(chapterTitledPaneController);
 			}
 			for (Activity activity : chapter.getUserSelectedActivities()) {
-				if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) {
-					// CODE TO LOAD ACTIVITIES
+				if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { //add activities to chapter
 					ActivityType activityType = activity.getActivityType();
 					SelectedActivity selectedActivity = new SelectedActivity(activityType.getLongName(),activityType.getLongName());
 					chapterTitledPaneController.getTitledPaneListView().getItems().add(selectedActivity);
@@ -121,17 +119,11 @@ public class EngagementSetupController implements Initializable {
 			}
 		}
 	}
-	
-	private boolean projectDirectoryHasDataFile(File projectDirectory) {
-		File [] projectFiles = projectDirectory.listFiles();
-		if(projectFiles != null && projectFiles.length > 0) {
-			for(File projectFile : projectFiles) {
-				if(projectFile.getName().contentEquals("Data.xml")) {
-					return true;
-				}
-			}
+			
+	private void fillActivityTypesListView() {
+		for (ActivityType activityType : activityTypes) {
+			activitityTypeListView.getItems().add(activityType);
 		}
-		return false;
 	}
 
 	private void setActivityTypeListViewCellFactory() {
@@ -153,7 +145,6 @@ public class EngagementSetupController implements Initializable {
 	}
 	
 	private void fillCustomizedActivitiesListView(String activityTypeName) {
-		clearCustomizedActivityInfo();
 		cleanCustomizedActivitiesListView();
 		for (Activity customActivity : customizedActivities) {
 			if (customActivity.getActivityType().getLongName().contentEquals(activityTypeName) && !customActivity.getShortName().contentEquals("Plan") && !customActivity.getShortName().contentEquals("Reflect")) {
@@ -192,7 +183,7 @@ public class EngagementSetupController implements Initializable {
 						super.updateItem(item, empty);
 						if (item != null) {
 							setText(item.getShowName());
-							setContextMenu(createContextMenu());
+							setContextMenu(createActivityContextMenu());
 						}
 					}
 				};
@@ -201,22 +192,22 @@ public class EngagementSetupController implements Initializable {
 		});
 	}
 	
-	private ContextMenu createContextMenu() {
+	private ContextMenu createActivityContextMenu() {
 		ContextMenu contextMenu = new ContextMenu();
 		MenuItem removeMenuItem = new MenuItem("Remove");
-		removeMenuItem.setOnAction(e-> removeMenuItemAction());
+		removeMenuItem.setOnAction(e-> removeActivityMenuItemAction());
 		contextMenu.getItems().add(removeMenuItem);
 		return contextMenu;
 	}
 	
-	private void removeMenuItemAction() {
+	private void removeActivityMenuItemAction() {
 		removeChapterTitledPaneActivity();
 		cleanCustomizedActivitiesListView();
 	}
 					
 	@FXML
 	public void addChapterButtonAction() {
-		Chapter chapter = createChapter();
+		Chapter chapter = createChapter(chaptersCreated.size() + 1, 0.0, 0.0, 0.0);
 		chaptersCreated.add(chapter);
 		ChapterTitledPaneController chapterTitledPaneController = loadChapterTitledPaneController(chapter);
 		if (chapterTitledPaneController != null) {
@@ -225,11 +216,8 @@ public class EngagementSetupController implements Initializable {
 		}
 	}
 	
-	private Chapter createChapter() {
-		//Create and store a new Chapter object to represent the user added chapter
-		int chapterNum = chaptersCreated.size() + 1;
-		Chapter chapter = new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "", 0.0, 0.0, 0.0);
-		return chapter;
+	private Chapter createChapter(int chapterNum, double planStatus, double engageStatus, double reflectStatus) {
+		return new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "", planStatus, engageStatus, reflectStatus);
 	}
 	
 	private ChapterTitledPaneController loadChapterTitledPaneController(Chapter chapter) {
@@ -246,11 +234,8 @@ public class EngagementSetupController implements Initializable {
 			return null;
 		}
 	}
-	
-	//TODO: LEFT OFF HERE
-	
+		
 	private void handleTitledPaneListViewAccess(ChapterTitledPaneController chapterTitledPaneController) {
-		//Handle access to the TitledPaneListView in this class
 		ListView<SelectedActivity> titledPaneListView = chapterTitledPaneController.getTitledPaneListView();
 		setTitledPaneListViewCellFactory(titledPaneListView);
 		setSelectedActivityListViewDrag(titledPaneListView);
@@ -306,6 +291,7 @@ public class EngagementSetupController implements Initializable {
 		SelectedActivity selectedActivity = titledPaneListView.getSelectionModel().getSelectedItem();
 		if (selectedActivity != null) {
 			selectedChapter = paneTitle;
+			clearCustomizedActivityInfo();
 			fillCustomizedActivitiesListView(selectedActivity.getActivityType());
 			setCustomizedActivityListViewCellFactory();
 		}
@@ -368,6 +354,18 @@ public class EngagementSetupController implements Initializable {
 		directionsTextField.setText(null);
 		objectivesTextField.setText(null);
 		fileNameHyperlink.setText(null);
+	}
+	
+	private boolean projectDirectoryHasDataFile(File projectDirectory) {
+		File [] projectFiles = projectDirectory.listFiles();
+		if(projectFiles != null && projectFiles.length > 0) {
+			for(File projectFile : projectFiles) {
+				if(projectFile.getName().contentEquals("Data.xml")) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	private void setActivityTypeListViewDrag(ListView<ActivityType> listView) {
