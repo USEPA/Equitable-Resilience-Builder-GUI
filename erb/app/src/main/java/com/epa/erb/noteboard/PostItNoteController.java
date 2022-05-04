@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseButton;
@@ -28,6 +29,10 @@ public class PostItNoteController implements Initializable{
 	TextFlow textFlow;
 	@FXML
 	ScrollPane scrollPane;
+	@FXML
+	HBox plusHBox;
+	@FXML
+	Label numberLabel;
 	
 	public PostItNoteController() {
 
@@ -48,11 +53,19 @@ public class PostItNoteController implements Initializable{
 		postItNotePane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		scrollPane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
+		plusHBox.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 	}
 	
 	private void initPostItNote() {
 		postItNotePane.setId("postedNote");
 		postItNotePane.setPrefWidth(0);
+	}
+	
+	@FXML
+	public void plusClicked() {
+		int numberOfPlus = Integer.parseInt(numberLabel.getText());
+		numberOfPlus++;
+		setNumberLabelText(String.valueOf(numberOfPlus));
 	}
 	
 	@FXML
@@ -102,6 +115,7 @@ public class PostItNoteController implements Initializable{
 		postItNotePane.setStyle("-fx-background-color: " + "#" + color);
 		scrollPane.setStyle("-fx-background-color: " + "#" + color);
 		textFlow.setStyle("-fx-background-color: " + "#" + color);
+		plusHBox.setStyle("-fx-background-color: " + "#" + color);
 	}
 	
 	void closeEditsStage() {
@@ -112,6 +126,10 @@ public class PostItNoteController implements Initializable{
 	
 	TextFlow getTextFlow() {
 		return textFlow;
+	}
+	
+	private void setNumberLabelText(String text) {
+		numberLabel.setText(text);
 	}
 
 }
