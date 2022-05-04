@@ -1,3 +1,7 @@
 .color-palette .hyperlink, .color-palette .separator {
   visibility: hidden ;
 }
+
+.color-picker .color-picker-label .text {
+visibility: false;
+}

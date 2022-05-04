@@ -21,7 +21,7 @@
          </children>
       </HBox>
       <TextArea fx:id="postItNoteTextArea" prefHeight="100.0" prefWidth="250.0" promptText="Post It content here" wrapText="true" />
-      <ColorPicker fx:id="colorPicker" />
+      <ColorPicker fx:id="colorPicker" prefHeight="26.0" prefWidth="50.0" />
       <HBox alignment="CENTER">
          <children>
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
