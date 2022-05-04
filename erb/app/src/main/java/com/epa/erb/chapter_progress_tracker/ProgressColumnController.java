@@ -1,4 +1,4 @@
-package com.epa.erb.erb_progress_tracker;
+package com.epa.erb.chapter_progress_tracker;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -171,7 +171,7 @@ public class ProgressColumnController implements Initializable{
 	private Stage progressAdjusterStage = null;
 	private void loadProgressAdjuster(String label) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressAdjuster.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter_progress_tracker/ProgressAdjuster.fxml"));
 			ProgressAdjusterController progressAdjusterController = new ProgressAdjusterController(label, this);
 			fxmlLoader.setController(progressAdjusterController);
 			Parent root = fxmlLoader.load();

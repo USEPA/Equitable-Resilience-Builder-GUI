@@ -1,4 +1,4 @@
-package com.epa.erb.erb_progress_tracker;
+package com.epa.erb.chapter_progress_tracker;
 
 import java.net.URL;
 import java.util.ResourceBundle;

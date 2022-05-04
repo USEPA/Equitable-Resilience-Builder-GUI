@@ -9,8 +9,9 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.Chapter;
 import com.epa.erb.Constants;
+import com.epa.erb.chapter_progress_tracker.ProgressTrackerController;
 import com.epa.erb.engagement_action.EngagementActionController;
-import com.epa.erb.erb_progress_tracker.ProgressTrackerController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -94,7 +95,7 @@ public class ChapterLandingController implements Initializable {
 	@FXML
 	public void viewProgressButtonAction() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb_progress_tracker/ProgressTracker.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter_progress_tracker/ProgressTracker.fxml"));
 			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getListOfChapters(), engagementActionController);
 			fxmlLoader.setController(progressTrackerController);
 			Parent root = fxmlLoader.load();

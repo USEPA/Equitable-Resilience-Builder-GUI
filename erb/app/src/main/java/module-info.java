@@ -17,7 +17,7 @@ module com.epa.erb {
 	opens com.epa.erb.worksheet to javafx.fxml;
 	opens com.epa.erb.engagement_action to javafx.fxml;
 	opens com.epa.erb.engagement_setup to javafx.fxml;
-	opens com.epa.erb.erb_progress_tracker to javafx.fxml;
+	opens com.epa.erb.chapter_progress_tracker to javafx.fxml;
 	opens com.epa.erb.activity_progress_tracker to javafx.fxml;
 	exports com.epa.erb;
 }
