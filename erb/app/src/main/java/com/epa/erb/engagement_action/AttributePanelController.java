@@ -47,11 +47,11 @@ public class AttributePanelController implements Initializable{
 		engagementActionController.removeAttributePanelController(this);
 	}
 	
-	void setAttributeFields(String attributeTextFlowString, String attributeLabelString, String attributeLabelColorString) {
-		setAttributeTextFlowText(attributeTextFlowString);
-		setAttributeLabelText(attributeLabelString);
-		setAttributeLabelColor(attributeLabelColorString);
-		setAttributeCloseButtonColor(attributeLabelColorString);
+	void setAttributeFields(String attributeTitle, String attributeContent, String attributeLabelColor) {
+		setAttributeTextFlowText(attributeContent);
+		setAttributeLabelText(attributeTitle);
+		setAttributeLabelColor(attributeLabelColor);
+		setAttributeCloseButtonColor(attributeLabelColor);
 	}
 
 	private void setAttributeTextFlowText(String attributeText) {
