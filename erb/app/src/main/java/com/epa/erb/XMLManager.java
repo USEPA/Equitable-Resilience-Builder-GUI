@@ -84,30 +84,10 @@ public class XMLManager {
 						String time = activityElement.getAttribute("time");
 						String who = activityElement.getAttribute("who");
 						String activityID = activityElement.getAttribute("activityID");
-						Activity activity = new Activity(activityType, status, shortName, longName, fileName, directions,
-								objectives, description, materials, time, who, activityID);
+						Activity activity = new Activity(activityType, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID);
 						availableActivities.add(activity);
-						NodeList linkedActivityIDNodeList = activityElement.getElementsByTagName("linkedActivityIDS");
-						for(int j =0; j < linkedActivityIDNodeList.getLength(); j++) {
-							Node linkedActivityIDNode = linkedActivityIDNodeList.item(j);
-							//Linked ActivityIDS
-							if(linkedActivityIDNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element linkedActivityIDElement = (Element) linkedActivityIDNode;
-								NodeList linksNodeList = linkedActivityIDElement.getElementsByTagName("link");
-								for(int k=0; k < linksNodeList.getLength(); k++) {
-									Node linkNode = linksNodeList.item(k);
-									//Link
-									if(linkNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element linkElement = (Element) linkNode;
-										String linkID = linkElement.getAttribute("activityID");
-										activity.addLinkedActivityID(linkID);
-									}
-								}
-							}
-						}
 					}
 				}
-				setLinkActivities(availableActivities);
 				return availableActivities;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
@@ -125,27 +105,6 @@ public class XMLManager {
 			}
 		}
 		logger.debug("ActivityType returned is null.");
-		return null;
-	}
-	
-	private void setLinkActivities(ArrayList<Activity> availableActivities) {
-		for (Activity activity : availableActivities) {
-			if (activity.getListOfLinkedActivityIDS().size() > 0) {
-				for (String activityID : activity.getListOfLinkedActivityIDS()) {
-					Activity linkedActivity = getCustomizedActivity(activityID, availableActivities);
-					activity.addLinkedActivity(linkedActivity);
-				}
-			}
-		}
-	}
-	
-	private Activity getCustomizedActivity(String activityID, ArrayList<Activity> availableActivities) {
-		for(Activity activity: availableActivities) {
-			if(activity.getActivityID().contentEquals(activityID)) {
-				return activity;
-			}
-		}
-		logger.debug("Customized Activity returned is null.");
 		return null;
 	}
 
@@ -170,8 +129,7 @@ public class XMLManager {
 						double planStatus = Double.parseDouble(chapterElement.getAttribute("planStatus"));
 						double engageStatus = Double.parseDouble(chapterElement.getAttribute("engageStatus"));
 						double reflectStatus = Double.parseDouble(chapterElement.getAttribute("reflectStatus"));
-						Chapter chapter = new Chapter(chapterNum, chapterNumericName, chapterStringName,
-								chapterDescription, planStatus, engageStatus, reflectStatus);
+						Chapter chapter = new Chapter(chapterNum, chapterNumericName, chapterStringName, chapterDescription, planStatus, engageStatus, reflectStatus);
 						NodeList activityNodeList = chapterNode.getChildNodes();
 						for (int j = 0; j < activityNodeList.getLength(); j++) {
 							Node activityNode = activityNodeList.item(j);
@@ -215,33 +173,10 @@ public class XMLManager {
 										Element activityTypeElement = (Element) activityTypeNode;
 										String activityTypeLongName = activityTypeElement.getAttribute("longName");
 										String activityTypeShortName = activityTypeElement.getAttribute("shortName");
-										String activityTypeDescription = activityTypeElement
-												.getAttribute("description");
+										String activityTypeDescription = activityTypeElement.getAttribute("description");
 										String activityTypeFileExt = activityTypeElement.getAttribute("fileExt");
-										ActivityType activityType = new ActivityType(activityTypeLongName,
-												activityTypeShortName, activityTypeDescription, activityTypeFileExt);
+										ActivityType activityType = new ActivityType(activityTypeLongName, activityTypeShortName, activityTypeDescription, activityTypeFileExt);
 										activity.setActivityType(activityType);
-									}
-								}
-
-								// Add activity id links element to activity
-								NodeList linkedActivityIDSNodeList = activityElement
-										.getElementsByTagName("linkedActivityIDS");
-								for (int k = 0; k < linkedActivityIDSNodeList.getLength(); k++) {
-									Node linkedActivityIDSNode = linkedActivityIDSNodeList.item(k);
-									// Linked ActivityIDS
-									if (linkedActivityIDSNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element linkedActivityIDSElement = (Element) linkedActivityIDSNode;
-										NodeList linkNodeList = linkedActivityIDSElement.getElementsByTagName("link");
-										for (int l = 0; l < linkNodeList.getLength(); l++) {
-											Node linkNode = linkNodeList.item(l);
-											// Link
-											if (linkNode.getNodeType() == Node.ELEMENT_NODE) {
-												Element linkElement = (Element) linkNode;
-												String linkID = linkElement.getAttribute("activityID");
-												activity.addLinkedActivityID(linkID);
-											}
-										}
 									}
 								}
 								chapter.addUserSelectedActivity(activity);
@@ -302,14 +237,7 @@ public class XMLManager {
 					activityTypeElement.setAttribute("description", activity.getActivityType().getDescription());
 					activityTypeElement.setAttribute("fileExt", activity.getActivityType().getFileExt());
 
-					Element linkedIDSElement = document.createElement("linkedActivityIDS");
-					for (Activity linkedActivity : activity.getListOfLinkedActivities()) {
-						Element linkElement = document.createElement("link");
-						linkElement.setAttribute("activityID", linkedActivity.getActivityID());
-						linkedIDSElement.appendChild(linkElement);
-					}
 					activityElement.appendChild(activityTypeElement);
-					activityElement.appendChild(linkedIDSElement);
 					chapterElement.appendChild(activityElement);
 				}
 				rootElement.appendChild(chapterElement);

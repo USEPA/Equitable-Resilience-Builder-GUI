@@ -414,7 +414,6 @@ public class EngagementActionController implements Initializable{
 		if (selectedActivity.getActivityType().getDescription().contentEquals("worksheet")) {
 			if (!selectedActivity.getLongName().contentEquals("Plan") && !selectedActivity.getLongName().contentEquals("Reflect")) {
 				handleAttributePanelGeneration("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
-				handleAttributePanelGeneration("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
 				handleAttributePanelGeneration("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 				loadSampleWK(selectedActivity);
 			} else if (selectedActivity.getLongName().contentEquals("Plan")) {
@@ -426,7 +425,6 @@ public class EngagementActionController implements Initializable{
 			}
 		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
 			handleAttributePanelGeneration("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
-			handleAttributePanelGeneration("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
 			handleAttributePanelGeneration("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
 			loadSampleNB(selectedActivity);
 		}

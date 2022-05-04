@@ -1,7 +1,5 @@
 package com.epa.erb;
 
-import java.util.ArrayList;
-
 public class Activity {
 	
 	private ActivityType activityType;
@@ -51,9 +49,6 @@ public class Activity {
 	public Activity() {
 		
 	}
-	
-	private ArrayList<String> listOfLinkedActivityIDS = new ArrayList<String>();
-	private ArrayList<Activity> listOfLinkedActivities = new ArrayList<Activity>();
 
 	public ActivityType getActivityType() {
 		return activityType;
@@ -158,30 +153,6 @@ public class Activity {
 	public void setGUID(String gUID) {
 		GUID = gUID;
 	}
-
-	public ArrayList<String> getListOfLinkedActivityIDS(){
-		return listOfLinkedActivityIDS;
-	}
-	
-	public void addLinkedActivityID(String activityID) {
-		listOfLinkedActivityIDS.add(activityID);
-	}
-		
-	public ArrayList<Activity> getListOfLinkedActivities(){
-		return listOfLinkedActivities;
-	}
-	
-	public void addLinkedActivity(Activity activity) {
-		listOfLinkedActivities.add(activity);
-	}
-	
-	public String getLinksString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		for(Activity activity : listOfLinkedActivities) {
-			stringBuilder.append("- " + activity.getLongName() + "\n");
-		}
-		return stringBuilder.toString();
-	}
 	
 	public String toString() {
 		return  "--ActivityType-- " + "\n" + activityType.toString() +  "\n" + "----" + "\n" +
@@ -195,7 +166,7 @@ public class Activity {
 				"Time: " + time + "\n" + 
 				"Who: " + who + "\n" +
 				"ActivityID: " + activityID + "\n" +
-				"GUID: " + GUID + "\n" +
-				"LinkedActivityIDS: " + listOfLinkedActivityIDS;
+				"GUID: " + GUID + "\n";
 	}
+	
 }
