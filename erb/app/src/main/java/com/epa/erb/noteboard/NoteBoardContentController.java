@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -34,9 +37,12 @@ public class NoteBoardContentController implements Initializable{
 	Pane layer4Pane;
 	@FXML
 	Pane note; //layer 5
+	@FXML
+	Label activityNameLabel;
 	
-	public NoteBoardContentController() {
-		
+	private Activity activity;
+	public NoteBoardContentController(Activity activity) {
+		this.activity = activity;
 	}
 	
 	private ArrayList<String> categories = new ArrayList<String>();
@@ -49,6 +55,7 @@ public class NoteBoardContentController implements Initializable{
 		fillCategories();
 		createCategoryRows();
 		initializeStyle();
+		setActivityNameLabelText(activity.getLongName());
 	}
 	
 	private void initializeStyle() {
@@ -152,6 +159,10 @@ public class NoteBoardContentController implements Initializable{
 			draggingTab.set(p);
 			event.consume();
 		});
+	}
+	
+	private void setActivityNameLabelText(String text) {
+		activityNameLabel.setText(text);
 	}
 
 }

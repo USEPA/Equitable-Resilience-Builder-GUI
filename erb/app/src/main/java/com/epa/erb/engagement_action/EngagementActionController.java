@@ -172,10 +172,10 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void loadSampleNB() {
+	private void loadSampleNB(Activity activity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(activity);
 			fxmlLoader.setController(noteBoardContentController);
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
@@ -428,7 +428,7 @@ public class EngagementActionController implements Initializable{
 			handleAttributePanelGeneration("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
 			handleAttributePanelGeneration("Linked Activities", selectedActivity.getLinksString(), constants.getLinksColor());
 			handleAttributePanelGeneration("Instructions", selectedActivity.getDirections(), constants.getInstructionsColor());
-			loadSampleNB();
+			loadSampleNB(selectedActivity);
 		}
 	}
 	
