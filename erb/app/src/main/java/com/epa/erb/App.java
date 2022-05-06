@@ -22,7 +22,7 @@ public class App extends Application {
 	private ArrayList<GoalCategory> goalCategories;
 	private Logger logger = LogManager.getLogger(App.class);
 	//private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
-	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\ERB_Static_Data";
+	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
 	
 	private String getGreeting() {
 		return "Launching ERB";
