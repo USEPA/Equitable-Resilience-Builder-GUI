@@ -145,7 +145,7 @@ public class XMLManager {
 			File [] projectDirectories = ERBProjectDirectory.listFiles();
 			for(File projectDirectory : projectDirectories) {
 				if(projectDirectory.isDirectory()) {
-					File projectMetaFile = new File(projectDirectory.getPath() + "Meta.xml");
+					File projectMetaFile = new File(projectDirectory.getPath() + "\\Meta.xml");
 					if(projectMetaFile.exists()) {
 						Project project = parseProjectXML(projectMetaFile);
 						projects.add(project);

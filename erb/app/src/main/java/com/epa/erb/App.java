@@ -59,23 +59,6 @@ public class App extends Application {
 		}
 	}
 	
-//	private Stage goalCreationStage = null;
-//	private void loadGoalCreation() {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
-//			GoalCreationController goalCreationController = new GoalCreationController(this);
-//			fxmlLoader.setController(goalCreationController);
-//			Parent root = fxmlLoader.load();
-//			goalCreationStage = new Stage();
-//			Scene scene = new Scene(root);
-//			goalCreationStage.setScene(scene);
-//			goalCreationStage.setTitle("Goals");
-//			goalCreationStage.showAndWait();
-//		}catch (Exception e) {
-//			logger.error(e.getMessage());
-//		}
-//	}
-	
 	private void readAndStoreData() {
 		XMLManager xmlManager = new XMLManager();
 		File activityTypesFile = getActivityTypesFileToParse();
@@ -123,12 +106,6 @@ public class App extends Application {
 			return null;
 		}
 	}
-	
-//	public void closeGoalCreationStage() {
-//		if(goalCreationStage != null) {
-//			goalCreationStage.close();
-//		}
-//	}
 	
 	public void closeProjectSelectionStage() {
 		if(projectSelectionStage != null) {

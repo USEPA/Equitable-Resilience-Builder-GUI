@@ -7,6 +7,9 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
+import com.epa.erb.project.Project;
+import com.epa.erb.project.ProjectSelectionController;
+
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,8 +39,12 @@ public class GoalCreationController implements Initializable{
 	ListView<Goal> selectedGoalsListView;
 
 	private App app;
-	public GoalCreationController(App app) {
+	private Project project;
+	private ProjectSelectionController projectSelectionController;
+	public GoalCreationController(App app, Project project, ProjectSelectionController projectSelectionController) {
 		this.app = app;
+		this.project = project;
+		this.projectSelectionController = projectSelectionController;
 	}
 	
 	private Logger logger = LogManager.getLogger(GoalCreationController.class);

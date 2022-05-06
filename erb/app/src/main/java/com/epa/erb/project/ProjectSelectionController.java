@@ -1,27 +1,28 @@
 package com.epa.erb.project;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.App;
 import com.epa.erb.Constants;
+import com.epa.erb.goal.GoalCreationController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class ProjectSelectionController implements Initializable{
 
@@ -30,7 +31,7 @@ public class ProjectSelectionController implements Initializable{
 	@FXML
 	TextField projectNameTextField;
 	@FXML
-	ListView<String> projectsListView;
+	ListView<Project> projectsListView;
 	
 	private App app;
 	public ProjectSelectionController(App app) {
@@ -44,8 +45,9 @@ public class ProjectSelectionController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		handleControls();
-//		fillProjectsListView();
+		handleControls();
+		setProjectsListViewCellFactory();
+		fillProjectsListView();
 	}
 	
 	private void handleControls() {
@@ -54,120 +56,112 @@ public class ProjectSelectionController implements Initializable{
 	
 	@FXML
 	public void createButtonAction() {
-	
-	}
-	
-	
-	@FXML
-	public void launchButtonAction() {
-		
-	}
-	
-	private void fillProjectsListView() {
-		if(projectsExist(new File(pathToERBProjectsFolder))) {
-			ArrayList<String> existingProjectNames = getExistingProjectNames(new File(pathToERBProjectsFolder));
-			for(String projectName : existingProjectNames) {
-				projectsListView.getItems().add(projectName);
-			}
+		String newProjectName = projectNameTextField.getText();
+		if(isValidNewProjectName(newProjectName)) {
+			Project project = new Project(newProjectName);
+			createNewProjectDirectory(project);
+			addProjectToListView(project);
 		}
 	}
 	
-	private boolean projectsExist(File erbProjectDirectory) {
-		if(erbProjectDirectory.exists()) {
-			File [] projectDirectories = erbProjectDirectory.listFiles();
-			if(projectDirectories != null && projectDirectories.length > 0) {
+	private boolean isValidNewProjectName(String projectName) {
+		if(projectName!= null && projectName.length() > 0) {
+			if(!isDuplicateProjectName(projectName)) {
+				return true;
+			} else {
+				showIsDuplicateProjectNameAlert();
+			}
+		}
+		return false;
+	}
+	
+	private boolean isDuplicateProjectName(String projectName) {
+		ArrayList<Project> existingProjects = app.getProjects();
+		for(Project project : existingProjects) {
+			if(projectName.contentEquals(project.getProjectName())) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	private ArrayList<String> getExistingProjectNames(File erbProjectDirectory){
-		ArrayList<String> projectNames = new ArrayList<String>();
-		if(erbProjectDirectory.exists()) {
-			File [] projectDirectories = erbProjectDirectory.listFiles();
-			if(projectDirectories != null && projectDirectories.length > 0) {
-				for(File projectDirectory : projectDirectories) {
-					if(projectDirectory.isDirectory()) {
-						projectNames.add(projectDirectory.getName());
-					}
-				}
-			}
-		}
-		return projectNames;
-	}
-	
-	private boolean filesAreSame(File sourceFile, File destFile) {
-		try {
-			return FileUtils.contentEquals(sourceFile, destFile);
-		} catch (IOException e) {
-			logger.error(e.getMessage());
-			return false;
-		}
-	}
-	
-	private void copyFile(File sourceFile, File destFile) {
-		InputStream is = null;
-	    OutputStream os = null;
-	    try {
-	        is = new FileInputStream(sourceFile);
-	        os = new FileOutputStream(destFile);
-	        byte[] buffer = new byte[1024];
-	        int length;
-	        while ((length = is.read(buffer)) > 0) {
-	            os.write(buffer, 0, length);
-	        }
-	        is.close();
-	        os.close();
-	    } catch (IOException e) {
-			logger.error(e.getMessage());
-		}
-	}
-	
-	private void showProjectDataNonExistentAlert() {
-		Alert alert = new Alert(AlertType.INFORMATION);
+	private void showIsDuplicateProjectNameAlert() {
+		Alert alert = new Alert(AlertType.ERROR);
 		alert.setHeaderText(null);
-		alert.setContentText("There is no data for this project. Please use Pt.1 of the tool to create data.");
-		alert.setTitle("No Data Alert");
+		alert.setContentText("Duplicate project name. Please enter a new name.");
+		alert.setTitle("Error");
 		alert.showAndWait();
 	}
 
-	private void removeExistingProjectData(File projectDirectory) {
-		File setupDataFile = new File(projectDirectory.getPath() + "\\Data.xml");
-		if(setupDataFile.exists()) {
-			setupDataFile.delete();
+	@FXML
+	public void launchButtonAction() {
+		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
+		if(selectedProject != null) {
+			loadGoalCreation(selectedProject);
+		}
+		app.closeProjectSelectionStage();
+	}
+	
+	private Stage goalCreationStage = null;
+	private void loadGoalCreation(Project project) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
+			GoalCreationController goalCreationController = new GoalCreationController(app, project, this);
+			fxmlLoader.setController(goalCreationController);
+			Parent root = fxmlLoader.load();
+			goalCreationStage = new Stage();
+			Scene scene = new Scene(root);
+			goalCreationStage.setScene(scene);
+			goalCreationStage.setTitle("Goals");
+			goalCreationStage.showAndWait();
+		}catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
 	
-
-	private File createNewProjectSetupDirectory(String newProjectName) {
-		// Setup directory
-		File newProjectDirectory = new File(pathToERBProjectsFolder + "\\EngagementSetupTool\\" + newProjectName + "\\");
-		if (!newProjectDirectory.exists()) {
+	private void createNewProjectDirectory(Project project) {
+		File newProjectDirectory = new File(pathToERBProjectsFolder + "\\" + project.getProjectName());
+		if(!newProjectDirectory.exists()) {
 			newProjectDirectory.mkdir();
 		}
-		return newProjectDirectory;
 	}
 	
-	private File createNewProjectActionDirectory(String newProjectName) {
-		// Action directory
-		File newProjectDirectory = new File(pathToERBProjectsFolder + "\\EngagementActionTool\\" + newProjectName + "\\");
-		if (!newProjectDirectory.exists()) {
-			newProjectDirectory.mkdir();
+	private void addProjectToListView(Project project) {
+		if(!projectsListView.getItems().contains(project)) {
+			projectsListView.getItems().add(project);
 		}
-		return newProjectDirectory;
 	}
 	
-	private boolean projectDirectoryHasDataFile(File projectDirectory) {
-		File [] projectFiles = projectDirectory.listFiles();
-		if(projectFiles != null && projectFiles.length > 0) {
-			for(File projectFile : projectFiles) {
-				if(projectFile.getName().contentEquals("Data.xml")) {
-					return true;
-				}
+	private void fillProjectsListView() {
+		ArrayList<Project> projects = app.getProjects();
+		for (Project project : projects) {
+			projectsListView.getItems().add(project);
+		}
+	}
+	
+	private void setProjectsListViewCellFactory() {
+		projectsListView.setCellFactory(new Callback<ListView<Project>, ListCell<Project>>() {
+			@Override
+			public ListCell<Project> call(ListView<Project> param) {
+				ListCell<Project> cell = new ListCell<Project>() {
+					@Override
+					protected void updateItem(Project item, boolean empty) {
+						super.updateItem(item, empty);
+						if (item != null) {
+							setText(item.getProjectName());
+							setFont(new Font(14.0));
+						}
+					}
+				};
+				return cell;
 			}
+		});
+	}
+	
+	void closeGoalCreationStage() {
+		if(goalCreationStage != null) {
+			goalCreationStage.close();
 		}
-		return false;
 	}
 	
 }
