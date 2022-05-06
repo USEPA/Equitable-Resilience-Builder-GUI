@@ -96,8 +96,8 @@ public class EngagementSetupController implements Initializable {
 	private void loadExisitingProjectData() {
 		File dataFileToLoad = new File(projectDirectory.getPath() + "\\Data.xml");
 		XMLManager xmlManager = new XMLManager();
-		ArrayList<Chapter> chapters = xmlManager.parseDataXML(dataFileToLoad);
-		loadChapterDataIntoTool(chapters);
+//		ArrayList<Chapter> chapters = xmlManager.parseDataXML(dataFileToLoad);
+//		loadChapterDataIntoTool(chapters);
 	}
 	
 	private void loadChapterDataIntoTool(ArrayList<Chapter> chapters) {
@@ -270,8 +270,8 @@ public class EngagementSetupController implements Initializable {
 	
 	private void storeFinalSelectedActivitiesAndChapters() {
 			File dataFile = new File(pathToERBFolder + "\\EngagementSetupTool\\" + projectDirectory.getName() + "\\Data.xml");
-			XMLManager xmlManager = new XMLManager();
-			xmlManager.writeDataXML(dataFile, chaptersCreated);
+//			XMLManager xmlManager = new XMLManager();
+//			xmlManager.writeDataXML(dataFile, chaptersCreated);
 	}
 	
 	private void addFinalSelectedActivitiesToChapters() {
@@ -424,14 +424,14 @@ public class EngagementSetupController implements Initializable {
 		activityTypes.clear();
 		File activityTypesFile = new File(pathToERBFolder + "\\Activities\\Activity_Types.xml");
 		XMLManager xmlManager = new XMLManager();
-		activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
+//		activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
 	}
 
 	private void parseAvailableActivities() {
 		customizedActivities.clear();
 		File activitesFile = new File(pathToERBFolder + "\\Activities\\Available_Activites.xml");
 		XMLManager xmlManager = new XMLManager();
-		customizedActivities = xmlManager.parseAvailableActivitiesXML(activitesFile, activityTypes);
+//		customizedActivities = xmlManager.parseAvailableActivitiesXML(activitesFile, activityTypes);
 	}
 		
 	private void cleanCustomizedActivitiesListView() {

@@ -13,16 +13,18 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.goal.GoalCategory;
-import com.epa.erb.goal.GoalCreationController;
+import com.epa.erb.project.Project;
+import com.epa.erb.project.ProjectSelectionController;
 
 public class App extends Application {
 
+	private ArrayList<Project> projects;
 	private ArrayList<Activity> activities;
 	private ArrayList<ActivityType> activityTypes;
 	private ArrayList<GoalCategory> goalCategories;
 	private Logger logger = LogManager.getLogger(App.class);
-	//private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
-	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
+	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
 	
 	private String getGreeting() {
 		return "Launching ERB";
@@ -36,25 +38,43 @@ public class App extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		logger.info(getGreeting());
 		readAndStoreData();
-		loadGoalCreation();
+		loadProjectSelection();
 	}
 	
-	private Stage goalCreationStage = null;
-	private void loadGoalCreation() {
+	private Stage projectSelectionStage = null;
+	private void loadProjectSelection() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
-			GoalCreationController goalCreationController = new GoalCreationController(this);
-			fxmlLoader.setController(goalCreationController);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
+			ProjectSelectionController projectSelectionController = new ProjectSelectionController(this);
+			fxmlLoader.setController(projectSelectionController);
 			Parent root = fxmlLoader.load();
-			goalCreationStage = new Stage();
+			projectSelectionStage = new Stage();
 			Scene scene = new Scene(root);
-			goalCreationStage.setScene(scene);
-			goalCreationStage.setTitle("Goals");
-			goalCreationStage.showAndWait();
-		}catch (Exception e) {
+			projectSelectionStage.setScene(scene);
+			projectSelectionStage.setTitle("Project Selection");
+			projectSelectionStage.showAndWait();
+		} catch (Exception e) {
 			logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
+	
+//	private Stage goalCreationStage = null;
+//	private void loadGoalCreation() {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
+//			GoalCreationController goalCreationController = new GoalCreationController(this);
+//			fxmlLoader.setController(goalCreationController);
+//			Parent root = fxmlLoader.load();
+//			goalCreationStage = new Stage();
+//			Scene scene = new Scene(root);
+//			goalCreationStage.setScene(scene);
+//			goalCreationStage.setTitle("Goals");
+//			goalCreationStage.showAndWait();
+//		}catch (Exception e) {
+//			logger.error(e.getMessage());
+//		}
+//	}
 	
 	private void readAndStoreData() {
 		XMLManager xmlManager = new XMLManager();
@@ -64,10 +84,12 @@ public class App extends Application {
 		if(availableActivitiesFile != null) activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
 		File goalCategoriesFile = getGoalCategoriesFileToParse();
 		if(goalCategoriesFile != null) goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
+		File erbProjectDirectory = getERBProjectDirectory();
+		if(erbProjectDirectory != null) projects = xmlManager.parseAllProjects(erbProjectDirectory);
 	}
 	
 	private File getActivityTypesFileToParse() {
-		File activityTypesFile = new File(pathToERBStaticDataFolder + "\\Activities\\Activity_Types.xml");
+		File activityTypesFile = new File(pathToERBFolder + "\\Static_Data\\Activities\\Activity_Types.xml");
 		if(activityTypesFile.exists()) {
 			return activityTypesFile;
 		} else {
@@ -76,7 +98,7 @@ public class App extends Application {
 	}
 	
 	private File getAvailableActivitiesFileToParse() {
-		File availableActivitiesFile = new File(pathToERBStaticDataFolder + "\\Activities\\Available_Activities.xml");
+		File availableActivitiesFile = new File(pathToERBFolder + "\\Static_Data\\Activities\\Available_Activities.xml");
 		if(availableActivitiesFile.exists()) {
 			return availableActivitiesFile;
 		} else {
@@ -85,7 +107,7 @@ public class App extends Application {
 	}
 	
 	private File getGoalCategoriesFileToParse() {
-		File goalCategoriesFile = new File(pathToERBStaticDataFolder + "\\Goals\\Goal_Categories.xml");
+		File goalCategoriesFile = new File(pathToERBFolder + "\\Static_Data\\Goals\\Goal_Categories.xml");
 		if(goalCategoriesFile.exists()) {
 			return goalCategoriesFile;
 		} else {
@@ -93,9 +115,24 @@ public class App extends Application {
 		}
 	}
 	
-	public void closeGoalCreationStage() {
-		if(goalCreationStage != null) {
-			goalCreationStage.close();
+	private File getERBProjectDirectory() {
+		File erbProjectDirectory = new File(pathToERBFolder + "\\Projects");
+		if(erbProjectDirectory.exists()) {
+			return erbProjectDirectory;
+		} else {
+			return null;
+		}
+	}
+	
+//	public void closeGoalCreationStage() {
+//		if(goalCreationStage != null) {
+//			goalCreationStage.close();
+//		}
+//	}
+	
+	public void closeProjectSelectionStage() {
+		if(projectSelectionStage != null) {
+			projectSelectionStage.close();
 		}
 	}
 
@@ -109,6 +146,10 @@ public class App extends Application {
 
 	public ArrayList<GoalCategory> getGoalCategories() {
 		return goalCategories;
+	}
+	
+	public ArrayList<Project> getProjects(){
+		return projects;
 	}
 	
 }

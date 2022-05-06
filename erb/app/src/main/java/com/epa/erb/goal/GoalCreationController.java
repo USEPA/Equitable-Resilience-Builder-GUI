@@ -160,7 +160,7 @@ public class GoalCreationController implements Initializable{
 					protected void updateItem(Goal item, boolean empty) {
 						super.updateItem(item, empty);
 						if (item != null) {
-							setText(item.getName());
+							setText(item.getGoalName());
 							setContextMenu(createGoalContextMenu());
 						}
 					}

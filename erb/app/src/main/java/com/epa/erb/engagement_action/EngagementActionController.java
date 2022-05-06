@@ -319,8 +319,8 @@ public class EngagementActionController implements Initializable{
 	
 	private void saveDataToActionProjectDirectory() {
 		File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\" + projectDirectory.getName() + "\\Data.xml");
-		XMLManager xmlManager = new XMLManager();
-		xmlManager.writeDataXML(dataFile, listOfChapters);
+//		XMLManager xmlManager = new XMLManager();
+//		xmlManager.writeDataXML(dataFile, listOfChapters);
 	}
 	
 	public void treeViewClicked() {
@@ -533,7 +533,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void parseDataFromSetup() {
 		XMLManager xmlManager = new XMLManager();
-		listOfChapters = xmlManager.parseDataXML(dataFileToLoad);
+//		listOfChapters = xmlManager.parseDataXML(dataFileToLoad);
 	}
 		
 	private boolean containsAttribute(String attributeLabel) {

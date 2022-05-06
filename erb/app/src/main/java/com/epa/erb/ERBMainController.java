@@ -137,19 +137,19 @@ public class ERBMainController implements Initializable{
 	
 	private Stage projectSelectionStage = null;
 	private void showProjectSelection(ArrayList<File> listOfProjectDirectories, boolean setup, boolean action) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
-			ProjectSelectionController projectSelectionController = new ProjectSelectionController(listOfProjectDirectories, this, setup, action);
-			fxmlLoader.setController(projectSelectionController);
-			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root);
-			projectSelectionStage = new Stage();
-			projectSelectionStage.setScene(scene);
-			projectSelectionStage.setTitle("Project Selection");
-			projectSelectionStage.showAndWait();
-		} catch (Exception e) {
-			logger.fatal(e.getMessage());
-		}
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
+//			ProjectSelectionController projectSelectionController = new ProjectSelectionController(listOfProjectDirectories, this, setup, action);
+//			fxmlLoader.setController(projectSelectionController);
+//			Parent root = fxmlLoader.load();
+//			Scene scene = new Scene(root);
+//			projectSelectionStage = new Stage();
+//			projectSelectionStage.setScene(scene);
+//			projectSelectionStage.setTitle("Project Selection");
+//			projectSelectionStage.showAndWait();
+//		} catch (Exception e) {
+//			logger.fatal(e.getMessage());
+//		}
 	}
 	
 	private ArrayList<File> getProjectDirectoriesInSetup() {

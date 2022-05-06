@@ -51,12 +51,12 @@ public class DataSelectionController implements Initializable{
 	public void okButtonAction() {
 		RadioButton selectedRadioButton = getSelectedDataRadioButton();
 		if(selectedRadioButton != null) {
-			if(selectedRadioButton == setupDataRadioButton) {
-				projectSelectionController.setDataFileToLoadInActionTool(setupFile);
-			} else if (selectedRadioButton == actionDataRadioButton) {
-				projectSelectionController.setDataFileToLoadInActionTool(actionFile);
-			}
-			projectSelectionController.closeDataSelectionStage();
+//			if(selectedRadioButton == setupDataRadioButton) {
+//				projectSelectionController.setDataFileToLoadInActionTool(setupFile);
+//			} else if (selectedRadioButton == actionDataRadioButton) {
+//				projectSelectionController.setDataFileToLoadInActionTool(actionFile);
+//			}
+//			projectSelectionController.closeDataSelectionStage();
 		}
 	}
 	

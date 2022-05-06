@@ -4,26 +4,26 @@ import java.util.ArrayList;
 
 public class Goal {
 	
-	private String name;
-	private String description;
+	private String goalName;
+	private String goalDescription;
 	private ArrayList<GoalCategory> listOfSelectedGoalCategories;
-	public Goal(String name, String description, ArrayList<GoalCategory> listOfSelectedGoalCategories ) {
-		this.name = name;
-		this.description = description;
+	public Goal(String goalName, String goalDescription, ArrayList<GoalCategory> listOfSelectedGoalCategories ) {
+		this.goalName = goalName;
+		this.goalDescription = goalDescription;
 		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
 	}
 	
-	public String getName() {
-		return name;
+	public String getGoalName() {
+		return goalName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setGoalName(String goalName) {
+		this.goalName = goalName;
 	}
-	public String getDescription() {
-		return description;
+	public String getGoalDescription() {
+		return goalDescription;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setGoalDescription(String goalDescription) {
+		this.goalDescription = goalDescription;
 	}
 	public ArrayList<GoalCategory> getListOfSelectedGoalCategories() {
 		return listOfSelectedGoalCategories;
