@@ -1,5 +1,6 @@
 package com.epa.erb.goal;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -7,12 +8,16 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
+import com.epa.erb.XMLManager;
+import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
-
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
@@ -25,6 +30,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class GoalCreationController implements Initializable{
@@ -36,7 +42,7 @@ public class GoalCreationController implements Initializable{
 	@FXML
 	TextArea goalDescriptionTextArea;
 	@FXML
-	ListView<Goal> selectedGoalsListView;
+	ListView<Goal> goalsListView;
 
 	private App app;
 	private Project project;
@@ -48,29 +54,36 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private Logger logger = LogManager.getLogger(GoalCreationController.class);
+	//private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		populateGoalCategoryCheckBoxes();
-		setSelectedGoalsListViewCellFactory();
-	}
-	
-	private void populateGoalCategoryCheckBoxes() {
-		ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
-		for(GoalCategory goalCategory : goalCategories) {
-			CheckBox goalCategoryCheckBox = createGoalCategoryCheckBox(goalCategory);
-			goalsVBox.getChildren().add(goalCategoryCheckBox);
+		if(isProjectNew(project)) {
+			populateGoalCategoryCheckBoxes();
+			setGoalsListViewCellFactory();
+		} else {
+			loadEngagementActionTool(project);
+			projectSelectionController.closeGoalCreationStage();
 		}
 	}
 	
-	private CheckBox createGoalCategoryCheckBox(GoalCategory goalCategory) {
-		CheckBox checkBox = new CheckBox(goalCategory.getCategoryName());
-		checkBox.setFont(new Font(15.0));
-		return checkBox;
+	private void loadEngagementActionTool(Project project) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+			EngagementActionController engagementActionController = new EngagementActionController(app, project);
+			fxmlLoader.setController(engagementActionController);
+			Parent root = fxmlLoader.load();
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("ERB");
+			stage.show();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
-	
 
-	
 	@FXML
 	public void addButtonAction() {
 		if(hasGoalUserInput()) {
@@ -80,7 +93,7 @@ public class GoalCreationController implements Initializable{
 				String goalDescription = getGoalDescription();
 				ArrayList<GoalCategory> selectedGoalCategories = getSelectedGoalCategories();
 				Goal goal = new Goal(goalName, goalDescription, selectedGoalCategories);
-				addGoalToSelectedGoalsListView(goal);
+				addGoalToGoalsListView(goal);
 				cleanGoalUserInputFields();
 				uncheckAllGoalCategoryCheckBoxes();
 			}
@@ -93,8 +106,34 @@ public class GoalCreationController implements Initializable{
 	public void doneButtonAction() {
 		Optional<ButtonType> result = showDoneAlert();
 		if(result.get() == ButtonType.OK) {
-			//TODO: Store all goals in project
-			
+			project.setProjectGoals(getCreatedGoals());
+			writeProjectMetaData(project);
+		}
+	}
+	
+	private void writeProjectMetaData(Project project) {
+		XMLManager xmlManager = new XMLManager();
+		xmlManager.writeProjectMetaXML(getProjectMetaFile(project), project);
+	}
+	
+	private File getProjectMetaFile(Project project) {
+		File projectMetaFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Meta.xml");
+		return projectMetaFile;
+	}
+	
+	private ArrayList<Goal> getCreatedGoals(){
+		ArrayList<Goal> createdGoals = new ArrayList<Goal>();
+		for(Goal goal: goalsListView.getItems()) {
+			createdGoals.add(goal);
+		}
+		return createdGoals;
+	}
+	
+	private void populateGoalCategoryCheckBoxes() {
+		ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
+		for(GoalCategory goalCategory : goalCategories) {
+			CheckBox goalCategoryCheckBox = createGoalCategoryCheckBox(goalCategory);
+			goalsVBox.getChildren().add(goalCategoryCheckBox);
 		}
 	}
 	
@@ -110,18 +149,24 @@ public class GoalCreationController implements Initializable{
 		}
 	}
 	
+	private CheckBox createGoalCategoryCheckBox(GoalCategory goalCategory) {
+		CheckBox checkBox = new CheckBox(goalCategory.getCategoryName());
+		checkBox.setFont(new Font(15.0));
+		return checkBox;
+	}
+	
 	private Optional<ButtonType> showDoneAlert() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
-		alert.setContentText("Selecting goals can only be done once. Are you sure you'd like to continue?");
+		alert.setContentText("Creating goals can only be done once. Are you sure you'd like to continue?");
 		alert.setTitle("Alert");
 		Optional<ButtonType> result = alert .showAndWait();
 		return result;
 	}
 	
-	private void addGoalToSelectedGoalsListView(Goal goal) {
-		if(!selectedGoalsListView.getItems().contains(goal)) {
-			selectedGoalsListView.getItems().add(goal);
+	private void addGoalToGoalsListView(Goal goal) {
+		if(!goalsListView.getItems().contains(goal)) {
+			goalsListView.getItems().add(goal);
 		}
 	}
 	
@@ -158,8 +203,8 @@ public class GoalCreationController implements Initializable{
 		return selectedGoalCheckBoxes;
 	}
 	
-	private void setSelectedGoalsListViewCellFactory() {
-		selectedGoalsListView.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
+	private void setGoalsListViewCellFactory() {
+		goalsListView.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
 			@Override
 			public ListCell<Goal> call(ListView<Goal> param) {
 				ListCell<Goal> cell = new ListCell<Goal>() {
@@ -175,6 +220,14 @@ public class GoalCreationController implements Initializable{
 				return cell;
 			}
 		});
+	}
+	
+	private boolean isProjectNew(Project project) {
+		if(project.getProjectGoals() == null || project.getProjectGoals().size() ==0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	private boolean hasGoalUserInput() {
@@ -206,8 +259,8 @@ public class GoalCreationController implements Initializable{
 	
 	private void removeSelectedGoal(Event e) {
 		Goal goalToRemove = getGoalListViewSelectedGoal();
-		selectedGoalsListView.getItems().remove(goalToRemove);
-		setSelectedGoalsListViewCellFactory();
+		goalsListView.getItems().remove(goalToRemove);
+		setGoalsListViewCellFactory();
 	}
 	
 	private String getGoalName() {
@@ -221,7 +274,7 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private Goal getGoalListViewSelectedGoal() {
-		return selectedGoalsListView.getSelectionModel().getSelectedItem();
+		return goalsListView.getSelectionModel().getSelectedItem();
 	}
 
 	public VBox getGoalsVBox() {
@@ -236,8 +289,8 @@ public class GoalCreationController implements Initializable{
 		return goalDescriptionTextArea;
 	}
 
-	public ListView<?> getSelectedGoalsListView() {
-		return selectedGoalsListView;
+	public ListView<?> getGoalsListView() {
+		return goalsListView;
 	}
 
 }

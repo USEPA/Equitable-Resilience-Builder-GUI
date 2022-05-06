@@ -52,7 +52,7 @@ public class App extends Application {
 			Scene scene = new Scene(root);
 			projectSelectionStage.setScene(scene);
 			projectSelectionStage.setTitle("Project Selection");
-			projectSelectionStage.showAndWait();
+			projectSelectionStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();

@@ -4,6 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
@@ -149,6 +154,9 @@ public class XMLManager {
 					if(projectMetaFile.exists()) {
 						Project project = parseProjectXML(projectMetaFile);
 						projects.add(project);
+					} else {
+						Project project = new Project(projectDirectory.getName());
+						projects.add(project);
 					}
 				}
 			}
@@ -228,6 +236,49 @@ public class XMLManager {
 		}
 		logger.debug("ActivityType returned is null.");
 		return null;
+	}
+	
+	public void writeProjectMetaXML(File xmlFile, Project project) {
+		try {
+			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+			Document document = documentBuilder.newDocument();
+			Element rootElement = document.createElement("project");
+			document.appendChild(rootElement);
+			rootElement.setAttribute("projectName", project.getProjectName());
+			Element goalsElement = document.createElement("goals");
+			for (Goal goal : project.getProjectGoals()) {
+				Element goalElement = document.createElement("goal");
+				goalElement.setAttribute("goalName", goal.getGoalName());
+				goalElement.setAttribute("goalDescription", goal.getGoalDescription());
+				Element goalsCategoryElement = document.createElement("goalsCategories");
+				for (GoalCategory goalCategory : goal.getListOfSelectedGoalCategories()) {
+					Element goalCategoryElement = document.createElement("goalCategory");
+					goalCategoryElement.setAttribute("categoryName", goalCategory.getCategoryName());
+					Element assignedActivitesElement = document.createElement("assignedActivities");
+					for (String activityID : goalCategory.getListOfAssignedActivityIds()) {
+						Element assignedActivityElement = document.createElement("assignedActivity");
+						assignedActivityElement.setAttribute("activityID", activityID);
+						assignedActivitesElement.appendChild(assignedActivityElement);						
+					}
+					goalCategoryElement.appendChild(assignedActivitesElement);
+					goalsCategoryElement.appendChild(goalCategoryElement);
+				}
+				goalElement.appendChild(goalsCategoryElement);
+				goalsElement.appendChild(goalElement);
+			}
+			rootElement.appendChild(goalsElement);
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource domSource = new DOMSource(document);
+
+			StreamResult file = new StreamResult(xmlFile);
+			transformer.transform(domSource, file);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 //	public ArrayList<Chapter> parseDataXML(File xmlFile) {

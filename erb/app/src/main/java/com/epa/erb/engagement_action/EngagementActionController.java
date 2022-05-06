@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
+import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
@@ -15,6 +16,7 @@ import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanController;
 import com.epa.erb.chapter.ReflectController;
 import com.epa.erb.noteboard.NoteBoardContentController;
+import com.epa.erb.project.Project;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,12 +82,12 @@ public class EngagementActionController implements Initializable{
 	Button skipButton;
 	@FXML
 	Button nextButton;
-	
-	private File dataFileToLoad;
-	private File projectDirectory;
-	public EngagementActionController(File projectDirectory, File dataFileToLoad) {
-		this.projectDirectory = projectDirectory;
-		this.dataFileToLoad = dataFileToLoad;
+
+	private App app;
+	private Project project;
+	public EngagementActionController(App app, Project project) {
+		this.app = app;
+		this.project = project;
 	}
 	
 	private Constants constants = new Constants();
@@ -100,12 +102,12 @@ public class EngagementActionController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		parseDataFromSetup();
-		handleControls();
-		fillAndStoreTreeViewData();
-		handleChapterERBPathwayGeneration();
-		initializeTreeViewSelection();
-		handleNavigationButtonsShown(null, null);
+//		parseDataFromSetup();
+//		handleControls();
+//		fillAndStoreTreeViewData();
+//		handleChapterERBPathwayGeneration();
+//		initializeTreeViewSelection();
+//		handleNavigationButtonsShown(null, null);
 	}
 	
 	private void initializeTreeViewSelection() {
@@ -318,7 +320,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void saveDataToActionProjectDirectory() {
-		File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\" + projectDirectory.getName() + "\\Data.xml");
+//		File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\" + projectDirectory.getName() + "\\Data.xml");
 //		XMLManager xmlManager = new XMLManager();
 //		xmlManager.writeDataXML(dataFile, listOfChapters);
 	}
@@ -767,20 +769,20 @@ public class EngagementActionController implements Initializable{
 	}
 
 	public File getDataFileToLoad() {
-		return dataFileToLoad;
+		return null;
 	}
 
-	public void setDataFileToLoad(File dataFileToLoad) {
-		this.dataFileToLoad = dataFileToLoad;
-	}
+//	public void setDataFileToLoad(File dataFileToLoad) {
+//		this.dataFileToLoad = dataFileToLoad;
+//	}
 
 	public File getProjectDirectory() {
-		return projectDirectory;
+		return null;
 	}
 
-	public void setProjectDirectory(File projectDirectory) {
-		this.projectDirectory = projectDirectory;
-	}
+//	public void setProjectDirectory(File projectDirectory) {
+//		this.projectDirectory = projectDirectory;
+//	}
 
 	public Activity getCurrentSelectedActivity() {
 		return currentSelectedActivity;

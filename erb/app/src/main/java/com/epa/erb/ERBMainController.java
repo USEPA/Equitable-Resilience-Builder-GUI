@@ -112,19 +112,19 @@ public class ERBMainController implements Initializable{
 	
 	//ERB Tool Pt 2
 	public void loadActionTool(File projectDirectory, File dataFileToLoad) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory, dataFileToLoad);
-			fxmlLoader.setController(engagementActionController);
-			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root);
-			actionStage = new Stage();
-			actionStage.setScene(scene);
-			actionStage.setTitle("ERB: Equitable Resilience Builder");
-			actionStage.show();
-		} catch (Exception e) {
-			logger.fatal(e.getMessage());
-		}
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+//			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory, dataFileToLoad);
+//			fxmlLoader.setController(engagementActionController);
+//			Parent root = fxmlLoader.load();
+//			Scene scene = new Scene(root);
+//			actionStage = new Stage();
+//			actionStage.setScene(scene);
+//			actionStage.setTitle("ERB: Equitable Resilience Builder");
+//			actionStage.show();
+//		} catch (Exception e) {
+//			logger.fatal(e.getMessage());
+//		}
 	}
 	
 	private void showProjectsNonExistentAlert() {

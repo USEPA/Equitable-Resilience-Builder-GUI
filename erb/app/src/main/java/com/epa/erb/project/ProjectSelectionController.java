@@ -113,7 +113,7 @@ public class ProjectSelectionController implements Initializable{
 			Scene scene = new Scene(root);
 			goalCreationStage.setScene(scene);
 			goalCreationStage.setTitle("Goals");
-			goalCreationStage.showAndWait();
+			goalCreationStage.show();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -158,7 +158,7 @@ public class ProjectSelectionController implements Initializable{
 		});
 	}
 	
-	void closeGoalCreationStage() {
+	public void closeGoalCreationStage() {
 		if(goalCreationStage != null) {
 			goalCreationStage.close();
 		}

@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1050.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
@@ -32,7 +31,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="Goal selection">
+                        <Label text="Goal creation">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -87,7 +86,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="List of selected goals">
+                        <Label text="List of created goals">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -104,7 +103,7 @@
                   </Separator>
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ListView fx:id="selectedGoalsListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <ListView fx:id="goalsListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                         <HBox alignment="CENTER">
                            <children>
                               <Button mnemonicParsing="false" onAction="#doneButtonAction" text="Done" />
