@@ -275,7 +275,7 @@ public class ProjectSelectionController implements Initializable{
 		return false;
 	}
 	
-	void closeDataSelectionStage() {
+	public void closeDataSelectionStage() {
 		if(dataSelectionStage != null) {
 			dataSelectionStage.close();
 		}
