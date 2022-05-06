@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.engagement_setup.EngagementSetupController;
+import com.epa.erb.project.ProjectSelectionController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -81,7 +83,7 @@ public class ERBMainController implements Initializable{
 	}
 	
 	//ERB Tool Pt 1
-	void loadSetupTool(File projectDirectory) {
+	public void loadSetupTool(File projectDirectory) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_setup/EngagementSetup.fxml"));
 			EngagementSetupController engagementSetupController = new EngagementSetupController(projectDirectory);
@@ -109,7 +111,7 @@ public class ERBMainController implements Initializable{
 	}
 	
 	//ERB Tool Pt 2
-	void loadActionTool(File projectDirectory, File dataFileToLoad) {
+	public void loadActionTool(File projectDirectory, File dataFileToLoad) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController(projectDirectory, dataFileToLoad);
@@ -136,7 +138,7 @@ public class ERBMainController implements Initializable{
 	private Stage projectSelectionStage = null;
 	private void showProjectSelection(ArrayList<File> listOfProjectDirectories, boolean setup, boolean action) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ProjectSelection.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
 			ProjectSelectionController projectSelectionController = new ProjectSelectionController(listOfProjectDirectories, this, setup, action);
 			fxmlLoader.setController(projectSelectionController);
 			Parent root = fxmlLoader.load();
