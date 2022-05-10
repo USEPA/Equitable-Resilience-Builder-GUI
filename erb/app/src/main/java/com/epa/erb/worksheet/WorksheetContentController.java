@@ -48,8 +48,8 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private Logger logger = LogManager.getLogger(WorksheetContentController.class);
-	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	//private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -64,7 +64,7 @@ public class WorksheetContentController implements Initializable{
 	
 	private File getPDFFileToLoad() {
 		String fileName = activity.getFileName().replace(".docx", ".pdf");
-		File pdfFileToLoad = new File(pathToERBFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
+		File pdfFileToLoad = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
 		return pdfFileToLoad;
 	}
 	
@@ -134,7 +134,7 @@ public class WorksheetContentController implements Initializable{
 	
 	private File getFileToPrint() {
 		String fileName = activity.getFileName().replace(".docx", ".pdf");
-		File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
+		File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
 		if(file.exists()) {
 			return file;
 		} else {
@@ -169,7 +169,7 @@ public class WorksheetContentController implements Initializable{
 	
 	public void openActivity(Activity activity) {
 		try {
-			File file = new File(pathToERBFolder + "\\Activities\\ChapterActivities\\" + activity.getFileName());
+			File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities\\" + activity.getFileName());
 			if (file.exists() && Desktop.isDesktopSupported()) {
 				Desktop.getDesktop().open(file);
 			} else {

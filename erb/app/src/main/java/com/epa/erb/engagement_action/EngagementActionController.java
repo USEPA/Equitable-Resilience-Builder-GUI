@@ -110,7 +110,8 @@ public class EngagementActionController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillGoalComboBox();
-		setGoalComboBoxCellFactory();
+		goalComboBox.setCellFactory(lv-> createGoalCell());
+		goalComboBox.setButtonCell(createGoalCell());
 		handleControls();
 		initializeGoalSelection();
 		handleNavigationButtonsShown(null, null);
@@ -326,7 +327,16 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-		saveDataToActionProjectDirectory();
+		Goal goal = getCurrentGoal();
+		if (goal != null) {
+			saveGoalData(goal);
+		}
+	}
+	
+	private void saveGoalData(Goal goal) {
+		XMLManager xmlManager = new XMLManager();
+		File goalXML = getGoalXMLFile(goal);
+		xmlManager.writeGoalMetaXML(goalXML, listOfChapters);
 	}
 	
 	@FXML
@@ -392,22 +402,37 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void setGoalComboBoxCellFactory() {
-		goalComboBox.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
+//	private void setGoalComboBoxCellFactory() {
+//		goalComboBox.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
+//			@Override
+//			public ListCell<Goal> call(ListView<Goal> param) {
+//				ListCell<Goal> cell = new ListCell<Goal>() {
+//					@Override
+//					protected void updateItem(Goal item, boolean empty) {
+//						super.updateItem(item, empty);
+//						if (item != null) {
+//							setText(item.getGoalName());
+//						}
+//					}
+//				};
+//				return cell;
+//			}
+//		});
+//	}
+	
+	private ListCell<Goal> createGoalCell() {
+		return new ListCell<Goal>() {
 			@Override
-			public ListCell<Goal> call(ListView<Goal> param) {
-				ListCell<Goal> cell = new ListCell<Goal>() {
-					@Override
-					protected void updateItem(Goal item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item != null) {
-							setText(item.getGoalName());
-						}
-					}
-				};
-				return cell;
+			protected void updateItem(Goal item, boolean empty) {
+				super.updateItem(item, empty);
+				if (empty || item == null) {
+					setText(null);
+					setGraphic(null);
+				} else {
+					setText(item.getGoalName());
+				}
 			}
-		});
+		};
 	}
 	
 	void handleAttributePanelGeneration(String attributeTitle, String attributeContent, String attributeColor) {
@@ -449,7 +474,6 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	
 	private void highlightSelectedActivityDiagram(TreeItem<String> selectedTreeItem) {
 		String activityID = treeMap.get(selectedTreeItem);
 		Activity selectedActivity = getActivity(activityID);
@@ -460,12 +484,6 @@ public class EngagementActionController implements Initializable{
 				erbPathwayDiagramController.unHighlightDiagram();
 			}
 		}
-	}
-	
-	private void saveDataToActionProjectDirectory() {
-//		File dataFile = new File(pathToERBFolder + "\\EngagementActionTool\\" + projectDirectory.getName() + "\\Data.xml");
-//		XMLManager xmlManager = new XMLManager();
-//		xmlManager.writeDataXML(dataFile, listOfChapters);
 	}
 	
 	private void handleChapterSelectedInTree(String selectedTreeItemValue) {
@@ -734,6 +752,10 @@ public class EngagementActionController implements Initializable{
 		}
 		logger.debug("Goal XML file returned is null.");
 		return null;
+	}
+	
+	private Goal getCurrentGoal() {
+		return goalComboBox.getSelectionModel().getSelectedItem();
 	}
 		
 	private void setChapterLabelText(String chapterLabelText) {
