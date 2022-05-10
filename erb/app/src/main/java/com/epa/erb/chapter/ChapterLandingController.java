@@ -93,19 +93,19 @@ public class ChapterLandingController implements Initializable {
 	
 	@FXML
 	public void viewProgressButtonAction() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter_progress_tracker/ProgressTracker.fxml"));
-			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getListOfChapters(), engagementActionController);
-			fxmlLoader.setController(progressTrackerController);
-			Parent root = fxmlLoader.load();
-			Stage stage = new Stage();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setTitle("ERB Progress Tracker");
-			stage.showAndWait();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter_progress_tracker/ProgressTracker.fxml"));
+//			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getListOfChapters(), engagementActionController);
+//			fxmlLoader.setController(progressTrackerController);
+//			Parent root = fxmlLoader.load();
+//			Stage stage = new Stage();
+//			Scene scene = new Scene(root);
+//			stage.setScene(scene);
+//			stage.setTitle("ERB Progress Tracker");
+//			stage.showAndWait();
+//		} catch (Exception e) {
+//			logger.error(e.getMessage());
+//		}
 	}
 
 	public void fillActivitiesListView(ArrayList<Activity> listOfActivities) {
@@ -119,12 +119,12 @@ public class ChapterLandingController implements Initializable {
 	private ArrayList<Activity> getActivitiesForListView() {
 		ArrayList<Activity> activitiesForListView = new ArrayList<Activity>();
 		if (chapter != null) { //landing for a single chapter
-			for (Activity activity : chapter.getUserSelectedActivities()) {
+			for (Activity activity : chapter.getAssignedActivities()) {
 				activitiesForListView.add(activity);
 			}
 		} else { //landing for erb showing all chapters
 			for (Chapter chapter : listOfAllChapters) {
-				for (Activity activity : chapter.getUserSelectedActivities()) {
+				for (Activity activity : chapter.getAssignedActivities()) {
 						activitiesForListView.add(activity);
 				}
 			}
@@ -162,7 +162,7 @@ public class ChapterLandingController implements Initializable {
 		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeMap();
 		for(TreeItem<String> treeItem : treeMap.keySet()) {
 			if(treeItem.getValue().contentEquals(selectedActivity.getLongName())) { //if tree item value matches
-				if(treeMap.get(treeItem).contentEquals(selectedActivity.getGUID())){ //if tree item GUID matches
+				if(treeMap.get(treeItem).contentEquals(selectedActivity.getActivityID())){ //if tree item GUID matches
 					engagementActionController.getTreeView().getSelectionModel().select(treeItem); //select tree item
 					engagementActionController.treeViewClicked(); //handle tree item selected
 				}

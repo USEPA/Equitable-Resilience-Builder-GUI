@@ -19,14 +19,17 @@ public class GoalCategory {
 	public String getCategoryName() {
 		return categoryName;
 	}
+	
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	public ArrayList<String> getListOfAssignedActivityIds() {
+
+	public ArrayList<String> getListOfAssignedActivityIDs() {
 		return listOfAssignedActivityIDs;
 	}
-	public void setListOfAssignedActivities(ArrayList<String> listOfAssignedActivityIDs) {
+
+	public void setListOfAssignedActivityIDs(ArrayList<String> listOfAssignedActivityIDs) {
 		this.listOfAssignedActivityIDs = listOfAssignedActivityIDs;
-	}
+	}	
 
 }

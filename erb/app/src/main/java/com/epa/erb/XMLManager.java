@@ -15,6 +15,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
@@ -78,6 +80,7 @@ public class XMLManager {
 						String activityTypeName = activityElement.getAttribute("activityType");
 						ActivityType activityType = getActivityType(activityTypeName, activityTypes);
 						String status = activityElement.getAttribute("status");
+						String chapterAssignment = activityElement.getAttribute("chapterAssignment");
 						String shortName = activityElement.getAttribute("shortName");
 						String longName = activityElement.getAttribute("longName");
 						String fileName = activityElement.getAttribute("fileName");
@@ -88,7 +91,7 @@ public class XMLManager {
 						String time = activityElement.getAttribute("time");
 						String who = activityElement.getAttribute("who");
 						String activityID = activityElement.getAttribute("activityID");
-						Activity activity = new Activity(activityType, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID);
+						Activity activity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID);
 						availableActivities.add(activity);
 					}
 				}
@@ -103,7 +106,7 @@ public class XMLManager {
 	}
 	
 	//Parse GoalCategories
-	ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile){
+	ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile, ArrayList<Activity> activities){
 		if (xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>();
@@ -144,7 +147,7 @@ public class XMLManager {
 	}
 	
 	//Parse all projects
-	ArrayList<Project> parseAllProjects(File ERBProjectDirectory){
+	ArrayList<Project> parseAllProjects(File ERBProjectDirectory, ArrayList<Activity> activities){
 		ArrayList<Project> projects = new ArrayList<Project>();
 		if(ERBProjectDirectory.exists()) {
 			File [] projectDirectories = ERBProjectDirectory.listFiles();
@@ -152,7 +155,7 @@ public class XMLManager {
 				if(projectDirectory.isDirectory()) {
 					File projectMetaFile = new File(projectDirectory.getPath() + "\\Meta.xml");
 					if(projectMetaFile.exists()) {
-						Project project = parseProjectXML(projectMetaFile);
+						Project project = parseProjectXML(projectMetaFile, activities);
 						projects.add(project);
 					} else {
 						Project project = new Project(projectDirectory.getName());
@@ -165,7 +168,7 @@ public class XMLManager {
 	}
 	
 	//Parse Project
-	Project parseProjectXML(File xmlFile){
+	Project parseProjectXML(File xmlFile, ArrayList<Activity> activities){
 		if (xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -228,6 +231,65 @@ public class XMLManager {
 		return null;	
 	}
 	
+	//Parse Goal
+	public ArrayList<Chapter> parseGoalXML(File xmlFile, ArrayList<Activity> activities){
+		if (xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				ArrayList<Chapter> chapters = new ArrayList<Chapter>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList chapterNodeList = doc.getElementsByTagName("chapter");
+				for(int i = 0; i < chapterNodeList.getLength(); i++) {
+					Node chapterNode = chapterNodeList.item(i);
+					//Chapter
+					if(chapterNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element chapterElement = (Element) chapterNode;
+						int chapterNum = Integer.parseInt(chapterElement.getAttribute("chapterNum"));
+						String numericName = chapterElement.getAttribute("numericName");
+						String stringName = chapterElement.getAttribute("stringName");
+						String description = chapterElement.getAttribute("description");
+						ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
+						Chapter chapter = new Chapter(chapterNum, numericName, stringName, description);
+						NodeList assignedActivityNodeList = chapterElement.getElementsByTagName("assignedActivity");
+						for(int j =0; j<assignedActivityNodeList.getLength(); j++) {
+							Node assignedActivityNode = assignedActivityNodeList.item(j);
+							//AssignedActivity
+							if(assignedActivityNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element assignedActivityElement = (Element) assignedActivityNode;
+								String activityID = assignedActivityElement.getAttribute("activityID");
+								String activityStatus = assignedActivityElement.getAttribute("status");
+								Activity activity = getActivity(activityID, activities);
+								activity.setStatus(activityStatus);
+								if(activity != null) listOfChapterActivities.add(activity);
+							}
+						}
+						chapter.setAssignedActivities(listOfChapterActivities);
+						chapters.add(chapter);
+					}
+				}
+				return chapters;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+				e.printStackTrace();
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;	
+	}
+	
+	private Activity getActivity(String activityID, ArrayList<Activity> activities) {
+		for(Activity activity : activities) {
+			if(activity.getActivityID().contentEquals(activityID)) {
+				return activity;
+			}
+		}
+		logger.debug("Activity returned is null.");
+		return null;
+	}
+	
 	private ActivityType getActivityType(String activityTypeName, ArrayList<ActivityType> activityTypes) {
 		for(ActivityType activityType: activityTypes) {
 			if(activityType.getLongName().contentEquals(activityTypeName)) {
@@ -256,7 +318,7 @@ public class XMLManager {
 					Element goalCategoryElement = document.createElement("goalCategory");
 					goalCategoryElement.setAttribute("categoryName", goalCategory.getCategoryName());
 					Element assignedActivitesElement = document.createElement("assignedActivities");
-					for (String activityID : goalCategory.getListOfAssignedActivityIds()) {
+					for (String activityID : goalCategory.getListOfAssignedActivityIDs()) {
 						Element assignedActivityElement = document.createElement("assignedActivity");
 						assignedActivityElement.setAttribute("activityID", activityID);
 						assignedActivitesElement.appendChild(assignedActivityElement);						
@@ -268,6 +330,43 @@ public class XMLManager {
 				goalsElement.appendChild(goalElement);
 			}
 			rootElement.appendChild(goalsElement);
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource domSource = new DOMSource(document);
+
+			StreamResult file = new StreamResult(xmlFile);
+			transformer.transform(domSource, file);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	public void writeGoalMetaXML(File xmlFile, ArrayList<Chapter> chapters) {
+		try {
+			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+			Document document = documentBuilder.newDocument();
+			Element rootElement = document.createElement("chapters");
+			document.appendChild(rootElement);
+			for(Chapter chapter: chapters) {
+				Element chapterElement = document.createElement("chapter");
+				chapterElement.setAttribute("chapterNum", String.valueOf(chapter.getChapterNum()));
+				chapterElement.setAttribute("numericName", chapter.getNumericName());
+				chapterElement.setAttribute("stringName", chapter.getStringName());
+				chapterElement.setAttribute("description", chapter.getDescriptionName());
+				
+				Element assignedActivitiesElement = document.createElement("assignedActivities");
+				for(Activity activity: chapter.getAssignedActivities()) {
+					Element assignedActivityElement = document.createElement("assignedActivity");
+					assignedActivityElement.setAttribute("activityID", activity.getActivityID());
+					assignedActivityElement.setAttribute("status", activity.getStatus());
+					assignedActivitiesElement.appendChild(assignedActivityElement);
+				}
+				chapterElement.appendChild(assignedActivitiesElement);
+				rootElement.appendChild(chapterElement);
+			}
 
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();

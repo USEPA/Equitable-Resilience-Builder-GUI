@@ -3,6 +3,7 @@ package com.epa.erb;
 public class Activity {
 	
 	private ActivityType activityType;
+	private String chapterAssignment; 
 	private String status;
 	private String shortName;
 	private String longName;
@@ -14,8 +15,9 @@ public class Activity {
 	private String time;
 	private String who;
 	private String activityID;
-	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID) {
+	public Activity(ActivityType activityType, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID) {
 		this.activityType = activityType;
+		this.chapterAssignment = chapterAssignment;
 		this.status = status;
 		this.shortName = shortName;
 		this.longName = longName;
@@ -27,23 +29,6 @@ public class Activity {
 		this.time = time;
 		this.who = who;
 		this.activityID = activityID;
-	}
-	
-	private String GUID;
-	public Activity(ActivityType activityType, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID, String GUID) {
-		this.activityType = activityType;
-		this.status = status;
-		this.shortName = shortName;
-		this.longName = longName;
-		this.fileName = fileName;
-		this.directions = directions;
-		this.objectives = objectives;
-		this.description = description;
-		this.materials = materials;
-		this.time = time;
-		this.who = who;
-		this.activityID = activityID;
-		this.GUID = GUID;
 	}
 		
 	public Activity() {
@@ -57,7 +42,15 @@ public class Activity {
 	public void setActivityType(ActivityType activityType) {
 		this.activityType = activityType;
 	}
-	
+		
+	public String getChapterAssignment() {
+		return chapterAssignment;
+	}
+
+	public void setChapterAssignment(String chapterAssignment) {
+		this.chapterAssignment = chapterAssignment;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -146,14 +139,6 @@ public class Activity {
 		this.activityID = activityID;
 	}
 	
-	public String getGUID() {
-		return GUID;
-	}
-
-	public void setGUID(String gUID) {
-		GUID = gUID;
-	}
-	
 	public String toString() {
 		return  "--ActivityType-- " + "\n" + activityType.toString() +  "\n" + "----" + "\n" +
 				"ShortName: " + shortName + "\n" + 
@@ -165,8 +150,7 @@ public class Activity {
 				"Materials: " + materials + "\n" + 
 				"Time: " + time + "\n" + 
 				"Who: " + who + "\n" +
-				"ActivityID: " + activityID + "\n" +
-				"GUID: " + GUID + "\n";
+				"ActivityID: " + activityID + "\n";
 	}
 	
 }

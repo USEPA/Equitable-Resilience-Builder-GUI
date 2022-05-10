@@ -47,15 +47,14 @@ public class App extends Application {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
 			ProjectSelectionController projectSelectionController = new ProjectSelectionController(this);
 			fxmlLoader.setController(projectSelectionController);
-			Parent root = fxmlLoader.load();
 			projectSelectionStage = new Stage();
+			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			projectSelectionStage.setScene(scene);
 			projectSelectionStage.setTitle("Project Selection");
 			projectSelectionStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 	
@@ -63,12 +62,15 @@ public class App extends Application {
 		XMLManager xmlManager = new XMLManager();
 		File activityTypesFile = getActivityTypesFileToParse();
 		if(activityTypesFile != null) activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
+		
 		File availableActivitiesFile = getAvailableActivitiesFileToParse();
 		if(availableActivitiesFile != null) activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
+		
 		File goalCategoriesFile = getGoalCategoriesFileToParse();
-		if(goalCategoriesFile != null) goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
+		if(goalCategoriesFile != null) goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile, activities);
+		
 		File erbProjectDirectory = getERBProjectDirectory();
-		if(erbProjectDirectory != null) projects = xmlManager.parseAllProjects(erbProjectDirectory);
+		if(erbProjectDirectory != null) projects = xmlManager.parseAllProjects(erbProjectDirectory, activities);
 	}
 	
 	private File getActivityTypesFileToParse() {
@@ -107,12 +109,26 @@ public class App extends Application {
 		}
 	}
 	
+	public Activity getActivity(String activityID) {
+		for (Activity activity : activities) {
+			if (activity.getActivityID().contentEquals(activityID)) {
+				return activity;
+			}
+		}
+		logger.debug("Activity returned is null");
+		return null;
+	}
+	
 	public void closeProjectSelectionStage() {
 		if(projectSelectionStage != null) {
 			projectSelectionStage.close();
 		}
 	}
-
+	
+	public ArrayList<Project> getProjects(){
+		return projects;
+	}
+	
 	public ArrayList<Activity> getActivities() {
 		return activities;
 	}
@@ -123,10 +139,6 @@ public class App extends Application {
 
 	public ArrayList<GoalCategory> getGoalCategories() {
 		return goalCategories;
-	}
-	
-	public ArrayList<Project> getProjects(){
-		return projects;
 	}
 	
 }

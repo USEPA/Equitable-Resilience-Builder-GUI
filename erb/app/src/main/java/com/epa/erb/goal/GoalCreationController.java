@@ -7,8 +7,11 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.XMLManager;
+import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
@@ -59,29 +62,8 @@ public class GoalCreationController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		if(isProjectNew(project)) {
 			populateGoalCategoryCheckBoxes();
 			setGoalsListViewCellFactory();
-		} else {
-			loadEngagementActionTool(project);
-			projectSelectionController.closeGoalCreationStage();
-		}
-	}
-	
-	private void loadEngagementActionTool(Project project) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(app, project);
-			fxmlLoader.setController(engagementActionController);
-			Parent root = fxmlLoader.load();
-			Stage stage = new Stage();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setTitle("ERB");
-			stage.show();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
 	}
 
 	@FXML
@@ -106,14 +88,105 @@ public class GoalCreationController implements Initializable{
 	public void doneButtonAction() {
 		Optional<ButtonType> result = showDoneAlert();
 		if(result.get() == ButtonType.OK) {
-			project.setProjectGoals(getCreatedGoals());
+			ArrayList<Goal> createdGoals = getCreatedGoals();
+			project.setProjectGoals(createdGoals);
 			writeProjectMetaData(project);
+			writeGoalsMetaData(createdGoals);
+			loadEngagementActionTool(project);
+			projectSelectionController.closeGoalCreationStage();
+			app.closeProjectSelectionStage();
+		}
+	}
+	
+	private void loadEngagementActionTool(Project project) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+			EngagementActionController engagementActionController = new EngagementActionController(app, project);
+			fxmlLoader.setController(engagementActionController);
+			Parent root = fxmlLoader.load();
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("ERB");
+			stage.show();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
 	
 	private void writeProjectMetaData(Project project) {
 		XMLManager xmlManager = new XMLManager();
 		xmlManager.writeProjectMetaXML(getProjectMetaFile(project), project);
+	}
+	
+	private void writeGoalsMetaData(ArrayList<Goal> goals) {
+		XMLManager xmlManager = new XMLManager();
+		createGoalsDirectory();
+		for(Goal goal : goals) {
+			File goalDirectory = createGoalDirectory(goal);
+			File goalMetaFile = new File(goalDirectory.getPath() + "\\Meta.xml");
+			ArrayList<Activity> activities = getAllActivities(goal);
+			ArrayList<Chapter> chapters = getAllChapters(activities);
+			xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
+		}
+	}
+	
+	private ArrayList<Activity> getAllActivities(Goal goal){
+		ArrayList<Activity> activities = new ArrayList<Activity>();
+		for(GoalCategory goalCategory : goal.getListOfSelectedGoalCategories()) {
+			for(String activityID: goalCategory.getListOfAssignedActivityIDs()) {
+				Activity activity = app.getActivity(activityID);
+				if(activity != null) activities.add(activity);
+			}
+		}
+		return activities;		
+	}
+	
+	private ArrayList<Chapter> getAllChapters(ArrayList<Activity> activities) {
+		ArrayList<String> chapterNumbers = getAllChapterNumbers(activities);
+		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
+		for(String chapterNumber : chapterNumbers) {
+			Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber, "Chapter " + chapterNumber, "");
+			ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities);
+			chapter.setAssignedActivities(activitiesForChapter);
+			chapters.add(chapter);
+		}
+		return chapters;
+	}
+	
+	private ArrayList<Activity> getActivitiesForChapter(String chapterNumber, ArrayList<Activity> activities){
+		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
+		for(Activity activity : activities) {
+			if(activity.getChapterAssignment().contentEquals(chapterNumber)) {
+				activitiesForChapter.add(activity);
+			}
+		}
+		return activitiesForChapter;
+	}
+	
+	private ArrayList<String> getAllChapterNumbers(ArrayList<Activity> activities){
+		ArrayList<String> chapterNumbers = new ArrayList<String>();
+		for(Activity activity : activities) {
+			if(!chapterNumbers.contains(activity.getChapterAssignment())) {
+				chapterNumbers.add(activity.getChapterAssignment());
+			}
+		}
+		return chapterNumbers;
+	}
+	
+	private File createGoalDirectory(Goal goal) {
+		File goalDirectory = new File(pathToERBProjectsFolder +  "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName());
+		if(!goalDirectory.exists()) {
+			goalDirectory.mkdir();
+		}
+		return goalDirectory;
+	}
+	
+	private void createGoalsDirectory() {
+		File goalDirectory = new File(pathToERBProjectsFolder +  "\\" + project.getProjectName() + "\\Goals");
+		if(!goalDirectory.exists()) {
+			goalDirectory.mkdir();
+		}
 	}
 	
 	private File getProjectMetaFile(Project project) {
@@ -221,15 +294,7 @@ public class GoalCreationController implements Initializable{
 			}
 		});
 	}
-	
-	private boolean isProjectNew(Project project) {
-		if(project.getProjectGoals() == null || project.getProjectGoals().size() ==0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
+
 	private boolean hasGoalUserInput() {
 		String goalName = goalNameTextField.getText();
 		String goalDescription = goalDescriptionTextArea.getText();
@@ -291,6 +356,30 @@ public class GoalCreationController implements Initializable{
 
 	public ListView<?> getGoalsListView() {
 		return goalsListView;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public ProjectSelectionController getProjectSelectionController() {
+		return projectSelectionController;
+	}
+
+	public void setProjectSelectionController(ProjectSelectionController projectSelectionController) {
+		this.projectSelectionController = projectSelectionController;
 	}
 
 }

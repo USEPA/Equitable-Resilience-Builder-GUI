@@ -35,7 +35,7 @@ public class ProgressColumnController implements Initializable{
 	}
 	
 	private void fillProgressColumn() {
-		for(Activity activity : chapter.getUserSelectedActivities()) {
+		for(Activity activity : chapter.getAssignedActivities()) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/activity_progress_tracker/ProgressActivity.fxml"));
 				ProgressActivityController progressActivityController = new ProgressActivityController(activity);

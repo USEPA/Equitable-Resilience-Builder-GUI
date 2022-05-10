@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
+import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.GoalCreationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,9 +98,13 @@ public class ProjectSelectionController implements Initializable{
 	public void launchButtonAction() {
 		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
 		if(selectedProject != null) {
-			loadGoalCreation(selectedProject);
+			if(isProjectNew(selectedProject)) {
+				loadGoalCreation(selectedProject);
+			} else {
+				loadEngagementActionTool(selectedProject);
+				app.closeProjectSelectionStage();
+			}
 		}
-		app.closeProjectSelectionStage();
 	}
 	
 	private Stage goalCreationStage = null;
@@ -108,14 +113,38 @@ public class ProjectSelectionController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
 			GoalCreationController goalCreationController = new GoalCreationController(app, project, this);
 			fxmlLoader.setController(goalCreationController);
-			Parent root = fxmlLoader.load();
 			goalCreationStage = new Stage();
+			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			goalCreationStage.setScene(scene);
 			goalCreationStage.setTitle("Goals");
 			goalCreationStage.show();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
+		}
+	}
+	
+	private void loadEngagementActionTool(Project project) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+			EngagementActionController engagementActionController = new EngagementActionController(app, project);
+			fxmlLoader.setController(engagementActionController);
+			Parent root = fxmlLoader.load();
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("ERB");
+			stage.show();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	private boolean isProjectNew(Project project) {
+		if(project.getProjectGoals() == null || project.getProjectGoals().size() ==0) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
@@ -162,6 +191,26 @@ public class ProjectSelectionController implements Initializable{
 		if(goalCreationStage != null) {
 			goalCreationStage.close();
 		}
+	}
+
+	public VBox getWelcomeVBox() {
+		return welcomeVBox;
+	}
+
+	public TextField getProjectNameTextField() {
+		return projectNameTextField;
+	}
+
+	public ListView<Project> getProjectsListView() {
+		return projectsListView;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
 	}
 	
 }

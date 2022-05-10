@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -16,6 +17,16 @@
    <children>
       <HBox fx:id="saveHBox" alignment="CENTER_RIGHT">
          <children>
+            <HBox alignment="CENTER_LEFT" spacing="20.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Goal">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="goalComboBox" onAction="#goalComboBoxAction" prefWidth="150.0" />
+               </children>
+            </HBox>
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save">
                <font>
                   <Font size="15.0" />

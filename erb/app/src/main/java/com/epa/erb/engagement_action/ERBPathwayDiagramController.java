@@ -93,10 +93,10 @@ public class ERBPathwayDiagramController implements Initializable {
 	
 	private void hideLeadingLines() {
 		int index = getIndexOfActivityInChapter();
-		if (chapter.getNumberOfUserSelectedActivities() == 1) {
+		if (chapter.getNumberOfAssignedActivities() == 1) {
 			hideLeftLeadingLine();
 			hideRightLeadingLine();
-		} else if (index == chapter.getNumberOfUserSelectedActivities() - 1) {
+		} else if (index == chapter.getNumberOfAssignedActivities() - 1) {
 			hideRightLeadingLine();
 		} else if (index == 0) {
 			hideLeftLeadingLine();
@@ -192,7 +192,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	public void bottomRightCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
-		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
+		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
 			engagementActionController.handleAttributePanelGeneration("Time", activity.getTime(), constants.getTimeColor());
 		}		
 	}
@@ -200,7 +200,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	public void bottomLeftCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
-		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
+		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
 			engagementActionController.handleAttributePanelGeneration("Who", activity.getWho(), constants.getWhoColor());
 		}
 	}
@@ -208,7 +208,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	public void topRightCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
-		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
+		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
 			engagementActionController.handleAttributePanelGeneration("Description", activity.getDescription(), constants.getDescriptionColor());
 		}
 	}
@@ -216,14 +216,14 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	public void topLeftCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
-		if (selectedActivityGUID.contentEquals(activity.getGUID())) {
+		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
 			engagementActionController.handleAttributePanelGeneration("Materials", activity.getMaterials(), constants.getMaterialsColor());
 		}
 	}
 
 	@FXML
 	public void centerCircleClicked() {
-		String selectedActivityGUID = activity.getGUID();
+		String selectedActivityGUID = activity.getActivityID();
 		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
 			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityGUID) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
@@ -234,8 +234,8 @@ public class ERBPathwayDiagramController implements Initializable {
 	
 	private int getIndexOfActivityInChapter() {
 		int count = 0;
-		for (Activity a : chapter.getUserSelectedActivities()) {
-			if (a.getGUID().contentEquals(activity.getGUID())) {
+		for (Activity a : chapter.getAssignedActivities()) {
+			if (a.getActivityID().contentEquals(activity.getActivityID())) {
 				return count;
 			}
 			count++;

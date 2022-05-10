@@ -108,7 +108,7 @@ public class EngagementSetupController implements Initializable {
 				handleTitledPaneListViewAccess(chapterTitledPaneController);
 				storeTitledPaneController(chapterTitledPaneController);
 			}
-			for (Activity activity : chapter.getUserSelectedActivities()) {
+			for (Activity activity : chapter.getAssignedActivities()) {
 				if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { //add activities to chapter
 					ActivityType activityType = activity.getActivityType();
 					SelectedActivity selectedActivity = new SelectedActivity(activityType.getLongName(),activityType.getLongName());
@@ -218,7 +218,8 @@ public class EngagementSetupController implements Initializable {
 	}
 	
 	private Chapter createChapter(int chapterNum, double planStatus, double engageStatus, double reflectStatus) {
-		return new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "", planStatus, engageStatus, reflectStatus);
+		return new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "");
+//		return new Chapter(chapterNum, chapterNum + ".0", "Chapter " + chapterNum, "", planStatus, engageStatus, reflectStatus);
 	}
 	
 	private ChapterTitledPaneController loadChapterTitledPaneController(Chapter chapter) {
@@ -277,14 +278,14 @@ public class EngagementSetupController implements Initializable {
 	private void addFinalSelectedActivitiesToChapters() {
 		for (ChapterTitledPaneController chapterTitledPaneController : chapterTitledPaneControllers) {
 			Chapter chapter = getChapter(chapterTitledPaneController.getTitledPaneText());
-			chapter.getUserSelectedActivities().clear();
+			chapter.getAssignedActivities().clear();
 			ListView<SelectedActivity> listView = chapterTitledPaneController.getTitledPaneListView();
-			chapter.addUserSelectedActivity(getCustomizedPlanActivity());
+			chapter.addActivity(getCustomizedPlanActivity());
 			ObservableList<SelectedActivity> selectedActivities = listView.getItems();
 			for (SelectedActivity selectedActivity : selectedActivities) {
-				chapter.addUserSelectedActivity(getCustomizedActivity(selectedActivity.getActivityID()));
+				chapter.addActivity(getCustomizedActivity(selectedActivity.getActivityID()));
 			}
-			chapter.addUserSelectedActivity(getCustomizedReflectActivity());
+			chapter.addActivity(getCustomizedReflectActivity());
 		}
 	}
 	

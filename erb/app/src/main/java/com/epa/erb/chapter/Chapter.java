@@ -9,20 +9,14 @@ public class Chapter {
 	private String numericName;
 	private String stringName;
 	private String descriptionName;
-	private double planStatus;
-	private double engageStatus;
-	private double reflectStatus;
-	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName, double planStatus, double engageStatus, double reflectStatus) {
+	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName) {
 		this.chapterNum = chapterNum;
 		this.numericName = numericName;
 		this.stringName = stringName;
 		this.descriptionName = descriptionName;
-		this.planStatus = planStatus;
-		this.engageStatus = engageStatus;
-		this.reflectStatus = reflectStatus;
 	}	
 
-	private ArrayList<Activity> userSelectedActivities = new ArrayList<Activity>();
+	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
 	
 	public int getChapterNum() {
 		return chapterNum;
@@ -56,52 +50,28 @@ public class Chapter {
 		this.descriptionName = descriptionName;
 	}
 	
-	public double getPlanStatus() {
-		return planStatus;
-	}
-
-	public void setPlanStatus(double planStatus) {
-		this.planStatus = planStatus;
-	}
-
-	public double getEngageStatus() {
-		return engageStatus;
-	}
-
-	public void setEngageStatus(double engageStatus) {
-		this.engageStatus = engageStatus;
-	}
-
-	public double getReflectStatus() {
-		return reflectStatus;
-	}
-
-	public void setReflectStatus(double reflectStatus) {
-		this.reflectStatus = reflectStatus;
-	}
-
-	public ArrayList<Activity> getUserSelectedActivities() {
-		return userSelectedActivities;
+	public ArrayList<Activity> getAssignedActivities() {
+		return assignedActivities;
 	}
 	
-	public void setUserSelectedActivities(ArrayList<Activity> userSelectedActivities) {
-		this.userSelectedActivities = userSelectedActivities;
+	public void setAssignedActivities(ArrayList<Activity> assignedActivities) {
+		this.assignedActivities = assignedActivities;
 	}
 
-	public void addUserSelectedActivity(Activity activity) {
-		userSelectedActivities.add(activity);
+	public void addActivity(Activity activity) {
+		assignedActivities.add(activity);
 	}
 	
-	public void removeUserSelectedActivity(Activity activity) {
-		userSelectedActivities.remove(activity);
+	public void removeActivity(Activity activity) {
+		assignedActivities.remove(activity);
 	}
 	
-	public int getNumberOfUserSelectedActivities() {
-		return userSelectedActivities.size();
+	public int getNumberOfAssignedActivities() {
+		return assignedActivities.size();
 	}
 	
 	public Activity getPlanActivity() {
-		for(Activity activity : userSelectedActivities) {
+		for(Activity activity : assignedActivities) {
 			if(activity.getLongName().contentEquals("Plan")) {
 				return activity;
 			}
@@ -110,7 +80,7 @@ public class Chapter {
 	}
 	
 	public Activity getReflectActivity(){
-		for(Activity activity : userSelectedActivities) {
+		for(Activity activity : assignedActivities) {
 			if(activity.getLongName().contentEquals("Reflect")) {
 				return activity;
 			}
@@ -120,7 +90,7 @@ public class Chapter {
 	
 	public int getNumberOfReadyActivities() {
 		int count = 0;
-		for(Activity activity: userSelectedActivities) {
+		for(Activity activity: assignedActivities) {
 			if(activity.getStatus().contentEquals("ready")) {
 				count++;
 			}
@@ -130,7 +100,7 @@ public class Chapter {
 	
 	public int getNumberOfInProgressActivities() {
 		int count = 0;
-		for(Activity activity: userSelectedActivities) {
+		for(Activity activity: assignedActivities) {
 			if(activity.getStatus().contentEquals("in progress")) {
 				count++;
 			}
@@ -140,7 +110,7 @@ public class Chapter {
 	
 	public int getNumberOfSkippedActivities() {
 		int count = 0;
-		for(Activity activity: userSelectedActivities) {
+		for(Activity activity: assignedActivities) {
 			if(activity.getStatus().contentEquals("skipped")) {
 				count++;
 			}
@@ -150,7 +120,7 @@ public class Chapter {
 	
 	public int getNumberOfCompletedActivities() {
 		int count = 0;
-		for(Activity activity: userSelectedActivities) {
+		for(Activity activity: assignedActivities) {
 			if(activity.getStatus().contentEquals("complete")) {
 				if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) {
 					count++;
@@ -166,7 +136,7 @@ public class Chapter {
 				"Numeric Name: " + numericName + "\n" + 
 				"String Name: " + stringName + "\n" + 
 				"Description Name: " + descriptionName + "\n" +
-				"User Selected Activities: " + userSelectedActivities.size();
+				"User Selected Activities: " + assignedActivities.size();
 	}
 	
 }

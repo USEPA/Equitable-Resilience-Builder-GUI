@@ -69,7 +69,7 @@ public class ProgressColumnController implements Initializable{
 		if(planActivity.getStatus().contentEquals("complete")) {
 			handlePlanProgressChange(1.0);
 		} else {
-			handlePlanProgressChange(chapter.getPlanStatus());
+//			handlePlanProgressChange(chapter.getPlanStatus());
 		}
 	}
 	
@@ -77,7 +77,7 @@ public class ProgressColumnController implements Initializable{
 		if(reflectActivity.getStatus().contentEquals("complete")) {
 			handleReflectProgressChange(1.0);
 		} else {
-			handleReflectProgressChange(chapter.getReflectStatus());
+//			handleReflectProgressChange(chapter.getReflectStatus());
 		}
 	}
 	
@@ -90,18 +90,18 @@ public class ProgressColumnController implements Initializable{
 	void handlePlanProgressChange(double progress) {
 		updateProgressIndicator(planProgressIndicator, progress);
 		updateActivityStatus(planActivity, progress);
-		chapter.setPlanStatus(progress/100.0);
-		updateERBDiagram(planActivity.getGUID());
+//		chapter.setPlanStatus(progress/100.0);
+		updateERBDiagram(planActivity.getActivityID());
 	}
 	
 	private void handleEngageProgressChange() {
 		double engageCompleteProgress = getEngageProgress();
 		updateProgressIndicator(engageProgressIndicator, engageCompleteProgress);
-		chapter.setEngageStatus(engageCompleteProgress);
+//		chapter.setEngageStatus(engageCompleteProgress);
 	}
 	
 	private double getEngageProgress() {
-		double numberOfActivitiesInChapter = chapter.getNumberOfUserSelectedActivities() -2; //Subtract Plan & Reflect
+		double numberOfActivitiesInChapter = chapter.getNumberOfAssignedActivities() -2; //Subtract Plan & Reflect
 		double numberOfCompletedActivitiesInChapter = chapter.getNumberOfCompletedActivities();
 		return (numberOfCompletedActivitiesInChapter/numberOfActivitiesInChapter);	
 	}
@@ -109,8 +109,8 @@ public class ProgressColumnController implements Initializable{
 	void handleReflectProgressChange(double progress) {
 		updateProgressIndicator(reflectProgressIndicator, progress);
 		updateActivityStatus(reflectActivity, progress);
-		chapter.setReflectStatus(progress/100.0);
-		updateERBDiagram(reflectActivity.getGUID());
+//		chapter.setReflectStatus(progress/100.0);
+		updateERBDiagram(reflectActivity.getActivityID());
 	}
 	
 	private void updateActivityStatus(Activity activity, double progress) {
