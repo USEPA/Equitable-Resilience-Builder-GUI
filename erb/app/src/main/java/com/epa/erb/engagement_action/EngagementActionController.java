@@ -387,6 +387,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void fillAndStoreTreeViewData(ArrayList<Chapter> chapters) {
+		treeMap.clear();
 		TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
 		rootTreeItem.setExpanded(true);
 		treeView.setRoot(rootTreeItem);
