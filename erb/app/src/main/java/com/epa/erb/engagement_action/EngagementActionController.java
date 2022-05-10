@@ -27,7 +27,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -35,7 +34,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 
 public class EngagementActionController implements Initializable{
 
@@ -410,24 +408,6 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-//	private void setGoalComboBoxCellFactory() {
-//		goalComboBox.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
-//			@Override
-//			public ListCell<Goal> call(ListView<Goal> param) {
-//				ListCell<Goal> cell = new ListCell<Goal>() {
-//					@Override
-//					protected void updateItem(Goal item, boolean empty) {
-//						super.updateItem(item, empty);
-//						if (item != null) {
-//							setText(item.getGoalName());
-//						}
-//					}
-//				};
-//				return cell;
-//			}
-//		});
-//	}
-	
 	private ListCell<Goal> createGoalCell() {
 		return new ListCell<Goal>() {
 			@Override
@@ -707,18 +687,6 @@ public class EngagementActionController implements Initializable{
 		logger.debug("Activity returned is null");
 		return null;
 	}
-	
-//	Activity getSelectedActivity() {
-//		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();
-//		TreeItem<String> parentTreeItem = treeItem.getParent();
-//		if (treeItem != null) {
-//			String GUID = treeMap.get(treeItem);
-//			return getActivity(GUID);
-//		} else {
-//			logger.debug("Selected Activity returned is null");
-//			return null;
-//		}
-//	}
 	
 	String getSelectedActivityGUID() {
 		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();

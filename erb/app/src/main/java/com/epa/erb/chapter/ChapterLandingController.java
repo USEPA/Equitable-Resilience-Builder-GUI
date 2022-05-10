@@ -8,14 +8,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
-import com.epa.erb.chapter_progress_tracker.ProgressTrackerController;
 import com.epa.erb.engagement_action.EngagementActionController;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -24,7 +19,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ChapterLandingController implements Initializable {
@@ -93,19 +87,7 @@ public class ChapterLandingController implements Initializable {
 	
 	@FXML
 	public void viewProgressButtonAction() {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter_progress_tracker/ProgressTracker.fxml"));
-//			ProgressTrackerController progressTrackerController = new ProgressTrackerController(engagementActionController.getListOfChapters(), engagementActionController);
-//			fxmlLoader.setController(progressTrackerController);
-//			Parent root = fxmlLoader.load();
-//			Stage stage = new Stage();
-//			Scene scene = new Scene(root);
-//			stage.setScene(scene);
-//			stage.setTitle("ERB Progress Tracker");
-//			stage.showAndWait();
-//		} catch (Exception e) {
-//			logger.error(e.getMessage());
-//		}
+
 	}
 
 	public void fillActivitiesListView(ArrayList<Activity> listOfActivities) {
