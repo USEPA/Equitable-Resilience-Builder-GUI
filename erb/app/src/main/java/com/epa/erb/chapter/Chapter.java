@@ -14,7 +14,11 @@ public class Chapter {
 		this.numericName = numericName;
 		this.stringName = stringName;
 		this.descriptionName = descriptionName;
-	}	
+	}
+	
+	public Chapter() {
+		
+	}
 
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
 	

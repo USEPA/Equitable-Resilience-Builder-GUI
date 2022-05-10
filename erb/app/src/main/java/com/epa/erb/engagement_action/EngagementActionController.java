@@ -74,6 +74,8 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	HBox body2HBox;
 	@FXML
+	HBox saveHBox;
+	@FXML
 	VBox contentVBox;
 	@FXML
 	ScrollPane attributePanelScrollPane;
@@ -131,6 +133,7 @@ public class EngagementActionController implements Initializable{
 		skippedKeyPane.setStyle("-fx-background-color: " + constants.getSkippedStatusColor() + ";");
 		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
+		saveHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	private void initializeGoalSelection() {
@@ -275,8 +278,10 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	public void startButtonAction() {
 		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
 		String activityID = treeMap.get(selectedTreeItem);
-		Activity activity = getActivity(activityID);
+		Chapter chapter = getChapter(parentTreeItem.getValue());
+		Activity activity = getActivity(activityID, chapter.getChapterNum());
 		activity.setStatus("in progress"); //set status of activity
 		
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
@@ -286,8 +291,10 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	public void completeButtonAction() {
 		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
 		String activityID = treeMap.get(selectedTreeItem);
-		Activity activity = getActivity(activityID);
+		Chapter chapter = getChapter(parentTreeItem.getValue());
+		Activity activity = getActivity(activityID, chapter.getChapterNum());
 		activity.setStatus("complete"); //set status of activity
 		
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
@@ -452,9 +459,9 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void loadActivityContent(TreeItem<String> selectedTreeItem) {
+	private void loadActivityContent(TreeItem<String> selectedTreeItem, Chapter chapter) {
 		String activityID = treeMap.get(selectedTreeItem);
-		Activity selectedActivity = getActivity(activityID);
+		Activity selectedActivity = getActivity(activityID, chapter.getChapterNum());
 		if (selectedActivity.getActivityType().getDescription().contentEquals("worksheet")) {
 			if (!selectedActivity.getLongName().contentEquals("Plan") && !selectedActivity.getLongName().contentEquals("Reflect")) {
 				handleAttributePanelGeneration("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
@@ -474,9 +481,9 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void highlightSelectedActivityDiagram(TreeItem<String> selectedTreeItem) {
+	private void highlightSelectedActivityDiagram(TreeItem<String> selectedTreeItem, Chapter chapter) {
 		String activityID = treeMap.get(selectedTreeItem);
-		Activity selectedActivity = getActivity(activityID);
+		Activity selectedActivity = getActivity(activityID, chapter.getChapterNum());
 		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
 			if(erbPathwayDiagramController.getActivity() == selectedActivity) {
 				erbPathwayDiagramController.highlightDiagram();
@@ -502,17 +509,17 @@ public class EngagementActionController implements Initializable{
 	
 	private void handleActivitySelectedInTree(TreeItem<String> selectedTreeItem, TreeItem<String> parentTreeItem) {
 		String activityGUID = treeMap.get(selectedTreeItem);
-		Activity selectedActivity = getActivity(activityGUID);
-		if(currentSelectedActivity != selectedActivity) { //If a new activity is selected
-			Chapter currentChapter = getChapter(parentTreeItem.getValue());
+		Chapter currentChapter = getChapter(parentTreeItem.getValue());
+		Activity selectedActivity = getActivity(activityGUID, currentChapter.getChapterNum());
+		if(!currentChapter.getStringName().contentEquals(selectedActivity.getChapterAssignment()) || currentSelectedActivity != selectedActivity) { //If a new activity is selected
 			addAttributeScrollPane(1);
 			addERBKeyVBox(1);
 			cleanContentVBox();
 			cleanAttributePanelContentVBox();
 			cleanListOfAttributePanelControllers();
-			loadActivityContent(selectedTreeItem);
+			loadActivityContent(selectedTreeItem, currentChapter);
 			handleActivityERBPathwayGeneration(currentChapter);
-			highlightSelectedActivityDiagram(selectedTreeItem);
+			highlightSelectedActivityDiagram(selectedTreeItem, currentChapter);
 			currentSelectedActivity = selectedActivity;
 			addStatusHBox();
 		}
@@ -670,7 +677,7 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 			
-	private Chapter getChapter(String chapterName) {
+	public Chapter getChapter(String chapterName) {
 		for(Chapter chapter : listOfChapters) {
 			if(chapter.getStringName().contentEquals(chapterName)) {
 				return chapter;
@@ -681,21 +688,17 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	public Chapter getChapterForActivity(Activity activity) {
-		for(Chapter chapter : listOfChapters) {
-			for(Activity chapterActivity: chapter.getAssignedActivities()) {
-				if(chapterActivity.getActivityID().contentEquals(activity.getActivityID())) {
-					return chapter;
-				}
-			}
-		}
+		String chapterName = "Chapter " + activity.getChapterAssignment();
+		Chapter chapter = getChapter(chapterName);
+		if(chapter != null) return chapter;
 		logger.debug("Chapter returned is null");
 		return null;
 	}
 	
-	private Activity getActivity(String guid) {
+	private Activity getActivity(String activityID, int chapterNum) {
 		for(Chapter chapter: listOfChapters) {
 			for(Activity activity : chapter.getAssignedActivities()) {
-				if(activity.getActivityID().contentEquals(guid)) {
+				if(activity.getActivityID().contentEquals(activityID) && activity.getChapterAssignment().contentEquals(String.valueOf(chapterNum))) {
 					return activity;
 				}
 			}
@@ -704,16 +707,17 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
-	Activity getSelectedActivity() {
-		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();
-		if (treeItem != null) {
-			String GUID = treeMap.get(treeItem);
-			return getActivity(GUID);
-		} else {
-			logger.debug("Selected Activity returned is null");
-			return null;
-		}
-	}
+//	Activity getSelectedActivity() {
+//		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();
+//		TreeItem<String> parentTreeItem = treeItem.getParent();
+//		if (treeItem != null) {
+//			String GUID = treeMap.get(treeItem);
+//			return getActivity(GUID);
+//		} else {
+//			logger.debug("Selected Activity returned is null");
+//			return null;
+//		}
+//	}
 	
 	String getSelectedActivityGUID() {
 		TreeItem<String> treeItem = treeView.getSelectionModel().getSelectedItem();

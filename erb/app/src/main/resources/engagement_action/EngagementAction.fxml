@@ -21,17 +21,13 @@
                <children>
                   <Label text="Goal">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                   <ComboBox fx:id="goalComboBox" onAction="#goalComboBoxAction" prefWidth="150.0" />
                </children>
             </HBox>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
          </children>
       </HBox>
       <HBox fx:id="headingHBox">

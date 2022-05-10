@@ -118,14 +118,14 @@ public class ChapterLandingController implements Initializable {
 	
 	private ArrayList<Activity> getActivitiesForListView() {
 		ArrayList<Activity> activitiesForListView = new ArrayList<Activity>();
-		if (chapter != null) { //landing for a single chapter
+		if (chapter != null) { // landing for a single chapter
 			for (Activity activity : chapter.getAssignedActivities()) {
 				activitiesForListView.add(activity);
 			}
-		} else { //landing for erb showing all chapters
+		} else { // landing for erb showing all chapters
 			for (Chapter chapter : listOfAllChapters) {
 				for (Activity activity : chapter.getAssignedActivities()) {
-						activitiesForListView.add(activity);
+					activitiesForListView.add(activity);
 				}
 			}
 		}
@@ -141,12 +141,7 @@ public class ChapterLandingController implements Initializable {
 					protected void updateItem(Activity item, boolean empty) {
 						super.updateItem(item, empty);
 						if (item != null) {
-							Chapter assignedChapter = engagementActionController.getChapterForActivity(item);
-							if (assignedChapter != null) {
-								setText(assignedChapter.getStringName() + ": " + item.getLongName());
-							} else {
-								setText(item.getLongName());
-							}
+							setText("Chapter " + item.getChapterAssignment() + ": " + item.getLongName());
 							setFont(new Font(14.0));
 						}
 					}
@@ -160,11 +155,16 @@ public class ChapterLandingController implements Initializable {
 	private void handleActivitySelectedInList() {
 		Activity selectedActivity = activitiesListView.getSelectionModel().getSelectedItem();
 		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeMap();
-		for(TreeItem<String> treeItem : treeMap.keySet()) {
-			if(treeItem.getValue().contentEquals(selectedActivity.getLongName())) { //if tree item value matches
-				if(treeMap.get(treeItem).contentEquals(selectedActivity.getActivityID())){ //if tree item GUID matches
-					engagementActionController.getTreeView().getSelectionModel().select(treeItem); //select tree item
-					engagementActionController.treeViewClicked(); //handle tree item selected
+		for (TreeItem<String> treeItem : treeMap.keySet()) {
+			String treeItemValue = treeItem.getValue();
+			if (treeItemValue.contentEquals(selectedActivity.getLongName())) { // if tree item value matches activity name
+				String treeItemActivityID = treeMap.get(treeItem);
+				if (treeItemActivityID.contentEquals(selectedActivity.getActivityID())) { // if tree item GUID matches
+					Chapter treeItemChapter = engagementActionController.getChapter(treeItem.getParent().getValue());
+					if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(selectedActivity.getChapterAssignment())) {
+						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
+						engagementActionController.treeViewClicked(); // handle tree item selected
+					}
 				}
 			}
 		}

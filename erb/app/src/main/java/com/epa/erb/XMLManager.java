@@ -235,11 +235,12 @@ public class XMLManager {
 	public ArrayList<Chapter> parseGoalXML(File xmlFile, ArrayList<Activity> activities){
 		if (xmlFile.exists() && xmlFile.canRead()) {
 			try {
-				ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
+				
+				ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 				NodeList chapterNodeList = doc.getElementsByTagName("chapter");
 				for(int i = 0; i < chapterNodeList.getLength(); i++) {
 					Node chapterNode = chapterNodeList.item(i);
@@ -250,9 +251,9 @@ public class XMLManager {
 						String numericName = chapterElement.getAttribute("numericName");
 						String stringName = chapterElement.getAttribute("stringName");
 						String description = chapterElement.getAttribute("description");
-						ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
 						Chapter chapter = new Chapter(chapterNum, numericName, stringName, description);
 						NodeList assignedActivityNodeList = chapterElement.getElementsByTagName("assignedActivity");
+						ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
 						for(int j =0; j<assignedActivityNodeList.getLength(); j++) {
 							Node assignedActivityNode = assignedActivityNodeList.item(j);
 							//AssignedActivity
@@ -261,8 +262,11 @@ public class XMLManager {
 								String activityID = assignedActivityElement.getAttribute("activityID");
 								String activityStatus = assignedActivityElement.getAttribute("status");
 								Activity activity = getActivity(activityID, activities);
-								activity.setStatus(activityStatus);
-								if(activity != null) listOfChapterActivities.add(activity);
+								if(activity != null) { 									
+									activity.setChapterAssignment(String.valueOf(chapter.getChapterNum()));
+									activity.setStatus(activityStatus);
+									listOfChapterActivities.add(activity);
+								}
 							}
 						}
 						chapter.setAssignedActivities(listOfChapterActivities);
@@ -283,11 +287,29 @@ public class XMLManager {
 	private Activity getActivity(String activityID, ArrayList<Activity> activities) {
 		for(Activity activity : activities) {
 			if(activity.getActivityID().contentEquals(activityID)) {
-				return activity;
+				return cloneActivity(activity);
 			}
 		}
 		logger.debug("Activity returned is null.");
 		return null;
+	}
+	
+	private Activity cloneActivity(Activity activity) {
+		Activity clonedActivity = new Activity();
+		clonedActivity.setActivityType(activity.getActivityType());
+		clonedActivity.setChapterAssignment(activity.getChapterAssignment());
+		clonedActivity.setStatus(activity.getStatus());
+		clonedActivity.setShortName(activity.getShortName());
+		clonedActivity.setLongName(activity.getLongName());
+		clonedActivity.setFileName(activity.getFileName());
+		clonedActivity.setDirections(activity.getDirections());
+		clonedActivity.setObjectives(activity.getObjectives());
+		clonedActivity.setDescription(activity.getDescription());
+		clonedActivity.setMaterials(activity.getMaterials());
+		clonedActivity.setTime(activity.getTime());
+		clonedActivity.setWho(activity.getWho());
+		clonedActivity.setActivityID(activity.getActivityID());
+		return clonedActivity;
 	}
 	
 	private ActivityType getActivityType(String activityTypeName, ArrayList<ActivityType> activityTypes) {

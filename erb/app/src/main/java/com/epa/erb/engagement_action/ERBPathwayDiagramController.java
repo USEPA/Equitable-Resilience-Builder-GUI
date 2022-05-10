@@ -226,8 +226,11 @@ public class ERBPathwayDiagramController implements Initializable {
 		String selectedActivityGUID = activity.getActivityID();
 		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
 			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityGUID) {
-				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-				engagementActionController.treeViewClicked();
+				Chapter treeItemChapter = engagementActionController.getChapter(treeItem.getParent().getValue());
+				if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(activity.getChapterAssignment())) {
+					engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+					engagementActionController.treeViewClicked();
+				}
 			}
 		}
 	}

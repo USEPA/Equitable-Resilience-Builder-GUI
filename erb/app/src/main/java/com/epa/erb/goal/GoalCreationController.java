@@ -62,8 +62,8 @@ public class GoalCreationController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-			populateGoalCategoryCheckBoxes();
-			setGoalsListViewCellFactory();
+		populateGoalCategoryCheckBoxes();
+		setGoalsListViewCellFactory();
 	}
 
 	@FXML
@@ -145,22 +145,30 @@ public class GoalCreationController implements Initializable{
 	private ArrayList<Chapter> getAllChapters(ArrayList<Activity> activities) {
 		ArrayList<String> chapterNumbers = getAllChapterNumbers(activities);
 		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
-		for(String chapterNumber : chapterNumbers) {
-			Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber, "Chapter " + chapterNumber, "");
-			ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities);
-			chapter.setAssignedActivities(activitiesForChapter);
-			chapters.add(chapter);
+		for (String chapterNumber : chapterNumbers) {
+			if (!chapterNumber.contentEquals("0")) {
+				Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, "");
+				ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities);
+				chapter.setAssignedActivities(activitiesForChapter);
+				chapters.add(chapter);
+			}
 		}
 		return chapters;
 	}
 	
 	private ArrayList<Activity> getActivitiesForChapter(String chapterNumber, ArrayList<Activity> activities){
 		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
+		Activity planActivity = app.getActivity("25");
+		planActivity.setChapterAssignment(chapterNumber);
+		activitiesForChapter.add(planActivity);
 		for(Activity activity : activities) {
 			if(activity.getChapterAssignment().contentEquals(chapterNumber)) {
 				activitiesForChapter.add(activity);
 			}
 		}
+		Activity reflectActivity = app.getActivity("26");
+		reflectActivity.setChapterAssignment(chapterNumber);
+		activitiesForChapter.add(reflectActivity);
 		return activitiesForChapter;
 	}
 	
