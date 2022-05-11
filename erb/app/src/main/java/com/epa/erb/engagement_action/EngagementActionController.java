@@ -229,9 +229,10 @@ public class EngagementActionController implements Initializable{
 	private void loadChapterReflect(Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Reflect.fxml"));
-			ReflectController reflectController = new ReflectController(chapter);
+			ReflectController reflectController = new ReflectController(chapter, this);
 			fxmlLoader.setController(reflectController);
 			Parent root = fxmlLoader.load();
+			reflectController.initProgress(getCurrentGoal(), chapter);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		} catch (Exception e) {
@@ -727,7 +728,7 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
-	private Goal getCurrentGoal() {
+	public Goal getCurrentGoal() {
 		return goalComboBox.getSelectionModel().getSelectedItem();
 	}
 		
@@ -829,6 +830,10 @@ public class EngagementActionController implements Initializable{
 
 	public Button getNextButton() {
 		return nextButton;
+	}
+	
+	public ArrayList<Chapter> getListOfChapters() {
+		return listOfChapters;
 	}
 
 	public File getDataFileToLoad() {

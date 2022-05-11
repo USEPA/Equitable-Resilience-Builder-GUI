@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="engagementVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="engagementVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="saveHBox" alignment="CENTER_RIGHT">
          <children>
@@ -131,7 +131,7 @@
       <HBox fx:id="bodyHBox" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
             <TreeView fx:id="treeView" prefHeight="200.0" />
-            <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" HBox.hgrow="ALWAYS">
+            <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                <content>
                   <VBox fx:id="mainVBox" prefHeight="200.0" prefWidth="100.0">
                      <children>
