@@ -7,7 +7,6 @@ import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -129,6 +128,7 @@ public class ReflectController implements Initializable{
 			Slider slider = new Slider();
 			slider.setId(activity.getActivityID());
 			slider.setOnMouseClicked(e-> ratingSliderAdjusted(slider, activity));
+			slider.setValue(100.0);
 			listOfSliders.add(slider);
 		}
 		return listOfSliders;
@@ -141,8 +141,8 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void ratingSliderAdjusted(Slider slider, Activity activity) {
-		System.out.println("Slider adjusted for " + activity.getLongName());
 		updatePercentLabel(activity, slider.getValue());
+		handleConfidenceProgressBar(chapter);
 	}
 	
 	private void populatePercentLabels(ArrayList<Activity> activities) {
@@ -153,7 +153,7 @@ public class ReflectController implements Initializable{
 	private ArrayList<Label> createPercentLabels(ArrayList<Activity> activities){
 		ArrayList<Label> listOfLabels = new ArrayList<Label>();
 		for(Activity activity : activities) {
-			Label label = new Label("0%");
+			Label label = new Label("100%");
 			label.setFont(new Font(14.0));
 			label.setId(activity.getActivityID());
 			listOfLabels.add(label);
@@ -242,7 +242,7 @@ public class ReflectController implements Initializable{
 	
 	public void initProgress(Goal goal, Chapter chapter) {
 		handleGoalProgressBar(goal);
-		handleConfidenceProgressBar(goal);
+		handleConfidenceProgressBar(chapter);
 		handleChapterProgressBar(chapter);
 	}
 	
@@ -283,13 +283,21 @@ public class ReflectController implements Initializable{
 		});
 	}
 	
-	private void handleConfidenceProgressBar(Goal goal) {
-		int confidencePercent = getConfidencePercent(goal);
+	private void handleConfidenceProgressBar(Chapter chapter) {
+		int confidencePercent = getConfidencePercent(chapter);
 		setConfidenceRating(confidencePercent);
 	}
 	
-	private int getConfidencePercent(Goal goal) {
-		return (100);
+	private int getConfidencePercent(Chapter chapter) {
+		//TODO: Switch this to activity rating
+		double max = (chapter.getNumberOfAssignedActivities()-2) * 100;
+		double rating = 0;
+		for(int i =0; i < ratingVBox.getChildren().size(); i++) {
+			Slider slider = (Slider) ratingVBox.getChildren().get(i);
+			rating = rating + slider.getValue();
+		}
+		
+		return (int) (((rating/max) * 100));
 	}
 	
 	private void setConfidenceRating(int percent) {
