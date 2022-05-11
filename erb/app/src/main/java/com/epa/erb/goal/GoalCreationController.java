@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Control;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -30,6 +31,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -161,7 +163,7 @@ public class GoalCreationController implements Initializable{
 		planActivity.setChapterAssignment(chapterNumber);
 		activitiesForChapter.add(planActivity);
 		for(Activity activity : activities) {
-			if(activity.getChapterAssignment().contentEquals(chapterNumber)) {
+			if(activity.getChapterAssignment().contentEquals(chapterNumber) && !activitiesForChapter.contains(activity)) {
 				activitiesForChapter.add(activity);
 			}
 		}
@@ -225,6 +227,9 @@ public class GoalCreationController implements Initializable{
 	private void uncheckAllGoalCategoryCheckBoxes() {
 		for (int i = 0; i < goalsVBox.getChildren().size(); i++) {
 			CheckBox goalCheckBox = (CheckBox) goalsVBox.getChildren().get(i);
+			goalCheckBox.setWrapText(true);
+			goalCheckBox.setPrefHeight(Control.USE_COMPUTED_SIZE);
+			goalCheckBox.setPrefWidth(Control.USE_COMPUTED_SIZE);
 			goalCheckBox.setSelected(false);
 		}
 	}

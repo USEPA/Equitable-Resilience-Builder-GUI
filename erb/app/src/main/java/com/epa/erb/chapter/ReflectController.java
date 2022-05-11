@@ -9,7 +9,10 @@ import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -18,6 +21,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class ReflectController implements Initializable{
 	
@@ -98,7 +102,7 @@ public class ReflectController implements Initializable{
 	private ArrayList<Hyperlink> createNotesHyperlinks(ArrayList<Activity> activities){
 		ArrayList<Hyperlink> listOfHyperlinks = new ArrayList<Hyperlink>();
 		for(Activity activity: activities) {
-			Hyperlink hyperlink = new Hyperlink("Add Notes");
+			Hyperlink hyperlink = new Hyperlink("Notes");
 			hyperlink.setId(activity.getActivityID());
 			hyperlink.setFont(new Font(13.0));
 			hyperlink.setOnAction(e-> notesHyperlinkClicked(hyperlink, activity));
@@ -114,7 +118,25 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void notesHyperlinkClicked(Hyperlink hyperlink, Activity activity) {
-		System.out.println("Hyperlink clicked for " + activity.getLongName());
+		loadReflectNotes(activity);
+	}
+	
+	private Stage reflectNotesStage = null;
+	private void loadReflectNotes(Activity activity) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectNotes.fxml"));
+			ReflectNotesController reflectNotesController = new ReflectNotesController(activity, this);
+			fxmlLoader.setController(reflectNotesController);
+			Parent root = fxmlLoader.load();
+			reflectNotesStage = new Stage();
+			Scene scene = new Scene(root);
+			reflectNotesStage.setScene(scene);
+			reflectNotesStage.setTitle("Notes");
+			reflectNotesStage.show();
+		}catch (Exception e) {
+			e.printStackTrace();
+			//TODO: Add logger statement
+		}
 	}
 	
 	private void populateRatingSliders(ArrayList<Activity> activities) {
@@ -128,7 +150,7 @@ public class ReflectController implements Initializable{
 			Slider slider = new Slider();
 			slider.setId(activity.getActivityID());
 			slider.setOnMouseClicked(e-> ratingSliderAdjusted(slider, activity));
-			slider.setValue(100.0);
+			slider.setValue(Double.parseDouble(activity.getRating()));
 			listOfSliders.add(slider);
 		}
 		return listOfSliders;
@@ -142,6 +164,7 @@ public class ReflectController implements Initializable{
 	
 	private void ratingSliderAdjusted(Slider slider, Activity activity) {
 		updatePercentLabel(activity, slider.getValue());
+		activity.setRating(String.valueOf((int) slider.getValue()));
 		handleConfidenceProgressBar(chapter);
 	}
 	
@@ -153,7 +176,7 @@ public class ReflectController implements Initializable{
 	private ArrayList<Label> createPercentLabels(ArrayList<Activity> activities){
 		ArrayList<Label> listOfLabels = new ArrayList<Label>();
 		for(Activity activity : activities) {
-			Label label = new Label("100%");
+			Label label = new Label(activity.getRating() + "%");
 			label.setFont(new Font(14.0));
 			label.setId(activity.getActivityID());
 			listOfLabels.add(label);
@@ -342,6 +365,12 @@ public class ReflectController implements Initializable{
 				chapterRatingPercentLabel.setText(percent + "%");
 			}
 		});
+	}
+	
+	public void closeReflectNotesStage() {
+		if(reflectNotesStage!=null) {
+			reflectNotesStage.close();
+		}
 	}
 	
 }

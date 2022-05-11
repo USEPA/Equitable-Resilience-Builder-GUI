@@ -15,7 +15,9 @@ public class Activity {
 	private String time;
 	private String who;
 	private String activityID;
-	public Activity(ActivityType activityType, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID) {
+	private String notes;
+	private String rating;
+	public Activity(ActivityType activityType, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID, String notes, String rating) {
 		this.activityType = activityType;
 		this.chapterAssignment = chapterAssignment;
 		this.status = status;
@@ -29,6 +31,8 @@ public class Activity {
 		this.time = time;
 		this.who = who;
 		this.activityID = activityID;
+		this.notes = notes;
+		this.rating = rating;
 	}
 		
 	public Activity() {
@@ -138,7 +142,23 @@ public class Activity {
 	public void setActivityID(String activityID) {
 		this.activityID = activityID;
 	}
-	
+		
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
 	public String toString() {
 		return  "--ActivityType-- " + "\n" + activityType.toString() +  "\n" + "----" + "\n" +
 				"ShortName: " + shortName + "\n" + 

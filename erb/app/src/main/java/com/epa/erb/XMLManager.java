@@ -89,7 +89,9 @@ public class XMLManager {
 						String time = activityElement.getAttribute("time");
 						String who = activityElement.getAttribute("who");
 						String activityID = activityElement.getAttribute("activityID");
-						Activity activity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID);
+						String notes = activityElement.getAttribute("notes");
+						String rating = activityElement.getAttribute("rating");
+						Activity activity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID, notes, rating);
 						availableActivities.add(activity);
 					}
 				}
@@ -259,10 +261,14 @@ public class XMLManager {
 								Element assignedActivityElement = (Element) assignedActivityNode;
 								String activityID = assignedActivityElement.getAttribute("activityID");
 								String activityStatus = assignedActivityElement.getAttribute("status");
+								String activityNotes = assignedActivityElement.getAttribute("notes");
+								String activityRating = assignedActivityElement.getAttribute("rating");
 								Activity activity = getActivity(activityID, activities);
 								if(activity != null) { 									
 									activity.setChapterAssignment(String.valueOf(chapter.getChapterNum()));
 									activity.setStatus(activityStatus);
+									activity.setNotes(activityNotes);
+									activity.setRating(activityRating);
 									listOfChapterActivities.add(activity);
 								}
 							}
@@ -307,6 +313,8 @@ public class XMLManager {
 		clonedActivity.setTime(activity.getTime());
 		clonedActivity.setWho(activity.getWho());
 		clonedActivity.setActivityID(activity.getActivityID());
+		clonedActivity.setNotes(activity.getNotes());
+		clonedActivity.setRating(activity.getRating());
 		return clonedActivity;
 	}
 	
@@ -382,6 +390,8 @@ public class XMLManager {
 					Element assignedActivityElement = document.createElement("assignedActivity");
 					assignedActivityElement.setAttribute("activityID", activity.getActivityID());
 					assignedActivityElement.setAttribute("status", activity.getStatus());
+					assignedActivityElement.setAttribute("notes", activity.getNotes());
+					assignedActivityElement.setAttribute("rating", activity.getRating());
 					assignedActivitiesElement.appendChild(assignedActivityElement);
 				}
 				chapterElement.appendChild(assignedActivitiesElement);
