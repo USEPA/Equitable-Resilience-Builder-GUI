@@ -9,11 +9,13 @@ public class Chapter {
 	private String numericName;
 	private String stringName;
 	private String descriptionName;
-	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName) {
+	private String notes;
+	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName, String notes) {
 		this.chapterNum = chapterNum;
 		this.numericName = numericName;
 		this.stringName = stringName;
 		this.descriptionName = descriptionName;
+		this.notes = notes;
 	}
 	
 	public Chapter() {
@@ -53,7 +55,15 @@ public class Chapter {
 	public void setDescriptionName(String descriptionName) {
 		this.descriptionName = descriptionName;
 	}
-	
+		
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
 	public ArrayList<Activity> getAssignedActivities() {
 		return assignedActivities;
 	}

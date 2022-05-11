@@ -54,7 +54,7 @@
                         </VBox>
                         <VBox minWidth="45.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label minWidth="0.0" text="Status">
+                              <Label minWidth="0.0" text="Completed">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>

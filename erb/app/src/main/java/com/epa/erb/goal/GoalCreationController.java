@@ -148,7 +148,7 @@ public class GoalCreationController implements Initializable{
 		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 		for (String chapterNumber : chapterNumbers) {
 			if (!chapterNumber.contentEquals("0")) {
-				Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, "");
+				Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, "", "");
 				ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities);
 				chapter.setAssignedActivities(activitiesForChapter);
 				chapters.add(chapter);

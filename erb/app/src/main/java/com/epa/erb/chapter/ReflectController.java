@@ -134,7 +134,6 @@ public class ReflectController implements Initializable{
 			reflectNotesStage.setTitle("Notes");
 			reflectNotesStage.show();
 		}catch (Exception e) {
-			e.printStackTrace();
 			//TODO: Add logger statement
 		}
 	}

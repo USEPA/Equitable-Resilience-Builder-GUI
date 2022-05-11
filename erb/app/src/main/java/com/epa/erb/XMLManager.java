@@ -251,7 +251,8 @@ public class XMLManager {
 						String numericName = chapterElement.getAttribute("numericName");
 						String stringName = chapterElement.getAttribute("stringName");
 						String description = chapterElement.getAttribute("description");
-						Chapter chapter = new Chapter(chapterNum, numericName, stringName, description);
+						String notes = chapterElement.getAttribute("notes");
+						Chapter chapter = new Chapter(chapterNum, numericName, stringName, description, notes);
 						NodeList assignedActivityNodeList = chapterElement.getElementsByTagName("assignedActivity");
 						ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
 						for(int j =0; j<assignedActivityNodeList.getLength(); j++) {
@@ -384,6 +385,7 @@ public class XMLManager {
 				chapterElement.setAttribute("numericName", chapter.getNumericName());
 				chapterElement.setAttribute("stringName", chapter.getStringName());
 				chapterElement.setAttribute("description", chapter.getDescriptionName());
+				chapterElement.setAttribute("notes", chapter.getNotes());
 				
 				Element assignedActivitiesElement = document.createElement("assignedActivities");
 				for(Activity activity: chapter.getAssignedActivities()) {
