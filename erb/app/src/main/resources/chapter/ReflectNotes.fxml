@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="404.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
-            <Label text="Notes for activity/chapter">
+            <Label fx:id="titleLabel" text="Notes for activity/chapter">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

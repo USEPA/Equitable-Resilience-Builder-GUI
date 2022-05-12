@@ -53,8 +53,6 @@ public class ReflectController implements Initializable{
 	Label confidencePercentLabel;
 	@FXML
 	Label chapterRatingPercentLabel;
-	@FXML
-	Hyperlink appChapterNotesHyperlink;
 	
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
@@ -118,23 +116,33 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void notesHyperlinkClicked(Hyperlink hyperlink, Activity activity) {
-		loadReflectNotes(activity);
+		loadReflectNotes(activity, null);
+	}
+	
+	@FXML
+	private void addChapterNotesAction() {
+		loadReflectNotes(null, chapter);
 	}
 	
 	private Stage reflectNotesStage = null;
-	private void loadReflectNotes(Activity activity) {
+
+	private void loadReflectNotes(Activity activity, Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectNotes.fxml"));
-			ReflectNotesController reflectNotesController = new ReflectNotesController(activity, this);
-			fxmlLoader.setController(reflectNotesController);
-			Parent root = fxmlLoader.load();
-			reflectNotesStage = new Stage();
-			Scene scene = new Scene(root);
-			reflectNotesStage.setScene(scene);
-			reflectNotesStage.setTitle("Notes");
-			reflectNotesStage.show();
-		}catch (Exception e) {
-			//TODO: Add logger statement
+			ReflectNotesController reflectNotesController = null;
+			if (activity != null) reflectNotesController = new ReflectNotesController(activity, this);
+			if (chapter != null) reflectNotesController = new ReflectNotesController(chapter, this);
+			if (reflectNotesController != null) {
+				fxmlLoader.setController(reflectNotesController);
+				Parent root = fxmlLoader.load();
+				reflectNotesStage = new Stage();
+				Scene scene = new Scene(root);
+				reflectNotesStage.setScene(scene);
+				reflectNotesStage.setTitle("Notes");
+				reflectNotesStage.show();
+			}
+		} catch (Exception e) {
+			// TODO: Add logger statement
 		}
 	}
 	

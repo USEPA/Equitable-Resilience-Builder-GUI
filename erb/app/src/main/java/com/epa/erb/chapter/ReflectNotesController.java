@@ -5,10 +5,13 @@ import java.util.ResourceBundle;
 import com.epa.erb.Activity;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class ReflectNotesController implements Initializable{
 
+	@FXML
+	Label titleLabel;
 	@FXML
 	TextArea notesTextArea;
 	
@@ -19,20 +22,40 @@ public class ReflectNotesController implements Initializable{
 		this.reflectController = reflectController;
 	}
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		checkForExistingNotes();
+	private Chapter chapter;
+	public ReflectNotesController(Chapter chapter, ReflectController reflectController) {
+		this.chapter = chapter;
+		this.reflectController = reflectController;
 	}
 	
-	private void checkForExistingNotes() {
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		 if(activity !=null) {
+			 checkForExistingActivityNotes();
+			 titleLabel.setText("Notes for " + activity.getLongName());
+		 }
+		 if(chapter !=null) {
+			 checkForExistingChapterNotes();
+			 titleLabel.setText("Notes for " + chapter.getStringName());
+		 }
+	}
+	
+	private void checkForExistingActivityNotes() {
 		if(activity.getNotes() != null && activity.getNotes().length() > 0) {
 			notesTextArea.setText(activity.getNotes());
 		}
 	}
 	
+	private void checkForExistingChapterNotes() {
+		if(chapter.getNotes() != null && chapter.getNotes().length() > 0) {
+			notesTextArea.setText(chapter.getNotes());
+		}
+	}
+	
 	@FXML
 	public void saveNotesAction() {
-		activity.setNotes(notesTextArea.getText());
+		if(activity != null) activity.setNotes(notesTextArea.getText());
+		if(chapter != null) chapter.setNotes(notesTextArea.getText());
 		reflectController.closeReflectNotesStage();
 	}
 

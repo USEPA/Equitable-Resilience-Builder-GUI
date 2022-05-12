@@ -146,7 +146,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Hyperlink fx:id="addChapterNotesHyperlink" text="Add Notes">
+                        <Hyperlink onAction="#addChapterNotesAction" text="Notes">
                            <font>
                               <Font size="15.0" />
                            </font>
