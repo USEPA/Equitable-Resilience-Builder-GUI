@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -82,7 +83,21 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	Label attributePanelCollapseLabel;
 	@FXML
-	VBox attributePanelContentVBox;
+	VBox attributePanelContentVBox;	
+	@FXML
+	Label goalProgressPercentLabel;
+	@FXML
+	Label goalConfidencePercentLabel;
+	@FXML
+	VBox goalProgressVBox;
+	@FXML
+	VBox goalProgressBar;
+	@FXML
+	VBox goalConfidenceVBox;
+	@FXML
+	VBox goalConfidenceBar;
+	@FXML
+	ProgressIndicator chapterProgressIndicator;
 	@FXML
 	Button previousButton;
 	@FXML
