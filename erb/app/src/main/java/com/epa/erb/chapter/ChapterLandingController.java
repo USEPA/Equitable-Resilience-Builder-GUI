@@ -84,11 +84,6 @@ public class ChapterLandingController implements Initializable {
 			return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
 		}
 	}
-	
-	@FXML
-	public void viewProgressButtonAction() {
-
-	}
 
 	public void fillActivitiesListView(ArrayList<Activity> listOfActivities) {
 		cleanActivitiesListView();
