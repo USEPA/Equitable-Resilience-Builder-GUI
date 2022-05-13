@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
+import com.epa.erb.Progress;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import javafx.application.Platform;
@@ -28,9 +29,9 @@ public class ReflectController implements Initializable{
 	@FXML
 	HBox erbHeading;
 	@FXML
-	VBox goalProgressVBox;
+	VBox chapterProgressVBox;
 	@FXML
-	VBox goalProgressBar;
+	VBox chapterProgressBar;
 	@FXML
 	VBox statusVBox;
 	@FXML
@@ -46,13 +47,13 @@ public class ReflectController implements Initializable{
 	@FXML
 	VBox confidenceRatingBar;
 	@FXML
-	ProgressBar chapterRatingProgressBar;
+	ProgressBar goalProgressBar;
 	@FXML
-	Label goalPercentLabel;
+	Label chapterPercentLabel;
 	@FXML
 	Label confidencePercentLabel;
 	@FXML
-	Label chapterRatingPercentLabel;
+	Label goalProgressLabel;
 	
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
@@ -62,6 +63,7 @@ public class ReflectController implements Initializable{
 	}
 	
 	private Constants constants = new Constants();
+	private Progress progress = new Progress();
 	private ArrayList<Activity> chapterActivities = new ArrayList<Activity>();
 	
 	@Override
@@ -73,7 +75,8 @@ public class ReflectController implements Initializable{
 	
 	private void handleControls() {
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-		goalProgressVBox.heightProperty().addListener(e-> initProgress(engagementActionController.getCurrentGoal(), chapter));
+		goalProgressBar.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
+		chapterProgressVBox.heightProperty().addListener(e-> initProgress(engagementActionController.getCurrentGoal(), chapter));
 	}
 	
 	private void fillChapterActivitiesList() {
@@ -172,7 +175,7 @@ public class ReflectController implements Initializable{
 	private void ratingSliderAdjusted(Slider slider, Activity activity) {
 		updatePercentLabel(activity, slider.getValue());
 		activity.setRating(String.valueOf((int) slider.getValue()));
-		handleConfidenceProgressBar(chapter);
+		handleChapterConfidenceProgressBar(chapter);
 		engagementActionController.handleLocalProgress(chapter, engagementActionController.getListOfChapters());
 	}
 	
@@ -272,66 +275,37 @@ public class ReflectController implements Initializable{
 	}
 	
 	public void initProgress(Goal goal, Chapter chapter) {
-		handleGoalProgressBar(goal);
-		handleConfidenceProgressBar(chapter);
-		handleChapterProgressBar(chapter);
+		handleChapterProgressBar(goal);
+		handleChapterConfidenceProgressBar(chapter);
+		handleGoalProgressBar(chapter);
 	}
 	
-	private void handleGoalProgressBar(Goal goal) {
-		int goalPercentDone = getGoalPercentDone(goal);
-		setGoalProgress(goalPercentDone);
+	private void handleChapterProgressBar(Goal goal) {
+		int chapterPercent = progress.getChapterPercentDone(chapter);
+		setChapterProgress(chapterPercent);
 	}
 	
-	private int getGoalPercentDone(Goal goal) {
-		ArrayList<Chapter> listOfChaptersInGoal = engagementActionController.getListOfChapters();
-		double numberOfActivitiesInGoal = 0;
-		double numberOfCompletedActivitiesInGoal = 0;
-		for(Chapter chapter: listOfChaptersInGoal) {
-			for(Activity activity: chapter.getAssignedActivities()) {
-				if(!activity.getActivityID().contentEquals("25") && !activity.getActivityID().contentEquals("26")) {
-					numberOfActivitiesInGoal++;
-					if(activity.getStatus().contentEquals("complete")) {
-						numberOfCompletedActivitiesInGoal++;
-					}
-				}
-			}
-		}
-		return (int) ((numberOfCompletedActivitiesInGoal/numberOfActivitiesInGoal) * 100);
-	}	
-	
-	private void setGoalProgress(int percent) {
+	private void setChapterProgress(int percent) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				double progressBarHeight = goalProgressVBox.getHeight();
-				goalProgressBar.setMaxHeight(progressBarHeight);
-				goalProgressBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+				double progressBarHeight = chapterProgressVBox.getHeight();
+				chapterProgressBar.setMaxHeight(progressBarHeight);
+				chapterProgressBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 				double fixedCapacity = 100;
 				double progress = percent/fixedCapacity;
-				goalProgressBar.setPrefHeight(progressBarHeight*progress);
-				goalPercentLabel.setText(percent + "%");
+				chapterProgressBar.setPrefHeight(progressBarHeight*progress);
+				chapterPercentLabel.setText(percent + "%");
 			}
 		});
 	}
 	
-	private void handleConfidenceProgressBar(Chapter chapter) {
-		int confidencePercent = getConfidencePercent(chapter);
-		setConfidenceRating(confidencePercent);
+	private void handleChapterConfidenceProgressBar(Chapter chapter) {
+		int confidencePercent = progress.getChapterConfidencePercent(chapter);
+		setChapterConfidenceRating(confidencePercent);
 	}
 	
-	private int getConfidencePercent(Chapter chapter) {
-		//TODO: Switch this to activity rating
-		double max = (chapter.getNumberOfAssignedActivities()-2) * 100;
-		double rating = 0;
-		for(int i =0; i < ratingVBox.getChildren().size(); i++) {
-			Slider slider = (Slider) ratingVBox.getChildren().get(i);
-			rating = rating + slider.getValue();
-		}
-		
-		return (int) (((rating/max) * 100));
-	}
-	
-	private void setConfidenceRating(int percent) {
+	private void setChapterConfidenceRating(int percent) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
@@ -346,31 +320,17 @@ public class ReflectController implements Initializable{
 		});
 	}
 	
-	private void handleChapterProgressBar(Chapter chapter) {
-		int chapterPercent = getChapterPercentDone(chapter);
-		setChapterRating(chapterPercent);
+	private void handleGoalProgressBar(Chapter chapter) {
+		int goalPercent = progress.getGoalPercentDone(engagementActionController.getListOfChapters());
+		setGoalRating(goalPercent);
 	}
-	
-	private int getChapterPercentDone(Chapter chapter) {
-		double numberOfActivitiesInChapter =0;
-		double numberOfCompletedActivitiesInChapter = 0;
-		for (Activity activity : chapter.getAssignedActivities()) {
-			if (!activity.getActivityID().contentEquals("25") && !activity.getActivityID().contentEquals("26")) {
-				numberOfActivitiesInChapter++;
-				if (activity.getStatus().contentEquals("complete")) {
-					numberOfCompletedActivitiesInChapter++;
-				}
-			}
-		}
-		return (int) ((numberOfCompletedActivitiesInChapter / numberOfActivitiesInChapter) * 100);
-	}
-	
-	private void setChapterRating(int percent) {
+
+	private void setGoalRating(int percent) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				chapterRatingProgressBar.setProgress(percent / 100.0);
-				chapterRatingPercentLabel.setText(percent + "%");
+				goalProgressBar.setProgress(percent / 100.0);
+				goalProgressLabel.setText(percent + "%");
 			}
 		});
 	}

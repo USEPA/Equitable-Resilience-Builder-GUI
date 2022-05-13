@@ -160,7 +160,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void addProgressListeners() {
 		goalProgressVBox.heightProperty().addListener(e-> handleProgressListeners());
-		goalConfidenceVBox.heightProperty().addListener(e-> handleProgressListeners());
+		//goalConfidenceVBox.heightProperty().addListener(e-> handleProgressListeners());
 	}
 	
 	private void handleProgressListeners() {
