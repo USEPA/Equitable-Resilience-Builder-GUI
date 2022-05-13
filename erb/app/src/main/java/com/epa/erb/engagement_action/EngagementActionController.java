@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
+import com.epa.erb.Progress;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
@@ -19,6 +20,8 @@ import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
 import com.epa.erb.worksheet.WorksheetContentController;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -65,7 +68,11 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	Pane inProgressKeyPane;
 	@FXML
+	VBox treeViewVBox;
+	@FXML
 	TreeView<String> treeView;
+	@FXML
+	VBox localProgressVBox;
 	@FXML
 	VBox mainVBox;
 	@FXML
@@ -127,8 +134,8 @@ public class EngagementActionController implements Initializable{
 		fillGoalComboBox();
 		goalComboBox.setCellFactory(lv-> createGoalCell());
 		goalComboBox.setButtonCell(createGoalCell());
-		handleControls();
 		initializeGoalSelection();
+		handleControls();
 		handleNavigationButtonsShown(null, null);
 	}
 	
@@ -146,7 +153,26 @@ public class EngagementActionController implements Initializable{
 		skippedKeyPane.setStyle("-fx-background-color: " + constants.getSkippedStatusColor() + ";");
 		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
+		chapterProgressIndicator.setStyle(" -fx-progress-color: " + constants.getAllChaptersColor() + ";");
 		saveHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+		addProgressListeners();
+	}
+	
+	private void addProgressListeners() {
+		goalProgressVBox.heightProperty().addListener(e-> handleProgressListeners());
+		goalConfidenceVBox.heightProperty().addListener(e-> handleProgressListeners());
+	}
+	
+	private void handleProgressListeners() {
+		if(currentSelectedActivity != null) {
+			String currentChapterName = "Chapter " + currentSelectedActivity.getChapterAssignment();
+			handleLocalProgress(getChapter(currentChapterName), listOfChapters);
+		} else {
+			TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+			if(selectedTreeItem.getValue().contains("Chapter")) {
+				handleLocalProgress(getChapter(selectedTreeItem.getValue().trim()), listOfChapters);
+			}
+		}
 	}
 	
 	private void initializeGoalSelection() {
@@ -300,6 +326,8 @@ public class EngagementActionController implements Initializable{
 		
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
+		
+		handleLocalProgress(chapter, listOfChapters);
 	}
 	
 	@FXML
@@ -313,6 +341,8 @@ public class EngagementActionController implements Initializable{
 		
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
+		
+		handleLocalProgress(chapter, listOfChapters);
 	}
 	
 	@FXML
@@ -385,6 +415,8 @@ public class EngagementActionController implements Initializable{
 				if (selectedTreeItemValue.length() > 0) {
 					if (parentTreeItemValue.contains("ERB")) { // Is Chapter
 						handleChapterSelectedInTree(selectedTreeItemValue);
+						addLocalProgressVBox(1);
+						handleLocalProgress(getChapter(selectedTreeItemValue), listOfChapters);
 					} else { // Is Activity
 						handleActivitySelectedInTree(selectedTreeItem, parentTreeItem);
 					}
@@ -393,6 +425,7 @@ public class EngagementActionController implements Initializable{
 				}
 			} else { //ERB Pathway 
 				handleERBPathwaySelectedInTree(selectedTreeItem);
+				removeLocalProgressVBox();
 			}
 		} else {
 			currentSelectedActivity = null;
@@ -456,6 +489,59 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	public void handleLocalProgress(Chapter chapter, ArrayList<Chapter> chapters) {
+		Progress progress = new Progress();
+		if (chapter != null) {
+			int chapterProgress = progress.getChapterPercentDone(chapter);
+			setChapterProgress(chapterProgress);
+		}
+		if(chapters != null) {
+			int goalProgress = progress.getGoalPercentDone(chapters);
+			setGoalProgress(goalProgress);
+			int goalConfidence = progress.getGoalConfidencePercent(chapters);
+			setGoalConfidence(goalConfidence);
+		}
+	}
+	
+	private void setChapterProgress(int chapterPercent) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				chapterProgressIndicator.setProgress(chapterPercent/100.0);
+			}
+		});
+	}
+	
+	private void setGoalProgress(int goalPercent) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				double progressBarHeight = goalProgressVBox.getHeight();
+				goalProgressBar.setMaxHeight(progressBarHeight);
+				goalProgressBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+				double fixedCapacity = 100;
+				double progress = goalPercent / fixedCapacity;
+				goalProgressBar.setPrefHeight(progressBarHeight * progress);
+				goalProgressPercentLabel.setText(goalPercent + "%");
+			}
+		});
+	}
+	
+	private void setGoalConfidence(int goalConfidence) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				double progressBarHeight = goalConfidenceVBox.getHeight();
+				goalConfidenceBar.setMaxHeight(progressBarHeight);
+				goalConfidenceBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+				double fixedCapacity = 100;
+				double progress = goalConfidence / fixedCapacity;
+				goalConfidenceBar.setPrefHeight(progressBarHeight * progress);
+				goalConfidencePercentLabel.setText(goalConfidence + "%");
+			}
+		});
+	}
+	
 	private void loadActivityContent(TreeItem<String> selectedTreeItem, Chapter chapter) {
 		String activityID = treeMap.get(selectedTreeItem);
 		Activity selectedActivity = getActivity(activityID, chapter.getChapterNum());
@@ -508,6 +594,11 @@ public class EngagementActionController implements Initializable{
 		String activityGUID = treeMap.get(selectedTreeItem);
 		Chapter currentChapter = getChapter(parentTreeItem.getValue());
 		Activity selectedActivity = getActivity(activityGUID, currentChapter.getChapterNum());
+		if(!selectedActivity.getActivityID().contentEquals("26")) {
+			addLocalProgressVBox(1);
+		} else {
+			removeLocalProgressVBox();
+		}
 		if(!currentChapter.getStringName().contentEquals(selectedActivity.getChapterAssignment()) || currentSelectedActivity != selectedActivity) { //If a new activity is selected
 			addAttributeScrollPane(1);
 			addERBKeyVBox(1);
@@ -640,6 +731,18 @@ public class EngagementActionController implements Initializable{
 	
 	void removeAttributePanelController(AttributePanelController attributePanelController) {
 		listOfAttributePanelControllers.remove(attributePanelController);
+	}
+	
+	private void addLocalProgressVBox(int index) {
+		if(!treeViewVBox.getChildren().contains(localProgressVBox)) {
+			treeViewVBox.getChildren().add(index, localProgressVBox);
+		}
+	}
+	
+	private void removeLocalProgressVBox() {
+		if(treeViewVBox.getChildren().contains(localProgressVBox)) {
+			treeViewVBox.getChildren().remove(localProgressVBox);
+		}
 	}
 	
 	private void addERBKeyVBox(int index) {

@@ -173,6 +173,7 @@ public class ReflectController implements Initializable{
 		updatePercentLabel(activity, slider.getValue());
 		activity.setRating(String.valueOf((int) slider.getValue()));
 		handleConfidenceProgressBar(chapter);
+		engagementActionController.handleLocalProgress(chapter, engagementActionController.getListOfChapters());
 	}
 	
 	private void populatePercentLabels(ArrayList<Activity> activities) {

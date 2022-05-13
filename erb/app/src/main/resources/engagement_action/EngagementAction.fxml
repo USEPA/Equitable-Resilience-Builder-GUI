@@ -133,8 +133,8 @@
          <children>
             <VBox fx:id="treeViewVBox">
                <children>
-                  <TreeView fx:id="treeView" maxHeight="250.0" prefHeight="200.0" />
-                  <VBox spacing="5.0" style="-fx-border-color: #E7E7E7;" VBox.vgrow="ALWAYS">
+                  <TreeView fx:id="treeView" prefHeight="250.0" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="localProgressVBox" spacing="5.0" style="-fx-border-color: #E7E7E7;" VBox.vgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER">
                            <children>
@@ -166,7 +166,7 @@
                                     <Label text="Progress" />
                                     <VBox fx:id="goalProgressVBox" alignment="BOTTOM_CENTER" maxWidth="25.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <VBox fx:id="goalProgressBar" VBox.vgrow="ALWAYS" />
+                                          <VBox fx:id="goalProgressBar" />
                                        </children>
                                        <padding>
                                           <Insets bottom="0.5" left="0.5" right="0.5" top="0.5" />
@@ -180,7 +180,7 @@
                                     <Label text="Confidence" />
                                     <VBox fx:id="goalConfidenceVBox" alignment="BOTTOM_CENTER" maxWidth="25.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <VBox fx:id="goalConfidenceBar" VBox.vgrow="ALWAYS" />
+                                          <VBox fx:id="goalConfidenceBar" />
                                        </children>
                                        <padding>
                                           <Insets bottom="0.5" left="0.5" right="0.5" top="0.5" />
