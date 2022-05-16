@@ -32,11 +32,11 @@ public class ReflectNotesController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		 if(activity !=null) {
 			 checkForExistingActivityNotes();
-			 titleLabel.setText("Notes for " + activity.getLongName());
+			 titleLabel.setText(activity.getLongName());
 		 }
 		 if(chapter !=null) {
 			 checkForExistingChapterNotes();
-			 titleLabel.setText("Notes for " + chapter.getStringName());
+			 titleLabel.setText(chapter.getStringName());
 		 }
 	}
 	

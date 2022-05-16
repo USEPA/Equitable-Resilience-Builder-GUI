@@ -133,6 +133,15 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Hyperlink onAction="#addChapterNotesAction" text="Chapter Notes">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" spacing="20.0">
                      <children>
                         <Label text="Goal Progress">
@@ -146,15 +155,6 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Hyperlink onAction="#addChapterNotesAction" text="Chapter Notes">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Hyperlink>
                      </children>
                   </HBox>
                </children>

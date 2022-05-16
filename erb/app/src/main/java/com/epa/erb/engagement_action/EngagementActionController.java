@@ -142,6 +142,7 @@ public class EngagementActionController implements Initializable{
 	private void handleControls() {
 		treeView.setOnMouseClicked(e-> treeViewClicked());
 		initializeStyle();
+		addProgressListeners();
 	}
 	
 	private void initializeStyle() {
@@ -155,12 +156,10 @@ public class EngagementActionController implements Initializable{
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
 		chapterProgressIndicator.setStyle(" -fx-progress-color: " + constants.getAllChaptersColor() + ";");
 		saveHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-		addProgressListeners();
 	}
 	
 	private void addProgressListeners() {
-		goalProgressVBox.heightProperty().addListener(e-> handleProgressListeners());
-		//goalConfidenceVBox.heightProperty().addListener(e-> handleProgressListeners());
+		localProgressVBox.heightProperty().addListener(e-> handleProgressListeners());
 	}
 	
 	private void handleProgressListeners() {
@@ -596,6 +595,7 @@ public class EngagementActionController implements Initializable{
 		Activity selectedActivity = getActivity(activityGUID, currentChapter.getChapterNum());
 		if(!selectedActivity.getActivityID().contentEquals("26")) {
 			addLocalProgressVBox(1);
+			handleLocalProgress(currentChapter, listOfChapters);
 		} else {
 			removeLocalProgressVBox();
 		}

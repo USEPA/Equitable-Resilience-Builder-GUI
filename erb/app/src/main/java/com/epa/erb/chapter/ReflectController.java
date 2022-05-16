@@ -76,7 +76,7 @@ public class ReflectController implements Initializable{
 	private void handleControls() {
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		goalProgressBar.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
-		chapterProgressVBox.heightProperty().addListener(e-> initProgress(engagementActionController.getCurrentGoal(), chapter));
+		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressListeners());
 	}
 	
 	private void fillChapterActivitiesList() {
@@ -85,6 +85,12 @@ public class ReflectController implements Initializable{
 				chapterActivities.add(activity);
 			}
 		}
+	}
+	
+	private void handleProgressListeners() {
+		Goal goal = engagementActionController.getCurrentGoal();
+		if(goal != null) handleChapterProgressBar(goal);
+		if(chapter != null) handleChapterConfidenceProgressBar(chapter);
 	}
 	
 	private void populateControlsForChapterActivities() {
