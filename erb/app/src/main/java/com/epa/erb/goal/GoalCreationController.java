@@ -31,7 +31,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -58,8 +57,8 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private Logger logger = LogManager.getLogger(GoalCreationController.class);
-	//private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
-	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects";
+	private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\");
+	//private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -236,6 +235,7 @@ public class GoalCreationController implements Initializable{
 	
 	private CheckBox createGoalCategoryCheckBox(GoalCategory goalCategory) {
 		CheckBox checkBox = new CheckBox(goalCategory.getCategoryName());
+		checkBox.setWrapText(true);
 		checkBox.setFont(new Font(15.0));
 		return checkBox;
 	}
@@ -253,6 +253,7 @@ public class GoalCreationController implements Initializable{
 		if(!goalsListView.getItems().contains(goal)) {
 			goalsListView.getItems().add(goal);
 		}
+		setGoalsListViewCellFactory();
 	}
 	
 	private GoalCategory getGoalCategory(String goalCategoryName) {

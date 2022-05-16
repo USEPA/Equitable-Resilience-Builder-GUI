@@ -1,0 +1,25 @@
+To Executable Instructions
+
+1. Change paths in java code
+	a. com.epa.erb.App
+	b. com.epa.erb.goal.GoalCreationController
+	c. com.epa.erb.project.ProjectSelectionController
+	d. com.epa.erb.worksheet.WorksheetContentController
+	e. com.epa.erb.engagement_action.EngagementActionController  
+	
+2. Change paths in log4j
+	a. 
+	<!--<File name="Debug" fileName="${sys:user.dir}//lib//ERB//Logs//debug.log">-->    
+	<File name="Debug" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//debug.log">
+	b.
+	<!--<File name="Info" fileName="${sys:user.dir}//lib//ERB//Logs//info.log">--> 
+	<File name="Info" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//info.log">
+	c.
+	<!--<File name="Warn" fileName="${sys:user.dir}//lib//ERB//Logs//warn.log">-->
+	<File name="Warn" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//warn.log">
+	d. 
+	<!--<File name="Error" fileName="${sys:user.dir}//lib//ERB//Logs//error.log">-->
+	<File name="Error" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//error.log">
+	e.
+	<!--<File name="Fatal" fileName="${sys:user.dir}//lib//ERB//Logs//fatal.log">-->
+	<File name="Fatal" fileName="C://Users//AWILKE06//OneDrive - Environmental Protection Agency (EPA)//Documents//Projects//Metro-CERI//FY22//ERB//Logs//fatal.log"> 
