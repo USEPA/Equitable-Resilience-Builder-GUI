@@ -14,6 +14,8 @@ import javax.print.attribute.standard.Copies;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javafx.application.Platform;
 //import org.apache.pdfbox.Loader;
 //import org.apache.pdfbox.pdmodel.PDDocument;
 //import org.apache.pdfbox.printing.PDFPageable;
@@ -48,8 +50,8 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private Logger logger = LogManager.getLogger(WorksheetContentController.class);
-	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
-	//private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
+	//private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
+	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -73,7 +75,6 @@ public class WorksheetContentController implements Initializable{
 			WebEngine webEngine = webView.getEngine();
 			String url = getClass().getResource("/pdfjs-2.8.335-dist/web/viewer.html").toExternalForm();
 			webEngine.setJavaScriptEnabled(true);
-			webEngine.load(url);
 			webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
 				@Override
 				public void changed(ObservableValue ov, State oldState, State newState) {
@@ -90,6 +91,7 @@ public class WorksheetContentController implements Initializable{
 					}
 				}
 			});
+			webEngine.load(url);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
