@@ -62,7 +62,7 @@
                               <VBox fx:id="statusVBox" spacing="20.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
-                        <VBox minWidth="55.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                        <VBox maxWidth="215.0" minWidth="55.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label text="Activity">
                                  <font>
