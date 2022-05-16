@@ -3,6 +3,10 @@ package com.epa.erb.chapter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
@@ -62,8 +66,9 @@ public class ReflectController implements Initializable{
 		this.engagementActionController = engagementActionController;
 	}
 	
-	private Constants constants = new Constants();
 	private Progress progress = new Progress();
+	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(ReflectController.class);
 	private ArrayList<Activity> chapterActivities = new ArrayList<Activity>();
 	
 	@Override
@@ -151,7 +156,7 @@ public class ReflectController implements Initializable{
 				reflectNotesStage.show();
 			}
 		} catch (Exception e) {
-			// TODO: Add logger statement
+			logger.error(e.getMessage());
 		}
 	}
 	
@@ -222,8 +227,8 @@ public class ReflectController implements Initializable{
 				return label;
 			}
 		}
+		logger.debug("Percent Label returned is null");
 		return null;
-		//TODO: lOGGER DEBUG
 	}
 	
 	private void populateActivityLabels(ArrayList<Activity> activities) {
