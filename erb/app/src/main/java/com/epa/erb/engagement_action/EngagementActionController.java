@@ -610,6 +610,7 @@ public class EngagementActionController implements Initializable{
 			highlightSelectedActivityDiagram(selectedTreeItem, currentChapter);
 			currentSelectedActivity = selectedActivity;
 			addStatusHBox();
+			if(selectedActivity.getActivityID().contentEquals("25") || selectedActivity.getActivityID().contentEquals("26")) removeStatusHBox();
 		}
 		handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
 	}

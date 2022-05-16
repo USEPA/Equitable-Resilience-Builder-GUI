@@ -138,7 +138,7 @@
                      <children>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label text="Chapter">
+                              <Label text="Chapter Completion">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -163,7 +163,7 @@
                            <children>
                               <VBox alignment="CENTER" spacing="2.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label text="Progress" />
+                                    <Label text="Completed" />
                                     <VBox fx:id="goalProgressVBox" alignment="BOTTOM_CENTER" maxWidth="25.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
                                        <children>
                                           <VBox fx:id="goalProgressBar" />

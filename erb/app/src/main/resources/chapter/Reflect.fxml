@@ -28,7 +28,7 @@
                      <children>
                         <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Chapter Progress" wrapText="true">
+                              <Label text="Chapter Completion" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -84,7 +84,7 @@
                         </VBox>
                         <VBox minWidth="50.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Rating">
+                              <Label text="Confidence">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -104,7 +104,7 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Chapter Confidence Rating" wrapText="true">
+                              <Label text="Chapter Confidence " wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -144,7 +144,7 @@
                   </HBox>
                   <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <Label text="Goal Progress">
+                        <Label text="Goal  Completion">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
