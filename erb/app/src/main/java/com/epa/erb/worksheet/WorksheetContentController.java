@@ -4,6 +4,8 @@ import java.awt.Desktop;
 //import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Base64;
 import java.util.ResourceBundle;
@@ -12,6 +14,7 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.Copies;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,6 +35,7 @@ import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import netscape.javascript.JSObject;
 import javafx.concurrent.Worker.State;
 import javafx.concurrent.Worker;
 
@@ -50,8 +54,8 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private Logger logger = LogManager.getLogger(WorksheetContentController.class);
-	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
-	//private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
+	//private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
+	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -70,28 +74,39 @@ public class WorksheetContentController implements Initializable{
 		return pdfFileToLoad;
 	}
 	
+
+	
 	private void loadPDFToWebView(File pdfFileToLoad) {
+		JavaBridge javaBridge = new JavaBridge();
 		try {
 			WebEngine webEngine = webView.getEngine();
-			String url = getClass().getResource("/pdfjs-2.8.335-dist/web/viewer.html").toExternalForm();
+			String url = getClass().getResource("/pdfjs-2.14.305-legacy-dist/web/viewer.html").toExternalForm();
+			webEngine.setUserStyleSheetLocation(getClass().getResource("/pdfjs-2.14.305-legacy-dist/web.css").toExternalForm());
 			webEngine.setJavaScriptEnabled(true);
+			webEngine.load(url);
+			
 			webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
 				@Override
 				public void changed(ObservableValue ov, State oldState, State newState) {
 					if (newState == Worker.State.SUCCEEDED) {
 						try {
-							if(activity.getFileName() != null && activity.getFileName().length() > 0) {
-								byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
-								String base64 = Base64.getEncoder().encodeToString(data);
-								webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
-							}
-						} catch (Exception e) {
-							logger.error(e.getMessage());
+							byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
+							String base64 = Base64.getEncoder().encodeToString(data);
+							Platform.runLater(new Runnable() {
+								@Override
+								public void run() {
+									JSObject window = (JSObject) webEngine.executeScript("window");
+								    window.setMember("java", javaBridge);
+								    webEngine.executeScript("console.log = function(message)\n" +"{\n" + "    java.log(message);\n" + "};"); 
+								    webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
+								}
+							});
+						} catch (Exception ex) {
+							ex.printStackTrace();
 						}
 					}
 				}
 			});
-			webEngine.load(url);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}

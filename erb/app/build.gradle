@@ -12,6 +12,10 @@ plugins {
     id 'org.beryx.jlink' version '2.24.2'    
 }
 
+//compileJava {
+//    options.compilerArgs << '--add-exports=javafx.web/com.sun.webkit=ALL-UNNAMED' 
+//}
+
 repositories {
     mavenCentral()
 }
@@ -24,8 +28,6 @@ dependencies {
 	implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
 	implementation 'commons-io:commons-io:2.11.0'
 	implementation 'org.apache.pdfbox:pdfbox:3.0.0-RC1'
-	
-	
 }
 
 javafx{
