@@ -23,6 +23,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -37,11 +38,15 @@ public class ReflectController implements Initializable{
 	@FXML
 	VBox chapterProgressBar;
 	@FXML
+	Label chapterCompletionInfoLabel;
+	@FXML
 	VBox statusVBox;
 	@FXML
 	VBox activityVBox;
 	@FXML
 	VBox ratingVBox;
+	@FXML
+	Label confidenceInfoLabel;
 	@FXML
 	VBox percentVBox;
 	@FXML
@@ -51,6 +56,8 @@ public class ReflectController implements Initializable{
 	@FXML
 	VBox confidenceRatingBar;
 	@FXML
+	Label chapterConfidenceInfoLabel;
+	@FXML
 	ProgressBar goalProgressBar;
 	@FXML
 	Label chapterPercentLabel;
@@ -58,6 +65,8 @@ public class ReflectController implements Initializable{
 	Label confidencePercentLabel;
 	@FXML
 	Label goalProgressLabel;
+	@FXML
+	Label goalCompletionInfoLabel;
 	
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
@@ -74,6 +83,7 @@ public class ReflectController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
+		addInfoToolTips();
 		fillChapterActivitiesList();
 		populateControlsForChapterActivities();
 	}
@@ -82,6 +92,13 @@ public class ReflectController implements Initializable{
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		goalProgressBar.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
 		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressListeners());
+	}
+	
+	private void addInfoToolTips() {
+		chapterCompletionInfoLabel.setTooltip(new Tooltip("Represents the total percent of activites complete in this chapter."));
+		chapterConfidenceInfoLabel.setTooltip(new Tooltip("Represents the total percent of confidence that this chapter is helping to achieve the current goal."));
+		goalCompletionInfoLabel.setTooltip(new Tooltip("Represents the total percent of activites complete in a chapters in this goal."));
+		confidenceInfoLabel.setTooltip(new Tooltip("Drag the slider on an activity to represet how confident you are that the activty helped achieve the current goal."));
 	}
 	
 	private void fillChapterActivitiesList() {

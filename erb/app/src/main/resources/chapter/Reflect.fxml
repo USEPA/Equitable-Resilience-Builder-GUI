@@ -6,7 +6,9 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
@@ -28,11 +30,25 @@
                      <children>
                         <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Chapter Completion" wrapText="true">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
+                              <HBox alignment="CENTER" spacing="3.0">
+                                 <children>
+                                    <Label text="Chapter Completion" wrapText="true" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <StackPane>
+                                       <children>
+                                          <Circle fill="WHITE" radius="8.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #E7E7E7;" />
+                                          <Label fx:id="chapterCompletionInfoLabel" text="?">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
                               <VBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
                                  <children>
                                     <VBox fx:id="chapterProgressVBox" alignment="BOTTOM_CENTER" maxWidth="35.0" style="-fx-border-color: black; -fx-border-radius: 2 2 2 2;" VBox.vgrow="ALWAYS">
@@ -52,63 +68,107 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox minWidth="45.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                        <VBox minWidth="78.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label minWidth="0.0" text="Completed">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <VBox fx:id="statusVBox" spacing="20.0" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="CENTER" spacing="3.0">
+                                 <children>
+                                    <Label text="Completed" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <VBox fx:id="statusVBox" alignment="TOP_CENTER" spacing="20.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox maxWidth="215.0" minWidth="55.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Activity">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
+                              <HBox alignment="CENTER" spacing="3.0">
+                                 <children>
+                                    <Label text="Activity" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                               <VBox fx:id="activityVBox" spacing="15.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox minWidth="45.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Notes">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <VBox fx:id="notesVBox" spacing="12.0" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="CENTER" spacing="3.0">
+                                 <children>
+                                    <Label text="Notes" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <VBox fx:id="notesVBox" alignment="TOP_CENTER" spacing="12.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
-                        <VBox minWidth="50.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                        <VBox minWidth="80.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Confidence">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <VBox fx:id="ratingVBox" spacing="25.0" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="CENTER" spacing="3.0">
+                                 <children>
+                                    <Label text="Confidence" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <StackPane>
+                                       <children>
+                                          <Circle fill="WHITE" radius="8.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #E7E7E7;" />
+                                          <Label fx:id="confidenceInfoLabel" text="?">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <VBox fx:id="ratingVBox" alignment="TOP_CENTER" spacing="25.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
-                        <VBox minWidth="30.0" spacing="5.0">
+                        <VBox minWidth="30.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="\%">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <VBox fx:id="percentVBox" spacing="18.0" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="CENTER" spacing="3.0">
+                                 <children>
+                                    <Label text="\%" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <VBox fx:id="percentVBox" alignment="TOP_CENTER" spacing="18.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Chapter Confidence " wrapText="true">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
+                              <HBox alignment="CENTER" spacing="3.0">
+                                 <children>
+                                    <Label text="Chapter Confidence" wrapText="true" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <StackPane>
+                                       <children>
+                                          <Circle fill="WHITE" radius="8.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #E7E7E7;" />
+                                          <Label fx:id="chapterConfidenceInfoLabel" text="?">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
                               <VBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
                                  <children>
                                     <VBox fx:id="confidenceRatingVBox" alignment="BOTTOM_CENTER" maxWidth="35.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
@@ -144,11 +204,25 @@
                   </HBox>
                   <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <Label text="Goal  Completion">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER_LEFT" spacing="3.0">
+                           <children>
+                              <Label text="Goal  Completion">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <StackPane>
+                                 <children>
+                                    <Circle fill="WHITE" radius="8.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #E7E7E7;" />
+                                    <Label fx:id="goalCompletionInfoLabel" text="?">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
                         <ProgressBar fx:id="goalProgressBar" prefHeight="30.0" prefWidth="350.0" progress="0.0" />
                         <Label fx:id="goalProgressLabel" text="\%">
                            <font>
