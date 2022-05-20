@@ -74,7 +74,7 @@ public class GoalCreationController implements Initializable{
 				String goalName = getGoalName();
 				String goalDescription = getGoalDescription();
 				ArrayList<GoalCategory> selectedGoalCategories = getSelectedGoalCategories();
-				Goal goal = new Goal(goalName, goalDescription, selectedGoalCategories);
+				Goal goal = new Goal(app,goalName, goalDescription, selectedGoalCategories);
 				addGoalToGoalsListView(goal);
 				cleanGoalUserInputFields();
 				uncheckAllGoalCategoryCheckBoxes();
@@ -115,71 +115,19 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void writeProjectMetaData(Project project) {
-		XMLManager xmlManager = new XMLManager();
+		XMLManager xmlManager = new XMLManager(app);
 		xmlManager.writeProjectMetaXML(getProjectMetaFile(project), project);
 	}
 	
 	private void writeGoalsMetaData(ArrayList<Goal> goals) {
-		XMLManager xmlManager = new XMLManager();
+		XMLManager xmlManager = new XMLManager(app);
 		createGoalsDirectory();
 		for(Goal goal : goals) {
 			File goalDirectory = createGoalDirectory(goal);
 			File goalMetaFile = new File(goalDirectory.getPath() + "\\Meta.xml");
-			ArrayList<Activity> activities = getAllActivities(goal);
-			ArrayList<Chapter> chapters = getAllChapters(activities);
+			ArrayList<Chapter> chapters = goal.getChapters();
 			xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
 		}
-	}
-	
-	private ArrayList<Activity> getAllActivities(Goal goal){
-		ArrayList<Activity> activities = new ArrayList<Activity>();
-		for(GoalCategory goalCategory : goal.getListOfSelectedGoalCategories()) {
-			for(String activityID: goalCategory.getListOfAssignedActivityIDs()) {
-				Activity activity = app.getActivity(activityID);
-				if(activity != null) activities.add(activity);
-			}
-		}
-		return activities;		
-	}
-	
-	private ArrayList<Chapter> getAllChapters(ArrayList<Activity> activities) {
-		ArrayList<String> chapterNumbers = getAllChapterNumbers(activities);
-		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
-		for (String chapterNumber : chapterNumbers) {
-			if (!chapterNumber.contentEquals("0")) {
-				Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, "", "");
-				ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities);
-				chapter.setAssignedActivities(activitiesForChapter);
-				chapters.add(chapter);
-			}
-		}
-		return chapters;
-	}
-	
-	private ArrayList<Activity> getActivitiesForChapter(String chapterNumber, ArrayList<Activity> activities){
-		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
-		Activity planActivity = app.getActivity("25");
-		planActivity.setChapterAssignment(chapterNumber);
-		activitiesForChapter.add(planActivity);
-		for(Activity activity : activities) {
-			if(activity.getChapterAssignment().contentEquals(chapterNumber) && !activitiesForChapter.contains(activity)) {
-				activitiesForChapter.add(activity);
-			}
-		}
-		Activity reflectActivity = app.getActivity("26");
-		reflectActivity.setChapterAssignment(chapterNumber);
-		activitiesForChapter.add(reflectActivity);
-		return activitiesForChapter;
-	}
-	
-	private ArrayList<String> getAllChapterNumbers(ArrayList<Activity> activities){
-		ArrayList<String> chapterNumbers = new ArrayList<String>();
-		for(Activity activity : activities) {
-			if(!chapterNumbers.contains(activity.getChapterAssignment())) {
-				chapterNumbers.add(activity.getChapterAssignment());
-			}
-		}
-		return chapterNumbers;
 	}
 	
 	private File createGoalDirectory(Goal goal) {

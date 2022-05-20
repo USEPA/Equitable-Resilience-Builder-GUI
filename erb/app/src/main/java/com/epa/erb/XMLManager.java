@@ -21,8 +21,9 @@ import com.epa.erb.project.Project;
 
 public class XMLManager {
 
-	public XMLManager() {
-
+	private App app;
+	public XMLManager(App app) {
+		this.app = app;
 	}
 
 	private Logger logger = LogManager.getLogger(XMLManager.class);
@@ -214,7 +215,8 @@ public class XMLManager {
 										listOfSelectedGoalCategories.add(goalCategory);
 									}
 								}
-								Goal goal = new Goal(goalName, goalDescription, listOfSelectedGoalCategories);
+								Goal goal = new Goal(app,goalName, goalDescription, listOfSelectedGoalCategories);
+								goal.setChapters(activities);
 								listOfGoals.add(goal);
 							}
 						}

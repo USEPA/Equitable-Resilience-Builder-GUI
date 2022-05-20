@@ -16,6 +16,7 @@ import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanController;
 import com.epa.erb.chapter.ReflectController;
+import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
@@ -26,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -38,6 +40,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class EngagementActionController implements Initializable{
 
@@ -121,7 +124,6 @@ public class EngagementActionController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	private ArrayList<Chapter> listOfChapters = new ArrayList<Chapter>();
 	private Activity currentSelectedActivity = null; //tracks the current user selected activity
 	private HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity GUID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //holds all of the attribute panels
@@ -154,7 +156,7 @@ public class EngagementActionController implements Initializable{
 		skippedKeyPane.setStyle("-fx-background-color: " + constants.getSkippedStatusColor() + ";");
 		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
-		chapterProgressIndicator.setStyle(" -fx-progress-color: " + constants.getAllChaptersColor() + ";");
+		chapterProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
 		saveHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
@@ -165,11 +167,12 @@ public class EngagementActionController implements Initializable{
 	private void handleProgressListeners() {
 		if(currentSelectedActivity != null) {
 			String currentChapterName = "Chapter " + currentSelectedActivity.getChapterAssignment();
-			handleLocalProgress(getChapter(currentChapterName), listOfChapters);
+			handleLocalProgress(getChapter(currentChapterName), getCurrentGoal().getChapters());
+
 		} else {
 			TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
 			if(selectedTreeItem.getValue().contains("Chapter")) {
-				handleLocalProgress(getChapter(selectedTreeItem.getValue().trim()), listOfChapters);
+				handleLocalProgress(getChapter(selectedTreeItem.getValue().trim()), getCurrentGoal().getChapters());
 			}
 		}
 	}
@@ -269,7 +272,7 @@ public class EngagementActionController implements Initializable{
 	private void loadChapterReflect(Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Reflect.fxml"));
-			ReflectController reflectController = new ReflectController(chapter, this);
+			ReflectController reflectController = new ReflectController(getCurrentGoal(), chapter, this);
 			fxmlLoader.setController(reflectController);
 			Parent root = fxmlLoader.load();
 			reflectController.initProgress(getCurrentGoal(), chapter);
@@ -326,7 +329,7 @@ public class EngagementActionController implements Initializable{
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		
-		handleLocalProgress(chapter, listOfChapters);
+		handleLocalProgress(chapter, getCurrentGoal().getChapters());
 	}
 	
 	@FXML
@@ -341,7 +344,7 @@ public class EngagementActionController implements Initializable{
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		
-		handleLocalProgress(chapter, listOfChapters);
+		handleLocalProgress(chapter, getCurrentGoal().getChapters());
 	}
 	
 	@FXML
@@ -383,10 +386,27 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	private Stage globalGoalTrackerStage = null;
+	@FXML
+	public void goalLabelClicked() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GlobalGoalTracker.fxml"));
+			GlobalGoalTrackerController globalGoalTrackerController = new GlobalGoalTrackerController(app, project, this);
+			fxmlLoader.setController(globalGoalTrackerController);
+			Parent root = fxmlLoader.load();
+			globalGoalTrackerStage = new Stage();
+			Scene scene = new Scene(root);
+			globalGoalTrackerStage.setScene(scene);
+			globalGoalTrackerStage.show();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
 	private void saveGoalData(Goal goal) {
-		XMLManager xmlManager = new XMLManager();
+		XMLManager xmlManager = new XMLManager(app);
 		File goalXML = getGoalXMLFile(goal);
-		xmlManager.writeGoalMetaXML(goalXML, listOfChapters);
+		xmlManager.writeGoalMetaXML(goalXML, getCurrentGoal().getChapters());
 	}
 	
 	@FXML
@@ -415,7 +435,7 @@ public class EngagementActionController implements Initializable{
 					if (parentTreeItemValue.contains("ERB")) { // Is Chapter
 						handleChapterSelectedInTree(selectedTreeItemValue);
 						addLocalProgressVBox(1);
-						handleLocalProgress(getChapter(selectedTreeItemValue), listOfChapters);
+						handleLocalProgress(getChapter(selectedTreeItemValue), getCurrentGoal().getChapters());
 					} else { // Is Activity
 						handleActivitySelectedInTree(selectedTreeItem, parentTreeItem);
 					}
@@ -480,7 +500,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void goalSelected(Goal goal) {
-		listOfChapters = getChapterData(goal);
+		ArrayList<Chapter> listOfChapters = goal.getChapters();
 		if (listOfChapters != null) {
 			fillAndStoreTreeViewData(listOfChapters);
 			initializeTreeViewSelection();
@@ -595,7 +615,7 @@ public class EngagementActionController implements Initializable{
 		Activity selectedActivity = getActivity(activityGUID, currentChapter.getChapterNum());
 		if(!selectedActivity.getActivityID().contentEquals("26")) {
 			addLocalProgressVBox(1);
-			handleLocalProgress(currentChapter, listOfChapters);
+			handleLocalProgress(currentChapter, getCurrentGoal().getChapters());
 		} else {
 			removeLocalProgressVBox();
 		}
@@ -624,7 +644,7 @@ public class EngagementActionController implements Initializable{
 			removeAttributeScrollPane();
 			removeERBKeyVBox();
 			handleChapterERBPathwayGeneration();
-			loadERBLandingContent(listOfChapters);
+			loadERBLandingContent(getCurrentGoal().getChapters());
 			handleNavigationButtonsShown(null, null);
 			removeStatusHBox();
 		}
@@ -633,8 +653,8 @@ public class EngagementActionController implements Initializable{
 	private void handleChapterERBPathwayGeneration() {
 		cleanERBPathwayDiagramHBox();
 		setChapterLabelText("Chapters");
-		for (Chapter chapter : listOfChapters) {
-			Parent root = loadChapterERBPathwayDiagram(chapter, listOfChapters);
+		for (Chapter chapter : getCurrentGoal().getChapters()) {
+			Parent root = loadChapterERBPathwayDiagram(chapter, getCurrentGoal().getChapters());
 			if(root != null) erbPathwayDiagramHBox.getChildren().add(root);
 		}
 	}
@@ -777,9 +797,15 @@ public class EngagementActionController implements Initializable{
 			mainVBox.getChildren().add(0, statusHBox);
 		}
 	}
+	
+	public void closeGlobalGoalTrackerStage() {
+		if(globalGoalTrackerStage!=null) {
+			globalGoalTrackerStage.close();
+		}
+	}
 			
 	public Chapter getChapter(String chapterName) {
-		for(Chapter chapter : listOfChapters) {
+		for(Chapter chapter : getCurrentGoal().getChapters()) {
 			if(chapter.getStringName().contentEquals(chapterName)) {
 				return chapter;
 			}
@@ -797,7 +823,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private Activity getActivity(String activityID, int chapterNum) {
-		for(Chapter chapter: listOfChapters) {
+		for(Chapter chapter: getCurrentGoal().getChapters()) {
 			for(Activity activity : chapter.getAssignedActivities()) {
 				if(activity.getActivityID().contentEquals(activityID) && activity.getChapterAssignment().contentEquals(String.valueOf(chapterNum))) {
 					return activity;
@@ -825,16 +851,6 @@ public class EngagementActionController implements Initializable{
 			}
 		}
 		logger.debug("ERB Pathway Diagram Controller returned is null");
-		return null;
-	}
-	
-	private ArrayList<Chapter> getChapterData(Goal goal) {
-		File goalXMLFile = getGoalXMLFile(goal);
-		if (goalXMLFile != null) {
-			XMLManager xmlManager = new XMLManager();
-			return xmlManager.parseGoalXML(goalXMLFile, app.getActivities());
-		}
-		logger.debug("Chapter data returned is null");
 		return null;
 	}
 	
@@ -949,10 +965,6 @@ public class EngagementActionController implements Initializable{
 
 	public Button getNextButton() {
 		return nextButton;
-	}
-	
-	public ArrayList<Chapter> getListOfChapters() {
-		return listOfChapters;
 	}
 
 	public File getDataFileToLoad() {

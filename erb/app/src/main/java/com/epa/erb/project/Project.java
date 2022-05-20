@@ -20,12 +20,15 @@ public class Project {
 	public String getProjectName() {
 		return projectName;
 	}
+	
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
+	
 	public ArrayList<Goal> getProjectGoals() {
 		return projectGoals;
 	}
+	
 	public void setProjectGoals(ArrayList<Goal> projectGoals) {
 		this.projectGoals = projectGoals;
 	}

@@ -152,7 +152,7 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label text="Goal">
+                              <Label onMouseClicked="#goalLabelClicked" text="Goal">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>

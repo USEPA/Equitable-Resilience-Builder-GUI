@@ -59,7 +59,7 @@ public class App extends Application {
 	}
 	
 	private void readAndStoreData() {
-		XMLManager xmlManager = new XMLManager();
+		XMLManager xmlManager = new XMLManager(this);
 		File activityTypesFile = getActivityTypesFileToParse();
 		if(activityTypesFile != null) activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
 		

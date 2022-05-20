@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="goalVBox" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox>
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label fx:id="goalTitleLabel" text="Title of goal here">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="Completion">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox fx:id="goalCompletionVBox" alignment="BOTTOM_CENTER" maxWidth="50.0" minHeight="100.0" minWidth="50.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="goalCompletionBar" />
+                     </children>
+                     <padding>
+                        <Insets bottom="0.5" left="0.5" right="0.5" top="0.5" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="completionPercentLabel" text="\%">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="Confidence">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox fx:id="goalConfidenceVBox" alignment="BOTTOM_CENTER" maxWidth="50.0" minHeight="100.0" minWidth="50.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="goalConfidenceBar" />
+                     </children>
+                     <padding>
+                        <Insets bottom="0.5" left="0.5" right="0.5" top="0.5" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="confidencePercentLabel" text="\%">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

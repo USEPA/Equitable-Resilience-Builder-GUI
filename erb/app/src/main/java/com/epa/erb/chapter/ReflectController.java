@@ -3,10 +3,8 @@ package com.epa.erb.chapter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
@@ -68,9 +66,11 @@ public class ReflectController implements Initializable{
 	@FXML
 	Label goalCompletionInfoLabel;
 	
+	private Goal goal;
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
-	public ReflectController (Chapter chapter, EngagementActionController engagementActionController) {
+	public ReflectController (Goal goal, Chapter chapter, EngagementActionController engagementActionController) {
+		this.goal = goal;
 		this.chapter = chapter;
 		this.engagementActionController = engagementActionController;
 	}
@@ -90,7 +90,7 @@ public class ReflectController implements Initializable{
 	
 	private void handleControls() {
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-		goalProgressBar.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
+		goalProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
 		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressListeners());
 	}
 	
@@ -204,7 +204,7 @@ public class ReflectController implements Initializable{
 		updatePercentLabel(activity, slider.getValue());
 		activity.setRating(String.valueOf((int) slider.getValue()));
 		handleChapterConfidenceProgressBar(chapter);
-		engagementActionController.handleLocalProgress(chapter, engagementActionController.getListOfChapters());
+		engagementActionController.handleLocalProgress(chapter,goal.getChapters());
 	}
 	
 	private void populatePercentLabels(ArrayList<Activity> activities) {
@@ -349,7 +349,7 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void handleGoalProgressBar(Chapter chapter) {
-		int goalPercent = progress.getGoalPercentDone(engagementActionController.getListOfChapters());
+		int goalPercent = progress.getGoalPercentDone(goal.getChapters());
 		setGoalRating(goalPercent);
 	}
 
