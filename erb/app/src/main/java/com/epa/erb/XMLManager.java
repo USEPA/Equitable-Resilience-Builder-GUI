@@ -215,8 +215,8 @@ public class XMLManager {
 										listOfSelectedGoalCategories.add(goalCategory);
 									}
 								}
-								Goal goal = new Goal(app,goalName, goalDescription, listOfSelectedGoalCategories);
-								goal.setChapters(activities);
+								Goal goal = new Goal(app, goalName, goalDescription, listOfSelectedGoalCategories);
+								goal.setChapters(activities, projectName);
 								listOfGoals.add(goal);
 							}
 						}

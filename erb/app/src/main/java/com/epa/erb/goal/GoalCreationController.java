@@ -74,6 +74,7 @@ public class GoalCreationController implements Initializable{
 				String goalDescription = getGoalDescription();
 				ArrayList<GoalCategory> selectedGoalCategories = getSelectedGoalCategories();
 				Goal goal = new Goal(app,goalName, goalDescription, selectedGoalCategories);
+				goal.setChapters(app.getActivities(), project.getProjectName());
 				addGoalToGoalsListView(goal);
 				cleanGoalUserInputFields();
 				uncheckAllGoalCategoryCheckBoxes();
@@ -289,7 +290,7 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private String getGoalName() {
-		String goalName = goalNameTextField.getText();
+		String goalName = goalNameTextField.getText().trim();
 		return goalName;
 	}
 	
