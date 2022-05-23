@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
-import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -36,13 +35,9 @@ public class GoalTrackerController implements Initializable{
 	@FXML
 	VBox goalVBox;
 	
-	private App app;
 	private Goal goal;
-	private File goalMetaXMLFile;
-	public GoalTrackerController(App app, Goal goal, File goalMetaXMLFile) {
-		this.app = app;
+	public GoalTrackerController(Goal goal) {
 		this.goal = goal;
-		this.goalMetaXMLFile = goalMetaXMLFile;
 	}
 	
 	private Constants constants = new Constants();

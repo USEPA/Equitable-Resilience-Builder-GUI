@@ -1,7 +1,6 @@
 package com.epa.erb.project;
 
 import java.util.ArrayList;
-
 import com.epa.erb.goal.Goal;
 
 public class Project {

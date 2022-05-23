@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Progress;
-import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.project.Project;
@@ -92,7 +91,7 @@ public class GlobalGoalTrackerController implements Initializable{
 	private Parent loadGoalTracker(App app, Goal goal, File goalMetaXMLFile) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalTracker.fxml"));
-			GoalTrackerController goalTrackerController = new GoalTrackerController(app, goal, goalMetaXMLFile);
+			GoalTrackerController goalTrackerController = new GoalTrackerController(goal);
 			fxmlLoader.setController(goalTrackerController);
 			Parent rootParent = fxmlLoader.load();
 			HBox.setHgrow(rootParent, Priority.ALWAYS);

@@ -2,9 +2,7 @@ package com.epa.erb.engagement_setup;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.epa.erb.chapter.Chapter;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;

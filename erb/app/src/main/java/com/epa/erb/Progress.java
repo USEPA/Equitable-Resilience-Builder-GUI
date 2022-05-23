@@ -1,10 +1,7 @@
 package com.epa.erb;
 
-import java.io.File;
 import java.util.ArrayList;
 import com.epa.erb.chapter.Chapter;
-import com.epa.erb.goal.Goal;
-import com.epa.erb.project.Project;
 
 public class Progress {
 	

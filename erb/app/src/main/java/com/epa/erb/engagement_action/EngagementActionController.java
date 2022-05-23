@@ -21,7 +21,6 @@ import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
 import com.epa.erb.worksheet.WorksheetContentController;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
