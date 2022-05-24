@@ -95,7 +95,7 @@ public class GoalCreationController implements Initializable{
 			writeGoalsMetaData(createdGoals);
 			loadEngagementActionTool(project);
 			projectSelectionController.closeGoalContainerStage();
-			app.closeProjectSelectionStage();
+			projectSelectionController.closeProjectSelectionStage();
 		}
 	}
 	

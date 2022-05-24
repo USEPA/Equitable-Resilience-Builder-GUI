@@ -14,7 +14,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
-import com.epa.erb.project.ProjectSelectionController;
 
 public class App extends Application {
 
@@ -38,21 +37,21 @@ public class App extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		logger.info(getGreeting());
 		readAndStoreData();
-		loadProjectSelection();
+		loadERBLanding();
 	}
 	
-	private Stage projectSelectionStage = null;
-	private void loadProjectSelection() {
+	private Stage erbLandingStage = null;
+	private void loadERBLanding() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
-			ProjectSelectionController projectSelectionController = new ProjectSelectionController(this);
-			fxmlLoader.setController(projectSelectionController);
-			projectSelectionStage = new Stage();
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
+			ERBLandingController erbLandingController = new ERBLandingController(this);
+			fxmlLoader.setController(erbLandingController);
+			erbLandingStage = new Stage();
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
-			projectSelectionStage.setScene(scene);
-			projectSelectionStage.setTitle("Project Selection");
-			projectSelectionStage.show();
+			erbLandingStage.setScene(scene);
+			erbLandingStage.setTitle("ERB");
+			erbLandingStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -119,9 +118,9 @@ public class App extends Application {
 		return null;
 	}
 	
-	public void closeProjectSelectionStage() {
-		if(projectSelectionStage != null) {
-			projectSelectionStage.close();
+	public void closeERBLandingStage() {
+		if(erbLandingStage != null) {
+			erbLandingStage.close();
 		}
 	}
 	
