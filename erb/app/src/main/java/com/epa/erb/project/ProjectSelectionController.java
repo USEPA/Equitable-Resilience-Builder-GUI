@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.goal.GoalContainerController;
 import com.epa.erb.goal.GoalCreationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -107,18 +108,18 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
-	private Stage goalCreationStage = null;
-	private void loadGoalCreation(Project project) {
+	private Stage goalContainerStage = null;
+	private void loadGoalCreation(Project project) {		
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
-			GoalCreationController goalCreationController = new GoalCreationController(app, project, this);
-			fxmlLoader.setController(goalCreationController);
-			goalCreationStage = new Stage();
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
+			GoalContainerController goalContainerController = new GoalContainerController(app, project, this);
+			fxmlLoader.setController(goalContainerController);
+			goalContainerStage = new Stage();
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
-			goalCreationStage.setScene(scene);
-			goalCreationStage.setTitle("Goals");
-			goalCreationStage.show();
+			goalContainerStage.setScene(scene);
+			goalContainerStage.setTitle("Goals");
+			goalContainerStage.show();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -187,9 +188,9 @@ public class ProjectSelectionController implements Initializable{
 		});
 	}
 	
-	public void closeGoalCreationStage() {
-		if(goalCreationStage != null) {
-			goalCreationStage.close();
+	public void closeGoalContainerStage() {
+		if(goalContainerStage != null) {
+			goalContainerStage.close();
 		}
 	}
 
