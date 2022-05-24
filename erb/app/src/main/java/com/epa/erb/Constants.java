@@ -47,6 +47,18 @@ public class Constants {
 	//Post-It Note Single
 	private String postItNoteColor = "#FFFFFF"; 				//White
 	
+	//Local Paths
+	private String pathToLocalERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	private String pathToLocalERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects";
+	private String pathToLocalERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
+	
+	
+	//Dynamic Paths
+	private String pathToDynamicERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
+	private String pathToDynamicERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\");
+	private String pathToDynamicERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
+
+
 	//-------------------------------------------------------------------------
 
 	public String getReadyStatusColor() {
@@ -56,11 +68,7 @@ public class Constants {
 	public String getInProgressStatusColor() {
 		return inProgressStatusColor;
 	}
-
-	public void setInProgressStatusColor(String inProgressStatusColor) {
-		this.inProgressStatusColor = inProgressStatusColor;
-	}
-
+	
 	public String getCompleteStatusColor() {
 		return completeStatusColor;
 	}
@@ -144,5 +152,29 @@ public class Constants {
 	public String getPostItNoteColor() {
 		return postItNoteColor;
 	}
-		
+
+	public String getPathToLocalERBFolder() {
+		return pathToLocalERBFolder;
+	}
+
+	public String getPathToLocalERBProjectsFolder() {
+		return pathToLocalERBProjectsFolder;
+	}
+
+	public String getPathToLocalERBStaticDataFolder() {
+		return pathToLocalERBStaticDataFolder;
+	}
+
+	public String getPathToDynamicERBFolder() {
+		return pathToDynamicERBFolder;
+	}
+
+	public String getPathToDynamicERBProjectsFolder() {
+		return pathToDynamicERBProjectsFolder;
+	}
+
+	public String getPathToDynamicERBStaticDataFolder() {
+		return pathToDynamicERBStaticDataFolder;
+	}
+			
 }

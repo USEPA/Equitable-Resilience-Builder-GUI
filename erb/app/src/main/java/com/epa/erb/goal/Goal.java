@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
+import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.project.Project;
@@ -22,9 +23,8 @@ public class Goal {
 	}
 	
 	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
-	
-	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	private Constants constants = new Constants();
+	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
 	public String getGoalName() {
 		return goalName;
@@ -71,7 +71,7 @@ public class Goal {
 	}
 	
 	private File getGoalXMLFile(String projectName) {
-		File goalMetaFile = new File(pathToERBFolder + "\\Projects\\" + projectName + "\\Goals\\" + goalName + "\\Meta.xml");
+		File goalMetaFile = new File(pathToERBProjectsFolder + "\\" + projectName + "\\Goals\\" + goalName + "\\Meta.xml");
 		if(goalMetaFile.exists()) {
 			return goalMetaFile;
 		}

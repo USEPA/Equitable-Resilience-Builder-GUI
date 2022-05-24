@@ -10,7 +10,6 @@ import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.GoalContainerController;
-import com.epa.erb.goal.GoalCreationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,8 +41,7 @@ public class ProjectSelectionController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
-	//private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\");
-	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects";
+	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -20,6 +20,8 @@ import javafx.application.Platform;
 //import org.apache.pdfbox.printing.PDFPageable;
 import javafx.beans.value.ChangeListener;
 import com.epa.erb.Activity;
+import com.epa.erb.Constants;
+
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,9 +51,9 @@ public class WorksheetContentController implements Initializable{
 		this.activity = activity;
 	}
 	
+	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(WorksheetContentController.class);
-	//private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
-	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
+	private String pathToERBStaticDataFolder = constants.getPathToLocalERBStaticDataFolder();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

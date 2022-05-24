@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
+import com.epa.erb.Constants;
 import com.epa.erb.Progress;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
@@ -40,8 +41,8 @@ public class GlobalGoalTrackerController implements Initializable{
 	}
 	
 	private Logger logger = LogManager.getLogger(GlobalGoalTrackerController.class);
-	//private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
+	private Constants constants = new Constants();
+	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -108,7 +109,7 @@ public class GlobalGoalTrackerController implements Initializable{
 	}
 	
 	private File getGoalMetaXMLFile(Goal goal, Project project) {
-		File goalXMLFile = new File(pathToERBFolder + "\\Projects\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
+		File goalXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
 		if(goalXMLFile.exists()) {
 			return goalXMLFile;
 		} else {

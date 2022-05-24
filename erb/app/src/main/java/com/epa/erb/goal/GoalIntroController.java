@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
+import com.epa.erb.Constants;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.worksheet.JavaBridge;
@@ -43,8 +44,8 @@ public class GoalIntroController implements Initializable{
 	}
 	
 	private Logger logger = LogManager.getLogger(GoalIntroController.class);
-	//private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
-	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
+	private Constants constants = new Constants();
+	private String pathToERBStaticDataFolder = constants.getPathToLocalERBStaticDataFolder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -68,7 +69,6 @@ public class GoalIntroController implements Initializable{
 			webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
 				@Override
 				public void changed(ObservableValue ov, State oldState, State newState) {
-					System.out.println("HERE");
 					if (newState == Worker.State.SUCCEEDED) {
 						try {
 							byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
