@@ -31,6 +31,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -38,6 +39,8 @@ import javafx.util.Callback;
 
 public class GoalCreationController implements Initializable{
 
+	@FXML
+	HBox headingHBox;
 	@FXML
 	VBox goalsVBox;
 	@FXML
@@ -62,8 +65,13 @@ public class GoalCreationController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		handleControls();
 		populateGoalCategoryCheckBoxes();
 		setGoalsListViewCellFactory();
+	}
+	
+	private void handleControls() {
+		headingHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 
 	@FXML

@@ -10,20 +10,39 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class ERBLandingController implements Initializable{
+	
+	@FXML
+	VBox welcomeVBox;
+	@FXML
+	Circle circle1;
+	@FXML
+	Circle circle2;
+	@FXML
+	Circle circle3;
 	
 	private App app;
 	public ERBLandingController(App app) {
 		this.app = app;
 	}
 	
+	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ERBLandingController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		handleControls();
+	}
+	
+	private void handleControls() {
+		welcomeVBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+		circle1.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
+		circle2.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
+		circle3.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	private Stage projectSelectionStage = null;

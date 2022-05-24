@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
@@ -31,6 +32,8 @@ public class GoalIntroController implements Initializable{
 
 	@FXML
 	WebView webView;
+	@FXML
+	HBox headingHBox;
 	
 	private App app;
 	private Project project;
@@ -49,7 +52,12 @@ public class GoalIntroController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		handleControls();
 		loadGoalsWorksheetPDF(getPDFFileToLoad());
+	}
+	
+	private void handleControls() {
+		headingHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	private File getPDFFileToLoad() {

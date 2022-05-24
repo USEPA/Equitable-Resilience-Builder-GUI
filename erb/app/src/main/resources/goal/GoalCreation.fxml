@@ -13,7 +13,7 @@
 
 <VBox spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER">
+      <HBox fx:id="headingHBox" alignment="CENTER">
          <children>
             <Label text="Welcome to the goal setting activity">
                <font>

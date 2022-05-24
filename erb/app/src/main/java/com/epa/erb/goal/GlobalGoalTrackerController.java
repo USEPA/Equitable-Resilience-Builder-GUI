@@ -25,6 +25,8 @@ import javafx.scene.layout.Priority;
 public class GlobalGoalTrackerController implements Initializable{
 
 	@FXML
+	HBox headingHBox;
+	@FXML
 	HBox goalHBox;
 	@FXML
 	ProgressBar erbProgressBar;
@@ -46,9 +48,14 @@ public class GlobalGoalTrackerController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		handleControls();
 		erbProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
 		addGoalTrackers(project);
 		handleERBProgress();
+	}
+	
+	private void handleControls() {
+		headingHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	private void handleERBProgress() {

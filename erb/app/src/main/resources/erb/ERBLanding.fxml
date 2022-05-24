@@ -93,7 +93,7 @@
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
-                              <Circle fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="circle1" fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
                               <Label text="What does the equitable resilience process look like?" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
@@ -149,7 +149,7 @@
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
-                              <Circle fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="circle2" fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
                               <Label text="Why focus on equity?" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
@@ -200,7 +200,7 @@
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
-                              <Circle fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="circle3" fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
                               <Label text="What are the outcomes of an equitable process?" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
