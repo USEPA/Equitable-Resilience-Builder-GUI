@@ -110,11 +110,6 @@ public class GlobalGoalTrackerController implements Initializable{
 		}
 	}
 	
-	@FXML
-	public void doneButtonAction() {
-		engagementActionController.closeGlobalGoalTrackerStage();
-	}
-	
 	private File getGoalMetaXMLFile(Goal goal, Project project) {
 		File goalXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
 		if(goalXMLFile.exists()) {

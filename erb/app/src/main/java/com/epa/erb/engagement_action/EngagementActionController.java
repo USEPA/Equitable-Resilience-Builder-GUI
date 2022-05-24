@@ -395,6 +395,7 @@ public class EngagementActionController implements Initializable{
 			globalGoalTrackerStage = new Stage();
 			Scene scene = new Scene(root);
 			globalGoalTrackerStage.setScene(scene);
+			globalGoalTrackerStage.setTitle("Global Goal Tracker");
 			globalGoalTrackerStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
