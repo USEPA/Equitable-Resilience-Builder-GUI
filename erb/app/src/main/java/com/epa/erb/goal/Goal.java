@@ -2,6 +2,10 @@ package com.epa.erb.goal;
 
 import java.io.File;
 import java.util.ArrayList;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
@@ -25,6 +29,7 @@ public class Goal {
 	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	private Constants constants = new Constants();
 	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
+	private Logger logger = LogManager.getLogger(Goal.class);
 	
 	public String getGoalName() {
 		return goalName;
@@ -60,14 +65,23 @@ public class Goal {
 			ArrayList<String> chapterNumbers = getAllChapterNumbers(activities, goalActivityIds);
 			for (String chapterNumber : chapterNumbers) {
 				if (!chapterNumber.contentEquals("0")) {
-					Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, "", "");
+					Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, getChapterDescription(chapterNumber), "");
 					ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities, goalActivityIds);
 					chapter.setAssignedActivities(activitiesForChapter);
 					chapters.add(chapter);
 				}
 			}
 		}
-		
+	}
+	
+	private String getChapterDescription(String chapterNumber) {
+		for(Chapter chapter: app.getChapters()) {
+			if(String.valueOf(chapter.getChapterNum()).contentEquals(chapterNumber)) {
+				return chapter.getDescriptionName();
+			}
+		}
+		logger.debug("Chapter description returned is null.");
+		return null;
 	}
 	
 	private File getGoalXMLFile(String projectName) {

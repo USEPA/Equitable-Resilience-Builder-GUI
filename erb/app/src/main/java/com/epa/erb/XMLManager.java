@@ -28,6 +28,40 @@ public class XMLManager {
 
 	private Logger logger = LogManager.getLogger(XMLManager.class);
 	
+	//Parse Chapters
+	ArrayList<Chapter> parseChaptersXML(File xmlFile) {
+		if (xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				ArrayList<Chapter> chapters = new ArrayList<Chapter>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList chapterNodeList = doc.getElementsByTagName("chapter");
+				for (int i = 0; i < chapterNodeList.getLength(); i++) {
+					Node chapterNode = chapterNodeList.item(i);
+					// Chapter
+					if (chapterNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element chapterElement = (Element) chapterNode;
+						String chapterNum = chapterElement.getAttribute("chapterNum");
+						String description = chapterElement.getAttribute("description");
+						String notes = chapterElement.getAttribute("notes");
+						String numericName = chapterElement.getAttribute("numericName");
+						String stringName = chapterElement.getAttribute("stringName");
+						Chapter chapter = new Chapter(Integer.parseInt(chapterNum), numericName, stringName, description, notes);
+						chapters.add(chapter);
+					}
+				}
+				return chapters;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
+	
 	//Parse ActivityTypes
 	ArrayList<ActivityType> parseActivityTypesXML(File xmlFile) {
 		if (xmlFile.exists() && xmlFile.canRead()) {

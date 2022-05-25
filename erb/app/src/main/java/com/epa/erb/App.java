@@ -12,12 +12,15 @@ import java.io.File;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
 
 public class App extends Application {
 
 	private ArrayList<Project> projects;
+	private ArrayList<Chapter> chapters;
 	private ArrayList<Activity> activities;
 	private ArrayList<ActivityType> activityTypes;
 	private ArrayList<GoalCategory> goalCategories;
@@ -59,6 +62,10 @@ public class App extends Application {
 	
 	private void readAndStoreData() {
 		XMLManager xmlManager = new XMLManager(this);
+		
+		File chaptersFile = getChaptersFileToParse();
+		if(chaptersFile != null) chapters = xmlManager.parseChaptersXML(chaptersFile);
+		
 		File activityTypesFile = getActivityTypesFileToParse();
 		if(activityTypesFile != null) activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
 		
@@ -70,6 +77,15 @@ public class App extends Application {
 		
 		File erbProjectDirectory = getERBProjectDirectory();
 		if(erbProjectDirectory != null) projects = xmlManager.parseAllProjects(erbProjectDirectory, activities);
+	}
+	
+	private File getChaptersFileToParse() {
+		File chaptersFile = new File(pathToERBFolder + "\\Static_Data\\Chapters\\Chapters.xml");
+		if(chaptersFile.exists()) {
+			return chaptersFile;
+		} else {
+			return null;
+		}
 	}
 	
 	private File getActivityTypesFileToParse() {
@@ -127,7 +143,11 @@ public class App extends Application {
 	public ArrayList<Project> getProjects(){
 		return projects;
 	}
-	
+		
+	public ArrayList<Chapter> getChapters() {
+		return chapters;
+	}
+
 	public ArrayList<Activity> getActivities() {
 		return activities;
 	}
