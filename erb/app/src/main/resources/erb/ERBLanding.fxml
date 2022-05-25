@@ -87,14 +87,14 @@
       </VBox>
       <HBox spacing="5.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="vBox1" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" maxHeight="130.0">
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
-                              <Circle fx:id="circle1" fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label text="What does the equitable resilience process look like?" textAlignment="CENTER" wrapText="true">
+                              <Circle fx:id="circle1" fill="WHITE" onMouseClicked="#circle1Clicked" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label onMouseClicked="#circle1Clicked" text="What does the equitable resilience process look like?" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -103,7 +103,7 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="scrollPane1" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                      <content>
                         <VBox prefWidth="100.0">
                            <children>
@@ -143,14 +143,14 @@
                   </ScrollPane>
                </children>
             </VBox>
-            <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="vBox2" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" maxHeight="130.0">
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
-                              <Circle fx:id="circle2" fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label text="Why focus on equity?" textAlignment="CENTER" wrapText="true">
+                              <Circle fx:id="circle2" fill="WHITE" onMouseClicked="#circle2Clicked" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label onMouseClicked="#circle2Clicked" text="Why focus on equity?" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -159,7 +159,7 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="scrollPane2" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                      <content>
                         <VBox prefWidth="100.0">
                            <children>
@@ -194,14 +194,14 @@
                   </ScrollPane>
                </children>
             </VBox>
-            <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="vBox3" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" maxHeight="130.0">
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
-                              <Circle fx:id="circle3" fill="WHITE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label text="What are the outcomes of an equitable process?" textAlignment="CENTER" wrapText="true">
+                              <Circle fx:id="circle3" fill="WHITE" onMouseClicked="#circle3Clicked" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label onMouseClicked="#circle3Clicked" text="What are the outcomes of an equitable process?" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -210,7 +210,7 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="scrollPane3" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                      <content>
                         <VBox prefWidth="100.0">
                            <children>
