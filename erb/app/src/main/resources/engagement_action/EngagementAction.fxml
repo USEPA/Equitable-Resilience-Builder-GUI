@@ -25,7 +25,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="goalComboBox" onAction="#goalComboBoxAction" prefWidth="150.0" />
+                  <ComboBox fx:id="goalComboBox" onAction="#goalComboBoxAction" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
@@ -138,11 +138,16 @@
                      <children>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label text="Chapter Completion">
+                              <Label text="Chapter">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Percent Complete" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER">
@@ -163,7 +168,7 @@
                            <children>
                               <VBox alignment="CENTER" spacing="2.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label text="Completed" />
+                                    <Label text="Percent Complete" />
                                     <VBox fx:id="goalProgressVBox" alignment="BOTTOM_CENTER" maxWidth="25.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
                                        <children>
                                           <VBox fx:id="goalProgressBar" />
@@ -177,7 +182,7 @@
                               </VBox>
                               <VBox alignment="CENTER" spacing="2.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label text="Confidence" />
+                                    <Label text="Ranking" />
                                     <VBox fx:id="goalConfidenceVBox" alignment="BOTTOM_CENTER" maxWidth="25.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
                                        <children>
                                           <VBox fx:id="goalConfidenceBar" />
@@ -206,7 +211,7 @@
                            <children>
                               <HBox fx:id="startHBox" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonAction" text="Started">
+                                    <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonAction" text="Started Activity">
                                        <font>
                                           <Font size="14.0" />
                                        </font></Button>
@@ -214,7 +219,7 @@
                               </HBox>
                               <HBox fx:id="completeHBox" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Button fx:id="completeButton" mnemonicParsing="false" onAction="#completeButtonAction" text="Complete">
+                                    <Button fx:id="completeButton" mnemonicParsing="false" onAction="#completeButtonAction" text="Completed Activity">
                                        <font>
                                           <Font size="14.0" />
                                        </font></Button>

@@ -35,7 +35,7 @@
          <children>
             <Label text="Project Selection">
                <font>
-                  <Font size="22.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
          </children>
@@ -48,7 +48,7 @@
                      <children>
                         <Label text="Create New Project:">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
@@ -58,7 +58,7 @@
                         <Pane prefWidth="50.0" />
                         <Label text="Project Name:">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="16.0" />
                            </font>
                         </Label>
                         <TextField fx:id="projectNameTextField" />
@@ -75,9 +75,9 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="Available Projects:">
+                        <Label text="Existing Projects:">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
@@ -87,9 +87,9 @@
             </VBox>
             <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Button mnemonicParsing="false" onAction="#launchButtonAction" text="Launch">
+                  <Button mnemonicParsing="false" onAction="#launchButtonAction" text="Load Project">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="14.0" />
                      </font>
                   </Button>
                </children>

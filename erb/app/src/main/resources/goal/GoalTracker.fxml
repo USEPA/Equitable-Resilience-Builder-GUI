@@ -27,9 +27,9 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label text="Completion">
+                        <Label text="Percent Complete">
                            <font>
-                              <Font name="System Bold" size="13.0" />
+                              <Font size="13.0" />
                            </font>
                         </Label>
                      </children>
@@ -57,7 +57,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label text="Confidence">
+                        <Label text="Ranking">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>

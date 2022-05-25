@@ -12,16 +12,16 @@
    <children>
       <HBox fx:id="headingLabelHBox" alignment="CENTER" minHeight="75.0">
          <children>
-            <Label fx:id="headingLabel" text="Welcome to the ERB">
+            <Label fx:id="headingLabel" text="Equitable Resilience Builder">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <VBox VBox.vgrow="ALWAYS">
+      <VBox fx:id="mainPanel" VBox.vgrow="ALWAYS">
          <children>
-            <VBox>
+            <VBox fx:id="aboutPanel">
                <children>
                   <HBox VBox.vgrow="NEVER">
                      <children>
@@ -45,9 +45,9 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
-            <VBox>
+            <VBox VBox.vgrow="ALWAYS">
                <children>
-                  <HBox VBox.vgrow="NEVER">
+                  <HBox>
                      <children>
                         <Label text="Activites" HBox.hgrow="ALWAYS">
                            <font>
@@ -59,7 +59,7 @@
                         <Insets left="3.0" />
                      </padding>
                   </HBox>
-                  <ListView fx:id="activitiesListView" style="-fx-background-color: transparent;" />
+                  <ListView fx:id="activitiesListView" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

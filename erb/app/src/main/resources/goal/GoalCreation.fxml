@@ -43,9 +43,9 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="Goal creation">
+                        <Label text="Create Goal">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                      </children>
@@ -98,9 +98,9 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="List of created goals">
+                        <Label text="ERB Goals">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                      </children>

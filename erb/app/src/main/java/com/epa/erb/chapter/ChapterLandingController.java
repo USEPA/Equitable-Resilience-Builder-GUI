@@ -17,12 +17,17 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 public class ChapterLandingController implements Initializable {
 
+	@FXML
+	VBox mainPanel;
+	@FXML
+	VBox aboutPanel;
 	@FXML
 	Label headingLabel;
 	@FXML
@@ -68,7 +73,7 @@ public class ChapterLandingController implements Initializable {
 		if (chapter != null) {
 			return "Welcome to " + chapter.getStringName();
 		} else {
-			return "Welcome to the ERB";
+			return "Equitable Resilience Builder";
 		}
 	}
 	
@@ -79,8 +84,10 @@ public class ChapterLandingController implements Initializable {
 	
 	Text getAboutText() {
 		if (chapter != null) {
+			addAboutPanel();
 			return new Text(chapter.getDescriptionName());
 		} else {
+			removeAboutPanel();
 			return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
 		}
 	}
@@ -144,6 +151,18 @@ public class ChapterLandingController implements Initializable {
 					}
 				}
 			}
+		}
+	}
+	
+	private void removeAboutPanel() {
+		if(mainPanel.getChildren().contains(aboutPanel)) {
+			mainPanel.getChildren().remove(aboutPanel);
+		}
+	}
+	
+	private void addAboutPanel() {
+		if(!mainPanel.getChildren().contains(aboutPanel)) {
+			mainPanel.getChildren().add(0,aboutPanel);
 		}
 	}
 	

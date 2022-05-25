@@ -119,7 +119,7 @@ public class ProjectSelectionController implements Initializable{
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			goalContainerStage.setScene(scene);
-			goalContainerStage.setTitle("Goals");
+			goalContainerStage.setTitle("Equitable Resilience Builder: Goals");
 			goalContainerStage.show();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
@@ -135,7 +135,7 @@ public class ProjectSelectionController implements Initializable{
 			Stage stage = new Stage();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
-			stage.setTitle("ERB");
+			stage.setTitle("Equitable Resilience Builder");
 			stage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());

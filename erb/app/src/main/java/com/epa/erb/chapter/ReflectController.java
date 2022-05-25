@@ -26,6 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 public class ReflectController implements Initializable{
 	
@@ -186,12 +187,43 @@ public class ReflectController implements Initializable{
 		ArrayList<Slider> listOfSliders = new ArrayList<Slider>();
 		for(Activity activity: activities) {
 			Slider slider = new Slider();
+			slider.setMin(0);
+			slider.setMax(100);
+			//slider.setMinorTickCount(0);
+	        //slider.setMajorTickUnit(1);
+	        slider.setSnapToTicks(true);
+	        slider.setShowTickMarks(true);
+	        slider.setShowTickLabels(true);
+			setSliderLabels(slider);
 			slider.setId(activity.getActivityID());
 			slider.setOnMouseClicked(e-> ratingSliderAdjusted(slider, activity));
 			slider.setValue(Double.parseDouble(activity.getRating()));
 			listOfSliders.add(slider);
 		}
 		return listOfSliders;
+	}
+	
+	private void setSliderLabels(Slider slider) {
+		slider.setLabelFormatter(new StringConverter<Double>() {
+            @Override
+            public String toString(Double n) {
+                if (n < 25) return "Not useful";
+                if (n < 75 && n > 25) return "Somewhat useful";
+                return "Very useful";
+            }
+            @Override
+            public Double fromString(String s) {
+                switch (s) {
+                    case "Not useful":
+                        return 0d;
+                    case "Very useful":
+                        return 100d;
+
+                    default:
+                        return 50d;
+                }
+            }
+        });
 	}
 	
 	private void addRatingSliders(ArrayList<Slider> ratingSliders) {

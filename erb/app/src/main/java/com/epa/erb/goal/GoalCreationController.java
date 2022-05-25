@@ -116,7 +116,7 @@ public class GoalCreationController implements Initializable{
 			Stage stage = new Stage();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
-			stage.setTitle("ERB");
+			stage.setTitle("Equitable Resilience Builder");
 			stage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());

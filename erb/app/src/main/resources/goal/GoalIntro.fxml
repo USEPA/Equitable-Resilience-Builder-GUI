@@ -24,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Label text="Use the following goal worksheet to help brainstorm goals.">
+            <Label text="Use the following worksheet to help brainstorm goals.">
                <font>
                   <Font size="15.0" />
                </font>

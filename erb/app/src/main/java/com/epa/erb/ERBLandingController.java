@@ -56,7 +56,7 @@ public class ERBLandingController implements Initializable{
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			projectSelectionStage.setScene(scene);
-			projectSelectionStage.setTitle("Project Selection");
+			projectSelectionStage.setTitle("Equitable Resilience Builder: Project Selection");
 			projectSelectionStage.show();
 			app.closeERBLandingStage();
 		} catch (Exception e) {

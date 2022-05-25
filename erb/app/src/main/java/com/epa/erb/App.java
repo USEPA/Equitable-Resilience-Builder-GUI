@@ -50,7 +50,7 @@ public class App extends Application {
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			erbLandingStage.setScene(scene);
-			erbLandingStage.setTitle("ERB");
+			erbLandingStage.setTitle("Equitable Resilience Builder: Welcome");
 			erbLandingStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
