@@ -1,5 +1,7 @@
 package com.epa.erb;
 
+import java.util.ArrayList;
+
 public class Activity {
 	
 	private ActivityType activityType;
@@ -37,6 +39,15 @@ public class Activity {
 		
 	public Activity() {
 		
+	}
+	
+	public ArrayList<String> getSplitMaterials(){
+		ArrayList<String> listOfMaterials = new ArrayList<String>();
+		String [] splitStrings = materials.split("\n");
+		for(String s: splitStrings) {
+			listOfMaterials.add(s);
+		}
+		return listOfMaterials;
 	}
 
 	public ActivityType getActivityType() {
