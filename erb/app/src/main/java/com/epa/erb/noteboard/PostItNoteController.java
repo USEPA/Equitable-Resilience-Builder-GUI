@@ -96,7 +96,7 @@ public class PostItNoteController implements Initializable{
 			editsStage = new Stage();
 			Scene scene = new Scene(fxmlLoader.load());
 			editsStage.setScene(scene);
-			editsStage.setTitle("Post It Note Edits");
+			editsStage.setTitle("ERB: Post It Note Edits");
 			editsStage.showAndWait();
 		} catch (Exception e) {
 			logger.error(e.getMessage());

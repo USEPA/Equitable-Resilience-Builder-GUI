@@ -35,7 +35,18 @@ public class ERBContainerController implements Initializable{
 	
 	@FXML
 	public void aboutMenuItemAction() {
-		
+		loadERBLandingToContainer();
+	}
+	
+	private void loadERBLandingToContainer() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
+			ERBLandingController erbLandingController = new ERBLandingController(app);
+			fxmlLoader.setController(erbLandingController);
+			app.loadContent(fxmlLoader.load());
+		} catch (Exception e) {
+
+		}
 	}
 	
 	@FXML
@@ -52,6 +63,7 @@ public class ERBContainerController implements Initializable{
 			Stage stage = new Stage();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
+			stage.setTitle("ERB: Glossary");
 			stage.showAndWait();
 		} catch (Exception e) {
 			

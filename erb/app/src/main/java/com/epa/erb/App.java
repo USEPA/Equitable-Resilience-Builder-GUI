@@ -67,6 +67,7 @@ public class App extends Application {
 			erbContainerStage = new Stage();
 			Scene scene = new Scene(fxmlLoader.load());
 			erbContainerStage.setScene(scene);
+			erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
 			erbContainerStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());

@@ -168,7 +168,7 @@ public class ReflectController implements Initializable{
 				reflectNotesStage = new Stage();
 				Scene scene = new Scene(root);
 				reflectNotesStage.setScene(scene);
-				reflectNotesStage.setTitle("Notes");
+				reflectNotesStage.setTitle("ERB: Notes");
 				reflectNotesStage.show();
 			}
 		} catch (Exception e) {

@@ -127,7 +127,7 @@ public class WorksheetContentController implements Initializable{
 			fxmlLoader.setController(printerSelectionController);
 			Parent root = fxmlLoader.load();
 			printerSelectionStage = new Stage();
-			printerSelectionStage.setTitle("Printer Selection");
+			printerSelectionStage.setTitle("ERB: Printer Selection");
 			Scene scene = new Scene(root);
 			printerSelectionStage.setScene(scene);
 			printerSelectionStage.showAndWait();

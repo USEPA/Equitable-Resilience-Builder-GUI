@@ -439,7 +439,7 @@ public class EngagementActionController implements Initializable{
 			globalGoalTrackerStage = new Stage();
 			Scene scene = new Scene(root);
 			globalGoalTrackerStage.setScene(scene);
-			globalGoalTrackerStage.setTitle("Equitable Resilience Builder: Goal Tracker");
+			globalGoalTrackerStage.setTitle("ERB: Goal Tracker");
 			globalGoalTrackerStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
