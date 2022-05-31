@@ -3,8 +3,12 @@ package com.epa.erb;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ERBContainerController implements Initializable{
 	
@@ -36,7 +40,22 @@ public class ERBContainerController implements Initializable{
 	
 	@FXML
 	public void glossaryMenuItemAction() {
-		
+		loadGlossary();
+	}
+	
+	private void loadGlossary() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/Glossary.fxml"));
+			GlossaryController glossaryController = new GlossaryController();
+			fxmlLoader.setController(glossaryController);
+			Parent root = fxmlLoader.load();
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e) {
+			
+		}
 	}
 
 	public VBox getWelcomeVBox() {
