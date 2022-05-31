@@ -21,7 +21,7 @@
             </HBox>
          </children>
       </VBox>
-      <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+      <HBox spacing="5.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                <children>
@@ -29,7 +29,7 @@
                      <children>
                         <Label text="Percent Complete">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
                      </children>
@@ -86,4 +86,7 @@
          </children>
       </HBox>
    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </VBox>
