@@ -149,6 +149,7 @@ public class ReflectController implements Initializable{
 	
 	private void notesHyperlinkClicked(Hyperlink hyperlink, Activity activity) {
 		loadReflectNotes(activity, null);
+		engagementActionController.needsSaving = true;
 	}
 	
 	@FXML
@@ -237,6 +238,7 @@ public class ReflectController implements Initializable{
 		activity.setRating(String.valueOf((int) slider.getValue()));
 		handleChapterConfidenceProgressBar(chapter);
 		engagementActionController.handleLocalProgress(chapter,goal.getChapters());
+		engagementActionController.needsSaving = true;
 	}
 	
 	private void populatePercentLabels(ArrayList<Activity> activities) {

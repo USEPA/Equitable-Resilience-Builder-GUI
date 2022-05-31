@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,12 +23,17 @@ import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -35,6 +41,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -121,6 +128,7 @@ public class EngagementActionController implements Initializable{
 		this.project = project;
 	}
 	
+	public boolean needsSaving = false;
 	private Constants constants = new Constants();
 	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
@@ -143,6 +151,13 @@ public class EngagementActionController implements Initializable{
 		treeView.setOnMouseClicked(e-> treeViewClicked());
 		initializeStyle();
 		addProgressListeners();
+		
+		goalComboBox.valueProperty().addListener(new ChangeListener<Goal>() {
+			@Override
+			public void changed(ObservableValue ov, Goal origG, Goal newG) {
+				goalChanged(origG, newG);
+			}
+		});
 	}
 	
 	private void initializeStyle() {
@@ -307,12 +322,26 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	@FXML
-	public void goalComboBoxAction() {
-		Goal goal = goalComboBox.getSelectionModel().getSelectedItem();
-		if(goal != null) {
-			goalSelected(goal);
+	private void goalChanged(Goal origGoal, Goal newGoal) {
+		if(origGoal != null) {
+			if(needsSaving) {
+				Optional<ButtonType> result = showGoalSavingAlert();
+				if(result.get().equals(ButtonType.OK)) {
+					loadSavePopup(origGoal);
+				}
+			}
+			goalSelected(newGoal);
+			needsSaving=false;
 		}
+	}
+		
+	private Optional<ButtonType> showGoalSavingAlert() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText(null);
+		alert.setContentText("A change in the current goal has been detected. Would you like to save before continuing?");
+		alert.setTitle("Warning");
+		Optional<ButtonType> result = alert.showAndWait();
+		return result;
 	}
 		
 	@FXML
@@ -328,6 +357,8 @@ public class EngagementActionController implements Initializable{
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		
 		handleLocalProgress(chapter, getCurrentGoal().getChapters());
+		
+		needsSaving = true;
 	}
 	
 	@FXML
@@ -343,6 +374,8 @@ public class EngagementActionController implements Initializable{
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		
 		handleLocalProgress(chapter, getCurrentGoal().getChapters());
+		
+		needsSaving = true;
 	}
 	
 	@FXML
@@ -378,9 +411,23 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-		Goal goal = getCurrentGoal();
-		if (goal != null) {
-			saveGoalData(goal);
+		loadSavePopup(getCurrentGoal());
+	}
+	
+	private Stage savePopupStage = null;
+	private void loadSavePopup(Goal goal) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/SavePopup.fxml"));
+			SavePopupController savePopupController = new SavePopupController(app, goal, getGoalXMLFile(goal), this);
+			fxmlLoader.setController(savePopupController);
+			Parent root = fxmlLoader.load();
+			savePopupStage = new Stage();
+			Scene scene = new Scene(root);
+			savePopupStage.setScene(scene);
+			savePopupStage.setTitle("Saving...");
+			savePopupStage.show();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
 	
@@ -400,12 +447,6 @@ public class EngagementActionController implements Initializable{
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-	}
-	
-	private void saveGoalData(Goal goal) {
-		XMLManager xmlManager = new XMLManager(app);
-		File goalXML = getGoalXMLFile(goal);
-		xmlManager.writeGoalMetaXML(goalXML, getCurrentGoal().getChapters());
 	}
 	
 	@FXML
@@ -800,6 +841,12 @@ public class EngagementActionController implements Initializable{
 	public void closeGlobalGoalTrackerStage() {
 		if(globalGoalTrackerStage!=null) {
 			globalGoalTrackerStage.close();
+		}
+	}
+	
+	public void closeSavePopupStage() {
+		if (savePopupStage != null) {
+			savePopupStage.close();
 		}
 	}
 			
