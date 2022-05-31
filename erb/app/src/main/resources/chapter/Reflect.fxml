@@ -134,20 +134,6 @@
                               <VBox fx:id="ratingVBox" alignment="TOP_CENTER" spacing="25.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
-                        <VBox minWidth="30.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <HBox alignment="CENTER" spacing="3.0">
-                                 <children>
-                                    <Label text="\%" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <VBox fx:id="percentVBox" alignment="TOP_CENTER" spacing="18.0" VBox.vgrow="ALWAYS" />
-                           </children>
-                        </VBox>
                         <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" spacing="3.0">

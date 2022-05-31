@@ -47,8 +47,6 @@ public class ReflectController implements Initializable{
 	@FXML
 	Label confidenceInfoLabel;
 	@FXML
-	VBox percentVBox;
-	@FXML
 	VBox notesVBox;
 	@FXML
 	VBox confidenceRatingVBox;
@@ -121,7 +119,6 @@ public class ReflectController implements Initializable{
 		populateActivityLabels(chapterActivities);
 		populateRatingSliders(chapterActivities);
 		populateNotesHyperlinks(chapterActivities);
-		populatePercentLabels(chapterActivities);
 	}
 	
 	private void populateNotesHyperlinks(ArrayList<Activity> activities) {
@@ -190,8 +187,6 @@ public class ReflectController implements Initializable{
 			Slider slider = new Slider();
 			slider.setMin(0);
 			slider.setMax(100);
-			//slider.setMinorTickCount(0);
-	        //slider.setMajorTickUnit(1);
 	        slider.setSnapToTicks(true);
 	        slider.setShowTickMarks(true);
 	        slider.setShowTickLabels(true);
@@ -234,52 +229,10 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void ratingSliderAdjusted(Slider slider, Activity activity) {
-		updatePercentLabel(activity, slider.getValue());
 		activity.setRating(String.valueOf((int) slider.getValue()));
 		handleChapterConfidenceProgressBar(chapter);
 		engagementActionController.handleLocalProgress(chapter,goal.getChapters());
 		engagementActionController.needsSaving = true;
-	}
-	
-	private void populatePercentLabels(ArrayList<Activity> activities) {
-		ArrayList<Label> percentLabels = createPercentLabels(activities);
-		addPercentLabels(percentLabels);
-	}
-	
-	private ArrayList<Label> createPercentLabels(ArrayList<Activity> activities){
-		ArrayList<Label> listOfLabels = new ArrayList<Label>();
-		for(Activity activity : activities) {
-			Label label = new Label(activity.getRating() + "%");
-			label.setFont(new Font(14.0));
-			label.setId(activity.getActivityID());
-			listOfLabels.add(label);
-		}
-		return listOfLabels;
-	}
-	
-	private void addPercentLabels(ArrayList<Label> percentLabels) {
-		for(Label label : percentLabels) {
-			percentVBox.getChildren().add(label);
-		}
-	}
-	
-	private void updatePercentLabel(Activity activity, double value) {
-		int valueToDisplay = (int) value;
-		Label percentLabel = getPercentLabel(activity);
-		if(percentLabel != null) {
-			percentLabel.setText(valueToDisplay + "%");
-		}
-	}
-	
-	private Label getPercentLabel(Activity activity) {
-		for(int i =0; i < percentVBox.getChildren().size(); i++) {
-			Label label = (Label)percentVBox.getChildren().get(i);
-			if(label.getId().contentEquals(activity.getActivityID())) {
-				return label;
-			}
-		}
-		logger.debug("Percent Label returned is null");
-		return null;
 	}
 	
 	private void populateActivityLabels(ArrayList<Activity> activities) {
