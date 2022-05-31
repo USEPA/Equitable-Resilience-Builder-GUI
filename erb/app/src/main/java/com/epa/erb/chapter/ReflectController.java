@@ -203,8 +203,8 @@ public class ReflectController implements Initializable{
 		slider.setLabelFormatter(new StringConverter<Double>() {
             @Override
             public String toString(Double n) {
-                if (n < 25) return "Not useful";
-                if (n < 75 && n > 25) return "Somewhat useful";
+                if (n <= 25) return "Not useful";
+                if (n <= 75 && n > 25) return "Somewhat useful";
                 return "Very useful";
             }
             @Override
