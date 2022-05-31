@@ -69,6 +69,13 @@ public class PostItNoteController implements Initializable{
 	}
 	
 	@FXML
+	public void minusClicked() {
+		int numberOfPlus = Integer.parseInt(numberLabel.getText());
+		numberOfPlus--;
+		setNumberLabelText(String.valueOf(numberOfPlus));
+	}
+	
+	@FXML
 	public void postItNoteClicked(MouseEvent mouseEvent) {
 		if(mouseEvent.getClickCount() ==2) {
 			postItNoteDoubleClicked(mouseEvent);

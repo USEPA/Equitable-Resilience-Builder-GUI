@@ -13,10 +13,11 @@
          <content>
             <VBox>
                <children>
-                  <HBox fx:id="plusHBox" alignment="TOP_RIGHT" style="-fx-background-color: transparent;">
+                  <HBox fx:id="plusHBox" alignment="TOP_RIGHT" spacing="1.0" style="-fx-background-color: transparent;">
                      <children>
-                        <Label onMouseClicked="#plusClicked" style="-fx-background-color: transparent;" text="+" />
+                        <Label onMouseClicked="#minusClicked" style="-fx-background-color: transparent;" text="-" />
                         <Label fx:id="numberLabel" text="0" />
+                        <Label onMouseClicked="#plusClicked" style="-fx-background-color: transparent;" text="+" />
                      </children>
                   </HBox>
                   <TextFlow fx:id="textFlow" VBox.vgrow="ALWAYS" />
