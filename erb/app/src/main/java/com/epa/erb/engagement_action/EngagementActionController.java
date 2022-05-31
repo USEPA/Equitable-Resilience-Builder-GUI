@@ -168,7 +168,6 @@ public class EngagementActionController implements Initializable{
 		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
 		chapterProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
-		saveHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	private void addProgressListeners() {

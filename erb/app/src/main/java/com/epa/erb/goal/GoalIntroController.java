@@ -57,7 +57,6 @@ public class GoalIntroController implements Initializable{
 	}
 	
 	private void handleControls() {
-		headingHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	private File getPDFFileToLoad() {

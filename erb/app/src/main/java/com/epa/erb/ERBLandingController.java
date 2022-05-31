@@ -8,17 +8,12 @@ import com.epa.erb.project.ProjectSelectionController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 
 public class ERBLandingController implements Initializable {
 
-	@FXML
-	VBox welcomeVBox;
 	@FXML
 	Circle circle1;
 	@FXML
@@ -53,7 +48,6 @@ public class ERBLandingController implements Initializable {
 	}
 
 	private void handleControls() {
-		welcomeVBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		circle1.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle2.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle3.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
@@ -62,22 +56,19 @@ public class ERBLandingController implements Initializable {
 		hideScrollPane3();
 	}
 
-	private Stage projectSelectionStage = null;
-
 	@FXML
 	public void beginERBProcessButtonClicked() {
+		loadProjectSelectionToContainer();
+	}
+	
+	private void loadProjectSelectionToContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
 			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app, this);
 			fxmlLoader.setController(projectSelectionController);
-			projectSelectionStage = new Stage();
-			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root);
-			projectSelectionStage.setScene(scene);
-			projectSelectionStage.setTitle("Equitable Resilience Builder: Project Selection");
-			projectSelectionStage.show();
-			app.closeERBLandingStage();
+			app.loadContent(fxmlLoader.load());			
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 	}
@@ -106,12 +97,6 @@ public class ERBLandingController implements Initializable {
 			hideScrollPane3();
 		} else {
 			showScrollPane3();
-		}
-	}
-
-	public void closeProjectSelectionStage() {
-		if (projectSelectionStage != null) {
-			projectSelectionStage.close();
 		}
 	}
 	

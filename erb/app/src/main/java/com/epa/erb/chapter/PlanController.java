@@ -7,11 +7,8 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 
 public class PlanController implements Initializable{
 

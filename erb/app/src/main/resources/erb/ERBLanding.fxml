@@ -11,18 +11,13 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1150.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="welcomeVBox" alignment="CENTER">
+      <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
          <children>
             <Label text="Welcome to the ERB">
                <font>
                   <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label text="Equitable Resilience Builder">
-               <font>
-                  <Font size="25.0" />
                </font>
             </Label>
          </children>

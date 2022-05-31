@@ -14,22 +14,16 @@ import com.epa.erb.goal.GoalContainerController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ProjectSelectionController implements Initializable{
 
-	@FXML
-	VBox welcomeVBox;
 	@FXML
 	TextField projectNameTextField;
 	@FXML
@@ -54,7 +48,6 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private void handleControls() {
-		welcomeVBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 	
 	@FXML
@@ -101,43 +94,31 @@ public class ProjectSelectionController implements Initializable{
 		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
 		if(selectedProject != null) {
 			if(isProjectNew(selectedProject)) {
-				loadGoalCreation(selectedProject);
+				loadGoalCreationToContainer(selectedProject);
 			} else {
-				loadEngagementActionTool(selectedProject);
-				erbLandingController.closeProjectSelectionStage();
+				loadEngagementActionToContainer(selectedProject);
 			}
 		}
 	}
 	
-	private Stage goalContainerStage = null;
-	private void loadGoalCreation(Project project) {		
+	private void loadGoalCreationToContainer(Project project) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
 			GoalContainerController goalContainerController = new GoalContainerController(app, project, this);
 			fxmlLoader.setController(goalContainerController);
-			goalContainerStage = new Stage();
-			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root);
-			goalContainerStage.setScene(scene);
-			goalContainerStage.setTitle("Equitable Resilience Builder: Goals");
-			goalContainerStage.show();
+			app.loadContent(fxmlLoader.load());
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
 	
-	private void loadEngagementActionTool(Project project) {
+	private void loadEngagementActionToContainer(Project project) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController(app, project);
 			fxmlLoader.setController(engagementActionController);
-			Parent root = fxmlLoader.load();
-			Stage stage = new Stage();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setTitle("Equitable Resilience Builder");
-			stage.show();
-		} catch (Exception e) {
+			app.loadContent(fxmlLoader.load());
+		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
@@ -187,20 +168,6 @@ public class ProjectSelectionController implements Initializable{
 				return cell;
 			}
 		});
-	}
-	
-	public void closeProjectSelectionStage() {
-		erbLandingController.closeProjectSelectionStage();
-	}
-	
-	public void closeGoalContainerStage() {
-		if(goalContainerStage != null) {
-			goalContainerStage.close();
-		}
-	}
-
-	public VBox getWelcomeVBox() {
-		return welcomeVBox;
 	}
 
 	public TextField getProjectNameTextField() {

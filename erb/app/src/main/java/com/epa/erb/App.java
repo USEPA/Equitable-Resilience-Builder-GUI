@@ -5,14 +5,16 @@ package com.epa.erb;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
@@ -25,6 +27,7 @@ public class App extends Application {
 	private ArrayList<ActivityType> activityTypes;
 	private ArrayList<GoalCategory> goalCategories;
 	private Logger logger = LogManager.getLogger(App.class);
+	private ERBContainerController erbContainerController;
 	private Constants constants = new Constants();
 	private String pathToERBFolder = constants.getPathToLocalERBFolder();
 	
@@ -40,21 +43,31 @@ public class App extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		logger.info(getGreeting());
 		readAndStoreData();
-		loadERBLanding();
+		loadERBContainer();
+		loadERBLandingToContainer();
 	}
 	
-	private Stage erbLandingStage = null;
-	private void loadERBLanding() {
+	private void loadERBLandingToContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
 			ERBLandingController erbLandingController = new ERBLandingController(this);
 			fxmlLoader.setController(erbLandingController);
-			erbLandingStage = new Stage();
-			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root);
-			erbLandingStage.setScene(scene);
-			erbLandingStage.setTitle("Equitable Resilience Builder: Welcome");
-			erbLandingStage.show();
+			loadContent(fxmlLoader.load());
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	private Stage erbContainerStage = null;
+	private void loadERBContainer() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBContainer.fxml"));
+			erbContainerController = new ERBContainerController(this);
+			fxmlLoader.setController(erbContainerController);
+			erbContainerStage = new Stage();
+			Scene scene = new Scene(fxmlLoader.load());
+			erbContainerStage.setScene(scene);
+			erbContainerStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -77,6 +90,13 @@ public class App extends Application {
 		
 		File erbProjectDirectory = getERBProjectDirectory();
 		if(erbProjectDirectory != null) projects = xmlManager.parseAllProjects(erbProjectDirectory, activities);
+	}
+	
+	public void loadContent(Node contentNode) {
+		VBox.setVgrow(contentNode, Priority.ALWAYS);
+		HBox.setHgrow(contentNode, Priority.ALWAYS);
+		erbContainerController.getErbContainer().getChildren().clear();
+		erbContainerController.getErbContainer().getChildren().add(contentNode);
 	}
 	
 	private File getChaptersFileToParse() {
@@ -134,9 +154,9 @@ public class App extends Application {
 		return null;
 	}
 	
-	public void closeERBLandingStage() {
-		if(erbLandingStage != null) {
-			erbLandingStage.close();
+	public void closeERBContainerStage() {
+		if(erbContainerStage != null) {
+			erbContainerStage.close();
 		}
 	}
 	
@@ -158,6 +178,10 @@ public class App extends Application {
 
 	public ArrayList<GoalCategory> getGoalCategories() {
 		return goalCategories;
+	}
+
+	public ERBContainerController getErbContainerController() {
+		return erbContainerController;
 	}
 	
 }

@@ -18,8 +18,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
@@ -34,7 +32,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class GoalCreationController implements Initializable{
@@ -71,7 +68,6 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void handleControls() {
-		headingHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 
 	@FXML
@@ -101,24 +97,17 @@ public class GoalCreationController implements Initializable{
 			project.setProjectGoals(createdGoals);
 			writeProjectMetaData(project);
 			writeGoalsMetaData(createdGoals);
-			loadEngagementActionTool(project);
-			projectSelectionController.closeGoalContainerStage();
-			projectSelectionController.closeProjectSelectionStage();
+			loadEngagementActionToContainer(project);
 		}
 	}
 	
-	private void loadEngagementActionTool(Project project) {
+	private void loadEngagementActionToContainer(Project project) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController(app, project);
 			fxmlLoader.setController(engagementActionController);
-			Parent root = fxmlLoader.load();
-			Stage stage = new Stage();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setTitle("Equitable Resilience Builder");
-			stage.show();
-		} catch (Exception e) {
+			app.loadContent(fxmlLoader.load());
+		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}

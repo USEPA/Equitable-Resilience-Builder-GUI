@@ -3,4 +3,4 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox fx:id="goalContainerVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" />
+<VBox fx:id="goalContainerVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" />

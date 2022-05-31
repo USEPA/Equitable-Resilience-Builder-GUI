@@ -10,7 +10,7 @@
 
 <VBox spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="headingHBox" alignment="CENTER">
+      <HBox fx:id="headingHBox" alignment="CENTER_LEFT">
          <children>
             <Label text="Welcome to the goal brainstorm activity">
                <font>
@@ -22,7 +22,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER">
+      <HBox alignment="CENTER_LEFT">
          <children>
             <Label text="Use the following worksheet to help brainstorm goals.">
                <font>
@@ -31,7 +31,11 @@
             </Label>
          </children>
       </HBox>
-      <WebView fx:id="webView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+      <VBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+         <children>
+            <WebView fx:id="webView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
       <HBox alignment="CENTER_RIGHT">
          <children>
             <Button mnemonicParsing="false" onAction="#nextButtonAction" text="Next" />
