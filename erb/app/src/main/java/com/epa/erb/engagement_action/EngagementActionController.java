@@ -24,6 +24,8 @@ import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -146,7 +148,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void handleControls() {
-		treeView.setOnMouseClicked(e-> treeViewClicked());
+		treeView.setOnMouseClicked(e-> treeViewClicked(e));
 		initializeStyle();
 		addProgressListeners();
 		
@@ -172,6 +174,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void addProgressListeners() {
 		localProgressVBox.heightProperty().addListener(e-> handleProgressListeners());
+		localProgressVBox.widthProperty().addListener(e-> handleProgressListeners());
 	}
 	
 	private void handleProgressListeners() {
@@ -196,7 +199,7 @@ public class EngagementActionController implements Initializable{
 		for (TreeItem<String> treeItem : treeMap.keySet()) {
 			if (treeMap.get(treeItem) == "0") {
 				getTreeView().getSelectionModel().select(treeItem);
-				treeViewClicked();
+				treeViewClicked(null);
 			}
 		}
 	}
@@ -382,7 +385,7 @@ public class EngagementActionController implements Initializable{
 		if (selectedTreeItem != null && parentTreeItem != null) {
 			int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
 			treeView.getSelectionModel().select(parentTreeItem.getChildren().get(currentIndex - 1));
-			treeViewClicked();
+			treeViewClicked(null);
 		}
 	}
 	
@@ -402,7 +405,7 @@ public class EngagementActionController implements Initializable{
 				int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
 				treeView.getSelectionModel().select(parentTreeItem.getChildren().get( currentIndex+ 1));
 			}
-			treeViewClicked();
+			treeViewClicked(null);
 		}
 	}
 	
@@ -462,31 +465,33 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	public void treeViewClicked() {
-		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-		if (selectedTreeItem != null) {
-			TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
-			if (parentTreeItem != null) {
-				String parentTreeItemValue = parentTreeItem.getValue().trim();
-				String selectedTreeItemValue = selectedTreeItem.getValue().trim();
-				if (selectedTreeItemValue.length() > 0) {
-					if (parentTreeItemValue.contains("ERB")) { // Is Chapter
-						handleChapterSelectedInTree(selectedTreeItemValue);
-						addLocalProgressVBox(1);
-						handleLocalProgress(getChapter(selectedTreeItemValue), getCurrentGoal().getChapters());
-					} else { // Is Activity
-						handleActivitySelectedInTree(selectedTreeItem, parentTreeItem);
+	public void treeViewClicked(Event e) {
+		if (e == null || (!e.getTarget().toString().contains("Group@"))) {
+			TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+			if (selectedTreeItem != null) {
+				TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
+				if (parentTreeItem != null) {
+					String parentTreeItemValue = parentTreeItem.getValue().trim();
+					String selectedTreeItemValue = selectedTreeItem.getValue().trim();
+					if (selectedTreeItemValue.length() > 0) {
+						if (parentTreeItemValue.contains("ERB")) { // Is Chapter
+							handleChapterSelectedInTree(selectedTreeItemValue);
+							addLocalProgressVBox(1);
+							handleLocalProgress(getChapter(selectedTreeItemValue), getCurrentGoal().getChapters());
+						} else { // Is Activity
+							handleActivitySelectedInTree(selectedTreeItem, parentTreeItem);
+						}
+					} else {
+						currentSelectedActivity = null;
 					}
-				} else {
-					currentSelectedActivity = null;
+				} else { // ERB Pathway
+					handleERBPathwaySelectedInTree(selectedTreeItem);
+					removeLocalProgressVBox();
 				}
-			} else { //ERB Pathway 
-				handleERBPathwaySelectedInTree(selectedTreeItem);
-				removeLocalProgressVBox();
+			} else {
+				currentSelectedActivity = null;
+				handleNavigationButtonsShown(null, null);
 			}
-		} else {
-			currentSelectedActivity = null;
-			handleNavigationButtonsShown(null, null);
 		}
 	}
 	

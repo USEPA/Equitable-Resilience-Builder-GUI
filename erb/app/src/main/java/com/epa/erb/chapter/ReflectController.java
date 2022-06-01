@@ -91,6 +91,8 @@ public class ReflectController implements Initializable{
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		goalProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
 		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressListeners());
+		engagementActionController.getMainVBox().widthProperty().addListener(e-> handleProgressListeners());
+
 	}
 	
 	private void addInfoToolTips() {
@@ -290,9 +292,14 @@ public class ReflectController implements Initializable{
 	}
 	
 	public void initProgress(Goal goal, Chapter chapter) {
-		handleChapterProgressBar(goal);
-		handleChapterConfidenceProgressBar(chapter);
-		handleGoalProgressBar(chapter);
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				handleChapterProgressBar(goal);
+				handleChapterConfidenceProgressBar(chapter);
+				handleGoalProgressBar(chapter);
+			}
+		});
 	}
 	
 	private void handleChapterProgressBar(Goal goal) {

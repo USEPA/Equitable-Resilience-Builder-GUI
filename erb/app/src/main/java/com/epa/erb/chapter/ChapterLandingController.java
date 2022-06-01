@@ -147,7 +147,7 @@ public class ChapterLandingController implements Initializable {
 					Chapter treeItemChapter = engagementActionController.getChapter(treeItem.getParent().getValue());
 					if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(selectedActivity.getChapterAssignment())) {
 						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
-						engagementActionController.treeViewClicked(); // handle tree item selected
+						engagementActionController.treeViewClicked(null); // handle tree item selected
 					}
 				}
 			}

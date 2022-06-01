@@ -228,7 +228,7 @@ public class ERBPathwayDiagramController implements Initializable {
 				Chapter treeItemChapter = engagementActionController.getChapter(treeItem.getParent().getValue());
 				if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(activity.getChapterAssignment())) {
 					engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-					engagementActionController.treeViewClicked();
+					engagementActionController.treeViewClicked(null);
 				}
 			}
 		}
