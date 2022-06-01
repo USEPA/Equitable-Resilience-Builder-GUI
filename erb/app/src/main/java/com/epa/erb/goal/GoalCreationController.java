@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
@@ -125,7 +127,30 @@ public class GoalCreationController implements Initializable{
 			File goalMetaFile = new File(goalDirectory.getPath() + "\\Meta.xml");
 			ArrayList<Chapter> chapters = goal.getChapters();
 			xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
+			File activitesDirectory =createActivitiesDirectory(goalDirectory);
+			createActivityDirectory(activitesDirectory, goal);
 		}
+	}
+	
+	private void createActivityDirectory(File activitiesDirectory, Goal goal) {
+		for(Chapter chapter : goal.getChapters()) {
+			for(Activity activity : chapter.getAssignedActivities()) {
+				if(!activity.getActivityID().contentEquals("25") && !activity.getActivityID().contentEquals("26")) {
+					File activityDirectory = new File(activitiesDirectory.getPath() + "\\" + activity.getActivityID());
+					if(!activityDirectory.exists()) {
+						activityDirectory.mkdir();
+					}
+				}
+			}
+		}
+	}
+	
+	private File createActivitiesDirectory(File goalDirectory) {
+		File activitiesDirectory = new File(goalDirectory.getPath() + "\\Activities");
+		if(!activitiesDirectory.exists()) {
+			activitiesDirectory.mkdir();
+		}
+		return activitiesDirectory;
 	}
 	
 	private File createGoalDirectory(Goal goal) {
