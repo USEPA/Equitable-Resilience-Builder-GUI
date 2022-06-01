@@ -79,7 +79,7 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <VBox fx:id="statusVBox" alignment="TOP_CENTER" spacing="20.0" VBox.vgrow="ALWAYS" />
+                              <VBox fx:id="statusVBox" alignment="TOP_CENTER" spacing="46.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox maxWidth="215.0" minWidth="55.0" spacing="5.0" HBox.hgrow="ALWAYS">
@@ -93,7 +93,7 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <VBox fx:id="activityVBox" spacing="15.0" VBox.vgrow="ALWAYS" />
+                              <VBox fx:id="activityVBox" spacing="41.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox minWidth="45.0" spacing="5.0" HBox.hgrow="ALWAYS">
@@ -107,7 +107,7 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <VBox fx:id="notesVBox" alignment="TOP_CENTER" spacing="12.0" VBox.vgrow="ALWAYS" />
+                              <VBox fx:id="notesVBox" alignment="TOP_CENTER" spacing="35.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox minWidth="80.0" spacing="5.0" HBox.hgrow="ALWAYS">
@@ -131,7 +131,10 @@
                                     </StackPane>
                                  </children>
                               </HBox>
-                              <VBox fx:id="ratingVBox" alignment="TOP_CENTER" spacing="25.0" VBox.vgrow="ALWAYS" />
+                              <VBox fx:id="ratingVBox" alignment="TOP_CENTER" spacing="25.0" VBox.vgrow="ALWAYS">
+                                 <padding>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </padding></VBox>
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
