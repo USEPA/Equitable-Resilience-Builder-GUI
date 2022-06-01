@@ -2,6 +2,6 @@
     -fx-background-color:
         -fx-box-border,
         linear-gradient(to bottom, derive(-fx-accent,95%), derive(-fx-accent,10%)),
-        #ABABAB; /* this line is the background color of the bar */
+        #C3C3C3; /* this line is the background color of the bar */
     -fx-padding: 0.416667em; /* 5 */
 }

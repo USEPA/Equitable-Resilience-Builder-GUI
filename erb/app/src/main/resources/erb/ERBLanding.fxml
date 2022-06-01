@@ -17,7 +17,7 @@
          <children>
             <Label text="Welcome to the ERB">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Label>
          </children>

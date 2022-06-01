@@ -96,9 +96,13 @@ public class ReflectController implements Initializable{
 	
 	private void addInfoToolTips() {
 		chapterCompletionInfoLabel.setTooltip(new Tooltip("Represents the total percent of activites complete in this chapter."));
+		chapterCompletionInfoLabel.getTooltip().setFont(new Font(12.0));
 		chapterConfidenceInfoLabel.setTooltip(new Tooltip("Represents the total percent of confidence that this chapter is helping to achieve the current goal."));
-		goalCompletionInfoLabel.setTooltip(new Tooltip("Represents the total percent of activites complete in a chapters in this goal."));
+		chapterConfidenceInfoLabel.getTooltip().setFont(new Font(12.0));
+		goalCompletionInfoLabel.setTooltip(new Tooltip("Represents the total percent of activites complete in this goal."));
+		goalCompletionInfoLabel.getTooltip().setFont(new Font(12.0));
 		confidenceInfoLabel.setTooltip(new Tooltip("Drag the slider on an activity to represet how confident you are that the activty helped achieve the current goal."));
+		confidenceInfoLabel.getTooltip().setFont(new Font(12.0));
 	}
 	
 	private void fillChapterActivitiesList() {

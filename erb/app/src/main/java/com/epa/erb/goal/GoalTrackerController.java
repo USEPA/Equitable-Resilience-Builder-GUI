@@ -3,8 +3,6 @@ package com.epa.erb.goal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
 import com.epa.erb.chapter.Chapter;
@@ -39,7 +37,6 @@ public class GoalTrackerController implements Initializable{
 	}
 	
 	private Constants constants = new Constants();
-	private Logger logger = LogManager.getLogger(GoalTrackerController.class);
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

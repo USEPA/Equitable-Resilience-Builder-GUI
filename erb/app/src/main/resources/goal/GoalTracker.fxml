@@ -12,6 +12,15 @@
          <children>
             <HBox alignment="CENTER">
                <children>
+                  <Label text="Goal">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
                   <Label fx:id="goalTitleLabel" text="Title of goal here">
                      <font>
                         <Font name="System Bold" size="18.0" />

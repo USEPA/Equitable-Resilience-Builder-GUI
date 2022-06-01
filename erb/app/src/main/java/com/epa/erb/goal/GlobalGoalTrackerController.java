@@ -10,7 +10,6 @@ import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
 import com.epa.erb.chapter.Chapter;
-import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.project.Project;
 import javafx.application.Platform;
 import javafx.fxml.FXML;

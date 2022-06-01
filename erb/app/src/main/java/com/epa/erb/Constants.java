@@ -28,7 +28,7 @@ public class Constants {
 
 	//Chapters
 //	private String allChaptersColor	= "#80BFCD"; 				//Dark Turquoise
-	private String allChaptersColor	= "#ABABAB"; 				//Grey
+	private String allChaptersColor	= "#C3C3C3"; 				//Grey
 
     //Post-It Notes Stack
 		//----Gray
