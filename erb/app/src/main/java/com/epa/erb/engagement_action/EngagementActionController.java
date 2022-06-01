@@ -25,7 +25,6 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -151,13 +150,7 @@ public class EngagementActionController implements Initializable{
 		treeView.setOnMouseClicked(e-> treeViewClicked(e));
 		initializeStyle();
 		addProgressListeners();
-		
-		goalComboBox.valueProperty().addListener(new ChangeListener<Goal>() {
-			@Override
-			public void changed(ObservableValue ov, Goal origG, Goal newG) {
-				goalChanged(origG, newG);
-			}
-		});
+		addGoalChangeListener();
 	}
 	
 	private void initializeStyle() {
@@ -177,11 +170,19 @@ public class EngagementActionController implements Initializable{
 		localProgressVBox.widthProperty().addListener(e-> handleProgressListeners());
 	}
 	
+	private void addGoalChangeListener() {
+		goalComboBox.valueProperty().addListener(new ChangeListener<Goal>() {
+			@Override
+			public void changed(ObservableValue ov, Goal origG, Goal newG) {
+				goalChanged(origG, newG);
+			}
+		});
+	}
+	
 	private void handleProgressListeners() {
 		if(currentSelectedActivity != null) {
 			String currentChapterName = "Chapter " + currentSelectedActivity.getChapterAssignment();
 			handleLocalProgress(getChapter(currentChapterName), getCurrentGoal().getChapters());
-
 		} else {
 			TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
 			if(selectedTreeItem.getValue().contains("Chapter")) {
@@ -308,7 +309,6 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	
 	private Parent loadERBPathwayDiagram(Activity activity, Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBPathwayDiagram.fxml"));
@@ -432,12 +432,16 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private Stage globalGoalTrackerStage = null;
 	@FXML
 	public void goalLabelClicked() {
+		loadGlobalGoalTracker();
+	}
+	
+	private Stage globalGoalTrackerStage = null;
+	private void loadGlobalGoalTracker() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GlobalGoalTracker.fxml"));
-			GlobalGoalTrackerController globalGoalTrackerController = new GlobalGoalTrackerController(app, project, this);
+			GlobalGoalTrackerController globalGoalTrackerController = new GlobalGoalTrackerController(app, project);
 			fxmlLoader.setController(globalGoalTrackerController);
 			Parent root = fxmlLoader.load();
 			globalGoalTrackerStage = new Stage();
@@ -457,7 +461,6 @@ public class EngagementActionController implements Initializable{
 			collapseAttributes();
 			attributePanelScrollPane.setMinWidth(0.0);
 			attributePanelCollapseLabel.setText("<");
-
 		} else if (attributePanelCollapseString.contentEquals("<")) {
 			unCollapseAttributes();
 			attributePanelScrollPane.setMinWidth(200.0);

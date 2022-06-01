@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
-import com.epa.erb.ERBLandingController;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.GoalContainerController;
 import javafx.fxml.FXML;
@@ -30,10 +29,8 @@ public class ProjectSelectionController implements Initializable{
 	ListView<Project> projectsListView;
 	
 	private App app;
-	private ERBLandingController erbLandingController;
-	public ProjectSelectionController(App app, ERBLandingController erbLandingController) {
+	public ProjectSelectionController(App app) {
 		this.app = app;
-		this.erbLandingController = erbLandingController;
 	}
 	
 	private Constants constants = new Constants();

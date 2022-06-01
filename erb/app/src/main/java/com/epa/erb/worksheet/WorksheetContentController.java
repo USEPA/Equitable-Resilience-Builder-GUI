@@ -98,7 +98,6 @@ public class WorksheetContentController implements Initializable{
 								}
 							});
 						} catch (Exception ex) {
-							ex.printStackTrace();
 							logger.error(ex.getMessage());
 						}
 					}
@@ -152,6 +151,7 @@ public class WorksheetContentController implements Initializable{
 		if(file.exists()) {
 			return file;
 		} else {
+			logger.debug("File to print returned is null");
 			return null;
 		}
 	}

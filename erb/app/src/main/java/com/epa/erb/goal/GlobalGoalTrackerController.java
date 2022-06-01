@@ -35,15 +35,13 @@ public class GlobalGoalTrackerController implements Initializable{
 	
 	private App app;
 	private Project project;
-	private EngagementActionController engagementActionController;
-	public GlobalGoalTrackerController(App app, Project project, EngagementActionController engagementActionController) {
+	public GlobalGoalTrackerController(App app, Project project) {
 		this.app = app;
 		this.project = project;
-		this.engagementActionController = engagementActionController;
 	}
 	
-	private Logger logger = LogManager.getLogger(GlobalGoalTrackerController.class);
 	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(GlobalGoalTrackerController.class);
 	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
 	@Override

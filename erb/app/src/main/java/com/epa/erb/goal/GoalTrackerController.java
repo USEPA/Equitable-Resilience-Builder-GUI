@@ -61,12 +61,12 @@ public class GoalTrackerController implements Initializable{
 	}
 	
 	private void handleGoalProgress() {
-			Progress progress = new Progress();
-			ArrayList<Chapter> listOfChapters = goal.getChapters();
-			int goalPercentDone = progress.getGoalPercentDone(listOfChapters);
-			setGoalCompletion(goalPercentDone);
-			int goalConfidencePercent = progress.getGoalConfidencePercent(listOfChapters);
-			setGoalConfidence(goalConfidencePercent);
+		Progress progress = new Progress();
+		ArrayList<Chapter> listOfChapters = goal.getChapters();
+		int goalPercentDone = progress.getGoalPercentDone(listOfChapters);
+		setGoalCompletion(goalPercentDone);
+		int goalConfidencePercent = progress.getGoalConfidencePercent(listOfChapters);
+		setGoalConfidence(goalConfidencePercent);
 	}
 	
 	private void setGoalCompletion(int goalPercent) {
@@ -99,6 +99,4 @@ public class GoalTrackerController implements Initializable{
 		});
 	}
 	
-
-
 }

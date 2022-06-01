@@ -45,8 +45,8 @@ public class NoteBoardContentController implements Initializable{
 		this.activity = activity;
 	}
 	
-	private ArrayList<String> categories = new ArrayList<String>();
 	private Constants constants = new Constants();
+	private ArrayList<String> categories = new ArrayList<String>();
 	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
 	
 	@Override

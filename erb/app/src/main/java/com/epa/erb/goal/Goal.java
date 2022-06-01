@@ -23,10 +23,10 @@ public class Goal {
 		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
 	}
 	
-	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	private Constants constants = new Constants();
-	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
+	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	private Logger logger = LogManager.getLogger(Goal.class);
+	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
 	public String getGoalName() {
 		return goalName;
@@ -86,6 +86,7 @@ public class Goal {
 		if(goalMetaFile.exists()) {
 			return goalMetaFile;
 		}
+		logger.debug("Goal XML file returned is null");
 		return null;
 	}
 	

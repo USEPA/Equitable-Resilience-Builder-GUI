@@ -317,7 +317,6 @@ public class XMLManager {
 				return chapters;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
-				e.printStackTrace();
 			}
 		} else {
 			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
@@ -404,7 +403,6 @@ public class XMLManager {
 			transformer.transform(domSource, file);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 	
@@ -444,7 +442,6 @@ public class XMLManager {
 			transformer.transform(domSource, file);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 

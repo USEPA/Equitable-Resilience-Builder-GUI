@@ -24,11 +24,11 @@ public class App extends Application {
 	private ArrayList<Project> projects;
 	private ArrayList<Chapter> chapters;
 	private ArrayList<Activity> activities;
+	private Constants constants = new Constants();
 	private ArrayList<ActivityType> activityTypes;
 	private ArrayList<GoalCategory> goalCategories;
-	private Logger logger = LogManager.getLogger(App.class);
 	private ERBContainerController erbContainerController;
-	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(App.class);
 	private String pathToERBFolder = constants.getPathToLocalERBFolder();
 	
 	private String getGreeting() {

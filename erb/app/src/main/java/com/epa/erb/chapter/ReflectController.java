@@ -92,7 +92,6 @@ public class ReflectController implements Initializable{
 		goalProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
 		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressListeners());
 		engagementActionController.getMainVBox().widthProperty().addListener(e-> handleProgressListeners());
-
 	}
 	
 	private void addInfoToolTips() {
@@ -157,7 +156,6 @@ public class ReflectController implements Initializable{
 	}
 	
 	private Stage reflectNotesStage = null;
-
 	private void loadReflectNotes(Activity activity, Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectNotes.fxml"));
@@ -216,7 +214,6 @@ public class ReflectController implements Initializable{
                         return 0d;
                     case "Very useful":
                         return 100d;
-
                     default:
                         return 50d;
                 }

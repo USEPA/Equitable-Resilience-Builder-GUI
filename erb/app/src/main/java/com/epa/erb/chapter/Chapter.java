@@ -83,25 +83,7 @@ public class Chapter {
 	public int getNumberOfAssignedActivities() {
 		return assignedActivities.size();
 	}
-	
-	public Activity getPlanActivity() {
-		for(Activity activity : assignedActivities) {
-			if(activity.getLongName().contentEquals("Plan")) {
-				return activity;
-			}
-		}
-		return null;
-	}
-	
-	public Activity getReflectActivity(){
-		for(Activity activity : assignedActivities) {
-			if(activity.getLongName().contentEquals("Reflect")) {
-				return activity;
-			}
-		}
-		return null;
-	}
-	
+		
 	public int getNumberOfReadyActivities() {
 		int count = 0;
 		for(Activity activity: assignedActivities) {

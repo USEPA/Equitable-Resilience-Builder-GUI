@@ -46,8 +46,8 @@ public class GoalIntroController implements Initializable{
 		this.projectSelectionController = projectSelectionController;
 	}
 	
-	private Logger logger = LogManager.getLogger(GoalIntroController.class);
 	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(GoalIntroController.class);
 	private String pathToERBStaticDataFolder = constants.getPathToLocalERBStaticDataFolder();
 	
 	@Override
@@ -91,6 +91,7 @@ public class GoalIntroController implements Initializable{
 							});
 						} catch (Exception ex) {
 							ex.printStackTrace();
+							logger.error(ex.getMessage());
 						}
 					}
 				}

@@ -64,11 +64,10 @@ public class ERBLandingController implements Initializable {
 	private void loadProjectSelectionToContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
-			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app, this);
+			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app);
 			fxmlLoader.setController(projectSelectionController);
 			app.loadContent(fxmlLoader.load());			
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 	}

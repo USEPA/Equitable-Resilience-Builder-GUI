@@ -56,8 +56,8 @@ public class GoalCreationController implements Initializable{
 		this.projectSelectionController = projectSelectionController;
 	}
 	
-	private Logger logger = LogManager.getLogger(GoalCreationController.class);
 	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(GoalCreationController.class);
 	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
 	@Override
