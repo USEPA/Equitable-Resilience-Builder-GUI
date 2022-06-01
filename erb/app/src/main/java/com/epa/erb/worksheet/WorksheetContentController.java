@@ -67,12 +67,10 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private File getPDFFileToLoad() {
-		String fileName = activity.getFileName().replace(".docx", ".pdf");
+		String fileName = activity.getFileName().trim().replace(".docx", ".pdf");
 		File pdfFileToLoad = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
 		return pdfFileToLoad;
 	}
-	
-
 	
 	private void loadPDFToWebView(File pdfFileToLoad) {
 		JavaBridge javaBridge = new JavaBridge();
@@ -101,6 +99,7 @@ public class WorksheetContentController implements Initializable{
 							});
 						} catch (Exception ex) {
 							ex.printStackTrace();
+							logger.error(ex.getMessage());
 						}
 					}
 				}

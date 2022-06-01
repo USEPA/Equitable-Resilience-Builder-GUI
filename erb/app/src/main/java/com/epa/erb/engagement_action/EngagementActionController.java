@@ -409,6 +409,7 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	public void saveButtonAction() {
 		loadSavePopup(getCurrentGoal());
+		needsSaving = false;
 	}
 	
 	private Stage savePopupStage = null;
