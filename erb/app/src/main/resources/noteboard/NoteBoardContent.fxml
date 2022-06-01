@@ -26,6 +26,35 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
+            <VBox>
+               <children>
+                  <Label text="How to:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="    -Click and drag a post it into one of the categories.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="    -Double click the post it to change the color and/or add text.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="    -Click and drag a post it to a new category or to reorder a category.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="CENTER" minWidth="100.0">
