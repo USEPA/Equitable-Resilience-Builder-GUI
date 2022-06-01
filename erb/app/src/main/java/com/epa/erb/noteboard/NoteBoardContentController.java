@@ -48,10 +48,11 @@ public class NoteBoardContentController implements Initializable{
 	private Constants constants = new Constants();
 	private ArrayList<String> categories = new ArrayList<String>();
 	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
+	private ArrayList<PostItNoteController> postItNoteControllers = new ArrayList<PostItNoteController>();
+	private ArrayList<CategorySectionController> categorySectionControllers = new ArrayList<CategorySectionController>();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		setDrag(note);
 		fillCategories();
 		createCategoryRows();
 		handleControls();
@@ -64,6 +65,7 @@ public class NoteBoardContentController implements Initializable{
 		layer3Pane.setStyle("-fx-background-color: " + constants.getLayer3ColorString() + ";");
 		layer4Pane.setStyle("-fx-background-color: " + constants.getLayer4ColorString() + ";");
 		note.setStyle("-fx-background-color: " + constants.getLayer5ColorString() + ";");
+		setDrag(note, null);
 	}
 	
 	private void fillCategories() {
@@ -92,7 +94,8 @@ public class NoteBoardContentController implements Initializable{
 			CategorySectionController categorySectionController = new CategorySectionController((category));
 			fxmlLoader.setController(categorySectionController);
 			HBox catHBox = fxmlLoader.load();
-			setDrag(categorySectionController.getPostItHBox());
+			setDrag(categorySectionController.getPostItHBox(), categorySectionController);
+			categorySectionControllers.add(categorySectionController);
 			return catHBox;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -104,7 +107,7 @@ public class NoteBoardContentController implements Initializable{
 	private int sourcePaneHashCode = -1;
 	private static final String TAB_DRAG_KEY = "pane";
 	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
-	private void setDrag(Pane p) {
+	private void setDrag(Pane p, CategorySectionController categorySectionController) {
 		p.setOnDragOver(event-> {
 			event.acceptTransferModes(TransferMode.MOVE);
 			Pane sourceNote = (Pane) event.getSource();
@@ -131,11 +134,12 @@ public class NoteBoardContentController implements Initializable{
 				if(sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
 					try {
 						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNote.fxml"));
-						PostItNoteController postItNoteController = new PostItNoteController();
+						PostItNoteController postItNoteController = new PostItNoteController(this);
 						fxmlLoader.setController(postItNoteController);
 						Pane postedPane = fxmlLoader.load();	
-						setDrag(postedPane);
+						setDrag(postedPane, categorySectionController);
 						targetPane.getChildren().add(postedPane);
+						postItNoteControllers.add(postItNoteController);
 					}catch (Exception e) {
 						logger.error(e.getMessage());
 					}
@@ -173,6 +177,22 @@ public class NoteBoardContentController implements Initializable{
 			draggingTab.set(p);
 			event.consume();
 		});
+	}
+	
+	public void setCategoryPostIts() {
+		for(CategorySectionController categorySectionController: categorySectionControllers) {
+			ArrayList<PostItNoteController> assignedPostItNoteControllers = new ArrayList<PostItNoteController>();
+			for(PostItNoteController postItNoteController: postItNoteControllers) {
+				if(postItNoteController.getPostItNotePane().getParent().hashCode() == categorySectionController.getPostItHBox().hashCode()) {
+					assignedPostItNoteControllers.add(postItNoteController);
+				}
+			}
+			categorySectionController.setListOfPostItNoteControllers(assignedPostItNoteControllers);
+		}
+	}
+	
+	void removePostItNoteController(PostItNoteController postItNoteController) {
+		postItNoteControllers.remove(postItNoteController);
 	}
 	
 	private void setActivityNameLabelText(String text) {
@@ -213,6 +233,10 @@ public class NoteBoardContentController implements Initializable{
 
 	public void setActivity(Activity activity) {
 		this.activity = activity;
+	}
+
+	public ArrayList<CategorySectionController> getCategorySectionControllers() {
+		return categorySectionControllers;
 	}
 	
 }

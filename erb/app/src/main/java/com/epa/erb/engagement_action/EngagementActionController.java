@@ -18,7 +18,9 @@ import com.epa.erb.chapter.PlanController;
 import com.epa.erb.chapter.ReflectController;
 import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.NoteBoardContentController;
+import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.application.Platform;
@@ -37,7 +39,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.Alert.AlertType;
@@ -45,6 +49,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class EngagementActionController implements Initializable{
@@ -119,6 +124,8 @@ public class EngagementActionController implements Initializable{
 	Button skipButton;
 	@FXML
 	Button nextButton;
+	@FXML
+	ToggleGroup activityStatusToggleGroup;
 
 	private App app;
 	private Project project;
@@ -132,6 +139,8 @@ public class EngagementActionController implements Initializable{
 	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	private Activity currentSelectedActivity = null; //tracks the current user selected activity
+	private ArrayList<WorksheetContentController> listOfAllWorksheetContentControllers = new ArrayList<WorksheetContentController>();
+	private ArrayList<NoteBoardContentController> listOfAllNoteBoardContentControllers = new ArrayList<NoteBoardContentController>();
 	private HashMap<TreeItem<String>, String> treeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity GUID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //holds all of the attribute panels
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>(); //holds all of the pathway controllers
@@ -239,6 +248,7 @@ public class EngagementActionController implements Initializable{
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
+			listOfAllWorksheetContentControllers.add(worksheetContentController);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -252,6 +262,7 @@ public class EngagementActionController implements Initializable{
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
+			listOfAllNoteBoardContentControllers.add(noteBoardContentController);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -343,38 +354,25 @@ public class EngagementActionController implements Initializable{
 		Optional<ButtonType> result = alert.showAndWait();
 		return result;
 	}
-		
-	@FXML
-	public void startButtonAction() {
-		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
-		String activityID = treeMap.get(selectedTreeItem);
-		Chapter chapter = getChapter(parentTreeItem.getValue());
-		Activity activity = getActivity(activityID, chapter.getChapterNum());
-		activity.setStatus("in progress"); //set status of activity
-		
-		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
-		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
-		
-		handleLocalProgress(chapter, getCurrentGoal().getChapters());
-		
-		needsSaving = true;
-	}
 	
 	@FXML
-	public void completeButtonAction() {
+	public void activityStatusRadioButtonAction () {
 		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
 		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
 		String activityID = treeMap.get(selectedTreeItem);
 		Chapter chapter = getChapter(parentTreeItem.getValue());
 		Activity activity = getActivity(activityID, chapter.getChapterNum());
-		activity.setStatus("complete"); //set status of activity
-		
+		RadioButton radioButton = (RadioButton) activityStatusToggleGroup.getSelectedToggle();
+		if(radioButton.getText().contentEquals("Ready")) {
+			activity.setStatus("ready");
+		} else if(radioButton.getText().contentEquals("In Progress")) {
+			activity.setStatus("in progress"); 
+		} else if(radioButton.getText().contentEquals("Complete")) {
+			activity.setStatus("complete");
+		} 
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
-		
 		handleLocalProgress(chapter, getCurrentGoal().getChapters());
-		
 		needsSaving = true;
 	}
 	
@@ -407,6 +405,45 @@ public class EngagementActionController implements Initializable{
 			}
 			treeViewClicked(null);
 		}
+	}
+	
+	@FXML
+	public void saveActivityAction() {
+		if(currentSelectedActivity.getActivityType().getLongName().contentEquals("Worksheet")) {
+			
+		} else if(currentSelectedActivity.getActivityType().getLongName().contentEquals("Workbook")) {
+			
+		} else if(currentSelectedActivity.getActivityType().getLongName().contentEquals("Noteboard")) {
+			saveNoteboardData(currentSelectedActivity, getCurrentGoal(), project);
+		}
+	}
+	
+	private void saveNoteboardData(Activity activity, Goal goal, Project project) {
+		for(NoteBoardContentController noteBoardContentController: listOfAllNoteBoardContentControllers) {
+			if(noteBoardContentController.getActivity().getActivityID().contentEquals(activity.getActivityID())) {
+				noteBoardContentController.setCategoryPostIts();
+				ArrayList<CategorySectionController> categories = noteBoardContentController.getCategorySectionControllers();
+				for(CategorySectionController category : categories) {
+					System.out.println("Category: " + category.getCategoryName());
+					for(PostItNoteController postItNoteController: category.getListOfPostItNoteControllers()) {
+						Text text = (Text) postItNoteController.getTextFlow().getChildren().get(0);
+						System.out.println("post " + text.getText());
+						System.out.println("post " + postItNoteController.getPlusHBox().getStyle());
+						System.out.println("post " + postItNoteController.getNumberLabel().getText());
+						System.out.println("post " + category.getPostItHBox().getChildren().indexOf(postItNoteController.getPostItNotePane()));
+
+					}
+				}
+			}
+		}
+	}
+	
+	private void saveWorkbookData() {
+		
+	}
+	
+	private void saveWorksheetData() {
+		
 	}
 	
 	@FXML

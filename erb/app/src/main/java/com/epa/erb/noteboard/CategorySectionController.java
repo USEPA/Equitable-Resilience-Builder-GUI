@@ -1,6 +1,7 @@
 package com.epa.erb.noteboard;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,8 @@ public class CategorySectionController implements Initializable {
 	public CategorySectionController(String categoryName) {
 		this.categoryName = categoryName;
 	}
+	
+	private ArrayList<PostItNoteController> listOfPostItNoteControllers = new ArrayList<PostItNoteController>();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -42,6 +45,14 @@ public class CategorySectionController implements Initializable {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public ArrayList<PostItNoteController> getListOfPostItNoteControllers() {
+		return listOfPostItNoteControllers;
+	}
+
+	public void setListOfPostItNoteControllers(ArrayList<PostItNoteController> listOfPostItNoteControllers) {
+		this.listOfPostItNoteControllers = listOfPostItNoteControllers;
 	}
 
 }

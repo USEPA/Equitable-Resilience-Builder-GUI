@@ -17,6 +17,7 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
+import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.project.Project;
 
 public class XMLManager {
@@ -440,6 +441,41 @@ public class XMLManager {
 
 			StreamResult file = new StreamResult(xmlFile);
 			transformer.transform(domSource, file);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	public void writeNoteboardDataXML(File xmlFile, ArrayList<CategorySectionController> categories) {
+		try {
+			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+			Document document = documentBuilder.newDocument();
+			Element rootElement = document.createElement("categories");
+			document.appendChild(rootElement);
+			for(CategorySectionController category: categories) {
+				Element chapterElement = document.createElement("category");
+				chapterElement.setAttribute("name", category.getCategoryName());
+				
+				Element assignedActivitiesElement = document.createElement("notes");
+//				for(Activity activity: chapter.getAssignedActivities()) {
+//					Element assignedActivityElement = document.createElement("assignedActivity");
+//					assignedActivityElement.setAttribute("activityID", activity.getActivityID());
+//					assignedActivityElement.setAttribute("status", activity.getStatus());
+//					assignedActivityElement.setAttribute("notes", activity.getNotes());
+//					assignedActivityElement.setAttribute("rating", activity.getRating());
+//					assignedActivitiesElement.appendChild(assignedActivityElement);
+//				}
+//				chapterElement.appendChild(assignedActivitiesElement);
+//				rootElement.appendChild(chapterElement);
+			}
+
+//			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+//			Transformer transformer = transformerFactory.newTransformer();
+//			DOMSource domSource = new DOMSource(document);
+//
+//			StreamResult file = new StreamResult(xmlFile);
+//			transformer.transform(domSource, file);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}

@@ -34,8 +34,9 @@ public class PostItNoteController implements Initializable{
 	@FXML
 	ScrollPane scrollPane;
 
-	public PostItNoteController() {
-
+	private NoteBoardContentController noteBoardContentController;
+	public PostItNoteController(NoteBoardContentController noteBoardContentController) {
+		this.noteBoardContentController = noteBoardContentController;
 	}
 	
 	private Stage editsStage = null;
@@ -118,6 +119,7 @@ public class PostItNoteController implements Initializable{
 	private void removePostItNote() {
 		HBox postItHBox = (HBox) postItNotePane.getParent();
 		postItHBox.getChildren().remove(postItNotePane);
+		noteBoardContentController.removePostItNoteController(this);
 	}
 	
 	void setPostItNoteText(String text) {

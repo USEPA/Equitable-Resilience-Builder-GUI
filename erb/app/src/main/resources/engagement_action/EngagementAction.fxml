@@ -5,8 +5,10 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="engagementVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="engagementVBox" prefHeight="666.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="saveHBox" alignment="CENTER_RIGHT">
          <children>
@@ -28,7 +30,7 @@
                   <ComboBox fx:id="goalComboBox" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save Goal" />
          </children>
       </HBox>
       <HBox fx:id="headingHBox">
@@ -209,20 +211,20 @@
                      <children>
                         <HBox fx:id="statusHBox">
                            <children>
-                              <HBox fx:id="startHBox" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                              <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonAction" text="Started Activity">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font></Button>
+                                    <RadioButton mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Ready">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="activityStatusToggleGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="In Progress" toggleGroup="$activityStatusToggleGroup" />
+                                    <RadioButton mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Complete" toggleGroup="$activityStatusToggleGroup" />
                                  </children>
                               </HBox>
-                              <HBox fx:id="completeHBox" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                              <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Button fx:id="completeButton" mnemonicParsing="false" onAction="#completeButtonAction" text="Completed Activity">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font></Button>
+                                    <Button mnemonicParsing="false" onAction="#saveActivityAction" text="Save Activity" />
                                  </children>
                               </HBox>
                            </children>
