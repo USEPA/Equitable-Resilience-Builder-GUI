@@ -12,6 +12,7 @@ import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
+import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanController;
@@ -20,7 +21,6 @@ import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.NoteBoardContentController;
-import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.application.Platform;
@@ -49,7 +49,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class EngagementActionController implements Initializable{
@@ -419,21 +418,12 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void saveNoteboardData(Activity activity, Goal goal, Project project) {
+		XMLManager xmlManager = new XMLManager(app);
 		for(NoteBoardContentController noteBoardContentController: listOfAllNoteBoardContentControllers) {
 			if(noteBoardContentController.getActivity().getActivityID().contentEquals(activity.getActivityID())) {
 				noteBoardContentController.setCategoryPostIts();
 				ArrayList<CategorySectionController> categories = noteBoardContentController.getCategorySectionControllers();
-				for(CategorySectionController category : categories) {
-					System.out.println("Category: " + category.getCategoryName());
-					for(PostItNoteController postItNoteController: category.getListOfPostItNoteControllers()) {
-						Text text = (Text) postItNoteController.getTextFlow().getChildren().get(0);
-						System.out.println("post " + text.getText());
-						System.out.println("post " + postItNoteController.getPlusHBox().getStyle());
-						System.out.println("post " + postItNoteController.getNumberLabel().getText());
-						System.out.println("post " + category.getPostItHBox().getChildren().indexOf(postItNoteController.getPostItNotePane()));
-
-					}
-				}
+				xmlManager.writeNoteboardDataXML(getActivityXMLFile(project, goal, activity), categories);
 			}
 		}
 	}
@@ -950,6 +940,11 @@ public class EngagementActionController implements Initializable{
 		}
 		logger.debug("Goal XML file returned is null.");
 		return null;
+	}
+	
+	private File getActivityXMLFile(Project project, Goal goal, Activity activity) {
+		File activityDataFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
+		return activityDataFile;
 	}
 	
 	public Goal getCurrentGoal() {

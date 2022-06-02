@@ -18,7 +18,10 @@ import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.noteboard.CategorySectionController;
+import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
+
+import javafx.scene.text.Text;
 
 public class XMLManager {
 
@@ -454,31 +457,46 @@ public class XMLManager {
 			Element rootElement = document.createElement("categories");
 			document.appendChild(rootElement);
 			for(CategorySectionController category: categories) {
-				Element chapterElement = document.createElement("category");
-				chapterElement.setAttribute("name", category.getCategoryName());
+				Element categoryElement = document.createElement("category");
+				categoryElement.setAttribute("name", category.getCategoryName());
 				
-				Element assignedActivitiesElement = document.createElement("notes");
-//				for(Activity activity: chapter.getAssignedActivities()) {
-//					Element assignedActivityElement = document.createElement("assignedActivity");
-//					assignedActivityElement.setAttribute("activityID", activity.getActivityID());
-//					assignedActivityElement.setAttribute("status", activity.getStatus());
-//					assignedActivityElement.setAttribute("notes", activity.getNotes());
-//					assignedActivityElement.setAttribute("rating", activity.getRating());
-//					assignedActivitiesElement.appendChild(assignedActivityElement);
-//				}
-//				chapterElement.appendChild(assignedActivitiesElement);
-//				rootElement.appendChild(chapterElement);
+				Element notesElement = document.createElement("notes");
+				for(PostItNoteController postItNoteController : category.getListOfPostItNoteControllers()) {
+					Element noteElement = document.createElement("note");
+					noteElement.setAttribute("content", getPostItText(postItNoteController));
+					noteElement.setAttribute("color", getPostItColor(postItNoteController));
+					noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
+					noteElement.setAttribute("position", String.valueOf(category.getPostItHBox().getChildren().indexOf(postItNoteController.getPostItNotePane())));
+					notesElement.appendChild(noteElement);
+				}
+				categoryElement.appendChild(notesElement);
+				rootElement.appendChild(categoryElement);
 			}
 
-//			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-//			Transformer transformer = transformerFactory.newTransformer();
-//			DOMSource domSource = new DOMSource(document);
-//
-//			StreamResult file = new StreamResult(xmlFile);
-//			transformer.transform(domSource, file);
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource domSource = new DOMSource(document);
+
+			StreamResult file = new StreamResult(xmlFile);
+			transformer.transform(domSource, file);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
+	}
+	
+	private String getPostItText(PostItNoteController postItNoteController) {
+		String postItText = "";
+		if (postItNoteController.getTextFlow().getChildren() != null) {
+			Text text = (Text) postItNoteController.getTextFlow().getChildren().get(0);
+			postItText = text.getText();
+		}
+		return postItText;
+	}
+	
+	private String getPostItColor(PostItNoteController postItNoteController) {
+		String style = postItNoteController.getPlusHBox().getStyle();
+		style = style.replace("-fx-background-color: ", "");
+		return style.trim();
 	}
 
 }
