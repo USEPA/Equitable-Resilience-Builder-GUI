@@ -11,6 +11,8 @@ import javafx.scene.layout.HBox;
 public class CategorySectionController implements Initializable {
 
 	@FXML
+	HBox categoryHBox;
+	@FXML
 	Label categoryLabel;
 	@FXML
 	HBox postItHBox;
@@ -25,7 +27,7 @@ public class CategorySectionController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setCategoryLabelText(categoryName);
-	}
+	}	
 	
 	void setCategoryLabelText(String text) {
 		categoryLabel.setText(text);
@@ -53,6 +55,10 @@ public class CategorySectionController implements Initializable {
 
 	public void setListOfPostItNoteControllers(ArrayList<PostItNoteController> listOfPostItNoteControllers) {
 		this.listOfPostItNoteControllers = listOfPostItNoteControllers;
+	}
+
+	public HBox getCategoryHBox() {
+		return categoryHBox;
 	}
 
 }

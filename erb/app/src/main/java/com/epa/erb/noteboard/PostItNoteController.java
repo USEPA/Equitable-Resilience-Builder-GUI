@@ -141,7 +141,7 @@ public class PostItNoteController implements Initializable{
 		}
 	}
 	
-	private void setNumberLabelText(String text) {
+	void setNumberLabelText(String text) {
 		numberLabel.setText(text);
 	}
 

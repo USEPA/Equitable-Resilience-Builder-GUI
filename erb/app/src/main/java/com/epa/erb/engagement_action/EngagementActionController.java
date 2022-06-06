@@ -256,7 +256,7 @@ public class EngagementActionController implements Initializable{
 	private void loadSampleNB(Activity activity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(activity);
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project, getCurrentGoal(), activity);
 			fxmlLoader.setController(noteBoardContentController);
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);

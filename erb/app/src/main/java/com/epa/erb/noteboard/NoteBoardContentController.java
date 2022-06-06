@@ -1,12 +1,18 @@
 package com.epa.erb.noteboard;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
+import com.epa.erb.App;
 import com.epa.erb.Constants;
+import com.epa.erb.XMLManager;
+import com.epa.erb.goal.Goal;
+import com.epa.erb.project.Project;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -40,25 +46,30 @@ public class NoteBoardContentController implements Initializable{
 	@FXML
 	Pane note; //layer 5
 	
+	private App app;
+	private Project project;
+	private Goal goal;
 	private Activity activity;
-	public NoteBoardContentController(Activity activity) {
+	public NoteBoardContentController(App app,Project project, Goal goal, Activity activity) {
+		this.app = app;
+		this.project = project;
+		this.goal = goal;
 		this.activity = activity;
 	}
 	
 	private Constants constants = new Constants();
-	private ArrayList<String> categories = new ArrayList<String>();
 	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
+	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	private ArrayList<PostItNoteController> postItNoteControllers = new ArrayList<PostItNoteController>();
 	private ArrayList<CategorySectionController> categorySectionControllers = new ArrayList<CategorySectionController>();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		fillCategories();
-		createCategoryRows();
 		handleControls();
+		checkForExistingNoteBoardData();
 		setActivityNameLabelText(activity.getLongName());
 	}
-	
+		
 	private void handleControls() {
 		layer1Pane.setStyle("-fx-background-color: " + constants.getLayer1ColorString() + ";");
 		layer2Pane.setStyle("-fx-background-color: " + constants.getLayer2ColorString() + ";");
@@ -67,25 +78,48 @@ public class NoteBoardContentController implements Initializable{
 		note.setStyle("-fx-background-color: " + constants.getLayer5ColorString() + ";");
 		setDrag(note, null);
 	}
-	
-	private void fillCategories() {
-		categories.add("Flood");
-		categories.add("Heat");
-		categories.add("Radiological Disease");
-		categories.add("Pandemic");
-	}
-	
+
 	@FXML
 	public void noteClicked() {
 		
 	}
 	
-	private void createCategoryRows() {
-		for (String category : categories) {
-			Parent root = loadCategorySection(category);
-			VBox.setVgrow(root, Priority.ALWAYS);
-			mainVBox.getChildren().add(root);
+	private void checkForExistingNoteBoardData() {
+		boolean dataExists = noteBoardDataExists(project, goal, activity);
+		if (dataExists) {
+			try {
+				XMLManager xmlManager = new XMLManager(app);
+				ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(getActivityDataFile(project, goal, activity));
+				for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
+					HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
+					for (String categoryName : categoryHashMap.keySet()) {
+						HBox catHBox = (HBox) loadCategorySection(categoryName);
+						ArrayList<HashMap<String, String>> listOfNoteHashMaps = categoryHashMap.get(categoryName);
+						for (int j = 0; j < listOfNoteHashMaps.size(); j++) {
+							CategorySectionController categorySectionController = getCategorySectionController(catHBox);
+							Pane postItNotePane = loadPostItNote(categorySectionController);
+							HashMap<String, String> noteHashMap = listOfNoteHashMaps.get(j);
+							String color = noteHashMap.get("color").replaceAll("#", "");
+							String content = noteHashMap.get("content");
+							String like = noteHashMap.get("likes");
+							setPostItNoteProperties((VBox) postItNotePane, color, content, like);
+							int index = Integer.parseInt(noteHashMap.get("position"));
+							categorySectionController.getPostItHBox().getChildren().add(index, postItNotePane);
+						}
+						mainVBox.getChildren().add(catHBox);
+					}
+				}
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
 		}
+	}
+	
+	private void setPostItNoteProperties(VBox postItNotePane, String color, String content, String likes) {
+		PostItNoteController postItNoteController = getPostItNoteController(postItNotePane);
+		postItNoteController.setPostItContentsColor(color);
+		postItNoteController.setPostItNoteText(content);
+		postItNoteController.setNumberLabelText(likes);
 	}
 	
 	private Parent loadCategorySection(String category) {
@@ -95,6 +129,7 @@ public class NoteBoardContentController implements Initializable{
 			fxmlLoader.setController(categorySectionController);
 			HBox catHBox = fxmlLoader.load();
 			setDrag(categorySectionController.getPostItHBox(), categorySectionController);
+			VBox.setVgrow(catHBox, Priority.ALWAYS);
 			categorySectionControllers.add(categorySectionController);
 			return catHBox;
 		} catch (Exception e) {
@@ -102,6 +137,30 @@ public class NoteBoardContentController implements Initializable{
 			return null;
 		}
 	}
+	
+	private Pane loadPostItNote(CategorySectionController categorySectionController) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNote.fxml"));
+			PostItNoteController postItNoteController = new PostItNoteController(this);
+			fxmlLoader.setController(postItNoteController);
+			Pane postItNotePane = fxmlLoader.load();
+			setDrag(postItNotePane, categorySectionController);
+			postItNoteControllers.add(postItNoteController);
+			return postItNotePane;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+	}
+
+	private boolean noteBoardDataExists(Project project, Goal goal, Activity activity) {
+		File activityDataFile = getActivityDataFile(project, goal, activity);
+		if(activityDataFile.exists()) {
+			return true;
+		}
+		return false;
+	}
+
 	
 	private int indexToMove = -1;
 	private int sourcePaneHashCode = -1;
@@ -132,17 +191,8 @@ public class NoteBoardContentController implements Initializable{
 				Pane sourceNote = (Pane) event.getGestureSource();
 				//Adding a new post it
 				if(sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
-					try {
-						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNote.fxml"));
-						PostItNoteController postItNoteController = new PostItNoteController(this);
-						fxmlLoader.setController(postItNoteController);
-						Pane postedPane = fxmlLoader.load();	
-						setDrag(postedPane, categorySectionController);
-						targetPane.getChildren().add(postedPane);
-						postItNoteControllers.add(postItNoteController);
-					}catch (Exception e) {
-						logger.error(e.getMessage());
-					}
+						Pane postItNotePane = loadPostItNote(categorySectionController);
+						targetPane.getChildren().add(postItNotePane);
 					// Moving a post it
 				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
 					if(sourcePaneHashCode == targetPane.hashCode()) {
@@ -179,6 +229,26 @@ public class NoteBoardContentController implements Initializable{
 		});
 	}
 	
+	private CategorySectionController getCategorySectionController(HBox categoryHBox) {
+		for(CategorySectionController categorySectionController : categorySectionControllers) {
+			if(categorySectionController.getCategoryHBox().hashCode() == categoryHBox.hashCode()) {
+				return categorySectionController;
+			}
+		}
+		logger.debug("CategorySectionController returned is null.");
+		return null;
+	}
+	
+	private PostItNoteController getPostItNoteController(VBox postItNotePane) {
+		for(PostItNoteController postItNoteController: postItNoteControllers) {
+			if(postItNoteController.getPostItNotePane().hashCode() == postItNotePane.hashCode()) {
+				return postItNoteController;
+			}
+		}
+		logger.debug("PostItNoteController returned is null.");
+		return null;
+	}
+	
 	public void setCategoryPostIts() {
 		for(CategorySectionController categorySectionController: categorySectionControllers) {
 			ArrayList<PostItNoteController> assignedPostItNoteControllers = new ArrayList<PostItNoteController>();
@@ -189,6 +259,10 @@ public class NoteBoardContentController implements Initializable{
 			}
 			categorySectionController.setListOfPostItNoteControllers(assignedPostItNoteControllers);
 		}
+	}
+	
+	private File getActivityDataFile(Project project, Goal goal, Activity activity) {
+		return new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
 	}
 	
 	void removePostItNoteController(PostItNoteController postItNoteController) {

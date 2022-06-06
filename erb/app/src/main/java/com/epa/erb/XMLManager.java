@@ -2,6 +2,8 @@ package com.epa.erb;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -447,6 +449,56 @@ public class XMLManager {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
+	}
+	
+	public ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> parseActivityXML(File xmlFile) {
+		if (xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				
+				NodeList categoryNodeList = doc.getElementsByTagName("category");
+				ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = new ArrayList<HashMap<String,ArrayList<HashMap<String,String>>>>();
+				for(int i = 0; i < categoryNodeList.getLength(); i++) {
+					Node categoryNode = categoryNodeList.item(i);
+					//Category
+					if(categoryNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element categoryElement = (Element) categoryNode;
+						String categoryName = categoryElement.getAttribute("name");
+						HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMaps = new HashMap<String, ArrayList<HashMap<String,String>>>();
+						NodeList noteNodeList = categoryElement.getElementsByTagName("note");
+						ArrayList<HashMap<String, String>> listOfNotesHashMaps = new ArrayList<HashMap<String,String>>();
+						for(int j =0; j<noteNodeList.getLength(); j++) {
+							Node noteNode = noteNodeList.item(j);
+							//Note
+							if(noteNode.getNodeType() == Node.ELEMENT_NODE) {
+								HashMap<String, String> noteHashMap = new HashMap<String, String>();
+								Element nodeElement = (Element) noteNode;
+								String color = nodeElement.getAttribute("color");
+								noteHashMap.put("color", color);
+								String content = nodeElement.getAttribute("content");
+								noteHashMap.put("content", content);
+								String likes = nodeElement.getAttribute("likes");
+								noteHashMap.put("likes", likes);
+								String position = nodeElement.getAttribute("position");
+								noteHashMap.put("position", position);
+								listOfNotesHashMaps.add(noteHashMap);
+							}
+						}
+						categoryHashMaps.put(categoryName, listOfNotesHashMaps);
+						listOfCategoryHashMaps.add(categoryHashMaps);
+					}
+				}
+				return listOfCategoryHashMaps;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
 	}
 	
 	public void writeNoteboardDataXML(File xmlFile, ArrayList<CategorySectionController> categories) {
