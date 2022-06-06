@@ -15,11 +15,16 @@ import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -31,6 +36,8 @@ import javafx.scene.text.TextFlow;
 
 public class NoteBoardContentController implements Initializable{
 
+	@FXML
+	TextField categoryTextField;
 	@FXML
 	Label activityNameLabel;
 	@FXML
@@ -84,6 +91,16 @@ public class NoteBoardContentController implements Initializable{
 		
 	}
 	
+	@FXML
+	public void addCategoryButtonAction() {
+		String categoryString = categoryTextField.getText();
+		if(categoryString != null && categoryString.trim().length() > 0) {
+			HBox catHBox = (HBox) loadCategorySection(categoryString);
+			mainVBox.getChildren().add(catHBox);
+			categoryTextField.setText(null);
+		}
+	}
+	
 	private void checkForExistingNoteBoardData() {
 		boolean dataExists = noteBoardDataExists(project, goal, activity);
 		if (dataExists) {
@@ -128,6 +145,7 @@ public class NoteBoardContentController implements Initializable{
 			CategorySectionController categorySectionController = new CategorySectionController((category));
 			fxmlLoader.setController(categorySectionController);
 			HBox catHBox = fxmlLoader.load();
+			catHBox.setOnContextMenuRequested(e-> createCategoryContextMenu(catHBox).show(mainVBox.getScene().getWindow(), e.getScreenX(), e.getScreenY()));
 			setDrag(categorySectionController.getPostItHBox(), categorySectionController);
 			VBox.setVgrow(catHBox, Priority.ALWAYS);
 			categorySectionControllers.add(categorySectionController);
@@ -160,8 +178,24 @@ public class NoteBoardContentController implements Initializable{
 		}
 		return false;
 	}
-
 	
+	private ContextMenu createCategoryContextMenu(HBox catHBox) {
+		ContextMenu contextMenu = new ContextMenu();
+		MenuItem menuItem = new MenuItem("Remove");
+		contextMenu.getItems().add(menuItem);
+		menuItem.setOnAction(e -> removeCategory(catHBox));
+		return contextMenu;
+	}
+	
+	private void removeCategory(HBox catHBox) {
+		CategorySectionController categorySectionController = getCategorySectionController(catHBox);
+		mainVBox.getChildren().remove(catHBox);
+		for(PostItNoteController postItNoteController: categorySectionController.getListOfPostItNoteControllers()) {
+			postItNoteControllers.remove(postItNoteController);
+		}
+		categorySectionControllers.remove(categorySectionController);
+	}
+
 	private int indexToMove = -1;
 	private int sourcePaneHashCode = -1;
 	private static final String TAB_DRAG_KEY = "pane";
