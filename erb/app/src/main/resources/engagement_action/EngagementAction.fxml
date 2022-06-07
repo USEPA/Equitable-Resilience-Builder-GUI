@@ -30,7 +30,7 @@
                   <ComboBox fx:id="goalComboBox" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save Goal" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
          </children>
       </HBox>
       <HBox fx:id="headingHBox">
@@ -222,11 +222,7 @@
                                     <RadioButton fx:id="completeRadioButton" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Complete" toggleGroup="$activityStatusToggleGroup" />
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#saveActivityAction" text="Save Activity" />
-                                 </children>
-                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

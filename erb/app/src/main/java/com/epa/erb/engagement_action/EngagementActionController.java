@@ -412,8 +412,7 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	@FXML
-	public void saveActivityAction() {
+	private void saveActivityData() {
 		if(currentSelectedActivity.getActivityType().getLongName().contentEquals("Worksheet")) {
 			
 		} else if(currentSelectedActivity.getActivityType().getLongName().contentEquals("Workbook")) {
@@ -444,7 +443,8 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-		loadSavePopup(getCurrentGoal());
+		loadSavePopup(getCurrentGoal()); //Save goal data
+		saveActivityData(); //Save activity data
 		needsSaving = false;
 	}
 	

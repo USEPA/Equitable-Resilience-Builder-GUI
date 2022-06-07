@@ -2,6 +2,7 @@ package com.epa.erb.noteboard;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -50,6 +51,7 @@ public class CategorySectionController implements Initializable {
 	}
 
 	public ArrayList<PostItNoteController> getListOfPostItNoteControllers() {
+		Collections.reverse(listOfPostItNoteControllers);
 		return listOfPostItNoteControllers;
 	}
 

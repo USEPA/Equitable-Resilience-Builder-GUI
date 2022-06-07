@@ -114,14 +114,18 @@ public class NoteBoardContentController implements Initializable{
 						ArrayList<HashMap<String, String>> listOfNoteHashMaps = categoryHashMap.get(categoryName);
 						for (int j = 0; j < listOfNoteHashMaps.size(); j++) {
 							CategorySectionController categorySectionController = getCategorySectionController(catHBox);
+							System.out.println("1. " + categorySectionController);
 							Pane postItNotePane = loadPostItNote(categorySectionController);
+							System.out.println("2. " + postItNotePane);
 							HashMap<String, String> noteHashMap = listOfNoteHashMaps.get(j);
 							String color = noteHashMap.get("color").replaceAll("#", "");
 							String content = noteHashMap.get("content");
 							String like = noteHashMap.get("likes");
 							setPostItNoteProperties((VBox) postItNotePane, color, content, like);
 							int index = Integer.parseInt(noteHashMap.get("position"));
+							System.out.println("3. " + index);
 							categorySectionController.getPostItHBox().getChildren().add(index, postItNotePane);
+							System.out.println("4. " + categorySectionController.getPostItHBox().getChildren().size());
 						}
 						mainVBox.getChildren().add(catHBox);
 					}
