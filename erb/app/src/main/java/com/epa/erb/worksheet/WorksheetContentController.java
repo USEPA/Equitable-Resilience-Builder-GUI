@@ -42,8 +42,6 @@ public class WorksheetContentController implements Initializable{
 	@FXML
 	WebView webView;
 	@FXML
-	Button saveButton;
-	@FXML
 	Label activityNameLabel;
 
 	private Activity activity;
@@ -63,7 +61,7 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private void handleControls() {
-		saveButton.setDisable(true);
+
 	}
 	
 	private File getPDFFileToLoad() {
@@ -163,18 +161,13 @@ public class WorksheetContentController implements Initializable{
 	}
 		
 	@FXML
-	public void saveButtonAction() {
-		
-	}
-	
-	@FXML
 	public void openButtonAction() {
 		openActivity(activity);
 	}
 	
 	public void openActivity(Activity activity) {
 		try {
-			File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities\\" + activity.getFileName());
+			File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\" + activity.getFileName());
 			if (file.exists() && Desktop.isDesktopSupported()) {
 				Desktop.getDesktop().open(file);
 			} else {
@@ -187,10 +180,6 @@ public class WorksheetContentController implements Initializable{
 
 	public WebView getWebView() {
 		return webView;
-	}
-
-	public Button getSaveButton() {
-		return saveButton;
 	}
 
 	public Label getActivityNameLabel() {

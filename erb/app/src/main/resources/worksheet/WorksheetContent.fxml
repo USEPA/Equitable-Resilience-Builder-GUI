@@ -26,7 +26,6 @@
                   <HBox spacing="10.0">
                      <children>
                         <Button fx:id="openButton" mnemonicParsing="false" onAction="#openButtonAction" text="Open" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" HBox.hgrow="ALWAYS" />
                         <Button fx:id="printButton" mnemonicParsing="false" onAction="#printButtonAction" text="Print" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
