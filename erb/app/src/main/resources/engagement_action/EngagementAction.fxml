@@ -213,13 +213,13 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Ready">
+                                    <RadioButton fx:id="readyRadioButton" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Ready">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="activityStatusToggleGroup" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="In Progress" toggleGroup="$activityStatusToggleGroup" />
-                                    <RadioButton mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Complete" toggleGroup="$activityStatusToggleGroup" />
+                                    <RadioButton fx:id="inProgressRadioButton" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="In Progress" toggleGroup="$activityStatusToggleGroup" />
+                                    <RadioButton fx:id="completeRadioButton" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Complete" toggleGroup="$activityStatusToggleGroup" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">

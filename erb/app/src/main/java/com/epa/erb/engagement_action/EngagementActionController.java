@@ -125,6 +125,12 @@ public class EngagementActionController implements Initializable{
 	Button nextButton;
 	@FXML
 	ToggleGroup activityStatusToggleGroup;
+	@FXML
+	RadioButton readyRadioButton;
+	@FXML
+	RadioButton inProgressRadioButton;
+	@FXML
+	RadioButton completeRadioButton;
 
 	private App app;
 	private Project project;
@@ -701,11 +707,22 @@ public class EngagementActionController implements Initializable{
 			loadActivityContent(selectedTreeItem, currentChapter);
 			handleActivityERBPathwayGeneration(currentChapter);
 			highlightSelectedActivityDiagram(selectedTreeItem, currentChapter);
+			handleActivityStatusButtons(selectedActivity);
 			currentSelectedActivity = selectedActivity;
 			addStatusHBox();
 			if(selectedActivity.getActivityID().contentEquals("25") || selectedActivity.getActivityID().contentEquals("26")) removeStatusHBox();
 		}
 		handleNavigationButtonsShown(selectedTreeItem, parentTreeItem);
+	}
+	
+	private void handleActivityStatusButtons(Activity activity) {
+		if(activity.getStatus().contentEquals("ready")) {
+			readyRadioButton.setSelected(true);
+		} else if (activity.getStatus().contentEquals("in progress")) {
+			inProgressRadioButton.setSelected(true);
+		} else if (activity.getStatus().contentEquals("complete")) {
+			completeRadioButton.setSelected(true);
+		}
 	}
 	
 	private void handleERBPathwaySelectedInTree(TreeItem<String> selectedTreeItem) {
