@@ -1,15 +1,11 @@
 package com.epa.erb.worksheet;
 
 import java.awt.Desktop;
-import java.awt.print.PrinterJob;
 import java.io.File;
 import java.net.URL;
 import java.util.Base64;
 import java.util.ResourceBundle;
 import javax.print.PrintService;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.Copies;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
