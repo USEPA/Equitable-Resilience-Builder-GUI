@@ -73,11 +73,10 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private void loadPDFToWebView(File pdfFileToLoad) {
-		JavaBridge javaBridge = new JavaBridge();
 		try {
 			WebEngine webEngine = webView.getEngine();
-			String url = getClass().getResource("/pdfjs-2.14.305-legacy-dist/web/viewer.html").toExternalForm();
-			webEngine.setUserStyleSheetLocation(getClass().getResource("/pdfjs-2.14.305-legacy-dist/web.css").toExternalForm());
+			String url = getClass().getResource("/pdfjs-2.8.335-legacy-dist/web/viewer.html").toExternalForm();
+			webEngine.setUserStyleSheetLocation(getClass().getResource("/web.css").toExternalForm());
 			webEngine.setJavaScriptEnabled(true);
 			webEngine.load(url);
 			
@@ -88,15 +87,7 @@ public class WorksheetContentController implements Initializable{
 						try {
 							byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
 							String base64 = Base64.getEncoder().encodeToString(data);
-							Platform.runLater(new Runnable() {
-								@Override
-								public void run() {
-									JSObject window = (JSObject) webEngine.executeScript("window");
-								    window.setMember("java", javaBridge);
-								    webEngine.executeScript("console.log = function(message)\n" +"{\n" + "    java.log(message);\n" + "};"); 
-								    webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
-								}
-							});
+							webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
 						} catch (Exception ex) {
 							logger.error(ex.getMessage());
 						}
