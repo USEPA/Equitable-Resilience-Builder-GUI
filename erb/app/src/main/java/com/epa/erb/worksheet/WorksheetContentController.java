@@ -1,9 +1,8 @@
 package com.epa.erb.worksheet;
 
 import java.awt.Desktop;
-//import java.awt.print.PrinterJob;
+import java.awt.print.PrinterJob;
 import java.io.File;
-import java.io.FileInputStream;
 import java.net.URL;
 import java.util.Base64;
 import java.util.ResourceBundle;
@@ -14,26 +13,19 @@ import javax.print.attribute.standard.Copies;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import javafx.application.Platform;
-//import org.apache.pdfbox.Loader;
-//import org.apache.pdfbox.pdmodel.PDDocument;
-//import org.apache.pdfbox.printing.PDFPageable;
 import javafx.beans.value.ChangeListener;
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
-
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import netscape.javascript.JSObject;
 import javafx.concurrent.Worker.State;
 import javafx.concurrent.Worker;
 
@@ -147,9 +139,9 @@ public class WorksheetContentController implements Initializable{
 	
 	void printActivity(PrintService printService, File fileToPrint) {
 		try {
-			FileInputStream fileInputStream = new FileInputStream(fileToPrint.getPath());
-			PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
-			attributeSet.add(new Copies(1));
+//			FileInputStream fileInputStream = new FileInputStream(fileToPrint.getPath());
+//			PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
+//			attributeSet.add(new Copies(1));
 //			PDDocument pdDocument = Loader.loadPDF(fileInputStream);
 //			PrinterJob printerJob = PrinterJob.getPrinterJob();
 //			printerJob.setPrintService(printService);
