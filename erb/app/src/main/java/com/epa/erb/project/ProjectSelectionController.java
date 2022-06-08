@@ -49,7 +49,7 @@ public class ProjectSelectionController implements Initializable{
 	
 	@FXML
 	public void createButtonAction() {
-		String newProjectName = projectNameTextField.getText();
+		String newProjectName = projectNameTextField.getText().trim();
 		if(isValidNewProjectName(newProjectName)) {
 			Project project = new Project(newProjectName);
 			createNewProjectDirectory(project);
@@ -60,7 +60,11 @@ public class ProjectSelectionController implements Initializable{
 	private boolean isValidNewProjectName(String projectName) {
 		if(projectName!= null && projectName.length() > 0) {
 			if(!isDuplicateProjectName(projectName)) {
-				return true;
+				if(isCharAllowableProjectName(projectName)) {
+					return true;
+				} else {
+					showIsNotCharAllowableProjectName();
+				}
 			} else {
 				showIsDuplicateProjectNameAlert();
 			}
@@ -78,10 +82,27 @@ public class ProjectSelectionController implements Initializable{
 		return false;
 	}
 	
+	private boolean isCharAllowableProjectName(String projectName) {
+		String regexString = "^[A-za-z0-9-_]{1,255}$";
+		if(projectName != null && projectName.length() > 0) {
+			return projectName.matches(regexString);
+		}else {
+			return false;
+		}
+	}
+	
 	private void showIsDuplicateProjectNameAlert() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setHeaderText(null);
-		alert.setContentText("Duplicate project name. Please enter a new name.");
+		alert.setContentText("Duplicate project name. Please enter a new project name.");
+		alert.setTitle("Error");
+		alert.showAndWait();
+	}
+	
+	private void showIsNotCharAllowableProjectName() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setHeaderText(null);
+		alert.setContentText("Please enter a valid project name. (Allowable characters include letters, numbers, \"-\", \"_\")");
 		alert.setTitle("Error");
 		alert.showAndWait();
 	}
