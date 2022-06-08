@@ -139,7 +139,6 @@ public class EngagementActionController implements Initializable{
 		this.project = project;
 	}
 	
-	public boolean needsSaving = false;
 	private Constants constants = new Constants();
 	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
@@ -262,7 +261,7 @@ public class EngagementActionController implements Initializable{
 	private void loadSampleNB(Activity activity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project, getCurrentGoal(), activity);
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project, getCurrentGoal(), activity, this);
 			fxmlLoader.setController(noteBoardContentController);
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
@@ -302,7 +301,7 @@ public class EngagementActionController implements Initializable{
 	private void loadChapterReflect(Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Reflect.fxml"));
-			ReflectController reflectController = new ReflectController(getCurrentGoal(), chapter, this);
+			ReflectController reflectController = new ReflectController(app, getCurrentGoal(), chapter, this);
 			fxmlLoader.setController(reflectController);
 			Parent root = fxmlLoader.load();
 			reflectController.initProgress(getCurrentGoal(), chapter);
@@ -340,14 +339,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void goalChanged(Goal origGoal, Goal newGoal) {
 		if(origGoal != null) {
-			if(needsSaving) {
-				Optional<ButtonType> result = showGoalSavingAlert();
-				if(result.get().equals(ButtonType.OK)) {
-					loadSavePopup(origGoal);
-				}
-			}
 			goalSelected(newGoal);
-			needsSaving=false;
 		}
 	}
 		
@@ -362,12 +354,15 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void activityStatusRadioButtonAction () {
-		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
-		String activityID = treeMap.get(selectedTreeItem);
-		Chapter chapter = getChapter(parentTreeItem.getValue());
-		Activity activity = getActivity(activityID, chapter.getChapterNum());
 		RadioButton radioButton = (RadioButton) activityStatusToggleGroup.getSelectedToggle();
+		handleActivityStatus(currentSelectedActivity, radioButton);
+		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(currentSelectedActivity.getActivityID());
+		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
+		handleLocalProgress(getChapterForActivity(currentSelectedActivity), getCurrentGoal().getChapters());
+		app.setNeedsSaving(true);
+	}
+	
+	private void handleActivityStatus(Activity activity, RadioButton radioButton) {
 		if(radioButton.getText().contentEquals("Ready")) {
 			activity.setStatus("ready");
 		} else if(radioButton.getText().contentEquals("In Progress")) {
@@ -375,10 +370,6 @@ public class EngagementActionController implements Initializable{
 		} else if(radioButton.getText().contentEquals("Complete")) {
 			activity.setStatus("complete");
 		} 
-		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activityID);
-		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
-		handleLocalProgress(chapter, getCurrentGoal().getChapters());
-		needsSaving = true;
 	}
 	
 	@FXML
@@ -443,9 +434,11 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-		loadSavePopup(getCurrentGoal()); //Save goal data
-		saveActivityData(); //Save activity data
-		needsSaving = false;
+		for (Goal goal : project.getProjectGoals()) {
+			loadSavePopup(goal); // Save goal data
+		}
+		saveActivityData(); // Save activity data
+		app.setNeedsSaving(false);
 	}
 	
 	private Stage savePopupStage = null;

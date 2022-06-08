@@ -21,6 +21,7 @@ import com.epa.erb.project.Project;
 
 public class App extends Application {
 
+	private boolean needsSaving = false;
 	private ArrayList<Project> projects;
 	private ArrayList<Chapter> chapters;
 	private ArrayList<Activity> activities;
@@ -67,10 +68,17 @@ public class App extends Application {
 			erbContainerStage = new Stage();
 			Scene scene = new Scene(fxmlLoader.load());
 			erbContainerStage.setScene(scene);
+			erbContainerStage.setOnCloseRequest(e-> callToCloseERB());
 			erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
 			erbContainerStage.show();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+		}
+	}
+	
+	private void callToCloseERB() {
+		if(needsSaving) {
+			needsSaving = false;
 		}
 	}
 	
@@ -160,7 +168,15 @@ public class App extends Application {
 			erbContainerStage.close();
 		}
 	}
-	
+		
+	public boolean needsSaving() {
+		return needsSaving;
+	}
+
+	public void setNeedsSaving(boolean needsSaving) {
+		this.needsSaving = needsSaving;
+	}
+
 	public ArrayList<Project> getProjects(){
 		return projects;
 	}

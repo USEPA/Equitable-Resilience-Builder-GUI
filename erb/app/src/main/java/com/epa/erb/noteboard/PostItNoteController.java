@@ -4,7 +4,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.epa.erb.App;
 import com.epa.erb.Constants;
+import com.epa.erb.engagement_action.EngagementActionController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,9 +38,13 @@ public class PostItNoteController implements Initializable{
 	@FXML
 	ScrollPane scrollPane;
 
+	private App app;
 	private NoteBoardContentController noteBoardContentController;
-	public PostItNoteController(NoteBoardContentController noteBoardContentController) {
+	private EngagementActionController engagementActionController;
+	public PostItNoteController(App app, NoteBoardContentController noteBoardContentController, EngagementActionController engagementActionController) {
+		this.app = app;
 		this.noteBoardContentController = noteBoardContentController;
+		this.engagementActionController = engagementActionController;
 	}
 	
 	private Stage editsStage = null;
@@ -67,6 +75,7 @@ public class PostItNoteController implements Initializable{
 		int numberOfPlus = Integer.parseInt(numberLabel.getText());
 		numberOfPlus++;
 		setNumberLabelText(String.valueOf(numberOfPlus));
+		app.setNeedsSaving(true);
 	}
 	
 	@FXML
@@ -74,6 +83,7 @@ public class PostItNoteController implements Initializable{
 		int numberOfPlus = Integer.parseInt(numberLabel.getText());
 		numberOfPlus--;
 		setNumberLabelText(String.valueOf(numberOfPlus));
+		app.setNeedsSaving(true);
 	}
 	
 	@FXML
@@ -92,7 +102,7 @@ public class PostItNoteController implements Initializable{
 	private void loadPostItNoteEdits() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
-			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(this);
+			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(app, this, engagementActionController);
 			fxmlLoader.setController(postItNoteEditsController);
 			editsStage = new Stage();
 			Scene scene = new Scene(fxmlLoader.load());
@@ -120,6 +130,7 @@ public class PostItNoteController implements Initializable{
 		HBox postItHBox = (HBox) postItNotePane.getParent();
 		postItHBox.getChildren().remove(postItNotePane);
 		noteBoardContentController.removePostItNoteController(this);
+		app.setNeedsSaving(true);
 	}
 	
 	void setPostItNoteText(String text) {

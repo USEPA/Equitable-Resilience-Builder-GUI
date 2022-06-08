@@ -11,6 +11,7 @@ import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
+import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import javafx.beans.property.ObjectProperty;
@@ -57,11 +58,13 @@ public class NoteBoardContentController implements Initializable{
 	private Project project;
 	private Goal goal;
 	private Activity activity;
-	public NoteBoardContentController(App app,Project project, Goal goal, Activity activity) {
+	private EngagementActionController engagementActionController;
+	public NoteBoardContentController(App app,Project project, Goal goal, Activity activity, EngagementActionController engagementActionController) {
 		this.app = app;
 		this.project = project;
 		this.goal = goal;
 		this.activity = activity;
+		this.engagementActionController = engagementActionController;
 	}
 	
 	private Constants constants = new Constants();
@@ -98,6 +101,7 @@ public class NoteBoardContentController implements Initializable{
 			HBox catHBox = (HBox) loadCategorySection(categoryString);
 			mainVBox.getChildren().add(catHBox);
 			categoryTextField.setText(null);
+			app.setNeedsSaving(true);
 		}
 	}
 	
@@ -159,7 +163,7 @@ public class NoteBoardContentController implements Initializable{
 	private Pane loadPostItNote(CategorySectionController categorySectionController) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNote.fxml"));
-			PostItNoteController postItNoteController = new PostItNoteController(this);
+			PostItNoteController postItNoteController = new PostItNoteController(app, this, engagementActionController);
 			fxmlLoader.setController(postItNoteController);
 			Pane postItNotePane = fxmlLoader.load();
 			setDrag(postItNotePane, categorySectionController);
@@ -194,6 +198,7 @@ public class NoteBoardContentController implements Initializable{
 			postItNoteControllers.remove(postItNoteController);
 		}
 		categorySectionControllers.remove(categorySectionController);
+		app.setNeedsSaving(true);
 	}
 
 	private int indexToMove = -1;
@@ -227,6 +232,7 @@ public class NoteBoardContentController implements Initializable{
 				if(sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
 						Pane postItNotePane = loadPostItNote(categorySectionController);
 						targetPane.getChildren().add(postItNotePane);
+						app.setNeedsSaving(true);
 					// Moving a post it
 				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
 					if(sourcePaneHashCode == targetPane.hashCode()) {
@@ -239,6 +245,7 @@ public class NoteBoardContentController implements Initializable{
 						if (targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().remove(sourceNote);
 						if(!targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().add(numChildren, sourceNote);
 					}
+					app.setNeedsSaving(true);
 				//Moving a post it
 				} else if(sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postedNote")) {
 					Pane sourceParentPane = (Pane) sourceNote.getParent();
@@ -247,6 +254,7 @@ public class NoteBoardContentController implements Initializable{
 					int targetIndex = sourceParentPane.getChildren().indexOf(noteVBox);
 					sourceParentPane.getChildren().remove(sourceNote);
 					sourceParentPane.getChildren().add(targetIndex, sourceNote);
+					app.setNeedsSaving(true);
 				}
 				success = true;
 			}

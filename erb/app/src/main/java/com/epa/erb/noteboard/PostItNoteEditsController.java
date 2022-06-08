@@ -2,6 +2,10 @@ package com.epa.erb.noteboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.epa.erb.App;
+import com.epa.erb.engagement_action.EngagementActionController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
@@ -16,9 +20,13 @@ public class PostItNoteEditsController implements Initializable{
 	@FXML
 	TextArea postItNoteTextArea;
 
+	private App app;
 	private PostItNoteController postItNoteController;
-	public PostItNoteEditsController(PostItNoteController postItNoteController) {
+	private EngagementActionController engagementActionController;
+	public PostItNoteEditsController(App app, PostItNoteController postItNoteController, EngagementActionController engagementActionController) {
+		this.app = app;
 		this.postItNoteController = postItNoteController;
+		this.engagementActionController = engagementActionController;
 	}
 	
 	@Override
@@ -55,6 +63,7 @@ public class PostItNoteEditsController implements Initializable{
 		postItNoteController.setPostItNoteText(postItNoteTextArea.getText());
 		postItNoteController.setPostItContentsColor(parseColorAsHex(colorPicker.getValue()));
 		postItNoteController.closeEditsStage();
+		app.setNeedsSaving(true);
 	}
 	
 	private String parseColorAsHex(Color color) {
