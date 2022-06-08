@@ -167,44 +167,4 @@ public class ChapterLandingController implements Initializable {
 		activitiesListView.getItems().clear();
 	}
 
-	public Label getHeadingLabel() {
-		return headingLabel;
-	}
-
-	public HBox getHeadingLabelHBox() {
-		return headingLabelHBox;
-	}
-
-	public TextArea getAboutTextArea() {
-		return aboutTextArea;
-	}
-
-	public ListView<Activity> getActivitiesListView() {
-		return activitiesListView;
-	}
-
-	public Chapter getChapter() {
-		return chapter;
-	}
-
-	public void setChapter(Chapter chapter) {
-		this.chapter = chapter;
-	}
-
-	public EngagementActionController getEngagementActionController() {
-		return engagementActionController;
-	}
-
-	public void setEngagementActionController(EngagementActionController engagementActionController) {
-		this.engagementActionController = engagementActionController;
-	}
-
-	public ArrayList<Chapter> getListOfAllChapters() {
-		return listOfAllChapters;
-	}
-
-	public void setListOfAllChapters(ArrayList<Chapter> listOfAllChapters) {
-		this.listOfAllChapters = listOfAllChapters;
-	}
-
 }

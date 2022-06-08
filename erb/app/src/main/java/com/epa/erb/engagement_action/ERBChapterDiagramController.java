@@ -91,49 +91,5 @@ public class ERBChapterDiagramController implements Initializable{
 	private int getIndexOfChapterInListOfChapters() {
 		return listOfChapters.indexOf(chapter);
 	}
-
-	public VBox getArrowVBox() {
-		return arrowVBox;
-	}
-
-	public Line getLeftLeadingLine() {
-		return leftLeadingLine;
-	}
-
-	public Line getRightLeadingLine() {
-		return rightLeadingLine;
-	}
-
-	public Circle getCenterCircle() {
-		return centerCircle;
-	}
-
-	public Label getCenterCircleLabel() {
-		return centerCircleLabel;
-	}
-
-	public Chapter getChapter() {
-		return chapter;
-	}
-
-	public void setChapter(Chapter chapter) {
-		this.chapter = chapter;
-	}
-
-	public ArrayList<Chapter> getListOfChapters() {
-		return listOfChapters;
-	}
-
-	public void setListOfChapters(ArrayList<Chapter> listOfChapters) {
-		this.listOfChapters = listOfChapters;
-	}
-
-	public EngagementActionController getEngagementActionController() {
-		return engagementActionController;
-	}
-
-	public void setEngagementActionController(EngagementActionController engagementActionController) {
-		this.engagementActionController = engagementActionController;
-	}
 	
 }

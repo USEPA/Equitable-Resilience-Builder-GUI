@@ -34,7 +34,6 @@ public class ERBLandingController implements Initializable {
 	VBox vBox3;
 
 	private App app;
-
 	public ERBLandingController(App app) {
 		this.app = app;
 	}

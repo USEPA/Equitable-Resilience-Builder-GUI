@@ -16,11 +16,9 @@ import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -58,13 +56,11 @@ public class NoteBoardContentController implements Initializable{
 	private Project project;
 	private Goal goal;
 	private Activity activity;
-	private EngagementActionController engagementActionController;
-	public NoteBoardContentController(App app,Project project, Goal goal, Activity activity, EngagementActionController engagementActionController) {
+	public NoteBoardContentController(App app,Project project, Goal goal, Activity activity ) {
 		this.app = app;
 		this.project = project;
 		this.goal = goal;
 		this.activity = activity;
-		this.engagementActionController = engagementActionController;
 	}
 	
 	private Constants constants = new Constants();
@@ -163,7 +159,7 @@ public class NoteBoardContentController implements Initializable{
 	private Pane loadPostItNote(CategorySectionController categorySectionController) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNote.fxml"));
-			PostItNoteController postItNoteController = new PostItNoteController(app, this, engagementActionController);
+			PostItNoteController postItNoteController = new PostItNoteController(app, this);
 			fxmlLoader.setController(postItNoteController);
 			Pane postItNotePane = fxmlLoader.load();
 			setDrag(postItNotePane, categorySectionController);
@@ -315,40 +311,8 @@ public class NoteBoardContentController implements Initializable{
 		activityNameLabel.setText(text);
 	}
 
-	public Label getActivityNameLabel() {
-		return activityNameLabel;
-	}
-
-	public VBox getMainVBox() {
-		return mainVBox;
-	}
-
-	public Pane getLayer1Pane() {
-		return layer1Pane;
-	}
-
-	public Pane getLayer2Pane() {
-		return layer2Pane;
-	}
-
-	public Pane getLayer3Pane() {
-		return layer3Pane;
-	}
-
-	public Pane getLayer4Pane() {
-		return layer4Pane;
-	}
-
-	public Pane getNote() {
-		return note;
-	}
-
 	public Activity getActivity() {
 		return activity;
-	}
-
-	public void setActivity(Activity activity) {
-		this.activity = activity;
 	}
 
 	public ArrayList<CategorySectionController> getCategorySectionControllers() {

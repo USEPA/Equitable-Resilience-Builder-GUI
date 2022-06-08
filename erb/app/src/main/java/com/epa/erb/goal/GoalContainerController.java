@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.project.Project;
-import com.epa.erb.project.ProjectSelectionController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,11 +20,9 @@ public class GoalContainerController implements Initializable{
 	
 	private App app;
 	private Project project;
-	private ProjectSelectionController projectSelectionController;
-	public GoalContainerController(App app, Project project, ProjectSelectionController projectSelectionController) {
+	public GoalContainerController(App app, Project project ) {
 		this.app = app;
 		this.project = project;
-		this.projectSelectionController = projectSelectionController;
 	}
 	
 	private Logger logger = LogManager.getLogger(GoalContainerController.class);
@@ -38,7 +35,7 @@ public class GoalContainerController implements Initializable{
 	private void loadGoalIntro() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalIntro.fxml"));
-			GoalIntroController goalIntroController = new GoalIntroController(app, project, this, projectSelectionController);
+			GoalIntroController goalIntroController = new GoalIntroController(app, project, this);
 			fxmlLoader.setController(goalIntroController);
 			Parent root = fxmlLoader.load();
 			VBox.setVgrow(root, Priority.ALWAYS);

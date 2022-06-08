@@ -92,8 +92,6 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	HBox body2HBox;
 	@FXML
-	HBox saveHBox;
-	@FXML
 	VBox contentVBox;
 	@FXML
 	ScrollPane attributePanelScrollPane;
@@ -261,7 +259,7 @@ public class EngagementActionController implements Initializable{
 	private void loadSampleNB(Activity activity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project, getCurrentGoal(), activity, this);
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project, getCurrentGoal(), activity);
 			fxmlLoader.setController(noteBoardContentController);
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
@@ -288,7 +286,7 @@ public class EngagementActionController implements Initializable{
 	private void loadChapterPlan(Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Plan.fxml"));
-			PlanController planController = new PlanController(chapter);
+			PlanController planController = new PlanController();
 			fxmlLoader.setController(planController);
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
@@ -965,54 +963,6 @@ public class EngagementActionController implements Initializable{
 		chapterLabel.setText(chapterLabelText);
 	}
 
-	public HBox getHeadingHBox() {
-		return headingHBox;
-	}
-	
-	public Label getChapterLabel() {
-		return chapterLabel;
-	}
-
-	public HBox getErbPathwayDiagramHBox() {
-		return erbPathwayDiagramHBox;
-	}
-	
-	public VBox getErbKeyVBox() {
-		return erbKeyVBox;
-	}
-
-	public Pane getMaterialKeyPane() {
-		return materialKeyPane;
-	}
-
-	public Pane getDescriptionKeyPane() {
-		return descriptionKeyPane;
-	}
-
-	public Pane getWhoKeyPane() {
-		return whoKeyPane;
-	}
-
-	public Pane getTimeKeyPane() {
-		return timeKeyPane;
-	}
-
-	public Pane getCompleteKeyPane() {
-		return completeKeyPane;
-	}
-
-	public Pane getReadyKeyPane() {
-		return readyKeyPane;
-	}
-
-	public Pane getSkippedKeyPane() {
-		return skippedKeyPane;
-	}
-
-	public Pane getInProgressKeyPane() {
-		return inProgressKeyPane;
-	}
-
 	public TreeView<String> getTreeView() {
 		return treeView;
 	}
@@ -1021,68 +971,12 @@ public class EngagementActionController implements Initializable{
 		return mainVBox;
 	}
 
-	public HBox getStatusHBox() {
-		return statusHBox;
-	}
-
-	public HBox getBody2HBox() {
-		return body2HBox;
-	}
-
-	public VBox getContentVBox() {
-		return contentVBox;
-	}
-
 	public ScrollPane getAttributePanelScrollPane() {
 		return attributePanelScrollPane;
 	}
 
-	public HBox getAttributePanelHBox() {
-		return attributePanelHBox;
-	}
-
-	public Label getAttributePanelCollapseLabel() {
-		return attributePanelCollapseLabel;
-	}
-	
-	public VBox getAttributePanelContentVBox() {
-		return attributePanelContentVBox;
-	}
-
-	public Button getPreviousButton() {
-		return previousButton;
-	}
-
-	public Button getSkipButton() {
-		return skipButton;
-	}
-
-	public Button getNextButton() {
-		return nextButton;
-	}
-
-	public File getDataFileToLoad() {
-		return null;
-	}
-
-	public File getProjectDirectory() {
-		return null;
-	}
-
-	public Activity getCurrentSelectedActivity() {
-		return currentSelectedActivity;
-	}
-	
 	public HashMap<TreeItem<String>, String> getTreeMap() {
 		return treeMap;
-	}
-
-	public ArrayList<AttributePanelController> getListOfAttributePanelControllers() {
-		return listOfAttributePanelControllers;
-	}
-
-	public ArrayList<ERBPathwayDiagramController> getListOfPathwayDiagramControllers() {
-		return listOfPathwayDiagramControllers;
 	}
 
 }

@@ -10,9 +10,6 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.project.Project;
-import com.epa.erb.project.ProjectSelectionController;
-import com.epa.erb.worksheet.JavaBridge;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -26,7 +23,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import netscape.javascript.JSObject;
 
 public class GoalIntroController implements Initializable{
 
@@ -38,12 +34,10 @@ public class GoalIntroController implements Initializable{
 	private App app;
 	private Project project;
 	private GoalContainerController goalContainerController;
-	private ProjectSelectionController projectSelectionController;
-	public GoalIntroController(App app, Project project, GoalContainerController goalContainerController, ProjectSelectionController projectSelectionController) {
+	public GoalIntroController(App app, Project project, GoalContainerController goalContainerController) {
 		this.app = app;
 		this.project = project;
 		this.goalContainerController = goalContainerController;
-		this.projectSelectionController = projectSelectionController;
 	}
 	
 	private Constants constants = new Constants();
@@ -99,7 +93,7 @@ public class GoalIntroController implements Initializable{
 	private void loadGoalCreation() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
-			GoalCreationController goalCreationController = new GoalCreationController(app, project, projectSelectionController);
+			GoalCreationController goalCreationController = new GoalCreationController(app, project);
 			fxmlLoader.setController(goalCreationController);
 			Parent root = fxmlLoader.load();
 			VBox.setVgrow(root, Priority.ALWAYS);

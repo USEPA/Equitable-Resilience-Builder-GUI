@@ -2,10 +2,7 @@ package com.epa.erb.noteboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.epa.erb.App;
-import com.epa.erb.engagement_action.EngagementActionController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
@@ -22,11 +19,9 @@ public class PostItNoteEditsController implements Initializable{
 
 	private App app;
 	private PostItNoteController postItNoteController;
-	private EngagementActionController engagementActionController;
-	public PostItNoteEditsController(App app, PostItNoteController postItNoteController, EngagementActionController engagementActionController) {
+	public PostItNoteEditsController(App app, PostItNoteController postItNoteController) {
 		this.app = app;
 		this.postItNoteController = postItNoteController;
-		this.engagementActionController = engagementActionController;
 	}
 	
 	@Override
@@ -80,22 +75,6 @@ public class PostItNoteEditsController implements Initializable{
 	
 	void setPostItNoteTextAreaText(String text) {
 		postItNoteTextArea.setText(text);
-	}
-
-	public ColorPicker getColorPicker() {
-		return colorPicker;
-	}
-
-	public TextArea getPostItNoteTextArea() {
-		return postItNoteTextArea;
-	}
-
-	public PostItNoteController getPostItNoteController() {
-		return postItNoteController;
-	}
-
-	public void setPostItNoteController(PostItNoteController postItNoteController) {
-		this.postItNoteController = postItNoteController;
 	}
 	
 }

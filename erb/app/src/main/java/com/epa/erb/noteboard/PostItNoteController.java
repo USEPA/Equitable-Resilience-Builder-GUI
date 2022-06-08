@@ -4,11 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.App;
 import com.epa.erb.Constants;
-import com.epa.erb.engagement_action.EngagementActionController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,11 +37,9 @@ public class PostItNoteController implements Initializable{
 
 	private App app;
 	private NoteBoardContentController noteBoardContentController;
-	private EngagementActionController engagementActionController;
-	public PostItNoteController(App app, NoteBoardContentController noteBoardContentController, EngagementActionController engagementActionController) {
+	public PostItNoteController(App app, NoteBoardContentController noteBoardContentController ) {
 		this.app = app;
 		this.noteBoardContentController = noteBoardContentController;
-		this.engagementActionController = engagementActionController;
 	}
 	
 	private Stage editsStage = null;
@@ -102,7 +97,7 @@ public class PostItNoteController implements Initializable{
 	private void loadPostItNoteEdits() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
-			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(app, this, engagementActionController);
+			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(app, this);
 			fxmlLoader.setController(postItNoteEditsController);
 			editsStage = new Stage();
 			Scene scene = new Scene(fxmlLoader.load());
@@ -160,10 +155,6 @@ public class PostItNoteController implements Initializable{
 		return plusHBox;
 	}
 
-	public Label getNumberLabel() {
-		return numberLabel;
-	}
-
 	public VBox getPostItNotePane() {
 		return postItNotePane;
 	}
@@ -172,8 +163,8 @@ public class PostItNoteController implements Initializable{
 		return textFlow;
 	}
 
-	public ScrollPane getScrollPane() {
-		return scrollPane;
+	public Label getNumberLabel() {
+		return numberLabel;
 	}
-	
+
 }

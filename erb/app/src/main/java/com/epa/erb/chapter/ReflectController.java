@@ -166,8 +166,8 @@ public class ReflectController implements Initializable{
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectNotes.fxml"));
 			ReflectNotesController reflectNotesController = null;
-			if (activity != null) reflectNotesController = new ReflectNotesController(app, activity, this, engagementActionController);
-			if (chapter != null) reflectNotesController = new ReflectNotesController(chapter, this, engagementActionController);
+			if (activity != null) reflectNotesController = new ReflectNotesController(app, activity, this);
+			if (chapter != null) reflectNotesController = new ReflectNotesController(chapter, this);
 			if (reflectNotesController != null) {
 				fxmlLoader.setController(reflectNotesController);
 				Parent root = fxmlLoader.load();

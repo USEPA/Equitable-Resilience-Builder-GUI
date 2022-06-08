@@ -51,12 +51,12 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	Label centerCircleLabel;
 
-	private Activity activity;
 	private Chapter chapter;
+	private Activity activity;
 	private EngagementActionController engagementActionController;
 	public ERBPathwayDiagramController(Activity activity, Chapter chapter, EngagementActionController engagementActionController) {
-		this.activity = activity;
 		this.chapter = chapter;
+		this.activity = activity;
 		this.engagementActionController = engagementActionController;
 	}
 	
@@ -284,88 +284,8 @@ public class ERBPathwayDiagramController implements Initializable {
 		activityLabel.setText(text);
 	}
 
-	public Line getLeftLeadingLine() {
-		return leftLeadingLine;
-	}
-
-	public Line getRightLeadingLine() {
-		return rightLeadingLine;
-	}
-
-	public VBox getDiagramVBox() {
-		return diagramVBox;
-	}
-
-	public VBox getArrowVBox() {
-		return arrowVBox;
-	}
-
-	public Circle getTopLeftCircle() {
-		return topLeftCircle;
-	}
-
-	public Circle getCenterCircle() {
-		return centerCircle;
-	}
-
-	public Circle getTopRightCircle() {
-		return topRightCircle;
-	}
-
-	public Circle getBottomLeftCircle() {
-		return bottomLeftCircle;
-	}
-
-	public Circle getBottomRightCircle() {
-		return bottomRightCircle;
-	}
-
-	public Label getTopLeftCircleLabel() {
-		return topLeftCircleLabel;
-	}
-
-	public Label getTopRightCircleLabel() {
-		return topRightCircleLabel;
-	}
-
-	public Label getBottomLeftCircleLabel() {
-		return bottomLeftCircleLabel;
-	}
-
-	public Label getBottomRightCircleLabel() {
-		return bottomRightCircleLabel;
-	}
-
-	public Label getActivityLabel() {
-		return activityLabel;
-	}
-
-	public Label getCenterCircleLabel() {
-		return centerCircleLabel;
-	}
-
 	public Activity getActivity() {
 		return activity;
-	}
-
-	public void setActivity(Activity activity) {
-		this.activity = activity;
-	}
-
-	public Chapter getChapter() {
-		return chapter;
-	}
-
-	public void setChapter(Chapter chapter) {
-		this.chapter = chapter;
-	}
-
-	public EngagementActionController getEngagementActionController() {
-		return engagementActionController;
-	}
-
-	public void setEngagementActionController(EngagementActionController engagementActionController) {
-		this.engagementActionController = engagementActionController;
 	}
 
 }

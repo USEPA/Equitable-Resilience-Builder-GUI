@@ -166,21 +166,4 @@ public class WorksheetContentController implements Initializable{
 		}
 	}
 
-	public WebView getWebView() {
-		return webView;
-	}
-
-	public Label getActivityNameLabel() {
-		return activityNameLabel;
-	}
-
-	public Activity getActivity() {
-		return activity;
-	}
-
-	public void setActivity(Activity activity) {
-		this.activity = activity;
-	}
-	
-	
 }

@@ -39,17 +39,5 @@ public class PrinterSelectionController implements Initializable{
 			worksheetContentController.closePrinterStage();
 		}
 	}
-
-	public ListView<String> getPrinterList() {
-		return printerList;
-	}
-
-	public WorksheetContentController getWorksheetContentController() {
-		return worksheetContentController;
-	}
-
-	public void setWorksheetContentController(WorksheetContentController worksheetContentController) {
-		this.worksheetContentController = worksheetContentController;
-	}
 	
 }

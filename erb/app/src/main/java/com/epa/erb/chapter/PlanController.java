@@ -12,9 +12,8 @@ public class PlanController implements Initializable{
 	@FXML
 	HBox erbHeading;
 	
-	private Chapter chapter;
-	public PlanController(Chapter chapter) {
-		this.chapter = chapter;
+	public PlanController() {
+		
 	}
 	
 	private Constants constants = new Constants();
@@ -26,14 +25,6 @@ public class PlanController implements Initializable{
 	
 	private void handleControls() {
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-	}
-
-	public Chapter getChapter() {
-		return chapter;
-	}
-
-	public void setChapter(Chapter chapter) {
-		this.chapter = chapter;
 	}
 
 }

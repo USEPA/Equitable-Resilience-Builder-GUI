@@ -162,14 +162,8 @@ public class App extends Application {
 		logger.debug("Activity returned is null");
 		return null;
 	}
-	
-	public void closeERBContainerStage() {
-		if(erbContainerStage != null) {
-			erbContainerStage.close();
-		}
-	}
 		
-	public boolean needsSaving() {
+	public boolean getNeedsSaving() {
 		return needsSaving;
 	}
 
@@ -195,10 +189,6 @@ public class App extends Application {
 
 	public ArrayList<GoalCategory> getGoalCategories() {
 		return goalCategories;
-	}
-
-	public ERBContainerController getErbContainerController() {
-		return erbContainerController;
 	}
 	
 }

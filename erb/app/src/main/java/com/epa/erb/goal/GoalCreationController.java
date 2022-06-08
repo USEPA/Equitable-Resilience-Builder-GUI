@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
@@ -15,7 +14,6 @@ import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.project.Project;
-import com.epa.erb.project.ProjectSelectionController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,15 +29,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
 public class GoalCreationController implements Initializable{
 
-	@FXML
-	HBox headingHBox;
 	@FXML
 	VBox goalsVBox;
 	@FXML
@@ -51,11 +46,9 @@ public class GoalCreationController implements Initializable{
 
 	private App app;
 	private Project project;
-	private ProjectSelectionController projectSelectionController;
-	public GoalCreationController(App app, Project project, ProjectSelectionController projectSelectionController) {
+	public GoalCreationController(App app, Project project) {
 		this.app = app;
 		this.project = project;
-		this.projectSelectionController = projectSelectionController;
 	}
 	
 	private Constants constants = new Constants();
@@ -324,46 +317,6 @@ public class GoalCreationController implements Initializable{
 	
 	private Goal getGoalListViewSelectedGoal() {
 		return goalsListView.getSelectionModel().getSelectedItem();
-	}
-
-	public VBox getGoalsVBox() {
-		return goalsVBox;
-	}
-
-	public TextField getGoalNameTextField() {
-		return goalNameTextField;
-	}
-
-	public TextArea getGoalDescriptionTextArea() {
-		return goalDescriptionTextArea;
-	}
-
-	public ListView<?> getGoalsListView() {
-		return goalsListView;
-	}
-
-	public App getApp() {
-		return app;
-	}
-
-	public void setApp(App app) {
-		this.app = app;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
-	public ProjectSelectionController getProjectSelectionController() {
-		return projectSelectionController;
-	}
-
-	public void setProjectSelectionController(ProjectSelectionController projectSelectionController) {
-		this.projectSelectionController = projectSelectionController;
 	}
 
 }

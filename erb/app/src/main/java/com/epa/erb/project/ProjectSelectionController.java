@@ -122,7 +122,7 @@ public class ProjectSelectionController implements Initializable{
 	private void loadGoalCreationToContainer(Project project) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
-			GoalContainerController goalContainerController = new GoalContainerController(app, project, this);
+			GoalContainerController goalContainerController = new GoalContainerController(app, project);
 			fxmlLoader.setController(goalContainerController);
 			app.loadContent(fxmlLoader.load());
 		}catch (Exception e) {
@@ -186,22 +186,6 @@ public class ProjectSelectionController implements Initializable{
 				return cell;
 			}
 		});
-	}
-
-	public TextField getProjectNameTextField() {
-		return projectNameTextField;
-	}
-
-	public ListView<Project> getProjectsListView() {
-		return projectsListView;
-	}
-
-	public App getApp() {
-		return app;
-	}
-
-	public void setApp(App app) {
-		this.app = app;
 	}
 	
 }

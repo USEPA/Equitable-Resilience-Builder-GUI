@@ -2,10 +2,8 @@ package com.epa.erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -75,16 +73,8 @@ public class ERBContainerController implements Initializable{
 		}
 	}
 
-	public VBox getWelcomeVBox() {
-		return welcomeVBox;
-	}
-
 	public VBox getErbContainer() {
 		return erbContainer;
-	}
-
-	public App getApp() {
-		return app;
 	}
 
 }
