@@ -2,11 +2,15 @@ To Executable Instructions
 
 1. Change paths in java code
 	a. com.epa.erb.App
-	b. com.epa.erb.goal.GoalCreationController
-	c. com.epa.erb.project.ProjectSelectionController
-	d. com.epa.erb.worksheet.WorksheetContentController
-	e. com.epa.erb.engagement_action.EngagementActionController  
-	
+	b. com.epa.erb.goal.Goal  
+	c. com.epa.erb.goal.GoalIntroController
+	d. com.epa.erb.goal.GoalCreationController
+	e. com.epa.erb.goal.GlobalGoalTrackerController    
+	f. com.epa.erb.project.ProjectSelectionController
+	g. com.epa.erb.worksheet.WorksheetContentController
+	h. com.epa.erb.noteboard.NoteBoardContentController
+	i. com.epa.erb.engagement_action.EngagementActionController
+
 2. Change paths in log4j
 	a. 
 	<!--<File name="Debug" fileName="${sys:user.dir}//lib//ERB//Logs//debug.log">-->    
