@@ -7,14 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="goalLabel" text="GOAL NAME HERE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
       <HBox alignment="CENTER_LEFT" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
             <Label fx:id="statusLabel" text="Working on saving your changes">

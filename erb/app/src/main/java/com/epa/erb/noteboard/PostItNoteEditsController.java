@@ -58,7 +58,7 @@ public class PostItNoteEditsController implements Initializable{
 		postItNoteController.setPostItNoteText(postItNoteTextArea.getText());
 		postItNoteController.setPostItContentsColor(parseColorAsHex(colorPicker.getValue()));
 		postItNoteController.closeEditsStage();
-		app.setNeedsSaving(true);
+		postItNoteController.getNoteBoardContentController().getActivity().setSaved(false);
 	}
 	
 	private String parseColorAsHex(Color color) {

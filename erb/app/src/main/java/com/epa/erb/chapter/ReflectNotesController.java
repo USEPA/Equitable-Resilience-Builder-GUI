@@ -57,10 +57,15 @@ public class ReflectNotesController implements Initializable{
 	
 	@FXML
 	public void saveNotesAction() {
-		if(activity != null) activity.setNotes(notesTextArea.getText());
-		if(chapter != null) chapter.setNotes(notesTextArea.getText());
+		if(activity != null) {
+			activity.setSaved(false);
+			activity.setNotes(notesTextArea.getText());
+		}
+		if(chapter != null) {
+			chapter.setSaved(false);
+			chapter.setNotes(notesTextArea.getText());
+		}
 		reflectController.closeReflectNotesStage();
-		app.setNeedsSaving(true);
 	}
 	
 }

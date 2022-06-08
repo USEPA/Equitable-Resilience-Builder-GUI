@@ -21,7 +21,6 @@ import com.epa.erb.project.Project;
 
 public class App extends Application {
 
-	private boolean needsSaving = false;
 	private ArrayList<Project> projects;
 	private ArrayList<Chapter> chapters;
 	private ArrayList<Activity> activities;
@@ -77,9 +76,16 @@ public class App extends Application {
 	}
 	
 	private void callToCloseERB() {
-		if(needsSaving) {
-			needsSaving = false;
+	
+	}
+	
+	private boolean allProjectsSaved() {
+		for(Project project: projects) {
+			if(!project.isSaved()) {
+				return false;
+			}
 		}
+		return true;
 	}
 	
 	private void readAndStoreData() {
@@ -161,14 +167,6 @@ public class App extends Application {
 		}
 		logger.debug("Activity returned is null");
 		return null;
-	}
-		
-	public boolean getNeedsSaving() {
-		return needsSaving;
-	}
-
-	public void setNeedsSaving(boolean needsSaving) {
-		this.needsSaving = needsSaving;
 	}
 
 	public ArrayList<Project> getProjects(){

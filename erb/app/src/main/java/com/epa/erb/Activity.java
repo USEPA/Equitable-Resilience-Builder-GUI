@@ -36,6 +36,8 @@ public class Activity {
 		this.notes = notes;
 		this.rating = rating;
 	}
+	
+	private boolean saved = true;
 		
 	public Activity() {
 		
@@ -168,6 +170,14 @@ public class Activity {
 
 	public void setRating(String rating) {
 		this.rating = rating;
+	}
+
+	public boolean isSaved() {
+		return saved;
+	}
+
+	public void setSaved(boolean saved) {
+		this.saved = saved;
 	}
 
 	public String toString() {

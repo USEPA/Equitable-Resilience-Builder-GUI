@@ -237,7 +237,7 @@ public class ReflectController implements Initializable{
 		activity.setRating(String.valueOf((int) slider.getValue()));
 		handleChapterConfidenceProgressBar(chapter);
 		engagementActionController.handleLocalProgress(chapter,goal.getChapters());
-		app.setNeedsSaving(true);
+		activity.setSaved(false);
 	}
 	
 	private void populateActivityLabels(ArrayList<Activity> activities) {

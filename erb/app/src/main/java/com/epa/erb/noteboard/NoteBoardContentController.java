@@ -97,7 +97,7 @@ public class NoteBoardContentController implements Initializable{
 			HBox catHBox = (HBox) loadCategorySection(categoryString);
 			mainVBox.getChildren().add(catHBox);
 			categoryTextField.setText(null);
-			app.setNeedsSaving(true);
+			activity.setSaved(false);
 		}
 	}
 	
@@ -194,7 +194,7 @@ public class NoteBoardContentController implements Initializable{
 			postItNoteControllers.remove(postItNoteController);
 		}
 		categorySectionControllers.remove(categorySectionController);
-		app.setNeedsSaving(true);
+		activity.setSaved(false);
 	}
 
 	private int indexToMove = -1;
@@ -228,8 +228,8 @@ public class NoteBoardContentController implements Initializable{
 				if(sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
 						Pane postItNotePane = loadPostItNote(categorySectionController);
 						targetPane.getChildren().add(postItNotePane);
-						app.setNeedsSaving(true);
-					// Moving a post it
+						activity.setSaved(false);
+						// Moving a post it
 				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
 					if(sourcePaneHashCode == targetPane.hashCode()) {
 						if (indexToMove > -1) {
@@ -241,7 +241,7 @@ public class NoteBoardContentController implements Initializable{
 						if (targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().remove(sourceNote);
 						if(!targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().add(numChildren, sourceNote);
 					}
-					app.setNeedsSaving(true);
+					activity.setSaved(false);
 				//Moving a post it
 				} else if(sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postedNote")) {
 					Pane sourceParentPane = (Pane) sourceNote.getParent();
@@ -250,7 +250,7 @@ public class NoteBoardContentController implements Initializable{
 					int targetIndex = sourceParentPane.getChildren().indexOf(noteVBox);
 					sourceParentPane.getChildren().remove(sourceNote);
 					sourceParentPane.getChildren().add(targetIndex, sourceNote);
-					app.setNeedsSaving(true);
+					activity.setSaved(false);
 				}
 				success = true;
 			}

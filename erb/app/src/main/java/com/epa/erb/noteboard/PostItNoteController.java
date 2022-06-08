@@ -70,7 +70,7 @@ public class PostItNoteController implements Initializable{
 		int numberOfPlus = Integer.parseInt(numberLabel.getText());
 		numberOfPlus++;
 		setNumberLabelText(String.valueOf(numberOfPlus));
-		app.setNeedsSaving(true);
+		noteBoardContentController.getActivity().setSaved(false);
 	}
 	
 	@FXML
@@ -78,7 +78,7 @@ public class PostItNoteController implements Initializable{
 		int numberOfPlus = Integer.parseInt(numberLabel.getText());
 		numberOfPlus--;
 		setNumberLabelText(String.valueOf(numberOfPlus));
-		app.setNeedsSaving(true);
+		noteBoardContentController.getActivity().setSaved(false);
 	}
 	
 	@FXML
@@ -125,7 +125,7 @@ public class PostItNoteController implements Initializable{
 		HBox postItHBox = (HBox) postItNotePane.getParent();
 		postItHBox.getChildren().remove(postItNotePane);
 		noteBoardContentController.removePostItNoteController(this);
-		app.setNeedsSaving(true);
+		noteBoardContentController.getActivity().setSaved(false);
 	}
 	
 	void setPostItNoteText(String text) {
@@ -147,6 +147,10 @@ public class PostItNoteController implements Initializable{
 		}
 	}
 	
+	public NoteBoardContentController getNoteBoardContentController() {
+		return noteBoardContentController;
+	}
+
 	void setNumberLabelText(String text) {
 		numberLabel.setText(text);
 	}

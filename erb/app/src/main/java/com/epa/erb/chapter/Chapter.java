@@ -18,6 +18,8 @@ public class Chapter {
 		this.notes = notes;
 	}
 	
+	private boolean saved = true;
+	
 	public Chapter() {
 		
 	}
@@ -84,6 +86,23 @@ public class Chapter {
 		return assignedActivities.size();
 	}
 		
+	public boolean isSaved() {
+		return saved && isActivitiesSaved();
+	}
+	
+	public boolean isActivitiesSaved() {
+		for(Activity activity: assignedActivities) {
+			if(!activity.isSaved()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public void setSaved(boolean saved) {
+		this.saved = saved;
+	}
+
 	public int getNumberOfReadyActivities() {
 		int count = 0;
 		for(Activity activity: assignedActivities) {

@@ -340,15 +340,6 @@ public class EngagementActionController implements Initializable{
 			goalSelected(newGoal);
 		}
 	}
-		
-	private Optional<ButtonType> showGoalSavingAlert() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setHeaderText(null);
-		alert.setContentText("A change in the current goal has been detected. Would you like to save before continuing?");
-		alert.setTitle("Warning");
-		Optional<ButtonType> result = alert.showAndWait();
-		return result;
-	}
 	
 	@FXML
 	public void activityStatusRadioButtonAction () {
@@ -357,7 +348,7 @@ public class EngagementActionController implements Initializable{
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(currentSelectedActivity.getActivityID());
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		handleLocalProgress(getChapterForActivity(currentSelectedActivity), getCurrentGoal().getChapters());
-		app.setNeedsSaving(true);
+		currentSelectedActivity.setSaved(false);
 	}
 	
 	private void handleActivityStatus(Activity activity, RadioButton radioButton) {
@@ -401,13 +392,55 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void saveActivityData() {
-		if(currentSelectedActivity.getActivityType().getLongName().contentEquals("Worksheet")) {
+	@FXML
+	public void saveButtonAction() {
+		ArrayList<Project> projectsToSave = new ArrayList<Project>();
+		projectsToSave.add(project);
+		
+		loadSavePopup(projectsToSave);
+		setAllToSaved(project);
+	}
+	
+	private Stage savePopupStage = null;
+	private void loadSavePopup(ArrayList<Project> projects) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/SavePopup.fxml"));
+			SavePopupController savePopupController = new SavePopupController(projects, this);
+			fxmlLoader.setController(savePopupController);
+			Parent root = fxmlLoader.load();
+			savePopupStage = new Stage();
+			Scene scene = new Scene(root);
+			savePopupStage.setScene(scene);
+			savePopupStage.setTitle("Saving...");
+			savePopupStage.show();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	public void setAllToSaved(Project project) {
+		for (Goal goal : project.getProjectGoals()) {
+			for (Chapter chapter : goal.getChapters()) {
+				chapter.setSaved(true);
+				for (Activity activity : chapter.getAssignedActivities()) {
+					activity.setSaved(true);
+				}
+			}
+		}
+	}
+	
+	public void saveGoalData(Goal goal) {
+		XMLManager xmlManager = new XMLManager(app);
+		xmlManager.writeGoalMetaXML(getGoalXMLFile(goal), goal.getChapters());
+	}
+	
+	public void saveActivityData(Project project, Goal goal, Activity activity) {
+		if(activity.getActivityType().getLongName().contentEquals("Worksheet")) {
 			
-		} else if(currentSelectedActivity.getActivityType().getLongName().contentEquals("Workbook")) {
+		} else if(activity.getActivityType().getLongName().contentEquals("Workbook")) {
 			
-		} else if(currentSelectedActivity.getActivityType().getLongName().contentEquals("Noteboard")) {
-			saveNoteboardData(currentSelectedActivity, getCurrentGoal(), project);
+		} else if(activity.getActivityType().getLongName().contentEquals("Noteboard")) {
+			saveNoteboardData(activity, getCurrentGoal(), project);
 		}
 	}
 	
@@ -428,32 +461,6 @@ public class EngagementActionController implements Initializable{
 	
 	private void saveWorksheetData() {
 		
-	}
-	
-	@FXML
-	public void saveButtonAction() {
-		for (Goal goal : project.getProjectGoals()) {
-			loadSavePopup(goal); // Save goal data
-		}
-		saveActivityData(); // Save activity data
-		app.setNeedsSaving(false);
-	}
-	
-	private Stage savePopupStage = null;
-	private void loadSavePopup(Goal goal) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/SavePopup.fxml"));
-			SavePopupController savePopupController = new SavePopupController(app, goal, getGoalXMLFile(goal), this);
-			fxmlLoader.setController(savePopupController);
-			Parent root = fxmlLoader.load();
-			savePopupStage = new Stage();
-			Scene scene = new Scene(root);
-			savePopupStage.setScene(scene);
-			savePopupStage.setTitle("Saving...");
-			savePopupStage.show();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
 	}
 	
 	@FXML

@@ -155,6 +155,15 @@ public class Goal {
 		return clonedActivity;
 	}
 	
+	public boolean isSaved() {
+		for(Chapter chapter: chapters) {
+			if(!chapter.isSaved()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public ArrayList<Chapter> getChapters(){
 		return chapters;
 	}

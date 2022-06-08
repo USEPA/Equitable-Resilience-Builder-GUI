@@ -1,11 +1,12 @@
 package com.epa.erb.engagement_action;
 
-import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import com.epa.erb.App;
-import com.epa.erb.XMLManager;
+import com.epa.erb.Activity;
+import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.project.Project;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -15,59 +16,69 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 
-public class SavePopupController implements Initializable{
+public class SavePopupController implements Initializable {
 
-	@FXML
-	Label goalLabel;
 	@FXML
 	Label statusLabel;
 	@FXML
 	ProgressIndicator progressIndicator;
-	
-	private App app;
-	private Goal goal;
-	private File goalXMLFile;
+
+	ArrayList<Project> projects;
 	private EngagementActionController engagementActionController;
-	public SavePopupController(App app, Goal goal, File goalXMLFile, EngagementActionController engagementActionController) {
-		this.app = app;
-		this.goal = goal;
-		this.goalXMLFile = goalXMLFile;
+	public SavePopupController(ArrayList<Project> projects,EngagementActionController engagementActionController) {
+		this.projects = projects;
 		this.engagementActionController = engagementActionController;
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		runTask();
 	}
-	
+
 	private void runTask() {
-		setGoalLabelText(goal.getGoalName());
 		Task<Void> task = new Task<Void>() {
 			@Override
-            protected Void call() throws Exception {
-               saveGoalData();
-               Thread.sleep(2000);
-               setGoalSaveDone();
-               Thread.sleep(1500);
-               return null;
-            }
-        };
-        task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			protected Void call() throws Exception {
+				for (Project project : projects) {
+					saveData(project);
+					engagementActionController.setAllToSaved(project);
+				}
+				Thread.sleep(2000);
+				setGoalSaveDone();
+				Thread.sleep(1500);
+				return null;
+			}
+		};
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent event) {
 				engagementActionController.closeSavePopupStage();
 			}
 		});
-        
-        progressIndicator.progressProperty().bind(task.progressProperty());
-        new Thread(task).start();
+
+		progressIndicator.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
 	}
-	
-	public void saveGoalData() {
-		XMLManager xmlManager = new XMLManager(app);
-		xmlManager.writeGoalMetaXML(goalXMLFile, goal.getChapters());
+
+	private void saveData(Project project) {
+		if (!project.isSaved()) {
+			for (Goal goal : project.getProjectGoals()) {
+				if (!goal.isSaved()) {
+					engagementActionController.saveGoalData(goal);
+					for (Chapter chapter : goal.getChapters()) {
+						if (!chapter.isSaved()) {
+							for (Activity activity : chapter.getAssignedActivities()) {
+								if (!activity.isSaved()) {
+									engagementActionController.saveActivityData(project, goal, activity);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
-	
+
 	public void setGoalSaveDone() {
 		Platform.runLater(new Runnable() {
 			@Override
@@ -77,11 +88,7 @@ public class SavePopupController implements Initializable{
 			}
 		});
 	}
-	
-	private void setGoalLabelText(String text) {
-		goalLabel.setText(text);
-	}
-	
+
 	private void setStatusLabelText(String text) {
 		statusLabel.setText(text);
 	}
