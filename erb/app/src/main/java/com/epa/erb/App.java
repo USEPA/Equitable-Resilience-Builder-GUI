@@ -76,7 +76,9 @@ public class App extends Application {
 	}
 	
 	private void callToCloseERB() {
-	
+		if(!allProjectsSaved()) {
+			
+		}
 	}
 	
 	private boolean allProjectsSaved() {

@@ -1,6 +1,5 @@
 package com.epa.erb.engagement_action;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,14 +10,12 @@ import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
-import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanController;
 import com.epa.erb.chapter.ReflectController;
 import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
-import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
 import com.epa.erb.worksheet.WorksheetContentController;
@@ -134,7 +131,6 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private Constants constants = new Constants();
-	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	private Activity currentSelectedActivity = null; //tracks the current user selected activity
 	private ArrayList<WorksheetContentController> listOfAllWorksheetContentControllers = new ArrayList<WorksheetContentController>();
@@ -394,14 +390,13 @@ public class EngagementActionController implements Initializable{
 		projectsToSave.add(project);
 		
 		loadSavePopup(projectsToSave);
-		setAllToSaved(project);
 	}
 	
 	private Stage savePopupStage = null;
 	private void loadSavePopup(ArrayList<Project> projects) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/SavePopup.fxml"));
-			SavePopupController savePopupController = new SavePopupController(projects, this);
+			SavePopupController savePopupController = new SavePopupController(app, projects, this);
 			fxmlLoader.setController(savePopupController);
 			Parent root = fxmlLoader.load();
 			savePopupStage = new Stage();
@@ -412,51 +407,6 @@ public class EngagementActionController implements Initializable{
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-	}
-	
-	public void setAllToSaved(Project project) {
-		for (Goal goal : project.getProjectGoals()) {
-			for (Chapter chapter : goal.getChapters()) {
-				chapter.setSaved(true);
-				for (Activity activity : chapter.getAssignedActivities()) {
-					activity.setSaved(true);
-				}
-			}
-		}
-	}
-	
-	public void saveGoalData(Goal goal) {
-		XMLManager xmlManager = new XMLManager(app);
-		xmlManager.writeGoalMetaXML(getGoalXMLFile(goal), goal.getChapters());
-	}
-	
-	public void saveActivityData(Project project, Goal goal, Activity activity) {
-		if(activity.getActivityType().getLongName().contentEquals("Worksheet")) {
-			
-		} else if(activity.getActivityType().getLongName().contentEquals("Workbook")) {
-			
-		} else if(activity.getActivityType().getLongName().contentEquals("Noteboard")) {
-			saveNoteboardData(activity, getCurrentGoal(), project);
-		}
-	}
-	
-	private void saveNoteboardData(Activity activity, Goal goal, Project project) {
-		XMLManager xmlManager = new XMLManager(app);
-		for(NoteBoardContentController noteBoardContentController: listOfAllNoteBoardContentControllers) {
-			if(noteBoardContentController.getActivity().getActivityID().contentEquals(activity.getActivityID())) {
-				noteBoardContentController.setCategoryPostIts();
-				ArrayList<CategorySectionController> categories = noteBoardContentController.getCategorySectionControllers();
-				xmlManager.writeNoteboardDataXML(getActivityXMLFile(project, goal, activity), categories);
-			}
-		}
-	}
-	
-	private void saveWorkbookData() {
-		
-	}
-	
-	private void saveWorksheetData() {
-		
 	}
 	
 	@FXML
@@ -942,20 +892,6 @@ public class EngagementActionController implements Initializable{
 		}
 		logger.debug("ERB Pathway Diagram Controller returned is null");
 		return null;
-	}
-	
-	private File getGoalXMLFile(Goal goal) {
-		File goalMetaFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
-		if(goalMetaFile.exists()) {
-			return goalMetaFile;
-		}
-		logger.debug("Goal XML file returned is null.");
-		return null;
-	}
-	
-	private File getActivityXMLFile(Project project, Goal goal, Activity activity) {
-		File activityDataFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
-		return activityDataFile;
 	}
 	
 	public Goal getCurrentGoal() {
