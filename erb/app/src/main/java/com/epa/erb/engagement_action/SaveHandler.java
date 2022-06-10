@@ -50,9 +50,13 @@ public class SaveHandler {
 			if (isAProjectNotSaved(projects)) {
 				return showToolSaveNeeded();
 			}
-		} else if (saveOrigin.contentEquals("projectChange") || saveOrigin.contentEquals("saveButton")) {
+		} else if (saveOrigin.contentEquals("projectChange")) {
 			if (!project.isSaved()) {
 				return showProjectSaveNeeded();
+			}
+		} else if (saveOrigin.contentEquals("saveButton")) {
+			if(!project.isSaved()) {
+				return "PROJECT";
 			}
 		} else if (saveOrigin.contentEquals("goalChange")) {
 			if (!goal.isSaved()) {
