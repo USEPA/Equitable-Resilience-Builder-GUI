@@ -116,6 +116,7 @@ public class ProjectSelectionController implements Initializable{
 			} else {
 				loadEngagementActionToContainer(selectedProject);
 			}
+			app.setSelectedProject(selectedProject);
 		}
 	}
 	

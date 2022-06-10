@@ -11,7 +11,6 @@ import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
-import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import javafx.beans.property.ObjectProperty;

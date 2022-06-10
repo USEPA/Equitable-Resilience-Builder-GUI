@@ -1,6 +1,10 @@
 package com.epa.erb;
 
 import java.util.ArrayList;
+import com.epa.erb.chapter.PlanController;
+import com.epa.erb.chapter.ReflectController;
+import com.epa.erb.noteboard.NoteBoardContentController;
+import com.epa.erb.worksheet.WorksheetContentController;
 
 public class Activity {
 	
@@ -38,6 +42,10 @@ public class Activity {
 	}
 	
 	private boolean saved = true;
+	private PlanController planController;
+	private ReflectController reflectController;
+	private WorksheetContentController worksheetContentController;
+	private NoteBoardContentController noteBoardContentController;
 		
 	public Activity() {
 		
@@ -178,6 +186,38 @@ public class Activity {
 
 	public void setSaved(boolean saved) {
 		this.saved = saved;
+	}
+	
+	public PlanController getPlanController() {
+		return planController;
+	}
+
+	public void setPlanController(PlanController planController) {
+		this.planController = planController;
+	}
+
+	public ReflectController getReflectController() {
+		return reflectController;
+	}
+
+	public void setReflectController(ReflectController reflectController) {
+		this.reflectController = reflectController;
+	}
+
+	public WorksheetContentController getWorksheetContentController() {
+		return worksheetContentController;
+	}
+
+	public void setWorksheetContentController(WorksheetContentController worksheetContentController) {
+		this.worksheetContentController = worksheetContentController;
+	}
+
+	public NoteBoardContentController getNoteBoardContentController() {
+		return noteBoardContentController;
+	}
+
+	public void setNoteBoardContentController(NoteBoardContentController noteBoardContentController) {
+		this.noteBoardContentController = noteBoardContentController;
 	}
 
 	public String toString() {

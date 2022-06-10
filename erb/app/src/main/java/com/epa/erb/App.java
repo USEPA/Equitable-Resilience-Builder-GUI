@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.engagement_action.SaveHandler;
+import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
 
@@ -30,6 +32,8 @@ public class App extends Application {
 	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
 	private String pathToERBFolder = constants.getPathToLocalERBFolder();
+	
+	private Project selectedProject;
 	
 	private String getGreeting() {
 		return "Launching ERB";
@@ -76,19 +80,17 @@ public class App extends Application {
 	}
 	
 	private void callToCloseERB() {
-		if(!allProjectsSaved()) {
-			
-		}
+		loadSavePopup(null, null, null, null, getProjects(), "close");
 	}
 	
-	private boolean allProjectsSaved() {
-		for(Project project: projects) {
-			if(!project.isSaved()) {
-				return false;
-			}
+	public void loadSavePopup(Activity activity, Chapter chapter, Goal goal, Project project,  ArrayList<Project> projects, String saveOrigin) {
+		try {
+			SaveHandler saveHandler = new SaveHandler(this, saveOrigin, activity, chapter, goal, project, projects);
+			saveHandler.beginSave();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
-		return true;
-	}
+	}	
 	
 	private void readAndStoreData() {
 		XMLManager xmlManager = new XMLManager(this);
@@ -170,7 +172,7 @@ public class App extends Application {
 		logger.debug("Activity returned is null");
 		return null;
 	}
-
+	
 	public ArrayList<Project> getProjects(){
 		return projects;
 	}
@@ -189,6 +191,14 @@ public class App extends Application {
 
 	public ArrayList<GoalCategory> getGoalCategories() {
 		return goalCategories;
+	}
+
+	public Project getSelectedProject() {
+		return selectedProject;
+	}
+
+	public void setSelectedProject(Project selectedProject) {
+		this.selectedProject = selectedProject;
 	}
 	
 }

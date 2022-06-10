@@ -39,6 +39,7 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	public void aboutMenuItemAction() {
 		loadERBLandingToContainer();
+		app.loadSavePopup(null, null, null, app.getSelectedProject(), null, "projectChange");
 	}
 	
 	private void loadERBLandingToContainer() {

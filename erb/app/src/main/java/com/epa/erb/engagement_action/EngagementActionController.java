@@ -242,6 +242,7 @@ public class EngagementActionController implements Initializable{
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
+			activity.setWorksheetContentController(worksheetContentController);
 			listOfAllWorksheetContentControllers.add(worksheetContentController);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
@@ -256,6 +257,7 @@ public class EngagementActionController implements Initializable{
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
+			activity.setNoteBoardContentController(noteBoardContentController);
 			listOfAllNoteBoardContentControllers.add(noteBoardContentController);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -275,7 +277,7 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void loadChapterPlan(Chapter chapter) {
+	private void loadChapterPlan(Chapter chapter, Activity activity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Plan.fxml"));
 			PlanController planController = new PlanController();
@@ -283,12 +285,13 @@ public class EngagementActionController implements Initializable{
 			Parent root = fxmlLoader.load();
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
+			activity.setPlanController(planController);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
 	
-	private void loadChapterReflect(Chapter chapter) {
+	private void loadChapterReflect(Chapter chapter, Activity activity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Reflect.fxml"));
 			ReflectController reflectController = new ReflectController(app, getCurrentGoal(), chapter, this);
@@ -297,6 +300,7 @@ public class EngagementActionController implements Initializable{
 			reflectController.initProgress(getCurrentGoal(), chapter);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
+			activity.setReflectController(reflectController);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -329,6 +333,8 @@ public class EngagementActionController implements Initializable{
 	
 	private void goalChanged(Goal origGoal, Goal newGoal) {
 		if(origGoal != null) {
+			app.loadSavePopup(null, null, origGoal, project, null, "goalChange");
+			
 			goalSelected(newGoal);
 		}
 	}
@@ -386,27 +392,7 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-		ArrayList<Project> projectsToSave = new ArrayList<Project>();
-		projectsToSave.add(project);
-		
-		loadSavePopup(projectsToSave);
-	}
-	
-	private Stage savePopupStage = null;
-	private void loadSavePopup(ArrayList<Project> projects) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/SavePopup.fxml"));
-			SavePopupController savePopupController = new SavePopupController(app, projects, this);
-			fxmlLoader.setController(savePopupController);
-			Parent root = fxmlLoader.load();
-			savePopupStage = new Stage();
-			Scene scene = new Scene(root);
-			savePopupStage.setScene(scene);
-			savePopupStage.setTitle("Saving...");
-			savePopupStage.show();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+		app.loadSavePopup(null, null, null, project, null, "saveButton");
 	}
 	
 	@FXML
@@ -454,7 +440,7 @@ public class EngagementActionController implements Initializable{
 					String parentTreeItemValue = parentTreeItem.getValue().trim();
 					String selectedTreeItemValue = selectedTreeItem.getValue().trim();
 					if (selectedTreeItemValue.length() > 0) {
-						if (parentTreeItemValue.contains("ERB")) { // Is Chapter
+						if (parentTreeItemValue.contains("ERB")) { // Is Chapter						
 							handleChapterSelectedInTree(selectedTreeItemValue);
 							addLocalProgressVBox(1);
 							handleLocalProgress(getChapter(selectedTreeItemValue), getCurrentGoal().getChapters());
@@ -594,10 +580,10 @@ public class EngagementActionController implements Initializable{
 				loadSampleWK(selectedActivity);
 			} else if (selectedActivity.getLongName().contentEquals("Plan")) {
 				removeAttributeScrollPane();
-				loadChapterPlan(getChapterForActivity(selectedActivity));
+				loadChapterPlan(getChapterForActivity(selectedActivity), selectedActivity);
 			} else if (selectedActivity.getLongName().contentEquals("Reflect")) {
 				removeAttributeScrollPane();
-				loadChapterReflect(getChapterForActivity(selectedActivity));
+				loadChapterReflect(getChapterForActivity(selectedActivity), selectedActivity);
 			}
 		} else if (selectedActivity.getActivityType().getDescription().contentEquals("noteboard")) {
 			handleAttributePanelGeneration("Objective", selectedActivity.getObjectives(), constants.getObjectivesColor());
@@ -619,6 +605,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void handleChapterSelectedInTree(String selectedTreeItemValue) {
+		if(currentSelectedActivity != null) app.loadSavePopup(null, getChapterForActivity(currentSelectedActivity), getCurrentGoal(), project, null, "chapterChange");
 		Chapter currentChapter = getChapter(selectedTreeItemValue);
 		currentSelectedActivity = null;
 		cleanContentVBox();
@@ -643,6 +630,8 @@ public class EngagementActionController implements Initializable{
 			removeLocalProgressVBox();
 		}
 		if(!currentChapter.getStringName().contentEquals(selectedActivity.getChapterAssignment()) || currentSelectedActivity != selectedActivity) { //If a new activity is selected
+			if(currentSelectedActivity != null) app.loadSavePopup(currentSelectedActivity, null, getCurrentGoal(), project, null, "activityChange");
+			
 			addAttributeScrollPane(1);
 			addERBKeyVBox(1);
 			cleanContentVBox();
@@ -835,12 +824,6 @@ public class EngagementActionController implements Initializable{
 	public void closeGlobalGoalTrackerStage() {
 		if(globalGoalTrackerStage!=null) {
 			globalGoalTrackerStage.close();
-		}
-	}
-	
-	public void closeSavePopupStage() {
-		if (savePopupStage != null) {
-			savePopupStage.close();
 		}
 	}
 			

@@ -10,6 +10,8 @@ import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.noteboard.CategorySectionController;
+import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -27,13 +29,23 @@ public class SavePopupController implements Initializable {
 	@FXML
 	ProgressIndicator progressIndicator;
 
-	private App app;
+	private Activity activity;
+	private Chapter chapter;
+	private Goal goal;
+	private Project project;
 	private ArrayList<Project> projects;
-	private EngagementActionController engagementActionController;
-	public SavePopupController(App app, ArrayList<Project> projects,EngagementActionController engagementActionController) {
-		this.app = app;
+	private App app;
+	private String saveType;
+	private SaveHandler saveHandler;
+	public SavePopupController(Activity activity, Chapter chapter, Goal goal, Project project, App app, String saveType, ArrayList<Project> projects, SaveHandler saveHandler) {
+		this.activity = activity;
+		this.chapter = chapter;
+		this.goal = goal;
+		this.project = project;
 		this.projects = projects;
-		this.engagementActionController = engagementActionController;
+		this.app = app;
+		this.saveType = saveType;
+		this.saveHandler = saveHandler;
 	}
 	
 	private Constants constants = new Constants();
@@ -48,89 +60,103 @@ public class SavePopupController implements Initializable {
 		Task<Void> task = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-				for (Project project : projects) {
-					saveData(project);
-					setAllToSaved(project);
+				if (saveType.contentEquals("ALL")) {
+					saveAllProjects(projects);
+				} else if (saveType.contentEquals("PROJECT")) {
+					saveProject(project);
+				} else if (saveType.contentEquals("GOAL")) {
+					saveGoal(project, goal);
+				} else if (saveType.contentEquals("CHAPTER")) {
+					saveChapter(project, goal, chapter);
+				} else if (saveType.contentEquals("ACTIVITY")) {
+					saveActivity(project, goal, activity);
 				}
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 				setGoalSaveDone();
-				Thread.sleep(1500);
+				Thread.sleep(1000);
 				return null;
 			}
 		};
 		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent event) {
-				engagementActionController.closeSavePopupStage();
+				saveHandler.closeSavePopupStage();
 			}
 		});
-
 		progressIndicator.progressProperty().bind(task.progressProperty());
 		new Thread(task).start();
 	}
-
-	private void saveData(Project project) {
-		if (!project.isSaved()) {
-			for (Goal goal : project.getProjectGoals()) {
-				if (!goal.isSaved()) {
-					saveGoalData(project, goal);
-					for (Chapter chapter : goal.getChapters()) {
-						if (!chapter.isSaved()) {
-							for (Activity activity : chapter.getAssignedActivities()) {
-								if (!activity.isSaved()) {
-									saveActivityData(project, goal, activity);
-								}
-							}
-						}
-					}
-				}
+	
+	private void saveAllProjects(ArrayList<Project> listOfProjects) {
+		for (Project project : listOfProjects) {
+			if (!project.isSaved()) {
+				saveProject(project);
 			}
 		}
 	}
 	
-	public void saveGoalData(Project project, Goal goal) {
+	private void saveProject(Project project) {
+		for (Goal goal : project.getProjectGoals()) {
+			if (!goal.isSaved()) {
+				saveGoal(project, goal);
+			}
+		}
+	}
+	
+	private void saveGoal(Project project, Goal goal) {
+		for (Chapter chapter : goal.getChapters()) {
+			if (!chapter.isSaved()) {
+				saveChapter(project, goal, chapter);
+			}
+		}
+	}
+	
+	private void saveChapter(Project project, Goal goal, Chapter chapter) {
+		for (Activity activity : chapter.getAssignedActivities()) {
+			if (!activity.isSaved()) {
+				saveActivity(project, goal, activity);
+			}
+		}
+		chapter.setSaved(true);
+	}
+	
+	private void saveActivity(Project project, Goal goal, Activity activity) {
+		callToWriteActivityDataXML(project, goal, activity);
+		callToWriteGoalDataXML(project, goal);
+		activity.setSaved(true);
+	}
+	
+	public void callToWriteGoalDataXML(Project project, Goal goal) {
 		XMLManager xmlManager = new XMLManager(app);
 		xmlManager.writeGoalMetaXML(getGoalXMLFile(project, goal), goal.getChapters());
 	}
 	
-	public void saveActivityData(Project project, Goal goal, Activity activity) {
+	public void callToWriteActivityDataXML(Project project, Goal goal, Activity activity) {
 		if(activity.getActivityType().getLongName().contentEquals("Worksheet")) {
-			saveWorksheetData();
+			callToWriteWorksheetDataXML();
 		} else if(activity.getActivityType().getLongName().contentEquals("Workbook")) {
-			saveWorkbookData();
+			callToWriteWorkbookDataXML();
 		} else if(activity.getActivityType().getLongName().contentEquals("Noteboard")) {
-			saveNoteboardData(activity, goal, project);
+			callToWriteNoteboardDataXML(activity, goal, project);
 		}
 	}
 	
-	private void saveNoteboardData(Activity activity, Goal goal, Project project) {
-//		XMLManager xmlManager = new XMLManager(app);
-//		for(NoteBoardContentController noteBoardContentController: listOfAllNoteBoardContentControllers) {
-//			if(noteBoardContentController.getActivity().getActivityID().contentEquals(activity.getActivityID())) {
-//				noteBoardContentController.setCategoryPostIts();
-//				ArrayList<CategorySectionController> categories = noteBoardContentController.getCategorySectionControllers();
-//				xmlManager.writeNoteboardDataXML(getActivityXMLFile(project, goal, activity), categories);
-//			}
-//		}
-	}
-	
-	private void saveWorkbookData() {
-		
-	}
-	
-	private void saveWorksheetData() {
-		
-	}
-	
-	public void setAllToSaved(Project project) {
-		for (Goal goal : project.getProjectGoals()) {
-			for (Chapter chapter : goal.getChapters()) {
-				chapter.setSaved(true);
-				for (Activity activity : chapter.getAssignedActivities()) {
-					activity.setSaved(true);
-				}
-			}
+	private void callToWriteNoteboardDataXML(Activity activity, Goal goal, Project project) {	
+		XMLManager xmlManager = new XMLManager(app);
+		NoteBoardContentController noteBoardContentController = activity.getNoteBoardContentController();
+		if(noteBoardContentController != null) {
+			noteBoardContentController.setCategoryPostIts();
+			ArrayList<CategorySectionController> categories = noteBoardContentController.getCategorySectionControllers();
+			xmlManager.writeNoteboardDataXML(getActivityXMLFile(project, goal, activity), categories);	
 		}
+	}
+	
+	private void callToWriteWorkbookDataXML() {
+		
+	}
+	
+	private void callToWriteWorksheetDataXML() {
+		
 	}
 
 	public void setGoalSaveDone() {
