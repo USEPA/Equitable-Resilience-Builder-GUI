@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.epa.erb.App;
 import com.epa.erb.Constants;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,10 +34,8 @@ public class PostItNoteController implements Initializable{
 	@FXML
 	ScrollPane scrollPane;
 
-	private App app;
 	private NoteBoardContentController noteBoardContentController;
-	public PostItNoteController(App app, NoteBoardContentController noteBoardContentController ) {
-		this.app = app;
+	public PostItNoteController(NoteBoardContentController noteBoardContentController ) {
 		this.noteBoardContentController = noteBoardContentController;
 	}
 	
@@ -97,7 +94,7 @@ public class PostItNoteController implements Initializable{
 	private void loadPostItNoteEdits() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
-			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(app, this);
+			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(this);
 			fxmlLoader.setController(postItNoteEditsController);
 			editsStage = new Stage();
 			Scene scene = new Scene(fxmlLoader.load());

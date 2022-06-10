@@ -294,7 +294,7 @@ public class EngagementActionController implements Initializable{
 	private void loadChapterReflect(Chapter chapter, Activity activity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Reflect.fxml"));
-			ReflectController reflectController = new ReflectController(app, getCurrentGoal(), chapter, this);
+			ReflectController reflectController = new ReflectController(getCurrentGoal(), chapter, this);
 			fxmlLoader.setController(reflectController);
 			Parent root = fxmlLoader.load();
 			reflectController.initProgress(getCurrentGoal(), chapter);

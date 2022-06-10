@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
-import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
 import com.epa.erb.engagement_action.EngagementActionController;
@@ -66,12 +65,10 @@ public class ReflectController implements Initializable{
 	@FXML
 	Label goalCompletionInfoLabel;
 	
-	private App app;
 	private Goal goal;
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
-	public ReflectController (App app, Goal goal, Chapter chapter, EngagementActionController engagementActionController) {
-		this.app = app;
+	public ReflectController (Goal goal, Chapter chapter, EngagementActionController engagementActionController) {
 		this.goal = goal;
 		this.chapter = chapter;
 		this.engagementActionController = engagementActionController;
@@ -166,7 +163,7 @@ public class ReflectController implements Initializable{
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectNotes.fxml"));
 			ReflectNotesController reflectNotesController = null;
-			if (activity != null) reflectNotesController = new ReflectNotesController(app, activity, this);
+			if (activity != null) reflectNotesController = new ReflectNotesController(activity, this);
 			if (chapter != null) reflectNotesController = new ReflectNotesController(chapter, this);
 			if (reflectNotesController != null) {
 				fxmlLoader.setController(reflectNotesController);

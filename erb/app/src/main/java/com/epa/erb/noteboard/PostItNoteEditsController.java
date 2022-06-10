@@ -2,7 +2,6 @@ package com.epa.erb.noteboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import com.epa.erb.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
@@ -17,10 +16,8 @@ public class PostItNoteEditsController implements Initializable{
 	@FXML
 	TextArea postItNoteTextArea;
 
-	private App app;
 	private PostItNoteController postItNoteController;
-	public PostItNoteEditsController(App app, PostItNoteController postItNoteController) {
-		this.app = app;
+	public PostItNoteEditsController(PostItNoteController postItNoteController) {
 		this.postItNoteController = postItNoteController;
 	}
 	

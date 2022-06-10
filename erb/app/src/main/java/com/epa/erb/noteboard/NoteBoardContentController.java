@@ -158,7 +158,7 @@ public class NoteBoardContentController implements Initializable{
 	private Pane loadPostItNote(CategorySectionController categorySectionController) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNote.fxml"));
-			PostItNoteController postItNoteController = new PostItNoteController(app, this);
+			PostItNoteController postItNoteController = new PostItNoteController(this);
 			fxmlLoader.setController(postItNoteController);
 			Pane postItNotePane = fxmlLoader.load();
 			setDrag(postItNotePane, categorySectionController);

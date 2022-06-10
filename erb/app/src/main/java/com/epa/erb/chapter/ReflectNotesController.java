@@ -3,7 +3,6 @@ package com.epa.erb.chapter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.Activity;
-import com.epa.erb.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -16,11 +15,9 @@ public class ReflectNotesController implements Initializable{
 	@FXML
 	TextArea notesTextArea;
 	
-	private App app;
 	private Activity activity;
 	private ReflectController reflectController;
-	public ReflectNotesController(App app, Activity activity, ReflectController reflectController) {
-		this.app = app;
+	public ReflectNotesController(Activity activity, ReflectController reflectController) {
 		this.activity = activity;
 		this.reflectController = reflectController;
 	}
