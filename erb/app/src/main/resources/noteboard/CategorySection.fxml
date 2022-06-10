@@ -24,7 +24,7 @@
                            </Label>
                      </children>
                   </HBox>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="100.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                      <content>
                         <HBox fx:id="postItHBox" alignment="CENTER_LEFT" spacing="10.0" />
                      </content>

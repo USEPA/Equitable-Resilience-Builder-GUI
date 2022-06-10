@@ -73,28 +73,32 @@
                   </Button>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox alignment="CENTER" minWidth="100.0">
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+               <content>
+                  <HBox minHeight="200.0" prefWidth="200.0">
                      <children>
-                        <StackPane>
+                        <VBox alignment="CENTER" minWidth="100.0">
                            <children>
-                              <Pane fx:id="layer1Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="100.0" prefWidth="100.0" />
-                              <Pane fx:id="layer2Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="95.0" prefWidth="95.0" />
-                              <Pane fx:id="layer3Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="90.0" prefWidth="90.0" />
-                              <Pane fx:id="layer4Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="85.0" prefWidth="85.0" />
-                              <Pane fx:id="note" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="80.0" prefWidth="80.0" />
+                              <StackPane>
+                                 <children>
+                                    <Pane fx:id="layer1Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="100.0" prefWidth="100.0" />
+                                    <Pane fx:id="layer2Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="95.0" prefWidth="95.0" />
+                                    <Pane fx:id="layer3Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="90.0" prefWidth="90.0" />
+                                    <Pane fx:id="layer4Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="85.0" prefWidth="85.0" />
+                                    <Pane fx:id="note" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="80.0" prefWidth="80.0" />
+                                 </children>
+                              </StackPane>
                            </children>
-                        </StackPane>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox fx:id="mainVBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
                      </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox fx:id="mainVBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
+                  </HBox>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
    </content>
