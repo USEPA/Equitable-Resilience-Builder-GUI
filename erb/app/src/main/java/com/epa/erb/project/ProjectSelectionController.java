@@ -54,6 +54,8 @@ public class ProjectSelectionController implements Initializable{
 			Project project = new Project(newProjectName);
 			createNewProjectDirectory(project);
 			addProjectToListView(project);
+			projectsListView.getSelectionModel().select(project);
+			launchButtonAction();
 		}
 	}
 	
