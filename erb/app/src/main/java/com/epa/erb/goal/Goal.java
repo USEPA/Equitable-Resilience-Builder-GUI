@@ -26,7 +26,7 @@ public class Goal {
 	private Constants constants = new Constants();
 	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	private Logger logger = LogManager.getLogger(Goal.class);
-	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
+	private String pathToERBProjectsFolder = constants.getPathToDynamicERBProjectsFolder();
 	
 	public String getGoalName() {
 		return goalName;

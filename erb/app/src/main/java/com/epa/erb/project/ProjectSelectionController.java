@@ -35,7 +35,7 @@ public class ProjectSelectionController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
-	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
+	private String pathToERBProjectsFolder = constants.getPathToDynamicERBProjectsFolder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
