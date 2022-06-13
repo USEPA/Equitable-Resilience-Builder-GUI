@@ -39,7 +39,7 @@ public class WorksheetContentController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(WorksheetContentController.class);
-	private String pathToERBStaticDataFolder = constants.getPathToDynamicERBStaticDataFolder();
+	private String pathToERBStaticDataFolder = constants.getPathToLocalERBStaticDataFolder();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

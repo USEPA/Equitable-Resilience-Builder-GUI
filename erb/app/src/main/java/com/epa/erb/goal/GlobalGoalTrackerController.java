@@ -41,7 +41,7 @@ public class GlobalGoalTrackerController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(GlobalGoalTrackerController.class);
-	private String pathToERBProjectsFolder = constants.getPathToDynamicERBProjectsFolder();
+	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

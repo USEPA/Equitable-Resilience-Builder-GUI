@@ -53,7 +53,7 @@ public class GoalCreationController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(GoalCreationController.class);
-	private String pathToERBProjectsFolder = constants.getPathToDynamicERBProjectsFolder();
+	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
