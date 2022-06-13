@@ -42,3 +42,11 @@ application {
 
 applicationDefaultJvmArgs = ["-Dprism.maxvram=2G"]
 
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher{
+        name = 'erb'
+    }
+    forceMerge('log4j-api')
+}
+
