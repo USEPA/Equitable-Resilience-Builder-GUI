@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -25,46 +24,30 @@
       <Separator />
       <VBox>
          <children>
-            <HBox>
-               <children>
-                  <Label text="About the ERB">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <VBox>
-               <children>
-                  <Label text="The Equitable Resilience Builder was developed by the U.S. Environmental Protection Agency to help under-resourced communities identify their most pressing vulnerabilities to a wide range of hazards and identify actions to increase resilience equitability. The process is adaptable for different levels of capacity and resources, and different planning contexts such as hazard mitigation planning, climate adaptation planning, or holistic resilience planning. The ERB toolkit is holistic, meaning that it pulls together many sectors that make up community resilience. This includes the built environment, natural environment, and social environment. The development of the ERB process was collaborative, bringing together expertise from a variety of scientific areas." wrapText="true">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
+            <Label text="About the ERB">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="The Equitable Resilience Builder was developed by the U.S. Environmental Protection Agency to help under-resourced communities identify their most pressing vulnerabilities to a wide range of hazards and identify actions to increase resilience equitability. The process is adaptable for different levels of capacity and resources, and different planning contexts such as hazard mitigation planning, climate adaptation planning, or holistic resilience planning. The ERB toolkit is holistic, meaning that it pulls together many sectors that make up community resilience. This includes the built environment, natural environment, and social environment. The development of the ERB process was collaborative, bringing together expertise from a variety of scientific areas." wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
       <VBox>
          <children>
-            <HBox>
-               <children>
-                  <Label text="About the ERB process">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <VBox>
-               <children>
-                  <Label text="The ERB process is designed to be flexible. We understand that all communities are different and face distinct hazards risks. We also realize that you may have unique resource constraints on getting your work done. The instructions for each step of the process describe some of the ways you can customize the ERB to make sure you can get the work done you need to do, in the most inclusive way possible, given the time frame, resources and team you have." wrapText="true">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
+            <Label text="About the ERB process">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="The ERB process is designed to be flexible. We understand that all communities are different and face distinct hazards risks. We also realize that you may have unique resource constraints on getting your work done. The instructions for each step of the process describe some of the ways you can customize the ERB to make sure you can get the work done you need to do, in the most inclusive way possible, given the time frame, resources and team you have." wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
       <VBox>
@@ -84,7 +67,7 @@
          <children>
             <VBox fx:id="vBox1" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" maxHeight="130.0">
+                  <HBox alignment="CENTER" maxHeight="130.0" VBox.vgrow="ALWAYS">
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
@@ -98,49 +81,45 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <ScrollPane fx:id="scrollPane1" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-                     <content>
-                        <VBox prefWidth="100.0">
-                           <children>
-                              <Label text="An equitable resilience process is one that is inclusive and empowers local voices in resilience building. This means the following." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Representatives of community-based organizations are part of your core team." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Community members participate in ERB workshops." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Your resilience plan will be based on input from local voices about their experiences with disasters and climate change, and their vision for an equitable, resilient future." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Community members will conduct equity review of resilience measures and actions." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Outputs will be shared so that numerous organizations can begin to take action." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
+                  <VBox fx:id="vBox1Content" prefWidth="100.0">
+                     <children>
+                        <Label text="An equitable resilience process is one that is inclusive and empowers local voices in resilience building. This means the following." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Representatives of community-based organizations are part of your core team." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Community members participate in ERB workshops." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Your resilience plan will be based on input from local voices about their experiences with disasters and climate change, and their vision for an equitable, resilient future." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Community members will conduct equity review of resilience measures and actions." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Outputs will be shared so that numerous organizations can begin to take action." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
             <VBox fx:id="vBox2" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" maxHeight="130.0">
+                  <HBox alignment="CENTER" maxHeight="130.0" VBox.vgrow="ALWAYS">
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
@@ -154,44 +133,40 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <ScrollPane fx:id="scrollPane2" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-                     <content>
-                        <VBox prefWidth="100.0">
-                           <children>
-                              <Label text="The ERB uses an equity lens of hazards/risks, vulnerability, and resilience for the following reasons." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Hazards and disasters tend to hit certain groups harder than others." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Groups that are hit harder and have fewer resources to begin with struggle more to recover." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Selecting actions that increase equity and resilience provides a bigger &quot;bang for the buck&quot; by making sure resources and assistance go to those who will benefit the most." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Communities that are more equitable have a better quality of life for everyone." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
+                  <VBox fx:id="vBox2Content" prefWidth="100.0">
+                     <children>
+                        <Label text="The ERB uses an equity lens of hazards/risks, vulnerability, and resilience for the following reasons." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Hazards and disasters tend to hit certain groups harder than others." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Groups that are hit harder and have fewer resources to begin with struggle more to recover." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Selecting actions that increase equity and resilience provides a bigger &quot;bang for the buck&quot; by making sure resources and assistance go to those who will benefit the most." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Communities that are more equitable have a better quality of life for everyone." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
             <VBox fx:id="vBox3" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" maxHeight="130.0">
+                  <HBox alignment="CENTER" maxHeight="130.0" VBox.vgrow="ALWAYS">
                      <children>
                         <StackPane maxWidth="100.0">
                            <children>
@@ -205,44 +180,40 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <ScrollPane fx:id="scrollPane3" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-                     <content>
-                        <VBox prefWidth="100.0">
-                           <children>
-                              <Label text="Using an equitable approach to resilience planning will do the following." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Make sure that resilience actions protect your community's most vulnerable." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Assess resilience using local input." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Prioritize which resilience actions will work best for your community and have the most equitable impact." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="  -Avoid unintended consequences of resilience actions." wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
+                  <VBox fx:id="vBox3Content" prefWidth="100.0">
+                     <children>
+                        <Label text="Using an equitable approach to resilience planning will do the following." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Make sure that resilience actions protect your community's most vulnerable." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Assess resilience using local input." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Prioritize which resilience actions will work best for your community and have the most equitable impact." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="  -Avoid unintended consequences of resilience actions." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER">
+      <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
          <children>
             <Button mnemonicParsing="false" onAction="#beginERBProcessButtonClicked" text="Begin ERB Process">
                <font>
@@ -250,7 +221,7 @@
                </font>
             </Button>
          </children>
-      </HBox>
+      </VBox>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

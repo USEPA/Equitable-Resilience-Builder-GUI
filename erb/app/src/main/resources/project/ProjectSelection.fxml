@@ -71,7 +71,7 @@
                   <ListView fx:id="projectsListView" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
-            <HBox alignment="CENTER_RIGHT">
+            <HBox alignment="BOTTOM_RIGHT">
                <children>
                   <Button mnemonicParsing="false" onAction="#launchButtonAction" text="Load Project">
                      <font>

@@ -6,6 +6,7 @@ package com.epa.erb;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -45,6 +46,7 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		System.out.println(java.awt.Toolkit.getDefaultToolkit().getScreenResolution());
 		logger.info(getGreeting());
 		readAndStoreData();
 		loadERBContainer();
@@ -56,7 +58,8 @@ public class App extends Application {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
 			ERBLandingController erbLandingController = new ERBLandingController(this);
 			fxmlLoader.setController(erbLandingController);
-			loadContent(fxmlLoader.load());
+			Parent root = fxmlLoader.load();
+			loadContent(root);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -112,9 +115,12 @@ public class App extends Application {
 	}
 	
 	public void loadContent(Node contentNode) {
+		erbContainerController.getErbContainer().getChildren().clear();
 		VBox.setVgrow(contentNode, Priority.ALWAYS);
 		HBox.setHgrow(contentNode, Priority.ALWAYS);
-		erbContainerController.getErbContainer().getChildren().clear();
+		VBox vBox = (VBox) contentNode;
+		vBox.setMinHeight(erbContainerController.getERBScrollPane().getHeight() - 50);
+		
 		erbContainerController.getErbContainer().getChildren().add(contentNode);
 	}
 	

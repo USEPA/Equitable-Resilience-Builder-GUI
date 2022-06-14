@@ -9,8 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 public class ERBLandingController implements Initializable {
 
@@ -21,17 +25,18 @@ public class ERBLandingController implements Initializable {
 	@FXML
 	Circle circle3;
 	@FXML
-	ScrollPane scrollPane1;
-	@FXML
-	ScrollPane scrollPane2;
-	@FXML
-	ScrollPane scrollPane3;
-	@FXML
 	VBox vBox1;
 	@FXML
 	VBox vBox2;
 	@FXML
 	VBox vBox3;
+	@FXML
+	VBox vBox1Content;
+	@FXML
+	VBox vBox2Content;
+	@FXML
+	VBox vBox3Content;
+
 
 	private App app;
 	public ERBLandingController(App app) {
@@ -50,9 +55,9 @@ public class ERBLandingController implements Initializable {
 		circle1.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle2.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle3.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		hideScrollPane1();
-		hideScrollPane2();
-		hideScrollPane3();
+		hideContent1();
+		hideContent2();
+		hideContent3();
 	}
 
 	@FXML
@@ -74,44 +79,44 @@ public class ERBLandingController implements Initializable {
 	@FXML
 	public void circle1Clicked() {
 		if(isCircle1ContentShowing()) {
-			hideScrollPane1();
+			hideContent1();
 		} else {
-			showScrollPane1();
+			showContent1();
 		}
 	}
 	
 	@FXML
 	public void circle2Clicked() {
 		if(isCircle2ContentShowing()) {
-			hideScrollPane2();
+			hideContent2();
 		} else {
-			showScrollPane2();
+			showContent2();
 		}
 	}
 	
 	@FXML
 	public void circle3Clicked() {
 		if(isCircle3ContentShowing()) {
-			hideScrollPane3();
+			hideContent3();
 		} else {
-			showScrollPane3();
+			showContent3();
 		}
 	}
 	
-	private void hideScrollPane1() {
-		if(vBox1.getChildren().contains(scrollPane1)) {
-			vBox1.getChildren().remove(scrollPane1);
+	private void hideContent1() {
+		if(vBox1.getChildren().contains(vBox1Content)) {
+			vBox1.getChildren().remove(vBox1Content);
 		}
 	}
 	
-	private void showScrollPane1() {
-		if(!vBox1.getChildren().contains(scrollPane1)) {
-			vBox1.getChildren().add(1,scrollPane1);
+	private void showContent1() {
+		if(!vBox1.getChildren().contains(vBox1Content)) {
+			vBox1.getChildren().add(1,vBox1Content);
 		}
 	}
 	
 	private boolean isCircle1ContentShowing() {
-		if(vBox1.getChildren().contains(scrollPane1)) {
+		if(vBox1.getChildren().contains(vBox1Content)) {
 			return true;
 		} else {
 			return false;
@@ -119,7 +124,7 @@ public class ERBLandingController implements Initializable {
 	}
 	
 	private boolean isCircle2ContentShowing() {
-		if(vBox2.getChildren().contains(scrollPane2)) {
+		if(vBox2.getChildren().contains(vBox2Content)) {
 			return true;
 		} else {
 			return false;
@@ -127,34 +132,34 @@ public class ERBLandingController implements Initializable {
 	}
 	
 	private boolean isCircle3ContentShowing() {
-		if(vBox3.getChildren().contains(scrollPane3)) {
+		if(vBox3.getChildren().contains(vBox3Content)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 	
-	private void hideScrollPane2() {
-		if(vBox2.getChildren().contains(scrollPane2)) {
-			vBox2.getChildren().remove(scrollPane2);
+	private void hideContent2() {
+		if(vBox2.getChildren().contains(vBox2Content)) {
+			vBox2.getChildren().remove(vBox2Content);
 		}
 	}
 	
-	private void showScrollPane2() {
-		if(!vBox2.getChildren().contains(scrollPane2)) {
-			vBox2.getChildren().add(1,scrollPane2);
+	private void showContent2() {
+		if(!vBox2.getChildren().contains(vBox2Content)) {
+			vBox2.getChildren().add(1,vBox2Content);
 		}
 	}
 	
-	private void hideScrollPane3() {
-		if(vBox3.getChildren().contains(scrollPane3)) {
-			vBox3.getChildren().remove(scrollPane3);
+	private void hideContent3() {
+		if(vBox3.getChildren().contains(vBox3Content)) {
+			vBox3.getChildren().remove(vBox3Content);
 		}
 	}
 	
-	private void showScrollPane3() {
-		if(!vBox3.getChildren().contains(scrollPane3)) {
-			vBox3.getChildren().add(1,scrollPane3);
+	private void showContent3() {
+		if(!vBox3.getChildren().contains(vBox3Content)) {
+			vBox3.getChildren().add(1,vBox3Content);
 		}
 	}
 
