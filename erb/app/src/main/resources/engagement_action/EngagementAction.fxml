@@ -226,35 +226,31 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <ScrollPane fx:id="scrollPane" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-                     <content>
-                        <HBox fx:id="body2HBox">
+                  <HBox fx:id="body2HBox" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="contentVBox" alignment="CENTER" HBox.hgrow="ALWAYS" />
+                        <HBox fx:id="attributePanelHBox" maxWidth="200.0" spacing="5.0">
                            <children>
-                              <VBox fx:id="contentVBox" alignment="CENTER" HBox.hgrow="ALWAYS" />
-                              <HBox fx:id="attributePanelHBox" maxWidth="200.0" minWidth="200.0" spacing="5.0">
+                              <VBox fx:id="attributePanelCollapseVBox" alignment="TOP_CENTER" minWidth="18.0" onMouseClicked="#attributePanelCollapseClicked" style="-fx-background-color: #D5D5D5;">
                                  <children>
-                                    <VBox fx:id="attributePanelCollapseVBox" alignment="TOP_CENTER" minWidth="18.0" onMouseClicked="#attributePanelCollapseClicked" style="-fx-background-color: #D5D5D5;">
-                                       <children>
-                                          <Label fx:id="attributePanelCollapseLabel" onMouseClicked="#attributePanelCollapseClicked" text="&gt;">
-                                             <font>
-                                                <Font name="System Bold" size="11.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                       <effect>
-                                          <DropShadow />
-                                       </effect>
-                                       <padding>
-                                          <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                                       </padding>
-                                    </VBox>
-                                    <VBox fx:id="attributePanelContentVBox" HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="attributePanelCollapseLabel" onMouseClicked="#attributePanelCollapseClicked" text="&gt;">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
                                  </children>
-                              </HBox>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <padding>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="attributePanelContentVBox" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
-                     </content>
-                  </ScrollPane>
+                     </children>
+                  </HBox>
                   <HBox fx:id="navigationHBox">
                      <children>
                         <HBox fx:id="previousHBox" HBox.hgrow="ALWAYS">
