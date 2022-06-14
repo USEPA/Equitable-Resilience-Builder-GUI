@@ -13,7 +13,7 @@
       <VBox HBox.hgrow="ALWAYS">
          <children>
             <Separator />
-            <HBox VBox.vgrow="ALWAYS">
+            <HBox minHeight="130.0" VBox.vgrow="ALWAYS">
                <children>
                   <HBox>
                      <children>

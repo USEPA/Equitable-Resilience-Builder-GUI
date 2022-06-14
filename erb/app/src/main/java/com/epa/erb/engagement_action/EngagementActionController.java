@@ -87,8 +87,6 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	VBox contentVBox;
 	@FXML
-	ScrollPane attributePanelScrollPane;
-	@FXML
 	HBox attributePanelHBox;
 	@FXML
 	Label attributePanelCollapseLabel;
@@ -122,7 +120,9 @@ public class EngagementActionController implements Initializable{
 	RadioButton inProgressRadioButton;
 	@FXML
 	RadioButton completeRadioButton;
-
+	@FXML
+	ScrollPane scrollPane;
+	
 	private App app;
 	private Project project;
 	public EngagementActionController(App app, Project project) {
@@ -150,10 +150,15 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void handleControls() {
+		scrollPane.heightProperty().addListener(e-> heightChanged());
 		treeView.setOnMouseClicked(e-> treeViewClicked(e));
 		initializeStyle();
 		addProgressListeners();
 		addGoalChangeListener();
+	}
+	
+	private void heightChanged() {
+		contentVBox.setMinHeight(scrollPane.getHeight() -50);
 	}
 	
 	private void initializeStyle() {
@@ -214,6 +219,8 @@ public class EngagementActionController implements Initializable{
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapters, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
+			VBox vBox = (VBox) root;
+			vBox.setMinHeight(scrollPane.getHeight() -50);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -227,6 +234,8 @@ public class EngagementActionController implements Initializable{
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
+			VBox vBox = (VBox) root;
+			vBox.setMinHeight(scrollPane.getHeight() -50);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -240,6 +249,8 @@ public class EngagementActionController implements Initializable{
 			WorksheetContentController worksheetContentController = new WorksheetContentController(activity);
 			fxmlLoader.setController(worksheetContentController);
 			Parent root = fxmlLoader.load();
+			VBox vBox = (VBox) root;
+			vBox.setMinHeight(scrollPane.getHeight() -50);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setWorksheetContentController(worksheetContentController);
@@ -255,6 +266,8 @@ public class EngagementActionController implements Initializable{
 			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project, getCurrentGoal(), activity);
 			fxmlLoader.setController(noteBoardContentController);
 			Parent root = fxmlLoader.load();
+			VBox vBox = (VBox) root;
+			vBox.setMinHeight(scrollPane.getHeight() -50);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setNoteBoardContentController(noteBoardContentController);
@@ -283,6 +296,8 @@ public class EngagementActionController implements Initializable{
 			PlanController planController = new PlanController();
 			fxmlLoader.setController(planController);
 			Parent root = fxmlLoader.load();
+			VBox vBox = (VBox) root;
+			vBox.setMinHeight(scrollPane.getHeight() -50);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setPlanController(planController);
@@ -298,6 +313,8 @@ public class EngagementActionController implements Initializable{
 			fxmlLoader.setController(reflectController);
 			Parent root = fxmlLoader.load();
 			reflectController.initProgress(getCurrentGoal(), chapter);
+			VBox vBox = (VBox) root;
+			vBox.setMinHeight(scrollPane.getHeight() -50);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setReflectController(reflectController);
@@ -422,11 +439,11 @@ public class EngagementActionController implements Initializable{
 		String attributePanelCollapseString = attributePanelCollapseLabel.getText();
 		if(attributePanelCollapseString.contentEquals(">")) {
 			collapseAttributes();
-			attributePanelScrollPane.setMinWidth(0.0);
+			attributePanelHBox.setMinWidth(0.0);
 			attributePanelCollapseLabel.setText("<");
 		} else if (attributePanelCollapseString.contentEquals("<")) {
 			unCollapseAttributes();
-			attributePanelScrollPane.setMinWidth(200.0);
+			attributePanelHBox.setMinWidth(200.0);
 			attributePanelCollapseLabel.setText(">");
 		}
 	}
@@ -631,7 +648,6 @@ public class EngagementActionController implements Initializable{
 		}
 		if(!currentChapter.getStringName().contentEquals(selectedActivity.getChapterAssignment()) || currentSelectedActivity != selectedActivity) { //If a new activity is selected
 			if(currentSelectedActivity != null) app.loadSavePopup(currentSelectedActivity, null, getCurrentGoal(), project, null, "activityChange");
-			
 			addAttributeScrollPane(1);
 			addERBKeyVBox(1);
 			cleanContentVBox();
@@ -800,13 +816,13 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void addAttributeScrollPane(int index) {
-		if(!body2HBox.getChildren().contains(attributePanelScrollPane)) {
-			body2HBox.getChildren().add(index, attributePanelScrollPane);
+		if(!body2HBox.getChildren().contains(attributePanelHBox)) {
+			body2HBox.getChildren().add(index, attributePanelHBox);
 		}
 	}
 	
 	private void removeAttributeScrollPane() {
-		body2HBox.getChildren().remove(attributePanelScrollPane);
+		body2HBox.getChildren().remove(attributePanelHBox);
 	}
 	
 	private void removeStatusHBox() {
@@ -893,8 +909,8 @@ public class EngagementActionController implements Initializable{
 		return mainVBox;
 	}
 
-	public ScrollPane getAttributePanelScrollPane() {
-		return attributePanelScrollPane;
+	public HBox getAttributePanelHBox() {
+		return attributePanelHBox;
 	}
 
 	public HashMap<TreeItem<String>, String> getTreeMap() {

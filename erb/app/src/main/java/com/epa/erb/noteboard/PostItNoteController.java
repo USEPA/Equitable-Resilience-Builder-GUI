@@ -31,8 +31,6 @@ public class PostItNoteController implements Initializable{
 	VBox postItNotePane;
 	@FXML
 	TextFlow textFlow;
-	@FXML
-	ScrollPane scrollPane;
 
 	private NoteBoardContentController noteBoardContentController;
 	public PostItNoteController(NoteBoardContentController noteBoardContentController ) {
@@ -52,7 +50,6 @@ public class PostItNoteController implements Initializable{
 	private void handleControls() {
 		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		postItNotePane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
-		scrollPane.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		textFlow.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 		plusHBox.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 	}
@@ -107,7 +104,7 @@ public class PostItNoteController implements Initializable{
 	}
 	
 	private void postItNoteRightClicked(MouseEvent mouseEvent) {
-		scrollPane.setContextMenu(createPostItContextMenu());
+		//scrollPane.setContextMenu(createPostItContextMenu());
 	}
 	
 	private ContextMenu createPostItContextMenu() {
@@ -133,7 +130,6 @@ public class PostItNoteController implements Initializable{
 	
 	void setPostItContentsColor(String color) {
 		postItNotePane.setStyle("-fx-background-color: " + "#" + color);
-		scrollPane.setStyle("-fx-background-color: " + "#" + color);
 		textFlow.setStyle("-fx-background-color: " + "#" + color);
 		plusHBox.setStyle("-fx-background-color: " + "#" + color);
 	}

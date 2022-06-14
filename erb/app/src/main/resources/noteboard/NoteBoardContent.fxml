@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
@@ -12,97 +11,95 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" minHeight="350.0" minWidth="500.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <VBox spacing="5.0">
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER">
          <children>
-            <HBox alignment="CENTER">
+            <Label fx:id="activityNameLabel" text="Activity Name">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <VBox>
+         <children>
+            <Label text="How to:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label text="    -Create a category by entering the category name into the text field, then clicking the &quot;Add Category&quot; button." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="    -Click and drag a post it into one of the categories." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="    -Double click the post it to change the color and/or add text." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="    -Click and drag a post it to a new category or to reorder a category." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
+      </VBox>
+      <HBox alignment="CENTER_LEFT" spacing="15.0">
+         <children>
+            <Label text="Category:" />
+            <TextField fx:id="categoryTextField" />
+            <Button mnemonicParsing="false" onAction="#addCategoryButtonAction" text="Add Category">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox VBox.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="CENTER" minWidth="100.0">
                <children>
-                  <Label fx:id="activityNameLabel" text="Activity Name">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
-                     </font>
-                  </Label>
+                  <StackPane>
+                     <children>
+                        <Pane fx:id="layer1Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="100.0" prefWidth="100.0" />
+                        <Pane fx:id="layer2Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="95.0" prefWidth="95.0" />
+                        <Pane fx:id="layer3Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="90.0" prefWidth="90.0" />
+                        <Pane fx:id="layer4Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="85.0" prefWidth="85.0" />
+                        <Pane fx:id="note" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="80.0" prefWidth="80.0" />
+                     </children>
+                  </StackPane>
                </children>
                <padding>
-                  <Insets left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
-            </HBox>
-            <VBox>
-               <children>
-                  <Label text="How to:">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label text="    -Create a category by entering the category name into the text field, then clicking the &quot;Add Category&quot; button." wrapText="true">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="    -Click and drag a post it into one of the categories.">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="    -Double click the post it to change the color and/or add text.">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;.">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="    -Click and drag a post it to a new category or to reorder a category.">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-               </children>
             </VBox>
-            <HBox alignment="CENTER_LEFT" spacing="15.0">
-               <children>
-                  <Label text="Category:" />
-                  <TextField fx:id="categoryTextField" />
-                  <Button mnemonicParsing="false" onAction="#addCategoryButtonAction" text="Add Category">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-               <content>
-                  <HBox minHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <VBox alignment="CENTER" minWidth="100.0">
-                           <children>
-                              <StackPane>
-                                 <children>
-                                    <Pane fx:id="layer1Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="100.0" prefWidth="100.0" />
-                                    <Pane fx:id="layer2Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="95.0" prefWidth="95.0" />
-                                    <Pane fx:id="layer3Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="90.0" prefWidth="90.0" />
-                                    <Pane fx:id="layer4Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="85.0" prefWidth="85.0" />
-                                    <Pane fx:id="note" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#noteClicked" prefHeight="80.0" prefWidth="80.0" />
-                                 </children>
-                              </StackPane>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </VBox>
-                        <Separator orientation="VERTICAL" prefHeight="200.0" />
-                        <VBox fx:id="mainVBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-               </content>
-            </ScrollPane>
+            <Separator orientation="VERTICAL" />
+            <VBox fx:id="mainVBox" prefWidth="100.0" HBox.hgrow="ALWAYS" />
          </children>
-      </VBox>
-   </content>
+      </HBox>
+   </children>
    <padding>
-      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
-</ScrollPane>
+</VBox>

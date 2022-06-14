@@ -42,7 +42,7 @@ public class AttributePanelController implements Initializable{
 	
 	@FXML
 	public void closeButtonAction() {
-		VBox attributePanel = (VBox) engagementActionController.getAttributePanelScrollPane().getContent();
+		HBox attributePanel = (HBox) engagementActionController.getAttributePanelHBox();
 		attributePanel.getChildren().remove(attributePanelVBox);
 		engagementActionController.removeAttributePanelController(this);
 	}

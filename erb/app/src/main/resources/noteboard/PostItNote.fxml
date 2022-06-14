@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -9,22 +8,18 @@
 
 <VBox fx:id="postItNotePane" maxHeight="115.0" maxWidth="115.0" minHeight="115.0" minWidth="115.0" onMouseClicked="#postItNoteClicked" prefHeight="115.0" prefWidth="115.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" style="-fx-border-color: transparent;" VBox.vgrow="ALWAYS">
-         <content>
-            <VBox>
+      <VBox>
+         <children>
+            <HBox fx:id="plusHBox" alignment="TOP_RIGHT" spacing="1.0" style="-fx-background-color: transparent;">
                <children>
-                  <HBox fx:id="plusHBox" alignment="TOP_RIGHT" spacing="1.0" style="-fx-background-color: transparent;">
-                     <children>
-                        <Label onMouseClicked="#minusClicked" style="-fx-background-color: transparent;" text="-" />
-                        <Label fx:id="numberLabel" text="0" />
-                        <Label onMouseClicked="#plusClicked" style="-fx-background-color: transparent;" text="+" />
-                     </children>
-                  </HBox>
-                  <TextFlow fx:id="textFlow" VBox.vgrow="ALWAYS" />
+                  <Label onMouseClicked="#minusClicked" style="-fx-background-color: transparent;" text="-" />
+                  <Label fx:id="numberLabel" text="0" />
+                  <Label onMouseClicked="#plusClicked" style="-fx-background-color: transparent;" text="+" />
                </children>
-            </VBox>
-         </content>
-      </ScrollPane>
+            </HBox>
+            <TextFlow fx:id="textFlow" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
    </children>
    <effect>
       <DropShadow />

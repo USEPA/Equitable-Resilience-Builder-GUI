@@ -206,9 +206,15 @@ public class NoteBoardContentController implements Initializable{
 			Pane sourceNote = (Pane) event.getSource();
 			Pane sourcePane = (Pane) sourceNote.getParent();
 			Pane targetPane = (Pane) event.getTarget();
+			System.out.println("-------DRAGOVER-------");
+			System.out.println("sourceNote: " + event.getSource());
+			System.out.println("sourceParent: " + sourceNote.getParent());
+			System.out.println("targetPane: " + event.getTarget());
+
 			if (targetPane != null) {
 				if(targetPane.toString().contains("TextFlow")) {
 					VBox sourceNoteVBox = (VBox) sourceNote;
+					System.out.println("Made it here: " + sourceNoteVBox);
 					if(sourceNoteVBox.getId().contentEquals("postedNote")) {
 						sourcePaneHashCode = sourcePane.hashCode();
 						indexToMove = sourcePane.getChildren().indexOf(sourceNoteVBox);
@@ -223,13 +229,20 @@ public class NoteBoardContentController implements Initializable{
 			if(db.hasString()) {
 				Pane targetPane = p;
 				Pane sourceNote = (Pane) event.getGestureSource();
+				System.out.println("-------DRAGDROP------");
+				System.out.println("targetPane = " + targetPane);
+				System.out.println("sourceNote = " + sourceNote);
 				//Adding a new post it
 				if(sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
+						System.out.println("ADDING A NEW POST IT");
 						Pane postItNotePane = loadPostItNote(categorySectionController);
 						targetPane.getChildren().add(postItNotePane);
 						activity.setSaved(false);
 						// Moving a post it
 				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
+					System.out.println("MOVING A POST IT 1");
+					System.out.println("sourcePaneHashCode = " + sourcePaneHashCode);
+					System.out.println("targetPaneHashCode = " + targetPane.hashCode());
 					if(sourcePaneHashCode == targetPane.hashCode()) {
 						if (indexToMove > -1) {
 							if (targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().remove(sourceNote);
@@ -243,6 +256,7 @@ public class NoteBoardContentController implements Initializable{
 					activity.setSaved(false);
 				//Moving a post it
 				} else if(sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postedNote")) {
+					System.out.println("MOVING A POST IT 2");
 					Pane sourceParentPane = (Pane) sourceNote.getParent();
 					TextFlow textFlow = (TextFlow) event.getTarget();
 					VBox noteVBox = (VBox) textFlow.getParent().getParent().getParent().getParent().getParent();
