@@ -1,3 +1,19 @@
 #toolbarViewerRight {
     display:none;
 }
+
+#sidebarContainer {
+    display:none;
+}
+
+#sidebarToggle {
+	display:none;
+}
+
+#zoomIn {
+	display:none;
+}
+
+#zoomOut {
+	display:none;
+}
