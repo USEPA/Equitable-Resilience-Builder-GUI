@@ -8,6 +8,7 @@ import com.epa.erb.project.ProjectSelectionController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
@@ -31,6 +32,16 @@ public class ERBLandingController implements Initializable {
 	VBox vBox2Content;
 	@FXML
 	VBox vBox3Content;
+	@FXML
+	TextArea textArea1;
+	@FXML
+	TextArea textArea2;
+	@FXML
+	TextArea textArea3;
+	@FXML
+	TextArea aboutERBTextArea;
+	@FXML
+	TextArea aboutERBProcessTextArea;
 
 
 	private App app;
@@ -47,6 +58,11 @@ public class ERBLandingController implements Initializable {
 	}
 
 	private void handleControls() {
+		textArea1.getStylesheets().add("/textArea.css");
+		textArea2.getStylesheets().add("/textArea.css");
+		textArea3.getStylesheets().add("/textArea.css");
+		aboutERBTextArea.getStylesheets().add("/textArea.css");
+		aboutERBProcessTextArea.getStylesheets().add("/textArea.css");
 		circle1.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle2.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle3.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");

@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="750.0" prefWidth="1150.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="830.0" prefWidth="1244.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
          <children>
@@ -29,11 +30,11 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label text="The Equitable Resilience Builder was developed by the U.S. Environmental Protection Agency to help under-resourced communities identify their most pressing vulnerabilities to a wide range of hazards and identify actions to increase resilience equitability. The process is adaptable for different levels of capacity and resources, and different planning contexts such as hazard mitigation planning, climate adaptation planning, or holistic resilience planning. The ERB toolkit is holistic, meaning that it pulls together many sectors that make up community resilience. This includes the built environment, natural environment, and social environment. The development of the ERB process was collaborative, bringing together expertise from a variety of scientific areas." wrapText="true">
+            <TextArea fx:id="aboutERBTextArea" prefHeight="123.0" prefWidth="1234.0" text="The Equitable Resilience Builder was developed by the U.S. Environmental Protection Agency to help under-resourced communities identify their most pressing vulnerabilities to a wide range of hazards and identify actions to increase resilience equitability. The process is adaptable for different levels of capacity and resources, and different planning contexts such as hazard mitigation planning, climate adaptation planning, or holistic resilience planning. The ERB toolkit is holistic, meaning that it pulls together many sectors that make up community resilience. This includes the built environment, natural environment, and social environment. The development of the ERB process was collaborative, bringing together expertise from a variety of scientific areas." wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
-            </Label>
+            </TextArea>
          </children>
       </VBox>
       <VBox>
@@ -43,11 +44,11 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label text="The ERB process is designed to be flexible. We understand that all communities are different and face distinct hazards risks. We also realize that you may have unique resource constraints on getting your work done. The instructions for each step of the process describe some of the ways you can customize the ERB to make sure you can get the work done you need to do, in the most inclusive way possible, given the time frame, resources and team you have." wrapText="true">
+            <TextArea fx:id="aboutERBProcessTextArea" prefHeight="85.0" prefWidth="1234.0" text="The ERB process is designed to be flexible. We understand that all communities are different and face distinct hazards risks. We also realize that you may have unique resource constraints on getting your work done. The instructions for each step of the process describe some of the ways you can customize the ERB to make sure you can get the work done you need to do, in the most inclusive way possible, given the time frame, resources and team you have." wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
-            </Label>
+            </TextArea>
          </children>
       </VBox>
       <VBox>
@@ -83,36 +84,11 @@
                   </HBox>
                   <VBox fx:id="vBox1Content" prefWidth="100.0">
                      <children>
-                        <Label text="An equitable resilience process is one that is inclusive and empowers local voices in resilience building. This means the following." wrapText="true">
+                        <TextArea fx:id="textArea1" text="An equitable resilience process is one that is inclusive and empowers local voices in resilience building. This means the following.&#10;  -Representatives of community-based organizations are part of your core team.&#10;  -Community members participate in ERB workshops.&#10;  -Your resilience plan will be based on input from local voices about their experiences with disasters and climate change, and their vision for an equitable, resilient future.&#10;  -Community members will conduct equity review of resilience measures and actions.&#10;  -Outputs will be shared so that numerous organizations can begin to take action." wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
-                        </Label>
-                        <Label text="  -Representatives of community-based organizations are part of your core team." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Community members participate in ERB workshops." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Your resilience plan will be based on input from local voices about their experiences with disasters and climate change, and their vision for an equitable, resilient future." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Community members will conduct equity review of resilience measures and actions." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Outputs will be shared so that numerous organizations can begin to take action." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        </TextArea>
                      </children>
                   </VBox>
                </children>
@@ -135,31 +111,11 @@
                   </HBox>
                   <VBox fx:id="vBox2Content" prefWidth="100.0">
                      <children>
-                        <Label text="The ERB uses an equity lens of hazards/risks, vulnerability, and resilience for the following reasons." wrapText="true">
+                        <TextArea fx:id="textArea2" text="The ERB uses an equity lens of hazards/risks, vulnerability, and resilience for the following reasons.&#10;  -Hazards and disasters tend to hit certain groups harder than others.&#10;  -Groups that are hit harder and have fewer resources to begin with struggle more to recover.&#10;  -Selecting actions that increase equity and resilience provides a bigger &quot;bang for the buck&quot; by making sure resources and assistance go to those who will benefit the most.&#10;  -Communities that are more equitable have a better quality of life for everyone." wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
-                        </Label>
-                        <Label text="  -Hazards and disasters tend to hit certain groups harder than others." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Groups that are hit harder and have fewer resources to begin with struggle more to recover." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Selecting actions that increase equity and resilience provides a bigger &quot;bang for the buck&quot; by making sure resources and assistance go to those who will benefit the most." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Communities that are more equitable have a better quality of life for everyone." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        </TextArea>
                      </children>
                   </VBox>
                </children>
@@ -182,31 +138,11 @@
                   </HBox>
                   <VBox fx:id="vBox3Content" prefWidth="100.0">
                      <children>
-                        <Label text="Using an equitable approach to resilience planning will do the following." wrapText="true">
+                        <TextArea fx:id="textArea3" text="Using an equitable approach to resilience planning will do the following.&#10;  -Make sure that resilience actions protect your community's most vulnerable.&#10;  -Assess resilience using local input.&#10;  -Prioritize which resilience actions will work best for your community and have the most equitable impact.&#10;  -Avoid unintended consequences of resilience actions." wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
-                        </Label>
-                        <Label text="  -Make sure that resilience actions protect your community's most vulnerable." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Assess resilience using local input." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Prioritize which resilience actions will work best for your community and have the most equitable impact." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="  -Avoid unintended consequences of resilience actions." wrapText="true">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        </TextArea>
                      </children>
                   </VBox>
                </children>
