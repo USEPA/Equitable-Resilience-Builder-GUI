@@ -46,11 +46,28 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		//System.out.println(java.awt.Toolkit.getDefaultToolkit().getScreenResolution());
 		logger.info(getGreeting());
+		checkScreenScaling();
 		readAndStoreData();
 		loadERBContainer();
 		loadERBLandingToContainer();
+	}
+	
+	private void checkScreenScaling() {
+		int scale = java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
+		if(scale > 0 && scale <=96) {
+			//100 percent
+			System.out.println("Scale is 100%");
+		} else if (scale > 96 && scale <=125) {
+			//125 percent
+			System.out.println("Scale is 125%");
+		} else if (scale > 125 && scale <= 144) {
+			//150 percent
+			System.out.println("Scale is 150%");
+		} else {
+			//175 percent
+			System.out.println("Scale is 175%");
+		}
 	}
 	
 	private void loadERBLandingToContainer() {
