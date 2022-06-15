@@ -46,7 +46,7 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println(java.awt.Toolkit.getDefaultToolkit().getScreenResolution());
+		//System.out.println(java.awt.Toolkit.getDefaultToolkit().getScreenResolution());
 		logger.info(getGreeting());
 		readAndStoreData();
 		loadERBContainer();
@@ -118,9 +118,6 @@ public class App extends Application {
 		erbContainerController.getErbContainer().getChildren().clear();
 		VBox.setVgrow(contentNode, Priority.ALWAYS);
 		HBox.setHgrow(contentNode, Priority.ALWAYS);
-		VBox vBox = (VBox) contentNode;
-		vBox.setMinHeight(erbContainerController.getERBScrollPane().getHeight() - 50);
-		
 		erbContainerController.getErbContainer().getChildren().add(contentNode);
 	}
 	

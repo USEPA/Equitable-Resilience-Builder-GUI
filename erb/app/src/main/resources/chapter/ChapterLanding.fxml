@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="headingLabelHBox" alignment="CENTER" minHeight="75.0">
          <children>
@@ -23,23 +23,15 @@
          <children>
             <VBox fx:id="aboutPanel">
                <children>
-                  <HBox VBox.vgrow="NEVER">
-                     <children>
-                        <Label text="About" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="3.0" />
-                     </padding>
-                  </HBox>
-                  <TextArea fx:id="aboutTextArea" editable="false" style="-fx-background-color: transparent;" wrapText="true">
+                  <Label text="About">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="aboutTextArea" editable="false" wrapText="true">
                      <font>
                         <Font size="15.0" />
-                     </font>
-                  </TextArea>
+                     </font></TextArea>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -47,18 +39,11 @@
             </VBox>
             <VBox VBox.vgrow="ALWAYS">
                <children>
-                  <HBox>
-                     <children>
-                        <Label text="Activites" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="3.0" />
-                     </padding>
-                  </HBox>
+                  <Label text="Activites">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
                   <ListView fx:id="activitiesListView" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
                </children>
                <padding>

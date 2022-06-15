@@ -34,7 +34,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -120,8 +119,6 @@ public class EngagementActionController implements Initializable{
 	RadioButton inProgressRadioButton;
 	@FXML
 	RadioButton completeRadioButton;
-//	@FXML
-//	ScrollPane scrollPane;
 	
 	private App app;
 	private Project project;
@@ -150,21 +147,11 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void handleControls() {
-//		scrollPane.heightProperty().addListener(e-> sizeChanged());
-//		scrollPane.widthProperty().addListener(e-> sizeChanged());
 		treeView.setOnMouseClicked(e-> treeViewClicked(e));
 		initializeStyle();
 		addProgressListeners();
 		addGoalChangeListener();
 	}
-	
-//	private void sizeChanged() {
-//		if(contentVBox.getChildren().size() > 0) {
-//			VBox vBox = (VBox) contentVBox.getChildren().get(0);
-//			vBox.setPrefHeight(scrollPane.getHeight() - 15);
-//			vBox.setMinWidth(scrollPane.getWidth()-3);
-//		}
-//	}
 	
 	private void initializeStyle() {
 		materialKeyPane.setStyle("-fx-background-color: " + constants.getMaterialsColor() + ";");
@@ -224,9 +211,6 @@ public class EngagementActionController implements Initializable{
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapters, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
-			VBox vBox = (VBox) root;
-//			vBox.setMinHeight(scrollPane.getHeight() -25);
-//			vBox.setMinWidth(scrollPane.getWidth() -5);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -240,9 +224,6 @@ public class EngagementActionController implements Initializable{
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
 			fxmlLoader.setController(chapterLandingController);
 			Parent root = fxmlLoader.load();
-			VBox vBox = (VBox) root;
-//			vBox.setMinHeight(scrollPane.getHeight() -25);
-//			vBox.setMinWidth(scrollPane.getWidth() -5);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -256,9 +237,6 @@ public class EngagementActionController implements Initializable{
 			WorksheetContentController worksheetContentController = new WorksheetContentController(activity);
 			fxmlLoader.setController(worksheetContentController);
 			Parent root = fxmlLoader.load();
-			VBox vBox = (VBox) root;
-//			vBox.setMinHeight(scrollPane.getHeight() -25);
-//			vBox.setMinWidth(scrollPane.getWidth() -5);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setWorksheetContentController(worksheetContentController);
@@ -274,9 +252,6 @@ public class EngagementActionController implements Initializable{
 			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project, getCurrentGoal(), activity);
 			fxmlLoader.setController(noteBoardContentController);
 			Parent root = fxmlLoader.load();
-			VBox vBox = (VBox) root;
-//			vBox.setMinHeight(scrollPane.getHeight() -25);
-//			vBox.setMinWidth(scrollPane.getWidth() -5);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setNoteBoardContentController(noteBoardContentController);
@@ -305,9 +280,6 @@ public class EngagementActionController implements Initializable{
 			PlanController planController = new PlanController();
 			fxmlLoader.setController(planController);
 			Parent root = fxmlLoader.load();
-			VBox vBox = (VBox) root;
-//			vBox.setMinHeight(scrollPane.getHeight() -25);
-//			vBox.setMinWidth(scrollPane.getWidth() -5);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setPlanController(planController);
@@ -323,9 +295,6 @@ public class EngagementActionController implements Initializable{
 			fxmlLoader.setController(reflectController);
 			Parent root = fxmlLoader.load();
 			reflectController.initProgress(getCurrentGoal(), chapter);
-			VBox vBox = (VBox) root;
-//			vBox.setMinHeight(scrollPane.getHeight() -25);
-//			vBox.setMinWidth(scrollPane.getWidth() -5);
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setReflectController(reflectController);

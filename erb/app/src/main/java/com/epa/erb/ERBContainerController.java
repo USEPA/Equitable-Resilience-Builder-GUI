@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -38,14 +37,6 @@ public class ERBContainerController implements Initializable{
 	
 	private void handleControls() {
 		welcomeVBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");		
-		erbScrollPane.heightProperty().addListener(e-> heightChanged());
-	}
-	
-	private void heightChanged() {
-		if (erbContainer.getChildren().size() > 0) {
-			VBox vBox = (VBox) erbContainer.getChildren().get(0);
-			vBox.setMinHeight(erbScrollPane.getHeight() - 50);
-		}
 	}
 	
 	@FXML

@@ -60,6 +60,7 @@ public class ChapterLandingController implements Initializable {
 	
 	private void handleControls() {
 		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+		aboutTextArea.getStylesheets().add("/textArea.css");
 	}
 	
 	public void setHeadingLabelText(String text) {
@@ -75,7 +76,6 @@ public class ChapterLandingController implements Initializable {
 	}
 	
 	public void setAboutTextAreaText(Text text) {
-		text.setFont(Font.font(15));
 		aboutTextArea.setText(text.getText());
 	}
 	

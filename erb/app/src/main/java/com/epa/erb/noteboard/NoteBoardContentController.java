@@ -196,73 +196,54 @@ public class NoteBoardContentController implements Initializable{
 		activity.setSaved(false);
 	}
 
-	private int indexToMove = -1;
-	private int sourcePaneHashCode = -1;
 	private static final String TAB_DRAG_KEY = "pane";
 	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
 	private void setDrag(Pane p, CategorySectionController categorySectionController) {
-		p.setOnDragOver(event-> {
+		p.setOnDragOver(event -> {
 			event.acceptTransferModes(TransferMode.MOVE);
-			Pane sourceNote = (Pane) event.getSource();
-			Pane sourcePane = (Pane) sourceNote.getParent();
-			Pane targetPane = (Pane) event.getTarget();
-			System.out.println("-------DRAGOVER-------");
-			System.out.println("sourceNote: " + event.getSource());
-			System.out.println("sourceParent: " + sourceNote.getParent());
-			System.out.println("targetPane: " + event.getTarget());
-
-			if (targetPane != null) {
-				if(targetPane.toString().contains("TextFlow")) {
-					VBox sourceNoteVBox = (VBox) sourceNote;
-					System.out.println("Made it here: " + sourceNoteVBox);
-					if(sourceNoteVBox.getId().contentEquals("postedNote")) {
-						sourcePaneHashCode = sourcePane.hashCode();
-						indexToMove = sourcePane.getChildren().indexOf(sourceNoteVBox);
-					}
-				}
-			}
 			event.consume();
 		});
-		p.setOnDragDropped(event-> {
+		p.setOnDragDropped(event -> {
 			Dragboard db = event.getDragboard();
 			boolean success = false;
-			if(db.hasString()) {
-				Pane targetPane = p;
+			if (db.hasString()) {
+				Pane target = p;
 				Pane sourceNote = (Pane) event.getGestureSource();
-				System.out.println("-------DRAGDROP------");
-				System.out.println("targetPane = " + targetPane);
-				System.out.println("sourceNote = " + sourceNote);
-				//Adding a new post it
-				if(sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
-						System.out.println("ADDING A NEW POST IT");
-						Pane postItNotePane = loadPostItNote(categorySectionController);
-						targetPane.getChildren().add(postItNotePane);
-						activity.setSaved(false);
-						// Moving a post it
-				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postItHBox")) {
-					System.out.println("MOVING A POST IT 1");
-					System.out.println("sourcePaneHashCode = " + sourcePaneHashCode);
-					System.out.println("targetPaneHashCode = " + targetPane.hashCode());
-					if(sourcePaneHashCode == targetPane.hashCode()) {
-						if (indexToMove > -1) {
-							if (targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().remove(sourceNote);
-							if(!targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().add(indexToMove, sourceNote);
-						}
-					} else {
-						int numChildren = targetPane.getChildren().size();
-						if (targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().remove(sourceNote);
-						if(!targetPane.getChildren().contains(sourceNote)) targetPane.getChildren().add(numChildren, sourceNote);
+				// Adding a new post it
+				if (sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && target.getId() != null && target.getId().contentEquals("postItHBox")) {
+					Pane postItNotePane = loadPostItNote(categorySectionController);
+					target.getChildren().add(postItNotePane);
+					activity.setSaved(false);
+					// Moving a post it
+				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && target.getId() != null && target.getId().contentEquals("postItHBox")) {
+					VBox sourcePostedNote = (VBox) sourceNote;
+					HBox sourcePostItHBox = (HBox) sourceNote.getParent();
+					HBox targetPostItHBox = (HBox) target;
+					if (sourcePostItHBox.hashCode() == targetPostItHBox.hashCode()) { // Moving in same cat
+						int targetIndex = sourcePostItHBox.getChildren().size() - 1;
+						sourcePostItHBox.getChildren().remove(sourcePostedNote);
+						sourcePostItHBox.getChildren().add(targetIndex, sourcePostedNote);
+					} else { // moving in diff cat
+						int targetIndex = targetPostItHBox.getChildren().size();
+						sourcePostItHBox.getChildren().remove(sourcePostedNote);
+						targetPostItHBox.getChildren().add(targetIndex, sourcePostedNote);
 					}
 					activity.setSaved(false);
-				//Moving a post it
-				} else if(sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && targetPane.getId() != null && targetPane.getId().contentEquals("postedNote")) {
-					System.out.println("MOVING A POST IT 2");
-					Pane sourceParentPane = (Pane) sourceNote.getParent();
-					TextFlow textFlow = (TextFlow) event.getTarget();
-					VBox noteVBox = (VBox) textFlow.getParent().getParent().getParent().getParent().getParent();
-					int targetIndex = sourceParentPane.getChildren().indexOf(noteVBox);
-					sourceParentPane.getChildren().remove(sourceNote);
-					sourceParentPane.getChildren().add(targetIndex, sourceNote);
+					// Moving a post it
+				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && target.getId() != null && target.getId().contentEquals("postedNote")) {
+					VBox sourcePostedNote = (VBox) sourceNote;
+					HBox sourcePostItHBox = (HBox) sourceNote.getParent();
+					VBox targetPostedNote = (VBox) target;
+					HBox targetPostItHBox = (HBox) targetPostedNote.getParent();
+					if (sourcePostItHBox.hashCode() == targetPostItHBox.hashCode()) { // Moving in same cat
+						int targetIndex = sourcePostItHBox.getChildren().indexOf(targetPostedNote);
+						sourcePostItHBox.getChildren().remove(sourcePostedNote);
+						sourcePostItHBox.getChildren().add(targetIndex, sourcePostedNote);
+					} else { // moving in diff cat
+						int targetIndex = targetPostItHBox.getChildren().indexOf(targetPostedNote);
+						sourcePostItHBox.getChildren().remove(sourcePostedNote);
+						targetPostItHBox.getChildren().add(targetIndex, sourcePostedNote);
+					}
 					activity.setSaved(false);
 				}
 				success = true;
@@ -270,7 +251,7 @@ public class NoteBoardContentController implements Initializable{
 			event.setDropCompleted(success);
 			event.consume();
 		});
-		p.setOnDragDetected(event-> {
+		p.setOnDragDetected(event -> {
 			Dragboard dragboard = p.startDragAndDrop(TransferMode.MOVE);
 			ClipboardContent clipboardContent = new ClipboardContent();
 			clipboardContent.putString(TAB_DRAG_KEY);
@@ -279,7 +260,7 @@ public class NoteBoardContentController implements Initializable{
 			event.consume();
 		});
 	}
-	
+
 	private CategorySectionController getCategorySectionController(HBox categoryHBox) {
 		for(CategorySectionController categorySectionController : categorySectionControllers) {
 			if(categorySectionController.getCategoryHBox().hashCode() == categoryHBox.hashCode()) {

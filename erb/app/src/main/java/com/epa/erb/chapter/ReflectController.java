@@ -20,6 +20,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
@@ -64,6 +65,10 @@ public class ReflectController implements Initializable{
 	Label goalProgressLabel;
 	@FXML
 	Label goalCompletionInfoLabel;
+	@FXML
+	ScrollPane reflectScrollPane;
+	@FXML
+	VBox reflectVBox;
 	
 	private Goal goal;
 	private Chapter chapter;
@@ -88,10 +93,15 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void handleControls() {
+		reflectScrollPane.widthProperty().addListener(e-> scrollPaneSizeChange());
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		goalProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
 		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressListeners());
 		engagementActionController.getMainVBox().widthProperty().addListener(e-> handleProgressListeners());
+	}
+	
+	private void scrollPaneSizeChange() {
+		reflectVBox.setMinWidth(reflectScrollPane.getWidth());
 	}
 	
 	private void addInfoToolTips() {
