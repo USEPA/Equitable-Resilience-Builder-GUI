@@ -81,7 +81,10 @@ public class ERBLandingController implements Initializable {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
 			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app);
 			fxmlLoader.setController(projectSelectionController);
-			app.loadContent(fxmlLoader.load());			
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			app.loadContent(root);			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}

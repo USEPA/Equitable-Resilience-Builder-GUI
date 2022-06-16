@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -24,6 +25,8 @@ import com.epa.erb.project.Project;
 
 public class App extends Application {
 
+	private int prefHeight;
+	private int prefWidth;
 	private ArrayList<Project> projects;
 	private ArrayList<Chapter> chapters;
 	private ArrayList<Activity> activities;
@@ -56,17 +59,17 @@ public class App extends Application {
 	private void checkScreenScaling() {
 		int scale = java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
 		if(scale > 0 && scale <=96) {
-			//100 percent
-			System.out.println("Scale is 100%");
+			prefWidth = constants.getPrefWidthForScale100();
+			prefHeight = constants.getPrefHeightForScale100();
 		} else if (scale > 96 && scale <=125) {
-			//125 percent
-			System.out.println("Scale is 125%");
+			prefWidth = constants.getPrefWidthForScale125();
+			prefHeight = constants.getPrefHeightForScale125();
 		} else if (scale > 125 && scale <= 144) {
-			//150 percent
-			System.out.println("Scale is 150%");
+			prefWidth = constants.getPrefWidthForScale150();
+			prefHeight = constants.getPrefHeightForScale150();
 		} else {
-			//175 percent
-			System.out.println("Scale is 175%");
+			prefWidth = constants.getPrefWidthForScale175();
+			prefHeight = constants.getPrefHeightForScale175();
 		}
 	}
 	
@@ -89,7 +92,10 @@ public class App extends Application {
 			erbContainerController = new ERBContainerController(this);
 			fxmlLoader.setController(erbContainerController);
 			erbContainerStage = new Stage();
-			Scene scene = new Scene(fxmlLoader.load());
+			ScrollPane root = fxmlLoader.load();
+			root.setPrefWidth(getPrefWidth());
+			root.setPrefHeight(getPrefHeight());
+			Scene scene = new Scene(root);
 			erbContainerStage.setScene(scene);
 			erbContainerStage.setOnCloseRequest(e-> callToCloseERB());
 			erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
@@ -193,6 +199,14 @@ public class App extends Application {
 		return null;
 	}
 	
+	public int getPrefHeight() {
+		return prefHeight;
+	}
+
+	public int getPrefWidth() {
+		return prefWidth;
+	}
+
 	public ArrayList<Project> getProjects(){
 		return projects;
 	}

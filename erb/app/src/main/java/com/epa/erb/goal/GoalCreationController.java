@@ -101,7 +101,10 @@ public class GoalCreationController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController(app, project);
 			fxmlLoader.setController(engagementActionController);
-			app.loadContent(fxmlLoader.load());
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			app.loadContent(root);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}

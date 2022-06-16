@@ -18,6 +18,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
@@ -127,7 +128,10 @@ public class ProjectSelectionController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
 			GoalContainerController goalContainerController = new GoalContainerController(app, project);
 			fxmlLoader.setController(goalContainerController);
-			app.loadContent(fxmlLoader.load());
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			app.loadContent(root);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -138,7 +142,10 @@ public class ProjectSelectionController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController(app, project);
 			fxmlLoader.setController(engagementActionController);
-			app.loadContent(fxmlLoader.load());
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			app.loadContent(root);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}

@@ -210,7 +210,9 @@ public class EngagementActionController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapters, this);
 			fxmlLoader.setController(chapterLandingController);
-			Parent root = fxmlLoader.load();
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -223,7 +225,9 @@ public class EngagementActionController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
 			fxmlLoader.setController(chapterLandingController);
-			Parent root = fxmlLoader.load();
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		}catch (Exception e) {
@@ -279,7 +283,9 @@ public class EngagementActionController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Plan.fxml"));
 			PlanController planController = new PlanController();
 			fxmlLoader.setController(planController);
-			Parent root = fxmlLoader.load();
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
 			contentVBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setPlanController(planController);

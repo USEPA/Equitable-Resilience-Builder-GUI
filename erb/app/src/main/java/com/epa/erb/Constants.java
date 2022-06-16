@@ -6,14 +6,24 @@ public class Constants {
 		
 	}
 	
-	//Activity Attributes
+	//Scaling Sizes
+	private int prefHeightForScale100 = 950;
+	private int prefWidthForScale100 = 1350;
+	private int prefHeightForScale125 = 750;
+	private int prefWidthForScale125 = 1150;
+	private int prefHeightForScale150 = 600;
+	private int prefWidthForScale150 = 1000;
+	private int prefHeightForScale175 = 500;
+	private int prefWidthForScale175 = 900;
+	
+	//Activity
 	private String activityTypeColor = "";
-	//Status
+		//Status
 	private String readyStatusColor = "#E3E3E3"; 				//Gray
 	private String inProgressStatusColor = "#EDF7B2"; 			//Yellow
 	private String completeStatusColor = "#B2F7D1"; 			//Mint Green
 	private String skippedStatusColor = "#B2C1F7"; 				//Light Blue
-	//--
+		//Attributes
 	private String shortNameColor = "";
 	private String longNameColor = "";
 	private String fileNameColor = "";
@@ -27,18 +37,9 @@ public class Constants {
 	private String linksColor = "#E88AFF";						//Magenta
 
 	//Chapters
-//	private String allChaptersColor	= "#80BFCD"; 				//Dark Turquoise
 	private String allChaptersColor	= "#C3C3C3"; 				//Grey
 
-    //Post-It Notes Stack
-		//----Gray
-	//private String layer1ColorString = "#555555";
-	//private String layer2ColorString = "#666666";
-	//private String layer3ColorString = "#777777";
-	//private String layer4ColorString = "#888888";
-	//private String layer5ColorString = "#999999";
-
-		//----Color
+	//Post It Note Stack
 	private String layer1ColorString = "#F7B2E0";				//Pink
 	private String layer2ColorString = "#B895EB";				//Purple
 	private String layer3ColorString = "#EB8787";				//Red
@@ -53,7 +54,6 @@ public class Constants {
 	private String pathToLocalERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects";
 	private String pathToLocalERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
 	
-	
 	//Dynamic Paths
 	private String pathToDynamicERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToDynamicERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\");
@@ -62,6 +62,38 @@ public class Constants {
 
 	//-------------------------------------------------------------------------
 
+	public int getPrefHeightForScale100() {
+		return prefHeightForScale100;
+	}
+
+	public int getPrefWidthForScale100() {
+		return prefWidthForScale100;
+	}
+
+	public int getPrefHeightForScale125() {
+		return prefHeightForScale125;
+	}
+
+	public int getPrefWidthForScale125() {
+		return prefWidthForScale125;
+	}
+
+	public int getPrefHeightForScale150() {
+		return prefHeightForScale150;
+	}
+
+	public int getPrefWidthForScale150() {
+		return prefWidthForScale150;
+	}
+
+	public int getPrefHeightForScale175() {
+		return prefHeightForScale175;
+	}
+
+	public int getPrefWidthForScale175() {
+		return prefWidthForScale175;
+	}
+	
 	public String getReadyStatusColor() {
 		return readyStatusColor;
 	}
