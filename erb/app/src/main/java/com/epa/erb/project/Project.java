@@ -16,6 +16,15 @@ public class Project {
 		this.projectGoals = projectGoals;
 	}
 	
+	public boolean isSaved() {
+		for(Goal goal: projectGoals) {
+			if(!goal.isSaved()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public String getProjectName() {
 		return projectName;
 	}
@@ -30,15 +39,6 @@ public class Project {
 	
 	public void setProjectGoals(ArrayList<Goal> projectGoals) {
 		this.projectGoals = projectGoals;
-	}
-	
-	public boolean isSaved() {
-		for(Goal goal: projectGoals) {
-			if(!goal.isSaved()) {
-				return false;
-			}
-		}
-		return true;
 	}
 	
 }

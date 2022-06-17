@@ -66,7 +66,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		setCircleColor();
-		setCircleToolTip();
+		setCircleToolTips();
 		hideLeadingLines();
 		setCenterCircleLetter();
 		setActivityLabelText(activity.getShortName());
@@ -117,7 +117,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		setCenterCircleColor();
 	}
 
-	private void setCircleToolTip() {	
+	private void setCircleToolTips() {	
 		//Center Circle
 		setCenterCircleToolTip();
 		//Top Left Circle
@@ -192,7 +192,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void bottomRightCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
 		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
-			engagementActionController.handleAttributePanelGeneration("Time", activity.getTime(), constants.getTimeColor());
+			engagementActionController.generateAttributePanel("Time", activity.getTime(), constants.getTimeColor());
 		}		
 	}
 	
@@ -200,7 +200,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void bottomLeftCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
 		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
-			engagementActionController.handleAttributePanelGeneration("Who", activity.getWho(), constants.getWhoColor());
+			engagementActionController.generateAttributePanel("Who", activity.getWho(), constants.getWhoColor());
 		}
 	}
 
@@ -208,7 +208,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void topRightCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
 		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
-			engagementActionController.handleAttributePanelGeneration("Description", activity.getDescription(), constants.getDescriptionColor());
+			engagementActionController.generateAttributePanel("Description", activity.getDescription(), constants.getDescriptionColor());
 		}
 	}
 
@@ -216,15 +216,15 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void topLeftCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getSelectedActivityGUID();
 		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
-			engagementActionController.handleAttributePanelGeneration("Materials", activity.getMaterials(), constants.getMaterialsColor());
+			engagementActionController.generateAttributePanel("Materials", activity.getMaterials(), constants.getMaterialsColor());
 		}
 	}
 
 	@FXML
 	public void centerCircleClicked() {
 		String selectedActivityGUID = activity.getActivityID();
-		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == selectedActivityGUID) {
+		for (TreeItem<String> treeItem : engagementActionController.getTreeItemActivityIdTreeMap().keySet()) {
+			if (engagementActionController.getTreeItemActivityIdTreeMap().get(treeItem) == selectedActivityGUID) {
 				Chapter treeItemChapter = engagementActionController.getChapter(treeItem.getParent().getValue());
 				if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(activity.getChapterAssignment())) {
 					engagementActionController.getTreeView().getSelectionModel().select(treeItem);
@@ -284,8 +284,88 @@ public class ERBPathwayDiagramController implements Initializable {
 		activityLabel.setText(text);
 	}
 
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
 	public Activity getActivity() {
 		return activity;
 	}
 
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+
+	public Line getLeftLeadingLine() {
+		return leftLeadingLine;
+	}
+
+	public Line getRightLeadingLine() {
+		return rightLeadingLine;
+	}
+
+	public VBox getDiagramVBox() {
+		return diagramVBox;
+	}
+
+	public VBox getArrowVBox() {
+		return arrowVBox;
+	}
+
+	public Circle getTopLeftCircle() {
+		return topLeftCircle;
+	}
+
+	public Circle getCenterCircle() {
+		return centerCircle;
+	}
+
+	public Circle getTopRightCircle() {
+		return topRightCircle;
+	}
+
+	public Circle getBottomLeftCircle() {
+		return bottomLeftCircle;
+	}
+
+	public Circle getBottomRightCircle() {
+		return bottomRightCircle;
+	}
+
+	public Label getTopLeftCircleLabel() {
+		return topLeftCircleLabel;
+	}
+
+	public Label getTopRightCircleLabel() {
+		return topRightCircleLabel;
+	}
+
+	public Label getBottomLeftCircleLabel() {
+		return bottomLeftCircleLabel;
+	}
+
+	public Label getBottomRightCircleLabel() {
+		return bottomRightCircleLabel;
+	}
+
+	public Label getActivityLabel() {
+		return activityLabel;
+	}
+
+	public Label getCenterCircleLabel() {
+		return centerCircleLabel;
+	}
+	
 }

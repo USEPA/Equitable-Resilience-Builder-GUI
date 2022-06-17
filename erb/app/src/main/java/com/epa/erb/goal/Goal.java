@@ -28,33 +28,9 @@ public class Goal {
 	private Logger logger = LogManager.getLogger(Goal.class);
 	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 	
-	public String getGoalName() {
-		return goalName;
-	}
-	
-	public void setGoalName(String goalName) {
-		this.goalName = goalName;
-	}
-	
-	public String getGoalDescription() {
-		return goalDescription;
-	}
-	
-	public void setGoalDescription(String goalDescription) {
-		this.goalDescription = goalDescription;
-	}
-	
-	public ArrayList<GoalCategory> getListOfSelectedGoalCategories() {
-		return listOfSelectedGoalCategories;
-	}
-	
-	public void setListOfSelectedGoalCategories(ArrayList<GoalCategory> listOfSelectedGoalCategories) {
-		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
-	}
-	
 	public void setChapters(ArrayList<Activity> activities, String projectName) {
 		File goalXMLFile = getGoalXMLFile(projectName);
-		if(goalXMLFile != null) {
+		if (goalXMLFile != null) {
 			XMLManager xmlManager = new XMLManager(app);
 			chapters = xmlManager.parseGoalXML(goalXMLFile, activities);
 		} else {
@@ -62,13 +38,58 @@ public class Goal {
 			ArrayList<String> chapterNumbers = getAllChapterNumbers(activities, goalActivityIds);
 			for (String chapterNumber : chapterNumbers) {
 				if (!chapterNumber.contentEquals("0")) {
-					Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, getChapterDescription(chapterNumber), "");
+					Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber, "Chapter " + chapterNumber, getChapterDescription(chapterNumber), "");
 					ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities, goalActivityIds);
 					chapter.setAssignedActivities(activitiesForChapter);
 					chapters.add(chapter);
 				}
 			}
 		}
+	}
+	
+	private ArrayList<String> getUniqueActivityIdsForGoal(){
+		ArrayList<String> activityIds = new ArrayList<String>();
+		for(GoalCategory goalCategory: listOfSelectedGoalCategories) {
+			for(String id: goalCategory.getListOfAssignedActivityIDs()) {
+				if(!activityIds.contains(id)) {
+					activityIds.add(id);
+				}
+			}
+		}
+		return activityIds;
+	}
+	
+	private ArrayList<Activity> getActivitiesForChapter(String chapterNumber, ArrayList<Activity> activities,ArrayList<String> goalActivityIds) {
+		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
+		Activity planActivity = app.getActivity("25");
+		Activity planCloneActivity = planActivity.cloneActivity();
+		planCloneActivity.setChapterAssignment(chapterNumber);
+		activitiesForChapter.add(planCloneActivity);
+		for (Activity activity : activities) {
+			if (activity.getChapterAssignment().contentEquals(chapterNumber) && !activitiesForChapter.contains(activity)) {
+				if (goalActivityIds.contains(activity.getActivityID())) {
+					Activity clonedActivity = activity.cloneActivity();
+					activitiesForChapter.add(clonedActivity);
+				}
+			}
+		}
+		Activity reflectActivity = app.getActivity("26");
+		Activity reflectCloneActivity = reflectActivity.cloneActivity();
+		reflectCloneActivity.setChapterAssignment(chapterNumber);
+		activitiesForChapter.add(reflectCloneActivity);
+		return activitiesForChapter;
+	}
+	
+	private ArrayList<String> getAllChapterNumbers(ArrayList<Activity> activities, ArrayList<String> goalActivityIds) {
+		ArrayList<String> chapterNumbers = new ArrayList<String>();
+		for (Activity activity : activities) {
+			if (goalActivityIds.contains(activity.getActivityID())) {
+				if (!chapterNumbers.contains(activity.getChapterAssignment())) {
+					chapterNumbers.add(activity.getChapterAssignment());
+				}
+			}
+		}
+		return chapterNumbers;
 	}
 	
 	private String getChapterDescription(String chapterNumber) {
@@ -90,71 +111,6 @@ public class Goal {
 		return null;
 	}
 	
-	private ArrayList<String> getUniqueActivityIdsForGoal(){
-		ArrayList<String> activityIds = new ArrayList<String>();
-		for(GoalCategory goalCategory: listOfSelectedGoalCategories) {
-			for(String id: goalCategory.getListOfAssignedActivityIDs()) {
-				if(!activityIds.contains(id)) {
-					activityIds.add(id);
-				}
-			}
-		}
-		return activityIds;
-	}
-	
-	private ArrayList<Activity> getActivitiesForChapter(String chapterNumber, ArrayList<Activity> activities,ArrayList<String> goalActivityIds) {
-		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
-		Activity planActivity = app.getActivity("25");
-		Activity planCloneActivity = cloneActivity(planActivity);
-		planCloneActivity.setChapterAssignment(chapterNumber);
-		activitiesForChapter.add(planCloneActivity);
-		for (Activity activity : activities) {
-			if (activity.getChapterAssignment().contentEquals(chapterNumber) && !activitiesForChapter.contains(activity)) {
-				if (goalActivityIds.contains(activity.getActivityID())) {
-					Activity clonedActivity = cloneActivity(activity);
-					activitiesForChapter.add(clonedActivity);
-				}
-			}
-		}
-		Activity reflectActivity = app.getActivity("26");
-		Activity reflectCloneActivity = cloneActivity(reflectActivity);
-		reflectCloneActivity.setChapterAssignment(chapterNumber);
-		activitiesForChapter.add(reflectCloneActivity);
-		return activitiesForChapter;
-	}
-	
-	private ArrayList<String> getAllChapterNumbers(ArrayList<Activity> activities, ArrayList<String> goalActivityIds) {
-		ArrayList<String> chapterNumbers = new ArrayList<String>();
-		for (Activity activity : activities) {
-			if (goalActivityIds.contains(activity.getActivityID())) {
-				if (!chapterNumbers.contains(activity.getChapterAssignment())) {
-					chapterNumbers.add(activity.getChapterAssignment());
-				}
-			}
-		}
-		return chapterNumbers;
-	}
-	
-	private Activity cloneActivity(Activity activity) {
-		Activity clonedActivity = new Activity();
-		clonedActivity.setActivityType(activity.getActivityType());
-		clonedActivity.setChapterAssignment(activity.getChapterAssignment());
-		clonedActivity.setStatus(activity.getStatus());
-		clonedActivity.setShortName(activity.getShortName());
-		clonedActivity.setLongName(activity.getLongName());
-		clonedActivity.setFileName(activity.getFileName());
-		clonedActivity.setDirections(activity.getDirections());
-		clonedActivity.setObjectives(activity.getObjectives());
-		clonedActivity.setDescription(activity.getDescription());
-		clonedActivity.setMaterials(activity.getMaterials());
-		clonedActivity.setTime(activity.getTime());
-		clonedActivity.setWho(activity.getWho());
-		clonedActivity.setActivityID(activity.getActivityID());
-		clonedActivity.setNotes(activity.getNotes());
-		clonedActivity.setRating(activity.getRating());
-		return clonedActivity;
-	}
-	
 	public boolean isSaved() {
 		for(Chapter chapter: chapters) {
 			if(!chapter.isSaved()) {
@@ -163,9 +119,45 @@ public class Goal {
 		}
 		return true;
 	}
-	
-	public ArrayList<Chapter> getChapters(){
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public String getGoalName() {
+		return goalName;
+	}
+
+	public void setGoalName(String goalName) {
+		this.goalName = goalName;
+	}
+
+	public String getGoalDescription() {
+		return goalDescription;
+	}
+
+	public void setGoalDescription(String goalDescription) {
+		this.goalDescription = goalDescription;
+	}
+
+	public ArrayList<GoalCategory> getListOfSelectedGoalCategories() {
+		return listOfSelectedGoalCategories;
+	}
+
+	public void setListOfSelectedGoalCategories(ArrayList<GoalCategory> listOfSelectedGoalCategories) {
+		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
+	}
+
+	public ArrayList<Chapter> getChapters() {
 		return chapters;
+	}
+
+	public void setChapters(ArrayList<Chapter> chapters) {
+		this.chapters = chapters;
 	}
 
 }

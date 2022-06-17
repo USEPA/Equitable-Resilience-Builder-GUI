@@ -54,7 +54,7 @@ public class ChapterLandingController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		setAboutTextAreaText(getAboutText());
-		setHeadingLabelText(getHeadingText());
+		setHeadingLabelText(getHeadingLabelText());
 		fillActivitiesListView(getActivitiesForListView());
 	}
 	
@@ -67,7 +67,7 @@ public class ChapterLandingController implements Initializable {
 		headingLabel.setText(text);
 	}
 	
-	String getHeadingText() {
+	String getHeadingLabelText() {
 		if (chapter != null) {
 			return "Welcome to " + chapter.getStringName();
 		} else {
@@ -135,7 +135,7 @@ public class ChapterLandingController implements Initializable {
 	
 	private void handleActivitySelectedInList() {
 		Activity selectedActivity = activitiesListView.getSelectionModel().getSelectedItem();
-		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeMap();
+		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
 		for (TreeItem<String> treeItem : treeMap.keySet()) {
 			String treeItemValue = treeItem.getValue();
 			if (treeItemValue.contentEquals(selectedActivity.getLongName())) { // if tree item value matches activity name
@@ -165,6 +165,58 @@ public class ChapterLandingController implements Initializable {
 	
 	private void cleanActivitiesListView() {
 		activitiesListView.getItems().clear();
+	}
+
+	public VBox getMainPanel() {
+		return mainPanel;
+	}
+
+	public VBox getAboutPanel() {
+		return aboutPanel;
+	}
+
+	public Label getHeadingLabel() {
+		return headingLabel;
+	}
+
+	public HBox getHeadingLabelHBox() {
+		return headingLabelHBox;
+	}
+
+	public TextArea getAboutTextArea() {
+		return aboutTextArea;
+	}
+
+	public ListView<Activity> getActivitiesListView() {
+		return activitiesListView;
+	}
+
+	public void setActivitiesListView(ListView<Activity> activitiesListView) {
+		this.activitiesListView = activitiesListView;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+
+	public ArrayList<Chapter> getListOfAllChapters() {
+		return listOfAllChapters;
+	}
+
+	public void setListOfAllChapters(ArrayList<Chapter> listOfAllChapters) {
+		this.listOfAllChapters = listOfAllChapters;
 	}
 
 }

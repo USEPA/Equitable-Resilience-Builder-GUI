@@ -14,7 +14,7 @@ public class Activity {
 	private String shortName;
 	private String longName;
 	private String fileName;
-	private String directions;
+	private String instructions;
 	private String objectives;
 	private String description;
 	private String materials;
@@ -30,7 +30,7 @@ public class Activity {
 		this.shortName = shortName;
 		this.longName = longName;
 		this.fileName = fileName;
-		this.directions = directions;
+		this.instructions = directions;
 		this.objectives = objectives;
 		this.description = description;
 		this.materials = materials;
@@ -41,7 +41,7 @@ public class Activity {
 		this.rating = rating;
 	}
 	
-	private boolean saved = true;
+	private boolean isSaved = true;
 	private PlanController planController;
 	private ReflectController reflectController;
 	private WorksheetContentController worksheetContentController;
@@ -59,6 +59,11 @@ public class Activity {
 		}
 		return listOfMaterials;
 	}
+	
+	public Activity cloneActivity() {
+		Activity clonedActivity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, instructions, objectives, description, materials, time, who, activityID, notes, rating);
+		return clonedActivity;
+	}
 
 	public ActivityType getActivityType() {
 		return activityType;
@@ -67,7 +72,7 @@ public class Activity {
 	public void setActivityType(ActivityType activityType) {
 		this.activityType = activityType;
 	}
-		
+
 	public String getChapterAssignment() {
 		return chapterAssignment;
 	}
@@ -108,12 +113,12 @@ public class Activity {
 		this.fileName = fileName;
 	}
 
-	public String getDirections() {
-		return directions;
+	public String getInstructions() {
+		return instructions;
 	}
 
-	public void setDirections(String directions) {
-		this.directions = directions;
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
 	}
 
 	public String getObjectives() {
@@ -131,7 +136,7 @@ public class Activity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-			
+
 	public String getMaterials() {
 		return materials;
 	}
@@ -155,7 +160,7 @@ public class Activity {
 	public void setWho(String who) {
 		this.who = who;
 	}
-	
+
 	public String getActivityID() {
 		return activityID;
 	}
@@ -163,7 +168,7 @@ public class Activity {
 	public void setActivityID(String activityID) {
 		this.activityID = activityID;
 	}
-		
+
 	public String getNotes() {
 		return notes;
 	}
@@ -181,13 +186,13 @@ public class Activity {
 	}
 
 	public boolean isSaved() {
-		return saved;
+		return isSaved;
 	}
 
-	public void setSaved(boolean saved) {
-		this.saved = saved;
+	public void setSaved(boolean isSaved) {
+		this.isSaved = isSaved;
 	}
-	
+
 	public PlanController getPlanController() {
 		return planController;
 	}
@@ -220,18 +225,4 @@ public class Activity {
 		this.noteBoardContentController = noteBoardContentController;
 	}
 
-	public String toString() {
-		return  "--ActivityType-- " + "\n" + activityType.toString() +  "\n" + "----" + "\n" +
-				"ShortName: " + shortName + "\n" + 
-				"LongName: " + longName + "\n" + 
-				"FileName: " + fileName + "\n" + 
-				"Directions: " + directions + "\n" + 
-				"Objectives: " + objectives + "\n" + 
-				"Description: " + description + "\n" +
-				"Materials: " + materials + "\n" + 
-				"Time: " + time + "\n" + 
-				"Who: " + who + "\n" +
-				"ActivityID: " + activityID + "\n";
-	}
-	
 }

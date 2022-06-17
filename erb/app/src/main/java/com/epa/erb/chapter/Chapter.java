@@ -19,59 +19,10 @@ public class Chapter {
 	}
 	
 	private boolean saved = true;
+	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
 	
 	public Chapter() {
 		
-	}
-
-	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
-	
-	public int getChapterNum() {
-		return chapterNum;
-	}
-	
-	public void setChapterNum(int chapterNum) {
-		this.chapterNum = chapterNum;
-	}
-	
-	public String getNumericName() {
-		return numericName;
-	}
-	
-	public void setNumericName(String numericName) {
-		this.numericName = numericName;
-	}
-	
-	public String getStringName() {
-		return stringName;
-	}
-	
-	public void setStringName(String stringName) {
-		this.stringName = stringName;
-	}
-	
-	public String getDescriptionName() {
-		return descriptionName;
-	}
-	
-	public void setDescriptionName(String descriptionName) {
-		this.descriptionName = descriptionName;
-	}
-		
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
-	public ArrayList<Activity> getAssignedActivities() {
-		return assignedActivities;
-	}
-	
-	public void setAssignedActivities(ArrayList<Activity> assignedActivities) {
-		this.assignedActivities = assignedActivities;
 	}
 
 	public void addActivity(Activity activity) {
@@ -86,10 +37,6 @@ public class Chapter {
 		return assignedActivities.size();
 	}
 		
-	public boolean isSaved() {
-		return saved && isActivitiesSaved();
-	}
-	
 	public boolean isActivitiesSaved() {
 		for(Activity activity: assignedActivities) {
 			if(!activity.isSaved()) {
@@ -97,10 +44,6 @@ public class Chapter {
 			}
 		}
 		return true;
-	}
-
-	public void setSaved(boolean saved) {
-		this.saved = saved;
 	}
 
 	public int getNumberOfReadyActivities() {
@@ -144,14 +87,61 @@ public class Chapter {
 		}
 		return count;
 	}
+
+	public int getChapterNum() {
+		return chapterNum;
+	}
+
+	public void setChapterNum(int chapterNum) {
+		this.chapterNum = chapterNum;
+	}
+
+	public String getNumericName() {
+		return numericName;
+	}
+
+	public void setNumericName(String numericName) {
+		this.numericName = numericName;
+	}
+
+	public String getStringName() {
+		return stringName;
+	}
+
+	public void setStringName(String stringName) {
+		this.stringName = stringName;
+	}
+
+	public String getDescriptionName() {
+		return descriptionName;
+	}
+
+	public void setDescriptionName(String descriptionName) {
+		this.descriptionName = descriptionName;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public ArrayList<Activity> getAssignedActivities() {
+		return assignedActivities;
+	}
+
+	public void setAssignedActivities(ArrayList<Activity> assignedActivities) {
+		this.assignedActivities = assignedActivities;
+	}
 	
-	public String toString() {
-		return  "----------Chapter---------" + "\n" +
-				"Chapter Num: " + chapterNum + "\n" + 
-				"Numeric Name: " + numericName + "\n" + 
-				"String Name: " + stringName + "\n" + 
-				"Description Name: " + descriptionName + "\n" +
-				"User Selected Activities: " + assignedActivities.size();
+	public boolean isSaved() {
+		return saved && isActivitiesSaved();
+	}
+
+	public void setSaved(boolean saved) {
+		this.saved = saved;
 	}
 	
 }

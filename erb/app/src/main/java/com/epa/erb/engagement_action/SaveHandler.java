@@ -39,15 +39,15 @@ public class SaveHandler {
 	private Logger logger = LogManager.getLogger(SaveHandler.class);
 
 	public void beginSave() {
-			String saveType = handleSavePrompt();
+			String saveType = determineSavePrompt();
 			if(!saveType.contentEquals("NO")) {
 				loadSavePopup(activity, chapter, goal, project, projects, saveType);
 		}
 	}
 	
-	private String handleSavePrompt() {
+	private String determineSavePrompt() {
 		if (saveOrigin.contentEquals("close")) {
-			if (isAProjectNotSaved(projects)) {
+			if (!allProjectsSaved(projects)) {
 				return showToolSaveNeeded();
 			}
 		} else if (saveOrigin.contentEquals("projectChange")) {
@@ -99,13 +99,13 @@ public class SaveHandler {
 		}
 	}	
 	
-	private boolean isAProjectNotSaved(ArrayList<Project> projects) {
+	private boolean allProjectsSaved(ArrayList<Project> projects) {
 		for (Project project : projects) {
 			if (!project.isSaved()) {
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	private String showActivitySaveNeeded(){
@@ -163,6 +163,70 @@ public class SaveHandler {
 		if (savePopupStage != null) {
 			savePopupStage.close();
 		}
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public String getSaveOrigin() {
+		return saveOrigin;
+	}
+
+	public void setSaveOrigin(String saveOrigin) {
+		this.saveOrigin = saveOrigin;
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(ArrayList<Project> projects) {
+		this.projects = projects;
+	}
+
+	public Stage getSavePopupStage() {
+		return savePopupStage;
+	}
+
+	public void setSavePopupStage(Stage savePopupStage) {
+		this.savePopupStage = savePopupStage;
 	}
 
 }

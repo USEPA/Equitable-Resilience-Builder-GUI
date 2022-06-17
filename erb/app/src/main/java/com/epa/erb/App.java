@@ -25,8 +25,9 @@ import com.epa.erb.project.Project;
 
 public class App extends Application {
 
-	private int prefHeight;
 	private int prefWidth;
+	private int prefHeight;
+	private Project selectedProject;
 	private ArrayList<Project> projects;
 	private ArrayList<Chapter> chapters;
 	private ArrayList<Activity> activities;
@@ -36,8 +37,6 @@ public class App extends Application {
 	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
 	private String pathToERBFolder = constants.getPathToLocalERBFolder();
-	
-	private Project selectedProject;
 	
 	private String getGreeting() {
 		return "Launching ERB";
@@ -74,14 +73,19 @@ public class App extends Application {
 	}
 	
 	private void loadERBLandingToContainer() {
+		Parent root = loadERBLanding();
+		loadContentToERBContainer(root);
+	}
+	
+	private Parent loadERBLanding() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
 			ERBLandingController erbLandingController = new ERBLandingController(this);
 			fxmlLoader.setController(erbLandingController);
-			Parent root = fxmlLoader.load();
-			loadContent(root);
+			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
 	}
 	
@@ -97,7 +101,7 @@ public class App extends Application {
 			root.setPrefHeight(getPrefHeight());
 			Scene scene = new Scene(root);
 			erbContainerStage.setScene(scene);
-			erbContainerStage.setOnCloseRequest(e-> callToCloseERB());
+			erbContainerStage.setOnCloseRequest(e-> erbCloseRequested());
 			erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
 			erbContainerStage.show();
 		} catch (Exception e) {
@@ -105,11 +109,11 @@ public class App extends Application {
 		}
 	}
 	
-	private void callToCloseERB() {
-		loadSavePopup(null, null, null, null, getProjects(), "close");
+	private void erbCloseRequested() {
+		initSaveHandler(null, null, null, null, getProjects(), "close");
 	}
 	
-	public void loadSavePopup(Activity activity, Chapter chapter, Goal goal, Project project,  ArrayList<Project> projects, String saveOrigin) {
+	public void initSaveHandler(Activity activity, Chapter chapter, Goal goal, Project project,  ArrayList<Project> projects, String saveOrigin) {
 		try {
 			SaveHandler saveHandler = new SaveHandler(this, saveOrigin, activity, chapter, goal, project, projects);
 			saveHandler.beginSave();
@@ -137,7 +141,7 @@ public class App extends Application {
 		if(erbProjectDirectory != null) projects = xmlManager.parseAllProjects(erbProjectDirectory, activities);
 	}
 	
-	public void loadContent(Node contentNode) {
+	public void loadContentToERBContainer(Node contentNode) {
 		erbContainerController.getErbContainer().getChildren().clear();
 		VBox.setVgrow(contentNode, Priority.ALWAYS);
 		HBox.setHgrow(contentNode, Priority.ALWAYS);
@@ -198,33 +202,21 @@ public class App extends Application {
 		logger.debug("Activity returned is null");
 		return null;
 	}
-	
-	public int getPrefHeight() {
-		return prefHeight;
-	}
 
 	public int getPrefWidth() {
 		return prefWidth;
 	}
 
-	public ArrayList<Project> getProjects(){
-		return projects;
-	}
-		
-	public ArrayList<Chapter> getChapters() {
-		return chapters;
+	public void setPrefWidth(int prefWidth) {
+		this.prefWidth = prefWidth;
 	}
 
-	public ArrayList<Activity> getActivities() {
-		return activities;
+	public int getPrefHeight() {
+		return prefHeight;
 	}
 
-	public ArrayList<ActivityType> getActivityTypes() {
-		return activityTypes;
-	}
-
-	public ArrayList<GoalCategory> getGoalCategories() {
-		return goalCategories;
+	public void setPrefHeight(int prefHeight) {
+		this.prefHeight = prefHeight;
 	}
 
 	public Project getSelectedProject() {
@@ -234,5 +226,61 @@ public class App extends Application {
 	public void setSelectedProject(Project selectedProject) {
 		this.selectedProject = selectedProject;
 	}
-	
+
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(ArrayList<Project> projects) {
+		this.projects = projects;
+	}
+
+	public ArrayList<Chapter> getChapters() {
+		return chapters;
+	}
+
+	public void setChapters(ArrayList<Chapter> chapters) {
+		this.chapters = chapters;
+	}
+
+	public ArrayList<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(ArrayList<Activity> activities) {
+		this.activities = activities;
+	}
+
+	public ArrayList<ActivityType> getActivityTypes() {
+		return activityTypes;
+	}
+
+	public void setActivityTypes(ArrayList<ActivityType> activityTypes) {
+		this.activityTypes = activityTypes;
+	}
+
+	public ArrayList<GoalCategory> getGoalCategories() {
+		return goalCategories;
+	}
+
+	public void setGoalCategories(ArrayList<GoalCategory> goalCategories) {
+		this.goalCategories = goalCategories;
+	}
+
+	public ERBContainerController getErbContainerController() {
+		return erbContainerController;
+	}
+
+	public void setErbContainerController(ERBContainerController erbContainerController) {
+		this.erbContainerController = erbContainerController;
+	}
+
+	public Stage getErbContainerStage() {
+		return erbContainerStage;
+	}
+
+	public void setErbContainerStage(Stage erbContainerStage) {
+		this.erbContainerStage = erbContainerStage;
+	}
+
 }

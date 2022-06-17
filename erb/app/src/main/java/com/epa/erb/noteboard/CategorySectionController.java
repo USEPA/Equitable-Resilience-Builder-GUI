@@ -30,21 +30,16 @@ public class CategorySectionController implements Initializable {
 		setCategoryLabelText(categoryName);
 	}	
 	
-	public ArrayList<PostItNoteController> getListOfPostItNoteControllers() {
-		Collections.reverse(listOfPostItNoteControllers);
-		return listOfPostItNoteControllers;
-	}
-
-	public void setListOfPostItNoteControllers(ArrayList<PostItNoteController> listOfPostItNoteControllers) {
-		this.listOfPostItNoteControllers = listOfPostItNoteControllers;
+	void setCategoryLabelText(String text) {
+		categoryLabel.setText(text);
 	}
 
 	public HBox getCategoryHBox() {
 		return categoryHBox;
 	}
-	
-	void setCategoryLabelText(String text) {
-		categoryLabel.setText(text);
+
+	public Label getCategoryLabel() {
+		return categoryLabel;
 	}
 
 	public HBox getPostItHBox() {
@@ -54,5 +49,14 @@ public class CategorySectionController implements Initializable {
 	public String getCategoryName() {
 		return categoryName;
 	}
+
+	public void setListOfPostItNoteControllers(ArrayList<PostItNoteController> listOfPostItNoteControllers) {
+		this.listOfPostItNoteControllers = listOfPostItNoteControllers;
+	}
+	
+	public ArrayList<PostItNoteController> getListOfPostItNoteControllers() {
+		Collections.reverse(listOfPostItNoteControllers);
+		return listOfPostItNoteControllers;
+	}	
 
 }

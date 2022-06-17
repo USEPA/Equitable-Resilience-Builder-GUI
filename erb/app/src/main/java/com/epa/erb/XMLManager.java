@@ -22,8 +22,6 @@ import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
 
-import javafx.scene.text.Text;
-
 public class XMLManager {
 
 	private App app;
@@ -329,46 +327,6 @@ public class XMLManager {
 		return null;	
 	}
 	
-	private Activity getActivity(String activityID, ArrayList<Activity> activities) {
-		for(Activity activity : activities) {
-			if(activity.getActivityID().contentEquals(activityID)) {
-				return cloneActivity(activity);
-			}
-		}
-		logger.debug("Activity returned is null.");
-		return null;
-	}
-	
-	private Activity cloneActivity(Activity activity) {
-		Activity clonedActivity = new Activity();
-		clonedActivity.setActivityType(activity.getActivityType());
-		clonedActivity.setChapterAssignment(activity.getChapterAssignment());
-		clonedActivity.setStatus(activity.getStatus());
-		clonedActivity.setShortName(activity.getShortName());
-		clonedActivity.setLongName(activity.getLongName());
-		clonedActivity.setFileName(activity.getFileName());
-		clonedActivity.setDirections(activity.getDirections());
-		clonedActivity.setObjectives(activity.getObjectives());
-		clonedActivity.setDescription(activity.getDescription());
-		clonedActivity.setMaterials(activity.getMaterials());
-		clonedActivity.setTime(activity.getTime());
-		clonedActivity.setWho(activity.getWho());
-		clonedActivity.setActivityID(activity.getActivityID());
-		clonedActivity.setNotes(activity.getNotes());
-		clonedActivity.setRating(activity.getRating());
-		return clonedActivity;
-	}
-	
-	private ActivityType getActivityType(String activityTypeName, ArrayList<ActivityType> activityTypes) {
-		for(ActivityType activityType: activityTypes) {
-			if(activityType.getLongName().contentEquals(activityTypeName)) {
-				return activityType;
-			}
-		}
-		logger.debug("ActivityType returned is null.");
-		return null;
-	}
-	
 	public void writeProjectMetaXML(File xmlFile, Project project) {
 		try {
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -514,8 +472,8 @@ public class XMLManager {
 				Element notesElement = document.createElement("notes");
 				for(PostItNoteController postItNoteController : category.getListOfPostItNoteControllers()) {
 					Element noteElement = document.createElement("note");
-					noteElement.setAttribute("content", getPostItText(postItNoteController));
-					noteElement.setAttribute("color", getPostItColor(postItNoteController));
+					noteElement.setAttribute("content", postItNoteController.getPostItNoteText());
+					noteElement.setAttribute("color", postItNoteController.getPostItNoteColor());
 					noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
 					noteElement.setAttribute("position", String.valueOf(category.getPostItHBox().getChildren().indexOf(postItNoteController.getPostItNotePane())));
 					notesElement.appendChild(noteElement);
@@ -535,19 +493,24 @@ public class XMLManager {
 		}
 	}
 	
-	private String getPostItText(PostItNoteController postItNoteController) {
-		String postItText = "";
-		if (postItNoteController.getTextFlow().getChildren() != null) {
-			Text text = (Text) postItNoteController.getTextFlow().getChildren().get(0);
-			postItText = text.getText();
+	private Activity getActivity(String activityID, ArrayList<Activity> activities) {
+		for(Activity activity : activities) {
+			if(activity.getActivityID().contentEquals(activityID)) {
+				return activity.cloneActivity();
+			}
 		}
-		return postItText;
+		logger.debug("Activity returned is null.");
+		return null;
 	}
 	
-	private String getPostItColor(PostItNoteController postItNoteController) {
-		String style = postItNoteController.getPlusHBox().getStyle();
-		style = style.replace("-fx-background-color: ", "");
-		return style.trim();
+	private ActivityType getActivityType(String activityTypeName, ArrayList<ActivityType> activityTypes) {
+		for(ActivityType activityType: activityTypes) {
+			if(activityType.getLongName().contentEquals(activityTypeName)) {
+				return activityType;
+			}
+		}
+		logger.debug("ActivityType returned is null.");
+		return null;
 	}
 
 }

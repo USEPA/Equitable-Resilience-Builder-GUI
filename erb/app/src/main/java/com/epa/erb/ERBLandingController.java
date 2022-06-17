@@ -84,7 +84,7 @@ public class ERBLandingController implements Initializable {
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
 			root.setPrefHeight(app.getPrefHeight());
-			app.loadContent(root);			
+			app.loadContentToERBContainer(root);			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -177,4 +177,68 @@ public class ERBLandingController implements Initializable {
 		}
 	}
 
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Circle getCircle1() {
+		return circle1;
+	}
+
+	public Circle getCircle2() {
+		return circle2;
+	}
+
+	public Circle getCircle3() {
+		return circle3;
+	}
+
+	public VBox getvBox1() {
+		return vBox1;
+	}
+
+	public VBox getvBox2() {
+		return vBox2;
+	}
+
+	public VBox getvBox3() {
+		return vBox3;
+	}
+
+	public VBox getvBox1Content() {
+		return vBox1Content;
+	}
+
+	public VBox getvBox2Content() {
+		return vBox2Content;
+	}
+
+	public VBox getvBox3Content() {
+		return vBox3Content;
+	}
+
+	public TextArea getTextArea1() {
+		return textArea1;
+	}
+
+	public TextArea getTextArea2() {
+		return textArea2;
+	}
+
+	public TextArea getTextArea3() {
+		return textArea3;
+	}
+
+	public TextArea getAboutERBTextArea() {
+		return aboutERBTextArea;
+	}
+
+	public TextArea getAboutERBProcessTextArea() {
+		return aboutERBProcessTextArea;
+	}
+	
 }

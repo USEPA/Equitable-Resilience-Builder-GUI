@@ -48,5 +48,13 @@ public class GoalContainerController implements Initializable{
 	public VBox getGoalContainerVBox() {
 		return goalContainerVBox;
 	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
 	
 }

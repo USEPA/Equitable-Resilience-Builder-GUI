@@ -58,156 +58,119 @@ public class Constants {
 	private String pathToDynamicERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
 	private String pathToDynamicERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\");
 	private String pathToDynamicERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
-
-
+	
 	//-------------------------------------------------------------------------
-
+	
 	public int getPrefHeightForScale100() {
 		return prefHeightForScale100;
 	}
-
 	public int getPrefWidthForScale100() {
 		return prefWidthForScale100;
 	}
-
 	public int getPrefHeightForScale125() {
 		return prefHeightForScale125;
 	}
-
 	public int getPrefWidthForScale125() {
 		return prefWidthForScale125;
 	}
-
 	public int getPrefHeightForScale150() {
 		return prefHeightForScale150;
 	}
-
 	public int getPrefWidthForScale150() {
 		return prefWidthForScale150;
 	}
-
 	public int getPrefHeightForScale175() {
 		return prefHeightForScale175;
 	}
-
 	public int getPrefWidthForScale175() {
 		return prefWidthForScale175;
 	}
-	
-	public String getReadyStatusColor() {
-		return readyStatusColor;
-	}
-
-	public String getInProgressStatusColor() {
-		return inProgressStatusColor;
-	}
-	
-	public String getCompleteStatusColor() {
-		return completeStatusColor;
-	}
-
-	public String getSkippedStatusColor() {
-		return skippedStatusColor;
-	}
-
-	public String getMaterialsColor() {
-		return materialsColor;
-	}
-
-	public String getDescriptionColor() {
-		return descriptionColor;
-	}
-
-	public String getObjectivesColor() {
-		return objectivesColor;
-	}
-
-	public String getInstructionsColor() {
-		return instructionsColor;
-	}
-
-	public String getWhoColor() {
-		return whoColor;
-	}
-
-	public String getTimeColor() {
-		return timeColor;
-	}
-
-	public String getShortNameColor() {
-		return shortNameColor;
-	}
-
-	public String getLongNameColor() {
-		return longNameColor;
-	}
-
-	public String getFileNameColor() {
-		return fileNameColor;
-	}
-
 	public String getActivityTypeColor() {
 		return activityTypeColor;
 	}
-	
-	public String getLinksColor() {
-		return linksColor;
+	public String getReadyStatusColor() {
+		return readyStatusColor;
 	}
-
+	public String getInProgressStatusColor() {
+		return inProgressStatusColor;
+	}
+	public String getCompleteStatusColor() {
+		return completeStatusColor;
+	}
+	public String getSkippedStatusColor() {
+		return skippedStatusColor;
+	}
+	public String getShortNameColor() {
+		return shortNameColor;
+	}
+	public String getLongNameColor() {
+		return longNameColor;
+	}
+	public String getFileNameColor() {
+		return fileNameColor;
+	}
+	public String getInstructionsColor() {
+		return instructionsColor;
+	}
+	public String getObjectivesColor() {
+		return objectivesColor;
+	}
+	public String getDescriptionColor() {
+		return descriptionColor;
+	}
+	public String getMaterialsColor() {
+		return materialsColor;
+	}
+	public String getTimeColor() {
+		return timeColor;
+	}
+	public String getWhoColor() {
+		return whoColor;
+	}
 	public String getActivityIDColor() {
 		return activityIDColor;
 	}
-
+	public String getLinksColor() {
+		return linksColor;
+	}
 	public String getAllChaptersColor() {
 		return allChaptersColor;
 	}
-
 	public String getLayer1ColorString() {
 		return layer1ColorString;
 	}
-
 	public String getLayer2ColorString() {
 		return layer2ColorString;
 	}
-
 	public String getLayer3ColorString() {
 		return layer3ColorString;
 	}
-
 	public String getLayer4ColorString() {
 		return layer4ColorString;
 	}
-
 	public String getLayer5ColorString() {
 		return layer5ColorString;
 	}
-
 	public String getPostItNoteColor() {
 		return postItNoteColor;
 	}
-
 	public String getPathToLocalERBFolder() {
 		return pathToLocalERBFolder;
 	}
-
 	public String getPathToLocalERBProjectsFolder() {
 		return pathToLocalERBProjectsFolder;
 	}
-
 	public String getPathToLocalERBStaticDataFolder() {
 		return pathToLocalERBStaticDataFolder;
 	}
-
 	public String getPathToDynamicERBFolder() {
 		return pathToDynamicERBFolder;
 	}
-
 	public String getPathToDynamicERBProjectsFolder() {
 		return pathToDynamicERBProjectsFolder;
 	}
-
 	public String getPathToDynamicERBStaticDataFolder() {
 		return pathToDynamicERBStaticDataFolder;
 	}
-			
+	
 }

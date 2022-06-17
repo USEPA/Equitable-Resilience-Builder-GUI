@@ -5,51 +5,44 @@ public class ActivityType {
 	private String longName;
 	private String shortName;
 	private String description;
-	private String fileExt;
-	public ActivityType(String longName, String shortName, String description, String fileExt) {
+	private String fileExtension;
+	public ActivityType(String longName, String shortName, String description, String fileExtension) {
 		this.longName = longName;
 		this.shortName = shortName;
 		this.description = description;
-		this.fileExt = fileExt;
+		this.fileExtension = fileExtension;
 	}
-
+	
 	public String getLongName() {
 		return longName;
 	}
-
+	
 	public void setLongName(String longName) {
 		this.longName = longName;
 	}
-
+	
 	public String getShortName() {
 		return shortName;
 	}
-
+	
 	public void setShortName(String shortName) {
 		this.shortName = shortName;
 	}
-
+	
 	public String getDescription() {
 		return description;
 	}
-
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public String getFileExt() {
-		return fileExt;
-	}
-
-	public void setFileExt(String fileExt) {
-		this.fileExt = fileExt;
+	
+	public String getFileExtension() {
+		return fileExtension;
 	}
 	
-	public String toString() {
-		return  "Long Name: " + longName + "\n" + 
-				"Short Name: " + shortName + "\n" + 
-				"Description: " + description + "\n" + 
-				"File Ext: " + fileExt;
+	public void setFileExtension(String fileExtension) {
+		this.fileExtension = fileExtension;
 	}
 	
 }

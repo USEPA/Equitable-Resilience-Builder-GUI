@@ -47,7 +47,7 @@ public class GoalIntroController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		loadGoalsWorksheetPDF(getPDFFileToLoad());
+		loadGoalsWorksheetPDFToWebView(getPDFFileToLoad());
 	}
 	
 	private void handleControls() {
@@ -58,7 +58,7 @@ public class GoalIntroController implements Initializable{
 		return pdfFileToLoad;
 	}
 	
-	private void loadGoalsWorksheetPDF(File pdfFileToLoad) {
+	private void loadGoalsWorksheetPDFToWebView(File pdfFileToLoad) {
 		try {
 			WebEngine webEngine = webView.getEngine();
 			String url = getClass().getResource("/pdfjs-2.8.335-legacy-dist/web/viewer.html").toExternalForm();
@@ -85,11 +85,6 @@ public class GoalIntroController implements Initializable{
 		}
 	}
 	
-	@FXML
-	public void nextButtonAction() {
-		loadGoalCreation();
-	}
-	
 	private void loadGoalCreation() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
@@ -102,6 +97,43 @@ public class GoalIntroController implements Initializable{
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
+	}
+	
+	@FXML
+	public void nextButtonAction() {
+		loadGoalCreation();
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public GoalContainerController getGoalContainerController() {
+		return goalContainerController;
+	}
+
+	public void setGoalContainerController(GoalContainerController goalContainerController) {
+		this.goalContainerController = goalContainerController;
+	}
+
+	public WebView getWebView() {
+		return webView;
+	}
+
+	public HBox getHeadingHBox() {
+		return headingHBox;
 	}
 
 }

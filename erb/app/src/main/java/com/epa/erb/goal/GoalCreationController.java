@@ -63,6 +63,21 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void handleControls() {
+		
+	}
+	
+	private void loadEngagementActionToContainer(Project project) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+			EngagementActionController engagementActionController = new EngagementActionController(app, project);
+			fxmlLoader.setController(engagementActionController);
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			app.loadContentToERBContainer(root);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 
 	@FXML
@@ -96,18 +111,87 @@ public class GoalCreationController implements Initializable{
 		}
 	}
 	
-	private void loadEngagementActionToContainer(Project project) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(app, project);
-			fxmlLoader.setController(engagementActionController);
-			VBox root = fxmlLoader.load();
-			root.setPrefWidth(app.getPrefWidth());
-			root.setPrefHeight(app.getPrefHeight());
-			app.loadContent(root);
-		}catch (Exception e) {
-			logger.error(e.getMessage());
+	private void populateGoalCategoryCheckBoxes() {
+		ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
+		for(GoalCategory goalCategory : goalCategories) {
+			CheckBox goalCategoryCheckBox = createGoalCategoryCheckBox(goalCategory);
+			goalsVBox.getChildren().add(goalCategoryCheckBox);
 		}
+	}
+	
+	private void uncheckAllGoalCategoryCheckBoxes() {
+		for (int i = 0; i < goalsVBox.getChildren().size(); i++) {
+			CheckBox goalCheckBox = (CheckBox) goalsVBox.getChildren().get(i);
+			goalCheckBox.setWrapText(true);
+			goalCheckBox.setPrefHeight(Control.USE_COMPUTED_SIZE);
+			goalCheckBox.setPrefWidth(Control.USE_COMPUTED_SIZE);
+			goalCheckBox.setSelected(false);
+		}
+	}
+	
+	private void addGoalToGoalsListView(Goal goal) {
+		if(!goalsListView.getItems().contains(goal)) {
+			goalsListView.getItems().add(goal);
+		}
+		setGoalsListViewCellFactory();
+	}
+	
+	private void setGoalsListViewCellFactory() {
+		goalsListView.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
+			@Override
+			public ListCell<Goal> call(ListView<Goal> param) {
+				ListCell<Goal> cell = new ListCell<Goal>() {
+					@Override
+					protected void updateItem(Goal item, boolean empty) {
+						super.updateItem(item, empty);
+						if (item != null) {
+							setText(item.getGoalName());
+							setContextMenu(createGoalContextMenu());
+						}
+					}
+				};
+				return cell;
+			}
+		});
+	}
+
+	private boolean hasGoalUserInput() {
+		String goalName = goalNameTextField.getText();
+		String goalDescription = goalDescriptionTextArea.getText();
+		if(goalName != null && goalDescription != null) {
+			if(goalName.trim().length() > 0 && goalDescription.trim().length() > 0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private void removeSelectedGoal(Event e) {
+		Goal goalToRemove = getGoalListViewSelectedGoal();
+		goalsListView.getItems().remove(goalToRemove);
+		setGoalsListViewCellFactory();
+	}
+	
+	private void cleanGoalUserInputFields() {
+		goalNameTextField.setText(null);
+		goalDescriptionTextArea.setText(null);
+	}
+
+	private void showGoalUserInputNeededAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setContentText("Please enter a valid goal name and description.");
+		alert.setTitle("Alert");
+		alert.showAndWait();
+	}
+	
+	private Optional<ButtonType> showDoneAlert() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText(null);
+		alert.setContentText("Creating goals can only be done once. Are you sure you'd like to continue?");
+		alert.setTitle("Alert");
+		Optional<ButtonType> result = alert .showAndWait();
+		return result;
 	}
 	
 	private void writeProjectMetaData(Project project) {
@@ -126,6 +210,21 @@ public class GoalCreationController implements Initializable{
 			File activitesDirectory =createActivitiesDirectory(goalDirectory);
 			createActivityDirectory(activitesDirectory, goal);
 		}
+	}
+	
+	private CheckBox createGoalCategoryCheckBox(GoalCategory goalCategory) {
+		CheckBox checkBox = new CheckBox(goalCategory.getCategoryName());
+		checkBox.setWrapText(true);
+		checkBox.setFont(new Font(15.0));
+		return checkBox;
+	}
+	
+	private ContextMenu createGoalContextMenu() {
+		ContextMenu contextMenu = new ContextMenu();
+		MenuItem removeMenuItem = new MenuItem("Remove");
+		removeMenuItem.setOnAction(e-> removeSelectedGoal(e));
+		contextMenu.getItems().add(removeMenuItem);
+		return contextMenu;
 	}
 	
 	private void createActivityDirectory(File activitiesDirectory, Goal goal) {
@@ -176,53 +275,7 @@ public class GoalCreationController implements Initializable{
 		}
 		return createdGoals;
 	}
-	
-	private void populateGoalCategoryCheckBoxes() {
-		ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
-		for(GoalCategory goalCategory : goalCategories) {
-			CheckBox goalCategoryCheckBox = createGoalCategoryCheckBox(goalCategory);
-			goalsVBox.getChildren().add(goalCategoryCheckBox);
-		}
-	}
-	
-	private void cleanGoalUserInputFields() {
-		goalNameTextField.setText(null);
-		goalDescriptionTextArea.setText(null);
-	}
-	
-	private void uncheckAllGoalCategoryCheckBoxes() {
-		for (int i = 0; i < goalsVBox.getChildren().size(); i++) {
-			CheckBox goalCheckBox = (CheckBox) goalsVBox.getChildren().get(i);
-			goalCheckBox.setWrapText(true);
-			goalCheckBox.setPrefHeight(Control.USE_COMPUTED_SIZE);
-			goalCheckBox.setPrefWidth(Control.USE_COMPUTED_SIZE);
-			goalCheckBox.setSelected(false);
-		}
-	}
-	
-	private CheckBox createGoalCategoryCheckBox(GoalCategory goalCategory) {
-		CheckBox checkBox = new CheckBox(goalCategory.getCategoryName());
-		checkBox.setWrapText(true);
-		checkBox.setFont(new Font(15.0));
-		return checkBox;
-	}
-	
-	private Optional<ButtonType> showDoneAlert() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setHeaderText(null);
-		alert.setContentText("Creating goals can only be done once. Are you sure you'd like to continue?");
-		alert.setTitle("Alert");
-		Optional<ButtonType> result = alert .showAndWait();
-		return result;
-	}
-	
-	private void addGoalToGoalsListView(Goal goal) {
-		if(!goalsListView.getItems().contains(goal)) {
-			goalsListView.getItems().add(goal);
-		}
-		setGoalsListViewCellFactory();
-	}
-	
+		
 	private GoalCategory getGoalCategory(String goalCategoryName) {
 		ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
 		for(GoalCategory goalCategory : goalCategories) {
@@ -256,58 +309,6 @@ public class GoalCreationController implements Initializable{
 		return selectedGoalCheckBoxes;
 	}
 	
-	private void setGoalsListViewCellFactory() {
-		goalsListView.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
-			@Override
-			public ListCell<Goal> call(ListView<Goal> param) {
-				ListCell<Goal> cell = new ListCell<Goal>() {
-					@Override
-					protected void updateItem(Goal item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item != null) {
-							setText(item.getGoalName());
-							setContextMenu(createGoalContextMenu());
-						}
-					}
-				};
-				return cell;
-			}
-		});
-	}
-
-	private boolean hasGoalUserInput() {
-		String goalName = goalNameTextField.getText();
-		String goalDescription = goalDescriptionTextArea.getText();
-		if(goalName != null && goalDescription != null) {
-			if(goalName.trim().length() > 0 && goalDescription.trim().length() > 0) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	private void showGoalUserInputNeededAlert() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText(null);
-		alert.setContentText("Please enter a valid goal name and description.");
-		alert.setTitle("Alert");
-		alert.showAndWait();
-	}
-	
-	private ContextMenu createGoalContextMenu() {
-		ContextMenu contextMenu = new ContextMenu();
-		MenuItem removeMenuItem = new MenuItem("Remove");
-		removeMenuItem.setOnAction(e-> removeSelectedGoal(e));
-		contextMenu.getItems().add(removeMenuItem);
-		return contextMenu;
-	}
-	
-	private void removeSelectedGoal(Event e) {
-		Goal goalToRemove = getGoalListViewSelectedGoal();
-		goalsListView.getItems().remove(goalToRemove);
-		setGoalsListViewCellFactory();
-	}
-	
 	private String getGoalName() {
 		String goalName = goalNameTextField.getText().trim();
 		return goalName;
@@ -320,6 +321,38 @@ public class GoalCreationController implements Initializable{
 	
 	private Goal getGoalListViewSelectedGoal() {
 		return goalsListView.getSelectionModel().getSelectedItem();
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public VBox getGoalsVBox() {
+		return goalsVBox;
+	}
+
+	public TextField getGoalNameTextField() {
+		return goalNameTextField;
+	}
+
+	public TextArea getGoalDescriptionTextArea() {
+		return goalDescriptionTextArea;
+	}
+
+	public ListView<Goal> getGoalsListView() {
+		return goalsListView;
 	}
 
 }

@@ -27,4 +27,8 @@ public class PlanController implements Initializable{
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 	}
 
+	public HBox getErbHeading() {
+		return erbHeading;
+	}
+
 }

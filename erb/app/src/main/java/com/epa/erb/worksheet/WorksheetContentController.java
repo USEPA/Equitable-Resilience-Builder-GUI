@@ -52,12 +52,16 @@ public class WorksheetContentController implements Initializable{
 
 	}
 	
-	private File getPDFFileToLoad() {
-		String fileName = activity.getFileName().trim().replace(".docx", ".pdf");
-		File pdfFileToLoad = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
-		return pdfFileToLoad;
+	@FXML
+	public void printButtonAction() {
+		loadPrinterSelection();
 	}
 	
+	@FXML
+	public void openButtonAction() {
+		openActivity(activity);
+	}
+
 	private void loadPDFToWebView(File pdfFileToLoad) {
 		try {
 			WebEngine webEngine = webView.getEngine();
@@ -85,15 +89,6 @@ public class WorksheetContentController implements Initializable{
 		}
 	}
 	
-	private void setActivityNameLabelText() {
-		activityNameLabel.setText(activity.getLongName());
-	}
-
-	@FXML
-	public void printButtonAction() {
-		loadPrinterSelection();
-	}
-	
 	private Stage printerSelectionStage = null;
 	private void loadPrinterSelection() {
 		try {
@@ -117,22 +112,6 @@ public class WorksheetContentController implements Initializable{
 		}
 	}
 	
-	void handlePrinterSelected(PrintService printService) {
-		File fileToPrint = getFileToPrint();
-		printActivity(printService, fileToPrint);
-	}
-	
-	private File getFileToPrint() {
-		String fileName = activity.getFileName().replace(".docx", ".pdf");
-		File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
-		if(file.exists()) {
-			return file;
-		} else {
-			logger.debug("File to print returned is null");
-			return null;
-		}
-	}
-	
 	void printActivity(PrintService printService, File fileToPrint) {
 		try {
 //			FileInputStream fileInputStream = new FileInputStream(fileToPrint.getPath());
@@ -147,11 +126,6 @@ public class WorksheetContentController implements Initializable{
 			logger.error(e.getMessage());
 		}
 	}
-		
-	@FXML
-	public void openButtonAction() {
-		openActivity(activity);
-	}
 	
 	public void openActivity(Activity activity) {
 		try {
@@ -164,6 +138,48 @@ public class WorksheetContentController implements Initializable{
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
+	}
+	
+	void printerSelected(PrintService printService) {
+		File fileToPrint = getFileToPrint();
+		printActivity(printService, fileToPrint);
+	}
+	
+	private File getPDFFileToLoad() {
+		String fileName = activity.getFileName().trim().replace(".docx", ".pdf");
+		File pdfFileToLoad = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
+		return pdfFileToLoad;
+	}
+	
+	private File getFileToPrint() {
+		String fileName = activity.getFileName().replace(".docx", ".pdf");
+		File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
+		if(file.exists()) {
+			return file;
+		} else {
+			logger.debug("File to print returned is null");
+			return null;
+		}
+	}
+	
+	private void setActivityNameLabelText() {
+		activityNameLabel.setText(activity.getLongName());
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	public WebView getWebView() {
+		return webView;
+	}
+
+	public Label getActivityNameLabel() {
+		return activityNameLabel;
 	}
 
 }

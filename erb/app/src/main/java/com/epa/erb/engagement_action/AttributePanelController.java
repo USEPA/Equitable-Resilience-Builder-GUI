@@ -59,6 +59,10 @@ public class AttributePanelController implements Initializable{
 		attributeTextFlow.getChildren().add(text);
 	}
 	
+	String getAttributeLabelText() {
+		return attributeLabel.getText();
+	}
+	
 	private void setAttributeLabelText(String text) {
 		attributeLabel.setText(text);
 	}
@@ -70,9 +74,57 @@ public class AttributePanelController implements Initializable{
 	private void setAttributeCloseButtonColor(String attributeLabelColor) {
 		closeButton.setStyle("-fx-background-color: " + attributeLabelColor + ";");
 	}
-	
-	String getAttributeLabelText() {
-		return attributeLabel.getText();
+
+	public String getAttributeTitle() {
+		return attributeTitle;
+	}
+
+	public void setAttributeTitle(String attributeTitle) {
+		this.attributeTitle = attributeTitle;
+	}
+
+	public String getAttributeContent() {
+		return attributeContent;
+	}
+
+	public void setAttributeContent(String attributeContent) {
+		this.attributeContent = attributeContent;
+	}
+
+	public String getAttributeColor() {
+		return attributeColor;
+	}
+
+	public void setAttributeColor(String attributeColor) {
+		this.attributeColor = attributeColor;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+
+	public Button getCloseButton() {
+		return closeButton;
+	}
+
+	public Label getAttributeLabel() {
+		return attributeLabel;
+	}
+
+	public VBox getAttributePanelVBox() {
+		return attributePanelVBox;
+	}
+
+	public HBox getAttributeLabelHBox() {
+		return attributeLabelHBox;
+	}
+
+	public TextFlow getAttributeTextFlow() {
+		return attributeTextFlow;
 	}
 
 }

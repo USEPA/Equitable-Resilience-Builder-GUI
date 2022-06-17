@@ -60,6 +60,47 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
+	@FXML
+	public void launchButtonAction() {
+		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
+		if(selectedProject != null) {
+			if(isProjectNew(selectedProject)) {
+				loadGoalCreationToContainer(selectedProject);
+			} else {
+				loadEngagementActionToContainer(selectedProject);
+			}
+			app.setSelectedProject(selectedProject);
+		}
+	}
+	
+	private void loadGoalCreationToContainer(Project project) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
+			GoalContainerController goalContainerController = new GoalContainerController(app, project);
+			fxmlLoader.setController(goalContainerController);
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			app.loadContentToERBContainer(root);
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	private void loadEngagementActionToContainer(Project project) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+			EngagementActionController engagementActionController = new EngagementActionController(app, project);
+			fxmlLoader.setController(engagementActionController);
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			app.loadContentToERBContainer(root);
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
 	private boolean isValidNewProjectName(String projectName) {
 		if(projectName!= null && projectName.length() > 0) {
 			if(!isDuplicateProjectName(projectName)) {
@@ -94,6 +135,14 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
+	private boolean isProjectNew(Project project) {
+		if(project.getProjectGoals() == null || project.getProjectGoals().size() ==0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	private void showIsDuplicateProjectNameAlert() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setHeaderText(null);
@@ -110,55 +159,6 @@ public class ProjectSelectionController implements Initializable{
 		alert.showAndWait();
 	}
 
-	@FXML
-	public void launchButtonAction() {
-		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
-		if(selectedProject != null) {
-			if(isProjectNew(selectedProject)) {
-				loadGoalCreationToContainer(selectedProject);
-			} else {
-				loadEngagementActionToContainer(selectedProject);
-			}
-			app.setSelectedProject(selectedProject);
-		}
-	}
-	
-	private void loadGoalCreationToContainer(Project project) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
-			GoalContainerController goalContainerController = new GoalContainerController(app, project);
-			fxmlLoader.setController(goalContainerController);
-			VBox root = fxmlLoader.load();
-			root.setPrefWidth(app.getPrefWidth());
-			root.setPrefHeight(app.getPrefHeight());
-			app.loadContent(root);
-		}catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-	}
-	
-	private void loadEngagementActionToContainer(Project project) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(app, project);
-			fxmlLoader.setController(engagementActionController);
-			VBox root = fxmlLoader.load();
-			root.setPrefWidth(app.getPrefWidth());
-			root.setPrefHeight(app.getPrefHeight());
-			app.loadContent(root);
-		}catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-	}
-	
-	private boolean isProjectNew(Project project) {
-		if(project.getProjectGoals() == null || project.getProjectGoals().size() ==0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
 	private void createNewProjectDirectory(Project project) {
 		File newProjectDirectory = new File(pathToERBProjectsFolder + "\\" + project.getProjectName());
 		if(!newProjectDirectory.exists()) {
@@ -196,6 +196,22 @@ public class ProjectSelectionController implements Initializable{
 				return cell;
 			}
 		});
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public TextField getProjectNameTextField() {
+		return projectNameTextField;
+	}
+
+	public ListView<Project> getProjectsListView() {
+		return projectsListView;
 	}
 	
 }

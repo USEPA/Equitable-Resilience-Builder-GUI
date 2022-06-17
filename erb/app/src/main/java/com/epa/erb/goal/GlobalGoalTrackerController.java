@@ -46,16 +46,16 @@ public class GlobalGoalTrackerController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		erbProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
 		addGoalTrackers(project);
-		handleERBProgress();
+		updateERBProgressBar();
 	}
 	
 	private void handleControls() {
 		headingHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+		erbProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
 	}
 	
-	private void handleERBProgress() {
+	private void updateERBProgressBar() {
 		Progress progress = new Progress();
 		double maxPercent = project.getProjectGoals().size() * 100;
 		double totalPercent = 0;
@@ -117,4 +117,36 @@ public class GlobalGoalTrackerController implements Initializable{
 		}
 	}
 
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public HBox getHeadingHBox() {
+		return headingHBox;
+	}
+
+	public HBox getGoalHBox() {
+		return goalHBox;
+	}
+
+	public ProgressBar getErbProgressBar() {
+		return erbProgressBar;
+	}
+
+	public Label getGoalProgressLabel() {
+		return goalProgressLabel;
+	}
+	
 }

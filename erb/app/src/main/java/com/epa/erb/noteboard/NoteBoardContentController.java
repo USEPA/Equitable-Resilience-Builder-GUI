@@ -30,7 +30,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextFlow;
 
 public class NoteBoardContentController implements Initializable{
 
@@ -100,44 +99,6 @@ public class NoteBoardContentController implements Initializable{
 		}
 	}
 	
-	private void checkForExistingNoteBoardData() {
-		boolean dataExists = noteBoardDataExists(project, goal, activity);
-		if (dataExists) {
-			try {
-				XMLManager xmlManager = new XMLManager(app);
-				ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(getActivityDataFile(project, goal, activity));
-				for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
-					HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
-					for (String categoryName : categoryHashMap.keySet()) {
-						HBox catHBox = (HBox) loadCategorySection(categoryName);
-						ArrayList<HashMap<String, String>> listOfNoteHashMaps = categoryHashMap.get(categoryName);
-						for (int j = 0; j < listOfNoteHashMaps.size(); j++) {
-							CategorySectionController categorySectionController = getCategorySectionController(catHBox);
-							Pane postItNotePane = loadPostItNote(categorySectionController);
-							HashMap<String, String> noteHashMap = listOfNoteHashMaps.get(j);
-							String color = noteHashMap.get("color").replaceAll("#", "");
-							String content = noteHashMap.get("content");
-							String like = noteHashMap.get("likes");
-							setPostItNoteProperties((VBox) postItNotePane, color, content, like);
-							int index = Integer.parseInt(noteHashMap.get("position"));
-							categorySectionController.getPostItHBox().getChildren().add(index, postItNotePane);
-						}
-						mainVBox.getChildren().add(catHBox);
-					}
-				}
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		}
-	}
-	
-	private void setPostItNoteProperties(VBox postItNotePane, String color, String content, String likes) {
-		PostItNoteController postItNoteController = getPostItNoteController(postItNotePane);
-		postItNoteController.setPostItContentsColor(color);
-		postItNoteController.setPostItNoteText(content);
-		postItNoteController.setNumberLabelText(likes);
-	}
-	
 	private Parent loadCategorySection(String category) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/CategorySection.fxml"));
@@ -169,7 +130,38 @@ public class NoteBoardContentController implements Initializable{
 			return null;
 		}
 	}
-
+	
+	private void checkForExistingNoteBoardData() {
+		boolean dataExists = noteBoardDataExists(project, goal, activity);
+		if (dataExists) {
+			try {
+				XMLManager xmlManager = new XMLManager(app);
+				ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(getActivityDataFile(project, goal, activity));
+				for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
+					HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
+					for (String categoryName : categoryHashMap.keySet()) {
+						HBox catHBox = (HBox) loadCategorySection(categoryName);
+						ArrayList<HashMap<String, String>> listOfNoteHashMaps = categoryHashMap.get(categoryName);
+						for (int j = 0; j < listOfNoteHashMaps.size(); j++) {
+							CategorySectionController categorySectionController = getCategorySectionController(catHBox);
+							Pane postItNotePane = loadPostItNote(categorySectionController);
+							HashMap<String, String> noteHashMap = listOfNoteHashMaps.get(j);
+							String color = noteHashMap.get("color").replaceAll("#", "");
+							String content = noteHashMap.get("content");
+							String like = noteHashMap.get("likes");
+							setPostItNoteProperties((VBox) postItNotePane, color, content, like);
+							int index = Integer.parseInt(noteHashMap.get("position"));
+							categorySectionController.getPostItHBox().getChildren().add(index, postItNotePane);
+						}
+						mainVBox.getChildren().add(catHBox);
+					}
+				}
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		}
+	}
+	
 	private boolean noteBoardDataExists(Project project, Goal goal, Activity activity) {
 		File activityDataFile = getActivityDataFile(project, goal, activity);
 		if(activityDataFile.exists()) {
@@ -281,6 +273,10 @@ public class NoteBoardContentController implements Initializable{
 		return null;
 	}
 	
+	private File getActivityDataFile(Project project, Goal goal, Activity activity) {
+		return new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
+	}
+	
 	public void setCategoryPostIts() {
 		for(CategorySectionController categorySectionController: categorySectionControllers) {
 			ArrayList<PostItNoteController> assignedPostItNoteControllers = new ArrayList<PostItNoteController>();
@@ -293,24 +289,99 @@ public class NoteBoardContentController implements Initializable{
 		}
 	}
 	
-	private File getActivityDataFile(Project project, Goal goal, Activity activity) {
-		return new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
+	private void setPostItNoteProperties(VBox postItNotePane, String color, String content, String likes) {
+		PostItNoteController postItNoteController = getPostItNoteController(postItNotePane);
+		postItNoteController.setPostItContentsColor(color);
+		postItNoteController.setPostItNoteText(content);
+		postItNoteController.setNumberLabelText(likes);
+	}
+	
+	private void setActivityNameLabelText(String text) {
+		activityNameLabel.setText(text);
 	}
 	
 	void removePostItNoteController(PostItNoteController postItNoteController) {
 		postItNoteControllers.remove(postItNoteController);
 	}
-	
-	private void setActivityNameLabelText(String text) {
-		activityNameLabel.setText(text);
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
 	}
 
 	public Activity getActivity() {
 		return activity;
 	}
 
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	public ArrayList<PostItNoteController> getPostItNoteControllers() {
+		return postItNoteControllers;
+	}
+
+	public void setPostItNoteControllers(ArrayList<PostItNoteController> postItNoteControllers) {
+		this.postItNoteControllers = postItNoteControllers;
+	}
+
 	public ArrayList<CategorySectionController> getCategorySectionControllers() {
 		return categorySectionControllers;
 	}
-	
+
+	public void setCategorySectionControllers(ArrayList<CategorySectionController> categorySectionControllers) {
+		this.categorySectionControllers = categorySectionControllers;
+	}
+
+	public TextField getCategoryTextField() {
+		return categoryTextField;
+	}
+
+	public Label getActivityNameLabel() {
+		return activityNameLabel;
+	}
+
+	public VBox getMainVBox() {
+		return mainVBox;
+	}
+
+	public Pane getLayer1Pane() {
+		return layer1Pane;
+	}
+
+	public Pane getLayer2Pane() {
+		return layer2Pane;
+	}
+
+	public Pane getLayer3Pane() {
+		return layer3Pane;
+	}
+
+	public Pane getLayer4Pane() {
+		return layer4Pane;
+	}
+
+	public Pane getNote() {
+		return note;
+	}
+		
 }

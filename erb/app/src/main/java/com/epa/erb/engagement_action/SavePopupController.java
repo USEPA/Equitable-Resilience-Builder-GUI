@@ -49,6 +49,7 @@ public class SavePopupController implements Initializable {
 	}
 	
 	private Constants constants = new Constants();
+	private XMLManager xmlManager = new XMLManager(app);
 	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
 
 	@Override
@@ -72,7 +73,7 @@ public class SavePopupController implements Initializable {
 					saveActivity(project, goal, activity);
 				}
 				Thread.sleep(1000);
-				setGoalSaveDone();
+				setSavePopupDone();
 				Thread.sleep(1000);
 				return null;
 			}
@@ -127,7 +128,6 @@ public class SavePopupController implements Initializable {
 	}
 	
 	public void callToWriteGoalDataXML(Project project, Goal goal) {
-		XMLManager xmlManager = new XMLManager(app);
 		xmlManager.writeGoalMetaXML(getGoalXMLFile(project, goal), goal.getChapters());
 	}
 	
@@ -142,7 +142,6 @@ public class SavePopupController implements Initializable {
 	}
 	
 	private void callToWriteNoteboardDataXML(Activity activity, Goal goal, Project project) {	
-		XMLManager xmlManager = new XMLManager(app);
 		NoteBoardContentController noteBoardContentController = activity.getNoteBoardContentController();
 		if(noteBoardContentController != null) {
 			noteBoardContentController.setCategoryPostIts();
@@ -159,7 +158,7 @@ public class SavePopupController implements Initializable {
 		
 	}
 
-	public void setGoalSaveDone() {
+	public void setSavePopupDone() {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
@@ -167,10 +166,6 @@ public class SavePopupController implements Initializable {
 				progressIndicator.setVisible(false);
 			}
 		});
-	}
-
-	private void setStatusLabelText(String text) {
-		statusLabel.setText(text);
 	}
 	
 	private File getGoalXMLFile(Project project, Goal goal) {
@@ -186,4 +181,80 @@ public class SavePopupController implements Initializable {
 		return activityDataFile;
 	}
 
+	private void setStatusLabelText(String text) {
+		statusLabel.setText(text);
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(ArrayList<Project> projects) {
+		this.projects = projects;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public String getSaveType() {
+		return saveType;
+	}
+
+	public void setSaveType(String saveType) {
+		this.saveType = saveType;
+	}
+
+	public SaveHandler getSaveHandler() {
+		return saveHandler;
+	}
+
+	public void setSaveHandler(SaveHandler saveHandler) {
+		this.saveHandler = saveHandler;
+	}
+
+	public Label getStatusLabel() {
+		return statusLabel;
+	}
+
+	public ProgressIndicator getProgressIndicator() {
+		return progressIndicator;
+	}
+	
 }

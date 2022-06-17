@@ -87,6 +87,10 @@ public class PostItNoteController implements Initializable{
 		loadPostItNoteEdits();
 	}
 	
+	private void postItNoteRightClicked(MouseEvent mouseEvent) {
+		//postItNotePane.setContextMenu(createPostItContextMenu());
+	}
+	
 	private void loadPostItNoteEdits() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
@@ -100,10 +104,6 @@ public class PostItNoteController implements Initializable{
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-	}
-	
-	private void postItNoteRightClicked(MouseEvent mouseEvent) {
-		//postItNotePane.setContextMenu(createPostItContextMenu());
 	}
 	
 	private ContextMenu createPostItContextMenu() {
@@ -142,13 +142,40 @@ public class PostItNoteController implements Initializable{
 	public NoteBoardContentController getNoteBoardContentController() {
 		return noteBoardContentController;
 	}
+	
+	public String getPostItNoteText() {
+		String postItText = "";
+		if (getTextFlow().getChildren() != null) {
+			Text text = (Text) getTextFlow().getChildren().get(0);
+			postItText = text.getText();
+		}
+		return postItText;
+	}
+	
+	public String getPostItNoteColor() {
+		String style = getPlusHBox().getStyle();
+		style = style.replace("-fx-background-color: ", "");
+		return style.trim();
+	}
 
 	void setNumberLabelText(String text) {
 		numberLabel.setText(text);
 	}
 
+	public Stage getEditsStage() {
+		return editsStage;
+	}
+
+	public void setEditsStage(Stage editsStage) {
+		this.editsStage = editsStage;
+	}
+
 	public HBox getPlusHBox() {
 		return plusHBox;
+	}
+
+	public Label getNumberLabel() {
+		return numberLabel;
 	}
 
 	public VBox getPostItNotePane() {
@@ -159,8 +186,8 @@ public class PostItNoteController implements Initializable{
 		return textFlow;
 	}
 
-	public Label getNumberLabel() {
-		return numberLabel;
+	public void setNoteBoardContentController(NoteBoardContentController noteBoardContentController) {
+		this.noteBoardContentController = noteBoardContentController;
 	}
 
 }

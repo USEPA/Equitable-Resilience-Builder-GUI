@@ -93,14 +93,14 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void handleControls() {
-		reflectScrollPane.widthProperty().addListener(e-> scrollPaneSizeChange());
+		reflectScrollPane.widthProperty().addListener(e-> scrollPaneWidthChange());
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		goalProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
-		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressListeners());
-		engagementActionController.getMainVBox().widthProperty().addListener(e-> handleProgressListeners());
+		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressBarsAfterPaneSizeChange());
+		engagementActionController.getMainVBox().widthProperty().addListener(e-> handleProgressBarsAfterPaneSizeChange());
 	}
 	
-	private void scrollPaneSizeChange() {
+	private void scrollPaneWidthChange() {
 		reflectVBox.setMinWidth(reflectScrollPane.getWidth());
 	}
 	
@@ -123,7 +123,7 @@ public class ReflectController implements Initializable{
 		}
 	}
 	
-	private void handleProgressListeners() {
+	private void handleProgressBarsAfterPaneSizeChange() {
 		Goal goal = engagementActionController.getCurrentGoal();
 		if(goal != null) handleChapterProgressBar(goal);
 		if(chapter != null) handleChapterConfidenceProgressBar(chapter);
@@ -243,7 +243,7 @@ public class ReflectController implements Initializable{
 	private void ratingSliderAdjusted(Slider slider, Activity activity) {
 		activity.setRating(String.valueOf((int) slider.getValue()));
 		handleChapterConfidenceProgressBar(chapter);
-		engagementActionController.handleLocalProgress(chapter,goal.getChapters());
+		engagementActionController.updateLocalProgress(chapter,goal.getChapters());
 		activity.setSaved(false);
 	}
 	
@@ -371,6 +371,118 @@ public class ReflectController implements Initializable{
 		if(reflectNotesStage!=null) {
 			reflectNotesStage.close();
 		}
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+
+	public ArrayList<Activity> getChapterActivities() {
+		return chapterActivities;
+	}
+
+	public void setChapterActivities(ArrayList<Activity> chapterActivities) {
+		this.chapterActivities = chapterActivities;
+	}
+
+	public HBox getErbHeading() {
+		return erbHeading;
+	}
+
+	public VBox getChapterProgressVBox() {
+		return chapterProgressVBox;
+	}
+
+	public VBox getChapterProgressBar() {
+		return chapterProgressBar;
+	}
+
+	public Label getChapterCompletionInfoLabel() {
+		return chapterCompletionInfoLabel;
+	}
+
+	public VBox getStatusVBox() {
+		return statusVBox;
+	}
+
+	public VBox getActivityVBox() {
+		return activityVBox;
+	}
+
+	public VBox getRatingVBox() {
+		return ratingVBox;
+	}
+
+	public Label getConfidenceInfoLabel() {
+		return confidenceInfoLabel;
+	}
+
+	public VBox getNotesVBox() {
+		return notesVBox;
+	}
+
+	public VBox getConfidenceRatingVBox() {
+		return confidenceRatingVBox;
+	}
+
+	public VBox getConfidenceRatingBar() {
+		return confidenceRatingBar;
+	}
+
+	public Label getChapterConfidenceInfoLabel() {
+		return chapterConfidenceInfoLabel;
+	}
+
+	public ProgressBar getGoalProgressBar() {
+		return goalProgressBar;
+	}
+
+	public Label getChapterPercentLabel() {
+		return chapterPercentLabel;
+	}
+
+	public Label getConfidencePercentLabel() {
+		return confidencePercentLabel;
+	}
+
+	public Label getGoalProgressLabel() {
+		return goalProgressLabel;
+	}
+
+	public Label getGoalCompletionInfoLabel() {
+		return goalCompletionInfoLabel;
+	}
+
+	public ScrollPane getReflectScrollPane() {
+		return reflectScrollPane;
+	}
+
+	public VBox getReflectVBox() {
+		return reflectVBox;
+	}
+
+	public Stage getReflectNotesStage() {
+		return reflectNotesStage;
 	}
 	
 }

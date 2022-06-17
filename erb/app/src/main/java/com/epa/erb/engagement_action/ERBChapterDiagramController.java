@@ -76,8 +76,8 @@ public class ERBChapterDiagramController implements Initializable{
 	@FXML
 	public void centerCircleClicked() {
 		String activityGUID = chapter.getNumericName();
-		for (TreeItem<String> treeItem : engagementActionController.getTreeMap().keySet()) {
-			if (engagementActionController.getTreeMap().get(treeItem) == activityGUID) {
+		for (TreeItem<String> treeItem : engagementActionController.getTreeItemActivityIdTreeMap().keySet()) {
+			if (engagementActionController.getTreeItemActivityIdTreeMap().get(treeItem) == activityGUID) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 				engagementActionController.treeViewClicked(null);
 			}
@@ -90,6 +90,50 @@ public class ERBChapterDiagramController implements Initializable{
 	
 	private int getIndexOfChapterInListOfChapters() {
 		return listOfChapters.indexOf(chapter);
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public ArrayList<Chapter> getListOfChapters() {
+		return listOfChapters;
+	}
+
+	public void setListOfChapters(ArrayList<Chapter> listOfChapters) {
+		this.listOfChapters = listOfChapters;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+
+	public VBox getArrowVBox() {
+		return arrowVBox;
+	}
+
+	public Line getLeftLeadingLine() {
+		return leftLeadingLine;
+	}
+
+	public Line getRightLeadingLine() {
+		return rightLeadingLine;
+	}
+
+	public Circle getCenterCircle() {
+		return centerCircle;
+	}
+
+	public Label getCenterCircleLabel() {
+		return centerCircleLabel;
 	}
 	
 }

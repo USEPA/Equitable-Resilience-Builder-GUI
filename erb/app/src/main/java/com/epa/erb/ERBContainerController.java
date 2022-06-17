@@ -9,14 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ERBContainerController implements Initializable{
 	
-	@FXML
-	ScrollPane erbScrollPane;
 	@FXML
 	VBox welcomeVBox;
 	@FXML
@@ -42,17 +39,23 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	public void aboutMenuItemAction() {
 		loadERBLandingToContainer();
-		app.loadSavePopup(null, null, null, app.getSelectedProject(), null, "projectChange");
+		app.initSaveHandler(null, null, null, app.getSelectedProject(), null, "projectChange");
 	}
 	
 	private void loadERBLandingToContainer() {
+		Parent root = loadERBLanding();
+		app.loadContentToERBContainer(root);
+	}
+	
+	private Parent loadERBLanding() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
 			ERBLandingController erbLandingController = new ERBLandingController(app);
 			fxmlLoader.setController(erbLandingController);
-			app.loadContent(fxmlLoader.load());
+			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
 	}
 	
@@ -77,12 +80,12 @@ public class ERBContainerController implements Initializable{
 		}
 	}
 
+	public VBox getWelcomeVBox() {
+		return welcomeVBox;
+	}
+
 	public VBox getErbContainer() {
 		return erbContainer;
-	}
-	
-	public ScrollPane getERBScrollPane() {
-		return erbScrollPane;
 	}
 
 }

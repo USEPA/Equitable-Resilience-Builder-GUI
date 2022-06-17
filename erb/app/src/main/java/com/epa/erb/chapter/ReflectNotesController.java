@@ -64,5 +64,37 @@ public class ReflectNotesController implements Initializable{
 		}
 		reflectController.closeReflectNotesStage();
 	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	public ReflectController getReflectController() {
+		return reflectController;
+	}
+
+	public void setReflectController(ReflectController reflectController) {
+		this.reflectController = reflectController;
+	}
+
+	public Chapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public Label getTitleLabel() {
+		return titleLabel;
+	}
+
+	public TextArea getNotesTextArea() {
+		return notesTextArea;
+	}
 	
 }

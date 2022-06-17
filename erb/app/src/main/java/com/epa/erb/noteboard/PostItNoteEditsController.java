@@ -73,5 +73,21 @@ public class PostItNoteEditsController implements Initializable{
 	void setPostItNoteTextAreaText(String text) {
 		postItNoteTextArea.setText(text);
 	}
-	
+
+	public PostItNoteController getPostItNoteController() {
+		return postItNoteController;
+	}
+
+	public void setPostItNoteController(PostItNoteController postItNoteController) {
+		this.postItNoteController = postItNoteController;
+	}
+
+	public ColorPicker getColorPicker() {
+		return colorPicker;
+	}
+
+	public TextArea getPostItNoteTextArea() {
+		return postItNoteTextArea;
+	}
+		
 }

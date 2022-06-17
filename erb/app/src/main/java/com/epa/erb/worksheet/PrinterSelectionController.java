@@ -23,6 +23,15 @@ public class PrinterSelectionController implements Initializable{
 		fillPrinterList();
 	}
 	
+	@FXML
+	public void okButtonAction() {
+		int selectedPrinterIndex = printerList.getSelectionModel().getSelectedIndex();
+		if (selectedPrinterIndex >= 0) {
+			worksheetContentController.printerSelected(PrintServiceLookup.lookupPrintServices(null, null)[selectedPrinterIndex]);
+			worksheetContentController.closePrinterStage();
+		}
+	}
+	
 	private void fillPrinterList() {
 		printerList.getItems().clear();
 		PrintService [] printServices = PrintServiceLookup.lookupPrintServices(null, null);
@@ -30,14 +39,17 @@ public class PrinterSelectionController implements Initializable{
 			printerList.getItems().add(printService.getName());
 		}
 	}
-	
-	@FXML
-	public void okButtonAction() {
-		int selectedPrinterIndex = printerList.getSelectionModel().getSelectedIndex();
-		if (selectedPrinterIndex >= 0) {
-			worksheetContentController.handlePrinterSelected(PrintServiceLookup.lookupPrintServices(null, null)[selectedPrinterIndex]);
-			worksheetContentController.closePrinterStage();
-		}
+
+	public WorksheetContentController getWorksheetContentController() {
+		return worksheetContentController;
 	}
+
+	public void setWorksheetContentController(WorksheetContentController worksheetContentController) {
+		this.worksheetContentController = worksheetContentController;
+	}
+
+	public ListView<String> getPrinterList() {
+		return printerList;
+	}	
 	
 }

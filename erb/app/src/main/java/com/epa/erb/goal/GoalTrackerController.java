@@ -41,23 +41,19 @@ public class GoalTrackerController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setGoalTitleLabelText(goal.getGoalName());
-		handleGoalProgress();
+		updateGoalProgress();
 		addProgressListener();
 	}
-	
-	private void setGoalTitleLabelText(String text) {
-		goalTitleLabel.setText(text);
-	}
-	
+
 	private void addProgressListener() {
-		goalVBox.heightProperty().addListener(e -> handleProgressListener());
+		goalVBox.heightProperty().addListener(e -> handleProgressBarsAfterPaneSizeChange());
 	}
 	
-	private void handleProgressListener() {
-		handleGoalProgress();
+	private void handleProgressBarsAfterPaneSizeChange() {
+		updateGoalProgress();
 	}
 	
-	private void handleGoalProgress() {
+	private void updateGoalProgress() {
 		Progress progress = new Progress();
 		ArrayList<Chapter> listOfChapters = goal.getChapters();
 		int goalPercentDone = progress.getGoalPercentDone(listOfChapters);
@@ -94,6 +90,50 @@ public class GoalTrackerController implements Initializable{
 				confidencePercentLabel.setText(goalConfidence + "%");
 			}
 		});
+	}
+	
+	private void setGoalTitleLabelText(String text) {
+		goalTitleLabel.setText(text);
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
+	}
+
+	public Label getGoalTitleLabel() {
+		return goalTitleLabel;
+	}
+
+	public VBox getGoalCompletionVBox() {
+		return goalCompletionVBox;
+	}
+
+	public VBox getGoalCompletionBar() {
+		return goalCompletionBar;
+	}
+
+	public Label getCompletionPercentLabel() {
+		return completionPercentLabel;
+	}
+
+	public VBox getGoalConfidenceVBox() {
+		return goalConfidenceVBox;
+	}
+
+	public VBox getGoalConfidenceBar() {
+		return goalConfidenceBar;
+	}
+
+	public Label getConfidencePercentLabel() {
+		return confidencePercentLabel;
+	}
+
+	public VBox getGoalVBox() {
+		return goalVBox;
 	}
 	
 }
