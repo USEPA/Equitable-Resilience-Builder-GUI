@@ -9,10 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -78,17 +75,11 @@ public class PostItNoteController implements Initializable{
 	public void postItNoteClicked(MouseEvent mouseEvent) {
 		if(mouseEvent.getClickCount() ==2) {
 			postItNoteDoubleClicked(mouseEvent);
-		} else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-			postItNoteRightClicked(mouseEvent);
-		}
+		} 
 	}
 	
 	private void postItNoteDoubleClicked(MouseEvent mouseEvent) {
 		loadPostItNoteEdits();
-	}
-	
-	private void postItNoteRightClicked(MouseEvent mouseEvent) {
-		//postItNotePane.setContextMenu(createPostItContextMenu());
 	}
 	
 	private void loadPostItNoteEdits() {
@@ -104,21 +95,6 @@ public class PostItNoteController implements Initializable{
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-	}
-	
-	private ContextMenu createPostItContextMenu() {
-		ContextMenu contextMenu = new ContextMenu();
-		MenuItem menuItem = new MenuItem("Remove");
-		contextMenu.getItems().add(menuItem);
-		menuItem.setOnAction(e -> removePostItNote());
-		return contextMenu;
-	}
-	
-	private void removePostItNote() {
-		HBox postItHBox = (HBox) postItNotePane.getParent();
-		postItHBox.getChildren().remove(postItNotePane);
-		noteBoardContentController.removePostItNoteController(this);
-		noteBoardContentController.getActivity().setSaved(false);
 	}
 	
 	void setPostItNoteText(String text) {

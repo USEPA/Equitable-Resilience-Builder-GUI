@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
@@ -105,7 +106,7 @@ public class NoteBoardContentController implements Initializable{
 			CategorySectionController categorySectionController = new CategorySectionController((category));
 			fxmlLoader.setController(categorySectionController);
 			HBox catHBox = fxmlLoader.load();
-			catHBox.setOnContextMenuRequested(e-> createCategoryContextMenu(catHBox).show(mainVBox.getScene().getWindow(), e.getScreenX(), e.getScreenY()));
+			catHBox.setOnContextMenuRequested(e-> showCategoryContextMenu(catHBox, e));
 			setDrag(categorySectionController.getPostItHBox(), categorySectionController);
 			VBox.setVgrow(catHBox, Priority.ALWAYS);
 			categorySectionControllers.add(categorySectionController);
@@ -121,7 +122,8 @@ public class NoteBoardContentController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNote.fxml"));
 			PostItNoteController postItNoteController = new PostItNoteController(this);
 			fxmlLoader.setController(postItNoteController);
-			Pane postItNotePane = fxmlLoader.load();
+			VBox postItNotePane = fxmlLoader.load();
+			postItNotePane.setOnContextMenuRequested(e-> showPostItNoteContextMenu(postItNoteController, postItNotePane, e));
 			setDrag(postItNotePane, categorySectionController);
 			postItNoteControllers.add(postItNoteController);
 			return postItNotePane;
@@ -170,12 +172,26 @@ public class NoteBoardContentController implements Initializable{
 		return false;
 	}
 	
-	private ContextMenu createCategoryContextMenu(HBox catHBox) {
-		ContextMenu contextMenu = new ContextMenu();
-		MenuItem menuItem = new MenuItem("Remove");
-		contextMenu.getItems().add(menuItem);
-		menuItem.setOnAction(e -> removeCategory(catHBox));
-		return contextMenu;
+	ContextMenu categoryContextMenu = null;
+
+	private void showCategoryContextMenu(HBox catHBox, ContextMenuEvent event) {
+		if (noteContextMenu == null || !noteContextMenu.isShowing()) {
+			categoryContextMenu = new ContextMenu();
+			MenuItem menuItem = new MenuItem("Remove Category");
+			categoryContextMenu.getItems().add(menuItem);
+			menuItem.setOnAction(e -> removeCategory(catHBox));
+			categoryContextMenu.show(catHBox, event.getScreenX(), event.getScreenY());
+		}
+	}
+
+	ContextMenu noteContextMenu = null;
+
+	private void showPostItNoteContextMenu(PostItNoteController postItNoteController, VBox postItNotePane,ContextMenuEvent event) {
+		noteContextMenu = new ContextMenu();
+		MenuItem menuItem = new MenuItem("Remove Note");
+		noteContextMenu.getItems().add(menuItem);
+		menuItem.setOnAction(e -> removeNote(postItNoteController, postItNotePane));
+		noteContextMenu.show(postItNotePane, event.getScreenX(), event.getScreenY());
 	}
 	
 	private void removeCategory(HBox catHBox) {
@@ -186,6 +202,13 @@ public class NoteBoardContentController implements Initializable{
 		}
 		categorySectionControllers.remove(categorySectionController);
 		activity.setSaved(false);
+	}
+	
+	private void removeNote(PostItNoteController postItNoteController, VBox postItNotePane) {
+		HBox postItHBox = (HBox) postItNotePane.getParent();
+		postItHBox.getChildren().remove(postItNotePane);
+		removePostItNoteController(postItNoteController);
+		getActivity().setSaved(false);
 	}
 
 	private static final String TAB_DRAG_KEY = "pane";

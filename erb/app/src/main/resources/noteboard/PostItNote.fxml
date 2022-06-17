@@ -17,7 +17,7 @@
                   <Label onMouseClicked="#plusClicked" style="-fx-background-color: transparent;" text="+" />
                </children>
             </HBox>
-            <TextFlow fx:id="textFlow" VBox.vgrow="ALWAYS" />
+            <TextFlow fx:id="textFlow" onMouseClicked="#postItNoteClicked" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>
