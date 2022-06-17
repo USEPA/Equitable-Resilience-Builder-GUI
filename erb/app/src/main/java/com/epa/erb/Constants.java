@@ -49,15 +49,15 @@ public class Constants {
 	//Post-It Note Single
 	private String postItNoteColor = "#FFFFFF"; 				//White
 	
-	//Local Paths
-	private String pathToLocalERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB";
-	private String pathToLocalERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects";
-	private String pathToLocalERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data";
+	//Paths
+//	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
+	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB"; //Local
 	
-	//Dynamic Paths
-	private String pathToDynamicERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\");
-	private String pathToDynamicERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\");
-	private String pathToDynamicERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\");
+//	private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
+	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects"; //Local
+	
+//	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
+	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data"; //Local
 	
 	//-------------------------------------------------------------------------
 	
@@ -154,23 +154,14 @@ public class Constants {
 	public String getPostItNoteColor() {
 		return postItNoteColor;
 	}
-	public String getPathToLocalERBFolder() {
-		return pathToLocalERBFolder;
+	public String getPathToERBFolder() {
+		return pathToERBFolder;
 	}
-	public String getPathToLocalERBProjectsFolder() {
-		return pathToLocalERBProjectsFolder;
+	public String getPathToERBProjectsFolder() {
+		return pathToERBProjectsFolder;
 	}
-	public String getPathToLocalERBStaticDataFolder() {
-		return pathToLocalERBStaticDataFolder;
-	}
-	public String getPathToDynamicERBFolder() {
-		return pathToDynamicERBFolder;
-	}
-	public String getPathToDynamicERBProjectsFolder() {
-		return pathToDynamicERBProjectsFolder;
-	}
-	public String getPathToDynamicERBStaticDataFolder() {
-		return pathToDynamicERBStaticDataFolder;
+	public String getPathToERBStaticDataFolder() {
+		return pathToERBStaticDataFolder;
 	}
 	
 }

@@ -67,7 +67,7 @@ public class NoteBoardContentController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
-	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
+	private String pathToERBProjectsFolder = constants.getPathToERBProjectsFolder();
 	private ArrayList<PostItNoteController> postItNoteControllers = new ArrayList<PostItNoteController>();
 	private ArrayList<CategorySectionController> categorySectionControllers = new ArrayList<CategorySectionController>();
 	

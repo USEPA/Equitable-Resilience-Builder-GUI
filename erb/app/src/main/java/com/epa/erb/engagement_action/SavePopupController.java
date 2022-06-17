@@ -50,7 +50,7 @@ public class SavePopupController implements Initializable {
 	
 	private Constants constants = new Constants();
 	private XMLManager xmlManager = new XMLManager(app);
-	private String pathToERBProjectsFolder = constants.getPathToLocalERBProjectsFolder();
+	private String pathToERBProjectsFolder = constants.getPathToERBProjectsFolder();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

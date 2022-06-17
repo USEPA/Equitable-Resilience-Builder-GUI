@@ -36,7 +36,7 @@ public class App extends Application {
 	private ArrayList<GoalCategory> goalCategories;
 	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
-	private String pathToERBFolder = constants.getPathToLocalERBFolder();
+	private String pathToERBFolder = constants.getPathToERBFolder();
 	
 	private String getGreeting() {
 		return "Launching ERB";
