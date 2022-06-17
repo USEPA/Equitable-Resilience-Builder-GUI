@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.ContextMenuEvent;
@@ -36,6 +37,8 @@ public class NoteBoardContentController implements Initializable{
 
 	@FXML
 	TextField categoryTextField;
+	@FXML
+	TextArea howToTextArea;
 	@FXML
 	Label activityNameLabel;
 	@FXML
@@ -76,6 +79,7 @@ public class NoteBoardContentController implements Initializable{
 	}
 		
 	private void handleControls() {
+		howToTextArea.getStylesheets().add("/textArea.css");
 		layer1Pane.setStyle("-fx-background-color: " + constants.getLayer1ColorString() + ";");
 		layer2Pane.setStyle("-fx-background-color: " + constants.getLayer2ColorString() + ";");
 		layer3Pane.setStyle("-fx-background-color: " + constants.getLayer3ColorString() + ";");

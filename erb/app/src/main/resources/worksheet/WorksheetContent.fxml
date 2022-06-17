@@ -12,7 +12,7 @@
    <children>
       <HBox alignment="CENTER">
          <children>
-            <Label fx:id="activityNameLabel" text="Activity Name">
+            <Label fx:id="activityNameLabel" text="Activity Name" wrapText="true">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>

@@ -15,7 +15,7 @@
    <children>
       <HBox fx:id="headingHBox" alignment="CENTER_LEFT">
          <children>
-            <Label text="Welcome to the goal setting activity">
+            <Label text="Welcome to the goal setting activity" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

@@ -9,6 +9,7 @@
 
 .text-area:focused .content {
     -fx-background-color: transparent, transparent, transparent, transparent;
+	-fx-cursor: default ;
 }
 
 .text-area:focused {

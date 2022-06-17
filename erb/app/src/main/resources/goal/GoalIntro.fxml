@@ -12,7 +12,7 @@
    <children>
       <HBox fx:id="headingHBox" alignment="CENTER_LEFT">
          <children>
-            <Label text="Welcome to the goal brainstorm activity">
+            <Label text="Welcome to the goal brainstorm activity" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -24,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT">
          <children>
-            <Label text="Use the following worksheet to help brainstorm goals.">
+            <Label text="Use the following worksheet to help brainstorm goals." wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>

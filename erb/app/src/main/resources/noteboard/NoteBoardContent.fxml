@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -32,31 +33,11 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label text="    -Create a category by entering the category name into the text field, then clicking the &quot;Add Category&quot; button." wrapText="true">
+            <TextArea fx:id="howToTextArea" editable="false" text="    -Create a category by entering the category name into the text field, then clicking the &quot;Add Category&quot; button.&#10;    -Click and drag a post it into one of the categories.&#10;    -Double click the post it to change the color and/or add text.&#10;    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;.&#10;    -Click and drag a post it to a new category or to reorder a category.&#10;" wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="15.0" />
                </font>
-            </Label>
-            <Label text="    -Click and drag a post it into one of the categories." wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="    -Double click the post it to change the color and/or add text." wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;." wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="    -Click and drag a post it to a new category or to reorder a category." wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
+            </TextArea>
          </children>
          <padding>
             <Insets bottom="5.0" />
