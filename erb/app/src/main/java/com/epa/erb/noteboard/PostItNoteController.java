@@ -33,6 +33,7 @@ public class PostItNoteController implements Initializable{
 		this.noteBoardContentController = noteBoardContentController;
 	}
 	
+	private int index =0;
 	private Stage editsStage = null;
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(PostItNoteController.class);
@@ -117,6 +118,10 @@ public class PostItNoteController implements Initializable{
 	
 	public NoteBoardContentController getNoteBoardContentController() {
 		return noteBoardContentController;
+	}
+
+	public int getPostItNoteIndex(CategorySectionController categorySectionController) {
+		return categorySectionController.getPostItHBox().getChildren().indexOf(getPostItNotePane());
 	}
 	
 	public String getPostItNoteText() {

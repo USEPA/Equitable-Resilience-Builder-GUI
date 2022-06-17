@@ -303,7 +303,7 @@ public class NoteBoardContentController implements Initializable{
 	public void setCategoryPostIts() {
 		for(CategorySectionController categorySectionController: categorySectionControllers) {
 			ArrayList<PostItNoteController> assignedPostItNoteControllers = new ArrayList<PostItNoteController>();
-			for(PostItNoteController postItNoteController: postItNoteControllers) {
+			for(PostItNoteController postItNoteController: postItNoteControllers) {				
 				if(postItNoteController.getPostItNotePane().getParent().hashCode() == categorySectionController.getPostItHBox().hashCode()) {
 					assignedPostItNoteControllers.add(postItNoteController);
 				}

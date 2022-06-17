@@ -468,14 +468,13 @@ public class XMLManager {
 			for(CategorySectionController category: categories) {
 				Element categoryElement = document.createElement("category");
 				categoryElement.setAttribute("name", category.getCategoryName());
-				
 				Element notesElement = document.createElement("notes");
 				for(PostItNoteController postItNoteController : category.getListOfPostItNoteControllers()) {
 					Element noteElement = document.createElement("note");
 					noteElement.setAttribute("content", postItNoteController.getPostItNoteText());
 					noteElement.setAttribute("color", postItNoteController.getPostItNoteColor());
 					noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
-					noteElement.setAttribute("position", String.valueOf(category.getPostItHBox().getChildren().indexOf(postItNoteController.getPostItNotePane())));
+					noteElement.setAttribute("position", String.valueOf(postItNoteController.getPostItNoteIndex(category)));
 					notesElement.appendChild(noteElement);
 				}
 				categoryElement.appendChild(notesElement);

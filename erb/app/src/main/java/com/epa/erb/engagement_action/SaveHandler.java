@@ -39,9 +39,9 @@ public class SaveHandler {
 	private Logger logger = LogManager.getLogger(SaveHandler.class);
 
 	public void beginSave() {
-			String saveType = determineSavePrompt();
-			if(!saveType.contentEquals("NO")) {
-				loadSavePopup(activity, chapter, goal, project, projects, saveType);
+		String saveType = determineSavePrompt();
+		if (!saveType.contentEquals("NO")) {
+			loadSavePopup(activity, chapter, goal, project, projects, saveType);
 		}
 	}
 	
