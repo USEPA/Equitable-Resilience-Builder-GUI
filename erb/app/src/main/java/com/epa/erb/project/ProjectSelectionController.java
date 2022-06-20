@@ -30,8 +30,10 @@ public class ProjectSelectionController implements Initializable{
 	ListView<Project> projectsListView;
 	
 	private App app;
-	public ProjectSelectionController(App app) {
+	private boolean updateProjects;
+	public ProjectSelectionController(App app, boolean updateProjects) {
 		this.app = app;
+		this.updateProjects = updateProjects;
 	}
 	
 	private Constants constants = new Constants();
@@ -41,6 +43,7 @@ public class ProjectSelectionController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
+		if(updateProjects) app.updateProjects();
 		setProjectsListViewCellFactory();
 		fillProjectsListView();
 	}

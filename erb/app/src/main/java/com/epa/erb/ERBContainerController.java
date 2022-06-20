@@ -43,14 +43,14 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void loadERBLandingToContainer() {
-		Parent root = loadERBLanding();
+		Parent root = loadERBLanding(true);
 		app.loadContentToERBContainer(root);
 	}
 	
-	private Parent loadERBLanding() {
+	private Parent loadERBLanding(boolean updateProjects) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
-			ERBLandingController erbLandingController = new ERBLandingController(app);
+			ERBLandingController erbLandingController = new ERBLandingController(app, updateProjects);
 			fxmlLoader.setController(erbLandingController);
 			return fxmlLoader.load();
 		} catch (Exception e) {

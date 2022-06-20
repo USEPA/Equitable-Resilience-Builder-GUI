@@ -73,14 +73,14 @@ public class App extends Application {
 	}
 	
 	private void loadERBLandingToContainer() {
-		Parent root = loadERBLanding();
+		Parent root = loadERBLanding(false);
 		loadContentToERBContainer(root);
 	}
 	
-	private Parent loadERBLanding() {
+	private Parent loadERBLanding(boolean updateProjects) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
-			ERBLandingController erbLandingController = new ERBLandingController(this);
+			ERBLandingController erbLandingController = new ERBLandingController(this, updateProjects);
 			fxmlLoader.setController(erbLandingController);
 			return fxmlLoader.load();
 		} catch (Exception e) {
@@ -146,6 +146,12 @@ public class App extends Application {
 		VBox.setVgrow(contentNode, Priority.ALWAYS);
 		HBox.setHgrow(contentNode, Priority.ALWAYS);
 		erbContainerController.getErbContainer().getChildren().add(contentNode);
+	}
+	
+	public void updateProjects() {
+		XMLManager xmlManager = new XMLManager(this);
+		File erbProjectDirectory = getERBProjectDirectory();
+		if(erbProjectDirectory != null && activities != null) projects = xmlManager.parseAllProjects(erbProjectDirectory, activities);
 	}
 	
 	private File getChaptersFileToParse() {

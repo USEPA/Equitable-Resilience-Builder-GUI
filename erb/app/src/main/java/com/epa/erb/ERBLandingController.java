@@ -45,8 +45,10 @@ public class ERBLandingController implements Initializable {
 
 
 	private App app;
-	public ERBLandingController(App app) {
+	private boolean updateProjects;
+	public ERBLandingController(App app, boolean updateProjects) {
 		this.app = app;
+		this.updateProjects = updateProjects;
 	}
 
 	private Constants constants = new Constants();
@@ -79,7 +81,7 @@ public class ERBLandingController implements Initializable {
 	private void loadProjectSelectionToContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
-			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app);
+			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app, updateProjects);
 			fxmlLoader.setController(projectSelectionController);
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
