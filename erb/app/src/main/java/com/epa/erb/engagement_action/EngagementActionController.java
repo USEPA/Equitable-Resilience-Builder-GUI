@@ -34,6 +34,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -51,7 +52,7 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	HBox headingHBox;
 	@FXML
-	Label chapterLabel;
+	TitledPane pathwayTitledPane;
 	@FXML
 	HBox erbPathwayDiagramHBox;
 	@FXML
@@ -156,6 +157,7 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void initializeStyle() {
+		pathwayTitledPane.setStyle("-fx-box-border: transparent;");
 		materialKeyPane.setStyle("-fx-background-color: " + constants.getMaterialsColor() + ";");
 		descriptionKeyPane.setStyle("-fx-background-color: " + constants.getDescriptionColor() + ";");
 		whoKeyPane.setStyle("-fx-background-color: " + constants.getWhoColor() + ";");
@@ -684,25 +686,23 @@ public class EngagementActionController implements Initializable{
 	private void generateChapterERBPathway() {
 		cleanERBPathwayDiagramHBox();
 		cleanListOfChapterDiagramControllers();
-		setChapterLabelText("Chapters");
 		for (Chapter chapter : getCurrentGoal().getChapters()) {
 			Parent root = loadChapterERBPathwayDiagram(chapter, getCurrentGoal().getChapters());
+			pathwayTitledPane.setText(getCurrentGoal().getGoalName() + " Pathway");
 			if(root != null) erbPathwayDiagramHBox.getChildren().add(root);
 		}
 	}
 	
 	private void generateActivityERBPathway(Chapter chapter) {
 		if (chapter != null) {
-			if (chapterLabel.getText() == null || !chapterLabel.getText().contentEquals(chapter.getStringName())) { // If a new chapter is selected
 				cleanERBPathwayDiagramHBox();
 				cleanListOfActivityDiagramControllers();
-				setChapterLabelText(chapter.getStringName() + " Activities");
 				for (Activity activity : chapter.getAssignedActivities()) {
 					Parent root = loadERBPathwayDiagram(activity, chapter);
+					pathwayTitledPane.setText(chapter.getStringName() + " Pathway");
 					if(root != null) erbPathwayDiagramHBox.getChildren().add(root);
 				}
 			}
-		}
 	}
 	
 	private void setNavigationButtonsDisability(TreeItem<String> selectedTreeItem, TreeItem<String> parentTreeItem) {
@@ -846,10 +846,6 @@ public class EngagementActionController implements Initializable{
 		if(globalGoalTrackerStage!=null) {
 			globalGoalTrackerStage.close();
 		}
-	}
-	
-	private void setChapterLabelText(String chapterLabelText) {
-		chapterLabel.setText(chapterLabelText);
 	}
 			
 	public Chapter getChapter(String chapterName) {
@@ -997,11 +993,7 @@ public class EngagementActionController implements Initializable{
 	public HBox getHeadingHBox() {
 		return headingHBox;
 	}
-
-	public Label getChapterLabel() {
-		return chapterLabel;
-	}
-
+	
 	public HBox getErbPathwayDiagramHBox() {
 		return erbPathwayDiagramHBox;
 	}
