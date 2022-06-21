@@ -87,6 +87,30 @@ public class Chapter {
 		}
 		return count;
 	}
+	
+	public String getStatus() {
+		boolean isReady = true; // if all activities are ready
+		boolean isComplete = true; // if all activities are complete
+		for (Activity activity : assignedActivities) {
+			if (!activity.getActivityID().contentEquals("25") && !activity.getActivityID().contentEquals("26")) {
+				if (activity.getStatus().contentEquals("ready")) {
+					isComplete = false;
+				} else if (activity.getStatus().contentEquals("in progress")) {
+					isComplete = false;
+					isReady = false;
+				} else if (activity.getStatus().contentEquals("complete")) {
+					isReady = false;
+				}
+			}
+		}
+		if (isComplete) {
+			return "complete";
+		} else if (isReady) {
+			return "ready";
+		} else {
+			return "in progress";
+		}
+	}
 
 	public int getChapterNum() {
 		return chapterNum;

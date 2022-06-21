@@ -134,6 +134,7 @@ public class EngagementActionController implements Initializable{
 	private HashMap<TreeItem<String>, String> treeItemActivityIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity GUID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //holds all of the attribute panels
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>(); //holds all of the pathway controllers
+	private ArrayList<ERBChapterDiagramController> listOfChapterDiagramControllers = new ArrayList<ERBChapterDiagramController>(); //holds all of the chapter controllers
 	private ArrayList<WorksheetContentController> listOfAllWorksheetContentControllers = new ArrayList<WorksheetContentController>();
 	private ArrayList<NoteBoardContentController> listOfAllNoteBoardContentControllers = new ArrayList<NoteBoardContentController>();
 	
@@ -314,6 +315,7 @@ public class EngagementActionController implements Initializable{
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBChapterDiagram.fxml"));
 			ERBChapterDiagramController erbChapterDiagramController = new ERBChapterDiagramController(chapter, chapters, this);
+			listOfChapterDiagramControllers.add(erbChapterDiagramController);
 			fxmlLoader.setController(erbChapterDiagramController);
 			return fxmlLoader.load();
 		} catch (Exception e) {
@@ -364,6 +366,8 @@ public class EngagementActionController implements Initializable{
 		RadioButton radioButton = (RadioButton) activityStatusToggleGroup.getSelectedToggle();
 		changeActivityStatus(currentSelectedActivity, radioButton);
 		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(currentSelectedActivity.getActivityID());
+		ERBChapterDiagramController erbChapterDiagramController = getErbChapterDiagramController(currentSelectedActivity.getChapterAssignment());
+		if(erbChapterDiagramController != null) erbChapterDiagramController.fillChapterCircleBasedOnStatus();
 		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
 		updateLocalProgress(getChapterForActivity(currentSelectedActivity), getCurrentGoal().getChapters());
 		currentSelectedActivity.setSaved(false);
@@ -679,6 +683,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void generateChapterERBPathway() {
 		cleanERBPathwayDiagramHBox();
+		cleanListOfChapterDiagramControllers();
 		setChapterLabelText("Chapters");
 		for (Chapter chapter : getCurrentGoal().getChapters()) {
 			Parent root = loadChapterERBPathwayDiagram(chapter, getCurrentGoal().getChapters());
@@ -779,6 +784,10 @@ public class EngagementActionController implements Initializable{
 	
 	private void cleanListOfActivityDiagramControllers() {
 		listOfPathwayDiagramControllers.clear();
+	}
+	
+	private void cleanListOfChapterDiagramControllers() {
+		listOfChapterDiagramControllers.clear();
 	}
 	
 	private void cleanListOfAttributePanelControllers() {
@@ -890,6 +899,16 @@ public class EngagementActionController implements Initializable{
 			}
 		}
 		logger.debug("ERB Pathway Diagram Controller returned is null");
+		return null;
+	}
+	
+	public ERBChapterDiagramController getErbChapterDiagramController(String selectedChapter) {
+		for(ERBChapterDiagramController erbChapterDiagramController : listOfChapterDiagramControllers) {
+			if(String.valueOf(erbChapterDiagramController.getChapter().getChapterNum()).contentEquals(selectedChapter)){
+				return erbChapterDiagramController;
+			}
+		}
+		logger.debug("ERB Chapter Diagram Controller returned is null");
 		return null;
 	}
 	

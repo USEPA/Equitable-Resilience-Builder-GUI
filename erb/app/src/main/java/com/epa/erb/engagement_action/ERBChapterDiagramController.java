@@ -3,6 +3,8 @@ package com.epa.erb.engagement_action;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import com.epa.erb.chapter.Chapter;
 import javafx.fxml.FXML;
@@ -49,7 +51,18 @@ public class ERBChapterDiagramController implements Initializable{
 	}
 	
 	private void initializeStyle() {
-		centerCircle.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
+		fillChapterCircleBasedOnStatus();
+	}
+	
+	public void fillChapterCircleBasedOnStatus() {
+		String chapterStatus = chapter.getStatus();
+		if(chapterStatus.contentEquals("ready")) {
+			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
+		} else if (chapterStatus.contentEquals("in progress")) {
+			centerCircle.setStyle("-fx-fill: " + constants.getInProgressStatusColor() + ";");
+		} else if (chapterStatus.contentEquals("complete")) {
+			centerCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
+		}
 	}
 	
 	private void hideLeadingLines() {
@@ -83,7 +96,7 @@ public class ERBChapterDiagramController implements Initializable{
 			}
 		}
 	}
-	
+		
 	private void setCenterCircleLabelText(String text) {
 		centerCircleLabel.setText(text);
 	}
