@@ -37,6 +37,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -420,16 +421,18 @@ public class EngagementActionController implements Initializable{
 	}
 		
 	@FXML
-	public void attributePanelCollapseClicked() {
-		String attributePanelCollapseString = attributePanelCollapseLabel.getText();
-		if(attributePanelCollapseString.contentEquals(">")) {
-			collapseAttributePanel();
-			attributePanelHBox.setMinWidth(0.0);
-			attributePanelCollapseLabel.setText("<");
-		} else if (attributePanelCollapseString.contentEquals("<")) {
-			unCollapseAttributePanel();
-			attributePanelHBox.setMinWidth(200.0);
-			attributePanelCollapseLabel.setText(">");
+	public void attributePanelCollapseClicked(MouseEvent mouseEvent) {
+		if (mouseEvent.getSource().toString().contains("VBox")) { //Don't allow for label
+			String attributePanelCollapseString = attributePanelCollapseLabel.getText();
+			if (attributePanelCollapseString.contentEquals(">") && !attributePanelCollapsed()) {
+				collapseAttributePanel();
+				attributePanelHBox.setMinWidth(0.0);
+				attributePanelCollapseLabel.setText("<");
+			} else if (attributePanelCollapseString.contentEquals("<") && attributePanelCollapsed()) {
+				unCollapseAttributePanel();
+				attributePanelHBox.setMinWidth(200.0);
+				attributePanelCollapseLabel.setText(">");
+			}
 		}
 	}
 	
@@ -751,6 +754,14 @@ public class EngagementActionController implements Initializable{
 	private void unCollapseAttributePanel() {
 		if(!attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
 			attributePanelHBox.getChildren().add(1, attributePanelContentVBox);
+		}
+	}
+	
+	private boolean attributePanelCollapsed() {
+		if(!attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 		
