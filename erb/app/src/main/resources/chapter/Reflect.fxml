@@ -110,7 +110,7 @@
                               <VBox fx:id="notesVBox" alignment="TOP_CENTER" spacing="35.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
-                        <VBox minWidth="75.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                        <VBox minWidth="225.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" spacing="3.0">
                                  <children>
