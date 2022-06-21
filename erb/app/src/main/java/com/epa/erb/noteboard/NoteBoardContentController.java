@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.Dragboard;
@@ -37,6 +38,8 @@ public class NoteBoardContentController implements Initializable{
 
 	@FXML
 	TextField categoryTextField;
+	@FXML
+	TitledPane howToTitledPane;
 	@FXML
 	TextArea howToTextArea;
 	@FXML
@@ -79,6 +82,7 @@ public class NoteBoardContentController implements Initializable{
 	}
 		
 	private void handleControls() {
+		howToTitledPane.setStyle("-fx-box-border: transparent;");
 		howToTextArea.getStylesheets().add("/textArea.css");
 		layer1Pane.setStyle("-fx-background-color: " + constants.getLayer1ColorString() + ";");
 		layer2Pane.setStyle("-fx-background-color: " + constants.getLayer2ColorString() + ";");

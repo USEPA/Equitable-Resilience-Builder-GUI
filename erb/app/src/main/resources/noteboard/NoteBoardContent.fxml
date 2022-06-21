@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
@@ -26,23 +27,25 @@
             <Insets left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <VBox>
-         <children>
-            <Label text="How to:">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="howToTextArea" editable="false" text="    -Create a category by entering the category name into the text field, then clicking the &quot;Add Category&quot; button.&#10;    -Click and drag a post it into one of the categories.&#10;    -Double click the post it to change the color and/or add text.&#10;    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;.&#10;    -Click and drag a post it to a new category or to reorder a category.&#10;" wrapText="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </TextArea>
-         </children>
-         <padding>
-            <Insets bottom="5.0" />
-         </padding>
-      </VBox>
+      <TitledPane fx:id="howToTitledPane" text="How To">
+         <content>
+            <VBox>
+               <children>
+                  <TextArea fx:id="howToTextArea" editable="false" text="    -Create a category by entering the category name into the text field, then clicking the &quot;Add Category&quot; button.&#10;    -Click and drag a post it into one of the categories.&#10;    -Double click the post it to change the color and/or add text.&#10;    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;.&#10;    -Click and drag a post it to a new category or to reorder a category.&#10;" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextArea>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </VBox>
+         </content>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TitledPane>
       <HBox alignment="CENTER_LEFT" spacing="15.0">
          <children>
             <Label text="Category:" />
