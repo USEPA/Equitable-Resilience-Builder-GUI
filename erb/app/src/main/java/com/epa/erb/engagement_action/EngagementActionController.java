@@ -56,6 +56,8 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	HBox erbPathwayDiagramHBox;
 	@FXML
+	VBox erbPathwayVBox;
+	@FXML
 	VBox erbKeyVBox;
 	@FXML
 	Pane materialKeyPane;
@@ -686,6 +688,7 @@ public class EngagementActionController implements Initializable{
 	private void generateChapterERBPathway() {
 		cleanERBPathwayDiagramHBox();
 		cleanListOfChapterDiagramControllers();
+		erbPathwayVBox.setPrefHeight(75);
 		for (Chapter chapter : getCurrentGoal().getChapters()) {
 			Parent root = loadChapterERBPathwayDiagram(chapter, getCurrentGoal().getChapters());
 			pathwayTitledPane.setText(getCurrentGoal().getGoalName() + " Pathway");
@@ -697,6 +700,7 @@ public class EngagementActionController implements Initializable{
 		if (chapter != null) {
 				cleanERBPathwayDiagramHBox();
 				cleanListOfActivityDiagramControllers();
+				erbPathwayVBox.setPrefHeight(150);
 				for (Activity activity : chapter.getAssignedActivities()) {
 					Parent root = loadERBPathwayDiagram(activity, chapter);
 					pathwayTitledPane.setText(chapter.getStringName() + " Pathway");
