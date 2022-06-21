@@ -72,7 +72,7 @@
                            <children>
                               <HBox alignment="CENTER" spacing="3.0">
                                  <children>
-                                    <Label text="Completed" HBox.hgrow="ALWAYS">
+                                    <Label text="Status" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>

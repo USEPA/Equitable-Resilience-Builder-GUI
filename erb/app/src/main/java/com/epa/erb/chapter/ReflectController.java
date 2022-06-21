@@ -16,7 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -130,7 +129,7 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void populateControlsForChapterActivities() {
-		populateStatusCheckBoxes(chapterActivities);
+		populateStatusLabels(chapterActivities);
 		populateActivityLabels(chapterActivities);
 		populateRatingSliders(chapterActivities);
 		populateNotesHyperlinks(chapterActivities);
@@ -269,36 +268,31 @@ public class ReflectController implements Initializable{
 		}
 	}
 	
-	private void populateStatusCheckBoxes(ArrayList<Activity> activities) {
-		ArrayList<CheckBox> statusCheckBoxes = createActivityStatusCheckBoxes(activities);
-		addActivityStatusCheckBoxes(statusCheckBoxes);
-	}
-	
-	private ArrayList<CheckBox> createActivityStatusCheckBoxes(ArrayList<Activity> activities){
-		ArrayList<CheckBox> listOfCheckBoxes = new ArrayList<CheckBox>();
-		for(Activity activity : activities) {
-			CheckBox checkBox = new CheckBox();
-			checkBox.setDisable(true);
-			checkBox.setStyle("-fx-opacity: 1");
-			checkBox.setId(activity.getActivityID());
-			setActivityStatusCheckBox(checkBox, activity);
-			listOfCheckBoxes.add(checkBox);
-		}
-		return listOfCheckBoxes;
+	private void populateStatusLabels(ArrayList<Activity> activities) {
+		ArrayList<Label> statusLabels = createActivityStatusLabels(activities);
+		addActivityStatusLabel(statusLabels);
 	}	
 	
-	private void addActivityStatusCheckBoxes(ArrayList<CheckBox> statusCheckBoxes) {
-		for(CheckBox checkBox: statusCheckBoxes) {
-			statusVBox.getChildren().add(checkBox);
+	private ArrayList<Label> createActivityStatusLabels(ArrayList<Activity> activities){
+		ArrayList<Label> listOfLabels= new ArrayList<Label>();
+		for(Activity activity : activities) {
+			Label label = new Label();
+			label.setFont(new Font(14.0));
+			label.setId(activity.getActivityID());
+			setActivityStatusLabel(label, activity);
+			listOfLabels.add(label);
+		}
+		return listOfLabels;
+	}
+	
+	private void addActivityStatusLabel(ArrayList<Label> statusLabels) {
+		for(Label label: statusLabels) {
+			statusVBox.getChildren().add(label);
 		}
 	}
 	
-	private void setActivityStatusCheckBox(CheckBox checkBox, Activity activity) {
-		if(activity.getStatus().contentEquals("complete")) {
-			checkBox.setSelected(true);
-		} else {
-			checkBox.setSelected(false);
-		}
+	private void setActivityStatusLabel(Label label, Activity activity) {
+		label.setText(activity.getStatus());
 	}
 	
 	public void initProgress(Goal goal, Chapter chapter) {
