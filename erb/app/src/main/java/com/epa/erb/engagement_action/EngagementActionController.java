@@ -944,7 +944,7 @@ public class EngagementActionController implements Initializable{
 		return null;
 	}
 	
-	private Activity getActivityForIDInGoal(String activityID, Goal goal) {
+	public Activity getActivityForIDInGoal(String activityID, Goal goal) {
 		if (activityID.contentEquals("25") || activityID.contentEquals("26")) {
 			return app.getActivity(activityID);
 		} else {

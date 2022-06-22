@@ -37,7 +37,20 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
-            <VBox VBox.vgrow="ALWAYS">
+            <VBox fx:id="planPanel">
+               <children>
+                  <Label text="Plan">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="planListView" VBox.vgrow="NEVER" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox fx:id="activitiesPanel" VBox.vgrow="ALWAYS">
                <children>
                   <Label text="Activites">
                      <font>
@@ -45,6 +58,19 @@
                      </font>
                   </Label>
                   <ListView fx:id="activitiesListView" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox fx:id="reflectPanel">
+               <children>
+                  <Label text="Reflect">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="reflectListView" VBox.vgrow="NEVER" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

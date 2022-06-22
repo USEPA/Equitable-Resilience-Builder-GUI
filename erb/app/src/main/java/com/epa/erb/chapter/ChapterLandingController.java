@@ -27,6 +27,12 @@ public class ChapterLandingController implements Initializable {
 	@FXML
 	VBox aboutPanel;
 	@FXML
+	VBox activitiesPanel;
+	@FXML
+	VBox planPanel;
+	@FXML
+	VBox reflectPanel;
+	@FXML
 	Label headingLabel;
 	@FXML
 	HBox headingLabelHBox;
@@ -34,6 +40,10 @@ public class ChapterLandingController implements Initializable {
 	TextArea aboutTextArea;
 	@FXML
 	ListView<Activity> activitiesListView;
+	@FXML
+	ListView<Activity> planListView;
+	@FXML
+	ListView<Activity> reflectListView;
 	
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
@@ -56,11 +66,24 @@ public class ChapterLandingController implements Initializable {
 		setAboutTextAreaText(getAboutText());
 		setHeadingLabelText(getHeadingLabelText());
 		fillActivitiesListView(getActivitiesForListView());
+		fillPlanListView();
+		fillReflectListView();
 	}
 	
 	private void handleControls() {
 		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		aboutTextArea.getStylesheets().add("/textArea.css");
+		handleControlsShowed();
+	}
+	
+	private void handleControlsShowed() {
+		if(listOfAllChapters != null) {
+			removePlanPanel();
+			removeReflectPanel();
+		} else {
+			addPlanPanel();
+			addReflectPanel();
+		}
 	}
 	
 	public void setHeadingLabelText(String text) {
@@ -95,6 +118,20 @@ public class ChapterLandingController implements Initializable {
 			activitiesListView.getItems().add(activity);
 		}
 		setActivityListViewCellFactory();
+	}
+	
+	public void fillPlanListView() {
+		cleanPlanListView();
+		Activity planActivity = engagementActionController.getActivityForIDInGoal("25", engagementActionController.getCurrentGoal());
+		planListView.getItems().add(planActivity);
+		setPlanListViewCellFactory();
+	}
+	
+	public void fillReflectListView() {
+		cleanReflectListView();
+		Activity reflectActivity = engagementActionController.getActivityForIDInGoal("26", engagementActionController.getCurrentGoal());
+		reflectListView.getItems().add(reflectActivity);
+		setReflectListViewCellFactory();
 	}
 	
 	private ArrayList<Activity> getActivitiesForListView() {
@@ -133,6 +170,46 @@ public class ChapterLandingController implements Initializable {
 		});
 	}
 	
+	private void setPlanListViewCellFactory() {
+		planListView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
+			@Override
+			public ListCell<Activity> call(ListView<Activity> param) {
+				ListCell<Activity> cell = new ListCell<Activity>() {
+					@Override
+					protected void updateItem(Activity item, boolean empty) {
+						super.updateItem(item, empty);
+						if (item != null) {
+							setText("Chapter " + chapter.getChapterNum() + ": Plan");
+							setFont(new Font(14.0));
+						}
+					}
+				};
+				cell.setOnMouseClicked(e -> planSelectedInList());
+				return cell;
+			}
+		});
+	}
+	
+	private void setReflectListViewCellFactory() {
+		reflectListView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
+			@Override
+			public ListCell<Activity> call(ListView<Activity> param) {
+				ListCell<Activity> cell = new ListCell<Activity>() {
+					@Override
+					protected void updateItem(Activity item, boolean empty) {
+						super.updateItem(item, empty);
+						if (item != null) {
+							setText("Chapter " + chapter.getChapterNum() + ": Reflect");
+							setFont(new Font(14.0));
+						}
+					}
+				};
+				cell.setOnMouseClicked(e -> reflectSelectedInList());
+				return cell;
+			}
+		});
+	}
+	
 	private void handleActivitySelectedInList() {
 		Activity selectedActivity = activitiesListView.getSelectionModel().getSelectedItem();
 		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
@@ -143,6 +220,42 @@ public class ChapterLandingController implements Initializable {
 				if (treeItemActivityID.contentEquals(selectedActivity.getActivityID())) { // if tree item GUID matches
 					Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
 					if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(selectedActivity.getChapterAssignment())) {
+						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
+						engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
+					}
+				}
+			}
+		}
+	}
+	
+	private void planSelectedInList() {
+		Activity activity = planListView.getSelectionModel().getSelectedItem();
+		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
+		for (TreeItem<String> treeItem : treeMap.keySet()) {
+			String treeItemValue = treeItem.getValue();
+			if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
+				String treeItemActivityID = treeMap.get(treeItem);
+				if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
+					Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
+					if (treeItemChapter.getChapterNum() == chapter.getChapterNum()) {
+						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
+						engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
+					}
+				}
+			}
+		}
+	}
+	
+	private void reflectSelectedInList() {
+		Activity activity = reflectListView.getSelectionModel().getSelectedItem();
+		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
+		for (TreeItem<String> treeItem : treeMap.keySet()) {
+			String treeItemValue = treeItem.getValue();
+			if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
+				String treeItemActivityID = treeMap.get(treeItem);
+				if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
+					Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
+					if (treeItemChapter.getChapterNum() == chapter.getChapterNum()) {
 						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 						engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
 					}
@@ -163,8 +276,42 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 	
+	private void removePlanPanel() {
+		if(mainPanel.getChildren().contains(planPanel)) {
+			mainPanel.getChildren().remove(planPanel);
+		}
+	}
+	
+	private void addPlanPanel() {
+		if(!mainPanel.getChildren().contains(planPanel)) {
+			int index = mainPanel.getChildren().indexOf(activitiesPanel);
+			mainPanel.getChildren().add(index -1, planPanel);
+		}
+	}
+	
+	private void removeReflectPanel() {
+		if(mainPanel.getChildren().contains(reflectPanel)) {
+			mainPanel.getChildren().remove(reflectPanel);
+		}
+	}
+	
+	private void addReflectPanel() {
+		if(!mainPanel.getChildren().contains(reflectPanel)) {
+			int index = mainPanel.getChildren().indexOf(activitiesPanel);
+			mainPanel.getChildren().add(index + 1, reflectPanel);
+		}
+	}
+	
 	private void cleanActivitiesListView() {
 		activitiesListView.getItems().clear();
+	}
+	
+	private void cleanPlanListView() {
+		planListView.getItems().clear();
+	}
+
+	private void cleanReflectListView() {
+		reflectListView.getItems().clear();
 	}
 
 	public VBox getMainPanel() {
