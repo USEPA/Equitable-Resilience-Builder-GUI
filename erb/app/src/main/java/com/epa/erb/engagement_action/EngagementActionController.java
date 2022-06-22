@@ -462,6 +462,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void erbPathwayTreeItemSelected() {
+		if(currentSelectedActivity != null) app.initSaveHandler(null, getChapterForActivityInGoal(currentSelectedActivity, currentSelectedGoal), currentSelectedGoal, project, null, "projectChange");
+		//--
 		currentSelectedActivity = null;
 		currentSelectedChapter = null;
 		//--
@@ -508,6 +510,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void activityTreeItemSelected(TreeItem<String> activityTreeItem) {
+		if(currentSelectedActivity != null) app.initSaveHandler(currentSelectedActivity, null, currentSelectedGoal, project, null, "activityChange");
+		//--
 		String activityId = treeItemActivityIdTreeMap.get(activityTreeItem);
 		currentSelectedActivity = getActivityForIDInGoal(activityId, currentSelectedGoal);
 		currentSelectedChapter = getChapterForNameInGoal(activityTreeItem.getParent().getValue(), currentSelectedGoal);
