@@ -116,9 +116,7 @@ public class ReflectController implements Initializable{
 	
 	private void fillChapterActivitiesList() {
 		for(Activity activity : chapter.getAssignedActivities()) {
-			if(!activity.getActivityID().contentEquals("25") && !activity.getActivityID().contentEquals("26")) {
 				chapterActivities.add(activity);
-			}
 		}
 	}
 	

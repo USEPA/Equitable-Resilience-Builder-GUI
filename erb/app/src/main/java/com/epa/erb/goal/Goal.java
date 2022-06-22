@@ -61,10 +61,6 @@ public class Goal {
 	
 	private ArrayList<Activity> getActivitiesForChapter(String chapterNumber, ArrayList<Activity> activities,ArrayList<String> goalActivityIds) {
 		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
-		Activity planActivity = app.getActivity("25");
-		Activity planCloneActivity = planActivity.cloneActivity();
-		planCloneActivity.setChapterAssignment(chapterNumber);
-		activitiesForChapter.add(planCloneActivity);
 		for (Activity activity : activities) {
 			if (activity.getChapterAssignment().contentEquals(chapterNumber) && !activitiesForChapter.contains(activity)) {
 				if (goalActivityIds.contains(activity.getActivityID())) {
@@ -73,10 +69,6 @@ public class Goal {
 				}
 			}
 		}
-		Activity reflectActivity = app.getActivity("26");
-		Activity reflectCloneActivity = reflectActivity.cloneActivity();
-		reflectCloneActivity.setChapterAssignment(chapterNumber);
-		activitiesForChapter.add(reflectCloneActivity);
 		return activitiesForChapter;
 	}
 	

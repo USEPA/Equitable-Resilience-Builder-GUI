@@ -92,7 +92,7 @@ public class ERBChapterDiagramController implements Initializable{
 		for (TreeItem<String> treeItem : engagementActionController.getTreeItemActivityIdTreeMap().keySet()) {
 			if (engagementActionController.getTreeItemActivityIdTreeMap().get(treeItem) == activityGUID) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-				engagementActionController.treeViewClicked(null);
+				engagementActionController.treeViewClicked(null, treeItem);
 			}
 		}
 	}

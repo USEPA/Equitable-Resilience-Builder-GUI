@@ -92,7 +92,6 @@ public class Chapter {
 		boolean isReady = true; // if all activities are ready
 		boolean isComplete = true; // if all activities are complete
 		for (Activity activity : assignedActivities) {
-			if (!activity.getActivityID().contentEquals("25") && !activity.getActivityID().contentEquals("26")) {
 				if (activity.getStatus().contentEquals("ready")) {
 					isComplete = false;
 				} else if (activity.getStatus().contentEquals("in progress")) {
@@ -101,7 +100,6 @@ public class Chapter {
 				} else if (activity.getStatus().contentEquals("complete")) {
 					isReady = false;
 				}
-			}
 		}
 		if (isComplete) {
 			return "complete";

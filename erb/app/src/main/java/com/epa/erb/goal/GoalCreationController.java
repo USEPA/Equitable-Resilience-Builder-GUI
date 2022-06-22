@@ -29,6 +29,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
@@ -74,8 +75,10 @@ public class GoalCreationController implements Initializable{
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
 			root.setPrefHeight(app.getPrefHeight());
+			VBox.setVgrow(root, Priority.ALWAYS);
 			app.loadContentToERBContainer(root);
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 	}
@@ -228,13 +231,11 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void createActivityDirectory(File activitiesDirectory, Goal goal) {
-		for(Chapter chapter : goal.getChapters()) {
-			for(Activity activity : chapter.getAssignedActivities()) {
-				if(!activity.getActivityID().contentEquals("25") && !activity.getActivityID().contentEquals("26")) {
-					File activityDirectory = new File(activitiesDirectory.getPath() + "\\" + activity.getActivityID());
-					if(!activityDirectory.exists()) {
-						activityDirectory.mkdir();
-					}
+		for (Chapter chapter : goal.getChapters()) {
+			for (Activity activity : chapter.getAssignedActivities()) {
+				File activityDirectory = new File(activitiesDirectory.getPath() + "\\" + activity.getActivityID());
+				if (!activityDirectory.exists()) {
+					activityDirectory.mkdir();
 				}
 			}
 		}

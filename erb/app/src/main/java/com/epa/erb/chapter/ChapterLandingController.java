@@ -141,10 +141,10 @@ public class ChapterLandingController implements Initializable {
 			if (treeItemValue.contentEquals(selectedActivity.getLongName())) { // if tree item value matches activity name
 				String treeItemActivityID = treeMap.get(treeItem);
 				if (treeItemActivityID.contentEquals(selectedActivity.getActivityID())) { // if tree item GUID matches
-					Chapter treeItemChapter = engagementActionController.getChapter(treeItem.getParent().getValue());
+					Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
 					if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(selectedActivity.getChapterAssignment())) {
 						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
-						engagementActionController.treeViewClicked(null); // handle tree item selected
+						engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
 					}
 				}
 			}
