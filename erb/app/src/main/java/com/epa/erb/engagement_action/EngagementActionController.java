@@ -72,8 +72,6 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	Pane readyKeyPane;
 	@FXML
-	Pane skippedKeyPane;
-	@FXML
 	Pane inProgressKeyPane;
 	@FXML
 	VBox treeViewVBox;
@@ -111,8 +109,6 @@ public class EngagementActionController implements Initializable{
 	ProgressIndicator chapterProgressIndicator;
 	@FXML
 	Button previousButton;
-	@FXML
-	Button skipButton;
 	@FXML
 	Button nextButton;
 	@FXML
@@ -167,7 +163,6 @@ public class EngagementActionController implements Initializable{
 		whoKeyPane.setStyle("-fx-background-color: " + constants.getWhoColor() + ";");
 		completeKeyPane.setStyle("-fx-background-color: " + constants.getCompleteStatusColor() + ";");
 		readyKeyPane.setStyle("-fx-background-color: " + constants.getReadyStatusColor() + ";");
-		skippedKeyPane.setStyle("-fx-background-color: " + constants.getSkippedStatusColor() + ";");
 		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
 		chapterProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
@@ -400,11 +395,6 @@ public class EngagementActionController implements Initializable{
 			treeView.getSelectionModel().select(parentTreeItem.getChildren().get(currentIndex - 1));
 			treeViewClicked(null, parentTreeItem.getChildren().get(currentIndex - 1));
 		}
-	}
-	
-	@FXML
-	public void skipButtonAction() {
-		
 	}
 	
 	@FXML
@@ -743,7 +733,6 @@ public class EngagementActionController implements Initializable{
 		if (selectedTreeItem != null) { //if activity is not null
 			if (parentTreeItem == null) { //if erb pathway
 				previousButton.setDisable(true);
-				skipButton.setDisable(true);
 				nextButton.setDisable(false);
 			} else {
 				int numberOfChildrenInParent = parentTreeItem.getChildren().size();
@@ -751,26 +740,21 @@ public class EngagementActionController implements Initializable{
 					int indexOfSelectedItem = parentTreeItem.getChildren().indexOf(selectedTreeItem);
 					if (indexOfSelectedItem == 0) { //if first activity
 						previousButton.setDisable(true);
-						skipButton.setDisable(true); //true
 						nextButton.setDisable(false);
 					} else if (indexOfSelectedItem == parentTreeItem.getChildren().size() - 1) { //if last activity
 						previousButton.setDisable(false);
-						skipButton.setDisable(true);
 						nextButton.setDisable(true);
 					} else {
 						previousButton.setDisable(false);
-						skipButton.setDisable(true);
 						nextButton.setDisable(false);
 					}
 				} else { //if only 1 activity
 					previousButton.setDisable(true);
-					skipButton.setDisable(true);
 					nextButton.setDisable(true);
 				}
 			}
 		} else { //if activity is null
 			previousButton.setDisable(true);
-			skipButton.setDisable(true);
 			nextButton.setDisable(true);
 		}
 	}
@@ -1076,10 +1060,6 @@ public class EngagementActionController implements Initializable{
 		return readyKeyPane;
 	}
 
-	public Pane getSkippedKeyPane() {
-		return skippedKeyPane;
-	}
-
 	public Pane getInProgressKeyPane() {
 		return inProgressKeyPane;
 	}
@@ -1154,10 +1134,6 @@ public class EngagementActionController implements Initializable{
 
 	public Button getPreviousButton() {
 		return previousButton;
-	}
-
-	public Button getSkipButton() {
-		return skipButton;
 	}
 
 	public Button getNextButton() {

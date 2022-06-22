@@ -134,8 +134,6 @@ public class ERBPathwayDiagramController implements Initializable {
 		// Center Circle
 		if (activity.getStatus().contentEquals("ready")) {
 			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getReadyStatusColor());
-		} else if (activity.getStatus().contentEquals("skipped")) {
-			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getSkippedStatusColor());
 		} else if (activity.getStatus().contentEquals("complete")) {
 			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getCompleteStatusColor());
 		} else if (activity.getStatus().contentEquals("in progress")) {
@@ -146,8 +144,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	private void setCenterCircleLetter() {
 		if (activity.getStatus().contentEquals("ready")) {
 			centerCircleLabel.setText("R");
-		} else if (activity.getStatus().contentEquals("skipped")) {
-			centerCircleLabel.setText("S");
 		} else if (activity.getStatus().contentEquals("complete")) {
 			centerCircleLabel.setText("C");
 		} else if (activity.getStatus().contentEquals("in progress")) {
@@ -171,8 +167,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	private void setCenterCircleColor() {
 		if (activity.getStatus().contentEquals("ready")) {
 			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
-		} else if (activity.getStatus().contentEquals("skipped")) {
-			centerCircle.setStyle("-fx-fill: " + constants.getSkippedStatusColor() + ";");
 		} else if (activity.getStatus().contentEquals("complete")) {
 			centerCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
 		} else if (activity.getStatus().contentEquals("in progress")) {

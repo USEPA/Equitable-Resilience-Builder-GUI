@@ -66,16 +66,6 @@ public class Chapter {
 		return count;
 	}
 	
-	public int getNumberOfSkippedActivities() {
-		int count = 0;
-		for(Activity activity: assignedActivities) {
-			if(activity.getStatus().contentEquals("skipped")) {
-				count++;
-			}
-		}
-		return count;
-	}
-	
 	public int getNumberOfCompletedActivities() {
 		int count = 0;
 		for(Activity activity: assignedActivities) {

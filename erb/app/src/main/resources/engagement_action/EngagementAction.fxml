@@ -101,12 +101,6 @@
                                     </HBox>
                                     <HBox spacing="20.0">
                                        <children>
-                                          <Pane fx:id="skippedKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                          <Label text="Skipped" />
-                                       </children>
-                                    </HBox>
-                                    <HBox spacing="20.0">
-                                       <children>
                                           <Pane fx:id="inProgressKeyPane" prefHeight="18.0" prefWidth="30.0" />
                                           <Label text="In Progress" />
                                        </children>
@@ -253,11 +247,6 @@
                         <HBox fx:id="previousHBox" HBox.hgrow="ALWAYS">
                            <children>
                               <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" text="Previous" />
-                           </children>
-                        </HBox>
-                        <HBox fx:id="skipHBox" alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Button fx:id="skipButton" mnemonicParsing="false" onAction="#skipButtonAction" text="Skip" />
                            </children>
                         </HBox>
                         <HBox fx:id="nextHBox" alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">

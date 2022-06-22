@@ -22,7 +22,6 @@ public class Constants {
 	private String readyStatusColor = "#E3E3E3"; 				//Gray
 	private String inProgressStatusColor = "#EDF7B2"; 			//Yellow
 	private String completeStatusColor = "#B2F7D1"; 			//Mint Green
-	private String skippedStatusColor = "#B2C1F7"; 				//Light Blue
 		//Attributes
 	private String shortNameColor = "";
 	private String longNameColor = "";
@@ -96,9 +95,6 @@ public class Constants {
 	}
 	public String getCompleteStatusColor() {
 		return completeStatusColor;
-	}
-	public String getSkippedStatusColor() {
-		return skippedStatusColor;
 	}
 	public String getShortNameColor() {
 		return shortNameColor;
