@@ -9,27 +9,27 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polygon?>
 
-<HBox fx:id="diagramHBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="diagramHBox" alignment="CENTER_LEFT" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox>
          <children>
             <HBox VBox.vgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER">
+                  <HBox fx:id="lineHBox" alignment="CENTER">
                      <children>
-                        <Line fx:id="leftLeadingLine" endX="-50.0" startX="-100.0" />
+                        <Line fx:id="leftLeadingLine" endX="-60.0" startX="-105.0" />
                         <StackPane>
                            <children>
                               <Circle fx:id="centerCircle" fill="WHITE" onMouseClicked="#centerCircleClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
                               <Label fx:id="centerCircleLabel" onMouseClicked="#centerCircleClicked" />
                            </children>
                         </StackPane>
-                        <Line fx:id="rightLeadingLine" endX="-50.0" startX="-100.0" />
+                        <Line fx:id="rightLeadingLine" endX="-60.0" startX="-105.0" />
                      </children>
                   </HBox>
                   <VBox fx:id="arrowVBox" alignment="CENTER_LEFT">
                      <children>
-                        <Polygon points="26.5, -15.5, 56.0, -15.5, 41.5, -45.5" rotate="90.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Polygon points="26.5, -15.5, 56.0, -15.5, 41.25, -45.750030517578125" rotate="90.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </VBox>
                </children>

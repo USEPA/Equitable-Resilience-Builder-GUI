@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressIndicator?>
@@ -36,86 +37,95 @@
       </HBox>
       <TitledPane fx:id="pathwayTitledPane" text="Pathway">
          <content>
-            <HBox fx:id="headingHBox">
+            <VBox fx:id="titledPaneVBox">
                <children>
-                  <VBox fx:id="erbPathwayVBox" prefHeight="150.0" HBox.hgrow="ALWAYS">
+                  <HBox fx:id="headingHBox">
                      <children>
-                        <ScrollPane fx:id="erbPathwayDiagramScrollPane" fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-                           <content>
-                              <HBox fx:id="erbPathwayDiagramHBox" alignment="CENTER_LEFT" />
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </VBox>
-                  <VBox fx:id="erbKeyVBox" minWidth="120.0" spacing="2.0">
-                     <children>
-                        <Label text="Key">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator />
-                        <HBox spacing="5.0">
+                        <VBox fx:id="erbPathwayVBox" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox spacing="2.0">
-                                 <children>
-                                    <HBox spacing="20.0">
-                                       <children>
-                                          <Pane fx:id="materialKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                          <Label text="Materials" />
-                                       </children>
-                                    </HBox>
-                                    <HBox spacing="20.0">
-                                       <children>
-                                          <Pane fx:id="descriptionKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                          <Label text="Description" />
-                                       </children>
-                                    </HBox>
-                                    <HBox spacing="20.0">
-                                       <children>
-                                          <Pane fx:id="whoKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                          <Label text="Who" />
-                                       </children>
-                                    </HBox>
-                                    <HBox spacing="20.0">
-                                       <children>
-                                          <Pane fx:id="timeKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                          <Label text="Time" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <VBox spacing="2.0">
-                                 <children>
-                                    <HBox spacing="20.0">
-                                       <children>
-                                          <Pane fx:id="completeKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                          <Label text="Complete" />
-                                       </children>
-                                    </HBox>
-                                    <HBox spacing="20.0">
-                                       <children>
-                                          <Pane fx:id="readyKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                          <Label text="Ready" />
-                                       </children>
-                                    </HBox>
-                                    <HBox spacing="20.0">
-                                       <children>
-                                          <Pane fx:id="inProgressKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                          <Label text="In Progress" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
+                              <ScrollPane fx:id="erbPathwayDiagramScrollPane" fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                                 <content>
+                                    <HBox fx:id="erbPathwayDiagramHBox" alignment="CENTER_LEFT" />
+                                 </content>
+                              </ScrollPane>
                            </children>
-                        </HBox>
+                        </VBox>
+                        <VBox fx:id="erbKeyVBox" minWidth="120.0" spacing="2.0">
+                           <children>
+                              <Label text="Key">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Separator />
+                              <HBox fx:id="keyPaneHBox" spacing="5.0">
+                                 <children>
+                                    <VBox spacing="2.0">
+                                       <children>
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <Pane fx:id="completeKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label text="Complete" />
+                                             </children>
+                                          </HBox>
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <Pane fx:id="readyKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label text="Ready" />
+                                             </children>
+                                          </HBox>
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <Pane fx:id="inProgressKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label text="In Progress" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="detailsKeyPaneVBox" spacing="2.0">
+                                       <children>
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <Pane fx:id="materialKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label text="Materials" />
+                                             </children>
+                                          </HBox>
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <Pane fx:id="descriptionKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label text="Description" />
+                                             </children>
+                                          </HBox>
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <Pane fx:id="whoKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label text="Who" />
+                                             </children>
+                                          </HBox>
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <Pane fx:id="timeKeyPane" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label text="Time" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </padding>
+                        </VBox>
                      </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" />
-                     </padding>
-                  </VBox>
+                  </HBox>
+                  <HBox fx:id="showDetailsHBox" alignment="CENTER_RIGHT">
+                     <children>
+                        <CheckBox fx:id="showDetailsCheckBox" mnemonicParsing="false" onAction="#showDetailsCheckboxAction" text="Show Details" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </content>
          <font>
             <Font name="System Bold" size="15.0" />

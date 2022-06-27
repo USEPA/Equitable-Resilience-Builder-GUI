@@ -3,14 +3,13 @@ package com.epa.erb.engagement_action;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import com.epa.erb.chapter.Chapter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -19,6 +18,8 @@ public class ERBChapterDiagramController implements Initializable{
 
 	@FXML
 	VBox arrowVBox;
+	@FXML
+	HBox lineHBox;
 	@FXML
 	Line leftLeadingLine;
 	@FXML
@@ -79,10 +80,12 @@ public class ERBChapterDiagramController implements Initializable{
 	
 	private void hideLeftLeadingLine() {
 		leftLeadingLine.setVisible(false);
+		lineHBox.getChildren().remove(leftLeadingLine);
 	}
 	
 	private void hideRightLeadingLine() {
 		rightLeadingLine.setVisible(false);
+		lineHBox.getChildren().remove(rightLeadingLine);
 		arrowVBox.setVisible(false);
 	}
 	

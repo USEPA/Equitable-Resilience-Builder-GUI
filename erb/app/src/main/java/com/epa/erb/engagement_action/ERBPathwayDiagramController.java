@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -50,6 +51,18 @@ public class ERBPathwayDiagramController implements Initializable {
 	Label activityLabel;
 	@FXML
 	Label centerCircleLabel;
+	@FXML
+	VBox holderVBox;
+	@FXML
+	HBox topLinesHBox;
+	@FXML
+	HBox bottomLinesHBox;
+	@FXML
+	HBox topCirclesHBox;
+	@FXML
+	HBox bottomCirclesHBox;
+	@FXML
+	HBox centerHBox;
 
 	private Chapter chapter;
 	private Activity activity;
@@ -88,6 +101,32 @@ public class ERBPathwayDiagramController implements Initializable {
 		if (activity.getTime().length() == 0) {
 			bottomRightCircleLabel.setVisible(false);
 		}
+		engagementActionController.getShowDetailsCheckBox().setSelected(true);
+	}
+	
+	void hideDetails() {
+		holderVBox.getChildren().remove(topLinesHBox);
+		holderVBox.getChildren().remove(topCirclesHBox);
+		holderVBox.getChildren().remove(bottomLinesHBox);
+		holderVBox.getChildren().remove(bottomCirclesHBox);
+	}
+	
+	void showDetails() {
+		if(!holderVBox.getChildren().contains(topCirclesHBox)) {
+			holderVBox.getChildren().add(0, topCirclesHBox);
+		}
+		
+		if(!holderVBox.getChildren().contains(topLinesHBox)) {
+			holderVBox.getChildren().add(1, topLinesHBox);
+		}
+		
+		if(!holderVBox.getChildren().contains(bottomLinesHBox)) {
+			holderVBox.getChildren().add(3, bottomLinesHBox);
+		}
+		
+		if(!holderVBox.getChildren().contains(bottomCirclesHBox)) {
+			holderVBox.getChildren().add(4, bottomCirclesHBox);
+		}
 	}
 	
 	private void hideLeadingLines() {
@@ -104,10 +143,12 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	private void hideLeftLeadingLine() {
 		leftLeadingLine.setVisible(false);
+		//centerHBox.getChildren().remove(leftLeadingLine);
 	}
 
 	private void hideRightLeadingLine() {
 		rightLeadingLine.setVisible(false);
+		//centerHBox.getChildren().remove(rightLeadingLine);
 		arrowVBox.setVisible(false);
 	}
 	

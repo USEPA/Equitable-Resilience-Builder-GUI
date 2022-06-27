@@ -28,6 +28,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -58,7 +59,13 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	VBox erbPathwayVBox;
 	@FXML
+	ScrollPane erbPathwayDiagramScrollPane;
+	@FXML
 	VBox erbKeyVBox;
+	@FXML
+	HBox keyPaneHBox;
+	@FXML
+	VBox detailsKeyPaneVBox;
 	@FXML
 	Pane materialKeyPane;
 	@FXML
@@ -119,6 +126,12 @@ public class EngagementActionController implements Initializable{
 	RadioButton inProgressRadioButton;
 	@FXML
 	RadioButton completeRadioButton;
+	@FXML
+	CheckBox showDetailsCheckBox;
+	@FXML
+	VBox titledPaneVBox;
+	@FXML
+	HBox showDetailsHBox;
 	
 	private App app;
 	private Project project;
@@ -329,6 +342,7 @@ public class EngagementActionController implements Initializable{
 			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -361,6 +375,24 @@ public class EngagementActionController implements Initializable{
 		if(origGoal != null) {
 			app.initSaveHandler(null, null, origGoal, project, null, "goalChange");
 			goalSelected(newGoal);
+		}
+	}
+	
+	@FXML
+	public void showDetailsCheckboxAction() {
+		if (currentSelectedChapter != null) {
+			for (Activity activity : currentSelectedChapter.getAssignedActivities()) {
+				ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activity.getActivityID());
+				if (showDetailsCheckBox.isSelected()) {
+					erbPathwayDiagramScrollPane.setMinHeight(130);
+					erbPathwayDiagramController.showDetails();
+					addDetailsKeyPaneVBox();
+				} else {
+					erbPathwayDiagramScrollPane.setMinHeight(60);
+					erbPathwayDiagramController.hideDetails();
+					removeDetailsKeyPaneVBox();
+				}
+			}
 		}
 	}
 	
@@ -461,10 +493,12 @@ public class EngagementActionController implements Initializable{
 		cleanAttributePanelContentVBox();
 		cleanListOfAttributePanelControllers();
 		//--
-		removeERBKeyVBox();
+//		removeERBKeyVBox();
 		removeStatusHBox();
 		removeLocalProgressVBox();
 		removeAttributeScrollPane();
+		//--
+		addERBKeyVBox(1);
 		//--
 		generateChapterERBPathway();
 		setNavigationButtonsDisability(null, null);
@@ -707,7 +741,9 @@ public class EngagementActionController implements Initializable{
 	private void generateChapterERBPathway() {
 		cleanERBPathwayDiagramHBox();
 		cleanListOfChapterDiagramControllers();
-		erbPathwayVBox.setPrefHeight(75);
+		removeShowDetailsCheckBox();
+		removeDetailsKeyPaneVBox();
+		erbPathwayDiagramScrollPane.setMinHeight(50);
 		for (Chapter chapter : currentSelectedGoal.getChapters()) {
 			Parent root = loadERBChapterDiagramRoot(chapter, currentSelectedGoal.getChapters());
 			pathwayTitledPane.setText(currentSelectedGoal.getGoalName() + " Pathway");
@@ -719,7 +755,9 @@ public class EngagementActionController implements Initializable{
 		if (chapter != null) {
 			cleanERBPathwayDiagramHBox();
 			cleanListOfActivityDiagramControllers();
-			erbPathwayVBox.setPrefHeight(150);
+			addShowDetailsCheckBox();
+			addDetailsKeyPaneVBox();
+			erbPathwayDiagramScrollPane.setMinHeight(130);
 			for (Activity activity : chapter.getAssignedActivities()) {
 				Parent root = loadERBPathwayDiagramRoot(activity, chapter);
 				pathwayTitledPane.setText(chapter.getStringName() + " Pathway");
@@ -816,6 +854,26 @@ public class EngagementActionController implements Initializable{
 		listOfAttributePanelControllers.remove(attributePanelController);
 	}
 	
+	private void addDetailsKeyPaneVBox() {
+		if(!keyPaneHBox.getChildren().contains(detailsKeyPaneVBox)) {
+			keyPaneHBox.getChildren().add(1, detailsKeyPaneVBox);
+		}
+	}
+	
+	private void removeDetailsKeyPaneVBox() {
+		keyPaneHBox.getChildren().remove(detailsKeyPaneVBox);
+	}
+	
+	private void addShowDetailsCheckBox() {
+		if(!titledPaneVBox.getChildren().contains(showDetailsHBox)) {
+			titledPaneVBox.getChildren().add(1, showDetailsHBox);
+		}
+	}
+	
+	private void removeShowDetailsCheckBox() {
+		titledPaneVBox.getChildren().remove(showDetailsHBox);
+	}
+	
 	private void addLocalProgressVBox(int index) {
 		if(!treeViewVBox.getChildren().contains(localProgressVBox)) {
 			treeViewVBox.getChildren().add(index, localProgressVBox);
@@ -893,6 +951,16 @@ public class EngagementActionController implements Initializable{
 	public ERBPathwayDiagramController getErbPathwayDiagramController(String GUID) {
 		for(ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
 			if(erbPathwayDiagramController.getActivity().getActivityID().contentEquals(GUID)) {
+				return erbPathwayDiagramController;
+			}
+		}
+		logger.debug("ERB Pathway Diagram Controller returned is null");
+		return null;
+	}
+	
+	public ERBPathwayDiagramController getErbPathwayDiagramController(int chapterNum) {
+		for(ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
+			if(erbPathwayDiagramController.getChapter().getChapterNum() == chapterNum) {
 				return erbPathwayDiagramController;
 			}
 		}
@@ -1154,6 +1222,10 @@ public class EngagementActionController implements Initializable{
 
 	public RadioButton getCompleteRadioButton() {
 		return completeRadioButton;
+	}
+	
+	public CheckBox getShowDetailsCheckBox() {
+		return showDetailsCheckBox;
 	}
 
 }

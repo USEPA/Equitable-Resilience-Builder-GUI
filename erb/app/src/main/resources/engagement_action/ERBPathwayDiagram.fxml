@@ -13,9 +13,9 @@
    <children>
       <HBox>
          <children>
-            <VBox>
+            <VBox fx:id="holderVBox">
                <children>
-                  <HBox>
+                  <HBox fx:id="topCirclesHBox">
                      <children>
                         <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
@@ -39,51 +39,51 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox>
+                  <HBox fx:id="topLinesHBox">
                      <children>
                         <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
-                              <HBox prefWidth="31.0" />
-                              <Line endX="-119.0" endY="9.5" rotate="75.0" startX="-100.0" />
+                              <HBox prefWidth="33.0" />
+                              <Line fx:id="topLeftLine" endX="-95.0" rotate="-135.0" startX="-113.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
-                              <Line endX="-119.0" endY="9.5" rotate="-25.0" startX="-100.0" />
-                              <HBox prefWidth="31.0" />
+                              <Line fx:id="topRightLine" endX="-95.0" rotate="-45.0" startX="-113.0" />
+                              <HBox prefWidth="33.0" />
                            </children>
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox fx:id="centerHBox" alignment="CENTER">
                      <children>
-                        <Line fx:id="leftLeadingLine" endX="-50.0" startX="-100.0" />
+                        <Line fx:id="leftLeadingLine" endX="-50.0" startX="-105.0" />
                         <StackPane>
                            <children>
                               <Circle fx:id="centerCircle" fill="WHITE" onMouseClicked="#centerCircleClicked" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                               <Label fx:id="centerCircleLabel" onMouseClicked="#centerCircleClicked" />
                            </children>
                         </StackPane>
-                        <Line fx:id="rightLeadingLine" endX="-50.0" startX="-100.0" />
+                        <Line fx:id="rightLeadingLine" endX="-50.0" startX="-105.0" />
                      </children>
                   </HBox>
-                  <HBox>
+                  <HBox fx:id="bottomLinesHBox">
                      <children>
                         <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
-                              <HBox prefWidth="31.0" />
-                              <Line endX="-119.0" endY="9.5" rotate="-25.0" startX="-100.0" />
+                              <HBox prefWidth="33.0" />
+                              <Line fx:id="bottomLeftLine" endX="-95.0" rotate="-45.0" startX="-113.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
-                              <Line endX="-119.0" endY="9.5" rotate="75.0" startX="-100.0" />
-                              <HBox prefWidth="31.0" />
+                              <Line fx:id="bottomRightLine" endX="-95.0" rotate="-135.0" startX="-113.0" />
+                              <HBox prefWidth="33.0" />
                            </children>
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox>
+                  <HBox fx:id="bottomCirclesHBox">
                      <children>
                         <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
