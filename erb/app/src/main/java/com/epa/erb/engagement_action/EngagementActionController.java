@@ -509,7 +509,12 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void chapterTreeItemSelected(TreeItem<String> chapterTreeItem) {
-		if(currentSelectedActivity != null) app.initSaveHandler(null, getChapterForActivityInGoal(currentSelectedActivity, currentSelectedGoal), currentSelectedGoal, project, null, "chapterChange");
+		if(currentSelectedActivity != null) {
+			Chapter chapter = getChapterForActivityInGoal(currentSelectedActivity, currentSelectedGoal);
+			if(chapter != null) {
+				app.initSaveHandler(null, chapter, currentSelectedGoal, project, null, "chapterChange");
+			}
+		}
 		//--
 		currentSelectedActivity = null;
 		currentSelectedChapter = getChapterForNameInGoal(chapterTreeItem.getValue(), currentSelectedGoal);
