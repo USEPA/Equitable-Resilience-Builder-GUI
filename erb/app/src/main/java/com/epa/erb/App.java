@@ -43,6 +43,10 @@ public class App extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		setScreenSizePreferences(getScreenScale());
 		readAndStoreData();
+		showERBToolMain();
+	}
+	
+	private void showERBToolMain() {
 		Parent erbContainerRoot = loadERBContainer();
 		launchERBLanding(false);
 		showERBContainer(erbContainerRoot);
