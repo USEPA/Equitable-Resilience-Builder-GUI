@@ -29,19 +29,20 @@ public class GoalContainerController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		loadGoalIntro();
+		Parent goalIntroRoot = loadGoalIntro();
+		VBox.setVgrow(goalIntroRoot, Priority.ALWAYS);
+		goalContainerVBox.getChildren().add(goalIntroRoot);
 	}
 	
-	private void loadGoalIntro() {
+	private Parent loadGoalIntro() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalIntro.fxml"));
 			GoalIntroController goalIntroController = new GoalIntroController(app, project, this);
 			fxmlLoader.setController(goalIntroController);
-			Parent root = fxmlLoader.load();
-			VBox.setVgrow(root, Priority.ALWAYS);
-			goalContainerVBox.getChildren().add(root);
+			return fxmlLoader.load();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
 	}
 

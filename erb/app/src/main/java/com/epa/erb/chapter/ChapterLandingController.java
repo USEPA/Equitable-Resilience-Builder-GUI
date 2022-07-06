@@ -63,25 +63,27 @@ public class ChapterLandingController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
+		fillPlanListView();
+		fillReflectListView();
 		setAboutTextAreaText(getAboutText());
 		setHeadingLabelText(getHeadingLabelText());
 		fillActivitiesListView(getActivitiesForListView());
-		fillPlanListView();
-		fillReflectListView();
 	}
 	
 	private void handleControls() {
+		handleControlsShown();
 		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		aboutTextArea.getStylesheets().add("/textArea.css");
-		handleControlsShowed();
 	}
 	
-	private void handleControlsShowed() {
+	private void handleControlsShown() {
 		if(listOfAllChapters != null) {
 			removePlanPanel();
+			removeAboutPanel();
 			removeReflectPanel();
 		} else {
 			addPlanPanel();
+			addAboutPanel();
 			addReflectPanel();
 		}
 	}
@@ -104,10 +106,8 @@ public class ChapterLandingController implements Initializable {
 	
 	Text getAboutText() {
 		if (chapter != null) {
-			addAboutPanel();
 			return new Text(chapter.getDescriptionName());
 		} else {
-			removeAboutPanel();
 			return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
 		}
 	}
@@ -117,21 +117,21 @@ public class ChapterLandingController implements Initializable {
 		for(Activity activity: listOfActivities) {
 			activitiesListView.getItems().add(activity);
 		}
-		setActivityListViewCellFactory();
+		setListViewCellFactory(activitiesListView, "useItem");
 	}
 	
 	public void fillPlanListView() {
 		cleanPlanListView();
 		Activity planActivity = engagementActionController.getActivityForIDInGoal("25", engagementActionController.getCurrentGoal());
 		planListView.getItems().add(planActivity);
-		setPlanListViewCellFactory();
+		setListViewCellFactory(planListView, "Plan");
 	}
 	
 	public void fillReflectListView() {
 		cleanReflectListView();
 		Activity reflectActivity = engagementActionController.getActivityForIDInGoal("26", engagementActionController.getCurrentGoal());
 		reflectListView.getItems().add(reflectActivity);
-		setReflectListViewCellFactory();
+		setListViewCellFactory(reflectListView, "Reflect");
 	}
 	
 	private ArrayList<Activity> getActivitiesForListView() {
@@ -150,8 +150,8 @@ public class ChapterLandingController implements Initializable {
 		return activitiesForListView;
 	}
 	
-	private void setActivityListViewCellFactory() {
-		activitiesListView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
+	private void setListViewCellFactory(ListView<Activity> listView, String text) {
+		listView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
 			@Override
 			public ListCell<Activity> call(ListView<Activity> param) {
 				ListCell<Activity> cell = new ListCell<Activity>() {
@@ -159,109 +159,44 @@ public class ChapterLandingController implements Initializable {
 					protected void updateItem(Activity item, boolean empty) {
 						super.updateItem(item, empty);
 						if (item != null) {
-							setText("Chapter " + item.getChapterAssignment() + ": " + item.getLongName());
+							if(text.contentEquals("useItem")) {
+								setText("Chapter " + item.getChapterAssignment() + ": " + item.getLongName());
+							} else {
+								setText(text);
+							}
 							setFont(new Font(14.0));
 						}
 					}
 				};
-				cell.setOnMouseClicked(e -> handleActivitySelectedInList());
+				cell.setOnMouseClicked(e -> handleListViewSelection(listView));
 				return cell;
 			}
 		});
 	}
 	
-	private void setPlanListViewCellFactory() {
-		planListView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
-			@Override
-			public ListCell<Activity> call(ListView<Activity> param) {
-				ListCell<Activity> cell = new ListCell<Activity>() {
-					@Override
-					protected void updateItem(Activity item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item != null) {
-							setText("Chapter " + chapter.getChapterNum() + ": Plan");
-							setFont(new Font(14.0));
-						}
-					}
-				};
-				cell.setOnMouseClicked(e -> planSelectedInList());
-				return cell;
-			}
-		});
+	private void handleListViewSelection(ListView<Activity> listView) {
+		Activity selectedActivity = listView.getSelectionModel().getSelectedItem();
+		TreeItem<String> treeItem = findTreeItem(selectedActivity);
+		if (treeItem != null) {
+			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
+			engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
+		}
 	}
 	
-	private void setReflectListViewCellFactory() {
-		reflectListView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
-			@Override
-			public ListCell<Activity> call(ListView<Activity> param) {
-				ListCell<Activity> cell = new ListCell<Activity>() {
-					@Override
-					protected void updateItem(Activity item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item != null) {
-							setText("Chapter " + chapter.getChapterNum() + ": Reflect");
-							setFont(new Font(14.0));
-						}
-					}
-				};
-				cell.setOnMouseClicked(e -> reflectSelectedInList());
-				return cell;
-			}
-		});
-	}
-	
-	private void handleActivitySelectedInList() {
-		Activity selectedActivity = activitiesListView.getSelectionModel().getSelectedItem();
-		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
-		for (TreeItem<String> treeItem : treeMap.keySet()) {
-			String treeItemValue = treeItem.getValue();
-			if (treeItemValue.contentEquals(selectedActivity.getLongName())) { // if tree item value matches activity name
-				String treeItemActivityID = treeMap.get(treeItem);
-				if (treeItemActivityID.contentEquals(selectedActivity.getActivityID())) { // if tree item GUID matches
-					Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
-					if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(selectedActivity.getChapterAssignment())) {
-						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
-						engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
+	private TreeItem<String> findTreeItem(Activity activity) {
+		if (activity != null) {
+			HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
+			for (TreeItem<String> treeItem : treeMap.keySet()) {
+				String treeItemValue = treeItem.getValue();
+				if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
+					String treeItemActivityID = treeMap.get(treeItem);
+					if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
+						return treeItem;
 					}
 				}
 			}
 		}
-	}
-	
-	private void planSelectedInList() {
-		Activity activity = planListView.getSelectionModel().getSelectedItem();
-		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
-		for (TreeItem<String> treeItem : treeMap.keySet()) {
-			String treeItemValue = treeItem.getValue();
-			if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
-				String treeItemActivityID = treeMap.get(treeItem);
-				if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
-					Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
-					if (treeItemChapter.getChapterNum() == chapter.getChapterNum()) {
-						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
-						engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
-					}
-				}
-			}
-		}
-	}
-	
-	private void reflectSelectedInList() {
-		Activity activity = reflectListView.getSelectionModel().getSelectedItem();
-		HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
-		for (TreeItem<String> treeItem : treeMap.keySet()) {
-			String treeItemValue = treeItem.getValue();
-			if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
-				String treeItemActivityID = treeMap.get(treeItem);
-				if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
-					Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
-					if (treeItemChapter.getChapterNum() == chapter.getChapterNum()) {
-						engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
-						engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
-					}
-				}
-			}
-		}
+		return null;
 	}
 	
 	private void removeAboutPanel() {

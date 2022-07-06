@@ -37,21 +37,22 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	@FXML
+	public void glossaryMenuItemAction() {
+		Parent glossaryRoot = loadGlossary();
+		showGlossary(glossaryRoot);
+	}
+	
+	@FXML
 	public void aboutMenuItemAction() {
-		loadERBLandingToContainer();
 		app.initSaveHandler(null, null, null, app.getSelectedProject(), null, "projectChange");
+		app.launchERBLanding(true);
 	}
 	
-	private void loadERBLandingToContainer() {
-		Parent root = loadERBLanding(true);
-		app.loadContentToERBContainer(root);
-	}
-	
-	private Parent loadERBLanding(boolean updateProjects) {
+	private Parent loadGlossary() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
-			ERBLandingController erbLandingController = new ERBLandingController(app, updateProjects);
-			fxmlLoader.setController(erbLandingController);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/Glossary.fxml"));
+			GlossaryController glossaryController = new GlossaryController();
+			fxmlLoader.setController(glossaryController);
 			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -59,25 +60,12 @@ public class ERBContainerController implements Initializable{
 		}
 	}
 	
-	@FXML
-	public void glossaryMenuItemAction() {
-		loadGlossary();
-	}
-	
-	private void loadGlossary() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/Glossary.fxml"));
-			GlossaryController glossaryController = new GlossaryController();
-			fxmlLoader.setController(glossaryController);
-			Parent root = fxmlLoader.load();
-			Stage stage = new Stage();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setTitle("ERB: Glossary");
-			stage.showAndWait();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+	private void showGlossary(Parent glossaryRoot) {
+		Stage stage = new Stage();
+		Scene scene = new Scene(glossaryRoot);
+		stage.setScene(scene);
+		stage.setTitle("ERB: Glossary");
+		stage.showAndWait();
 	}
 
 	public VBox getWelcomeVBox() {

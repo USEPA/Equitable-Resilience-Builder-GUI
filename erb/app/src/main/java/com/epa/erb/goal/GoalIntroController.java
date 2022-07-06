@@ -85,23 +85,24 @@ public class GoalIntroController implements Initializable{
 		}
 	}
 	
-	private void loadGoalCreation() {
+	private Parent loadGoalCreation() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
 			GoalCreationController goalCreationController = new GoalCreationController(app, project);
 			fxmlLoader.setController(goalCreationController);
-			Parent root = fxmlLoader.load();
-			VBox.setVgrow(root, Priority.ALWAYS);
-			goalContainerController.getGoalContainerVBox().getChildren().clear();
-			goalContainerController.getGoalContainerVBox().getChildren().add(root);
+			return fxmlLoader.load();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
 	}
 	
 	@FXML
 	public void nextButtonAction() {
-		loadGoalCreation();
+		Parent goalCreationRoot = loadGoalCreation();
+		VBox.setVgrow(goalCreationRoot, Priority.ALWAYS);
+		goalContainerController.getGoalContainerVBox().getChildren().clear();
+		goalContainerController.getGoalContainerVBox().getChildren().add(goalCreationRoot);
 	}
 
 	public App getApp() {

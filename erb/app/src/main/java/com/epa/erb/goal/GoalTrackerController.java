@@ -3,10 +3,8 @@ package com.epa.erb.goal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import com.epa.erb.Constants;
 import com.epa.erb.Progress;
 import com.epa.erb.chapter.Chapter;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -36,8 +34,6 @@ public class GoalTrackerController implements Initializable{
 		this.goal = goal;
 	}
 	
-	private Constants constants = new Constants();
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setGoalTitleLabelText(goal.getGoalName());
@@ -57,39 +53,9 @@ public class GoalTrackerController implements Initializable{
 		Progress progress = new Progress();
 		ArrayList<Chapter> listOfChapters = goal.getChapters();
 		int goalPercentDone = progress.getGoalPercentDone(listOfChapters);
-		setGoalCompletion(goalPercentDone);
+		progress.setGoalRating(goalCompletionVBox, goalCompletionBar, completionPercentLabel, goalPercentDone);
 		int goalConfidencePercent = progress.getGoalConfidencePercent(listOfChapters);
-		setGoalConfidence(goalConfidencePercent);
-	}
-	
-	private void setGoalCompletion(int goalPercent) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				double progressBarHeight = goalCompletionVBox.getHeight();
-				goalCompletionBar.setMaxHeight(progressBarHeight);
-				goalCompletionBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-				double fixedCapacity = 100;
-				double progress = goalPercent / fixedCapacity;
-				goalCompletionBar.setPrefHeight(progressBarHeight * progress);
-				completionPercentLabel.setText(goalPercent + "%");
-			}
-		});
-	}
-	
-	private void setGoalConfidence(int goalConfidence) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				double progressBarHeight = goalConfidenceVBox.getHeight();
-				goalConfidenceBar.setMaxHeight(progressBarHeight);
-				goalConfidenceBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-				double fixedCapacity = 100;
-				double progress = goalConfidence / fixedCapacity;
-				goalConfidenceBar.setPrefHeight(progressBarHeight * progress);
-				confidencePercentLabel.setText(goalConfidence + "%");
-			}
-		});
+		progress.setGoalRating(goalConfidenceVBox, goalConfidenceBar, confidencePercentLabel, goalConfidencePercent);
 	}
 	
 	private void setGoalTitleLabelText(String text) {

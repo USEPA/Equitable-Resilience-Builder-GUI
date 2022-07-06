@@ -43,7 +43,7 @@ public class ProjectSelectionController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		if(updateProjects) app.updateProjects();
+		if(updateProjects) app.updateAvailableProjectsList();
 		setProjectsListViewCellFactory();
 		fillProjectsListView();
 	}
@@ -84,7 +84,7 @@ public class ProjectSelectionController implements Initializable{
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
 			root.setPrefHeight(app.getPrefHeight());
-			app.loadContentToERBContainer(root);
+			app.loadNodeToERBContainer(root);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -98,7 +98,7 @@ public class ProjectSelectionController implements Initializable{
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
 			root.setPrefHeight(app.getPrefHeight());
-			app.loadContentToERBContainer(root);
+			app.loadNodeToERBContainer(root);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}

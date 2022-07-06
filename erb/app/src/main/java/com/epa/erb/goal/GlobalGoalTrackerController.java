@@ -2,16 +2,13 @@ package com.epa.erb.goal;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
-import com.epa.erb.chapter.Chapter;
 import com.epa.erb.project.Project;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -58,27 +55,9 @@ public class GlobalGoalTrackerController implements Initializable{
 	private void updateERBProgressBar() {
 		Progress progress = new Progress();
 		double maxPercent = project.getProjectGoals().size() * 100;
-		double totalPercent = 0;
-		for (Goal goal : project.getProjectGoals()) {
-			File goalMetaXMLFile = getGoalMetaXMLFile(goal, project);
-			if (goalMetaXMLFile != null) {
-				ArrayList<Chapter> chapters = goal.getChapters();
-				int goalCompletePercent = progress.getGoalPercentDone(chapters);
-				totalPercent = totalPercent + goalCompletePercent;
-			}
-		}
+		double totalPercent = progress.getProjectTotalPercent(project);
 		double erbProgressPercent = (totalPercent/maxPercent)* 100;
-		setERBProgress((int) erbProgressPercent);
-	}
-	
-	private void setERBProgress(int percent) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				erbProgressBar.setProgress(percent/100.0);
-				goalProgressLabel.setText(percent + "%");
-			}
-		});
+		progress.setERBProgress(erbProgressBar, goalProgressLabel, erbProgressPercent);
 	}
 	
 	private void addGoalTrackers(Project project) {
@@ -88,6 +67,7 @@ public class GlobalGoalTrackerController implements Initializable{
 				Parent root = loadGoalTracker(app, goal, goalMetaXMLFile);
 				if (root != null) {
 					goalHBox.getChildren().add(root);
+					HBox.setHgrow(root, Priority.ALWAYS);
 				}
 			}
 		}
@@ -98,9 +78,7 @@ public class GlobalGoalTrackerController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalTracker.fxml"));
 			GoalTrackerController goalTrackerController = new GoalTrackerController(goal);
 			fxmlLoader.setController(goalTrackerController);
-			Parent rootParent = fxmlLoader.load();
-			HBox.setHgrow(rootParent, Priority.ALWAYS);
-			return rootParent;
+			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;

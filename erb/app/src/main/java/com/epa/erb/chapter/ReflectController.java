@@ -95,8 +95,8 @@ public class ReflectController implements Initializable{
 		reflectScrollPane.widthProperty().addListener(e-> scrollPaneWidthChange());
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
 		goalProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
-		engagementActionController.getMainVBox().heightProperty().addListener(e-> handleProgressBarsAfterPaneSizeChange());
-		engagementActionController.getMainVBox().widthProperty().addListener(e-> handleProgressBarsAfterPaneSizeChange());
+		engagementActionController.getMainVBox().heightProperty().addListener(e-> mainPaneSizeChanged());
+		engagementActionController.getMainVBox().widthProperty().addListener(e-> mainPaneSizeChanged());
 	}
 	
 	private void scrollPaneWidthChange() {
@@ -115,15 +115,17 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void fillChapterActivitiesList() {
-		for(Activity activity : chapter.getAssignedActivities()) {
-				chapterActivities.add(activity);
+		for (Activity activity : chapter.getAssignedActivities()) {
+			chapterActivities.add(activity);
 		}
 	}
 	
-	private void handleProgressBarsAfterPaneSizeChange() {
+	private void mainPaneSizeChanged() {
 		Goal goal = engagementActionController.getCurrentGoal();
-		if(goal != null) handleChapterProgressBar(goal);
-		if(chapter != null) handleChapterConfidenceProgressBar(chapter);
+		if (goal != null && chapter != null) {
+			updateChapterProgressBar(goal);
+			updateChapterConfidenceProgressBar(chapter);
+		}
 	}
 	
 	private void populateControlsForChapterActivities() {
@@ -157,32 +159,38 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void notesHyperlinkClicked(Hyperlink hyperlink, Activity activity) {
-		loadReflectNotes(activity, null);
+		Parent reflectNotesRoot = loadReflectNotes(activity, null);
+		showReflectNotes(reflectNotesRoot);
 	}
 	
 	@FXML
 	private void addChapterNotesAction() {
-		loadReflectNotes(null, chapter);
+		Parent reflectNotesRoot = loadReflectNotes(null, chapter);
+		showReflectNotes(reflectNotesRoot);
 	}
 	
-	private Stage reflectNotesStage = null;
-	private void loadReflectNotes(Activity activity, Chapter chapter) {
+	private Parent loadReflectNotes(Activity activity, Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectNotes.fxml"));
 			ReflectNotesController reflectNotesController = null;
 			if (activity != null) reflectNotesController = new ReflectNotesController(activity, this);
 			if (chapter != null) reflectNotesController = new ReflectNotesController(chapter, this);
-			if (reflectNotesController != null) {
-				fxmlLoader.setController(reflectNotesController);
-				Parent root = fxmlLoader.load();
-				reflectNotesStage = new Stage();
-				Scene scene = new Scene(root);
-				reflectNotesStage.setScene(scene);
-				reflectNotesStage.setTitle("ERB: Notes");
-				reflectNotesStage.show();
-			}
+			if (reflectNotesController != null) fxmlLoader.setController(reflectNotesController);
+			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
+		}
+	}
+	
+	private Stage reflectNotesStage = null;
+	private void showReflectNotes(Parent reflectNotesRoot) {
+		if (reflectNotesRoot != null) {
+			reflectNotesStage = new Stage();
+			Scene scene = new Scene(reflectNotesRoot);
+			reflectNotesStage.setScene(scene);
+			reflectNotesStage.setTitle("ERB: Notes");
+			reflectNotesStage.show();
 		}
 	}
 	
@@ -239,7 +247,7 @@ public class ReflectController implements Initializable{
 	
 	private void ratingSliderAdjusted(Slider slider, Activity activity) {
 		activity.setRating(String.valueOf((int) slider.getValue()));
-		handleChapterConfidenceProgressBar(chapter);
+		updateChapterConfidenceProgressBar(chapter);
 		engagementActionController.updateLocalProgress(chapter,goal.getChapters());
 		activity.setSaved(false);
 	}
@@ -297,66 +305,26 @@ public class ReflectController implements Initializable{
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				handleChapterProgressBar(goal);
-				handleChapterConfidenceProgressBar(chapter);
-				handleGoalProgressBar(chapter);
+				updateChapterProgressBar(goal);
+				updateChapterConfidenceProgressBar(chapter);
+				updateGoalProgressBar(chapter);
 			}
 		});
 	}
 	
-	private void handleChapterProgressBar(Goal goal) {
+	private void updateChapterProgressBar(Goal goal) {
 		int chapterPercent = progress.getChapterPercentDone(chapter);
-		setChapterProgress(chapterPercent);
+		progress.setChapterProgress(chapterProgressVBox, chapterProgressBar, chapterPercentLabel, chapterPercent);
 	}
 	
-	private void setChapterProgress(int percent) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				double progressBarHeight = chapterProgressVBox.getHeight();
-				chapterProgressBar.setMaxHeight(progressBarHeight);
-				chapterProgressBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-				double fixedCapacity = 100;
-				double progress = percent/fixedCapacity;
-				chapterProgressBar.setPrefHeight(progressBarHeight*progress);
-				chapterPercentLabel.setText(percent + "%");
-			}
-		});
-	}
-	
-	private void handleChapterConfidenceProgressBar(Chapter chapter) {
+	private void updateChapterConfidenceProgressBar(Chapter chapter) {
 		int confidencePercent = progress.getChapterConfidencePercent(chapter);
-		setChapterConfidenceRating(confidencePercent);
+		progress.setChapterRating(confidenceRatingVBox, confidenceRatingBar, confidencePercentLabel, confidencePercent);
 	}
 	
-	private void setChapterConfidenceRating(int percent) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				double progressBarHeight = confidenceRatingVBox.getHeight();
-				confidenceRatingBar.setMaxHeight(progressBarHeight);
-				confidenceRatingBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-				double fixedCapacity = 100;
-				double progress = percent / fixedCapacity;
-				confidenceRatingBar.setPrefHeight(progressBarHeight * progress);
-				confidencePercentLabel.setText(percent + "%");
-			}
-		});
-	}
-	
-	private void handleGoalProgressBar(Chapter chapter) {
+	private void updateGoalProgressBar(Chapter chapter) {
 		int goalPercent = progress.getGoalPercentDone(goal.getChapters());
-		setGoalRating(goalPercent);
-	}
-
-	private void setGoalRating(int percent) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				goalProgressBar.setProgress(percent / 100.0);
-				goalProgressLabel.setText(percent + "%");
-			}
-		});
+		progress.setGoalProgress(goalProgressBar, goalProgressLabel, goalPercent);
 	}
 	
 	public void closeReflectNotesStage() {

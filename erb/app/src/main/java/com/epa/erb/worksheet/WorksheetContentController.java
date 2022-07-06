@@ -54,7 +54,8 @@ public class WorksheetContentController implements Initializable{
 	
 	@FXML
 	public void printButtonAction() {
-		loadPrinterSelection();
+		Parent printSelectionRoot = loadPrinterSelection();
+		showPrinterSelection(printSelectionRoot);
 	}
 	
 	@FXML
@@ -89,21 +90,25 @@ public class WorksheetContentController implements Initializable{
 		}
 	}
 	
-	private Stage printerSelectionStage = null;
-	private void loadPrinterSelection() {
+	private Parent loadPrinterSelection() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/PrinterSelection.fxml"));
 			PrinterSelectionController printerSelectionController = new PrinterSelectionController(this);
 			fxmlLoader.setController(printerSelectionController);
-			Parent root = fxmlLoader.load();
-			printerSelectionStage = new Stage();
-			printerSelectionStage.setTitle("ERB: Printer Selection");
-			Scene scene = new Scene(root);
-			printerSelectionStage.setScene(scene);
-			printerSelectionStage.showAndWait();
-		}catch (Exception e) {
+			return fxmlLoader.load();
+		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
+	}
+	
+	private Stage printerSelectionStage = null;
+	private void showPrinterSelection(Parent printerSelectionRoot) {
+		printerSelectionStage = new Stage();
+		printerSelectionStage.setTitle("ERB: Printer Selection");
+		Scene scene = new Scene(printerSelectionRoot);
+		printerSelectionStage.setScene(scene);
+		printerSelectionStage.showAndWait();
 	}
 	
 	void closePrinterStage() {

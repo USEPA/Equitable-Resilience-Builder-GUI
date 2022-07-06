@@ -34,29 +34,29 @@ public class App extends Application {
 	private Constants constants = new Constants();
 	private ArrayList<ActivityType> activityTypes;
 	private ArrayList<GoalCategory> goalCategories;
+	private XMLManager xmlManager = new XMLManager(this);
 	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
 	private String pathToERBFolder = constants.getPathToERBFolder();
 	
-	private String getGreeting() {
-		return "Launching ERB";
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		setScreenSizePreferences(getScreenScale());
+		readAndStoreData();
+		Parent erbContainerRoot = loadERBContainer();
+		launchERBLanding(false);
+		showERBContainer(erbContainerRoot);
 	}
 
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		logger.info(getGreeting());
-		checkScreenScaling();
-		readAndStoreData();
-		loadERBContainer();
-		loadERBLandingToContainer();
+	
+	private int getScreenScale() {
+		return java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
 	}
 	
-	private void checkScreenScaling() {
-		int scale = java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
+	private void setScreenSizePreferences(int scale) {
 		if(scale > 0 && scale <=96) {
 			prefWidth = constants.getPrefWidthForScale100();
 			prefHeight = constants.getPrefHeightForScale100();
@@ -71,10 +71,10 @@ public class App extends Application {
 			prefHeight = constants.getPrefHeightForScale175();
 		}
 	}
-	
-	private void loadERBLandingToContainer() {
-		Parent root = loadERBLanding(false);
-		loadContentToERBContainer(root);
+
+	public void launchERBLanding(boolean updateProjects) {
+		Parent erbLandingRoot = loadERBLanding(updateProjects);
+		loadNodeToERBContainer(erbLandingRoot);
 	}
 	
 	private Parent loadERBLanding(boolean updateProjects) {
@@ -89,69 +89,96 @@ public class App extends Application {
 		}
 	}
 	
-	private Stage erbContainerStage = null;
-	private void loadERBContainer() {
+	private Parent loadERBContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBContainer.fxml"));
 			erbContainerController = new ERBContainerController(this);
 			fxmlLoader.setController(erbContainerController);
-			erbContainerStage = new Stage();
 			ScrollPane root = fxmlLoader.load();
 			root.setPrefWidth(getPrefWidth());
 			root.setPrefHeight(getPrefHeight());
-			Scene scene = new Scene(root);
-			erbContainerStage.setScene(scene);
-			erbContainerStage.setOnCloseRequest(e-> erbCloseRequested());
-			erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
-			erbContainerStage.show();
+			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
+	}
+	
+	private Stage erbContainerStage = null;
+	private void showERBContainer(Parent erbContainerRoot) {
+		erbContainerStage = new Stage();
+		Scene scene = new Scene(erbContainerRoot);
+		erbContainerStage.setScene(scene);
+		erbContainerStage.setOnCloseRequest(e-> erbCloseRequested());
+		erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
+		erbContainerStage.show();
 	}
 	
 	private void erbCloseRequested() {
 		initSaveHandler(null, null, null, null, getProjects(), "close");
 	}
 	
-	public void initSaveHandler(Activity activity, Chapter chapter, Goal goal, Project project,  ArrayList<Project> projects, String saveOrigin) {
-		try {
-			SaveHandler saveHandler = new SaveHandler(this, saveOrigin, activity, chapter, goal, project, projects);
-			saveHandler.beginSave();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+	public void initSaveHandler(Activity activity, Chapter chapter, Goal goal, Project project, ArrayList<Project> projects, String saveOrigin) {
+		SaveHandler saveHandler = new SaveHandler(this, saveOrigin, activity, chapter, goal, project, projects);
+		saveHandler.beginSave();
 	}	
 	
-	private void readAndStoreData() {
-		XMLManager xmlManager = new XMLManager(this);
-		
+	private void readAndStoreData() {	
+		readAndStoreChapters();
+		readAndStoreActivityTypes();
+		readAndStoreAvailableActivities();
+		readAndStoreGoalCategories();
+		readAndStoreProjects();
+	}
+	
+	private void readAndStoreChapters() {
 		File chaptersFile = getChaptersFileToParse();
 		if(chaptersFile != null) chapters = xmlManager.parseChaptersXML(chaptersFile);
-		
+	}
+	
+	private void readAndStoreActivityTypes() {
 		File activityTypesFile = getActivityTypesFileToParse();
 		if(activityTypesFile != null) activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
-		
+	}
+	
+	private void readAndStoreAvailableActivities() {
 		File availableActivitiesFile = getAvailableActivitiesFileToParse();
 		if(availableActivitiesFile != null) activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
-		
+	}
+	
+	private void readAndStoreGoalCategories() {
 		File goalCategoriesFile = getGoalCategoriesFileToParse();
 		if(goalCategoriesFile != null) goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile, activities);
-		
-		File erbProjectDirectory = getERBProjectDirectory();
+	}
+	
+	private void readAndStoreProjects() {
+		File erbProjectDirectory = getERBProjectsDirectory();
 		if(erbProjectDirectory != null) projects = xmlManager.parseAllProjects(erbProjectDirectory, activities);
 	}
 	
-	public void loadContentToERBContainer(Node contentNode) {
+	public void loadNodeToERBContainer(Node node) {
+		setNodeGrowPriority(node, Priority.ALWAYS);
 		erbContainerController.getErbContainer().getChildren().clear();
-		VBox.setVgrow(contentNode, Priority.ALWAYS);
-		HBox.setHgrow(contentNode, Priority.ALWAYS);
-		erbContainerController.getErbContainer().getChildren().add(contentNode);
+		erbContainerController.getErbContainer().getChildren().add(node);
 	}
 	
-	public void updateProjects() {
-		XMLManager xmlManager = new XMLManager(this);
-		File erbProjectDirectory = getERBProjectDirectory();
-		if(erbProjectDirectory != null && activities != null) projects = xmlManager.parseAllProjects(erbProjectDirectory, activities);
+	public void setNodeGrowPriority(Node node, Priority priority) {
+		VBox.setVgrow(node, priority);
+		HBox.setHgrow(node, priority);
+	}
+	
+	public void updateAvailableProjectsList() {
+		readAndStoreProjects();
+	}
+	
+	public Activity getActivity(String activityID, ArrayList<Activity> activities) {
+		for (Activity activity : activities) {
+			if (activity.getActivityID().contentEquals(activityID)) {
+				return activity;
+			}
+		}
+		logger.debug("Activity for ID:" + activityID + " returned is null.");
+		return null;
 	}
 	
 	private File getChaptersFileToParse() {
@@ -159,6 +186,7 @@ public class App extends Application {
 		if(chaptersFile.exists()) {
 			return chaptersFile;
 		} else {
+			logger.debug(chaptersFile.getPath() + " does not exist. ChaptersFile returned is null");
 			return null;
 		}
 	}
@@ -168,6 +196,7 @@ public class App extends Application {
 		if(activityTypesFile.exists()) {
 			return activityTypesFile;
 		} else {
+			logger.debug(activityTypesFile.getPath() + " does not exist. ActivityTypesFile returned is null.");
 			return null;
 		}
 	}
@@ -177,6 +206,7 @@ public class App extends Application {
 		if(availableActivitiesFile.exists()) {
 			return availableActivitiesFile;
 		} else {
+			logger.debug(availableActivitiesFile.getPath() + " does not exist. AvailableActivitiesFile returned is null.");
 			return null;
 		}
 	}
@@ -186,27 +216,19 @@ public class App extends Application {
 		if(goalCategoriesFile.exists()) {
 			return goalCategoriesFile;
 		} else {
+			logger.debug(goalCategoriesFile.getPath() + " does not exist. GoalCategoriesFile returned is null.");
 			return null;
 		}
 	}
 	
-	private File getERBProjectDirectory() {
+	private File getERBProjectsDirectory() {
 		File erbProjectDirectory = new File(pathToERBFolder + "\\Projects");
 		if(erbProjectDirectory.exists()) {
 			return erbProjectDirectory;
 		} else {
+			logger.debug(erbProjectDirectory.getPath() + " does not exist. ERBProjectDirectory returned is null.");
 			return null;
 		}
-	}
-	
-	public Activity getActivity(String activityID) {
-		for (Activity activity : activities) {
-			if (activity.getActivityID().contentEquals(activityID)) {
-				return activity;
-			}
-		}
-		logger.debug("Activity returned is null");
-		return null;
 	}
 
 	public int getPrefWidth() {

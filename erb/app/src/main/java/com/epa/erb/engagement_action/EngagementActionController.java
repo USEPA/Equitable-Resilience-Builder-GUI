@@ -19,7 +19,6 @@ import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
 import com.epa.erb.worksheet.WorksheetContentController;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -140,11 +139,11 @@ public class EngagementActionController implements Initializable{
 		this.project = project;
 	}
 	
-	private Constants constants = new Constants();
-	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	private Goal currentSelectedGoal = null;
 	private Chapter currentSelectedChapter = null; 
 	private Activity currentSelectedActivity = null;
+	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	private HashMap<TreeItem<String>, String> treeItemActivityIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity GUID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //holds all of the attribute panels
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>(); //holds all of the pathway controllers
@@ -154,10 +153,10 @@ public class EngagementActionController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		fillGoalComboBox();
+		fillGoalComboBox(project);
 		goalComboBox.setCellFactory(lv-> createGoalCell());
 		goalComboBox.setButtonCell(createGoalCell());
-		initializeGoalSelection();
+		initializeGoalSelection(project);
 		setNavigationButtonsDisability(null, null);
 		handleControls();
 	}
@@ -182,8 +181,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void addProgressListeners() {
-		localProgressVBox.heightProperty().addListener(e-> handleProgressBarsAfterPaneSizeChange());
-		localProgressVBox.widthProperty().addListener(e-> handleProgressBarsAfterPaneSizeChange());
+		localProgressVBox.heightProperty().addListener(e-> localProgressPaneSizeChanged());
+		localProgressVBox.widthProperty().addListener(e-> localProgressPaneSizeChanged());
 	}
 	
 	private void addGoalChangeListener() {
@@ -195,7 +194,7 @@ public class EngagementActionController implements Initializable{
 		});
 	}
 	
-	private void handleProgressBarsAfterPaneSizeChange() {
+	private void localProgressPaneSizeChanged() {
 		if(currentSelectedActivity != null) {
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 		} else {
@@ -206,7 +205,7 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void initializeGoalSelection() {
+	private void initializeGoalSelection(Project project) {
 		goalComboBox.getSelectionModel().select(0);
 		goalSelected(project.getProjectGoals().get(0));
 	}
@@ -228,6 +227,7 @@ public class EngagementActionController implements Initializable{
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.getMessage());
 			return null;
 		}
@@ -310,8 +310,6 @@ public class EngagementActionController implements Initializable{
 			fxmlLoader.setController(reflectController);
 			ScrollPane root = fxmlLoader.load();
 			reflectController.initProgress(currentSelectedGoal, chapter);
-			contentVBox.getChildren().add(root);
-			VBox.setVgrow(root, Priority.ALWAYS);
 			activity.setReflectController(reflectController);
 			return root;
 		} catch (Exception e) {
@@ -342,29 +340,39 @@ public class EngagementActionController implements Initializable{
 			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	private Parent loadGlobalGoalTracker() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GlobalGoalTracker.fxml"));
+			GlobalGoalTrackerController globalGoalTrackerController = new GlobalGoalTrackerController(app, project);
+			fxmlLoader.setController(globalGoalTrackerController);
+			 return fxmlLoader.load();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 			return null;
 		}
 	}
 	
 	private Stage globalGoalTrackerStage = null;
-	private void loadGlobalGoalTracker() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GlobalGoalTracker.fxml"));
-			GlobalGoalTrackerController globalGoalTrackerController = new GlobalGoalTrackerController(app, project);
-			fxmlLoader.setController(globalGoalTrackerController);
-			Parent root = fxmlLoader.load();
-			globalGoalTrackerStage = new Stage();
-			Scene scene = new Scene(root);
-			globalGoalTrackerStage.setScene(scene);
-			globalGoalTrackerStage.setTitle("ERB: Goal Tracker");
-			globalGoalTrackerStage.show();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+	private void showGlobalGoalTracker(Parent globalGoalTrackerRoot) {
+		globalGoalTrackerStage = new Stage();
+		Scene scene = new Scene(globalGoalTrackerRoot);
+		globalGoalTrackerStage.setScene(scene);
+		globalGoalTrackerStage.setTitle("ERB: Goal Tracker");
+		globalGoalTrackerStage.show();
 	}
 	
 	private void setDynamicDimensions(Pane pane) {
+		pane.setPrefHeight(app.getPrefHeight());
+		pane.setPrefWidth(app.getPrefWidth());
+		VBox.setVgrow(pane, Priority.ALWAYS);
+		HBox.setHgrow(pane, Priority.ALWAYS);
+	}
+	
+	private void setDynamicDimensions(ScrollPane pane) {
 		pane.setPrefHeight(app.getPrefHeight());
 		pane.setPrefWidth(app.getPrefWidth());
 		VBox.setVgrow(pane, Priority.ALWAYS);
@@ -452,7 +460,8 @@ public class EngagementActionController implements Initializable{
 	
 	@FXML
 	public void goalLabelClicked() {
-		loadGlobalGoalTracker();
+		Parent globalGoalTrackerRoot = loadGlobalGoalTracker();
+		showGlobalGoalTracker(globalGoalTrackerRoot);
 	}
 		
 	@FXML
@@ -473,11 +482,11 @@ public class EngagementActionController implements Initializable{
 	
 	public void treeViewClicked(TreeItem<String> oldItem, TreeItem<String> newItem) {
 		if(newItem != null) {
-			if(isActivityInGoal(newItem, currentSelectedGoal)) {
+			if(isTreeItemActivityInGoal(newItem, currentSelectedGoal)) {
 				activityTreeItemSelected(newItem);
-			} else if (isChapterInGoal(newItem, currentSelectedGoal)) {
+			} else if (isTreeItemChapterInGoal(newItem, currentSelectedGoal)) {
 				chapterTreeItemSelected(newItem);
-			} else if(!isActivityInGoal(newItem, currentSelectedGoal) && !isChapterInGoal(newItem, currentSelectedGoal)) {
+			} else if(!isTreeItemActivityInGoal(newItem, currentSelectedGoal) && !isTreeItemChapterInGoal(newItem, currentSelectedGoal)) {
 				erbPathwayTreeItemSelected();
 			}
 		}
@@ -493,14 +502,13 @@ public class EngagementActionController implements Initializable{
 		cleanAttributePanelContentVBox();
 		cleanListOfAttributePanelControllers();
 		//--
-//		removeERBKeyVBox();
 		removeStatusHBox();
 		removeLocalProgressVBox();
 		removeAttributeScrollPane();
 		//--
 		addERBKeyVBox(1);
 		//--
-		generateChapterERBPathway();
+		generateChapterERBPathway(currentSelectedGoal);
 		setNavigationButtonsDisability(null, null);
 		if(currentSelectedGoal != null) {
 			Pane root = loadERBPathwayLandingRoot(currentSelectedGoal.getChapters());
@@ -562,12 +570,21 @@ public class EngagementActionController implements Initializable{
 		loadActivityContent(currentSelectedActivity);
 		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
-		highlightSelectedActivityDiagram(currentSelectedActivity);
+		highlightActivityDiagram(currentSelectedActivity);
 		setNavigationButtonsDisability(activityTreeItem, activityTreeItem.getParent());
 		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 	
-	private void addContentToContentVBox(Pane root,boolean setDynamicDimensions) {
+	private void addContentToContentVBox(Pane root, boolean setDynamicDimensions) {
+		contentVBox.getChildren().add(root);
+		if(setDynamicDimensions) {
+			setDynamicDimensions(root);
+		} else {
+			VBox.setVgrow(root, Priority.ALWAYS);
+		}
+	}
+	
+	private void addContentToContentVBox(ScrollPane root, boolean setDynamicDimensions) {
 		contentVBox.getChildren().add(root);
 		if(setDynamicDimensions) {
 			setDynamicDimensions(root);
@@ -608,7 +625,7 @@ public class EngagementActionController implements Initializable{
 		treeItemActivityIdTreeMap.put(reflectTreeItem, "26");
 	}
 	
-	private void fillGoalComboBox() {
+	private void fillGoalComboBox(Project project) {
 		for(Goal goal: project.getProjectGoals()) {
 			goalComboBox.getItems().add(goal);
 		}
@@ -629,7 +646,7 @@ public class EngagementActionController implements Initializable{
 		};
 	}
 	
-	void generateAttributePanel(String attributeTitle, String attributeContent, String attributeColor) {
+	void generateAttribute(String attributeTitle, String attributeContent, String attributeColor) {
 		if (attributeContent.trim().length() > 0 && !attributePanelContainsAttribute(attributeTitle)) {
 			Parent root = loadAttributePaneRoot(attributeTitle, attributeContent, attributeColor);
 			attributePanelContentVBox.getChildren().add(root);
@@ -643,7 +660,7 @@ public class EngagementActionController implements Initializable{
 		if (listOfChapters != null) {
 			fillAndStoreTreeViewData(listOfChapters);
 			initializeTreeViewSelection();
-			generateChapterERBPathway();
+			generateChapterERBPathway(currentSelectedGoal);
 		}
 	}
 	
@@ -651,79 +668,44 @@ public class EngagementActionController implements Initializable{
 		Progress progress = new Progress();
 		if (chapter != null) {
 			int chapterProgress = progress.getChapterPercentDone(chapter);
-			setChapterProgress(chapterProgress);
+			progress.setChapterProgress(chapterProgressIndicator, chapterProgress);
 		}
 		if(chapters != null) {
 			int goalProgress = progress.getGoalPercentDone(chapters);
-			setGoalProgress(goalProgress);
+			progress.setGoalProgress(goalProgressVBox, goalProgressBar, goalProgressPercentLabel, goalProgress);
 			int goalConfidence = progress.getGoalConfidencePercent(chapters);
-			setGoalConfidence(goalConfidence);
+			progress.setGoalRating(goalConfidenceVBox, goalConfidenceBar, goalConfidencePercentLabel, goalConfidence);
 		}
-	}
-	
-	private void setChapterProgress(int chapterPercent) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				chapterProgressIndicator.setProgress(chapterPercent/100.0);
-			}
-		});
-	}
-	
-	private void setGoalProgress(int goalPercent) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				double progressBarHeight = goalProgressVBox.getHeight();
-				goalProgressBar.setMaxHeight(progressBarHeight);
-				goalProgressBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-				double fixedCapacity = 100;
-				double progress = goalPercent / fixedCapacity;
-				goalProgressBar.setPrefHeight(progressBarHeight * progress);
-				goalProgressPercentLabel.setText(goalPercent + "%");
-			}
-		});
-	}
-	
-	private void setGoalConfidence(int goalConfidence) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				double progressBarHeight = goalConfidenceVBox.getHeight();
-				goalConfidenceBar.setMaxHeight(progressBarHeight);
-				goalConfidenceBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-				double fixedCapacity = 100;
-				double progress = goalConfidence / fixedCapacity;
-				goalConfidenceBar.setPrefHeight(progressBarHeight * progress);
-				goalConfidencePercentLabel.setText(goalConfidence + "%");
-			}
-		});
 	}
 	
 	private void loadActivityContent(Activity activity) {
 		if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
-			if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) {
-				generateAttributePanel("Objective", activity.getObjectives(), constants.getObjectivesColor());
-				generateAttributePanel("Instructions", activity.getInstructions(), constants.getInstructionsColor());
+			if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { //Normal Activity
+				addBaseAttributesToAttributePanel(activity);
 				Pane root = loadWorksheetContentController(activity);
 				addContentToContentVBox(root, false);
-			} else if (activity.getLongName().contentEquals("Plan")) {
+			} else if (activity.getLongName().contentEquals("Plan")) { //Plan Activity
 				removeAttributeScrollPane();
 				Pane root = loadPlanRoot(currentSelectedChapter, activity);
 				addContentToContentVBox(root, true);
-			} else if (activity.getLongName().contentEquals("Reflect")) {
+			} else if (activity.getLongName().contentEquals("Reflect")) { //Reflect Activity
 				removeAttributeScrollPane();
-				loadReflectRoot(currentSelectedChapter, activity);
+				ScrollPane root = loadReflectRoot(currentSelectedChapter, activity);
+				addContentToContentVBox(root, false);
 			}
 		} else if (activity.getActivityType().getDescription().contentEquals("noteboard")) {
-			generateAttributePanel("Objective", activity.getObjectives(), constants.getObjectivesColor());
-			generateAttributePanel("Instructions", activity.getInstructions(), constants.getInstructionsColor());
+			addBaseAttributesToAttributePanel(activity);
 			Pane root = loadNoteBoardContentController(activity);
 			addContentToContentVBox(root, false);
 		}
 	}
 	
-	private void highlightSelectedActivityDiagram(Activity activity) {
+	private void addBaseAttributesToAttributePanel(Activity activity) {
+		generateAttribute("Objective", activity.getObjectives(), constants.getObjectivesColor());
+		generateAttribute("Instructions", activity.getInstructions(), constants.getInstructionsColor());
+	}
+	
+	private void highlightActivityDiagram(Activity activity) {
 		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
 			if(erbPathwayDiagramController.getActivity() == activity) {
 				erbPathwayDiagramController.highlightDiagram();
@@ -743,16 +725,18 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void generateChapterERBPathway() {
-		cleanERBPathwayDiagramHBox();
-		cleanListOfChapterDiagramControllers();
-		removeShowDetailsCheckBox();
-		removeDetailsKeyPaneVBox();
-		erbPathwayDiagramScrollPane.setMinHeight(50);
-		for (Chapter chapter : currentSelectedGoal.getChapters()) {
-			Parent root = loadERBChapterDiagramRoot(chapter, currentSelectedGoal.getChapters());
-			pathwayTitledPane.setText(currentSelectedGoal.getGoalName() + " Pathway");
-			if(root != null) erbPathwayDiagramHBox.getChildren().add(root);
+	private void generateChapterERBPathway(Goal goal) {
+		if (goal != null) {
+			cleanERBPathwayDiagramHBox();
+			cleanListOfChapterDiagramControllers();
+			removeShowDetailsCheckBox();
+			removeDetailsKeyPaneVBox();
+			erbPathwayDiagramScrollPane.setMinHeight(50);
+			for (Chapter chapter : goal.getChapters()) {
+				Parent root = loadERBChapterDiagramRoot(chapter, goal.getChapters());
+				pathwayTitledPane.setText(goal.getGoalName() + " Pathway");
+				if (root != null) erbPathwayDiagramHBox.getChildren().add(root);
+			}
 		}
 	}
 	
@@ -766,8 +750,7 @@ public class EngagementActionController implements Initializable{
 			for (Activity activity : chapter.getAssignedActivities()) {
 				Parent root = loadERBPathwayDiagramRoot(activity, chapter);
 				pathwayTitledPane.setText(chapter.getStringName() + " Pathway");
-				if (root != null)
-					erbPathwayDiagramHBox.getChildren().add(root);
+				if (root != null) erbPathwayDiagramHBox.getChildren().add(root);
 			}
 		}
 	}
@@ -929,7 +912,7 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 
-	private boolean isActivityInGoal(TreeItem<String> treeItem, Goal goal) {
+	private boolean isTreeItemActivityInGoal(TreeItem<String> treeItem, Goal goal) {
 		if (treeItem.getValue().contentEquals("Plan") || treeItem.getValue().contentEquals("Reflect")) {
 			return true;
 		} else {
@@ -944,7 +927,7 @@ public class EngagementActionController implements Initializable{
 		return false;
 	}
 
-	private boolean isChapterInGoal(TreeItem<String> treeItem, Goal goal) {
+	private boolean isTreeItemChapterInGoal(TreeItem<String> treeItem, Goal goal) {
 		for(Chapter chapter: goal.getChapters()) {
 			if(treeItem.getValue().contentEquals(chapter.getStringName())) {
 				return true;
@@ -996,14 +979,17 @@ public class EngagementActionController implements Initializable{
 	public Chapter getChapterForActivityInGoal(Activity activity, Goal goal) {
 		String chapterName = "Chapter " + activity.getChapterAssignment();
 		Chapter chapter = getChapterForNameInGoal(chapterName, goal);
-		if(chapter != null) return chapter;
-		logger.debug("Chapter returned is null");
-		return null;
+		if (chapter != null) {
+			return chapter;
+		} else {
+			logger.debug("Chapter returned is null");
+			return null;
+		}
 	}
 	
 	public Activity getActivityForIDInGoal(String activityID, Goal goal) {
 		if (activityID.contentEquals("25") || activityID.contentEquals("26")) {
-			return app.getActivity(activityID);
+			return app.getActivity(activityID, app.getActivities());
 		} else {
 			for (Chapter chapter : goal.getChapters()) {
 				for (Activity activity : chapter.getAssignedActivities()) {

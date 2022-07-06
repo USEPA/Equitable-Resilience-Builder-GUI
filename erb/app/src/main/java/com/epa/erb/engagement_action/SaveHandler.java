@@ -41,7 +41,8 @@ public class SaveHandler {
 	public void beginSave() {
 		String saveType = determineSavePrompt();
 		if (!saveType.contentEquals("NO")) {
-			loadSavePopup(activity, chapter, goal, project, projects, saveType);
+			Parent savePopupRoot = loadSavePopup(activity, chapter, goal, project, projects, saveType);
+			showSavePopup(savePopupRoot);
 		}
 	}
 	
@@ -82,22 +83,26 @@ public class SaveHandler {
 		return "NO";
 	}
 	
-	private Stage savePopupStage = null; //Save prompt on app close
-	public void loadSavePopup(Activity activity, Chapter chapter, Goal goal, Project project,ArrayList<Project> projects, String saveType) {
+	public Parent loadSavePopup(Activity activity, Chapter chapter, Goal goal, Project project,ArrayList<Project> projects, String saveType) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/SavePopup.fxml"));
 			SavePopupController savePopupController = new SavePopupController(activity, chapter, goal, project, app, saveType, projects, this);
 			fxmlLoader.setController(savePopupController);
-			Parent root = fxmlLoader.load();
-			savePopupStage = new Stage();
-			Scene scene = new Scene(root);
-			savePopupStage.setScene(scene);
-			savePopupStage.setTitle("Saving...");
-			savePopupStage.show();
+			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
 	}	
+	
+	private Stage savePopupStage = null; //Save prompt on app close
+	private void showSavePopup(Parent savePopupRoot) {
+		savePopupStage = new Stage();
+		Scene scene = new Scene(savePopupRoot);
+		savePopupStage.setScene(scene);
+		savePopupStage.setTitle("Saving...");
+		savePopupStage.show();
+	}
 	
 	private boolean allProjectsSaved(ArrayList<Project> projects) {
 		for (Project project : projects) {
@@ -127,7 +132,6 @@ public class SaveHandler {
 		if(result.get() == ButtonType.OK) return "CHAPTER";
 		return "NO" ;
 	}
-	
 	
 	private String showGoalSaveNeeded(){
 		Alert alert = new Alert(AlertType.CONFIRMATION);

@@ -8,6 +8,7 @@ import com.epa.erb.project.ProjectSelectionController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
@@ -56,6 +57,9 @@ public class ERBLandingController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		hideContent1();
+		hideContent2();
+		hideContent3();
 		handleControls();
 	}
 
@@ -68,17 +72,15 @@ public class ERBLandingController implements Initializable {
 		circle1.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle2.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle3.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
-		hideContent1();
-		hideContent2();
-		hideContent3();
 	}
 
 	@FXML
 	public void beginERBProcessButtonClicked() {
-		loadProjectSelectionToContainer();
+		Parent projectSelectionRoot = loadProjectSelectionToContainer();
+		app.loadNodeToERBContainer(projectSelectionRoot);			
 	}
 	
-	private void loadProjectSelectionToContainer() {
+	private Parent loadProjectSelectionToContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
 			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app, updateProjects);
@@ -86,24 +88,25 @@ public class ERBLandingController implements Initializable {
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
 			root.setPrefHeight(app.getPrefHeight());
-			app.loadContentToERBContainer(root);			
+			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
 	}
 	
 	@FXML
 	public void circle1Clicked() {
-		if(isCircle1ContentShowing()) {
+		if (isCircle1ContentShowing()) {
 			hideContent1();
 		} else {
 			showContent1();
 		}
 	}
-	
+
 	@FXML
 	public void circle2Clicked() {
-		if(isCircle2ContentShowing()) {
+		if (isCircle2ContentShowing()) {
 			hideContent2();
 		} else {
 			showContent2();
@@ -112,70 +115,70 @@ public class ERBLandingController implements Initializable {
 	
 	@FXML
 	public void circle3Clicked() {
-		if(isCircle3ContentShowing()) {
+		if (isCircle3ContentShowing()) {
 			hideContent3();
 		} else {
 			showContent3();
 		}
 	}
-	
+
+	private boolean isCircle1ContentShowing() {
+		if (vBox1.getChildren().contains(vBox1Content)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private boolean isCircle2ContentShowing() {
+		if (vBox2.getChildren().contains(vBox2Content)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private boolean isCircle3ContentShowing() {
+		if (vBox3.getChildren().contains(vBox3Content)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	private void hideContent1() {
-		if(vBox1.getChildren().contains(vBox1Content)) {
+		if (vBox1.getChildren().contains(vBox1Content)) {
 			vBox1.getChildren().remove(vBox1Content);
 		}
 	}
-	
-	private void showContent1() {
-		if(!vBox1.getChildren().contains(vBox1Content)) {
-			vBox1.getChildren().add(1,vBox1Content);
-		}
-	}
-	
-	private boolean isCircle1ContentShowing() {
-		if(vBox1.getChildren().contains(vBox1Content)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	private boolean isCircle2ContentShowing() {
-		if(vBox2.getChildren().contains(vBox2Content)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	private boolean isCircle3ContentShowing() {
-		if(vBox3.getChildren().contains(vBox3Content)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
+
 	private void hideContent2() {
-		if(vBox2.getChildren().contains(vBox2Content)) {
+		if (vBox2.getChildren().contains(vBox2Content)) {
 			vBox2.getChildren().remove(vBox2Content);
 		}
 	}
-	
-	private void showContent2() {
-		if(!vBox2.getChildren().contains(vBox2Content)) {
-			vBox2.getChildren().add(1,vBox2Content);
-		}
-	}
-	
+
 	private void hideContent3() {
-		if(vBox3.getChildren().contains(vBox3Content)) {
+		if (vBox3.getChildren().contains(vBox3Content)) {
 			vBox3.getChildren().remove(vBox3Content);
 		}
 	}
-	
+
+	private void showContent1() {
+		if (!vBox1.getChildren().contains(vBox1Content)) {
+			vBox1.getChildren().add(1, vBox1Content);
+		}
+	}
+
+	private void showContent2() {
+		if (!vBox2.getChildren().contains(vBox2Content)) {
+			vBox2.getChildren().add(1, vBox2Content);
+		}
+	}
+
 	private void showContent3() {
-		if(!vBox3.getChildren().contains(vBox3Content)) {
-			vBox3.getChildren().add(1,vBox3Content);
+		if (!vBox3.getChildren().contains(vBox3Content)) {
+			vBox3.getChildren().add(1, vBox3Content);
 		}
 	}
 

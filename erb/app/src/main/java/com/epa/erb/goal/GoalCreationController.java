@@ -29,7 +29,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
@@ -75,8 +74,7 @@ public class GoalCreationController implements Initializable{
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
 			root.setPrefHeight(app.getPrefHeight());
-			VBox.setVgrow(root, Priority.ALWAYS);
-			app.loadContentToERBContainer(root);
+			app.loadNodeToERBContainer(root);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

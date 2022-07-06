@@ -26,13 +26,17 @@ public class Chapter {
 	}
 
 	public void addActivity(Activity activity) {
-		assignedActivities.add(activity);
+		if (activity != null) {
+			assignedActivities.add(activity);
+		}
 	}
 	
 	public void removeActivity(Activity activity) {
-		assignedActivities.remove(activity);
+		if (activity != null) {
+			assignedActivities.remove(activity);
+		}
 	}
-	
+
 	public int getNumberOfAssignedActivities() {
 		return assignedActivities.size();
 	}
@@ -81,7 +85,8 @@ public class Chapter {
 	public String getStatus() {
 		boolean isReady = true; // if all activities are ready
 		boolean isComplete = true; // if all activities are complete
-		for (Activity activity : assignedActivities) {
+		if (assignedActivities.size() > 0) {
+			for (Activity activity : assignedActivities) {
 				if (activity.getStatus().contentEquals("ready")) {
 					isComplete = false;
 				} else if (activity.getStatus().contentEquals("in progress")) {
@@ -90,13 +95,16 @@ public class Chapter {
 				} else if (activity.getStatus().contentEquals("complete")) {
 					isReady = false;
 				}
-		}
-		if (isComplete) {
-			return "complete";
-		} else if (isReady) {
-			return "ready";
+			}
+			if (isComplete) {
+				return "complete";
+			} else if (isReady) {
+				return "ready";
+			} else {
+				return "in progress";
+			}
 		} else {
-			return "in progress";
+			return "ready";
 		}
 	}
 

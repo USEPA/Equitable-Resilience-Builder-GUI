@@ -41,13 +41,13 @@ public class ReflectNotesController implements Initializable{
 	}
 	
 	private void checkForExistingActivityNotes() {
-		if(activity.getNotes() != null && activity.getNotes().length() > 0) {
+		if(activity != null && activity.getNotes() != null && activity.getNotes().length() > 0) {
 			notesTextArea.setText(activity.getNotes());
 		}
 	}
 	
 	private void checkForExistingChapterNotes() {
-		if(chapter.getNotes() != null && chapter.getNotes().length() > 0) {
+		if(chapter != null && chapter.getNotes() != null && chapter.getNotes().length() > 0) {
 			notesTextArea.setText(chapter.getNotes());
 		}
 	}

@@ -144,31 +144,35 @@ public class NoteBoardContentController implements Initializable{
 	private void checkForExistingNoteBoardData() {
 		boolean dataExists = noteBoardDataExists(project, goal, activity);
 		if (dataExists) {
-			try {
-				XMLManager xmlManager = new XMLManager(app);
-				ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(getActivityDataFile(project, goal, activity));
-				for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
-					HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
-					for (String categoryName : categoryHashMap.keySet()) {
-						HBox catHBox = (HBox) loadCategorySection(categoryName);
-						ArrayList<HashMap<String, String>> listOfNoteHashMaps = categoryHashMap.get(categoryName);
-						for (int j = 0; j < listOfNoteHashMaps.size(); j++) {
-							CategorySectionController categorySectionController = getCategorySectionController(catHBox);
-							Pane postItNotePane = loadPostItNote(categorySectionController);
-							HashMap<String, String> noteHashMap = listOfNoteHashMaps.get(j);
-							String color = noteHashMap.get("color").replaceAll("#", "");
-							String content = noteHashMap.get("content");
-							String like = noteHashMap.get("likes");
-							setPostItNoteProperties((VBox) postItNotePane, color, content, like);
-							int index = Integer.parseInt(noteHashMap.get("position"));
-							categorySectionController.getPostItHBox().getChildren().add(index, postItNotePane);
-						}
-						mainVBox.getChildren().add(catHBox);
+			generateExistingNoteBoardControls(project, goal, activity);
+		}
+	}
+	
+	private void generateExistingNoteBoardControls(Project project, Goal goal, Activity activity) {
+		try {
+			XMLManager xmlManager = new XMLManager(app);
+			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(getActivityDataFile(project, goal, activity));
+			for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
+				HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
+				for (String categoryName : categoryHashMap.keySet()) {
+					HBox catHBox = (HBox) loadCategorySection(categoryName);
+					ArrayList<HashMap<String, String>> listOfNoteHashMaps = categoryHashMap.get(categoryName);
+					for (int j = 0; j < listOfNoteHashMaps.size(); j++) {
+						CategorySectionController categorySectionController = getCategorySectionController(catHBox);
+						Pane postItNotePane = loadPostItNote(categorySectionController);
+						HashMap<String, String> noteHashMap = listOfNoteHashMaps.get(j);
+						String color = noteHashMap.get("color").replaceAll("#", "");
+						String content = noteHashMap.get("content");
+						String like = noteHashMap.get("likes");
+						setPostItNoteProperties((VBox) postItNotePane, color, content, like);
+						int index = Integer.parseInt(noteHashMap.get("position"));
+						categorySectionController.getPostItHBox().getChildren().add(index, postItNotePane);
 					}
+					mainVBox.getChildren().add(catHBox);
 				}
-			} catch (Exception e) {
-				logger.error(e.getMessage());
 			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 	}
 	
@@ -181,25 +185,28 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	ContextMenu categoryContextMenu = null;
-
 	private void showCategoryContextMenu(HBox catHBox, ContextMenuEvent event) {
 		if (noteContextMenu == null || !noteContextMenu.isShowing()) {
 			categoryContextMenu = new ContextMenu();
 			MenuItem menuItem = new MenuItem("Remove Category");
 			categoryContextMenu.getItems().add(menuItem);
-			menuItem.setOnAction(e -> removeCategory(catHBox));
+			menuItem.setOnAction(e -> removeCategoryMenuItemClicked(catHBox));
 			categoryContextMenu.show(catHBox, event.getScreenX(), event.getScreenY());
 		}
 	}
 
 	ContextMenu noteContextMenu = null;
-
 	private void showPostItNoteContextMenu(PostItNoteController postItNoteController, VBox postItNotePane,ContextMenuEvent event) {
 		noteContextMenu = new ContextMenu();
 		MenuItem menuItem = new MenuItem("Remove Note");
 		noteContextMenu.getItems().add(menuItem);
-		menuItem.setOnAction(e -> removeNote(postItNoteController, postItNotePane));
+		menuItem.setOnAction(e -> removeNoteMenuItemClicked(postItNoteController, postItNotePane));
 		noteContextMenu.show(postItNotePane, event.getScreenX(), event.getScreenY());
+	}
+	
+	private void removeCategoryMenuItemClicked(HBox catHBox) {
+		removeCategory(catHBox);
+		activity.setSaved(false);
 	}
 	
 	private void removeCategory(HBox catHBox) {
@@ -209,14 +216,17 @@ public class NoteBoardContentController implements Initializable{
 			postItNoteControllers.remove(postItNoteController);
 		}
 		categorySectionControllers.remove(categorySectionController);
-		activity.setSaved(false);
+	}
+	
+	private void removeNoteMenuItemClicked(PostItNoteController postItNoteController, VBox postItNotePane) {
+		removeNote(postItNoteController, postItNotePane);
+		getActivity().setSaved(false);
 	}
 	
 	private void removeNote(PostItNoteController postItNoteController, VBox postItNotePane) {
 		HBox postItHBox = (HBox) postItNotePane.getParent();
 		postItHBox.getChildren().remove(postItNotePane);
 		removePostItNoteController(postItNoteController);
-		getActivity().setSaved(false);
 	}
 
 	private static final String TAB_DRAG_KEY = "pane";
@@ -295,8 +305,8 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private PostItNoteController getPostItNoteController(VBox postItNotePane) {
-		for(PostItNoteController postItNoteController: postItNoteControllers) {
-			if(postItNoteController.getPostItNotePane().hashCode() == postItNotePane.hashCode()) {
+		for (PostItNoteController postItNoteController : postItNoteControllers) {
+			if (postItNoteController.getPostItNotePane().hashCode() == postItNotePane.hashCode()) {
 				return postItNoteController;
 			}
 		}

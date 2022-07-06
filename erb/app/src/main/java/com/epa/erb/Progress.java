@@ -1,9 +1,20 @@
 package com.epa.erb;
 
+import java.io.File;
 import java.util.ArrayList;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.goal.Goal;
+import com.epa.erb.project.Project;
+
+import javafx.application.Platform;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.VBox;
 
 public class Progress {
+	
+	private Constants constants = new Constants();
 	
 	public Progress() {
 		
@@ -69,6 +80,117 @@ public class Progress {
 				}
 			}
 		return numActivities * 100.0;
+	}
+	
+	public double getProjectTotalPercent(Project project) {
+		double totalPercent = 0;
+		for (Goal goal : project.getProjectGoals()) {
+			File goalMetaXMLFile = getGoalMetaXMLFile(goal, project);
+			if (goalMetaXMLFile != null) {
+				ArrayList<Chapter> chapters = goal.getChapters();
+				int goalCompletePercent = getGoalPercentDone(chapters);
+				totalPercent = totalPercent + goalCompletePercent;
+			}
+		}
+		return totalPercent;
+	}
+	
+	private File getGoalMetaXMLFile(Goal goal, Project project) {
+		File goalXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
+		if(goalXMLFile.exists()) {
+			return goalXMLFile;
+		} else {
+			return null;
+		}
+	}
+	
+	public void setChapterProgress(VBox chapterProgressVBox, VBox chapterProgressBar, Label chapterPercentLabel, int chapterPercent) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				double progressBarHeight = chapterProgressVBox.getHeight();
+				chapterProgressBar.setMaxHeight(progressBarHeight);
+				chapterProgressBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+				double fixedCapacity = 100;
+				double progress = chapterPercent/fixedCapacity;
+				chapterProgressBar.setPrefHeight(progressBarHeight*progress);
+				chapterPercentLabel.setText(chapterPercent + "%");
+			}
+		});
+	}
+	
+	public void setChapterProgress(ProgressIndicator chapterProgressIndicator, int chapterPercent) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				chapterProgressIndicator.setProgress(chapterPercent/100.0);
+			}
+		});
+	}
+	
+	public void setChapterRating(VBox chapterConfidenceVBox, VBox chapterConfidenceBar, Label chaperConfidencePercentLabel, int chapterConfidence) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				double progressBarHeight = chapterConfidenceVBox.getHeight();
+				chapterConfidenceBar.setMaxHeight(progressBarHeight);
+				chapterConfidenceBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+				double fixedCapacity = 100;
+				double progress = chapterConfidence / fixedCapacity;
+				chapterConfidenceBar.setPrefHeight(progressBarHeight * progress);
+				chaperConfidencePercentLabel.setText(chapterConfidence + "%");
+			}
+		});
+	}
+	
+	public void setGoalProgress(VBox goalProgressVBox, VBox goalProgressBar, Label goalProgressPercentLabel, int goalPercent) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				double progressBarHeight = goalProgressVBox.getHeight();
+				goalProgressBar.setMaxHeight(progressBarHeight);
+				goalProgressBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+				double fixedCapacity = 100;
+				double progress = goalPercent / fixedCapacity;
+				goalProgressBar.setPrefHeight(progressBarHeight * progress);
+				goalProgressPercentLabel.setText(goalPercent + "%");
+			}
+		});
+	}
+	
+	public void setGoalProgress(ProgressBar goalProgressBar, Label goalProgressPercentLabel, int goalPercent) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				goalProgressBar.setProgress(goalPercent / 100.0);
+				goalProgressPercentLabel.setText(goalPercent + "%");
+			}
+		});
+	}
+	
+	public void setGoalRating(VBox goalConfidenceVBox, VBox goalConfidenceBar, Label goalConfidencePercentLabel, int goalConfidence) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				double progressBarHeight = goalConfidenceVBox.getHeight();
+				goalConfidenceBar.setMaxHeight(progressBarHeight);
+				goalConfidenceBar.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+				double fixedCapacity = 100;
+				double progress = goalConfidence / fixedCapacity;
+				goalConfidenceBar.setPrefHeight(progressBarHeight * progress);
+				goalConfidencePercentLabel.setText(goalConfidence + "%");
+			}
+		});
+	}
+	
+	public void setERBProgress(ProgressBar erbProgressBar, Label erbProgressPercentLabel, double erbPercent) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				erbProgressBar.setProgress(erbPercent/100.0);
+				erbProgressPercentLabel.setText(erbPercent + "%");
+			}
+		});
 	}
 
 }

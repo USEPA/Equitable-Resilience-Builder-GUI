@@ -8,6 +8,7 @@ import com.epa.erb.Constants;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -33,7 +34,6 @@ public class PostItNoteController implements Initializable{
 		this.noteBoardContentController = noteBoardContentController;
 	}
 	
-	private int index =0;
 	private Stage editsStage = null;
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(PostItNoteController.class);
@@ -80,22 +80,28 @@ public class PostItNoteController implements Initializable{
 	}
 	
 	private void postItNoteDoubleClicked(MouseEvent mouseEvent) {
-		loadPostItNoteEdits();
+		Parent postItNoteEditsRoot = loadPostItNoteEdits();
+		showPostItNoteEdits(postItNoteEditsRoot);
 	}
 	
-	private void loadPostItNoteEdits() {
+	private Parent loadPostItNoteEdits() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/PostItNoteEdits.fxml"));
 			PostItNoteEditsController postItNoteEditsController = new PostItNoteEditsController(this);
 			fxmlLoader.setController(postItNoteEditsController);
-			editsStage = new Stage();
-			Scene scene = new Scene(fxmlLoader.load());
-			editsStage.setScene(scene);
-			editsStage.setTitle("ERB: Post It Note Edits");
-			editsStage.showAndWait();
+			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
 		}
+	}
+	
+	private void showPostItNoteEdits(Parent postItNoteEditsRoot) {
+		editsStage = new Stage();
+		Scene scene = new Scene(postItNoteEditsRoot);
+		editsStage.setScene(scene);
+		editsStage.setTitle("ERB: Post It Note Edits");
+		editsStage.showAndWait();
 	}
 	
 	void setPostItNoteText(String text) {
@@ -116,10 +122,6 @@ public class PostItNoteController implements Initializable{
 		}
 	}
 	
-	public NoteBoardContentController getNoteBoardContentController() {
-		return noteBoardContentController;
-	}
-
 	public int getPostItNoteIndex(CategorySectionController categorySectionController) {
 		return categorySectionController.getPostItHBox().getChildren().indexOf(getPostItNotePane());
 	}
@@ -165,6 +167,10 @@ public class PostItNoteController implements Initializable{
 
 	public TextFlow getTextFlow() {
 		return textFlow;
+	}
+	
+	public NoteBoardContentController getNoteBoardContentController() {
+		return noteBoardContentController;
 	}
 
 	public void setNoteBoardContentController(NoteBoardContentController noteBoardContentController) {
