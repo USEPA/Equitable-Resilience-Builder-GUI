@@ -61,19 +61,23 @@ public class GlobalGoalTrackerController implements Initializable{
 	}
 	
 	private void addGoalTrackers(Project project) {
-		for (Goal goal : project.getProjectGoals()) {
-			File goalMetaXMLFile = getGoalMetaXMLFile(goal, project);
-			if (goalMetaXMLFile != null) {
-				Parent root = loadGoalTracker(app, goal, goalMetaXMLFile);
-				if (root != null) {
-					goalHBox.getChildren().add(root);
-					HBox.setHgrow(root, Priority.ALWAYS);
+		if (project != null) {
+			for (Goal goal : project.getProjectGoals()) {
+				File goalMetaXMLFile = getGoalMetaXMLFile(goal, project);
+				if (goalMetaXMLFile != null) {
+					Parent root = loadGoalTracker(goal);
+					if (root != null) {
+						goalHBox.getChildren().add(root);
+						HBox.setHgrow(root, Priority.ALWAYS);
+					}
 				}
 			}
+		} else {
+			logger.error("Cannot addGoalTrackers. project is null.");
 		}
 	}
 	
-	private Parent loadGoalTracker(App app, Goal goal, File goalMetaXMLFile) {
+	private Parent loadGoalTracker(Goal goal) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalTracker.fxml"));
 			GoalTrackerController goalTrackerController = new GoalTrackerController(goal);
@@ -86,11 +90,16 @@ public class GlobalGoalTrackerController implements Initializable{
 	}
 	
 	private File getGoalMetaXMLFile(Goal goal, Project project) {
-		File goalXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
-		if(goalXMLFile.exists()) {
-			return goalXMLFile;
+		if (goal != null && project != null) {
+			File goalXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
+			if (goalXMLFile.exists()) {
+				return goalXMLFile;
+			} else {
+				logger.debug("Goal Meta XML file returned is null.");
+				return null;
+			}
 		} else {
-			logger.debug("Goal Meta XML file returned is null.");
+			logger.error("Cannot getGoalMetaXMLFile. goal or project is null.");
 			return null;
 		}
 	}

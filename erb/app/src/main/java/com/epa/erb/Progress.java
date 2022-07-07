@@ -2,10 +2,11 @@ package com.epa.erb;
 
 import java.io.File;
 import java.util.ArrayList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
-
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -15,91 +16,126 @@ import javafx.scene.layout.VBox;
 public class Progress {
 	
 	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(Progress.class);
 	
 	public Progress() {
 		
 	}
 	
 	public int getChapterPercentDone(Chapter chapter) {
-		double numberOfActivitiesInChapter = 0;
-		double numberOfCompletedActivitiesInChapter = 0;
-		for (Activity activity : chapter.getAssignedActivities()) {
+		if (chapter != null) {
+			double numberOfActivitiesInChapter = 0;
+			double numberOfCompletedActivitiesInChapter = 0;
+			for (Activity activity : chapter.getAssignedActivities()) {
 				numberOfActivitiesInChapter++;
 				if (activity.getStatus().contentEquals("complete")) {
 					numberOfCompletedActivitiesInChapter++;
 				}
+			}
+			return (int) ((numberOfCompletedActivitiesInChapter / numberOfActivitiesInChapter) * 100);
+		} else {
+			logger.error("Cannot getChapterPercentDone. chapter is null.");
+			return -1;
 		}
-		return (int) ((numberOfCompletedActivitiesInChapter / numberOfActivitiesInChapter) * 100);
 	}
 	
 	public int getGoalPercentDone(ArrayList<Chapter> listOfChaptersInGoal) {
-		double numberOfActivitiesInGoal = 0;
-		double numberOfCompletedActivitiesInGoal = 0;
-		for(Chapter chapter: listOfChaptersInGoal) {
-			for(Activity activity: chapter.getAssignedActivities()) {
+		if (listOfChaptersInGoal != null) {
+			double numberOfActivitiesInGoal = 0;
+			double numberOfCompletedActivitiesInGoal = 0;
+			for (Chapter chapter : listOfChaptersInGoal) {
+				for (Activity activity : chapter.getAssignedActivities()) {
 					numberOfActivitiesInGoal++;
-					if(activity.getStatus().contentEquals("complete")) {
+					if (activity.getStatus().contentEquals("complete")) {
 						numberOfCompletedActivitiesInGoal++;
 					}
 				}
+			}
+			return (int) ((numberOfCompletedActivitiesInGoal / numberOfActivitiesInGoal) * 100);
+		} else {
+			logger.error("Cannot getGoalPercentDone. listOfChaptersInGoal is null.");
+			return -1;
 		}
-		return (int) ((numberOfCompletedActivitiesInGoal/numberOfActivitiesInGoal) * 100);
 	}
 	
 	public int getChapterConfidencePercent(Chapter chapter) {
-		double max = (chapter.getNumberOfAssignedActivities()) * 100;
-		double rating = 0;
-		for (Activity activity : chapter.getAssignedActivities()) {
-			int activityRating = Integer.parseInt(activity.getRating());
+		if (chapter != null) {
+			double max = (chapter.getNumberOfAssignedActivities()) * 100;
+			double rating = 0;
+			for (Activity activity : chapter.getAssignedActivities()) {
+				int activityRating = Integer.parseInt(activity.getRating());
 				if (activityRating >= 0) {
 					rating = rating + activityRating;
 				}
+			}
+			return (int) (((rating / max) * 100));
+		} else {
+			logger.error("Cannot getChapterConfidencePercent. chapter is null.");
+			return -1;
 		}
-		return (int) (((rating / max) * 100));
 	}
 	
 	public int getGoalConfidencePercent(ArrayList<Chapter> listOfChaptersInGoal) {
-		double max = getMaxPercent(listOfChaptersInGoal);
-		double rating = 0;
-		for (Chapter chapter : listOfChaptersInGoal) {
-			for (Activity activity : chapter.getAssignedActivities()) {
+		if (listOfChaptersInGoal != null) {
+			double max = getMaxPercent(listOfChaptersInGoal);
+			double rating = 0;
+			for (Chapter chapter : listOfChaptersInGoal) {
+				for (Activity activity : chapter.getAssignedActivities()) {
 					int activityRating = Integer.parseInt(activity.getRating());
 					if (activityRating >= 0) {
 						rating = rating + activityRating;
 					}
+				}
 			}
+			return (int) (((rating / max) * 100));
+		} else {
+			logger.error("Cannot getGoalConfidencePercent. listOfChaptersInGoal is null.");
+			return -1;
 		}
-		return (int) (((rating / max) * 100));
 	}
 	
 	private double getMaxPercent(ArrayList<Chapter> listOfChaptersInGoal) {
-		int numActivities = 0;
-		for(Chapter chapter: listOfChaptersInGoal) {
-			for(Activity activity : chapter.getAssignedActivities()) {
+		if (listOfChaptersInGoal != null) {
+			int numActivities = 0;
+			for (Chapter chapter : listOfChaptersInGoal) {
+				for (Activity activity : chapter.getAssignedActivities()) {
 					numActivities++;
 				}
 			}
-		return numActivities * 100.0;
+			return numActivities * 100.0;
+		} else {
+			logger.error("Cannot getMaxPercent. listOfChaptersInGoal is null");
+			return -1;
+		}
 	}
 	
 	public double getProjectTotalPercent(Project project) {
-		double totalPercent = 0;
-		for (Goal goal : project.getProjectGoals()) {
-			File goalMetaXMLFile = getGoalMetaXMLFile(goal, project);
-			if (goalMetaXMLFile != null) {
-				ArrayList<Chapter> chapters = goal.getChapters();
-				int goalCompletePercent = getGoalPercentDone(chapters);
-				totalPercent = totalPercent + goalCompletePercent;
+		if (project != null) {
+			double totalPercent = 0;
+			for (Goal goal : project.getProjectGoals()) {
+				File goalMetaXMLFile = getGoalMetaXMLFile(goal, project);
+				if (goalMetaXMLFile != null) {
+					ArrayList<Chapter> chapters = goal.getChapters();
+					int goalCompletePercent = getGoalPercentDone(chapters);
+					totalPercent = totalPercent + goalCompletePercent;
+				}
 			}
+			return totalPercent;
+		} else {
+			logger.error("Cannot getProjectTotalPercent. project is null.");
+			return -1;
 		}
-		return totalPercent;
 	}
 	
 	private File getGoalMetaXMLFile(Goal goal, Project project) {
-		File goalXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
-		if(goalXMLFile.exists()) {
-			return goalXMLFile;
+		if (goal != null && project != null) {
+			File goalXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectName()+ "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
+			if (goalXMLFile.exists()) {
+				return goalXMLFile;
+			}
+			return null;
 		} else {
+			logger.error("Cannot getGoalMetaXMLFile. goal or project is null.");
 			return null;
 		}
 	}

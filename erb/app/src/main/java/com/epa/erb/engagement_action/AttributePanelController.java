@@ -2,6 +2,8 @@ package com.epa.erb.engagement_action;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -35,6 +37,8 @@ public class AttributePanelController implements Initializable{
 		this.engagementActionController = engagementActionController;
 	}
 	
+	private Logger logger = LogManager.getLogger(AttributePanelController.class);
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setAttributeFields(attributeTitle, attributeContent, attributeColor);
@@ -55,8 +59,10 @@ public class AttributePanelController implements Initializable{
 	}
 
 	private void setAttributeTextFlowText(String attributeText) {
-		Text text = new Text(attributeText);
-		attributeTextFlow.getChildren().add(text);
+		if (attributeText != null) {
+			Text text = new Text(attributeText);
+			attributeTextFlow.getChildren().add(text);
+		}
 	}
 	
 	String getAttributeLabelText() {
@@ -64,15 +70,15 @@ public class AttributePanelController implements Initializable{
 	}
 	
 	private void setAttributeLabelText(String text) {
-		attributeLabel.setText(text);
+		if(text != null)attributeLabel.setText(text);
 	}
 	
 	private void setAttributeLabelColor(String attributeLabelColor) {
-		attributeLabelHBox.setStyle("-fx-background-color: " + attributeLabelColor + ";");
+		if(attributeLabelColor!=null) attributeLabelHBox.setStyle("-fx-background-color: " + attributeLabelColor + ";");
 	}
 	
 	private void setAttributeCloseButtonColor(String attributeLabelColor) {
-		closeButton.setStyle("-fx-background-color: " + attributeLabelColor + ";");
+		if(attributeLabelColor != null) closeButton.setStyle("-fx-background-color: " + attributeLabelColor + ";");
 	}
 
 	public String getAttributeTitle() {

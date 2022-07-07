@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import com.epa.erb.chapter.Chapter;
@@ -74,6 +78,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 	
 	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(ERBPathwayDiagramController.class);
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -211,17 +216,21 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 	
 	private void createToolTip(String toolTipText, Circle circle, Label circleLabel, String color) {
-		Tooltip tooltip = new Tooltip(toolTipText);
-		Tooltip.install(circle, tooltip);
-		Tooltip.install(circleLabel, tooltip);
-		tooltip.setStyle("-fx-background-color: " + color + " ; -fx-text-fill: black;");
-		circle.setStyle("-fx-fill: " + color + ";");
+		if (toolTipText != null && circle != null && circleLabel != null && color != null) {
+			Tooltip tooltip = new Tooltip(toolTipText);
+			Tooltip.install(circle, tooltip);
+			Tooltip.install(circleLabel, tooltip);
+			tooltip.setStyle("-fx-background-color: " + color + " ; -fx-text-fill: black;");
+			circle.setStyle("-fx-fill: " + color + ";");
+		} else {
+			logger.error("Cannot createToolTip. a param is null.");
+		}
 	}
 
 	@FXML
 	public void bottomRightCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getCurrentActivity().getActivityID();
-		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
+		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getActivityID())) {
 			engagementActionController.generateAttribute("Time", activity.getTime(), constants.getTimeColor());
 		}		
 	}
@@ -229,7 +238,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	public void bottomLeftCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getCurrentActivity().getActivityID();
-		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
+		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getActivityID())) {
 			engagementActionController.generateAttribute("Who", activity.getWho(), constants.getWhoColor());
 		}
 	}
@@ -237,7 +246,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	public void topRightCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getCurrentActivity().getActivityID();
-		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
+		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getActivityID())) {
 			engagementActionController.generateAttribute("Description", activity.getDescription(), constants.getDescriptionColor());
 		}
 	}
@@ -245,7 +254,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	public void topLeftCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getCurrentActivity().getActivityID();
-		if (selectedActivityGUID.contentEquals(activity.getActivityID())) {
+		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getActivityID())) {
 			engagementActionController.generateAttribute("Materials", activity.getMaterials(), constants.getMaterialsColor());
 		}
 	}
@@ -256,9 +265,11 @@ public class ERBPathwayDiagramController implements Initializable {
 		for (TreeItem<String> treeItem : engagementActionController.getTreeItemActivityIdTreeMap().keySet()) {
 			if (engagementActionController.getTreeItemActivityIdTreeMap().get(treeItem) == selectedActivityGUID) {
 				Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
-				if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(activity.getChapterAssignment())) {
-					engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-					engagementActionController.treeViewClicked(null, treeItem);
+				if (treeItemChapter != null) {
+					if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(activity.getChapterAssignment())) {
+						engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+						engagementActionController.treeViewClicked(null, treeItem);
+					}
 				}
 			}
 		}
@@ -266,11 +277,15 @@ public class ERBPathwayDiagramController implements Initializable {
 	
 	private int getIndexOfActivityInChapter(Chapter chapter, Activity activity) {
 		int count = 0;
-		for (Activity a : chapter.getAssignedActivities()) {
-			if (a.getActivityID().contentEquals(activity.getActivityID())) {
-				return count;
+		if (chapter != null && activity != null) {
+			for (Activity a : chapter.getAssignedActivities()) {
+				if (a.getActivityID().contentEquals(activity.getActivityID())) {
+					return count;
+				}
+				count++;
 			}
-			count++;
+		} else {
+			logger.error("Cannot getIndexOfActivityInChapter. chapter or activity is null.");
 		}
 		return -1;
 	}
@@ -282,7 +297,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	 * @return
 	 */
 	private String splitString(String string) {
-		if (string.length() > 50) {
+		if (string != null && string.length() > 50) {
 			String regex = ".{1,50}\\s";
 			Matcher m = Pattern.compile(regex).matcher(string);
 			ArrayList<String> lines = new ArrayList<>();

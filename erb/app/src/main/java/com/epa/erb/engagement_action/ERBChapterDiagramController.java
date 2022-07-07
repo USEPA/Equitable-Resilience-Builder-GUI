@@ -101,7 +101,7 @@ public class ERBChapterDiagramController implements Initializable{
 	}
 		
 	private void setCenterCircleLabelText(String text) {
-		centerCircleLabel.setText(text);
+		if(text != null) centerCircleLabel.setText(text);
 	}
 	
 	private int getIndexOfChapterInListOfChapters() {

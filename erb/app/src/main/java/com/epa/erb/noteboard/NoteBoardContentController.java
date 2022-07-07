@@ -111,7 +111,7 @@ public class NoteBoardContentController implements Initializable{
 	private Parent loadCategorySection(String category) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/CategorySection.fxml"));
-			CategorySectionController categorySectionController = new CategorySectionController((category));
+			CategorySectionController categorySectionController = new CategorySectionController(category);
 			fxmlLoader.setController(categorySectionController);
 			HBox catHBox = fxmlLoader.load();
 			catHBox.setOnContextMenuRequested(e-> showCategoryContextMenu(catHBox, e));
@@ -152,6 +152,7 @@ public class NoteBoardContentController implements Initializable{
 		try {
 			XMLManager xmlManager = new XMLManager(app);
 			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(getActivityDataFile(project, goal, activity));
+			if(listOfCategoryHashMaps != null) {
 			for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
 				HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
 				for (String categoryName : categoryHashMap.keySet()) {
@@ -171,6 +172,7 @@ public class NoteBoardContentController implements Initializable{
 					mainVBox.getChildren().add(catHBox);
 				}
 			}
+			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -186,22 +188,31 @@ public class NoteBoardContentController implements Initializable{
 	
 	ContextMenu categoryContextMenu = null;
 	private void showCategoryContextMenu(HBox catHBox, ContextMenuEvent event) {
-		if (noteContextMenu == null || !noteContextMenu.isShowing()) {
-			categoryContextMenu = new ContextMenu();
-			MenuItem menuItem = new MenuItem("Remove Category");
-			categoryContextMenu.getItems().add(menuItem);
-			menuItem.setOnAction(e -> removeCategoryMenuItemClicked(catHBox));
-			categoryContextMenu.show(catHBox, event.getScreenX(), event.getScreenY());
+		if (event != null) {
+			if (noteContextMenu == null || !noteContextMenu.isShowing()) {
+				categoryContextMenu = new ContextMenu();
+				MenuItem menuItem = new MenuItem("Remove Category");
+				categoryContextMenu.getItems().add(menuItem);
+				menuItem.setOnAction(e -> removeCategoryMenuItemClicked(catHBox));
+				categoryContextMenu.show(catHBox, event.getScreenX(), event.getScreenY());
+			}
+		} else {
+			logger.error("Cannot showCategoryContextMenu. event is null.");
 		}
 	}
 
 	ContextMenu noteContextMenu = null;
-	private void showPostItNoteContextMenu(PostItNoteController postItNoteController, VBox postItNotePane,ContextMenuEvent event) {
-		noteContextMenu = new ContextMenu();
-		MenuItem menuItem = new MenuItem("Remove Note");
-		noteContextMenu.getItems().add(menuItem);
-		menuItem.setOnAction(e -> removeNoteMenuItemClicked(postItNoteController, postItNotePane));
-		noteContextMenu.show(postItNotePane, event.getScreenX(), event.getScreenY());
+	private void showPostItNoteContextMenu(PostItNoteController postItNoteController, VBox postItNotePane,
+			ContextMenuEvent event) {
+		if (event != null) {
+			noteContextMenu = new ContextMenu();
+			MenuItem menuItem = new MenuItem("Remove Note");
+			noteContextMenu.getItems().add(menuItem);
+			menuItem.setOnAction(e -> removeNoteMenuItemClicked(postItNoteController, postItNotePane));
+			noteContextMenu.show(postItNotePane, event.getScreenX(), event.getScreenY());
+		} else {
+			logger.error("Cannot showPostItNoteContextMenu. event is null.");
+		}
 	}
 	
 	private void removeCategoryMenuItemClicked(HBox catHBox) {
@@ -210,12 +221,16 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private void removeCategory(HBox catHBox) {
-		CategorySectionController categorySectionController = getCategorySectionController(catHBox);
-		mainVBox.getChildren().remove(catHBox);
-		for(PostItNoteController postItNoteController: categorySectionController.getListOfPostItNoteControllers()) {
-			postItNoteControllers.remove(postItNoteController);
+		if (catHBox != null) {
+			CategorySectionController categorySectionController = getCategorySectionController(catHBox);
+			mainVBox.getChildren().remove(catHBox);
+			for (PostItNoteController postItNoteController : categorySectionController.getListOfPostItNoteControllers()) {
+				postItNoteControllers.remove(postItNoteController);
+			}
+			categorySectionControllers.remove(categorySectionController);
+		} else {
+			logger.error("Cannot removeCategory. catHBox is null.");
 		}
-		categorySectionControllers.remove(categorySectionController);
 	}
 	
 	private void removeNoteMenuItemClicked(PostItNoteController postItNoteController, VBox postItNotePane) {
@@ -224,9 +239,13 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private void removeNote(PostItNoteController postItNoteController, VBox postItNotePane) {
-		HBox postItHBox = (HBox) postItNotePane.getParent();
-		postItHBox.getChildren().remove(postItNotePane);
-		removePostItNoteController(postItNoteController);
+		if (postItNotePane != null) {
+			HBox postItHBox = (HBox) postItNotePane.getParent();
+			postItHBox.getChildren().remove(postItNotePane);
+			removePostItNoteController(postItNoteController);
+		} else {
+			logger.error("Cannot removeNote. postItNotePane is null.");
+		}
 	}
 
 	private static final String TAB_DRAG_KEY = "pane";
@@ -295,23 +314,33 @@ public class NoteBoardContentController implements Initializable{
 	}
 
 	private CategorySectionController getCategorySectionController(HBox categoryHBox) {
-		for(CategorySectionController categorySectionController : categorySectionControllers) {
-			if(categorySectionController.getCategoryHBox().hashCode() == categoryHBox.hashCode()) {
-				return categorySectionController;
+		if (categoryHBox != null) {
+			for (CategorySectionController categorySectionController : categorySectionControllers) {
+				if (categorySectionController.getCategoryHBox().hashCode() == categoryHBox.hashCode()) {
+					return categorySectionController;
+				}
 			}
+			logger.debug("CategorySectionController returned is null.");
+			return null;
+		} else {
+			logger.error("Cannot getCategorySectionController. categoryHBox is null.");
+			return null;
 		}
-		logger.debug("CategorySectionController returned is null.");
-		return null;
 	}
-	
+
 	private PostItNoteController getPostItNoteController(VBox postItNotePane) {
-		for (PostItNoteController postItNoteController : postItNoteControllers) {
-			if (postItNoteController.getPostItNotePane().hashCode() == postItNotePane.hashCode()) {
-				return postItNoteController;
+		if (postItNotePane != null) {
+			for (PostItNoteController postItNoteController : postItNoteControllers) {
+				if (postItNoteController.getPostItNotePane().hashCode() == postItNotePane.hashCode()) {
+					return postItNoteController;
+				}
 			}
+			logger.debug("PostItNoteController returned is null.");
+			return null;
+		} else {
+			logger.error("Cannot getPostItNoteController. postItNotePane is null.");
+			return null;
 		}
-		logger.debug("PostItNoteController returned is null.");
-		return null;
 	}
 	
 	private File getActivityDataFile(Project project, Goal goal, Activity activity) {

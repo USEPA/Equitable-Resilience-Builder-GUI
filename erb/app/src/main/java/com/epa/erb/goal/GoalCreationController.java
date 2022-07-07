@@ -52,6 +52,7 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private Constants constants = new Constants();
+	private XMLManager xmlManager = new XMLManager(app);
 	private Logger logger = LogManager.getLogger(GoalCreationController.class);
 	private String pathToERBProjectsFolder = constants.getPathToERBProjectsFolder();
 	
@@ -169,7 +170,7 @@ public class GoalCreationController implements Initializable{
 	
 	private void removeSelectedGoal(Event e) {
 		Goal goalToRemove = getGoalListViewSelectedGoal();
-		goalsListView.getItems().remove(goalToRemove);
+		if(goalToRemove != null) goalsListView.getItems().remove(goalToRemove);
 		setGoalsListViewCellFactory();
 	}
 	
@@ -196,28 +197,36 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void writeProjectMetaData(Project project) {
-		XMLManager xmlManager = new XMLManager(app);
-		xmlManager.writeProjectMetaXML(getProjectMetaFile(project), project);
+		File projectMetaFile = getProjectMetaFile(project);
+		xmlManager.writeProjectMetaXML(projectMetaFile, project);
 	}
 	
 	private void writeGoalsMetaData(ArrayList<Goal> goals) {
-		XMLManager xmlManager = new XMLManager(app);
-		createGoalsDirectory();
-		for(Goal goal : goals) {
-			File goalDirectory = createGoalDirectory(goal);
-			File goalMetaFile = new File(goalDirectory.getPath() + "\\Meta.xml");
-			ArrayList<Chapter> chapters = goal.getChapters();
-			xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
-			File activitesDirectory =createActivitiesDirectory(goalDirectory);
-			createActivityDirectory(activitesDirectory, goal);
+		if (goals != null) {
+			createGoalsDirectory();
+			for (Goal goal : goals) {
+				File goalDirectory = createGoalDirectory(goal);
+				File goalMetaFile = new File(goalDirectory.getPath() + "\\Meta.xml");
+				ArrayList<Chapter> chapters = goal.getChapters();
+				xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
+				File activitesDirectory = createActivitiesDirectory(goalDirectory);
+				createActivityDirectory(activitesDirectory, goal);
+			}
+		} else {
+			logger.error("Cannot writeGoalsMetaData. goals is null.");
 		}
 	}
 	
 	private CheckBox createGoalCategoryCheckBox(GoalCategory goalCategory) {
-		CheckBox checkBox = new CheckBox(goalCategory.getCategoryName());
-		checkBox.setWrapText(true);
-		checkBox.setFont(new Font(15.0));
-		return checkBox;
+		if (goalCategory != null) {
+			CheckBox checkBox = new CheckBox(goalCategory.getCategoryName());
+			checkBox.setWrapText(true);
+			checkBox.setFont(new Font(15.0));
+			return checkBox;
+		} else {
+			logger.error("Cannot createGoalCategoryCheckBox. goalCategory is null.");
+			return null;
+		}
 	}
 	
 	private ContextMenu createGoalContextMenu() {
@@ -229,30 +238,45 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void createActivityDirectory(File activitiesDirectory, Goal goal) {
-		for (Chapter chapter : goal.getChapters()) {
-			for (Activity activity : chapter.getAssignedActivities()) {
-				File activityDirectory = new File(activitiesDirectory.getPath() + "\\" + activity.getActivityID());
-				if (!activityDirectory.exists()) {
-					activityDirectory.mkdir();
+		if (activitiesDirectory != null && goal != null) {
+			for (Chapter chapter : goal.getChapters()) {
+				for (Activity activity : chapter.getAssignedActivities()) {
+					File activityDirectory = new File(activitiesDirectory.getPath() + "\\" + activity.getActivityID());
+					if (!activityDirectory.exists()) {
+						activityDirectory.mkdir();
+					}
 				}
 			}
+		} else {
+			logger.error("Cannot createActivityDirectory. activitiesDirectory or goal is null.");
 		}
 	}
 	
 	private File createActivitiesDirectory(File goalDirectory) {
-		File activitiesDirectory = new File(goalDirectory.getPath() + "\\Activities");
-		if(!activitiesDirectory.exists()) {
-			activitiesDirectory.mkdir();
+		if (goalDirectory != null) {
+			File activitiesDirectory = new File(goalDirectory.getPath() + "\\Activities");
+			if (!activitiesDirectory.exists()) {
+				activitiesDirectory.mkdir();
+			}
+			return activitiesDirectory;
+		} else {
+			logger.error("Cannot createActivitiesDirectory. goalDirectory is null.");
+			return null;
 		}
-		return activitiesDirectory;
 	}
 	
 	private File createGoalDirectory(Goal goal) {
-		File goalDirectory = new File(pathToERBProjectsFolder +  "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName());
-		if(!goalDirectory.exists()) {
-			goalDirectory.mkdir();
+		if (goal != null) {
+			File goalDirectory = new File(
+					pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName());
+			if (!goalDirectory.exists()) {
+				goalDirectory.mkdir();
+			}
+			return goalDirectory;
+		} else {
+			logger.error("Cannot createGoalDirectory. goal is null.");
+			return null;
 		}
-		return goalDirectory;
 	}
 	
 	private void createGoalsDirectory() {
@@ -263,8 +287,13 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private File getProjectMetaFile(Project project) {
-		File projectMetaFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Meta.xml");
-		return projectMetaFile;
+		if (project != null) {
+			File projectMetaFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Meta.xml");
+			return projectMetaFile;
+		} else {
+			logger.error("Cannot getProjectMetaFile. project is null.");
+			return null;
+		}
 	}
 	
 	private ArrayList<Goal> getCreatedGoals(){
@@ -276,14 +305,19 @@ public class GoalCreationController implements Initializable{
 	}
 		
 	private GoalCategory getGoalCategory(String goalCategoryName) {
-		ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
-		for(GoalCategory goalCategory : goalCategories) {
-			if(goalCategory.getCategoryName().contentEquals(goalCategoryName)) {
-				return goalCategory;
+		if (goalCategoryName != null) {
+			ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
+			for (GoalCategory goalCategory : goalCategories) {
+				if (goalCategory.getCategoryName().contentEquals(goalCategoryName)) {
+					return goalCategory;
+				}
 			}
+			logger.debug("Goal Category returned is null.");
+			return null;
+		} else {
+			logger.error("Cannot getGoalCategory. goalCategoryName is null.");
+			return null;
 		}
-		logger.debug("Goal Category returned is null.");
-		return null;
 	}
 	
 	private ArrayList<GoalCategory> getSelectedGoalCategories() {
@@ -292,7 +326,7 @@ public class GoalCreationController implements Initializable{
 		for (CheckBox goalCategoryCheckBox : selectedGoalCheckBoxes) {
 			String goalCategoryName = goalCategoryCheckBox.getText();
 			GoalCategory goalCategory = getGoalCategory(goalCategoryName);
-			selectedGoalCategories.add(goalCategory);
+			if(goalCategory != null) selectedGoalCategories.add(goalCategory);
 		}
 		return selectedGoalCategories;
 	}

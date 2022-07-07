@@ -33,7 +33,7 @@ public class XMLManager {
 	
 	//Parse Chapters
 	ArrayList<Chapter> parseChaptersXML(File xmlFile) {
-		if (xmlFile.exists() && xmlFile.canRead()) {
+		if (xmlFile!= null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -67,7 +67,7 @@ public class XMLManager {
 	
 	//Parse ActivityTypes
 	ArrayList<ActivityType> parseActivityTypesXML(File xmlFile) {
-		if (xmlFile.exists() && xmlFile.canRead()) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -100,7 +100,7 @@ public class XMLManager {
 	
 	//Parse AvailableActivities
 	ArrayList<Activity> parseAvailableActivitiesXML(File xmlFile, ArrayList<ActivityType> activityTypes){
-		if (xmlFile.exists() && xmlFile.canRead()) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<Activity> availableActivities = new ArrayList<Activity>();
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -144,8 +144,8 @@ public class XMLManager {
 	}
 	
 	//Parse GoalCategories
-	ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile, ArrayList<Activity> activities){
-		if (xmlFile.exists() && xmlFile.canRead()) {
+	ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile){
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>();
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -187,7 +187,7 @@ public class XMLManager {
 	//Parse all projects
 	ArrayList<Project> parseAllProjects(File ERBProjectDirectory, ArrayList<Activity> activities){
 		ArrayList<Project> projects = new ArrayList<Project>();
-		if(ERBProjectDirectory.exists()) {
+		if(ERBProjectDirectory != null && ERBProjectDirectory.exists()) {
 			File [] projectDirectories = ERBProjectDirectory.listFiles();
 			for(File projectDirectory : projectDirectories) {
 				if(projectDirectory.isDirectory()) {
@@ -207,7 +207,7 @@ public class XMLManager {
 	
 	//Parse Project
 	Project parseProjectXML(File xmlFile, ArrayList<Activity> activities){
-		if (xmlFile.exists() && xmlFile.canRead()) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -272,7 +272,7 @@ public class XMLManager {
 	
 	//Parse Goal
 	public ArrayList<Chapter> parseGoalXML(File xmlFile, ArrayList<Activity> activities){
-		if (xmlFile.exists() && xmlFile.canRead()) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -328,88 +328,96 @@ public class XMLManager {
 	}
 	
 	public void writeProjectMetaXML(File xmlFile, Project project) {
-		try {
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.newDocument();
-			Element rootElement = document.createElement("project");
-			document.appendChild(rootElement);
-			rootElement.setAttribute("projectName", project.getProjectName());
-			Element goalsElement = document.createElement("goals");
-			for (Goal goal : project.getProjectGoals()) {
-				Element goalElement = document.createElement("goal");
-				goalElement.setAttribute("goalName", goal.getGoalName());
-				goalElement.setAttribute("goalDescription", goal.getGoalDescription());
-				Element goalsCategoryElement = document.createElement("goalsCategories");
-				for (GoalCategory goalCategory : goal.getListOfSelectedGoalCategories()) {
-					Element goalCategoryElement = document.createElement("goalCategory");
-					goalCategoryElement.setAttribute("categoryName", goalCategory.getCategoryName());
-					Element assignedActivitesElement = document.createElement("assignedActivities");
-					for (String activityID : goalCategory.getListOfAssignedActivityIDs()) {
-						Element assignedActivityElement = document.createElement("assignedActivity");
-						assignedActivityElement.setAttribute("activityID", activityID);
-						assignedActivitesElement.appendChild(assignedActivityElement);						
+		if (xmlFile != null && project != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("project");
+				document.appendChild(rootElement);
+				rootElement.setAttribute("projectName", project.getProjectName());
+				Element goalsElement = document.createElement("goals");
+				for (Goal goal : project.getProjectGoals()) {
+					Element goalElement = document.createElement("goal");
+					goalElement.setAttribute("goalName", goal.getGoalName());
+					goalElement.setAttribute("goalDescription", goal.getGoalDescription());
+					Element goalsCategoryElement = document.createElement("goalsCategories");
+					for (GoalCategory goalCategory : goal.getListOfSelectedGoalCategories()) {
+						Element goalCategoryElement = document.createElement("goalCategory");
+						goalCategoryElement.setAttribute("categoryName", goalCategory.getCategoryName());
+						Element assignedActivitesElement = document.createElement("assignedActivities");
+						for (String activityID : goalCategory.getListOfAssignedActivityIDs()) {
+							Element assignedActivityElement = document.createElement("assignedActivity");
+							assignedActivityElement.setAttribute("activityID", activityID);
+							assignedActivitesElement.appendChild(assignedActivityElement);
+						}
+						goalCategoryElement.appendChild(assignedActivitesElement);
+						goalsCategoryElement.appendChild(goalCategoryElement);
 					}
-					goalCategoryElement.appendChild(assignedActivitesElement);
-					goalsCategoryElement.appendChild(goalCategoryElement);
+					goalElement.appendChild(goalsCategoryElement);
+					goalsElement.appendChild(goalElement);
 				}
-				goalElement.appendChild(goalsCategoryElement);
-				goalsElement.appendChild(goalElement);
+				rootElement.appendChild(goalsElement);
+
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
 			}
-			rootElement.appendChild(goalsElement);
-
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			DOMSource domSource = new DOMSource(document);
-
-			StreamResult file = new StreamResult(xmlFile);
-			transformer.transform(domSource, file);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
+		} else {
+			logger.error("Cannot writeProjectMetaXML. xmlFile or project is null.");
 		}
 	}
 	
 	public void writeGoalMetaXML(File xmlFile, ArrayList<Chapter> chapters) {
-		try {
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.newDocument();
-			Element rootElement = document.createElement("chapters");
-			document.appendChild(rootElement);
-			for(Chapter chapter: chapters) {
-				Element chapterElement = document.createElement("chapter");
-				chapterElement.setAttribute("chapterNum", String.valueOf(chapter.getChapterNum()));
-				chapterElement.setAttribute("numericName", chapter.getNumericName());
-				chapterElement.setAttribute("stringName", chapter.getStringName());
-				chapterElement.setAttribute("description", chapter.getDescriptionName());
-				chapterElement.setAttribute("notes", chapter.getNotes());
-				
-				Element assignedActivitiesElement = document.createElement("assignedActivities");
-				for(Activity activity: chapter.getAssignedActivities()) {
-					Element assignedActivityElement = document.createElement("assignedActivity");
-					assignedActivityElement.setAttribute("activityID", activity.getActivityID());
-					assignedActivityElement.setAttribute("status", activity.getStatus());
-					assignedActivityElement.setAttribute("notes", activity.getNotes());
-					assignedActivityElement.setAttribute("rating", activity.getRating());
-					assignedActivitiesElement.appendChild(assignedActivityElement);
+		if (xmlFile != null && chapters != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("chapters");
+				document.appendChild(rootElement);
+				for (Chapter chapter : chapters) {
+					Element chapterElement = document.createElement("chapter");
+					chapterElement.setAttribute("chapterNum", String.valueOf(chapter.getChapterNum()));
+					chapterElement.setAttribute("numericName", chapter.getNumericName());
+					chapterElement.setAttribute("stringName", chapter.getStringName());
+					chapterElement.setAttribute("description", chapter.getDescriptionName());
+					chapterElement.setAttribute("notes", chapter.getNotes());
+
+					Element assignedActivitiesElement = document.createElement("assignedActivities");
+					for (Activity activity : chapter.getAssignedActivities()) {
+						Element assignedActivityElement = document.createElement("assignedActivity");
+						assignedActivityElement.setAttribute("activityID", activity.getActivityID());
+						assignedActivityElement.setAttribute("status", activity.getStatus());
+						assignedActivityElement.setAttribute("notes", activity.getNotes());
+						assignedActivityElement.setAttribute("rating", activity.getRating());
+						assignedActivitiesElement.appendChild(assignedActivityElement);
+					}
+					chapterElement.appendChild(assignedActivitiesElement);
+					rootElement.appendChild(chapterElement);
 				}
-				chapterElement.appendChild(assignedActivitiesElement);
-				rootElement.appendChild(chapterElement);
+
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
 			}
-
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			DOMSource domSource = new DOMSource(document);
-
-			StreamResult file = new StreamResult(xmlFile);
-			transformer.transform(domSource, file);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
+		} else {
+			logger.error("Cannot writeGoalMetaXML. xmlFile or chapters is null.");
 		}
 	}
 	
 	public ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> parseActivityXML(File xmlFile) {
-		if (xmlFile.exists() && xmlFile.canRead()) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -459,57 +467,72 @@ public class XMLManager {
 	}
 	
 	public void writeNoteboardDataXML(File xmlFile, ArrayList<CategorySectionController> categories) {
-		try {
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.newDocument();
-			Element rootElement = document.createElement("categories");
-			document.appendChild(rootElement);
-			for(CategorySectionController category: categories) {
-				Element categoryElement = document.createElement("category");
-				categoryElement.setAttribute("name", category.getCategoryName());
-				Element notesElement = document.createElement("notes");
-				for(PostItNoteController postItNoteController : category.getListOfPostItNoteControllers()) {
-					Element noteElement = document.createElement("note");
-					noteElement.setAttribute("content", postItNoteController.getPostItNoteText());
-					noteElement.setAttribute("color", postItNoteController.getPostItNoteColor());
-					noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
-					noteElement.setAttribute("position", String.valueOf(postItNoteController.getPostItNoteIndex(category)));
-					notesElement.appendChild(noteElement);
+		if (xmlFile != null && categories != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("categories");
+				document.appendChild(rootElement);
+				for (CategorySectionController category : categories) {
+					Element categoryElement = document.createElement("category");
+					categoryElement.setAttribute("name", category.getCategoryName());
+					Element notesElement = document.createElement("notes");
+					for (PostItNoteController postItNoteController : category.getListOfPostItNoteControllers()) {
+						Element noteElement = document.createElement("note");
+						noteElement.setAttribute("content", postItNoteController.getPostItNoteText());
+						noteElement.setAttribute("color", postItNoteController.getPostItNoteColor());
+						noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
+						noteElement.setAttribute("position",
+								String.valueOf(postItNoteController.getPostItNoteIndex(category)));
+						notesElement.appendChild(noteElement);
+					}
+					categoryElement.appendChild(notesElement);
+					rootElement.appendChild(categoryElement);
 				}
-				categoryElement.appendChild(notesElement);
-				rootElement.appendChild(categoryElement);
+
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
 			}
-
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			DOMSource domSource = new DOMSource(document);
-
-			StreamResult file = new StreamResult(xmlFile);
-			transformer.transform(domSource, file);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
+		} else {
+			logger.error("Cannot writeNoteboardDataXML. xmlFile or categories is null.");
 		}
 	}
 	
 	private Activity getActivity(String activityID, ArrayList<Activity> activities) {
-		for(Activity activity : activities) {
-			if(activity.getActivityID().contentEquals(activityID)) {
-				return activity.cloneActivity();
+		if (activityID != null && activities != null) {
+			for (Activity activity : activities) {
+				if (activity.getActivityID().contentEquals(activityID)) {
+					return activity.cloneActivity();
+				}
 			}
+			logger.debug("Activity returned is null.");
+			return null;
+		} else {
+			logger.error("Cannot getActivity. activityID or activities is null.");
+			return null;
 		}
-		logger.debug("Activity returned is null.");
-		return null;
 	}
 	
 	private ActivityType getActivityType(String activityTypeName, ArrayList<ActivityType> activityTypes) {
-		for(ActivityType activityType: activityTypes) {
-			if(activityType.getLongName().contentEquals(activityTypeName)) {
-				return activityType;
+		if (activityTypeName != null && activityTypes != null) {
+			for (ActivityType activityType : activityTypes) {
+				if (activityType.getLongName().contentEquals(activityTypeName)) {
+					return activityType;
+				}
 			}
+			logger.debug("ActivityType returned is null.");
+			return null;
+		} else {
+			logger.error("Cannot getActivityType. activityTypeName or activityTypes is null.");
+			return null;
 		}
-		logger.debug("ActivityType returned is null.");
-		return null;
 	}
 
 }

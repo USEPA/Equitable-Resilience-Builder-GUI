@@ -115,17 +115,18 @@ public class ReflectController implements Initializable{
 	}
 	
 	private void fillChapterActivitiesList() {
-		for (Activity activity : chapter.getAssignedActivities()) {
-			chapterActivities.add(activity);
+		if (chapter != null) {
+			for (Activity activity : chapter.getAssignedActivities()) {
+				chapterActivities.add(activity);
+			}
+		} else {
+			logger.error("Cannot fillChapterActivitiesList. chapter is null.");
 		}
 	}
 	
 	private void mainPaneSizeChanged() {
-		Goal goal = engagementActionController.getCurrentGoal();
-		if (goal != null && chapter != null) {
-			updateChapterProgressBar(goal);
-			updateChapterConfidenceProgressBar(chapter);
-		}
+		updateChapterProgressBar(chapter);
+		updateChapterConfidenceProgressBar(chapter);
 	}
 	
 	private void populateControlsForChapterActivities() {
@@ -140,25 +141,33 @@ public class ReflectController implements Initializable{
 		addNotesHyperlinks(notesHyperlinks);
 	}
 	
-	private ArrayList<Hyperlink> createNotesHyperlinks(ArrayList<Activity> activities){
+	private ArrayList<Hyperlink> createNotesHyperlinks(ArrayList<Activity> activities) {
 		ArrayList<Hyperlink> listOfHyperlinks = new ArrayList<Hyperlink>();
-		for(Activity activity: activities) {
-			Hyperlink hyperlink = new Hyperlink("Notes");
-			hyperlink.setId(activity.getActivityID());
-			hyperlink.setFont(new Font(13.0));
-			hyperlink.setOnAction(e-> notesHyperlinkClicked(hyperlink, activity));
-			listOfHyperlinks.add(hyperlink);
+		if (activities != null) {
+			for (Activity activity : activities) {
+				Hyperlink hyperlink = new Hyperlink("Notes");
+				hyperlink.setId(activity.getActivityID());
+				hyperlink.setFont(new Font(13.0));
+				hyperlink.setOnAction(e -> notesHyperlinkClicked(activity));
+				listOfHyperlinks.add(hyperlink);
+			}
+		} else {
+			logger.error("Cannot createNotedHyperlinks. activites is null.");
 		}
 		return listOfHyperlinks;
 	}
 	
 	private void addNotesHyperlinks(ArrayList<Hyperlink> notesHyperlinks) {
-		for(Hyperlink hyperlink: notesHyperlinks) {
-			notesVBox.getChildren().add(hyperlink);
+		if (notesHyperlinks != null) {
+			for (Hyperlink hyperlink : notesHyperlinks) {
+				notesVBox.getChildren().add(hyperlink);
+			}
+		} else {
+			logger.error("Cannot addNotesHyperlinks. notesHyperlinks is null.");
 		}
 	}
 	
-	private void notesHyperlinkClicked(Hyperlink hyperlink, Activity activity) {
+	private void notesHyperlinkClicked(Activity activity) {
 		Parent reflectNotesRoot = loadReflectNotes(activity, null);
 		showReflectNotes(reflectNotesRoot);
 	}
@@ -191,6 +200,8 @@ public class ReflectController implements Initializable{
 			reflectNotesStage.setScene(scene);
 			reflectNotesStage.setTitle("ERB: Notes");
 			reflectNotesStage.show();
+		} else {
+			logger.error("Cannot showReflectNotes. reflectNotesRoot is null.");
 		}
 	}
 	
@@ -199,49 +210,64 @@ public class ReflectController implements Initializable{
 		addRatingSliders(ratingSliders);
 	}
 	
-	private ArrayList<Slider> createRatingSliders(ArrayList<Activity> activities){
+	private ArrayList<Slider> createRatingSliders(ArrayList<Activity> activities) {
 		ArrayList<Slider> listOfSliders = new ArrayList<Slider>();
-		for(Activity activity: activities) {
-			Slider slider = new Slider();
-			slider.setMin(0);
-			slider.setMax(100);
-	        slider.setSnapToTicks(true);
-	        slider.setShowTickMarks(true);
-	        slider.setShowTickLabels(true);
-			setSliderLabels(slider);
-			slider.setId(activity.getActivityID());
-			slider.setOnMouseClicked(e-> ratingSliderAdjusted(slider, activity));
-			slider.setValue(Double.parseDouble(activity.getRating()));
-			listOfSliders.add(slider);
+		if (activities != null) {
+			for (Activity activity : activities) {
+				Slider slider = new Slider();
+				slider.setMin(0);
+				slider.setMax(100);
+				slider.setSnapToTicks(true);
+				slider.setShowTickMarks(true);
+				slider.setShowTickLabels(true);
+				setSliderLabels(slider);
+				slider.setId(activity.getActivityID());
+				slider.setOnMouseClicked(e -> ratingSliderAdjusted(slider, activity));
+				slider.setValue(Double.parseDouble(activity.getRating()));
+				listOfSliders.add(slider);
+			}
+		} else {
+			logger.error("Cannot createRatingSliders. activites is null.");
 		}
 		return listOfSliders;
 	}
 	
 	private void setSliderLabels(Slider slider) {
-		slider.setLabelFormatter(new StringConverter<Double>() {
-            @Override
-            public String toString(Double n) {
-                if (n <= 25) return "Not useful";
-                if (n <= 75 && n > 25) return "Somewhat useful";
-                return "Very useful";
-            }
-            @Override
-            public Double fromString(String s) {
-                switch (s) {
-                    case "Not useful":
-                        return 0d;
-                    case "Very useful":
-                        return 100d;
-                    default:
-                        return 50d;
-                }
-            }
-        });
+		if (slider != null) {
+			slider.setLabelFormatter(new StringConverter<Double>() {
+				@Override
+				public String toString(Double n) {
+					if (n <= 25)
+						return "Not useful";
+					if (n <= 75 && n > 25)
+						return "Somewhat useful";
+					return "Very useful";
+				}
+
+				@Override
+				public Double fromString(String s) {
+					switch (s) {
+					case "Not useful":
+						return 0d;
+					case "Very useful":
+						return 100d;
+					default:
+						return 50d;
+					}
+				}
+			});
+		} else {
+			logger.error("Cannot setSliderLabels. slider is null.");
+		}
 	}
 	
 	private void addRatingSliders(ArrayList<Slider> ratingSliders) {
+		if(ratingSliders != null) {
 		for(Slider slider : ratingSliders) {
 			ratingVBox.getChildren().add(slider);
+		}
+		} else {
+			logger.error("Cannot addRatingSliders. ratingSliders is null.");
 		}
 	}
 	
@@ -257,20 +283,28 @@ public class ReflectController implements Initializable{
 		addActivityLabels(activityLabels);
 	}
 	
-	private ArrayList<Label> createActivityLabels(ArrayList<Activity> activities){
+	private ArrayList<Label> createActivityLabels(ArrayList<Activity> activities) {
 		ArrayList<Label> listOfLabels = new ArrayList<Label>();
-		for(Activity activity : activities) {
-			Label label = new Label(activity.getLongName());
-			label.setFont(new Font(14.0));
-			label.setId(activity.getActivityID());
-			listOfLabels.add(label);
+		if (activities != null) {
+			for (Activity activity : activities) {
+				Label label = new Label(activity.getLongName());
+				label.setFont(new Font(14.0));
+				label.setId(activity.getActivityID());
+				listOfLabels.add(label);
+			}
+		} else {
+			logger.error("Cannot createActivityLabels. activites is null.");
 		}
 		return listOfLabels;
 	}
 	
 	private void addActivityLabels(ArrayList<Label> activityLabels) {
-		for(Label label : activityLabels) {
-			activityVBox.getChildren().add(label);
+		if (activityLabels != null) {
+			for (Label label : activityLabels) {
+				activityVBox.getChildren().add(label);
+			}
+		} else {
+			logger.error("Cannot addActivityLabels. activityLabels is null.");
 		}
 	}
 	
@@ -279,21 +313,29 @@ public class ReflectController implements Initializable{
 		addActivityStatusLabel(statusLabels);
 	}	
 	
-	private ArrayList<Label> createActivityStatusLabels(ArrayList<Activity> activities){
-		ArrayList<Label> listOfLabels= new ArrayList<Label>();
-		for(Activity activity : activities) {
-			Label label = new Label();
-			label.setFont(new Font(14.0));
-			label.setId(activity.getActivityID());
-			setActivityStatusLabel(label, activity);
-			listOfLabels.add(label);
+	private ArrayList<Label> createActivityStatusLabels(ArrayList<Activity> activities) {
+		ArrayList<Label> listOfLabels = new ArrayList<Label>();
+		if (activities != null) {
+			for (Activity activity : activities) {
+				Label label = new Label();
+				label.setFont(new Font(14.0));
+				label.setId(activity.getActivityID());
+				setActivityStatusLabel(label, activity);
+				listOfLabels.add(label);
+			}
+		} else {
+			logger.error("Cannot createActivityStatusLabels. activities is null.");
 		}
 		return listOfLabels;
 	}
 	
 	private void addActivityStatusLabel(ArrayList<Label> statusLabels) {
-		for(Label label: statusLabels) {
-			statusVBox.getChildren().add(label);
+		if (statusLabels != null) {
+			for (Label label : statusLabels) {
+				statusVBox.getChildren().add(label);
+			}
+		} else {
+			logger.error("Cannot addActivityStatusLabel. statusLabels is null.");
 		}
 	}
 	
@@ -305,26 +347,32 @@ public class ReflectController implements Initializable{
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				updateChapterProgressBar(goal);
+				updateChapterProgressBar(chapter);
 				updateChapterConfidenceProgressBar(chapter);
 				updateGoalProgressBar(chapter);
 			}
 		});
 	}
 	
-	private void updateChapterProgressBar(Goal goal) {
+	private void updateChapterProgressBar(Chapter chapter) {
 		int chapterPercent = progress.getChapterPercentDone(chapter);
-		progress.setChapterProgress(chapterProgressVBox, chapterProgressBar, chapterPercentLabel, chapterPercent);
+		if(chapterPercent >= 0) {
+			progress.setChapterProgress(chapterProgressVBox, chapterProgressBar, chapterPercentLabel, chapterPercent);
+		}
 	}
 	
 	private void updateChapterConfidenceProgressBar(Chapter chapter) {
 		int confidencePercent = progress.getChapterConfidencePercent(chapter);
-		progress.setChapterRating(confidenceRatingVBox, confidenceRatingBar, confidencePercentLabel, confidencePercent);
+		if (confidencePercent >= 0) {
+			progress.setChapterRating(confidenceRatingVBox, confidenceRatingBar, confidencePercentLabel,confidencePercent);
+		}
 	}
 	
 	private void updateGoalProgressBar(Chapter chapter) {
 		int goalPercent = progress.getGoalPercentDone(goal.getChapters());
-		progress.setGoalProgress(goalProgressBar, goalProgressLabel, goalPercent);
+		if(goalPercent >= 0) {
+			progress.setGoalProgress(goalProgressBar, goalProgressLabel, goalPercent);
+		}
 	}
 	
 	public void closeReflectNotesStage() {

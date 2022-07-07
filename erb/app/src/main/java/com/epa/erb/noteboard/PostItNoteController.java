@@ -97,23 +97,35 @@ public class PostItNoteController implements Initializable{
 	}
 	
 	private void showPostItNoteEdits(Parent postItNoteEditsRoot) {
-		editsStage = new Stage();
-		Scene scene = new Scene(postItNoteEditsRoot);
-		editsStage.setScene(scene);
-		editsStage.setTitle("ERB: Post It Note Edits");
-		editsStage.showAndWait();
+		if (postItNoteEditsRoot != null) {
+			editsStage = new Stage();
+			Scene scene = new Scene(postItNoteEditsRoot);
+			editsStage.setScene(scene);
+			editsStage.setTitle("ERB: Post It Note Edits");
+			editsStage.showAndWait();
+		} else {
+			logger.error("Cannot showPostItNoteEdits. postItNoteEditsRoot is null.");
+		}
 	}
 	
 	void setPostItNoteText(String text) {
-		Text textToAdd = new Text(text);
-		textFlow.getChildren().clear();
-		textFlow.getChildren().add(textToAdd);
+		if (text != null) {
+			Text textToAdd = new Text(text);
+			textFlow.getChildren().clear();
+			textFlow.getChildren().add(textToAdd);
+		} else {
+			logger.error("Cannot setPostItNoteText. text is null.");
+		}
 	}
 	
 	void setPostItContentsColor(String color) {
-		postItNotePane.setStyle("-fx-background-color: " + "#" + color);
-		textFlow.setStyle("-fx-background-color: " + "#" + color);
-		plusHBox.setStyle("-fx-background-color: " + "#" + color);
+		if (color != null) {
+			postItNotePane.setStyle("-fx-background-color: " + "#" + color);
+			textFlow.setStyle("-fx-background-color: " + "#" + color);
+			plusHBox.setStyle("-fx-background-color: " + "#" + color);
+		} else {
+			logger.error("Cannot setPostItContentsColor. color is null.");
+		}
 	}
 	
 	void closeEditsStage() {

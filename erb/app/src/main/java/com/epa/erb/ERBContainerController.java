@@ -61,11 +61,15 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void showGlossary(Parent glossaryRoot) {
-		Stage stage = new Stage();
-		Scene scene = new Scene(glossaryRoot);
-		stage.setScene(scene);
-		stage.setTitle("ERB: Glossary");
-		stage.showAndWait();
+		if (glossaryRoot != null) {
+			Stage stage = new Stage();
+			Scene scene = new Scene(glossaryRoot);
+			stage.setScene(scene);
+			stage.setTitle("ERB: Glossary");
+			stage.showAndWait();
+		} else {
+			logger.error("Cannot showGlossary. glossaryRoot is null.");
+		}
 	}
 
 	public VBox getWelcomeVBox() {

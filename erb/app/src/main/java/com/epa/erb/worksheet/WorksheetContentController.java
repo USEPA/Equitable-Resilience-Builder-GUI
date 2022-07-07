@@ -64,29 +64,33 @@ public class WorksheetContentController implements Initializable{
 	}
 
 	private void loadPDFToWebView(File pdfFileToLoad) {
-		try {
-			WebEngine webEngine = webView.getEngine();
-			String url = getClass().getResource("/pdfjs-2.8.335-legacy-dist/web/viewer.html").toExternalForm();
-			webEngine.setUserStyleSheetLocation(getClass().getResource("/web.css").toExternalForm());
-			webEngine.setJavaScriptEnabled(true);
-			webEngine.load(url);
-			
-			webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
-				@Override
-				public void changed(ObservableValue ov, State oldState, State newState) {
-					if (newState == Worker.State.SUCCEEDED) {
-						try {
-							byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
-							String base64 = Base64.getEncoder().encodeToString(data);
-							webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
-						} catch (Exception ex) {
-							logger.error(ex.getMessage());
+		if (pdfFileToLoad != null) {
+			try {
+				WebEngine webEngine = webView.getEngine();
+				String url = getClass().getResource("/pdfjs-2.8.335-legacy-dist/web/viewer.html").toExternalForm();
+				webEngine.setUserStyleSheetLocation(getClass().getResource("/web.css").toExternalForm());
+				webEngine.setJavaScriptEnabled(true);
+				webEngine.load(url);
+
+				webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
+					@Override
+					public void changed(ObservableValue ov, State oldState, State newState) {
+						if (newState == Worker.State.SUCCEEDED) {
+							try {
+								byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
+								String base64 = Base64.getEncoder().encodeToString(data);
+								webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
+							} catch (Exception ex) {
+								logger.error(ex.getMessage());
+							}
 						}
 					}
-				}
-			});
-		} catch (Exception e) {
-			logger.error(e.getMessage());
+				});
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot loadPDFToWebView. pdfFileToLoad is null.");
 		}
 	}
 	
@@ -104,11 +108,15 @@ public class WorksheetContentController implements Initializable{
 	
 	private Stage printerSelectionStage = null;
 	private void showPrinterSelection(Parent printerSelectionRoot) {
-		printerSelectionStage = new Stage();
-		printerSelectionStage.setTitle("ERB: Printer Selection");
-		Scene scene = new Scene(printerSelectionRoot);
-		printerSelectionStage.setScene(scene);
-		printerSelectionStage.showAndWait();
+		if (printerSelectionRoot != null) {
+			printerSelectionStage = new Stage();
+			printerSelectionStage.setTitle("ERB: Printer Selection");
+			Scene scene = new Scene(printerSelectionRoot);
+			printerSelectionStage.setScene(scene);
+			printerSelectionStage.showAndWait();
+		} else {
+			logger.error("Cannot showPrinterSelection. printerSelectionRoot is null.");
+		}
 	}
 	
 	void closePrinterStage() {
@@ -133,15 +141,20 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	public void openActivity(Activity activity) {
-		try {
-			File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\" + activity.getFileName());
-			if (file.exists() && Desktop.isDesktopSupported()) {
-				Desktop.getDesktop().open(file);
-			} else {
-				logger.error(file.getPath() + " either does not exist or desktop is not supported.");
+		if (activity != null) {
+			try {
+				File file = new File(
+						pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\" + activity.getFileName());
+				if (file.exists() && Desktop.isDesktopSupported()) {
+					Desktop.getDesktop().open(file);
+				} else {
+					logger.error(file.getPath() + " either does not exist or desktop is not supported.");
+				}
+			} catch (Exception e) {
+				logger.error(e.getMessage());
 			}
-		} catch (Exception e) {
-			logger.error(e.getMessage());
+		} else {
+			logger.error("Cannot openActivity. activity is null.");
 		}
 	}
 	

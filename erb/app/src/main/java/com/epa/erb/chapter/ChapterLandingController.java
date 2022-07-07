@@ -4,6 +4,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.Activity;
 import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
@@ -59,6 +63,7 @@ public class ChapterLandingController implements Initializable {
 	}
 	
 	private Constants constants = new Constants();
+	private Logger logger = LogManager.getLogger(ChapterLandingController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -113,24 +118,28 @@ public class ChapterLandingController implements Initializable {
 	}
 
 	public void fillActivitiesListView(ArrayList<Activity> listOfActivities) {
-		cleanActivitiesListView();
-		for(Activity activity: listOfActivities) {
-			activitiesListView.getItems().add(activity);
+		if (listOfActivities != null) {
+			cleanActivitiesListView();
+			for (Activity activity : listOfActivities) {
+				activitiesListView.getItems().add(activity);
+			}
+			setListViewCellFactory(activitiesListView, "useItem");
+		} else {
+			logger.error("Cannot fillActivitiesListView. listOfActivites is null.");
 		}
-		setListViewCellFactory(activitiesListView, "useItem");
 	}
 	
 	public void fillPlanListView() {
 		cleanPlanListView();
 		Activity planActivity = engagementActionController.getActivityForIDInGoal("25", engagementActionController.getCurrentGoal());
-		planListView.getItems().add(planActivity);
+		if (planActivity != null) planListView.getItems().add(planActivity);
 		setListViewCellFactory(planListView, "Plan");
 	}
 	
 	public void fillReflectListView() {
 		cleanReflectListView();
 		Activity reflectActivity = engagementActionController.getActivityForIDInGoal("26", engagementActionController.getCurrentGoal());
-		reflectListView.getItems().add(reflectActivity);
+		if(reflectActivity != null) reflectListView.getItems().add(reflectActivity);
 		setListViewCellFactory(reflectListView, "Reflect");
 	}
 	
@@ -141,9 +150,11 @@ public class ChapterLandingController implements Initializable {
 				activitiesForListView.add(activity);
 			}
 		} else { // landing for erb showing all chapters
-			for (Chapter chapter : listOfAllChapters) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					activitiesForListView.add(activity);
+			if (listOfAllChapters != null) {
+				for (Chapter chapter : listOfAllChapters) {
+					for (Activity activity : chapter.getAssignedActivities()) {
+						activitiesForListView.add(activity);
+					}
 				}
 			}
 		}
@@ -151,35 +162,43 @@ public class ChapterLandingController implements Initializable {
 	}
 	
 	private void setListViewCellFactory(ListView<Activity> listView, String text) {
-		listView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
-			@Override
-			public ListCell<Activity> call(ListView<Activity> param) {
-				ListCell<Activity> cell = new ListCell<Activity>() {
-					@Override
-					protected void updateItem(Activity item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item != null) {
-							if(text.contentEquals("useItem")) {
-								setText("Chapter " + item.getChapterAssignment() + ": " + item.getLongName());
-							} else {
-								setText(text);
+		if (listView != null) {
+			listView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
+				@Override
+				public ListCell<Activity> call(ListView<Activity> param) {
+					ListCell<Activity> cell = new ListCell<Activity>() {
+						@Override
+						protected void updateItem(Activity item, boolean empty) {
+							super.updateItem(item, empty);
+							if (item != null) {
+								if (text.contentEquals("useItem")) {
+									setText("Chapter " + item.getChapterAssignment() + ": " + item.getLongName());
+								} else {
+									setText(text);
+								}
+								setFont(new Font(14.0));
 							}
-							setFont(new Font(14.0));
 						}
-					}
-				};
-				cell.setOnMouseClicked(e -> handleListViewSelection(listView));
-				return cell;
-			}
-		});
+					};
+					cell.setOnMouseClicked(e -> handleListViewSelection(listView));
+					return cell;
+				}
+			});
+		} else {
+			logger.error("Cannot setListViewCellFactory. listView is null.");
+		}
 	}
 	
 	private void handleListViewSelection(ListView<Activity> listView) {
-		Activity selectedActivity = listView.getSelectionModel().getSelectedItem();
-		TreeItem<String> treeItem = findTreeItem(selectedActivity);
-		if (treeItem != null) {
-			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
-			engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
+		if (listView != null) {
+			Activity selectedActivity = listView.getSelectionModel().getSelectedItem();
+			TreeItem<String> treeItem = findTreeItem(selectedActivity);
+			if (treeItem != null) {
+				engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
+				engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
+			}
+		} else {
+			logger.error("Cannot handleListViewSelection. listView is null.");
 		}
 	}
 	
@@ -195,6 +214,8 @@ public class ChapterLandingController implements Initializable {
 					}
 				}
 			}
+		} else {
+			logger.error("Cannot findTreeItem. activity is null.");
 		}
 		return null;
 	}

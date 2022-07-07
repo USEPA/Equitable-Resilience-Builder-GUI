@@ -110,14 +110,18 @@ public class App extends Application {
 	
 	private Stage erbContainerStage = null;
 	private void showERBContainer(Parent erbContainerRoot) {
-		erbContainerStage = new Stage();
-		Scene scene = new Scene(erbContainerRoot);
-		erbContainerStage.setScene(scene);
-		erbContainerStage.setOnCloseRequest(e-> erbCloseRequested());
-		erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
-		erbContainerStage.show();
+		if (erbContainerRoot != null) {
+			erbContainerStage = new Stage();
+			Scene scene = new Scene(erbContainerRoot);
+			erbContainerStage.setScene(scene);
+			erbContainerStage.setOnCloseRequest(e -> erbCloseRequested());
+			erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
+			erbContainerStage.show();
+		} else {
+			logger.error("Cannot show ERBContainer. erbContainerRoot is null.");
+		}
 	}
-	
+
 	private void erbCloseRequested() {
 		initSaveHandler(null, null, null, null, getProjects(), "close");
 	}
@@ -152,7 +156,7 @@ public class App extends Application {
 	
 	private void readAndStoreGoalCategories() {
 		File goalCategoriesFile = getGoalCategoriesFileToParse();
-		if(goalCategoriesFile != null) goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile, activities);
+		if(goalCategoriesFile != null) goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
 	}
 	
 	private void readAndStoreProjects() {
@@ -161,14 +165,20 @@ public class App extends Application {
 	}
 	
 	public void loadNodeToERBContainer(Node node) {
-		setNodeGrowPriority(node, Priority.ALWAYS);
-		erbContainerController.getErbContainer().getChildren().clear();
-		erbContainerController.getErbContainer().getChildren().add(node);
+		if (node != null) {
+			setNodeGrowPriority(node, Priority.ALWAYS);
+			erbContainerController.getErbContainer().getChildren().clear();
+			erbContainerController.getErbContainer().getChildren().add(node);
+		} else {
+			logger.error("Cannot load node to ERBContainer. node is null.");
+		}
 	}
 	
 	public void setNodeGrowPriority(Node node, Priority priority) {
-		VBox.setVgrow(node, priority);
-		HBox.setHgrow(node, priority);
+		if (node != null) {
+			VBox.setVgrow(node, priority);
+			HBox.setHgrow(node, priority);
+		}
 	}
 	
 	public void updateAvailableProjectsList() {
@@ -176,13 +186,19 @@ public class App extends Application {
 	}
 	
 	public Activity getActivity(String activityID, ArrayList<Activity> activities) {
-		for (Activity activity : activities) {
-			if (activity.getActivityID().contentEquals(activityID)) {
-				return activity;
+		if (activityID != null && activities != null) {
+			for (Activity activity : activities) {
+				if (activity.getActivityID().contentEquals(activityID)) {
+					return activity;
+				}
 			}
+		} else {
+			logger.error("Cannot get activity. activityID or activities is null.");
+			return null;
 		}
-		logger.debug("Activity for ID:" + activityID + " returned is null.");
+		logger.debug("Cannot get activity. Activity returned is null");
 		return null;
+
 	}
 	
 	private File getChaptersFileToParse() {

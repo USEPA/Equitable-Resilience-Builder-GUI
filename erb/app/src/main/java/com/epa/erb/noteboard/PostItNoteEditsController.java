@@ -2,6 +2,10 @@ package com.epa.erb.noteboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
@@ -20,6 +24,8 @@ public class PostItNoteEditsController implements Initializable{
 	public PostItNoteEditsController(PostItNoteController postItNoteController) {
 		this.postItNoteController = postItNoteController;
 	}
+	
+	private Logger logger = LogManager.getLogger(PostItNoteEditsController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -59,19 +65,28 @@ public class PostItNoteEditsController implements Initializable{
 	}
 	
 	private String parseColorAsHex(Color color) {
-		String colorAsString = color.toString();
-		String colorAsHexString = colorAsString.replaceAll("0x", "");
-		colorAsHexString = colorAsHexString.substring(0, colorAsHexString.length()-2);
-		return colorAsHexString;
+		if (color != null) {
+			String colorAsString = color.toString();
+			String colorAsHexString = colorAsString.replaceAll("0x", "");
+			colorAsHexString = colorAsHexString.substring(0, colorAsHexString.length() - 2);
+			return colorAsHexString;
+		} else {
+			logger.error("Cannot parseColorAsHex. color is null.");
+			return null;
+		}
 	}
-	
+
 	void setColorPickerColor(String color) {
-		Color colorToSelect = Color.web(color, 1.0);
-		colorPicker.setValue(colorToSelect);
+		if (color != null) {
+			Color colorToSelect = Color.web(color, 1.0);
+			colorPicker.setValue(colorToSelect);
+		} else {
+			logger.error("Cannot setColorPickerColor. color is null");
+		}
 	}
 	
 	void setPostItNoteTextAreaText(String text) {
-		postItNoteTextArea.setText(text);
+		if(text != null) postItNoteTextArea.setText(text);
 	}
 
 	public PostItNoteController getPostItNoteController() {

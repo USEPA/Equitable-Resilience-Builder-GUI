@@ -95,19 +95,25 @@ public class SaveHandler {
 		}
 	}	
 	
-	private Stage savePopupStage = null; //Save prompt on app close
+	private Stage savePopupStage = null; // Save prompt on app close
 	private void showSavePopup(Parent savePopupRoot) {
-		savePopupStage = new Stage();
-		Scene scene = new Scene(savePopupRoot);
-		savePopupStage.setScene(scene);
-		savePopupStage.setTitle("Saving...");
-		savePopupStage.show();
+		if (savePopupRoot != null) {
+			savePopupStage = new Stage();
+			Scene scene = new Scene(savePopupRoot);
+			savePopupStage.setScene(scene);
+			savePopupStage.setTitle("Saving...");
+			savePopupStage.show();
+		} else {
+			logger.error("Cannot showSavePopup. savePopupRoot is null.");
+		}
 	}
 	
 	private boolean allProjectsSaved(ArrayList<Project> projects) {
-		for (Project project : projects) {
-			if (!project.isSaved()) {
-				return false;
+		if (projects != null) {
+			for (Project project : projects) {
+				if (!project.isSaved()) {
+					return false;
+				}
 			}
 		}
 		return true;

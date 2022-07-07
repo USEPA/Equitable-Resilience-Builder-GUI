@@ -49,6 +49,7 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private void handleControls() {
+		
 	}
 	
 	@FXML
@@ -120,15 +121,19 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private boolean isDuplicateProjectName(String projectName) {
-		ArrayList<Project> existingProjects = app.getProjects();
-		for(Project project : existingProjects) {
-			if(projectName.contentEquals(project.getProjectName())) {
-				return true;
+		if (projectName != null) {
+			ArrayList<Project> existingProjects = app.getProjects();
+			for (Project project : existingProjects) {
+				if (projectName.contentEquals(project.getProjectName())) {
+					return true;
+				}
 			}
+			return false;
+		} else {
+			return true;
 		}
-		return false;
 	}
-	
+
 	private boolean isCharAllowableProjectName(String projectName) {
 		String regexString = "^[A-za-z0-9-_]{1,255}$";
 		if(projectName != null && projectName.length() > 0) {
@@ -139,8 +144,12 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private boolean isProjectNew(Project project) {
-		if(project.getProjectGoals() == null || project.getProjectGoals().size() ==0) {
-			return true;
+		if (project != null) {
+			if (project.getProjectGoals() == null || project.getProjectGoals().size() == 0) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -163,15 +172,23 @@ public class ProjectSelectionController implements Initializable{
 	}
 
 	private void createNewProjectDirectory(Project project) {
-		File newProjectDirectory = new File(pathToERBProjectsFolder + "\\" + project.getProjectName());
-		if(!newProjectDirectory.exists()) {
-			newProjectDirectory.mkdir();
+		if (project != null) {
+			File newProjectDirectory = new File(pathToERBProjectsFolder + "\\" + project.getProjectName());
+			if (!newProjectDirectory.exists()) {
+				newProjectDirectory.mkdir();
+			}
+		} else {
+			logger.error("Cannot createNewProjectDirectory. project is null.");
 		}
 	}
 	
 	private void addProjectToListView(Project project) {
-		if(!projectsListView.getItems().contains(project)) {
-			projectsListView.getItems().add(project);
+		if (project != null) {
+			if (!projectsListView.getItems().contains(project)) {
+				projectsListView.getItems().add(project);
+			}
+		} else {
+			logger.error("Cannot addProjectToListView. project is null.");
 		}
 	}
 	
