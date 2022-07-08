@@ -253,11 +253,14 @@ public class XMLManager {
 									}
 								}
 								Goal goal = new Goal(app, goalName, goalDescription, listOfSelectedGoalCategories);
-								goal.setChapters(activities, projectName);
+								//goal.setChapters(activities);
 								listOfGoals.add(goal);
 							}
 						}
 						Project project = new Project(projectName, listOfGoals);
+						for(Goal goal: listOfGoals) {
+							goal.setChapters(activities, project);
+						}
 						return project;
 					}
 				}

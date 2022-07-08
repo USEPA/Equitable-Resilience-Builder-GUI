@@ -55,7 +55,6 @@ public class SavePopupController implements Initializable {
 	private Constants constants = new Constants();
 	private XMLManager xmlManager = new XMLManager(app);
 	private Logger logger = LogManager.getLogger(SavePopupController.class);
-	private String pathToERBProjectsFolder = constants.getPathToERBProjectsFolder();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -138,7 +137,7 @@ public class SavePopupController implements Initializable {
 	
 	public void callToWriteGoalDataXML(Project project, Goal goal) {
 		if (goal != null) {
-			File goalXMLFile = getGoalXMLFile(project, goal);
+			File goalXMLFile = constants.getGoalMetaXMLFile(project, goal);
 			xmlManager.writeGoalMetaXML(goalXMLFile, goal.getChapters());
 		} else {
 			logger.error("Cannot callToWriteGoalDataXML. goal is null.");
@@ -161,7 +160,7 @@ public class SavePopupController implements Initializable {
 			if (noteBoardContentController != null) {
 				noteBoardContentController.setCategoryPostIts();
 				ArrayList<CategorySectionController> categories = noteBoardContentController.getCategorySectionControllers();
-				xmlManager.writeNoteboardDataXML(getActivityXMLFile(project, goal, activity), categories);
+				xmlManager.writeNoteboardDataXML(constants.getActivityDataXMLFile(project, goal, activity), categories);
 			}
 		} else {
 			logger.error("Cannot callToWriteNoteboardDataXML. activity is null.");
@@ -184,28 +183,6 @@ public class SavePopupController implements Initializable {
 				progressIndicator.setVisible(false);
 			}
 		});
-	}
-	
-	private File getGoalXMLFile(Project project, Goal goal) {
-		if (project != null && goal != null) {
-			File goalMetaFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
-			if (goalMetaFile.exists()) {
-				return goalMetaFile;
-			}
-		} else {
-			logger.error("Cannot getGoalXMLFile. project or goal is null.");
-		}
-		return null;
-	}
-	
-	private File getActivityXMLFile(Project project, Goal goal, Activity activity) {
-		if (project != null && goal != null && activity != null) {
-			File activityDataFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\"+ goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
-			return activityDataFile;
-		} else {
-			logger.error("Cannot getActivityXMLFile. param is null.");
-			return null;
-		}
 	}
 
 	private void setStatusLabelText(String text) {

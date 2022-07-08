@@ -38,7 +38,6 @@ public class GlobalGoalTrackerController implements Initializable{
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(GlobalGoalTrackerController.class);
-	private String pathToERBProjectsFolder = constants.getPathToERBProjectsFolder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -63,14 +62,14 @@ public class GlobalGoalTrackerController implements Initializable{
 	private void addGoalTrackers(Project project) {
 		if (project != null) {
 			for (Goal goal : project.getProjectGoals()) {
-				File goalMetaXMLFile = getGoalMetaXMLFile(goal, project);
-				if (goalMetaXMLFile != null) {
+//				File goalMetaXMLFile = constants.getGoalMetaXMLFile(project, goal);
+//				if (goalMetaXMLFile != null) {
 					Parent root = loadGoalTracker(goal);
 					if (root != null) {
 						goalHBox.getChildren().add(root);
 						HBox.setHgrow(root, Priority.ALWAYS);
 					}
-				}
+//				}
 			}
 		} else {
 			logger.error("Cannot addGoalTrackers. project is null.");
@@ -85,21 +84,6 @@ public class GlobalGoalTrackerController implements Initializable{
 			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return null;
-		}
-	}
-	
-	private File getGoalMetaXMLFile(Goal goal, Project project) {
-		if (goal != null && project != null) {
-			File goalXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
-			if (goalXMLFile.exists()) {
-				return goalXMLFile;
-			} else {
-				logger.debug("Goal Meta XML file returned is null.");
-				return null;
-			}
-		} else {
-			logger.error("Cannot getGoalMetaXMLFile. goal or project is null.");
 			return null;
 		}
 	}

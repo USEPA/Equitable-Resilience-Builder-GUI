@@ -9,6 +9,7 @@ import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.project.Project;
 
 public class Goal {
 	
@@ -28,9 +29,9 @@ public class Goal {
 	private Logger logger = LogManager.getLogger(Goal.class);
 	private String pathToERBProjectsFolder = constants.getPathToERBProjectsFolder();
 	
-	public void setChapters(ArrayList<Activity> activities, String projectName) {
-		File goalXMLFile = getGoalXMLFile(projectName);
-		if (goalXMLFile != null) {
+	public void setChapters(ArrayList<Activity> activities, Project project) {
+		File goalXMLFile = constants.getGoalMetaXMLFile(project, this);
+		if (goalXMLFile != null && goalXMLFile.exists()) {
 			XMLManager xmlManager = new XMLManager(app);
 			chapters = xmlManager.parseGoalXML(goalXMLFile, activities);
 		} else {
@@ -105,20 +106,6 @@ public class Goal {
 			return null;
 		} else {
 			logger.error("Cannot getChapterDescription. chapterNumber is null.");
-			return null;
-		}
-	}
-	
-	private File getGoalXMLFile(String projectName) {
-		if (projectName != null) {
-			File goalMetaFile = new File(pathToERBProjectsFolder + "\\" + projectName + "\\Goals\\" + goalName + "\\Meta.xml");
-			if (goalMetaFile.exists()) {
-				return goalMetaFile;
-			}
-			logger.debug("Goal XML file returned is null");
-			return null;
-		} else {
-			logger.error("Cannot getGoalXMLFile. projectName is null.");
 			return null;
 		}
 	}

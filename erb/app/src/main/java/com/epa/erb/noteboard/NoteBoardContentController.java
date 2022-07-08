@@ -151,7 +151,7 @@ public class NoteBoardContentController implements Initializable{
 	private void generateExistingNoteBoardControls(Project project, Goal goal, Activity activity) {
 		try {
 			XMLManager xmlManager = new XMLManager(app);
-			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(getActivityDataFile(project, goal, activity));
+			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(constants.getActivityDataXMLFile(project, goal, activity));
 			if(listOfCategoryHashMaps != null) {
 			for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
 				HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
@@ -179,8 +179,8 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private boolean noteBoardDataExists(Project project, Goal goal, Activity activity) {
-		File activityDataFile = getActivityDataFile(project, goal, activity);
-		if(activityDataFile.exists()) {
+		File activityDataFile = constants.getActivityDataXMLFile(project, goal, activity);
+		if(activityDataFile != null && activityDataFile.exists()) {
 			return true;
 		}
 		return false;
@@ -341,10 +341,6 @@ public class NoteBoardContentController implements Initializable{
 			logger.error("Cannot getPostItNoteController. postItNotePane is null.");
 			return null;
 		}
-	}
-	
-	private File getActivityDataFile(Project project, Goal goal, Activity activity) {
-		return new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
 	}
 	
 	public void setCategoryPostIts() {
