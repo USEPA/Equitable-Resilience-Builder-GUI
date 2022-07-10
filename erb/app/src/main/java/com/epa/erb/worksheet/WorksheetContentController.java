@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ public class WorksheetContentController implements Initializable{
 	WebView webView;
 	@FXML
 	Label activityNameLabel;
+	@FXML
+	HBox fileOptionsHBox;
 
 	private Activity activity;
 	public WorksheetContentController(Activity activity) {
@@ -50,6 +53,10 @@ public class WorksheetContentController implements Initializable{
 	
 	private void handleControls() {
 
+	}
+	
+	public void hideFileOptionsHBox() {
+		fileOptionsHBox.setVisible(false);
 	}
 	
 	@FXML

@@ -48,7 +48,8 @@ public class App extends Application {
 	
 	private void showERBToolMain() {
 		Parent erbContainerRoot = loadERBContainer();
-		launchERBLanding(false);
+		//launchERBLanding(false);
+		launchERBWelcome();
 		showERBContainer(erbContainerRoot);
 	}
 
@@ -73,6 +74,22 @@ public class App extends Application {
 		} else {
 			prefWidth = constants.getPrefWidthForScale175();
 			prefHeight = constants.getPrefHeightForScale175();
+		}
+	}
+	
+	public void launchERBWelcome() {
+		Parent erbWelcomeParent = loadERBWelcome();
+		loadNodeToERBContainer(erbWelcomeParent);
+	}
+	
+	private Parent loadERBWelcome() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBWelcome.fxml"));
+			ERBWelcomeController erbWelcomeController = new ERBWelcomeController(this);
+			fxmlLoader.setController(erbWelcomeController);
+			return fxmlLoader.load();
+		} catch (Exception e) {
+			return null;
 		}
 	}
 

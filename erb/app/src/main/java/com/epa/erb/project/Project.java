@@ -17,9 +17,11 @@ public class Project {
 	}
 	
 	public boolean isSaved() {
-		for(Goal goal: projectGoals) {
-			if(!goal.isSaved()) {
-				return false;
+		if (projectGoals != null) {
+			for (Goal goal : projectGoals) {
+				if (!goal.isSaved()) {
+					return false;
+				}
 			}
 		}
 		return true;
