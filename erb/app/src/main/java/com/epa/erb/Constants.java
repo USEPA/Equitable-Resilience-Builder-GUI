@@ -172,7 +172,7 @@ public class Constants {
 	
 	public File getProjectMetaXMLFile(Project project) {
 		if(project != null) {
-			File projectXMLMetaXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Meta.xml");
+			File projectXMLMetaXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Meta.xml");
 			return projectXMLMetaXMLFile;
 		} else {
 			logger.error("Cannot getProjectMetaXMLFile. project is null.");
@@ -182,7 +182,7 @@ public class Constants {
 	
 	public File getGoalMetaXMLFile(Project project, Goal goal) {
 		if(project != null && goal != null) {
-			File goalMetaXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
+			File goalMetaXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
 			return goalMetaXMLFile;
 		} else {
 			logger.error("Cannot getGoalMetaXMLFile. project or goal is null.");
@@ -192,7 +192,7 @@ public class Constants {
 	
 	public File getActivityDataXMLFile(Project project, Goal goal, Activity activity) {
 		if(project != null && goal != null && activity != null) {
-			File activityDataXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
+			File activityDataXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
 			return activityDataXMLFile;
 		} else {
 			logger.error("Cannot getActivityDataXMLFile. project or goal or activity is null.");

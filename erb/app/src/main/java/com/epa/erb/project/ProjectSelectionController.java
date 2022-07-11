@@ -56,11 +56,12 @@ public class ProjectSelectionController implements Initializable{
 	public void createButtonAction() {
 		String newProjectName = projectNameTextField.getText().trim();
 		if(isValidNewProjectName(newProjectName)) {
-			Project project = new Project(newProjectName);
+			String cleanedProjectName = cleanStringForWindows(newProjectName);
+			Project project = new Project(newProjectName, cleanedProjectName);
 			createNewProjectDirectory(project);
 			addProjectToListView(project);
 			projectsListView.getSelectionModel().select(project);
-			launchButtonAction();
+			//launchButtonAction();
 		}
 	}
 	
@@ -108,16 +109,20 @@ public class ProjectSelectionController implements Initializable{
 	private boolean isValidNewProjectName(String projectName) {
 		if(projectName!= null && projectName.length() > 0) {
 			if(!isDuplicateProjectName(projectName)) {
-				if(isCharAllowableProjectName(projectName)) {
+				//if(isCharAllowableProjectName(projectName)) {
 					return true;
-				} else {
-					showIsNotCharAllowableProjectName();
-				}
+				//} else {
+				//	showIsNotCharAllowableProjectName();
+				//}
 			} else {
 				showIsDuplicateProjectNameAlert();
 			}
 		}
 		return false;
+	}
+	
+	private String cleanStringForWindows(String string) {
+		return string.replaceAll("[^A-Za-z0-9]", "_");
 	}
 	
 	private boolean isDuplicateProjectName(String projectName) {
@@ -173,7 +178,7 @@ public class ProjectSelectionController implements Initializable{
 
 	private void createNewProjectDirectory(Project project) {
 		if (project != null) {
-			File newProjectDirectory = new File(pathToERBProjectsFolder + "\\" + project.getProjectName());
+			File newProjectDirectory = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName());
 			if (!newProjectDirectory.exists()) {
 				newProjectDirectory.mkdir();
 			}

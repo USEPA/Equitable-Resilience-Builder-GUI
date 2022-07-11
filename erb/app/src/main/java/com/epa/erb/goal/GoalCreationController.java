@@ -268,7 +268,7 @@ public class GoalCreationController implements Initializable{
 	private File createGoalDirectory(Goal goal) {
 		if (goal != null) {
 			File goalDirectory = new File(
-					pathToERBProjectsFolder + "\\" + project.getProjectName() + "\\Goals\\" + goal.getGoalName());
+					pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalName());
 			if (!goalDirectory.exists()) {
 				goalDirectory.mkdir();
 			}
@@ -280,7 +280,7 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void createGoalsDirectory() {
-		File goalDirectory = new File(pathToERBProjectsFolder +  "\\" + project.getProjectName() + "\\Goals");
+		File goalDirectory = new File(pathToERBProjectsFolder +  "\\" + project.getProjectCleanedName() + "\\Goals");
 		if(!goalDirectory.exists()) {
 			goalDirectory.mkdir();
 		}

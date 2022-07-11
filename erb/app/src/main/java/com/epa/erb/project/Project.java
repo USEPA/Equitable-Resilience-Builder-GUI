@@ -6,13 +6,16 @@ import com.epa.erb.goal.Goal;
 public class Project {
 
 	private String projectName;
-	public Project(String projectName) {
+	private String projectCleanedName;
+	public Project(String projectName, String projectCleanedName) {
 		this.projectName = projectName;
+		this.projectCleanedName = projectCleanedName;
 	}
 	
 	private ArrayList<Goal> projectGoals;
-	public Project(String projectName, ArrayList<Goal> projectGoals) {
+	public Project(String projectName, String projectCleanedName, ArrayList<Goal> projectGoals) {
 		this.projectName = projectName;
+		this.projectCleanedName = projectCleanedName;
 		this.projectGoals = projectGoals;
 	}
 	
@@ -35,6 +38,14 @@ public class Project {
 		this.projectName = projectName;
 	}
 	
+	public String getProjectCleanedName() {
+		return projectCleanedName;
+	}
+
+	public void setProjectCleanedName(String projectCleanedName) {
+		this.projectCleanedName = projectCleanedName;
+	}
+
 	public ArrayList<Goal> getProjectGoals() {
 		return projectGoals;
 	}

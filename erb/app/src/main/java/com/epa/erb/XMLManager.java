@@ -196,8 +196,8 @@ public class XMLManager {
 						Project project = parseProjectXML(projectMetaFile, activities);
 						projects.add(project);
 					} else {
-						Project project = new Project(projectDirectory.getName());
-						projects.add(project);
+//						Project project = new Project(projectDirectory.getName());
+//						projects.add(project);
 					}
 				}
 			}
@@ -220,6 +220,7 @@ public class XMLManager {
 					if(projectNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element projectElement = (Element) projectNode;
 						String projectName = projectElement.getAttribute("projectName");
+						String projectCleanedName = projectElement.getAttribute("projectCleanedName");
 						ArrayList<Goal> listOfGoals = new ArrayList<Goal>();
 						NodeList goalsNodeList = projectElement.getElementsByTagName("goal");
 						for(int j =0; j < goalsNodeList.getLength(); j++) {
@@ -257,7 +258,7 @@ public class XMLManager {
 								listOfGoals.add(goal);
 							}
 						}
-						Project project = new Project(projectName, listOfGoals);
+						Project project = new Project(projectName, projectCleanedName, listOfGoals);
 						for(Goal goal: listOfGoals) {
 							goal.setChapters(activities, project);
 						}
@@ -339,6 +340,7 @@ public class XMLManager {
 				Element rootElement = document.createElement("project");
 				document.appendChild(rootElement);
 				rootElement.setAttribute("projectName", project.getProjectName());
+				rootElement.setAttribute("projectCleanedName", project.getProjectCleanedName());
 				Element goalsElement = document.createElement("goals");
 				for (Goal goal : project.getProjectGoals()) {
 					Element goalElement = document.createElement("goal");
