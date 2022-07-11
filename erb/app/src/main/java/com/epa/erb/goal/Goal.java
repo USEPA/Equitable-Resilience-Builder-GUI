@@ -15,11 +15,13 @@ public class Goal {
 	
 	private App app;
 	private String goalName;
+	private String goalCleanedName;
 	private String goalDescription;
 	private ArrayList<GoalCategory> listOfSelectedGoalCategories;
-	public Goal(App app,String goalName, String goalDescription, ArrayList<GoalCategory> listOfSelectedGoalCategories ) {
+	public Goal(App app,String goalName, String goalCleanedName, String goalDescription, ArrayList<GoalCategory> listOfSelectedGoalCategories ) {
 		this.app = app;
 		this.goalName = goalName;
+		this.goalCleanedName = goalCleanedName;
 		this.goalDescription = goalDescription;
 		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
 	}
@@ -133,6 +135,14 @@ public class Goal {
 
 	public void setGoalName(String goalName) {
 		this.goalName = goalName;
+	}
+
+	public String getGoalCleanedName() {
+		return goalCleanedName;
+	}
+
+	public void setGoalCleanedName(String goalCleanedName) {
+		this.goalCleanedName = goalCleanedName;
 	}
 
 	public String getGoalDescription() {

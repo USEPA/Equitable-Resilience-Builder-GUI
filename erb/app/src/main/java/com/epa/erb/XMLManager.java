@@ -229,6 +229,7 @@ public class XMLManager {
 							if(goalNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element goalElement = (Element) goalNode;
 								String goalName = goalElement.getAttribute("goalName");
+								String goalCleanedName = goalElement.getAttribute("goalCleanedName");
 								ArrayList<GoalCategory> listOfSelectedGoalCategories = new ArrayList<GoalCategory>();
 								String goalDescription = goalElement.getAttribute("goalDescription");
 								NodeList goalCategoryNodeList = goalElement.getElementsByTagName("goalCategory");
@@ -253,7 +254,7 @@ public class XMLManager {
 										listOfSelectedGoalCategories.add(goalCategory);
 									}
 								}
-								Goal goal = new Goal(app, goalName, goalDescription, listOfSelectedGoalCategories);
+								Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription, listOfSelectedGoalCategories);
 								//goal.setChapters(activities);
 								listOfGoals.add(goal);
 							}
@@ -345,6 +346,7 @@ public class XMLManager {
 				for (Goal goal : project.getProjectGoals()) {
 					Element goalElement = document.createElement("goal");
 					goalElement.setAttribute("goalName", goal.getGoalName());
+					goalElement.setAttribute("goalCleanedName", goal.getGoalCleanedName());
 					goalElement.setAttribute("goalDescription", goal.getGoalDescription());
 					Element goalsCategoryElement = document.createElement("goalsCategories");
 					for (GoalCategory goalCategory : goal.getListOfSelectedGoalCategories()) {

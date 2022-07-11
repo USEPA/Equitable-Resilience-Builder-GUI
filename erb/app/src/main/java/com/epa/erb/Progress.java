@@ -129,7 +129,7 @@ public class Progress {
 	
 	private File getGoalMetaXMLFile(Goal goal, Project project) {
 		if (goal != null && project != null) {
-			File goalXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName()+ "\\Goals\\" + goal.getGoalName() + "\\Meta.xml");
+			File goalXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName()+ "\\Goals\\" + goal.getGoalCleanedName() + "\\Meta.xml");
 			if (goalXMLFile.exists()) {
 				return goalXMLFile;
 			}

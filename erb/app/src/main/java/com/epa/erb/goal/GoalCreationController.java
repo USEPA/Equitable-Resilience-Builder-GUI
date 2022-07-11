@@ -88,9 +88,10 @@ public class GoalCreationController implements Initializable{
 			ArrayList<CheckBox> selectedGoalCheckBoxes = getSelectedGoalCategoryCheckBoxes();
 			if(selectedGoalCheckBoxes.size() > 0) {
 				String goalName = getGoalName();
+				String goalCleanedName = cleanStringForWindows(goalName);
 				String goalDescription = getGoalDescription();
 				ArrayList<GoalCategory> selectedGoalCategories = getSelectedGoalCategories();
-				Goal goal = new Goal(app,goalName, goalDescription, selectedGoalCategories);
+				Goal goal = new Goal(app,goalName, goalCleanedName, goalDescription, selectedGoalCategories);
 				goal.setChapters(app.getActivities(), project);
 				addGoalToGoalsListView(goal);
 				cleanGoalUserInputFields();
@@ -155,6 +156,10 @@ public class GoalCreationController implements Initializable{
 				return cell;
 			}
 		});
+	}
+	
+	private String cleanStringForWindows(String string) {
+		return string.replaceAll("[^A-Za-z0-9]", "_");
 	}
 
 	private boolean hasGoalUserInput() {
@@ -268,7 +273,7 @@ public class GoalCreationController implements Initializable{
 	private File createGoalDirectory(Goal goal) {
 		if (goal != null) {
 			File goalDirectory = new File(
-					pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalName());
+					pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName());
 			if (!goalDirectory.exists()) {
 				goalDirectory.mkdir();
 			}
