@@ -4,7 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
 <VBox spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
@@ -18,11 +21,11 @@
             </Label>
          </children>
       </VBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <HBox spacing="50.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox HBox.hgrow="ALWAYS">
+            <VBox>
                <children>
-                  <VBox VBox.vgrow="ALWAYS">
+                  <VBox>
                      <children>
                         <HBox>
                            <children>
@@ -33,6 +36,46 @@
                               </Label>
                            </children>
                         </HBox>
+                        <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <SVGPath fx:id="svgPath" content="M40,60 C42,48 44,30 25,32" fill="#91c4e5d7" />
+                                    <VBox>
+                                       <children>
+                                          <HBox alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Circle fill="DODGERBLUE" radius="10.0" stroke="WHITE" strokeType="INSIDE" />
+                                                <Label text="Take Action" />
+                                             </children>
+                                             <padding>
+                                                <Insets right="0.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Circle fill="DODGERBLUE" radius="10.0" stroke="WHITE" strokeType="INSIDE" />
+                                                <Label text="Assess your resilience" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="140.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Circle fill="DODGERBLUE" radius="10.0" stroke="WHITE" strokeType="INSIDE" />
+                                                <Label text="Build relationships" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="60.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children></VBox>
@@ -47,7 +90,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <VBox fx:id="circleDiagramVBox" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="circleDiagramVBox" alignment="CENTER" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </children>

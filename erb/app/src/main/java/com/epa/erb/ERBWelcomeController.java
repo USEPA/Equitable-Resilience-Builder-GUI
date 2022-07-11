@@ -6,7 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.SVGPath;
 
 public class ERBWelcomeController implements Initializable{
 
@@ -14,6 +17,8 @@ public class ERBWelcomeController implements Initializable{
 	VBox welcomeVBox;
 	@FXML
 	VBox circleDiagramVBox;
+	@FXML
+	SVGPath svgPath;
 	
 	private App app;
 	public ERBWelcomeController(App app) {
@@ -23,7 +28,7 @@ public class ERBWelcomeController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		loadCircleDiagram();
-		
+		svgPath.setContent("M 150 350 Q 150 350 450 150 Q 450 150 400 100 Q 400 100 550 100 C 550 100 550 250 550 250 C 550 250 500 200 500 200 C 500 200 350 250 150 350 ");
 	}
 	
 	private void loadCircleDiagram() {
