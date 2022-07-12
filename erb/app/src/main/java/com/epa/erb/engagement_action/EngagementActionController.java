@@ -396,7 +396,7 @@ public class EngagementActionController implements Initializable{
 	private void setDynamicDimensions(Pane pane) {
 		if (pane != null) {
 			pane.setPrefHeight(app.getPrefHeight());
-			pane.setPrefWidth(app.getPrefWidth());
+			pane.setPrefWidth(app.getPrefWidth()-10);
 			VBox.setVgrow(pane, Priority.ALWAYS);
 			HBox.setHgrow(pane, Priority.ALWAYS);
 		}
