@@ -53,10 +53,11 @@ public class GlobalGoalTrackerController implements Initializable{
 	
 	private void updateERBProgressBar() {
 		Progress progress = new Progress();
-		double maxPercent = project.getProjectGoals().size() * 100;
-		double totalPercent = progress.getProjectTotalPercent(project);
-		double erbProgressPercent = (totalPercent/maxPercent)* 100;
-		progress.setERBProgress(erbProgressBar, goalProgressLabel, erbProgressPercent);
+		int maxPercent = project.getProjectGoals().size() * 100;
+		int totalPercent = progress.getProjectTotalPercent(project);
+		double erbProgress = ((double) totalPercent/ maxPercent);
+		double erbProgressPercent = erbProgress* 100;
+		progress.setERBProgress(erbProgressBar, goalProgressLabel, (int) erbProgressPercent);
 	}
 	
 	private void addGoalTrackers(Project project) {

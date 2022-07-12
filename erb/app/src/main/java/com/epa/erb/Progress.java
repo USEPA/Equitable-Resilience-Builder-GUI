@@ -109,7 +109,7 @@ public class Progress {
 		}
 	}
 	
-	public double getProjectTotalPercent(Project project) {
+	public int getProjectTotalPercent(Project project) {
 		if (project != null) {
 			double totalPercent = 0;
 			for (Goal goal : project.getProjectGoals()) {
@@ -120,7 +120,7 @@ public class Progress {
 					totalPercent = totalPercent + goalCompletePercent;
 				}
 			}
-			return totalPercent;
+			return (int) totalPercent;
 		} else {
 			logger.error("Cannot getProjectTotalPercent. project is null.");
 			return -1;
@@ -219,7 +219,7 @@ public class Progress {
 		});
 	}
 	
-	public void setERBProgress(ProgressBar erbProgressBar, Label erbProgressPercentLabel, double erbPercent) {
+	public void setERBProgress(ProgressBar erbProgressBar, Label erbProgressPercentLabel, int erbPercent) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
