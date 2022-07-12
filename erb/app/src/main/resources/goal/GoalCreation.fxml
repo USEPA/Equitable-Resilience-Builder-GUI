@@ -26,18 +26,19 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER_LEFT">
-         <children>
-            <Label text="Now that you have brainstormed some goals, use the following activity to set your goals for your ERB process." wrapText="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
+      <ScrollPane fitToHeight="true" style="-fx-background-color: transparent;">
+         <content>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label text="Now that you have brainstormed some goals, use the following activity to set your goals for your ERB process." wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
       <HBox prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefWidth="100.0" HBox.hgrow="ALWAYS">
@@ -63,17 +64,17 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" spacing="20.0">
                            <children>
-                              <Label text="Name:">
+                              <Label minWidth="45.0" text="Name:">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="goalNameTextField" />
+                              <TextField fx:id="goalNameTextField" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                            <children>
-                              <Label text="Description:">
+                              <Label minWidth="80.0" text="Description:">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
