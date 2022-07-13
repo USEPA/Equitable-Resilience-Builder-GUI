@@ -141,6 +141,52 @@ public class App extends Application {
 
 	private void erbCloseRequested() {
 		initSaveHandler(null, null, null, null, getProjects(), "close");
+		if(areEmptyProjects()) {
+			deleteEmptyProjectDirectories();
+		}
+	}
+	
+	private void deleteEmptyProjectDirectories() {
+		File erbProjectDir = new File(constants.getPathToERBProjectsFolder());
+		if (erbProjectDir.exists()) {
+			File[] projectDirectories = erbProjectDir.listFiles();
+			for (File projDir : projectDirectories) {
+				if (projDir.isDirectory()) {
+					File projectMetaFile = new File(projDir + "\\Meta.xml");
+					if (!projectMetaFile.exists()) {
+						deleteDirectory(projDir);
+ 					}
+				}
+			}
+		}
+	}
+	
+	private void deleteDirectory(File directory) {
+		File[] allContents = directory.listFiles();
+		if (allContents != null) {
+			for (File file : allContents) {
+				deleteDirectory(file);
+			}
+			directory.delete();
+		} else {
+			directory.delete();
+		}
+	}
+	
+	private boolean areEmptyProjects() {
+		File erbProjectDir = new File(constants.getPathToERBProjectsFolder());
+		if (erbProjectDir.exists()) {
+			File[] projectDirectories = erbProjectDir.listFiles();
+			for (File projDir : projectDirectories) {
+				if (projDir.isDirectory()) {
+					File projectMetaFile = new File(projDir + "\\Meta.xml");
+					if (!projectMetaFile.exists()) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 	public void initSaveHandler(Activity activity, Chapter chapter, Goal goal, Project project, ArrayList<Project> projects, String saveOrigin) {
