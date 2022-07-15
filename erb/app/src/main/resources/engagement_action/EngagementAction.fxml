@@ -64,20 +64,20 @@
                                        <children>
                                           <HBox spacing="20.0">
                                              <children>
-                                                <Pane fx:id="completeKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                                <Label text="Complete" />
+                                                <Pane fx:id="completeKeyPane" minWidth="30.0" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label minWidth="60.0" text="Complete" />
                                              </children>
                                           </HBox>
                                           <HBox spacing="20.0">
                                              <children>
-                                                <Pane fx:id="readyKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                                <Label text="Ready" />
+                                                <Pane fx:id="readyKeyPane" minWidth="30.0" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label minWidth="60.0" text="Ready" />
                                              </children>
                                           </HBox>
                                           <HBox spacing="20.0">
                                              <children>
-                                                <Pane fx:id="inProgressKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                                <Label text="In Progress" />
+                                                <Pane fx:id="inProgressKeyPane" minWidth="30.0" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label minWidth="60.0" text="In Progress" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -86,26 +86,26 @@
                                        <children>
                                           <HBox spacing="20.0">
                                              <children>
-                                                <Pane fx:id="materialKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                                <Label text="Materials" />
+                                                <Pane fx:id="materialKeyPane" minWidth="30.0" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label minWidth="60.0" text="Materials" />
                                              </children>
                                           </HBox>
                                           <HBox spacing="20.0">
                                              <children>
-                                                <Pane fx:id="descriptionKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                                <Label text="Description" />
+                                                <Pane fx:id="descriptionKeyPane" minWidth="30.0" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label minWidth="60.0" text="Description" />
                                              </children>
                                           </HBox>
                                           <HBox spacing="20.0">
                                              <children>
-                                                <Pane fx:id="whoKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                                <Label text="Who" />
+                                                <Pane fx:id="whoKeyPane" minWidth="30.0" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label minWidth="60.0" text="Who" />
                                              </children>
                                           </HBox>
                                           <HBox spacing="20.0">
                                              <children>
-                                                <Pane fx:id="timeKeyPane" prefHeight="18.0" prefWidth="30.0" />
-                                                <Label text="Time" />
+                                                <Pane fx:id="timeKeyPane" minWidth="30.0" prefHeight="18.0" prefWidth="30.0" />
+                                                <Label minWidth="60.0" text="Time" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -121,7 +121,7 @@
                   </HBox>
                   <HBox fx:id="showDetailsHBox" alignment="CENTER_RIGHT">
                      <children>
-                        <CheckBox fx:id="showDetailsCheckBox" mnemonicParsing="false" onAction="#showDetailsCheckboxAction" text="Show Details" />
+                        <CheckBox fx:id="showDetailsCheckBox" minWidth="95.0" mnemonicParsing="false" onAction="#showDetailsCheckboxAction" text="Show Details" />
                      </children>
                      <padding>
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -139,12 +139,12 @@
          <children>
             <VBox fx:id="treeViewVBox">
                <children>
-                  <TreeView fx:id="treeView" prefHeight="250.0" VBox.vgrow="ALWAYS" />
+                  <TreeView fx:id="treeView" minWidth="125.0" prefHeight="250.0" VBox.vgrow="ALWAYS" />
                   <VBox fx:id="localProgressVBox" spacing="5.0" style="-fx-border-color: #E7E7E7;" VBox.vgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label text="Chapter">
+                              <Label minWidth="52.0" text="Chapter">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -153,7 +153,7 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label text="Percent Complete" />
+                              <Label minWidth="95.0" text="Percent Complete" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER">
@@ -163,7 +163,7 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label onMouseClicked="#goalLabelClicked" text="Goal">
+                              <Label minWidth="30.0" onMouseClicked="#goalLabelClicked" text="Goal">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -174,7 +174,7 @@
                            <children>
                               <VBox alignment="CENTER" spacing="2.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label text="Percent Complete" />
+                                    <Label minWidth="95.0" text="Percent Complete" />
                                     <VBox fx:id="goalProgressVBox" alignment="BOTTOM_CENTER" maxWidth="25.0" minHeight="50.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
                                        <children>
                                           <VBox fx:id="goalProgressBar" />
@@ -188,7 +188,7 @@
                               </VBox>
                               <VBox alignment="CENTER" spacing="2.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label text="Ranking" />
+                                    <Label minWidth="43.0" text="Ranking" />
                                     <VBox fx:id="goalConfidenceVBox" alignment="BOTTOM_CENTER" maxWidth="25.0" minHeight="50.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
                                        <children>
                                           <VBox fx:id="goalConfidenceBar" />
@@ -215,13 +215,13 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <RadioButton fx:id="readyRadioButton" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Ready">
+                              <RadioButton fx:id="readyRadioButton" minWidth="55.0" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Ready">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="activityStatusToggleGroup" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="inProgressRadioButton" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="In Progress" toggleGroup="$activityStatusToggleGroup" />
-                              <RadioButton fx:id="completeRadioButton" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Complete" toggleGroup="$activityStatusToggleGroup" />
+                              <RadioButton fx:id="inProgressRadioButton" minWidth="81.0" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="In Progress" toggleGroup="$activityStatusToggleGroup" />
+                              <RadioButton fx:id="completeRadioButton" minWidth="72.0" mnemonicParsing="false" onAction="#activityStatusRadioButtonAction" text="Complete" toggleGroup="$activityStatusToggleGroup" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />

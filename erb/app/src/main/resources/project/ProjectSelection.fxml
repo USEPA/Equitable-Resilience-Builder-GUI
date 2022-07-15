@@ -18,7 +18,7 @@
    <children>
       <HBox alignment="CENTER_LEFT">
          <children>
-            <Label text="Project Selection">
+            <Label minWidth="175.0" text="Project Selection">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -32,7 +32,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="Create New Project:">
+                        <Label minWidth="157.0" text="Create New Project:">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -41,14 +41,14 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="15.0">
                      <children>
-                        <Pane prefWidth="50.0" />
-                        <Label text="Project Name:">
+                        <Pane minWidth="50.0" />
+                        <Label minWidth="100.0" text="Project Name:">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="projectNameTextField" />
-                        <Button mnemonicParsing="false" onAction="#createButtonAction" text="Create">
+                        <TextField fx:id="projectNameTextField" minWidth="200.0" />
+                        <Button minWidth="60.0" mnemonicParsing="false" onAction="#createButtonAction" text="Create">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -61,14 +61,14 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="Existing Projects:">
+                        <Label minWidth="134.0" text="Existing Projects:">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <ListView fx:id="projectsListView" VBox.vgrow="ALWAYS" />
+                  <ListView fx:id="projectsListView" minHeight="150.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <HBox alignment="BOTTOM_RIGHT">

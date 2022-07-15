@@ -12,7 +12,7 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label text="Goal">
+                  <Label minWidth="40.0" text="Goal">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -36,7 +36,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label text="Percent Complete">
+                        <Label minWidth="110.0" text="Percent Complete">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -66,7 +66,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label text="Ranking">
+                        <Label minWidth="50.0" text="Ranking">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>

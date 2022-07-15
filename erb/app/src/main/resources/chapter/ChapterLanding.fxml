@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -10,15 +11,19 @@
 
 <VBox prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="headingLabelHBox" alignment="CENTER" minHeight="75.0">
-         <children>
-            <Label fx:id="headingLabel" text="Equitable Resilience Builder">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <ScrollPane fx:id="headingLabelScrollPane" minHeight="85.0">
+         <content>
+            <HBox fx:id="headingLabelHBox" alignment="CENTER" minHeight="75.0" style="-fx-background-color: transparent;">
+               <children>
+                  <Label fx:id="headingLabel" text="Equitable Resilience Builder">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
       <VBox fx:id="mainPanel" VBox.vgrow="ALWAYS">
          <children>
             <VBox fx:id="aboutPanel">

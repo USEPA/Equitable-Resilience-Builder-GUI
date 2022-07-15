@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -15,23 +16,24 @@
 
 <VBox spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER">
-         <children>
-            <Label fx:id="activityNameLabel" text="Activity Name">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-         </children>
-         <padding>
-            <Insets left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
+      <ScrollPane minHeight="50.0" style="-fx-background-color: transparent;">
+         <content>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label fx:id="activityNameLabel" text="Activity Name" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
       <TitledPane fx:id="howToTitledPane" text="How To">
          <content>
             <VBox>
                <children>
-                  <TextArea fx:id="howToTextArea" editable="false" text="    -Create a category by entering the category name into the text field, then clicking the &quot;Add Category&quot; button.&#10;    -Click and drag a post it into one of the categories.&#10;    -Double click the post it to change the color and/or add text.&#10;    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;.&#10;    -Click and drag a post it to a new category or to reorder a category.&#10;" wrapText="true">
+                  <TextArea fx:id="howToTextArea" editable="false" prefHeight="141.0" text="    -Create a category by entering the category name into the text field, then clicking the &quot;Add Category&quot; button.&#10;    -Click and drag a post it into one of the categories.&#10;    -Double click the post it to change the color and/or add text.&#10;    -Click the &quot;+&quot; and &quot;-&quot; labels to increase or decrease the number of  &quot;likes&quot;.&#10;    -Click and drag a post it to a new category or to reorder a category.&#10;" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -48,9 +50,9 @@
       </TitledPane>
       <HBox alignment="CENTER_LEFT" spacing="15.0">
          <children>
-            <Label text="Category:" />
-            <TextField fx:id="categoryTextField" />
-            <Button mnemonicParsing="false" onAction="#addCategoryButtonAction" text="Add Category">
+            <Label minWidth="50.0" text="Category:" />
+            <TextField fx:id="categoryTextField" minWidth="150.0" />
+            <Button minWidth="75.0" mnemonicParsing="false" onAction="#addCategoryButtonAction" text="Add Category">
                <font>
                   <Font size="10.0" />
                </font>

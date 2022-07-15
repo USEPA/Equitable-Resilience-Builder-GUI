@@ -10,7 +10,7 @@
    <children>
       <HBox fx:id="erbHeading" alignment="CENTER">
          <children>
-            <Label text="Chapter Planning">
+            <Label minWidth="250.0" text="Chapter Planning">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>

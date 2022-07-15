@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
@@ -38,6 +39,8 @@ public class ChapterLandingController implements Initializable {
 	VBox reflectPanel;
 	@FXML
 	Label headingLabel;
+	@FXML
+	ScrollPane headingLabelScrollPane;
 	@FXML
 	HBox headingLabelHBox;
 	@FXML
@@ -62,7 +65,6 @@ public class ChapterLandingController implements Initializable {
 		this.engagementActionController = engagementActionController;
 	}
 	
-	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ChapterLandingController.class);
 	
 	@Override
@@ -77,7 +79,7 @@ public class ChapterLandingController implements Initializable {
 	
 	private void handleControls() {
 		handleControlsShown();
-		headingLabelHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
+		headingLabelScrollPane.getStylesheets().add("/scrollPane.css");
 		aboutTextArea.getStylesheets().add("/textArea.css");
 	}
 	
