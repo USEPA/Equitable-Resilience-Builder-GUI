@@ -48,8 +48,8 @@ public class App extends Application {
 	
 	private void showERBToolMain() {
 		Parent erbContainerRoot = loadERBContainer();
-		//launchERBLanding(false);
-		launchERBWelcome();
+		//launchERBLanding(false); //Original tool
+		launchERBWelcome(); //Dashboard tool
 		showERBContainer(erbContainerRoot);
 	}
 

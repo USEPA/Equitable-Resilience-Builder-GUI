@@ -2,8 +2,6 @@ package com.epa.erb.engagement_action;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,9 +34,7 @@ public class AttributePanelController implements Initializable{
 		this.attributeColor = attributeColor;
 		this.engagementActionController = engagementActionController;
 	}
-	
-	private Logger logger = LogManager.getLogger(AttributePanelController.class);
-	
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setAttributeFields(attributeTitle, attributeContent, attributeColor);

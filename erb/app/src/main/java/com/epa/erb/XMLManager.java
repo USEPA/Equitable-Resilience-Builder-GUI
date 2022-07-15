@@ -195,9 +195,6 @@ public class XMLManager {
 					if(projectMetaFile.exists()) {
 						Project project = parseProjectXML(projectMetaFile, activities);
 						projects.add(project);
-					} else {
-//						Project project = new Project(projectDirectory.getName());
-//						projects.add(project);
 					}
 				}
 			}
@@ -255,7 +252,6 @@ public class XMLManager {
 									}
 								}
 								Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription, listOfSelectedGoalCategories);
-								//goal.setChapters(activities);
 								listOfGoals.add(goal);
 							}
 						}

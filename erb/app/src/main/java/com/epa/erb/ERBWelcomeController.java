@@ -6,8 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 
@@ -39,7 +37,7 @@ public class ERBWelcomeController implements Initializable{
 			Parent circleDiagramRoot = fxmlLoader.load();
 			circleDiagramVBox.getChildren().add(circleDiagramRoot);
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		}
 	}
 	

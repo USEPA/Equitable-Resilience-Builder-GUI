@@ -1,10 +1,8 @@
 package com.epa.erb;
 
 import java.io.File;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 

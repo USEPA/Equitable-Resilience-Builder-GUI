@@ -4,12 +4,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.Activity;
-import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

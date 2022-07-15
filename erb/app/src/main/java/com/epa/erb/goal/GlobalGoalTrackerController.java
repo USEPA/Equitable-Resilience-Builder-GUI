@@ -1,6 +1,5 @@
 package com.epa.erb.goal;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
@@ -63,14 +62,11 @@ public class GlobalGoalTrackerController implements Initializable{
 	private void addGoalTrackers(Project project) {
 		if (project != null) {
 			for (Goal goal : project.getProjectGoals()) {
-//				File goalMetaXMLFile = constants.getGoalMetaXMLFile(project, goal);
-//				if (goalMetaXMLFile != null) {
-					Parent root = loadGoalTracker(goal);
-					if (root != null) {
-						goalHBox.getChildren().add(root);
-						HBox.setHgrow(root, Priority.ALWAYS);
-					}
-//				}
+				Parent root = loadGoalTracker(goal);
+				if (root != null) {
+					goalHBox.getChildren().add(root);
+					HBox.setHgrow(root, Priority.ALWAYS);
+				}
 			}
 		} else {
 			logger.error("Cannot addGoalTrackers. project is null.");

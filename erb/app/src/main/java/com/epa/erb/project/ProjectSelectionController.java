@@ -107,13 +107,9 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private boolean isValidNewProjectName(String projectName) {
-		if(projectName!= null && projectName.length() > 0) {
-			if(!isDuplicateProjectName(projectName)) {
-				//if(isCharAllowableProjectName(projectName)) {
-					return true;
-				//} else {
-				//	showIsNotCharAllowableProjectName();
-				//}
+		if (projectName != null && projectName.length() > 0) {
+			if (!isDuplicateProjectName(projectName)) {
+				return true;
 			} else {
 				showIsDuplicateProjectNameAlert();
 			}

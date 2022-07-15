@@ -29,7 +29,6 @@ public class Goal {
 	private Constants constants = new Constants();
 	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	private Logger logger = LogManager.getLogger(Goal.class);
-	private String pathToERBProjectsFolder = constants.getPathToERBProjectsFolder();
 	
 	public void setChapters(ArrayList<Activity> activities, Project project) {
 		File goalXMLFile = constants.getGoalMetaXMLFile(project, this);
