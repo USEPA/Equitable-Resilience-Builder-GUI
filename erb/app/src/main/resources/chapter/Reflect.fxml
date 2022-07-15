@@ -79,7 +79,7 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <VBox fx:id="statusVBox" alignment="TOP_CENTER" spacing="46.0" VBox.vgrow="ALWAYS" />
+                              <VBox fx:id="statusVBox" alignment="TOP_CENTER" spacing="41.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox minWidth="60.0" spacing="5.0" HBox.hgrow="ALWAYS">
