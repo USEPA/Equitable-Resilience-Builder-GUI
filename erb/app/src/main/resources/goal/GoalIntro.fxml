@@ -31,6 +31,12 @@
             </Label>
          </children>
       </HBox>
+      <HBox spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#openButtonAction" text="Open" />
+            <Button disable="true" mnemonicParsing="false" onAction="#printButtonAction" text="Print" />
+         </children>
+      </HBox>
       <VBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
          <children>
             <WebView fx:id="webView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />

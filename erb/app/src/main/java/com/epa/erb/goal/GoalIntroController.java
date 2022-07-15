@@ -1,5 +1,6 @@
 package com.epa.erb.goal;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.net.URL;
 import java.util.Base64;
@@ -51,6 +52,30 @@ public class GoalIntroController implements Initializable{
 	}
 	
 	private void handleControls() {
+		
+	}
+	
+	@FXML
+	public void openButtonAction() {
+		openGoalActivity();
+	}
+	
+	@FXML
+	public void printButtonAction() {
+		
+	}
+	
+	private void openGoalActivity() {
+		try {
+			File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\1_Goals.docx");
+			if (file.exists() && Desktop.isDesktopSupported()) {
+				Desktop.getDesktop().open(file);
+			} else {
+				logger.error(file.getPath() + " either does not exist or desktop is not supported.");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 	
 	private File getPDFFileToLoad() {
