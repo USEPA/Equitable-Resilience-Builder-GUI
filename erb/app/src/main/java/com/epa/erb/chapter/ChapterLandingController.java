@@ -131,6 +131,7 @@ public class ChapterLandingController implements Initializable {
 	public void fillPlanListView() {
 		cleanPlanListView();
 		Activity planActivity = engagementActionController.getActivityForIDInGoal("25", engagementActionController.getCurrentGoal());
+		if(chapter != null) planActivity.setChapterAssignment(String.valueOf(chapter.getChapterNum()));
 		if (planActivity != null) planListView.getItems().add(planActivity);
 		setListViewCellFactory(planListView, "Plan");
 	}
@@ -138,6 +139,7 @@ public class ChapterLandingController implements Initializable {
 	public void fillReflectListView() {
 		cleanReflectListView();
 		Activity reflectActivity = engagementActionController.getActivityForIDInGoal("26", engagementActionController.getCurrentGoal());
+		if(chapter != null) reflectActivity.setChapterAssignment(String.valueOf(chapter.getChapterNum()));
 		if(reflectActivity != null) reflectListView.getItems().add(reflectActivity);
 		setListViewCellFactory(reflectListView, "Reflect");
 	}
@@ -206,13 +208,27 @@ public class ChapterLandingController implements Initializable {
 			HashMap<TreeItem<String>, String> treeMap = engagementActionController.getTreeItemActivityIdTreeMap();
 			for (TreeItem<String> treeItem : treeMap.keySet()) {
 				String treeItemValue = treeItem.getValue();
-				if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
-					String treeItemActivityID = treeMap.get(treeItem);
-					if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
-						return treeItem;
+				TreeItem<String> parentTreeItem = treeItem.getParent();
+				if (parentTreeItem != null) {
+					String chapterString = "Chapter " + activity.getChapterAssignment();
+					if (parentTreeItem.getValue().contentEquals(chapterString)) {
+						if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
+							String treeItemActivityID = treeMap.get(treeItem);
+							if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
+								return treeItem;
+							}
+						}
+					}
+				} else {
+					if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
+						String treeItemActivityID = treeMap.get(treeItem);
+						if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
+							return treeItem;
+						}
 					}
 				}
 			}
+			return null;
 		} else {
 			logger.error("Cannot findTreeItem. activity is null.");
 		}
