@@ -1,0 +1,49 @@
+<goalCategories>
+	<goalCategory categoryName="Community Engagement">
+		<assignedActivities>
+			<assignedActivity activityID="02"/>
+			<assignedActivity activityID="08"/>
+			<assignedActivity activityID="14"/>
+			<assignedActivity activityID="17"/>
+			<assignedActivity activityID="18"/>
+		</assignedActivities>
+	</goalCategory>
+	<goalCategory categoryName="Identify areas to improve equitable resilience.">
+		<assignedActivities>
+			<assignedActivity activityID="13"/>
+			<assignedActivity activityID="12"/>
+			<assignedActivity activityID="14"/>
+			<assignedActivity activityID="17"/>
+			<assignedActivity activityID="20"/>
+			<assignedActivity activityID="22"/>
+			<assignedActivity activityID="21"/>
+			<assignedActivity activityID="23"/>
+		</assignedActivities>
+	</goalCategory>
+	<goalCategory categoryName="Include or improve inclusion of equity and social vulnerability in my HMP.">
+		<assignedActivities>
+			<assignedActivity activityID="14"/>
+			<assignedActivity activityID="13"/>
+			<assignedActivity activityID="17"/>
+			<assignedActivity activityID="20"/>
+			<assignedActivity activityID="21"/>
+			<assignedActivity activityID="22"/>
+			<assignedActivity activityID="23"/>
+		</assignedActivities>
+	</goalCategory>
+	<goalCategory categoryName="Include emerging hazards in my HMP such as climate change projections, cyber-security and CBRN.">
+		<assignedActivities>
+			<assignedActivity activityID="14"/>
+			<assignedActivity activityID="21"/>
+			<assignedActivity activityID="22"/>
+		</assignedActivities>
+	</goalCategory>
+	<goalCategory categoryName="Include cascading hazards in my HMP.">
+		<assignedActivities>
+			<assignedActivity activityID="14"/>
+			<assignedActivity activityID="12"/>
+			<assignedActivity activityID="21"/>
+			<assignedActivity activityID="22"/>
+		</assignedActivities>
+	</goalCategory>
+</goalCategories>

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<activities>
+	<activity id="11" chapter="1" name="Gather a core team" description="Having a small core team of 5-7 people will make your project more collaborative and help win support from key people or groups in your community. It will also give you a sounding board and potentially some extra hands to help as you move through the process.">
+		<form id="111" name="Story telling exercise"  fileName="Ch1_Storytelling.docx" description="Storytelling is an activity where people get together and share their experiences. Consider using a storytelling exercise after you've gotten your core team together to break the ice, get to know your team, and start identifying common goals and priorities."/> 
+	</activity>
+	<activity id="12" chapter="1" name="Lay out goals" description="Laying out some goals and understanding the problem you want to address will help guide you through this project. You can tackle this step individually, or with your project team.">
+		<form id="121" name="Goals worksheet" fileName="Ch1_Goals.docx" description="Laying out some goals and understanding the problem you want to address will help guide you through this project. You can tackle this step individually, or with your project team. Work through the following steps to identify your goals."/>
+	</activity>
+	<activity id="13" chapter="1" name="Make a project plan" description="Getting together with your project team to do a project plan is a helpful step for ensuring you and your team understand what you are going to do and how you are going to do it.">
+		<form id="131" name="Project plan template" fileName="Ch1_ProjectPlanTemplate.docx" description="Getting together with your project team to do a project plan is a helpful step for ensuring you and your team understand what you are going to do and how you are going to do it.  You may need 1-3 meetings with your team to discuss the project plan depending on how detailed you want to make the plan. Remember: If you don't have enough information to make a complete plan at this time don't worry! The planning process can be iterative."/>
+		<form id="132" name="Project plan example" fileName="Ch1_ProjectPlanExample.docx" description="Example of a plan for a typical ERB project." />
+		<form id="133" name="Communication guide" fileName="Ch1_Communication.docx" description="Guide for creating the communication section of your plan if you want additional help"/>
+	</activity>
+	<activity id="21" chapter="2" name="Network analysis and mapping" description="Identify the community members and groups that are key members in your community for trust and resilience. This map will help identify community relationships, the flow of resources, and central nodes for community engagement.">
+		<form id="211" name="Network analysis table" fileName="Ch2_NetworkAnalysisTable.docx" description=" Identify the community members and groups that are key members in your community for trust and resilience. This map will help identify community relationships, the flow of resources, and central nodes for community engagement." />
+	</activity>
+	<activity id="22" chapter="2" name="Community engagement" description="A community engagement plan should outline a clear approach to how the community will be engaged during the ERB process. Engagement plans can take many different forms.">
+		<form id="221" name="Community engagement plan" fileName="Ch2_CommunityEngagementPlan.docx" description="A community engagement plan should outline a clear approach to how the community will be engaged during the ERB process. Engagement plans can take many different forms."/>
+	</activity>
+	<activity id="31" chapter="3" name="Describe hazards and threats" description="Gather information on hazards, disasters, and threats (HDT) that your community may face to inform the social vulnerability assessment you will do next.">
+		<form id="311" name="Hazards, disasters and threats" fileName="Ch3_HDT.docx" description="The objective of this activity is to understand the main hazards, disasters, and threats that the community should be concerned about."/>
+	</activity>
+	<activity id="32" chapter="3" name="Gather data on equity" description="Explore existing data sources that might be able to shed light on vulnerability and equity issues you may or may not be aware of.">
+		<form id="321" name="Equity Indicators" fileName="Ch3_EquityData.docx" description="The objective of this activity is to gather data on existing inequities that may influence who is affected by hazards and disasters, and how. This data can help identify where there are disparities in factors such as income, housing, and health, as well as consider the needs of priority groups such as the elderly and non-English speakers to improve the resilience of the entire community" />
+	</activity>
+	<activity id="33" chapter="3" name="HDT workshop" description="Understanding how community members experience HDT is important for identifying how you can increase your community's resilience and equity.">
+		<form id="331" name="Understanding community experiences" fileName="Ch3_Storytelling.docx" description="The objective of this activity is to understand the past experiences of community members with hazards, disasters, and threats in order to start to identify who is most vulnerable, how and why"/>
+		<form id="332" name="Mapping HDT and vulnerability" fileName="Ch3_Mapping.docx" description="The objective of this activity is to identify the locations where impacts are happening or may happen, as well as potential cascading impacts. "/>
+		<form id="333" name="Social vulnerability assessment" fileName="Ch3_SocialVulnerability.docx" description="The objective of this activity is to identify who is most vulnerable to hazards and disasters, how they are impacted, and what are the root causes of these impacts"/>
+	</activity>
+	<activity id="41" chapter="4" name="Indicators workshop" description="Work with a set of indicators to assess how resilient and equitable your community’s built, natural, and social support systems currently are. This information will help you identify your community's greatest areas of need to build equitable resilience of these support systems to hazards and disasters.">
+		<form id="411" name="Workshop" fileName="Ch4_Workshop.docx" description="Assess how resilient and equitable your community's built, natural, and social environment systems are to disasters and climate change, using key indicators.Convene discussions about equitable resilience with community constituencies"/>
+		<form id="412" name="Indicator workbook" fileName="Ch4_IndicatorsWorkbook.xlsx" description="" />
+		<form id="413" name="Indicator card" fileName="Ch4_IndicatorCard.docx" description=""/>
+	</activity>
+	<activity id="51" chapter="5" name="Touch base and plan activities" description="Collectively come up with actions that different organizations, sectors, government agencies, and members of your community can use to help build equitable resilience.">
+		<form id="511" name="Storytelling" fileName="Ch5_Storytelling.docx" description="Storytelling is a way of learning about what has or hasn't worked with implementation other types of actions for your community and the people who work on resilience and equity already."/>
+	</activity>
+	<activity id="52" chapter="5" name="Generate how might we statements" description="Participants will brainstorm and assess possible actions that different organizations and entities could take to build equitable resilience in your community. ">
+		<form id="521" name="How might we template" fileName="Ch5_HowMightWeTemplate.docx" description="First, you and your core team can synthesize information coming from the visualization in Ch. 4, the SVA table from Ch. 3, the hazards ID slides, and storytelling to help you focus on key areas of need your community has for building equitable resilience" />
+		<form id="522" name="How might we example" fileName="Ch5_HowMightWeExample.docx" description="Example how might we statement"/>
+	</activity>
+	<activity id="53" chapter="5" name="Resilience actions workshop" description="Host a workshop with community members on equitable resilience building actions. ">
+		<form id="531" name="Equity principles" fileName="Ch5_EquityPriciples.docx" description="List of equity principles"/>
+		<form id="532" name="Identifying Actions" fileName="Ch5_IdentifyingActionsTemplate.docx" description="Use this template to begin to brainstorm actions, either on individual sheets or written on an easel pad" />
+		<form id="533" name="Evaluating Actions" fileName="Ch5_EvalutatingActionsTemplate.docx" description="Use this template to help evaluate actions"/>
+	</activity>
+</activities>

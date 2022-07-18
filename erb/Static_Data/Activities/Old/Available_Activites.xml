@@ -1,0 +1,430 @@
+<activities>
+	<activity 
+	activityType="Worksheet"
+	activityID="01"
+	status="ready" 
+	shortName="Communication Guide" 
+	longName="In-Depth Communication Guide" 
+	fileName="1_Communication.docx" 
+	directions="" 
+	objectives="Create the communication section of your project plan." 
+	description="Questions to consider when determining how to communicate and who to inform." 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet" 
+	activityID="02"
+	status="ready" 
+	shortName="Gathering a Team" 
+	longName="Instructions for Gathering a Team" 
+	fileName="1_GatherTeam.docx" 
+	directions="" 
+	objectives="Create your core project team." 
+	description="Instructions and tips for gathering a team." 
+	materials="" 
+	time="" 
+	who="">
+		<linkedActivityIDS>
+			<link activityID="06"> </link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="03"
+	status="ready" 
+	shortName="Goals" 
+	longName="ERB Goals Worksheet" 
+	fileName="1_Goals.docx" 
+	directions="" 
+	objectives="Guide you through your project." 
+	description="Steps to layout goals and understand the problem you want to address." 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="04"	
+	status="ready" 
+	shortName="PP Example" 
+	longName="ERB Project Plan Example" 
+	fileName="1_ProjectPlanExample.docx" 
+	directions="" 
+	objectives="Create your own project plan." 
+	description="Example of a completed project plan." 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+    activityID="05"	
+	status="ready" 
+	shortName="PP Template" 
+	longName="ERB Project Plan Template" 
+	fileName="1_ProjectPlanTemplate.docx" 
+	directions="" 
+	objectives="Create your own project plan." 
+	description="Template of a project plan." 
+	materials="" 
+	time="" 
+	who="">
+		<linkedActivityIDS>
+			<link activityID="03"> </link>
+			<link activityID="04"> </link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="06"	
+	status="ready" 
+	shortName="Team Storytelling" 
+	longName="Team Storytelling Exercise" 
+	fileName="1_Storytelling.docx" 
+	directions="Break up into groups of 3. One person will be a notetaker, one person will be an active listener, and one person will be the storyteller. After each story, rotate roles so that by the end everyone has had a chance to have each role."   
+	objectives="" 
+	description="" 
+	materials="Notetaker
+	&#xD;Active Listener
+	&#xD;Storyteller" 
+	time="" 
+	who="">
+		<linkedActivityIDS>
+			<link activityID="09"> </link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="07"	
+	status="ready" 
+	shortName="Community Involvement" 
+	longName="Community Engagement and Empowerment Plan" 
+	fileName="2_CommunityEngagementPlan.docx" 
+	directions="" 
+	objectives="Determine how the community will be engaged during the ERB process." 
+	description="" 
+	materials="" 
+	time="" 
+	who="">
+		<linkedActivityIDS>
+			<link activityID="08"></link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="08"	
+	status="ready" 
+	shortName="Network Analysis" 
+	longName="Network Analysis Template and Example" 
+	fileName="2_NetworkAnalysisTable.docx" 
+	directions="" 
+	objectives="Identify the community members and groups that are key members in your community for trust and resilience." 
+	description="Activities to identify community relationships, the flow of resources, and central nodes for community engagement." 
+	materials="" 
+	time="" 
+	who="Core team">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="09"	
+	status="ready" 
+	shortName="Storytelling Resources" 
+	longName="Storytelling Resources" 
+	fileName="2_StorytellingResource.docx" 
+	directions="" 
+	objectives="Give users information on storytelling." 
+	description="Information on why to use storytelling and how." 
+	materials="" 
+	time="" 
+	who="Core team">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="10"	
+	status="ready" 
+	shortName="Equity Data" 
+	longName="Equity Data Worksheet" 
+	fileName="3_EquityData.docx" 
+	directions="" 
+	objectives="Find existing inequities that may influence who is affected by hazards and disasters, and how." 
+	description="Steps to gather data to improve resilience of a community. This data can help identify where there are disparities in factors such as income, housing, and health, as well as consider the needs of priority groups such as the elderly and non-English speakers." 
+	materials="Internet Access 
+	&#xD;Copies of existing reports 
+	&#xD;Template" 
+	time="4 Hours" 
+	who="Completed by one person or a small group">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="11"	
+	status="ready" 
+	shortName="HDT" 
+	longName="Hazards, Disasters, and Threats Worksheet" 
+	fileName="3_HDT.docx" 
+	directions="" 
+	objectives="Understand the main hazards, disasters, and threats that the community should be concerned about." 
+	description="Sources and template research hazards." 
+	materials="Internet Access 
+	&#xD;Copies of existing reports 
+	&#xD;Template" 
+	time="4 Hours" 
+	who="Completed by one person or a small group">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="12"	
+	status="ready" 
+	shortName="Mapping" 
+	longName="Mapping Activity Instructions" 
+	fileName="3_Mapping.docx" 
+	directions="" 
+	objectives="Identify the locations where impacts are happening or may happen, as well as potential cascading impacts." 
+	description="Steps to map hazards." 
+	materials="Maps 
+	&#xD;Interactive platform" 
+	time="2 Hours" 
+	who="Core team and other stakeholders and community members">
+		<linkedActivityIDS>
+			<link activityID="14"></link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Noteboard"
+	activityID="13"	
+	status="ready" 
+	shortName="Social Vulnerability" 
+	longName="Social Vulnerability Activity Template" 
+	fileName="3_SocialVulnerability.docx" 
+	directions="" 
+	objectives="Identify who is most vulnerable to hazards and disasters, how they are impacted, and what are the root causes of these impacts." 
+	description="White board activity to identify vulnerabilities." 
+	materials="White Board 
+	&#xD;Post-It Notes" 
+	time="2 Hours" 
+	who="Core team and other stakeholders and community members">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="14"	
+	status="ready" 
+	shortName="HDT Storytelling" 
+	longName="Hazards, Disasters, and Threats Storytelling Activity" 
+	fileName="3_Storytelling.docx" 
+	directions="" 
+	objectives="Help to understand the past experiences of community members with hazards, disasters, and threats in order to start to identify who is most vulnerable, how and why" 
+	description="" 
+	materials="Storytelling worksheets 
+	&#xD;Writing instruments" 
+	time="2 Hours" 
+	who="Core team and other stakeholders and community members">
+		<linkedActivityIDS>
+			<link activityID="09"> </link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="15"	
+	status="ready" 
+	shortName="Indicator Card" 
+	longName="Indicator Card Template" 
+	fileName="4_IndicatorCard.docx" 
+	directions="" 
+	objectives="Organize indicator information." 
+	description="Printable card containing indicator information." 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Workbook"
+	activityID="16"	
+	status="ready" 
+	shortName="Indicator WB" 
+	longName="Indicators Workbook" 
+	fileName="4_IndicatorsWorkbook.xlsx" 
+	directions="" 
+	objectives="" 
+	description="" 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="17"	
+	status="ready" 
+	shortName="Assessing Resilience" 
+	longName="Instructions for selecting, gathering information, sorting, visualizing to assess equity and resilience in your community" 
+	fileName="4_Workshop.docx" 
+	directions="" 
+	objectives="Assess how resilient and equitable your community's built, natural, and social environment systems are to disasters and climate change, using key indicators." 
+	description="Convene discussions about equitable resilience with community constituencies." 
+	materials="Easel Pad 
+	&#xD;Sticky notes 
+	&#xD;Markers 
+	&#xD;SVA table/cards 
+	&#xD;Hazards ID" 
+	time="1) Kickoff meeting with the core team and community members to discuss Chapter 4 objectives and select indicators that are relevant to where you live (2 hours). 
+	&#xD;2) Gather data and information to help you answer the indicator questions for each system and sector. 
+	&#xD;3) Community workshop where you will sort indicators by their relative resilience and equity into a 4-quadrant diagram and discuss the results of the assessment (time to plan; 2 hours for the workshop)" 
+	who="The project core team and any additional community members">
+		<linkedActivityIDS>
+			<link activityID="16"> </link>
+			<link activityID="15"> </link>
+			<link activityID="11"> </link>
+			<link activityID="13"> </link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="18"	
+	status="ready" 
+	shortName="Actions Workshop" 
+	longName="Actions Workshop" 
+	fileName="5_ActionsWorkshop.docx" 
+	directions="" 
+	objectives="1. Identify and evaluate actions to build equitable resilience in your community. 
+	&#xD;2. Come up with next steps so different groups can begin to take action. 
+	&#xD;3. Continue to build relationships and trust among local groups, expanding their network connections." 
+	description="Multiple workshops to determine actions to take." 
+	materials="Easel pad 
+	&#xD;Sticky notes and dots 
+	&#xD;Markers 
+	&#xD;How might we... so that statements 
+	&#xD;Templates for identifying actions 
+	&#xD;Evaluating actions and next steps" 
+	time="Anywhere from a week to a month to plan; you could hold one 4-hour workshop or two 2-hour workshops." 
+	who="Core team plans the event; participants could include local residents, businesses, community-based organizations, government agencies, universities, and others.">
+		<linkedActivityIDS>
+			<link activityID="20"> </link>
+			<link activityID="23"> </link>
+			<link activityID="19"> </link>
+			<link activityID="07"> </link>
+			<link activityID="22"> </link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="19"	
+	status="ready" 
+	shortName="Equity Principles" 
+	longName="Equity Principles" 
+	fileName="5_EquityPrinciples.docx" 
+	directions="" 
+	objectives="" 
+	description="List of equity principles." 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="20"	
+	status="ready" 
+	shortName="Eval Actions" 
+	longName="Evalutating Resilience Building Actions" 
+	fileName="5_EvaluatingActionsTemplate.docx" 
+	directions="" 
+	objectives="Determine where an actions falls on a spectrum of equity, feasibility and impact." 
+	description="Diagram to evaluate equitable resilience building actions." 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="21"	
+	status="ready" 
+	shortName="Action Statement Ex" 
+	longName="How Might We Statement Example" 
+	fileName="5_HowMightWeExample.docx" 
+	directions="" 
+	objectives="Create 'how might we...so that' statements." 
+	description="Example 'how might we..so that' statements." 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="22"	
+	status="ready" 
+	shortName="Action Statement Template" 
+	longName="How Might We Statement Template" 
+	fileName="5_HowMightWeTemplate.docx" 
+	directions="" 
+	objectives="Create 'how might we...so that' statements." 
+	description="Template to create 'how might we...so that' statements." 
+	materials="" 
+	time="" 
+	who="">
+		<linkedActivityIDS>
+			<link activityID="11"> </link>
+			<link activityID="15"> </link>
+			<link activityID="13"> </link>
+			<link activityID="21"> </link>
+			<link activityID="17"> </link>
+		</linkedActivityIDS>
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="23"	
+	status="ready" 
+	shortName="Identifying Actions" 
+	longName="Template for Identifying Equitable Resilience Building Actions" 
+	fileName="5_IdentifyingActionsTemplate" 
+	directions="" 
+	objectives="Help users to brainstorm actions." 
+	description="" 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="24"	
+	status="ready" 
+	shortName="Implementation Storytelling" 
+	longName="Storytelling About Implementation" 
+	fileName="5_Storytelling.docx" 
+	directions="" 
+	objectives="" 
+	description="" 
+	materials="" 
+	time="" 
+	who="">
+		<linkedActivityIDS>
+			<link activityID="18"> </link>
+		</linkedActivityIDS>
+	</activity>	
+	<activity 
+	activityType="Worksheet"
+	activityID="25"	
+	status="ready" 
+	shortName="Plan" 
+	longName="Plan" 
+	fileName="" 
+	directions="" 
+	objectives="" 
+	description="" 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+	<activity 
+	activityType="Worksheet"
+	activityID="26"	
+	status="ready" 
+	shortName="Reflect" 
+	longName="Reflect" 
+	fileName="" 
+	directions="" 
+	objectives="" 
+	description="" 
+	materials="" 
+	time="" 
+	who="">
+	</activity>
+</activities>
