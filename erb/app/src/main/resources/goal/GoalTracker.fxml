@@ -8,28 +8,15 @@
 
 <VBox fx:id="goalVBox" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox>
+      <HBox alignment="CENTER">
          <children>
-            <HBox alignment="CENTER">
-               <children>
-                  <Label minWidth="40.0" text="Goal">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER">
-               <children>
-                  <Label fx:id="goalTitleLabel" text="Title of goal here">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
+            <Label fx:id="goalTitleLabel" text="Title of goal here" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
-      </VBox>
+      </HBox>
       <HBox spacing="5.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">

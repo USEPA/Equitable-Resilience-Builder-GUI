@@ -37,8 +37,14 @@ public class GoalTrackerController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setGoalTitleLabelText(goal.getGoalName());
+		setGoalTitleLabelWidth();
 		updateGoalProgress();
 		addProgressListener();
+	}
+	
+	public void setGoalTitleLabelWidth() {
+		double width =  goal.getGoalName().length() * 10.0;
+		goalTitleLabel.setMinWidth(width);
 	}
 
 	private void addProgressListener() {
