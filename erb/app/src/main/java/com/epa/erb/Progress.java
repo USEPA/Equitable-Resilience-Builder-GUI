@@ -113,8 +113,8 @@ public class Progress {
 		if (project != null) {
 			double totalPercent = 0;
 			for (Goal goal : project.getProjectGoals()) {
-				File goalMetaXMLFile = getGoalMetaXMLFile(goal, project);
-				if (goalMetaXMLFile != null) {
+				File goalMetaXMLFile = constants.getGoalMetaXMLFile(project, goal);
+				if (goalMetaXMLFile != null && goalMetaXMLFile.exists()) {
 					ArrayList<Chapter> chapters = goal.getChapters();
 					int goalCompletePercent = getGoalPercentDone(chapters);
 					totalPercent = totalPercent + goalCompletePercent;
@@ -124,19 +124,6 @@ public class Progress {
 		} else {
 			logger.error("Cannot getProjectTotalPercent. project is null.");
 			return -1;
-		}
-	}
-	
-	private File getGoalMetaXMLFile(Goal goal, Project project) {
-		if (goal != null && project != null) {
-			File goalXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName()+ "\\Goals\\" + goal.getGoalCleanedName() + "\\Meta.xml");
-			if (goalXMLFile.exists()) {
-				return goalXMLFile;
-			}
-			return null;
-		} else {
-			logger.error("Cannot getGoalMetaXMLFile. goal or project is null.");
-			return null;
 		}
 	}
 	
