@@ -34,7 +34,7 @@
                         <Button fx:id="printButton" disable="true" mnemonicParsing="false" onAction="#printButtonAction" text="Print" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <WebView fx:id="webView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+                  <WebView fx:id="webView" minHeight="500.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </children>
