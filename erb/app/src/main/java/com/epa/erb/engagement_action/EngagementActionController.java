@@ -779,6 +779,16 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	public Activity retrieveNextActivity(ERBPathwayDiagramController currentErbPathwayDiagramController) {
+		int indexOfCurrentController = listOfPathwayDiagramControllers.indexOf(currentErbPathwayDiagramController);
+		if(indexOfCurrentController >= 0) {
+			int indexOfNextController = indexOfCurrentController + 1;
+			ERBPathwayDiagramController nextErbPathwayDiagramController = listOfPathwayDiagramControllers.get(indexOfNextController);
+			return nextErbPathwayDiagramController.getActivity();
+		}
+		return null;
+	}
+	
 	private void highlightActivityDiagram(Activity activity) {
 		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
 			if(erbPathwayDiagramController.getActivity() == activity) {
@@ -835,6 +845,38 @@ public class EngagementActionController implements Initializable{
 		} else {
 			logger.error("Cannot generateActivityERBPathway. chapter is null.");
 		}
+	}
+	
+	public TreeItem<String> findTreeItem(Activity activity) {
+		if (activity != null) {
+			HashMap<TreeItem<String>, String> treeMap = getTreeItemActivityIdTreeMap();
+			for (TreeItem<String> treeItem : treeMap.keySet()) {
+				String treeItemValue = treeItem.getValue();
+				TreeItem<String> parentTreeItem = treeItem.getParent();
+				if (parentTreeItem != null) {
+					String chapterString = "Chapter " + activity.getChapterAssignment();
+					if (parentTreeItem.getValue().contentEquals(chapterString)) {
+						if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
+							String treeItemActivityID = treeMap.get(treeItem);
+							if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
+								return treeItem;
+							}
+						}
+					}
+				} else {
+					if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
+						String treeItemActivityID = treeMap.get(treeItem);
+						if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
+							return treeItem;
+						}
+					}
+				}
+			}
+			return null;
+		} else {
+			logger.error("Cannot findTreeItem. activity is null.");
+		}
+		return null;
 	}
 
 	private void setNavigationButtonsDisability(TreeItem<String> selectedTreeItem, TreeItem<String> parentTreeItem) {

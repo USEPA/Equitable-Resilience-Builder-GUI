@@ -224,6 +224,18 @@ public class ERBPathwayDiagramController implements Initializable {
 			logger.error("Cannot createToolTip. a param is null.");
 		}
 	}
+	
+	@FXML
+	public void arrowClicked() {
+		Activity nextActivity = engagementActionController.retrieveNextActivity(this);
+		if(nextActivity != null) {
+			TreeItem<String> treeItem = engagementActionController.findTreeItem(nextActivity);
+			if (treeItem != null) {
+				engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
+				engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
+			}
+		}
+	}
 
 	@FXML
 	public void bottomRightCircleLabelClicked() {
