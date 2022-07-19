@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 
-public class ERBWelcomeController implements Initializable{
+public class ERBLandingNew1Controller implements Initializable{
 
 	@FXML
 	VBox welcomeVBox;
@@ -19,7 +19,7 @@ public class ERBWelcomeController implements Initializable{
 	SVGPath svgPath;
 	
 	private App app;
-	public ERBWelcomeController(App app) {
+	public ERBLandingNew1Controller(App app) {
 		this.app = app;
 	}
 	
@@ -42,16 +42,16 @@ public class ERBWelcomeController implements Initializable{
 	}
 	
 	@FXML
-	public void exploreButtonAction() {
-		Parent erbDashboardRoot = loadERBDashboard();
-		app.loadNodeToERBContainer(erbDashboardRoot);
+	public void continueButtonAction() {
+		Parent erbLandingNew2Root = loadERBLandingNew2();
+		app.loadNodeToERBContainer(erbLandingNew2Root);
 	}
 	
-	private Parent loadERBDashboard() {
+	private Parent loadERBLandingNew2() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBDashboard.fxml"));
-			ERBDashboardController erbDashboardController = new ERBDashboardController(app);
-			fxmlLoader.setController(erbDashboardController);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLandingNew2.fxml"));
+			ERBLandingNew2Controller erbLandingNew2Controller = new ERBLandingNew2Controller(app);
+			fxmlLoader.setController(erbLandingNew2Controller);
 			return fxmlLoader.load();
 		} catch (Exception e) {
 			e.printStackTrace();

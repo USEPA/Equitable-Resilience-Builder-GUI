@@ -49,7 +49,7 @@ public class App extends Application {
 	private void showERBToolMain() {
 		Parent erbContainerRoot = loadERBContainer();
 		//launchERBLanding(false); //Original tool
-		launchERBWelcome(); //Dashboard tool
+		launchERBLandingNew1(); //Dashboard tool
 		showERBContainer(erbContainerRoot);
 	}
 
@@ -77,16 +77,16 @@ public class App extends Application {
 		}
 	}
 	
-	public void launchERBWelcome() {
-		Parent erbWelcomeParent = loadERBWelcome();
-		loadNodeToERBContainer(erbWelcomeParent);
+	public void launchERBLandingNew1() {
+		Parent erbLandingNew1Root = loadERBLandingNew1();
+		loadNodeToERBContainer(erbLandingNew1Root);
 	}
 	
-	private Parent loadERBWelcome() {
+	private Parent loadERBLandingNew1() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBWelcome.fxml"));
-			ERBWelcomeController erbWelcomeController = new ERBWelcomeController(this);
-			fxmlLoader.setController(erbWelcomeController);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLandingNew1.fxml"));
+			ERBLandingNew1Controller erbLandingNew1Controller = new ERBLandingNew1Controller(this);
+			fxmlLoader.setController(erbLandingNew1Controller);
 			return fxmlLoader.load();
 		} catch (Exception e) {
 			return null;

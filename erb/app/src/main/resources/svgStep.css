@@ -1,0 +1,25 @@
+.button {
+	-fx-shape: "M 100 300 L 300 300 L 300 350 L 150 350 L 150 450 L 100 450 L 100 300 ";
+	
+}
+#button1{
+	-fx-background-color: #FAAC2C;
+}
+
+#button2{
+	-fx-background-color: #A6F444;
+}
+
+#button3{
+	-fx-background-color: #46E062;
+}
+
+#button4{
+	-fx-background-color: #46E0C9;
+}
+
+#button5{
+	-fx-background-color: #468AE0;
+}
+
+

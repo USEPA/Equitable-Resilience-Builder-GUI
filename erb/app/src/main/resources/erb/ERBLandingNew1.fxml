@@ -170,7 +170,7 @@
                            <font>
                               <Font size="14.0" />
                            </font></Button>
-                        <Button mnemonicParsing="false" onAction="#exploreButtonAction" style="-fx-background-color: transparent; -fx-border-color: blue;" text="Explore the chapters" textFill="#41ae46">
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: blue;" text="Explore the chapters" textFill="#41ae46">
                            <font>
                               <Font size="14.0" />
                            </font></Button>
@@ -198,6 +198,14 @@
                         <Font size="14.0" />
                      </font></Label>
                </children>
+            </VBox>
+            <VBox alignment="BOTTOM_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#continueButtonAction" text="Continue" />
+               </children>
+               <padding>
+                  <Insets left="15.0" right="15.0" top="15.0" />
+               </padding>
             </VBox>
          </children></HBox>
    </children>
