@@ -31,9 +31,11 @@ public class ProjectSelectionController implements Initializable{
 	
 	private App app;
 	private boolean updateProjects;
-	public ProjectSelectionController(App app, boolean updateProjects) {
+	private String mode;
+	public ProjectSelectionController(App app, boolean updateProjects, String mode) {
 		this.app = app;
 		this.updateProjects = updateProjects;
+		this.mode = mode;
 	}
 	
 	private Constants constants = new Constants();
@@ -57,7 +59,7 @@ public class ProjectSelectionController implements Initializable{
 		String newProjectName = projectNameTextField.getText().trim();
 		if(isValidNewProjectName(newProjectName)) {
 			String cleanedProjectName = cleanStringForWindows(newProjectName);
-			Project project = new Project(newProjectName, cleanedProjectName);
+			Project project = new Project(newProjectName, mode, cleanedProjectName);
 			createNewProjectDirectory(project);
 			addProjectToListView(project);
 			projectsListView.getSelectionModel().select(project);
@@ -225,6 +227,22 @@ public class ProjectSelectionController implements Initializable{
 
 	public void setApp(App app) {
 		this.app = app;
+	}
+
+	public boolean isUpdateProjects() {
+		return updateProjects;
+	}
+
+	public void setUpdateProjects(boolean updateProjects) {
+		this.updateProjects = updateProjects;
+	}
+
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
 	}
 
 	public TextField getProjectNameTextField() {

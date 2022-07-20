@@ -9,7 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
@@ -43,7 +46,12 @@ public class ERBLandingController implements Initializable {
 	TextArea aboutERBTextArea;
 	@FXML
 	TextArea aboutERBProcessTextArea;
-
+	@FXML
+	ToggleGroup modeToggleGroup;
+	@FXML
+	RadioButton facilitatorModeRadioButton;
+	@FXML
+	RadioButton goalModeRadioButton;
 
 	private App app;
 	private boolean updateProjects;
@@ -52,6 +60,7 @@ public class ERBLandingController implements Initializable {
 		this.updateProjects = updateProjects;
 	}
 
+	private String mode = "goalMode";
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ERBLandingController.class);
 
@@ -64,6 +73,7 @@ public class ERBLandingController implements Initializable {
 	}
 
 	private void handleControls() {
+		goalModeRadioButton.setSelected(true);
 		textArea1.getStylesheets().add("/textArea.css");
 		textArea2.getStylesheets().add("/textArea.css");
 		textArea3.getStylesheets().add("/textArea.css");
@@ -72,6 +82,12 @@ public class ERBLandingController implements Initializable {
 		circle1.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle2.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
 		circle3.setStyle("-fx-fill: " + constants.getAllChaptersColor() + ";");
+		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
+	}
+	
+	private void modeChanged(Toggle oldToggle, Toggle newToggle) {
+		RadioButton newRadioButton = (RadioButton) newToggle;
+		mode = newRadioButton.getText();
 	}
 
 	@FXML
@@ -83,7 +99,7 @@ public class ERBLandingController implements Initializable {
 	private Parent loadProjectSelectionToContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
-			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app, updateProjects);
+			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app, updateProjects, mode);
 			fxmlLoader.setController(projectSelectionController);
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
@@ -245,5 +261,13 @@ public class ERBLandingController implements Initializable {
 	public TextArea getAboutERBProcessTextArea() {
 		return aboutERBProcessTextArea;
 	}
-	
+
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+		
 }
