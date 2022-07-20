@@ -197,8 +197,11 @@ public class ProjectSelectionController implements Initializable{
 	
 	private void fillProjectsListView() {
 		ArrayList<Project> projects = app.getProjects();
+		String modeType = mode.replaceAll("Mode", "").trim().toLowerCase();
 		for (Project project : projects) {
-			projectsListView.getItems().add(project);
+			if (project.getProjectType().contentEquals(modeType)) {
+				projectsListView.getItems().add(project);
+			}
 		}
 	}
 	
