@@ -67,7 +67,7 @@ public class GoalCreationController implements Initializable{
 		
 	}
 	
-	private void loadEngagementActionToContainer(Project project) {
+	public void loadEngagementActionToContainer(Project project) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController(app, project);
@@ -158,7 +158,7 @@ public class GoalCreationController implements Initializable{
 		});
 	}
 	
-	private String cleanStringForWindows(String string) {
+	public String cleanStringForWindows(String string) {
 		return string.replaceAll("[^A-Za-z0-9]", "_");
 	}
 
@@ -201,12 +201,12 @@ public class GoalCreationController implements Initializable{
 		return result;
 	}
 	
-	private void writeProjectMetaData(Project project) {
+	public void writeProjectMetaData(Project project) {
 		File projectMetaFile = constants.getProjectMetaXMLFile(project);
 		xmlManager.writeProjectMetaXML(projectMetaFile, project);
 	}
 	
-	private void writeGoalsMetaData(ArrayList<Goal> goals) {
+	public void writeGoalsMetaData(ArrayList<Goal> goals) {
 		if (goals != null) {
 			createGoalsDirectory();
 			for (Goal goal : goals) {
@@ -299,7 +299,7 @@ public class GoalCreationController implements Initializable{
 		return createdGoals;
 	}
 		
-	private GoalCategory getGoalCategory(String goalCategoryName) {
+	public GoalCategory getGoalCategory(String goalCategoryName) {
 		if (goalCategoryName != null) {
 			ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
 			for (GoalCategory goalCategory : goalCategories) {

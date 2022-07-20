@@ -3,13 +3,17 @@ package com.epa.erb.project;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.goal.Goal;
+import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.goal.GoalContainerController;
+import com.epa.erb.goal.GoalCreationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -72,12 +76,47 @@ public class ProjectSelectionController implements Initializable{
 		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
 		if(selectedProject != null) {
 			if(isProjectNew(selectedProject)) {
-				loadGoalCreationToContainer(selectedProject);
+				if (mode.contentEquals("Goal Mode")) {
+					loadGoalCreationToContainer(selectedProject);
+				} else {
+					GoalCreationController goalCreationController = createFacilitatorProject(selectedProject);
+					goalCreationController.loadEngagementActionToContainer(selectedProject);
+				}
 			} else {
 				loadEngagementActionToContainer(selectedProject);
 			}
 			app.setSelectedProject(selectedProject);
 		}
+	}
+	
+	private GoalCreationController createFacilitatorProject(Project project) {
+		GoalCreationController goalCreationController = new GoalCreationController(app, project);
+		ArrayList<Goal> projectGoals = createFacilitatorProjectGoals(goalCreationController, project);
+		createFacilitatorProjectFiles(goalCreationController, project, projectGoals);
+		return goalCreationController;
+	}
+	
+	private ArrayList<Goal> createFacilitatorProjectGoals(GoalCreationController goalCreationController, Project project) {
+		Goal defaultGoal = createGoal(goalCreationController);
+		ArrayList<Goal> goals = new ArrayList<Goal>(Arrays.asList(defaultGoal));
+		project.setProjectGoals(goals);
+		return goals;
+	}
+	
+	private void createFacilitatorProjectFiles(GoalCreationController goalCreationController, Project project, ArrayList<Goal> projectGoals) {
+		goalCreationController.writeProjectMetaData(project);
+		goalCreationController.writeGoalsMetaData(projectGoals);
+	}
+	
+	private Goal createGoal(GoalCreationController goalCreationController) {
+		String goalName = "Default Goal";
+		String goalCleanedName = goalCreationController.cleanStringForWindows(goalName);
+		String goalDescription = "Default goal holding all chapters and activities.";
+		GoalCategory goalCategory = goalCreationController.getGoalCategory("All activities");
+		ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>(Arrays.asList(goalCategory));
+		Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription, goalCategories);
+		goal.setChapters(app.getActivities(), goalCreationController.getProject());
+		return goal;
 	}
 	
 	private void loadGoalCreationToContainer(Project project) {
