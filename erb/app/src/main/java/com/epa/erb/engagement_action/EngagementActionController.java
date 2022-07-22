@@ -12,6 +12,7 @@ import com.epa.erb.Constants;
 import com.epa.erb.Progress;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
+import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
 import com.epa.erb.chapter.ReflectGoalModeController;
 import com.epa.erb.goal.GlobalGoalTrackerController;
@@ -324,14 +325,21 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private VBox loadPlanRoot(Activity activity) {
-		if (activity != null) {
+		if (activity != null) {			
 			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/PlanGoalMode.fxml"));
-				PlanGoalModeController planController = new PlanGoalModeController();
-				fxmlLoader.setController(planController);
-				VBox root = fxmlLoader.load();
-				activity.setPlanController(planController);
-				return root;
+				FXMLLoader fxmlLoader = null;
+				if(project.getProjectType().contentEquals("Facilitator Mode")) {
+					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/PlanFacilitatorMode.fxml"));
+					PlanFacilitatorModeController planController = new PlanFacilitatorModeController();
+					fxmlLoader.setController(planController);
+					activity.setPlanFacilitatorModeController(planController);
+				} else {
+					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/PlanGoalMode.fxml"));
+					PlanGoalModeController planController = new PlanGoalModeController();
+					fxmlLoader.setController(planController);
+					activity.setPlanGoalModeController(planController);
+				}
+				return fxmlLoader.load();
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 				return null;

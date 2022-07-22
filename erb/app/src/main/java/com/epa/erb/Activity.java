@@ -1,6 +1,8 @@
 package com.epa.erb;
 
 import java.util.ArrayList;
+
+import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
 import com.epa.erb.chapter.ReflectGoalModeController;
 import com.epa.erb.noteboard.NoteBoardContentController;
@@ -42,7 +44,8 @@ public class Activity {
 	}
 	
 	private boolean isSaved = true;
-	private PlanGoalModeController planController;
+	private PlanGoalModeController planGoalModeController;
+	private PlanFacilitatorModeController planFacilitatorModeController;
 	private ReflectGoalModeController reflectController;
 	private WorksheetContentController worksheetContentController;
 	private NoteBoardContentController noteBoardContentController;
@@ -193,12 +196,20 @@ public class Activity {
 		this.isSaved = isSaved;
 	}
 
-	public PlanGoalModeController getPlanController() {
-		return planController;
+	public PlanGoalModeController getPlanGoalModeController() {
+		return planGoalModeController;
 	}
 
-	public void setPlanController(PlanGoalModeController planController) {
-		this.planController = planController;
+	public void setPlanGoalModeController(PlanGoalModeController planController) {
+		this.planGoalModeController = planController;
+	}
+
+	public PlanFacilitatorModeController getPlanFacilitatorModeController() {
+		return planFacilitatorModeController;
+	}
+
+	public void setPlanFacilitatorModeController(PlanFacilitatorModeController planFacilitatorModeController) {
+		this.planFacilitatorModeController = planFacilitatorModeController;
 	}
 
 	public ReflectGoalModeController getReflectController() {
