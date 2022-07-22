@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" maxHeight="415.0" maxWidth="600.0" minHeight="300.0" minWidth="480.0" prefHeight="380.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -23,8 +24,14 @@
                      <children>
                         <StackPane>
                            <children>
-                              <Button fx:id="button5" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
-                              <Label text="Action" />
+                              <Button fx:id="button5" mnemonicParsing="false" prefHeight="52.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
+                              <Label text="Action">
+                                  <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding></Label>
                            </children>
                         </StackPane>
                      </children>
@@ -36,10 +43,13 @@
                      <children>
                         <StackPane>
                            <children>
-                              <Button fx:id="button4" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
+                              <Button fx:id="button4" mnemonicParsing="false" prefHeight="52.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
                               <Label text="Assess Resilience">
+                                  <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
                                  <padding>
-                                    <Insets left="60.0" />
+                                    <Insets left="80.0" />
                                  </padding>
                               </Label>
                            </children>
@@ -53,10 +63,13 @@
                      <children>
                         <StackPane>
                            <children>
-                              <Button fx:id="button3" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
-                              <Label text="Hazards &amp; Vulnerability" wrapText="true">
+                              <Button fx:id="button3" mnemonicParsing="false" prefHeight="52.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
+                              <Label contentDisplay="BOTTOM" text="Hazards" wrapText="true">
+                                  <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
                                  <padding>
-                                    <Insets left="100.0" />
+                                    <Insets left="15.0" />
                                  </padding>
                               </Label>
                            </children>
@@ -67,8 +80,14 @@
                      <children>
                         <StackPane>
                            <children>
-                              <Button fx:id="button2" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
-                              <Label text="Engage" />
+                              <Button fx:id="button2" mnemonicParsing="false" prefHeight="52.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
+                              <Label text="Engage">
+                                  <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding></Label>
                            </children>
                         </StackPane>
                      </children>
@@ -80,8 +99,14 @@
                      <children>
                         <StackPane>
                            <children>
-                              <Button fx:id="button1" mnemonicParsing="false" prefHeight="50.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
-                              <Label text="Plan" />
+                              <Button fx:id="button1" mnemonicParsing="false" prefHeight="52.0" prefWidth="85.0" stylesheets="@../svgStep.css" />
+                              <Label text="Plan">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="-5.0" />
+                                 </padding></Label>
                            </children>
                         </StackPane>
                      </children>
