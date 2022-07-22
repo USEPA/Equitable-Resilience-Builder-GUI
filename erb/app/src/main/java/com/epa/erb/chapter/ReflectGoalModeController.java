@@ -28,7 +28,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-public class ReflectController implements Initializable{
+public class ReflectGoalModeController implements Initializable{
 	
 	@FXML
 	HBox erbHeading;
@@ -72,7 +72,7 @@ public class ReflectController implements Initializable{
 	private Goal goal;
 	private Chapter chapter;
 	private EngagementActionController engagementActionController;
-	public ReflectController (Goal goal, Chapter chapter, EngagementActionController engagementActionController) {
+	public ReflectGoalModeController (Goal goal, Chapter chapter, EngagementActionController engagementActionController) {
 		this.goal = goal;
 		this.chapter = chapter;
 		this.engagementActionController = engagementActionController;
@@ -80,7 +80,7 @@ public class ReflectController implements Initializable{
 	
 	private Progress progress = new Progress();
 	private Constants constants = new Constants();
-	private Logger logger = LogManager.getLogger(ReflectController.class);
+	private Logger logger = LogManager.getLogger(ReflectGoalModeController.class);
 	private ArrayList<Activity> chapterActivities = new ArrayList<Activity>();
 	
 	@Override

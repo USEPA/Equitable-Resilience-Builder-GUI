@@ -16,14 +16,14 @@ public class ReflectNotesController implements Initializable{
 	TextArea notesTextArea;
 	
 	private Activity activity;
-	private ReflectController reflectController;
-	public ReflectNotesController(Activity activity, ReflectController reflectController) {
+	private ReflectGoalModeController reflectController;
+	public ReflectNotesController(Activity activity, ReflectGoalModeController reflectController) {
 		this.activity = activity;
 		this.reflectController = reflectController;
 	}
 	
 	private Chapter chapter;
-	public ReflectNotesController(Chapter chapter, ReflectController reflectController) {
+	public ReflectNotesController(Chapter chapter, ReflectGoalModeController reflectController) {
 		this.chapter = chapter;
 		this.reflectController = reflectController;
 	}
@@ -73,11 +73,11 @@ public class ReflectNotesController implements Initializable{
 		this.activity = activity;
 	}
 
-	public ReflectController getReflectController() {
+	public ReflectGoalModeController getReflectController() {
 		return reflectController;
 	}
 
-	public void setReflectController(ReflectController reflectController) {
+	public void setReflectController(ReflectGoalModeController reflectController) {
 		this.reflectController = reflectController;
 	}
 

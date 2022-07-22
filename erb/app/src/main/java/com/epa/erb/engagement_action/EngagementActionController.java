@@ -12,8 +12,8 @@ import com.epa.erb.Constants;
 import com.epa.erb.Progress;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
-import com.epa.erb.chapter.PlanController;
-import com.epa.erb.chapter.ReflectController;
+import com.epa.erb.chapter.PlanGoalModeController;
+import com.epa.erb.chapter.ReflectGoalModeController;
 import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
@@ -326,8 +326,8 @@ public class EngagementActionController implements Initializable{
 	private VBox loadPlanRoot(Activity activity) {
 		if (activity != null) {
 			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Plan.fxml"));
-				PlanController planController = new PlanController();
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/PlanGoalMode.fxml"));
+				PlanGoalModeController planController = new PlanGoalModeController();
 				fxmlLoader.setController(planController);
 				VBox root = fxmlLoader.load();
 				activity.setPlanController(planController);
@@ -345,8 +345,8 @@ public class EngagementActionController implements Initializable{
 	private ScrollPane loadReflectRoot(Chapter chapter, Activity activity) {
 		if (activity != null) {
 			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/Reflect.fxml"));
-				ReflectController reflectController = new ReflectController(currentSelectedGoal, chapter, this);
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectGoalMode.fxml"));
+				ReflectGoalModeController reflectController = new ReflectGoalModeController(currentSelectedGoal, chapter, this);
 				fxmlLoader.setController(reflectController);
 				ScrollPane root = fxmlLoader.load();
 				reflectController.initProgress(currentSelectedGoal, chapter);

@@ -7,12 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 
-public class PlanController implements Initializable{
+public class PlanGoalModeController implements Initializable{
 
 	@FXML
 	HBox erbHeading;
 	
-	public PlanController() {
+	public PlanGoalModeController() {
 		
 	}
 	
