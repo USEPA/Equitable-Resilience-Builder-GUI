@@ -24,7 +24,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="20.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Goal">
+                  <Label fx:id="goalLabel" text="Goal">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

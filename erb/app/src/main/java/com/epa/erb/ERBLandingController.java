@@ -60,7 +60,7 @@ public class ERBLandingController implements Initializable {
 		this.updateProjects = updateProjects;
 	}
 
-	private String mode = "goalMode";
+	private String mode = "Goal Mode";
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ERBLandingController.class);
 

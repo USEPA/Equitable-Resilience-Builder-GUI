@@ -48,6 +48,10 @@ import javafx.stage.Stage;
 public class EngagementActionController implements Initializable{
 
 	@FXML
+	VBox engagementVBox;
+	@FXML
+	Label goalLabel;
+	@FXML
 	ComboBox<Goal> goalComboBox;
 	@FXML
 	HBox headingHBox;
@@ -153,19 +157,31 @@ public class EngagementActionController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		fillGoalComboBox(project);
-		goalComboBox.setCellFactory(lv-> createGoalCell());
-		goalComboBox.setButtonCell(createGoalCell());
-		initializeGoalSelection(project);
-		setNavigationButtonsDisability(null, null);
-		handleControls();
+		if(project.getProjectType().contentEquals("Goal Mode")) {
+			fillGoalComboBox(project);
+			goalComboBox.setCellFactory(lv-> createGoalCell());
+			goalComboBox.setButtonCell(createGoalCell());
+			initializeGoalSelection(project);
+			setNavigationButtonsDisability(null, null);
+			handleControls();
+		} else {
+			initializeGoalSelection(project);
+			setNavigationButtonsDisability(null, null);
+
+			addTreeViewListener();
+			
+			hideGoalSelection();
+			removePathwayPane();
+			removeLocalProgressPane();
+		}
+
 	}
 	
 	private void handleControls() {
 		initializeStyle();
 		addProgressListeners();
 		addGoalChangeListener();
-		treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));
+		addTreeViewListener();
 	}
 	
 	private void initializeStyle() {
@@ -178,6 +194,10 @@ public class EngagementActionController implements Initializable{
 		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
 		chapterProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
+	}
+	
+	private void addTreeViewListener() {
+		treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));
 	}
 	
 	private void addProgressListeners() {
@@ -573,7 +593,7 @@ public class EngagementActionController implements Initializable{
 		removeAttributeScrollPane();
 		//--
 		addERBKeyVBox(1);
-		addLocalProgressVBox(1);
+		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
 		//--
 		generateActivityERBPathway(currentSelectedChapter);
 		setNavigationButtonsDisability(null, null);
@@ -598,12 +618,12 @@ public class EngagementActionController implements Initializable{
 		if(currentSelectedActivity.getActivityID().contentEquals("25") || currentSelectedActivity.getActivityID().contentEquals("26")) {
 			removeStatusHBox();
 		} else {
-			addStatusHBox();
+			if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
 		}
 		//--
 		addERBKeyVBox(1);
-		addLocalProgressVBox(1);
-		addAttributeScrollPane(1);
+		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
+		if(project.getProjectType().contentEquals("Goal Mode")) addAttributeScrollPane(1);
 		//--
 		loadActivityContent(currentSelectedActivity);
 		generateActivityERBPathway(currentSelectedChapter);
@@ -1029,6 +1049,23 @@ public class EngagementActionController implements Initializable{
 	private void addStatusHBox() {
 		if(!mainVBox.getChildren().contains(statusHBox)) {
 			mainVBox.getChildren().add(0, statusHBox);
+		}
+	}
+	
+	private void hideGoalSelection() {
+		goalLabel.setVisible(false);
+		goalComboBox.setVisible(false);
+	}
+	
+	private void removePathwayPane() {
+		if(engagementVBox.getChildren().contains(pathwayTitledPane)) {
+			engagementVBox.getChildren().remove(pathwayTitledPane);
+		}
+	}
+	
+	private void removeLocalProgressPane() {
+		if(treeViewVBox.getChildren().contains(localProgressVBox)) {
+			treeViewVBox.getChildren().remove(localProgressVBox);
 		}
 	}
 	
