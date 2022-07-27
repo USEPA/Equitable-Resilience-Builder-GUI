@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox spacing="10.0">
+         <children>
+            <HBox fx:id="erbHeading" alignment="CENTER">
+               <children>
+                  <Label minWidth="190.0" text="Chapter Reflect">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label minWidth="505.0" text="Use this screen to reflect on how interactions generated ideas and solutions.">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label minWidth="140.0" text="Were key stakeholders in attendance?">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TextArea />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <Label minWidth="130.0" text="How did I move my goals forward?">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TextArea />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <Label minWidth="200.0" text="Action items from activities.">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TextArea />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <Label minWidth="137.0" text="Miscellaneous Notes">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TextArea />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </content>
+</ScrollPane>

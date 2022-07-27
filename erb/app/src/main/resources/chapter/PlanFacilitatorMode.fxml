@@ -20,7 +20,7 @@
       </HBox>
       <HBox>
          <children>
-            <Label minWidth="570.0" text="Use this screen to plan out interactions with stakeholders and other interested parties.">
+            <Label minWidth="570.0" text="Use this screen to plan out interactions with stakeholders and other interested parties. ">
                <font>
                   <Font size="15.0" />
                </font>

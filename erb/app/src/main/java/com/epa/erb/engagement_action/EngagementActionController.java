@@ -14,6 +14,7 @@ import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
+import com.epa.erb.chapter.ReflectFacilitatorModeController;
 import com.epa.erb.chapter.ReflectGoalModeController;
 import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
@@ -353,13 +354,20 @@ public class EngagementActionController implements Initializable{
 	private ScrollPane loadReflectRoot(Chapter chapter, Activity activity) {
 		if (activity != null) {
 			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectGoalMode.fxml"));
-				ReflectGoalModeController reflectController = new ReflectGoalModeController(currentSelectedGoal, chapter, this);
-				fxmlLoader.setController(reflectController);
-				ScrollPane root = fxmlLoader.load();
-				reflectController.initProgress(currentSelectedGoal, chapter);
-				activity.setReflectController(reflectController);
-				return root;
+				FXMLLoader fxmlLoader = null;
+				if(project.getProjectType().contentEquals("Facilitator Mode")) {
+					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectFacilitatorMode.fxml"));
+					ReflectFacilitatorModeController reflectFacilitatorModeController = new ReflectFacilitatorModeController();
+					fxmlLoader.setController(reflectFacilitatorModeController);
+					activity.setReflectFacilitatorModeController(reflectFacilitatorModeController);
+				} else {
+					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectGoalMode.fxml"));
+					ReflectGoalModeController reflectController = new ReflectGoalModeController(currentSelectedGoal, chapter, this);
+					fxmlLoader.setController(reflectController);
+					activity.setReflectGoalModeController(reflectController);
+					reflectController.initProgress(currentSelectedGoal, chapter);
+				}
+				return fxmlLoader.load();
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 				return null;

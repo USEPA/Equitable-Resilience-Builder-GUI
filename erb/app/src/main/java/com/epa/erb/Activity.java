@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
+import com.epa.erb.chapter.ReflectFacilitatorModeController;
 import com.epa.erb.chapter.ReflectGoalModeController;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.worksheet.WorksheetContentController;
@@ -46,7 +47,8 @@ public class Activity {
 	private boolean isSaved = true;
 	private PlanGoalModeController planGoalModeController;
 	private PlanFacilitatorModeController planFacilitatorModeController;
-	private ReflectGoalModeController reflectController;
+	private ReflectGoalModeController reflectGoalModeController;
+	private ReflectFacilitatorModeController reflectFacilitatorModeController;
 	private WorksheetContentController worksheetContentController;
 	private NoteBoardContentController noteBoardContentController;
 		
@@ -212,12 +214,20 @@ public class Activity {
 		this.planFacilitatorModeController = planFacilitatorModeController;
 	}
 
-	public ReflectGoalModeController getReflectController() {
-		return reflectController;
+	public ReflectGoalModeController getReflectGoalModeController() {
+		return reflectGoalModeController;
 	}
 
-	public void setReflectController(ReflectGoalModeController reflectController) {
-		this.reflectController = reflectController;
+	public void setReflectGoalModeController(ReflectGoalModeController reflectController) {
+		this.reflectGoalModeController = reflectController;
+	}
+
+	public ReflectFacilitatorModeController getReflectFacilitatorModeController() {
+		return reflectFacilitatorModeController;
+	}
+
+	public void setReflectFacilitatorModeController(ReflectFacilitatorModeController reflectFacilitatorModeController) {
+		this.reflectFacilitatorModeController = reflectFacilitatorModeController;
 	}
 
 	public WorksheetContentController getWorksheetContentController() {
