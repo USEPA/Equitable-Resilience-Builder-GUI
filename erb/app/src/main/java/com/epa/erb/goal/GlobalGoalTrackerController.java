@@ -47,7 +47,7 @@ public class GlobalGoalTrackerController implements Initializable{
 	
 	private void handleControls() {
 		headingHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-		erbProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
+		erbProgressBar.getStylesheets().add(getClass().getResource("/progressBar.css").toString());
 	}
 	
 	private void updateERBProgressBar() {

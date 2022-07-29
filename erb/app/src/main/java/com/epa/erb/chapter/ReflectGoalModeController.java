@@ -94,7 +94,7 @@ public class ReflectGoalModeController implements Initializable{
 	private void handleControls() {
 		reflectScrollPane.widthProperty().addListener(e-> scrollPaneWidthChange());
 		erbHeading.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");
-		goalProgressBar.getStylesheets().add(getClass().getResource("/ProgressBar.css").toString());
+		goalProgressBar.getStylesheets().add(getClass().getResource("/progressBar.css").toString());
 		engagementActionController.getMainVBox().heightProperty().addListener(e-> mainPaneSizeChanged());
 		engagementActionController.getMainVBox().widthProperty().addListener(e-> mainPaneSizeChanged());
 	}
