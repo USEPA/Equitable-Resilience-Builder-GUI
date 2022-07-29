@@ -131,7 +131,7 @@
                      <content>
                         <VBox spacing="10.0">
                            <children>
-                              <RadioButton mnemonicParsing="false" selected="true" text="Goal Mode">
+                              <RadioButton fx:id="goalModeRadioButton" mnemonicParsing="false" selected="true" text="Goal Mode">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -139,7 +139,7 @@
                                     <ToggleGroup fx:id="modeToggleGroup" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton mnemonicParsing="false" text="Facilitator Mode" toggleGroup="$modeToggleGroup">
+                              <RadioButton fx:id="facilitatorModeRadioButton" mnemonicParsing="false" text="Facilitator Mode" toggleGroup="$modeToggleGroup">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -150,7 +150,7 @@
                   </TitledPane>
                   <VBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #447ABF;" wrapText="true">
+                        <Button mnemonicParsing="false" onAction="#projectButtonAction" style="-fx-background-color: transparent; -fx-border-color: #447ABF;" wrapText="true">
                            <graphic>
                               <VBox alignment="CENTER">
                                  <children>
