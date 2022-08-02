@@ -10,7 +10,7 @@
 
 <ScrollPane fx:id="erbScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <VBox>
+      <VBox fx:id="erbVBox">
          <children>
             <MenuBar nodeOrientation="RIGHT_TO_LEFT">
               <menus>

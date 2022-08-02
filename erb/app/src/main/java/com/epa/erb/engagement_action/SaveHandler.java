@@ -52,19 +52,19 @@ public class SaveHandler {
 				return showToolSaveNeeded();
 			}
 		} else if (saveOrigin.contentEquals("projectChange")) {
-			if (!project.isSaved()) {
+			if (project != null && !project.isSaved()) {
 				return showProjectSaveNeeded();
 			}
 		} else if (saveOrigin.contentEquals("saveButton")) {
-			if(!project.isSaved()) {
+			if(project != null && !project.isSaved()) {
 				return "PROJECT";
 			}
 		} else if (saveOrigin.contentEquals("goalChange")) {
-			if (!goal.isSaved()) {
+			if (goal != null && !goal.isSaved()) {
 				return showGoalSaveNeeded();
 			}
 		} else if (saveOrigin.contentEquals("chapterChange")) {
-			if (!chapter.isSaved()) {
+			if (chapter != null && !chapter.isSaved()) {
 				String resultString = showChapterSaveNeeded();
 				if(resultString.contentEquals("NO")) {
 					chapter.setSaved(true);
@@ -72,7 +72,7 @@ public class SaveHandler {
 				return resultString;
 			}
 		} else if (saveOrigin.contentEquals("activityChange")) {
-			if (!activity.isSaved()) {
+			if (activity != null && !activity.isSaved()) {
 				String resultString = showActivitySaveNeeded();
 				if(resultString.contentEquals("NO")) {
 					activity.setSaved(true);

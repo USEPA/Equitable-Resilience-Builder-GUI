@@ -43,20 +43,7 @@ public class ERBLandingNew1Controller implements Initializable{
 	
 	@FXML
 	public void continueButtonAction() {
-		Parent erbLandingNew2Root = loadERBLandingNew2();
-		app.loadNodeToERBContainer(erbLandingNew2Root);
-	}
-	
-	private Parent loadERBLandingNew2() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLandingNew2.fxml"));
-			ERBLandingNew2Controller erbLandingNew2Controller = new ERBLandingNew2Controller(app);
-			fxmlLoader.setController(erbLandingNew2Controller);
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		app.launchERBLandingNew2();
 	}
 	
 }

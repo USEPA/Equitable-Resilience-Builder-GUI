@@ -17,6 +17,8 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	VBox welcomeVBox;
 	@FXML
+	VBox erbVBox;
+	@FXML
 	VBox erbContainer;
 	
 	private App app;
@@ -45,7 +47,7 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	public void aboutMenuItemAction() {
 		app.initSaveHandler(null, null, null, app.getSelectedProject(), null, "projectChange");
-		app.launchERBLanding(true);
+		app.launchERBLandingNew2();
 	}
 	
 	private Parent loadGlossary() {
@@ -71,9 +73,25 @@ public class ERBContainerController implements Initializable{
 			logger.error("Cannot showGlossary. glossaryRoot is null.");
 		}
 	}
+	
+	public void removeHeaderPanel() {
+		if(erbVBox.getChildren().contains(welcomeVBox)) {
+			erbVBox.getChildren().remove(welcomeVBox);
+		}
+	}
+	
+	public void addHeaderPanel() {
+		if(!erbVBox.getChildren().contains(welcomeVBox)) {
+			erbVBox.getChildren().add(1, welcomeVBox);
+		}
+	}
 
 	public VBox getWelcomeVBox() {
 		return welcomeVBox;
+	}
+
+	public VBox getErbVBox() {
+		return erbVBox;
 	}
 
 	public VBox getErbContainer() {

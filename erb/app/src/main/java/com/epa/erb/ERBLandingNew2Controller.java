@@ -12,10 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ERBLandingNew2Controller implements Initializable{
 
+	@FXML
+	HBox welcomeHBox;
 	@FXML
 	VBox arrowVBox;
 	@FXML
@@ -31,6 +34,7 @@ public class ERBLandingNew2Controller implements Initializable{
 	}
 	
 	private String mode = "Goal Mode";
+	private Constants constants = new Constants();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -39,6 +43,8 @@ public class ERBLandingNew2Controller implements Initializable{
 	}
 	
 	private void handleControls() {
+		app.getErbContainerController().removeHeaderPanel();
+		welcomeHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");		
 		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
 	}
 	
@@ -82,6 +88,14 @@ public class ERBLandingNew2Controller implements Initializable{
 	@FXML
 	public void continueButtonAction() {
 		app.launchERBLanding(false);
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
 	}
 
 	public String getMode() {

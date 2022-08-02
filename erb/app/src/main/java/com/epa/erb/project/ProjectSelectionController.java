@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
+import com.epa.erb.ERBContainerController;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -55,7 +56,7 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private void handleControls() {
-		
+		app.getErbContainerController().addHeaderPanel();
 	}
 	
 	@FXML
