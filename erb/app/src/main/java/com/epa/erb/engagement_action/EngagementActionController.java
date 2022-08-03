@@ -331,7 +331,7 @@ public class EngagementActionController implements Initializable{
 				FXMLLoader fxmlLoader = null;
 				if(project.getProjectType().contentEquals("Facilitator Mode")) {
 					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/PlanFacilitatorMode.fxml"));
-					PlanFacilitatorModeController planController = new PlanFacilitatorModeController();
+					PlanFacilitatorModeController planController = new PlanFacilitatorModeController(currentSelectedChapter);
 					fxmlLoader.setController(planController);
 					activity.setPlanFacilitatorModeController(planController);
 				} else {
@@ -625,7 +625,11 @@ public class EngagementActionController implements Initializable{
 		//--
 		String activityId = treeItemActivityIdTreeMap.get(activityTreeItem);
 		currentSelectedActivity = getActivityForIDInGoal(activityId, currentSelectedGoal);
-		currentSelectedChapter = getChapterForNameInGoal(activityTreeItem.getParent().getValue(), currentSelectedGoal);
+		Chapter chapterForActivity = getChapterForNameInGoal(activityTreeItem.getParent().getValue(), currentSelectedGoal);
+		if(currentSelectedChapter != null && (chapterForActivity!= currentSelectedChapter)) {
+			app.initSaveHandler(null, currentSelectedChapter, currentSelectedGoal, project, null, "chapterChange");
+		}
+		currentSelectedChapter = chapterForActivity;
 		//--
 		cleanContentVBox();
 		cleanAttributePanelContentVBox();

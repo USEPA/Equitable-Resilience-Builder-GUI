@@ -39,7 +39,9 @@ public class SaveHandler {
 	private Logger logger = LogManager.getLogger(SaveHandler.class);
 
 	public void beginSave() {
+		System.out.println("Save Origin -> " + saveOrigin);
 		String saveType = determineSavePrompt();
+		System.out.println("Save Type -> " + saveType);
 		if (!saveType.contentEquals("NO")) {
 			Parent savePopupRoot = loadSavePopup(activity, chapter, goal, project, projects, saveType);
 			showSavePopup(savePopupRoot);

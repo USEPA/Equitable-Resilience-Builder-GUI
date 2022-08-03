@@ -1,6 +1,7 @@
 package com.epa.erb.chapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import com.epa.erb.Activity;
 
 public class Chapter {
@@ -17,9 +18,11 @@ public class Chapter {
 		this.descriptionName = descriptionName;
 		this.notes = notes;
 	}
-	
+		
 	private boolean saved = true;
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
+	private HashMap<String, String> facilitatorPlanHashMap;	
+	private HashMap<String, String> facilitatorReflectHashMap;
 	
 	public Chapter() {
 		
@@ -163,5 +166,21 @@ public class Chapter {
 	public void setSaved(boolean saved) {
 		this.saved = saved;
 	}
-	
+
+	public HashMap<String, String> getFacilitatorPlanHashMap() {
+		return facilitatorPlanHashMap;
+	}
+
+	public void setFacilitatorPlanHashMap(HashMap<String, String> facilitatorPlanHashMap) {
+		this.facilitatorPlanHashMap = facilitatorPlanHashMap;
+	}
+
+	public HashMap<String, String> getFacilitatorReflectHashMap() {
+		return facilitatorReflectHashMap;
+	}
+
+	public void setFacilitatorReflectHashMap(HashMap<String, String> facilitatorReflectHashMap) {
+		this.facilitatorReflectHashMap = facilitatorReflectHashMap;
+	}
+		
 }

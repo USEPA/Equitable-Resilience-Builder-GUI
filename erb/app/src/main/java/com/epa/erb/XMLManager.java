@@ -293,6 +293,15 @@ public class XMLManager {
 						String stringName = chapterElement.getAttribute("stringName");
 						String description = chapterElement.getAttribute("description");
 						String notes = chapterElement.getAttribute("notes");
+						HashMap<String, String> facilitatorPlanHashMap = new HashMap<String, String>();
+						String pAudience = chapterElement.getAttribute("pAudience");
+						String pGoals = chapterElement.getAttribute("pGoals");
+						String pActivities = chapterElement.getAttribute("pActivities");
+						String pNotes = chapterElement.getAttribute("pNotes");
+						facilitatorPlanHashMap.put("pAudience", pAudience);
+						facilitatorPlanHashMap.put("pGoals", pGoals);
+						facilitatorPlanHashMap.put("pActivities", pActivities);
+						facilitatorPlanHashMap.put("pNotes", pNotes);
 						Chapter chapter = new Chapter(chapterNum, numericName, stringName, description, notes);
 						NodeList assignedActivityNodeList = chapterElement.getElementsByTagName("assignedActivity");
 						ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
@@ -315,6 +324,7 @@ public class XMLManager {
 								}
 							}
 						}
+						chapter.setFacilitatorPlanHashMap(facilitatorPlanHashMap);
 						chapter.setAssignedActivities(listOfChapterActivities);
 						chapters.add(chapter);
 					}
@@ -393,7 +403,11 @@ public class XMLManager {
 					chapterElement.setAttribute("stringName", chapter.getStringName());
 					chapterElement.setAttribute("description", chapter.getDescriptionName());
 					chapterElement.setAttribute("notes", chapter.getNotes());
-
+					chapterElement.setAttribute("pAudience", chapter.getFacilitatorPlanHashMap().get("pAudience"));
+					chapterElement.setAttribute("pGoals", chapter.getFacilitatorPlanHashMap().get("pGoals"));
+					chapterElement.setAttribute("pActivities", chapter.getFacilitatorPlanHashMap().get("pActivities"));
+					chapterElement.setAttribute("pNotes", chapter.getFacilitatorPlanHashMap().get("pNotes"));
+					
 					Element assignedActivitiesElement = document.createElement("assignedActivities");
 					for (Activity activity : chapter.getAssignedActivities()) {
 						Element assignedActivityElement = document.createElement("assignedActivity");
