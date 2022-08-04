@@ -41,7 +41,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextArea />
+                  <TextArea fx:id="audienceTextArea" />
                </children>
             </VBox>
             <VBox>
@@ -55,7 +55,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextArea />
+                  <TextArea fx:id="goalsTextArea" />
                </children>
             </VBox>
             <VBox>
@@ -69,7 +69,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextArea />
+                  <TextArea fx:id="activitiesTextArea" />
                </children>
             </VBox>
             <VBox>
@@ -83,7 +83,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextArea />
+                  <TextArea fx:id="notesTextArea" />
                </children>
             </VBox>
          </children>

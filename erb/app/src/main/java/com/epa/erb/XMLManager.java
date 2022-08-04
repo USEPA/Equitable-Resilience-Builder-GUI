@@ -293,15 +293,24 @@ public class XMLManager {
 						String stringName = chapterElement.getAttribute("stringName");
 						String description = chapterElement.getAttribute("description");
 						String notes = chapterElement.getAttribute("notes");
-						HashMap<String, String> facilitatorPlanHashMap = new HashMap<String, String>();
 						String pAudience = chapterElement.getAttribute("pAudience");
 						String pGoals = chapterElement.getAttribute("pGoals");
 						String pActivities = chapterElement.getAttribute("pActivities");
 						String pNotes = chapterElement.getAttribute("pNotes");
+						String rAudience = chapterElement.getAttribute("rAudience");
+						String rGoals = chapterElement.getAttribute("rGoals");
+						String rActivities = chapterElement.getAttribute("rActivities");
+						String rNotes = chapterElement.getAttribute("rNotes");
+						HashMap<String, String> facilitatorPlanHashMap = new HashMap<String, String>();
 						facilitatorPlanHashMap.put("pAudience", pAudience);
 						facilitatorPlanHashMap.put("pGoals", pGoals);
 						facilitatorPlanHashMap.put("pActivities", pActivities);
 						facilitatorPlanHashMap.put("pNotes", pNotes);
+						HashMap<String, String> facilitatorReflectHashMap = new HashMap<String, String>();
+						facilitatorReflectHashMap.put("rAudience", rAudience);
+						facilitatorReflectHashMap.put("rGoals", rGoals);
+						facilitatorReflectHashMap.put("rActivities", rActivities);
+						facilitatorReflectHashMap.put("rNotes", rNotes);
 						Chapter chapter = new Chapter(chapterNum, numericName, stringName, description, notes);
 						NodeList assignedActivityNodeList = chapterElement.getElementsByTagName("assignedActivity");
 						ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
@@ -325,6 +334,7 @@ public class XMLManager {
 							}
 						}
 						chapter.setFacilitatorPlanHashMap(facilitatorPlanHashMap);
+						chapter.setFacilitatorReflectHashMap(facilitatorReflectHashMap);
 						chapter.setAssignedActivities(listOfChapterActivities);
 						chapters.add(chapter);
 					}
@@ -407,7 +417,10 @@ public class XMLManager {
 					chapterElement.setAttribute("pGoals", chapter.getFacilitatorPlanHashMap().get("pGoals"));
 					chapterElement.setAttribute("pActivities", chapter.getFacilitatorPlanHashMap().get("pActivities"));
 					chapterElement.setAttribute("pNotes", chapter.getFacilitatorPlanHashMap().get("pNotes"));
-					
+					chapterElement.setAttribute("rAudience", chapter.getFacilitatorReflectHashMap().get("rAudience"));
+					chapterElement.setAttribute("rGoals", chapter.getFacilitatorReflectHashMap().get("rGoals"));
+					chapterElement.setAttribute("rActivities", chapter.getFacilitatorReflectHashMap().get("rActivities"));
+					chapterElement.setAttribute("rNotes", chapter.getFacilitatorReflectHashMap().get("rNotes"));
 					Element assignedActivitiesElement = document.createElement("assignedActivities");
 					for (Activity activity : chapter.getAssignedActivities()) {
 						Element assignedActivityElement = document.createElement("assignedActivity");

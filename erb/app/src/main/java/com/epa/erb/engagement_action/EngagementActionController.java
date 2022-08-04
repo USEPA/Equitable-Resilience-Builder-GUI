@@ -357,7 +357,7 @@ public class EngagementActionController implements Initializable{
 				FXMLLoader fxmlLoader = null;
 				if(project.getProjectType().contentEquals("Facilitator Mode")) {
 					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectFacilitatorMode.fxml"));
-					ReflectFacilitatorModeController reflectFacilitatorModeController = new ReflectFacilitatorModeController();
+					ReflectFacilitatorModeController reflectFacilitatorModeController = new ReflectFacilitatorModeController(currentSelectedChapter);
 					fxmlLoader.setController(reflectFacilitatorModeController);
 					activity.setReflectFacilitatorModeController(reflectFacilitatorModeController);
 				} else {

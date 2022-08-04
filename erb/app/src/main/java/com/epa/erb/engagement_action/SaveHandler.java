@@ -55,18 +55,22 @@ public class SaveHandler {
 			}
 		} else if (saveOrigin.contentEquals("projectChange")) {
 			if (project != null && !project.isSaved()) {
+				System.out.println(project.getProjectName() + " is not saved.");
 				return showProjectSaveNeeded();
 			}
 		} else if (saveOrigin.contentEquals("saveButton")) {
 			if(project != null && !project.isSaved()) {
+				System.out.println(project.getProjectName() + " is not saved.");
 				return "PROJECT";
 			}
 		} else if (saveOrigin.contentEquals("goalChange")) {
 			if (goal != null && !goal.isSaved()) {
+				System.out.println(goal.getGoalName() + " is not saved.");
 				return showGoalSaveNeeded();
 			}
 		} else if (saveOrigin.contentEquals("chapterChange")) {
 			if (chapter != null && !chapter.isSaved()) {
+				System.out.println(chapter.getStringName() + " is not saved.");
 				String resultString = showChapterSaveNeeded();
 				if(resultString.contentEquals("NO")) {
 					chapter.setSaved(true);
@@ -75,6 +79,7 @@ public class SaveHandler {
 			}
 		} else if (saveOrigin.contentEquals("activityChange")) {
 			if (activity != null && !activity.isSaved()) {
+				System.out.println(activity.getLongName() + " is not saved.");
 				String resultString = showActivitySaveNeeded();
 				if(resultString.contentEquals("NO")) {
 					activity.setSaved(true);
@@ -114,6 +119,7 @@ public class SaveHandler {
 		if (projects != null) {
 			for (Project project : projects) {
 				if (!project.isSaved()) {
+					System.out.println(project.getProjectName() + " is not saved.");
 					return false;
 				}
 			}
