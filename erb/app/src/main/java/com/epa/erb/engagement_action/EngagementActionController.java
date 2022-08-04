@@ -336,7 +336,7 @@ public class EngagementActionController implements Initializable{
 					activity.setPlanFacilitatorModeController(planController);
 				} else {
 					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/PlanGoalMode.fxml"));
-					PlanGoalModeController planController = new PlanGoalModeController();
+					PlanGoalModeController planController = new PlanGoalModeController(currentSelectedChapter);
 					fxmlLoader.setController(planController);
 					activity.setPlanGoalModeController(planController);
 				}
