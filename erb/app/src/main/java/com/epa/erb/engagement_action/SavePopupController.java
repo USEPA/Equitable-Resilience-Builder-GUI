@@ -103,7 +103,6 @@ public class SavePopupController implements Initializable {
 	}
 	
 	private void saveProject(Project project) {
-		System.out.println("Saving project " + project.getProjectName());
 		for (Goal goal : project.getProjectGoals()) {
 			if (!goal.isSaved()) {
 				saveGoal(project, goal);
@@ -112,7 +111,6 @@ public class SavePopupController implements Initializable {
 	}
 	
 	private void saveGoal(Project project, Goal goal) {
-		System.out.println("Saving goal " + goal.getGoalName());
 		for (Chapter chapter : goal.getChapters()) {
 			if (!chapter.isSaved()) {
 				saveChapter(project, goal, chapter);
@@ -121,7 +119,6 @@ public class SavePopupController implements Initializable {
 	}
 	
 	private void saveChapter(Project project, Goal goal, Chapter chapter) {
-		System.out.println("Saving chapter " + chapter.getStringName());
 		if (!chapter.isActivitiesSaved()) {
 			for (Activity activity : chapter.getAssignedActivities()) {
 				if (!activity.isSaved()) {
@@ -135,7 +132,6 @@ public class SavePopupController implements Initializable {
 	}
 	
 	private void saveActivity(Project project, Goal goal, Activity activity) {
-		System.out.println("Saving activity " + activity.getLongName());
 		callToWriteActivityDataXML(project, goal, activity);
 		callToWriteGoalDataXML(project, goal);
 		activity.setSaved(true);
