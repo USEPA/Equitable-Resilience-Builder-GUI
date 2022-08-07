@@ -35,10 +35,10 @@ public class ReflectFacilitatorModeController implements Initializable {
 	}
 	
 	private void loadExistingContent() {
-		audienceTextArea.setText(chapter.getFacilitatorReflectHashMap().get("rAudience"));
-		goalsTextArea.setText(chapter.getFacilitatorReflectHashMap().get("rGoals"));
-		activitiesTextArea.setText(chapter.getFacilitatorReflectHashMap().get("rActivities"));
-		notesTextArea.setText(chapter.getFacilitatorReflectHashMap().get("rNotes"));
+		audienceTextArea.setText(chapter.getReflectHashMap().get("rAudience"));
+		goalsTextArea.setText(chapter.getReflectHashMap().get("rGoals"));
+		activitiesTextArea.setText(chapter.getReflectHashMap().get("rActivities"));
+		notesTextArea.setText(chapter.getReflectHashMap().get("rNotes"));
 	}
 	
 	private void handleControls() {
@@ -50,33 +50,33 @@ public class ReflectFacilitatorModeController implements Initializable {
 	}
 	
 	private void audienceTextAreaTextChanged(String newValue) {
-		String origValue = chapter.getFacilitatorReflectHashMap().get("rAudience");
+		String origValue = chapter.getReflectHashMap().get("rAudience");
 		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
-			chapter.getFacilitatorReflectHashMap().put("rAudience", newValue);
+			chapter.getReflectHashMap().put("rAudience", newValue);
 			chapter.setSaved(false);
 		}
 	}
 
 	private void goalsTextAreaTextChanged(String newValue) {
-		String origValue = chapter.getFacilitatorReflectHashMap().get("rGoals");
+		String origValue = chapter.getReflectHashMap().get("rGoals");
 		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
-			chapter.getFacilitatorReflectHashMap().put("rGoals", newValue);
+			chapter.getReflectHashMap().put("rGoals", newValue);
 			chapter.setSaved(false);
 		}
 	}
 	
 	private void activitiesTextAreaTextChanged(String newValue) {
-		String origValue = chapter.getFacilitatorReflectHashMap().get("rActivities");
+		String origValue = chapter.getReflectHashMap().get("rActivities");
 		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
-			chapter.getFacilitatorReflectHashMap().put("rActivities", newValue);
+			chapter.getReflectHashMap().put("rActivities", newValue);
 			chapter.setSaved(false);
 		}
 	}
 	
 	private void notesTextAreaTextChanged(String newValue) {
-		String origValue = chapter.getFacilitatorReflectHashMap().get("rNotes");
+		String origValue = chapter.getReflectHashMap().get("rNotes");
 		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
-			chapter.getFacilitatorReflectHashMap().put("rNotes", newValue);
+			chapter.getReflectHashMap().put("rNotes", newValue);
 			chapter.setSaved(false);
 		}
 	}

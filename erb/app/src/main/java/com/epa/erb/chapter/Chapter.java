@@ -21,8 +21,8 @@ public class Chapter {
 		
 	private boolean saved = true;
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
-	private HashMap<String, String> facilitatorPlanHashMap;	
-	private HashMap<String, String> facilitatorReflectHashMap;
+	private HashMap<String, String> planHashMap;	
+	private HashMap<String, String> reflectHashMap;
 	
 	public Chapter() {
 		
@@ -167,20 +167,20 @@ public class Chapter {
 		this.saved = saved;
 	}
 
-	public HashMap<String, String> getFacilitatorPlanHashMap() {
-		return facilitatorPlanHashMap;
+	public HashMap<String, String> getPlanHashMap() {
+		return planHashMap;
 	}
 
-	public void setFacilitatorPlanHashMap(HashMap<String, String> facilitatorPlanHashMap) {
-		this.facilitatorPlanHashMap = facilitatorPlanHashMap;
+	public void setPlanHashMap(HashMap<String, String> planHashMap) {
+		this.planHashMap = planHashMap;
 	}
 
-	public HashMap<String, String> getFacilitatorReflectHashMap() {
-		return facilitatorReflectHashMap;
+	public HashMap<String, String> getReflectHashMap() {
+		return reflectHashMap;
 	}
 
-	public void setFacilitatorReflectHashMap(HashMap<String, String> facilitatorReflectHashMap) {
-		this.facilitatorReflectHashMap = facilitatorReflectHashMap;
+	public void setReflectHashMap(HashMap<String, String> reflectHashMap) {
+		this.reflectHashMap = reflectHashMap;
 	}
 		
 }

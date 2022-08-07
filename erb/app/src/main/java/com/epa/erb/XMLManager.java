@@ -333,8 +333,8 @@ public class XMLManager {
 								}
 							}
 						}
-						chapter.setFacilitatorPlanHashMap(facilitatorPlanHashMap);
-						chapter.setFacilitatorReflectHashMap(facilitatorReflectHashMap);
+						chapter.setPlanHashMap(facilitatorPlanHashMap);
+						chapter.setReflectHashMap(facilitatorReflectHashMap);
 						chapter.setAssignedActivities(listOfChapterActivities);
 						chapters.add(chapter);
 					}
@@ -413,14 +413,14 @@ public class XMLManager {
 					chapterElement.setAttribute("stringName", chapter.getStringName());
 					chapterElement.setAttribute("description", chapter.getDescriptionName());
 					chapterElement.setAttribute("notes", chapter.getNotes());
-					chapterElement.setAttribute("pAudience", chapter.getFacilitatorPlanHashMap().get("pAudience"));
-					chapterElement.setAttribute("pGoals", chapter.getFacilitatorPlanHashMap().get("pGoals"));
-					chapterElement.setAttribute("pActivities", chapter.getFacilitatorPlanHashMap().get("pActivities"));
-					chapterElement.setAttribute("pNotes", chapter.getFacilitatorPlanHashMap().get("pNotes"));
-					chapterElement.setAttribute("rAudience", chapter.getFacilitatorReflectHashMap().get("rAudience"));
-					chapterElement.setAttribute("rGoals", chapter.getFacilitatorReflectHashMap().get("rGoals"));
-					chapterElement.setAttribute("rActivities", chapter.getFacilitatorReflectHashMap().get("rActivities"));
-					chapterElement.setAttribute("rNotes", chapter.getFacilitatorReflectHashMap().get("rNotes"));
+					chapterElement.setAttribute("pAudience", chapter.getPlanHashMap().get("pAudience"));
+					chapterElement.setAttribute("pGoals", chapter.getPlanHashMap().get("pGoals"));
+					chapterElement.setAttribute("pActivities", chapter.getPlanHashMap().get("pActivities"));
+					chapterElement.setAttribute("pNotes", chapter.getPlanHashMap().get("pNotes"));
+					chapterElement.setAttribute("rAudience", chapter.getReflectHashMap().get("rAudience"));
+					chapterElement.setAttribute("rGoals", chapter.getReflectHashMap().get("rGoals"));
+					chapterElement.setAttribute("rActivities", chapter.getReflectHashMap().get("rActivities"));
+					chapterElement.setAttribute("rNotes", chapter.getReflectHashMap().get("rNotes"));
 					Element assignedActivitiesElement = document.createElement("assignedActivities");
 					for (Activity activity : chapter.getAssignedActivities()) {
 						Element assignedActivityElement = document.createElement("assignedActivity");

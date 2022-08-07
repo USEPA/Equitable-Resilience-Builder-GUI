@@ -786,24 +786,42 @@ public class EngagementActionController implements Initializable{
 	
 	private void loadActivityContent(Activity activity) {
 		if (activity != null) {
-			if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
-				if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
+			if (project.getProjectType().contentEquals("Facilitator Mode")) {
+				if (activity.getActivityType().getDescription().contentEquals("worksheet") || activity.getActivityType().getDescription().contentEquals("noteboard")) {
+					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
+						addBaseAttributesToAttributePanel(activity);
+						Pane root = loadWorksheetContentController(activity);
+						addContentToContentVBox(root, false);
+					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
+						removeAttributeScrollPane();
+						Pane root = loadPlanRoot(activity);
+						addContentToContentVBox(root, true);
+					} else if (activity.getLongName().contentEquals("Reflect")) { // Reflect Activity
+						removeAttributeScrollPane();
+						ScrollPane root = loadReflectRoot(currentSelectedChapter, activity);
+						addContentToContentVBox(root, false);
+					}
+				}
+			} else {
+				if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
+					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
+						addBaseAttributesToAttributePanel(activity);
+						Pane root = loadWorksheetContentController(activity);
+						addContentToContentVBox(root, false);
+					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
+						removeAttributeScrollPane();
+						Pane root = loadPlanRoot(activity);
+						addContentToContentVBox(root, true);
+					} else if (activity.getLongName().contentEquals("Reflect")) { // Reflect Activity
+						removeAttributeScrollPane();
+						ScrollPane root = loadReflectRoot(currentSelectedChapter, activity);
+						addContentToContentVBox(root, false);
+					}
+				} else if (activity.getActivityType().getDescription().contentEquals("noteboard")) {
 					addBaseAttributesToAttributePanel(activity);
-					Pane root = loadWorksheetContentController(activity);
-					addContentToContentVBox(root, false);
-				} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
-					removeAttributeScrollPane();
-					Pane root = loadPlanRoot(activity);
-					addContentToContentVBox(root, true);
-				} else if (activity.getLongName().contentEquals("Reflect")) { // Reflect Activity
-					removeAttributeScrollPane();
-					ScrollPane root = loadReflectRoot(currentSelectedChapter, activity);
+					Pane root = loadNoteBoardContentController(activity);
 					addContentToContentVBox(root, false);
 				}
-			} else if (activity.getActivityType().getDescription().contentEquals("noteboard")) {
-				addBaseAttributesToAttributePanel(activity);
-				Pane root = loadNoteBoardContentController(activity);
-				addContentToContentVBox(root, false);
 			}
 		} else {
 			logger.error("Cannot loadActivityContent. activity is null.");

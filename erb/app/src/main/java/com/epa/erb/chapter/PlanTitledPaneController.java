@@ -31,10 +31,58 @@ public class PlanTitledPaneController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
+		loadExistingContent();
+	}
+	
+	private void loadExistingContent() {
+		audienceTextArea.setText(chapter.getPlanHashMap().get("pAudience"));
+		goalsTextArea.setText(chapter.getPlanHashMap().get("pGoals"));
+		activitiesTextArea.setText(chapter.getPlanHashMap().get("pActivities"));
+		notesTextArea.setText(chapter.getPlanHashMap().get("pNotes"));
 	}
 	
 	private void handleControls() {
 		setTitledPaneText();
+		audienceTextArea.textProperty().addListener((v, oldValue, newValue) -> audienceTextAreaTextChanged(newValue));
+		goalsTextArea.textProperty().addListener((v, oldValue, newValue) -> goalsTextAreaTextChanged(newValue));
+		activitiesTextArea.textProperty().addListener((v, oldValue, newValue) -> activitiesTextAreaTextChanged(newValue));
+		notesTextArea.textProperty().addListener((v, oldValue, newValue) -> notesTextAreaTextChanged(newValue));
+	}
+	
+	private void audienceTextAreaTextChanged(String newValue) {
+		String origValue = chapter.getPlanHashMap().get("pAudience");
+		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
+			chapter.getPlanHashMap().put("pAudience", newValue);
+			chapter.setSaved(false);
+		}
+	}
+
+	private void goalsTextAreaTextChanged(String newValue) {
+		String origValue = chapter.getPlanHashMap().get("pGoals");
+		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
+			chapter.getPlanHashMap().put("pGoals", newValue);
+			chapter.setSaved(false);
+		}
+	}
+	
+	private void activitiesTextAreaTextChanged(String newValue) {
+		String origValue = chapter.getPlanHashMap().get("pActivities");
+		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
+			chapter.getPlanHashMap().put("pActivities", newValue);
+			chapter.setSaved(false);
+		}
+	}
+	
+	private void notesTextAreaTextChanged(String newValue) {
+		String origValue = chapter.getPlanHashMap().get("pNotes");
+		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
+			chapter.getPlanHashMap().put("pNotes", newValue);
+			chapter.setSaved(false);
+		}
+	}
+	
+	public void expand() {
+		titledPane.setExpanded(true);
 	}
 	
 	private void setTitledPaneText() {
