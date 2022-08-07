@@ -46,4 +46,32 @@
 			<assignedActivity activityID="22"/>
 		</assignedActivities>
 	</goalCategory>
+	<goalCategory categoryName="All activities">
+		<assignedActivities>
+			<assignedActivity activityID="01"/>
+			<assignedActivity activityID="02"/>
+			<assignedActivity activityID="03"/>
+			<assignedActivity activityID="04"/>
+			<assignedActivity activityID="05"/>
+			<assignedActivity activityID="06"/>
+			<assignedActivity activityID="07"/>
+			<assignedActivity activityID="08"/>
+			<assignedActivity activityID="09"/>
+			<assignedActivity activityID="10"/>
+			<assignedActivity activityID="11"/>
+			<assignedActivity activityID="12"/>
+			<assignedActivity activityID="13"/>
+			<assignedActivity activityID="14"/>
+			<assignedActivity activityID="15"/>
+			<assignedActivity activityID="16"/>
+			<assignedActivity activityID="17"/>
+			<assignedActivity activityID="18"/>
+			<assignedActivity activityID="19"/>
+			<assignedActivity activityID="20"/>
+			<assignedActivity activityID="21"/>
+			<assignedActivity activityID="22"/>
+			<assignedActivity activityID="23"/>
+			<assignedActivity activityID="24"/>
+		</assignedActivities>
+	</goalCategory>
 </goalCategories>
