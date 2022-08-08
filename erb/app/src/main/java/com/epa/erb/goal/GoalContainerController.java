@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.project.Project;
+import com.epa.erb.project.ProjectSelectionController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,9 +22,11 @@ public class GoalContainerController implements Initializable{
 	
 	private App app;
 	private Project project;
-	public GoalContainerController(App app, Project project ) {
+	private ProjectSelectionController projectSelectionController;
+	public GoalContainerController(App app, Project project, ProjectSelectionController projectSelectionController ) {
 		this.app = app;
 		this.project = project;
+		this.projectSelectionController = projectSelectionController;
 	}
 	
 	private Logger logger = LogManager.getLogger(GoalContainerController.class);
@@ -37,7 +41,7 @@ public class GoalContainerController implements Initializable{
 	private Parent loadGoalIntro() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalIntro.fxml"));
-			GoalIntroController goalIntroController = new GoalIntroController(app, project, this);
+			GoalIntroController goalIntroController = new GoalIntroController(app, project, this, projectSelectionController);
 			fxmlLoader.setController(goalIntroController);
 			return fxmlLoader.load();
 		}catch (Exception e) {
@@ -57,5 +61,13 @@ public class GoalContainerController implements Initializable{
 	public Project getProject() {
 		return project;
 	}
-	
+
+	public ProjectSelectionController getProjectSelectionController() {
+		return projectSelectionController;
+	}
+
+	public void setProjectSelectionController(ProjectSelectionController projectSelectionController) {
+		this.projectSelectionController = projectSelectionController;
+	}
+		
 }

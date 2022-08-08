@@ -99,7 +99,7 @@ public class ChapterLandingController implements Initializable {
 		if (chapter != null) {
 			return "Welcome to " + chapter.getStringName();
 		} else {
-			return "ERB Activities";
+			return "Equitable Resilience Builder";
 		}
 	}
 	

@@ -24,14 +24,9 @@
             </MenuBar>
             <VBox fx:id="welcomeVBox" alignment="CENTER">
                <children>
-                  <Label text="ERB">
+                  <Label fx:id="titleLabel" text="ERB">
                      <font>
                         <Font name="System Bold" size="30.0" />
-                     </font>
-                  </Label>
-                  <Label text="Equitable Resilience Builder" wrapText="true">
-                     <font>
-                        <Font size="25.0" />
                      </font>
                   </Label>
                </children>

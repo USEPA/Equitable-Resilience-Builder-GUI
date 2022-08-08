@@ -176,7 +176,7 @@ public class EngagementActionController implements Initializable{
 			removePathwayPane();
 			removeLocalProgressPane();
 		}
-
+		app.getErbContainerController().setTitleLabelText("ERB: " + project.getProjectName() + ": " + project.getProjectType());
 	}
 	
 	private void handleControls() {

@@ -11,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.project.Project;
+import com.epa.erb.project.ProjectSelectionController;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -35,10 +37,12 @@ public class GoalIntroController implements Initializable{
 	private App app;
 	private Project project;
 	private GoalContainerController goalContainerController;
-	public GoalIntroController(App app, Project project, GoalContainerController goalContainerController) {
+	private ProjectSelectionController projectSelectionController;
+	public GoalIntroController(App app, Project project, GoalContainerController goalContainerController, ProjectSelectionController projectSelectionController) {
 		this.app = app;
 		this.project = project;
 		this.goalContainerController = goalContainerController;
+		this.projectSelectionController = projectSelectionController;
 	}
 	
 	private Constants constants = new Constants();
@@ -52,7 +56,7 @@ public class GoalIntroController implements Initializable{
 	}
 	
 	private void handleControls() {
-		
+		app.getErbContainerController().setTitleLabelText("ERB: Goal Intro");
 	}
 	
 	@FXML
@@ -117,7 +121,7 @@ public class GoalIntroController implements Initializable{
 	private Parent loadGoalCreation() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
-			GoalCreationController goalCreationController = new GoalCreationController(app, project);
+			GoalCreationController goalCreationController = new GoalCreationController(app, project, projectSelectionController);
 			fxmlLoader.setController(goalCreationController);
 			return fxmlLoader.load();
 		}catch (Exception e) {
@@ -156,6 +160,14 @@ public class GoalIntroController implements Initializable{
 
 	public void setGoalContainerController(GoalContainerController goalContainerController) {
 		this.goalContainerController = goalContainerController;
+	}
+
+	public ProjectSelectionController getProjectSelectionController() {
+		return projectSelectionController;
+	}
+
+	public void setProjectSelectionController(ProjectSelectionController projectSelectionController) {
+		this.projectSelectionController = projectSelectionController;
 	}
 
 	public WebView getWebView() {

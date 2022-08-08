@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
-import com.epa.erb.ERBContainerController;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -57,6 +56,7 @@ public class ProjectSelectionController implements Initializable{
 	
 	private void handleControls() {
 		app.getErbContainerController().addHeaderPanel();
+		app.getErbContainerController().setTitleLabelText("ERB: Project Selection");
 	}
 	
 	@FXML
@@ -80,8 +80,8 @@ public class ProjectSelectionController implements Initializable{
 				if (mode.contentEquals("Goal Mode")) {
 					loadGoalCreationToContainer(selectedProject);
 				} else {
-					GoalCreationController goalCreationController = createFacilitatorProject(selectedProject);
-					goalCreationController.loadEngagementActionToContainer(selectedProject);
+					createFacilitatorProject(selectedProject);
+					loadEngagementActionToContainer(selectedProject);
 				}
 			} else {
 				loadEngagementActionToContainer(selectedProject);
@@ -91,7 +91,7 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private GoalCreationController createFacilitatorProject(Project project) {
-		GoalCreationController goalCreationController = new GoalCreationController(app, project);
+		GoalCreationController goalCreationController = new GoalCreationController(app, project, this);
 		ArrayList<Goal> projectGoals = createFacilitatorProjectGoals(goalCreationController, project);
 		createFacilitatorProjectFiles(goalCreationController, project, projectGoals);
 		return goalCreationController;
@@ -123,7 +123,7 @@ public class ProjectSelectionController implements Initializable{
 	private void loadGoalCreationToContainer(Project project) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
-			GoalContainerController goalContainerController = new GoalContainerController(app, project);
+			GoalContainerController goalContainerController = new GoalContainerController(app, project, this);
 			fxmlLoader.setController(goalContainerController);
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
@@ -134,7 +134,7 @@ public class ProjectSelectionController implements Initializable{
 		}
 	}
 	
-	private void loadEngagementActionToContainer(Project project) {
+	public void loadEngagementActionToContainer(Project project) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController(app, project);

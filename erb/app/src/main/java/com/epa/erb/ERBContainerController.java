@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -20,6 +21,8 @@ public class ERBContainerController implements Initializable{
 	VBox erbVBox;
 	@FXML
 	VBox erbContainer;
+	@FXML
+	Label titleLabel;
 	
 	private App app;
 	public ERBContainerController(App app) {
@@ -72,6 +75,10 @@ public class ERBContainerController implements Initializable{
 		} else {
 			logger.error("Cannot showGlossary. glossaryRoot is null.");
 		}
+	}
+	
+	public void setTitleLabelText(String text) {
+		titleLabel.setText(text);
 	}
 	
 	public void removeHeaderPanel() {

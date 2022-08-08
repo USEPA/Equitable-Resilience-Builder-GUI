@@ -14,6 +14,8 @@ import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.project.Project;
+import com.epa.erb.project.ProjectSelectionController;
+
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,9 +48,11 @@ public class GoalCreationController implements Initializable{
 
 	private App app;
 	private Project project;
-	public GoalCreationController(App app, Project project) {
+	private ProjectSelectionController projectSelectionController;
+	public GoalCreationController(App app, Project project, ProjectSelectionController projectSelectionController) {
 		this.app = app;
 		this.project = project;
+		this.projectSelectionController = projectSelectionController;
 	}
 	
 	private Constants constants = new Constants();
@@ -64,22 +68,7 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void handleControls() {
-		
-	}
-	
-	public void loadEngagementActionToContainer(Project project) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(app, project);
-			fxmlLoader.setController(engagementActionController);
-			VBox root = fxmlLoader.load();
-			root.setPrefWidth(app.getPrefWidth());
-			root.setPrefHeight(app.getPrefHeight());
-			app.loadNodeToERBContainer(root);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-		}
+		app.getErbContainerController().setTitleLabelText("ERB: Goal Creation");
 	}
 
 	@FXML
@@ -110,7 +99,7 @@ public class GoalCreationController implements Initializable{
 			project.setProjectGoals(createdGoals);
 			writeProjectMetaData(project);
 			writeGoalsMetaData(createdGoals);
-			loadEngagementActionToContainer(project);
+			projectSelectionController.loadEngagementActionToContainer(project);
 		}
 	}
 	
@@ -365,6 +354,14 @@ public class GoalCreationController implements Initializable{
 
 	public void setProject(Project project) {
 		this.project = project;
+	}
+	
+	public ProjectSelectionController getProjectSelectionController() {
+		return projectSelectionController;
+	}
+
+	public void setProjectSelectionController(ProjectSelectionController projectSelectionController) {
+		this.projectSelectionController = projectSelectionController;
 	}
 
 	public VBox getGoalsVBox() {
