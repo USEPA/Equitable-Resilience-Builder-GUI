@@ -12,13 +12,10 @@ import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
-import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
-
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
