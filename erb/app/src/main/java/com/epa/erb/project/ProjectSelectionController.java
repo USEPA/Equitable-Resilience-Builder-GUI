@@ -38,7 +38,7 @@ public class ProjectSelectionController implements Initializable{
 	private String mode;
 	public ProjectSelectionController(App app, boolean updateProjects, String mode) {
 		this.app = app;
-		this.updateProjects = updateProjects;
+		this.updateProjects = true;
 		this.mode = mode;
 	}
 	
