@@ -27,6 +27,28 @@ public class Chapter {
 	public Chapter() {
 		
 	}
+	
+	public void setHashMaps() {
+		setPlanHashMapDefaults();
+		setReflectHashMapDefaults();
+	}
+	
+	private void setPlanHashMapDefaults() {
+		planHashMap = new HashMap<String, String>();
+		planHashMap.put("pAudience", "");
+		planHashMap.put("pGoals", "");
+		planHashMap.put("pActivities", "");
+		planHashMap.put("pNotes", "");
+	}
+	
+	private void setReflectHashMapDefaults() {
+		reflectHashMap = new HashMap<String, String>();
+		reflectHashMap.put("rAudience", "");
+		reflectHashMap.put("rGoals", "");
+		reflectHashMap.put("rActivities", "");
+		reflectHashMap.put("rNotes", "");
+	}
+
 
 	public void addActivity(Activity activity) {
 		if (activity != null) {
