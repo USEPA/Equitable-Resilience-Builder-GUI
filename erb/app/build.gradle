@@ -18,7 +18,11 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven {
+    	url "https://repository.aspose.com/repo/" 
+   }
 }
+
 
 dependencies {
     implementation 'com.google.guava:guava:30.1.1-jre'
@@ -27,6 +31,7 @@ dependencies {
 	implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
 	implementation 'commons-io:commons-io:2.11.0'
 	implementation 'org.apache.pdfbox:pdfbox:3.0.0-RC1'
+	implementation 'com.aspose:aspose-words:22.7:jdk17'
 }
 
 javafx{

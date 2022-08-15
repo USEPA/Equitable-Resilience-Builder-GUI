@@ -22,6 +22,7 @@ import com.epa.erb.engagement_action.SaveHandler;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
+import com.aspose.words.*;
 
 public class App extends Application {
 
@@ -44,6 +45,8 @@ public class App extends Application {
 		setScreenSizePreferences(getScreenScale());
 		readAndStoreData();
 		showERBToolMain();
+		File file = new File("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\InterviewQuestions.docx");
+		convertDocxToPDF(file);
 	}
 	
 	private void showERBToolMain() {
@@ -216,6 +219,15 @@ public class App extends Application {
 		readAndStoreAvailableActivities();
 		readAndStoreGoalCategories();
 		readAndStoreProjects();
+	}
+	
+	public void convertDocxToPDF(File docxFileToConvert) {
+		try {
+			Document documentToConvert = new Document(docxFileToConvert.getPath());
+			documentToConvert.save("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\output.pdf", SaveFormat.PDF);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void readAndStoreChapters() {
