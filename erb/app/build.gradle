@@ -9,8 +9,10 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.11'
     id 'application'
     id 'distribution'
-    id 'org.beryx.jlink' version '2.25.0'    
+    id 'org.beryx.jlink' version '2.25.0' 
 }
+
+//apply plugin: "nebula.lint"
 
 //compileJava {
 //    options.compilerArgs << '--add-exports=javafx.web/com.sun.webkit=ALL-UNNAMED' 
@@ -23,16 +25,16 @@ repositories {
    }
 }
 
-
 dependencies {
-    implementation 'com.google.guava:guava:30.1.1-jre'
 	implementation 'org.apache.logging.log4j:log4j:2.17.1'
 	implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
 	implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
 	implementation 'commons-io:commons-io:2.11.0'
-	implementation 'org.apache.pdfbox:pdfbox:3.0.0-RC1'
 	implementation 'com.aspose:aspose-words:22.7:jdk17'
+    //implementation 'org.docx4j:docx4j-core:11.2.9'
+
 }
+
 
 javafx{
     version = '17'
