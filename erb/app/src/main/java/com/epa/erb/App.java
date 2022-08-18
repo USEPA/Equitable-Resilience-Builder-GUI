@@ -14,9 +14,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,9 +23,6 @@ import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
 import com.aspose.words.*;
-//import org.docx4j.Docx4J;
-//import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
-//import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 
 public class App extends Application {
 
@@ -241,7 +235,7 @@ public class App extends Application {
 //		try {
 //            InputStream templateInputStream = new FileInputStream(docxFileToConvert);
 //            WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(templateInputStream);
-//            MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
+//           // MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 //
 //            String outputfilepath = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\output2.pdf";
 //            FileOutputStream os = new FileOutputStream(outputfilepath);
