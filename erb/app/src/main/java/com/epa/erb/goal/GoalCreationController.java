@@ -202,6 +202,8 @@ public class GoalCreationController implements Initializable{
 				xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
 				File activitesDirectory = createActivitiesDirectory(goalDirectory);
 				createActivityDirectory(activitesDirectory, goal);
+				copyActivityDocxToActivityDirectory(activitesDirectory, goal);
+				convertActivityDocxToPDF(activitesDirectory, goal);
 			}
 		} else {
 			logger.error("Cannot writeGoalsMetaData. goals is null.");
@@ -240,6 +242,41 @@ public class GoalCreationController implements Initializable{
 			}
 		} else {
 			logger.error("Cannot createActivityDirectory. activitiesDirectory or goal is null.");
+		}
+	}
+	
+	private void copyActivityDocxToActivityDirectory(File activitiesDirectory, Goal goal) {
+		if (activitiesDirectory != null && goal != null) {
+			for (Chapter chapter : goal.getChapters()) {
+				for (Activity activity : chapter.getAssignedActivities()) {
+					File activityDirectory = new File(activitiesDirectory.getPath() + "\\" + activity.getActivityID());
+					if (activityDirectory.exists()) {
+						File sourceActivityDocx = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\ChapterActivities_DOC\\" + activity.getFileName());
+						File destActivityDocx = new File(activitiesDirectory.getPath()+ "\\" + activity.getActivityID() + "\\" + activity.getFileName());
+						app.copyFile(sourceActivityDocx, destActivityDocx);
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot copyActivityDocxToActivityDirectory. activitiesDirectory or goal is null.");
+		}
+	}
+	
+	private void convertActivityDocxToPDF(File activitiesDirectory, Goal goal) {
+		if (activitiesDirectory != null && goal != null) {
+			for (Chapter chapter : goal.getChapters()) {
+				for (Activity activity : chapter.getAssignedActivities()) {
+					File activityDirectory = new File(activitiesDirectory.getPath() + "\\" + activity.getActivityID());
+					if (activityDirectory.exists()) {
+						File activityDocx = new File(activitiesDirectory.getPath()+ "\\" + activity.getActivityID() + "\\" + activity.getFileName());
+						String pdfFileName = activity.getFileName().replace(".docx", ".pdf");
+						File activityPDF = new File(activitiesDirectory.getPath()+ "\\" + activity.getActivityID() + "\\" + pdfFileName);
+						app.convertDocxToPDF(activityDocx, activityPDF.getPath());
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot copyActivityDocxToActivityDirectory. activitiesDirectory or goal is null.");
 		}
 	}
 	

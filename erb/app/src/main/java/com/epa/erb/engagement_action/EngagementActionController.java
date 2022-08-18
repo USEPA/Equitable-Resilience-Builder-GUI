@@ -275,7 +275,7 @@ public class EngagementActionController implements Initializable{
 		if (activity != null) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/WorksheetContent.fxml"));
-				WorksheetContentController worksheetContentController = new WorksheetContentController(activity);
+				WorksheetContentController worksheetContentController = new WorksheetContentController(activity, project, currentSelectedGoal, app);
 				fxmlLoader.setController(worksheetContentController);
 				VBox root = fxmlLoader.load();
 				activity.setWorksheetContentController(worksheetContentController);

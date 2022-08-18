@@ -11,14 +11,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javafx.beans.value.ChangeListener;
 import com.epa.erb.Activity;
+import com.epa.erb.App;
 import com.epa.erb.Constants;
+import com.epa.erb.goal.Goal;
+import com.epa.erb.project.Project;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -36,8 +42,14 @@ public class WorksheetContentController implements Initializable{
 	HBox fileOptionsHBox;
 
 	private Activity activity;
-	public WorksheetContentController(Activity activity) {
+	private Project project;
+	private Goal goal;
+	private App app;
+	public WorksheetContentController(Activity activity, Project project, Goal goal, App app) {
 		this.activity = activity;
+		this.project = project;
+		this.goal = goal;
+		this.app = app;
 	}
 	
 	private Constants constants = new Constants();
@@ -49,10 +61,34 @@ public class WorksheetContentController implements Initializable{
 		handleControls();
 		setActivityNameLabelText();
 		loadPDFToWebView(getPDFFileToLoad());
+		 webView.setContextMenuEnabled(false);
+	     createContextMenu(webView);
 	}
 	
 	private void handleControls() {
 
+	}
+	
+	private void createContextMenu(WebView webView) {
+		ContextMenu contextMenu = new ContextMenu();
+		MenuItem reload = new MenuItem("Reload");
+		reload.setOnAction(e -> reloadClicked());
+		contextMenu.getItems().addAll(reload);
+
+		webView.setOnMousePressed(e -> {
+			if (e.getButton() == MouseButton.SECONDARY) {
+				contextMenu.show(webView, e.getScreenX(), e.getScreenY());
+			} else {
+				contextMenu.hide();
+			}
+		});
+	}
+	
+	private void reloadClicked() {
+		File docxFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\" + activity.getFileName());
+		File pdfFile = getPDFFileToLoad();
+		app.convertDocxToPDF(docxFile, pdfFile.getPath());
+		webView.getEngine().reload();
 	}
 	
 	public void hideFileOptionsHBox() {
@@ -150,8 +186,8 @@ public class WorksheetContentController implements Initializable{
 	public void openActivity(Activity activity) {
 		if (activity != null) {
 			try {
-				File file = new File(
-						pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\" + activity.getFileName());
+				File file = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\" + activity.getFileName());
+				//File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\" + activity.getFileName());
 				if (file.exists() && Desktop.isDesktopSupported()) {
 					Desktop.getDesktop().open(file);
 				} else {
@@ -171,8 +207,11 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private File getPDFFileToLoad() {
-		String fileName = activity.getFileName().trim().replace(".docx", ".pdf");
-		File pdfFileToLoad = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
+		String activityPDFName = activity.getFileName().replace(".docx", ".pdf");
+		File pdfFileToLoad = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\" + activityPDFName);
+
+		//String fileName = activity.getFileName().trim().replace(".docx", ".pdf");
+		//File pdfFileToLoad = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
 		return pdfFileToLoad;
 	}
 	
@@ -197,6 +236,30 @@ public class WorksheetContentController implements Initializable{
 
 	public void setActivity(Activity activity) {
 		this.activity = activity;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
 	}
 
 	public WebView getWebView() {

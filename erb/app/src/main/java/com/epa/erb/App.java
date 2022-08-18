@@ -14,6 +14,12 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,9 +51,6 @@ public class App extends Application {
 		setScreenSizePreferences(getScreenScale());
 		readAndStoreData();
 		showERBToolMain();
-		File file = new File("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\InterviewQuestions.docx");
-		convertDocxToPDF(file);
-		converDocxToPDF2(file);
 	}
 	
 	private void showERBToolMain() {
@@ -222,30 +225,31 @@ public class App extends Application {
 		readAndStoreProjects();
 	}
 	
-	public void convertDocxToPDF(File docxFileToConvert) {
+	public void convertDocxToPDF(File docxFileToConvert, String pathToConvertedPDF) {
 		try {
 			Document documentToConvert = new Document(docxFileToConvert.getPath());
-			documentToConvert.save("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\output.pdf", SaveFormat.PDF);
+			documentToConvert.save(pathToConvertedPDF, SaveFormat.PDF);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 	
-	public void converDocxToPDF2(File docxFileToConvert) {
-//		try {
-//            InputStream templateInputStream = new FileInputStream(docxFileToConvert);
-//            WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(templateInputStream);
-//           // MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
-//
-//            String outputfilepath = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\output2.pdf";
-//            FileOutputStream os = new FileOutputStream(outputfilepath);
-//            Docx4J.toPDF(wordMLPackage,os);
-//            os.flush();
-//            os.close();
-//        } catch (Throwable e) {
-//
-//            e.printStackTrace();
-//        } 
+	public void copyFile(File source, File dest) {
+		InputStream is = null;
+		OutputStream os = null;
+		try {
+			is = new FileInputStream(source);
+			os = new FileOutputStream(dest);
+			byte[] buffer = new byte[1024];
+			int length;
+			while ((length = is.read(buffer)) > 0) {
+				os.write(buffer, 0, length);
+			}
+			is.close();
+			os.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void readAndStoreChapters() {
