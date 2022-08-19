@@ -133,6 +133,7 @@ public class SavePopupController implements Initializable {
 	
 	private void saveActivity(Project project, Goal goal, Activity activity) {
 		callToWriteActivityDataXML(project, goal, activity);
+		callToWriteActivityMetaXML(project, goal, activity);
 		callToWriteGoalDataXML(project, goal);
 		activity.setSaved(true);
 	}
@@ -143,6 +144,14 @@ public class SavePopupController implements Initializable {
 			xmlManager.writeGoalMetaXML(goalXMLFile, goal.getChapters());
 		} else {
 			logger.error("Cannot callToWriteGoalDataXML. goal is null.");
+		}
+	}
+	
+	public void callToWriteActivityMetaXML(Project project, Goal goal, Activity activity) {
+		if(activity != null) {
+			xmlManager.writeActivityMetaXML(constants.getActivityMetaXMLFile(project, goal, activity), activity);
+		} else {
+			logger.error("Cannot callToWriteActivityMetaXML. activity is null.");
 		}
 	}
 	

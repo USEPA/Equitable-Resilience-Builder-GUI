@@ -413,14 +413,12 @@ public class XMLManager {
 					chapterElement.setAttribute("stringName", chapter.getStringName());
 					chapterElement.setAttribute("description", chapter.getDescriptionName());
 					chapterElement.setAttribute("notes", chapter.getNotes());
-					chapterElement.setAttribute("pAudience", chapter.getPlanHashMap().get("pAudience"));
-					chapterElement.setAttribute("pGoals", chapter.getPlanHashMap().get("pGoals"));
-					chapterElement.setAttribute("pActivities", chapter.getPlanHashMap().get("pActivities"));
-					chapterElement.setAttribute("pNotes", chapter.getPlanHashMap().get("pNotes"));
-					chapterElement.setAttribute("rAudience", chapter.getReflectHashMap().get("rAudience"));
-					chapterElement.setAttribute("rGoals", chapter.getReflectHashMap().get("rGoals"));
-					chapterElement.setAttribute("rActivities", chapter.getReflectHashMap().get("rActivities"));
-					chapterElement.setAttribute("rNotes", chapter.getReflectHashMap().get("rNotes"));
+					for(String key: chapter.getPlanHashMap().keySet()) {
+						chapterElement.setAttribute(key, chapter.getPlanHashMap().get(key));
+					}
+					for(String key: chapter.getReflectHashMap().keySet()) {
+						chapterElement.setAttribute(key, chapter.getReflectHashMap().get(key));
+					}
 					Element assignedActivitiesElement = document.createElement("assignedActivities");
 					for (Activity activity : chapter.getAssignedActivities()) {
 						Element assignedActivityElement = document.createElement("assignedActivity");
@@ -448,7 +446,104 @@ public class XMLManager {
 		}
 	}
 	
-	public ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> parseActivityXML(File xmlFile) {
+	public void writeActivityMetaXML(File xmlFile, Activity activity) {
+		if (xmlFile != null && activity != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("activity");
+				document.appendChild(rootElement);
+				rootElement.setAttribute("activityID", activity.getActivityID());
+				rootElement.setAttribute("fileName", activity.getFileName());
+				for(String key: activity.getPlanHashMap().keySet()) {
+					rootElement.setAttribute(key, activity.getPlanHashMap().get(key));
+				}
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot writeActivityMetaXML. xmlFile or activity is null.");
+		}
+	}
+	
+	public HashMap<String, String> parseActivityMetaXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+
+				HashMap<String, String> planHashMap = new HashMap<String, String>();
+				NodeList activityNodeList = doc.getElementsByTagName("activity");
+				for (int i = 0; i < activityNodeList.getLength(); i++) {
+					Node activityNode = activityNodeList.item(i);
+					// Activity
+					if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element activityElement = (Element) activityNode;
+						planHashMap.put("pAudience", activityElement.getAttribute("pAudience"));
+						planHashMap.put("pGoals", activityElement.getAttribute("pGoals"));
+						planHashMap.put("pNotes", activityElement.getAttribute("pNotes"));
+						planHashMap.put("pActivities", activityElement.getAttribute("pActivities"));
+					}
+				}
+				return planHashMap;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
+	
+	public void writeNoteboardDataXML(File xmlFile, ArrayList<CategorySectionController> categories) {
+		if (xmlFile != null && categories != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("categories");
+				document.appendChild(rootElement);
+				for (CategorySectionController category : categories) {
+					Element categoryElement = document.createElement("category");
+					categoryElement.setAttribute("name", category.getCategoryName());
+					Element notesElement = document.createElement("notes");
+					for (PostItNoteController postItNoteController : category.getListOfPostItNoteControllers()) {
+						Element noteElement = document.createElement("note");
+						noteElement.setAttribute("content", postItNoteController.getPostItNoteText());
+						noteElement.setAttribute("color", postItNoteController.getPostItNoteColor());
+						noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
+						noteElement.setAttribute("position",
+								String.valueOf(postItNoteController.getPostItNoteIndex(category)));
+						notesElement.appendChild(noteElement);
+					}
+					categoryElement.appendChild(notesElement);
+					rootElement.appendChild(categoryElement);
+				}
+
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot writeNoteboardDataXML. xmlFile or categories is null.");
+		}
+	}
+	
+	public ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> parseNoteboardDataXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -496,45 +591,6 @@ public class XMLManager {
 			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
 		return null;
-	}
-	
-	public void writeNoteboardDataXML(File xmlFile, ArrayList<CategorySectionController> categories) {
-		if (xmlFile != null && categories != null) {
-			try {
-				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-				Document document = documentBuilder.newDocument();
-				Element rootElement = document.createElement("categories");
-				document.appendChild(rootElement);
-				for (CategorySectionController category : categories) {
-					Element categoryElement = document.createElement("category");
-					categoryElement.setAttribute("name", category.getCategoryName());
-					Element notesElement = document.createElement("notes");
-					for (PostItNoteController postItNoteController : category.getListOfPostItNoteControllers()) {
-						Element noteElement = document.createElement("note");
-						noteElement.setAttribute("content", postItNoteController.getPostItNoteText());
-						noteElement.setAttribute("color", postItNoteController.getPostItNoteColor());
-						noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
-						noteElement.setAttribute("position",
-								String.valueOf(postItNoteController.getPostItNoteIndex(category)));
-						notesElement.appendChild(noteElement);
-					}
-					categoryElement.appendChild(notesElement);
-					rootElement.appendChild(categoryElement);
-				}
-
-				TransformerFactory transformerFactory = TransformerFactory.newInstance();
-				Transformer transformer = transformerFactory.newTransformer();
-				DOMSource domSource = new DOMSource(document);
-
-				StreamResult file = new StreamResult(xmlFile);
-				transformer.transform(domSource, file);
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error("Cannot writeNoteboardDataXML. xmlFile or categories is null.");
-		}
 	}
 	
 	private Activity getActivity(String activityID, ArrayList<Activity> activities) {

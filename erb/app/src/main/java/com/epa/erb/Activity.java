@@ -1,6 +1,7 @@
 package com.epa.erb;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
@@ -52,8 +53,22 @@ public class Activity {
 	private WorksheetContentController worksheetContentController;
 	private NoteBoardContentController noteBoardContentController;
 		
+	private HashMap<String, String> planHashMap;
+	
 	public Activity() {
 		
+	}
+	
+	public void setHashMap() {
+		setPlanHashMapDefaults();
+	}
+	
+	private void setPlanHashMapDefaults() {
+		planHashMap = new HashMap<String, String>();
+		planHashMap.put("pAudience", "");
+		planHashMap.put("pGoals", "");
+		planHashMap.put("pActivities", "");
+		planHashMap.put("pNotes", "");
 	}
 	
 	public ArrayList<String> getSplitMaterials(){
@@ -244,6 +259,14 @@ public class Activity {
 
 	public void setNoteBoardContentController(NoteBoardContentController noteBoardContentController) {
 		this.noteBoardContentController = noteBoardContentController;
+	}
+
+	public HashMap<String, String> getPlanHashMap() {
+		return planHashMap;
+	}
+
+	public void setPlanHashMap(HashMap<String, String> planHashMap) {
+		this.planHashMap = planHashMap;
 	}
 
 }

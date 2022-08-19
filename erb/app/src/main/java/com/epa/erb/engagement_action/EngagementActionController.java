@@ -1,5 +1,6 @@
 package com.epa.erb.engagement_action;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Constants;
 import com.epa.erb.Progress;
+import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanFacilitatorModeController;
@@ -342,6 +344,7 @@ public class EngagementActionController implements Initializable{
 				}
 				return fxmlLoader.load();
 			} catch (Exception e) {
+				e.printStackTrace();
 				logger.error(e.getMessage());
 				return null;
 			}
@@ -600,6 +603,8 @@ public class EngagementActionController implements Initializable{
 		//--
 		currentSelectedActivity = null;
 		currentSelectedChapter = getChapterForNameInGoal(chapterTreeItem.getValue(), currentSelectedGoal);
+		
+		checkForUpdatedActivityMetaData(currentSelectedChapter);
 		//--
 		cleanContentVBox();
 		cleanAttributePanelContentVBox();
@@ -651,6 +656,18 @@ public class EngagementActionController implements Initializable{
 		highlightActivityDiagram(currentSelectedActivity);
 		setNavigationButtonsDisability(activityTreeItem, activityTreeItem.getParent());
 		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
+	}
+	
+	private void checkForUpdatedActivityMetaData(Chapter chapter) {
+		for(Activity activity: chapter.getAssignedActivities()) {
+			checkForUpdatedActivityMetaData(activity);
+		}
+	}
+	
+	private void checkForUpdatedActivityMetaData(Activity activity) {
+		XMLManager xmlManager = new XMLManager(app);
+		HashMap<String, String> planHashMap = xmlManager.parseActivityMetaXML(constants.getActivityMetaXMLFile(project, currentSelectedGoal, activity));
+		activity.setPlanHashMap(planHashMap);
 	}
 	
 	private void addContentToContentVBox(Pane root, boolean setDynamicDimensions) {

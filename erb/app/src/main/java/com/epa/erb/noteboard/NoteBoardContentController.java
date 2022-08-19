@@ -150,7 +150,7 @@ public class NoteBoardContentController implements Initializable{
 	private void generateExistingNoteBoardControls(Project project, Goal goal, Activity activity) {
 		try {
 			XMLManager xmlManager = new XMLManager(app);
-			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseActivityXML(constants.getActivityDataXMLFile(project, goal, activity));
+			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(constants.getActivityDataXMLFile(project, goal, activity));
 			if(listOfCategoryHashMaps != null) {
 			for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
 				HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);

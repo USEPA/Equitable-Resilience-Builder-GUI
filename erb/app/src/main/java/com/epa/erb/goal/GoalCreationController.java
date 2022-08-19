@@ -202,6 +202,7 @@ public class GoalCreationController implements Initializable{
 				xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
 				File activitesDirectory = createActivitiesDirectory(goalDirectory);
 				createActivityDirectory(activitesDirectory, goal);
+				writeActivityXML(activitesDirectory, goal);
 				copyActivityDocxToActivityDirectory(activitesDirectory, goal);
 				convertActivityDocxToPDF(activitesDirectory, goal);
 			}
@@ -242,6 +243,23 @@ public class GoalCreationController implements Initializable{
 			}
 		} else {
 			logger.error("Cannot createActivityDirectory. activitiesDirectory or goal is null.");
+		}
+	}
+	
+	private void writeActivityXML(File activitiesDirectory, Goal goal) {
+		if (activitiesDirectory != null && goal != null) {
+			for (Chapter chapter : goal.getChapters()) {
+				for (Activity activity : chapter.getAssignedActivities()) {
+					File activityDirectory = new File(activitiesDirectory.getPath() + "\\" + activity.getActivityID());
+					if (activityDirectory.exists()) {
+						File activityXMLFile = new File(activityDirectory.getPath() + "\\" + "Meta.xml");
+						activity.setHashMap();
+						xmlManager.writeActivityMetaXML(activityXMLFile, activity);
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot writeActivityXML. activitiesDirectory or goal is null.");
 		}
 	}
 	
@@ -295,8 +313,7 @@ public class GoalCreationController implements Initializable{
 	
 	private File createGoalDirectory(Goal goal) {
 		if (goal != null) {
-			File goalDirectory = new File(
-					pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName());
+			File goalDirectory = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName());
 			if (!goalDirectory.exists()) {
 				goalDirectory.mkdir();
 			}

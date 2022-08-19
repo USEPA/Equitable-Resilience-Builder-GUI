@@ -35,10 +35,17 @@ public class PlanTitledPaneController implements Initializable{
 	}
 	
 	private void loadExistingContent() {
-		audienceTextArea.setText(chapter.getPlanHashMap().get("pAudience"));
-		goalsTextArea.setText(chapter.getPlanHashMap().get("pGoals"));
-		activitiesTextArea.setText(chapter.getPlanHashMap().get("pActivities"));
-		notesTextArea.setText(chapter.getPlanHashMap().get("pNotes"));
+		if (activity != null) {
+			audienceTextArea.setText(activity.getPlanHashMap().get("pAudience"));
+			goalsTextArea.setText(activity.getPlanHashMap().get("pGoals"));
+			activitiesTextArea.setText(activity.getPlanHashMap().get("pActivities"));
+			notesTextArea.setText(activity.getPlanHashMap().get("pNotes"));
+		} else {
+			audienceTextArea.setText(chapter.getPlanHashMap().get("pAudience"));
+			goalsTextArea.setText(chapter.getPlanHashMap().get("pGoals"));
+			activitiesTextArea.setText(chapter.getPlanHashMap().get("pActivities"));
+			notesTextArea.setText(chapter.getPlanHashMap().get("pNotes"));
+		}
 	}
 	
 	private void handleControls() {
@@ -52,35 +59,55 @@ public class PlanTitledPaneController implements Initializable{
 	private void audienceTextAreaTextChanged(String newValue) {
 		String origValue = chapter.getPlanHashMap().get("pAudience");
 		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
-			chapter.getPlanHashMap().put("pAudience", newValue);
-			chapter.setSaved(false);
+			if (activity != null) {
+				activity.getPlanHashMap().put("pAudience", newValue);
+				activity.setSaved(false);
+			} else {
+				chapter.getPlanHashMap().put("pAudience", newValue);
+				chapter.setSaved(false);
+			}
 		}
 	}
 
 	private void goalsTextAreaTextChanged(String newValue) {
 		String origValue = chapter.getPlanHashMap().get("pGoals");
 		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
-			chapter.getPlanHashMap().put("pGoals", newValue);
-			chapter.setSaved(false);
+			if (activity != null) {
+				activity.getPlanHashMap().put("pGoals", newValue);
+				activity.setSaved(false);
+			} else {
+				chapter.getPlanHashMap().put("pGoals", newValue);
+				chapter.setSaved(false);
+			}
 		}
 	}
 	
 	private void activitiesTextAreaTextChanged(String newValue) {
 		String origValue = chapter.getPlanHashMap().get("pActivities");
 		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
-			chapter.getPlanHashMap().put("pActivities", newValue);
-			chapter.setSaved(false);
+			if (activity != null) {
+				activity.getPlanHashMap().put("pActivities", newValue);
+				activity.setSaved(false);
+			} else {
+				chapter.getPlanHashMap().put("pActivities", newValue);
+				chapter.setSaved(false);
+			}
 		}
 	}
 	
 	private void notesTextAreaTextChanged(String newValue) {
 		String origValue = chapter.getPlanHashMap().get("pNotes");
 		if (origValue == null || (origValue != null && !origValue.trim().contentEquals(newValue))) {
-			chapter.getPlanHashMap().put("pNotes", newValue);
-			chapter.setSaved(false);
+			if (activity != null) {
+				activity.getPlanHashMap().put("pNotes", newValue);
+				activity.setSaved(false);
+			} else {
+				chapter.getPlanHashMap().put("pNotes", newValue);
+				chapter.setSaved(false);
+			}
 		}
 	}
-	
+
 	public void expand() {
 		titledPane.setExpanded(true);
 	}
