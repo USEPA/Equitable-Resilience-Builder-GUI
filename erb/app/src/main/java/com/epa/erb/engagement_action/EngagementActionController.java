@@ -1,6 +1,5 @@
 package com.epa.erb.engagement_action;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
