@@ -727,6 +727,9 @@ public class EngagementActionController implements Initializable{
 			TreeItem<String> planTreeItem = new TreeItem<String>("Plan");
 			chapterTreeItem.getChildren().add(planTreeItem);
 			treeItemActivityIdTreeMap.put(planTreeItem, "25");
+			
+			TreeItem<String> planTreeItemChild1 = new TreeItem<String>("Resource 1");
+			planTreeItem.getChildren().add(planTreeItemChild1);
 		} else {
 			logger.error("Cannot addPlanTreeItem. chapterTreeItem is null.");
 		}
