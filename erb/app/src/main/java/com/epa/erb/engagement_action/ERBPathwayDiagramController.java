@@ -8,8 +8,9 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
-import com.epa.erb.Constants;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.utility.Constants;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

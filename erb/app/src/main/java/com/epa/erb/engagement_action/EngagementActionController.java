@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.Constants;
 import com.epa.erb.Progress;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
@@ -22,6 +21,8 @@ import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
+import com.epa.erb.utility.Constants;
+import com.epa.erb.utility.FileHandler;
 import com.epa.erb.worksheet.WorksheetContentController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -151,6 +152,7 @@ public class EngagementActionController implements Initializable{
 	private Chapter currentSelectedChapter = null; 
 	private Activity currentSelectedActivity = null;
 	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	private HashMap<TreeItem<String>, String> treeItemActivityIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity GUID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //holds all of the attribute panels
@@ -666,7 +668,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void checkForUpdatedActivityMetaData(Activity activity) {
 		XMLManager xmlManager = new XMLManager(app);
-		HashMap<String, String> planHashMap = xmlManager.parseActivityMetaXML(constants.getActivityMetaXMLFile(project, currentSelectedGoal, activity));
+		HashMap<String, String> planHashMap = xmlManager.parseActivityMetaXML(fileHandler.getActivityMetaXMLFile(project, currentSelectedGoal, activity));
 		activity.setPlanHashMap(planHashMap);
 	}
 	

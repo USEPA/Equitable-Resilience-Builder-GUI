@@ -3,7 +3,8 @@ package com.epa.erb.chapter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.Activity;
-import com.epa.erb.Constants;
+import com.epa.erb.utility.Constants;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

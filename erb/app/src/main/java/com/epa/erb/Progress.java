@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
+import com.epa.erb.utility.Constants;
+import com.epa.erb.utility.FileHandler;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -16,6 +18,7 @@ import javafx.scene.layout.VBox;
 public class Progress {
 	
 	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(Progress.class);
 	
 	public Progress() {
@@ -113,7 +116,7 @@ public class Progress {
 		if (project != null) {
 			double totalPercent = 0;
 			for (Goal goal : project.getProjectGoals()) {
-				File goalMetaXMLFile = constants.getGoalMetaXMLFile(project, goal);
+				File goalMetaXMLFile = fileHandler.getGoalMetaXMLFile(project, goal);
 				if (goalMetaXMLFile != null && goalMetaXMLFile.exists()) {
 					ArrayList<Chapter> chapters = goal.getChapters();
 					int goalCompletePercent = getGoalPercentDone(chapters);

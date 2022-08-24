@@ -8,12 +8,12 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
-import com.epa.erb.Constants;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.goal.GoalContainerController;
 import com.epa.erb.goal.GoalCreationController;
+import com.epa.erb.utility.FileHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,9 +42,8 @@ public class ProjectSelectionController implements Initializable{
 		this.mode = mode;
 	}
 	
-	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
-	private String pathToERBProjectsFolder = constants.getPathToERBProjectsFolder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -216,8 +215,8 @@ public class ProjectSelectionController implements Initializable{
 
 	private void createNewProjectDirectory(Project project) {
 		if (project != null) {
-			File newProjectDirectory = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName());
-			if (!newProjectDirectory.exists()) {
+			File newProjectDirectory = fileHandler.getProjectDirectory(project);
+			if (newProjectDirectory!=null && !newProjectDirectory.exists()) {
 				newProjectDirectory.mkdir();
 			}
 		} else {

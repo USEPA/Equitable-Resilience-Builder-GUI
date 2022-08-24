@@ -159,11 +159,6 @@
                               <Insets left="5.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="BOTTOM_CENTER">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#continueButtonAction" opacity="0.0" text="Continue" />
-                           </children>
-                        </VBox>
                      </children>
                   </HBox>
                </children>

@@ -14,11 +14,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,7 +22,8 @@ import com.epa.erb.engagement_action.SaveHandler;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
-import com.aspose.words.*;
+import com.epa.erb.utility.Constants;
+import com.epa.erb.utility.FileHandler;
 
 public class App extends Application {
 
@@ -38,12 +34,12 @@ public class App extends Application {
 	private ArrayList<Chapter> chapters;
 	private ArrayList<Activity> activities;
 	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	private ArrayList<ActivityType> activityTypes;
 	private ArrayList<GoalCategory> goalCategories;
 	private XMLManager xmlManager = new XMLManager(this);
 	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
-	private String pathToERBFolder = constants.getPathToERBFolder();
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -52,15 +48,14 @@ public class App extends Application {
 		showERBToolMain();
 	}
 	
-	private void showERBToolMain() {
-		Parent erbContainerRoot = loadERBContainer();
-		//launchERBLanding(false); //Original tool
-		launchERBLandingNew2();
-		showERBContainer(erbContainerRoot);
-	}
-
 	public static void main(String[] args) {
 		Application.launch(args);
+	}
+	
+	private void showERBToolMain() {
+		Parent erbContainerRoot = loadERBContainer();
+		launchERBLandingNew2();
+		showERBContainer(erbContainerRoot);
 	}
 	
 	private int getScreenScale() {
@@ -99,38 +94,38 @@ public class App extends Application {
 		}
 	}
 	
-	public void launchERBLandingNew1() {
-		Parent erbLandingNew1Root = loadERBLandingNew1();
-		loadNodeToERBContainer(erbLandingNew1Root);
-	}
-	
-	private Parent loadERBLandingNew1() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLandingNew1.fxml"));
-			ERBLandingNew1Controller erbLandingNew1Controller = new ERBLandingNew1Controller(this);
-			fxmlLoader.setController(erbLandingNew1Controller);
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public void launchERBLanding(boolean updateProjects) {
-		Parent erbLandingRoot = loadERBLanding(updateProjects);
-		loadNodeToERBContainer(erbLandingRoot);
-	}
-	
-	private Parent loadERBLanding(boolean updateProjects) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
-			ERBLandingController erbLandingController = new ERBLandingController(this, updateProjects);
-			fxmlLoader.setController(erbLandingController);
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return null;
-		}
-	}
+//	public void launchERBLandingNew1() {
+//		Parent erbLandingNew1Root = loadERBLandingNew1();
+//		loadNodeToERBContainer(erbLandingNew1Root);
+//	}
+//	
+//	private Parent loadERBLandingNew1() {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLandingNew1.fxml"));
+//			ERBLandingNew1Controller erbLandingNew1Controller = new ERBLandingNew1Controller(this);
+//			fxmlLoader.setController(erbLandingNew1Controller);
+//			return fxmlLoader.load();
+//		} catch (Exception e) {
+//			return null;
+//		}
+//	}
+//
+//	public void launchERBLanding(boolean updateProjects) {
+//		Parent erbLandingRoot = loadERBLanding(updateProjects);
+//		loadNodeToERBContainer(erbLandingRoot);
+//	}
+//	
+//	private Parent loadERBLanding(boolean updateProjects) {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
+//			ERBLandingController erbLandingController = new ERBLandingController(this, updateProjects);
+//			fxmlLoader.setController(erbLandingController);
+//			return fxmlLoader.load();
+//		} catch (Exception e) {
+//			logger.error(e.getMessage());
+//			return null;
+//		}
+//	}
 	
 	private Parent loadERBContainer() {
 		try {
@@ -169,40 +164,28 @@ public class App extends Application {
 	}
 	
 	private void deleteEmptyProjectDirectories() {
-		File erbProjectDir = new File(constants.getPathToERBProjectsFolder());
-		if (erbProjectDir.exists()) {
-			File[] projectDirectories = erbProjectDir.listFiles();
+		File projectsDirectory = fileHandler.getProjectsDirectory();
+		if (projectsDirectory != null && projectsDirectory.exists()) {
+			File[] projectDirectories = projectsDirectory.listFiles();
 			for (File projDir : projectDirectories) {
 				if (projDir.isDirectory()) {
-					File projectMetaFile = new File(projDir + "\\Meta.xml");
-					if (!projectMetaFile.exists()) {
-						deleteDirectory(projDir);
+					File projectMetaFile = fileHandler.getProjectMetaXMLFile(selectedProject);
+					if (projectMetaFile == null || !projectMetaFile.exists()) {
+						fileHandler.deleteDirectory(projDir);
  					}
 				}
 			}
 		}
 	}
 	
-	private void deleteDirectory(File directory) {
-		File[] allContents = directory.listFiles();
-		if (allContents != null) {
-			for (File file : allContents) {
-				deleteDirectory(file);
-			}
-			directory.delete();
-		} else {
-			directory.delete();
-		}
-	}
-	
 	private boolean areEmptyProjects() {
-		File erbProjectDir = new File(constants.getPathToERBProjectsFolder());
-		if (erbProjectDir.exists()) {
-			File[] projectDirectories = erbProjectDir.listFiles();
+		File projectsDirectory = fileHandler.getProjectsDirectory();
+		if (projectsDirectory != null && projectsDirectory.exists()) {
+			File[] projectDirectories = projectsDirectory.listFiles();
 			for (File projDir : projectDirectories) {
 				if (projDir.isDirectory()) {
-					File projectMetaFile = new File(projDir + "\\Meta.xml");
-					if (!projectMetaFile.exists()) {
+					File projectMetaFile = fileHandler.getProjectMetaXMLFile(selectedProject);
+					if (projectMetaFile == null || !projectMetaFile.exists()) {
 						return true;
 					}
 				}
@@ -224,56 +207,29 @@ public class App extends Application {
 		readAndStoreProjects();
 	}
 	
-	public void convertDocxToPDF(File docxFileToConvert, String pathToConvertedPDF) {
-		try {
-			Document documentToConvert = new Document(docxFileToConvert.getPath());
-			documentToConvert.save(pathToConvertedPDF, SaveFormat.PDF);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-	}
-	
-	public void copyFile(File source, File dest) {
-		InputStream is = null;
-		OutputStream os = null;
-		try {
-			is = new FileInputStream(source);
-			os = new FileOutputStream(dest);
-			byte[] buffer = new byte[1024];
-			int length;
-			while ((length = is.read(buffer)) > 0) {
-				os.write(buffer, 0, length);
-			}
-			is.close();
-			os.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	private void readAndStoreChapters() {
-		File chaptersFile = getChaptersFileToParse();
-		if(chaptersFile != null) chapters = xmlManager.parseChaptersXML(chaptersFile);
+		File chaptersFile = fileHandler.getChaptersFileToParse();
+		chapters = xmlManager.parseChaptersXML(chaptersFile);
 	}
 	
 	private void readAndStoreActivityTypes() {
-		File activityTypesFile = getActivityTypesFileToParse();
-		if(activityTypesFile != null) activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
+		File activityTypesFile = fileHandler.getActivityTypesFileToParse();
+		activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
 	}
 	
 	private void readAndStoreAvailableActivities() {
-		File availableActivitiesFile = getAvailableActivitiesFileToParse();
-		if(availableActivitiesFile != null) activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
+		File availableActivitiesFile = fileHandler.getAvailableActivitiesFileToParse();
+		activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
 	}
 	
 	private void readAndStoreGoalCategories() {
-		File goalCategoriesFile = getGoalCategoriesFileToParse();
-		if(goalCategoriesFile != null) goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
+		File goalCategoriesFile = fileHandler.getGoalCategoriesFileToParse();
+		goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
 	}
 	
 	private void readAndStoreProjects() {
-		File erbProjectDirectory = getERBProjectsDirectory();
-		if(erbProjectDirectory != null) projects = xmlManager.parseAllProjects(erbProjectDirectory, activities);
+		File projectsDirectory = fileHandler.getProjectsDirectory();
+		projects = xmlManager.parseAllProjects(projectsDirectory, activities);
 	}
 	
 	public void loadNodeToERBContainer(Node node) {
@@ -311,56 +267,6 @@ public class App extends Application {
 		logger.debug("Cannot get activity. Activity returned is null");
 		return null;
 
-	}
-	
-	private File getChaptersFileToParse() {
-		File chaptersFile = new File(pathToERBFolder + "\\Static_Data\\Chapters\\Chapters.xml");
-		if(chaptersFile.exists()) {
-			return chaptersFile;
-		} else {
-			logger.debug(chaptersFile.getPath() + " does not exist. ChaptersFile returned is null");
-			return null;
-		}
-	}
-	
-	private File getActivityTypesFileToParse() {
-		File activityTypesFile = new File(pathToERBFolder + "\\Static_Data\\Activities\\Activity_Types.xml");
-		if(activityTypesFile.exists()) {
-			return activityTypesFile;
-		} else {
-			logger.debug(activityTypesFile.getPath() + " does not exist. ActivityTypesFile returned is null.");
-			return null;
-		}
-	}
-	
-	private File getAvailableActivitiesFileToParse() {
-		File availableActivitiesFile = new File(pathToERBFolder + "\\Static_Data\\Activities\\Available_Activities.xml");
-		if(availableActivitiesFile.exists()) {
-			return availableActivitiesFile;
-		} else {
-			logger.debug(availableActivitiesFile.getPath() + " does not exist. AvailableActivitiesFile returned is null.");
-			return null;
-		}
-	}
-	
-	private File getGoalCategoriesFileToParse() {
-		File goalCategoriesFile = new File(pathToERBFolder + "\\Static_Data\\Goals\\Goal_Categories.xml");
-		if(goalCategoriesFile.exists()) {
-			return goalCategoriesFile;
-		} else {
-			logger.debug(goalCategoriesFile.getPath() + " does not exist. GoalCategoriesFile returned is null.");
-			return null;
-		}
-	}
-	
-	private File getERBProjectsDirectory() {
-		File erbProjectDirectory = new File(pathToERBFolder + "\\Projects");
-		if(erbProjectDirectory.exists()) {
-			return erbProjectDirectory;
-		} else {
-			logger.debug(erbProjectDirectory.getPath() + " does not exist. ERBProjectDirectory returned is null.");
-			return null;
-		}
 	}
 
 	public int getPrefWidth() {

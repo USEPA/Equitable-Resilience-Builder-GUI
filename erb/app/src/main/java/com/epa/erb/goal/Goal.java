@@ -6,10 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.project.Project;
+import com.epa.erb.utility.FileHandler;
 
 public class Goal {
 	
@@ -26,12 +26,12 @@ public class Goal {
 		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
 	}
 	
-	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	private Logger logger = LogManager.getLogger(Goal.class);
 	
 	public void setChapters(ArrayList<Activity> activities, Project project) {
-		File goalXMLFile = constants.getGoalMetaXMLFile(project, this);
+		File goalXMLFile = fileHandler.getGoalMetaXMLFile(project, this);
 		if (goalXMLFile != null && goalXMLFile.exists()) {
 			XMLManager xmlManager = new XMLManager(app);
 			chapters = xmlManager.parseGoalXML(goalXMLFile, activities);

@@ -9,10 +9,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
+import com.epa.erb.utility.Constants;
+import com.epa.erb.utility.FileHandler;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -69,6 +71,7 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
 	private ArrayList<PostItNoteController> postItNoteControllers = new ArrayList<PostItNoteController>();
 	private ArrayList<CategorySectionController> categorySectionControllers = new ArrayList<CategorySectionController>();
@@ -150,7 +153,7 @@ public class NoteBoardContentController implements Initializable{
 	private void generateExistingNoteBoardControls(Project project, Goal goal, Activity activity) {
 		try {
 			XMLManager xmlManager = new XMLManager(app);
-			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(constants.getActivityDataXMLFile(project, goal, activity));
+			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(fileHandler.getActivityDataXMLFile(project, goal, activity));
 			if(listOfCategoryHashMaps != null) {
 			for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
 				HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
@@ -178,7 +181,7 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private boolean noteBoardDataExists(Project project, Goal goal, Activity activity) {
-		File activityDataFile = constants.getActivityDataXMLFile(project, goal, activity);
+		File activityDataFile = fileHandler.getActivityDataXMLFile(project, goal, activity);
 		if(activityDataFile != null && activityDataFile.exists()) {
 			return true;
 		}

@@ -8,13 +8,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.Constants;
 import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
+import com.epa.erb.utility.FileHandler;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -50,7 +50,7 @@ public class SavePopupController implements Initializable {
 		this.saveHandler = saveHandler;
 	}
 	
-	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	private XMLManager xmlManager = new XMLManager(app);
 	private Logger logger = LogManager.getLogger(SavePopupController.class);
 
@@ -140,7 +140,7 @@ public class SavePopupController implements Initializable {
 	
 	public void callToWriteGoalDataXML(Project project, Goal goal) {
 		if (goal != null) {
-			File goalXMLFile = constants.getGoalMetaXMLFile(project, goal);
+			File goalXMLFile = fileHandler.getGoalMetaXMLFile(project, goal);
 			xmlManager.writeGoalMetaXML(goalXMLFile, goal.getChapters());
 		} else {
 			logger.error("Cannot callToWriteGoalDataXML. goal is null.");
@@ -149,7 +149,7 @@ public class SavePopupController implements Initializable {
 	
 	public void callToWriteActivityMetaXML(Project project, Goal goal, Activity activity) {
 		if(activity != null) {
-			xmlManager.writeActivityMetaXML(constants.getActivityMetaXMLFile(project, goal, activity), activity);
+			xmlManager.writeActivityMetaXML(fileHandler.getActivityMetaXMLFile(project, goal, activity), activity);
 		} else {
 			logger.error("Cannot callToWriteActivityMetaXML. activity is null.");
 		}
@@ -171,7 +171,7 @@ public class SavePopupController implements Initializable {
 			if (noteBoardContentController != null) {
 				noteBoardContentController.setCategoryPostIts();
 				ArrayList<CategorySectionController> categories = noteBoardContentController.getCategorySectionControllers();
-				xmlManager.writeNoteboardDataXML(constants.getActivityDataXMLFile(project, goal, activity), categories);
+				xmlManager.writeNoteboardDataXML(fileHandler.getActivityDataXMLFile(project, goal, activity), categories);
 			}
 		} else {
 			logger.error("Cannot callToWriteNoteboardDataXML. activity is null.");

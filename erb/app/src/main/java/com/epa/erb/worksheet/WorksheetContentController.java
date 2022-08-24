@@ -12,9 +12,9 @@ import org.apache.logging.log4j.Logger;
 import javafx.beans.value.ChangeListener;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.Constants;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
+import com.epa.erb.utility.FileHandler;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,17 +52,16 @@ public class WorksheetContentController implements Initializable{
 		this.app = app;
 	}
 	
-	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(WorksheetContentController.class);
-	private String pathToERBStaticDataFolder = constants.getPathToERBStaticDataFolder();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		setActivityNameLabelText();
-		loadPDFToWebView(getPDFFileToLoad());
-		 webView.setContextMenuEnabled(false);
-	     createContextMenu(webView);
+		loadPDFToWebView(fileHandler.getActivityPDFDoc(project, goal, activity));
+		webView.setContextMenuEnabled(false);
+	    createContextMenu(webView);
 	}
 	
 	private void handleControls() {
@@ -85,9 +84,9 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private void reloadClicked() {
-		File docxFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\" + activity.getFileName());
-		File pdfFile = getPDFFileToLoad();
-		app.convertDocxToPDF(docxFile, pdfFile.getPath());
+		File docxFile = fileHandler.getActivityWordDoc(project, goal, activity);
+		File pdfFile = fileHandler.getActivityPDFDoc(project, goal, activity);
+		fileHandler.convertDocxToPDF(docxFile, pdfFile.getPath());
 		webView.getEngine().reload();
 	}
 	
@@ -107,7 +106,7 @@ public class WorksheetContentController implements Initializable{
 	}
 
 	private void loadPDFToWebView(File pdfFileToLoad) {
-		if (pdfFileToLoad != null) {
+		if (pdfFileToLoad != null && pdfFileToLoad.exists()) {
 			try {
 				WebEngine webEngine = webView.getEngine();
 				String url = getClass().getResource("/pdfjs-2.8.335-legacy-dist/web/viewer.html").toExternalForm();
@@ -186,9 +185,8 @@ public class WorksheetContentController implements Initializable{
 	public void openActivity(Activity activity) {
 		if (activity != null) {
 			try {
-				File file = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\" + activity.getFileName());
-				//File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\" + activity.getFileName());
-				if (file.exists() && Desktop.isDesktopSupported()) {
+				File file = fileHandler.getActivityWordDoc(project, goal, activity);
+				if (file != null && file.exists() && Desktop.isDesktopSupported()) {
 					Desktop.getDesktop().open(file);
 				} else {
 					logger.error(file.getPath() + " either does not exist or desktop is not supported.");
@@ -206,19 +204,9 @@ public class WorksheetContentController implements Initializable{
 		printActivity(printService, fileToPrint);
 	}
 	
-	private File getPDFFileToLoad() {
-		String activityPDFName = activity.getFileName().replace(".docx", ".pdf");
-		File pdfFileToLoad = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\" + activityPDFName);
-
-		//String fileName = activity.getFileName().trim().replace(".docx", ".pdf");
-		//File pdfFileToLoad = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
-		return pdfFileToLoad;
-	}
-	
 	private File getFileToPrint() {
-		String fileName = activity.getFileName().replace(".docx", ".pdf");
-		File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\" + fileName);
-		if(file.exists()) {
+		File file = fileHandler.getActivityPDFDoc(project, goal, activity);
+		if(file != null && file.exists()) {
 			return file;
 		} else {
 			logger.debug("File to print returned is null");

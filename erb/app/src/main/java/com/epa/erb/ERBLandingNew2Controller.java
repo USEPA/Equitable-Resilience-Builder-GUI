@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.epa.erb.project.ProjectSelectionController;
+import com.epa.erb.utility.Constants;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -83,11 +84,6 @@ public class ERBLandingNew2Controller implements Initializable{
 		} catch (Exception e) {
 			return null;
 		}
-	}
-	
-	@FXML
-	public void continueButtonAction() {
-		app.launchERBLanding(false);
 	}
 
 	public App getApp() {

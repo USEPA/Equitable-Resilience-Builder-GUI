@@ -1,19 +1,11 @@
-package com.epa.erb;
-
-import java.io.File;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import com.epa.erb.goal.Goal;
-import com.epa.erb.project.Project;
+package com.epa.erb.utility;
 
 public class Constants {
 	
 	public Constants() {
 		
 	}
-	
-	private Logger logger = LogManager.getLogger(Constants.class);
-	
+		
 	//Scaling Sizes
 	private int prefHeightForScale100 = 950;
 	private int prefWidthForScale100 = 1350;
@@ -167,44 +159,5 @@ public class Constants {
 	public String getPathToERBStaticDataFolder() {
 		return pathToERBStaticDataFolder;
 	}
-	
-	public File getProjectMetaXMLFile(Project project) {
-		if(project != null) {
-			File projectXMLMetaXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Meta.xml");
-			return projectXMLMetaXMLFile;
-		} else {
-			logger.error("Cannot getProjectMetaXMLFile. project is null.");
-			return null;
-		}
-	}
-	
-	public File getGoalMetaXMLFile(Project project, Goal goal) {
-		if(project != null && goal != null) {
-			File goalMetaXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Meta.xml");
-			return goalMetaXMLFile;
-		} else {
-			logger.error("Cannot getGoalMetaXMLFile. project or goal is null.");
-			return null;
-		}
-	}
-	
-	public File getActivityDataXMLFile(Project project, Goal goal, Activity activity) {
-		if(project != null && goal != null && activity != null) {
-			File activityDataXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
-			return activityDataXMLFile;
-		} else {
-			logger.error("Cannot getActivityDataXMLFile. project or goal or activity is null.");
-			return null;
-		}
-	}
-	
-	public File getActivityMetaXMLFile(Project project, Goal goal, Activity activity) {
-		if(project != null && goal != null && activity != null) {
-			File activityDataXMLFile = new File(pathToERBProjectsFolder + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\Meta.xml");
-			return activityDataXMLFile;
-		} else {
-			logger.error("Cannot getActivityMetaXMLFile. project or goal or activity is null.");
-			return null;
-		}
-	}
+
 }
