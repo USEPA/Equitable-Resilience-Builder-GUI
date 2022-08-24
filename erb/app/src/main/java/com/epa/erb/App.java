@@ -94,39 +94,6 @@ public class App extends Application {
 		}
 	}
 	
-//	public void launchERBLandingNew1() {
-//		Parent erbLandingNew1Root = loadERBLandingNew1();
-//		loadNodeToERBContainer(erbLandingNew1Root);
-//	}
-//	
-//	private Parent loadERBLandingNew1() {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLandingNew1.fxml"));
-//			ERBLandingNew1Controller erbLandingNew1Controller = new ERBLandingNew1Controller(this);
-//			fxmlLoader.setController(erbLandingNew1Controller);
-//			return fxmlLoader.load();
-//		} catch (Exception e) {
-//			return null;
-//		}
-//	}
-//
-//	public void launchERBLanding(boolean updateProjects) {
-//		Parent erbLandingRoot = loadERBLanding(updateProjects);
-//		loadNodeToERBContainer(erbLandingRoot);
-//	}
-//	
-//	private Parent loadERBLanding(boolean updateProjects) {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
-//			ERBLandingController erbLandingController = new ERBLandingController(this, updateProjects);
-//			fxmlLoader.setController(erbLandingController);
-//			return fxmlLoader.load();
-//		} catch (Exception e) {
-//			logger.error(e.getMessage());
-//			return null;
-//		}
-//	}
-	
 	private Parent loadERBContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBContainer.fxml"));
