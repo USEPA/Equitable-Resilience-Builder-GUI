@@ -49,7 +49,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="planListView" minHeight="50.0" style="-fx-background-color: transparent;" VBox.vgrow="NEVER" />
+                  <ListView fx:id="planListView" maxHeight="30.0" minHeight="30.0" style="-fx-background-color: transparent;" VBox.vgrow="NEVER" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -75,7 +75,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="reflectListView" minHeight="50.0" style="-fx-background-color: transparent;" VBox.vgrow="NEVER" />
+                  <ListView fx:id="reflectListView" maxHeight="30.0" minHeight="30.0" style="-fx-background-color: transparent;" VBox.vgrow="NEVER" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

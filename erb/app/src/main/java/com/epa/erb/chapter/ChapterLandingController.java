@@ -118,6 +118,8 @@ public class ChapterLandingController implements Initializable {
 	public void fillActivitiesListView(ArrayList<Activity> listOfActivities) {
 		if (listOfActivities != null) {
 			cleanActivitiesListView();
+			activitiesListView.setMinHeight(listOfActivities.size() * 27.5);
+			activitiesListView.setMaxHeight(listOfActivities.size() * 27.5);
 			for (Activity activity : listOfActivities) {
 				activitiesListView.getItems().add(activity);
 			}
