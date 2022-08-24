@@ -17,7 +17,7 @@
 }
 
 .text-area .content {
-    -fx-padding: 10px;
+    -fx-padding: 5px;
     -fx-text-fill: gray;
     -fx-highlight-fill: #7ecfff;
 }
