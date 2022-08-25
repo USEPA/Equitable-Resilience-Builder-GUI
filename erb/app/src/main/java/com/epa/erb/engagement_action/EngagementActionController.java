@@ -15,7 +15,6 @@ import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
 import com.epa.erb.chapter.ReflectFacilitatorModeController;
 import com.epa.erb.chapter.ReflectGoalModeController;
-import com.epa.erb.form_activities.Controller14;
 import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
@@ -830,13 +829,8 @@ public class EngagementActionController implements Initializable{
 				if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
-						if (activity.getActivityID().contentEquals("14")) {
-							Pane root = loadController14Content(activity);
-							addContentToContentVBox(root, false);
-						} else {
-							Pane root = loadWorksheetContentController(activity);
-							addContentToContentVBox(root, false);
-						}
+						Pane root = loadWorksheetContentController(activity);
+						addContentToContentVBox(root, false);
 					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
 						removeAttributeScrollPane();
 						Pane root = loadPlanRoot(activity);
@@ -854,24 +848,6 @@ public class EngagementActionController implements Initializable{
 			}
 		} else {
 			logger.error("Cannot loadActivityContent. activity is null.");
-		}
-	}
-	
-	private VBox loadController14Content(Activity activity) {
-		if (activity != null) {
-			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/14.fxml"));
-				Controller14 controller14 = new Controller14(activity);
-				fxmlLoader.setController(controller14);
-				VBox root = fxmlLoader.load();
-				return root;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				return null;
-			}
-		} else {
-			logger.error("Cannot loadController14Content. activity is null.");
-			return null;
 		}
 	}
 	
