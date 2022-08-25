@@ -7,6 +7,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.docx4j.Docx4J;
+import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
+import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
+
 import com.aspose.words.Document;
 import com.aspose.words.SaveFormat;
 import com.epa.erb.Activity;
@@ -34,6 +38,22 @@ public class FileHandler {
 		} else {
 			logger.error("Cannot deleteDirectory. directory = null.");
 		}
+	}
+	
+	public void convertDocxToPDF2(File docxFileToConvert, String pathToConvertedPDF) {
+	 try {
+         InputStream templateInputStream = new FileInputStream(docxFileToConvert);
+         WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(templateInputStream);
+         MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
+
+         FileOutputStream os = new FileOutputStream(pathToConvertedPDF);
+         Docx4J.toPDF(wordMLPackage,os);
+         os.flush();
+         os.close();
+     } catch (Throwable e) {
+
+         e.printStackTrace();
+     } 
 	}
 	
 	public void convertDocxToPDF(File docxFileToConvert, String pathToConvertedPDF) {

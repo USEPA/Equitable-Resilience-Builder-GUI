@@ -86,7 +86,7 @@ public class WorksheetContentController implements Initializable{
 	private void reloadClicked() {
 		File docxFile = fileHandler.getActivityWordDoc(project, goal, activity);
 		File pdfFile = fileHandler.getActivityPDFDoc(project, goal, activity);
-		fileHandler.convertDocxToPDF(docxFile, pdfFile.getPath());
+		fileHandler.convertDocxToPDF2(docxFile, pdfFile.getPath());
 		webView.getEngine().reload();
 	}
 	
