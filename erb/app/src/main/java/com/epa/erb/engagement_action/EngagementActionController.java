@@ -642,7 +642,7 @@ public class EngagementActionController implements Initializable{
 		cleanAttributePanelContentVBox();
 		cleanListOfAttributePanelControllers();
 		//--
-		if(currentSelectedActivity.getActivityID().contentEquals("25") || currentSelectedActivity.getActivityID().contentEquals("26")) {
+		if(currentSelectedActivity.getShortName().contentEquals("Plan") || currentSelectedActivity.getShortName().contentEquals("Reflect")) {
 			removeStatusHBox();
 		} else {
 			if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
@@ -726,7 +726,8 @@ public class EngagementActionController implements Initializable{
 		if (chapterTreeItem != null) {
 			TreeItem<String> planTreeItem = new TreeItem<String>("Plan");
 			chapterTreeItem.getChildren().add(planTreeItem);
-			treeItemActivityIdTreeMap.put(planTreeItem, "25");
+			String activityID = app.getActivityIDByName("Plan");
+			treeItemActivityIdTreeMap.put(planTreeItem, activityID);
 			
 			TreeItem<String> planTreeItemChild1 = new TreeItem<String>("Resource 1");
 			planTreeItem.getChildren().add(planTreeItemChild1);
@@ -739,7 +740,8 @@ public class EngagementActionController implements Initializable{
 		if (chapterTreeItem != null) {
 			TreeItem<String> reflectTreeItem = new TreeItem<String>("Reflect");
 			chapterTreeItem.getChildren().add(reflectTreeItem);
-			treeItemActivityIdTreeMap.put(reflectTreeItem, "26");
+			String activityID = app.getActivityIDByName("Reflect");
+			treeItemActivityIdTreeMap.put(reflectTreeItem, activityID);
 		} else {
 			logger.error("Cannot addReflectTreeItem. chapterTreeItem is null.");
 		}
@@ -1263,10 +1265,32 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	public Activity getActivityForNameInGoal(String activityShortName, Goal goal) {
+		if (activityShortName != null && goal != null) {
+			if (activityShortName.contentEquals("Plan") || activityShortName.contentEquals("Reflect")) {
+				return app.getActivityByName(activityShortName, app.getActivities());
+			} else {
+				for (Chapter chapter : goal.getChapters()) {
+					for (Activity activity : chapter.getAssignedActivities()) {
+						if (activity.getShortName().contentEquals(activityShortName)) {
+							return activity;
+						}
+					}
+				}
+				logger.debug("Activity returned is null");
+				return null;
+			}
+		} else {
+			logger.error("Cannot getActivityForIDInGoal. activityID or goal is null.");
+			return null;
+		}
+	}
+	
 	public Activity getActivityForIDInGoal(String activityID, Goal goal) {
 		if (activityID != null && goal != null) {
-			if (activityID.contentEquals("25") || activityID.contentEquals("26")) {
-				return app.getActivity(activityID, app.getActivities());
+			Activity a = app.getActivityByID(activityID, app.getActivities());
+			if (a.getShortName().contentEquals("Plan") || a.getShortName().contentEquals("Reflect")) {
+				return a;
 			} else {
 				for (Chapter chapter : goal.getChapters()) {
 					for (Activity activity : chapter.getAssignedActivities()) {

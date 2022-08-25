@@ -104,7 +104,9 @@ public class ChapterLandingController implements Initializable {
 	}
 	
 	public void setAboutTextAreaText(Text text) {
-		aboutTextArea.setText(text.getText());
+		String string = text.getText();
+		string = string.replaceAll("\r", "\n");	
+		aboutTextArea.setText(string);
 	}
 	
 	Text getAboutText() {
@@ -131,7 +133,7 @@ public class ChapterLandingController implements Initializable {
 	
 	public void fillPlanListView() {
 		cleanPlanListView();
-		Activity planActivity = engagementActionController.getActivityForIDInGoal("25", engagementActionController.getCurrentGoal());
+		Activity planActivity = engagementActionController.getActivityForNameInGoal("Plan", engagementActionController.getCurrentGoal());
 		if(chapter != null) planActivity.setChapterAssignment(String.valueOf(chapter.getChapterNum()));
 		if (planActivity != null) planListView.getItems().add(planActivity);
 		setListViewCellFactory(planListView, "Plan");
@@ -139,7 +141,7 @@ public class ChapterLandingController implements Initializable {
 	
 	public void fillReflectListView() {
 		cleanReflectListView();
-		Activity reflectActivity = engagementActionController.getActivityForIDInGoal("26", engagementActionController.getCurrentGoal());
+		Activity reflectActivity = engagementActionController.getActivityForNameInGoal("Reflect", engagementActionController.getCurrentGoal());
 		if(chapter != null) reflectActivity.setChapterAssignment(String.valueOf(chapter.getChapterNum()));
 		if(reflectActivity != null) reflectListView.getItems().add(reflectActivity);
 		setListViewCellFactory(reflectListView, "Reflect");

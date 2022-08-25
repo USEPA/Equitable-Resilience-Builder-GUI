@@ -221,7 +221,20 @@ public class App extends Application {
 		readAndStoreProjects();
 	}
 	
-	public Activity getActivity(String activityID, ArrayList<Activity> activities) {
+	public String getActivityIDByName(String activityShortName) {
+		if (activityShortName != null) {
+			for (Activity activity : activities) {
+				if (activity.getShortName().contentEquals(activityShortName)) {
+					return activity.getActivityID();
+				}
+			}
+		} else {
+			logger.error("Cannot getActivityIDByName. activityShortName is null.");
+		}
+		return null;
+	}
+	
+	public Activity getActivityByID(String activityID, ArrayList<Activity> activities) {
 		if (activityID != null && activities != null) {
 			for (Activity activity : activities) {
 				if (activity.getActivityID().contentEquals(activityID)) {
@@ -229,10 +242,25 @@ public class App extends Application {
 				}
 			}
 		} else {
-			logger.error("Cannot get activity. activityID or activities is null.");
+			logger.error("Cannot getActivityByID. activityID or activities is null.");
 			return null;
 		}
-		logger.debug("Cannot get activity. Activity returned is null");
+		logger.debug("Cannot getActivityByID. Activity returned is null");
+		return null;
+	}
+	
+	public Activity getActivityByName(String activityShortName, ArrayList<Activity> activities) {
+		if (activityShortName != null && activities != null) {
+			for (Activity activity : activities) {
+				if (activity.getShortName().contentEquals(activityShortName)) {
+					return activity;
+				}
+			}
+		} else {
+			logger.error("Cannot getActivityByName. activityShortName or activities is null.");
+			return null;
+		}
+		logger.debug("Cannot getActivityByName. Activity returned is null");
 		return null;
 
 	}
