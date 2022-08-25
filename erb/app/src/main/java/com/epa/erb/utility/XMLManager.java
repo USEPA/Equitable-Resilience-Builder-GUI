@@ -1,4 +1,4 @@
-package com.epa.erb;
+package com.epa.erb.utility;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,6 +15,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.epa.erb.Activity;
+import com.epa.erb.ActivityType;
+import com.epa.erb.App;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -32,7 +36,7 @@ public class XMLManager {
 	private Logger logger = LogManager.getLogger(XMLManager.class);
 	
 	//Parse Chapters
-	ArrayList<Chapter> parseChaptersXML(File xmlFile) {
+	public ArrayList<Chapter> parseChaptersXML(File xmlFile) {
 		if (xmlFile!= null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<Chapter> chapters = new ArrayList<Chapter>();
@@ -66,7 +70,7 @@ public class XMLManager {
 	}
 	
 	//Parse ActivityTypes
-	ArrayList<ActivityType> parseActivityTypesXML(File xmlFile) {
+	public ArrayList<ActivityType> parseActivityTypesXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<ActivityType> activityTypes = new ArrayList<ActivityType>();
@@ -99,7 +103,7 @@ public class XMLManager {
 	}
 	
 	//Parse AvailableActivities
-	ArrayList<Activity> parseAvailableActivitiesXML(File xmlFile, ArrayList<ActivityType> activityTypes){
+	public ArrayList<Activity> parseAvailableActivitiesXML(File xmlFile, ArrayList<ActivityType> activityTypes){
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<Activity> availableActivities = new ArrayList<Activity>();
@@ -144,7 +148,7 @@ public class XMLManager {
 	}
 	
 	//Parse GoalCategories
-	ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile){
+	public ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile){
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>();
@@ -185,7 +189,7 @@ public class XMLManager {
 	}
 	
 	//Parse all projects
-	ArrayList<Project> parseAllProjects(File ERBProjectDirectory, ArrayList<Activity> activities){
+	public ArrayList<Project> parseAllProjects(File ERBProjectDirectory, ArrayList<Activity> activities){
 		ArrayList<Project> projects = new ArrayList<Project>();
 		if(ERBProjectDirectory != null && ERBProjectDirectory.exists()) {
 			File [] projectDirectories = ERBProjectDirectory.listFiles();
@@ -203,7 +207,7 @@ public class XMLManager {
 	}
 	
 	//Parse Project
-	Project parseProjectXML(File xmlFile, ArrayList<Activity> activities){
+	public Project parseProjectXML(File xmlFile, ArrayList<Activity> activities){
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

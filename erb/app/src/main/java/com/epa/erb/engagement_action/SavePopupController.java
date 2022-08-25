@@ -8,13 +8,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.XMLManager;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.XMLManager;
+
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;

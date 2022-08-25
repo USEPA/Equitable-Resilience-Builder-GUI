@@ -24,6 +24,7 @@ import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.XMLManager;
 
 public class App extends Application {
 
