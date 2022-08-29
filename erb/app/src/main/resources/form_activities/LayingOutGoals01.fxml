@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -19,11 +22,45 @@
       </HBox>
       <VBox>
          <children>
-            <Label text="Laying out some goals and understanding the problem you want to address will help guide you through this project. You can tackle this step individually, or with your project team. You may want to start with a storytelling exercise Ch1 storytelling exercise to get to know each other, if you haven't previously worked together. After the storytelling exercise, download the goals worksheet Ch1 goals worksheet to formulate personalized goals, or you can build upon a pre-populated list of example goals below." wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+               <content>
+                  <FlowPane prefWrapLength="200.0">
+                     <children>
+                        <Label text="Laying out some goals and understanding the problem you want to address will help guide you through this project. You can tackle this step individually, or with your project team. You may want to start with a storytelling exercise " wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink onAction="#activity06HyperlinkAction" text="Ch1 Storytelling exercise." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="-1.5" left="1.0" right="1.0" top="-1.5" />
+                           </padding>
+                        </Hyperlink>
+                        <Label text="to get to know each other, if you havent't previously worked together. After the storytelling exercise, download the goals worksheet" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink onAction="#activity03HyperlinkAction" text="Ch 1 Goals worksheet" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="-1.5" left="1.0" right="1.0" top="-1.5" />
+                           </padding>
+                        </Hyperlink>
+                        <Label text="to formulate personalized goals, or you can build upon a pre-populated list of example goals below." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
       <VBox spacing="3.0">

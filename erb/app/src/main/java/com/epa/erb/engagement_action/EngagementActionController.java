@@ -864,7 +864,7 @@ public class EngagementActionController implements Initializable{
 	private VBox loadLayingOutGoalsController() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/LayingOutGoals01.fxml"));
-			LayingOutGoals01Controller layingOutGoals01Controller = new LayingOutGoals01Controller();
+			LayingOutGoals01Controller layingOutGoals01Controller = new LayingOutGoals01Controller(app);
 			fxmlLoader.setController(layingOutGoals01Controller);
 			VBox root = fxmlLoader.load();
 			return root;
@@ -877,7 +877,7 @@ public class EngagementActionController implements Initializable{
 	private VBox loadGetCoreTeamController() {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/GetCoreTeam01.fxml"));
-				GetCoreTeam01Controller getCoreTeam01Controller = new GetCoreTeam01Controller();
+				GetCoreTeam01Controller getCoreTeam01Controller = new GetCoreTeam01Controller(app);
 				fxmlLoader.setController(getCoreTeam01Controller);
 				VBox root = fxmlLoader.load();
 				return root;

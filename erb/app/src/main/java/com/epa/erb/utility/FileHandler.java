@@ -1,5 +1,6 @@
 package com.epa.erb.utility;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -25,6 +26,18 @@ public class FileHandler {
 	
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(FileHandler.class);
+	
+	public void openFile(File fileToToOpen) {
+		try {
+			if (fileToToOpen != null && fileToToOpen.exists() && Desktop.isDesktopSupported()) {
+				Desktop.getDesktop().open(fileToToOpen);
+			} else {
+				logger.error(fileToToOpen.getPath() + " either does not exist or desktop is not supported.");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
 	
 	public void deleteDirectory(File directory) {
 		if (directory != null) {

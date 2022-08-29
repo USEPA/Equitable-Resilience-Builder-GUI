@@ -12,6 +12,7 @@ import com.epa.erb.App;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.Constants;
+import com.epa.erb.utility.FileHandler;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -45,6 +46,7 @@ public class GoalIntroController implements Initializable{
 		this.projectSelectionController = projectSelectionController;
 	}
 	
+	private FileHandler fileHandler = new FileHandler();
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(GoalIntroController.class);
 	private String pathToERBStaticDataFolder = constants.getPathToERBStaticDataFolder();
@@ -70,16 +72,8 @@ public class GoalIntroController implements Initializable{
 	}
 	
 	private void openGoalActivity() {
-		try {
-			File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\1_Goals.docx");
-			if (file.exists() && Desktop.isDesktopSupported()) {
-				Desktop.getDesktop().open(file);
-			} else {
-				logger.error(file.getPath() + " either does not exist or desktop is not supported.");
-			}
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+		File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\1_Goals.docx");
+		fileHandler.openFile(file);
 	}
 	
 	private File getPDFFileToLoad() {
