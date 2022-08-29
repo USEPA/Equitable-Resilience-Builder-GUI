@@ -67,12 +67,11 @@ public class Goal {
 	private ArrayList<Activity> getActivitiesForChapter(String chapterNumber, ArrayList<Activity> activities,ArrayList<String> goalActivityIds) {
 		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
 		if (chapterNumber != null && activities != null && goalActivityIds != null) {
-			for (Activity activity : activities) {
-				if (activity.getChapterAssignment().contentEquals(chapterNumber)&& !activitiesForChapter.contains(activity)) {
-					if (goalActivityIds.contains(activity.getActivityID())) {
-						Activity clonedActivity = activity.cloneActivity();
-						activitiesForChapter.add(clonedActivity);
-					}
+			for (String goalActivityID : goalActivityIds) {
+				Activity activity = app.getActivityByID(goalActivityID, app.getActivities());
+				if (activity.getChapterAssignment().contentEquals(chapterNumber)) {
+					Activity clonedActivity = activity.cloneActivity();
+					activitiesForChapter.add(clonedActivity);
 				}
 			}
 		} else {

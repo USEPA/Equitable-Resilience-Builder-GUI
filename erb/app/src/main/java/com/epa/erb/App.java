@@ -138,7 +138,9 @@ public class App extends Application {
 			for (File projDir : projectDirectories) {
 				if (projDir.isDirectory()) {
 					File projectMetaFile = fileHandler.getProjectMetaXMLFile(selectedProject);
+					System.out.println("Project Meta File = " + projectMetaFile);
 					if (projectMetaFile == null || !projectMetaFile.exists()) {
+						System.out.println("Deleting " + projDir);
 						fileHandler.deleteDirectory(projDir);
  					}
 				}
