@@ -17,6 +17,7 @@ import com.epa.erb.chapter.ReflectFacilitatorModeController;
 import com.epa.erb.chapter.ReflectGoalModeController;
 import com.epa.erb.form_activities.GetCoreTeam01Controller;
 import com.epa.erb.form_activities.LayingOutGoals01Controller;
+import com.epa.erb.form_activities.MakeProjectPlan01Controller;
 import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
@@ -821,6 +822,9 @@ public class EngagementActionController implements Initializable{
 						} else if (activity.getShortName().contentEquals("Laying out goals for building equitable resilience")) {
 							Pane root = loadLayingOutGoalsController();
 							addContentToContentVBox(root, false);
+						} else if (activity.getShortName().contentEquals("Make a Project Plan")) {
+							Pane root = loadMakeProjectPlanController();
+							addContentToContentVBox(root, false);
 						} else {
 							Pane root = loadWorksheetContentController(activity);
 							addContentToContentVBox(root, false);
@@ -839,8 +843,22 @@ public class EngagementActionController implements Initializable{
 				if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
-						Pane root = loadWorksheetContentController(activity);
-						addContentToContentVBox(root, false);
+						if(activity.getShortName().contentEquals("Get a core team together")) {
+							Pane root = loadGetCoreTeamController();
+							addContentToContentVBox(root, false);
+						} else if (activity.getShortName().contentEquals("Laying out goals for building equitable resilience")) {
+							Pane root = loadLayingOutGoalsController();
+							addContentToContentVBox(root, false);
+						} else if (activity.getShortName().contentEquals("Make a Project Plan")) {
+							Pane root = loadMakeProjectPlanController();
+							addContentToContentVBox(root, false);
+						} else {
+							Pane root = loadWorksheetContentController(activity);
+							addContentToContentVBox(root, false);
+						}						
+//						addBaseAttributesToAttributePanel(activity);
+//						Pane root = loadWorksheetContentController(activity);
+//						addContentToContentVBox(root, false);
 					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
 						removeAttributeScrollPane();
 						Pane root = loadPlanRoot(activity);
@@ -885,6 +903,19 @@ public class EngagementActionController implements Initializable{
 				logger.error(e.getMessage());
 				return null;
 			}
+	}
+	
+	private VBox loadMakeProjectPlanController() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/MakeProjectPlan01.fxml"));
+			MakeProjectPlan01Controller makeProjectPlan01Controller = new MakeProjectPlan01Controller(app);
+			fxmlLoader.setController(makeProjectPlan01Controller);
+			VBox root = fxmlLoader.load();
+			return root;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 	
 	private void addBaseAttributesToAttributePanel(Activity activity) {

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox>
+         <children>
+            <Label text="Make a Project Plan">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label text="Now that you are clear on your goals and have some commitments from people to join your team, what do you need to make sure this is a successful project? Getting together with your project team to do a project plan is a helpful step for ensuring you and your team understand what you are going to do and how you are going to do it." wrapText="true" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <VBox spacing="3.0">
+         <children>
+            <Label text="Some key parts of the project plan are:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="1. A list of your goals">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label text="2. A list of activities/milestones you will do to meet them">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label text="3. Any resources you need to complete the activites/milestones">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label text="4. How you will communicate within the project team as well as outside of the team">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label text="5. A description of roles and who will do what">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label text="6. A timeline for the activites">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="10.0">
+         <children>
+            <FlowPane prefWrapLength="200.0">
+               <children>
+                  <Label text="Download the" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink onAction="#activity04HyperlinkAction" text="Ch 1 Project Plan Example" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="-1.5" left="1.0" right="1.0" top="-1.5" />
+                     </padding>
+                  </Hyperlink>
+                  <Label text="for an example of a plan for a typical ERB project." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+               <content>
+                  <FlowPane prefWrapLength="200.0">
+                     <children>
+                        <Label text="There is also an additional guide for creating the communication section of your plan if you want additional help on that topic. Download the" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink onAction="#activity01HyperlinkAction" text="Ch 1 in depth communication guide" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="-1.5" left="1.0" right="1.0" top="-1.5" />
+                           </padding>
+                        </Hyperlink>
+                        <Label text="to see the in-depth communication guidance. In the next chapter we'll walk you through how to plan and carry out community engagement, so don't worry about spending too much time on that yet in your project plan." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
+            <Label text="You may need 1-3 meetings with your team to discuss the project plan depending on how detailed you want to make the plan." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="If you don't have enough information to make a complete plan at this time don't worry! The planning process can be iterative. Throughout the ERB process you will have opportunities to reflect on your progress. These reflection steps can be a time for you to revisit your project plan and add or adjust as needed." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

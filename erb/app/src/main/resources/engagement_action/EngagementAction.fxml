@@ -50,7 +50,7 @@
                               </ScrollPane>
                            </children>
                         </VBox>
-                        <VBox fx:id="erbKeyVBox" minWidth="120.0" spacing="2.0">
+                        <VBox fx:id="erbKeyVBox" minWidth="230.0" spacing="2.0">
                            <children>
                               <Label text="Key">
                                  <font>
@@ -60,7 +60,7 @@
                               <Separator />
                               <HBox fx:id="keyPaneHBox" spacing="5.0">
                                  <children>
-                                    <VBox spacing="2.0">
+                                    <VBox minWidth="110.0" spacing="2.0">
                                        <children>
                                           <HBox spacing="20.0">
                                              <children>
@@ -82,7 +82,7 @@
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <VBox fx:id="detailsKeyPaneVBox" spacing="2.0">
+                                    <VBox fx:id="detailsKeyPaneVBox" minWidth="110.0" spacing="2.0">
                                        <children>
                                           <HBox spacing="20.0">
                                              <children>
