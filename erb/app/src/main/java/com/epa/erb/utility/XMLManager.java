@@ -11,6 +11,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.docx4j.fonts.fop.fonts.FontType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -25,6 +26,11 @@ import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
+
+import javafx.scene.control.Hyperlink;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public class XMLManager {
 
@@ -593,6 +599,92 @@ public class XMLManager {
 			}
 		} else {
 			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
+	
+	public ArrayList<Text> parseFormContentXML(File xmlFile) {
+		if(xmlFile != null && xmlFile.exists()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				
+				NodeList textBlockNodeList = doc.getElementsByTagName("textBlock");
+				ArrayList<Text> textBlocks = new ArrayList<Text>();
+
+				for(int i = 0; i < textBlockNodeList.getLength(); i++) {
+					Node textBlockNode = textBlockNodeList.item(i);
+					//TextBlock
+					if(textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element textBlockElement = (Element) textBlockNode;
+						double size = Double.parseDouble(textBlockElement.getAttribute("size"));
+						String fontFamily = textBlockElement.getAttribute("fontFamily");
+						String fontStyle = textBlockElement.getAttribute("fontStyle");
+						String text = textBlockElement.getAttribute("text") + "\n";
+						
+						Text textBlock = new Text(text);
+						if (fontStyle.contentEquals("Bold")) {
+							textBlock.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+						} else if (fontStyle.contentEquals("Underlined")){
+							textBlock.setUnderline(true);
+							textBlock.setFont(Font.font(fontFamily, size));							
+						} else {
+							textBlock.setFont(Font.font(fontFamily, size));
+						}
+							
+						textBlocks.add(textBlock);
+					}
+				}
+				return textBlocks;
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
+		}
+		return null;
+	}
+	
+	public ArrayList<Hyperlink> parseFormHyperlinkXML(File xmlFile){
+		if(xmlFile != null && xmlFile.exists()) {
+			try {
+				FileHandler fileHandler = new FileHandler();
+				
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				
+				NodeList linkNodeList = doc.getElementsByTagName("link");
+				ArrayList<Hyperlink> hyperlinks = new ArrayList<Hyperlink>();
+
+				for(int i = 0; i < linkNodeList.getLength(); i++) {
+					Node linkNode = linkNodeList.item(i);
+					//Link
+					if(linkNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element linkElement = (Element) linkNode;
+						String name = linkElement.getAttribute("name");
+						String activityID = linkElement.getAttribute("activityId");
+
+						Hyperlink hyperlink = new Hyperlink(name);
+						hyperlink.setFont(new Font(14.0));
+						Activity activity = app.getActivityByID(activityID, app.getActivities());
+						File activityFile = fileHandler.getGlobalActivityWordDoc(activity);
+						hyperlink.setOnAction(e-> fileHandler.openFile(activityFile));
+						
+						hyperlinks.add(hyperlink);
+					}
+				}
+				return hyperlinks;
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
 		}
 		return null;
 	}

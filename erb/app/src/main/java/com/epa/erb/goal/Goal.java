@@ -83,11 +83,10 @@ public class Goal {
 	private ArrayList<String> getAllChapterNumbers(ArrayList<Activity> activities, ArrayList<String> goalActivityIds) {
 		ArrayList<String> chapterNumbers = new ArrayList<String>();
 		if (activities != null && goalActivityIds != null) {
-			for (Activity activity : activities) {
-				if (goalActivityIds.contains(activity.getActivityID())) {
-					if (!chapterNumbers.contains(activity.getChapterAssignment())) {
-						chapterNumbers.add(activity.getChapterAssignment());
-					}
+			for(String activityId: goalActivityIds) {
+				Activity activity = app.getActivityByID(activityId, activities);
+				if(!chapterNumbers.contains(activity.getChapterAssignment())) {
+					chapterNumbers.add(activity.getChapterAssignment());
 				}
 			}
 		} else {

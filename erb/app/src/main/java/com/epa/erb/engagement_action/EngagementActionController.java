@@ -15,9 +15,7 @@ import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
 import com.epa.erb.chapter.ReflectFacilitatorModeController;
 import com.epa.erb.chapter.ReflectGoalModeController;
-import com.epa.erb.form_activities.GetCoreTeam01Controller;
-import com.epa.erb.form_activities.LayingOutGoals01Controller;
-import com.epa.erb.form_activities.MakeProjectPlan01Controller;
+import com.epa.erb.form_activities.FormContentController;
 import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
@@ -817,13 +815,13 @@ public class EngagementActionController implements Initializable{
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
 						if(activity.getShortName().contentEquals("Get a core team together")) {
-							Pane root = loadGetCoreTeamController();
+							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
 							addContentToContentVBox(root, false);
 						} else if (activity.getShortName().contentEquals("Laying out goals for building equitable resilience")) {
-							Pane root = loadLayingOutGoalsController();
+							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
 							addContentToContentVBox(root, false);
 						} else if (activity.getShortName().contentEquals("Make a Project Plan")) {
-							Pane root = loadMakeProjectPlanController();
+							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
 							addContentToContentVBox(root, false);
 						} else {
 							Pane root = loadWorksheetContentController(activity);
@@ -844,21 +842,18 @@ public class EngagementActionController implements Initializable{
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
 						if(activity.getShortName().contentEquals("Get a core team together")) {
-							Pane root = loadGetCoreTeamController();
+							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
 							addContentToContentVBox(root, false);
 						} else if (activity.getShortName().contentEquals("Laying out goals for building equitable resilience")) {
-							Pane root = loadLayingOutGoalsController();
+							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
 							addContentToContentVBox(root, false);
 						} else if (activity.getShortName().contentEquals("Make a Project Plan")) {
-							Pane root = loadMakeProjectPlanController();
+							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
 							addContentToContentVBox(root, false);
 						} else {
 							Pane root = loadWorksheetContentController(activity);
 							addContentToContentVBox(root, false);
 						}						
-//						addBaseAttributesToAttributePanel(activity);
-//						Pane root = loadWorksheetContentController(activity);
-//						addContentToContentVBox(root, false);
 					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
 						removeAttributeScrollPane();
 						Pane root = loadPlanRoot(activity);
@@ -878,38 +873,12 @@ public class EngagementActionController implements Initializable{
 			logger.error("Cannot loadActivityContent. activity is null.");
 		}
 	}
-
-	private VBox loadLayingOutGoalsController() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/LayingOutGoals01.fxml"));
-			LayingOutGoals01Controller layingOutGoals01Controller = new LayingOutGoals01Controller(app);
-			fxmlLoader.setController(layingOutGoals01Controller);
-			VBox root = fxmlLoader.load();
-			return root;
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return null;
-		}
-}
 	
-	private VBox loadGetCoreTeamController() {
-			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/GetCoreTeam01.fxml"));
-				GetCoreTeam01Controller getCoreTeam01Controller = new GetCoreTeam01Controller(app);
-				fxmlLoader.setController(getCoreTeam01Controller);
-				VBox root = fxmlLoader.load();
-				return root;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				return null;
-			}
-	}
-	
-	private VBox loadMakeProjectPlanController() {
+	private VBox loadFormContentController(Project project, Goal goal, Activity activity) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/MakeProjectPlan01.fxml"));
-			MakeProjectPlan01Controller makeProjectPlan01Controller = new MakeProjectPlan01Controller(app);
-			fxmlLoader.setController(makeProjectPlan01Controller);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/FormContent.fxml"));
+			FormContentController formContentController = new FormContentController(app, project, goal, activity);
+			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {

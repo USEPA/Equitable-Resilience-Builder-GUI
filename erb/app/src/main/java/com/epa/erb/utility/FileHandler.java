@@ -258,4 +258,24 @@ public class FileHandler {
 			return null;
 		}
 	}
+	
+	public File getActivityFormContentXML(Project project, Goal goal, Activity activity) {
+		if (project != null && goal != null && activity != null) {
+			File activityContentXML = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activities_XML\\" + activity.getActivityID() + "\\form_text.xml");
+			return activityContentXML;
+		} else {
+			logger.error("Cannot activityContentXML. project = " + project + " goal = " + goal + " activity = " + activity);
+			return null;
+		}
+	}
+	
+	public File getActivityFormLinksXML(Project project, Goal goal, Activity activity) {
+		if (project != null && goal != null && activity != null) {
+			File activityLinksXML = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activities_XML\\" + activity.getActivityID() + "\\form_links.xml");
+			return activityLinksXML;
+		} else {
+			logger.error("Cannot getActivityFormLinksXML. project = " + project + " goal = " + goal + " activity = " + activity);
+			return null;
+		}
+	}
 }
