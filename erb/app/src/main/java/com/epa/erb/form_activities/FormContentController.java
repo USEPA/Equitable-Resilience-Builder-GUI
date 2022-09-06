@@ -23,6 +23,8 @@ public class FormContentController implements Initializable{
 	@FXML
 	TextFlow formTextFlow;
 	@FXML
+	VBox lVBox;
+	@FXML
 	VBox linksVBox;
 	
 	private App app;
@@ -66,6 +68,7 @@ public class FormContentController implements Initializable{
 				linksVBox.getChildren().add(hyperlink);
 			}
 		}
+		if(linksVBox.getChildren().size() == 0) lVBox.setVisible(false);
 	}
 
 	public TextFlow getFormTextFlow() {

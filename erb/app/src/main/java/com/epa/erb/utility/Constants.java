@@ -1,10 +1,8 @@
 package com.epa.erb.utility;
 
+import java.util.ArrayList;
+
 public class Constants {
-	
-	public Constants() {
-		
-	}
 		
 	//Scaling Sizes
 	private int prefHeightForScale100 = 950;
@@ -48,6 +46,8 @@ public class Constants {
 	//Post-It Note Single
 	private String postItNoteColor = "#FFFFFF"; 				//White
 	
+	private ArrayList<String> listOfActivityShortNamesWithFormContent;
+	
 	//Paths
 //	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB"; //Local
@@ -57,6 +57,26 @@ public class Constants {
 	
 //	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
 	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data"; //Local
+	
+	public Constants() {
+		fillListOfActivityShortNamesWithFormContent();
+	}
+	
+	private void fillListOfActivityShortNamesWithFormContent() {
+		listOfActivityShortNamesWithFormContent = new ArrayList<String>();
+		listOfActivityShortNamesWithFormContent.add("Get a core team together");
+		listOfActivityShortNamesWithFormContent.add("Laying out goals for building equitable resilience");
+		listOfActivityShortNamesWithFormContent.add("Make a Project Plan");
+		listOfActivityShortNamesWithFormContent.add("Network Analysis and Mapping");
+		listOfActivityShortNamesWithFormContent.add("Step 1: Storytelling");
+		listOfActivityShortNamesWithFormContent.add("Step 2: Network Analysis Table");
+		listOfActivityShortNamesWithFormContent.add("Step 3: Network Mapping");
+		listOfActivityShortNamesWithFormContent.add("Community Engagement Plan");
+		listOfActivityShortNamesWithFormContent.add("Step 1: Determine level of engagement");
+		listOfActivityShortNamesWithFormContent.add("Step 2: Empower the community");
+		listOfActivityShortNamesWithFormContent.add("Step 3: Planning the Activities");
+		listOfActivityShortNamesWithFormContent.add("Maintaining Relationships");
+	}
 	
 	//-------------------------------------------------------------------------
 	
@@ -149,6 +169,9 @@ public class Constants {
 	}
 	public String getPostItNoteColor() {
 		return postItNoteColor;
+	}
+	public ArrayList<String> getListOfActivityShortNamesWithFormContent() {
+		return listOfActivityShortNamesWithFormContent;
 	}
 	public String getPathToERBFolder() {
 		return pathToERBFolder;

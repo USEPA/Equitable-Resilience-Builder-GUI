@@ -9,7 +9,7 @@
 <VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextFlow fx:id="formTextFlow" lineSpacing="5.0" />
-      <VBox>
+      <VBox fx:id="lVBox">
          <children>
             <Label text="Links">
                <font>

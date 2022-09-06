@@ -728,9 +728,6 @@ public class EngagementActionController implements Initializable{
 			chapterTreeItem.getChildren().add(planTreeItem);
 			String activityID = app.getActivityIDByName("Plan");
 			treeItemActivityIdTreeMap.put(planTreeItem, activityID);
-			
-			TreeItem<String> planTreeItemChild1 = new TreeItem<String>("Resource 1");
-			planTreeItem.getChildren().add(planTreeItemChild1);
 		} else {
 			logger.error("Cannot addPlanTreeItem. chapterTreeItem is null.");
 		}
@@ -814,13 +811,9 @@ public class EngagementActionController implements Initializable{
 				if (activity.getActivityType().getDescription().contentEquals("worksheet") || activity.getActivityType().getDescription().contentEquals("noteboard")) {
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
-						if(activity.getShortName().contentEquals("Get a core team together")) {
-							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
-							addContentToContentVBox(root, false);
-						} else if (activity.getShortName().contentEquals("Laying out goals for building equitable resilience")) {
-							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
-							addContentToContentVBox(root, false);
-						} else if (activity.getShortName().contentEquals("Make a Project Plan")) {
+						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
+						if(listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
+//						if(activity.getShortName().contentEquals("Get a core team together")) {
 							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
 							addContentToContentVBox(root, false);
 						} else {
@@ -841,13 +834,9 @@ public class EngagementActionController implements Initializable{
 				if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
-						if(activity.getShortName().contentEquals("Get a core team together")) {
-							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
-							addContentToContentVBox(root, false);
-						} else if (activity.getShortName().contentEquals("Laying out goals for building equitable resilience")) {
-							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
-							addContentToContentVBox(root, false);
-						} else if (activity.getShortName().contentEquals("Make a Project Plan")) {
+						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
+						if(listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
+//						if(activity.getShortName().contentEquals("Get a core team together")) {
 							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
 							addContentToContentVBox(root, false);
 						} else {
