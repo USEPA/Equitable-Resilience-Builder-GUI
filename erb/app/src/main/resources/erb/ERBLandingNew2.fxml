@@ -2,8 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
@@ -170,15 +172,41 @@
          <center>
             <VBox BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Label minWidth="258.0" text="What will ERB help you do?">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <TitledPane fx:id="helpTitledPane" alignment="CENTER" animated="false" expanded="false" style="-fx-border-color: transparent;" stylesheets="@../titledPane.css" text="What will the ERB help you do?">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <content>
+                        <VBox>
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label text="It helps you:" wrapText="true">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label text="-Bring people together in a way that builds connections and energy for resilience action" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="-Include local knowledge and experiences in resilience and social vulnerability assesment" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="-Write and implement a better resilience or hazard mitigation plan" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
                   <VBox fx:id="arrowVBox" alignment="CENTER" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
@@ -265,7 +293,7 @@
             </VBox>
          </right>
          <left>
-            <VBox alignment="CENTER" spacing="10.0">
+            <VBox alignment="CENTER" maxWidth="250.0" spacing="10.0">
                <children>
                   <TitledPane animated="false" expanded="false" style="-fx-border-color: orange;" stylesheets="@../titledPane.css" text="How does it work?">
                      <font>
@@ -276,7 +304,7 @@
                            <children>
                               <HBox>
                                  <children>
-                                    <Label maxWidth="180.0" text="- Follow 5 chapters stepwise or choose which chapters and activities to use" wrapText="true">
+                                    <Label text="- Follow 5 chapters stepwise or choose which chapters and activities to use" wrapText="true">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -334,6 +362,57 @@
                         </VBox>
                      </content>
                   </TitledPane>
+                  <TitledPane animated="false" expanded="false" style="-fx-border-color: orange;" stylesheets="@../titledPane.css" text="Outcomes of the ERB">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <content>
+                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+                           <content>
+                              <VBox>
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label text="-Built relationships with new groups and organizations in your community" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                          <Label text="-Identified who is most vulnerable to different hazards, why and how" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                          <Label text="-Assessed your community's resilience to disasters and climate change" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                          <Label text="-Identified actions to build community resilience in an equitable way" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </TitledPane>
                </children>
                <BorderPane.margin>
                   <Insets />
@@ -344,21 +423,44 @@
             </VBox>
          </left>
          <top>
-            <HBox fx:id="welcomeHBox" alignment="CENTER" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="Welcome to the Equitable Resilience Builder">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
+            <VBox BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="10.0" />
                </BorderPane.margin>
-            </HBox>
+               <children>
+                  <HBox fx:id="welcomeHBox" alignment="CENTER">
+                     <children>
+                        <Label text="Welcome to the Equitable Resilience Builder">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="The ERB toolkit guides you through a collaborative process to strengthen your community's" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink onAction="#equitableResilienceHyperlinkClicked" text="equitable resilience">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Hyperlink>
+                        <Label text="to disasters and climate change">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </top>
       </BorderPane>
    </children>

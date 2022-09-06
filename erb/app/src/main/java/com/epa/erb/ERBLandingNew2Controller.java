@@ -54,6 +54,12 @@ public class ERBLandingNew2Controller implements Initializable{
 		mode = newRadioButton.getText();
 	}
 	
+	@FXML
+	public void equitableResilienceHyperlinkClicked() {
+		ERBContainerController erbContainerController = new ERBContainerController(app);
+		erbContainerController.glossaryMenuItemAction();
+	}
+	
 	private void loadArrowDiagram() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ArrowDiagram.fxml"));
