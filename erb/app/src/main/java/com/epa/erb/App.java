@@ -137,7 +137,7 @@ public class App extends Application {
 			File[] projectDirectories = projectsDirectory.listFiles();
 			for (File projDir : projectDirectories) {
 				if (projDir.isDirectory()) {
-					File projectMetaFile = fileHandler.getProjectMetaXMLFile(selectedProject);
+					File projectMetaFile = fileHandler.getProjectMetaXMLFile(projDir);
 					System.out.println("Project Meta File = " + projectMetaFile);
 					if (projectMetaFile == null || !projectMetaFile.exists()) {
 						System.out.println("Deleting " + projDir);

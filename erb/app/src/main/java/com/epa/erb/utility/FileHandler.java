@@ -112,6 +112,16 @@ public class FileHandler {
 		}
 	}
 	
+	public File getProjectMetaXMLFile(File projectDir) {
+		if(projectDir != null) {
+			File projectXMLMetaXMLFile = new File(projectDir+ "\\Meta.xml");
+			return projectXMLMetaXMLFile;
+		} else {
+			logger.error("Cannot getProjectMetaXMLFile. projectDir = null.");
+			return null;
+		}
+	}
+	
 	public File getGoalMetaXMLFile(Project project, Goal goal) {
 		if(project != null && goal != null) {
 			File goalMetaXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Meta.xml");
