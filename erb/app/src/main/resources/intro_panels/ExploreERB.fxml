@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Explore ERB">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label text="It may seem like a lot, but the ERB process is designed to be flexible. We understand that all communities are different and face distinct disaster and climate change risks. We also realize that you may have unique resource constraints on getting your work done. You can decide which activities in which chapters to carry out, to make sure you can get the work done you need to do, in the most inclusive way possible given what you've done already and the time frame, resources, and team that you have. Some places you might want to check out given your interests:" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <FlowPane>
+         <children>
+            <Label text="-You're expanding the social vulnerability component of an existing HMP? &gt;&gt;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Hyperlink text="Ch 3 SVA step">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </FlowPane>
+      <FlowPane>
+         <children>
+            <Label text="-You want to better engage community members in resilience planning? &gt;&gt;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Hyperlink text="Ch 2 landing page">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </FlowPane>
+      <FlowPane>
+         <children>
+            <Label text="-You need to figure out what the main hazards or threats to your community are? &gt;&gt;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Hyperlink text="Ch 3 hazards ID step">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </FlowPane>
+      <FlowPane>
+         <children>
+            <Label text="-You want to check out indicators for assessing your community's built, natural, and social environments? &gt;&gt;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Hyperlink text="Ch 4 step 1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </FlowPane>
+   </children>
+</VBox>

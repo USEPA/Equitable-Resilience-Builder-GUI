@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="How others are using ERB">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label text="Here's how other communities are using ERB:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>

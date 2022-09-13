@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="963.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
@@ -22,7 +21,65 @@
          <children>
             <HBox>
                <children>
-                  <Label minWidth="100.0" text="Resilience:">
+                  <Label minWidth="150.0" text="Equitable Resilience:" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <VBox>
+                     <children>
+                        <Label text="Resilience involves strengthening your community's capacity to prepare for, withstand, respond, adapt, and transform in the face of climate change &amp; disasters. Equitable resilience does so in ways that:" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="-Are culturally appropriate">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="-Are informed by local knowledge">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="-Use inclusive methods of making decisions">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="-Address how social and environmental inequalities lead to some community members bearing worse burdens than others from floods, accidental chemical releases, heat waves, etc." wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="-Pay attention to how the benefits and costs of resilience actions are distributed">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label minWidth="150.0" text="Resilience:">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -36,7 +93,7 @@
             </HBox>
             <HBox>
                <children>
-                  <Label minWidth="100.0" text="Function:">
+                  <Label minWidth="150.0" text="Function:">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -50,7 +107,7 @@
             </HBox>
             <HBox>
                <children>
-                  <Label minWidth="100.0" text="Equitable:">
+                  <Label minWidth="150.0" text="Equitable:">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -64,7 +121,7 @@
             </HBox>
             <HBox>
                <children>
-                  <Label minWidth="100.0" text="Inclusive:">
+                  <Label minWidth="150.0" text="Inclusive:">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

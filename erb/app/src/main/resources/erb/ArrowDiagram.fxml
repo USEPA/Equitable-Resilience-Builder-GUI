@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="415.0" maxWidth="600.0" minHeight="300.0" minWidth="480.0" prefHeight="380.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="415.0" maxWidth="600.0" minHeight="350.0" minWidth="480.0" prefHeight="380.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane VBox.vgrow="ALWAYS">
          <children>

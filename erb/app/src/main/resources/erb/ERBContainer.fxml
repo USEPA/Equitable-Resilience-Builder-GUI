@@ -16,7 +16,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#aboutMenuItemAction" text="About" />
+                    <MenuItem mnemonicParsing="false" onAction="#aboutMenuItemAction" text="ERB Landing Page" />
                         <MenuItem mnemonicParsing="false" onAction="#glossaryMenuItemAction" text="Glossary" />
                   </items>
                 </Menu>

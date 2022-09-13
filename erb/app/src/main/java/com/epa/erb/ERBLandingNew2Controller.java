@@ -3,6 +3,11 @@ package com.epa.erb;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.epa.erb.intro_panels.EquityAndResilienceController;
+import com.epa.erb.intro_panels.HowDoesItWorkController;
+import com.epa.erb.intro_panels.HowERBMadeController;
+import com.epa.erb.intro_panels.WhatMakesERBDifferentController;
+import com.epa.erb.intro_panels.WhoAreERBUsersController;
 import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.Constants;
 
@@ -10,11 +15,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ERBLandingNew2Controller implements Initializable{
 
@@ -58,6 +65,92 @@ public class ERBLandingNew2Controller implements Initializable{
 	public void equitableResilienceHyperlinkClicked() {
 		ERBContainerController erbContainerController = new ERBContainerController(app);
 		erbContainerController.glossaryMenuItemAction();
+	}
+	
+	@FXML
+	public void equityAndResilienceHyperlinkClicked() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/EquityAndResilience.fxml"));
+			EquityAndResilienceController equityAndResilienceController = new EquityAndResilienceController(app);
+			fxmlLoader.setController(equityAndResilienceController);
+			Parent vBox = fxmlLoader.load();
+			app.loadNodeToERBContainer(vBox);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void howERBMadeHyperlinkClicked() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/HowERBMade.fxml"));
+			HowERBMadeController howERBMadeController = new HowERBMadeController(app, this);
+			fxmlLoader.setController(howERBMadeController);
+			Parent vBox = fxmlLoader.load();
+			app.loadNodeToERBContainer(vBox);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void howDoesItWorkButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/HowDoesItWork.fxml"));
+			HowDoesItWorkController howDoesItWorkController = new HowDoesItWorkController(app);
+			fxmlLoader.setController(howDoesItWorkController);
+			Parent vBox = fxmlLoader.load();
+			app.loadNodeToERBContainer(vBox);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void howOthersUsingERBHyperlinkClicked() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/HowOthersAreUsingERB.fxml"));
+			Parent vBox = fxmlLoader.load();
+			app.loadNodeToERBContainer(vBox);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void exploreButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/ExploreERB.fxml"));
+			Parent vBox = fxmlLoader.load();
+			app.loadNodeToERBContainer(vBox);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void whoAreERBUsersButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/WhoAreERBUsers.fxml"));
+			WhoAreERBUsersController whoAreERBUsersController = new WhoAreERBUsersController(app);
+			fxmlLoader.setController(whoAreERBUsersController);
+			Parent vBox = fxmlLoader.load();
+			app.loadNodeToERBContainer(vBox);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void whatMakesERBDifferentButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/WhatMakesERBDifferent.fxml"));
+			WhatMakesERBDifferentController whatMakesERBDifferentController = new WhatMakesERBDifferentController(app);
+			fxmlLoader.setController(whatMakesERBDifferentController);
+			Parent vBox = fxmlLoader.load();
+			app.loadNodeToERBContainer(vBox);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void loadArrowDiagram() {

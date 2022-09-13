@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="welcomeHBox" alignment="CENTER">
+         <children>
+            <Label text="Welcome to the Equitable Resilience Builder">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="The ERB toolkit guides you through a collaborative process to strengthen your community's" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Hyperlink onAction="#equitableResilienceHyperlinkClicked" text="equitable resilience">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <Label text="to disasters and climate change">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT">
+         <children>
+            <Label text="How does it work?">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox spacing="5.0">
+         <children>
+            <FlowPane>
+               <children>
+                  <Label text="ERB is a toolkit containing 5 chapters that guide you through a process for building equitable resilience in your community, see" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink text="diagram">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label text="Depending on the goals you come up with, you will proceed through the chapters in different ways." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="3.0" prefWrapLength="500.0">
+               <children>
+                  <Label text="1.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Project planning." underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Get a core team together to set your goals for using the toolkit and put together a project plan." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="3.0" prefWrapLength="500.0">
+               <children>
+                  <Label text="2.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Community engagement." underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Carry out a social network analysis and begin the outreach that is the foundation for inclusive participation in ERB workshops." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="3.0" prefWrapLength="500.0">
+               <children>
+                  <Label text="3.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Hazard and social vulnerability identification." underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Hold community workshops to identify hazards from disasters and climate change from and figure out who is made most vulnerable to these harzards, why, and how." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="3.0" prefWrapLength="500.0">
+               <children>
+                  <Label text="4.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Equitable resilience assessment." underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Use indicators and local knowledge to measure how the built, natural, and social environments affect resilience and equity in your community." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="3.0" prefWrapLength="500.0">
+               <children>
+                  <Label text="5.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Taking action." underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Hold community workshops to identify how you're going to take action to address resilience and equity needs." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <VBox spacing="3.0">
+               <children>
+                  <Label text="What do you need to get started?" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="-Interest and support from your office and other local constituencies in strengthening resilience and equity" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="-4-6 people who can join your project team" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="-Resources and capability to facilitate 2-3 community workshops (virtual or in-person)" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <FlowPane>
+                     <children>
+                        <Label text="-The first step is to create an ERB project" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink text="from the landing page">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </FlowPane>
+               </children>
+            </VBox>
+            <VBox spacing="3.0">
+               <children>
+                  <FlowPane hgap="3.0">
+                     <children>
+                        <Label text="What outputs will you get?" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Depending on the path you take through the ERB, you will generate:" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </FlowPane>
+                  <Label text="-Ch 1: Project Plan, team storytelling" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="-Ch 2: Social network analysis, stronger relationships, and community empowerment around resilience" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="-Ch 3: Hazard identification slides, social vulnerability assessment table, community storytelling" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="-Ch 4: Resilience indicator measuments and visualization" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="-Ch 5: List of action items for building equitable resilience, documentation of what you've accomplished" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>
