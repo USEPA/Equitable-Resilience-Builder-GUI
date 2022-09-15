@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.TextFlow?>
 
 <VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextFlow fx:id="formTextFlow" lineSpacing="5.0" />
-      <VBox fx:id="lVBox">
+      <HBox VBox.vgrow="ALWAYS">
          <children>
-            <Label text="Links">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <VBox fx:id="linksVBox" />
+            <VBox fx:id="formVBox" spacing="10.0" HBox.hgrow="ALWAYS" />
+            <VBox minWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox fx:id="topPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="bottomPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

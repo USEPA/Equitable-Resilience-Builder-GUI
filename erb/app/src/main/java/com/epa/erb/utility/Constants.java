@@ -65,17 +65,9 @@ public class Constants {
 	private void fillListOfActivityShortNamesWithFormContent() {
 		listOfActivityShortNamesWithFormContent = new ArrayList<String>();
 		listOfActivityShortNamesWithFormContent.add("Get a core team together");
-		listOfActivityShortNamesWithFormContent.add("Laying out goals for building equitable resilience");
+		listOfActivityShortNamesWithFormContent.add("Lay out goals for using ERB");
 		listOfActivityShortNamesWithFormContent.add("Make a Project Plan");
-		listOfActivityShortNamesWithFormContent.add("Network Analysis and Mapping");
-		listOfActivityShortNamesWithFormContent.add("Step 1: Storytelling");
-		listOfActivityShortNamesWithFormContent.add("Step 2: Network Analysis Table");
-		listOfActivityShortNamesWithFormContent.add("Step 3: Network Mapping");
-		listOfActivityShortNamesWithFormContent.add("Community Engagement Plan");
-		listOfActivityShortNamesWithFormContent.add("Step 1: Determine level of engagement");
-		listOfActivityShortNamesWithFormContent.add("Step 2: Empower the community");
-		listOfActivityShortNamesWithFormContent.add("Step 3: Planning the Activities");
-		listOfActivityShortNamesWithFormContent.add("Maintaining Relationships");
+		listOfActivityShortNamesWithFormContent.add("Reflection and next steps");
 	}
 	
 	//-------------------------------------------------------------------------

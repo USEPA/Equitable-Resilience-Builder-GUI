@@ -11,12 +11,10 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.docx4j.fonts.fop.fonts.FontType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.App;
@@ -26,11 +24,10 @@ import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
-
-import javafx.scene.control.Hyperlink;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 public class XMLManager {
 
@@ -603,82 +600,67 @@ public class XMLManager {
 		return null;
 	}
 	
-	public ArrayList<Text> parseFormContentXML(File xmlFile) {
-		if(xmlFile != null && xmlFile.exists()) {
+	public HashMap<String, ArrayList<TextFlow>> parseFormContentXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
-				
-				NodeList textBlockNodeList = doc.getElementsByTagName("textBlock");
-				ArrayList<Text> textBlocks = new ArrayList<Text>();
 
-				for(int i = 0; i < textBlockNodeList.getLength(); i++) {
-					Node textBlockNode = textBlockNodeList.item(i);
-					//TextBlock
-					if(textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element textBlockElement = (Element) textBlockNode;
-						double size = Double.parseDouble(textBlockElement.getAttribute("size"));
-						String fontFamily = textBlockElement.getAttribute("fontFamily");
-						String fontStyle = textBlockElement.getAttribute("fontStyle");
-						String text = textBlockElement.getAttribute("text") + "\n";
-						
-						Text textBlock = new Text(text);
-						if (fontStyle.contentEquals("Bold")) {
-							textBlock.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
-						} else if (fontStyle.contentEquals("Underlined")){
-							textBlock.setUnderline(true);
-							textBlock.setFont(Font.font(fontFamily, size));							
-						} else {
-							textBlock.setFont(Font.font(fontFamily, size));
+				HashMap<String, ArrayList<TextFlow>> contentHashMap = new HashMap<String, ArrayList<TextFlow>>();
+
+				NodeList containerNodeList = doc.getElementsByTagName("container");
+				for (int i = 0; i < containerNodeList.getLength(); i++) {
+					Node containerNode = containerNodeList.item(i);
+					if (containerNode.getNodeType() == Node.ELEMENT_NODE) {
+						// Container
+						Element containerElement = (Element) containerNode;
+						String containerId = containerElement.getAttribute("id");
+						ArrayList<TextFlow> textBlocks = new ArrayList<TextFlow>();
+						NodeList textBlockNodeList = containerElement.getElementsByTagName("textBlock");
+						for (int j = 0; j < textBlockNodeList.getLength(); j++) {
+							Node textBlockNode = textBlockNodeList.item(j);
+							// TextBlock
+							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
+								TextFlow textFlow = new TextFlow();
+								Element textBlockElement = (Element) textBlockNode;
+								NodeList textNodeList = textBlockElement.getElementsByTagName("text");
+								for (int k = 0; k < textNodeList.getLength(); k++) {
+									Node textNode = textNodeList.item(k);
+									// Text
+									if (textNode.getNodeType() == Node.ELEMENT_NODE) {
+										Element textElement = (Element) textNode;
+										double size = Double.parseDouble(textElement.getAttribute("size"));
+										String fontFamily = textElement.getAttribute("fontFamily");
+										String fontStyle = textElement.getAttribute("fontStyle");
+										String text = textElement.getAttribute("text");
+										Text t = new Text(text);
+										if (fontStyle.contentEquals("Hyperlink")) {
+											t.setStyle("-fx-fill:#4d90bc");
+											t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+											t.setOnMouseEntered(e -> t.setUnderline(true));
+											t.setOnMouseExited(e -> t.setUnderline(false));
+										} else {
+											if (fontStyle.contentEquals("Bold")) {
+												t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+											} else if (fontStyle.contentEquals("Underlined")) {
+												t.setUnderline(true);
+												t.setFont(Font.font(fontFamily, size));
+											} else {
+												t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+											}
+										}
+										textFlow.getChildren().add(t);
+									}
+								}
+								textBlocks.add(textFlow);
+							}
 						}
-							
-						textBlocks.add(textBlock);
+						contentHashMap.put(containerId, textBlocks);
 					}
 				}
-				return textBlocks;
-			} catch (Exception e) {
-				e.printStackTrace();
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
-		}
-		return null;
-	}
-	
-	public ArrayList<Hyperlink> parseFormHyperlinkXML(File xmlFile){
-		if(xmlFile != null && xmlFile.exists()) {
-			try {
-				FileHandler fileHandler = new FileHandler();
-				
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(xmlFile);
-				doc.getDocumentElement().normalize();
-				
-				NodeList linkNodeList = doc.getElementsByTagName("link");
-				ArrayList<Hyperlink> hyperlinks = new ArrayList<Hyperlink>();
-
-				for(int i = 0; i < linkNodeList.getLength(); i++) {
-					Node linkNode = linkNodeList.item(i);
-					//Link
-					if(linkNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element linkElement = (Element) linkNode;
-						String name = linkElement.getAttribute("name");
-						String activityID = linkElement.getAttribute("activityId");
-
-						Hyperlink hyperlink = new Hyperlink(name);
-						hyperlink.setFont(new Font(14.0));
-						Activity activity = app.getActivityByID(activityID, app.getActivities());
-						File activityFile = fileHandler.getGlobalActivityWordDoc(activity);
-						hyperlink.setOnAction(e-> fileHandler.openFile(activityFile));
-						
-						hyperlinks.add(hyperlink);
-					}
-				}
-				return hyperlinks;
+				return contentHashMap;
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.error(e.getMessage());

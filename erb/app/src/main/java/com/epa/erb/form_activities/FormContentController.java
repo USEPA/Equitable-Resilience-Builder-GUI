@@ -3,8 +3,8 @@ package com.epa.erb.form_activities;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
-
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.goal.Goal;
@@ -13,19 +13,17 @@ import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 public class FormContentController implements Initializable{
 	
 	@FXML
-	TextFlow formTextFlow;
+	VBox formVBox;
 	@FXML
-	VBox lVBox;
+	VBox topPanelVBox;
 	@FXML
-	VBox linksVBox;
+	VBox bottomPanelVBox;
 	
 	private App app;
 	private Project project;
@@ -45,34 +43,27 @@ public class FormContentController implements Initializable{
 		XMLManager xmlManager = new XMLManager(app);
 
 		File xmlContentFileToParse = fileHandler.getActivityFormContentXML(project, goal, activity);
-		ArrayList<Text> textBlocks = xmlManager.parseFormContentXML(xmlContentFileToParse);
-		addContent(textBlocks);
-		
-		File xmlLinksFileToParse = fileHandler.getActivityFormLinksXML(project, goal, activity);
-		ArrayList<Hyperlink> links = xmlManager.parseFormHyperlinkXML(xmlLinksFileToParse);
-		addLinks(links);
-		
+		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseFormContentXML(xmlContentFileToParse);
+		addContent(formContentHashMap);
 	}
 	
-	public void addContent(ArrayList<Text> textBlocks) {
-		if(textBlocks != null) {
-			for(Text textBlock: textBlocks) {
-				formTextFlow.getChildren().add(textBlock);
-			}
+	public void addContent(HashMap<String, ArrayList<TextFlow>> formContentHashMap) {
+		if(formContentHashMap != null) {
+			ArrayList<TextFlow> formContentTextFlows = formContentHashMap.get("formVBox");
+			addTextFlowsToVBox(formVBox, formContentTextFlows);
+			ArrayList<TextFlow> topPanelTextFlows = formContentHashMap.get("topPanelVBox");
+			addTextFlowsToVBox(topPanelVBox, topPanelTextFlows);
+			ArrayList<TextFlow> bottomPanelTextFlows = formContentHashMap.get("bottomPanelVBox");
+			addTextFlowsToVBox(bottomPanelVBox, bottomPanelTextFlows);
 		}
 	}
 	
-	public void addLinks(ArrayList<Hyperlink> links) {
-		if(links != null) {
-			for(Hyperlink hyperlink: links) {
-				linksVBox.getChildren().add(hyperlink);
+	public void addTextFlowsToVBox(VBox vBox, ArrayList<TextFlow> textFlows) {
+		if (textFlows != null && vBox != null) {
+			for (TextFlow textFlow : textFlows) {
+				vBox.getChildren().add(textFlow);
 			}
 		}
-		if(linksVBox.getChildren().size() == 0) lVBox.setVisible(false);
-	}
-
-	public TextFlow getFormTextFlow() {
-		return formTextFlow;
 	}
 
 }
