@@ -68,6 +68,15 @@ public class Constants {
 		listOfActivityShortNamesWithFormContent.add("Lay out goals for using ERB");
 		listOfActivityShortNamesWithFormContent.add("Make a Project Plan");
 		listOfActivityShortNamesWithFormContent.add("Reflection and next steps");
+		
+		listOfActivityShortNamesWithFormContent.add("Identify and Diagram Community Connections, Activity 1");
+		listOfActivityShortNamesWithFormContent.add("Identify and Diagram Community Connections, Activity 2");
+		listOfActivityShortNamesWithFormContent.add("Develop a Community Engagement Plan, Activity 1");
+		listOfActivityShortNamesWithFormContent.add("Develop a Community Engagement Plan, Activity 2");
+		//listOfActivityShortNamesWithFormContent.add("Reflection and next steps");
+
+
+
 	}
 	
 	//-------------------------------------------------------------------------
