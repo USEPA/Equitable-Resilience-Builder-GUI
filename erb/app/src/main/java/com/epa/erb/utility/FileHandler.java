@@ -15,6 +15,7 @@ import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import com.aspose.words.Document;
 import com.aspose.words.SaveFormat;
 import com.epa.erb.Activity;
+import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 
@@ -274,7 +275,18 @@ public class FileHandler {
 			File activityContentXML = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activities_XML\\" + activity.getActivityID() + "\\form_text.xml");
 			return activityContentXML;
 		} else {
-			logger.error("Cannot activityContentXML. project = " + project + " goal = " + goal + " activity = " + activity);
+			logger.error("Cannot getActivityFormContentXML. project = " + project + " goal = " + goal + " activity = " + activity);
+			return null;
+		}
+	}
+	
+	public File getChapterFormAboutXML(Chapter chapter) {
+		if (chapter != null) {
+			String xmlFileName = chapter.getStringName().replaceAll(" ", "") + "_About.xml";
+			File chapterAboutXML = new File(constants.getPathToERBStaticDataFolder() + "\\Chapters\\Chapters_XML\\" + xmlFileName);
+			return chapterAboutXML;
+		} else {
+			logger.error("Cannot getChapterFormAboutXML. chapter = " + chapter);
 			return null;
 		}
 	}

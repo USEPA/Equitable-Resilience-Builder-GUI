@@ -23,5 +23,6 @@ module com.epa.erb {
 	opens com.epa.erb.worksheet to javafx.fxml, javafx.web;
 	opens com.epa.erb.engagement_action to javafx.fxml;
 	opens com.epa.erb.form_activities to javafx.fxml;
+	opens com.epa.erb.intro_panels to javafx.fxml;
 	exports com.epa.erb;
 }

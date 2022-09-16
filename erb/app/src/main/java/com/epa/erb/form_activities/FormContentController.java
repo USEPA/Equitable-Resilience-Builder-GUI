@@ -5,11 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.goal.Goal;
-import com.epa.erb.project.Project;
-import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,23 +22,17 @@ public class FormContentController implements Initializable{
 	VBox bottomPanelVBox;
 	
 	private App app;
-	private Project project;
-	private Goal goal;
-	private Activity activity;
-	public FormContentController(App app, Project project, Goal goal, Activity activity) {
+	private File xmlContentFileToParse;
+	public FormContentController(App app, File xmlContentFileToParse) {
 		this.app = app;
-		this.project = project;
-		this.goal = goal;
-		this.activity = activity;
+		this.xmlContentFileToParse = xmlContentFileToParse;
 	}
-	
-	private FileHandler fileHandler = new FileHandler();
-	
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLManager xmlManager = new XMLManager(app);
 
-		File xmlContentFileToParse = fileHandler.getActivityFormContentXML(project, goal, activity);
+		//File xmlContentFileToParse = fileHandler.getActivityFormContentXML(project, goal, activity);
 		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseFormContentXML(xmlContentFileToParse);
 		addContent(formContentHashMap);
 	}

@@ -1,5 +1,6 @@
 package com.epa.erb.engagement_action;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -262,18 +263,18 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 
-	private VBox loadChapterLandingRoot(Chapter chapter) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
-			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
-			fxmlLoader.setController(chapterLandingController);
-			VBox root = fxmlLoader.load();
-			return root;
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return null;
-		}
-	}
+//	private VBox loadChapterLandingRoot(Chapter chapter) {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
+//			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
+//			fxmlLoader.setController(chapterLandingController);
+//			VBox root = fxmlLoader.load();
+//			return root;
+//		} catch (Exception e) {
+//			logger.error(e.getMessage());
+//			return null;
+//		}
+//	}
 
 	private VBox loadWorksheetContentController(Activity activity) {
 		if (activity != null) {
@@ -621,7 +622,8 @@ public class EngagementActionController implements Initializable{
 		generateActivityERBPathway(currentSelectedChapter);
 		setNavigationButtonsDisability(null, null);
 		if(currentSelectedChapter != null) {
-			Pane root = loadChapterLandingRoot(currentSelectedChapter);
+			File file = fileHandler.getChapterFormAboutXML(currentSelectedChapter);
+			Pane root = loadFormContentController(file);
 			addContentToContentVBox(root, true);
 		}
 		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
@@ -813,8 +815,8 @@ public class EngagementActionController implements Initializable{
 						addBaseAttributesToAttributePanel(activity);
 						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
 						if(listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
-//						if(activity.getShortName().contentEquals("Get a core team together")) {
-							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
+							File file = fileHandler.getActivityFormContentXML(project, currentSelectedGoal, activity);
+							Pane root = loadFormContentController(file);
 							addContentToContentVBox(root, false);
 						} else {
 							Pane root = loadWorksheetContentController(activity);
@@ -836,8 +838,8 @@ public class EngagementActionController implements Initializable{
 						addBaseAttributesToAttributePanel(activity);
 						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
 						if(listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
-//						if(activity.getShortName().contentEquals("Get a core team together")) {
-							Pane root = loadFormContentController(project, currentSelectedGoal, activity);
+							File file = fileHandler.getActivityFormContentXML(project, currentSelectedGoal, activity);
+							Pane root = loadFormContentController(file);
 							addContentToContentVBox(root, false);
 						} else {
 							Pane root = loadWorksheetContentController(activity);
@@ -863,10 +865,10 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private VBox loadFormContentController(Project project, Goal goal, Activity activity) {
+	private VBox loadFormContentController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/FormContent.fxml"));
-			FormContentController formContentController = new FormContentController(app, project, goal, activity);
+			FormContentController formContentController = new FormContentController(app, xmlContentFileToParse);
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;
