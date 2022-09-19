@@ -178,6 +178,16 @@ public class FileHandler {
 		}
 	}
 	
+	public File getSupportingDOCDirectory(Project project, Goal goal) {
+		if(project != null && goal != null) {
+			File supportingDOCDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Supporting_DOC");
+			return supportingDOCDirectory;
+		} else {
+			logger.error("Cannot getSupportingDOCDirectory. project = " + project + " goal = " + goal);
+			return null;
+		}
+	}
+	
 	public File getProjectDirectory(Project project) {
 		if(project != null) {
 			File projectDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName());
@@ -226,6 +236,21 @@ public class FileHandler {
 	public File getGoalCategoriesFileToParse() {
 		File goalCategoriesFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Goals\\Goal_Categories.xml");
 		return goalCategoriesFile;
+	}
+	
+	public File getStaticSupportingDOCDirectory() {
+		File supportingDOCDirectory = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Supporting_DOC");
+		return supportingDOCDirectory;
+	}
+	
+	public File getStaticSupportingXML(String id) {
+		if (id != null) {
+			File supportingXMLFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Supporting_XML\\" + id + "\\form_text.xml");
+			return supportingXMLFile ;
+		} else {
+			logger.error("Cannot getStaticSupportingXML. id = null.");
+			return null;
+		}
 	}
 	
 	public File getGlobalActivityWordDoc(Activity activity) {

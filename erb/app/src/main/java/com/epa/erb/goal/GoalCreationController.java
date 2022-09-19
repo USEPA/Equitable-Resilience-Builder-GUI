@@ -200,6 +200,11 @@ public class GoalCreationController implements Initializable{
 				File goalMetaFile = fileHandler.getGoalMetaXMLFile(project, goal);
 				ArrayList<Chapter> chapters = goal.getChapters();
 				xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
+				createSupportingDocDirectory(goal);
+				File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(project, goal);
+				if(supportingDOCDirectory != null && supportingDOCDirectory.exists()) {
+					copyGlobalSupportingDocsToGoalSupportingDocs(supportingDOCDirectory);
+				}
 				createActivitiesDirectory(goal);
 				File activitiesDirectory = fileHandler.getActivitiesDirectory(project, goal);
 				if (activitiesDirectory != null && activitiesDirectory.exists()) {
@@ -266,6 +271,16 @@ public class GoalCreationController implements Initializable{
 		}
 	}
 	
+	private void copyGlobalSupportingDocsToGoalSupportingDocs(File goalSupportingDOCDirectory) {
+		if(goalSupportingDOCDirectory != null) {
+			File staticGlobalSupportingDOCDirectory = fileHandler.getStaticSupportingDOCDirectory();
+			for(File sourceFile: staticGlobalSupportingDOCDirectory.listFiles()) {
+				File destFile = new File(goalSupportingDOCDirectory + "\\" + sourceFile.getName());
+				fileHandler.copyFile(sourceFile, destFile);
+			}
+		}
+	}
+	
 	private void copyActivityDocxToActivityDirectory(File activitiesDirectory, Goal goal) {
 		if (activitiesDirectory != null && goal != null) {
 			for (Chapter chapter : goal.getChapters()) {
@@ -297,6 +312,17 @@ public class GoalCreationController implements Initializable{
 			}
 		} else {
 			logger.error("Cannot copyActivityDocxToActivityDirectory. activitiesDirectory or goal is null.");
+		}
+	}
+	
+	private void createSupportingDocDirectory(Goal goal) {
+		if (goal != null) {
+			File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(project, goal);
+			if (supportingDOCDirectory != null && !supportingDOCDirectory.exists()) {
+				supportingDOCDirectory.mkdir();
+			}
+		} else {
+			logger.error("Cannot createSupportingDocDirectory. goal is null.");
 		}
 	}
 	

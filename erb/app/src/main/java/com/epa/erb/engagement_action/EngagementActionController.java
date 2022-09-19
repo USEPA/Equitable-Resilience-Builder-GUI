@@ -711,13 +711,13 @@ public class EngagementActionController implements Initializable{
 				TreeItem<String> chapterTreeItem = new TreeItem<String>(chapter.getStringName());
 				rootTreeItem.getChildren().add(chapterTreeItem);
 				treeItemActivityIdTreeMap.put(chapterTreeItem, chapter.getNumericName());
-				addPlanTreeItem(chapterTreeItem);
+				//addPlanTreeItem(chapterTreeItem);
 				for (Activity activity : chapter.getAssignedActivities()) {
 					TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
 					chapterTreeItem.getChildren().add(activityTreeItem);
 					treeItemActivityIdTreeMap.put(activityTreeItem, activity.getActivityID());
 				}
-				addReflectTreeItem(chapterTreeItem);
+				//addReflectTreeItem(chapterTreeItem);
 			}
 		} else {
 			logger.error("Cannot fillAndStoreTreeViewData. chapters is null.");
@@ -868,7 +868,7 @@ public class EngagementActionController implements Initializable{
 	private VBox loadFormContentController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/FormContent.fxml"));
-			FormContentController formContentController = new FormContentController(app, xmlContentFileToParse);
+			FormContentController formContentController = new FormContentController(app, xmlContentFileToParse, this);
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;
@@ -1525,6 +1525,10 @@ public class EngagementActionController implements Initializable{
 	
 	public CheckBox getShowDetailsCheckBox() {
 		return showDetailsCheckBox;
+	}
+
+	public VBox getEngagementVBox() {
+		return engagementVBox;
 	}
 
 }

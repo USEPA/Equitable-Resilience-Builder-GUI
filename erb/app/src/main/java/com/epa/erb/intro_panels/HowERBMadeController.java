@@ -2,21 +2,18 @@ package com.epa.erb.intro_panels;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.epa.erb.App;
 import com.epa.erb.ERBContainerController;
-import com.epa.erb.ERBLandingNew2Controller;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 public class HowERBMadeController implements Initializable{
 
 	private App app;
-	private ERBLandingNew2Controller erbLandingNew2Controller;
-	public HowERBMadeController(App app, ERBLandingNew2Controller erbLandingNew2Controller) {
+	private IntroPanelLoader introPanelLoader;
+	public HowERBMadeController(App app, IntroPanelLoader introPanelLoader) {
 		this.app = app;
-		this.erbLandingNew2Controller = erbLandingNew2Controller;
+		this.introPanelLoader = introPanelLoader;
 	}
 	
 	@Override
@@ -33,7 +30,7 @@ public class HowERBMadeController implements Initializable{
 	
 	@FXML
 	public void equityAndResilienceHyperlinkClicked() {
-		erbLandingNew2Controller.equityAndResilienceHyperlinkClicked();
+		introPanelLoader.loadEquityAndResiliencePanel();;
 	}
 
 }

@@ -4,20 +4,25 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.utility.Constants;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ERBContainerController implements Initializable{
 	
+	@FXML
+	HBox backButtonHBox;
+	@FXML
+	Button backButton;
 	@FXML
 	VBox welcomeVBox;
 	@FXML
@@ -38,6 +43,7 @@ public class ERBContainerController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
+		removeBackButton();
 	}
 	
 	private void handleControls() {
@@ -94,6 +100,22 @@ public class ERBContainerController implements Initializable{
 		if(!erbVBox.getChildren().contains(welcomeVBox)) {
 			erbVBox.getChildren().add(1, welcomeVBox);
 		}
+	}
+	
+	public void removeBackButton() {
+		if(erbVBox.getChildren().contains(backButtonHBox)) {
+			erbVBox.getChildren().remove(backButtonHBox);
+		}
+	}
+	
+	public void addBackButton() {
+		if(!erbVBox.getChildren().contains(backButtonHBox)) {
+			erbVBox.getChildren().add(1, backButtonHBox);
+		}
+	}
+	
+	public Button getBackButton() {
+		return backButton;
 	}
 
 	public VBox getWelcomeVBox() {

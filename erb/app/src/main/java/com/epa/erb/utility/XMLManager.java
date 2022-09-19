@@ -19,6 +19,7 @@ import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.App;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.form_activities.FormContentController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.noteboard.CategorySectionController;
@@ -600,7 +601,7 @@ public class XMLManager {
 		return null;
 	}
 	
-	public HashMap<String, ArrayList<TextFlow>> parseFormContentXML(File xmlFile) {
+	public HashMap<String, ArrayList<TextFlow>> parseFormContentXML(File xmlFile, FormContentController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -637,10 +638,13 @@ public class XMLManager {
 										String text = textElement.getAttribute("text");
 										Text t = new Text(text);
 										if (fontStyle.contentEquals("Hyperlink")) {
+											String linkType = textElement.getAttribute("linkType");
+											String link = textElement.getAttribute("link");
 											t.setStyle("-fx-fill:#4d90bc");
 											t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 											t.setOnMouseEntered(e -> t.setUnderline(true));
 											t.setOnMouseExited(e -> t.setUnderline(false));
+											t.setOnMouseClicked(e-> formContentController.handleHyperlink(t, linkType, link));
 										} else {
 											if (fontStyle.contentEquals("Bold")) {
 												t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
