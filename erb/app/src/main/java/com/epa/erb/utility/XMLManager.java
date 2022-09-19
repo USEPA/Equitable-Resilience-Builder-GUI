@@ -18,6 +18,7 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.App;
+import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.form_activities.FormContentController;
 import com.epa.erb.goal.Goal;
@@ -138,6 +139,8 @@ public class XMLManager {
 						String notes = activityElement.getAttribute("notes");
 						String rating = activityElement.getAttribute("rating");
 						Activity activity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID, notes, rating);
+						activity.assignSteps(app.getSteps());
+						System.out.println(activity.getShortName() + "Steps -> " + activity.getSteps());
 						availableActivities.add(activity);
 					}
 				}
@@ -151,6 +154,51 @@ public class XMLManager {
 		return null;
 	}
 	
+	// Parse AvailableSteps
+	public ArrayList<Step> parseAvailableStepsXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				ArrayList<Step> availableSteps = new ArrayList<Step>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList stepsNodeList = doc.getElementsByTagName("step");
+				for (int i = 0; i < stepsNodeList.getLength(); i++) {
+					Node stepNode = stepsNodeList.item(i);
+					// Step
+					if (stepNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element activityElement = (Element) stepNode;
+						String status = activityElement.getAttribute("status");
+						String activityAssignment = activityElement.getAttribute("activityAssignment");
+						String chapterAssignment = activityElement.getAttribute("chapterAssignment");
+						String shortName = activityElement.getAttribute("shortName");
+						String longName = activityElement.getAttribute("longName");
+						String fileName = activityElement.getAttribute("fileName");
+						String directions = activityElement.getAttribute("directions");
+						String objectives = activityElement.getAttribute("objectives");
+						String description = activityElement.getAttribute("description");
+						String materials = activityElement.getAttribute("materials");
+						String time = activityElement.getAttribute("time");
+						String who = activityElement.getAttribute("who");
+						String stepID = activityElement.getAttribute("stepID");
+						String notes = activityElement.getAttribute("notes");
+						String rating = activityElement.getAttribute("rating");
+						
+						Step step = new Step(activityAssignment, chapterAssignment, status, shortName, longName,fileName, directions, objectives, description, materials, time, who, stepID, notes, rating);
+						availableSteps.add(step);
+					}
+				}
+				return availableSteps ;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
+
 	//Parse GoalCategories
 	public ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile){
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {

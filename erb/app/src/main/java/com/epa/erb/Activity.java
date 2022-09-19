@@ -45,6 +45,8 @@ public class Activity {
 		this.rating = rating;
 	}
 	
+	private ArrayList<Step> steps = new ArrayList<Step>();
+	
 	private boolean isSaved = true;
 	private PlanGoalModeController planGoalModeController;
 	private PlanFacilitatorModeController planFacilitatorModeController;
@@ -61,6 +63,17 @@ public class Activity {
 	
 	public void setHashMap() {
 		setPlanHashMapDefaults();
+	}
+	
+	public void assignSteps(ArrayList<Step> allSteps) {
+		ArrayList<Step> activitySteps = new ArrayList<Step>();
+		for(Step step: allSteps) {
+			if(step.getActivityAssignment().contentEquals(activityID)) {
+				int sizeOfActivityList = activitySteps.size();
+				activitySteps.add(sizeOfActivityList, step);
+			}
+		}
+		setSteps(activitySteps);
 	}
 	
 	private void setPlanHashMapDefaults() {
@@ -82,6 +95,7 @@ public class Activity {
 	
 	public Activity cloneActivity() {
 		Activity clonedActivity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, instructions, objectives, description, materials, time, who, activityID, notes, rating);
+		clonedActivity.setSteps(steps);
 		return clonedActivity;
 	}
 
@@ -267,6 +281,14 @@ public class Activity {
 
 	public void setPlanHashMap(HashMap<String, String> planHashMap) {
 		this.planHashMap = planHashMap;
+	}
+
+	public ArrayList<Step> getSteps() {
+		return steps;
+	}
+
+	public void setSteps(ArrayList<Step> steps) {
+		this.steps = steps;
 	}
 
 }

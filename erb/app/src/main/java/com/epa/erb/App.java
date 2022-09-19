@@ -34,6 +34,7 @@ public class App extends Application {
 	private ArrayList<Project> projects;
 	private ArrayList<Chapter> chapters;
 	private ArrayList<Activity> activities;
+	private ArrayList<Step> steps;
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private ArrayList<ActivityType> activityTypes;
@@ -138,9 +139,7 @@ public class App extends Application {
 			for (File projDir : projectDirectories) {
 				if (projDir.isDirectory()) {
 					File projectMetaFile = fileHandler.getProjectMetaXMLFile(projDir);
-					System.out.println("Project Meta File = " + projectMetaFile);
 					if (projectMetaFile == null || !projectMetaFile.exists()) {
-						System.out.println("Deleting " + projDir);
 						fileHandler.deleteDirectory(projDir);
  					}
 				}
@@ -172,6 +171,7 @@ public class App extends Application {
 	private void readAndStoreData() {	
 		readAndStoreChapters();
 		readAndStoreActivityTypes();
+		readAndStoreAvailableSteps();
 		readAndStoreAvailableActivities();
 		readAndStoreGoalCategories();
 		readAndStoreProjects();
@@ -190,6 +190,11 @@ public class App extends Application {
 	private void readAndStoreAvailableActivities() {
 		File availableActivitiesFile = fileHandler.getAvailableActivitiesFileToParse();
 		activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
+	}
+	
+	private void readAndStoreAvailableSteps() {
+		File availableStepsFile = fileHandler.getAvailableStepsFileToParse();
+		steps = xmlManager.parseAvailableStepsXML(availableStepsFile);
 	}
 	
 	private void readAndStoreGoalCategories() {
@@ -233,6 +238,21 @@ public class App extends Application {
 		} else {
 			logger.error("Cannot getActivityIDByName. activityShortName is null.");
 		}
+		return null;
+	}
+	
+	public Step getStepByID(String stepID, ArrayList<Step> steps) {
+		if (stepID != null && steps != null) {
+			for (Step step : steps) {
+				if (step.getStepID().contentEquals(stepID)) {
+					return step;
+				}
+			}
+		} else {
+			logger.error("Cannot getStepByID. stepID or steps is null.");
+			return null;
+		}
+		logger.debug("Cannot getStepByID. Step returned is null");
 		return null;
 	}
 	
@@ -313,6 +333,14 @@ public class App extends Application {
 
 	public void setActivities(ArrayList<Activity> activities) {
 		this.activities = activities;
+	}
+
+	public ArrayList<Step> getSteps() {
+		return steps;
+	}
+
+	public void setSteps(ArrayList<Step> steps) {
+		this.steps = steps;
 	}
 
 	public ArrayList<ActivityType> getActivityTypes() {

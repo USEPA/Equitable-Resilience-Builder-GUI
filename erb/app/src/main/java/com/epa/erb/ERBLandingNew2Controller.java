@@ -35,12 +35,13 @@ public class ERBLandingNew2Controller implements Initializable{
 	
 	private String mode = "Goal Mode";
 	private Constants constants = new Constants();
-	private IntroPanelLoader introPanelLoader = new IntroPanelLoader(app);
+	private IntroPanelLoader introPanelLoader;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		loadArrowDiagram();
+		introPanelLoader = new IntroPanelLoader(app);
 	}
 	
 	private void handleControls() {

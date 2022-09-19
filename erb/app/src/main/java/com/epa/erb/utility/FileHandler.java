@@ -233,6 +233,11 @@ public class FileHandler {
 		return availableActivitiesFile;
 	}
 	
+	public File getAvailableStepsFileToParse() {
+		File availableStepsFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Activities\\Available_Steps.xml");
+		return availableStepsFile;
+	}
+	
 	public File getGoalCategoriesFileToParse() {
 		File goalCategoriesFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Goals\\Goal_Categories.xml");
 		return goalCategoriesFile;

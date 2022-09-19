@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.Progress;
+import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.chapter.PlanFacilitatorModeController;
@@ -152,10 +153,12 @@ public class EngagementActionController implements Initializable{
 	private Goal currentSelectedGoal = null;
 	private Chapter currentSelectedChapter = null; 
 	private Activity currentSelectedActivity = null;
+	private Step currentSelectedStep = null;
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	private HashMap<TreeItem<String>, String> treeItemActivityIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity GUID
+	private HashMap<TreeItem<String>, String> treeItemActivityIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity ID
+	private HashMap<TreeItem<String>, String> treeItemStepIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a step ID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //holds all of the attribute panels
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>(); //holds all of the pathway controllers
 	private ArrayList<ERBChapterDiagramController> listOfChapterDiagramControllers = new ArrayList<ERBChapterDiagramController>(); //holds all of the chapter controllers
@@ -562,7 +565,9 @@ public class EngagementActionController implements Initializable{
 	
 	public void treeViewClicked(TreeItem<String> oldItem, TreeItem<String> newItem) {
 		if (newItem != null) {
-			if (isTreeItemActivityInGoal(newItem, currentSelectedGoal)) {
+			if(isTreeItemStepInGoal(newItem, currentSelectedGoal)) {
+				stepTreeItemSelected(newItem);
+			}else if (isTreeItemActivityInGoal(newItem, currentSelectedGoal)) {
 				activityTreeItemSelected(newItem);
 			} else if (isTreeItemChapterInGoal(newItem, currentSelectedGoal)) {
 				chapterTreeItemSelected(newItem);
@@ -575,6 +580,7 @@ public class EngagementActionController implements Initializable{
 	private void erbPathwayTreeItemSelected() {
 		if(currentSelectedActivity != null) app.initSaveHandler(null, getChapterForActivityInGoal(currentSelectedActivity, currentSelectedGoal), currentSelectedGoal, project, null, "projectChange");
 		//--
+		currentSelectedStep = null;
 		currentSelectedActivity = null;
 		currentSelectedChapter = null;
 		//--
@@ -604,6 +610,7 @@ public class EngagementActionController implements Initializable{
 			}
 		}
 		//--
+		currentSelectedStep = null;
 		currentSelectedActivity = null;
 		currentSelectedChapter = getChapterForNameInGoal(chapterTreeItem.getValue(), currentSelectedGoal);
 		
@@ -638,6 +645,7 @@ public class EngagementActionController implements Initializable{
 		if(currentSelectedChapter != null && (chapterForActivity!= currentSelectedChapter)) {
 			app.initSaveHandler(null, currentSelectedChapter, currentSelectedGoal, project, null, "chapterChange");
 		}
+		currentSelectedStep = null;
 		currentSelectedChapter = chapterForActivity;
 		//--
 		cleanContentVBox();
@@ -659,6 +667,40 @@ public class EngagementActionController implements Initializable{
 		setActivityStatusRadioButton(currentSelectedActivity);
 		highlightActivityDiagram(currentSelectedActivity);
 		setNavigationButtonsDisability(activityTreeItem, activityTreeItem.getParent());
+		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
+	}
+	
+	private void stepTreeItemSelected(TreeItem<String> stepTreeItem) {
+		//if(currentSelectedActivity != null) app.initSaveHandler(currentSelectedActivity, null, currentSelectedGoal, project, null, "activityChange");
+		
+		String stepId = treeItemStepIdTreeMap.get(stepTreeItem);
+		currentSelectedStep = getStepForIDInGoal(stepId, currentSelectedGoal);
+		currentSelectedActivity = getActivityForIDInGoal(currentSelectedStep.getActivityAssignment(), currentSelectedGoal);
+		Chapter chapterForActivity = getChapterForNameInGoal(stepTreeItem.getParent().getValue(), currentSelectedGoal);
+		//if(currentSelectedChapter != null && (chapterForActivity!= currentSelectedChapter)) {
+			//app.initSaveHandler(null, currentSelectedChapter, currentSelectedGoal, project, null, "chapterChange");
+		//}
+		currentSelectedChapter = chapterForActivity;
+		//--
+		cleanContentVBox();
+		cleanAttributePanelContentVBox();
+		cleanListOfAttributePanelControllers();
+		//--
+		if(currentSelectedActivity.getShortName().contentEquals("Plan") || currentSelectedActivity.getShortName().contentEquals("Reflect")) {
+			removeStatusHBox();
+		} else {
+			if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
+		}
+		//--
+		addERBKeyVBox(1);
+		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
+		if(project.getProjectType().contentEquals("Goal Mode")) addAttributeScrollPane(1);
+		//--
+		loadStepContent(currentSelectedStep, currentSelectedActivity);
+		generateActivityERBPathway(currentSelectedChapter);
+		setActivityStatusRadioButton(currentSelectedActivity);
+		highlightActivityDiagram(currentSelectedActivity);
+		setNavigationButtonsDisability(stepTreeItem, stepTreeItem.getParent());
 		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 	
@@ -703,6 +745,7 @@ public class EngagementActionController implements Initializable{
 	private void fillAndStoreTreeViewData(ArrayList<Chapter> chapters) {
 		if (chapters != null) {
 			treeItemActivityIdTreeMap.clear();
+			treeItemStepIdTreeMap.clear();
 			TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
@@ -716,6 +759,11 @@ public class EngagementActionController implements Initializable{
 					TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
 					chapterTreeItem.getChildren().add(activityTreeItem);
 					treeItemActivityIdTreeMap.put(activityTreeItem, activity.getActivityID());
+					for(Step step: activity.getSteps()) {
+						TreeItem<String> stepTreeItem = new TreeItem<String>(step.getLongName());
+						activityTreeItem.getChildren().add(stepTreeItem);
+						treeItemStepIdTreeMap.put(stepTreeItem, step.getStepID());
+					}
 				}
 				//addReflectTreeItem(chapterTreeItem);
 			}
@@ -865,6 +913,17 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	private void loadStepContent(Step step, Activity activity) {
+		if (step != null) {
+				addBaseAttributesToAttributePanel(activity);
+				File file = fileHandler.getStaticSupportingXML(step.getStepID());
+				Pane root = loadFormContentController(file);
+				addContentToContentVBox(root, false);
+		} else {
+			logger.error("Cannot loadStepContent. step is null.");
+		}
+	}
+
 	private VBox loadFormContentController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/FormContent.fxml"));
@@ -1162,6 +1221,27 @@ public class EngagementActionController implements Initializable{
 			globalGoalTrackerStage.close();
 		}
 	}
+	
+	private boolean isTreeItemStepInGoal(TreeItem<String> treeItem, Goal goal) {
+		if (treeItem != null && goal != null) {
+			if (treeItem.getValue().contentEquals("Plan") || treeItem.getValue().contentEquals("Reflect")) {
+				return false;
+			} else {
+				for (Chapter chapter : goal.getChapters()) {
+					for (Activity activity : chapter.getAssignedActivities()) {
+						for (Step step : activity.getSteps()) {
+							if (treeItem.getValue().contentEquals(step.getLongName())) {
+								return true;
+							}
+						}
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot execute isTreeItemStepInActivity. treeItem or goal is null.");
+		}
+		return false;
+	}
 
 	private boolean isTreeItemActivityInGoal(TreeItem<String> treeItem, Goal goal) {
 		if (treeItem != null && goal != null) {
@@ -1311,6 +1391,25 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	public Step getStepForIDInGoal(String stepID, Goal goal) {
+		if (stepID != null && goal != null) {
+				for (Chapter chapter : goal.getChapters()) {
+					for (Activity activity : chapter.getAssignedActivities()) {
+						for(Step step: activity.getSteps()) {
+							if(step.getStepID().contentEquals(stepID)) {
+								return step;
+							}
+						}
+					}
+				}
+				logger.debug("Step returned is null");
+				return null;
+		} else {
+			logger.error("Cannot getStepForIDInGoal. stepID or goal is null.");
+			return null;
+		}
+	}
+	
 	public Chapter getCurrentChapter() {
 		return currentSelectedChapter;
 	}
@@ -1321,6 +1420,10 @@ public class EngagementActionController implements Initializable{
 	
 	public Goal getCurrentGoal() {
 		return currentSelectedGoal;
+	}
+
+	public Step getCurrentSelectedStep() {
+		return currentSelectedStep;
 	}
 
 	public App getApp() {
