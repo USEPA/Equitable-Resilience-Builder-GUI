@@ -1,5 +1,6 @@
 package com.epa.erb.form_activities;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,11 +13,10 @@ import com.epa.erb.intro_panels.IntroPanelLoader;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
-
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.TreeItem;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -44,8 +44,6 @@ public class FormContentController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLManager xmlManager = new XMLManager(app);
-
-		//File xmlContentFileToParse = fileHandler.getActivityFormContentXML(project, goal, activity);
 		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseFormContentXML(xmlContentFileToParse, this);
 		addContent(formContentHashMap);
 	}
@@ -53,10 +51,22 @@ public class FormContentController implements Initializable{
 	public void handleHyperlink(Text text, String linkType, String link) {
 		if(linkType.contentEquals("internalPanel")) {
 			internalPanelLinkClicked(link);
-		} else if (linkType.contentEquals("externalXML")) {
-			externalXMLLinkClicked(link);
+		} else if (linkType.contentEquals("internalStep")) {
+			internalStepLinkClicked(link);
+		} else if (linkType.contentEquals("internalActivity")) {
+			internalActivityLinkClicked(link);
 		} else if (linkType.contentEquals("externalDOC")) {
 			externalDOCLinkClicked(link);
+		} else if (linkType.contentEquals("URL")) {
+			urlLinkClicked(link);
+		}
+	}
+	
+	private void urlLinkClicked(String link) {
+		try {
+			Desktop.getDesktop().browse(new URL(link).toURI());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -73,29 +83,28 @@ public class FormContentController implements Initializable{
 		if(link.contentEquals("equityAndResilience")) {
 			introPanelLoader.loadEquityAndResiliencePanel();
 		}
-		
 	}
 	
-	private void backButtonClickedExternalXML(ArrayList<Node> previousFormNodes, ArrayList<Node> previousTopNodes, ArrayList<Node> previousBottomNodes) {
-		clearContent();
-		formVBox.getChildren().addAll(previousFormNodes);
-		topPanelVBox.getChildren().addAll(previousTopNodes);
-		bottomPanelVBox.getChildren().addAll(previousBottomNodes);
-		app.getErbContainerController().removeBackButton();
+	private void internalStepLinkClicked(String link) {
+		TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+		for(TreeItem<String> stepTreeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+			String stepTreeItemId = engagementActionController.getTreeItemIdTreeMap().get(stepTreeItem);
+			if(stepTreeItemId.contentEquals(link)) {
+				engagementActionController.getTreeView().getSelectionModel().select(stepTreeItem);
+				engagementActionController.treeViewClicked(currentSelectedTreeItem, stepTreeItem);
+			}
+		}
 	}
 	
-	private void externalXMLLinkClicked(String link) {
-		app.getErbContainerController().addBackButton();
-		FileHandler fileHandler = new FileHandler();
-		XMLManager xmlManager = new XMLManager(app);
-		File xmlFile = fileHandler.getStaticSupportingXML(link);
-		ArrayList<Node> pFN = new ArrayList<Node>(formVBox.getChildren());
-		ArrayList<Node> pTN = new ArrayList<Node>(topPanelVBox.getChildren());
-		ArrayList<Node> pBN = new ArrayList<Node>(bottomPanelVBox.getChildren());
-		app.getErbContainerController().getBackButton().setOnMouseClicked(e-> backButtonClickedExternalXML(pFN, pTN, pBN));
-		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseFormContentXML(xmlFile, this);
-		clearContent();
-		addContent(formContentHashMap);
+	private void internalActivityLinkClicked(String link) {
+		TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+		for(TreeItem<String> activityTreeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+			String activityTreeItemId = engagementActionController.getTreeItemIdTreeMap().get(activityTreeItem);
+			if(activityTreeItemId.contentEquals(link)) {
+				engagementActionController.getTreeView().getSelectionModel().select(activityTreeItem);
+				engagementActionController.treeViewClicked(currentSelectedTreeItem, activityTreeItem);
+			}
+		}
 	}
 	
 	private void externalDOCLinkClicked(String link) {

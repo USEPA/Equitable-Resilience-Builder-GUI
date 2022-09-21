@@ -273,8 +273,8 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	public void centerCircleClicked() {
 		String selectedActivityGUID = activity.getActivityID();
-		for (TreeItem<String> treeItem : engagementActionController.getTreeItemActivityIdTreeMap().keySet()) {
-			if (engagementActionController.getTreeItemActivityIdTreeMap().get(treeItem) == selectedActivityGUID) {
+		for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+			if (engagementActionController.getTreeItemIdTreeMap().get(treeItem) == selectedActivityGUID) {
 				Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
 				if (treeItemChapter != null) {
 					if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(activity.getChapterAssignment())) {

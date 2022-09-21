@@ -157,8 +157,7 @@ public class EngagementActionController implements Initializable{
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	private HashMap<TreeItem<String>, String> treeItemActivityIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity ID
-	private HashMap<TreeItem<String>, String> treeItemStepIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a step ID
+	private HashMap<TreeItem<String>, String> treeItemIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity ID
 	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //holds all of the attribute panels
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>(); //holds all of the pathway controllers
 	private ArrayList<ERBChapterDiagramController> listOfChapterDiagramControllers = new ArrayList<ERBChapterDiagramController>(); //holds all of the chapter controllers
@@ -245,8 +244,8 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void initializeTreeViewSelection() {
-		for (TreeItem<String> treeItem : treeItemActivityIdTreeMap.keySet()) {
-			if (treeItemActivityIdTreeMap.get(treeItem) == "0") {
+		for (TreeItem<String> treeItem : treeItemIdTreeMap.keySet()) {
+			if (treeItemIdTreeMap.get(treeItem) == "0") {
 				getTreeView().getSelectionModel().select(treeItem);
 				treeViewClicked(null, treeItem);
 			}
@@ -265,19 +264,6 @@ public class EngagementActionController implements Initializable{
 			return null;
 		}
 	}
-
-//	private VBox loadChapterLandingRoot(Chapter chapter) {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
-//			ChapterLandingController chapterLandingController = new ChapterLandingController(chapter, this);
-//			fxmlLoader.setController(chapterLandingController);
-//			VBox root = fxmlLoader.load();
-//			return root;
-//		} catch (Exception e) {
-//			logger.error(e.getMessage());
-//			return null;
-//		}
-//	}
 
 	private VBox loadWorksheetContentController(Activity activity) {
 		if (activity != null) {
@@ -639,7 +625,7 @@ public class EngagementActionController implements Initializable{
 	private void activityTreeItemSelected(TreeItem<String> activityTreeItem) {
 		if(currentSelectedActivity != null) app.initSaveHandler(currentSelectedActivity, null, currentSelectedGoal, project, null, "activityChange");
 		//--
-		String activityId = treeItemActivityIdTreeMap.get(activityTreeItem);
+		String activityId = treeItemIdTreeMap.get(activityTreeItem);
 		currentSelectedActivity = getActivityForIDInGoal(activityId, currentSelectedGoal);
 		Chapter chapterForActivity = getChapterForNameInGoal(activityTreeItem.getParent().getValue(), currentSelectedGoal);
 		if(currentSelectedChapter != null && (chapterForActivity!= currentSelectedChapter)) {
@@ -671,15 +657,11 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void stepTreeItemSelected(TreeItem<String> stepTreeItem) {
-		//if(currentSelectedActivity != null) app.initSaveHandler(currentSelectedActivity, null, currentSelectedGoal, project, null, "activityChange");
 		
-		String stepId = treeItemStepIdTreeMap.get(stepTreeItem);
+		String stepId = treeItemIdTreeMap.get(stepTreeItem);
 		currentSelectedStep = getStepForIDInGoal(stepId, currentSelectedGoal);
 		currentSelectedActivity = getActivityForIDInGoal(currentSelectedStep.getActivityAssignment(), currentSelectedGoal);
 		Chapter chapterForActivity = getChapterForNameInGoal(stepTreeItem.getParent().getValue(), currentSelectedGoal);
-		//if(currentSelectedChapter != null && (chapterForActivity!= currentSelectedChapter)) {
-			//app.initSaveHandler(null, currentSelectedChapter, currentSelectedGoal, project, null, "chapterChange");
-		//}
 		currentSelectedChapter = chapterForActivity;
 		//--
 		cleanContentVBox();
@@ -744,53 +726,28 @@ public class EngagementActionController implements Initializable{
 
 	private void fillAndStoreTreeViewData(ArrayList<Chapter> chapters) {
 		if (chapters != null) {
-			treeItemActivityIdTreeMap.clear();
-			treeItemStepIdTreeMap.clear();
+			treeItemIdTreeMap.clear();
 			TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
-			treeItemActivityIdTreeMap.put(rootTreeItem, "0");
+			treeItemIdTreeMap.put(rootTreeItem, "0");
 			for (Chapter chapter : chapters) {
 				TreeItem<String> chapterTreeItem = new TreeItem<String>(chapter.getStringName());
 				rootTreeItem.getChildren().add(chapterTreeItem);
-				treeItemActivityIdTreeMap.put(chapterTreeItem, chapter.getNumericName());
-				//addPlanTreeItem(chapterTreeItem);
+				treeItemIdTreeMap.put(chapterTreeItem, chapter.getNumericName());
 				for (Activity activity : chapter.getAssignedActivities()) {
 					TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
 					chapterTreeItem.getChildren().add(activityTreeItem);
-					treeItemActivityIdTreeMap.put(activityTreeItem, activity.getActivityID());
+					treeItemIdTreeMap.put(activityTreeItem, activity.getActivityID());
 					for(Step step: activity.getSteps()) {
 						TreeItem<String> stepTreeItem = new TreeItem<String>(step.getLongName());
 						activityTreeItem.getChildren().add(stepTreeItem);
-						treeItemStepIdTreeMap.put(stepTreeItem, step.getStepID());
+						treeItemIdTreeMap.put(stepTreeItem, step.getStepID());
 					}
 				}
-				//addReflectTreeItem(chapterTreeItem);
 			}
 		} else {
 			logger.error("Cannot fillAndStoreTreeViewData. chapters is null.");
-		}
-	}
-	
-	private void addPlanTreeItem(TreeItem<String> chapterTreeItem) {
-		if (chapterTreeItem != null) {
-			TreeItem<String> planTreeItem = new TreeItem<String>("Plan");
-			chapterTreeItem.getChildren().add(planTreeItem);
-			String activityID = app.getActivityIDByName("Plan");
-			treeItemActivityIdTreeMap.put(planTreeItem, activityID);
-		} else {
-			logger.error("Cannot addPlanTreeItem. chapterTreeItem is null.");
-		}
-	}
-	
-	private void addReflectTreeItem(TreeItem<String> chapterTreeItem) {
-		if (chapterTreeItem != null) {
-			TreeItem<String> reflectTreeItem = new TreeItem<String>("Reflect");
-			chapterTreeItem.getChildren().add(reflectTreeItem);
-			String activityID = app.getActivityIDByName("Reflect");
-			treeItemActivityIdTreeMap.put(reflectTreeItem, activityID);
-		} else {
-			logger.error("Cannot addReflectTreeItem. chapterTreeItem is null.");
 		}
 	}
 	
@@ -861,15 +818,9 @@ public class EngagementActionController implements Initializable{
 				if (activity.getActivityType().getDescription().contentEquals("worksheet") || activity.getActivityType().getDescription().contentEquals("noteboard")) {
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
-						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
-						if(listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
-							File file = fileHandler.getActivityFormContentXML(project, currentSelectedGoal, activity);
-							Pane root = loadFormContentController(file);
-							addContentToContentVBox(root, false);
-						} else {
-							Pane root = loadWorksheetContentController(activity);
-							addContentToContentVBox(root, false);
-						}
+						File file = fileHandler.getActivityFormContentXML(project, currentSelectedGoal, activity);
+						Pane root = loadFormContentController(file);
+						addContentToContentVBox(root, false);
 					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
 						removeAttributeScrollPane();
 						Pane root = loadPlanRoot(activity);
@@ -885,14 +836,14 @@ public class EngagementActionController implements Initializable{
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
 						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
-						if(listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
+						if (listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
 							File file = fileHandler.getActivityFormContentXML(project, currentSelectedGoal, activity);
 							Pane root = loadFormContentController(file);
 							addContentToContentVBox(root, false);
 						} else {
 							Pane root = loadWorksheetContentController(activity);
 							addContentToContentVBox(root, false);
-						}						
+						}
 					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
 						removeAttributeScrollPane();
 						Pane root = loadPlanRoot(activity);
@@ -1016,27 +967,11 @@ public class EngagementActionController implements Initializable{
 	
 	public TreeItem<String> findTreeItem(Activity activity) {
 		if (activity != null) {
-			HashMap<TreeItem<String>, String> treeMap = getTreeItemActivityIdTreeMap();
+			HashMap<TreeItem<String>, String> treeMap = getTreeItemIdTreeMap();
 			for (TreeItem<String> treeItem : treeMap.keySet()) {
-				String treeItemValue = treeItem.getValue();
-				TreeItem<String> parentTreeItem = treeItem.getParent();
-				if (parentTreeItem != null) {
-					String chapterString = "Chapter " + activity.getChapterAssignment();
-					if (parentTreeItem.getValue().contentEquals(chapterString)) {
-						if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
-							String treeItemActivityID = treeMap.get(treeItem);
-							if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
-								return treeItem;
-							}
-						}
-					}
-				} else {
-					if (treeItemValue.contentEquals(activity.getLongName())) { // if tree item value matches activity name
-						String treeItemActivityID = treeMap.get(treeItem);
-						if (treeItemActivityID.contentEquals(activity.getActivityID())) { // if tree item GUID matches
-							return treeItem;
-						}
-					}
+				String treeItemId = treeMap.get(treeItem);
+				if(treeItemId.contentEquals(activity.getActivityID())) {
+					return treeItem;
 				}
 			}
 			return null;
@@ -1442,14 +1377,14 @@ public class EngagementActionController implements Initializable{
 		this.project = project;
 	}
 
-	public HashMap<TreeItem<String>, String> getTreeItemActivityIdTreeMap() {
-		return treeItemActivityIdTreeMap;
+	public HashMap<TreeItem<String>, String> getTreeItemIdTreeMap() {
+		return treeItemIdTreeMap;
 	}
 
-	public void setTreeItemActivityIdTreeMap(HashMap<TreeItem<String>, String> treeItemActivityIdTreeMap) {
-		this.treeItemActivityIdTreeMap = treeItemActivityIdTreeMap;
+	public void setTreeItemIdTreeMap(HashMap<TreeItem<String>, String> treeItemIdTreeMap) {
+		this.treeItemIdTreeMap = treeItemIdTreeMap;
 	}
-
+	
 	public ArrayList<AttributePanelController> getListOfAttributePanelControllers() {
 		return listOfAttributePanelControllers;
 	}

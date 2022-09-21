@@ -139,7 +139,7 @@
          <children>
             <VBox fx:id="treeViewVBox">
                <children>
-                  <TreeView fx:id="treeView" minWidth="200.0" prefHeight="250.0" VBox.vgrow="ALWAYS" />
+                  <TreeView fx:id="treeView" minWidth="250.0" prefHeight="250.0" VBox.vgrow="ALWAYS" />
                   <VBox fx:id="localProgressVBox" prefHeight="250.0" spacing="5.0" style="-fx-border-color: #E7E7E7;" VBox.vgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER">
