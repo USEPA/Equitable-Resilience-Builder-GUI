@@ -169,9 +169,9 @@ public class App extends Application {
 	}	
 	
 	private void readAndStoreData() {	
+		readAndStoreAvailableSteps();
 		readAndStoreChapters();
 		readAndStoreActivityTypes();
-		readAndStoreAvailableSteps();
 		readAndStoreAvailableActivities();
 		readAndStoreGoalCategories();
 		readAndStoreProjects();

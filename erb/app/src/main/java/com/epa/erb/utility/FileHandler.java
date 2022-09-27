@@ -219,27 +219,32 @@ public class FileHandler {
 	}
 	
 	public File getChaptersFileToParse() {
-		File chaptersFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Chapters\\Chapters.xml");
+		File chaptersFile = new File(constants.getPathToERBStaticDataFolder() + "\\Chapters\\Chapters.xml");
 		return chaptersFile;
 	}
 	
 	public File getActivityTypesFileToParse() {
-		File activityTypesFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Activities\\Activity_Types.xml");
+		File activityTypesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activity_Types.xml");
 		return activityTypesFile;
 	}
 	
 	public File getAvailableActivitiesFileToParse() {
-		File availableActivitiesFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Activities\\Available_Activities.xml");
+		File availableActivitiesFile = new File(constants.getPathToERBStaticDataFolder()+ "\\Activities\\Available_Activities.xml");
 		return availableActivitiesFile;
 	}
 	
 	public File getAvailableStepsFileToParse() {
-		File availableStepsFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Activities\\Available_Steps.xml");
+		File availableStepsFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Steps.xml");
 		return availableStepsFile;
 	}
 	
+	public File getAvailableResourcesFileToParse() {
+		File availableResourcesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Resources\\Available_Resources.xml");
+		return availableResourcesFile;
+	}
+	
 	public File getGoalCategoriesFileToParse() {
-		File goalCategoriesFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Goals\\Goal_Categories.xml");
+		File goalCategoriesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Goals\\Goal_Categories.xml");
 		return goalCategoriesFile;
 	}
 	
@@ -317,6 +322,16 @@ public class FileHandler {
 			return chapterAboutXML;
 		} else {
 			logger.error("Cannot getChapterFormAboutXML. chapter = " + chapter);
+			return null;
+		}
+	}
+	
+	public File getResourceFormContentXML(String id) {
+		if(id != null) {
+			File availableResourcesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Resources\\" + id + "\\form_text.xml");
+			return availableResourcesFile;
+		} else {
+			logger.error("Cannot getResourceFormContentXML. id = " + id);
 			return null;
 		}
 	}

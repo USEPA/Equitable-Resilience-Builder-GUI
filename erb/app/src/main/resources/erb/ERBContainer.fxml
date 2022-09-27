@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -16,10 +17,19 @@
          <children>
             <MenuBar nodeOrientation="RIGHT_TO_LEFT">
               <menus>
-                <Menu mnemonicParsing="false" text="Help">
+                <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#aboutMenuItemAction" text="ERB Landing Page" />
-                        <MenuItem mnemonicParsing="false" onAction="#glossaryMenuItemAction" text="Glossary" />
+                        <Menu mnemonicParsing="false" onAction="#aboutMenuItemAction" text="ERB Landing Page">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#howERBMadeMenuItemAction" text="How ERB was made" />
+                              <MenuItem mnemonicParsing="false" onAction="#howDoesItWorkMenuItemAction" text="How does it work" />
+                              <MenuItem mnemonicParsing="false" onAction="#whoIsItForMenuItemAction" text="Who is ERB for" />
+                              <MenuItem mnemonicParsing="false" onAction="#howOthersAreUsingItMenuItemAction" text="How others are using ERB" />
+                              <MenuItem mnemonicParsing="false" onAction="#whatMakesERBDifferentMenuItemAction" text="What makes ERB different" />
+                              <MenuItem mnemonicParsing="false" onAction="#equityAndResilienceMenuItemAction" text="Equity and Resilience" />
+                          </items>
+                        </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
                   </items>
                 </Menu>
               </menus>

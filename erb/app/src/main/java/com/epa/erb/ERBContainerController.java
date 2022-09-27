@@ -1,21 +1,26 @@
 package com.epa.erb;
 
+import java.io.File;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.epa.erb.form_activities.FormContentController;
+import com.epa.erb.intro_panels.IntroPanelLoader;
 import com.epa.erb.utility.Constants;
+import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class ERBContainerController implements Initializable{
 	
@@ -31,29 +36,77 @@ public class ERBContainerController implements Initializable{
 	VBox erbContainer;
 	@FXML
 	Label titleLabel;
+	@FXML
+	Menu resourcesMenu;
 	
 	private App app;
 	public ERBContainerController(App app) {
 		this.app = app;
 	}
 	
+	private IntroPanelLoader introPanelLoader;
 	private Constants constants = new Constants();
+	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(ERBContainerController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		removeBackButton();
+		handleResourceMenu();
+		introPanelLoader = new IntroPanelLoader(app);
 	}
 	
 	private void handleControls() {
 		welcomeVBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");		
 	}
 	
-	@FXML
-	public void glossaryMenuItemAction() {
-		Parent glossaryRoot = loadGlossary();
-		showGlossary(glossaryRoot);
+	private void handleResourceMenu() {
+		XMLManager xmlManager = new XMLManager(app);
+		File resourceXMLFile = fileHandler.getAvailableResourcesFileToParse();
+		HashMap<String, String> resources = xmlManager.parseAvailableResourcesXML(resourceXMLFile);
+		for(String idString: resources.keySet()) {
+			String name = resources.get(idString);
+			MenuItem menuItem = createMenuItem(idString, name);
+			addMenuItem(menuItem);
+		}
+	}
+	
+	private MenuItem createMenuItem(String id, String name) {
+		if (id != null && name != null) {
+			MenuItem menuItem = new MenuItem(name);
+			menuItem.setId(id);
+			menuItem.setOnAction(e -> resourceMenuItemSelected(menuItem));
+			return menuItem;
+		} else {
+			System.out.println("Cannot createMenuItem. id or name is null.");
+			return null;
+		}
+	}
+	
+	private void addMenuItem(MenuItem menuItem) {
+		if(menuItem != null) {
+			resourcesMenu.getItems().add(menuItem);
+		}
+	}
+	
+	private void resourceMenuItemSelected(MenuItem menuItem) {
+		File resourceXML = fileHandler.getResourceFormContentXML(menuItem.getId());
+		Parent root = loadFormContentController(resourceXML);
+		app.loadNodeToERBContainer(root);
+	}
+	
+	private VBox loadFormContentController(File xmlContentFileToParse) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/FormContent.fxml"));
+			FormContentController formContentController = new FormContentController(app, xmlContentFileToParse, null);
+			fxmlLoader.setController(formContentController);
+			VBox root = fxmlLoader.load();
+			return root;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 	
 	@FXML
@@ -62,28 +115,34 @@ public class ERBContainerController implements Initializable{
 		app.launchERBLandingNew2();
 	}
 	
-	private Parent loadGlossary() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/Glossary.fxml"));
-			GlossaryController glossaryController = new GlossaryController();
-			fxmlLoader.setController(glossaryController);
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return null;
-		}
+	@FXML
+	public void howERBMadeMenuItemAction() {
+		introPanelLoader.loadHowERBMadePanel();
 	}
 	
-	private void showGlossary(Parent glossaryRoot) {
-		if (glossaryRoot != null) {
-			Stage stage = new Stage();
-			Scene scene = new Scene(glossaryRoot);
-			stage.setScene(scene);
-			stage.setTitle("ERB: Glossary");
-			stage.showAndWait();
-		} else {
-			logger.error("Cannot showGlossary. glossaryRoot is null.");
-		}
+	@FXML
+	public void howDoesItWorkMenuItemAction() {
+		introPanelLoader.loadHowDoesItWorkPanel();
+	}
+	
+	@FXML
+	public void whoIsItForMenuItemAction() {
+		introPanelLoader.loadWhoAreERBUsersPanel();
+	}
+	
+	@FXML
+	public void howOthersAreUsingItMenuItemAction() {
+		introPanelLoader.loadHowOthersAreUsingERBPanel();
+	}
+	
+	@FXML
+	public void whatMakesERBDifferentMenuItemAction() {
+		introPanelLoader.loadWhatMakesERBDifferentPanel();
+	}
+	
+	@FXML
+	public void equityAndResilienceMenuItemAction() {
+		introPanelLoader.loadEquityAndResiliencePanel();
 	}
 	
 	public void setTitleLabelText(String text) {

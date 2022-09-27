@@ -23,13 +23,13 @@ public class EquityAndResilienceController implements Initializable{
 	@FXML
 	public void glossaryHyperlinkClicked() {
 		ERBContainerController erbContainerController = new ERBContainerController(app);
-		erbContainerController.glossaryMenuItemAction();
+		//erbContainerController.glossaryMenuItemAction();
 	}
 	
 	@FXML
 	public void equitableResilienceHyperlinkClicked() {
 		ERBContainerController erbContainerController = new ERBContainerController(app);
-		erbContainerController.glossaryMenuItemAction();
+		//erbContainerController.glossaryMenuItemAction();
 	}
 
 }

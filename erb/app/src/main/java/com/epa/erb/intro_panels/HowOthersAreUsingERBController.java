@@ -2,17 +2,15 @@ package com.epa.erb.intro_panels;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.epa.erb.App;
 import com.epa.erb.ERBContainerController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class WhatMakesERBDifferentController implements Initializable {
+public class HowOthersAreUsingERBController implements Initializable{
 
 	private App app;
-	public WhatMakesERBDifferentController(App app) {
+	public HowOthersAreUsingERBController(App app) {
 		this.app = app;
 	}
 	

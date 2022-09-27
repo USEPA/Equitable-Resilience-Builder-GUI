@@ -58,7 +58,7 @@ public class ERBLandingNew2Controller implements Initializable{
 	@FXML
 	public void equitableResilienceHyperlinkClicked() {
 		ERBContainerController erbContainerController = new ERBContainerController(app);
-		erbContainerController.glossaryMenuItemAction();
+		//erbContainerController.glossaryMenuItemAction();
 	}
 	
 	@FXML

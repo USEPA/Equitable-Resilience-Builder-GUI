@@ -61,6 +61,7 @@ public class XMLManager {
 						String numericName = chapterElement.getAttribute("numericName");
 						String stringName = chapterElement.getAttribute("stringName");
 						Chapter chapter = new Chapter(Integer.parseInt(chapterNum), numericName, stringName, description, notes);
+						chapter.assignSteps(app.getSteps());
 						chapters.add(chapter);
 					}
 				}
@@ -190,6 +191,37 @@ public class XMLManager {
 					}
 				}
 				return availableSteps ;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
+	
+	// Parse AvailableResources
+	public HashMap<String, String> parseAvailableResourcesXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				HashMap<String, String> availableResources = new HashMap<String, String>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList resourceNodeList = doc.getElementsByTagName("resource");
+				for (int i = 0; i < resourceNodeList.getLength(); i++) {
+					Node resourceNode = resourceNodeList.item(i);
+					// Resource
+					if (resourceNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element resourceElement = (Element) resourceNode;
+						String id = resourceElement.getAttribute("id");
+						String name = resourceElement.getAttribute("name");
+
+						availableResources.put(id, name);
+					}
+				}
+				return availableResources;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
@@ -389,6 +421,7 @@ public class XMLManager {
 								}
 							}
 						}
+						chapter.assignSteps(app.getSteps());
 						chapter.setPlanHashMap(facilitatorPlanHashMap);
 						chapter.setReflectHashMap(facilitatorReflectHashMap);
 						chapter.setAssignedActivities(listOfChapterActivities);

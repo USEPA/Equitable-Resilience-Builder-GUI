@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TreeItem;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -26,7 +27,11 @@ public class FormContentController implements Initializable{
 	@FXML
 	VBox nodeVBox;
 	@FXML
+	HBox hBox;
+	@FXML
 	VBox formVBox;
+	@FXML
+	VBox rightPanelVBox;
 	@FXML
 	VBox topPanelVBox;
 	@FXML
@@ -46,6 +51,7 @@ public class FormContentController implements Initializable{
 		XMLManager xmlManager = new XMLManager(app);
 		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseFormContentXML(xmlContentFileToParse, this);
 		addContent(formContentHashMap);
+		hideEmptyControls();
 	}
 	
 	public void handleHyperlink(Text text, String linkType, String link) {
@@ -124,6 +130,12 @@ public class FormContentController implements Initializable{
 			addTextFlowsToVBox(topPanelVBox, topPanelTextFlows);
 			ArrayList<TextFlow> bottomPanelTextFlows = formContentHashMap.get("bottomPanelVBox");
 			addTextFlowsToVBox(bottomPanelVBox, bottomPanelTextFlows);
+		}
+	}
+	
+	private void hideEmptyControls() {
+		if(topPanelVBox.getChildren().size() == 0 && bottomPanelVBox.getChildren().size() == 0) {
+			hBox.getChildren().remove(rightPanelVBox);
 		}
 	}
 	

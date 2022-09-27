@@ -6,13 +6,13 @@
 
 <VBox fx:id="nodeVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox VBox.vgrow="ALWAYS">
+      <HBox fx:id="hBox" VBox.vgrow="ALWAYS">
          <children>
             <VBox fx:id="formVBox" spacing="10.0" HBox.hgrow="ALWAYS" />
-            <VBox minWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="rightPanelVBox" minWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
                   <VBox fx:id="topPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
-                  <VBox fx:id="bottomPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="bottomPanelVBox" alignment="BOTTOM_LEFT" spacing="10.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </children>

@@ -3,6 +3,7 @@ package com.epa.erb.chapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import com.epa.erb.Activity;
+import com.epa.erb.Step;
 
 public class Chapter {
 	
@@ -20,12 +21,26 @@ public class Chapter {
 	}
 		
 	private boolean saved = true;
+	private ArrayList<Step> steps = new ArrayList<Step>();
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
 	private HashMap<String, String> planHashMap;	
 	private HashMap<String, String> reflectHashMap;
 	
 	public Chapter() {
 		
+	}
+	
+	public void assignSteps(ArrayList<Step> allSteps) {
+		ArrayList<Step> chapterSteps = new ArrayList<Step>();
+		if (allSteps != null) {
+			for (Step step : allSteps) {
+				if (step.getActivityAssignment().contentEquals(chapterNum + "0")) {
+					int sizeOfChapterList = chapterSteps.size();
+					chapterSteps.add(sizeOfChapterList, step);
+				}
+			}
+		}
+		setSteps(chapterSteps);
 	}
 	
 	public void setHashMaps() {
@@ -203,6 +218,14 @@ public class Chapter {
 
 	public void setReflectHashMap(HashMap<String, String> reflectHashMap) {
 		this.reflectHashMap = reflectHashMap;
+	}
+	
+	public ArrayList<Step> getSteps() {
+		return steps;
+	}
+
+	public void setSteps(ArrayList<Step> steps) {
+		this.steps = steps;
 	}
 		
 }

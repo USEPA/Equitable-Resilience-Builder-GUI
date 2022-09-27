@@ -43,6 +43,7 @@ public class Goal {
 					if (!chapterNumber.contentEquals("0")) {
 						Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, getChapterDescription(chapterNumber), "");
 						ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities,goalActivityIds);
+						chapter.assignSteps(app.getSteps());
 						chapter.setAssignedActivities(activitiesForChapter);
 						chapter.setHashMaps();
 						chapters.add(chapter);

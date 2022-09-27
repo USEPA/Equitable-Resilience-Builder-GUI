@@ -50,6 +50,8 @@ public class IntroPanelLoader {
 	public void loadHowOthersAreUsingERBPanel() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/HowOthersAreUsingERB.fxml"));
+			HowOthersAreUsingERBController howOthersAreUsingERB = new HowOthersAreUsingERBController(app);
+			fxmlLoader.setController(howOthersAreUsingERB);
 			Parent vBox = fxmlLoader.load();
 			app.loadNodeToERBContainer(vBox);
 		} catch (Exception e) {
@@ -60,6 +62,8 @@ public class IntroPanelLoader {
 	public void loadExplorePanel() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/ExploreERB.fxml"));
+			ExploreERBController exploreERBController = new ExploreERBController(app);
+			fxmlLoader.setController(exploreERBController);
 			Parent vBox = fxmlLoader.load();
 			app.loadNodeToERBContainer(vBox);
 		} catch (Exception e) {
@@ -80,7 +84,15 @@ public class IntroPanelLoader {
 	}
 	
 	public void loadWhatMakesERBDifferentPanel() {
-		
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/WhatMakesERBDifferent.fxml"));
+			WhatMakesERBDifferentController whatMakesERBDifferentController = new WhatMakesERBDifferentController(app);
+			fxmlLoader.setController(whatMakesERBDifferentController);
+			Parent vBox = fxmlLoader.load();
+			app.loadNodeToERBContainer(vBox);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public App getApp() {
