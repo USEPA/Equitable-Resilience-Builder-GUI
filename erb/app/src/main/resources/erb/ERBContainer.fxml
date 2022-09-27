@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -19,26 +16,12 @@
               <menus>
                 <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources">
                   <items>
-                        <Menu mnemonicParsing="false" onAction="#aboutMenuItemAction" text="ERB Landing Page">
-                          <items>
-                            <MenuItem mnemonicParsing="false" onAction="#howERBMadeMenuItemAction" text="How ERB was made" />
-                              <MenuItem mnemonicParsing="false" onAction="#howDoesItWorkMenuItemAction" text="How does it work" />
-                              <MenuItem mnemonicParsing="false" onAction="#whoIsItForMenuItemAction" text="Who is ERB for" />
-                              <MenuItem mnemonicParsing="false" onAction="#howOthersAreUsingItMenuItemAction" text="How others are using ERB" />
-                              <MenuItem mnemonicParsing="false" onAction="#whatMakesERBDifferentMenuItemAction" text="What makes ERB different" />
-                              <MenuItem mnemonicParsing="false" onAction="#equityAndResilienceMenuItemAction" text="Equity and Resilience" />
-                          </items>
-                        </Menu>
+                        <Menu fx:id="erbLandingMenu" mnemonicParsing="false" onAction="#aboutMenuItemAction" text="ERB Landing Page" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                   </items>
                 </Menu>
               </menus>
             </MenuBar>
-            <HBox fx:id="backButtonHBox">
-               <children>
-                  <Button fx:id="backButton" mnemonicParsing="false" text="Back" />
-               </children>
-            </HBox>
             <VBox fx:id="welcomeVBox" alignment="CENTER">
                <children>
                   <Label fx:id="titleLabel" text="ERB">

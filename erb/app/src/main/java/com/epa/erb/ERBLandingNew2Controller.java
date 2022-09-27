@@ -1,17 +1,22 @@
 package com.epa.erb;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import com.epa.erb.intro_panels.IntroPanelLoader;
 import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.Constants;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -35,13 +40,11 @@ public class ERBLandingNew2Controller implements Initializable{
 	
 	private String mode = "Goal Mode";
 	private Constants constants = new Constants();
-	private IntroPanelLoader introPanelLoader;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		loadArrowDiagram();
-		introPanelLoader = new IntroPanelLoader(app);
 	}
 	
 	private void handleControls() {
@@ -56,43 +59,33 @@ public class ERBLandingNew2Controller implements Initializable{
 	}
 	
 	@FXML
-	public void equitableResilienceHyperlinkClicked() {
-		ERBContainerController erbContainerController = new ERBContainerController(app);
-		//erbContainerController.glossaryMenuItemAction();
+	public void equitableResilienceHyperlinkClicked(ActionEvent actionEvent) {
+		Hyperlink hyperlink = (Hyperlink) actionEvent.getSource();
+		loadContent(hyperlink.getId(), true);
 	}
 	
 	@FXML
-	public void equityAndResilienceHyperlinkClicked() {
-		introPanelLoader.loadEquityAndResiliencePanel();
+	public void buttonAction(ActionEvent actionEvent) {
+		Button button = (Button) actionEvent.getSource();
+		loadContent(button.getId(), false);
 	}
 	
 	@FXML
-	public void howERBMadeHyperlinkClicked() {
-		introPanelLoader.loadHowERBMadePanel();
+	public void hyperlinkAction(ActionEvent actionEvent) {
+		Hyperlink hyperlink = (Hyperlink) actionEvent.getSource();
+		loadContent(hyperlink.getId(), false);
 	}
 	
 	@FXML
-	public void howDoesItWorkButtonAction() {
-		introPanelLoader.loadHowDoesItWorkPanel();
-	}
-	@FXML
-	public void howOthersUsingERBHyperlinkClicked() {
-		introPanelLoader.loadHowOthersAreUsingERBPanel();
+	public void labelAction(MouseEvent mouseEvent) {
+		Label label = (Label) mouseEvent.getSource();
+		loadContent(label.getId(), false);
 	}
 	
-	@FXML
-	public void exploreButtonAction() {
-		introPanelLoader.loadExplorePanel();
-	}
-	
-	@FXML
-	public void whoAreERBUsersButtonAction() {
-		introPanelLoader.loadWhoAreERBUsersPanel();
-	}
-	
-	@FXML
-	public void whatMakesERBDifferentButtonAction() {
-		introPanelLoader.loadWhatMakesERBDifferentPanel();
+	private void loadContent(String id, boolean isResource) {
+		File formContentXMLFile = app.getErbContainerController().getFormContentXML(id, isResource);
+		Parent root = app.getErbContainerController().loadFormContentController(formContentXMLFile);
+		app.loadNodeToERBContainer(root);
 	}
 	
 	private void loadArrowDiagram() {

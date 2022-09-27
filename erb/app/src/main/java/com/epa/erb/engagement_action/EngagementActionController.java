@@ -1432,6 +1432,10 @@ public class EngagementActionController implements Initializable{
 		return currentSelectedGoal;
 	}
 
+	public void setCurrentSelectedGoal(Goal currentSelectedGoal) {
+		this.currentSelectedGoal = currentSelectedGoal;
+	}
+
 	public Step getCurrentSelectedStep() {
 		return currentSelectedStep;
 	}

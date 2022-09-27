@@ -11,6 +11,8 @@ public class IntroPanelLoader {
 		this.app = app;
 	}
 	
+	
+	
 	public void loadEquityAndResiliencePanel() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/intro_panels/EquityAndResilience.fxml"));

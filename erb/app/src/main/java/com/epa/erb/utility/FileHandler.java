@@ -243,6 +243,11 @@ public class FileHandler {
 		return availableResourcesFile;
 	}
 	
+	public File getAvailableIntroFileToParse() {
+		File availableIntroFile = new File(constants.getPathToERBStaticDataFolder() + "\\Intro\\Available_Intro.xml");
+		return availableIntroFile;
+	}
+	
 	public File getGoalCategoriesFileToParse() {
 		File goalCategoriesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Goals\\Goal_Categories.xml");
 		return goalCategoriesFile;
@@ -332,6 +337,16 @@ public class FileHandler {
 			return availableResourcesFile;
 		} else {
 			logger.error("Cannot getResourceFormContentXML. id = " + id);
+			return null;
+		}
+	}
+	
+	public File getIntroFormContentXML(String id) {
+		if(id != null) {
+			File availableIntroFile = new File(constants.getPathToERBStaticDataFolder() + "\\Intro\\" + id + "\\form_text.xml");
+			return availableIntroFile;
+		} else {
+			logger.error("Cannot getIntroFormContentXML. id = " + id);
 			return null;
 		}
 	}

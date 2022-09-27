@@ -11,16 +11,26 @@ import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.intro_panels.IntroPanelLoader;
 import com.epa.erb.project.Project;
+import com.epa.erb.project.ProjectSelectionPopupController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
+import com.epa.erb.worksheet.WorksheetContentController;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class FormContentController implements Initializable{
 	
@@ -46,6 +56,8 @@ public class FormContentController implements Initializable{
 		this.engagementActionController = engagementActionController;
 	}
 		
+	private Project project;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLManager xmlManager = new XMLManager(app);
@@ -55,9 +67,11 @@ public class FormContentController implements Initializable{
 	}
 	
 	public void handleHyperlink(Text text, String linkType, String link) {
-		if(linkType.contentEquals("internalPanel")) {
-			internalPanelLinkClicked(link);
-		} else if (linkType.contentEquals("internalStep")) {
+		if(linkType.contentEquals("internalIntro")) {
+			internalIntroLinkClicked(link);
+		} else if (linkType.contentEquals("internalResource")){
+			internalResourceLinkClicked(link);
+	    } else if (linkType.contentEquals("internalStep")) {
 			internalStepLinkClicked(link);
 		} else if (linkType.contentEquals("internalActivity")) {
 			internalActivityLinkClicked(link);
@@ -68,58 +82,104 @@ public class FormContentController implements Initializable{
 		}
 	}
 	
+	private void internalIntroLinkClicked(String link) {
+		if (!link.contentEquals("00")) {
+			File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, false);
+			Parent root = app.getErbContainerController().loadFormContentController(formContentXMLFile);
+			app.loadNodeToERBContainer(root);
+		} else {
+			app.launchERBLandingNew2();
+		}
+	}
+	
+	private void internalResourceLinkClicked(String link) {
+		File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, true);
+		Parent root = app.getErbContainerController().loadFormContentController(formContentXMLFile);
+		app.loadNodeToERBContainer(root);
+	}
+	
+	private void internalStepLinkClicked(String link) {
+		if (engagementActionController != null) {
+			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+			for (TreeItem<String> stepTreeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+				String stepTreeItemId = engagementActionController.getTreeItemIdTreeMap().get(stepTreeItem);
+				if (stepTreeItemId.contentEquals(link)) {
+					engagementActionController.getTreeView().getSelectionModel().select(stepTreeItem);
+					engagementActionController.treeViewClicked(currentSelectedTreeItem, stepTreeItem);
+				}
+			}
+		} else {
+			System.out.println("ERROR 1");
+			loadProjectSelectionPopup();
+		}
+	}
+	
+	
+	
+	private void internalActivityLinkClicked(String link) {
+		if (engagementActionController != null) {
+			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+			for (TreeItem<String> activityTreeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+				String activityTreeItemId = engagementActionController.getTreeItemIdTreeMap().get(activityTreeItem);
+				if (activityTreeItemId.contentEquals(link)) {
+					engagementActionController.getTreeView().getSelectionModel().select(activityTreeItem);
+					engagementActionController.treeViewClicked(currentSelectedTreeItem, activityTreeItem);
+				}
+			}
+		} else {
+			System.out.println("ERROR 2");
+			loadProjectSelectionPopup();
+
+		}
+	}
+	
+	private void externalDOCLinkClicked(String link) {
+		if (engagementActionController != null) {
+			FileHandler fileHandler = new FileHandler();
+			Project currentProject = app.getSelectedProject();
+			Goal currentGoal = engagementActionController.getCurrentGoal();
+			File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(currentProject, currentGoal);
+			File fileToOpen = new File(supportingDOCDirectory + "\\" + link);
+			fileHandler.openFile(fileToOpen);
+		} else {
+			//TODO: HERE
+			System.out.println("ERROR 3");
+			loadProjectSelectionPopup();
+			System.out.println(project.getProjectName());
+			engagementActionController = new EngagementActionController(app, project);
+			engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
+			externalDOCLinkClicked(link);
+		}
+	}
+	
+	public void closeProjectPopupStage() {
+		if(projectPopupStage != null) {
+			projectPopupStage.close();
+		}
+	}
+	
+	private Stage projectPopupStage;
+	private void loadProjectSelectionPopup() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelectionPopup.fxml"));
+			ProjectSelectionPopupController projectSelectionPopupController = new ProjectSelectionPopupController(app,this);
+			fxmlLoader.setController(projectSelectionPopupController);
+			VBox root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			projectPopupStage = new Stage();
+			projectPopupStage.setScene(scene);
+			projectPopupStage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private void urlLinkClicked(String link) {
 		try {
 			Desktop.getDesktop().browse(new URL(link).toURI());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	private void backButtonClickedInternalPanel() {
-		Node previousNode = engagementActionController.getEngagementVBox();
-		app.loadNodeToERBContainer(previousNode);
-		app.getErbContainerController().removeBackButton();
-	}
-	
-	private void internalPanelLinkClicked(String link) {
-		app.getErbContainerController().addBackButton();
-		app.getErbContainerController().getBackButton().setOnMouseClicked(e-> backButtonClickedInternalPanel());
-		IntroPanelLoader introPanelLoader = new IntroPanelLoader(app);
-		if(link.contentEquals("equityAndResilience")) {
-			introPanelLoader.loadEquityAndResiliencePanel();
-		}
-	}
-	
-	private void internalStepLinkClicked(String link) {
-		TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
-		for(TreeItem<String> stepTreeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-			String stepTreeItemId = engagementActionController.getTreeItemIdTreeMap().get(stepTreeItem);
-			if(stepTreeItemId.contentEquals(link)) {
-				engagementActionController.getTreeView().getSelectionModel().select(stepTreeItem);
-				engagementActionController.treeViewClicked(currentSelectedTreeItem, stepTreeItem);
-			}
-		}
-	}
-	
-	private void internalActivityLinkClicked(String link) {
-		TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
-		for(TreeItem<String> activityTreeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-			String activityTreeItemId = engagementActionController.getTreeItemIdTreeMap().get(activityTreeItem);
-			if(activityTreeItemId.contentEquals(link)) {
-				engagementActionController.getTreeView().getSelectionModel().select(activityTreeItem);
-				engagementActionController.treeViewClicked(currentSelectedTreeItem, activityTreeItem);
-			}
-		}
-	}
-	
-	private void externalDOCLinkClicked(String link) {
-		FileHandler fileHandler = new FileHandler();
-		Project currentProject = app.getSelectedProject();
-		Goal currentGoal = engagementActionController.getCurrentGoal();
-		File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(currentProject, currentGoal);
-		File fileToOpen = new File(supportingDOCDirectory + "\\" + link);
-		fileHandler.openFile(fileToOpen);
 	}
 	
 	public void addContent(HashMap<String, ArrayList<TextFlow>> formContentHashMap) {
@@ -163,6 +223,14 @@ public class FormContentController implements Initializable{
 				vBox.getChildren().add(textFlow);
 			}
 		}
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 }

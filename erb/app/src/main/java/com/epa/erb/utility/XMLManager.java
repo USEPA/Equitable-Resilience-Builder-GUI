@@ -230,6 +230,37 @@ public class XMLManager {
 		}
 		return null;
 	}
+	
+	// Parse AvailableIntro
+	public HashMap<String, String> parseAvailableIntroXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				HashMap<String, String> availableIntroPanels = new HashMap<String, String>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList intoNodeList = doc.getElementsByTagName("introPanel");
+				for (int i = 0; i < intoNodeList.getLength(); i++) {
+					Node introNode = intoNodeList.item(i);
+					// Intro
+					if (introNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element introElement = (Element) introNode;
+						String id = introElement.getAttribute("id");
+						String name = introElement.getAttribute("name");
+
+						availableIntroPanels.put(id, name);
+					}
+				}
+				return availableIntroPanels;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
 
 	//Parse GoalCategories
 	public ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile){
