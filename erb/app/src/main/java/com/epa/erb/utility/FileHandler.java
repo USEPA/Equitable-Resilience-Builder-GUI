@@ -147,7 +147,7 @@ public class FileHandler {
 	
 	public File getActivityDataXMLFile(Project project, Goal goal, Activity activity) {
 		if(project != null && goal != null && activity != null) {
-			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\Data.xml");
+			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML\\" + activity.getActivityID() + "\\Data.xml");
 			return activityDataXMLFile;
 		} else {
 			logger.error("Cannot getActivityDataXMLFile. project = " + project + " goal = " + goal + " activity = " + activity);
@@ -157,7 +157,7 @@ public class FileHandler {
 	
 	public File getActivityMetaXMLFile(Project project, Goal goal, Activity activity) {
 		if(project != null && goal != null && activity != null) {
-			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\Meta.xml");
+			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML\\" + activity.getActivityID() + "\\Meta.xml");
 			return activityDataXMLFile;
 		} else {
 			logger.error("Cannot getActivityMetaXMLFile. project = " + project + " goal = " + goal + " activity = " + activity);

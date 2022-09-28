@@ -850,7 +850,7 @@ public class EngagementActionController implements Initializable{
 				if (activity.getActivityType().getDescription().contentEquals("worksheet") || activity.getActivityType().getDescription().contentEquals("noteboard")) {
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
-						File file = fileHandler.getStaticActivityFormText(project, currentSelectedGoal, activity);
+						File file = fileHandler.getStaticActivityFormText(activity);
 						Pane root = loadFormContentController(file);
 						addContentToContentVBox(root, false);
 					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
@@ -869,7 +869,7 @@ public class EngagementActionController implements Initializable{
 						addBaseAttributesToAttributePanel(activity);
 						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
 						if (listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
-							File file = fileHandler.getStaticActivityFormText(project, currentSelectedGoal, activity);
+							File file = fileHandler.getStaticActivityFormText(activity);
 							Pane root = loadFormContentController(file);
 							addContentToContentVBox(root, false);
 						} else {

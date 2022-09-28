@@ -2,7 +2,6 @@ package com.epa.erb;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
 import com.epa.erb.chapter.ReflectFacilitatorModeController;

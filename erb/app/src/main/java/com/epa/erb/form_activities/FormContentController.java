@@ -113,8 +113,6 @@ public class FormContentController implements Initializable{
 		}
 	}
 	
-	
-	
 	private void internalActivityLinkClicked(String link) {
 		if (engagementActionController != null) {
 			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();

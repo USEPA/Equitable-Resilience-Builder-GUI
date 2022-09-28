@@ -2,9 +2,6 @@ package com.epa.erb;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import org.docx4j.model.properties.run.FontColor;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
