@@ -31,6 +31,7 @@ public class ProjectSelectionPopupController implements Initializable{
 	}
 	
 	private void fillProjectChoiceBox() {
+		app.updateAvailableProjectsList();
 		projectComboBox.getItems().addAll(app.getProjects());
 	}
 	

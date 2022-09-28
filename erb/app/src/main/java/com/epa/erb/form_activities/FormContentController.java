@@ -9,28 +9,21 @@ import java.util.ResourceBundle;
 import com.epa.erb.App;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
-import com.epa.erb.intro_panels.IntroPanelLoader;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionPopupController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
-import com.epa.erb.worksheet.WorksheetContentController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 public class FormContentController implements Initializable{
 	
@@ -109,8 +102,14 @@ public class FormContentController implements Initializable{
 				}
 			}
 		} else {
-			System.out.println("ERROR 1");
 			loadProjectSelectionPopup();
+			if (project != null) {
+				app.setSelectedProject(project);
+				engagementActionController = new EngagementActionController(app, project);
+				loadEngagementActionToContainer(engagementActionController);
+				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
+				internalStepLinkClicked(link);
+			}
 		}
 	}
 	
@@ -127,9 +126,27 @@ public class FormContentController implements Initializable{
 				}
 			}
 		} else {
-			System.out.println("ERROR 2");
 			loadProjectSelectionPopup();
-
+			if (project != null) {
+				app.setSelectedProject(project);
+				engagementActionController = new EngagementActionController(app, project);
+				loadEngagementActionToContainer(engagementActionController);
+				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
+				internalActivityLinkClicked(link);
+			}
+		}
+	}
+	
+	public void loadEngagementActionToContainer(EngagementActionController engagementActionController) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
+			fxmlLoader.setController(engagementActionController);
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			app.loadNodeToERBContainer(root);
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -142,13 +159,13 @@ public class FormContentController implements Initializable{
 			File fileToOpen = new File(supportingDOCDirectory + "\\" + link);
 			fileHandler.openFile(fileToOpen);
 		} else {
-			//TODO: HERE
-			System.out.println("ERROR 3");
 			loadProjectSelectionPopup();
-			System.out.println(project.getProjectName());
-			engagementActionController = new EngagementActionController(app, project);
-			engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
-			externalDOCLinkClicked(link);
+			if (project != null) {
+				app.setSelectedProject(project);
+				engagementActionController = new EngagementActionController(app, project);
+				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
+				externalDOCLinkClicked(link);
+			}
 		}
 	}
 	
