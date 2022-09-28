@@ -38,7 +38,7 @@ public class ERBLandingNew2Controller implements Initializable{
 		this.app = app;
 	}
 	
-	private String mode = "Goal Mode";
+	private String mode = "Facilitator Mode";
 	private Constants constants = new Constants();
 	
 	@Override

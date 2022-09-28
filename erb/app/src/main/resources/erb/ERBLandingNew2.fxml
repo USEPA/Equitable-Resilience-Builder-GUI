@@ -279,7 +279,7 @@
                      <content>
                         <VBox spacing="10.0">
                            <children>
-                              <RadioButton fx:id="goalModeRadioButton" mnemonicParsing="false" selected="true" text="Goal Mode">
+                              <RadioButton fx:id="goalModeRadioButton" disable="true" mnemonicParsing="false" text="Goal Mode">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -287,7 +287,7 @@
                                     <ToggleGroup fx:id="modeToggleGroup" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="facilitatorModeRadioButton" mnemonicParsing="false" text="Facilitator Mode" toggleGroup="$modeToggleGroup">
+                              <RadioButton fx:id="facilitatorModeRadioButton" mnemonicParsing="false" selected="true" text="Facilitator Mode" toggleGroup="$modeToggleGroup">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

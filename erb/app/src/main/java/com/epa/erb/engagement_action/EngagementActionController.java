@@ -63,6 +63,8 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	HBox headingHBox;
 	@FXML
+	HBox saveHBox;
+	@FXML
 	TitledPane pathwayTitledPane;
 	@FXML
 	HBox erbPathwayDiagramHBox;
@@ -180,6 +182,7 @@ public class EngagementActionController implements Initializable{
 			addTreeViewListener();
 			
 			hideGoalSelection();
+			removeSaveHBox();
 			removePathwayPane();
 			removeLocalProgressPane();
 		}
@@ -1176,6 +1179,12 @@ public class EngagementActionController implements Initializable{
 	private void hideGoalSelection() {
 		goalLabel.setVisible(false);
 		goalComboBox.setVisible(false);
+	}
+	
+	private void removeSaveHBox() {
+		if(engagementVBox.getChildren().contains(saveHBox)) {
+			engagementVBox.getChildren().remove(saveHBox);
+		}
 	}
 	
 	private void removePathwayPane() {
