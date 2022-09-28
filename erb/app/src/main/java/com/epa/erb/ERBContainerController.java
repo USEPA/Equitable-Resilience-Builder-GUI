@@ -56,7 +56,7 @@ public class ERBContainerController implements Initializable{
 	private void handleResourceMenu() {
 		XMLManager xmlManager = new XMLManager(app);
 		HandleLandingMenu(xmlManager);
-		File resourceXMLFile = fileHandler.getAvailableResourcesFileToParse();
+		File resourceXMLFile = fileHandler.getStaticAvailableResourcesXMLFile();
 		HashMap<String, String> resources = xmlManager.parseAvailableResourcesXML(resourceXMLFile);
 		for(String idString: resources.keySet()) {
 			String name = resources.get(idString);
@@ -66,7 +66,7 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void HandleLandingMenu(XMLManager xmlManager) {
-		File introXMLFile = fileHandler.getAvailableIntroFileToParse();
+		File introXMLFile = fileHandler.getStaticAvailableIntroXMLFile();
 		HashMap<String, String> introPanels = xmlManager.parseAvailableIntroXML(introXMLFile);
 		for(String idString: introPanels.keySet()) {
 			String name = introPanels.get(idString);
@@ -118,9 +118,9 @@ public class ERBContainerController implements Initializable{
 	public File getFormContentXML(String id, boolean isResource) {
 		File xmlFile;
 		if (isResource) {
-			xmlFile = fileHandler.getResourceFormContentXML(id);
+			xmlFile = fileHandler.getStaticResourceFormTextXML(id);
 		} else {
-			xmlFile = fileHandler.getIntroFormContentXML(id);
+			xmlFile = fileHandler.getStaticIntroFormText(id);
 		}
 		return xmlFile;
 	}

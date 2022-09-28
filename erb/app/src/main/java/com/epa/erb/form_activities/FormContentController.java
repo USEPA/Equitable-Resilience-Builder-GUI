@@ -157,7 +157,7 @@ public class FormContentController implements Initializable{
 			Goal currentGoal = engagementActionController.getCurrentGoal();
 			File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(currentProject, currentGoal);
 			File fileToOpen = new File(supportingDOCDirectory + "\\" + link);
-			fileHandler.openFile(fileToOpen);
+			fileHandler.openFileOnDesktop(fileToOpen);
 		} else {
 			loadProjectSelectionPopup();
 			if (project != null) {

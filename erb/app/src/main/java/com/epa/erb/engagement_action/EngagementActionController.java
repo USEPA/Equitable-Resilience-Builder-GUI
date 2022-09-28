@@ -620,7 +620,7 @@ public class EngagementActionController implements Initializable{
 		generateActivityERBPathway(currentSelectedChapter);
 		setNavigationButtonsDisability(null, null);
 		if(currentSelectedChapter != null) {
-			File file = fileHandler.getChapterFormAboutXML(currentSelectedChapter);
+			File file = fileHandler.getStaticChapterFormAbout(currentSelectedChapter);
 			Pane root = loadFormContentController(file);
 			addContentToContentVBox(root, true);
 		}
@@ -850,7 +850,7 @@ public class EngagementActionController implements Initializable{
 				if (activity.getActivityType().getDescription().contentEquals("worksheet") || activity.getActivityType().getDescription().contentEquals("noteboard")) {
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
-						File file = fileHandler.getActivityFormContentXML(project, currentSelectedGoal, activity);
+						File file = fileHandler.getStaticActivityFormText(project, currentSelectedGoal, activity);
 						Pane root = loadFormContentController(file);
 						addContentToContentVBox(root, false);
 					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
@@ -869,7 +869,7 @@ public class EngagementActionController implements Initializable{
 						addBaseAttributesToAttributePanel(activity);
 						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
 						if (listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
-							File file = fileHandler.getActivityFormContentXML(project, currentSelectedGoal, activity);
+							File file = fileHandler.getStaticActivityFormText(project, currentSelectedGoal, activity);
 							Pane root = loadFormContentController(file);
 							addContentToContentVBox(root, false);
 						} else {
@@ -899,7 +899,7 @@ public class EngagementActionController implements Initializable{
 	private void loadStepContent(Step step, Activity activity) {
 		if (step != null) {
 				addBaseAttributesToAttributePanel(activity);
-				File file = fileHandler.getStaticSupportingXML(step.getStepID());
+				File file = fileHandler.getStaticStepFormText(step);
 				Pane root = loadFormContentController(file);
 				addContentToContentVBox(root, false);
 		} else {
@@ -909,7 +909,7 @@ public class EngagementActionController implements Initializable{
 	
 	private void loadChapterStepContent(Step step) {
 		if (step != null) {
-			File file = fileHandler.getStaticSupportingXML(step.getStepID());
+			File file = fileHandler.getStaticStepFormText(step);
 			Pane root = loadFormContentController(file);
 			addContentToContentVBox(root, false);
 	} else {

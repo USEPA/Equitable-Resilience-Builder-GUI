@@ -8,13 +8,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.docx4j.Docx4J;
-import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
-import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
-
 import com.aspose.words.Document;
 import com.aspose.words.SaveFormat;
 import com.epa.erb.Activity;
+import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
@@ -28,81 +25,96 @@ public class FileHandler {
 	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(FileHandler.class);
 	
-	public void openFile(File fileToToOpen) {
-		try {
-			if (fileToToOpen != null && fileToToOpen.exists() && Desktop.isDesktopSupported()) {
-				Desktop.getDesktop().open(fileToToOpen);
-			} else {
-				logger.error(fileToToOpen.getPath() + " either does not exist or desktop is not supported.");
-			}
-		} catch (Exception e) {
-			logger.error(e.getMessage());
+	//--------------------------------------------------------------------------
+	
+	public File getProjectsDirectory() {
+		File projectsDirectory = new File(constants.getPathToERBProjectsFolder());
+		return projectsDirectory;
+	}
+	
+	public File getProjectDirectory(Project project) {
+		if(project != null) {
+			File projectDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName());
+			return projectDirectory;
+		} else {
+			logger.error("Cannot getProjectDirectory. project = " + project);
+			return null;
 		}
 	}
 	
-	public void deleteDirectory(File directory) {
-		if (directory != null) {
-			File[] allContents = directory.listFiles();
-			if (allContents != null) {
-				for (File file : allContents) {
-					deleteDirectory(file);
-				}
-			}
-			directory.delete();
+	public File getGoalsDirectory(Project project) {
+		if(project != null) {
+			File goalsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals");
+			return goalsDirectory;
 		} else {
-			logger.error("Cannot deleteDirectory. directory = null.");
+			logger.error("Cannot getGoalsDirectory. project = " + project);
+			return null;
 		}
 	}
 	
-	public void convertDocxToPDF2(File docxFileToConvert, String pathToConvertedPDF) {
-	 try {
-         InputStream templateInputStream = new FileInputStream(docxFileToConvert);
-         WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(templateInputStream);
-         MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
-
-         FileOutputStream os = new FileOutputStream(pathToConvertedPDF);
-         Docx4J.toPDF(wordMLPackage,os);
-         os.flush();
-         os.close();
-     } catch (Throwable e) {
-
-         e.printStackTrace();
-     } 
+	public File getGoalDirectory(Project project, Goal goal) {
+		if(project != null && goal != null) {
+			File goalDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName());
+			return goalDirectory;
+		} else {
+			logger.error("Cannot getGoalDirectory. project = " + project + " goal = " + goal);
+			return null;
+		}
 	}
 	
-	public void convertDocxToPDF(File docxFileToConvert, String pathToConvertedPDF) {
-		if (docxFileToConvert != null && docxFileToConvert.exists() && pathToConvertedPDF != null) {
-			try {
-				Document documentToConvert = new Document(docxFileToConvert.getPath());
-				documentToConvert.save(pathToConvertedPDF, SaveFormat.PDF);
-			} catch (Exception e) {
-				logger.error("Cannot convertDocxToPDF. " + e.getMessage());
-			}
+	public File getActivitiesDirectory(Project project, Goal goal) {
+		if (project != null && goal != null) {
+			File activitiesDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML");
+			return activitiesDirectory;
 		} else {
-			logger.error("Cannot convertDocxToPDF. docxFileToConvert = " + docxFileToConvert + " pathToConvertedPDF = " + pathToConvertedPDF);
+			logger.error("Cannot getActivitiesDirectory. project = " + project + " goal = " + goal);
+			return null;
 		}
 	}
 
-	public void copyFile(File source, File dest) {
-		if (source != null && source.exists() && dest != null) {
-			try {
-				InputStream is = new FileInputStream(source);
-				OutputStream os = new FileOutputStream(dest);
-				byte[] buffer = new byte[1024];
-				int length;
-				while ((length = is.read(buffer)) > 0) {
-					os.write(buffer, 0, length);
-				}
-				is.close();
-				os.close();
-			} catch (Exception e) {
-				logger.error("Cannot copyFile. " + e.getMessage());
-			}
+	public File getActivityDirectory(Project project, Goal goal, Activity activity) {
+		if (project != null && goal != null && activity != null) {
+			File activityDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML\\" + activity.getActivityID());
+			return activityDirectory;
 		} else {
-			logger.error("Cannot copyFile. source = " + source + " dest = " + dest);
+			logger.error("Cannot getActivityDirectory. project = " + project + " goal = " + goal + " activity = "
+					+ activity);
+			return null;
+		}
+	}
+	
+	public File getStepsDirectory(Project project, Goal goal) {
+		if (project != null && goal != null) {
+			File stepsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML");
+			return stepsDirectory;
+		} else {
+			logger.error("Cannot getStepsDirectory. project = " + project + " goal = " + goal);
+			return null;
 		}
 	}
 
+	public File getStepDirectory(Project project, Goal goal, Step step) {
+		if (project != null && goal != null && step != null) {
+			File activityDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML\\" + step.getStepID());
+			return activityDirectory;
+		} else {
+			logger.error("Cannot getStepDirectory. project = " + project + " goal = " + goal + " step = " + step);
+			return null;
+		}
+	}
+	
+	public File getSupportingDOCDirectory(Project project, Goal goal) {
+		if(project != null && goal != null) {
+			File supportingDOCDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Supporting_DOC");
+			return supportingDOCDirectory;
+		} else {
+			logger.error("Cannot getSupportingDOCDirectory. project = " + project + " goal = " + goal);
+			return null;
+		}
+	}
+	
+	//--------------------------------------------------------------------------
+	
 	public File getProjectMetaXMLFile(Project project) {
 		if(project != null) {
 			File projectXMLMetaXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Meta.xml");
@@ -153,211 +165,158 @@ public class FileHandler {
 		}
 	}
 	
-	public File getProjectsDirectory() {
-		File projectsDirectory = new File(constants.getPathToERBProjectsFolder());
-		return projectsDirectory;
-	}
-	
-	public File getGoalsDirectory(Project project) {
-		if(project != null) {
-			File goalsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals");
-			return goalsDirectory;
-		} else {
-			logger.error("Cannot getGoalsDirectory. project = " + project);
-			return null;
-		}
-	}
-	
-	public File getActivitiesDirectory(Project project, Goal goal) {
-		if(project != null && goal != null) {
-			File activitiesDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities");
-			return activitiesDirectory;
-		} else {
-			logger.error("Cannot getActivitiesDirectory. project = " + project + " goal = " + goal);
-			return null;
-		}
-	}
-	
-	public File getSupportingDOCDirectory(Project project, Goal goal) {
-		if(project != null && goal != null) {
-			File supportingDOCDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Supporting_DOC");
-			return supportingDOCDirectory;
-		} else {
-			logger.error("Cannot getSupportingDOCDirectory. project = " + project + " goal = " + goal);
-			return null;
-		}
-	}
-	
-	public File getProjectDirectory(Project project) {
-		if(project != null) {
-			File projectDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName());
-			return projectDirectory;
-		} else {
-			logger.error("Cannot getProjectDirectory. project = " + project);
-			return null;
-		}
-	}
-	
-	public File getGoalDirectory(Project project, Goal goal) {
-		if(project != null && goal != null) {
-			File goalDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName());
-			return goalDirectory;
-		} else {
-			logger.error("Cannot getGoalDirectory. project = " + project + " goal = " + goal);
-			return null;
-		}
-	}
-	
-	public File getActivityDirectory(Project project, Goal goal, Activity activity) {
-		if(project != null && goal != null && activity != null) {
-			File activityDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID());
-			return activityDirectory;
-		} else {
-			logger.error("Cannot getActivityDirectory. project = " + project + " goal = " + goal + " activity = " + activity);
-			return null;
-		}
-	}
-	
-	public File getChaptersFileToParse() {
-		File chaptersFile = new File(constants.getPathToERBStaticDataFolder() + "\\Chapters\\Chapters.xml");
-		return chaptersFile;
-	}
-	
-	public File getActivityTypesFileToParse() {
-		File activityTypesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activity_Types.xml");
-		return activityTypesFile;
-	}
-	
-	public File getAvailableActivitiesFileToParse() {
-		File availableActivitiesFile = new File(constants.getPathToERBStaticDataFolder()+ "\\Activities\\Available_Activities.xml");
-		return availableActivitiesFile;
-	}
-	
-	public File getAvailableStepsFileToParse() {
-		File availableStepsFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Steps.xml");
-		return availableStepsFile;
-	}
-	
-	public File getAvailableResourcesFileToParse() {
-		File availableResourcesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Resources\\Available_Resources.xml");
-		return availableResourcesFile;
-	}
-	
-	public File getAvailableIntroFileToParse() {
-		File availableIntroFile = new File(constants.getPathToERBStaticDataFolder() + "\\Intro\\Available_Intro.xml");
-		return availableIntroFile;
-	}
-	
-	public File getGoalCategoriesFileToParse() {
-		File goalCategoriesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Goals\\Goal_Categories.xml");
-		return goalCategoriesFile;
-	}
+	//--------------------------------------------------------------------------
 	
 	public File getStaticSupportingDOCDirectory() {
 		File supportingDOCDirectory = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Supporting_DOC");
 		return supportingDOCDirectory;
 	}
 	
-	public File getStaticSupportingXML(String id) {
-		if (id != null) {
-			File supportingXMLFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Supporting_XML\\" + id + "\\form_text.xml");
-			return supportingXMLFile ;
-		} else {
-			logger.error("Cannot getStaticSupportingXML. id = null.");
-			return null;
-		}
+	public File getStaticActivityTypesXMLFile() {
+		File activityTypesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activity_Types.xml");
+		return activityTypesFile;
 	}
 	
-	public File getGlobalActivityWordDoc(Activity activity) {
-		if(activity != null) {
-			File activityDocx = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\ChapterActivities_DOC\\" + activity.getFileName());
-			return activityDocx;
-		} else {
-			logger.error("Cannot getGlobalActivityWordDoc. activity = null.");
-			return null;
-		}
+	public File getStaticAvailableActivitiesXMLFile() {
+		File availableActivitiesFile = new File(constants.getPathToERBStaticDataFolder()+ "\\Activities\\Available_Activities.xml");
+		return availableActivitiesFile;
 	}
 	
-	public File getGlobalActivityPDFDoc(Activity activity) {
-		if(activity != null) {
-			String pdfFileName = activity.getFileName().replace(".docx", ".pdf");
-			File activityDocx = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\ChapterActivities_PDF\\" + pdfFileName);
-			return activityDocx;
-		} else {
-			logger.error("Cannot getGlobalActivityPDFDoc. activity = null.");
-			return null;
-		}
+	public File getStaticAvailableStepsXMLFile() {
+		File availableStepsFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Steps.xml");
+		return availableStepsFile;
 	}
 	
-	public File getActivityWordDoc(Project project, Goal goal, Activity activity) {
-		if(project != null && goal != null && activity != null) {
-			File activityPDF = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\" + activity.getFileName());
-			return activityPDF;
-		} else {
-			logger.error("Cannot getActivityWordDoc. project = " + project + " goal = " + goal + " activity = " + activity);
-			return null;
-		}
-	}
-	
-	public File getActivityPDFDoc(Project project, Goal goal, Activity activity) {
-		if (project != null && goal != null && activity != null) {
-			String pdfFileName = activity.getFileName().replace(".docx", ".pdf");
-			File activityPDF = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName()+ "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities\\" + activity.getActivityID() + "\\"+ pdfFileName);
-			return activityPDF;
-		} else {
-			logger.error("Cannot getActivityPDFDoc. project = " + project + " goal = " + goal + " activity = " + activity);
-			return null;
-		}
-	}
-	
-	public File getActivityFormContentXML(Project project, Goal goal, Activity activity) {
-		if (project != null && goal != null && activity != null) {
+	public File getStaticActivityFormText(Activity activity) {
+		if (activity != null) {
 			File activityContentXML = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activities_XML\\" + activity.getActivityID() + "\\form_text.xml");
 			return activityContentXML;
 		} else {
-			logger.error("Cannot getActivityFormContentXML. project = " + project + " goal = " + goal + " activity = " + activity);
+			logger.error("Cannot getStaticActivityFormText. activity = null");
 			return null;
 		}
 	}
 	
-	public File getChapterFormAboutXML(Chapter chapter) {
+	public File getStaticStepFormText(Step step) {
+		if (step != null) {
+			File stepContentXMLFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Steps_XML\\" + step.getStepID() + "\\form_text.xml");
+			return stepContentXMLFile ;
+		} else {
+			logger.error("Cannot getStaticStepFormText. step = null.");
+			return null;
+		}
+	}
+	
+	public File getStaticChaptersXMLFile() {
+		File chaptersFile = new File(constants.getPathToERBStaticDataFolder() + "\\Chapters\\Chapters.xml");
+		return chaptersFile;
+	}
+	
+	public File getStaticChapterFormAbout(Chapter chapter) {
 		if (chapter != null) {
 			String xmlFileName = chapter.getStringName().replaceAll(" ", "") + "_About.xml";
 			File chapterAboutXML = new File(constants.getPathToERBStaticDataFolder() + "\\Chapters\\Chapters_XML\\" + xmlFileName);
 			return chapterAboutXML;
 		} else {
-			logger.error("Cannot getChapterFormAboutXML. chapter = " + chapter);
+			logger.error("Cannot getStaticChapterFormAbout. chapter = null");
 			return null;
 		}
 	}
 	
-	public File getResourceFormContentXML(String id) {
-		if(id != null) {
-			File availableResourcesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Resources\\" + id + "\\form_text.xml");
-			return availableResourcesFile;
-		} else {
-			logger.error("Cannot getResourceFormContentXML. id = " + id);
-			return null;
-		}
+	public File getStaticGoalCategoriesXMLFile() {
+		File goalCategoriesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Goals\\Goal_Categories.xml");
+		return goalCategoriesFile;
 	}
 	
-	public File getIntroFormContentXML(String id) {
+	public File getStaticAvailableIntroXMLFile() {
+		File availableIntroFile = new File(constants.getPathToERBStaticDataFolder() + "\\Intro\\Available_Intro.xml");
+		return availableIntroFile;
+	}
+	
+	public File getStaticIntroFormText(String id) {
 		if(id != null) {
 			File availableIntroFile = new File(constants.getPathToERBStaticDataFolder() + "\\Intro\\" + id + "\\form_text.xml");
 			return availableIntroFile;
 		} else {
-			logger.error("Cannot getIntroFormContentXML. id = " + id);
+			logger.error("Cannot getStaticIntroFormText. id = " + id);
 			return null;
 		}
 	}
 	
-	public File getActivityFormLinksXML(Project project, Goal goal, Activity activity) {
-		if (project != null && goal != null && activity != null) {
-			File activityLinksXML = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activities_XML\\" + activity.getActivityID() + "\\form_links.xml");
-			return activityLinksXML;
+	public File getStaticAvailableResourcesXMLFile() {
+		File availableResourcesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Resources\\Available_Resources.xml");
+		return availableResourcesFile;
+	}
+	
+	public File getStaticResourceFormTextXML(String id) {
+		if(id != null) {
+			File availableResourcesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Resources\\" + id + "\\form_text.xml");
+			return availableResourcesFile;
 		} else {
-			logger.error("Cannot getActivityFormLinksXML. project = " + project + " goal = " + goal + " activity = " + activity);
+			logger.error("Cannot getStaticResourceFormTextXML. id = " + id);
 			return null;
 		}
 	}
+	
+	//-------------------------------------------------------------------------
+	
+	public void openFileOnDesktop(File fileToToOpen) {
+		try {
+			if (fileToToOpen != null && fileToToOpen.exists() && Desktop.isDesktopSupported()) {
+				Desktop.getDesktop().open(fileToToOpen);
+			} else {
+				logger.error(fileToToOpen.getPath() + " either does not exist or desktop is not supported.");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	public void deleteDirectory(File directory) {
+		if (directory != null) {
+			File[] allContents = directory.listFiles();
+			if (allContents != null) {
+				for (File file : allContents) {
+					deleteDirectory(file);
+				}
+			}
+			directory.delete();
+		} else {
+			logger.error("Cannot deleteDirectory. directory = null.");
+		}
+	}
+	
+	public void convertDocxToPDF(File docxFileToConvert, String pathToConvertedPDF) {
+		if (docxFileToConvert != null && docxFileToConvert.exists() && pathToConvertedPDF != null) {
+			try {
+				Document documentToConvert = new Document(docxFileToConvert.getPath());
+				documentToConvert.save(pathToConvertedPDF, SaveFormat.PDF);
+			} catch (Exception e) {
+				logger.error("Cannot convertDocxToPDF. " + e.getMessage());
+			}
+		} else {
+			logger.error("Cannot convertDocxToPDF. docxFileToConvert = " + docxFileToConvert + " pathToConvertedPDF = " + pathToConvertedPDF);
+		}
+	}
+
+	public void copyFile(File source, File dest) {
+		if (source != null && source.exists() && dest != null) {
+			try {
+				InputStream is = new FileInputStream(source);
+				OutputStream os = new FileOutputStream(dest);
+				byte[] buffer = new byte[1024];
+				int length;
+				while ((length = is.read(buffer)) > 0) {
+					os.write(buffer, 0, length);
+				}
+				is.close();
+				os.close();
+			} catch (Exception e) {
+				logger.error("Cannot copyFile. " + e.getMessage());
+			}
+		} else {
+			logger.error("Cannot copyFile. source = " + source + " dest = " + dest);
+		}
+	}
+	
 }

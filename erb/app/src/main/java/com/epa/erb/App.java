@@ -178,27 +178,27 @@ public class App extends Application {
 	}
 	
 	private void readAndStoreChapters() {
-		File chaptersFile = fileHandler.getChaptersFileToParse();
+		File chaptersFile = fileHandler.getStaticChaptersXMLFile();
 		chapters = xmlManager.parseChaptersXML(chaptersFile);
 	}
 	
 	private void readAndStoreActivityTypes() {
-		File activityTypesFile = fileHandler.getActivityTypesFileToParse();
+		File activityTypesFile = fileHandler.getStaticActivityTypesXMLFile();
 		activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
 	}
 	
 	private void readAndStoreAvailableActivities() {
-		File availableActivitiesFile = fileHandler.getAvailableActivitiesFileToParse();
+		File availableActivitiesFile = fileHandler.getStaticAvailableActivitiesXMLFile();
 		activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
 	}
 	
 	private void readAndStoreAvailableSteps() {
-		File availableStepsFile = fileHandler.getAvailableStepsFileToParse();
+		File availableStepsFile = fileHandler.getStaticAvailableStepsXMLFile();
 		steps = xmlManager.parseAvailableStepsXML(availableStepsFile);
 	}
 	
 	private void readAndStoreGoalCategories() {
-		File goalCategoriesFile = fileHandler.getGoalCategoriesFileToParse();
+		File goalCategoriesFile = fileHandler.getStaticGoalCategoriesXMLFile();
 		goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
 	}
 	

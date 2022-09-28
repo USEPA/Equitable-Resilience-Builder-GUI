@@ -59,7 +59,7 @@ public class WorksheetContentController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		setActivityNameLabelText();
-		loadPDFToWebView(fileHandler.getActivityPDFDoc(project, goal, activity));
+		//loadPDFToWebView(fileHandler.getActivityPDFDoc(project, goal, activity));
 		webView.setContextMenuEnabled(false);
 	    createContextMenu(webView);
 	}
@@ -84,9 +84,9 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private void reloadClicked() {
-		File docxFile = fileHandler.getActivityWordDoc(project, goal, activity);
-		File pdfFile = fileHandler.getActivityPDFDoc(project, goal, activity);
-		fileHandler.convertDocxToPDF2(docxFile, pdfFile.getPath());
+		//File docxFile = fileHandler.getActivityWordDoc(project, goal, activity);
+		//File pdfFile = fileHandler.getActivityPDFDoc(project, goal, activity);
+		//fileHandler.convertDocxToPDF2(docxFile, pdfFile.getPath());
 		webView.getEngine().reload();
 	}
 	
@@ -185,7 +185,8 @@ public class WorksheetContentController implements Initializable{
 	public void openActivity(Activity activity) {
 		if (activity != null) {
 			try {
-				File file = fileHandler.getActivityWordDoc(project, goal, activity);
+//				File file = fileHandler.getActivityWordDoc(project, goal, activity);
+				File file = new File("");
 				if (file != null && file.exists() && Desktop.isDesktopSupported()) {
 					Desktop.getDesktop().open(file);
 				} else {
@@ -205,13 +206,7 @@ public class WorksheetContentController implements Initializable{
 	}
 	
 	private File getFileToPrint() {
-		File file = fileHandler.getActivityPDFDoc(project, goal, activity);
-		if(file != null && file.exists()) {
-			return file;
-		} else {
-			logger.debug("File to print returned is null");
-			return null;
-		}
+		return null;
 	}
 	
 	private void setActivityNameLabelText() {

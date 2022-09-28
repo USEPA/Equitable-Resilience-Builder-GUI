@@ -1,6 +1,5 @@
 package com.epa.erb.goal;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.net.URL;
 import java.util.Base64;
@@ -13,7 +12,6 @@ import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -72,13 +70,12 @@ public class GoalIntroController implements Initializable{
 	}
 	
 	private void openGoalActivity() {
-		File file = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_DOC\\1_Goals.docx");
-		fileHandler.openFile(file);
+		File file = new File(pathToERBStaticDataFolder + "\\Activities\\Supporting_DOC\\Ch1_Goals_Worksheet.docx");
+		fileHandler.openFileOnDesktop(file);
 	}
 	
 	private File getPDFFileToLoad() {
-		File pdfFileToLoad = new File(pathToERBStaticDataFolder + "\\Activities\\ChapterActivities_PDF\\1_Goals.pdf");
-		return pdfFileToLoad;
+		return null;
 	}
 	
 	private void loadGoalsWorksheetPDFToWebView(File pdfFileToLoad) {
