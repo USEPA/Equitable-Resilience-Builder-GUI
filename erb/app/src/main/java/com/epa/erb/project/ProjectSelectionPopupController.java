@@ -3,7 +3,8 @@ package com.epa.erb.project;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
-import com.epa.erb.form_activities.FormContentController;
+import com.epa.erb.forms.MainFormController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -17,8 +18,8 @@ public class ProjectSelectionPopupController implements Initializable{
 	ComboBox<Project> projectComboBox;
 	
 	private App app;
-	private FormContentController formContentController;
-	public ProjectSelectionPopupController(App app, FormContentController formContentController) {
+	private MainFormController formContentController;
+	public ProjectSelectionPopupController(App app, MainFormController formContentController) {
 		this.app = app;
 		this.formContentController = formContentController;
 	}

@@ -95,8 +95,8 @@ public class FileHandler {
 
 	public File getStepDirectory(Project project, Goal goal, Step step) {
 		if (project != null && goal != null && step != null) {
-			File activityDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML\\" + step.getStepID());
-			return activityDirectory;
+			File stepDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML\\" + step.getStepID());
+			return stepDirectory;
 		} else {
 			logger.error("Cannot getStepDirectory. project = " + project + " goal = " + goal + " step = " + step);
 			return null;
@@ -161,6 +161,16 @@ public class FileHandler {
 			return activityDataXMLFile;
 		} else {
 			logger.error("Cannot getActivityMetaXMLFile. project = " + project + " goal = " + goal + " activity = " + activity);
+			return null;
+		}
+	}
+	
+	public File getStepDataXMLFile(Project project, Goal goal, Step step) {
+		if(project != null && goal != null && step != null) {
+			File stepDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML\\" + step.getStepID() + "\\Data.xml");
+			return stepDataXMLFile;
+		} else {
+			logger.error("Cannot getStepDataXMLFile. project = " + project + " goal = " + goal + " step = " + step);
 			return null;
 		}
 	}

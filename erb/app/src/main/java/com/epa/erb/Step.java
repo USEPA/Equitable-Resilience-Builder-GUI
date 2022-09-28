@@ -2,6 +2,7 @@ package com.epa.erb;
 
 public class Step {
 	
+	private String stepType;
 	private String activityAssignment; 
 	private String chapterAssignment; 
 	private String status;
@@ -18,7 +19,8 @@ public class Step {
 	private String notes;
 	private String rating;
 	
-	public Step(String activityAssignment, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String stepID, String notes, String rating) {
+	public Step(String stepType, String activityAssignment, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String stepID, String notes, String rating) {
+		this.stepType = stepType;
 		this.activityAssignment = activityAssignment;
 		this.chapterAssignment = chapterAssignment;
 		this.status = status;
@@ -35,7 +37,14 @@ public class Step {
 		this.notes = notes;
 		this.rating = rating;
 	}
-	
+
+	public String getStepType() {
+		return stepType;
+	}
+
+	public void setStepType(String stepType) {
+		this.stepType = stepType;
+	}
 
 	public String getActivityAssignment() {
 		return activityAssignment;

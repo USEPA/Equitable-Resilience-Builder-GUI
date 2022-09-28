@@ -3,6 +3,7 @@ package com.epa.erb.utility;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -20,12 +21,14 @@ import com.epa.erb.ActivityType;
 import com.epa.erb.App;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
-import com.epa.erb.form_activities.FormContentController;
+import com.epa.erb.forms.MainFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
+
+import javafx.scene.control.TextArea;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -141,7 +144,6 @@ public class XMLManager {
 						String rating = activityElement.getAttribute("rating");
 						Activity activity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID, notes, rating);
 						activity.assignSteps(app.getSteps());
-						System.out.println(activity.getShortName() + "Steps -> " + activity.getSteps());
 						availableActivities.add(activity);
 					}
 				}
@@ -169,24 +171,25 @@ public class XMLManager {
 					Node stepNode = stepsNodeList.item(i);
 					// Step
 					if (stepNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element activityElement = (Element) stepNode;
-						String status = activityElement.getAttribute("status");
-						String activityAssignment = activityElement.getAttribute("activityAssignment");
-						String chapterAssignment = activityElement.getAttribute("chapterAssignment");
-						String shortName = activityElement.getAttribute("shortName");
-						String longName = activityElement.getAttribute("longName");
-						String fileName = activityElement.getAttribute("fileName");
-						String directions = activityElement.getAttribute("directions");
-						String objectives = activityElement.getAttribute("objectives");
-						String description = activityElement.getAttribute("description");
-						String materials = activityElement.getAttribute("materials");
-						String time = activityElement.getAttribute("time");
-						String who = activityElement.getAttribute("who");
-						String stepID = activityElement.getAttribute("stepID");
-						String notes = activityElement.getAttribute("notes");
-						String rating = activityElement.getAttribute("rating");
+						Element stepElement = (Element) stepNode;
+						String stepType = stepElement.getAttribute("stepType");
+						String stepID = stepElement.getAttribute("stepID");
+						String activityAssignment = stepElement.getAttribute("activityAssignment");
+						String chapterAssignment = stepElement.getAttribute("chapterAssignment");
+						String status = stepElement.getAttribute("status");
+						String shortName = stepElement.getAttribute("shortName");
+						String longName = stepElement.getAttribute("longName");
+						String fileName = stepElement.getAttribute("fileName");
+						String directions = stepElement.getAttribute("directions");
+						String objectives = stepElement.getAttribute("objectives");
+						String description = stepElement.getAttribute("description");
+						String materials = stepElement.getAttribute("materials");
+						String time = stepElement.getAttribute("time");
+						String who = stepElement.getAttribute("who");
+						String notes = stepElement.getAttribute("notes");
+						String rating = stepElement.getAttribute("rating");
 						
-						Step step = new Step(activityAssignment, chapterAssignment, status, shortName, longName,fileName, directions, objectives, description, materials, time, who, stepID, notes, rating);
+						Step step = new Step(stepType, activityAssignment, chapterAssignment, status, shortName, longName,fileName, directions, objectives, description, materials, time, who, stepID, notes, rating);
 						availableSteps.add(step);
 					}
 				}
@@ -713,7 +716,7 @@ public class XMLManager {
 		return null;
 	}
 	
-	public HashMap<String, ArrayList<TextFlow>> parseFormContentXML(File xmlFile, FormContentController formContentController) {
+	public HashMap<String, ArrayList<TextFlow>> parseMainFormContentXML(File xmlFile, MainFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -785,6 +788,120 @@ public class XMLManager {
 			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
 		}
 		return null;
+	}
+	
+	public HashMap<ArrayList<Text>, String> parseOutputFormContentXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+
+				HashMap<ArrayList<Text>, String> contentList = new LinkedHashMap<ArrayList<Text>, String>();
+
+				NodeList containerNodeList = doc.getElementsByTagName("container");
+				for (int i = 0; i < containerNodeList.getLength(); i++) {
+					Node containerNode = containerNodeList.item(i);
+					if (containerNode.getNodeType() == Node.ELEMENT_NODE) {
+						// Container
+						Element containerElement = (Element) containerNode;
+						NodeList textBlockNodeList = containerElement.getElementsByTagName("textBlock");
+						for (int j = 0; j < textBlockNodeList.getLength(); j++) {
+							Node textBlockNode = textBlockNodeList.item(j);
+							// TextBlock
+							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element textBlockElement = (Element) textBlockNode;
+								String textBlockType = textBlockElement.getAttribute("type");
+								ArrayList<Text> textList = new ArrayList<Text>();
+								NodeList textNodeList = textBlockElement.getElementsByTagName("text");
+								for (int k = 0; k < textNodeList.getLength(); k++) {
+									Node textNode = textNodeList.item(k);
+									// Text
+									if (textNode.getNodeType() == Node.ELEMENT_NODE) {
+										Element textElement = (Element) textNode;
+										double size = Double.parseDouble(textElement.getAttribute("size"));
+										String fontFamily = textElement.getAttribute("fontFamily");
+										String fontStyle = textElement.getAttribute("fontStyle");
+										String text = textElement.getAttribute("text");
+										
+										Text t = new Text(text);
+										t.setFont(Font.font(fontFamily, size));
+										t.setId(fontStyle);
+										textList.add(t);
+									}
+								}
+								contentList.put(textList, textBlockType);
+							}
+						}
+					}
+				}
+				return contentList;
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
+		}
+		return null;
+	}
+	
+	public void writeOutputFormDataXML(File xmlFile, ArrayList<javafx.scene.Node> outputFormNodes) {
+		if (xmlFile != null && outputFormNodes != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("textBlocks");
+				document.appendChild(rootElement);
+				Element containerElement = document.createElement("container");
+				containerElement.setAttribute("id", "formVBox");
+				for(javafx.scene.Node node: outputFormNodes) {
+					Element textBlockElement = document.createElement("textBlock");
+					textBlockElement.setAttribute("type", node.getId());
+					
+					if(node.toString().contains("TextFlow")) {
+						TextFlow textFlow = (TextFlow) node;
+						for(int i =0; i < textFlow.getChildren().size(); i++) {
+							Text text = (Text) textFlow.getChildren().get(i);
+							Element textElement = document.createElement("text");
+							textElement.setAttribute("size", String.valueOf(text.getFont().getSize()));
+							textElement.setAttribute("fontFamily", text.getFont().getFamily());
+							textElement.setAttribute("fontStyle", text.getId());
+							textElement.setAttribute("text", text.getText());
+							textBlockElement.appendChild(textElement);
+						}
+					} else if (node.toString().contains("TextArea")) {
+						TextArea textArea = (TextArea) node;
+						Element textElement = document.createElement("text");
+						textElement.setAttribute("size", "16.0");
+						textElement.setAttribute("fontFamily", "System");
+						if(textArea.getText() != null && textArea.getText().length() > 0) {
+							textElement.setAttribute("text", textArea.getText());
+							textElement.setAttribute("fontStyle", "Regular");
+						} else {
+							textElement.setAttribute("text", textArea.getPromptText());
+							textElement.setAttribute("fontStyle", "Prompt");
+						}
+						textBlockElement.appendChild(textElement);
+					}
+					containerElement.appendChild(textBlockElement);
+				}
+				rootElement.appendChild(containerElement);
+
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot writeOutputFormDataXML. xmlFile or outputFormNodes is null.");
+		}
 	}
 	
 	private Activity getActivity(String activityID, ArrayList<Activity> activities) {

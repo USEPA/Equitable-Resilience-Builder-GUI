@@ -84,7 +84,7 @@ public class ERBLandingNew2Controller implements Initializable{
 	
 	private void loadContent(String id, boolean isResource) {
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(id, isResource);
-		Parent root = app.getErbContainerController().loadFormContentController(formContentXMLFile);
+		Parent root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
 		app.loadNodeToERBContainer(root);
 	}
 	

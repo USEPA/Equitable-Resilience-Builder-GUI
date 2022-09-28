@@ -1,4 +1,4 @@
-package com.epa.erb.form_activities;
+package com.epa.erb.forms;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -25,7 +25,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
-public class FormContentController implements Initializable{
+public class MainFormController implements Initializable{
 	
 	@FXML
 	VBox nodeVBox;
@@ -43,7 +43,7 @@ public class FormContentController implements Initializable{
 	private App app;
 	private File xmlContentFileToParse;
 	private EngagementActionController engagementActionController;
-	public FormContentController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
+	public MainFormController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;
@@ -54,7 +54,7 @@ public class FormContentController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLManager xmlManager = new XMLManager(app);
-		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseFormContentXML(xmlContentFileToParse, this);
+		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseMainFormContentXML(xmlContentFileToParse, this);
 		addContent(formContentHashMap);
 		hideEmptyControls();
 	}
@@ -78,7 +78,7 @@ public class FormContentController implements Initializable{
 	private void internalIntroLinkClicked(String link) {
 		if (!link.contentEquals("00")) {
 			File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, false);
-			Parent root = app.getErbContainerController().loadFormContentController(formContentXMLFile);
+			Parent root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
 			app.loadNodeToERBContainer(root);
 		} else {
 			app.launchERBLandingNew2();
@@ -87,7 +87,7 @@ public class FormContentController implements Initializable{
 	
 	private void internalResourceLinkClicked(String link) {
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, true);
-		Parent root = app.getErbContainerController().loadFormContentController(formContentXMLFile);
+		Parent root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
 		app.loadNodeToERBContainer(root);
 	}
 	

@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.epa.erb.form_activities.FormContentController;
+
+import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
@@ -99,14 +100,14 @@ public class ERBContainerController implements Initializable{
 	
 	private void menuItemSelected(MenuItem menuItem, boolean isResource) {
 		File formContentXMLFile = getFormContentXML(menuItem.getId(), isResource);
-		Parent root = loadFormContentController(formContentXMLFile);
+		Parent root = loadMainFormContentController(formContentXMLFile);
 		app.loadNodeToERBContainer(root);
 	}
 	
-	public VBox loadFormContentController(File xmlContentFileToParse) {
+	public VBox loadMainFormContentController(File xmlContentFileToParse) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/FormContent.fxml"));
-			FormContentController formContentController = new FormContentController(app, xmlContentFileToParse, null);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/MainForm.fxml"));
+			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse, null);
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;

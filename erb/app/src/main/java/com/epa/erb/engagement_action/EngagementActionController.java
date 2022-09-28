@@ -17,7 +17,8 @@ import com.epa.erb.chapter.PlanFacilitatorModeController;
 import com.epa.erb.chapter.PlanGoalModeController;
 import com.epa.erb.chapter.ReflectFacilitatorModeController;
 import com.epa.erb.chapter.ReflectGoalModeController;
-import com.epa.erb.form_activities.FormContentController;
+import com.epa.erb.forms.MainFormController;
+import com.epa.erb.forms.OutputFormController;
 import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
@@ -621,7 +622,7 @@ public class EngagementActionController implements Initializable{
 		setNavigationButtonsDisability(null, null);
 		if(currentSelectedChapter != null) {
 			File file = fileHandler.getStaticChapterFormAbout(currentSelectedChapter);
-			Pane root = loadFormContentController(file);
+			Pane root = loadMainFormController(file);
 			addContentToContentVBox(root, true);
 		}
 		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
@@ -851,7 +852,7 @@ public class EngagementActionController implements Initializable{
 					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
 						addBaseAttributesToAttributePanel(activity);
 						File file = fileHandler.getStaticActivityFormText(activity);
-						Pane root = loadFormContentController(file);
+						Pane root = loadMainFormController(file);
 						addContentToContentVBox(root, false);
 					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
 						removeAttributeScrollPane();
@@ -870,7 +871,7 @@ public class EngagementActionController implements Initializable{
 						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
 						if (listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
 							File file = fileHandler.getStaticActivityFormText(activity);
-							Pane root = loadFormContentController(file);
+							Pane root = loadMainFormController(file);
 							addContentToContentVBox(root, false);
 						} else {
 							Pane root = loadWorksheetContentController(activity);
@@ -900,8 +901,13 @@ public class EngagementActionController implements Initializable{
 		if (step != null) {
 				addBaseAttributesToAttributePanel(activity);
 				File file = fileHandler.getStaticStepFormText(step);
-				Pane root = loadFormContentController(file);
-				addContentToContentVBox(root, false);
+				if(step.getStepType().contentEquals("mainForm")) {
+					Pane root = loadMainFormController(file);
+					addContentToContentVBox(root, false);
+				} else if (step.getStepType().contentEquals("outputForm")) {
+					Pane root = loadOutputFormController(file);
+					addContentToContentVBox(root, false);
+				}
 		} else {
 			logger.error("Cannot loadStepContent. step is null.");
 		}
@@ -910,17 +916,35 @@ public class EngagementActionController implements Initializable{
 	private void loadChapterStepContent(Step step) {
 		if (step != null) {
 			File file = fileHandler.getStaticStepFormText(step);
-			Pane root = loadFormContentController(file);
-			addContentToContentVBox(root, false);
+			if(step.getStepType().contentEquals("mainForm")) {
+				Pane root = loadMainFormController(file);
+				addContentToContentVBox(root, false);
+			} else if (step.getStepType().contentEquals("outputForm")) {
+				Pane root = loadOutputFormController(file);
+				addContentToContentVBox(root, false);
+			}
 	} else {
 		logger.error("Cannot loadChapterStepContent. step is null.");
 	}
 	}
-
-	private VBox loadFormContentController(File xmlContentFileToParse) {
+	
+	private VBox loadOutputFormController(File xmlContentFileToParse) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/form_activities/FormContent.fxml"));
-			FormContentController formContentController = new FormContentController(app, xmlContentFileToParse, this);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/OutputForm.fxml"));
+			OutputFormController outputFormController = new OutputFormController(app, xmlContentFileToParse, this);
+			fxmlLoader.setController(outputFormController);
+			VBox root = fxmlLoader.load();
+			return root;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+	}
+
+	private VBox loadMainFormController(File xmlContentFileToParse) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/MainForm.fxml"));
+			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse, this);
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;
