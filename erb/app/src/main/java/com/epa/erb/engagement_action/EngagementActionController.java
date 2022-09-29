@@ -44,6 +44,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
@@ -181,12 +182,14 @@ public class EngagementActionController implements Initializable{
 			setNavigationButtonsDisability(null, null);
 
 			addTreeViewListener();
+			initializeStyle();
 			
 			hideGoalSelection();
 			removeSaveHBox();
 			removePathwayPane();
 			removeLocalProgressPane();
 		}
+
 		app.getErbContainerController().setTitleLabelText("ERB: " + project.getProjectName() + ": " + project.getProjectType());
 	}
 	
@@ -667,7 +670,7 @@ public class EngagementActionController implements Initializable{
 		String stepId = treeItemIdTreeMap.get(stepTreeItem);
 		currentSelectedStep = getStepForIDInGoal(stepId, currentSelectedGoal);
 		currentSelectedActivity = getActivityForIDInGoal(currentSelectedStep.getActivityAssignment(), currentSelectedGoal);
-		Chapter chapterForActivity = getChapterForNameInGoal(stepTreeItem.getParent().getValue(), currentSelectedGoal);
+		Chapter chapterForActivity = getChapterForNameInGoal(stepTreeItem.getParent().getParent().getValue(), currentSelectedGoal);
 		currentSelectedChapter = chapterForActivity;
 		//--
 		cleanContentVBox();
@@ -950,6 +953,7 @@ public class EngagementActionController implements Initializable{
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			e.printStackTrace();
 			return null;
 		}
 	}

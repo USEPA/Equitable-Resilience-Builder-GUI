@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox fx:id="nodeVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="hBox" VBox.vgrow="ALWAYS">
-         <children>
-            <VBox fx:id="formVBox" spacing="10.0" HBox.hgrow="ALWAYS" />
-            <VBox fx:id="rightPanelVBox" minWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
+      <BorderPane VBox.vgrow="ALWAYS">
+         <center>
+            <HBox fx:id="hBox" BorderPane.alignment="CENTER">
                <children>
-                  <VBox fx:id="topPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
-                  <VBox fx:id="bottomPanelVBox" alignment="BOTTOM_LEFT" spacing="10.0" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="formVBox" spacing="10.0" HBox.hgrow="ALWAYS" />
+                  <VBox fx:id="rightPanelVBox" minWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="topPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
+                        <VBox fx:id="bottomPanelVBox" alignment="BOTTOM_LEFT" spacing="10.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-         </children>
-      </HBox>
+            </HBox>
+         </center>
+         <top>
+            <Pane fx:id="tP" prefHeight="10.0" BorderPane.alignment="CENTER" />
+         </top>
+         <left>
+            <Pane fx:id="lP" prefWidth="10.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane fx:id="rP" prefWidth="10.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <Pane fx:id="bP" prefHeight="10.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

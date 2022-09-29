@@ -34,7 +34,14 @@ public class Constants {
 	private String linksColor = "#E88AFF";						//Magenta
 
 	//Chapters
-	private String allChaptersColor	= "#C3C3C3"; 				//Grey
+	//private String allChaptersColor	= "#C3C3C3"; 		    //Grey
+	private String allChaptersColor	= "#A7BFE8";				//Blue
+	
+	private String chapter1Color = "#A7E8BF";					//Mint Green
+	private String chapter2Color = "#CDA7E8";					//Purple
+	private String chapter3Color = "#E8F275";					//Green
+	private String chapter4Color = "#FC8D89";					//Red
+	private String chapter5Color = "#F8D0A7";					//Orange
 
 	//Post It Note Stack
 	private String layer1ColorString = "#F7B2E0";				//Pink
@@ -49,14 +56,14 @@ public class Constants {
 	private ArrayList<String> listOfActivityShortNamesWithFormContent;
 	
 	//Paths
-//	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB"; //Local
+	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
+//	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB"; //Local
 	
-//	private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
-	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects"; //Local
+	private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
+//	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects"; //Local
 	
-//	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
-	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data"; //Local
+	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
+//	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data"; //Local
 	
 	public Constants() {
 		fillListOfActivityShortNamesWithFormContent();
@@ -152,7 +159,27 @@ public class Constants {
 	}
 	public String getAllChaptersColor() {
 		return allChaptersColor;
+	}	
+	public String getChapter1Color() {
+		return chapter1Color;
 	}
+
+	public String getChapter2Color() {
+		return chapter2Color;
+	}
+
+	public String getChapter3Color() {
+		return chapter3Color;
+	}
+
+	public String getChapter4Color() {
+		return chapter4Color;
+	}
+
+	public String getChapter5Color() {
+		return chapter5Color;
+	}
+
 	public String getLayer1ColorString() {
 		return layer1ColorString;
 	}

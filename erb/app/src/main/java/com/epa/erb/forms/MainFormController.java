@@ -11,6 +11,7 @@ import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionPopupController;
+import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -39,6 +41,14 @@ public class MainFormController implements Initializable{
 	VBox topPanelVBox;
 	@FXML
 	VBox bottomPanelVBox;
+	@FXML
+	Pane lP;
+	@FXML
+	Pane tP;
+	@FXML
+	Pane rP;
+	@FXML
+	Pane bP;
 	
 	private App app;
 	private File xmlContentFileToParse;
@@ -57,6 +67,24 @@ public class MainFormController implements Initializable{
 		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseMainFormContentXML(xmlContentFileToParse, this);
 		addContent(formContentHashMap);
 		hideEmptyControls();
+		setColor();
+	}
+	
+	private void setColor() {
+		Constants constants = new Constants();
+		if (engagementActionController != null && engagementActionController.getCurrentChapter() != null) {
+			if (engagementActionController.getCurrentChapter().getChapterNum() == 1) {
+				tP.setStyle("-fx-background-color: " + constants.getChapter1Color());
+			} else if (engagementActionController.getCurrentChapter().getChapterNum() == 2) {
+				tP.setStyle("-fx-background-color: " + constants.getChapter2Color());
+			} else if (engagementActionController.getCurrentChapter().getChapterNum() == 3) {
+				tP.setStyle("-fx-background-color: " + constants.getChapter3Color());
+			} else if (engagementActionController.getCurrentChapter().getChapterNum() == 4) {
+				tP.setStyle("-fx-background-color: " + constants.getChapter4Color());
+			} else if (engagementActionController.getCurrentChapter().getChapterNum() == 5) {
+				tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
+			}
+		}
 	}
 	
 	public void handleHyperlink(Text text, String linkType, String link) {
