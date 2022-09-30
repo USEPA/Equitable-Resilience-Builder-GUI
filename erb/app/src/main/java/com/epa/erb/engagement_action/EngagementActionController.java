@@ -13,10 +13,6 @@ import com.epa.erb.Progress;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.chapter.ChapterLandingController;
-import com.epa.erb.chapter.PlanFacilitatorModeController;
-import com.epa.erb.chapter.PlanGoalModeController;
-import com.epa.erb.chapter.ReflectFacilitatorModeController;
-import com.epa.erb.chapter.ReflectGoalModeController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
 import com.epa.erb.goal.GlobalGoalTrackerController;
@@ -44,7 +40,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
@@ -171,26 +166,31 @@ public class EngagementActionController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		if(project.getProjectType().contentEquals("Goal Mode")) {
-			fillGoalComboBox(project);
-			goalComboBox.setCellFactory(lv-> createGoalCell());
-			goalComboBox.setButtonCell(createGoalCell());
-			initializeGoalSelection(project);
-			setNavigationButtonsDisability(null, null);
-			handleControls();
+			initGoalMode();
 		} else {
-			initializeGoalSelection(project);
-			setNavigationButtonsDisability(null, null);
-
-			addTreeViewListener();
-			initializeStyle();
-			
-			hideGoalSelection();
-			removeSaveHBox();
-			removePathwayPane();
-			removeLocalProgressPane();
+			initFacilitatorMode();
 		}
-
 		app.getErbContainerController().setTitleLabelText("ERB: " + project.getProjectName() + ": " + project.getProjectType());
+	}
+	
+	private void initGoalMode() {
+		fillGoalComboBox(project);
+		goalComboBox.setCellFactory(lv-> createGoalCell());
+		goalComboBox.setButtonCell(createGoalCell());
+		initializeGoalSelection(project);
+		setNavigationButtonsDisability(null, null);
+		handleControls();
+	}
+	
+	private void initFacilitatorMode() {
+		initializeGoalSelection(project);
+		setNavigationButtonsDisability(null, null);
+		addTreeViewListener();
+		initializeStyle();
+		hideGoalSelection();
+		removeSaveHBox();
+		removePathwayPane();
+		removeLocalProgressPane();
 	}
 	
 	private void handleControls() {
@@ -246,7 +246,7 @@ public class EngagementActionController implements Initializable{
 			goalComboBox.getSelectionModel().select(0);
 			goalSelected(project.getProjectGoals().get(0));
 		} else {
-			logger.error("Cannot initializeGoalSelection. project is null.");
+			logger.error("Cannot initializeGoalSelection. project = " + project);
 		}
 	}
 	
@@ -287,7 +287,7 @@ public class EngagementActionController implements Initializable{
 				return null;
 			}
 		} else {
-			logger.error("Cannot loadWorksheetContentController. activity is null.");
+			logger.error("Cannot loadWorksheetContentController. activity = " + activity);
 			return null;
 		}
 	}
@@ -296,8 +296,7 @@ public class EngagementActionController implements Initializable{
 		if (activity != null) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-				NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,
-						currentSelectedGoal, activity);
+				NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, activity);
 				fxmlLoader.setController(noteBoardContentController);
 				VBox root = fxmlLoader.load();
 				activity.setNoteBoardContentController(noteBoardContentController);
@@ -308,7 +307,7 @@ public class EngagementActionController implements Initializable{
 				return null;
 			}
 		} else {
-			logger.error("Cannot loadNoteBoardContentController. activity is null.");
+			logger.error("Cannot loadNoteBoardContentController. activity = " + activity);
 			return null;
 		}
 	}
@@ -322,60 +321,6 @@ public class EngagementActionController implements Initializable{
 			return fxmlLoader.load();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return null;
-		}
-	}
-	
-	private VBox loadPlanRoot(Activity activity) {
-		if (activity != null) {			
-			try {
-				FXMLLoader fxmlLoader = null;
-				if(project.getProjectType().contentEquals("Facilitator Mode")) {
-					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/PlanFacilitatorMode.fxml"));
-					PlanFacilitatorModeController planController = new PlanFacilitatorModeController(currentSelectedChapter);
-					fxmlLoader.setController(planController);
-					activity.setPlanFacilitatorModeController(planController);
-				} else {
-					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/PlanGoalMode.fxml"));
-					PlanGoalModeController planController = new PlanGoalModeController(currentSelectedChapter);
-					fxmlLoader.setController(planController);
-					activity.setPlanGoalModeController(planController);
-				}
-				return fxmlLoader.load();
-			} catch (Exception e) {
-				e.printStackTrace();
-				logger.error(e.getMessage());
-				return null;
-			}
-		} else {
-			logger.error("Cannot loadPlanRoot. activity is null.");
-			return null;
-		}
-	}
-	
-	private ScrollPane loadReflectRoot(Chapter chapter, Activity activity) {
-		if (activity != null) {
-			try {
-				FXMLLoader fxmlLoader = null;
-				if(project.getProjectType().contentEquals("Facilitator Mode")) {
-					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectFacilitatorMode.fxml"));
-					ReflectFacilitatorModeController reflectFacilitatorModeController = new ReflectFacilitatorModeController(currentSelectedChapter);
-					fxmlLoader.setController(reflectFacilitatorModeController);
-					activity.setReflectFacilitatorModeController(reflectFacilitatorModeController);
-				} else {
-					fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ReflectGoalMode.fxml"));
-					ReflectGoalModeController reflectController = new ReflectGoalModeController(currentSelectedGoal, chapter, this);
-					fxmlLoader.setController(reflectController);
-					activity.setReflectGoalModeController(reflectController);
-					reflectController.initProgress(currentSelectedGoal, chapter);
-				}
-				return fxmlLoader.load();
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				return null;
-			}
-		} else {
-			logger.error("Cannot loadReflectRoot. activity is null.");
 			return null;
 		}
 	}
@@ -427,25 +372,21 @@ public class EngagementActionController implements Initializable{
 			globalGoalTrackerStage.setTitle("ERB: Goal Tracker");
 			globalGoalTrackerStage.show();
 		} else {
-			logger.error("Cannot showGlobalGoalTracker. globalGoalTrackerRoot is null.");
+			logger.error("Cannot showGlobalGoalTracker. globalGoalTrackerRoot = " + globalGoalTrackerRoot);
 		}
 	}
 	
-	private void setDynamicDimensions(Pane pane) {
+	private void setDynamicDimensions(Pane pane, ScrollPane scrollPane) {
 		if (pane != null) {
 			pane.setPrefHeight(app.getPrefHeight());
 			pane.setPrefWidth(app.getPrefWidth()-10);
 			VBox.setVgrow(pane, Priority.ALWAYS);
 			HBox.setHgrow(pane, Priority.ALWAYS);
-		}
-	}
-	
-	private void setDynamicDimensions(ScrollPane pane) {
-		if (pane != null) {
-			pane.setPrefHeight(app.getPrefHeight());
-			pane.setPrefWidth(app.getPrefWidth());
-			VBox.setVgrow(pane, Priority.ALWAYS);
-			HBox.setHgrow(pane, Priority.ALWAYS);
+		} else if (scrollPane != null) {
+			scrollPane.setPrefHeight(app.getPrefHeight());
+			scrollPane.setPrefWidth(app.getPrefWidth());
+			VBox.setVgrow(scrollPane, Priority.ALWAYS);
+			HBox.setHgrow(scrollPane, Priority.ALWAYS);
 		}
 	}
 	
@@ -569,6 +510,8 @@ public class EngagementActionController implements Initializable{
 			} else if (!isTreeItemActivityInGoal(newItem, currentSelectedGoal) && !isTreeItemChapterInGoal(newItem, currentSelectedGoal)) {
 				erbPathwayTreeItemSelected();
 			}
+		} else {
+			
 		}
 	}
 	
@@ -666,7 +609,6 @@ public class EngagementActionController implements Initializable{
 	}
 	
 	private void stepTreeItemSelected(TreeItem<String> stepTreeItem) {
-		
 		String stepId = treeItemIdTreeMap.get(stepTreeItem);
 		currentSelectedStep = getStepForIDInGoal(stepId, currentSelectedGoal);
 		currentSelectedActivity = getActivityForIDInGoal(currentSelectedStep.getActivityAssignment(), currentSelectedGoal);
@@ -687,7 +629,8 @@ public class EngagementActionController implements Initializable{
 		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
 		if(project.getProjectType().contentEquals("Goal Mode")) addAttributeScrollPane(1);
 		//--
-		loadStepContent(currentSelectedStep, currentSelectedActivity);
+		addBaseAttributesToAttributePanel(currentSelectedActivity);
+		loadStepContent(currentSelectedStep);
 		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
 		highlightActivityDiagram(currentSelectedActivity);
@@ -708,10 +651,12 @@ public class EngagementActionController implements Initializable{
 		if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
 		//--
 		addERBKeyVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) addAttributeScrollPane(1);
+		if(project.getProjectType().contentEquals("Goal Mode")) {
+			addLocalProgressVBox(1);
+			addAttributeScrollPane(1);
+		}
 		//--
-		loadChapterStepContent(currentSelectedStep);
+		loadStepContent(currentSelectedStep);
 		generateActivityERBPathway(currentSelectedChapter);
 		setNavigationButtonsDisability(stepTreeItem, stepTreeItem.getParent());
 		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
@@ -729,24 +674,11 @@ public class EngagementActionController implements Initializable{
 		activity.setPlanHashMap(planHashMap);
 	}
 	
-	private void addContentToContentVBox(Pane root, boolean setDynamicDimensions) {
+	public void addContentToContentVBox(Pane root, boolean setDynamicDimensions) {
 		if (root != null) {
 			contentVBox.getChildren().add(root);
 			if (setDynamicDimensions) {
-				setDynamicDimensions(root);
-			} else {
-				VBox.setVgrow(root, Priority.ALWAYS);
-			}
-		} else {
-			logger.error("Cannot addContentToContentVBox. root is null.");
-		}
-	}
-	
-	private void addContentToContentVBox(ScrollPane root, boolean setDynamicDimensions) {
-		if (root != null) {
-			contentVBox.getChildren().add(root);
-			if (setDynamicDimensions) {
-				setDynamicDimensions(root);
+				setDynamicDimensions(root, null);
 			} else {
 				VBox.setVgrow(root, Priority.ALWAYS);
 			}
@@ -783,7 +715,7 @@ public class EngagementActionController implements Initializable{
 				}
 			}
 		} else {
-			logger.error("Cannot fillAndStoreTreeViewData. chapters is null.");
+			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + chapters);
 		}
 	}
 	
@@ -793,7 +725,7 @@ public class EngagementActionController implements Initializable{
 				goalComboBox.getItems().add(goal);
 			}
 		} else {
-			logger.error("Cannot fillGoalComboBox. project is null.");
+			logger.error("Cannot fillGoalComboBox. project = " + project);
 		}
 	}
 	
@@ -830,7 +762,7 @@ public class EngagementActionController implements Initializable{
 				generateChapterERBPathway(currentSelectedGoal);
 			}
 		} else {
-			logger.error("Cannot execute goalSelected. goal is null.");
+			logger.error("Cannot execute goalSelected. goal = " + goal);
 		}
 	}
 	
@@ -851,86 +783,56 @@ public class EngagementActionController implements Initializable{
 	private void loadActivityContent(Activity activity) {
 		if (activity != null) {
 			if (project.getProjectType().contentEquals("Facilitator Mode")) {
-				if (activity.getActivityType().getDescription().contentEquals("worksheet") || activity.getActivityType().getDescription().contentEquals("noteboard")) {
-					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
-						addBaseAttributesToAttributePanel(activity);
-						File file = fileHandler.getStaticActivityFormText(activity);
-						Pane root = loadMainFormController(file);
-						addContentToContentVBox(root, false);
-					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
-						removeAttributeScrollPane();
-						Pane root = loadPlanRoot(activity);
-						addContentToContentVBox(root, true);
-					} else if (activity.getLongName().contentEquals("Reflect")) { // Reflect Activity
-						removeAttributeScrollPane();
-						ScrollPane root = loadReflectRoot(currentSelectedChapter, activity);
-						addContentToContentVBox(root, false);
-					}
-				}
+				loadActivityContentFacilitatorMode(activity);
 			} else {
-				if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
-					if (!activity.getLongName().contentEquals("Plan") && !activity.getLongName().contentEquals("Reflect")) { // Normal Activity
-						addBaseAttributesToAttributePanel(activity);
-						ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
-						if (listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
-							File file = fileHandler.getStaticActivityFormText(activity);
-							Pane root = loadMainFormController(file);
-							addContentToContentVBox(root, false);
-						} else {
-							Pane root = loadWorksheetContentController(activity);
-							addContentToContentVBox(root, false);
-						}
-					} else if (activity.getLongName().contentEquals("Plan")) { // Plan Activity
-						removeAttributeScrollPane();
-						Pane root = loadPlanRoot(activity);
-						addContentToContentVBox(root, true);
-					} else if (activity.getLongName().contentEquals("Reflect")) { // Reflect Activity
-						removeAttributeScrollPane();
-						ScrollPane root = loadReflectRoot(currentSelectedChapter, activity);
-						addContentToContentVBox(root, false);
-					}
-				} else if (activity.getActivityType().getDescription().contentEquals("noteboard")) {
-					addBaseAttributesToAttributePanel(activity);
-					Pane root = loadNoteBoardContentController(activity);
-					addContentToContentVBox(root, false);
-				}
+				loadActivityContentGoalMode(activity);
 			}
 		} else {
-			logger.error("Cannot loadActivityContent. activity is null.");
+			logger.error("Cannot loadActivityContent. activity = " + activity);
+		}
+	}
+
+	private void loadActivityContentFacilitatorMode(Activity activity) {
+		addBaseAttributesToAttributePanel(activity);
+		File file = fileHandler.getStaticActivityFormText(activity);
+		Pane root = loadMainFormController(file);
+		addContentToContentVBox(root, false);
+	}
+
+	private void loadActivityContentGoalMode(Activity activity) {
+		if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
+			addBaseAttributesToAttributePanel(activity);
+			ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
+			if (listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
+				File file = fileHandler.getStaticActivityFormText(activity);
+				Pane root = loadMainFormController(file);
+				addContentToContentVBox(root, false);
+			} else {
+				Pane root = loadWorksheetContentController(activity);
+				addContentToContentVBox(root, false);
+			}
+		} else if (activity.getActivityType().getDescription().contentEquals("noteboard")) {
+			addBaseAttributesToAttributePanel(activity);
+			Pane root = loadNoteBoardContentController(activity);
+			addContentToContentVBox(root, false);
 		}
 	}
 	
-	private void loadStepContent(Step step, Activity activity) {
-		if (step != null) {
-				addBaseAttributesToAttributePanel(activity);
-				File file = fileHandler.getStaticStepFormText(step);
-				if(step.getStepType().contentEquals("mainForm")) {
-					Pane root = loadMainFormController(file);
-					addContentToContentVBox(root, false);
-				} else if (step.getStepType().contentEquals("outputForm")) {
-					Pane root = loadOutputFormController(file);
-					addContentToContentVBox(root, false);
-				}
-		} else {
-			logger.error("Cannot loadStepContent. step is null.");
-		}
-	}
-	
-	private void loadChapterStepContent(Step step) {
+	private void loadStepContent(Step step) {
 		if (step != null) {
 			File file = fileHandler.getStaticStepFormText(step);
-			if(step.getStepType().contentEquals("mainForm")) {
+			if (step.getStepType().contentEquals("mainForm")) {
 				Pane root = loadMainFormController(file);
 				addContentToContentVBox(root, false);
 			} else if (step.getStepType().contentEquals("outputForm")) {
 				Pane root = loadOutputFormController(file);
 				addContentToContentVBox(root, false);
 			}
-	} else {
-		logger.error("Cannot loadChapterStepContent. step is null.");
+		} else {
+			logger.error("Cannot loadStepContent. step = " + step);
+		}
 	}
-	}
-	
+
 	private VBox loadOutputFormController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/OutputForm.fxml"));
@@ -953,7 +855,6 @@ public class EngagementActionController implements Initializable{
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -963,7 +864,7 @@ public class EngagementActionController implements Initializable{
 			generateAttribute("Objective", activity.getObjectives(), constants.getObjectivesColor());
 			generateAttribute("Instructions", activity.getInstructions(), constants.getInstructionsColor());
 		} else {
-			logger.error("Cannot addBaseAttributesToAttributePanel. activity is null.");
+			logger.error("Cannot addBaseAttributesToAttributePanel. activity = " + activity);
 		}
 	}
 	
@@ -997,7 +898,7 @@ public class EngagementActionController implements Initializable{
 				completeRadioButton.setSelected(true);
 			}
 		} else {
-			logger.error("Cannot setActivityStatusRadioButton. activity is null.");
+			logger.error("Cannot setActivityStatusRadioButton. activity = " + activity);
 		}
 	}
 	
@@ -1014,7 +915,7 @@ public class EngagementActionController implements Initializable{
 				if (root != null) erbPathwayDiagramHBox.getChildren().add(root);
 			}
 		} else {
-			logger.error("Cannot generateChapterERBPathway. goal is null.");
+			logger.error("Cannot generateChapterERBPathway. goal = " + goal);
 		}
 	}
 	
@@ -1031,7 +932,7 @@ public class EngagementActionController implements Initializable{
 				if (root != null)erbPathwayDiagramHBox.getChildren().add(root);
 			}
 		} else {
-			logger.error("Cannot generateActivityERBPathway. chapter is null.");
+			logger.error("Cannot generateActivityERBPathway. chapter = " + chapter);
 		}
 	}
 	
@@ -1046,7 +947,7 @@ public class EngagementActionController implements Initializable{
 			}
 			return null;
 		} else {
-			logger.error("Cannot findTreeItem. activity is null.");
+			logger.error("Cannot findTreeItem. activity = " + activity);
 		}
 		return null;
 	}
@@ -1120,7 +1021,7 @@ public class EngagementActionController implements Initializable{
 		erbPathwayDiagramHBox.getChildren().clear();
 	}
 
-	private void cleanContentVBox() {
+	public void cleanContentVBox() {
 		contentVBox.getChildren().clear();
 	}
 	

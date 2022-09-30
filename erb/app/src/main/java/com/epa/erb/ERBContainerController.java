@@ -11,6 +11,7 @@ import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,6 +35,8 @@ public class ERBContainerController implements Initializable{
 	Menu erbLandingMenu;
 	@FXML
 	Menu resourcesMenu;
+	@FXML
+	MenuItem landingPageMenuItem;
 	
 	private App app;
 	public ERBContainerController(App app) {
@@ -48,6 +51,7 @@ public class ERBContainerController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		handleResourceMenu();
+		landingPageMenuItem.setOnAction(e-> menuItemSelected(landingPageMenuItem, false));
 	}
 	
 	private void handleControls() {
@@ -99,15 +103,30 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void menuItemSelected(MenuItem menuItem, boolean isResource) {
-		File formContentXMLFile = getFormContentXML(menuItem.getId(), isResource);
-		Parent root = loadMainFormContentController(formContentXMLFile);
-		app.loadNodeToERBContainer(root);
+		if (menuItem != null) {
+			if (menuItem.getId().contentEquals("00")) {
+				app.launchERBLandingNew2();
+				app.setEngagementActionController(null);
+			} else {
+				File formContentXMLFile = getFormContentXML(menuItem.getId(), isResource);
+				if (app.getEngagementActionController() != null) {
+					app.getEngagementActionController().getTreeView().getSelectionModel().select(null);
+					VBox root = loadMainFormContentController(formContentXMLFile);
+					app.getEngagementActionController().cleanContentVBox();
+					app.getEngagementActionController().addContentToContentVBox(root, true);
+				} else {
+					VBox root = loadMainFormContentController(formContentXMLFile);
+					app.loadNodeToERBContainer(root);
+				}
+			}
+		}
 	}
 	
 	public VBox loadMainFormContentController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/MainForm.fxml"));
-			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse, null);
+			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse, app.getEngagementActionController());
+
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;
@@ -124,12 +143,6 @@ public class ERBContainerController implements Initializable{
 			xmlFile = fileHandler.getStaticIntroFormText(id);
 		}
 		return xmlFile;
-	}
-	
-	@FXML
-	public void aboutMenuItemAction() {
-		app.initSaveHandler(null, null, null, app.getSelectedProject(), null, "projectChange");
-		app.launchERBLandingNew2();
 	}
 	
 	public void setTitleLabelText(String text) {

@@ -137,6 +137,7 @@ public class ProjectSelectionController implements Initializable{
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
 			EngagementActionController engagementActionController = new EngagementActionController(app, project);
+			app.setEngagementActionController(engagementActionController);
 			fxmlLoader.setController(engagementActionController);
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());

@@ -2,10 +2,6 @@ package com.epa.erb;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import com.epa.erb.chapter.PlanFacilitatorModeController;
-import com.epa.erb.chapter.PlanGoalModeController;
-import com.epa.erb.chapter.ReflectFacilitatorModeController;
-import com.epa.erb.chapter.ReflectGoalModeController;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.worksheet.WorksheetContentController;
 
@@ -47,10 +43,6 @@ public class Activity {
 	private ArrayList<Step> steps = new ArrayList<Step>();
 	
 	private boolean isSaved = true;
-	private PlanGoalModeController planGoalModeController;
-	private PlanFacilitatorModeController planFacilitatorModeController;
-	private ReflectGoalModeController reflectGoalModeController;
-	private ReflectFacilitatorModeController reflectFacilitatorModeController;
 	private WorksheetContentController worksheetContentController;
 	private NoteBoardContentController noteBoardContentController;
 		
@@ -224,42 +216,6 @@ public class Activity {
 
 	public void setSaved(boolean isSaved) {
 		this.isSaved = isSaved;
-	}
-
-	public PlanGoalModeController getPlanGoalModeController() {
-		return planGoalModeController;
-	}
-
-	public void setPlanGoalModeController(PlanGoalModeController planController) {
-		this.planGoalModeController = planController;
-	}
-
-	public PlanFacilitatorModeController getPlanFacilitatorModeController() {
-		return planFacilitatorModeController;
-	}
-
-	public void setPlanFacilitatorModeController(PlanFacilitatorModeController planFacilitatorModeController) {
-		this.planFacilitatorModeController = planFacilitatorModeController;
-	}
-
-	public ReflectGoalModeController getReflectGoalModeController() {
-		return reflectGoalModeController;
-	}
-
-	public void setReflectGoalModeController(ReflectGoalModeController reflectController) {
-		this.reflectGoalModeController = reflectController;
-	}
-
-	public ReflectFacilitatorModeController getReflectFacilitatorModeController() {
-		return reflectFacilitatorModeController;
-	}
-
-	public void setReflectFacilitatorModeController(ReflectFacilitatorModeController reflectFacilitatorModeController) {
-		this.reflectFacilitatorModeController = reflectFacilitatorModeController;
-	}
-
-	public WorksheetContentController getWorksheetContentController() {
-		return worksheetContentController;
 	}
 
 	public void setWorksheetContentController(WorksheetContentController worksheetContentController) {

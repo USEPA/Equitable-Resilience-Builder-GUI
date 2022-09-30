@@ -397,17 +397,17 @@
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label text="The ERB toolkit guides you through a collaborative process to strengthen your community's">
+                        <Label minWidth="605.0" text="The ERB toolkit guides you through a collaborative process to strengthen your community's">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Hyperlink id="001" onAction="#equitableResilienceHyperlinkClicked" text="equitable resilience">
+                        <Hyperlink id="001" minWidth="138.0" onAction="#equitableResilienceHyperlinkClicked" text="equitable resilience">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Hyperlink>
-                        <Label text="to disasters and climate change.">
+                        <Label minWidth="212.0" text="to disasters and climate change.">
                            <font>
                               <Font size="15.0" />
                            </font>

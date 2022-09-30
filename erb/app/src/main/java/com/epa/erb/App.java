@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.engagement_action.SaveHandler;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -42,6 +43,7 @@ public class App extends Application {
 	private XMLManager xmlManager = new XMLManager(this);
 	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
+	private EngagementActionController engagementActionController;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -373,6 +375,14 @@ public class App extends Application {
 
 	public void setErbContainerStage(Stage erbContainerStage) {
 		this.erbContainerStage = erbContainerStage;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
 	}
 
 }
