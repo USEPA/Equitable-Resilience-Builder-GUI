@@ -86,3 +86,5 @@
 | DEBUG | 2022-09-30 13:51:01 | App.java:287 | Cannot getActivityByName. Activity returned is null
 | DEBUG | 2022-09-30 13:52:10 | App.java:287 | Cannot getActivityByName. Activity returned is null
 | DEBUG | 2022-09-30 13:52:10 | App.java:287 | Cannot getActivityByName. Activity returned is null
+| DEBUG | 2022-09-30 14:34:31 | App.java:287 | Cannot getActivityByName. Activity returned is null
+| DEBUG | 2022-09-30 14:34:31 | App.java:287 | Cannot getActivityByName. Activity returned is null

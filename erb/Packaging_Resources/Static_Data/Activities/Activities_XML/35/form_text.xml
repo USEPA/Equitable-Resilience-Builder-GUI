@@ -1,0 +1,192 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Mapping Activity: Locating hazards and assets in the community">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In this activity you will engage members of the community in locating hazards and assets on a map of their communities.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Locating hazards, threats and assets on a map will help you ground discussions in a particular place and get specific location based information about the hazards people are experiencing.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Divide into groups of 5-8 people who live or work near each other, and give each a large map on the table or wall.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Discuss the hazards, disasters or threats (HDT) that have affected or are currently affecting the community and locate them on the map with colored dots or sticky notes.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- For each HDT add a sticky note describing who is most impacted and how">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Next, add dots or sticky notes for community assets.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Get back together in a big group and discuss the HDT and the assets.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- How do the assets help reduce/mitigate the hazards?">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Optional 'domino impacts' add-on. Create a flow chart with the domino effects of the hazard. For example, storm -> power outage -> water supply goes offline -> hospitals need to transfer patients">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Add notes to the ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Chapter 3 summary form"
+			linkType="internalStep"
+			link="301">
+			</text>
+		</textBlock>
+	</container>
+<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Thing's you'll need:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Time: 1 hour">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Materials: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;Large printed maps">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Workshop facilitators guide"
+			linkType="externalDOC"
+			link="Workshop_facilitators_guide.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Space: A room large enough for small groups to talk quietly">
+			</text>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Chapter 3 outputs:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Summary of existing data on HDT">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Summary of existing data on equity">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Storytelling notes">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#xD;- Maps">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Social vulnerability assessment">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- List of top current and future hazards, disasters, and threats.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

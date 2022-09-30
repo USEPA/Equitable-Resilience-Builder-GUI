@@ -1,0 +1,100 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Goal setting scenario">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Scenario 1:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" An EPA Regional staff member and a community organizer for environmental justice are working together to convene and activate a new group of community members in a rural county with EJ issues. They decided that their Goals for Going through the ERB Process are:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Bring together community leaders and members who have not gotten together to discuss EJ issues before and empower/activate them to take action">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Increase community members' knowledge about emergency preparedness">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Identify potential actions for the group to take">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Scenario 2:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" A local environmental education and advocacy organization is leading the development of a watershed resilience plan. They decide that their Goals for Going through the ERB Process are:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Collect input for the resilience plan from community members in the watershed, particularly with a focus on equity issues">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Convene workshops in sub-watersheds to bring together local environmental organizations, neighborhood associations, and other groups who have not worked together before, to help them improve their community engagement.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Scenario 3:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" A county emergency manager is tasked with leading a committee to update the county's Hazard Mitigation Plan. The previous plan has plenty on natural hazards but hasn't incorporated lessons learned from the COVID-19 pandemic. The committee decides that their Goals for Going through the ERB Process are:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Improve the plan's social vulnerability assessment">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Incorporate pandemics and other biological incidents into the plan">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

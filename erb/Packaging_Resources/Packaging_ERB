@@ -1,7 +1,7 @@
 To Export
 
 1. Change paths in java code
-	a. /erb/Constants: Change the 3 commented paths
+	a. com.epa.utility/Constants: Change the 3 commented paths
 	
 2. Change paths in log4j
 	b. Change the 5 commented paths
@@ -16,5 +16,5 @@ For Executable
 		b. copy and paste the following directories into the ERB directory
 			i. Projects (if you don't have any projects, create an empty directory named "Projects").
 			ii. Static_Data
-		c. double click app.exe to run
+		c. double click erb.exe to run
  
