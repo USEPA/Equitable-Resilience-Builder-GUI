@@ -1,6 +1,5 @@
 package com.epa.erb.forms;
 
-import java.awt.Panel;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -137,6 +136,7 @@ public class OutputFormController implements Initializable {
 			}
 		}
 		textArea.setId("area");
+		textArea.setMinHeight(100);
 		return textArea;
 	}
 

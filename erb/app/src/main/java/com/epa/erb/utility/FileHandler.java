@@ -217,6 +217,11 @@ public class FileHandler {
 		}
 	}
 	
+	public File getStaticAvailableDynamicActivitiesXMLFile() {
+		File availableDynamicActivitiesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Dynamic_Activities.xml");
+		return availableDynamicActivitiesFile;
+	}
+	
 	public File getStaticChaptersXMLFile() {
 		File chaptersFile = new File(constants.getPathToERBStaticDataFolder() + "\\Chapters\\Chapters.xml");
 		return chaptersFile;

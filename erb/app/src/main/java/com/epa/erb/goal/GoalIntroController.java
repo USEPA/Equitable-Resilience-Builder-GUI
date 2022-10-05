@@ -2,9 +2,7 @@ package com.epa.erb.goal;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Base64;
 import java.util.ResourceBundle;
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
@@ -12,10 +10,6 @@ import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker;
-import javafx.concurrent.Worker.State;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 public class GoalIntroController implements Initializable{
@@ -52,7 +45,7 @@ public class GoalIntroController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		loadGoalsWorksheetPDFToWebView(getPDFFileToLoad());
+		//loadGoalsWorksheetPDFToWebView(getPDFFileToLoad());
 	}
 	
 	private void handleControls() {
@@ -74,40 +67,40 @@ public class GoalIntroController implements Initializable{
 		fileHandler.openFileOnDesktop(file);
 	}
 	
-	private File getPDFFileToLoad() {
-		return null;
-	}
+//	private File getPDFFileToLoad() {
+//		return null;
+//	}
 	
-	private void loadGoalsWorksheetPDFToWebView(File pdfFileToLoad) {
-		if (pdfFileToLoad != null) {
-			try {
-				WebEngine webEngine = webView.getEngine();
-				String url = getClass().getResource("/pdfjs-2.8.335-legacy-dist/web/viewer.html").toExternalForm();
-				webEngine.setUserStyleSheetLocation(getClass().getResource("/web.css").toExternalForm());
-				webEngine.setJavaScriptEnabled(true);
-				webEngine.load(url);
-
-				webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
-					@Override
-					public void changed(ObservableValue ov, State oldState, State newState) {
-						if (newState == Worker.State.SUCCEEDED) {
-							try {
-								byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
-								String base64 = Base64.getEncoder().encodeToString(data);
-								webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
-							} catch (Exception ex) {
-								logger.error(ex.getMessage());
-							}
-						}
-					}
-				});
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error("Cannot loadGoalsWorksheetPDFToWebView. pdfFileToLoad is null.");
-		}
-	}
+//	private void loadGoalsWorksheetPDFToWebView(File pdfFileToLoad) {
+//		if (pdfFileToLoad != null) {
+//			try {
+//				WebEngine webEngine = webView.getEngine();
+//				String url = getClass().getResource("/pdfjs-2.8.335-legacy-dist/web/viewer.html").toExternalForm();
+//				webEngine.setUserStyleSheetLocation(getClass().getResource("/web.css").toExternalForm());
+//				webEngine.setJavaScriptEnabled(true);
+//				webEngine.load(url);
+//
+//				webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
+//					@Override
+//					public void changed(ObservableValue ov, State oldState, State newState) {
+//						if (newState == Worker.State.SUCCEEDED) {
+//							try {
+//								byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
+//								String base64 = Base64.getEncoder().encodeToString(data);
+//								webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
+//							} catch (Exception ex) {
+//								logger.error(ex.getMessage());
+//							}
+//						}
+//					}
+//				});
+//			} catch (Exception e) {
+//				logger.error(e.getMessage());
+//			}
+//		} else {
+//			logger.error("Cannot loadGoalsWorksheetPDFToWebView. pdfFileToLoad is null.");
+//		}
+//	}
 	
 	private Parent loadGoalCreation() {
 		try {

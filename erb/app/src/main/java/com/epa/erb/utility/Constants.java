@@ -1,6 +1,5 @@
 package com.epa.erb.utility;
 
-import java.util.ArrayList;
 
 public class Constants {
 		
@@ -52,38 +51,19 @@ public class Constants {
 	
 	//Post-It Note Single
 	private String postItNoteColor = "#FFFFFF"; 				//White
-	
-	private ArrayList<String> listOfActivityShortNamesWithFormContent;
-	
+		
 	//Paths
-	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
-//	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB"; //Local
+//	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
+	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB"; //Local
 	
-	private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
-//	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects"; //Local
+//	private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
+	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects"; //Local
 	
-	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
-//	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data"; //Local
+//	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
+	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data"; //Local
 	
 	public Constants() {
-		fillListOfActivityShortNamesWithFormContent();
-	}
-	
-	private void fillListOfActivityShortNamesWithFormContent() {
-		listOfActivityShortNamesWithFormContent = new ArrayList<String>();
-		listOfActivityShortNamesWithFormContent.add("Get a core team together");
-		listOfActivityShortNamesWithFormContent.add("Lay out goals for using ERB");
-		listOfActivityShortNamesWithFormContent.add("Make a Project Plan");
-		listOfActivityShortNamesWithFormContent.add("Reflection and next steps");
 		
-		listOfActivityShortNamesWithFormContent.add("Identify and Diagram Community Connections, Activity 1");
-		listOfActivityShortNamesWithFormContent.add("Identify and Diagram Community Connections, Activity 2");
-		listOfActivityShortNamesWithFormContent.add("Develop a Community Engagement Plan, Activity 1");
-		listOfActivityShortNamesWithFormContent.add("Develop a Community Engagement Plan, Activity 2");
-		//listOfActivityShortNamesWithFormContent.add("Reflection and next steps");
-
-
-
 	}
 	
 	//-------------------------------------------------------------------------
@@ -197,9 +177,6 @@ public class Constants {
 	}
 	public String getPostItNoteColor() {
 		return postItNoteColor;
-	}
-	public ArrayList<String> getListOfActivityShortNamesWithFormContent() {
-		return listOfActivityShortNamesWithFormContent;
 	}
 	public String getPathToERBFolder() {
 		return pathToERBFolder;

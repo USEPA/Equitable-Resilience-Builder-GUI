@@ -279,7 +279,7 @@
                      <content>
                         <VBox spacing="10.0">
                            <children>
-                              <RadioButton fx:id="goalModeRadioButton" disable="true" mnemonicParsing="false" text="Goal Mode">
+                              <RadioButton fx:id="goalModeRadioButton" mnemonicParsing="false" text="Goal Mode">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

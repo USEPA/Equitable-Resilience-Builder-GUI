@@ -3,7 +3,6 @@ package com.epa.erb;
 import java.util.ArrayList;
 import java.util.HashMap;
 import com.epa.erb.noteboard.NoteBoardContentController;
-import com.epa.erb.worksheet.WorksheetContentController;
 
 public class Activity {
 	
@@ -22,7 +21,8 @@ public class Activity {
 	private String activityID;
 	private String notes;
 	private String rating;
-	public Activity(ActivityType activityType, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID, String notes, String rating) {
+	private String dynamicActivityID;
+	public Activity(ActivityType activityType, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID, String notes, String rating, String dynamicActivityID) {
 		this.activityType = activityType;
 		this.chapterAssignment = chapterAssignment;
 		this.status = status;
@@ -38,12 +38,12 @@ public class Activity {
 		this.activityID = activityID;
 		this.notes = notes;
 		this.rating = rating;
+		this.dynamicActivityID = dynamicActivityID;
 	}
 	
 	private ArrayList<Step> steps = new ArrayList<Step>();
 	
 	private boolean isSaved = true;
-	private WorksheetContentController worksheetContentController;
 	private NoteBoardContentController noteBoardContentController;
 		
 	private HashMap<String, String> planHashMap;
@@ -85,7 +85,7 @@ public class Activity {
 	}
 	
 	public Activity cloneActivity() {
-		Activity clonedActivity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, instructions, objectives, description, materials, time, who, activityID, notes, rating);
+		Activity clonedActivity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, instructions, objectives, description, materials, time, who, activityID, notes, rating, dynamicActivityID);
 		clonedActivity.setSteps(steps);
 		return clonedActivity;
 	}
@@ -210,16 +210,20 @@ public class Activity {
 		this.rating = rating;
 	}
 
+	public String getDynamicActivityID() {
+		return dynamicActivityID;
+	}
+
+	public void setDynamicActivityID(String dynamicActivityID) {
+		this.dynamicActivityID = dynamicActivityID;
+	}
+
 	public boolean isSaved() {
 		return isSaved;
 	}
 
 	public void setSaved(boolean isSaved) {
 		this.isSaved = isSaved;
-	}
-
-	public void setWorksheetContentController(WorksheetContentController worksheetContentController) {
-		this.worksheetContentController = worksheetContentController;
 	}
 
 	public NoteBoardContentController getNoteBoardContentController() {

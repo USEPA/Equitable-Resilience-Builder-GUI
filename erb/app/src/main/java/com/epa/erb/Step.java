@@ -18,8 +18,8 @@ public class Step {
 	private String stepID;
 	private String notes;
 	private String rating;
-	
-	public Step(String stepType, String activityAssignment, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String stepID, String notes, String rating) {
+	private String dynamicActivityID;
+	public Step(String stepType, String activityAssignment, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String stepID, String notes, String rating, String dynamicActivityID) {
 		this.stepType = stepType;
 		this.activityAssignment = activityAssignment;
 		this.chapterAssignment = chapterAssignment;
@@ -36,6 +36,7 @@ public class Step {
 		this.stepID = stepID;
 		this.notes = notes;
 		this.rating = rating;
+		this.dynamicActivityID = dynamicActivityID;
 	}
 
 	public String getStepType() {
@@ -166,4 +167,12 @@ public class Step {
 		this.rating = rating;
 	}
 
+	public String getDynamicActivityID() {
+		return dynamicActivityID;
+	}
+
+	public void setDynamicActivityID(String dynamicActivityID) {
+		this.dynamicActivityID = dynamicActivityID;
+	}
+	
 }

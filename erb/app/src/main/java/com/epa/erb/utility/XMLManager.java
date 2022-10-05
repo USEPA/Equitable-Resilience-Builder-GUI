@@ -19,6 +19,7 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.ActivityType;
 import com.epa.erb.App;
+import com.epa.erb.DynamicActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.forms.MainFormController;
@@ -142,7 +143,8 @@ public class XMLManager {
 						String activityID = activityElement.getAttribute("activityID");
 						String notes = activityElement.getAttribute("notes");
 						String rating = activityElement.getAttribute("rating");
-						Activity activity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID, notes, rating);
+						String dynamicActivityID = activityElement.getAttribute("dynamicActivityID");
+						Activity activity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, directions, objectives, description, materials, time, who, activityID, notes, rating, dynamicActivityID);
 						activity.assignSteps(app.getSteps());
 						availableActivities.add(activity);
 					}
@@ -188,12 +190,43 @@ public class XMLManager {
 						String who = stepElement.getAttribute("who");
 						String notes = stepElement.getAttribute("notes");
 						String rating = stepElement.getAttribute("rating");
-						
-						Step step = new Step(stepType, activityAssignment, chapterAssignment, status, shortName, longName,fileName, directions, objectives, description, materials, time, who, stepID, notes, rating);
+						String dynamicActivityID = stepElement.getAttribute("dynamicActivityID");
+						Step step = new Step(stepType, activityAssignment, chapterAssignment, status, shortName, longName,fileName, directions, objectives, description, materials, time, who, stepID, notes, rating, dynamicActivityID);
 						availableSteps.add(step);
 					}
 				}
 				return availableSteps ;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
+	
+	// Parse AvailableDynamicActivities
+	public ArrayList<DynamicActivity> parseAvailableDynamicActivitiesXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				ArrayList<DynamicActivity> availableDynamicActivities = new ArrayList<DynamicActivity>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList dynamicActivitiesNodeList = doc.getElementsByTagName("dynamic_activity");
+				for (int i = 0; i < dynamicActivitiesNodeList.getLength(); i++) {
+					Node dynamicActivityNode = dynamicActivitiesNodeList.item(i);
+					// Dynamic Activity
+					if (dynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element dynamicActivityElement = (Element) dynamicActivityNode;
+						String dynamicActivityID = dynamicActivityElement.getAttribute("id");
+						String dynamicActivityName = dynamicActivityElement.getAttribute("name");
+						DynamicActivity dynamicActivity = new DynamicActivity(dynamicActivityID, dynamicActivityName);
+						availableDynamicActivities.add(dynamicActivity);
+					}
+				}
+				return availableDynamicActivities;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}

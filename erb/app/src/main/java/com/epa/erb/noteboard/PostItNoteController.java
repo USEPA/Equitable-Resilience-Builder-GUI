@@ -63,7 +63,7 @@ public class PostItNoteController implements Initializable{
 		int numberOfPlus = Integer.parseInt(numberLabel.getText());
 		numberOfPlus++;
 		setNumberLabelText(String.valueOf(numberOfPlus));
-		noteBoardContentController.getActivity().setSaved(false);
+//		noteBoardContentController.getActivity().setSaved(false);
 	}
 	
 	@FXML
@@ -71,7 +71,7 @@ public class PostItNoteController implements Initializable{
 		int numberOfPlus = Integer.parseInt(numberLabel.getText());
 		numberOfPlus--;
 		setNumberLabelText(String.valueOf(numberOfPlus));
-		noteBoardContentController.getActivity().setSaved(false);
+//		noteBoardContentController.getActivity().setSaved(false);
 	}
 	
 	@FXML

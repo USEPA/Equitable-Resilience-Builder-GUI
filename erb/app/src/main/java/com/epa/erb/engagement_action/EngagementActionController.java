@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
+import com.epa.erb.DynamicActivity;
 import com.epa.erb.Progress;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
@@ -272,44 +273,41 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 
-	private VBox loadWorksheetContentController(Activity activity) {
-		if (activity != null) {
-			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/WorksheetContent.fxml"));
-				WorksheetContentController worksheetContentController = new WorksheetContentController(activity, project, currentSelectedGoal, app);
-				fxmlLoader.setController(worksheetContentController);
-				VBox root = fxmlLoader.load();
-				activity.setWorksheetContentController(worksheetContentController);
-				listOfAllWorksheetContentControllers.add(worksheetContentController);
-				return root;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				return null;
-			}
-		} else {
-			logger.error("Cannot loadWorksheetContentController. activity = " + activity);
-			return null;
-		}
-	}
+//	private VBox loadWorksheetContentController(Activity activity) {
+//		if (activity != null) {
+//			try {
+//				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/WorksheetContent.fxml"));
+//				WorksheetContentController worksheetContentController = new WorksheetContentController(activity, project, currentSelectedGoal, app);
+//				fxmlLoader.setController(worksheetContentController);
+//				VBox root = fxmlLoader.load();
+//				activity.setWorksheetContentController(worksheetContentController);
+//				listOfAllWorksheetContentControllers.add(worksheetContentController);
+//				return root;
+//			} catch (Exception e) {
+//				logger.error(e.getMessage());
+//				return null;
+//			}
+//		} else {
+//			logger.error("Cannot loadWorksheetContentController. activity = " + activity);
+//			return null;
+//		}
+//	}
 
-	private VBox loadNoteBoardContentController(Activity activity) {
-		if (activity != null) {
+	private VBox loadNoteBoardContentController() {
+
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-				NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, activity);
+//				NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, activity);
+				NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
 				fxmlLoader.setController(noteBoardContentController);
 				VBox root = fxmlLoader.load();
-				activity.setNoteBoardContentController(noteBoardContentController);
+//				activity.setNoteBoardContentController(noteBoardContentController);
 				listOfAllNoteBoardContentControllers.add(noteBoardContentController);
 				return root;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 				return null;
 			}
-		} else {
-			logger.error("Cannot loadNoteBoardContentController. activity = " + activity);
-			return null;
-		}
 	}
 	
 	private Parent loadAttributePaneRoot(String attributeTitle, String attributeContent, String attributeColor) {
@@ -499,7 +497,9 @@ public class EngagementActionController implements Initializable{
 	
 	public void treeViewClicked(TreeItem<String> oldItem, TreeItem<String> newItem) {
 		if (newItem != null) {
-			if(isTreeItemChapterStepInGoal(newItem, currentSelectedGoal)) {
+			if(isDynamicActivity(newItem)) {
+				dynamicActivitySelected(newItem);
+			}else if(isTreeItemChapterStepInGoal(newItem, currentSelectedGoal)) {
 				chapterStepTreeItemSelected(newItem);
 			}else if(isTreeItemStepInGoal(newItem, currentSelectedGoal)) {
 				stepTreeItemSelected(newItem);
@@ -513,6 +513,32 @@ public class EngagementActionController implements Initializable{
 		} else {
 			
 		}
+	}
+	
+	private void dynamicActivitySelected(TreeItem<String> dynamicActivityTreeItem) {
+		String dynamicActivityId = treeItemIdTreeMap.get(dynamicActivityTreeItem);
+		
+		//TODO: Fix these
+		currentSelectedStep = null;
+		currentSelectedActivity= null;
+		currentSelectedChapter = null ;
+		//--
+		cleanContentVBox();
+		cleanAttributePanelContentVBox();
+		cleanListOfAttributePanelControllers();
+		//--
+		if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
+		//--
+		addERBKeyVBox(1);
+		if(project.getProjectType().contentEquals("Goal Mode")) {
+			addLocalProgressVBox(1);
+			addAttributeScrollPane(1);
+		}
+		//--
+		loadDynamicActivityContent(dynamicActivityId);
+		generateActivityERBPathway(currentSelectedChapter);
+		setNavigationButtonsDisability(dynamicActivityTreeItem, dynamicActivityTreeItem.getParent());
+		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 	
 	private void erbPathwayTreeItemSelected() {
@@ -707,10 +733,26 @@ public class EngagementActionController implements Initializable{
 					TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
 					chapterTreeItem.getChildren().add(activityTreeItem);
 					treeItemIdTreeMap.put(activityTreeItem, activity.getActivityID());
+					if(activity.getDynamicActivityID().length()>0) {
+						DynamicActivity dynamicActivity = app.getDynamicActivityById(activity.getDynamicActivityID());
+						if(dynamicActivity != null) {
+							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(dynamicActivity.getName());
+							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivity.getId() + "." + activity.getActivityID());
+						}
+					}
 					for(Step step: activity.getSteps()) {
 						TreeItem<String> stepTreeItem = new TreeItem<String>(step.getLongName());
 						activityTreeItem.getChildren().add(stepTreeItem);
 						treeItemIdTreeMap.put(stepTreeItem, step.getStepID());
+						if(step.getDynamicActivityID().length()>0) {
+							DynamicActivity dynamicActivity = app.getDynamicActivityById(step.getDynamicActivityID());
+							if(dynamicActivity != null) {
+								TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(dynamicActivity.getName());
+								stepTreeItem.getChildren().add(dynamicActivityTreeItem);
+								treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivity.getId() + "." + step.getStepID());
+							}
+						}
 					}
 				}
 			}
@@ -802,19 +844,26 @@ public class EngagementActionController implements Initializable{
 	private void loadActivityContentGoalMode(Activity activity) {
 		if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
 			addBaseAttributesToAttributePanel(activity);
-			ArrayList<String> listOfActivityShortNamesWithFormContent = constants.getListOfActivityShortNamesWithFormContent();
-			if (listOfActivityShortNamesWithFormContent.contains(activity.getShortName())) {
-				File file = fileHandler.getStaticActivityFormText(activity);
-				Pane root = loadMainFormController(file);
-				addContentToContentVBox(root, false);
-			} else {
-				Pane root = loadWorksheetContentController(activity);
-				addContentToContentVBox(root, false);
-			}
+			File file = fileHandler.getStaticActivityFormText(activity);
+			Pane root = loadMainFormController(file);
+			addContentToContentVBox(root, false);
 		} else if (activity.getActivityType().getDescription().contentEquals("noteboard")) {
 			addBaseAttributesToAttributePanel(activity);
-			Pane root = loadNoteBoardContentController(activity);
+			Pane root = loadNoteBoardContentController();
 			addContentToContentVBox(root, false);
+		}
+	}
+	
+	private void loadDynamicActivityContent(String dynamicActivityId) {
+		if (dynamicActivityId != null) {
+			String dynamicActivityParsedId = dynamicActivityId.substring(0, 4);
+			if (dynamicActivityParsedId.contentEquals("0001")) {
+				Pane root = loadNoteBoardContentController();
+				addContentToContentVBox(root, false);
+			}
+		} else {
+			logger.error("Cannot loadDynamicActivityContent. dynamicActivityId = " + dynamicActivityId);
+
 		}
 	}
 	
@@ -1134,19 +1183,28 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
+	private boolean isDynamicActivity(TreeItem<String> treeItem) {
+		if (treeItem != null) {
+			for (DynamicActivity dynamicActivity : app.getDynamicActivities()) {
+				if (treeItem.getValue().contentEquals(dynamicActivity.getName())) {
+					return true;
+				}
+			}
+		} else {
+			logger.error("Cannot execute isDynamicActivity. treeItem  is null.");
+		}
+		return false;
+	}
+	
 	private boolean isTreeItemChapterStepInGoal(TreeItem<String> treeItem, Goal goal) {
 		if (treeItem != null && goal != null) {
-			if (treeItem.getValue().contentEquals("Plan") || treeItem.getValue().contentEquals("Reflect")) {
-				return false;
-			} else {
-				for (Chapter chapter : goal.getChapters()) {
-						for (Step step : chapter.getSteps()) {
-							if (treeItem.getValue().contentEquals(step.getLongName())) {
-								return true;
-							}
-						}
+			for (Chapter chapter : goal.getChapters()) {
+				for (Step step : chapter.getSteps()) {
+					if (treeItem.getValue().contentEquals(step.getLongName())) {
+						return true;
 					}
 				}
+			}
 		} else {
 			logger.error("Cannot execute isTreeItemChapterStepInGoal. treeItem or goal is null.");
 		}
@@ -1155,19 +1213,16 @@ public class EngagementActionController implements Initializable{
 	
 	private boolean isTreeItemStepInGoal(TreeItem<String> treeItem, Goal goal) {
 		if (treeItem != null && goal != null) {
-			if (treeItem.getValue().contentEquals("Plan") || treeItem.getValue().contentEquals("Reflect")) {
-				return false;
-			} else {
-				for (Chapter chapter : goal.getChapters()) {
-					for (Activity activity : chapter.getAssignedActivities()) {
-						for (Step step : activity.getSteps()) {
-							if (treeItem.getValue().contentEquals(step.getLongName())) {
-								return true;
-							}
+			for (Chapter chapter : goal.getChapters()) {
+				for (Activity activity : chapter.getAssignedActivities()) {
+					for (Step step : activity.getSteps()) {
+						if (treeItem.getValue().contentEquals(step.getLongName())) {
+							return true;
 						}
 					}
 				}
 			}
+
 		} else {
 			logger.error("Cannot execute isTreeItemStepInActivity. treeItem or goal is null.");
 		}
@@ -1176,14 +1231,10 @@ public class EngagementActionController implements Initializable{
 
 	private boolean isTreeItemActivityInGoal(TreeItem<String> treeItem, Goal goal) {
 		if (treeItem != null && goal != null) {
-			if (treeItem.getValue().contentEquals("Plan") || treeItem.getValue().contentEquals("Reflect")) {
-				return true;
-			} else {
-				for (Chapter chapter : goal.getChapters()) {
-					for (Activity activity : chapter.getAssignedActivities()) {
-						if (treeItem.getValue().contentEquals(activity.getLongName())) {
-							return true;
-						}
+			for (Chapter chapter : goal.getChapters()) {
+				for (Activity activity : chapter.getAssignedActivities()) {
+					if (treeItem.getValue().contentEquals(activity.getLongName())) {
+						return true;
 					}
 				}
 			}

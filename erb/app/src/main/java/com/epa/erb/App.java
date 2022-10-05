@@ -34,6 +34,7 @@ public class App extends Application {
 	private Project selectedProject;
 	private ArrayList<Project> projects;
 	private ArrayList<Chapter> chapters;
+	private ArrayList<DynamicActivity> dynamicActivities;
 	private ArrayList<Activity> activities;
 	private ArrayList<Step> steps;
 	private Constants constants = new Constants();
@@ -170,13 +171,19 @@ public class App extends Application {
 		saveHandler.beginSave();
 	}	
 	
-	private void readAndStoreData() {	
+	private void readAndStoreData() {
+		readAndStoreDynamicActivities();
 		readAndStoreAvailableSteps();
 		readAndStoreChapters();
 		readAndStoreActivityTypes();
 		readAndStoreAvailableActivities();
 		readAndStoreGoalCategories();
 		readAndStoreProjects();
+	}
+	
+	private void readAndStoreDynamicActivities() {
+		File dynamicActivitiesFile = fileHandler.getStaticAvailableDynamicActivitiesXMLFile();
+		dynamicActivities = xmlManager.parseAvailableDynamicActivitiesXML(dynamicActivitiesFile);
 	}
 	
 	private void readAndStoreChapters() {
@@ -288,6 +295,20 @@ public class App extends Application {
 		return null;
 
 	}
+	
+	public DynamicActivity getDynamicActivityById(String dynamicActivityID) {
+		if(dynamicActivityID != null) {
+			for(DynamicActivity dynamicActivity: dynamicActivities) {
+				if(dynamicActivity.getId().contentEquals(dynamicActivityID)) {
+					return dynamicActivity;
+				}
+			}
+		} else {
+			logger.error("Cannot getDynamicActivityById. dynamicActivityID is null.");
+		}
+		logger.debug("Cannot getDynamicActivityById. DynamicActivity returned is null");
+		return null;
+	}
 
 	public int getPrefWidth() {
 		return prefWidth;
@@ -343,6 +364,14 @@ public class App extends Application {
 
 	public void setSteps(ArrayList<Step> steps) {
 		this.steps = steps;
+	}
+
+	public ArrayList<DynamicActivity> getDynamicActivities() {
+		return dynamicActivities;
+	}
+
+	public void setDynamicActivities(ArrayList<DynamicActivity> dynamicActivities) {
+		this.dynamicActivities = dynamicActivities;
 	}
 
 	public ArrayList<ActivityType> getActivityTypes() {
