@@ -9,11 +9,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polygon?>
 
-<VBox fx:id="diagramVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="diagramVBox" alignment="CENTER_LEFT" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox>
+      <HBox alignment="CENTER_LEFT">
          <children>
-            <VBox fx:id="holderVBox">
+            <VBox fx:id="holderVBox" alignment="CENTER_LEFT">
                <children>
                   <HBox fx:id="topCirclesHBox">
                      <children>
@@ -119,7 +119,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox>
+      <VBox alignment="CENTER_LEFT">
          <children>
             <HBox alignment="CENTER">
                <children>

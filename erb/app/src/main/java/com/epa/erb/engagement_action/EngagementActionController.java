@@ -66,8 +66,8 @@ public class EngagementActionController implements Initializable{
 	TitledPane pathwayTitledPane;
 	@FXML
 	HBox erbPathwayDiagramHBox;
-	@FXML
-	VBox erbPathwayVBox;
+//	@FXML
+//	VBox erbPathwayVBox;
 	@FXML
 	ScrollPane erbPathwayDiagramScrollPane;
 	@FXML
@@ -166,6 +166,11 @@ public class EngagementActionController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		removeShowDetailsCheckBox(); //Default setting for removing spokes
+		removeDetailsKeyPaneVBox();  //Default setting for removing spokes
+		
+		
+		
 		if(project.getProjectType().contentEquals("Goal Mode")) {
 			initGoalMode();
 		} else {
@@ -402,11 +407,9 @@ public class EngagementActionController implements Initializable{
 				ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activity.getActivityID());
 				if (erbPathwayDiagramController != null) {
 					if (showDetailsCheckBox.isSelected()) {
-						erbPathwayDiagramScrollPane.setMinHeight(130);
 						erbPathwayDiagramController.showDetails();
 						addDetailsKeyPaneVBox();
 					} else {
-						erbPathwayDiagramScrollPane.setMinHeight(60);
 						erbPathwayDiagramController.hideDetails();
 						removeDetailsKeyPaneVBox();
 					}
@@ -957,7 +960,6 @@ public class EngagementActionController implements Initializable{
 			cleanListOfChapterDiagramControllers();
 			removeShowDetailsCheckBox();
 			removeDetailsKeyPaneVBox();
-			erbPathwayDiagramScrollPane.setMinHeight(50);
 			for (Chapter chapter : goal.getChapters()) {
 				Parent root = loadERBChapterDiagramRoot(chapter, goal.getChapters());
 				pathwayTitledPane.setText(goal.getGoalName() + " Pathway");
@@ -972,9 +974,6 @@ public class EngagementActionController implements Initializable{
 		if (chapter != null) {
 			cleanERBPathwayDiagramHBox();
 			cleanListOfActivityDiagramControllers();
-			addShowDetailsCheckBox();
-			addDetailsKeyPaneVBox();
-			erbPathwayDiagramScrollPane.setMinHeight(130);
 			for (Activity activity : chapter.getAssignedActivities()) {
 				Parent root = loadERBPathwayDiagramRoot(activity, chapter);
 				pathwayTitledPane.setText(chapter.getStringName() + " Pathway");
