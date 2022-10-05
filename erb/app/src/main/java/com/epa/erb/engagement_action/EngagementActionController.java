@@ -168,7 +168,7 @@ public class EngagementActionController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		removeShowDetailsCheckBox(); //Default setting for removing spokes
 		removeDetailsKeyPaneVBox();  //Default setting for removing spokes
-		
+		removeAttributeScrollPane(); //Default setting 
 		
 		
 		if(project.getProjectType().contentEquals("Goal Mode")) {
@@ -535,7 +535,6 @@ public class EngagementActionController implements Initializable{
 		addERBKeyVBox(1);
 		if(project.getProjectType().contentEquals("Goal Mode")) {
 			addLocalProgressVBox(1);
-			addAttributeScrollPane(1);
 		}
 		//--
 		loadDynamicActivityContent(dynamicActivityId);
@@ -627,7 +626,6 @@ public class EngagementActionController implements Initializable{
 		//--
 		addERBKeyVBox(1);
 		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) addAttributeScrollPane(1);
 		//--
 		loadActivityContent(currentSelectedActivity);
 		generateActivityERBPathway(currentSelectedChapter);
@@ -656,7 +654,6 @@ public class EngagementActionController implements Initializable{
 		//--
 		addERBKeyVBox(1);
 		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) addAttributeScrollPane(1);
 		//--
 		addBaseAttributesToAttributePanel(currentSelectedActivity);
 		loadStepContent(currentSelectedStep);
@@ -682,7 +679,6 @@ public class EngagementActionController implements Initializable{
 		addERBKeyVBox(1);
 		if(project.getProjectType().contentEquals("Goal Mode")) {
 			addLocalProgressVBox(1);
-			addAttributeScrollPane(1);
 		}
 		//--
 		loadStepContent(currentSelectedStep);
