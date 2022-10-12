@@ -182,20 +182,6 @@
                                     <Label fx:id="goalProgressPercentLabel" text="\%" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" spacing="2.0" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Label minWidth="43.0" text="Ranking" />
-                                    <VBox fx:id="goalConfidenceVBox" alignment="BOTTOM_CENTER" maxWidth="25.0" minHeight="50.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
-                                       <children>
-                                          <VBox fx:id="goalConfidenceBar" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="0.5" left="0.5" right="0.5" top="0.5" />
-                                       </padding>
-                                    </VBox>
-                                    <Label fx:id="goalConfidencePercentLabel" text="\%" />
-                                 </children>
-                              </VBox>
                            </children>
                         </HBox>
                      </children>

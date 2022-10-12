@@ -42,10 +42,8 @@ public class Goal {
 				for (String chapterNumber : chapterNumbers) {
 					if (!chapterNumber.contentEquals("0")) {
 						Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, getChapterDescription(chapterNumber), "");
-						ArrayList<Activity> activitiesForChapter = getActivitiesForChapter(chapterNumber, activities,goalActivityIds);
-						chapter.assignSteps(app.getSteps());
-						chapter.setAssignedActivities(activitiesForChapter);
-						chapter.setHashMaps();
+						chapter.assignStepIds(app.getAvailableSteps());
+						chapter.assignActivityIds(app.getAvailableActivities());
 						chapters.add(chapter);
 					}
 				}
@@ -69,7 +67,7 @@ public class Goal {
 		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
 		if (chapterNumber != null && activities != null && goalActivityIds != null) {
 			for (String goalActivityID : goalActivityIds) {
-				Activity activity = app.getActivityByID(goalActivityID, app.getActivities());
+				Activity activity = app.getActivityByID(goalActivityID, app.getAvailableActivities());
 				if (activity.getChapterAssignment().contentEquals(chapterNumber)) {
 					Activity clonedActivity = activity.cloneActivity();
 					activitiesForChapter.add(clonedActivity);
@@ -98,7 +96,7 @@ public class Goal {
 	
 	private String getChapterDescription(String chapterNumber) {
 		if (chapterNumber != null) {
-			for (Chapter chapter : app.getChapters()) {
+			for (Chapter chapter : app.getAvailableChapters()) {
 				if (String.valueOf(chapter.getChapterNum()).contentEquals(chapterNumber)) {
 					return chapter.getDescriptionName();
 				}

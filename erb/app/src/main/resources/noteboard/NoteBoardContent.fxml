@@ -84,6 +84,11 @@
             <VBox fx:id="mainVBox" prefWidth="100.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#saveBoardButtonAction" text="Save Board" />
+         </children>
+      </HBox>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

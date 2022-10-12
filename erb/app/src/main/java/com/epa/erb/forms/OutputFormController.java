@@ -93,6 +93,10 @@ public class OutputFormController implements Initializable {
 			listOfChildren.add(formVBox.getChildren().get(i));
 		}
 		File saveLocation = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
+		if(!saveLocation.getParentFile().exists()) {
+			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal()), engagementActionController.getListOfUniqueChapters());
+			fileHandler.createGUIDDirectoriesForGoal(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getListOfUniqueChapters());
+		}
 		xmlManager.writeOutputFormDataXML(saveLocation, listOfChildren);
 	}
 	

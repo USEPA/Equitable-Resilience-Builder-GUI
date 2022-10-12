@@ -48,14 +48,8 @@ public class ChapterLandingController implements Initializable {
 	@FXML
 	ListView<Activity> reflectListView;
 	
-	private Chapter chapter;
-	private EngagementActionController engagementActionController;
-	public ChapterLandingController(Chapter chapter, EngagementActionController engagementActionController) {
-		this.chapter = chapter;
-		this.engagementActionController = engagementActionController;
-	}
-	
 	private ArrayList<Chapter> listOfAllChapters;
+	private EngagementActionController engagementActionController;
 	public ChapterLandingController(ArrayList<Chapter> listOfAllChapters, EngagementActionController engagementActionController) {
 		this.listOfAllChapters = listOfAllChapters;
 		this.engagementActionController = engagementActionController;
@@ -66,8 +60,6 @@ public class ChapterLandingController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		fillPlanListView();
-		fillReflectListView();
 		setAboutTextAreaText(getAboutText());
 		setHeadingLabelText(getHeadingLabelText());
 		fillActivitiesListView(getActivitiesForListView());
@@ -96,11 +88,7 @@ public class ChapterLandingController implements Initializable {
 	}
 	
 	String getHeadingLabelText() {
-		if (chapter != null) {
-			return "Welcome to " + chapter.getStringName();
-		} else {
-			return "Equitable Resilience Builder";
-		}
+		return "Equitable Resilience Builder";
 	}
 	
 	public void setAboutTextAreaText(Text text) {
@@ -110,11 +98,7 @@ public class ChapterLandingController implements Initializable {
 	}
 	
 	Text getAboutText() {
-		if (chapter != null) {
-			return new Text(chapter.getDescriptionName());
-		} else {
-			return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
-		}
+		return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
 	}
 
 	public void fillActivitiesListView(ArrayList<Activity> listOfActivities) {
@@ -131,34 +115,12 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 	
-	public void fillPlanListView() {
-		cleanPlanListView();
-		Activity planActivity = engagementActionController.getActivityForNameInGoal("Plan", engagementActionController.getCurrentGoal());
-		if(chapter != null) planActivity.setChapterAssignment(String.valueOf(chapter.getChapterNum()));
-		if (planActivity != null) planListView.getItems().add(planActivity);
-		setListViewCellFactory(planListView, "Plan");
-	}
-	
-	public void fillReflectListView() {
-		cleanReflectListView();
-		Activity reflectActivity = engagementActionController.getActivityForNameInGoal("Reflect", engagementActionController.getCurrentGoal());
-		if(chapter != null) reflectActivity.setChapterAssignment(String.valueOf(chapter.getChapterNum()));
-		if(reflectActivity != null) reflectListView.getItems().add(reflectActivity);
-		setListViewCellFactory(reflectListView, "Reflect");
-	}
-	
 	private ArrayList<Activity> getActivitiesForListView() {
 		ArrayList<Activity> activitiesForListView = new ArrayList<Activity>();
-		if (chapter != null) { // landing for a single chapter
-			for (Activity activity : chapter.getAssignedActivities()) {
-				activitiesForListView.add(activity);
-			}
-		} else { // landing for erb showing all chapters
-			if (listOfAllChapters != null) {
-				for (Chapter chapter : listOfAllChapters) {
-					for (Activity activity : chapter.getAssignedActivities()) {
-						activitiesForListView.add(activity);
-					}
+		if (listOfAllChapters != null) {
+			for (Chapter chapter : listOfAllChapters) {
+				for (Activity activity : chapter.getAssignedActivities()) {
+					activitiesForListView.add(activity);
 				}
 			}
 		}
@@ -282,14 +244,6 @@ public class ChapterLandingController implements Initializable {
 
 	public void setActivitiesListView(ListView<Activity> activitiesListView) {
 		this.activitiesListView = activitiesListView;
-	}
-
-	public Chapter getChapter() {
-		return chapter;
-	}
-
-	public void setChapter(Chapter chapter) {
-		this.chapter = chapter;
 	}
 
 	public EngagementActionController getEngagementActionController() {

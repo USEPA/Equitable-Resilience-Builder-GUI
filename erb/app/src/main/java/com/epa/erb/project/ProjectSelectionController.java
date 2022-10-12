@@ -75,6 +75,7 @@ public class ProjectSelectionController implements Initializable{
 	public void launchButtonAction() {
 		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
 		if(selectedProject != null) {
+			app.setSelectedProject(selectedProject);
 			if(isProjectNew(selectedProject)) {
 				if (mode.contentEquals("Goal Mode")) {
 					loadGoalCreationToContainer(selectedProject);
@@ -85,7 +86,6 @@ public class ProjectSelectionController implements Initializable{
 			} else {
 				loadEngagementActionToContainer(selectedProject);
 			}
-			app.setSelectedProject(selectedProject);
 		}
 	}
 	
@@ -115,7 +115,7 @@ public class ProjectSelectionController implements Initializable{
 		GoalCategory goalCategory = goalCreationController.getGoalCategory("All activities");
 		ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>(Arrays.asList(goalCategory));
 		Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription, goalCategories);
-		goal.setChapters(app.getActivities(), goalCreationController.getProject());
+		goal.setChapters(app.getAvailableActivities(), goalCreationController.getProject());
 		return goal;
 	}
 	
@@ -144,6 +144,7 @@ public class ProjectSelectionController implements Initializable{
 			root.setPrefHeight(app.getPrefHeight());
 			app.loadNodeToERBContainer(root);
 		}catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 	}

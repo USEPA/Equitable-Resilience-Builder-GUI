@@ -49,36 +49,6 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-               <children>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Label minWidth="50.0" text="Ranking">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <VBox fx:id="goalConfidenceVBox" alignment="BOTTOM_CENTER" maxWidth="50.0" minHeight="100.0" minWidth="50.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
-                     <children>
-                        <VBox fx:id="goalConfidenceBar" />
-                     </children>
-                     <padding>
-                        <Insets bottom="0.5" left="0.5" right="0.5" top="0.5" />
-                     </padding>
-                  </VBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Label fx:id="confidencePercentLabel" text="\%">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
          </children>
       </HBox>
    </children>

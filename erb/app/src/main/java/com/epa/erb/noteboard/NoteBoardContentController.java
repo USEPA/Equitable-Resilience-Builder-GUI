@@ -3,14 +3,17 @@ package com.epa.erb.noteboard;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.epa.erb.Activity;
+import com.epa.erb.App;
+import com.epa.erb.DynamicActivity;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.XMLManager;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -55,19 +58,15 @@ public class NoteBoardContentController implements Initializable{
 	@FXML
 	Pane note; //layer 5
 	
-//	private App app;
-//	private Project project;
-//	private Goal goal;
-//	private Activity activity;
-//	public NoteBoardContentController(App app,Project project, Goal goal, Activity activity ) {
-//		this.app = app;
-//		this.project = project;
-//		this.goal = goal;
-//		this.activity = activity;
-//	}
-	
-	public NoteBoardContentController() {
-
+	private App app;
+	private Project project;
+	private Goal goal;
+	private DynamicActivity dynamicActivity;
+	public NoteBoardContentController(App app,Project project, Goal goal, DynamicActivity dynamicActivity ) {
+		this.app = app;
+		this.project = project;
+		this.goal = goal;
+		this.dynamicActivity = dynamicActivity;
 	}
 	
 	private Constants constants = new Constants();
@@ -80,7 +79,7 @@ public class NoteBoardContentController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		checkForExistingNoteBoardData();
-//		setActivityNameLabelText(activity.getLongName());
+		setActivityNameLabelText(dynamicActivity.getName());
 	}
 		
 	private void handleControls() {
@@ -100,13 +99,20 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	@FXML
+	public void saveBoardButtonAction() {
+		XMLManager xmlManager = new XMLManager(app);
+		setCategoryPostIts();
+		ArrayList<CategorySectionController> categories = getCategorySectionControllers();
+		xmlManager.writeNoteboardDataXML(fileHandler.getDynamicActivityDataXMLFile(project, goal, dynamicActivity), categories);
+	}
+	
+	@FXML
 	public void addCategoryButtonAction() {
 		String categoryString = categoryTextField.getText();
 		if(categoryString != null && categoryString.trim().length() > 0) {
 			HBox catHBox = (HBox) loadCategorySection(categoryString);
 			mainVBox.getChildren().add(catHBox);
 			categoryTextField.setText(null);
-//			activity.setSaved(false);
 		}
 	}
 	
@@ -144,44 +150,44 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private void checkForExistingNoteBoardData() {
-//		boolean dataExists = noteBoardDataExists(project, goal, activity);
-//		if (dataExists) {
-//			generateExistingNoteBoardControls(project, goal, activity);
-//		}
+		boolean dataExists = noteBoardDataExists(project, goal, dynamicActivity);
+		if (dataExists) {
+			generateExistingNoteBoardControls(project, goal, dynamicActivity);
+		}
 	}
 	
-	private void generateExistingNoteBoardControls(Project project, Goal goal, Activity activity) {
-//		try {
-//			XMLManager xmlManager = new XMLManager(app);
-//			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(fileHandler.getActivityDataXMLFile(project, goal, activity));
-//			if(listOfCategoryHashMaps != null) {
-//			for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
-//				HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
-//				for (String categoryName : categoryHashMap.keySet()) {
-//					HBox catHBox = (HBox) loadCategorySection(categoryName);
-//					ArrayList<HashMap<String, String>> listOfNoteHashMaps = categoryHashMap.get(categoryName);
-//					for (int j = 0; j < listOfNoteHashMaps.size(); j++) {
-//						CategorySectionController categorySectionController = getCategorySectionController(catHBox);
-//						Pane postItNotePane = loadPostItNote(categorySectionController);
-//						HashMap<String, String> noteHashMap = listOfNoteHashMaps.get(j);
-//						String color = noteHashMap.get("color").replaceAll("#", "");
-//						String content = noteHashMap.get("content");
-//						String like = noteHashMap.get("likes");
-//						setPostItNoteProperties((VBox) postItNotePane, color, content, like);
-//						int index = Integer.parseInt(noteHashMap.get("position"));
-//						categorySectionController.getPostItHBox().getChildren().add(index, postItNotePane);
-//					}
-//					mainVBox.getChildren().add(catHBox);
-//				}
-//			}
-//			}
-//		} catch (Exception e) {
-//			logger.error(e.getMessage());
-//		}
+	private void generateExistingNoteBoardControls(Project project, Goal goal, DynamicActivity dynamicActivity) {
+		try {
+			XMLManager xmlManager = new XMLManager(app);
+			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(fileHandler.getDynamicActivityDataXMLFile(project, goal, dynamicActivity));
+			if(listOfCategoryHashMaps != null) {
+			for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
+				HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
+				for (String categoryName : categoryHashMap.keySet()) {
+					HBox catHBox = (HBox) loadCategorySection(categoryName);
+					ArrayList<HashMap<String, String>> listOfNoteHashMaps = categoryHashMap.get(categoryName);
+					for (int j = 0; j < listOfNoteHashMaps.size(); j++) {
+						CategorySectionController categorySectionController = getCategorySectionController(catHBox);
+						Pane postItNotePane = loadPostItNote(categorySectionController);
+						HashMap<String, String> noteHashMap = listOfNoteHashMaps.get(j);
+						String color = noteHashMap.get("color").replaceAll("#", "");
+						String content = noteHashMap.get("content");
+						String like = noteHashMap.get("likes");
+						setPostItNoteProperties((VBox) postItNotePane, color, content, like);
+						int index = Integer.parseInt(noteHashMap.get("position"));
+						categorySectionController.getPostItHBox().getChildren().add(index, postItNotePane);
+					}
+					mainVBox.getChildren().add(catHBox);
+				}
+			}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 	
-	private boolean noteBoardDataExists(Project project, Goal goal, Activity activity) {
-		File activityDataFile = fileHandler.getActivityDataXMLFile(project, goal, activity);
+	private boolean noteBoardDataExists(Project project, Goal goal, DynamicActivity dynamicActivity) {
+		File activityDataFile = fileHandler.getDynamicActivityDataXMLFile(project, goal, dynamicActivity);
 		if(activityDataFile != null && activityDataFile.exists()) {
 			return true;
 		}
@@ -219,7 +225,6 @@ public class NoteBoardContentController implements Initializable{
 	
 	private void removeCategoryMenuItemClicked(HBox catHBox) {
 		removeCategory(catHBox);
-//		activity.setSaved(false);
 	}
 	
 	private void removeCategory(HBox catHBox) {
@@ -237,7 +242,6 @@ public class NoteBoardContentController implements Initializable{
 	
 	private void removeNoteMenuItemClicked(PostItNoteController postItNoteController, VBox postItNotePane) {
 		removeNote(postItNoteController, postItNotePane);
-//		getActivity().setSaved(false);
 	}
 	
 	private void removeNote(PostItNoteController postItNoteController, VBox postItNotePane) {
@@ -267,7 +271,6 @@ public class NoteBoardContentController implements Initializable{
 				if (sourceNote.getId() != null && sourceNote.getId().contentEquals("note") && target.getId() != null && target.getId().contentEquals("postItHBox")) {
 					Pane postItNotePane = loadPostItNote(categorySectionController);
 					target.getChildren().add(postItNotePane);
-//					activity.setSaved(false);
 					// Moving a post it
 				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && target.getId() != null && target.getId().contentEquals("postItHBox")) {
 					VBox sourcePostedNote = (VBox) sourceNote;
@@ -282,7 +285,6 @@ public class NoteBoardContentController implements Initializable{
 						sourcePostItHBox.getChildren().remove(sourcePostedNote);
 						targetPostItHBox.getChildren().add(targetIndex, sourcePostedNote);
 					}
-//					activity.setSaved(false);
 					// Moving a post it
 				} else if (sourceNote.getId() != null && sourceNote.getId().contentEquals("postedNote") && target.getId() != null && target.getId().contentEquals("postedNote")) {
 					VBox sourcePostedNote = (VBox) sourceNote;
@@ -298,7 +300,6 @@ public class NoteBoardContentController implements Initializable{
 						sourcePostItHBox.getChildren().remove(sourcePostedNote);
 						targetPostItHBox.getChildren().add(targetIndex, sourcePostedNote);
 					}
-//					activity.setSaved(false);
 				}
 				success = true;
 			}
@@ -372,37 +373,37 @@ public class NoteBoardContentController implements Initializable{
 		postItNoteControllers.remove(postItNoteController);
 	}
 
-//	public App getApp() {
-//		return app;
-//	}
-//
-//	public void setApp(App app) {
-//		this.app = app;
-//	}
-//
-//	public Project getProject() {
-//		return project;
-//	}
-//
-//	public void setProject(Project project) {
-//		this.project = project;
-//	}
-//
-//	public Goal getGoal() {
-//		return goal;
-//	}
-//
-//	public void setGoal(Goal goal) {
-//		this.goal = goal;
-//	}
-//
-//	public Activity getActivity() {
-//		return activity;
-//	}
-//
-//	public void setActivity(Activity activity) {
-//		this.activity = activity;
-//	}
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
+	}
+
+	public DynamicActivity getDynamicActivity() {
+		return dynamicActivity;
+	}
+
+	public void setDynamicActivity(DynamicActivity dynamicActivity) {
+		this.dynamicActivity = dynamicActivity;
+	}
 
 	public ArrayList<PostItNoteController> getPostItNoteControllers() {
 		return postItNoteControllers;

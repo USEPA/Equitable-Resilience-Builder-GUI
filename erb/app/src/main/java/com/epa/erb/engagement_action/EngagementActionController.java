@@ -23,7 +23,7 @@ import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
-import com.epa.erb.worksheet.WorksheetContentController;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -50,7 +50,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class EngagementActionController implements Initializable{
+public class EngagementActionController implements Initializable {
 
 	@FXML
 	VBox engagementVBox;
@@ -66,8 +66,6 @@ public class EngagementActionController implements Initializable{
 	TitledPane pathwayTitledPane;
 	@FXML
 	HBox erbPathwayDiagramHBox;
-//	@FXML
-//	VBox erbPathwayVBox;
 	@FXML
 	ScrollPane erbPathwayDiagramScrollPane;
 	@FXML
@@ -109,7 +107,7 @@ public class EngagementActionController implements Initializable{
 	@FXML
 	Label attributePanelCollapseLabel;
 	@FXML
-	VBox attributePanelContentVBox;	
+	VBox attributePanelContentVBox;
 	@FXML
 	Label goalProgressPercentLabel;
 	@FXML
@@ -118,10 +116,6 @@ public class EngagementActionController implements Initializable{
 	VBox goalProgressVBox;
 	@FXML
 	VBox goalProgressBar;
-	@FXML
-	VBox goalConfidenceVBox;
-	@FXML
-	VBox goalConfidenceBar;
 	@FXML
 	ProgressIndicator chapterProgressIndicator;
 	@FXML
@@ -142,52 +136,50 @@ public class EngagementActionController implements Initializable{
 	VBox titledPaneVBox;
 	@FXML
 	HBox showDetailsHBox;
-	
+
 	private App app;
 	private Project project;
 	public EngagementActionController(App app, Project project) {
 		this.app = app;
 		this.project = project;
 	}
-	
+
 	private Goal currentSelectedGoal = null;
-	private Chapter currentSelectedChapter = null; 
-	private Activity currentSelectedActivity = null;
 	private Step currentSelectedStep = null;
+	private Chapter currentSelectedChapter = null;
+	private Activity currentSelectedActivity = null;
+	private DynamicActivity currentSelectedDynamicActivity = null;
+
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	private HashMap<TreeItem<String>, String> treeItemIdTreeMap = new HashMap<TreeItem<String>, String>(); //holds the tree items mapped to a chapter or activity ID
-	private ArrayList<AttributePanelController> listOfAttributePanelControllers = new ArrayList<AttributePanelController>(); //holds all of the attribute panels
-	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>(); //holds all of the pathway controllers
-	private ArrayList<ERBChapterDiagramController> listOfChapterDiagramControllers = new ArrayList<ERBChapterDiagramController>(); //holds all of the chapter controllers
-	private ArrayList<WorksheetContentController> listOfAllWorksheetContentControllers = new ArrayList<WorksheetContentController>();
-	private ArrayList<NoteBoardContentController> listOfAllNoteBoardContentControllers = new ArrayList<NoteBoardContentController>();
-	
+	private HashMap<TreeItem<String>, String> treeItemIdTreeMap = new HashMap<TreeItem<String>, String>();
+	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
+	private ArrayList<ERBChapterDiagramController> listOfChapterDiagramControllers = new ArrayList<ERBChapterDiagramController>();
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		removeShowDetailsCheckBox(); //Default setting for removing spokes
-		removeDetailsKeyPaneVBox();  //Default setting for removing spokes
-		removeAttributeScrollPane(); //Default setting 
-		
-		
-		if(project.getProjectType().contentEquals("Goal Mode")) {
+		removeShowDetailsCheckBox(); // Default setting for removing spokes
+		removeDetailsKeyPaneVBox(); // Default setting for removing spokes
+		removeAttributeScrollPane(); // Default setting
+
+		if (project.getProjectType().contentEquals("Goal Mode")) {
 			initGoalMode();
 		} else {
 			initFacilitatorMode();
 		}
 		app.getErbContainerController().setTitleLabelText("ERB: " + project.getProjectName() + ": " + project.getProjectType());
 	}
-	
+
 	private void initGoalMode() {
 		fillGoalComboBox(project);
-		goalComboBox.setCellFactory(lv-> createGoalCell());
+		goalComboBox.setCellFactory(lv -> createGoalCell());
 		goalComboBox.setButtonCell(createGoalCell());
 		initializeGoalSelection(project);
 		setNavigationButtonsDisability(null, null);
 		handleControls();
 	}
-	
+
 	private void initFacilitatorMode() {
 		initializeGoalSelection(project);
 		setNavigationButtonsDisability(null, null);
@@ -198,14 +190,14 @@ public class EngagementActionController implements Initializable{
 		removePathwayPane();
 		removeLocalProgressPane();
 	}
-	
+
 	private void handleControls() {
 		initializeStyle();
 		addProgressListeners();
 		addGoalChangeListener();
 		addTreeViewListener();
 	}
-	
+
 	private void initializeStyle() {
 		pathwayTitledPane.setStyle("-fx-box-border: transparent;");
 		materialKeyPane.setStyle("-fx-background-color: " + constants.getMaterialsColor() + ";");
@@ -217,16 +209,16 @@ public class EngagementActionController implements Initializable{
 		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
 		chapterProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
 	}
-	
+
 	private void addTreeViewListener() {
 		treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));
 	}
-	
+
 	private void addProgressListeners() {
-		localProgressVBox.heightProperty().addListener(e-> localProgressPaneSizeChanged());
-		localProgressVBox.widthProperty().addListener(e-> localProgressPaneSizeChanged());
+		localProgressVBox.heightProperty().addListener(e -> localProgressPaneSizeChanged());
+		localProgressVBox.widthProperty().addListener(e -> localProgressPaneSizeChanged());
 	}
-	
+
 	private void addGoalChangeListener() {
 		goalComboBox.valueProperty().addListener(new ChangeListener<Goal>() {
 			@Override
@@ -235,18 +227,18 @@ public class EngagementActionController implements Initializable{
 			}
 		});
 	}
-	
+
 	private void localProgressPaneSizeChanged() {
-		if(currentSelectedActivity != null) {
+		if (currentSelectedActivity != null) {
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 		} else {
 			TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-			if(selectedTreeItem != null && selectedTreeItem.getValue().contains("Chapter")) {
-				updateLocalProgress(getChapterForNameInGoal(selectedTreeItem.getValue().trim(), currentSelectedGoal), currentSelectedGoal.getChapters());
+			if (selectedTreeItem != null && selectedTreeItem.getValue().contains("Chapter")) {
+				updateLocalProgress(getChapterForNameInGoal(selectedTreeItem.getValue().trim(), currentSelectedGoal),currentSelectedGoal.getChapters());
 			}
 		}
 	}
-	
+
 	private void initializeGoalSelection(Project project) {
 		if (project != null) {
 			goalComboBox.getSelectionModel().select(0);
@@ -255,7 +247,7 @@ public class EngagementActionController implements Initializable{
 			logger.error("Cannot initializeGoalSelection. project = " + project);
 		}
 	}
-	
+
 	private void initializeTreeViewSelection() {
 		for (TreeItem<String> treeItem : treeItemIdTreeMap.keySet()) {
 			if (treeItemIdTreeMap.get(treeItem) == "0") {
@@ -264,8 +256,8 @@ public class EngagementActionController implements Initializable{
 			}
 		}
 	}
-			
-	private VBox loadERBPathwayLandingRoot(ArrayList<Chapter> chapters) {
+
+	private VBox loadChapterLanding(ArrayList<Chapter> chapters) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
 			ChapterLandingController chapterLandingController = new ChapterLandingController(chapters, this);
@@ -278,57 +270,22 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 
-//	private VBox loadWorksheetContentController(Activity activity) {
-//		if (activity != null) {
-//			try {
-//				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/worksheet/WorksheetContent.fxml"));
-//				WorksheetContentController worksheetContentController = new WorksheetContentController(activity, project, currentSelectedGoal, app);
-//				fxmlLoader.setController(worksheetContentController);
-//				VBox root = fxmlLoader.load();
-//				activity.setWorksheetContentController(worksheetContentController);
-//				listOfAllWorksheetContentControllers.add(worksheetContentController);
-//				return root;
-//			} catch (Exception e) {
-//				logger.error(e.getMessage());
-//				return null;
-//			}
-//		} else {
-//			logger.error("Cannot loadWorksheetContentController. activity = " + activity);
-//			return null;
-//		}
-//	}
-
-	private VBox loadNoteBoardContentController() {
-
-			try {
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-//				NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, activity);
-				NoteBoardContentController noteBoardContentController = new NoteBoardContentController();
-				fxmlLoader.setController(noteBoardContentController);
-				VBox root = fxmlLoader.load();
-//				activity.setNoteBoardContentController(noteBoardContentController);
-				listOfAllNoteBoardContentControllers.add(noteBoardContentController);
-				return root;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				return null;
-			}
-	}
-	
-	private Parent loadAttributePaneRoot(String attributeTitle, String attributeContent, String attributeColor) {
+	private VBox loadNoteBoardContentController(DynamicActivity dynamicActivity) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/AttributePane.fxml"));
-			AttributePanelController attributePanelController = new AttributePanelController(attributeTitle, attributeContent, attributeColor, this);
-			listOfAttributePanelControllers.add(attributePanelController);
-			fxmlLoader.setController(attributePanelController);
-			return fxmlLoader.load();
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, dynamicActivity);
+			fxmlLoader.setController(noteBoardContentController);
+			VBox root = fxmlLoader.load();
+			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
 		}
 	}
-	
-	private Parent loadERBChapterDiagramRoot(Chapter chapter, ArrayList<Chapter> chapters)  {
+
+
+
+	private Parent loadERBChapterDiagramRoot(Chapter chapter, ArrayList<Chapter> chapters) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBChapterDiagram.fxml"));
 			ERBChapterDiagramController erbChapterDiagramController = new ERBChapterDiagramController(chapter, chapters, this);
@@ -340,7 +297,7 @@ public class EngagementActionController implements Initializable{
 			return null;
 		}
 	}
-	
+
 	private Parent loadERBPathwayDiagramRoot(Activity activity, Chapter chapter) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBPathwayDiagram.fxml"));
@@ -353,7 +310,7 @@ public class EngagementActionController implements Initializable{
 			return null;
 		}
 	}
-	
+
 	private Parent loadGlobalGoalTracker() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GlobalGoalTracker.fxml"));
@@ -365,8 +322,9 @@ public class EngagementActionController implements Initializable{
 			return null;
 		}
 	}
-	
+
 	private Stage globalGoalTrackerStage = null;
+
 	private void showGlobalGoalTracker(Parent globalGoalTrackerRoot) {
 		if (globalGoalTrackerRoot != null) {
 			globalGoalTrackerStage = new Stage();
@@ -378,11 +336,11 @@ public class EngagementActionController implements Initializable{
 			logger.error("Cannot showGlobalGoalTracker. globalGoalTrackerRoot = " + globalGoalTrackerRoot);
 		}
 	}
-	
+
 	private void setDynamicDimensions(Pane pane, ScrollPane scrollPane) {
 		if (pane != null) {
 			pane.setPrefHeight(app.getPrefHeight());
-			pane.setPrefWidth(app.getPrefWidth()-10);
+			pane.setPrefWidth(app.getPrefWidth() - 10);
 			VBox.setVgrow(pane, Priority.ALWAYS);
 			HBox.setHgrow(pane, Priority.ALWAYS);
 		} else if (scrollPane != null) {
@@ -392,58 +350,65 @@ public class EngagementActionController implements Initializable{
 			HBox.setHgrow(scrollPane, Priority.ALWAYS);
 		}
 	}
-	
+
 	private void goalChanged(Goal origGoal, Goal newGoal) {
-		if(origGoal != null) {
-			app.initSaveHandler(null, null, origGoal, project, null, "goalChange");
+		if (origGoal != null) {
 			goalSelected(newGoal);
 		}
 	}
-	
+
 	@FXML
 	public void showDetailsCheckboxAction() {
-		if (currentSelectedChapter != null) {
-			for (Activity activity : currentSelectedChapter.getAssignedActivities()) {
-				ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(activity.getActivityID());
-				if (erbPathwayDiagramController != null) {
-					if (showDetailsCheckBox.isSelected()) {
-						erbPathwayDiagramController.showDetails();
-						addDetailsKeyPaneVBox();
-					} else {
-						erbPathwayDiagramController.hideDetails();
-						removeDetailsKeyPaneVBox();
-					}
+
+	}
+
+	@FXML
+	public void activityStatusRadioButtonAction() {
+		RadioButton radioButton = (RadioButton) activityStatusToggleGroup.getSelectedToggle();
+		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		if (selectedTreeItem != null) {
+			String GUIDOfItemClicked = treeItemIdTreeMap.get(selectedTreeItem);
+			Object itemClicked = map.get(GUIDOfItemClicked);
+			String status = getActivityStatusForRadioButtonState(radioButton);
+			if (itemClicked != null) {
+				if (itemClicked.toString().contains("DynamicActivity")) {
+					DynamicActivity dynamicActivity = (DynamicActivity) itemClicked;
+					dynamicActivity.setStatus(status);
+				} else if (itemClicked.toString().contains("Step")) {
+					Step step = (Step) itemClicked;
+					step.setStatus(status);
+				} else if (itemClicked.toString().contains("Activity")) {
+					Activity activity = (Activity) itemClicked;
+					activity.setStatus(status);
+				} else if (itemClicked.toString().contains("Chapter")) {
+					Chapter chapter = (Chapter) itemClicked;
+				}
+			}
+			for (ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
+				if (erbPathwayDiagramController.getActivity().getGUID().contentEquals(GUIDOfItemClicked)) {
+					erbPathwayDiagramController.getActivity().setStatus(status);
+					erbPathwayDiagramController.updateStatus();
 				}
 			}
 		}
+		updateLocalProgress(currentSelectedChapter, listOfUniqueChapters);
 	}
-	
-	@FXML
-	public void activityStatusRadioButtonAction () {
-		RadioButton radioButton = (RadioButton) activityStatusToggleGroup.getSelectedToggle();
-		changeActivityStatus(currentSelectedActivity, radioButton);
-		ERBPathwayDiagramController erbPathwayDiagramController = getErbPathwayDiagramController(currentSelectedActivity.getActivityID());
-		ERBChapterDiagramController erbChapterDiagramController = getErbChapterDiagramController(currentSelectedActivity.getChapterAssignment());
-		if(erbChapterDiagramController != null) erbChapterDiagramController.fillChapterCircleBasedOnStatus();
-		if(erbPathwayDiagramController != null) erbPathwayDiagramController.updateStatus(); //set status of erb diagram
-		updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
-		currentSelectedActivity.setSaved(false);
-	}
-	
-	private void changeActivityStatus(Activity activity, RadioButton radioButton) {
-		if (activity != null && radioButton != null) {
+
+	private String getActivityStatusForRadioButtonState(RadioButton radioButton) {
+		if (radioButton != null) {
 			if (radioButton.getText().contentEquals("Ready")) {
-				activity.setStatus("ready");
+				return "ready";
 			} else if (radioButton.getText().contentEquals("In Progress")) {
-				activity.setStatus("in progress");
+				return "in progress";
 			} else if (radioButton.getText().contentEquals("Complete")) {
-				activity.setStatus("complete");
+				return "complete";
 			}
 		} else {
-			logger.error("Cannot changeActivityStatus. activity or radioButton is null.");
+			logger.error("Cannot changeActivityStatus. radioButton is null.");
 		}
+		return "ready"; //default
 	}
-	
+
 	@FXML
 	public void previousButtonAction() {
 		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
@@ -454,7 +419,7 @@ public class EngagementActionController implements Initializable{
 			treeViewClicked(null, parentTreeItem.getChildren().get(currentIndex - 1));
 		}
 	}
-	
+
 	@FXML
 	public void nextButtonAction() {
 		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
@@ -465,26 +430,28 @@ public class EngagementActionController implements Initializable{
 				treeViewClicked(null, selectedTreeItem.getChildren().get(0));
 			} else {
 				int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
-				treeView.getSelectionModel().select(parentTreeItem.getChildren().get( currentIndex+ 1));
-				treeViewClicked(null, parentTreeItem.getChildren().get( currentIndex+ 1));
+				treeView.getSelectionModel().select(parentTreeItem.getChildren().get(currentIndex + 1));
+				treeViewClicked(null, parentTreeItem.getChildren().get(currentIndex + 1));
 			}
 		}
 	}
-	
+
 	@FXML
-	public void saveButtonAction() {
-		app.initSaveHandler(null, null, null, project, null, "saveButton");
+	public void saveButtonAction() {		
+		XMLManager xmlManager = new XMLManager(app);
+		xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, currentSelectedGoal), listOfUniqueChapters);
+		fileHandler.createGUIDDirectoriesForGoal(project, currentSelectedGoal, listOfUniqueChapters);
 	}
-	
+
 	@FXML
 	public void goalLabelClicked() {
 		Parent globalGoalTrackerRoot = loadGlobalGoalTracker();
 		showGlobalGoalTracker(globalGoalTrackerRoot);
 	}
-		
+
 	@FXML
 	public void attributePanelCollapseClicked(MouseEvent mouseEvent) {
-		if (mouseEvent.getSource().toString().contains("VBox")) { //Don't allow for label
+		if (mouseEvent.getSource().toString().contains("VBox")) { // Don't allow for label
 			String attributePanelCollapseString = attributePanelCollapseLabel.getText();
 			if (attributePanelCollapseString.contentEquals(">") && !attributePanelCollapsed()) {
 				collapseAttributePanel();
@@ -497,208 +464,240 @@ public class EngagementActionController implements Initializable{
 			}
 		}
 	}
-	
+
 	public void treeViewClicked(TreeItem<String> oldItem, TreeItem<String> newItem) {
 		if (newItem != null) {
-			if(isDynamicActivity(newItem)) {
-				dynamicActivitySelected(newItem);
-			}else if(isTreeItemChapterStepInGoal(newItem, currentSelectedGoal)) {
-				chapterStepTreeItemSelected(newItem);
-			}else if(isTreeItemStepInGoal(newItem, currentSelectedGoal)) {
-				stepTreeItemSelected(newItem);
-			}else if (isTreeItemActivityInGoal(newItem, currentSelectedGoal)) {
-				activityTreeItemSelected(newItem);
-			} else if (isTreeItemChapterInGoal(newItem, currentSelectedGoal)) {
-				chapterTreeItemSelected(newItem);
-			} else if (!isTreeItemActivityInGoal(newItem, currentSelectedGoal) && !isTreeItemChapterInGoal(newItem, currentSelectedGoal)) {
+			String GUIDOfItemClicked = treeItemIdTreeMap.get(newItem);
+			Object itemClicked = map.get(GUIDOfItemClicked);
+			if (itemClicked != null) {
+				if (itemClicked.toString().contains("DynamicActivity")) {
+					DynamicActivity dynamicActivity = (DynamicActivity) itemClicked;
+					dynamicActivitySelected(newItem, dynamicActivity);
+				} else if (itemClicked.toString().contains("Step")) {
+					Step step = (Step) itemClicked;
+					stepTreeItemSelected(newItem, step);
+				} else if (itemClicked.toString().contains("Activity")) {
+					Activity activity = (Activity) itemClicked;
+					activityTreeItemSelected(newItem, activity);
+				} else if (itemClicked.toString().contains("Chapter")) {
+					Chapter chapter = (Chapter) itemClicked;
+					chapterTreeItemSelected(newItem, chapter);
+				}
+			} else {
 				erbPathwayTreeItemSelected();
 			}
 		} else {
-			
+
 		}
 	}
-	
-	private void dynamicActivitySelected(TreeItem<String> dynamicActivityTreeItem) {
-		String dynamicActivityId = treeItemIdTreeMap.get(dynamicActivityTreeItem);
-		
-		//TODO: Fix these
-		currentSelectedStep = null;
-		currentSelectedActivity= null;
-		currentSelectedChapter = null ;
-		//--
-		cleanContentVBox();
-		cleanAttributePanelContentVBox();
-		cleanListOfAttributePanelControllers();
-		//--
-		if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
-		//--
-		addERBKeyVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) {
-			addLocalProgressVBox(1);
+
+	public Object getObjectByGUID(String GUID) {
+		for (Chapter chapter : listOfUniqueChapters) {
+			for (Step chapterStep : chapter.getAssignedSteps()) {
+				if (chapterStep.getGUID().contentEquals(GUID)) {
+					return chapterStep;
+				}
+			}
+			for (Activity activity : chapter.getAssignedActivities()) {
+				if (activity.getGUID().contentEquals(GUID)) {
+					return activity;
+				}
+				for (Step activityStep : activity.getAssignedSteps()) {
+					if (activityStep.getGUID().contentEquals(GUID)) {
+						return activityStep;
+					}
+					for (DynamicActivity dynamicActivity : activityStep.getAssignedDynamicActivities()) {
+						if (dynamicActivity.getGUID().contentEquals(GUID)) {
+							return dynamicActivity;
+						}
+					}
+				}
+				for (DynamicActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
+					if (dynamicActivity.getGUID().contentEquals(GUID)) {
+						return dynamicActivity;
+					}
+				}
+
+			}
 		}
-		//--
-		loadDynamicActivityContent(dynamicActivityId);
-		generateActivityERBPathway(currentSelectedChapter);
-		setNavigationButtonsDisability(dynamicActivityTreeItem, dynamicActivityTreeItem.getParent());
-		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
+		return null;
 	}
-	
+
+	public Chapter getChapterForActivity(Activity activity) {
+		for (Chapter chapter : listOfUniqueChapters) {
+			for (Activity chapterActivity : chapter.getAssignedActivities()) {
+				if (chapterActivity.getGUID().contentEquals(activity.getGUID())) {
+					return chapter;
+				}
+			}
+		}
+		return null;
+	}
+
+	public Chapter getChapterForStep(Step step) {
+		for (Chapter chapter : listOfUniqueChapters) {
+			for (Step chapterStep : chapter.getAssignedSteps()) {
+				if (chapterStep.getGUID().contentEquals(step.getGUID())) {
+					return chapter;
+				}
+			}
+		}
+		return null;
+	}
+
+	public Activity getActivityForStep(Step step) {
+		for (Chapter chapter : listOfUniqueChapters) {
+			for (Activity chapterActivity : chapter.getAssignedActivities()) {
+				for (Step activityStep : chapterActivity.getAssignedSteps()) {
+					if (activityStep.getGUID().contentEquals(step.getGUID())) {
+						return chapterActivity;
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	public Step getStepForDynamicActivity(DynamicActivity dynamicActivity) {
+		for (Chapter chapter : listOfUniqueChapters) {
+			for (Activity chapterActivity : chapter.getAssignedActivities()) {
+				for (Step activityStep : chapterActivity.getAssignedSteps()) {
+					for (DynamicActivity stepDynamicActivity : activityStep.getAssignedDynamicActivities()) {
+						if (stepDynamicActivity.getGUID().contentEquals(dynamicActivity.getGUID())) {
+							return activityStep;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	public Activity getActivityForDynamicActivity(DynamicActivity dynamicActivity) {
+		for (Chapter chapter : listOfUniqueChapters) {
+			for (Activity chapterActivity : chapter.getAssignedActivities()) {
+				for (DynamicActivity activityDynamicActivity : chapterActivity.getAssignedDynamicActivities()) {
+					if (activityDynamicActivity.getGUID().contentEquals(dynamicActivity.getGUID())) {
+						return chapterActivity;
+					}
+				}
+			}
+		}
+		return null;
+	}
+
 	private void erbPathwayTreeItemSelected() {
-		if(currentSelectedActivity != null) app.initSaveHandler(null, getChapterForActivityInGoal(currentSelectedActivity, currentSelectedGoal), currentSelectedGoal, project, null, "projectChange");
-		//--
+		currentSelectedDynamicActivity = null;
 		currentSelectedStep = null;
 		currentSelectedActivity = null;
 		currentSelectedChapter = null;
-		//--
 		cleanContentVBox();
-		cleanAttributePanelContentVBox();
-		cleanListOfAttributePanelControllers();
-		//--
 		removeStatusHBox();
 		removeLocalProgressVBox();
 		removeAttributeScrollPane();
-		//--
 		addERBKeyVBox(1);
-		//--
 		generateChapterERBPathway(currentSelectedGoal);
 		setNavigationButtonsDisability(null, null);
-		if(currentSelectedGoal != null) {
-			Pane root = loadERBPathwayLandingRoot(currentSelectedGoal.getChapters());
+		if (currentSelectedGoal != null) {
+			Pane root = loadChapterLanding(listOfUniqueChapters);
 			addContentToContentVBox(root, true);
 		}
 	}
-	
-	private void chapterTreeItemSelected(TreeItem<String> chapterTreeItem) {
-		if(currentSelectedActivity != null) {
-			Chapter chapter = getChapterForActivityInGoal(currentSelectedActivity, currentSelectedGoal);
-			if(chapter != null) {
-				app.initSaveHandler(null, chapter, currentSelectedGoal, project, null, "chapterChange");
-			}
-		}
-		//--
+
+	private void chapterTreeItemSelected(TreeItem<String> chapterTreeItem, Chapter chapter) {
+		currentSelectedDynamicActivity = null;
 		currentSelectedStep = null;
 		currentSelectedActivity = null;
-		currentSelectedChapter = getChapterForNameInGoal(chapterTreeItem.getValue(), currentSelectedGoal);
-		
-		checkForUpdatedActivityMetaData(currentSelectedChapter);
-		//--
+		currentSelectedChapter = chapter;
 		cleanContentVBox();
-		cleanAttributePanelContentVBox();
-		cleanListOfAttributePanelControllers();
-		//--
 		removeStatusHBox();
 		removeAttributeScrollPane();
-		//--
 		addERBKeyVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
-		//--
+		if (project.getProjectType().contentEquals("Goal Mode"))
+			addLocalProgressVBox(1);
 		generateActivityERBPathway(currentSelectedChapter);
 		setNavigationButtonsDisability(null, null);
-		if(currentSelectedChapter != null) {
+		if (currentSelectedChapter != null) {
 			File file = fileHandler.getStaticChapterFormAbout(currentSelectedChapter);
 			Pane root = loadMainFormController(file);
 			addContentToContentVBox(root, true);
 		}
-		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
+		if (currentSelectedChapter != null && currentSelectedGoal != null)
+			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
-	
-	private void activityTreeItemSelected(TreeItem<String> activityTreeItem) {
-		if(currentSelectedActivity != null) app.initSaveHandler(currentSelectedActivity, null, currentSelectedGoal, project, null, "activityChange");
-		//--
-		String activityId = treeItemIdTreeMap.get(activityTreeItem);
-		currentSelectedActivity = getActivityForIDInGoal(activityId, currentSelectedGoal);
-		Chapter chapterForActivity = getChapterForNameInGoal(activityTreeItem.getParent().getValue(), currentSelectedGoal);
-		if(currentSelectedChapter != null && (chapterForActivity!= currentSelectedChapter)) {
-			app.initSaveHandler(null, currentSelectedChapter, currentSelectedGoal, project, null, "chapterChange");
-		}
+
+	private void activityTreeItemSelected(TreeItem<String> activityTreeItem, Activity activity) {
+		currentSelectedDynamicActivity = null;
 		currentSelectedStep = null;
-		currentSelectedChapter = chapterForActivity;
-		//--
+		currentSelectedActivity = activity;
+		currentSelectedChapter = getChapterForActivity(activity);
 		cleanContentVBox();
-		cleanAttributePanelContentVBox();
-		cleanListOfAttributePanelControllers();
-		//--
-		if(currentSelectedActivity.getShortName().contentEquals("Plan") || currentSelectedActivity.getShortName().contentEquals("Reflect")) {
-			removeStatusHBox();
-		} else {
-			if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
+		if (project.getProjectType().contentEquals("Goal Mode")) {
+			addStatusHBox();
+			addLocalProgressVBox(1);
 		}
-		//--
 		addERBKeyVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
-		//--
 		loadActivityContent(currentSelectedActivity);
 		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
 		highlightActivityDiagram(currentSelectedActivity);
 		setNavigationButtonsDisability(activityTreeItem, activityTreeItem.getParent());
-		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
+		if (currentSelectedChapter != null && currentSelectedGoal != null)
+			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
-	
-	private void stepTreeItemSelected(TreeItem<String> stepTreeItem) {
-		String stepId = treeItemIdTreeMap.get(stepTreeItem);
-		currentSelectedStep = getStepForIDInGoal(stepId, currentSelectedGoal);
-		currentSelectedActivity = getActivityForIDInGoal(currentSelectedStep.getActivityAssignment(), currentSelectedGoal);
-		Chapter chapterForActivity = getChapterForNameInGoal(stepTreeItem.getParent().getParent().getValue(), currentSelectedGoal);
-		currentSelectedChapter = chapterForActivity;
-		//--
-		cleanContentVBox();
-		cleanAttributePanelContentVBox();
-		cleanListOfAttributePanelControllers();
-		//--
-		if(currentSelectedActivity.getShortName().contentEquals("Plan") || currentSelectedActivity.getShortName().contentEquals("Reflect")) {
-			removeStatusHBox();
+
+	private void stepTreeItemSelected(TreeItem<String> stepTreeItem, Step step) {
+		currentSelectedDynamicActivity = null;
+		currentSelectedStep = step;
+		currentSelectedActivity = getActivityForStep(step);
+		;
+		if (currentSelectedActivity != null) {
+			currentSelectedChapter = getChapterForActivity(currentSelectedActivity);
 		} else {
-			if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
+			currentSelectedChapter = getChapterForStep(step);
 		}
-		//--
+		cleanContentVBox();
+		if (project.getProjectType().contentEquals("Goal Mode")) {
+			if(currentSelectedActivity != null) {
+				addStatusHBox();
+			} else {
+				removeStatusHBox();
+			}
+			addLocalProgressVBox(1);
+		}
 		addERBKeyVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) addLocalProgressVBox(1);
-		//--
-		addBaseAttributesToAttributePanel(currentSelectedActivity);
 		loadStepContent(currentSelectedStep);
 		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
 		highlightActivityDiagram(currentSelectedActivity);
 		setNavigationButtonsDisability(stepTreeItem, stepTreeItem.getParent());
-		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
+		if (currentSelectedChapter != null && currentSelectedGoal != null)
+			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
-	
-	private void chapterStepTreeItemSelected(TreeItem<String> stepTreeItem) {
-		String stepId = treeItemIdTreeMap.get(stepTreeItem);
-		currentSelectedStep = getChapterStepForIDInGoal(stepId, currentSelectedGoal);
-		Chapter chapterForActivity = getChapterForNameInGoal(stepTreeItem.getParent().getValue(), currentSelectedGoal);
-		currentSelectedChapter = chapterForActivity;
-		//--
+
+	private void dynamicActivitySelected(TreeItem<String> dynamicActivityTreeItem, DynamicActivity dynamicActivity) {
+		currentSelectedDynamicActivity = dynamicActivity;
+		currentSelectedStep = getStepForDynamicActivity(dynamicActivity);
+		currentSelectedActivity = getActivityForDynamicActivity(dynamicActivity);
+		if (currentSelectedActivity != null) {
+			currentSelectedChapter = getChapterForActivity(currentSelectedActivity);
+		} else {
+			currentSelectedChapter = getChapterForStep(currentSelectedStep);
+		}
 		cleanContentVBox();
-		cleanAttributePanelContentVBox();
-		cleanListOfAttributePanelControllers();
-		//--
-		if(project.getProjectType().contentEquals("Goal Mode")) addStatusHBox();
-		//--
-		addERBKeyVBox(1);
-		if(project.getProjectType().contentEquals("Goal Mode")) {
+		if (project.getProjectType().contentEquals("Goal Mode")) {
+			addStatusHBox();
 			addLocalProgressVBox(1);
 		}
-		//--
-		loadStepContent(currentSelectedStep);
+		addERBKeyVBox(1);
+		// --
+		loadDynamicActivityContent(dynamicActivity);
 		generateActivityERBPathway(currentSelectedChapter);
-		setNavigationButtonsDisability(stepTreeItem, stepTreeItem.getParent());
-		if(currentSelectedChapter != null && currentSelectedGoal != null) updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
+		setNavigationButtonsDisability(dynamicActivityTreeItem, dynamicActivityTreeItem.getParent());
+		if (currentSelectedChapter != null && currentSelectedGoal != null)
+			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
-	
-	private void checkForUpdatedActivityMetaData(Chapter chapter) {
-		for(Activity activity: chapter.getAssignedActivities()) {
-			checkForUpdatedActivityMetaData(activity);
-		}
-	}
-	
-	private void checkForUpdatedActivityMetaData(Activity activity) {
-		XMLManager xmlManager = new XMLManager(app);
-		HashMap<String, String> planHashMap = xmlManager.parseActivityMetaXML(fileHandler.getActivityMetaXMLFile(project, currentSelectedGoal, activity));
-		activity.setPlanHashMap(planHashMap);
-	}
-	
+
 	public void addContentToContentVBox(Pane root, boolean setDynamicDimensions) {
 		if (root != null) {
 			contentVBox.getChildren().add(root);
@@ -712,7 +711,10 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 
-	private void fillAndStoreTreeViewData(ArrayList<Chapter> chapters) {
+	ArrayList<Chapter> listOfUniqueChapters = new ArrayList<Chapter>();
+	HashMap<String, Object> map = new HashMap<String, Object>();
+
+	private void fillAndStoreTreeViewData_GUIDS(ArrayList<Chapter> chapters) { //HAS GUIDS
 		if (chapters != null) {
 			treeItemIdTreeMap.clear();
 			TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
@@ -720,46 +722,199 @@ public class EngagementActionController implements Initializable{
 			treeView.setRoot(rootTreeItem);
 			treeItemIdTreeMap.put(rootTreeItem, "0");
 			for (Chapter chapter : chapters) {
-				TreeItem<String> chapterTreeItem = new TreeItem<String>(chapter.getStringName());
+				//CHAPTER
+				Chapter uniqueChapter = chapter.cloneChapter();
+				TreeItem<String> chapterTreeItem = new TreeItem<String>(uniqueChapter.getStringName());
 				rootTreeItem.getChildren().add(chapterTreeItem);
-				treeItemIdTreeMap.put(chapterTreeItem, chapter.getChapterNum() + "0");
-				for(Step step: chapter.getSteps()) {
-					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(step.getLongName());
+				String chapterGUID = uniqueChapter.getGUID();
+				uniqueChapter.setGUID(chapterGUID);
+				map.put(chapterGUID, uniqueChapter);
+				treeItemIdTreeMap.put(chapterTreeItem, chapterGUID);
+				
+				for (Step step : uniqueChapter.getAssignedSteps()) {
+					//CHAPTER -> STEP
+					Step uniqueStep = step.cloneStep();
+					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
 					chapterTreeItem.getChildren().add(chapterStepTreeItem);
-					treeItemIdTreeMap.put(chapterStepTreeItem, step.getStepID());
-				}				
-				for (Activity activity : chapter.getAssignedActivities()) {
-					TreeItem<String> activityTreeItem = new TreeItem<String>(activity.getLongName());
-					chapterTreeItem.getChildren().add(activityTreeItem);
-					treeItemIdTreeMap.put(activityTreeItem, activity.getActivityID());
-					if(activity.getDynamicActivityID().length()>0) {
-						DynamicActivity dynamicActivity = app.getDynamicActivityById(activity.getDynamicActivityID());
-						if(dynamicActivity != null) {
-							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(dynamicActivity.getName());
-							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivity.getId() + "." + activity.getActivityID());
-						}
-					}
-					for(Step step: activity.getSteps()) {
-						TreeItem<String> stepTreeItem = new TreeItem<String>(step.getLongName());
-						activityTreeItem.getChildren().add(stepTreeItem);
-						treeItemIdTreeMap.put(stepTreeItem, step.getStepID());
-						if(step.getDynamicActivityID().length()>0) {
-							DynamicActivity dynamicActivity = app.getDynamicActivityById(step.getDynamicActivityID());
-							if(dynamicActivity != null) {
-								TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(dynamicActivity.getName());
-								stepTreeItem.getChildren().add(dynamicActivityTreeItem);
-								treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivity.getId() + "." + step.getStepID());
-							}
+					String stepGUID = uniqueStep.getGUID();
+					uniqueStep.setGUID(stepGUID);
+					map.put(stepGUID, uniqueStep);
+					treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
+					for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
+						//CHAPTER -> STEP -> DYNAMIC ACTIVITY
+						if (dynamicActivity != null) {
+							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+							chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
+							String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
+							uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+							map.put(dynamicActivityGUID, uniqueDynamicActivity);
+							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
 						}
 					}
 				}
+				
+				for (Activity activity : uniqueChapter.getAssignedActivities()) {
+					//CHAPTER -> ACTIVITY
+					Activity uniqueActivity = activity.cloneActivity();
+					TreeItem<String> activityTreeItem = new TreeItem<String>(uniqueActivity.getLongName());
+					chapterTreeItem.getChildren().add(activityTreeItem);
+					String activityGUID = uniqueActivity.getGUID();
+					uniqueActivity.setGUID(activityGUID);
+					map.put(activityGUID, uniqueActivity);
+					treeItemIdTreeMap.put(activityTreeItem, activityGUID);
+					for (Step step : uniqueActivity.getAssignedSteps()) {
+						//CHAPTER -> ACTIVITY -> STEP
+						if (step != null) {
+							Step uniqueStep = step.cloneStep();
+							TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+							activityTreeItem.getChildren().add(stepTreeItem);
+							String stepGUID = uniqueStep.getGUID();
+							uniqueStep.setGUID(stepGUID);
+							map.put(stepGUID, uniqueStep);
+							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+							for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
+								//CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
+								if (dynamicActivity != null) {
+									DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+									TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+									activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+									String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
+									uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+									map.put(dynamicActivityGUID, uniqueDynamicActivity);
+									treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+								}
+							}
+						}
+					}
+					for (DynamicActivity dynamicActivity : uniqueActivity.getAssignedDynamicActivities()) {
+						//CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
+						if (dynamicActivity != null) {
+							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+							String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
+							uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+							map.put(dynamicActivityGUID, uniqueDynamicActivity);
+							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+						}
+					}
+				}
+
+				listOfUniqueChapters.add(uniqueChapter);
 			}
 		} else {
 			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + chapters);
 		}
 	}
 	
+	private void fillAndStoreTreeViewData(ArrayList<Chapter> chapters) { //Does not have GUIDS
+		if (chapters != null) {
+			treeItemIdTreeMap.clear();
+			TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
+			rootTreeItem.setExpanded(true);
+			treeView.setRoot(rootTreeItem);
+			treeItemIdTreeMap.put(rootTreeItem, "0");
+			for (Chapter chapter : chapters) {
+				//CHAPTER
+				Chapter uniqueChapter = chapter.cloneChapter();
+				TreeItem<String> chapterTreeItem = new TreeItem<String>(uniqueChapter.getStringName());
+				rootTreeItem.getChildren().add(chapterTreeItem);
+				String chapterGUID = app.generateGUID(); 
+				uniqueChapter.setGUID(chapterGUID);
+				map.put(chapterGUID, uniqueChapter);
+				treeItemIdTreeMap.put(chapterTreeItem, chapterGUID);
+				
+				
+				for (String stepId : uniqueChapter.getAssignedStepIds()) {
+					//CHAPTER -> STEP
+					Step step = app.getStepByID(stepId, app.getAvailableSteps());
+					Step uniqueStep = step.cloneStep();
+					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+					chapterTreeItem.getChildren().add(chapterStepTreeItem);
+					String stepGUID = app.generateGUID(); 
+					uniqueStep.setGUID(stepGUID);
+					map.put(stepGUID, uniqueStep);
+					treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
+					uniqueChapter.addStep(uniqueStep);
+					for (String id : uniqueStep.getAssignedDynamicActivityIds()) {
+						//CHAPTER -> STEP -> DYNAMIC ACTIVITY
+						DynamicActivity dynamicActivity = app.getDynamicActivityById(id,app.getAvailableDynamicActivities());
+						if (dynamicActivity != null) {
+							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+							chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
+							String dynamicActivityGUID = app.generateGUID(); 
+							uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+							map.put(dynamicActivityGUID, uniqueDynamicActivity);
+							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+							uniqueStep.addDynamicActivity(uniqueDynamicActivity);
+						}
+					}
+				}
+				
+				for (String activityID : uniqueChapter.getAssignedActivityIds()) {
+					//CHAPTER -> ACTIVITY
+					Activity activity = app.getActivityByID(activityID, app.getAvailableActivities());
+					Activity uniqueActivity = activity.cloneActivity();
+					TreeItem<String> activityTreeItem = new TreeItem<String>(uniqueActivity.getLongName());
+					chapterTreeItem.getChildren().add(activityTreeItem);
+					String activityGUID = app.generateGUID(); 
+					uniqueActivity.setGUID(activityGUID);
+					map.put(activityGUID, uniqueActivity);
+					treeItemIdTreeMap.put(activityTreeItem, activityGUID);
+					for (String stepId : uniqueActivity.getAssignedStepIds()) {
+						//CHAPTER -> ACTIVITY -> STEP
+						Step step = app.getStepByID(stepId, app.getAvailableSteps());
+						if (step != null) {
+							Step uniqueStep = step.cloneStep();
+							TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+							activityTreeItem.getChildren().add(stepTreeItem);
+							String stepGUID = app.generateGUID(); 
+							uniqueStep.setGUID(stepGUID);
+							map.put(stepGUID, uniqueStep);
+							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+							uniqueActivity.addStep(uniqueStep);
+							for (String id : uniqueStep.getAssignedDynamicActivityIds()) {
+								//CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
+								DynamicActivity dynamicActivity = app.getDynamicActivityById(id,app.getAvailableDynamicActivities());
+								if (dynamicActivity != null) {
+									DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+									TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+									activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+									String dynamicActivityGUID = app.generateGUID(); 
+									uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+									map.put(dynamicActivityGUID, uniqueDynamicActivity);
+									treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+									uniqueStep.addDynamicActivity(uniqueDynamicActivity);
+								}
+							}
+						}
+					}
+					for (String id : uniqueActivity.getAssignedDynamicActivityIds()) {
+						//CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
+						DynamicActivity dynamicActivity = app.getDynamicActivityById(id, app.getAvailableDynamicActivities());
+						if (dynamicActivity != null) {
+							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+							String dynamicActivityGUID = app.generateGUID(); 
+							uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+							map.put(dynamicActivityGUID, uniqueDynamicActivity);
+							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+							uniqueActivity.addDynamicActivity(uniqueDynamicActivity);
+						}
+					}
+					uniqueChapter.addActivity(uniqueActivity);
+				}
+				
+				listOfUniqueChapters.add(uniqueChapter);
+			}
+		} else {
+			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + chapters);
+		}
+	}
+
 	private void fillGoalComboBox(Project project) {
 		if (project != null) {
 			for (Goal goal : project.getProjectGoals()) {
@@ -769,7 +924,7 @@ public class EngagementActionController implements Initializable{
 			logger.error("Cannot fillGoalComboBox. project = " + project);
 		}
 	}
-	
+
 	private ListCell<Goal> createGoalCell() {
 		return new ListCell<Goal>() {
 			@Override
@@ -784,21 +939,23 @@ public class EngagementActionController implements Initializable{
 			}
 		};
 	}
-	
-	void generateAttribute(String attributeTitle, String attributeContent, String attributeColor) {
-		if (attributeContent!= null && attributeContent.trim().length() > 0 && !attributePanelContainsAttribute(attributeTitle)) {
-			Parent root = loadAttributePaneRoot(attributeTitle, attributeContent, attributeColor);
-			attributePanelContentVBox.getChildren().add(root);
-			VBox.setVgrow(root, Priority.ALWAYS);
-		}
-	}
-	
+
 	private void goalSelected(Goal goal) {
 		if (goal != null) {
 			currentSelectedGoal = goal;
 			ArrayList<Chapter> listOfChapters = goal.getChapters();
 			if (listOfChapters != null) {
-				fillAndStoreTreeViewData(listOfChapters);
+				boolean hasGUIDs = false;
+				if(listOfChapters.get(0) != null) {
+					if(listOfChapters.get(0).getGUID() != null && listOfChapters.get(0).getGUID().length() > 0) {
+						hasGUIDs= true;
+					}
+				}
+				if(hasGUIDs) {
+					fillAndStoreTreeViewData_GUIDS(listOfChapters);
+				} else {
+					fillAndStoreTreeViewData(listOfChapters);
+				}
 				initializeTreeViewSelection();
 				generateChapterERBPathway(currentSelectedGoal);
 			}
@@ -806,21 +963,19 @@ public class EngagementActionController implements Initializable{
 			logger.error("Cannot execute goalSelected. goal = " + goal);
 		}
 	}
-	
+
 	public void updateLocalProgress(Chapter chapter, ArrayList<Chapter> chapters) {
 		Progress progress = new Progress();
 		if (chapter != null) {
 			int chapterProgress = progress.getChapterPercentDone(chapter);
 			progress.setChapterProgress(chapterProgressIndicator, chapterProgress);
 		}
-		if(chapters != null) {
+		if (chapters != null) {
 			int goalProgress = progress.getGoalPercentDone(chapters);
 			progress.setGoalProgress(goalProgressVBox, goalProgressBar, goalProgressPercentLabel, goalProgress);
-			int goalConfidence = progress.getGoalConfidencePercent(chapters);
-			progress.setGoalRating(goalConfidenceVBox, goalConfidenceBar, goalConfidencePercentLabel, goalConfidence);
 		}
 	}
-	
+
 	private void loadActivityContent(Activity activity) {
 		if (activity != null) {
 			if (project.getProjectType().contentEquals("Facilitator Mode")) {
@@ -834,38 +989,31 @@ public class EngagementActionController implements Initializable{
 	}
 
 	private void loadActivityContentFacilitatorMode(Activity activity) {
-		addBaseAttributesToAttributePanel(activity);
 		File file = fileHandler.getStaticActivityFormText(activity);
 		Pane root = loadMainFormController(file);
 		addContentToContentVBox(root, false);
 	}
 
 	private void loadActivityContentGoalMode(Activity activity) {
-		if (activity.getActivityType().getDescription().contentEquals("worksheet")) {
-			addBaseAttributesToAttributePanel(activity);
-			File file = fileHandler.getStaticActivityFormText(activity);
-			Pane root = loadMainFormController(file);
-			addContentToContentVBox(root, false);
-		} else if (activity.getActivityType().getDescription().contentEquals("noteboard")) {
-			addBaseAttributesToAttributePanel(activity);
-			Pane root = loadNoteBoardContentController();
-			addContentToContentVBox(root, false);
-		}
+		File file = fileHandler.getStaticActivityFormText(activity);
+		Pane root = loadMainFormController(file);
+		addContentToContentVBox(root, false);
+
 	}
-	
-	private void loadDynamicActivityContent(String dynamicActivityId) {
-		if (dynamicActivityId != null) {
-			String dynamicActivityParsedId = dynamicActivityId.substring(0, 4);
+
+	private void loadDynamicActivityContent(DynamicActivity dynamicActivity) {
+		if (dynamicActivity != null) {
+			String dynamicActivityParsedId = dynamicActivity.getId().substring(0, 4);
 			if (dynamicActivityParsedId.contentEquals("0001")) {
-				Pane root = loadNoteBoardContentController();
+				Pane root = loadNoteBoardContentController(dynamicActivity);
 				addContentToContentVBox(root, false);
 			}
 		} else {
-			logger.error("Cannot loadDynamicActivityContent. dynamicActivityId = " + dynamicActivityId);
+			logger.error("Cannot loadDynamicActivityContent. DynamicActivity = " + dynamicActivity);
 
 		}
 	}
-	
+
 	private void loadStepContent(Step step) {
 		if (step != null) {
 			File file = fileHandler.getStaticStepFormText(step);
@@ -907,35 +1055,36 @@ public class EngagementActionController implements Initializable{
 		}
 	}
 	
-	private void addBaseAttributesToAttributePanel(Activity activity) {
-		if (activity != null) {
-			generateAttribute("Objective", activity.getObjectives(), constants.getObjectivesColor());
-			generateAttribute("Instructions", activity.getInstructions(), constants.getInstructionsColor());
-		} else {
-			logger.error("Cannot addBaseAttributesToAttributePanel. activity = " + activity);
-		}
-	}
-	
+
+
 	public Activity retrieveNextActivity(ERBPathwayDiagramController currentErbPathwayDiagramController) {
 		int indexOfCurrentController = listOfPathwayDiagramControllers.indexOf(currentErbPathwayDiagramController);
-		if(indexOfCurrentController >= 0) {
+		if (indexOfCurrentController >= 0) {
 			int indexOfNextController = indexOfCurrentController + 1;
 			ERBPathwayDiagramController nextErbPathwayDiagramController = listOfPathwayDiagramControllers.get(indexOfNextController);
 			return nextErbPathwayDiagramController.getActivity();
 		}
 		return null;
 	}
-	
+
 	private void highlightActivityDiagram(Activity activity) {
-		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
-			if(erbPathwayDiagramController.getActivity() == activity) {
+		if(activity != null && activity.getGUID() != null) {
+		for (ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
+			if (erbPathwayDiagramController.getActivity().getGUID().contentEquals(activity.getGUID())) {
 				erbPathwayDiagramController.highlightDiagram();
 			} else {
 				erbPathwayDiagramController.unHighlightDiagram();
 			}
 		}
+		}
 	}
 	
+	private void updatePathwayDiagrams() {
+		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
+			erbPathwayDiagramController.updateStatus();
+		}
+	}
+
 	private void setActivityStatusRadioButton(Activity activity) {
 		if (activity != null) {
 			if (activity.getStatus().contentEquals("ready")) {
@@ -949,7 +1098,7 @@ public class EngagementActionController implements Initializable{
 			logger.error("Cannot setActivityStatusRadioButton. activity = " + activity);
 		}
 	}
-	
+
 	private void generateChapterERBPathway(Goal goal) {
 		if (goal != null) {
 			cleanERBPathwayDiagramHBox();
@@ -959,13 +1108,14 @@ public class EngagementActionController implements Initializable{
 			for (Chapter chapter : goal.getChapters()) {
 				Parent root = loadERBChapterDiagramRoot(chapter, goal.getChapters());
 				pathwayTitledPane.setText(goal.getGoalName() + " Pathway");
-				if (root != null) erbPathwayDiagramHBox.getChildren().add(root);
+				if (root != null)
+					erbPathwayDiagramHBox.getChildren().add(root);
 			}
 		} else {
 			logger.error("Cannot generateChapterERBPathway. goal = " + goal);
 		}
 	}
-	
+
 	private void generateActivityERBPathway(Chapter chapter) {
 		if (chapter != null) {
 			cleanERBPathwayDiagramHBox();
@@ -973,19 +1123,20 @@ public class EngagementActionController implements Initializable{
 			for (Activity activity : chapter.getAssignedActivities()) {
 				Parent root = loadERBPathwayDiagramRoot(activity, chapter);
 				pathwayTitledPane.setText(chapter.getStringName() + " Pathway");
-				if (root != null)erbPathwayDiagramHBox.getChildren().add(root);
+				if (root != null)
+					erbPathwayDiagramHBox.getChildren().add(root);
 			}
 		} else {
 			logger.error("Cannot generateActivityERBPathway. chapter = " + chapter);
 		}
 	}
-	
+
 	public TreeItem<String> findTreeItem(Activity activity) {
 		if (activity != null) {
 			HashMap<TreeItem<String>, String> treeMap = getTreeItemIdTreeMap();
 			for (TreeItem<String> treeItem : treeMap.keySet()) {
 				String treeItemId = treeMap.get(treeItem);
-				if(treeItemId.contentEquals(activity.getActivityID())) {
+				if (treeItemId.contentEquals(activity.getActivityID())) {
 					return treeItem;
 				}
 			}
@@ -997,70 +1148,59 @@ public class EngagementActionController implements Initializable{
 	}
 
 	private void setNavigationButtonsDisability(TreeItem<String> selectedTreeItem, TreeItem<String> parentTreeItem) {
-		if (selectedTreeItem != null) { //if activity is not null
-			if (parentTreeItem == null) { //if erb pathway
+		if (selectedTreeItem != null) { // if activity is not null
+			if (parentTreeItem == null) { // if erb pathway
 				previousButton.setDisable(true);
 				nextButton.setDisable(false);
 			} else {
 				int numberOfChildrenInParent = parentTreeItem.getChildren().size();
-				if (numberOfChildrenInParent > 1) { //if more than 1 activity
+				if (numberOfChildrenInParent > 1) { // if more than 1 activity
 					int indexOfSelectedItem = parentTreeItem.getChildren().indexOf(selectedTreeItem);
-					if (indexOfSelectedItem == 0) { //if first activity
+					if (indexOfSelectedItem == 0) { // if first activity
 						previousButton.setDisable(true);
 						nextButton.setDisable(false);
-					} else if (indexOfSelectedItem == parentTreeItem.getChildren().size() - 1) { //if last activity
+					} else if (indexOfSelectedItem == parentTreeItem.getChildren().size() - 1) { // if last activity
 						previousButton.setDisable(false);
 						nextButton.setDisable(true);
 					} else {
 						previousButton.setDisable(false);
 						nextButton.setDisable(false);
 					}
-				} else { //if only 1 activity
+				} else { // if only 1 activity
 					previousButton.setDisable(true);
 					nextButton.setDisable(true);
 				}
 			}
-		} else { //if activity is null
+		} else { // if activity is null
 			previousButton.setDisable(true);
 			nextButton.setDisable(true);
 		}
 	}
-	
-	private boolean attributePanelContainsAttribute(String attributeLabel) {
-		if (attributeLabel != null) {
-			for (AttributePanelController attributePanelController : listOfAttributePanelControllers) {
-				if (attributePanelController.getAttributeLabelText().contentEquals(attributeLabel)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
+
 	private void collapseAttributePanel() {
-		if(attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
+		if (attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
 			attributePanelHBox.getChildren().remove(attributePanelContentVBox);
 		}
 	}
-	
+
 	private void unCollapseAttributePanel() {
-		if(!attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
+		if (!attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
 			attributePanelHBox.getChildren().add(1, attributePanelContentVBox);
 		}
 	}
-	
+
 	private boolean attributePanelCollapsed() {
-		if(!attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
+		if (!attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-		
+
 	private void cleanAttributePanelContentVBox() {
 		attributePanelContentVBox.getChildren().clear();
 	}
-	
+
 	private void cleanERBPathwayDiagramHBox() {
 		erbPathwayDiagramHBox.getChildren().clear();
 	}
@@ -1068,232 +1208,90 @@ public class EngagementActionController implements Initializable{
 	public void cleanContentVBox() {
 		contentVBox.getChildren().clear();
 	}
-	
+
 	private void cleanListOfActivityDiagramControllers() {
 		listOfPathwayDiagramControllers.clear();
 	}
-	
+
 	private void cleanListOfChapterDiagramControllers() {
 		listOfChapterDiagramControllers.clear();
 	}
-	
-	private void cleanListOfAttributePanelControllers() {
-		listOfAttributePanelControllers.clear();
-	}
-	
-	void removeAttributePanelController(AttributePanelController attributePanelController) {
-		listOfAttributePanelControllers.remove(attributePanelController);
-	}
-	
-	private void addDetailsKeyPaneVBox() {
-		if(!keyPaneHBox.getChildren().contains(detailsKeyPaneVBox)) {
-			keyPaneHBox.getChildren().add(1, detailsKeyPaneVBox);
-		}
-	}
-	
+
 	private void removeDetailsKeyPaneVBox() {
 		keyPaneHBox.getChildren().remove(detailsKeyPaneVBox);
 	}
-	
-	private void addShowDetailsCheckBox() {
-		if(!titledPaneVBox.getChildren().contains(showDetailsHBox)) {
-			titledPaneVBox.getChildren().add(1, showDetailsHBox);
-		}
-	}
-	
+
 	private void removeShowDetailsCheckBox() {
 		titledPaneVBox.getChildren().remove(showDetailsHBox);
 	}
-	
+
 	private void addLocalProgressVBox(int index) {
-		if(!treeViewVBox.getChildren().contains(localProgressVBox)) {
+		if (!treeViewVBox.getChildren().contains(localProgressVBox)) {
 			treeViewVBox.getChildren().add(index, localProgressVBox);
 		}
 	}
-	
+
 	private void removeLocalProgressVBox() {
-		if(treeViewVBox.getChildren().contains(localProgressVBox)) {
+		if (treeViewVBox.getChildren().contains(localProgressVBox)) {
 			treeViewVBox.getChildren().remove(localProgressVBox);
 		}
 	}
-	
+
 	private void addERBKeyVBox(int index) {
-		if(!headingHBox.getChildren().contains(erbKeyVBox)) {
+		if (!headingHBox.getChildren().contains(erbKeyVBox)) {
 			headingHBox.getChildren().add(index, erbKeyVBox);
 		}
 	}
-	
+
 	private void removeERBKeyVBox() {
 		headingHBox.getChildren().remove(erbKeyVBox);
 	}
-	
-	private void addAttributeScrollPane(int index) {
-		if(!body2HBox.getChildren().contains(attributePanelHBox)) {
-			body2HBox.getChildren().add(index, attributePanelHBox);
-		}
-	}
-	
+
 	private void removeAttributeScrollPane() {
 		body2HBox.getChildren().remove(attributePanelHBox);
 	}
-	
-	private void removeStatusHBox() {
-		if(mainVBox.getChildren().contains(statusHBox)) {
+
+	public void removeStatusHBox() {
+		if (mainVBox.getChildren().contains(statusHBox)) {
 			mainVBox.getChildren().remove(statusHBox);
 		}
 	}
-	
+
 	private void addStatusHBox() {
-		if(!mainVBox.getChildren().contains(statusHBox)) {
+		if (!mainVBox.getChildren().contains(statusHBox)) {
 			mainVBox.getChildren().add(0, statusHBox);
 		}
 	}
-	
+
 	private void hideGoalSelection() {
 		goalLabel.setVisible(false);
 		goalComboBox.setVisible(false);
 	}
-	
+
 	private void removeSaveHBox() {
-		if(engagementVBox.getChildren().contains(saveHBox)) {
+		if (engagementVBox.getChildren().contains(saveHBox)) {
 			engagementVBox.getChildren().remove(saveHBox);
 		}
 	}
-	
+
 	private void removePathwayPane() {
-		if(engagementVBox.getChildren().contains(pathwayTitledPane)) {
+		if (engagementVBox.getChildren().contains(pathwayTitledPane)) {
 			engagementVBox.getChildren().remove(pathwayTitledPane);
 		}
 	}
-	
+
 	private void removeLocalProgressPane() {
-		if(treeViewVBox.getChildren().contains(localProgressVBox)) {
+		if (treeViewVBox.getChildren().contains(localProgressVBox)) {
 			treeViewVBox.getChildren().remove(localProgressVBox);
 		}
 	}
-	
+
 	public void closeGlobalGoalTrackerStage() {
-		if(globalGoalTrackerStage!=null) {
+		if (globalGoalTrackerStage != null) {
 			globalGoalTrackerStage.close();
 		}
 	}
-	
-	private boolean isDynamicActivity(TreeItem<String> treeItem) {
-		if (treeItem != null) {
-			for (DynamicActivity dynamicActivity : app.getDynamicActivities()) {
-				if (treeItem.getValue().contentEquals(dynamicActivity.getName())) {
-					return true;
-				}
-			}
-		} else {
-			logger.error("Cannot execute isDynamicActivity. treeItem  is null.");
-		}
-		return false;
-	}
-	
-	private boolean isTreeItemChapterStepInGoal(TreeItem<String> treeItem, Goal goal) {
-		if (treeItem != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				for (Step step : chapter.getSteps()) {
-					if (treeItem.getValue().contentEquals(step.getLongName())) {
-						return true;
-					}
-				}
-			}
-		} else {
-			logger.error("Cannot execute isTreeItemChapterStepInGoal. treeItem or goal is null.");
-		}
-		return false;
-	}
-	
-	private boolean isTreeItemStepInGoal(TreeItem<String> treeItem, Goal goal) {
-		if (treeItem != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					for (Step step : activity.getSteps()) {
-						if (treeItem.getValue().contentEquals(step.getLongName())) {
-							return true;
-						}
-					}
-				}
-			}
 
-		} else {
-			logger.error("Cannot execute isTreeItemStepInActivity. treeItem or goal is null.");
-		}
-		return false;
-	}
-
-	private boolean isTreeItemActivityInGoal(TreeItem<String> treeItem, Goal goal) {
-		if (treeItem != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					if (treeItem.getValue().contentEquals(activity.getLongName())) {
-						return true;
-					}
-				}
-			}
-		} else {
-			logger.error("Cannot execute isTreeItemActivityInGoal. treeItem or goal is null.");
-		}
-		return false;
-	}
-
-	private boolean isTreeItemChapterInGoal(TreeItem<String> treeItem, Goal goal) {
-		if (treeItem != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				if (treeItem.getValue().contentEquals(chapter.getStringName())) {
-					return true;
-				}
-			}
-		} else {
-			logger.error("Cannot execute isTreeItemChapterInGoal. treeItem or goal is null.");
-
-		}
-		return false;
-	}
-	
-	public ERBPathwayDiagramController getErbPathwayDiagramController(String GUID) {
-		if (GUID != null) {
-			for (ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
-				if (erbPathwayDiagramController.getActivity().getActivityID().contentEquals(GUID)) {
-					return erbPathwayDiagramController;
-				}
-			}
-			logger.debug("ERB Pathway Diagram Controller returned is null");
-			return null;
-		} else {
-			logger.error("Cannot getErbPathwayDiagramController. GUID is null.");
-			return null;
-		}
-	}
-	
-	public ERBPathwayDiagramController getErbPathwayDiagramController(int chapterNum) {
-		for(ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
-			if(erbPathwayDiagramController.getChapter().getChapterNum() == chapterNum) {
-				return erbPathwayDiagramController;
-			}
-		}
-		logger.debug("ERB Pathway Diagram Controller returned is null");
-		return null;
-	}
-	
-	public ERBChapterDiagramController getErbChapterDiagramController(String selectedChapter) {
-		if (selectedChapter != null) {
-			for (ERBChapterDiagramController erbChapterDiagramController : listOfChapterDiagramControllers) {
-				if (String.valueOf(erbChapterDiagramController.getChapter().getChapterNum())
-						.contentEquals(selectedChapter)) {
-					return erbChapterDiagramController;
-				}
-			}
-			logger.debug("ERB Chapter Diagram Controller returned is null");
-			return null;
-		} else {
-			logger.error("Cannot getErbChapterDiagramController. selectedChapter is null.");
-			return null;
-		}
-	}
-	
 	public Chapter getChapterForNameInGoal(String chapterName, Goal goal) {
 		if (chapterName != null && goal != null) {
 			for (Chapter chapter : goal.getChapters()) {
@@ -1308,110 +1306,15 @@ public class EngagementActionController implements Initializable{
 			return null;
 		}
 	}
-	
-	public Chapter getChapterForActivityInGoal(Activity activity, Goal goal) {
-		if (activity != null) {
-			String chapterName = "Chapter " + activity.getChapterAssignment();
-			Chapter chapter = getChapterForNameInGoal(chapterName, goal);
-			if (chapter != null) {
-				return chapter;
-			} else {
-				logger.debug("Chapter returned is null");
-				return null;
-			}
-		} else {
-			logger.error("Cannot getChapterForActivityInGoal. activity is null.");
-			return null;
-		}
-	}
-	
-	public Activity getActivityForNameInGoal(String activityShortName, Goal goal) {
-		if (activityShortName != null && goal != null) {
-			if (activityShortName.contentEquals("Plan") || activityShortName.contentEquals("Reflect")) {
-				return app.getActivityByName(activityShortName, app.getActivities());
-			} else {
-				for (Chapter chapter : goal.getChapters()) {
-					for (Activity activity : chapter.getAssignedActivities()) {
-						if (activity.getShortName().contentEquals(activityShortName)) {
-							return activity;
-						}
-					}
-				}
-				logger.debug("Activity returned is null");
-				return null;
-			}
-		} else {
-			logger.error("Cannot getActivityForIDInGoal. activityID or goal is null.");
-			return null;
-		}
-	}
-	
-	public Activity getActivityForIDInGoal(String activityID, Goal goal) {
-		if (activityID != null && goal != null) {
-			Activity a = app.getActivityByID(activityID, app.getActivities());
-			if (a.getShortName().contentEquals("Plan") || a.getShortName().contentEquals("Reflect")) {
-				return a;
-			} else {
-				for (Chapter chapter : goal.getChapters()) {
-					for (Activity activity : chapter.getAssignedActivities()) {
-						if (activity.getActivityID().contentEquals(activityID)) {
-							return activity;
-						}
-					}
-				}
-				logger.debug("Activity returned is null");
-				return null;
-			}
-		} else {
-			logger.error("Cannot getActivityForIDInGoal. activityID or goal is null.");
-			return null;
-		}
-	}
-	
-	public Step getStepForIDInGoal(String stepID, Goal goal) {
-		if (stepID != null && goal != null) {
-				for (Chapter chapter : goal.getChapters()) {
-					for (Activity activity : chapter.getAssignedActivities()) {
-						for(Step step: activity.getSteps()) {
-							if(step.getStepID().contentEquals(stepID)) {
-								return step;
-							}
-						}
-					}
-				}
-				logger.debug("Step returned is null");
-				return null;
-		} else {
-			logger.error("Cannot getStepForIDInGoal. stepID or goal is null.");
-			return null;
-		}
-	}
 
-	public Step getChapterStepForIDInGoal(String stepID, Goal goal) {
-		if (stepID != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				for (Step step : chapter.getSteps()) {
-					if (step.getStepID().contentEquals(stepID)) {
-						return step;
-					}
-				}
-			}
-			logger.debug("Step returned is null");
-			return null;
-		} else {
-			logger.error("Cannot getChapterStepForIDInGoal. stepID or goal is null.");
-			return null;
-		}
-	}
-	
 	public Chapter getCurrentChapter() {
 		return currentSelectedChapter;
 	}
-	
+
 	public Activity getCurrentActivity() {
 		return currentSelectedActivity;
 	}
-	
+
 	public Goal getCurrentGoal() {
 		return currentSelectedGoal;
 	}
@@ -1447,37 +1350,14 @@ public class EngagementActionController implements Initializable{
 	public void setTreeItemIdTreeMap(HashMap<TreeItem<String>, String> treeItemIdTreeMap) {
 		this.treeItemIdTreeMap = treeItemIdTreeMap;
 	}
-	
-	public ArrayList<AttributePanelController> getListOfAttributePanelControllers() {
-		return listOfAttributePanelControllers;
-	}
-
-	public void setListOfAttributePanelControllers(ArrayList<AttributePanelController> listOfAttributePanelControllers) {
-		this.listOfAttributePanelControllers = listOfAttributePanelControllers;
-	}
 
 	public ArrayList<ERBPathwayDiagramController> getListOfPathwayDiagramControllers() {
 		return listOfPathwayDiagramControllers;
 	}
 
-	public void setListOfPathwayDiagramControllers(ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers) {
+	public void setListOfPathwayDiagramControllers(
+			ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers) {
 		this.listOfPathwayDiagramControllers = listOfPathwayDiagramControllers;
-	}
-
-	public ArrayList<WorksheetContentController> getListOfAllWorksheetContentControllers() {
-		return listOfAllWorksheetContentControllers;
-	}
-
-	public void setListOfAllWorksheetContentControllers(ArrayList<WorksheetContentController> listOfAllWorksheetContentControllers) {
-		this.listOfAllWorksheetContentControllers = listOfAllWorksheetContentControllers;
-	}
-
-	public ArrayList<NoteBoardContentController> getListOfAllNoteBoardContentControllers() {
-		return listOfAllNoteBoardContentControllers;
-	}
-
-	public void setListOfAllNoteBoardContentControllers(ArrayList<NoteBoardContentController> listOfAllNoteBoardContentControllers) {
-		this.listOfAllNoteBoardContentControllers = listOfAllNoteBoardContentControllers;
 	}
 
 	public Stage getGlobalGoalTrackerStage() {
@@ -1495,7 +1375,7 @@ public class EngagementActionController implements Initializable{
 	public HBox getHeadingHBox() {
 		return headingHBox;
 	}
-	
+
 	public HBox getErbPathwayDiagramHBox() {
 		return erbPathwayDiagramHBox;
 	}
@@ -1588,14 +1468,6 @@ public class EngagementActionController implements Initializable{
 		return goalProgressBar;
 	}
 
-	public VBox getGoalConfidenceVBox() {
-		return goalConfidenceVBox;
-	}
-
-	public VBox getGoalConfidenceBar() {
-		return goalConfidenceBar;
-	}
-
 	public ProgressIndicator getChapterProgressIndicator() {
 		return chapterProgressIndicator;
 	}
@@ -1623,7 +1495,7 @@ public class EngagementActionController implements Initializable{
 	public RadioButton getCompleteRadioButton() {
 		return completeRadioButton;
 	}
-	
+
 	public CheckBox getShowDetailsCheckBox() {
 		return showDetailsCheckBox;
 	}
@@ -1632,4 +1504,49 @@ public class EngagementActionController implements Initializable{
 		return engagementVBox;
 	}
 
+	public ArrayList<Chapter> getListOfUniqueChapters() {
+		return listOfUniqueChapters;
+	}
+
+	public DynamicActivity getCurrentSelectedDynamicActivity() {
+		return currentSelectedDynamicActivity;
+	}
+
+	public void setCurrentSelectedDynamicActivity(DynamicActivity currentSelectedDynamicActivity) {
+		this.currentSelectedDynamicActivity = currentSelectedDynamicActivity;
+	}
+	
+//-----------------------------Keep for attribute panel-----------------------------------------
+//	private Parent loadAttributePaneRoot(String attributeTitle, String attributeContent, String attributeColor) {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/AttributePane.fxml"));
+//			AttributePanelController attributePanelController = new AttributePanelController(attributeTitle, attributeContent, attributeColor, this);
+//			listOfAttributePanelControllers.add(attributePanelController);
+//			fxmlLoader.setController(attributePanelController);
+//			return fxmlLoader.load();
+//		} catch (Exception e) {
+//			logger.error(e.getMessage());
+//			return null;
+//		}
+//	}
+//	private boolean attributePanelContainsAttribute(String attributeLabel) {
+//		if (attributeLabel != null) {
+//			for (AttributePanelController attributePanelController : listOfAttributePanelControllers) {
+//				if (attributePanelController.getAttributeLabelText().contentEquals(attributeLabel)) {
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+//	private void addBaseAttributesToAttributePanel(Activity activity) {
+//		// Example: generateAttribute("Objective", activity.getObjectives(),
+//	}
+//	void generateAttribute(String attributeTitle, String attributeContent, String attributeColor) {
+//		if (attributeContent!= null && attributeContent.trim().length() > 0 && !attributePanelContainsAttribute(attributeTitle)) {
+//			Parent root = loadAttributePaneRoot(attributeTitle, attributeContent, attributeColor);
+//			attributePanelContentVBox.getChildren().add(root);
+//			VBox.setVgrow(root, Priority.ALWAYS);
+//		}
+//	}
 }

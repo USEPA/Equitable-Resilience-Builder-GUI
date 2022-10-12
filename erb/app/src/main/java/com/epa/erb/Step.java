@@ -1,5 +1,7 @@
 package com.epa.erb;
 
+import java.util.ArrayList;
+
 public class Step {
 	
 	private String stepType;
@@ -9,17 +11,11 @@ public class Step {
 	private String shortName;
 	private String longName;
 	private String fileName;
-	private String instructions;
-	private String objectives;
-	private String description;
-	private String materials;
-	private String time;
-	private String who;
 	private String stepID;
 	private String notes;
 	private String rating;
-	private String dynamicActivityID;
-	public Step(String stepType, String activityAssignment, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String stepID, String notes, String rating, String dynamicActivityID) {
+	private ArrayList<String> assignedDynamicActivityIds;
+	public Step(String stepType, String activityAssignment, String chapterAssignment, String status, String shortName, String longName, String fileName, String stepID, String notes, String rating,ArrayList<String> assignedDynamicActivityIds) {
 		this.stepType = stepType;
 		this.activityAssignment = activityAssignment;
 		this.chapterAssignment = chapterAssignment;
@@ -27,16 +23,33 @@ public class Step {
 		this.shortName = shortName;
 		this.longName = longName;
 		this.fileName = fileName;
-		this.instructions = directions;
-		this.objectives = objectives;
-		this.description = description;
-		this.materials = materials;
-		this.time = time;
-		this.who = who;
 		this.stepID = stepID;
 		this.notes = notes;
 		this.rating = rating;
-		this.dynamicActivityID = dynamicActivityID;
+		this.assignedDynamicActivityIds = assignedDynamicActivityIds;
+	}
+	
+	private ArrayList<DynamicActivity> assignedDynamicActivities = new ArrayList<DynamicActivity>();
+	
+	private String GUID;
+	
+	public Step cloneStep() {
+		Step clonedStep = new Step(stepType, activityAssignment, chapterAssignment, status, shortName, longName, fileName, stepID, notes, rating, assignedDynamicActivityIds);
+		clonedStep.setGUID(GUID);
+		clonedStep.setAssignedDynamicActivities(assignedDynamicActivities);
+		return clonedStep;
+	}
+	
+	public void addDynamicActivity(DynamicActivity dynamicActivity) {
+		if (dynamicActivity != null) {
+			assignedDynamicActivities.add(dynamicActivity);
+		}
+	}
+	
+	public void removeDynamicActivity(DynamicActivity dynamicActivity) {
+		if (dynamicActivity != null) {
+			assignedDynamicActivities.remove(dynamicActivity);
+		}
 	}
 
 	public String getStepType() {
@@ -95,54 +108,6 @@ public class Step {
 		this.fileName = fileName;
 	}
 
-	public String getInstructions() {
-		return instructions;
-	}
-
-	public void setInstructions(String instructions) {
-		this.instructions = instructions;
-	}
-
-	public String getObjectives() {
-		return objectives;
-	}
-
-	public void setObjectives(String objectives) {
-		this.objectives = objectives;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getMaterials() {
-		return materials;
-	}
-
-	public void setMaterials(String materials) {
-		this.materials = materials;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public String getWho() {
-		return who;
-	}
-
-	public void setWho(String who) {
-		this.who = who;
-	}
-
 	public String getStepID() {
 		return stepID;
 	}
@@ -167,12 +132,28 @@ public class Step {
 		this.rating = rating;
 	}
 
-	public String getDynamicActivityID() {
-		return dynamicActivityID;
+	public ArrayList<String> getAssignedDynamicActivityIds() {
+		return assignedDynamicActivityIds;
 	}
 
-	public void setDynamicActivityID(String dynamicActivityID) {
-		this.dynamicActivityID = dynamicActivityID;
+	public void setAssignedDynamicActivityIds(ArrayList<String> assignedDynamicActivityIds) {
+		this.assignedDynamicActivityIds = assignedDynamicActivityIds;
 	}
+
+	public ArrayList<DynamicActivity> getAssignedDynamicActivities() {
+		return assignedDynamicActivities;
+	}
+
+	public void setAssignedDynamicActivities(ArrayList<DynamicActivity> assignedDynamicActivities) {
+		this.assignedDynamicActivities = assignedDynamicActivities;
+	}
+
+	public String getGUID() {
+		return GUID;
+	}
+
+	public void setGUID(String gUID) {
+		GUID = gUID;
+	}	
 	
 }

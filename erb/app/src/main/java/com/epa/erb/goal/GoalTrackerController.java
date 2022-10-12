@@ -21,12 +21,6 @@ public class GoalTrackerController implements Initializable{
 	@FXML
 	Label completionPercentLabel;
 	@FXML
-	VBox goalConfidenceVBox;
-	@FXML
-	VBox goalConfidenceBar;
-	@FXML
-	Label confidencePercentLabel;
-	@FXML
 	VBox goalVBox;
 	
 	private Goal goal;
@@ -60,8 +54,6 @@ public class GoalTrackerController implements Initializable{
 		ArrayList<Chapter> listOfChapters = goal.getChapters();
 		int goalPercentDone = progress.getGoalPercentDone(listOfChapters);
 		progress.setGoalRating(goalCompletionVBox, goalCompletionBar, completionPercentLabel, goalPercentDone);
-		int goalConfidencePercent = progress.getGoalConfidencePercent(listOfChapters);
-		progress.setGoalRating(goalConfidenceVBox, goalConfidenceBar, confidencePercentLabel, goalConfidencePercent);
 	}
 	
 	private void setGoalTitleLabelText(String text) {
@@ -90,18 +82,6 @@ public class GoalTrackerController implements Initializable{
 
 	public Label getCompletionPercentLabel() {
 		return completionPercentLabel;
-	}
-
-	public VBox getGoalConfidenceVBox() {
-		return goalConfidenceVBox;
-	}
-
-	public VBox getGoalConfidenceBar() {
-		return goalConfidenceBar;
-	}
-
-	public Label getConfidencePercentLabel() {
-		return confidencePercentLabel;
 	}
 
 	public VBox getGoalVBox() {

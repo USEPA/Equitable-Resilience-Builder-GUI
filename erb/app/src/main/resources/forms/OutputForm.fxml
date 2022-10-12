@@ -16,7 +16,7 @@
                   <VBox fx:id="formVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
+                        <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save Form" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

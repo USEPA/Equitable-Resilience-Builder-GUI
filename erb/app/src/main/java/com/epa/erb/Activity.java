@@ -1,101 +1,75 @@
 package com.epa.erb;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import com.epa.erb.noteboard.NoteBoardContentController;
 
 public class Activity {
 	
-	private ActivityType activityType;
 	private String chapterAssignment; 
 	private String status;
 	private String shortName;
 	private String longName;
 	private String fileName;
-	private String instructions;
-	private String objectives;
-	private String description;
-	private String materials;
-	private String time;
-	private String who;
 	private String activityID;
 	private String notes;
 	private String rating;
-	private String dynamicActivityID;
-	public Activity(ActivityType activityType, String chapterAssignment, String status, String shortName, String longName, String fileName, String directions, String objectives, String description, String materials, String time, String who, String activityID, String notes, String rating, String dynamicActivityID) {
-		this.activityType = activityType;
+	private ArrayList<String> assignedDynamicActivityIds;
+	private ArrayList<String> assignedStepIds;
+	public Activity(String chapterAssignment, String status, String shortName, String longName, String fileName, String activityID, String notes, String rating, ArrayList<String> assignedDynamicActivityIds, ArrayList<String> assignedStepIds) {
 		this.chapterAssignment = chapterAssignment;
 		this.status = status;
 		this.shortName = shortName;
 		this.longName = longName;
 		this.fileName = fileName;
-		this.instructions = directions;
-		this.objectives = objectives;
-		this.description = description;
-		this.materials = materials;
-		this.time = time;
-		this.who = who;
 		this.activityID = activityID;
 		this.notes = notes;
 		this.rating = rating;
-		this.dynamicActivityID = dynamicActivityID;
+		this.assignedDynamicActivityIds = assignedDynamicActivityIds;
+		this.assignedStepIds = assignedStepIds;
 	}
-	
-	private ArrayList<Step> steps = new ArrayList<Step>();
 	
 	private boolean isSaved = true;
 	private NoteBoardContentController noteBoardContentController;
-		
-	private HashMap<String, String> planHashMap;
 	
+	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
+	private ArrayList<DynamicActivity> assignedDynamicActivities = new ArrayList<DynamicActivity>();
+	
+	private String GUID;
+		
 	public Activity() {
 		
 	}
 	
-	public void setHashMap() {
-		setPlanHashMapDefaults();
-	}
-	
-	public void assignSteps(ArrayList<Step> allSteps) {
-		ArrayList<Step> activitySteps = new ArrayList<Step>();
-		for(Step step: allSteps) {
-			if(step.getActivityAssignment().contentEquals(activityID)) {
-				int sizeOfActivityList = activitySteps.size();
-				activitySteps.add(sizeOfActivityList, step);
-			}
-		}
-		setSteps(activitySteps);
-	}
-	
-	private void setPlanHashMapDefaults() {
-		planHashMap = new HashMap<String, String>();
-		planHashMap.put("pAudience", "");
-		planHashMap.put("pGoals", "");
-		planHashMap.put("pActivities", "");
-		planHashMap.put("pNotes", "");
-	}
-	
-	public ArrayList<String> getSplitMaterials(){
-		ArrayList<String> listOfMaterials = new ArrayList<String>();
-		String [] splitStrings = materials.split("\n");
-		for(String s: splitStrings) {
-			listOfMaterials.add(s);
-		}
-		return listOfMaterials;
-	}
-	
 	public Activity cloneActivity() {
-		Activity clonedActivity = new Activity(activityType, chapterAssignment, status, shortName, longName, fileName, instructions, objectives, description, materials, time, who, activityID, notes, rating, dynamicActivityID);
-		clonedActivity.setSteps(steps);
+		Activity clonedActivity = new Activity(chapterAssignment, status, shortName, longName, fileName, activityID, notes, rating, assignedDynamicActivityIds, assignedStepIds);
+		clonedActivity.setGUID(GUID);
+		clonedActivity.setAssignedSteps(assignedSteps);
+		clonedActivity.setAssignedDynamicActivities(assignedDynamicActivities);
 		return clonedActivity;
 	}
-
-	public ActivityType getActivityType() {
-		return activityType;
+	
+	public void addStep(Step step) {
+		if (step != null) {
+			assignedSteps.add(step);
+		}
 	}
-
-	public void setActivityType(ActivityType activityType) {
-		this.activityType = activityType;
+	
+	public void removeStep(Step step) {
+		if (step != null) {
+			assignedSteps.remove(step);
+		}
+	}
+	
+	public void addDynamicActivity(DynamicActivity dynamicActivity) {
+		if (dynamicActivity != null) {
+			assignedDynamicActivities.add(dynamicActivity);
+		}
+	}
+	
+	public void removeDynamicActivity(DynamicActivity dynamicActivity) {
+		if (dynamicActivity != null) {
+			assignedDynamicActivities.remove(dynamicActivity);
+		}
 	}
 
 	public String getChapterAssignment() {
@@ -138,54 +112,6 @@ public class Activity {
 		this.fileName = fileName;
 	}
 
-	public String getInstructions() {
-		return instructions;
-	}
-
-	public void setInstructions(String instructions) {
-		this.instructions = instructions;
-	}
-
-	public String getObjectives() {
-		return objectives;
-	}
-
-	public void setObjectives(String objectives) {
-		this.objectives = objectives;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getMaterials() {
-		return materials;
-	}
-
-	public void setMaterials(String materials) {
-		this.materials = materials;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public String getWho() {
-		return who;
-	}
-
-	public void setWho(String who) {
-		this.who = who;
-	}
-
 	public String getActivityID() {
 		return activityID;
 	}
@@ -210,14 +136,6 @@ public class Activity {
 		this.rating = rating;
 	}
 
-	public String getDynamicActivityID() {
-		return dynamicActivityID;
-	}
-
-	public void setDynamicActivityID(String dynamicActivityID) {
-		this.dynamicActivityID = dynamicActivityID;
-	}
-
 	public boolean isSaved() {
 		return isSaved;
 	}
@@ -234,20 +152,44 @@ public class Activity {
 		this.noteBoardContentController = noteBoardContentController;
 	}
 
-	public HashMap<String, String> getPlanHashMap() {
-		return planHashMap;
+	public ArrayList<String> getAssignedStepIds() {
+		return assignedStepIds;
 	}
 
-	public void setPlanHashMap(HashMap<String, String> planHashMap) {
-		this.planHashMap = planHashMap;
+	public void setAssignedStepIds(ArrayList<String> assignedStepIds) {
+		this.assignedStepIds = assignedStepIds;
 	}
 
-	public ArrayList<Step> getSteps() {
-		return steps;
+	public ArrayList<String> getAssignedDynamicActivityIds() {
+		return assignedDynamicActivityIds;
 	}
 
-	public void setSteps(ArrayList<Step> steps) {
-		this.steps = steps;
+	public void setAssignedDynamicActivityIds(ArrayList<String> assignedDynamicActivityIds) {
+		this.assignedDynamicActivityIds = assignedDynamicActivityIds;
+	}
+
+	public ArrayList<Step> getAssignedSteps() {
+		return assignedSteps;
+	}
+
+	public void setAssignedSteps(ArrayList<Step> assignedSteps) {
+		this.assignedSteps = assignedSteps;
+	}
+
+	public ArrayList<DynamicActivity> getAssignedDynamicActivities() {
+		return assignedDynamicActivities;
+	}
+
+	public void setAssignedDynamicActivities(ArrayList<DynamicActivity> assignedDynamicActivities) {
+		this.assignedDynamicActivities = assignedDynamicActivities;
+	}
+
+	public String getGUID() {
+		return GUID;
+	}
+
+	public void setGUID(String gUID) {
+		GUID = gUID;
 	}
 
 }

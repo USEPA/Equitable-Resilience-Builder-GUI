@@ -45,7 +45,6 @@ public class GoalIntroController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		//loadGoalsWorksheetPDFToWebView(getPDFFileToLoad());
 	}
 	
 	private void handleControls() {
@@ -66,41 +65,6 @@ public class GoalIntroController implements Initializable{
 		File file = new File(pathToERBStaticDataFolder + "\\Activities\\Supporting_DOC\\Ch1_Goals_Worksheet.docx");
 		fileHandler.openFileOnDesktop(file);
 	}
-	
-//	private File getPDFFileToLoad() {
-//		return null;
-//	}
-	
-//	private void loadGoalsWorksheetPDFToWebView(File pdfFileToLoad) {
-//		if (pdfFileToLoad != null) {
-//			try {
-//				WebEngine webEngine = webView.getEngine();
-//				String url = getClass().getResource("/pdfjs-2.8.335-legacy-dist/web/viewer.html").toExternalForm();
-//				webEngine.setUserStyleSheetLocation(getClass().getResource("/web.css").toExternalForm());
-//				webEngine.setJavaScriptEnabled(true);
-//				webEngine.load(url);
-//
-//				webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
-//					@Override
-//					public void changed(ObservableValue ov, State oldState, State newState) {
-//						if (newState == Worker.State.SUCCEEDED) {
-//							try {
-//								byte[] data = FileUtils.readFileToByteArray(pdfFileToLoad);
-//								String base64 = Base64.getEncoder().encodeToString(data);
-//								webView.getEngine().executeScript("openFileFromBase64('" + base64 + "')");
-//							} catch (Exception ex) {
-//								logger.error(ex.getMessage());
-//							}
-//						}
-//					}
-//				});
-//			} catch (Exception e) {
-//				logger.error(e.getMessage());
-//			}
-//		} else {
-//			logger.error("Cannot loadGoalsWorksheetPDFToWebView. pdfFileToLoad is null.");
-//		}
-//	}
 	
 	private Parent loadGoalCreation() {
 		try {

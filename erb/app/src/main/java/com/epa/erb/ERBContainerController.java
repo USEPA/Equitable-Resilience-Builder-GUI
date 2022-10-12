@@ -6,16 +6,13 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -87,7 +84,6 @@ public class ERBContainerController implements Initializable{
 			menuItem.setOnAction(e -> menuItemSelected(menuItem, isResource));
 			return menuItem;
 		} else {
-			System.out.println("Cannot createMenuItem. id or name is null.");
 			return null;
 		}
 	}

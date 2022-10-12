@@ -7,15 +7,11 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.Step;
-import com.epa.erb.chapter.Chapter;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
-
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -79,7 +75,7 @@ public class GoalCreationController implements Initializable{
 				String goalDescription = getGoalDescription();
 				ArrayList<GoalCategory> selectedGoalCategories = getSelectedGoalCategories();
 				Goal goal = new Goal(app,goalName, goalCleanedName, goalDescription, selectedGoalCategories);
-				goal.setChapters(app.getActivities(), project);
+				goal.setChapters(app.getAvailableActivities(), project);
 				addGoalToGoalsListView(goal);
 				cleanGoalUserInputFields();
 				uncheckAllGoalCategoryCheckBoxes();
@@ -102,7 +98,7 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void populateGoalCategoryCheckBoxes() {
-		ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
+		ArrayList<GoalCategory> goalCategories = app.getAvailableGoalCategories();
 		for(GoalCategory goalCategory : goalCategories) {
 			CheckBox goalCategoryCheckBox = createGoalCategoryCheckBox(goalCategory);
 			goalsVBox.getChildren().add(goalCategoryCheckBox);
@@ -198,27 +194,10 @@ public class GoalCreationController implements Initializable{
 			createGoalsDirectory();
 			for (Goal goal : goals) {
 				createGoalDirectory(goal);
-				File goalMetaFile = fileHandler.getGoalMetaXMLFile(project, goal);
-				ArrayList<Chapter> chapters = goal.getChapters();
-				xmlManager.writeGoalMetaXML(goalMetaFile, chapters);
-				//----
 				createSupportingDocDirectory(goal);
 				File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(project, goal);
 				if(supportingDOCDirectory != null && supportingDOCDirectory.exists()) {
 					copyGlobalSupportingDocsToGoalSupportingDocs(supportingDOCDirectory);
-				}
-				//----
-				createActivitiesDirectory(goal);
-				File activitiesDirectory = fileHandler.getActivitiesDirectory(project, goal);
-				if (activitiesDirectory != null && activitiesDirectory.exists()) {
-					createActivityDirectory(activitiesDirectory, goal);
-					writeActivityXML(activitiesDirectory, goal);
-				}
-				//----
-				createStepsDirectory(goal);
-				File stepsDirectory = fileHandler.getStepsDirectory(project, goal);
-				if(stepsDirectory != null && stepsDirectory.exists()) {
-					createStepDirectory(stepsDirectory, goal);
 				}
 			}
 		} else {
@@ -246,61 +225,6 @@ public class GoalCreationController implements Initializable{
 		return contextMenu;
 	}
 	
-	private void createActivityDirectory(File activitiesDirectory, Goal goal) {
-		if (activitiesDirectory != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					File activityDirectory = fileHandler.getActivityDirectory(project, goal, activity);
-					if (activityDirectory !=null && !activityDirectory.exists()) {
-						activityDirectory.mkdir();
-					}
-				}
-			}
-		} else {
-			logger.error("Cannot createActivityDirectory. activitiesDirectory or goal is null.");
-		}
-	}
-	
-	private void createStepDirectory(File stepsDirectory, Goal goal) {
-		if (stepsDirectory != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				for (Step chapterStep : chapter.getSteps()) {
-					File stepDirectory = fileHandler.getStepDirectory(project, goal, chapterStep);
-					if (stepDirectory != null && !stepDirectory.exists()) {
-						stepDirectory.mkdir();
-					}
-				}
-				for (Activity activity : chapter.getAssignedActivities()) {
-					for (Step activityStep : activity.getSteps()) {
-						File stepDirectory = fileHandler.getStepDirectory(project, goal, activityStep);
-						if (stepDirectory != null && !stepDirectory.exists()) {
-							stepDirectory.mkdir();
-						}
-					}
-				}
-			}
-		} else {
-			logger.error("Cannot createStepDirectory. stepsDirectory or goal is null.");
-		}
-	}
-	
-	private void writeActivityXML(File activitiesDirectory, Goal goal) {
-		if (activitiesDirectory != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					File activityDirectory = fileHandler.getActivityDirectory(project, goal, activity);
-					if (activityDirectory !=null && activityDirectory.exists()) {
-						File activityXMLFile = fileHandler.getActivityMetaXMLFile(project, goal, activity);
-						activity.setHashMap();
-						xmlManager.writeActivityMetaXML(activityXMLFile, activity);
-					}
-				}
-			}
-		} else {
-			logger.error("Cannot writeActivityXML. activitiesDirectory or goal is null.");
-		}
-	}
-	
 	private void copyGlobalSupportingDocsToGoalSupportingDocs(File goalSupportingDOCDirectory) {
 		if(goalSupportingDOCDirectory != null) {
 			File staticGlobalSupportingDOCDirectory = fileHandler.getStaticSupportingDOCDirectory();
@@ -310,40 +234,6 @@ public class GoalCreationController implements Initializable{
 			}
 		}
 	}
-	
-//	private void copyActivityDocxToActivityDirectory(File activitiesDirectory, Goal goal) {
-//		if (activitiesDirectory != null && goal != null) {
-//			for (Chapter chapter : goal.getChapters()) {
-//				for (Activity activity : chapter.getAssignedActivities()) {
-//					File activityDirectory = fileHandler.getActivityDirectory(project, goal, activity);
-//					if (activityDirectory !=null && activityDirectory.exists()) {
-//						File sourceActivityDocx = fileHandler.getGlobalActivityWordDoc(activity);
-//						File destActivityDocx = fileHandler.getActivityWordDoc(project, goal, activity);
-//						fileHandler.copyFile(sourceActivityDocx, destActivityDocx);
-//					}
-//				}
-//			}
-//		} else {
-//			logger.error("Cannot copyActivityDocxToActivityDirectory. activitiesDirectory or goal is null.");
-//		}
-//	}
-//	
-//	private void convertActivityDocxToPDF(File activitiesDirectory, Goal goal) {
-//		if (activitiesDirectory != null && goal != null) {
-//			for (Chapter chapter : goal.getChapters()) {
-//				for (Activity activity : chapter.getAssignedActivities()) {
-//					File activityDirectory = fileHandler.getActivityDirectory(project, goal, activity);
-//					if (activityDirectory !=null && activityDirectory.exists()) {
-//						File activityDocx = fileHandler.getActivityWordDoc(project, goal, activity);
-//						File activityPDF = fileHandler.getActivityPDFDoc(project, goal, activity);
-//						fileHandler.convertDocxToPDF(activityDocx, activityPDF.getPath());
-//					}
-//				}
-//			}
-//		} else {
-//			logger.error("Cannot copyActivityDocxToActivityDirectory. activitiesDirectory or goal is null.");
-//		}
-//	}
 	
 	private void createSupportingDocDirectory(Goal goal) {
 		if (goal != null) {
@@ -406,7 +296,7 @@ public class GoalCreationController implements Initializable{
 		
 	public GoalCategory getGoalCategory(String goalCategoryName) {
 		if (goalCategoryName != null) {
-			ArrayList<GoalCategory> goalCategories = app.getGoalCategories();
+			ArrayList<GoalCategory> goalCategories = app.getAvailableGoalCategories();
 			for (GoalCategory goalCategory : goalCategories) {
 				if (goalCategory.getCategoryName().contentEquals(goalCategoryName)) {
 					return goalCategory;

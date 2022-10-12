@@ -6,7 +6,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import com.epa.erb.Activity;
 import com.epa.erb.App;
+import com.epa.erb.Step;
+import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
@@ -17,7 +20,6 @@ import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
@@ -108,8 +110,13 @@ public class MainFormController implements Initializable{
 	private void internalIntroLinkClicked(String link) {
 		if (!link.contentEquals("00")) {
 			File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, false);
-			Parent root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
-			app.loadNodeToERBContainer(root);
+			Pane root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
+			if(app.getEngagementActionController() != null) {
+				app.getEngagementActionController().cleanContentVBox();
+				app.getEngagementActionController().removeStatusHBox();
+				app.getEngagementActionController().getTreeView().getSelectionModel().select(null);
+				app.getEngagementActionController().addContentToContentVBox(root, true);
+			}
 		} else {
 			app.launchERBLandingNew2();
 		}
@@ -117,18 +124,25 @@ public class MainFormController implements Initializable{
 	
 	private void internalResourceLinkClicked(String link) {
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, true);
-		Parent root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
-		app.loadNodeToERBContainer(root);
+		Pane root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
+		if(app.getEngagementActionController() != null) {
+			app.getEngagementActionController().cleanContentVBox();
+			app.getEngagementActionController().removeStatusHBox();
+			app.getEngagementActionController().getTreeView().getSelectionModel().select(null);
+			app.getEngagementActionController().addContentToContentVBox(root, true);
+		}
 	}
 	
 	private void internalStepLinkClicked(String link) {
 		if (engagementActionController != null) {
 			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
-			for (TreeItem<String> stepTreeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-				String stepTreeItemId = engagementActionController.getTreeItemIdTreeMap().get(stepTreeItem);
-				if (stepTreeItemId.contentEquals(link)) {
-					engagementActionController.getTreeView().getSelectionModel().select(stepTreeItem);
-					engagementActionController.treeViewClicked(currentSelectedTreeItem, stepTreeItem);
+			Step step = findStep(link);
+			if(step != null) {
+				for(TreeItem<String> treeItem: engagementActionController.getTreeItemIdTreeMap().keySet()) {
+					if(engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(step.getGUID())) {
+						engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+						engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
+					}
 				}
 			}
 		} else {
@@ -138,7 +152,6 @@ public class MainFormController implements Initializable{
 				engagementActionController = new EngagementActionController(app, project);
 				loadEngagementActionToContainer(engagementActionController);
 				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
-				//app.setEngagementActionController(engagementActionController);
 				internalStepLinkClicked(link);
 			}
 		}
@@ -146,12 +159,27 @@ public class MainFormController implements Initializable{
 	
 	private void internalActivityLinkClicked(String link) {
 		if (engagementActionController != null) {
-			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
-			for (TreeItem<String> activityTreeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-				String activityTreeItemId = engagementActionController.getTreeItemIdTreeMap().get(activityTreeItem);
-				if (activityTreeItemId.contentEquals(link)) {
-					engagementActionController.getTreeView().getSelectionModel().select(activityTreeItem);
-					engagementActionController.treeViewClicked(currentSelectedTreeItem, activityTreeItem);
+			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel()
+					.getSelectedItem();
+			if (link.endsWith("0")) {
+				Chapter chapter = findChapter(link);
+				if (chapter != null) {
+					for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+						if (engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(chapter.getGUID())) {
+							engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+							engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
+						}
+					}
+				}
+			}
+			Activity activity = findActivity(link);
+			if (activity != null) {
+				for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+					if (engagementActionController.getTreeItemIdTreeMap().get(treeItem)
+							.contentEquals(activity.getGUID())) {
+						engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+						engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
+					}
 				}
 			}
 		} else {
@@ -161,10 +189,47 @@ public class MainFormController implements Initializable{
 				engagementActionController = new EngagementActionController(app, project);
 				loadEngagementActionToContainer(engagementActionController);
 				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
-				//app.setEngagementActionController(engagementActionController);
 				internalActivityLinkClicked(link);
 			}
 		}
+	}
+	
+	private Chapter findChapter(String chapterId) {
+		for(Chapter chapter: engagementActionController.getListOfUniqueChapters()) {
+			if((chapter.getChapterNum() + "0").contentEquals(chapterId)) {
+				return chapter;
+			}
+		}
+		return null;
+	}
+	
+	private Step findStep(String stepId) {
+		for (Chapter chapter : engagementActionController.getListOfUniqueChapters()) {
+			for (Step chapterStep : chapter.getAssignedSteps()) {
+				if (chapterStep.getStepID().contentEquals(stepId)) {
+					return chapterStep;
+				}
+			}
+			for (Activity activity : chapter.getAssignedActivities()) {
+				for (Step activityStep : activity.getAssignedSteps()) {
+					if (activityStep.getStepID().contentEquals(stepId)) {
+						return activityStep;
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	private Activity findActivity(String activityId) {
+		for (Chapter chapter : engagementActionController.getListOfUniqueChapters()) {
+			for (Activity activity : chapter.getAssignedActivities()) {
+				if (activity.getActivityID().contentEquals(activityId)) {
+					return activity;
+				}
+			}
+		}
+		return null;
 	}
 	
 	public void loadEngagementActionToContainer(EngagementActionController engagementActionController) {
@@ -194,7 +259,6 @@ public class MainFormController implements Initializable{
 				app.setSelectedProject(project);
 				engagementActionController = new EngagementActionController(app, project);
 				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
-				//app.setEngagementActionController(engagementActionController);
 				externalDOCLinkClicked(link);
 			}
 		}

@@ -12,15 +12,11 @@ module com.epa.erb {
 	requires transitive javafx.controls;
 	requires jdk.jsobject;
 	requires com.aspose.words;
-//	requires org.slf4j;
-//	requires org.docx4j.core;
-//	requires jakarta.xml.bind;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.goal to javafx.fxml;
 	opens com.epa.erb.chapter to javafx.fxml;
 	opens com.epa.erb.project to javafx.fxml;
 	opens com.epa.erb.noteboard to javafx.fxml;
-	opens com.epa.erb.worksheet to javafx.fxml, javafx.web;
 	opens com.epa.erb.engagement_action to javafx.fxml;
 	opens com.epa.erb.forms to javafx.fxml;
 	exports com.epa.erb;

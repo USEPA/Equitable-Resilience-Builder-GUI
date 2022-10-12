@@ -251,7 +251,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void bottomRightCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getCurrentActivity().getActivityID();
 		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getActivityID())) {
-			engagementActionController.generateAttribute("Time", activity.getTime(), constants.getTimeColor());
 		}		
 	}
 	
@@ -259,7 +258,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void bottomLeftCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getCurrentActivity().getActivityID();
 		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getActivityID())) {
-			engagementActionController.generateAttribute("Who", activity.getWho(), constants.getWhoColor());
 		}
 	}
 
@@ -267,7 +265,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void topRightCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getCurrentActivity().getActivityID();
 		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getActivityID())) {
-			engagementActionController.generateAttribute("Description", activity.getDescription(), constants.getDescriptionColor());
 		}
 	}
 
@@ -275,7 +272,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void topLeftCircleLabelClicked() {
 		String selectedActivityGUID = engagementActionController.getCurrentActivity().getActivityID();
 		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getActivityID())) {
-			engagementActionController.generateAttribute("Materials", activity.getMaterials(), constants.getMaterialsColor());
 		}
 	}
 
@@ -401,7 +397,7 @@ public class ERBPathwayDiagramController implements Initializable {
 		return centerCircleLabel;
 	}
 	
-//Keep this code to add spokes back into pathway diagram
+//--------------------Keep this code to add spokes back into pathway diagram-----------------------
 //	public Circle getTopLeftCircle() {
 //	    return topLeftCircle;
 //  }	

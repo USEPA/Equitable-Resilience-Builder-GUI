@@ -44,7 +44,6 @@ public class AttributePanelController implements Initializable{
 	public void closeButtonAction() {
 		HBox attributePanel = (HBox) engagementActionController.getAttributePanelHBox();
 		attributePanel.getChildren().remove(attributePanelVBox);
-		engagementActionController.removeAttributePanelController(this);
 	}
 	
 	void setAttributeFields(String attributeTitle, String attributeContent, String attributeLabelColor) {

@@ -1,7 +1,6 @@
 package com.epa.erb.chapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import com.epa.erb.Activity;
 import com.epa.erb.Step;
 
@@ -21,49 +20,66 @@ public class Chapter {
 	}
 		
 	private boolean saved = true;
-	private ArrayList<Step> steps = new ArrayList<Step>();
+	
+	private ArrayList<String> assignedStepIds = new ArrayList<String>();
+	private ArrayList<String> assignedActivityIds = new ArrayList<String>();
+
+	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
-	private HashMap<String, String> planHashMap;	
-	private HashMap<String, String> reflectHashMap;
+
+	private String GUID;
 	
 	public Chapter() {
 		
 	}
 	
-	public void assignSteps(ArrayList<Step> allSteps) {
-		ArrayList<Step> chapterSteps = new ArrayList<Step>();
+	public Chapter cloneChapter() {
+		Chapter clonedChapter = new Chapter(chapterNum, numericName, stringName, descriptionName, notes);
+		clonedChapter.setGUID(GUID);
+		clonedChapter.setAssignedSteps(assignedSteps);
+		clonedChapter.setAssignedStepIds(assignedStepIds);
+		clonedChapter.setAssignedActivityIds(assignedActivityIds);
+		clonedChapter.setAssignedActivities(assignedActivities);
+		return clonedChapter;
+	}
+	
+	public void assignStepIds(ArrayList<Step> allSteps) {
+		ArrayList<String> stepIds = new ArrayList<String>();
 		if (allSteps != null) {
 			for (Step step : allSteps) {
 				if (step.getActivityAssignment().contentEquals(chapterNum + "0")) {
-					int sizeOfChapterList = chapterSteps.size();
-					chapterSteps.add(sizeOfChapterList, step);
+					int sizeOfStepIdsList = stepIds.size();
+					stepIds.add(sizeOfStepIdsList, step.getStepID());
+				}
+			}
+			assignedStepIds = stepIds;
+		}
+	}
+	
+	public void assignActivityIds(ArrayList<Activity> allActivities) {
+		ArrayList<String> activityIds = new ArrayList<String>();
+		if(allActivities != null) {
+			for(Activity activity: allActivities) {
+				if(activity.getChapterAssignment().contentEquals(String.valueOf(chapterNum))) {
+					int sizeOfActivityIdsList = activityIds.size();
+					activityIds.add(sizeOfActivityIdsList, activity.getActivityID());
 				}
 			}
 		}
-		setSteps(chapterSteps);
+		assignedActivityIds = activityIds;
 	}
 	
-	public void setHashMaps() {
-		setPlanHashMapDefaults();
-		setReflectHashMapDefaults();
+	public void addStep(Step step) {
+		if (step != null) {
+			assignedSteps.add(step);
+		}
 	}
 	
-	private void setPlanHashMapDefaults() {
-		planHashMap = new HashMap<String, String>();
-		planHashMap.put("pAudience", "");
-		planHashMap.put("pGoals", "");
-		planHashMap.put("pActivities", "");
-		planHashMap.put("pNotes", "");
+	public void removeStep(Step step) {
+		if (step != null) {
+			assignedSteps.remove(step);
+		}
 	}
-	
-	private void setReflectHashMapDefaults() {
-		reflectHashMap = new HashMap<String, String>();
-		reflectHashMap.put("rAudience", "");
-		reflectHashMap.put("rGoals", "");
-		reflectHashMap.put("rActivities", "");
-		reflectHashMap.put("rNotes", "");
-	}
-
 
 	public void addActivity(Activity activity) {
 		if (activity != null) {
@@ -187,14 +203,6 @@ public class Chapter {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-
-	public ArrayList<Activity> getAssignedActivities() {
-		return assignedActivities;
-	}
-
-	public void setAssignedActivities(ArrayList<Activity> assignedActivities) {
-		this.assignedActivities = assignedActivities;
-	}
 	
 	public boolean isSaved() {
 		return saved && isActivitiesSaved();
@@ -203,29 +211,45 @@ public class Chapter {
 	public void setSaved(boolean saved) {
 		this.saved = saved;
 	}
-
-	public HashMap<String, String> getPlanHashMap() {
-		return planHashMap;
-	}
-
-	public void setPlanHashMap(HashMap<String, String> planHashMap) {
-		this.planHashMap = planHashMap;
-	}
-
-	public HashMap<String, String> getReflectHashMap() {
-		return reflectHashMap;
-	}
-
-	public void setReflectHashMap(HashMap<String, String> reflectHashMap) {
-		this.reflectHashMap = reflectHashMap;
-	}
 	
-	public ArrayList<Step> getSteps() {
-		return steps;
+	public ArrayList<String> getAssignedStepIds() {
+		return assignedStepIds;
 	}
 
-	public void setSteps(ArrayList<Step> steps) {
-		this.steps = steps;
+	public void setAssignedStepIds(ArrayList<String> assignedStepIds) {
+		this.assignedStepIds = assignedStepIds;
+	}
+
+	public ArrayList<String> getAssignedActivityIds() {
+		return assignedActivityIds;
+	}
+
+	public void setAssignedActivityIds(ArrayList<String> assignedActivityIds) {
+		this.assignedActivityIds = assignedActivityIds;
+	}
+
+	public ArrayList<Step> getAssignedSteps() {
+		return assignedSteps;
+	}
+
+	public void setAssignedSteps(ArrayList<Step> assignedSteps) {
+		this.assignedSteps = assignedSteps;
+	}
+
+	public ArrayList<Activity> getAssignedActivities() {
+		return assignedActivities;
+	}
+
+	public void setAssignedActivities(ArrayList<Activity> assignedActivities) {
+		this.assignedActivities = assignedActivities;
+	}
+
+	public String getGUID() {
+		return GUID;
+	}
+
+	public void setGUID(String gUID) {
+		GUID = gUID;
 	}
 		
 }

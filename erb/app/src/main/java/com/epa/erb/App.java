@@ -15,11 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
-import com.epa.erb.engagement_action.SaveHandler;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
@@ -31,19 +31,21 @@ public class App extends Application {
 
 	private int prefWidth;
 	private int prefHeight;
-	private Project selectedProject;
-	private ArrayList<Project> projects;
-	private ArrayList<Chapter> chapters;
-	private ArrayList<DynamicActivity> dynamicActivities;
-	private ArrayList<Activity> activities;
-	private ArrayList<Step> steps;
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
-	private ArrayList<ActivityType> activityTypes;
-	private ArrayList<GoalCategory> goalCategories;
 	private XMLManager xmlManager = new XMLManager(this);
-	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
+	
+	private Project selectedProject;
+	private ArrayList<Project> projects;
+	
+	private ArrayList<Step> availableSteps;
+	private ArrayList<Chapter> availableChapters;
+	private ArrayList<Activity> availableActivities;
+	private ArrayList<GoalCategory> availableGoalCategories;
+	private ArrayList<DynamicActivity> availableDynamicActivities;
+	
+	private ERBContainerController erbContainerController;
 	private EngagementActionController engagementActionController;
 	
 	@Override
@@ -129,91 +131,52 @@ public class App extends Application {
 	}
 
 	private void erbCloseRequested() {
-		initSaveHandler(null, null, null, null, getProjects(), "close");
-		if(areEmptyProjects()) {
-			deleteEmptyProjectDirectories();
+		if(engagementActionController != null) {
+			Project project = engagementActionController.getProject();
+			Goal goal = engagementActionController.getCurrentGoal();
+			ArrayList<Chapter> listOfUniqueChapters = engagementActionController.getListOfUniqueChapters();
+			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), listOfUniqueChapters);
+			fileHandler.createGUIDDirectoriesForGoal(project, goal, listOfUniqueChapters);
 		}
-	}
-	
-	private void deleteEmptyProjectDirectories() {
-		File projectsDirectory = fileHandler.getProjectsDirectory();
-		if (projectsDirectory != null && projectsDirectory.exists()) {
-			File[] projectDirectories = projectsDirectory.listFiles();
-			for (File projDir : projectDirectories) {
-				if (projDir.isDirectory()) {
-					File projectMetaFile = fileHandler.getProjectMetaXMLFile(projDir);
-					if (projectMetaFile == null || !projectMetaFile.exists()) {
-						fileHandler.deleteDirectory(projDir);
- 					}
-				}
-			}
-		}
-	}
-	
-	private boolean areEmptyProjects() {
-		File projectsDirectory = fileHandler.getProjectsDirectory();
-		if (projectsDirectory != null && projectsDirectory.exists()) {
-			File[] projectDirectories = projectsDirectory.listFiles();
-			for (File projDir : projectDirectories) {
-				if (projDir.isDirectory()) {
-					File projectMetaFile = fileHandler.getProjectMetaXMLFile(selectedProject);
-					if (projectMetaFile == null || !projectMetaFile.exists()) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
-	
-	public void initSaveHandler(Activity activity, Chapter chapter, Goal goal, Project project, ArrayList<Project> projects, String saveOrigin) {
-		SaveHandler saveHandler = new SaveHandler(this, saveOrigin, activity, chapter, goal, project, projects);
-		saveHandler.beginSave();
 	}	
 	
 	private void readAndStoreData() {
-		readAndStoreDynamicActivities();
+		readAndStoreAvailableDynamicActivities();
 		readAndStoreAvailableSteps();
-		readAndStoreChapters();
-		readAndStoreActivityTypes();
 		readAndStoreAvailableActivities();
-		readAndStoreGoalCategories();
+		readAndStoreAvailableChapters();
+		readAndStoreAvailableGoalCategories();
 		readAndStoreProjects();
 	}
 	
-	private void readAndStoreDynamicActivities() {
+	private void readAndStoreAvailableDynamicActivities() {
 		File dynamicActivitiesFile = fileHandler.getStaticAvailableDynamicActivitiesXMLFile();
-		dynamicActivities = xmlManager.parseAvailableDynamicActivitiesXML(dynamicActivitiesFile);
+		availableDynamicActivities = xmlManager.parseAvailableDynamicActivitiesXML(dynamicActivitiesFile);
 	}
 	
-	private void readAndStoreChapters() {
+	private void readAndStoreAvailableChapters() {
 		File chaptersFile = fileHandler.getStaticChaptersXMLFile();
-		chapters = xmlManager.parseChaptersXML(chaptersFile);
-	}
-	
-	private void readAndStoreActivityTypes() {
-		File activityTypesFile = fileHandler.getStaticActivityTypesXMLFile();
-		activityTypes = xmlManager.parseActivityTypesXML(activityTypesFile);
+		availableChapters = xmlManager.parseChaptersXML(chaptersFile);
 	}
 	
 	private void readAndStoreAvailableActivities() {
 		File availableActivitiesFile = fileHandler.getStaticAvailableActivitiesXMLFile();
-		activities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile, activityTypes);
+		availableActivities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile);
 	}
 	
 	private void readAndStoreAvailableSteps() {
 		File availableStepsFile = fileHandler.getStaticAvailableStepsXMLFile();
-		steps = xmlManager.parseAvailableStepsXML(availableStepsFile);
+		availableSteps = xmlManager.parseAvailableStepsXML(availableStepsFile);
 	}
 	
-	private void readAndStoreGoalCategories() {
+	private void readAndStoreAvailableGoalCategories() {
 		File goalCategoriesFile = fileHandler.getStaticGoalCategoriesXMLFile();
-		goalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
+		availableGoalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
 	}
 	
 	private void readAndStoreProjects() {
 		File projectsDirectory = fileHandler.getProjectsDirectory();
-		projects = xmlManager.parseAllProjects(projectsDirectory, activities);
+		projects = xmlManager.parseAllProjects(projectsDirectory, availableActivities);
 	}
 	
 	public void loadNodeToERBContainer(Node node) {
@@ -239,7 +202,7 @@ public class App extends Application {
 	
 	public String getActivityIDByName(String activityShortName) {
 		if (activityShortName != null) {
-			for (Activity activity : activities) {
+			for (Activity activity : availableActivities) {
 				if (activity.getShortName().contentEquals(activityShortName)) {
 					return activity.getActivityID();
 				}
@@ -247,6 +210,21 @@ public class App extends Application {
 		} else {
 			logger.error("Cannot getActivityIDByName. activityShortName is null.");
 		}
+		return null;
+	}
+	
+	public DynamicActivity getDynamicActivityById(String activityID, ArrayList<DynamicActivity> dynamicActivities) {
+		if (activityID != null && dynamicActivities != null) {
+			for (DynamicActivity dynamicActivity : dynamicActivities) {
+				if (dynamicActivity.getId().contentEquals(activityID)) {
+					return dynamicActivity;
+				}
+			}
+		} else {
+			logger.error("Cannot getDynamicActivityById. activityID or availableDynamicActivities is null.");
+			return null;
+		}
+		logger.debug("Cannot getDynamicActivityById. DynamicActivity returned is null");
 		return null;
 	}
 	
@@ -258,7 +236,7 @@ public class App extends Application {
 				}
 			}
 		} else {
-			logger.error("Cannot getStepByID. stepID or steps is null.");
+			logger.error("Cannot getStepByID. stepID or availableSteps is null.");
 			return null;
 		}
 		logger.debug("Cannot getStepByID. Step returned is null");
@@ -273,7 +251,7 @@ public class App extends Application {
 				}
 			}
 		} else {
-			logger.error("Cannot getActivityByID. activityID or activities is null.");
+			logger.error("Cannot getActivityByID. activityID or availableActivities is null.");
 			return null;
 		}
 		logger.debug("Cannot getActivityByID. Activity returned is null");
@@ -288,7 +266,7 @@ public class App extends Application {
 				}
 			}
 		} else {
-			logger.error("Cannot getActivityByName. activityShortName or activities is null.");
+			logger.error("Cannot getActivityByName. activityShortName or availableActivities is null.");
 			return null;
 		}
 		logger.debug("Cannot getActivityByName. Activity returned is null");
@@ -296,18 +274,8 @@ public class App extends Application {
 
 	}
 	
-	public DynamicActivity getDynamicActivityById(String dynamicActivityID) {
-		if(dynamicActivityID != null) {
-			for(DynamicActivity dynamicActivity: dynamicActivities) {
-				if(dynamicActivity.getId().contentEquals(dynamicActivityID)) {
-					return dynamicActivity;
-				}
-			}
-		} else {
-			logger.error("Cannot getDynamicActivityById. dynamicActivityID is null.");
-		}
-		logger.debug("Cannot getDynamicActivityById. DynamicActivity returned is null");
-		return null;
+	public String generateGUID() {
+		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
 
 	public int getPrefWidth() {
@@ -342,52 +310,44 @@ public class App extends Application {
 		this.projects = projects;
 	}
 
-	public ArrayList<Chapter> getChapters() {
-		return chapters;
+	public ArrayList<Chapter> getAvailableChapters() {
+		return availableChapters;
 	}
 
-	public void setChapters(ArrayList<Chapter> chapters) {
-		this.chapters = chapters;
+	public void setAvailableChapters(ArrayList<Chapter> chapters) {
+		this.availableChapters = chapters;
 	}
 
-	public ArrayList<Activity> getActivities() {
-		return activities;
+	public ArrayList<Activity> getAvailableActivities() {
+		return availableActivities;
 	}
 
-	public void setActivities(ArrayList<Activity> activities) {
-		this.activities = activities;
+	public void setAvailableActivities(ArrayList<Activity> activities) {
+		this.availableActivities = activities;
 	}
 
-	public ArrayList<Step> getSteps() {
-		return steps;
+	public ArrayList<Step> getAvailableSteps() {
+		return availableSteps;
 	}
 
-	public void setSteps(ArrayList<Step> steps) {
-		this.steps = steps;
+	public void setAvailableSteps(ArrayList<Step> steps) {
+		this.availableSteps = steps;
 	}
 
-	public ArrayList<DynamicActivity> getDynamicActivities() {
-		return dynamicActivities;
+	public ArrayList<DynamicActivity> getAvailableDynamicActivities() {
+		return availableDynamicActivities;
 	}
 
-	public void setDynamicActivities(ArrayList<DynamicActivity> dynamicActivities) {
-		this.dynamicActivities = dynamicActivities;
+	public void setAvailableDynamicActivities(ArrayList<DynamicActivity> dynamicActivities) {
+		this.availableDynamicActivities = dynamicActivities;
 	}
 
-	public ArrayList<ActivityType> getActivityTypes() {
-		return activityTypes;
+	public ArrayList<GoalCategory> getAvailableGoalCategories() {
+		return availableGoalCategories;
 	}
 
-	public void setActivityTypes(ArrayList<ActivityType> activityTypes) {
-		this.activityTypes = activityTypes;
-	}
-
-	public ArrayList<GoalCategory> getGoalCategories() {
-		return goalCategories;
-	}
-
-	public void setGoalCategories(ArrayList<GoalCategory> goalCategories) {
-		this.goalCategories = goalCategories;
+	public void setAvailableGoalCategories(ArrayList<GoalCategory> goalCategories) {
+		this.availableGoalCategories = goalCategories;
 	}
 
 	public ERBContainerController getErbContainerController() {

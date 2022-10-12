@@ -61,57 +61,6 @@ public class Progress {
 		}
 	}
 	
-	public int getChapterConfidencePercent(Chapter chapter) {
-		if (chapter != null) {
-			double max = (chapter.getNumberOfAssignedActivities()) * 100;
-			double rating = 0;
-			for (Activity activity : chapter.getAssignedActivities()) {
-				int activityRating = Integer.parseInt(activity.getRating());
-				if (activityRating >= 0) {
-					rating = rating + activityRating;
-				}
-			}
-			return (int) (((rating / max) * 100));
-		} else {
-			logger.error("Cannot getChapterConfidencePercent. chapter is null.");
-			return -1;
-		}
-	}
-	
-	public int getGoalConfidencePercent(ArrayList<Chapter> listOfChaptersInGoal) {
-		if (listOfChaptersInGoal != null) {
-			double max = getMaxPercent(listOfChaptersInGoal);
-			double rating = 0;
-			for (Chapter chapter : listOfChaptersInGoal) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					int activityRating = Integer.parseInt(activity.getRating());
-					if (activityRating >= 0) {
-						rating = rating + activityRating;
-					}
-				}
-			}
-			return (int) (((rating / max) * 100));
-		} else {
-			logger.error("Cannot getGoalConfidencePercent. listOfChaptersInGoal is null.");
-			return -1;
-		}
-	}
-	
-	private double getMaxPercent(ArrayList<Chapter> listOfChaptersInGoal) {
-		if (listOfChaptersInGoal != null) {
-			int numActivities = 0;
-			for (Chapter chapter : listOfChaptersInGoal) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					numActivities++;
-				}
-			}
-			return numActivities * 100.0;
-		} else {
-			logger.error("Cannot getMaxPercent. listOfChaptersInGoal is null");
-			return -1;
-		}
-	}
-	
 	public int getProjectTotalPercent(Project project) {
 		if (project != null) {
 			double totalPercent = 0;

@@ -6,11 +6,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.aspose.words.Document;
 import com.aspose.words.SaveFormat;
 import com.epa.erb.Activity;
+import com.epa.erb.DynamicActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
@@ -113,6 +116,16 @@ public class FileHandler {
 		}
 	}
 	
+	public File getGUIDDataDirectory(Project project, Goal goal) {
+		if(project != null && goal != null) {
+			File guidsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data");
+			return guidsDirectory;
+		} else {
+			logger.error("Cannot getGUIDDataDirectory. project = " + project + " goal = " + goal);
+			return null;
+		}
+	}
+	
 	//--------------------------------------------------------------------------
 	
 	public File getProjectMetaXMLFile(Project project) {
@@ -147,7 +160,7 @@ public class FileHandler {
 	
 	public File getActivityDataXMLFile(Project project, Goal goal, Activity activity) {
 		if(project != null && goal != null && activity != null) {
-			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML\\" + activity.getActivityID() + "\\Data.xml");
+			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + activity.getGUID() + "\\Data.xml");
 			return activityDataXMLFile;
 		} else {
 			logger.error("Cannot getActivityDataXMLFile. project = " + project + " goal = " + goal + " activity = " + activity);
@@ -155,22 +168,22 @@ public class FileHandler {
 		}
 	}
 	
-	public File getActivityMetaXMLFile(Project project, Goal goal, Activity activity) {
-		if(project != null && goal != null && activity != null) {
-			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML\\" + activity.getActivityID() + "\\Meta.xml");
-			return activityDataXMLFile;
+	public File getStepDataXMLFile(Project project, Goal goal, Step step) {
+		if(project != null && goal != null && step != null) {
+			File stepDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + step.getGUID() + "\\Data.xml");
+			return stepDataXMLFile;
 		} else {
-			logger.error("Cannot getActivityMetaXMLFile. project = " + project + " goal = " + goal + " activity = " + activity);
+			logger.error("Cannot getStepDataXMLFile. project = " + project + " goal = " + goal + " step = " + step);
 			return null;
 		}
 	}
 	
-	public File getStepDataXMLFile(Project project, Goal goal, Step step) {
-		if(project != null && goal != null && step != null) {
-			File stepDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML\\" + step.getStepID() + "\\Data.xml");
-			return stepDataXMLFile;
+	public File getDynamicActivityDataXMLFile(Project project, Goal goal, DynamicActivity dynamicActivity) {
+		if(project != null && goal != null && dynamicActivity != null) {
+			File dynamicActivityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + dynamicActivity.getGUID() + "\\Data.xml");
+			return dynamicActivityDataXMLFile;
 		} else {
-			logger.error("Cannot getStepDataXMLFile. project = " + project + " goal = " + goal + " step = " + step);
+			logger.error("Cannot getDynamicActivityDataXMLFile. project = " + project + " goal = " + goal + " dynamicActivity = " + dynamicActivity);
 			return null;
 		}
 	}
@@ -180,11 +193,6 @@ public class FileHandler {
 	public File getStaticSupportingDOCDirectory() {
 		File supportingDOCDirectory = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Supporting_DOC");
 		return supportingDOCDirectory;
-	}
-	
-	public File getStaticActivityTypesXMLFile() {
-		File activityTypesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activity_Types.xml");
-		return activityTypesFile;
 	}
 	
 	public File getStaticAvailableActivitiesXMLFile() {
@@ -331,6 +339,47 @@ public class FileHandler {
 			}
 		} else {
 			logger.error("Cannot copyFile. source = " + source + " dest = " + dest);
+		}
+	}
+	
+	//------------------------------------------------------------------------
+	
+	public void createGUIDDataDirectory(Project project, Goal goal) {
+		File GUIDDataDirectory = getGUIDDataDirectory(project, goal);
+		if (!GUIDDataDirectory.exists()) {
+			GUIDDataDirectory.mkdir();
+		}
+	}
+
+	public void createGUIDDirectoriesForGoal(Project project, Goal goal, ArrayList<Chapter> uniqueChapters) {
+		createGUIDDataDirectory(project, goal);
+		for (Chapter chapter : uniqueChapters) {
+			File chapterGUIDDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + chapter.getGUID());
+			if(!chapterGUIDDirectory.exists()) chapterGUIDDirectory.mkdir();
+			for (Activity activity : chapter.getAssignedActivities()) {
+				File chapterActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + activity.getGUID());
+				if(!chapterActivityDirectory.exists()) chapterActivityDirectory.mkdir();
+				for (Step step : activity.getAssignedSteps()) {
+					File activityStepDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + step.getGUID());
+					if(!activityStepDirectory.exists()) activityStepDirectory.mkdir();
+					for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+						File stepDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
+						if(!stepDynamicActivityDirectory.exists()) stepDynamicActivityDirectory.mkdir();
+					}
+				}
+				for (DynamicActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
+					File activityDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
+					if(!activityDynamicActivityDirectory.exists()) activityDynamicActivityDirectory.mkdir();
+				}
+			}
+			for (Step step : chapter.getAssignedSteps()) {
+				File chapterStepDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + step.getGUID());
+				if(!chapterStepDirectory.exists()) chapterStepDirectory.mkdir();
+				for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+					File stepDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
+					if(!stepDynamicActivityDirectory.exists()) stepDynamicActivityDirectory.mkdir();
+				}
+			}
 		}
 	}
 	
