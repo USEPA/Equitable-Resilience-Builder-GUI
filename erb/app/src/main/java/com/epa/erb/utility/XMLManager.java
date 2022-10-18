@@ -871,6 +871,7 @@ public class XMLManager {
 							// TextBlock
 							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
 								TextFlow textFlow = new TextFlow();
+								double maxTextLength = 0.0;
 								Element textBlockElement = (Element) textBlockNode;
 								NodeList textNodeList = textBlockElement.getElementsByTagName("text");
 								for (int k = 0; k < textNodeList.getLength(); k++) {
@@ -902,8 +903,10 @@ public class XMLManager {
 											}
 										}
 										textFlow.getChildren().add(t);
+										if(t.getText().length() > maxTextLength) maxTextLength = t.getText().length();
 									}
 								}
+								textFlow.setPrefWidth(maxTextLength * 2);
 								textBlocks.add(textFlow);
 							}
 						}

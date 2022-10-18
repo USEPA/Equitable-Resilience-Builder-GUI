@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -51,6 +52,8 @@ public class MainFormController implements Initializable{
 	Pane rP;
 	@FXML
 	Pane bP;
+	@FXML
+	Separator separator;
 	
 	private App app;
 	private File xmlContentFileToParse;
@@ -308,6 +311,15 @@ public class MainFormController implements Initializable{
 	private void hideEmptyControls() {
 		if(topPanelVBox.getChildren().size() == 0 && bottomPanelVBox.getChildren().size() == 0) {
 			hBox.getChildren().remove(rightPanelVBox);
+			separator.setVisible(false);
+		}
+		if(topPanelVBox.getChildren().size() ==0) {
+			if(rightPanelVBox.getChildren().contains(topPanelVBox)) rightPanelVBox.getChildren().remove(topPanelVBox);
+			separator.setVisible(false);
+		}
+		if(bottomPanelVBox.getChildren().size() ==0) {
+			if(rightPanelVBox.getChildren().contains(bottomPanelVBox)) rightPanelVBox.getChildren().remove(bottomPanelVBox);
+			separator.setVisible(false);
 		}
 	}
 	
