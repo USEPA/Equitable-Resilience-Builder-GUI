@@ -75,7 +75,7 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#launchButtonAction" text="Load Project">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
                </children>
