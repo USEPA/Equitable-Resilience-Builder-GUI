@@ -57,11 +57,6 @@
             </VBox>
             <VBox fx:id="activitiesPanel" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Activites">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
                   <ListView fx:id="activitiesListView" minHeight="50.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
                </children>
                <padding>

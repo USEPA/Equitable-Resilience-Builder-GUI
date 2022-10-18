@@ -88,7 +88,7 @@ public class ChapterLandingController implements Initializable {
 	}
 	
 	String getHeadingLabelText() {
-		return "Equitable Resilience Builder";
+		return "Equitable Resilience Builder Activities";
 	}
 	
 	public void setAboutTextAreaText(Text text) {
