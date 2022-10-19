@@ -33,16 +33,16 @@ public class GoalContainerController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Parent goalIntroRoot = loadGoalIntro();
-		VBox.setVgrow(goalIntroRoot, Priority.ALWAYS);
-		goalContainerVBox.getChildren().add(goalIntroRoot);
+		Parent goalCreationRoot = loadGoalCreation();
+		VBox.setVgrow(goalCreationRoot, Priority.ALWAYS);
+		goalContainerVBox.getChildren().add(goalCreationRoot);
 	}
 	
-	private Parent loadGoalIntro() {
+	private Parent loadGoalCreation() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalIntro.fxml"));
-			GoalIntroController goalIntroController = new GoalIntroController(app, project, this, projectSelectionController);
-			fxmlLoader.setController(goalIntroController);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalCreation.fxml"));
+			GoalCreationController goalCreationController = new GoalCreationController(app, project, projectSelectionController);
+			fxmlLoader.setController(goalCreationController);
 			return fxmlLoader.load();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
