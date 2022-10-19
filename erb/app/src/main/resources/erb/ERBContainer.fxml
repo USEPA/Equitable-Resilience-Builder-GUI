@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -26,6 +27,7 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <HBox fx:id="breadCrumbHBox" />
             <VBox fx:id="welcomeVBox" alignment="CENTER">
                <children>
                   <Label fx:id="titleLabel" text="ERB">

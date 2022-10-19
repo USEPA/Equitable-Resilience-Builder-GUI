@@ -81,9 +81,11 @@ public class ProjectSelectionController implements Initializable{
 					loadGoalCreationToContainer(selectedProject);
 				} else {
 					createFacilitatorProject(selectedProject);
+					app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", "00");
 					loadEngagementActionToContainer(selectedProject);
 				}
 			} else {
+				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", "00");
 				loadEngagementActionToContainer(selectedProject);
 			}
 		}

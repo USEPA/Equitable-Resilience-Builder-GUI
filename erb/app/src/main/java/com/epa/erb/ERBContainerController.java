@@ -16,7 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TreeItem;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.controlsfx.control.BreadCrumbBar;
 
 public class ERBContainerController implements Initializable{
 	
@@ -34,12 +37,15 @@ public class ERBContainerController implements Initializable{
 	Menu resourcesMenu;
 	@FXML
 	MenuItem landingPageMenuItem;
+	@FXML
+	HBox breadCrumbHBox;
 	
 	private App app;
 	public ERBContainerController(App app) {
 		this.app = app;
 	}
 	
+	private MyBreadCrumbBar myBreadCrumbBar;
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(ERBContainerController.class);
@@ -48,6 +54,7 @@ public class ERBContainerController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		handleResourceMenu();
+		handleBreadCrumbBar();
 		landingPageMenuItem.setOnAction(e-> menuItemSelected(landingPageMenuItem, false));
 	}
 	
@@ -65,6 +72,12 @@ public class ERBContainerController implements Initializable{
 			MenuItem menuItem = createMenuItem(idString, name, true);
 			addMenuItem(menuItem, true);
 		}
+	}
+	
+	private void handleBreadCrumbBar() {
+		myBreadCrumbBar = new MyBreadCrumbBar();
+		myBreadCrumbBar.initMyBreadCrumbBar("ERB Landing");
+		breadCrumbHBox.getChildren().add(myBreadCrumbBar);
 	}
 	
 	private void HandleLandingMenu(XMLManager xmlManager) {
@@ -167,6 +180,10 @@ public class ERBContainerController implements Initializable{
 
 	public VBox getErbContainer() {
 		return erbContainer;
+	}
+
+	public MyBreadCrumbBar getMyBreadCrumbBar() {
+		return myBreadCrumbBar;
 	}
 
 }

@@ -94,6 +94,7 @@ public class ERBLandingController implements Initializable {
 	@FXML
 	public void beginERBProcessButtonClicked() {
 		Parent projectSelectionRoot = loadProjectSelectionToContainer();
+		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb("Project Selection");
 		app.loadNodeToERBContainer(projectSelectionRoot);			
 	}
 	
