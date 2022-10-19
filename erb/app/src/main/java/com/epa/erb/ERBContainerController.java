@@ -114,7 +114,7 @@ public class ERBContainerController implements Initializable{
 	private void menuItemSelected(MenuItem menuItem, boolean isResource) {
 		if (menuItem != null) {
 			if (menuItem.getId().contentEquals("00")) {
-				app.launchERBLandingNew2();
+				app.launchERBLanding();
 				app.setEngagementActionController(null);
 			} else {
 				File formContentXMLFile = getFormContentXML(menuItem.getId(), isResource);

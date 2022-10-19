@@ -122,7 +122,7 @@ public class MainFormController implements Initializable{
 			stage.setTitle("Intro");
 			stage.showAndWait();
 		} else {
-			app.launchERBLandingNew2();
+			app.launchERBLanding();
 		}
 	}
 	

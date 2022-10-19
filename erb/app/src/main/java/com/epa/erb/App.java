@@ -61,7 +61,7 @@ public class App extends Application {
 	
 	private void showERBToolMain() {
 		Parent erbContainerRoot = loadERBContainer();
-		launchERBLandingNew2();
+		launchERBLanding();
 		showERBContainer(erbContainerRoot);
 	}
 	
@@ -85,12 +85,12 @@ public class App extends Application {
 		}
 	}
 	
-	public void launchERBLandingNew2() {
-		Parent erbLandingNew2Root = loadERBLandingNew2();
-		loadNodeToERBContainer(erbLandingNew2Root);
+	public void launchERBLanding() {
+		Parent erbLandingRoot = loadERBLanding();
+		loadNodeToERBContainer(erbLandingRoot);
 	}
 	
-	private Parent loadERBLandingNew2() {
+	private Parent loadERBLanding() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
 			ERBLandingController erbLandingNew2Controller = new ERBLandingController(this);
