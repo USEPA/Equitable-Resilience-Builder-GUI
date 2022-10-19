@@ -110,16 +110,17 @@ public class MainFormController implements Initializable{
 		}
 	}
 	
-	private void internalIntroLinkClicked(String link) {
+	public void internalIntroLinkClicked(String link) {
 		if (!link.contentEquals("00")) {
 			File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, false);
 			Pane root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
-			if(app.getEngagementActionController() != null) {
-				app.getEngagementActionController().cleanContentVBox();
-				app.getEngagementActionController().removeStatusHBox();
-				app.getEngagementActionController().getTreeView().getSelectionModel().select(null);
-				app.getEngagementActionController().addContentToContentVBox(root, true);
-			}
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setWidth(1150.0);
+			stage.setHeight(750.0);
+			stage.setScene(scene);
+			stage.setTitle("Intro");
+			stage.showAndWait();
 		} else {
 			app.launchERBLandingNew2();
 		}
@@ -128,12 +129,13 @@ public class MainFormController implements Initializable{
 	private void internalResourceLinkClicked(String link) {
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, true);
 		Pane root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
-		if(app.getEngagementActionController() != null) {
-			app.getEngagementActionController().cleanContentVBox();
-			app.getEngagementActionController().removeStatusHBox();
-			app.getEngagementActionController().getTreeView().getSelectionModel().select(null);
-			app.getEngagementActionController().addContentToContentVBox(root, true);
-		}
+		Stage stage = new Stage();
+		Scene scene = new Scene(root);
+		stage.setWidth(1150.0);
+		stage.setHeight(750.0);
+		stage.setScene(scene);
+		stage.setTitle("Resource");
+		stage.showAndWait();
 	}
 	
 	private void internalStepLinkClicked(String link) {

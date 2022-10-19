@@ -3,6 +3,7 @@ package com.epa.erb;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import com.epa.erb.forms.MainFormController;
 import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.Constants;
 import javafx.event.ActionEvent;
@@ -84,8 +85,8 @@ public class ERBLandingNew2Controller implements Initializable{
 	
 	private void loadContent(String id, boolean isResource) {
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(id, isResource);
-		Parent root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
-		app.loadNodeToERBContainer(root);
+		MainFormController mainFormController = new MainFormController(app, formContentXMLFile, app.getEngagementActionController());
+		mainFormController.internalIntroLinkClicked(id);
 	}
 	
 	private void loadArrowDiagram() {
