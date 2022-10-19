@@ -104,7 +104,7 @@ public class ERBLandingNew2Controller implements Initializable{
 	@FXML
 	public void projectButtonAction() {
 		Parent projectSelectionRoot = loadProjectSelectionToContainer();
-		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb("Project Selection");
+		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb("Project Selection", null);
 		app.loadNodeToERBContainer(projectSelectionRoot);			
 	}
 	
