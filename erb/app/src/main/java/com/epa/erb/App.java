@@ -92,8 +92,8 @@ public class App extends Application {
 	
 	private Parent loadERBLandingNew2() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLandingNew2.fxml"));
-			ERBLandingNew2Controller erbLandingNew2Controller = new ERBLandingNew2Controller(this);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
+			ERBLandingController erbLandingNew2Controller = new ERBLandingController(this);
 			fxmlLoader.setController(erbLandingNew2Controller);
 			return fxmlLoader.load();
 		} catch (Exception e) {

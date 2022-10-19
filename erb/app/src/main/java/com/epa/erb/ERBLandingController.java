@@ -21,7 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class ERBLandingNew2Controller implements Initializable{
+public class ERBLandingController implements Initializable{
 
 	@FXML
 	HBox welcomeHBox;
@@ -35,7 +35,7 @@ public class ERBLandingNew2Controller implements Initializable{
 	RadioButton goalModeRadioButton;
 	
 	private App app;
-	public ERBLandingNew2Controller(App app) {
+	public ERBLandingController(App app) {
 		this.app = app;
 	}
 	
