@@ -126,7 +126,7 @@ public class MainFormController implements Initializable{
 		}
 	}
 	
-	private void internalResourceLinkClicked(String link) {
+	public void internalResourceLinkClicked(String link) {
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, true);
 		Pane root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
 		Stage stage = new Stage();

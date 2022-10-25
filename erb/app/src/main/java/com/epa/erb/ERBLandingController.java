@@ -87,7 +87,12 @@ public class ERBLandingController implements Initializable{
 	private void loadContent(String id, boolean isResource) {
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(id, isResource);
 		MainFormController mainFormController = new MainFormController(app, formContentXMLFile, app.getEngagementActionController());
-		mainFormController.internalIntroLinkClicked(id);
+		if(isResource) {
+			mainFormController.internalResourceLinkClicked(id);
+		}else {
+			mainFormController.internalIntroLinkClicked(id);
+
+		}
 	}
 	
 	private void loadArrowDiagram() {

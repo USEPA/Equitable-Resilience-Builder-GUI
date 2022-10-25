@@ -39,7 +39,7 @@
                                        <center>
                                           <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                                              <children>
-                                                <Label id="07" onMouseClicked="#labelAction" text="Explore" textFill="#cf4545">
+                                                <Label id="7" onMouseClicked="#labelAction" text="Explore" textFill="#cf4545">
                                                    <font>
                                                       <Font name="System Bold" size="16.0" />
                                                    </font>
@@ -124,7 +124,7 @@
                                                       <Font size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <Hyperlink id="01" onAction="#hyperlinkAction" text="Equity and resilience">
+                                                <Hyperlink id="1" onAction="#hyperlinkAction" text="Equity and resilience">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -138,7 +138,7 @@
                                                       <Font size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <Hyperlink id="06" onAction="#hyperlinkAction" text="How ERB was made">
+                                                <Hyperlink id="6" onAction="#hyperlinkAction" text="How ERB was made">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -152,7 +152,7 @@
                                                       <Font size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <Hyperlink id="02" onAction="#hyperlinkAction" text="How others are using ERB">
+                                                <Hyperlink id="2" onAction="#hyperlinkAction" text="How others are using ERB">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -353,17 +353,17 @@
         <left>
             <VBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <Button id="03" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="How does it work?">
+                  <Button id="3" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="How does it work?">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button id="04" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="Who is ERB for?">
+                  <Button id="4" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="Who is ERB for?">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button id="05" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="What makes ERB different?">
+                  <Button id="5" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="What makes ERB different?">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -402,7 +402,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Hyperlink id="001" minWidth="138.0" onAction="#equitableResilienceHyperlinkClicked" text="equitable resilience">
+                        <Hyperlink id="01" minWidth="138.0" onAction="#equitableResilienceHyperlinkClicked" text="equitable resilience">
                            <font>
                               <Font size="15.0" />
                            </font>
