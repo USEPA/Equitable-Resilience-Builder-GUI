@@ -13,7 +13,6 @@ import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.goal.GoalCreationController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -21,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
@@ -64,31 +64,7 @@ public class ProjectSelectionController implements Initializable{
 			createNewProjectDirectory(project);
 			addProjectToListView(project);
 			projectsListView.getSelectionModel().select(project);
-			launchButtonAction();
-		}
-	}
-	
-	@FXML
-	public void launchButtonAction() {
-		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
-		if(selectedProject != null) {
-			MainPanelHandler mainPanelHandler = new MainPanelHandler();
-			app.setSelectedProject(selectedProject);
-			if(isProjectNew(selectedProject)) {
-				if (mode.contentEquals("Goal Mode")) {
-					Parent goalCreationRoot = mainPanelHandler.loadGoalCreationToContainer(app, selectedProject, this);
-					app.loadNodeToERBContainer(goalCreationRoot);
-				} else {
-					createFacilitatorProject(selectedProject); 
-					app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
-					app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
-					loadEngagementActionToContainer(selectedProject);
-				}
-			} else {
-				app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
-				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
-				loadEngagementActionToContainer(selectedProject);
-			}
+			mouseClickedProject(null);
 		}
 	}
 	
@@ -221,9 +197,35 @@ public class ProjectSelectionController implements Initializable{
 						}
 					}
 				};
+				cell.setOnMouseClicked(e-> mouseClickedProject(e));
 				return cell;
 			}
 		});
+	}
+	
+	private void mouseClickedProject(MouseEvent mouseEvent) {
+		if(mouseEvent == null || mouseEvent.getClickCount() == 2) {
+			Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
+			if(selectedProject != null) {
+				MainPanelHandler mainPanelHandler = new MainPanelHandler();
+				app.setSelectedProject(selectedProject);
+				if(isProjectNew(selectedProject)) {
+					if (mode.contentEquals("Goal Mode")) {
+						Parent goalCreationRoot = mainPanelHandler.loadGoalCreationToContainer(app, selectedProject, this);
+						app.loadNodeToERBContainer(goalCreationRoot);
+					} else {
+						createFacilitatorProject(selectedProject); 
+						app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
+						app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
+						loadEngagementActionToContainer(selectedProject);
+					}
+				} else {
+					app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
+					app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
+					loadEngagementActionToContainer(selectedProject);
+				}
+			}
+		}
 	}
 
 	public App getApp() {
