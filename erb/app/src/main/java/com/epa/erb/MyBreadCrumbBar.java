@@ -3,11 +3,8 @@ package com.epa.erb;
 import java.util.HashMap;
 
 import org.controlsfx.control.BreadCrumbBar;
-
 import com.epa.erb.project.Project;
-import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.MainPanelHandler;
-
 import javafx.scene.Parent;
 import javafx.scene.control.TreeItem;
 
@@ -23,7 +20,6 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 	
 	private String mode;
 	private Project project;
-	private ProjectSelectionController projectSelectionController;
 	
 	public void initMyBreadCrumbBar(String crumb, String id) {
 		TreeItem<String> breadCrumb = new TreeItem<String> (crumb);
@@ -49,7 +45,7 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 			Parent root = mainPanelHandler.loadProjectSelectionRoot(app, mode);
 			app.loadNodeToERBContainer(root);
 		}else if(mainPanelId.contentEquals("003")) {
-			//mainPanelHandler.loadGoalCreationToContainer(app, null, null);
+			//Don't allow right now
 		}else if(mainPanelId.contentEquals("004")) {
 			Parent root = mainPanelHandler.loadEngagementActionRoot(app, project);
 			app.loadNodeToERBContainer(root);
@@ -70,10 +66,6 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 
 	public void setProject(Project project) {
 		this.project = project;
-	}
-
-	public void setProjectSelectionController(ProjectSelectionController projectSelectionController) {
-		this.projectSelectionController = projectSelectionController;
 	}
 
 }
