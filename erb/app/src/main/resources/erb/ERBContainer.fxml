@@ -3,9 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -14,17 +12,10 @@
    <content>
       <VBox fx:id="erbVBox">
          <children>
-            <MenuBar nodeOrientation="RIGHT_TO_LEFT">
+            <MenuBar nodeOrientation="LEFT_TO_RIGHT">
               <menus>
-                <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources">
-                  <items>
-                        <Menu fx:id="erbLandingMenu" mnemonicParsing="false" text="ERB Intro Materials">
-                           <items>
-                              <MenuItem id="00" fx:id="landingPageMenuItem" mnemonicParsing="false" text="Landing Page" />
-                           </items></Menu>
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                  </items>
-                </Menu>
+                  <Menu fx:id="introMenu" mnemonicParsing="false" text="Intro Materials" />
+                <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources" />
               </menus>
             </MenuBar>
             <HBox fx:id="breadCrumbHBox" />

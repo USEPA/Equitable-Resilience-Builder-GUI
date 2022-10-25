@@ -12,11 +12,13 @@ import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ERBContainerController implements Initializable{
 	
@@ -29,11 +31,9 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	Label titleLabel;
 	@FXML
-	Menu erbLandingMenu;
+	Menu introMenu;
 	@FXML
 	Menu resourcesMenu;
-	@FXML
-	MenuItem landingPageMenuItem;
 	@FXML
 	HBox breadCrumbHBox;
 	
@@ -51,7 +51,6 @@ public class ERBContainerController implements Initializable{
 		handleControls();
 		handleResourceMenu();
 		handleBreadCrumbBar();
-		landingPageMenuItem.setOnAction(e-> menuItemSelected(landingPageMenuItem, false));
 	}
 	
 	private void handleControls() {
@@ -104,28 +103,22 @@ public class ERBContainerController implements Initializable{
 			if(isResource) {
 				resourcesMenu.getItems().add(menuItem);
 			} else {
-				erbLandingMenu.getItems().add(menuItem);
+				introMenu.getItems().add(menuItem);
 			}
 		}
 	}
 	
 	private void menuItemSelected(MenuItem menuItem, boolean isResource) {
 		if (menuItem != null) {
-			if (menuItem.getId().contentEquals("00")) {
-				app.launchERBLanding();
-				app.setEngagementActionController(null);
-			} else {
-				File formContentXMLFile = getFormContentXML(menuItem.getId(), isResource);
-				if (app.getEngagementActionController() != null) {
-					app.getEngagementActionController().getTreeView().getSelectionModel().select(null);
-					VBox root = loadMainFormContentController(formContentXMLFile);
-					app.getEngagementActionController().cleanContentVBox();
-					app.getEngagementActionController().addContentToContentVBox(root, true);
-				} else {
-					VBox root = loadMainFormContentController(formContentXMLFile);
-					app.loadNodeToERBContainer(root);
-				}
-			}
+			File formContentXMLFile = getFormContentXML(menuItem.getId(), isResource);
+			VBox root = loadMainFormContentController(formContentXMLFile);
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setWidth(1150.0);
+			stage.setHeight(750.0);
+			stage.setScene(scene);
+			stage.setTitle(menuItem.getText());
+			stage.showAndWait();
 		}
 	}
 	
