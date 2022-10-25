@@ -8,12 +8,12 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
-import com.epa.erb.MainPanelHandler;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.goal.GoalCreationController;
-import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.MainPanelHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -40,7 +40,6 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private FileHandler fileHandler = new FileHandler();
-	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
 	
 	@Override
@@ -157,15 +156,6 @@ public class ProjectSelectionController implements Initializable{
 			return true;
 		}
 	}
-
-	private boolean isCharAllowableProjectName(String projectName) {
-		String regexString = "^[A-za-z0-9-_]{1,255}$";
-		if(projectName != null && projectName.length() > 0) {
-			return projectName.matches(regexString);
-		}else {
-			return false;
-		}
-	}
 	
 	private boolean isProjectNew(Project project) {
 		if (project != null) {
@@ -183,14 +173,6 @@ public class ProjectSelectionController implements Initializable{
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setHeaderText(null);
 		alert.setContentText("Duplicate project name. Please enter a new project name.");
-		alert.setTitle("Error");
-		alert.showAndWait();
-	}
-	
-	private void showIsNotCharAllowableProjectName() {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setHeaderText(null);
-		alert.setContentText("Please enter a valid project name. (Allowable characters include letters, numbers, \"-\", \"_\")");
 		alert.setTitle("Error");
 		alert.showAndWait();
 	}

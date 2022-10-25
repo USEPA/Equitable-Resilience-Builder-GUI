@@ -21,9 +21,8 @@ public class Step {
 		this.rating = rating;
 	}
 	
-	private ArrayList<DynamicActivity> assignedDynamicActivities = new ArrayList<DynamicActivity>();
-	
 	private String GUID;
+	private ArrayList<DynamicActivity> assignedDynamicActivities = new ArrayList<DynamicActivity>();
 	
 	public Step cloneStep() {
 		Step clonedStep = new Step(stepType, status, shortName, longName, stepID, notes, rating);

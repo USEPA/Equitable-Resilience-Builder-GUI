@@ -2,8 +2,6 @@ package com.epa.erb.goal;
 
 import java.io.File;
 import java.util.ArrayList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.chapter.Chapter;
@@ -28,7 +26,6 @@ public class Goal {
 	
 	private FileHandler fileHandler = new FileHandler();
 	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
-	private Logger logger = LogManager.getLogger(Goal.class);
 	
 	public void setChapters(ArrayList<Activity> activities, Project project) {
 		File goalXMLFile = fileHandler.getGoalMetaXMLFile(project, this);
@@ -38,32 +35,7 @@ public class Goal {
 		} else {
 			chapters = getAllChapters();
 		}
-//			ArrayList<String> goalActivityIds = getUniqueActivityIdsForGoal();
-//			ArrayList<String> chapterNumbers = getAllChapterNumbers(activities, goalActivityIds);
-//			if (chapterNumbers != null) {
-//				for (String chapterNumber : chapterNumbers) {
-//					if (!chapterNumber.contentEquals("0")) {
-//						Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, getChapterDescription(chapterNumber), "");
-//						chapter.assignStepIds(app.getAvailableSteps());
-//						chapter.assignActivityIds(app.getAvailableActivities());
-//						chapters.add(chapter);
-//					}
-//				}
-//			}
-//		}
 	}
-	
-//	private ArrayList<String> getUniqueActivityIdsForGoal(){
-//		ArrayList<String> activityIds = new ArrayList<String>();
-//		for(GoalCategory goalCategory: listOfSelectedGoalCategories) {
-//			for(String id: goalCategory.getListOfAssignedActivityIDs()) {
-//				if(!activityIds.contains(id)) {
-//					activityIds.add(id);
-//				}
-//			}
-//		}
-//		return activityIds;
-//	}
 	
 	private ArrayList<Chapter> getAllChapters() {
 		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
@@ -79,45 +51,6 @@ public class Goal {
 		return chapters;
 	}
 	
-//	private ArrayList<String> getAllChapterNumbers(ArrayList<Activity> activities, ArrayList<String> goalActivityIds) {
-//		ArrayList<String> chapterNumbers = new ArrayList<String>();
-//		if (activities != null && goalActivityIds != null) {
-//			for(String activityId: goalActivityIds) {
-//				Activity activity = app.getActivityByID(activityId);
-//				if(!chapterNumbers.contains(activity.getChapterAssignment())) {
-//					chapterNumbers.add(activity.getChapterAssignment());
-//				}
-//			}
-//		} else {
-//			logger.error("Cannot getAllChapterNumbers. activites or goalActivityIds is null.");
-//		}
-//		return chapterNumbers;
-//	}
-	
-//	private String getChapterDescription(String chapterNumber) {
-//		if (chapterNumber != null) {
-//			for (Chapter chapter : app.getAvailableChapters()) {
-//				if (String.valueOf(chapter.getChapterNum()).contentEquals(chapterNumber)) {
-//					return chapter.getDescriptionName();
-//				}
-//			}
-//			logger.debug("Chapter description returned is null.");
-//			return null;
-//		} else {
-//			logger.error("Cannot getChapterDescription. chapterNumber is null.");
-//			return null;
-//		}
-//	}
-	
-	public boolean isSaved() {
-		for(Chapter chapter: chapters) {
-			if(!chapter.isSaved()) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 	public App getApp() {
 		return app;
 	}

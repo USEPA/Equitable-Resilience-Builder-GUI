@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.Constants;
+import com.epa.erb.utility.MainPanelHandler;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

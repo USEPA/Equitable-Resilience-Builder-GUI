@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

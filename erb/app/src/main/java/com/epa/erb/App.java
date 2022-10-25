@@ -25,28 +25,27 @@ import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.MainPanelHandler;
 import com.epa.erb.utility.XMLManager;
 
 public class App extends Application {
 
 	private int prefWidth;
 	private int prefHeight;
+	private Project selectedProject;
+	private ArrayList<Project> projects;
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private XMLManager xmlManager = new XMLManager(this);
+	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
-	
-	private Project selectedProject;
-	private ArrayList<Project> projects;
+	private EngagementActionController engagementActionController;
 	
 	private ArrayList<Step> availableSteps;
 	private ArrayList<Chapter> availableChapters;
 	private ArrayList<Activity> availableActivities;
 	private ArrayList<GoalCategory> availableGoalCategories;
 	private ArrayList<DynamicActivity> availableDynamicActivities;
-	
-	private ERBContainerController erbContainerController;
-	private EngagementActionController engagementActionController;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {

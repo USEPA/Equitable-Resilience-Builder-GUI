@@ -19,7 +19,6 @@ public class Chapter {
 		this.notes = notes;
 	}
 		
-	private boolean saved = true;
 	private String GUID;
 	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
@@ -34,11 +33,6 @@ public class Chapter {
 		clonedChapter.setAssignedSteps(assignedSteps);
 		clonedChapter.setAssignedActivities(assignedActivities);
 		return clonedChapter;
-	}
-	
-	public void resetAssignments() {
-		assignedSteps.clear();
-		assignedActivities.clear();
 	}
 	
 	public void addStep(Step step) {
@@ -69,15 +63,7 @@ public class Chapter {
 		return assignedActivities.size();
 	}
 		
-	public boolean isActivitiesSaved() {
-		for(Activity activity: assignedActivities) {
-			if(!activity.isSaved()) {
-				return false;
-			}
-		}
-		return true;
-	}
-
+	
 	public int getNumberOfReadyActivities() {
 		int count = 0;
 		for(Activity activity: assignedActivities) {
@@ -174,14 +160,6 @@ public class Chapter {
 
 	public void setNotes(String notes) {
 		this.notes = notes;
-	}
-	
-	public boolean isSaved() {
-		return saved && isActivitiesSaved();
-	}
-
-	public void setSaved(boolean saved) {
-		this.saved = saved;
 	}
 
 	public ArrayList<Step> getAssignedSteps() {

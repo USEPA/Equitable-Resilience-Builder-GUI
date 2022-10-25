@@ -10,20 +10,18 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.DynamicActivity;
-import com.epa.erb.Progress;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
-import com.epa.erb.chapter.ChapterLandingController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
-import com.epa.erb.goal.GlobalGoalTrackerController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
+import com.epa.erb.progress.GlobalProgressTrackerController;
+import com.epa.erb.progress.Progress;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -261,8 +259,8 @@ public class EngagementActionController implements Initializable {
 
 	private VBox loadChapterLanding(ArrayList<Chapter> chapters) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/chapter/ChapterLanding.fxml"));
-			ChapterLandingController chapterLandingController = new ChapterLandingController(chapters, this);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementGoalLandingContent.fxml"));
+			EngagementGoalLandingContentController chapterLandingController = new EngagementGoalLandingContentController(chapters, this);
 			fxmlLoader.setController(chapterLandingController);
 			VBox root = fxmlLoader.load();
 			return root;
@@ -315,8 +313,8 @@ public class EngagementActionController implements Initializable {
 
 	private Parent loadGlobalGoalTracker() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GlobalGoalTracker.fxml"));
-			GlobalGoalTrackerController globalGoalTrackerController = new GlobalGoalTrackerController(app, project);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progress/GlobalProgressTracker.fxml"));
+			GlobalProgressTrackerController globalGoalTrackerController = new GlobalProgressTrackerController(app, project);
 			fxmlLoader.setController(globalGoalTrackerController);
 			return fxmlLoader.load();
 		} catch (Exception e) {
@@ -491,38 +489,6 @@ public class EngagementActionController implements Initializable {
 		} else {
 
 		}
-	}
-
-	public Object getObjectByGUID(String GUID) {
-		for (Chapter chapter : listOfUniqueChapters) {
-			for (Step chapterStep : chapter.getAssignedSteps()) {
-				if (chapterStep.getGUID().contentEquals(GUID)) {
-					return chapterStep;
-				}
-			}
-			for (Activity activity : chapter.getAssignedActivities()) {
-				if (activity.getGUID().contentEquals(GUID)) {
-					return activity;
-				}
-				for (Step activityStep : activity.getAssignedSteps()) {
-					if (activityStep.getGUID().contentEquals(GUID)) {
-						return activityStep;
-					}
-					for (DynamicActivity dynamicActivity : activityStep.getAssignedDynamicActivities()) {
-						if (dynamicActivity.getGUID().contentEquals(GUID)) {
-							return dynamicActivity;
-						}
-					}
-				}
-				for (DynamicActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
-					if (dynamicActivity.getGUID().contentEquals(GUID)) {
-						return dynamicActivity;
-					}
-				}
-
-			}
-		}
-		return null;
 	}
 
 	public Chapter getChapterForActivity(Activity activity) {
@@ -1034,8 +1000,6 @@ public class EngagementActionController implements Initializable {
 			return null;
 		}
 	}
-	
-
 
 	public Activity retrieveNextActivity(ERBPathwayDiagramController currentErbPathwayDiagramController) {
 		int indexOfCurrentController = listOfPathwayDiagramControllers.indexOf(currentErbPathwayDiagramController);
@@ -1056,12 +1020,6 @@ public class EngagementActionController implements Initializable {
 				erbPathwayDiagramController.unHighlightDiagram();
 			}
 		}
-		}
-	}
-	
-	private void updatePathwayDiagrams() {
-		for(ERBPathwayDiagramController erbPathwayDiagramController: listOfPathwayDiagramControllers) {
-			erbPathwayDiagramController.updateStatus();
 		}
 	}
 

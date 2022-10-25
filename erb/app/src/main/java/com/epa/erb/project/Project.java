@@ -22,17 +22,6 @@ public class Project {
 		this.projectGoals = projectGoals;
 	}
 	
-	public boolean isSaved() {
-		if (projectGoals != null) {
-			for (Goal goal : projectGoals) {
-				if (!goal.isSaved()) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	
 	public String getProjectName() {
 		return projectName;
 	}

@@ -1,7 +1,6 @@
 package com.epa.erb;
 
 import java.util.ArrayList;
-import com.epa.erb.noteboard.NoteBoardContentController;
 
 public class Activity {
 	
@@ -19,9 +18,6 @@ public class Activity {
 		this.notes = notes;
 		this.rating = rating;
 	}
-	
-	private boolean isSaved = true;
-	private NoteBoardContentController noteBoardContentController;
 	
 	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
 	private ArrayList<DynamicActivity> assignedDynamicActivities = new ArrayList<DynamicActivity>();
@@ -115,22 +111,6 @@ public class Activity {
 
 	public void setRating(String rating) {
 		this.rating = rating;
-	}
-
-	public boolean isSaved() {
-		return isSaved;
-	}
-
-	public void setSaved(boolean isSaved) {
-		this.isSaved = isSaved;
-	}
-
-	public NoteBoardContentController getNoteBoardContentController() {
-		return noteBoardContentController;
-	}
-
-	public void setNoteBoardContentController(NoteBoardContentController noteBoardContentController) {
-		this.noteBoardContentController = noteBoardContentController;
 	}
 
 	public ArrayList<Step> getAssignedSteps() {

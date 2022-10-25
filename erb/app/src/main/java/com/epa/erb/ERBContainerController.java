@@ -4,11 +4,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.MainPanelHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.controlsfx.control.BreadCrumbBar;
 
 public class ERBContainerController implements Initializable{
 	
@@ -48,7 +45,6 @@ public class ERBContainerController implements Initializable{
 	private MyBreadCrumbBar myBreadCrumbBar;
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
-	private Logger logger = LogManager.getLogger(ERBContainerController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

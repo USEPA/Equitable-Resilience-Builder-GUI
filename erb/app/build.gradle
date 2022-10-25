@@ -28,16 +28,7 @@ dependencies {
 	implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
 	implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
 	implementation 'commons-io:commons-io:2.11.0'
-	implementation 'com.aspose:aspose-words:22.7:jdk17'
-	implementation 'org.controlsfx:controlsfx:11.1.2'
-	
-    //implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.0'
-    //<!-- JAXB Implementation -->
-    //implementation 'com.sun.xml.bind:jaxb-impl:3.0.0'
-	//implementation 'org.slf4j:slf4j-jdk14:2.0.0'
-	//implementation 'org.docx4j:docx4j-JAXB-ReferenceImpl:11.4.7'
-	//implementation 'org.docx4j:docx4j-core:11.4.7'
-	
+	implementation 'org.controlsfx:controlsfx:11.1.2'	
 }
 
 

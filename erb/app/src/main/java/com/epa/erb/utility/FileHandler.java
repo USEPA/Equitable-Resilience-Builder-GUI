@@ -7,11 +7,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.aspose.words.Document;
-import com.aspose.words.SaveFormat;
 import com.epa.erb.Activity;
 import com.epa.erb.DynamicActivity;
 import com.epa.erb.Step;
@@ -306,19 +303,6 @@ public class FileHandler {
 			directory.delete();
 		} else {
 			logger.error("Cannot deleteDirectory. directory = null.");
-		}
-	}
-	
-	public void convertDocxToPDF(File docxFileToConvert, String pathToConvertedPDF) {
-		if (docxFileToConvert != null && docxFileToConvert.exists() && pathToConvertedPDF != null) {
-			try {
-				Document documentToConvert = new Document(docxFileToConvert.getPath());
-				documentToConvert.save(pathToConvertedPDF, SaveFormat.PDF);
-			} catch (Exception e) {
-				logger.error("Cannot convertDocxToPDF. " + e.getMessage());
-			}
-		} else {
-			logger.error("Cannot convertDocxToPDF. docxFileToConvert = " + docxFileToConvert + " pathToConvertedPDF = " + pathToConvertedPDF);
 		}
 	}
 
