@@ -8,21 +8,20 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
-import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.MainPanelHandler;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
-import com.epa.erb.goal.GoalContainerController;
 import com.epa.erb.goal.GoalCreationController;
+import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
@@ -34,21 +33,20 @@ public class ProjectSelectionController implements Initializable{
 	ListView<Project> projectsListView;
 	
 	private App app;
-	private boolean updateProjects;
 	private String mode;
-	public ProjectSelectionController(App app, boolean updateProjects, String mode) {
+	public ProjectSelectionController(App app, String mode) {
 		this.app = app;
-		this.updateProjects = true;
 		this.mode = mode;
 	}
 	
 	private FileHandler fileHandler = new FileHandler();
+	private Constants constants = new Constants();
 	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		if(updateProjects) app.updateAvailableProjectsList();
+		app.updateAvailableProjectsList();
 		setProjectsListViewCellFactory();
 		fillProjectsListView();
 	}
@@ -75,17 +73,21 @@ public class ProjectSelectionController implements Initializable{
 	public void launchButtonAction() {
 		Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
 		if(selectedProject != null) {
+			MainPanelHandler mainPanelHandler = new MainPanelHandler();
 			app.setSelectedProject(selectedProject);
 			if(isProjectNew(selectedProject)) {
 				if (mode.contentEquals("Goal Mode")) {
-					loadGoalCreationToContainer(selectedProject);
+					Parent goalCreationRoot = mainPanelHandler.loadGoalCreationToContainer(app, selectedProject, this);
+					app.loadNodeToERBContainer(goalCreationRoot);
 				} else {
-					createFacilitatorProject(selectedProject);
-					app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", "00");
+					createFacilitatorProject(selectedProject); 
+					app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
+					app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
 					loadEngagementActionToContainer(selectedProject);
 				}
 			} else {
-				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", "00");
+				app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
+				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
 				loadEngagementActionToContainer(selectedProject);
 			}
 		}
@@ -121,35 +123,10 @@ public class ProjectSelectionController implements Initializable{
 		return goal;
 	}
 	
-	private void loadGoalCreationToContainer(Project project) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
-			GoalContainerController goalContainerController = new GoalContainerController(app, project, this);
-			fxmlLoader.setController(goalContainerController);
-			VBox root = fxmlLoader.load();
-			root.setPrefWidth(app.getPrefWidth());
-			root.setPrefHeight(app.getPrefHeight());
-			app.loadNodeToERBContainer(root);
-		}catch (Exception e) {
-			logger.error(e.getMessage());
-			e.printStackTrace();
-		}
-	}
-	
 	public void loadEngagementActionToContainer(Project project) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
-			EngagementActionController engagementActionController = new EngagementActionController(app, project);
-			app.setEngagementActionController(engagementActionController);
-			fxmlLoader.setController(engagementActionController);
-			VBox root = fxmlLoader.load();
-			root.setPrefWidth(app.getPrefWidth());
-			root.setPrefHeight(app.getPrefHeight());
-			app.loadNodeToERBContainer(root);
-		}catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-		}
+		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		Parent engagementActionRoot = mainPanelHandler.loadEngagementActionRoot(app, project);
+		app.loadNodeToERBContainer(engagementActionRoot);
 	}
 	
 	private boolean isValidNewProjectName(String projectName) {
@@ -273,14 +250,6 @@ public class ProjectSelectionController implements Initializable{
 
 	public void setApp(App app) {
 		this.app = app;
-	}
-
-	public boolean isUpdateProjects() {
-		return updateProjects;
-	}
-
-	public void setUpdateProjects(boolean updateProjects) {
-		this.updateProjects = updateProjects;
 	}
 
 	public String getMode() {

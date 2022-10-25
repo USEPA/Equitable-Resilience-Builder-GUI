@@ -1,6 +1,5 @@
 package com.epa.erb.utility;
 
-
 public class Constants {
 		
 	//Scaling Sizes
@@ -51,7 +50,7 @@ public class Constants {
 	
 	//Post-It Note Single
 	private String postItNoteColor = "#FFFFFF"; 				//White
-		
+			
 	//Paths
 //	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
 	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB"; //Local
@@ -63,7 +62,6 @@ public class Constants {
 	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data"; //Local
 	
 	public Constants() {
-		
 	}
 	
 	//-------------------------------------------------------------------------

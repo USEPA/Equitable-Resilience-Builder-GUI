@@ -86,19 +86,9 @@ public class App extends Application {
 	}
 	
 	public void launchERBLanding() {
-		Parent erbLandingRoot = loadERBLanding();
+		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		Parent erbLandingRoot = mainPanelHandler.loadERBLanding(this);
 		loadNodeToERBContainer(erbLandingRoot);
-	}
-	
-	private Parent loadERBLanding() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
-			ERBLandingController erbLandingNew2Controller = new ERBLandingController(this);
-			fxmlLoader.setController(erbLandingNew2Controller);
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			return null;
-		}
 	}
 	
 	private Parent loadERBContainer() {

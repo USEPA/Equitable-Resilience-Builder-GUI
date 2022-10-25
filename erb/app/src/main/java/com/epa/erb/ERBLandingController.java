@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
-import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.Constants;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -103,24 +102,12 @@ public class ERBLandingController implements Initializable{
 	
 	@FXML
 	public void projectButtonAction() {
-		Parent projectSelectionRoot = loadProjectSelectionToContainer();
-		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb("Project Selection", null);
+		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		Parent projectSelectionRoot = mainPanelHandler.loadProjectSelectionRoot(app, mode);
+		String projectSelectionString = "Project Selection";
+		app.getErbContainerController().getMyBreadCrumbBar().setMode(mode);
+		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(projectSelectionString, mainPanelHandler.getMainPanelIdHashMap().get(projectSelectionString));
 		app.loadNodeToERBContainer(projectSelectionRoot);			
-	}
-	
-	private Parent loadProjectSelectionToContainer() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
-			ProjectSelectionController projectSelectionController = new ProjectSelectionController(app, false, mode);
-			fxmlLoader.setController(projectSelectionController);
-			VBox root = fxmlLoader.load();
-			root.setPrefWidth(app.getPrefWidth());
-			root.setPrefHeight(app.getPrefHeight());
-			return root;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
 	}
 
 	public App getApp() {

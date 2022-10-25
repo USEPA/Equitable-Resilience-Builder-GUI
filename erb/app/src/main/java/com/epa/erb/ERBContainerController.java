@@ -75,8 +75,10 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void handleBreadCrumbBar() {
-		myBreadCrumbBar = new MyBreadCrumbBar();
-		myBreadCrumbBar.initMyBreadCrumbBar("ERB Landing", null);
+		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		myBreadCrumbBar = new MyBreadCrumbBar(app);
+		String erbLandingString = "ERB Landing";
+		myBreadCrumbBar.initMyBreadCrumbBar(erbLandingString, mainPanelHandler.getMainPanelIdHashMap().get(erbLandingString));
 		breadCrumbHBox.getChildren().add(myBreadCrumbBar);
 	}
 	
