@@ -634,7 +634,8 @@ public class EngagementActionController implements Initializable {
 			addLocalProgressVBox(1);
 		}
 		addERBKeyVBox(1);
-		loadStepContent(currentSelectedStep);
+		Pane root = loadStepContent(currentSelectedStep);
+		addContentToContentVBox(root, false);
 		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
 		highlightActivityDiagram(currentSelectedActivity);
@@ -699,22 +700,23 @@ public class EngagementActionController implements Initializable {
 				for (Step step : uniqueChapter.getAssignedSteps()) {
 					// CHAPTER -> STEP
 					Step uniqueStep = step.cloneStep();
-					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
-					chapterTreeItem.getChildren().add(chapterStepTreeItem);
 					String stepGUID = uniqueStep.getGUID();
 					uniqueStep.setGUID(stepGUID);
 					map.put(stepGUID, uniqueStep);
-					treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
+					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+					if(uniqueStep.getStepID().length() != 4) {
+						chapterTreeItem.getChildren().add(chapterStepTreeItem);
+						treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
+					}
 					for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
 						// CHAPTER -> STEP -> DYNAMIC ACTIVITY
 						DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
-						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
-						chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
 						String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
 						uniqueDynamicActivity.setGUID(dynamicActivityGUID);
 						map.put(dynamicActivityGUID, uniqueDynamicActivity);
+						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+						chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
 						treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
-
 					} // CHAPTER STEP DYYNAMIC ACTIVITY
 				} // CHAPTER STEP
 				for (Activity activity : uniqueChapter.getAssignedActivities()) {
@@ -729,12 +731,14 @@ public class EngagementActionController implements Initializable {
 					for (Step step : uniqueActivity.getAssignedSteps()) {
 						// CHAPTER -> ACTIVITY -> STEP
 						Step uniqueStep = step.cloneStep();
-						TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
-						activityTreeItem.getChildren().add(stepTreeItem);
 						String stepGUID = uniqueStep.getGUID();
 						uniqueStep.setGUID(stepGUID);
 						map.put(stepGUID, uniqueStep);
-						treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+						TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+						if(uniqueStep.getStepID().length() != 4) {
+							activityTreeItem.getChildren().add(stepTreeItem);
+							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+						}
 						for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
 							// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
 							if (dynamicActivity != null) {
@@ -792,9 +796,10 @@ public class EngagementActionController implements Initializable {
 					uniqueStep.setGUID(stepGUID);
 					map.put(stepGUID, uniqueStep);
 					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
-					chapterTreeItem.getChildren().add(chapterStepTreeItem);
-					treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
-
+					if(uniqueStep.getStepID().length() != 4) {
+						chapterTreeItem.getChildren().add(chapterStepTreeItem);
+						treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
+					}
 					// CHAPTER -> STEP -> DYNAMIC ACTIVITY
 					for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
 						DynamicActivity uniqueDynamicActivity = new DynamicActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
@@ -825,8 +830,10 @@ public class EngagementActionController implements Initializable {
 						uniqueStep.setGUID(stepGUID);
 						map.put(stepGUID, uniqueStep);
 						TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
-						activityTreeItem.getChildren().add(stepTreeItem);
-						treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+						if(uniqueStep.getStepID().length() != 4) {
+							activityTreeItem.getChildren().add(stepTreeItem);
+							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+						}
 						// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
 						for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
 							DynamicActivity uniqueDynamicActivity = new DynamicActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
@@ -960,19 +967,20 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	private void loadStepContent(Step step) {
+	public Pane loadStepContent(Step step) {
 		if (step != null) {
 			File file = fileHandler.getStaticStepFormText(step);
 			if (step.getStepType().contentEquals("mainForm")) {
 				Pane root = loadMainFormController(file);
-				addContentToContentVBox(root, false);
+				return root;
 			} else if (step.getStepType().contentEquals("outputForm")) {
 				Pane root = loadOutputFormController(file);
-				addContentToContentVBox(root, false);
+				return root;
 			}
 		} else {
 			logger.error("Cannot loadStepContent. step = " + step);
 		}
+		return null;
 	}
 
 	private VBox loadOutputFormController(File xmlContentFileToParse) {

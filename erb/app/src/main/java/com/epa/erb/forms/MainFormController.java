@@ -140,13 +140,25 @@ public class MainFormController implements Initializable{
 	
 	private void internalStepLinkClicked(String link) {
 		if (engagementActionController != null) {
-			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel()
+					.getSelectedItem();
 			Step step = findStep(link);
-			if(step != null) {
-				for(TreeItem<String> treeItem: engagementActionController.getTreeItemIdTreeMap().keySet()) {
-					if(engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(step.getGUID())) {
-						engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-						engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
+			if (step != null) {
+				if (step.getStepID().length() == 4) {
+					Pane root = engagementActionController.loadStepContent(step);
+					Stage stage = new Stage();
+					Scene scene = new Scene(root);
+					stage.setWidth(1150.0);
+					stage.setHeight(750.0);
+					stage.setScene(scene);
+					stage.setTitle(step.getLongName());
+					stage.showAndWait();
+				} else {
+					for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+						if (engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(step.getGUID())) {
+							engagementActionController.getTreeView().getSelectionModel().select(treeItem);
+							engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
+						}
 					}
 				}
 			}
