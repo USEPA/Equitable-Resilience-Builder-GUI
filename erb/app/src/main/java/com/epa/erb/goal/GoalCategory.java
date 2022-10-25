@@ -2,20 +2,17 @@ package com.epa.erb.goal;
 
 import java.util.ArrayList;
 
+import com.epa.erb.chapter.Chapter;
+
 public class GoalCategory {
 	
 	private String categoryName;
-	private ArrayList<String> listOfAssignedActivityIDs;
-	public GoalCategory(String categoryName, ArrayList<String> listOfAssignedActivityIDs) {
+	private ArrayList<Chapter> goalChapters;
+	public GoalCategory(String categoryName, ArrayList<Chapter> goalChapters) {
 		this.categoryName = categoryName;
-		this.listOfAssignedActivityIDs = listOfAssignedActivityIDs;
+		this.goalChapters = goalChapters;
 	}
-	
-	public String toString() {
-		return "Category Name: " + categoryName + "\n" + 
-				"List of assigned IDs: " + listOfAssignedActivityIDs;
-	}
-	
+
 	public String getCategoryName() {
 		return categoryName;
 	}
@@ -24,12 +21,11 @@ public class GoalCategory {
 		this.categoryName = categoryName;
 	}
 
-	public ArrayList<String> getListOfAssignedActivityIDs() {
-		return listOfAssignedActivityIDs;
+	public ArrayList<Chapter> getGoalChapters() {
+		return goalChapters;
 	}
 
-	public void setListOfAssignedActivityIDs(ArrayList<String> listOfAssignedActivityIDs) {
-		this.listOfAssignedActivityIDs = listOfAssignedActivityIDs;
-	}	
-
+	public void setGoalChapters(ArrayList<Chapter> goalChapters) {
+		this.goalChapters = goalChapters;
+	}
 }

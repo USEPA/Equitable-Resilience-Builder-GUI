@@ -36,78 +36,78 @@ public class Goal {
 			XMLManager xmlManager = new XMLManager(app);
 			chapters = xmlManager.parseGoalXML(goalXMLFile, activities);
 		} else {
-			ArrayList<String> goalActivityIds = getUniqueActivityIdsForGoal();
-			ArrayList<String> chapterNumbers = getAllChapterNumbers(activities, goalActivityIds);
-			if (chapterNumbers != null) {
-				for (String chapterNumber : chapterNumbers) {
-					if (!chapterNumber.contentEquals("0")) {
-						Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, getChapterDescription(chapterNumber), "");
-						chapter.assignStepIds(app.getAvailableSteps());
-						chapter.assignActivityIds(app.getAvailableActivities());
-						chapters.add(chapter);
-					}
-				}
-			}
+			chapters = getAllChapters();
 		}
+//			ArrayList<String> goalActivityIds = getUniqueActivityIdsForGoal();
+//			ArrayList<String> chapterNumbers = getAllChapterNumbers(activities, goalActivityIds);
+//			if (chapterNumbers != null) {
+//				for (String chapterNumber : chapterNumbers) {
+//					if (!chapterNumber.contentEquals("0")) {
+//						Chapter chapter = new Chapter(Integer.parseInt(chapterNumber), "0" + chapterNumber,"Chapter " + chapterNumber, getChapterDescription(chapterNumber), "");
+//						chapter.assignStepIds(app.getAvailableSteps());
+//						chapter.assignActivityIds(app.getAvailableActivities());
+//						chapters.add(chapter);
+//					}
+//				}
+//			}
+//		}
 	}
 	
-	private ArrayList<String> getUniqueActivityIdsForGoal(){
-		ArrayList<String> activityIds = new ArrayList<String>();
-		for(GoalCategory goalCategory: listOfSelectedGoalCategories) {
-			for(String id: goalCategory.getListOfAssignedActivityIDs()) {
-				if(!activityIds.contains(id)) {
-					activityIds.add(id);
+//	private ArrayList<String> getUniqueActivityIdsForGoal(){
+//		ArrayList<String> activityIds = new ArrayList<String>();
+//		for(GoalCategory goalCategory: listOfSelectedGoalCategories) {
+//			for(String id: goalCategory.getListOfAssignedActivityIDs()) {
+//				if(!activityIds.contains(id)) {
+//					activityIds.add(id);
+//				}
+//			}
+//		}
+//		return activityIds;
+//	}
+	
+	private ArrayList<Chapter> getAllChapters() {
+		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
+		ArrayList<String> chapNums = new ArrayList<String>();
+		for (GoalCategory goalCategory : listOfSelectedGoalCategories) {
+			for (Chapter chapter : goalCategory.getGoalChapters()) {
+				if(!chapNums.contains(String.valueOf(chapter.getChapterNum()))) {
+					chapNums.add(String.valueOf(chapter.getChapterNum()));
+					chapters.add(chapter);
 				}
 			}
 		}
-		return activityIds;
+		return chapters;
 	}
 	
-	private ArrayList<Activity> getActivitiesForChapter(String chapterNumber, ArrayList<Activity> activities,ArrayList<String> goalActivityIds) {
-		ArrayList<Activity> activitiesForChapter = new ArrayList<Activity>();
-		if (chapterNumber != null && activities != null && goalActivityIds != null) {
-			for (String goalActivityID : goalActivityIds) {
-				Activity activity = app.getActivityByID(goalActivityID, app.getAvailableActivities());
-				if (activity.getChapterAssignment().contentEquals(chapterNumber)) {
-					Activity clonedActivity = activity.cloneActivity();
-					activitiesForChapter.add(clonedActivity);
-				}
-			}
-		} else {
-			logger.error("Cannot getActivitiesForChapter. param is null.");
-		}
-		return activitiesForChapter;
-	}
+//	private ArrayList<String> getAllChapterNumbers(ArrayList<Activity> activities, ArrayList<String> goalActivityIds) {
+//		ArrayList<String> chapterNumbers = new ArrayList<String>();
+//		if (activities != null && goalActivityIds != null) {
+//			for(String activityId: goalActivityIds) {
+//				Activity activity = app.getActivityByID(activityId);
+//				if(!chapterNumbers.contains(activity.getChapterAssignment())) {
+//					chapterNumbers.add(activity.getChapterAssignment());
+//				}
+//			}
+//		} else {
+//			logger.error("Cannot getAllChapterNumbers. activites or goalActivityIds is null.");
+//		}
+//		return chapterNumbers;
+//	}
 	
-	private ArrayList<String> getAllChapterNumbers(ArrayList<Activity> activities, ArrayList<String> goalActivityIds) {
-		ArrayList<String> chapterNumbers = new ArrayList<String>();
-		if (activities != null && goalActivityIds != null) {
-			for(String activityId: goalActivityIds) {
-				Activity activity = app.getActivityByID(activityId, activities);
-				if(!chapterNumbers.contains(activity.getChapterAssignment())) {
-					chapterNumbers.add(activity.getChapterAssignment());
-				}
-			}
-		} else {
-			logger.error("Cannot getAllChapterNumbers. activites or goalActivityIds is null.");
-		}
-		return chapterNumbers;
-	}
-	
-	private String getChapterDescription(String chapterNumber) {
-		if (chapterNumber != null) {
-			for (Chapter chapter : app.getAvailableChapters()) {
-				if (String.valueOf(chapter.getChapterNum()).contentEquals(chapterNumber)) {
-					return chapter.getDescriptionName();
-				}
-			}
-			logger.debug("Chapter description returned is null.");
-			return null;
-		} else {
-			logger.error("Cannot getChapterDescription. chapterNumber is null.");
-			return null;
-		}
-	}
+//	private String getChapterDescription(String chapterNumber) {
+//		if (chapterNumber != null) {
+//			for (Chapter chapter : app.getAvailableChapters()) {
+//				if (String.valueOf(chapter.getChapterNum()).contentEquals(chapterNumber)) {
+//					return chapter.getDescriptionName();
+//				}
+//			}
+//			logger.debug("Chapter description returned is null.");
+//			return null;
+//		} else {
+//			logger.error("Cannot getChapterDescription. chapterNumber is null.");
+//			return null;
+//		}
+//	}
 	
 	public boolean isSaved() {
 		for(Chapter chapter: chapters) {

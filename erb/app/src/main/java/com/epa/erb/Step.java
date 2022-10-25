@@ -5,28 +5,20 @@ import java.util.ArrayList;
 public class Step {
 	
 	private String stepType;
-	private String activityAssignment; 
-	private String chapterAssignment; 
 	private String status;
 	private String shortName;
 	private String longName;
-	private String fileName;
 	private String stepID;
 	private String notes;
 	private String rating;
-	private ArrayList<String> assignedDynamicActivityIds;
-	public Step(String stepType, String activityAssignment, String chapterAssignment, String status, String shortName, String longName, String fileName, String stepID, String notes, String rating,ArrayList<String> assignedDynamicActivityIds) {
+	public Step(String stepType, String status, String shortName, String longName, String stepID, String notes, String rating) {
 		this.stepType = stepType;
-		this.activityAssignment = activityAssignment;
-		this.chapterAssignment = chapterAssignment;
 		this.status = status;
 		this.shortName = shortName;
 		this.longName = longName;
-		this.fileName = fileName;
 		this.stepID = stepID;
 		this.notes = notes;
 		this.rating = rating;
-		this.assignedDynamicActivityIds = assignedDynamicActivityIds;
 	}
 	
 	private ArrayList<DynamicActivity> assignedDynamicActivities = new ArrayList<DynamicActivity>();
@@ -34,10 +26,14 @@ public class Step {
 	private String GUID;
 	
 	public Step cloneStep() {
-		Step clonedStep = new Step(stepType, activityAssignment, chapterAssignment, status, shortName, longName, fileName, stepID, notes, rating, assignedDynamicActivityIds);
+		Step clonedStep = new Step(stepType, status, shortName, longName, stepID, notes, rating);
 		clonedStep.setGUID(GUID);
 		clonedStep.setAssignedDynamicActivities(assignedDynamicActivities);
 		return clonedStep;
+	}
+
+	public void resetAssignments() {
+		assignedDynamicActivities.clear();
 	}
 	
 	public void addDynamicActivity(DynamicActivity dynamicActivity) {
@@ -58,22 +54,6 @@ public class Step {
 
 	public void setStepType(String stepType) {
 		this.stepType = stepType;
-	}
-
-	public String getActivityAssignment() {
-		return activityAssignment;
-	}
-
-	public void setActivityAssignment(String activityAssignment) {
-		this.activityAssignment = activityAssignment;
-	}
-
-	public String getChapterAssignment() {
-		return chapterAssignment;
-	}
-
-	public void setChapterAssignment(String chapterAssignment) {
-		this.chapterAssignment = chapterAssignment;
 	}
 
 	public String getStatus() {
@@ -100,14 +80,6 @@ public class Step {
 		this.longName = longName;
 	}
 
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
 	public String getStepID() {
 		return stepID;
 	}
@@ -130,14 +102,6 @@ public class Step {
 
 	public void setRating(String rating) {
 		this.rating = rating;
-	}
-
-	public ArrayList<String> getAssignedDynamicActivityIds() {
-		return assignedDynamicActivityIds;
-	}
-
-	public void setAssignedDynamicActivityIds(ArrayList<String> assignedDynamicActivityIds) {
-		this.assignedDynamicActivityIds = assignedDynamicActivityIds;
 	}
 
 	public ArrayList<DynamicActivity> getAssignedDynamicActivities() {

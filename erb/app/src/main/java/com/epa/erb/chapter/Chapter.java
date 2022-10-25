@@ -20,15 +20,10 @@ public class Chapter {
 	}
 		
 	private boolean saved = true;
-	
-	private ArrayList<String> assignedStepIds = new ArrayList<String>();
-	private ArrayList<String> assignedActivityIds = new ArrayList<String>();
-
+	private String GUID;
 	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
 
-	private String GUID;
-	
 	public Chapter() {
 		
 	}
@@ -37,36 +32,13 @@ public class Chapter {
 		Chapter clonedChapter = new Chapter(chapterNum, numericName, stringName, descriptionName, notes);
 		clonedChapter.setGUID(GUID);
 		clonedChapter.setAssignedSteps(assignedSteps);
-		clonedChapter.setAssignedStepIds(assignedStepIds);
-		clonedChapter.setAssignedActivityIds(assignedActivityIds);
 		clonedChapter.setAssignedActivities(assignedActivities);
 		return clonedChapter;
 	}
 	
-	public void assignStepIds(ArrayList<Step> allSteps) {
-		ArrayList<String> stepIds = new ArrayList<String>();
-		if (allSteps != null) {
-			for (Step step : allSteps) {
-				if (step.getActivityAssignment().contentEquals(chapterNum + "0")) {
-					int sizeOfStepIdsList = stepIds.size();
-					stepIds.add(sizeOfStepIdsList, step.getStepID());
-				}
-			}
-			assignedStepIds = stepIds;
-		}
-	}
-	
-	public void assignActivityIds(ArrayList<Activity> allActivities) {
-		ArrayList<String> activityIds = new ArrayList<String>();
-		if(allActivities != null) {
-			for(Activity activity: allActivities) {
-				if(activity.getChapterAssignment().contentEquals(String.valueOf(chapterNum))) {
-					int sizeOfActivityIdsList = activityIds.size();
-					activityIds.add(sizeOfActivityIdsList, activity.getActivityID());
-				}
-			}
-		}
-		assignedActivityIds = activityIds;
+	public void resetAssignments() {
+		assignedSteps.clear();
+		assignedActivities.clear();
 	}
 	
 	public void addStep(Step step) {
@@ -210,22 +182,6 @@ public class Chapter {
 
 	public void setSaved(boolean saved) {
 		this.saved = saved;
-	}
-	
-	public ArrayList<String> getAssignedStepIds() {
-		return assignedStepIds;
-	}
-
-	public void setAssignedStepIds(ArrayList<String> assignedStepIds) {
-		this.assignedStepIds = assignedStepIds;
-	}
-
-	public ArrayList<String> getAssignedActivityIds() {
-		return assignedActivityIds;
-	}
-
-	public void setAssignedActivityIds(ArrayList<String> assignedActivityIds) {
-		this.assignedActivityIds = assignedActivityIds;
 	}
 
 	public ArrayList<Step> getAssignedSteps() {

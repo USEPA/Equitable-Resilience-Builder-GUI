@@ -200,78 +200,79 @@ public class App extends Application {
 		readAndStoreProjects();
 	}
 	
-	public String getActivityIDByName(String activityShortName) {
-		if (activityShortName != null) {
-			for (Activity activity : availableActivities) {
-				if (activity.getShortName().contentEquals(activityShortName)) {
-					return activity.getActivityID();
+	public GoalCategory getGoalCategoryByName(String goalCategoryName) {
+		if(goalCategoryName != null) {
+			for(GoalCategory goalCategory: availableGoalCategories) {
+				if(goalCategory.getCategoryName().contentEquals(goalCategoryName)) {
+					return goalCategory;
 				}
 			}
 		} else {
-			logger.error("Cannot getActivityIDByName. activityShortName is null.");
+			logger.error("Cannot getGoalCategoryByName. goalCategoryName is null.");
+			return null;
 		}
+		logger.debug("Cannot getGoalCategoryByName. GoalCategory returned is null");
 		return null;
 	}
 	
-	public DynamicActivity getDynamicActivityById(String activityID, ArrayList<DynamicActivity> dynamicActivities) {
-		if (activityID != null && dynamicActivities != null) {
-			for (DynamicActivity dynamicActivity : dynamicActivities) {
+	public DynamicActivity getDynamicActivityById(String activityID) {
+		if (activityID != null) {
+			for (DynamicActivity dynamicActivity : availableDynamicActivities) {
 				if (dynamicActivity.getId().contentEquals(activityID)) {
 					return dynamicActivity;
 				}
 			}
 		} else {
-			logger.error("Cannot getDynamicActivityById. activityID or availableDynamicActivities is null.");
+			logger.error("Cannot getDynamicActivityById. activityID is null.");
 			return null;
 		}
 		logger.debug("Cannot getDynamicActivityById. DynamicActivity returned is null");
 		return null;
 	}
 	
-	public Step getStepByID(String stepID, ArrayList<Step> steps) {
-		if (stepID != null && steps != null) {
-			for (Step step : steps) {
+	public Step getStepByID(String stepID) {
+		if (stepID != null) {
+			for (Step step : availableSteps) {
 				if (step.getStepID().contentEquals(stepID)) {
 					return step;
 				}
 			}
 		} else {
-			logger.error("Cannot getStepByID. stepID or availableSteps is null.");
+			logger.error("Cannot getStepByID. stepID is null.");
 			return null;
 		}
 		logger.debug("Cannot getStepByID. Step returned is null");
 		return null;
 	}
 	
-	public Activity getActivityByID(String activityID, ArrayList<Activity> activities) {
-		if (activityID != null && activities != null) {
-			for (Activity activity : activities) {
+	public Activity getActivityByID(String activityID) {
+		if (activityID != null) {
+			for (Activity activity : availableActivities) {
 				if (activity.getActivityID().contentEquals(activityID)) {
 					return activity;
 				}
 			}
 		} else {
-			logger.error("Cannot getActivityByID. activityID or availableActivities is null.");
+			logger.error("Cannot getActivityByID. activityID is null.");
 			return null;
 		}
 		logger.debug("Cannot getActivityByID. Activity returned is null");
 		return null;
 	}
 	
-	public Activity getActivityByName(String activityShortName, ArrayList<Activity> activities) {
-		if (activityShortName != null && activities != null) {
-			for (Activity activity : activities) {
-				if (activity.getShortName().contentEquals(activityShortName)) {
-					return activity;
+	public Chapter getChapterByID(String chapterID) {
+		if(chapterID != null) {
+			for(Chapter chapter: availableChapters) {
+				if(chapter.getNumericName().contentEquals(chapterID)) {
+					return chapter;
 				}
 			}
 		} else {
-			logger.error("Cannot getActivityByName. activityShortName or availableActivities is null.");
+			logger.error("Cannot getChapterByID. chapterID is null.");
 			return null;
 		}
-		logger.debug("Cannot getActivityByName. Activity returned is null");
+		logger.debug("Cannot getChapterByID.Chapter returned is null.");
 		return null;
-
 	}
 	
 	public String generateGUID() {

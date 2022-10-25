@@ -246,28 +246,6 @@ public class GoalCreationController implements Initializable{
 		}
 	}
 	
-	private void createActivitiesDirectory(Goal goal) {
-		if (goal != null) {
-			File activitiesDirectory = fileHandler.getActivitiesDirectory(project, goal);
-			if (activitiesDirectory != null && !activitiesDirectory.exists()) {
-				activitiesDirectory.mkdir();
-			}
-		} else {
-			logger.error("Cannot createActivitiesDirectory. goal is null.");
-		}
-	}
-	
-	private void createStepsDirectory(Goal goal) {
-		if (goal != null) {
-			File stepsDirectory = fileHandler.getStepsDirectory(project, goal);
-			if (stepsDirectory != null && !stepsDirectory.exists()) {
-				stepsDirectory.mkdir();
-			}
-		} else {
-			logger.error("Cannot createStepsDirectory. goal is null.");
-		}
-	}
-	
 	private void createGoalDirectory(Goal goal) {
 		if (goal != null) {
 			File goalDirectory = fileHandler.getGoalDirectory(project, goal);

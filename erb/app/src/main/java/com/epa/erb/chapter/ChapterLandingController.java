@@ -47,16 +47,17 @@ public class ChapterLandingController implements Initializable {
 	ListView<Activity> planListView;
 	@FXML
 	ListView<Activity> reflectListView;
-	
-	private ArrayList<Chapter> listOfAllChapters;
+
+	private ArrayList<Chapter> listOfChaptersInGoal;
 	private EngagementActionController engagementActionController;
-	public ChapterLandingController(ArrayList<Chapter> listOfAllChapters, EngagementActionController engagementActionController) {
-		this.listOfAllChapters = listOfAllChapters;
+
+	public ChapterLandingController(ArrayList<Chapter> listOfChaptersInGoal, EngagementActionController engagementActionController) {
+		this.listOfChaptersInGoal = listOfChaptersInGoal;
 		this.engagementActionController = engagementActionController;
 	}
-	
+
 	private Logger logger = LogManager.getLogger(ChapterLandingController.class);
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
@@ -64,39 +65,33 @@ public class ChapterLandingController implements Initializable {
 		setHeadingLabelText(getHeadingLabelText());
 		fillActivitiesListView(getActivitiesForListView());
 	}
-	
+
 	private void handleControls() {
 		handleControlsShown();
 		headingLabelScrollPane.getStylesheets().add("/scrollPane.css");
 		aboutTextArea.getStylesheets().add("/textArea.css");
 	}
-	
+
 	private void handleControlsShown() {
-		if(listOfAllChapters != null) {
-			removePlanPanel();
-			removeAboutPanel();
-			removeReflectPanel();
-		} else {
-			addPlanPanel();
-			addAboutPanel();
-			addReflectPanel();
-		}
+		removePlanPanel();
+		removeAboutPanel();
+		removeReflectPanel();
 	}
-	
+
 	public void setHeadingLabelText(String text) {
 		headingLabel.setText(text);
 	}
-	
+
 	String getHeadingLabelText() {
 		return "Equitable Resilience Builder Activities";
 	}
-	
+
 	public void setAboutTextAreaText(Text text) {
 		String string = text.getText();
-		string = string.replaceAll("\r", "\n");	
+		string = string.replaceAll("\r", "\n");
 		aboutTextArea.setText(string);
 	}
-	
+
 	Text getAboutText() {
 		return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
 	}
@@ -114,19 +109,17 @@ public class ChapterLandingController implements Initializable {
 			logger.error("Cannot fillActivitiesListView. listOfActivites is null.");
 		}
 	}
-	
+
 	private ArrayList<Activity> getActivitiesForListView() {
 		ArrayList<Activity> activitiesForListView = new ArrayList<Activity>();
-		if (listOfAllChapters != null) {
-			for (Chapter chapter : listOfAllChapters) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					activitiesForListView.add(activity);
-				}
+		for (Chapter chapter : listOfChaptersInGoal) {
+			for (Activity activity : chapter.getAssignedActivities()) {
+				activitiesForListView.add(activity);
 			}
 		}
 		return activitiesForListView;
 	}
-	
+
 	private void setListViewCellFactory(ListView<Activity> listView, String text) {
 		if (listView != null) {
 			listView.setCellFactory(new Callback<ListView<Activity>, ListCell<Activity>>() {
@@ -138,7 +131,7 @@ public class ChapterLandingController implements Initializable {
 							super.updateItem(item, empty);
 							if (item != null) {
 								if (text.contentEquals("useItem")) {
-									setText("Chapter " + item.getChapterAssignment() + ": " + item.getLongName());
+									setText("Chapter " + getChapterNumberForActivity(item.getGUID()) + ": " + item.getLongName());
 								} else {
 									setText(text);
 								}
@@ -155,10 +148,25 @@ public class ChapterLandingController implements Initializable {
 		}
 	}
 	
+	private String getChapterNumberForActivity(String activityGUID) {
+		if (activityGUID != null) {
+			for (Chapter chapter : listOfChaptersInGoal) {
+				for(Activity activity: chapter.getAssignedActivities()) {
+					if(activity.getGUID().contentEquals(activityGUID)) {
+						return String.valueOf(chapter.getChapterNum());
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot getChapterNumberForActivity. activityGUID is null");
+		}
+		return null;
+	}
+
 	private void handleListViewSelection(ListView<Activity> listView) {
 		if (listView != null) {
 			Activity selectedActivity = listView.getSelectionModel().getSelectedItem();
-			TreeItem<String> treeItem = engagementActionController.findTreeItem(selectedActivity);
+			TreeItem<String> treeItem = engagementActionController.findTreeItem(selectedActivity.getGUID());
 			if (treeItem != null) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 				engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
@@ -167,55 +175,27 @@ public class ChapterLandingController implements Initializable {
 			logger.error("Cannot handleListViewSelection. listView is null.");
 		}
 	}
-	
+
 	private void removeAboutPanel() {
-		if(mainPanel.getChildren().contains(aboutPanel)) {
+		if (mainPanel.getChildren().contains(aboutPanel)) {
 			mainPanel.getChildren().remove(aboutPanel);
 		}
 	}
-	
-	private void addAboutPanel() {
-		if(!mainPanel.getChildren().contains(aboutPanel)) {
-			mainPanel.getChildren().add(0,aboutPanel);
-		}
-	}
-	
+
 	private void removePlanPanel() {
-		if(mainPanel.getChildren().contains(planPanel)) {
+		if (mainPanel.getChildren().contains(planPanel)) {
 			mainPanel.getChildren().remove(planPanel);
 		}
 	}
-	
-	private void addPlanPanel() {
-		if(!mainPanel.getChildren().contains(planPanel)) {
-			int index = mainPanel.getChildren().indexOf(activitiesPanel);
-			mainPanel.getChildren().add(index -1, planPanel);
-		}
-	}
-	
+
 	private void removeReflectPanel() {
-		if(mainPanel.getChildren().contains(reflectPanel)) {
+		if (mainPanel.getChildren().contains(reflectPanel)) {
 			mainPanel.getChildren().remove(reflectPanel);
 		}
 	}
-	
-	private void addReflectPanel() {
-		if(!mainPanel.getChildren().contains(reflectPanel)) {
-			int index = mainPanel.getChildren().indexOf(activitiesPanel);
-			mainPanel.getChildren().add(index + 1, reflectPanel);
-		}
-	}
-	
+
 	private void cleanActivitiesListView() {
 		activitiesListView.getItems().clear();
-	}
-	
-	private void cleanPlanListView() {
-		planListView.getItems().clear();
-	}
-
-	private void cleanReflectListView() {
-		reflectListView.getItems().clear();
 	}
 
 	public VBox getMainPanel() {
@@ -255,11 +235,11 @@ public class ChapterLandingController implements Initializable {
 	}
 
 	public ArrayList<Chapter> getListOfAllChapters() {
-		return listOfAllChapters;
+		return listOfChaptersInGoal;
 	}
 
 	public void setListOfAllChapters(ArrayList<Chapter> listOfAllChapters) {
-		this.listOfAllChapters = listOfAllChapters;
+		this.listOfChaptersInGoal = listOfAllChapters;
 	}
 
 }

@@ -93,12 +93,10 @@ public class ERBChapterDiagramController implements Initializable{
 	
 	@FXML
 	public void centerCircleClicked() {
-		String activityGUID = chapter.getChapterNum() + "0";
-		for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-			if (engagementActionController.getTreeItemIdTreeMap().get(treeItem) == activityGUID) {
-				engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-				engagementActionController.treeViewClicked(null, treeItem);
-			}
+		TreeItem<String> treeItem = engagementActionController.findTreeItem(chapter.getGUID());
+		if (treeItem != null) {
+			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
+			engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
 		}
 	}
 		

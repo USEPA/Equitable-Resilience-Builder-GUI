@@ -239,7 +239,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void arrowClicked() {
 		Activity nextActivity = engagementActionController.retrieveNextActivity(this);
 		if(nextActivity != null) {
-			TreeItem<String> treeItem = engagementActionController.findTreeItem(nextActivity);
+			TreeItem<String> treeItem = engagementActionController.findTreeItem(nextActivity.getGUID());
 			if (treeItem != null) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 				engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
@@ -277,17 +277,10 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void centerCircleClicked() {
-		String selectedActivityGUID = activity.getActivityID();
-		for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-			if (engagementActionController.getTreeItemIdTreeMap().get(treeItem) == selectedActivityGUID) {
-				Chapter treeItemChapter = engagementActionController.getChapterForNameInGoal(treeItem.getParent().getValue(), engagementActionController.getCurrentGoal());
-				if (treeItemChapter != null) {
-					if (String.valueOf(treeItemChapter.getChapterNum()).contentEquals(activity.getChapterAssignment())) {
-						engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-						engagementActionController.treeViewClicked(null, treeItem);
-					}
-				}
-			}
+		TreeItem<String> treeItem = engagementActionController.findTreeItem(activity.getGUID());
+		if (treeItem != null) {
+			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
+			engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
 		}
 	}
 	

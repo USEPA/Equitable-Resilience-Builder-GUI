@@ -118,6 +118,7 @@ public class ERBLandingController implements Initializable{
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -143,7 +143,9 @@ public class EngagementActionController implements Initializable {
 		this.app = app;
 		this.project = project;
 	}
-
+	ArrayList<Chapter> listOfUniqueChapters = new ArrayList<Chapter>();
+	HashMap<String, Object> map = new HashMap<String, Object>();
+	
 	private Goal currentSelectedGoal = null;
 	private Step currentSelectedStep = null;
 	private Chapter currentSelectedChapter = null;
@@ -711,18 +713,15 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	ArrayList<Chapter> listOfUniqueChapters = new ArrayList<Chapter>();
-	HashMap<String, Object> map = new HashMap<String, Object>();
-
-	private void fillAndStoreTreeViewData_GUIDS(ArrayList<Chapter> chapters) { //HAS GUIDS
-		if (chapters != null) {
+	private void fillAndStoreTreeViewData_GUIDS(ArrayList<Chapter> uniqueChapters) { // HAS GUIDS
+		if (uniqueChapters != null) {
 			treeItemIdTreeMap.clear();
 			TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
 			treeItemIdTreeMap.put(rootTreeItem, "0");
-			for (Chapter chapter : chapters) {
-				//CHAPTER
+			for (Chapter chapter : uniqueChapters) {
+				// CHAPTER
 				Chapter uniqueChapter = chapter.cloneChapter();
 				TreeItem<String> chapterTreeItem = new TreeItem<String>(uniqueChapter.getStringName());
 				rootTreeItem.getChildren().add(chapterTreeItem);
@@ -730,9 +729,9 @@ public class EngagementActionController implements Initializable {
 				uniqueChapter.setGUID(chapterGUID);
 				map.put(chapterGUID, uniqueChapter);
 				treeItemIdTreeMap.put(chapterTreeItem, chapterGUID);
-				
+
 				for (Step step : uniqueChapter.getAssignedSteps()) {
-					//CHAPTER -> STEP
+					// CHAPTER -> STEP
 					Step uniqueStep = step.cloneStep();
 					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
 					chapterTreeItem.getChildren().add(chapterStepTreeItem);
@@ -741,21 +740,19 @@ public class EngagementActionController implements Initializable {
 					map.put(stepGUID, uniqueStep);
 					treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
 					for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
-						//CHAPTER -> STEP -> DYNAMIC ACTIVITY
-						if (dynamicActivity != null) {
-							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
-							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
-							chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
-							String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
-							uniqueDynamicActivity.setGUID(dynamicActivityGUID);
-							map.put(dynamicActivityGUID, uniqueDynamicActivity);
-							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
-						}
-					}
-				}
-				
+						// CHAPTER -> STEP -> DYNAMIC ACTIVITY
+						DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+						chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
+						String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
+						uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+						map.put(dynamicActivityGUID, uniqueDynamicActivity);
+						treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+
+					} // CHAPTER STEP DYYNAMIC ACTIVITY
+				} // CHAPTER STEP
 				for (Activity activity : uniqueChapter.getAssignedActivities()) {
-					//CHAPTER -> ACTIVITY
+					// CHAPTER -> ACTIVITY
 					Activity uniqueActivity = activity.cloneActivity();
 					TreeItem<String> activityTreeItem = new TreeItem<String>(uniqueActivity.getLongName());
 					chapterTreeItem.getChildren().add(activityTreeItem);
@@ -764,31 +761,29 @@ public class EngagementActionController implements Initializable {
 					map.put(activityGUID, uniqueActivity);
 					treeItemIdTreeMap.put(activityTreeItem, activityGUID);
 					for (Step step : uniqueActivity.getAssignedSteps()) {
-						//CHAPTER -> ACTIVITY -> STEP
-						if (step != null) {
-							Step uniqueStep = step.cloneStep();
-							TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
-							activityTreeItem.getChildren().add(stepTreeItem);
-							String stepGUID = uniqueStep.getGUID();
-							uniqueStep.setGUID(stepGUID);
-							map.put(stepGUID, uniqueStep);
-							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
-							for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
-								//CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-								if (dynamicActivity != null) {
-									DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
-									TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
-									activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-									String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
-									uniqueDynamicActivity.setGUID(dynamicActivityGUID);
-									map.put(dynamicActivityGUID, uniqueDynamicActivity);
-									treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
-								}
+						// CHAPTER -> ACTIVITY -> STEP
+						Step uniqueStep = step.cloneStep();
+						TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+						activityTreeItem.getChildren().add(stepTreeItem);
+						String stepGUID = uniqueStep.getGUID();
+						uniqueStep.setGUID(stepGUID);
+						map.put(stepGUID, uniqueStep);
+						treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+						for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
+							// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
+							if (dynamicActivity != null) {
+								DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+								TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+								activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+								String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
+								uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+								map.put(dynamicActivityGUID, uniqueDynamicActivity);
+								treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
 							}
-						}
-					}
+						} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
+					} // CHAPTER ACTIVITY STEP
 					for (DynamicActivity dynamicActivity : uniqueActivity.getAssignedDynamicActivities()) {
-						//CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
+						// CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
 						if (dynamicActivity != null) {
 							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
 							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
@@ -798,120 +793,105 @@ public class EngagementActionController implements Initializable {
 							map.put(dynamicActivityGUID, uniqueDynamicActivity);
 							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
 						}
-					}
-				}
-
+					} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
+				} // CHAPTER ACTIVITY
 				listOfUniqueChapters.add(uniqueChapter);
-			}
+			} // CHAPTER
 		} else {
-			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + chapters);
+			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + uniqueChapters);
 		}
 	}
 	
-	private void fillAndStoreTreeViewData(ArrayList<Chapter> chapters) { //Does not have GUIDS
-		if (chapters != null) {
+	private void fillAndStoreTreeViewData(ArrayList<Chapter> genericChapters) { // Does not have GUIDS
+		if (genericChapters != null) {
 			treeItemIdTreeMap.clear();
 			TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
 			treeItemIdTreeMap.put(rootTreeItem, "0");
-			for (Chapter chapter : chapters) {
-				//CHAPTER
-				Chapter uniqueChapter = chapter.cloneChapter();
-				TreeItem<String> chapterTreeItem = new TreeItem<String>(uniqueChapter.getStringName());
-				rootTreeItem.getChildren().add(chapterTreeItem);
-				String chapterGUID = app.generateGUID(); 
+
+			// CHAPTER
+			for (Chapter chapter : genericChapters) {
+				Chapter uniqueChapter = new Chapter(chapter.getChapterNum(), chapter.getNumericName(), chapter.getStringName(), chapter.getDescriptionName(), chapter.getNotes());
+				String chapterGUID = app.generateGUID();
 				uniqueChapter.setGUID(chapterGUID);
 				map.put(chapterGUID, uniqueChapter);
+				TreeItem<String> chapterTreeItem = new TreeItem<String>(uniqueChapter.getStringName());
+				rootTreeItem.getChildren().add(chapterTreeItem);
 				treeItemIdTreeMap.put(chapterTreeItem, chapterGUID);
-				
-				
-				for (String stepId : uniqueChapter.getAssignedStepIds()) {
-					//CHAPTER -> STEP
-					Step step = app.getStepByID(stepId, app.getAvailableSteps());
-					Step uniqueStep = step.cloneStep();
-					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
-					chapterTreeItem.getChildren().add(chapterStepTreeItem);
-					String stepGUID = app.generateGUID(); 
+				// CHAPTER -> STEP
+				for (Step step : chapter.getAssignedSteps()) {
+					Step uniqueStep = new Step(step.getStepType(), step.getStatus(), step.getShortName(), step.getLongName(), step.getStepID(), step.getNotes(), step.getRating());
+					String stepGUID = app.generateGUID();
 					uniqueStep.setGUID(stepGUID);
 					map.put(stepGUID, uniqueStep);
+					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+					chapterTreeItem.getChildren().add(chapterStepTreeItem);
 					treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
+
+					// CHAPTER -> STEP -> DYNAMIC ACTIVITY
+					for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+						DynamicActivity uniqueDynamicActivity = new DynamicActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
+						String dynamicActivityGUID = app.generateGUID();
+						uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+						map.put(dynamicActivityGUID, uniqueDynamicActivity);
+						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+						chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
+						treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+						uniqueStep.addDynamicActivity(uniqueDynamicActivity);
+					}//CHAPTER STEP DYNAMIC ACTIVITY
 					uniqueChapter.addStep(uniqueStep);
-					for (String id : uniqueStep.getAssignedDynamicActivityIds()) {
-						//CHAPTER -> STEP -> DYNAMIC ACTIVITY
-						DynamicActivity dynamicActivity = app.getDynamicActivityById(id,app.getAvailableDynamicActivities());
-						if (dynamicActivity != null) {
-							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
-							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
-							chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
-							String dynamicActivityGUID = app.generateGUID(); 
-							uniqueDynamicActivity.setGUID(dynamicActivityGUID);
-							map.put(dynamicActivityGUID, uniqueDynamicActivity);
-							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
-							uniqueStep.addDynamicActivity(uniqueDynamicActivity);
-						}
-					}
-				}
-				
-				for (String activityID : uniqueChapter.getAssignedActivityIds()) {
-					//CHAPTER -> ACTIVITY
-					Activity activity = app.getActivityByID(activityID, app.getAvailableActivities());
-					Activity uniqueActivity = activity.cloneActivity();
-					TreeItem<String> activityTreeItem = new TreeItem<String>(uniqueActivity.getLongName());
-					chapterTreeItem.getChildren().add(activityTreeItem);
-					String activityGUID = app.generateGUID(); 
+				}//CHAPTER STEP
+
+				// CHAPTER -> ACTIVITY
+				for (Activity activity : chapter.getAssignedActivities()) {
+					Activity uniqueActivity = new Activity(activity.getStatus(), activity.getShortName(), activity.getLongName(), activity.getActivityID(), activity.getNotes(), activity.getRating());
+					String activityGUID = app.generateGUID();
 					uniqueActivity.setGUID(activityGUID);
 					map.put(activityGUID, uniqueActivity);
+					TreeItem<String> activityTreeItem = new TreeItem<String>(uniqueActivity.getLongName());
+					chapterTreeItem.getChildren().add(activityTreeItem);
 					treeItemIdTreeMap.put(activityTreeItem, activityGUID);
-					for (String stepId : uniqueActivity.getAssignedStepIds()) {
-						//CHAPTER -> ACTIVITY -> STEP
-						Step step = app.getStepByID(stepId, app.getAvailableSteps());
-						if (step != null) {
-							Step uniqueStep = step.cloneStep();
-							TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
-							activityTreeItem.getChildren().add(stepTreeItem);
-							String stepGUID = app.generateGUID(); 
-							uniqueStep.setGUID(stepGUID);
-							map.put(stepGUID, uniqueStep);
-							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
-							uniqueActivity.addStep(uniqueStep);
-							for (String id : uniqueStep.getAssignedDynamicActivityIds()) {
-								//CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-								DynamicActivity dynamicActivity = app.getDynamicActivityById(id,app.getAvailableDynamicActivities());
-								if (dynamicActivity != null) {
-									DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
-									TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
-									activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-									String dynamicActivityGUID = app.generateGUID(); 
-									uniqueDynamicActivity.setGUID(dynamicActivityGUID);
-									map.put(dynamicActivityGUID, uniqueDynamicActivity);
-									treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
-									uniqueStep.addDynamicActivity(uniqueDynamicActivity);
-								}
-							}
-						}
-					}
-					for (String id : uniqueActivity.getAssignedDynamicActivityIds()) {
-						//CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
-						DynamicActivity dynamicActivity = app.getDynamicActivityById(id, app.getAvailableDynamicActivities());
-						if (dynamicActivity != null) {
-							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
-							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
-							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-							String dynamicActivityGUID = app.generateGUID(); 
+					// CHAPTER -> ACTIVITY -> STEP
+					for (Step step : activity.getAssignedSteps()) {
+						Step uniqueStep = new Step(step.getStepType(), step.getStatus(), step.getShortName(), step.getLongName(), step.getStepID(), step.getNotes(), step.getRating());
+						String stepGUID = app.generateGUID();
+						uniqueStep.setGUID(stepGUID);
+						map.put(stepGUID, uniqueStep);
+						TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+						activityTreeItem.getChildren().add(stepTreeItem);
+						treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+						// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
+						for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+							DynamicActivity uniqueDynamicActivity = new DynamicActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
+							String dynamicActivityGUID = app.generateGUID();
 							uniqueDynamicActivity.setGUID(dynamicActivityGUID);
 							map.put(dynamicActivityGUID, uniqueDynamicActivity);
+							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
 							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
-							uniqueActivity.addDynamicActivity(uniqueDynamicActivity);
-						}
-					}
+							uniqueStep.addDynamicActivity(uniqueDynamicActivity);
+						}//CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
+						uniqueActivity.addStep(uniqueStep);
+					}//CHAPTER ACTIVITY STEP
+
+					// CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
+					for (DynamicActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
+						DynamicActivity uniqueDynamicActivity = new DynamicActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
+						String dynamicActivityGUID = app.generateGUID();
+						uniqueDynamicActivity.setGUID(dynamicActivityGUID);
+						map.put(dynamicActivityGUID, uniqueDynamicActivity);
+						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
+						activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+						treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+						uniqueActivity.addDynamicActivity(uniqueDynamicActivity);
+					}//CHAPTER ACTIVITY DYNAMIC ACTIVITY
 					uniqueChapter.addActivity(uniqueActivity);
-				}
-				
+				}//CHAPTER ACTIVITY
 				listOfUniqueChapters.add(uniqueChapter);
-			}
+			}//CHAPTER
 		} else {
-			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + chapters);
+			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + genericChapters);
 		}
 	}
 
@@ -952,9 +932,9 @@ public class EngagementActionController implements Initializable {
 					}
 				}
 				if(hasGUIDs) {
-					fillAndStoreTreeViewData_GUIDS(listOfChapters);
+					fillAndStoreTreeViewData_GUIDS(listOfChapters); //LIST OF CHAPTERS IS ALREADY UNIQUE
 				} else {
-					fillAndStoreTreeViewData(listOfChapters);
+					fillAndStoreTreeViewData(listOfChapters); //LIST OF CHAPTERS IS NOT UNIQUE
 				}
 				initializeTreeViewSelection();
 				generateChapterERBPathway(currentSelectedGoal);
@@ -1003,8 +983,8 @@ public class EngagementActionController implements Initializable {
 
 	private void loadDynamicActivityContent(DynamicActivity dynamicActivity) {
 		if (dynamicActivity != null) {
-			String dynamicActivityParsedId = dynamicActivity.getId().substring(0, 4);
-			if (dynamicActivityParsedId.contentEquals("0001")) {
+			//TODO: Somehow make this not static
+			if (dynamicActivity.getId().contentEquals("00000001")) {
 				Pane root = loadNoteBoardContentController(dynamicActivity);
 				addContentToContentVBox(root, false);
 			}
@@ -1131,18 +1111,17 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	public TreeItem<String> findTreeItem(Activity activity) {
-		if (activity != null) {
-			HashMap<TreeItem<String>, String> treeMap = getTreeItemIdTreeMap();
-			for (TreeItem<String> treeItem : treeMap.keySet()) {
-				String treeItemId = treeMap.get(treeItem);
-				if (treeItemId.contentEquals(activity.getActivityID())) {
+	public TreeItem<String> findTreeItem(String guid) {
+		if (guid != null) {
+			for (TreeItem<String> treeItem : treeItemIdTreeMap.keySet()) {
+				String treeItemId = treeItemIdTreeMap.get(treeItem);
+				if (treeItemId.contentEquals(guid)) {
 					return treeItem;
 				}
 			}
 			return null;
 		} else {
-			logger.error("Cannot findTreeItem. activity = " + activity);
+			logger.error("Cannot findTreeItem. guid = " + guid);
 		}
 		return null;
 	}

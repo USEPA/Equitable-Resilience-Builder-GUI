@@ -132,6 +132,7 @@ public class ProjectSelectionController implements Initializable{
 			app.loadNodeToERBContainer(root);
 		}catch (Exception e) {
 			logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	

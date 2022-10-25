@@ -5,27 +5,19 @@ import com.epa.erb.noteboard.NoteBoardContentController;
 
 public class Activity {
 	
-	private String chapterAssignment; 
 	private String status;
 	private String shortName;
 	private String longName;
-	private String fileName;
 	private String activityID;
 	private String notes;
 	private String rating;
-	private ArrayList<String> assignedDynamicActivityIds;
-	private ArrayList<String> assignedStepIds;
-	public Activity(String chapterAssignment, String status, String shortName, String longName, String fileName, String activityID, String notes, String rating, ArrayList<String> assignedDynamicActivityIds, ArrayList<String> assignedStepIds) {
-		this.chapterAssignment = chapterAssignment;
+	public Activity(String status, String shortName, String longName, String activityID, String notes, String rating) {
 		this.status = status;
 		this.shortName = shortName;
 		this.longName = longName;
-		this.fileName = fileName;
 		this.activityID = activityID;
 		this.notes = notes;
 		this.rating = rating;
-		this.assignedDynamicActivityIds = assignedDynamicActivityIds;
-		this.assignedStepIds = assignedStepIds;
 	}
 	
 	private boolean isSaved = true;
@@ -41,11 +33,16 @@ public class Activity {
 	}
 	
 	public Activity cloneActivity() {
-		Activity clonedActivity = new Activity(chapterAssignment, status, shortName, longName, fileName, activityID, notes, rating, assignedDynamicActivityIds, assignedStepIds);
+		Activity clonedActivity = new Activity(status, shortName, longName, activityID, notes, rating);
 		clonedActivity.setGUID(GUID);
 		clonedActivity.setAssignedSteps(assignedSteps);
 		clonedActivity.setAssignedDynamicActivities(assignedDynamicActivities);
 		return clonedActivity;
+	}
+	
+	public void resetAssignments() {
+		assignedSteps.clear();
+		assignedDynamicActivities.clear();
 	}
 	
 	public void addStep(Step step) {
@@ -72,14 +69,6 @@ public class Activity {
 		}
 	}
 
-	public String getChapterAssignment() {
-		return chapterAssignment;
-	}
-
-	public void setChapterAssignment(String chapterAssignment) {
-		this.chapterAssignment = chapterAssignment;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -103,15 +92,7 @@ public class Activity {
 	public void setLongName(String longName) {
 		this.longName = longName;
 	}
-
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
+	
 	public String getActivityID() {
 		return activityID;
 	}
@@ -150,22 +131,6 @@ public class Activity {
 
 	public void setNoteBoardContentController(NoteBoardContentController noteBoardContentController) {
 		this.noteBoardContentController = noteBoardContentController;
-	}
-
-	public ArrayList<String> getAssignedStepIds() {
-		return assignedStepIds;
-	}
-
-	public void setAssignedStepIds(ArrayList<String> assignedStepIds) {
-		this.assignedStepIds = assignedStepIds;
-	}
-
-	public ArrayList<String> getAssignedDynamicActivityIds() {
-		return assignedDynamicActivityIds;
-	}
-
-	public void setAssignedDynamicActivityIds(ArrayList<String> assignedDynamicActivityIds) {
-		this.assignedDynamicActivityIds = assignedDynamicActivityIds;
 	}
 
 	public ArrayList<Step> getAssignedSteps() {
