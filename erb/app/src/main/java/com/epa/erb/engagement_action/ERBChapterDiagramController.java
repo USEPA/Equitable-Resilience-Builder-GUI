@@ -46,7 +46,7 @@ public class ERBChapterDiagramController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		hideLeadingLines();
-		setCenterCircleLabelText(Integer.toString(chapter.getChapterNum()));
+		setCenterCircleLabelText(Integer.toString(chapter.getNumber()));
 	}
 	
 	private void handleControls() {
@@ -93,7 +93,7 @@ public class ERBChapterDiagramController implements Initializable{
 	
 	@FXML
 	public void centerCircleClicked() {
-		TreeItem<String> treeItem = engagementActionController.findTreeItem(chapter.getGUID());
+		TreeItem<String> treeItem = engagementActionController.findTreeItem(chapter.getGuid());
 		if (treeItem != null) {
 			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 			engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected

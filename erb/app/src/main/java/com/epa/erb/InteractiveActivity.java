@@ -1,43 +1,21 @@
 package com.epa.erb;
 
-public class InteractiveActivity {
+public class InteractiveActivity extends ERBItem{
 	
 	private String id;
-	private String name;
+	private String guid;
+	private String longName;
+	private String shortName;
 	private String status;
-	public InteractiveActivity(String id, String name, String status) {
-		this.id = id;
-		this.name = name;
+	
+	public InteractiveActivity(String id, String guid, String longName, String shortName, String status) {
+		super(id, guid, longName, shortName);
 		this.status = status;
 	}
 	
-	private String GUID;
-	
 	public InteractiveActivity cloneDynamicActivity() {
-		InteractiveActivity clonedDynamicActivity = new InteractiveActivity(id,name, status);
-		clonedDynamicActivity.setGUID(GUID);
-		return clonedDynamicActivity;
-	}
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getGUID() {
-		return GUID;
-	}
-
-	public void setGUID(String gUID) {
-		GUID = gUID;
+		InteractiveActivity clonedInteractiveActivity = new InteractiveActivity(id, guid, longName, shortName, status);
+		return clonedInteractiveActivity;
 	}
 
 	public String getStatus() {

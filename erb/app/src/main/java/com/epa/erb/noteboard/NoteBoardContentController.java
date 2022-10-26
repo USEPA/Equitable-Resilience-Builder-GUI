@@ -79,7 +79,7 @@ public class NoteBoardContentController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		checkForExistingNoteBoardData();
-		setActivityNameLabelText(dynamicActivity.getName());
+		setActivityNameLabelText(dynamicActivity.getLongName());
 	}
 		
 	private void handleControls() {

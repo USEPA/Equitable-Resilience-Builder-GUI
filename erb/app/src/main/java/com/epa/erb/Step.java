@@ -2,57 +2,44 @@ package com.epa.erb;
 
 import java.util.ArrayList;
 
-public class Step {
-	
-	private String stepType;
-	private String status;
-	private String shortName;
+public class Step extends ERBItem{
+
+	private String id;
+	private String guid;
 	private String longName;
-	private String stepID;
+	private String shortName;
+
+	private String status;
 	private String notes;
 	private String rating;
-	public Step(String stepType, String status, String shortName, String longName, String stepID, String notes, String rating) {
-		this.stepType = stepType;
+	private String type;
+
+	public Step(String id, String guid, String longName, String shortName, String status, String notes, String rating, String type) {
+		super(id, guid, longName, shortName);
 		this.status = status;
-		this.shortName = shortName;
-		this.longName = longName;
-		this.stepID = stepID;
 		this.notes = notes;
 		this.rating = rating;
+		this.type = type;
 	}
-	
-	private String GUID;
+
 	private ArrayList<InteractiveActivity> assignedDynamicActivities = new ArrayList<InteractiveActivity>();
-	
+
 	public Step cloneStep() {
-		Step clonedStep = new Step(stepType, status, shortName, longName, stepID, notes, rating);
-		clonedStep.setGUID(GUID);
+		Step clonedStep = new Step(id, guid, longName, shortName, status, notes, rating, type);
 		clonedStep.setAssignedDynamicActivities(assignedDynamicActivities);
 		return clonedStep;
 	}
 
-	public void resetAssignments() {
-		assignedDynamicActivities.clear();
-	}
-	
 	public void addDynamicActivity(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			assignedDynamicActivities.add(dynamicActivity);
 		}
 	}
-	
+
 	public void removeDynamicActivity(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			assignedDynamicActivities.remove(dynamicActivity);
 		}
-	}
-
-	public String getStepType() {
-		return stepType;
-	}
-
-	public void setStepType(String stepType) {
-		this.stepType = stepType;
 	}
 
 	public String getStatus() {
@@ -61,30 +48,6 @@ public class Step {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public String getShortName() {
-		return shortName;
-	}
-
-	public void setShortName(String shortName) {
-		this.shortName = shortName;
-	}
-
-	public String getLongName() {
-		return longName;
-	}
-
-	public void setLongName(String longName) {
-		this.longName = longName;
-	}
-
-	public String getStepID() {
-		return stepID;
-	}
-
-	public void setStepID(String activityID) {
-		this.stepID = activityID;
 	}
 
 	public String getNotes() {
@@ -103,6 +66,14 @@ public class Step {
 		this.rating = rating;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public ArrayList<InteractiveActivity> getAssignedDynamicActivities() {
 		return assignedDynamicActivities;
 	}
@@ -111,12 +82,4 @@ public class Step {
 		this.assignedDynamicActivities = assignedDynamicActivities;
 	}
 
-	public String getGUID() {
-		return GUID;
-	}
-
-	public void setGUID(String gUID) {
-		GUID = gUID;
-	}	
-	
 }

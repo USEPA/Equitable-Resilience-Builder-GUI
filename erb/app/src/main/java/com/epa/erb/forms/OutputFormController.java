@@ -63,15 +63,15 @@ public class OutputFormController implements Initializable {
 	private void setColor() {
 		Constants constants = new Constants();
 		if (engagementActionController != null && engagementActionController.getCurrentChapter() != null) {
-			if (engagementActionController.getCurrentChapter().getChapterNum() == 1) {
+			if (engagementActionController.getCurrentChapter().getNumber() == 1) {
 				tP.setStyle("-fx-background-color: " + constants.getChapter1Color());
-			} else if (engagementActionController.getCurrentChapter().getChapterNum() == 2) {
+			} else if (engagementActionController.getCurrentChapter().getNumber() == 2) {
 				tP.setStyle("-fx-background-color: " + constants.getChapter2Color());
-			} else if (engagementActionController.getCurrentChapter().getChapterNum() == 3) {
+			} else if (engagementActionController.getCurrentChapter().getNumber() == 3) {
 				tP.setStyle("-fx-background-color: " + constants.getChapter3Color());
-			} else if (engagementActionController.getCurrentChapter().getChapterNum() == 4) {
+			} else if (engagementActionController.getCurrentChapter().getNumber() == 4) {
 				tP.setStyle("-fx-background-color: " + constants.getChapter4Color());
-			} else if (engagementActionController.getCurrentChapter().getChapterNum() == 5) {
+			} else if (engagementActionController.getCurrentChapter().getNumber() == 5) {
 				tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
 			}
 		}

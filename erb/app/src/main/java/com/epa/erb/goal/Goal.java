@@ -42,8 +42,8 @@ public class Goal {
 		ArrayList<String> chapNums = new ArrayList<String>();
 		for (GoalCategory goalCategory : listOfSelectedGoalCategories) {
 			for (Chapter chapter : goalCategory.getGoalChapters()) {
-				if(!chapNums.contains(String.valueOf(chapter.getChapterNum()))) {
-					chapNums.add(String.valueOf(chapter.getChapterNum()));
+				if(!chapNums.contains(String.valueOf(chapter.getNumber()))) {
+					chapNums.add(String.valueOf(chapter.getNumber()));
 					chapters.add(chapter);
 				}
 			}

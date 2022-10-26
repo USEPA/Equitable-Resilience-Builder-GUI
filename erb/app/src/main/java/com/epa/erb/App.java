@@ -45,7 +45,7 @@ public class App extends Application {
 	private ArrayList<Chapter> availableChapters;
 	private ArrayList<Activity> availableActivities;
 	private ArrayList<GoalCategory> availableGoalCategories;
-	private ArrayList<InteractiveActivity> availableDynamicActivities;
+	private ArrayList<InteractiveActivity> availableInteractiveActivities;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -130,7 +130,7 @@ public class App extends Application {
 	}	
 	
 	private void readAndStoreData() {
-		readAndStoreAvailableDynamicActivities();
+		readAndStoreAvailableInteractiveActivities();
 		readAndStoreAvailableSteps();
 		readAndStoreAvailableActivities();
 		readAndStoreAvailableChapters();
@@ -138,9 +138,9 @@ public class App extends Application {
 		readAndStoreProjects();
 	}
 	
-	private void readAndStoreAvailableDynamicActivities() {
-		File dynamicActivitiesFile = fileHandler.getStaticAvailableDynamicActivitiesXMLFile();
-		availableDynamicActivities = xmlManager.parseAvailableDynamicActivitiesXML(dynamicActivitiesFile);
+	private void readAndStoreAvailableInteractiveActivities() {
+		File interactiveActivitiesFile = fileHandler.getStaticAvailableInteractiveActivitiesXMLFile();
+		availableInteractiveActivities = xmlManager.parseAvailableInteractiveActivitiesXML(interactiveActivitiesFile);
 	}
 	
 	private void readAndStoreAvailableChapters() {
@@ -206,7 +206,7 @@ public class App extends Application {
 	
 	public InteractiveActivity getDynamicActivityById(String activityID) {
 		if (activityID != null) {
-			for (InteractiveActivity dynamicActivity : availableDynamicActivities) {
+			for (InteractiveActivity dynamicActivity : availableInteractiveActivities) {
 				if (dynamicActivity.getId().contentEquals(activityID)) {
 					return dynamicActivity;
 				}
@@ -222,7 +222,7 @@ public class App extends Application {
 	public Step getStepByID(String stepID) {
 		if (stepID != null) {
 			for (Step step : availableSteps) {
-				if (step.getStepID().contentEquals(stepID)) {
+				if (step.getId().contentEquals(stepID)) {
 					return step;
 				}
 			}
@@ -237,7 +237,7 @@ public class App extends Application {
 	public Activity getActivityByID(String activityID) {
 		if (activityID != null) {
 			for (Activity activity : availableActivities) {
-				if (activity.getActivityID().contentEquals(activityID)) {
+				if (activity.getId().contentEquals(activityID)) {
 					return activity;
 				}
 			}
@@ -252,7 +252,7 @@ public class App extends Application {
 	public Chapter getChapterByID(String chapterID) {
 		if(chapterID != null) {
 			for(Chapter chapter: availableChapters) {
-				if(chapter.getNumericName().contentEquals(chapterID)) {
+				if(chapter.getId().contentEquals(chapterID)) {
 					return chapter;
 				}
 			}
@@ -324,12 +324,12 @@ public class App extends Application {
 		this.availableSteps = steps;
 	}
 
-	public ArrayList<InteractiveActivity> getAvailableDynamicActivities() {
-		return availableDynamicActivities;
+	public ArrayList<InteractiveActivity> getAvailableInteractiveActivities() {
+		return availableInteractiveActivities;
 	}
 
-	public void setAvailableDynamicActivities(ArrayList<InteractiveActivity> dynamicActivities) {
-		this.availableDynamicActivities = dynamicActivities;
+	public void setAvailableInteractiveActivities(ArrayList<InteractiveActivity> interactiveActivities) {
+		this.availableInteractiveActivities = interactiveActivities;
 	}
 
 	public ArrayList<GoalCategory> getAvailableGoalCategories() {

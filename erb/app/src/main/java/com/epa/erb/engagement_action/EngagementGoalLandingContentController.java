@@ -131,7 +131,7 @@ public class EngagementGoalLandingContentController implements Initializable {
 							super.updateItem(item, empty);
 							if (item != null) {
 								if (text.contentEquals("useItem")) {
-									setText("Chapter " + getChapterNumberForActivity(item.getGUID()) + ": " + item.getLongName());
+									setText("Chapter " + getChapterNumberForActivity(item.getGuid()) + ": " + item.getLongName());
 								} else {
 									setText(text);
 								}
@@ -152,8 +152,8 @@ public class EngagementGoalLandingContentController implements Initializable {
 		if (activityGUID != null) {
 			for (Chapter chapter : listOfChaptersInGoal) {
 				for(Activity activity: chapter.getAssignedActivities()) {
-					if(activity.getGUID().contentEquals(activityGUID)) {
-						return String.valueOf(chapter.getChapterNum());
+					if(activity.getGuid().contentEquals(activityGUID)) {
+						return String.valueOf(chapter.getNumber());
 					}
 				}
 			}
@@ -166,7 +166,7 @@ public class EngagementGoalLandingContentController implements Initializable {
 	private void handleListViewSelection(ListView<Activity> listView) {
 		if (listView != null) {
 			Activity selectedActivity = listView.getSelectionModel().getSelectedItem();
-			TreeItem<String> treeItem = engagementActionController.findTreeItem(selectedActivity.getGUID());
+			TreeItem<String> treeItem = engagementActionController.findTreeItem(selectedActivity.getGuid());
 			if (treeItem != null) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 				engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected

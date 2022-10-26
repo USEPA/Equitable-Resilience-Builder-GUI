@@ -2,34 +2,34 @@ package com.epa.erb.chapter;
 
 import java.util.ArrayList;
 import com.epa.erb.Activity;
+import com.epa.erb.ERBItem;
 import com.epa.erb.Step;
 
-public class Chapter {
+public class Chapter extends ERBItem{
 	
-	private int chapterNum;
-	private String numericName;
-	private String stringName;
-	private String descriptionName;
+	private String id;
+	private String guid;
+	private String longName;
+	private String shortName;
+	
+	private String status;
 	private String notes;
-	public Chapter(int chapterNum, String numericName, String stringName, String descriptionName, String notes) {
-		this.chapterNum = chapterNum;
-		this.numericName = numericName;
-		this.stringName = stringName;
-		this.descriptionName = descriptionName;
+	private String description;
+	private int number;
+
+	public Chapter(String id, String guid, String longName, String shortName, String status, String notes, String description, int number) {
+		super(id, guid, longName, shortName);
+		this.status = status;
 		this.notes = notes;
+		this.description = description;
+		this.number = number;
 	}
 		
-	private String GUID;
 	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
 
-	public Chapter() {
-		
-	}
-	
 	public Chapter cloneChapter() {
-		Chapter clonedChapter = new Chapter(chapterNum, numericName, stringName, descriptionName, notes);
-		clonedChapter.setGUID(GUID);
+		Chapter clonedChapter = new Chapter(id, guid, longName, shortName, status, notes, description, number);
 		clonedChapter.setAssignedSteps(assignedSteps);
 		clonedChapter.setAssignedActivities(assignedActivities);
 		return clonedChapter;
@@ -96,63 +96,32 @@ public class Chapter {
 		return count;
 	}
 	
-	public String getStatus() {
-		boolean isReady = true; // if all activities are ready
-		boolean isComplete = true; // if all activities are complete
-		if (assignedActivities.size() > 0) {
-			for (Activity activity : assignedActivities) {
-				if (activity.getStatus().contentEquals("ready")) {
-					isComplete = false;
-				} else if (activity.getStatus().contentEquals("in progress")) {
-					isComplete = false;
-					isReady = false;
-				} else if (activity.getStatus().contentEquals("complete")) {
-					isReady = false;
-				}
-			}
-			if (isComplete) {
-				return "complete";
-			} else if (isReady) {
-				return "ready";
-			} else {
-				return "in progress";
-			}
-		} else {
-			return "ready";
-		}
-	}
-
-	public int getChapterNum() {
-		return chapterNum;
-	}
-
-	public void setChapterNum(int chapterNum) {
-		this.chapterNum = chapterNum;
-	}
-
-	public String getNumericName() {
-		return numericName;
-	}
-
-	public void setNumericName(String numericName) {
-		this.numericName = numericName;
-	}
-
-	public String getStringName() {
-		return stringName;
-	}
-
-	public void setStringName(String stringName) {
-		this.stringName = stringName;
-	}
-
-	public String getDescriptionName() {
-		return descriptionName;
-	}
-
-	public void setDescriptionName(String descriptionName) {
-		this.descriptionName = descriptionName;
-	}
+	//TODO: FIX HERE
+//	public String getStatus() {
+//		boolean isReady = true; // if all activities are ready
+//		boolean isComplete = true; // if all activities are complete
+//		if (assignedActivities.size() > 0) {
+//			for (Activity activity : assignedActivities) {
+//				if (activity.getStatus().contentEquals("ready")) {
+//					isComplete = false;
+//				} else if (activity.getStatus().contentEquals("in progress")) {
+//					isComplete = false;
+//					isReady = false;
+//				} else if (activity.getStatus().contentEquals("complete")) {
+//					isReady = false;
+//				}
+//			}
+//			if (isComplete) {
+//				return "complete";
+//			} else if (isReady) {
+//				return "ready";
+//			} else {
+//				return "in progress";
+//			}
+//		} else {
+//			return "ready";
+//		}
+//	}
 
 	public String getNotes() {
 		return notes;
@@ -160,6 +129,22 @@ public class Chapter {
 
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 	public ArrayList<Step> getAssignedSteps() {
@@ -178,12 +163,12 @@ public class Chapter {
 		this.assignedActivities = assignedActivities;
 	}
 
-	public String getGUID() {
-		return GUID;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setGUID(String gUID) {
-		GUID = gUID;
-	}
+	public void setStatus(String status) {
+		this.status = status;
+	}	
 		
 }

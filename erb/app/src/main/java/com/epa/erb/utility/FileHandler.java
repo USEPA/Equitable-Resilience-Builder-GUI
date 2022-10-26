@@ -74,7 +74,7 @@ public class FileHandler {
 
 	public File getActivityDirectory(Project project, Goal goal, Activity activity) {
 		if (project != null && goal != null && activity != null) {
-			File activityDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML\\" + activity.getActivityID());
+			File activityDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML\\" + activity.getId());
 			return activityDirectory;
 		} else {
 			logger.error("Cannot getActivityDirectory. project = " + project + " goal = " + goal + " activity = "
@@ -95,7 +95,7 @@ public class FileHandler {
 
 	public File getStepDirectory(Project project, Goal goal, Step step) {
 		if (project != null && goal != null && step != null) {
-			File stepDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML\\" + step.getStepID());
+			File stepDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML\\" + step.getId());
 			return stepDirectory;
 		} else {
 			logger.error("Cannot getStepDirectory. project = " + project + " goal = " + goal + " step = " + step);
@@ -157,7 +157,7 @@ public class FileHandler {
 	
 	public File getActivityDataXMLFile(Project project, Goal goal, Activity activity) {
 		if(project != null && goal != null && activity != null) {
-			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + activity.getGUID() + "\\Data.xml");
+			File activityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + activity.getGuid() + "\\Data.xml");
 			return activityDataXMLFile;
 		} else {
 			logger.error("Cannot getActivityDataXMLFile. project = " + project + " goal = " + goal + " activity = " + activity);
@@ -167,7 +167,7 @@ public class FileHandler {
 	
 	public File getStepDataXMLFile(Project project, Goal goal, Step step) {
 		if(project != null && goal != null && step != null) {
-			File stepDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + step.getGUID() + "\\Data.xml");
+			File stepDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + step.getGuid() + "\\Data.xml");
 			return stepDataXMLFile;
 		} else {
 			logger.error("Cannot getStepDataXMLFile. project = " + project + " goal = " + goal + " step = " + step);
@@ -177,7 +177,7 @@ public class FileHandler {
 	
 	public File getDynamicActivityDataXMLFile(Project project, Goal goal, InteractiveActivity dynamicActivity) {
 		if(project != null && goal != null && dynamicActivity != null) {
-			File dynamicActivityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + dynamicActivity.getGUID() + "\\Data.xml");
+			File dynamicActivityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + dynamicActivity.getGuid() + "\\Data.xml");
 			return dynamicActivityDataXMLFile;
 		} else {
 			logger.error("Cannot getDynamicActivityDataXMLFile. project = " + project + " goal = " + goal + " dynamicActivity = " + dynamicActivity);
@@ -204,7 +204,7 @@ public class FileHandler {
 	
 	public File getStaticActivityFormText(Activity activity) {
 		if (activity != null) {
-			File activityContentXML = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activities_XML\\" + activity.getActivityID() + "\\form_text.xml");
+			File activityContentXML = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Activities_XML\\" + activity.getId() + "\\form_text.xml");
 			return activityContentXML;
 		} else {
 			logger.error("Cannot getStaticActivityFormText. activity = null");
@@ -214,7 +214,7 @@ public class FileHandler {
 	
 	public File getStaticStepFormText(Step step) {
 		if (step != null) {
-			File stepContentXMLFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Steps_XML\\" + step.getStepID() + "\\form_text.xml");
+			File stepContentXMLFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Steps_XML\\" + step.getId() + "\\form_text.xml");
 			return stepContentXMLFile ;
 		} else {
 			logger.error("Cannot getStaticStepFormText. step = null.");
@@ -222,9 +222,9 @@ public class FileHandler {
 		}
 	}
 	
-	public File getStaticAvailableDynamicActivitiesXMLFile() {
-		File availableDynamicActivitiesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Dynamic_Activities.xml");
-		return availableDynamicActivitiesFile;
+	public File getStaticAvailableInteractiveActivitiesXMLFile() {
+		File availableInterativeActivitiesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Interactive_Activities.xml");
+		return availableInterativeActivitiesFile;
 	}
 	
 	public File getStaticChaptersXMLFile() {
@@ -234,7 +234,7 @@ public class FileHandler {
 	
 	public File getStaticChapterFormAbout(Chapter chapter) {
 		if (chapter != null) {
-			String xmlFileName = chapter.getStringName().replaceAll(" ", "") + "_About.xml";
+			String xmlFileName = chapter.getShortName().replaceAll(" ", "") + "_About.xml";
 			File chapterAboutXML = new File(constants.getPathToERBStaticDataFolder() + "\\Chapters\\Chapters_XML\\" + xmlFileName);
 			return chapterAboutXML;
 		} else {
@@ -338,29 +338,29 @@ public class FileHandler {
 	public void createGUIDDirectoriesForGoal(Project project, Goal goal, ArrayList<Chapter> uniqueChapters) {
 		createGUIDDataDirectory(project, goal);
 		for (Chapter chapter : uniqueChapters) {
-			File chapterGUIDDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + chapter.getGUID());
+			File chapterGUIDDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + chapter.getGuid());
 			if(!chapterGUIDDirectory.exists()) chapterGUIDDirectory.mkdir();
 			for (Activity activity : chapter.getAssignedActivities()) {
-				File chapterActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + activity.getGUID());
+				File chapterActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + activity.getGuid());
 				if(!chapterActivityDirectory.exists()) chapterActivityDirectory.mkdir();
 				for (Step step : activity.getAssignedSteps()) {
-					File activityStepDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + step.getGUID());
+					File activityStepDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + step.getGuid());
 					if(!activityStepDirectory.exists()) activityStepDirectory.mkdir();
 					for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
-						File stepDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
+						File stepDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGuid());
 						if(!stepDynamicActivityDirectory.exists()) stepDynamicActivityDirectory.mkdir();
 					}
 				}
 				for (InteractiveActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
-					File activityDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
+					File activityDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGuid());
 					if(!activityDynamicActivityDirectory.exists()) activityDynamicActivityDirectory.mkdir();
 				}
 			}
 			for (Step step : chapter.getAssignedSteps()) {
-				File chapterStepDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + step.getGUID());
+				File chapterStepDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + step.getGuid());
 				if(!chapterStepDirectory.exists()) chapterStepDirectory.mkdir();
 				for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
-					File stepDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
+					File stepDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGuid());
 					if(!stepDynamicActivityDirectory.exists()) stepDynamicActivityDirectory.mkdir();
 				}
 			}

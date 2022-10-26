@@ -2,19 +2,20 @@ package com.epa.erb;
 
 import java.util.ArrayList;
 
-public class Activity {
+public class Activity extends ERBItem{
 	
-	private String status;
-	private String shortName;
+	private String id;
+	private String guid;
 	private String longName;
-	private String activityID;
+	private String shortName;
+
+	private String status;
 	private String notes;
 	private String rating;
-	public Activity(String status, String shortName, String longName, String activityID, String notes, String rating) {
+	
+	public Activity(String id, String guid, String longName, String shortName, String status, String notes, String rating) {
+		super(id, guid, longName, shortName);
 		this.status = status;
-		this.shortName = shortName;
-		this.longName = longName;
-		this.activityID = activityID;
 		this.notes = notes;
 		this.rating = rating;
 	}
@@ -22,25 +23,13 @@ public class Activity {
 	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
 	private ArrayList<InteractiveActivity> assignedDynamicActivities = new ArrayList<InteractiveActivity>();
 	
-	private String GUID;
-		
-	public Activity() {
-		
-	}
-	
 	public Activity cloneActivity() {
-		Activity clonedActivity = new Activity(status, shortName, longName, activityID, notes, rating);
-		clonedActivity.setGUID(GUID);
+		Activity clonedActivity = new Activity(id, guid, longName, shortName, status, notes, rating);
 		clonedActivity.setAssignedSteps(assignedSteps);
 		clonedActivity.setAssignedDynamicActivities(assignedDynamicActivities);
 		return clonedActivity;
 	}
-	
-	public void resetAssignments() {
-		assignedSteps.clear();
-		assignedDynamicActivities.clear();
-	}
-	
+
 	public void addStep(Step step) {
 		if (step != null) {
 			assignedSteps.add(step);
@@ -73,30 +62,6 @@ public class Activity {
 		this.status = status;
 	}
 
-	public String getShortName() {
-		return shortName;
-	}
-
-	public void setShortName(String shortName) {
-		this.shortName = shortName;
-	}
-
-	public String getLongName() {
-		return longName;
-	}
-
-	public void setLongName(String longName) {
-		this.longName = longName;
-	}
-	
-	public String getActivityID() {
-		return activityID;
-	}
-
-	public void setActivityID(String activityID) {
-		this.activityID = activityID;
-	}
-
 	public String getNotes() {
 		return notes;
 	}
@@ -127,14 +92,6 @@ public class Activity {
 
 	public void setAssignedDynamicActivities(ArrayList<InteractiveActivity> assignedDynamicActivities) {
 		this.assignedDynamicActivities = assignedDynamicActivities;
-	}
-
-	public String getGUID() {
-		return GUID;
-	}
-
-	public void setGUID(String gUID) {
-		GUID = gUID;
 	}
 
 }

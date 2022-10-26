@@ -33,6 +33,7 @@ public class MainPanelHandler {
 			fxmlLoader.setController(erbLandingNew2Controller);
 			return fxmlLoader.load();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -47,6 +48,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -61,6 +63,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -76,6 +79,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

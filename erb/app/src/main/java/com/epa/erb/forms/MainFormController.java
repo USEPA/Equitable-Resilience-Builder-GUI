@@ -79,15 +79,15 @@ public class MainFormController implements Initializable{
 		Constants constants = new Constants();
 		if (engagementActionController != null && engagementActionController.getCurrentChapter() != null) {
 			if (engagementActionController.getTreeView().getSelectionModel().getSelectedItem() != null) {
-				if (engagementActionController.getCurrentChapter().getChapterNum() == 1) {
+				if (engagementActionController.getCurrentChapter().getNumber() == 1) {
 					tP.setStyle("-fx-background-color: " + constants.getChapter1Color());
-				} else if (engagementActionController.getCurrentChapter().getChapterNum() == 2) {
+				} else if (engagementActionController.getCurrentChapter().getNumber() == 2) {
 					tP.setStyle("-fx-background-color: " + constants.getChapter2Color());
-				} else if (engagementActionController.getCurrentChapter().getChapterNum() == 3) {
+				} else if (engagementActionController.getCurrentChapter().getNumber() == 3) {
 					tP.setStyle("-fx-background-color: " + constants.getChapter3Color());
-				} else if (engagementActionController.getCurrentChapter().getChapterNum() == 4) {
+				} else if (engagementActionController.getCurrentChapter().getNumber() == 4) {
 					tP.setStyle("-fx-background-color: " + constants.getChapter4Color());
-				} else if (engagementActionController.getCurrentChapter().getChapterNum() == 5) {
+				} else if (engagementActionController.getCurrentChapter().getNumber() == 5) {
 					tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
 				}
 			}
@@ -95,6 +95,10 @@ public class MainFormController implements Initializable{
 	}
 	
 	public void handleHyperlink(Text text, String linkType, String link) {
+		TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+		String GUID = engagementActionController.getTreeItemIdTreeMap().get(currentSelectedTreeItem);
+		System.out.println("Looking for inital panel: " + GUID);
+		
 		if(linkType.contentEquals("internalIntro")) {
 			internalIntroLinkClicked(link);
 		} else if (linkType.contentEquals("internalResource")){
@@ -144,7 +148,7 @@ public class MainFormController implements Initializable{
 					.getSelectedItem();
 			Step step = findStep(link);
 			if (step != null) {
-				if (step.getStepID().length() == 4) {
+				if (step.getId().length() == 4) {
 					Pane root = engagementActionController.loadStepContent(step);
 					Stage stage = new Stage();
 					Scene scene = new Scene(root);
@@ -154,8 +158,9 @@ public class MainFormController implements Initializable{
 					stage.setTitle(step.getLongName());
 					stage.showAndWait();
 				} else {
+					System.out.println("Hyperlink made us jump 1");
 					for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-						if (engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(step.getGUID())) {
+						if (engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(step.getGuid())) {
 							engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 							engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
 						}
@@ -176,13 +181,13 @@ public class MainFormController implements Initializable{
 	
 	private void internalActivityLinkClicked(String link) {
 		if (engagementActionController != null) {
-			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel()
-					.getSelectedItem();
-			if (link.endsWith("0")) {
+			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+			if (link.length() == 5) {
 				Chapter chapter = findChapter(link);
 				if (chapter != null) {
+					System.out.println("Hyperlink made us jump 2");
 					for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-						if (engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(chapter.getGUID())) {
+						if (engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(chapter.getGuid())) {
 							engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 							engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
 						}
@@ -191,9 +196,10 @@ public class MainFormController implements Initializable{
 			}
 			Activity activity = findActivity(link);
 			if (activity != null) {
+				System.out.println("Hyperlink made us jump 3");
 				for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
 					if (engagementActionController.getTreeItemIdTreeMap().get(treeItem)
-							.contentEquals(activity.getGUID())) {
+							.contentEquals(activity.getGuid())) {
 						engagementActionController.getTreeView().getSelectionModel().select(treeItem);
 						engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
 					}
@@ -211,9 +217,13 @@ public class MainFormController implements Initializable{
 		}
 	}
 	
+	private void hyperlinkJump() {
+		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(null, null);
+	}
+	
 	private Chapter findChapter(String chapterId) {
 		for(Chapter chapter: engagementActionController.getListOfUniqueChapters()) {
-			if((chapter.getChapterNum() + "0").contentEquals(chapterId)) {
+			if((chapter.getId()).contentEquals(chapterId)) {
 				return chapter;
 			}
 		}
@@ -223,13 +233,13 @@ public class MainFormController implements Initializable{
 	private Step findStep(String stepId) {
 		for (Chapter chapter : engagementActionController.getListOfUniqueChapters()) {
 			for (Step chapterStep : chapter.getAssignedSteps()) {
-				if (chapterStep.getStepID().contentEquals(stepId)) {
+				if (chapterStep.getId().contentEquals(stepId)) {
 					return chapterStep;
 				}
 			}
 			for (Activity activity : chapter.getAssignedActivities()) {
 				for (Step activityStep : activity.getAssignedSteps()) {
-					if (activityStep.getStepID().contentEquals(stepId)) {
+					if (activityStep.getId().contentEquals(stepId)) {
 						return activityStep;
 					}
 				}
@@ -241,7 +251,7 @@ public class MainFormController implements Initializable{
 	private Activity findActivity(String activityId) {
 		for (Chapter chapter : engagementActionController.getListOfUniqueChapters()) {
 			for (Activity activity : chapter.getAssignedActivities()) {
-				if (activity.getActivityID().contentEquals(activityId)) {
+				if (activity.getId().contentEquals(activityId)) {
 					return activity;
 				}
 			}
