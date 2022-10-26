@@ -18,7 +18,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.DynamicActivity;
+import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.forms.MainFormController;
@@ -148,10 +148,10 @@ public class XMLManager {
 	}
 	
 	// Parse AvailableDynamicActivities
-	public ArrayList<DynamicActivity> parseAvailableDynamicActivitiesXML(File xmlFile) {
+	public ArrayList<InteractiveActivity> parseAvailableDynamicActivitiesXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
-				ArrayList<DynamicActivity> availableDynamicActivities = new ArrayList<DynamicActivity>();
+				ArrayList<InteractiveActivity> availableDynamicActivities = new ArrayList<InteractiveActivity>();
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -165,7 +165,7 @@ public class XMLManager {
 						String dynamicActivityID = dynamicActivityElement.getAttribute("id");
 						String dynamicActivityName = dynamicActivityElement.getAttribute("name");
 						String dynamicActivityStatus = dynamicActivityElement.getAttribute("status");
-						DynamicActivity dynamicActivity = new DynamicActivity(dynamicActivityID, dynamicActivityName, dynamicActivityStatus);
+						InteractiveActivity dynamicActivity = new InteractiveActivity(dynamicActivityID, dynamicActivityName, dynamicActivityStatus);
 						availableDynamicActivities.add(dynamicActivity);
 					}
 				}
@@ -286,14 +286,14 @@ public class XMLManager {
 												Step step = app.getStepByID(stepID);
 												if (step != null) listOfChapterActivitySteps.add(step);
 												NodeList casDynamicActivitiesNodeList = caStepElement.getElementsByTagName("ChapterActivityStepDynamicActivity");
-												ArrayList<DynamicActivity> listOfChapterActivityStepDynamicActivities = new ArrayList<DynamicActivity>();
+												ArrayList<InteractiveActivity> listOfChapterActivityStepDynamicActivities = new ArrayList<InteractiveActivity>();
 												for (int l = 0; l < casDynamicActivitiesNodeList.getLength(); l++) {
 													Node casDynamicActivityNode = casDynamicActivitiesNodeList.item(l);
 													// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
 													if (casDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
 														Element casDynamicActivityElement = (Element) casDynamicActivityNode;
 														String dynamicActivityID = casDynamicActivityElement.getAttribute("activityID");
-														DynamicActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+														InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
 														if (dynamicActivity != null) listOfChapterActivityStepDynamicActivities.add(dynamicActivity);
 													} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY ELEMENT
 												} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
@@ -302,14 +302,14 @@ public class XMLManager {
 										} // CHAPTER ACTIVITY STEP
 										activity.setAssignedSteps(listOfChapterActivitySteps);
 										NodeList caDynamicActivitesNodeList = cActivityElement.getElementsByTagName("ChapterActivityDynamicActivity");
-										ArrayList<DynamicActivity> listOfChapterActivityDynamicActivities = new ArrayList<DynamicActivity>();
+										ArrayList<InteractiveActivity> listOfChapterActivityDynamicActivities = new ArrayList<InteractiveActivity>();
 										for (int m = 0; m < caDynamicActivitesNodeList.getLength(); m++) {
 											Node caDynamicActivityNode = caDynamicActivitesNodeList.item(m);
 											// CHAPTER -> ACTIVITY -> DYNAMIC ACTIVITY
 											if (caDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
 												Element caDynamicActivityElement = (Element) caDynamicActivityNode;
 												String dynamicActivityID = caDynamicActivityElement.getAttribute("activityID");
-												DynamicActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+												InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
 												if (dynamicActivity != null) listOfChapterActivityDynamicActivities.add(dynamicActivity);
 											} // CHAPTER ACTIVITY DYNAMIC ACTIVITY ELEMENT
 										} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
@@ -326,14 +326,14 @@ public class XMLManager {
 										String stepID = cStepElement.getAttribute("stepID");
 										Step step = app.getStepByID(stepID);
 										NodeList csDynamicActivitesNodeList = cStepElement.getElementsByTagName("ChapterStepDynamicActivity");
-										ArrayList<DynamicActivity> listOfChapterStepDynamicActivities = new ArrayList<DynamicActivity>();
+										ArrayList<InteractiveActivity> listOfChapterStepDynamicActivities = new ArrayList<InteractiveActivity>();
 										for (int o = 0; o < csDynamicActivitesNodeList.getLength(); o++) {
 											Node csDynamicActivityNode = csDynamicActivitesNodeList.item(o);
 											// CHAPTER -> STEP -> DYNAMIC ACTIVITY
 											if (csDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
 												Element csDynamicActivityElement = (Element) csDynamicActivityNode;
 												String dynamicActivityID = csDynamicActivityElement.getAttribute("activityID");
-												DynamicActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+												InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
 												if (dynamicActivity != null) listOfChapterStepDynamicActivities.add(dynamicActivity);
 											} // CHAPTER STEP DYNAMIC ACTIVITY ELEMENT
 										} // CHAPTER STEP DYNAMIC ACTIVITY
@@ -509,7 +509,7 @@ public class XMLManager {
 												listOfChapterActivitySteps.add(step);
 												
 												NodeList casDynamicActivitiesNodeList = caStepElement.getElementsByTagName("ChapterActivityStepDynamicActivity");
-												ArrayList<DynamicActivity> listOfChapterActivityStepDynamicActivities = new ArrayList<DynamicActivity>();
+												ArrayList<InteractiveActivity> listOfChapterActivityStepDynamicActivities = new ArrayList<InteractiveActivity>();
 												for (int l = 0; l < casDynamicActivitiesNodeList.getLength(); l++) {
 													Node casDynamicActivityNode = casDynamicActivitiesNodeList.item(l);
 													// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
@@ -519,7 +519,7 @@ public class XMLManager {
 														String dynamicActivityID = casDynamicActivityElement.getAttribute("id");
 														String dynamicActivityStatus = casDynamicActivityElement.getAttribute("status");
 														
-														DynamicActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+														InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
 														if (dynamicActivity != null) {
 															dynamicActivity = dynamicActivity.cloneDynamicActivity();
 															dynamicActivity.setGUID(dynamicActivityGUID);
@@ -534,7 +534,7 @@ public class XMLManager {
 										} // CHAPTER ACTIVITY STEP ELEMENT
 									} // CHAPTER ACTIVITY STEP
 									NodeList caDynamicActivitesNodeList = cActivityElement.getElementsByTagName("ChapterActivityDynamicActivity");
-									ArrayList<DynamicActivity> listOfChapterActivityDynamicActivities = new ArrayList<DynamicActivity>();
+									ArrayList<InteractiveActivity> listOfChapterActivityDynamicActivities = new ArrayList<InteractiveActivity>();
 									for (int m = 0; m < caDynamicActivitesNodeList.getLength(); m++) {
 										Node caDynamicActivityNode = caDynamicActivitesNodeList.item(m);
 										// CHAPTER -> ACTIVITY -> DYNAMIC ACTIVITY
@@ -544,7 +544,7 @@ public class XMLManager {
 											String dynamicActivityID = caDynamicActivityElement.getAttribute("id");
 											String dynamicActivityStatus = caDynamicActivityElement.getAttribute("status");
 											
-											DynamicActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+											InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
 											if (dynamicActivity != null) {
 												dynamicActivity = dynamicActivity.cloneDynamicActivity();
 												dynamicActivity.setGUID(dynamicActivityGUID);
@@ -582,7 +582,7 @@ public class XMLManager {
 									listOfChapterSteps.add(step);
 									
 									NodeList csDynamicActivitesNodeList = cStepElement.getElementsByTagName("ChapterStepDynamicActivity");
-									ArrayList<DynamicActivity> listOfChapterStepDynamicActivities = new ArrayList<DynamicActivity>();
+									ArrayList<InteractiveActivity> listOfChapterStepDynamicActivities = new ArrayList<InteractiveActivity>();
 									for (int o = 0; o < csDynamicActivitesNodeList.getLength(); o++) {
 										Node csDynamicActivityNode = csDynamicActivitesNodeList.item(o);
 										// CHAPTER -> STEP -> DYNAMIC ACTIVITY
@@ -592,7 +592,7 @@ public class XMLManager {
 											String dynamicActivityID = csDynamicActivityElement.getAttribute("id");
 											String dynamicActivityStatus = csDynamicActivityElement.getAttribute("status");
 											
-											DynamicActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+											InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
 											if (dynamicActivity != null) {
 												dynamicActivity = dynamicActivity.cloneDynamicActivity();
 												dynamicActivity.setGUID(dynamicActivityGUID);
@@ -703,7 +703,7 @@ public class XMLManager {
 							assignedStepsElement.appendChild(assignedActivityStepElement);
 							Element assignedDynamicActivitiesElement = document.createElement("assignedDynamicActivities");
 							// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-							for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+							for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
 								Element assignedActivityDynamicActivityElement = document.createElement("ChapterActivityStepDynamicActivity");
 								assignedActivityDynamicActivityElement.setAttribute("id", dynamicActivity.getId());
 								assignedActivityDynamicActivityElement.setAttribute("name", dynamicActivity.getName());
@@ -716,7 +716,7 @@ public class XMLManager {
 						assignedActivityElement.appendChild(assignedStepsElement);
 						Element assignedDynamicActivitiesElement = document.createElement("assignedDynamicActivities");
 						// CHAPTER -> ACTIVITY -> DYNAMIC ACTIVITY
-						for (DynamicActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
+						for (InteractiveActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
 							Element assignedActivityDynamicActivityElement = document.createElement("ChapterActivityDynamicActivity");
 							assignedActivityDynamicActivityElement.setAttribute("id", dynamicActivity.getId());
 							assignedActivityDynamicActivityElement.setAttribute("name", dynamicActivity.getName());
@@ -739,7 +739,7 @@ public class XMLManager {
 						assignedStepsElement.appendChild(assignedStepElement);
 						Element assignedDynamicActivitiesElement = document.createElement("assignedDynamicActivities");
 						// CHAPTER -> STEP -> DYNAMIC ACTIVITY
-						for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+						for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
 							Element assignedStepDynamicActivityElement = document.createElement("ChapterStepDynamicActivity");
 							assignedStepDynamicActivityElement.setAttribute("id", dynamicActivity.getId());
 							assignedStepDynamicActivityElement.setAttribute("name", dynamicActivity.getName());

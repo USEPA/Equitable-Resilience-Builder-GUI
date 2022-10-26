@@ -20,7 +20,7 @@ public class Activity {
 	}
 	
 	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
-	private ArrayList<DynamicActivity> assignedDynamicActivities = new ArrayList<DynamicActivity>();
+	private ArrayList<InteractiveActivity> assignedDynamicActivities = new ArrayList<InteractiveActivity>();
 	
 	private String GUID;
 		
@@ -53,13 +53,13 @@ public class Activity {
 		}
 	}
 	
-	public void addDynamicActivity(DynamicActivity dynamicActivity) {
+	public void addDynamicActivity(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			assignedDynamicActivities.add(dynamicActivity);
 		}
 	}
 	
-	public void removeDynamicActivity(DynamicActivity dynamicActivity) {
+	public void removeDynamicActivity(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			assignedDynamicActivities.remove(dynamicActivity);
 		}
@@ -121,11 +121,11 @@ public class Activity {
 		this.assignedSteps = assignedSteps;
 	}
 
-	public ArrayList<DynamicActivity> getAssignedDynamicActivities() {
+	public ArrayList<InteractiveActivity> getAssignedDynamicActivities() {
 		return assignedDynamicActivities;
 	}
 
-	public void setAssignedDynamicActivities(ArrayList<DynamicActivity> assignedDynamicActivities) {
+	public void setAssignedDynamicActivities(ArrayList<InteractiveActivity> assignedDynamicActivities) {
 		this.assignedDynamicActivities = assignedDynamicActivities;
 	}
 

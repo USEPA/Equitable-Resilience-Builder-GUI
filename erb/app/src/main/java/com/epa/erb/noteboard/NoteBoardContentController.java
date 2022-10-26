@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
-import com.epa.erb.DynamicActivity;
+import com.epa.erb.InteractiveActivity;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
@@ -61,8 +61,8 @@ public class NoteBoardContentController implements Initializable{
 	private App app;
 	private Project project;
 	private Goal goal;
-	private DynamicActivity dynamicActivity;
-	public NoteBoardContentController(App app,Project project, Goal goal, DynamicActivity dynamicActivity ) {
+	private InteractiveActivity dynamicActivity;
+	public NoteBoardContentController(App app,Project project, Goal goal, InteractiveActivity dynamicActivity ) {
 		this.app = app;
 		this.project = project;
 		this.goal = goal;
@@ -156,7 +156,7 @@ public class NoteBoardContentController implements Initializable{
 		}
 	}
 	
-	private void generateExistingNoteBoardControls(Project project, Goal goal, DynamicActivity dynamicActivity) {
+	private void generateExistingNoteBoardControls(Project project, Goal goal, InteractiveActivity dynamicActivity) {
 		try {
 			XMLManager xmlManager = new XMLManager(app);
 			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(fileHandler.getDynamicActivityDataXMLFile(project, goal, dynamicActivity));
@@ -186,7 +186,7 @@ public class NoteBoardContentController implements Initializable{
 		}
 	}
 	
-	private boolean noteBoardDataExists(Project project, Goal goal, DynamicActivity dynamicActivity) {
+	private boolean noteBoardDataExists(Project project, Goal goal, InteractiveActivity dynamicActivity) {
 		File activityDataFile = fileHandler.getDynamicActivityDataXMLFile(project, goal, dynamicActivity);
 		if(activityDataFile != null && activityDataFile.exists()) {
 			return true;
@@ -397,11 +397,11 @@ public class NoteBoardContentController implements Initializable{
 		this.goal = goal;
 	}
 
-	public DynamicActivity getDynamicActivity() {
+	public InteractiveActivity getDynamicActivity() {
 		return dynamicActivity;
 	}
 
-	public void setDynamicActivity(DynamicActivity dynamicActivity) {
+	public void setDynamicActivity(InteractiveActivity dynamicActivity) {
 		this.dynamicActivity = dynamicActivity;
 	}
 

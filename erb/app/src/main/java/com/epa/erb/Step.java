@@ -22,7 +22,7 @@ public class Step {
 	}
 	
 	private String GUID;
-	private ArrayList<DynamicActivity> assignedDynamicActivities = new ArrayList<DynamicActivity>();
+	private ArrayList<InteractiveActivity> assignedDynamicActivities = new ArrayList<InteractiveActivity>();
 	
 	public Step cloneStep() {
 		Step clonedStep = new Step(stepType, status, shortName, longName, stepID, notes, rating);
@@ -35,13 +35,13 @@ public class Step {
 		assignedDynamicActivities.clear();
 	}
 	
-	public void addDynamicActivity(DynamicActivity dynamicActivity) {
+	public void addDynamicActivity(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			assignedDynamicActivities.add(dynamicActivity);
 		}
 	}
 	
-	public void removeDynamicActivity(DynamicActivity dynamicActivity) {
+	public void removeDynamicActivity(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			assignedDynamicActivities.remove(dynamicActivity);
 		}
@@ -103,11 +103,11 @@ public class Step {
 		this.rating = rating;
 	}
 
-	public ArrayList<DynamicActivity> getAssignedDynamicActivities() {
+	public ArrayList<InteractiveActivity> getAssignedDynamicActivities() {
 		return assignedDynamicActivities;
 	}
 
-	public void setAssignedDynamicActivities(ArrayList<DynamicActivity> assignedDynamicActivities) {
+	public void setAssignedDynamicActivities(ArrayList<InteractiveActivity> assignedDynamicActivities) {
 		this.assignedDynamicActivities = assignedDynamicActivities;
 	}
 

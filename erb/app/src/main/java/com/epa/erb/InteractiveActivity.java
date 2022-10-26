@@ -1,11 +1,11 @@
 package com.epa.erb;
 
-public class DynamicActivity {
+public class InteractiveActivity {
 	
 	private String id;
 	private String name;
 	private String status;
-	public DynamicActivity(String id, String name, String status) {
+	public InteractiveActivity(String id, String name, String status) {
 		this.id = id;
 		this.name = name;
 		this.status = status;
@@ -13,8 +13,8 @@ public class DynamicActivity {
 	
 	private String GUID;
 	
-	public DynamicActivity cloneDynamicActivity() {
-		DynamicActivity clonedDynamicActivity = new DynamicActivity(id,name, status);
+	public InteractiveActivity cloneDynamicActivity() {
+		InteractiveActivity clonedDynamicActivity = new InteractiveActivity(id,name, status);
 		clonedDynamicActivity.setGUID(GUID);
 		return clonedDynamicActivity;
 	}

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.DynamicActivity;
+import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.forms.MainFormController;
@@ -148,7 +148,7 @@ public class EngagementActionController implements Initializable {
 	private Step currentSelectedStep = null;
 	private Chapter currentSelectedChapter = null;
 	private Activity currentSelectedActivity = null;
-	private DynamicActivity currentSelectedDynamicActivity = null;
+	private InteractiveActivity currentSelectedDynamicActivity = null;
 
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
@@ -270,7 +270,7 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	private VBox loadNoteBoardContentController(DynamicActivity dynamicActivity) {
+	private VBox loadNoteBoardContentController(InteractiveActivity dynamicActivity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
 			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, dynamicActivity);
@@ -371,8 +371,8 @@ public class EngagementActionController implements Initializable {
 			Object itemClicked = map.get(GUIDOfItemClicked);
 			String status = getActivityStatusForRadioButtonState(radioButton);
 			if (itemClicked != null) {
-				if (itemClicked.toString().contains("DynamicActivity")) {
-					DynamicActivity dynamicActivity = (DynamicActivity) itemClicked;
+				if (itemClicked.toString().contains("InteractiveActivity")) {
+					InteractiveActivity dynamicActivity = (InteractiveActivity) itemClicked;
 					dynamicActivity.setStatus(status);
 				} else if (itemClicked.toString().contains("Step")) {
 					Step step = (Step) itemClicked;
@@ -470,8 +470,8 @@ public class EngagementActionController implements Initializable {
 			String GUIDOfItemClicked = treeItemIdTreeMap.get(newItem);
 			Object itemClicked = map.get(GUIDOfItemClicked);
 			if (itemClicked != null) {
-				if (itemClicked.toString().contains("DynamicActivity")) {
-					DynamicActivity dynamicActivity = (DynamicActivity) itemClicked;
+				if (itemClicked.toString().contains("InteractiveActivity")) {
+					InteractiveActivity dynamicActivity = (InteractiveActivity) itemClicked;
 					dynamicActivitySelected(newItem, dynamicActivity);
 				} else if (itemClicked.toString().contains("Step")) {
 					Step step = (Step) itemClicked;
@@ -526,11 +526,11 @@ public class EngagementActionController implements Initializable {
 		return null;
 	}
 
-	public Step getStepForDynamicActivity(DynamicActivity dynamicActivity) {
+	public Step getStepForDynamicActivity(InteractiveActivity dynamicActivity) {
 		for (Chapter chapter : listOfUniqueChapters) {
 			for (Activity chapterActivity : chapter.getAssignedActivities()) {
 				for (Step activityStep : chapterActivity.getAssignedSteps()) {
-					for (DynamicActivity stepDynamicActivity : activityStep.getAssignedDynamicActivities()) {
+					for (InteractiveActivity stepDynamicActivity : activityStep.getAssignedDynamicActivities()) {
 						if (stepDynamicActivity.getGUID().contentEquals(dynamicActivity.getGUID())) {
 							return activityStep;
 						}
@@ -541,10 +541,10 @@ public class EngagementActionController implements Initializable {
 		return null;
 	}
 
-	public Activity getActivityForDynamicActivity(DynamicActivity dynamicActivity) {
+	public Activity getActivityForDynamicActivity(InteractiveActivity dynamicActivity) {
 		for (Chapter chapter : listOfUniqueChapters) {
 			for (Activity chapterActivity : chapter.getAssignedActivities()) {
-				for (DynamicActivity activityDynamicActivity : chapterActivity.getAssignedDynamicActivities()) {
+				for (InteractiveActivity activityDynamicActivity : chapterActivity.getAssignedDynamicActivities()) {
 					if (activityDynamicActivity.getGUID().contentEquals(dynamicActivity.getGUID())) {
 						return chapterActivity;
 					}
@@ -644,7 +644,7 @@ public class EngagementActionController implements Initializable {
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 
-	private void dynamicActivitySelected(TreeItem<String> dynamicActivityTreeItem, DynamicActivity dynamicActivity) {
+	private void dynamicActivitySelected(TreeItem<String> dynamicActivityTreeItem, InteractiveActivity dynamicActivity) {
 		currentSelectedDynamicActivity = dynamicActivity;
 		currentSelectedStep = getStepForDynamicActivity(dynamicActivity);
 		currentSelectedActivity = getActivityForDynamicActivity(dynamicActivity);
@@ -708,9 +708,9 @@ public class EngagementActionController implements Initializable {
 						chapterTreeItem.getChildren().add(chapterStepTreeItem);
 						treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
 					}
-					for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
+					for (InteractiveActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
 						// CHAPTER -> STEP -> DYNAMIC ACTIVITY
-						DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+						InteractiveActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
 						String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
 						uniqueDynamicActivity.setGUID(dynamicActivityGUID);
 						map.put(dynamicActivityGUID, uniqueDynamicActivity);
@@ -739,10 +739,10 @@ public class EngagementActionController implements Initializable {
 							activityTreeItem.getChildren().add(stepTreeItem);
 							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
 						}
-						for (DynamicActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
+						for (InteractiveActivity dynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
 							// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
 							if (dynamicActivity != null) {
-								DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+								InteractiveActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
 								TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
 								activityTreeItem.getChildren().add(dynamicActivityTreeItem);
 								String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
@@ -752,10 +752,10 @@ public class EngagementActionController implements Initializable {
 							}
 						} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
 					} // CHAPTER ACTIVITY STEP
-					for (DynamicActivity dynamicActivity : uniqueActivity.getAssignedDynamicActivities()) {
+					for (InteractiveActivity dynamicActivity : uniqueActivity.getAssignedDynamicActivities()) {
 						// CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
 						if (dynamicActivity != null) {
-							DynamicActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
+							InteractiveActivity uniqueDynamicActivity = dynamicActivity.cloneDynamicActivity();
 							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getName());
 							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
 							String dynamicActivityGUID = uniqueDynamicActivity.getGUID();
@@ -801,8 +801,8 @@ public class EngagementActionController implements Initializable {
 						treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
 					}
 					// CHAPTER -> STEP -> DYNAMIC ACTIVITY
-					for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
-						DynamicActivity uniqueDynamicActivity = new DynamicActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
+					for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+						InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
 						String dynamicActivityGUID = app.generateGUID();
 						uniqueDynamicActivity.setGUID(dynamicActivityGUID);
 						map.put(dynamicActivityGUID, uniqueDynamicActivity);
@@ -835,8 +835,8 @@ public class EngagementActionController implements Initializable {
 							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
 						}
 						// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-						for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
-							DynamicActivity uniqueDynamicActivity = new DynamicActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
+						for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+							InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
 							String dynamicActivityGUID = app.generateGUID();
 							uniqueDynamicActivity.setGUID(dynamicActivityGUID);
 							map.put(dynamicActivityGUID, uniqueDynamicActivity);
@@ -849,8 +849,8 @@ public class EngagementActionController implements Initializable {
 					}//CHAPTER ACTIVITY STEP
 
 					// CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
-					for (DynamicActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
-						DynamicActivity uniqueDynamicActivity = new DynamicActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
+					for (InteractiveActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
+						InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivity.getName(), dynamicActivity.getStatus());
 						String dynamicActivityGUID = app.generateGUID();
 						uniqueDynamicActivity.setGUID(dynamicActivityGUID);
 						map.put(dynamicActivityGUID, uniqueDynamicActivity);
@@ -954,7 +954,7 @@ public class EngagementActionController implements Initializable {
 
 	}
 
-	private void loadDynamicActivityContent(DynamicActivity dynamicActivity) {
+	private void loadDynamicActivityContent(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			//TODO: Somehow make this not static
 			if (dynamicActivity.getId().contentEquals("00000001")) {
@@ -962,7 +962,7 @@ public class EngagementActionController implements Initializable {
 				addContentToContentVBox(root, false);
 			}
 		} else {
-			logger.error("Cannot loadDynamicActivityContent. DynamicActivity = " + dynamicActivity);
+			logger.error("Cannot loadDynamicActivityContent. InteractiveActivity = " + dynamicActivity);
 
 		}
 	}
@@ -1453,11 +1453,11 @@ public class EngagementActionController implements Initializable {
 		return listOfUniqueChapters;
 	}
 
-	public DynamicActivity getCurrentSelectedDynamicActivity() {
+	public InteractiveActivity getCurrentSelectedDynamicActivity() {
 		return currentSelectedDynamicActivity;
 	}
 
-	public void setCurrentSelectedDynamicActivity(DynamicActivity currentSelectedDynamicActivity) {
+	public void setCurrentSelectedDynamicActivity(InteractiveActivity currentSelectedDynamicActivity) {
 		this.currentSelectedDynamicActivity = currentSelectedDynamicActivity;
 	}
 	

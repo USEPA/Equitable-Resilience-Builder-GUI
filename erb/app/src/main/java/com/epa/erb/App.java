@@ -45,7 +45,7 @@ public class App extends Application {
 	private ArrayList<Chapter> availableChapters;
 	private ArrayList<Activity> availableActivities;
 	private ArrayList<GoalCategory> availableGoalCategories;
-	private ArrayList<DynamicActivity> availableDynamicActivities;
+	private ArrayList<InteractiveActivity> availableDynamicActivities;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -204,9 +204,9 @@ public class App extends Application {
 		return null;
 	}
 	
-	public DynamicActivity getDynamicActivityById(String activityID) {
+	public InteractiveActivity getDynamicActivityById(String activityID) {
 		if (activityID != null) {
-			for (DynamicActivity dynamicActivity : availableDynamicActivities) {
+			for (InteractiveActivity dynamicActivity : availableDynamicActivities) {
 				if (dynamicActivity.getId().contentEquals(activityID)) {
 					return dynamicActivity;
 				}
@@ -215,7 +215,7 @@ public class App extends Application {
 			logger.error("Cannot getDynamicActivityById. activityID is null.");
 			return null;
 		}
-		logger.debug("Cannot getDynamicActivityById. DynamicActivity returned is null");
+		logger.debug("Cannot getDynamicActivityById. InteractiveActivity returned is null");
 		return null;
 	}
 	
@@ -324,11 +324,11 @@ public class App extends Application {
 		this.availableSteps = steps;
 	}
 
-	public ArrayList<DynamicActivity> getAvailableDynamicActivities() {
+	public ArrayList<InteractiveActivity> getAvailableDynamicActivities() {
 		return availableDynamicActivities;
 	}
 
-	public void setAvailableDynamicActivities(ArrayList<DynamicActivity> dynamicActivities) {
+	public void setAvailableDynamicActivities(ArrayList<InteractiveActivity> dynamicActivities) {
 		this.availableDynamicActivities = dynamicActivities;
 	}
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
-import com.epa.erb.DynamicActivity;
+import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
@@ -175,7 +175,7 @@ public class FileHandler {
 		}
 	}
 	
-	public File getDynamicActivityDataXMLFile(Project project, Goal goal, DynamicActivity dynamicActivity) {
+	public File getDynamicActivityDataXMLFile(Project project, Goal goal, InteractiveActivity dynamicActivity) {
 		if(project != null && goal != null && dynamicActivity != null) {
 			File dynamicActivityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + dynamicActivity.getGUID() + "\\Data.xml");
 			return dynamicActivityDataXMLFile;
@@ -346,12 +346,12 @@ public class FileHandler {
 				for (Step step : activity.getAssignedSteps()) {
 					File activityStepDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + step.getGUID());
 					if(!activityStepDirectory.exists()) activityStepDirectory.mkdir();
-					for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+					for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
 						File stepDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
 						if(!stepDynamicActivityDirectory.exists()) stepDynamicActivityDirectory.mkdir();
 					}
 				}
-				for (DynamicActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
+				for (InteractiveActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
 					File activityDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
 					if(!activityDynamicActivityDirectory.exists()) activityDynamicActivityDirectory.mkdir();
 				}
@@ -359,7 +359,7 @@ public class FileHandler {
 			for (Step step : chapter.getAssignedSteps()) {
 				File chapterStepDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + step.getGUID());
 				if(!chapterStepDirectory.exists()) chapterStepDirectory.mkdir();
-				for (DynamicActivity dynamicActivity : step.getAssignedDynamicActivities()) {
+				for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
 					File stepDynamicActivityDirectory = new File(getGUIDDataDirectory(project, goal) + "\\" + dynamicActivity.getGUID());
 					if(!stepDynamicActivityDirectory.exists()) stepDynamicActivityDirectory.mkdir();
 				}
