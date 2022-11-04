@@ -9,7 +9,7 @@ public class InteractiveActivity extends ERBItem{
 	private String status;
 	
 	public InteractiveActivity(String id, String guid, String longName, String shortName, String status) {
-		super(id, guid, longName, shortName);
+		super(id, guid, longName, shortName, null);
 		this.status = status;
 	}
 	

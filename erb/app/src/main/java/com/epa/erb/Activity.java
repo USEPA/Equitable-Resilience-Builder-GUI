@@ -14,7 +14,7 @@ public class Activity extends ERBItem{
 	private String rating;
 	
 	public Activity(String id, String guid, String longName, String shortName, String status, String notes, String rating) {
-		super(id, guid, longName, shortName);
+		super(id, guid, longName, shortName, null);
 		this.status = status;
 		this.notes = notes;
 		this.rating = rating;

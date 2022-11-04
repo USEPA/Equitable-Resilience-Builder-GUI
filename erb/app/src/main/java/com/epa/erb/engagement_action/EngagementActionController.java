@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
+import com.epa.erb.ERBItem;
 import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
@@ -39,6 +40,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
@@ -89,7 +91,7 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	VBox treeViewVBox;
 	@FXML
-	TreeView<String> treeView;
+	TreeView<ERBItem> treeView;
 	@FXML
 	VBox localProgressVBox;
 	@FXML
@@ -142,7 +144,6 @@ public class EngagementActionController implements Initializable {
 		this.project = project;
 	}
 	ArrayList<Chapter> listOfUniqueChapters = new ArrayList<Chapter>();
-	HashMap<String, Object> map = new HashMap<String, Object>();
 	
 	private Goal currentSelectedGoal = null;
 	private Step currentSelectedStep = null;
@@ -153,7 +154,7 @@ public class EngagementActionController implements Initializable {
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	private HashMap<TreeItem<String>, String> treeItemIdTreeMap = new HashMap<TreeItem<String>, String>();
+	private HashMap<ERBItem, TreeItem<ERBItem>> treeItemGuidTreeMap = new HashMap<ERBItem, TreeItem<ERBItem>>();
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
 	private ArrayList<ERBChapterDiagramController> listOfChapterDiagramControllers = new ArrayList<ERBChapterDiagramController>();
 
@@ -162,7 +163,7 @@ public class EngagementActionController implements Initializable {
 		removeShowDetailsCheckBox(); // Default setting for removing spokes
 		removeDetailsKeyPaneVBox(); // Default setting for removing spokes
 		removeAttributeScrollPane(); // Default setting
-
+		treeView.setCellFactory(tv-> createTreeCell());
 		if (project.getProjectType().contentEquals("Goal Mode")) {
 			initGoalMode();
 		} else {
@@ -232,9 +233,9 @@ public class EngagementActionController implements Initializable {
 		if (currentSelectedActivity != null) {
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 		} else {
-			TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-			if (selectedTreeItem != null && selectedTreeItem.getValue().contains("Chapter")) {
-				updateLocalProgress(getChapterForNameInGoal(selectedTreeItem.getValue().trim(), currentSelectedGoal),currentSelectedGoal.getChapters());
+			TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+			if (selectedTreeItem != null && selectedTreeItem.getValue().getShortName().contains("Chapter")) {
+				updateLocalProgress(getChapterForNameInGoal(selectedTreeItem.getValue().getShortName().trim(), currentSelectedGoal),currentSelectedGoal.getChapters());
 			}
 		}
 	}
@@ -249,8 +250,9 @@ public class EngagementActionController implements Initializable {
 	}
 
 	private void initializeTreeViewSelection() {
-		for (TreeItem<String> treeItem : treeItemIdTreeMap.keySet()) {
-			if (treeItemIdTreeMap.get(treeItem) == "0") {
+		for (ERBItem erbItem : treeItemGuidTreeMap.keySet()) {
+			TreeItem<ERBItem> treeItem = treeItemGuidTreeMap.get(erbItem);
+			if (treeItem.getValue().getId() == "004") {
 				getTreeView().getSelectionModel().select(treeItem);
 				treeViewClicked(null, treeItem);
 			}
@@ -282,8 +284,6 @@ public class EngagementActionController implements Initializable {
 			return null;
 		}
 	}
-
-
 
 	private Parent loadERBChapterDiagramRoot(Chapter chapter, ArrayList<Chapter> chapters) {
 		try {
@@ -365,10 +365,11 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	public void activityStatusRadioButtonAction() {
 		RadioButton radioButton = (RadioButton) activityStatusToggleGroup.getSelectedToggle();
-		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
 		if (selectedTreeItem != null) {
-			String GUIDOfItemClicked = treeItemIdTreeMap.get(selectedTreeItem);
-			Object itemClicked = map.get(GUIDOfItemClicked);
+			ERBItem selectedErbItem = selectedTreeItem.getValue();
+			String GUIDOfItemClicked = selectedTreeItem.getValue().getGuid();
+			Object itemClicked = selectedErbItem.getObject();
 			String status = getActivityStatusForRadioButtonState(radioButton);
 			if (itemClicked != null) {
 				if (itemClicked.toString().contains("InteractiveActivity")) {
@@ -411,8 +412,8 @@ public class EngagementActionController implements Initializable {
 
 	@FXML
 	public void previousButtonAction() {
-		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
+		TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<ERBItem> parentTreeItem = selectedTreeItem.getParent();
 		if (selectedTreeItem != null && parentTreeItem != null) {
 			int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
 			treeView.getSelectionModel().select(parentTreeItem.getChildren().get(currentIndex - 1));
@@ -422,10 +423,10 @@ public class EngagementActionController implements Initializable {
 
 	@FXML
 	public void nextButtonAction() {
-		TreeItem<String> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-		TreeItem<String> parentTreeItem = selectedTreeItem.getParent();
+		TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<ERBItem> parentTreeItem = selectedTreeItem.getParent();
 		if (selectedTreeItem != null && parentTreeItem != null) {
-			if (parentTreeItem.getValue().contains("ERB")) {
+			if (parentTreeItem.getValue().getShortName().contains("ERB")) {
 				treeView.getSelectionModel().select(selectedTreeItem.getChildren().get(0));
 				treeViewClicked(null, selectedTreeItem.getChildren().get(0));
 			} else {
@@ -464,11 +465,10 @@ public class EngagementActionController implements Initializable {
 			}
 		}
 	}
-
-	public void treeViewClicked(TreeItem<String> oldItem, TreeItem<String> newItem) {
-		if (newItem != null) {
-			String GUIDOfItemClicked = treeItemIdTreeMap.get(newItem);
-			Object itemClicked = map.get(GUIDOfItemClicked);
+	
+	public void treeViewClicked(TreeItem<ERBItem> oldItem, TreeItem<ERBItem> newItem) {
+		if (newItem != null) {			
+			Object itemClicked = newItem.getValue().getObject();
 			if (itemClicked != null) {
 				if (itemClicked.toString().contains("InteractiveActivity")) {
 					InteractiveActivity dynamicActivity = (InteractiveActivity) itemClicked;
@@ -572,7 +572,7 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	private void chapterTreeItemSelected(TreeItem<String> chapterTreeItem, Chapter chapter) {
+	private void chapterTreeItemSelected(TreeItem<ERBItem> chapterTreeItem, Chapter chapter) {
 		currentSelectedDynamicActivity = null;
 		currentSelectedStep = null;
 		currentSelectedActivity = null;
@@ -594,7 +594,7 @@ public class EngagementActionController implements Initializable {
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 
-	private void activityTreeItemSelected(TreeItem<String> activityTreeItem, Activity activity) {
+	private void activityTreeItemSelected(TreeItem<ERBItem> activityTreeItem, Activity activity) {
 		currentSelectedDynamicActivity = null;
 		currentSelectedStep = null;
 		currentSelectedActivity = activity;
@@ -614,7 +614,7 @@ public class EngagementActionController implements Initializable {
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 
-	private void stepTreeItemSelected(TreeItem<String> stepTreeItem, Step step) {
+	private void stepTreeItemSelected(TreeItem<ERBItem> stepTreeItem, Step step) {
 		currentSelectedDynamicActivity = null;
 		currentSelectedStep = step;
 		currentSelectedActivity = getActivityForStep(step);
@@ -644,7 +644,7 @@ public class EngagementActionController implements Initializable {
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 
-	private void dynamicActivitySelected(TreeItem<String> dynamicActivityTreeItem, InteractiveActivity dynamicActivity) {
+	private void dynamicActivitySelected(TreeItem<ERBItem> dynamicActivityTreeItem, InteractiveActivity dynamicActivity) {
 		currentSelectedDynamicActivity = dynamicActivity;
 		currentSelectedStep = getStepForDynamicActivity(dynamicActivity);
 		currentSelectedActivity = getActivityForDynamicActivity(dynamicActivity);
@@ -682,71 +682,70 @@ public class EngagementActionController implements Initializable {
 
 	private void fillAndStoreTreeViewData_GUIDS(ArrayList<Chapter> uniqueChapters) { // HAS GUIDS
 		if (uniqueChapters != null) {
-			treeItemIdTreeMap.clear();
-			TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
+			treeItemGuidTreeMap.clear();
+
+			ERBItem rootErbItem = new ERBItem("004", null, "ERB Pathway" , "ERB Pathway", null);
+			TreeItem<ERBItem> rootTreeItem = new TreeItem<ERBItem>(rootErbItem);
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
-			treeItemIdTreeMap.put(rootTreeItem, "0");
+			treeItemGuidTreeMap.put(rootErbItem, rootTreeItem);
 
 			// CHAPTER
 			for (Chapter uniqueChapter : uniqueChapters) {
-				TreeItem<String> chapterTreeItem = new TreeItem<String>(uniqueChapter.getLongName());
+				ERBItem chapterERBItem = new ERBItem(uniqueChapter.getId(), uniqueChapter.getGuid(), uniqueChapter.getLongName(), uniqueChapter.getShortName(), uniqueChapter);
+				TreeItem<ERBItem> chapterTreeItem = new TreeItem<ERBItem>(chapterERBItem);
 				rootTreeItem.getChildren().add(chapterTreeItem);
-				String chapterGUID = uniqueChapter.getGuid();
-				map.put(chapterGUID, uniqueChapter);
-				treeItemIdTreeMap.put(chapterTreeItem, chapterGUID);
+				treeItemGuidTreeMap.put(chapterERBItem, chapterTreeItem);
+
 				// CHAPTER -> STEP
 				for (Step uniqueStep : uniqueChapter.getAssignedSteps()) {
-					String stepGUID = uniqueStep.getGuid();
-					map.put(stepGUID, uniqueStep);
-					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+					ERBItem chapterStepERBItem = new ERBItem(uniqueStep.getId(), uniqueStep.getGuid(), uniqueStep.getLongName(), uniqueStep.getShortName(), uniqueStep);
+					TreeItem<ERBItem> chapterStepTreeItem = new TreeItem<ERBItem>(chapterStepERBItem);
 					if (uniqueStep.getId().length() != 4) {
 						chapterTreeItem.getChildren().add(chapterStepTreeItem);
-						treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
+						treeItemGuidTreeMap.put(chapterStepERBItem, chapterStepTreeItem);
 					}
+					
 					// CHAPTER -> STEP -> DYNAMIC ACTIVITY
 					for (InteractiveActivity uniqueDynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
-						String dynamicActivityGUID = uniqueDynamicActivity.getGuid();
-						map.put(dynamicActivityGUID, uniqueDynamicActivity);
-						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getLongName());
+						ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
+						TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
 						chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
-						treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+						treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
 					} // CHAPTER STEP DYYNAMIC ACTIVITY
 				} // CHAPTER STEP
 
 				// CHAPTER -> ACTIVITY
 				for (Activity uniqueActivity : uniqueChapter.getAssignedActivities()) {
-					TreeItem<String> activityTreeItem = new TreeItem<String>(uniqueActivity.getLongName());
+					ERBItem activityERBItem = new ERBItem(uniqueActivity.getId(), uniqueActivity.getGuid(), uniqueActivity.getLongName(), uniqueActivity.getShortName(), uniqueActivity);
+					TreeItem<ERBItem> activityTreeItem = new TreeItem<ERBItem>(activityERBItem);
 					chapterTreeItem.getChildren().add(activityTreeItem);
-					String activityGUID = uniqueActivity.getGuid();
-					map.put(activityGUID, uniqueActivity);
-					treeItemIdTreeMap.put(activityTreeItem, activityGUID);
+					treeItemGuidTreeMap.put(activityERBItem, activityTreeItem);
+					
 					// CHAPTER -> ACTIVITY -> STEP
 					for (Step uniqueStep : uniqueActivity.getAssignedSteps()) {
-						String stepGUID = uniqueStep.getGuid();
-						map.put(stepGUID, uniqueStep);
-						TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+						ERBItem stepERBItem = new ERBItem(uniqueStep.getId(), uniqueStep.getGuid(), uniqueStep.getLongName(), uniqueStep.getShortName(), uniqueStep);
+						TreeItem<ERBItem> stepTreeItem = new TreeItem<ERBItem>(stepERBItem);
 						if (uniqueStep.getId().length() != 4) {
 							activityTreeItem.getChildren().add(stepTreeItem);
-							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+							treeItemGuidTreeMap.put(stepERBItem, stepTreeItem);
 						}
+						
 						// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
 						for (InteractiveActivity uniqueDynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
-							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getLongName());
+							ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
+							TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
 							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-							String dynamicActivityGUID = uniqueDynamicActivity.getGuid();
-							map.put(dynamicActivityGUID, uniqueDynamicActivity);
-							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+							treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
 						} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
 					} // CHAPTER ACTIVITY STEP
 
 					// CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
 					for (InteractiveActivity uniqueDynamicActivity : uniqueActivity.getAssignedDynamicActivities()) {
-						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getLongName());
+						ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
+						TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
 						activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-						String dynamicActivityGUID = uniqueDynamicActivity.getGuid();
-						map.put(dynamicActivityGUID, uniqueDynamicActivity);
-						treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+						treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
 					} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
 				} // CHAPTER ACTIVITY
 				listOfUniqueChapters.add(uniqueChapter);
@@ -758,38 +757,41 @@ public class EngagementActionController implements Initializable {
 	
 	private void fillAndStoreTreeViewData(ArrayList<Chapter> genericChapters) { // Does not have GUIDS
 		if (genericChapters != null) {
-			treeItemIdTreeMap.clear();
-			TreeItem<String> rootTreeItem = new TreeItem<String>("ERB Pathway");
+			treeItemGuidTreeMap.clear();
+			ERBItem rootErbItem = new ERBItem("004", null, "ERB Pathway" , "ERB Pathway", null);
+			TreeItem<ERBItem> rootTreeItem = new TreeItem<ERBItem>(rootErbItem);
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
-			treeItemIdTreeMap.put(rootTreeItem, "0");
+			treeItemGuidTreeMap.put(rootErbItem, rootTreeItem);
 
 			// CHAPTER
 			for (Chapter chapter : genericChapters) {
 				String chapterGUID = app.generateGUID();
 				Chapter uniqueChapter = new Chapter(chapter.getId(), chapterGUID, chapter.getLongName(), chapter.getShortName(), chapter.getStatus(), chapter.getNotes(), chapter.getDescription(), chapter.getNumber());
-				map.put(chapterGUID, uniqueChapter);
-				TreeItem<String> chapterTreeItem = new TreeItem<String>(uniqueChapter.getLongName());
+				ERBItem chapterERBItem = new ERBItem(uniqueChapter.getId(), uniqueChapter.getGuid(), uniqueChapter.getLongName(), uniqueChapter.getShortName(), uniqueChapter);
+				TreeItem<ERBItem> chapterTreeItem = new TreeItem<ERBItem>(chapterERBItem);
 				rootTreeItem.getChildren().add(chapterTreeItem);
-				treeItemIdTreeMap.put(chapterTreeItem, chapterGUID);
+				treeItemGuidTreeMap.put(chapterERBItem, chapterTreeItem);
+				
 				// CHAPTER -> STEP
 				for (Step step : chapter.getAssignedSteps()) {
 					String stepGUID = app.generateGUID();
 					Step uniqueStep = new Step(step.getId(), stepGUID, step.getLongName(), step.getShortName(), step.getStatus(), step.getNotes(), step.getRating(), step.getType());
-					map.put(stepGUID, uniqueStep);
-					TreeItem<String> chapterStepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+					ERBItem chapterStepERBItem = new ERBItem(uniqueStep.getId(), uniqueStep.getGuid(), uniqueStep.getLongName(), uniqueStep.getShortName(), uniqueStep);
+					TreeItem<ERBItem> chapterStepTreeItem = new TreeItem<ERBItem>(chapterStepERBItem);
 					if(uniqueStep.getId().length() != 4) {
 						chapterTreeItem.getChildren().add(chapterStepTreeItem);
-						treeItemIdTreeMap.put(chapterStepTreeItem, stepGUID);
+						treeItemGuidTreeMap.put(chapterStepERBItem, chapterStepTreeItem);
 					}
+					
 					// CHAPTER -> STEP -> DYNAMIC ACTIVITY
 					for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
 						String dynamicActivityGUID = app.generateGUID();
 						InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivityGUID, dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus());
-						map.put(dynamicActivityGUID, uniqueDynamicActivity);
-						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getLongName());
+						ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
+						TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
 						chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
-						treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+						treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
 						uniqueStep.addDynamicActivity(uniqueDynamicActivity);
 					}//CHAPTER STEP DYNAMIC ACTIVITY
 					uniqueChapter.addStep(uniqueStep);
@@ -799,28 +801,30 @@ public class EngagementActionController implements Initializable {
 				for (Activity activity : chapter.getAssignedActivities()) {
 					String activityGUID = app.generateGUID();
 					Activity uniqueActivity = new Activity(activity.getId(), activityGUID, activity.getLongName(), activity.getShortName(), activity.getStatus(), activity.getNotes(), activity.getRating());
-					map.put(activityGUID, uniqueActivity);
-					TreeItem<String> activityTreeItem = new TreeItem<String>(uniqueActivity.getLongName());
+					ERBItem activityERBItem = new ERBItem(uniqueActivity.getId(), uniqueActivity.getGuid(), uniqueActivity.getLongName(), uniqueActivity.getShortName(), uniqueActivity);
+					TreeItem<ERBItem> activityTreeItem = new TreeItem<ERBItem>(activityERBItem);
 					chapterTreeItem.getChildren().add(activityTreeItem);
-					treeItemIdTreeMap.put(activityTreeItem, activityGUID);
+					treeItemGuidTreeMap.put(activityERBItem, activityTreeItem);
+					
 					// CHAPTER -> ACTIVITY -> STEP
 					for (Step step : activity.getAssignedSteps()) {
 						String stepGUID = app.generateGUID();
 						Step uniqueStep = new Step(step.getId(), stepGUID, step.getLongName(), step.getShortName(), step.getStatus(), step.getNotes(), step.getRating(), step.getType());
-						map.put(stepGUID, uniqueStep);
-						TreeItem<String> stepTreeItem = new TreeItem<String>(uniqueStep.getLongName());
+						ERBItem stepERBItem = new ERBItem(uniqueStep.getId(), uniqueStep.getGuid(), uniqueStep.getLongName(), uniqueStep.getShortName(), uniqueStep);
+						TreeItem<ERBItem> stepTreeItem = new TreeItem<ERBItem>(stepERBItem);
 						if(uniqueStep.getId().length() != 4) {
 							activityTreeItem.getChildren().add(stepTreeItem);
-							treeItemIdTreeMap.put(stepTreeItem, stepGUID);
+							treeItemGuidTreeMap.put(stepERBItem, stepTreeItem);
 						}
+						
 						// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
 						for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
 							String dynamicActivityGUID = app.generateGUID();
 							InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivityGUID, dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus());
-							map.put(dynamicActivityGUID, uniqueDynamicActivity);
-							TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getLongName());
+							ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
+							TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
 							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-							treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+							treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
 							uniqueStep.addDynamicActivity(uniqueDynamicActivity);
 						}//CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
 						uniqueActivity.addStep(uniqueStep);
@@ -830,10 +834,10 @@ public class EngagementActionController implements Initializable {
 					for (InteractiveActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
 						String dynamicActivityGUID = app.generateGUID();
 						InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivityGUID, dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus());
-						map.put(dynamicActivityGUID, uniqueDynamicActivity);
-						TreeItem<String> dynamicActivityTreeItem = new TreeItem<String>(uniqueDynamicActivity.getLongName());
+						ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
+						TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
 						activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-						treeItemIdTreeMap.put(dynamicActivityTreeItem, dynamicActivityGUID);
+						treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
 						uniqueActivity.addDynamicActivity(uniqueDynamicActivity);
 					}//CHAPTER ACTIVITY DYNAMIC ACTIVITY
 					uniqueChapter.addActivity(uniqueActivity);
@@ -865,6 +869,21 @@ public class EngagementActionController implements Initializable {
 					setGraphic(null);
 				} else {
 					setText(item.getGoalName());
+				}
+			}
+		};
+	}
+	
+	private TreeCell<ERBItem> createTreeCell(){
+		return new TreeCell<ERBItem>() {
+			@Override
+			protected void updateItem(ERBItem item, boolean empty) {
+				super.updateItem(item, empty);
+				if (empty || item == null) {
+					setText(null);
+					setGraphic(null);
+				} else {
+					setText(item.getLongName());
 				}
 			}
 		};
@@ -1054,12 +1073,11 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	public TreeItem<String> findTreeItem(String guid) {
+	public TreeItem<ERBItem> findTreeItem(String guid) {
 		if (guid != null) {
-			for (TreeItem<String> treeItem : treeItemIdTreeMap.keySet()) {
-				String treeItemId = treeItemIdTreeMap.get(treeItem);
-				if (treeItemId.contentEquals(guid)) {
-					return treeItem;
+			for (ERBItem erbItem : treeItemGuidTreeMap.keySet()) {
+				if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(guid)) {
+					return treeItemGuidTreeMap.get(erbItem);
 				}
 			}
 			return null;
@@ -1069,7 +1087,7 @@ public class EngagementActionController implements Initializable {
 		return null;
 	}
 
-	private void setNavigationButtonsDisability(TreeItem<String> selectedTreeItem, TreeItem<String> parentTreeItem) {
+	private void setNavigationButtonsDisability(TreeItem<ERBItem> selectedTreeItem, TreeItem<ERBItem> parentTreeItem) {
 		if (selectedTreeItem != null) { // if activity is not null
 			if (parentTreeItem == null) { // if erb pathway
 				previousButton.setDisable(true);
@@ -1265,12 +1283,12 @@ public class EngagementActionController implements Initializable {
 		this.project = project;
 	}
 
-	public HashMap<TreeItem<String>, String> getTreeItemIdTreeMap() {
-		return treeItemIdTreeMap;
+	public HashMap<ERBItem, TreeItem<ERBItem>> getTreeItemIdTreeMap() {
+		return treeItemGuidTreeMap;
 	}
 
-	public void setTreeItemIdTreeMap(HashMap<TreeItem<String>, String> treeItemIdTreeMap) {
-		this.treeItemIdTreeMap = treeItemIdTreeMap;
+	public void setTreeItemIdTreeMap(HashMap<ERBItem, TreeItem<ERBItem>> treeItemIdTreeMap) {
+		this.treeItemGuidTreeMap = treeItemIdTreeMap;
 	}
 
 	public ArrayList<ERBPathwayDiagramController> getListOfPathwayDiagramControllers() {
@@ -1337,8 +1355,8 @@ public class EngagementActionController implements Initializable {
 	public VBox getTreeViewVBox() {
 		return treeViewVBox;
 	}
-
-	public TreeView<String> getTreeView() {
+	
+	public TreeView<ERBItem> getTreeView() {
 		return treeView;
 	}
 

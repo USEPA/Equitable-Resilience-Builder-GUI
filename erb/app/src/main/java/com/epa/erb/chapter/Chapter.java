@@ -18,7 +18,7 @@ public class Chapter extends ERBItem{
 	private int number;
 
 	public Chapter(String id, String guid, String longName, String shortName, String status, String notes, String description, int number) {
-		super(id, guid, longName, shortName);
+		super(id, guid, longName, shortName, null);
 		this.status = status;
 		this.notes = notes;
 		this.description = description;

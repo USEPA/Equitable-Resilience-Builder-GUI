@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
+import com.epa.erb.ERBItem;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
@@ -94,11 +95,7 @@ public class MainFormController implements Initializable{
 		}
 	}
 	
-	public void handleHyperlink(Text text, String linkType, String link) {
-		TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
-		String GUID = engagementActionController.getTreeItemIdTreeMap().get(currentSelectedTreeItem);
-		System.out.println("Looking for inital panel: " + GUID);
-		
+	public void handleHyperlink(Text text, String linkType, String link) {		
 		if(linkType.contentEquals("internalIntro")) {
 			internalIntroLinkClicked(link);
 		} else if (linkType.contentEquals("internalResource")){
@@ -144,8 +141,8 @@ public class MainFormController implements Initializable{
 	
 	private void internalStepLinkClicked(String link) {
 		if (engagementActionController != null) {
-			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel()
-					.getSelectedItem();
+			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+
 			Step step = findStep(link);
 			if (step != null) {
 				if (step.getId().length() == 4) {
@@ -158,11 +155,14 @@ public class MainFormController implements Initializable{
 					stage.setTitle(step.getLongName());
 					stage.showAndWait();
 				} else {
-					System.out.println("Hyperlink made us jump 1");
-					for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-						if (engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(step.getGuid())) {
-							engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-							engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
+					ERBItem currentErbItem = engagementActionController.findTreeItem(step.getGuid()).getValue();
+//					System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
+//					System.out.println("Hyperlink made us jump 1");
+					for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+						if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(step.getGuid())) {
+							TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
 						}
 					}
 				}
@@ -181,27 +181,32 @@ public class MainFormController implements Initializable{
 	
 	private void internalActivityLinkClicked(String link) {
 		if (engagementActionController != null) {
-			TreeItem<String> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
 			if (link.length() == 5) {
 				Chapter chapter = findChapter(link);
 				if (chapter != null) {
-					System.out.println("Hyperlink made us jump 2");
-					for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-						if (engagementActionController.getTreeItemIdTreeMap().get(treeItem).contentEquals(chapter.getGuid())) {
-							engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-							engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
+					ERBItem currentErbItem = engagementActionController.findTreeItem(chapter.getGuid()).getValue();
+//					System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
+//					System.out.println("Hyperlink made us jump 2");
+					for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+						if (erbItem.getGuid()!= null && erbItem.getGuid().contentEquals(chapter.getGuid())) {
+							TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
 						}
 					}
 				}
 			}
 			Activity activity = findActivity(link);
 			if (activity != null) {
-				System.out.println("Hyperlink made us jump 3");
-				for (TreeItem<String> treeItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-					if (engagementActionController.getTreeItemIdTreeMap().get(treeItem)
-							.contentEquals(activity.getGuid())) {
-						engagementActionController.getTreeView().getSelectionModel().select(treeItem);
-						engagementActionController.treeViewClicked(currentSelectedTreeItem, treeItem);
+				ERBItem currentErbItem = engagementActionController.findTreeItem(activity.getGuid()).getValue();
+//				System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
+//				System.out.println("Hyperlink made us jump 3");
+				for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+					if (erbItem.getGuid().contentEquals(activity.getGuid())) {
+						TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+						engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+						engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
 					}
 				}
 			}
@@ -217,8 +222,8 @@ public class MainFormController implements Initializable{
 		}
 	}
 	
-	private void hyperlinkJump() {
-		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(null, null);
+	private void hyperlinkJump(ERBItem erbItem) {
+		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(erbItem.getShortName(), erbItem.getId());
 	}
 	
 	private Chapter findChapter(String chapterId) {

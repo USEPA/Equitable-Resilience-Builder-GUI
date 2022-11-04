@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.epa.erb.ERBItem;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.utility.Constants;
 
@@ -93,7 +94,8 @@ public class ERBChapterDiagramController implements Initializable{
 	
 	@FXML
 	public void centerCircleClicked() {
-		TreeItem<String> treeItem = engagementActionController.findTreeItem(chapter.getGuid());
+		TreeItem<ERBItem> treeItem = engagementActionController.findTreeItem(chapter.getGuid());
+
 		if (treeItem != null) {
 			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 			engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected

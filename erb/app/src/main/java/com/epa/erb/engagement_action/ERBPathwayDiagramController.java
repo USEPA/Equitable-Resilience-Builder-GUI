@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
+import com.epa.erb.ERBItem;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.utility.Constants;
 import javafx.fxml.FXML;
@@ -239,7 +240,8 @@ public class ERBPathwayDiagramController implements Initializable {
 	public void arrowClicked() {
 		Activity nextActivity = engagementActionController.retrieveNextActivity(this);
 		if(nextActivity != null) {
-			TreeItem<String> treeItem = engagementActionController.findTreeItem(nextActivity.getGuid());
+			TreeItem<ERBItem> treeItem = engagementActionController.findTreeItem(nextActivity.getGuid());
+
 			if (treeItem != null) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 				engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
@@ -277,7 +279,8 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void centerCircleClicked() {
-		TreeItem<String> treeItem = engagementActionController.findTreeItem(activity.getGuid());
+		TreeItem<ERBItem> treeItem = engagementActionController.findTreeItem(activity.getGuid());
+
 		if (treeItem != null) {
 			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 			engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected

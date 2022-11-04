@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
+import com.epa.erb.ERBItem;
 import com.epa.erb.chapter.Chapter;
 
 import javafx.fxml.FXML;
@@ -166,7 +167,8 @@ public class EngagementGoalLandingContentController implements Initializable {
 	private void handleListViewSelection(ListView<Activity> listView) {
 		if (listView != null) {
 			Activity selectedActivity = listView.getSelectionModel().getSelectedItem();
-			TreeItem<String> treeItem = engagementActionController.findTreeItem(selectedActivity.getGuid());
+			TreeItem<ERBItem> treeItem = engagementActionController.findTreeItem(selectedActivity.getGuid());
+
 			if (treeItem != null) {
 				engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 				engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
