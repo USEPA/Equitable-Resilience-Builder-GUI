@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="erbScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox fx:id="erbVBox">
+         <children>
+            <MenuBar nodeOrientation="LEFT_TO_RIGHT">
+              <menus>
+                  <Menu fx:id="introMenu" mnemonicParsing="false" text="About">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/about_image.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></Menu>
+                <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/resource_image.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Menu>
+                  <Menu mnemonicParsing="false" text="Instructions/FAQ">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/faq_image.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <HBox fx:id="breadCrumbHBox" />
+            <VBox fx:id="welcomeVBox">
+               <children>
+                  <Label fx:id="titleLabel" text="Equitable Resilience Builder">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label text="A collaborative process to strengthen your equitable resilience to diasters and climate change">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </VBox>
+            <VBox fx:id="erbContainer" alignment="CENTER" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

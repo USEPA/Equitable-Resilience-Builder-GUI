@@ -59,8 +59,9 @@ public class App extends Application {
 	}
 	
 	private void showERBToolMain() {
-		Parent erbContainerRoot = loadERBContainer();
-		launchERBLanding();
+//		Parent erbContainerRoot = loadERBContainer();
+		Parent erbContainerRoot = loadERBContainer_Draft1();
+//		launchERBLanding();
 		showERBContainer(erbContainerRoot);
 	}
 	
@@ -96,6 +97,24 @@ public class App extends Application {
 			erbContainerController = new ERBContainerController(this);
 			fxmlLoader.setController(erbContainerController);
 			ScrollPane root = fxmlLoader.load();
+			root.setPrefWidth(getPrefWidth());
+			root.setPrefHeight(getPrefHeight());
+			return root;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+	}
+	
+	private Parent loadERBContainer_Draft1() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBContainer_Draft1.fxml"));
+			ERBContainer_Draft1Controller erbContainer_Draft1Controller = new ERBContainer_Draft1Controller(this);
+			fxmlLoader.setController(erbContainer_Draft1Controller);
+			MainPanelHandler mainPanelHandler = new MainPanelHandler();
+			Parent erbLandingRoot = mainPanelHandler.loadERBLanding_Draft1(this);
+			ScrollPane root = fxmlLoader.load();
+			erbContainer_Draft1Controller.getErbContainer().getChildren().add(erbLandingRoot);
 			root.setPrefWidth(getPrefWidth());
 			root.setPrefHeight(getPrefHeight());
 			return root;
