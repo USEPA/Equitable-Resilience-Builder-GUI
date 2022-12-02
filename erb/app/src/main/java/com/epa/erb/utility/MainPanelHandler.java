@@ -38,16 +38,6 @@ public class MainPanelHandler {
 		}
 	}
 	
-	public Parent loadERBLanding_Draft1(App app) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding_Draft1.fxml"));
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
 	public Parent loadProjectSelectionRoot(App app, String mode) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
