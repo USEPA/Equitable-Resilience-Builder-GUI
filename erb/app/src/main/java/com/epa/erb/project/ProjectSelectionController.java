@@ -171,9 +171,9 @@ public class ProjectSelectionController implements Initializable{
 	private void fillProjectsListView() {
 		ArrayList<Project> projects = app.getProjects();
 		for (Project project : projects) {
-			if (project.getProjectType().contentEquals(mode)) {
+//			if (project.getProjectType().contentEquals(mode)) {
 				projectsListView.getItems().add(project);
-			}
+//			}
 		}
 	}
 	
