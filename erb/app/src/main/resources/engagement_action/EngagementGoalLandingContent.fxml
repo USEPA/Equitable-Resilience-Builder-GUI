@@ -1,82 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane fx:id="headingLabelScrollPane" minHeight="85.0">
-         <content>
-            <HBox fx:id="headingLabelHBox" alignment="CENTER" minHeight="75.0" style="-fx-background-color: transparent;">
-               <children>
-                  <Label fx:id="headingLabel" text="Equitable Resilience Builder">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </content>
-      </ScrollPane>
-      <VBox fx:id="mainPanel" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER_RIGHT">
          <children>
-            <VBox fx:id="aboutPanel">
-               <children>
-                  <Label text="About">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextArea fx:id="aboutTextArea" editable="false" prefHeight="200.0" wrapText="true">
-                     <font>
-                        <Font size="15.0" />
-                     </font></TextArea>
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-            <VBox fx:id="planPanel">
-               <children>
-                  <Label text="Plan">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="planListView" maxHeight="30.0" minHeight="30.0" style="-fx-background-color: transparent;" VBox.vgrow="NEVER" />
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-            <VBox fx:id="activitiesPanel" VBox.vgrow="ALWAYS">
-               <children>
-                  <ListView fx:id="activitiesListView" minHeight="50.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-            <VBox fx:id="reflectPanel">
-               <children>
-                  <Label text="Reflect">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="reflectListView" maxHeight="30.0" minHeight="30.0" style="-fx-background-color: transparent;" VBox.vgrow="NEVER" />
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
+            <Hyperlink text="My Portfolio" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
          </children>
-      </VBox>
+      </HBox>
+      <VBox fx:id="mainPanel" alignment="CENTER" VBox.vgrow="ALWAYS">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image1.PNG" />
+               </image>
+            </ImageView>
+         </children></VBox>
    </children>
 </VBox>
