@@ -18,7 +18,6 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 		 setOnCrumbAction(e->breadCrumbSelected(e.getSelectedCrumb()));
 	}
 	
-	private String mode;
 	private Project project;
 	
 	public void initMyBreadCrumbBar(String crumb, String id) {
@@ -42,14 +41,17 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 			Parent root = mainPanelHandler.loadERBLanding(app);
 			app.loadNodeToERBContainer(root);
 		}else if(mainPanelId.contentEquals("002")) {
-			Parent root = mainPanelHandler.loadProjectSelectionRoot(app, mode);
+			Parent root = mainPanelHandler.loadProjectSelectionRoot(app);
 			app.loadNodeToERBContainer(root);
 		}else if(mainPanelId.contentEquals("003")) {
 			//Don't allow right now
 		}else if(mainPanelId.contentEquals("004")) {
 			Parent root = mainPanelHandler.loadEngagementActionRoot(app, project);
 			app.loadNodeToERBContainer(root);
-		}else {
+		}else if(mainPanelId.contentEquals("005")){
+			Parent root = mainPanelHandler.loadProjectCreationRoot(app);
+			app.loadNodeToERBContainer(root);
+		} else {
 			
 		}
 	}
@@ -60,10 +62,6 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 
 	public void setApp(App app) {
 		this.app = app;
-	}
-
-	public void setMode(String mode) {
-		this.mode = mode;
 	}
 
 	public void setProject(Project project) {

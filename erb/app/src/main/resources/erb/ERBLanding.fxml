@@ -3,9 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -51,8 +48,8 @@
                                           <VBox>
                                              <children>
                                                 <Hyperlink id="7" onAction="#hyperlinkAction" text="Explore" />
-                                                <Hyperlink onAction="#projectButtonAction" text="Start a new project" />
-                                                <Hyperlink onAction="#projectButtonAction" text="Continue your project" />
+                                                <Hyperlink onAction="#projectCreationButtonAction" text="Start a new project" />
+                                                <Hyperlink onAction="#projectContinueButtonAction" text="Continue your project" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -145,32 +142,6 @@
                <BorderPane.margin>
                   <Insets bottom="10.0" />
                </BorderPane.margin>
-               <children>
-                  <TitledPane animated="false" stylesheets="@../titledPane.css" text="Available Modes">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                     <content>
-                        <VBox spacing="10.0">
-                           <children>
-                              <RadioButton fx:id="goalModeRadioButton" mnemonicParsing="false" text="Goal Mode">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="modeToggleGroup" />
-                                 </toggleGroup>
-                              </RadioButton>
-                              <RadioButton fx:id="facilitatorModeRadioButton" mnemonicParsing="false" selected="true" text="Facilitator Mode" toggleGroup="$modeToggleGroup">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </RadioButton>
-                           </children>
-                        </VBox>
-                     </content>
-                  </TitledPane>
-               </children>
             </VBox>
          </top>
       </BorderPane>

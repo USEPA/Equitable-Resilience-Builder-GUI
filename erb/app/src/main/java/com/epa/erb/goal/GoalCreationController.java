@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.project.Project;
-import com.epa.erb.project.ProjectSelectionController;
+import com.epa.erb.project.ProjectCreationController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.event.Event;
@@ -43,11 +43,11 @@ public class GoalCreationController implements Initializable{
 
 	private App app;
 	private Project project;
-	private ProjectSelectionController projectSelectionController;
-	public GoalCreationController(App app, Project project, ProjectSelectionController projectSelectionController) {
+	private ProjectCreationController projectCreationController;
+	public GoalCreationController(App app, Project project, ProjectCreationController projectCreationController) {
 		this.app = app;
 		this.project = project;
-		this.projectSelectionController = projectSelectionController;
+		this.projectCreationController = projectCreationController;
 	}
 	
 	private FileHandler fileHandler = new FileHandler();
@@ -93,7 +93,7 @@ public class GoalCreationController implements Initializable{
 			project.setProjectGoals(createdGoals);
 			writeProjectMetaData(project);
 			writeGoalsMetaData(createdGoals);
-			projectSelectionController.loadEngagementActionToContainer(project);
+			projectCreationController.loadEngagementActionToContainer(project);
 		}
 	}
 	
@@ -180,7 +180,7 @@ public class GoalCreationController implements Initializable{
 		alert.setHeaderText(null);
 		alert.setContentText("Creating goals can only be done once. Are you sure you'd like to continue?");
 		alert.setTitle("Alert");
-		Optional<ButtonType> result = alert .showAndWait();
+		Optional<ButtonType> result = alert.showAndWait();
 		return result;
 	}
 	
@@ -340,12 +340,12 @@ public class GoalCreationController implements Initializable{
 		this.project = project;
 	}
 	
-	public ProjectSelectionController getProjectSelectionController() {
-		return projectSelectionController;
+	public ProjectCreationController getProjectCreationController() {
+		return projectCreationController;
 	}
 
-	public void setProjectSelectionController(ProjectSelectionController projectSelectionController) {
-		this.projectSelectionController = projectSelectionController;
+	public void setProjectCreationController(ProjectCreationController projectCreationController) {
+		this.projectCreationController = projectCreationController;
 	}
 
 	public VBox getGoalsVBox() {

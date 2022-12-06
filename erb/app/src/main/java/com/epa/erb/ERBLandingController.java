@@ -12,21 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 public class ERBLandingController implements Initializable{
 
-	@FXML
-	ToggleGroup modeToggleGroup;
-	@FXML
-	RadioButton facilitatorModeRadioButton;
-	@FXML
-	RadioButton goalModeRadioButton;
 	@FXML
 	ImageView landingImageView1;
 	@FXML
@@ -44,9 +35,7 @@ public class ERBLandingController implements Initializable{
 	public ERBLandingController(App app) {
 		this.app = app;
 	}
-	
-	private String mode = "Facilitator Mode";
-	
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
@@ -73,12 +62,7 @@ public class ERBLandingController implements Initializable{
 	}
 	
 	private void handleControls() {
-		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
-	}
-	
-	private void modeChanged(Toggle oldToggle, Toggle newToggle) {
-		RadioButton newRadioButton = (RadioButton) newToggle;
-		mode = newRadioButton.getText();
+		
 	}
 	
 	@FXML
@@ -111,13 +95,21 @@ public class ERBLandingController implements Initializable{
 	}
 	
 	@FXML
-	public void projectButtonAction() {
+	public void projectContinueButtonAction() {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();
-		Parent projectSelectionRoot = mainPanelHandler.loadProjectSelectionRoot(app, mode);
+		Parent projectSelectionRoot = mainPanelHandler.loadProjectSelectionRoot(app);
 		String projectSelectionString = "Project Selection";
-		app.getErbContainerController().getMyBreadCrumbBar().setMode(mode);
 		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(projectSelectionString, mainPanelHandler.getMainPanelIdHashMap().get(projectSelectionString));
 		app.loadNodeToERBContainer(projectSelectionRoot);			
+	}
+	
+	@FXML
+	public void projectCreationButtonAction() {
+		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		Parent projectCreationRoot = mainPanelHandler.loadProjectCreationRoot(app);
+		String projectCreationString = "Project Creation";
+		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(projectCreationString, mainPanelHandler.getMainPanelIdHashMap().get(projectCreationString));
+		app.loadNodeToERBContainer(projectCreationRoot);			
 	}
 
 	public App getApp() {
@@ -126,14 +118,6 @@ public class ERBLandingController implements Initializable{
 
 	public void setApp(App app) {
 		this.app = app;
-	}
-
-	public String getMode() {
-		return mode;
-	}
-
-	public void setMode(String mode) {
-		this.mode = mode;
 	}
 	
 }
