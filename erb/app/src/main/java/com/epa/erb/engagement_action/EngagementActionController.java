@@ -4,7 +4,12 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.ListIterator;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
@@ -154,7 +159,7 @@ public class EngagementActionController implements Initializable {
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	private HashMap<ERBItem, TreeItem<ERBItem>> treeItemGuidTreeMap = new HashMap<ERBItem, TreeItem<ERBItem>>();
+	private LinkedHashMap<ERBItem, TreeItem<ERBItem>> treeItemGuidTreeMap = new LinkedHashMap<ERBItem, TreeItem<ERBItem>>();
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
 	private ArrayList<ERBChapterDiagramController> listOfChapterDiagramControllers = new ArrayList<ERBChapterDiagramController>();
 
@@ -169,7 +174,6 @@ public class EngagementActionController implements Initializable {
 		} else {
 			initFacilitatorMode();
 		}
-//		app.getErbContainerController().setTitleLabelText("ERB: " + project.getProjectName() + ": " + project.getProjectType());
 	}
 
 	private void initGoalMode() {
@@ -177,13 +181,11 @@ public class EngagementActionController implements Initializable {
 		goalComboBox.setCellFactory(lv -> createGoalCell());
 		goalComboBox.setButtonCell(createGoalCell());
 		initializeGoalSelection(project);
-		setNavigationButtonsDisability(null, null);
 		handleControls();
 	}
 
 	private void initFacilitatorMode() {
 		initializeGoalSelection(project);
-		setNavigationButtonsDisability(null, null);
 		addTreeViewListener();
 		initializeStyle();
 		hideGoalSelection();
@@ -413,28 +415,78 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	public void previousButtonAction() {
 		TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-		TreeItem<ERBItem> parentTreeItem = selectedTreeItem.getParent();
-		if (selectedTreeItem != null && parentTreeItem != null) {
-			int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
-			treeView.getSelectionModel().select(parentTreeItem.getChildren().get(currentIndex - 1));
-			treeViewClicked(null, parentTreeItem.getChildren().get(currentIndex - 1));
+		if (selectedTreeItem != null) {
+			TreeItem<ERBItem> previousTreeItem = getPreviousTreeItem(selectedTreeItem.getValue());
+			if (previousTreeItem != null) {
+				treeView.getSelectionModel().select(previousTreeItem);
+				treeViewClicked(null, previousTreeItem);
+			}
 		}
 	}
 
 	@FXML
 	public void nextButtonAction() {
 		TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-		TreeItem<ERBItem> parentTreeItem = selectedTreeItem.getParent();
-		if (selectedTreeItem != null && parentTreeItem != null) {
-			if (parentTreeItem.getValue().getShortName().contains("ERB")) {
-				treeView.getSelectionModel().select(selectedTreeItem.getChildren().get(0));
-				treeViewClicked(null, selectedTreeItem.getChildren().get(0));
-			} else {
-				int currentIndex = parentTreeItem.getChildren().indexOf(selectedTreeItem);
-				treeView.getSelectionModel().select(parentTreeItem.getChildren().get(currentIndex + 1));
-				treeViewClicked(null, parentTreeItem.getChildren().get(currentIndex + 1));
+		if (selectedTreeItem != null) {
+			TreeItem<ERBItem> nextTreeItem = getNextTreeItem(selectedTreeItem.getValue());
+			if (nextTreeItem != null) {
+				treeView.getSelectionModel().select(nextTreeItem);
+				treeViewClicked(null, nextTreeItem);
 			}
 		}
+	}
+	
+	public TreeItem<ERBItem> getNextTreeItem(ERBItem currentErbItem) {
+		Iterator<ERBItem> iterator = treeItemGuidTreeMap.keySet().iterator();
+		while (iterator.hasNext()) {
+			ERBItem erbItem = iterator.next();
+			if (currentErbItem.getGuid() != null) {
+				if (erbItem.getGuid() != null && (erbItem.getGuid().contentEquals(currentErbItem.getGuid()))) {
+					if (iterator.hasNext()) {
+						ERBItem nextErbItem = iterator.next();
+						return treeItemGuidTreeMap.get(nextErbItem);
+					}
+				}
+			} else {
+				if (erbItem.getId().contentEquals(currentErbItem.getId())) {
+					if (iterator.hasNext()) {
+						ERBItem nextErbItem = iterator.next();
+						return treeItemGuidTreeMap.get(nextErbItem);
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	public TreeItem<ERBItem> getPreviousTreeItem(ERBItem currentErbItem) {
+		ListIterator<ERBItem> iterator = treeItemGuidTreeMap.keySet().stream().collect(Collectors.toList())
+				.listIterator();
+		while (iterator.hasNext()) {
+			ERBItem erbItem = iterator.next();
+			if (currentErbItem.getGuid() != null) {
+				if (erbItem.getGuid() != null && (erbItem.getGuid().contentEquals(currentErbItem.getGuid()))) {
+					if (iterator.hasPrevious()) {
+						ERBItem previousErbItem = iterator.previous();
+						previousErbItem = iterator.previous();
+						return treeItemGuidTreeMap.get(previousErbItem);
+					}
+				}
+			} else {
+				if (erbItem.getId().contentEquals(currentErbItem.getId())) {
+					if (iterator.hasPrevious()) {
+						ERBItem previousErbItem = iterator.previous();
+						try {
+							previousErbItem = iterator.previous();
+							return treeItemGuidTreeMap.get(previousErbItem);
+						} catch (Exception e) {
+							return null;
+						}
+					}
+				}
+			}
+		}
+		return null;
 	}
 
 	@FXML
@@ -565,7 +617,6 @@ public class EngagementActionController implements Initializable {
 		removeAttributeScrollPane();
 		addERBKeyVBox(1);
 		generateChapterERBPathway(currentSelectedGoal);
-		setNavigationButtonsDisability(null, null);
 		if (currentSelectedGoal != null) {
 			Pane root = loadChapterLanding(listOfUniqueChapters);
 			addContentToContentVBox(root, true);
@@ -584,7 +635,6 @@ public class EngagementActionController implements Initializable {
 		if (project.getProjectType().contentEquals("Goal Mode"))
 			addLocalProgressVBox(1);
 		generateActivityERBPathway(currentSelectedChapter);
-		setNavigationButtonsDisability(null, null);
 		if (currentSelectedChapter != null) {
 			File file = fileHandler.getStaticChapterFormAbout(currentSelectedChapter);
 			Pane root = loadMainFormController(file);
@@ -609,7 +659,6 @@ public class EngagementActionController implements Initializable {
 		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
 		highlightActivityDiagram(currentSelectedActivity);
-		setNavigationButtonsDisability(activityTreeItem, activityTreeItem.getParent());
 		if (currentSelectedChapter != null && currentSelectedGoal != null)
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
@@ -639,7 +688,6 @@ public class EngagementActionController implements Initializable {
 		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
 		highlightActivityDiagram(currentSelectedActivity);
-		setNavigationButtonsDisability(stepTreeItem, stepTreeItem.getParent());
 		if (currentSelectedChapter != null && currentSelectedGoal != null)
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
@@ -662,7 +710,6 @@ public class EngagementActionController implements Initializable {
 		// --
 		loadDynamicActivityContent(dynamicActivity);
 		generateActivityERBPathway(currentSelectedChapter);
-		setNavigationButtonsDisability(dynamicActivityTreeItem, dynamicActivityTreeItem.getParent());
 		if (currentSelectedChapter != null && currentSelectedGoal != null)
 			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
@@ -1087,36 +1134,6 @@ public class EngagementActionController implements Initializable {
 		return null;
 	}
 
-	private void setNavigationButtonsDisability(TreeItem<ERBItem> selectedTreeItem, TreeItem<ERBItem> parentTreeItem) {
-		if (selectedTreeItem != null) { // if activity is not null
-			if (parentTreeItem == null) { // if erb pathway
-				previousButton.setDisable(true);
-				nextButton.setDisable(false);
-			} else {
-				int numberOfChildrenInParent = parentTreeItem.getChildren().size();
-				if (numberOfChildrenInParent > 1) { // if more than 1 activity
-					int indexOfSelectedItem = parentTreeItem.getChildren().indexOf(selectedTreeItem);
-					if (indexOfSelectedItem == 0) { // if first activity
-						previousButton.setDisable(true);
-						nextButton.setDisable(false);
-					} else if (indexOfSelectedItem == parentTreeItem.getChildren().size() - 1) { // if last activity
-						previousButton.setDisable(false);
-						nextButton.setDisable(true);
-					} else {
-						previousButton.setDisable(false);
-						nextButton.setDisable(false);
-					}
-				} else { // if only 1 activity
-					previousButton.setDisable(true);
-					nextButton.setDisable(true);
-				}
-			}
-		} else { // if activity is null
-			previousButton.setDisable(true);
-			nextButton.setDisable(true);
-		}
-	}
-
 	private void collapseAttributePanel() {
 		if (attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
 			attributePanelHBox.getChildren().remove(attributePanelContentVBox);
@@ -1287,7 +1304,7 @@ public class EngagementActionController implements Initializable {
 		return treeItemGuidTreeMap;
 	}
 
-	public void setTreeItemIdTreeMap(HashMap<ERBItem, TreeItem<ERBItem>> treeItemIdTreeMap) {
+	public void setTreeItemIdTreeMap(LinkedHashMap<ERBItem, TreeItem<ERBItem>> treeItemIdTreeMap) {
 		this.treeItemGuidTreeMap = treeItemIdTreeMap;
 	}
 
