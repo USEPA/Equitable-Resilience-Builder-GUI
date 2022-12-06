@@ -14,36 +14,42 @@
    <content>
       <VBox fx:id="erbVBox">
          <children>
-            <MenuBar nodeOrientation="RIGHT_TO_LEFT">
-              <menus>
-                  <Menu fx:id="introMenu" mnemonicParsing="false" text="Instructions/FAQ">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/faq_image.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Menu>
-                <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/resource_image.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Menu>
-                  <Menu fx:id="aboutMenu" mnemonicParsing="false" text="About">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/about_image.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Menu>
-              </menus>
-            </MenuBar>
-            <HBox fx:id="breadCrumbHBox" />
+            <HBox alignment="CENTER_LEFT" style="-fx-border-color: #D0D0D0;">
+               <children>
+                  <HBox fx:id="breadCrumbHBox" alignment="CENTER_LEFT" style="-fx-background-color: #E7E7E7;" HBox.hgrow="ALWAYS" />
+                  <MenuBar nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #E7E7E7;">
+                    <menus>
+                        <Menu fx:id="introMenu" mnemonicParsing="false" text="Instructions/FAQ">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/faq_image.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Menu>
+                      <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/resource_image.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Menu>
+                        <Menu fx:id="aboutMenu" mnemonicParsing="false" text="About">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/about_image.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
             <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
                <children>
                   <Label fx:id="titleLabel" text="Equitable Resilience Builder">

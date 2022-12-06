@@ -146,7 +146,7 @@
                   <Insets bottom="10.0" />
                </BorderPane.margin>
                <children>
-                  <TitledPane animated="false" style="-fx-border-color: orange;" stylesheets="@../titledPane.css" text="Available Modes">
+                  <TitledPane animated="false" stylesheets="@../titledPane.css" text="Available Modes">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
