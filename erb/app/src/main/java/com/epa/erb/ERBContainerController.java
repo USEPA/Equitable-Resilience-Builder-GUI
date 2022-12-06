@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
-import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
 import com.epa.erb.utility.XMLManager;
@@ -23,8 +22,6 @@ import javafx.stage.Stage;
 public class ERBContainerController implements Initializable{
 	
 	@FXML
-	VBox welcomeVBox;
-	@FXML
 	VBox erbVBox;
 	@FXML
 	VBox erbContainer;
@@ -35,6 +32,8 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	Menu resourcesMenu;
 	@FXML
+	Menu aboutMenu;
+	@FXML
 	HBox breadCrumbHBox;
 	
 	private App app;
@@ -43,7 +42,6 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private MyBreadCrumbBar myBreadCrumbBar;
-	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	
 	@Override
@@ -54,7 +52,7 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void handleControls() {
-		welcomeVBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");		
+		
 	}
 	
 	private void handleResourceMenu() {
@@ -143,26 +141,6 @@ public class ERBContainerController implements Initializable{
 			xmlFile = fileHandler.getStaticIntroFormText(id);
 		}
 		return xmlFile;
-	}
-	
-	public void setTitleLabelText(String text) {
-		titleLabel.setText(text);
-	}
-	
-	public void removeHeaderPanel() {
-		if(erbVBox.getChildren().contains(welcomeVBox)) {
-			erbVBox.getChildren().remove(welcomeVBox);
-		}
-	}
-	
-	public void addHeaderPanel() {
-		if(!erbVBox.getChildren().contains(welcomeVBox)) {
-			erbVBox.getChildren().add(1, welcomeVBox);
-		}
-	}
-
-	public VBox getWelcomeVBox() {
-		return welcomeVBox;
 	}
 
 	public VBox getErbVBox() {

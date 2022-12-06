@@ -4,12 +4,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
-import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.MainPanelHandler;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -18,22 +15,30 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ERBLandingController implements Initializable{
 
-	@FXML
-	HBox welcomeHBox;
-	@FXML
-	VBox arrowVBox;
 	@FXML
 	ToggleGroup modeToggleGroup;
 	@FXML
 	RadioButton facilitatorModeRadioButton;
 	@FXML
 	RadioButton goalModeRadioButton;
+	@FXML
+	ImageView landingImageView1;
+	@FXML
+	VBox landingImageView1VBox;
+	@FXML
+	ImageView landingImageView2;
+	@FXML
+	VBox landingImageView2VBox;
+	@FXML
+	ImageView landingImageView3;
+	@FXML
+	VBox landingImageView3VBox;
 	
 	private App app;
 	public ERBLandingController(App app) {
@@ -41,29 +46,39 @@ public class ERBLandingController implements Initializable{
 	}
 	
 	private String mode = "Facilitator Mode";
-	private Constants constants = new Constants();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
-		loadArrowDiagram();
+		landingImageView1VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
+			landingImageView1.setFitWidth(newVal.doubleValue());
+		});
+		landingImageView2VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
+			landingImageView2.setFitWidth(newVal.doubleValue());
+		});
+		landingImageView3VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
+			landingImageView3.setFitWidth(newVal.doubleValue());
+		});
+		
+		
+		landingImageView1VBox.heightProperty().addListener((obs, oldVal, newVal) -> {
+			landingImageView1.setFitHeight(newVal.doubleValue());
+		});
+		landingImageView2VBox.heightProperty().addListener((obs, oldVal, newVal) -> {
+			landingImageView2.setFitHeight(newVal.doubleValue());
+		});
+		landingImageView3VBox.heightProperty().addListener((obs, oldVal, newVal) -> {
+			landingImageView3.setFitHeight(newVal.doubleValue());
+		});
 	}
 	
 	private void handleControls() {
-		app.getErbContainerController().removeHeaderPanel();
-		welcomeHBox.setStyle("-fx-background-color: " + constants.getAllChaptersColor() + ";");		
 		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
 	}
 	
 	private void modeChanged(Toggle oldToggle, Toggle newToggle) {
 		RadioButton newRadioButton = (RadioButton) newToggle;
 		mode = newRadioButton.getText();
-	}
-	
-	@FXML
-	public void equitableResilienceHyperlinkClicked(ActionEvent actionEvent) {
-		Hyperlink hyperlink = (Hyperlink) actionEvent.getSource();
-		loadContent(hyperlink.getId(), true);
 	}
 	
 	@FXML
@@ -92,18 +107,6 @@ public class ERBLandingController implements Initializable{
 		}else {
 			mainFormController.internalIntroLinkClicked(id);
 
-		}
-	}
-	
-	private void loadArrowDiagram() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ArrowDiagram.fxml"));
-			ArrowDiagramController arrowDiagramController = new ArrowDiagramController();
-			fxmlLoader.setController(arrowDiagramController);
-			Parent arrowDiagramRoot = fxmlLoader.load();
-			arrowVBox.getChildren().add(arrowDiagramRoot);
-		} catch (Exception e) {
-			
 		}
 	}
 	

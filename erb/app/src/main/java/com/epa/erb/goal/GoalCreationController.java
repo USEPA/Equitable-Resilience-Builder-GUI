@@ -62,7 +62,7 @@ public class GoalCreationController implements Initializable{
 	}
 	
 	private void handleControls() {
-		app.getErbContainerController().setTitleLabelText("ERB: Goal Creation");
+//		app.getErbContainerController().setTitleLabelText("ERB: Goal Creation");
 	}
 
 	@FXML

@@ -51,8 +51,8 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	private void handleControls() {
-		app.getErbContainerController().addHeaderPanel();
-		app.getErbContainerController().setTitleLabelText("ERB: Project Selection");
+//		app.getErbContainerController().addHeaderPanel();
+//		app.getErbContainerController().setTitleLabelText("ERB: Project Selection");
 	}
 	
 	@FXML

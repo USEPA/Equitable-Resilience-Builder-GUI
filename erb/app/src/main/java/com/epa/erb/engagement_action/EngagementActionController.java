@@ -169,7 +169,7 @@ public class EngagementActionController implements Initializable {
 		} else {
 			initFacilitatorMode();
 		}
-		app.getErbContainerController().setTitleLabelText("ERB: " + project.getProjectName() + ": " + project.getProjectType());
+//		app.getErbContainerController().setTitleLabelText("ERB: " + project.getProjectName() + ": " + project.getProjectType());
 	}
 
 	private void initGoalMode() {

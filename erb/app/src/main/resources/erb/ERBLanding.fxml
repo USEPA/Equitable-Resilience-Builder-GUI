@@ -1,276 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane VBox.vgrow="ALWAYS">
          <bottom>
             <VBox BorderPane.alignment="CENTER">
-               <children>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Label text="What do you want to do next?">
-                           <font>
-                              <Font name="System Bold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <BorderPane>
-                                       <center>
-                                          <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-                                             <children>
-                                                <Label id="7" onMouseClicked="#labelAction" text="Explore" textFill="#cf4545">
-                                                   <font>
-                                                      <Font name="System Bold" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </VBox>
-                                       </center>
-                                       <top>
-                                          <Pane prefHeight="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </top>
-                                       <left>
-                                          <Pane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </left>
-                                       <right>
-                                          <Pane prefWidth="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </right>
-                                       <bottom>
-                                          <Pane prefHeight="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </bottom>
-                                    </BorderPane>
-                                 </children>
-                              </VBox>
-                           </graphic>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <BorderPane>
-                                       <center>
-                                          <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-                                             <children>
-                                                <Label text="See" textFill="#4ea96f">
-                                                   <font>
-                                                      <Font name="System Bold" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label text="Examples" textFill="#4ea96f">
-                                                   <font>
-                                                      <Font name="System Bold" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </VBox>
-                                       </center>
-                                       <top>
-                                          <Pane prefHeight="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </top>
-                                       <left>
-                                          <Pane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </left>
-                                       <right>
-                                          <Pane prefWidth="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </right>
-                                       <bottom>
-                                          <Pane prefHeight="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </bottom>
-                                    </BorderPane>
-                                 </children>
-                              </VBox>
-                           </graphic>
-                        </Button>
-                        <VBox maxHeight="-Infinity" prefHeight="125.0" prefWidth="215.0" spacing="5.0" style="-fx-background-color: transparent;">
-                           <children>
-                              <BorderPane>
-                                 <center>
-                                    <VBox BorderPane.alignment="CENTER">
-                                       <children>
-                                          <HBox alignment="CENTER">
-                                             <children>
-                                                <Label text="Read more about" textFill="#b89d1d">
-                                                   <font>
-                                                      <Font name="System Bold" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <Label text="-">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <Hyperlink id="1" onAction="#hyperlinkAction" text="Equity and resilience">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Hyperlink>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <Label text="-">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <Hyperlink id="6" onAction="#hyperlinkAction" text="How ERB was made">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Hyperlink>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <Label text="-">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <Hyperlink id="2" onAction="#hyperlinkAction" text="How others are using ERB">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Hyperlink>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                       </padding>
-                                    </VBox>
-                                 </center>
-                                 <top>
-                                    <Pane prefHeight="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                 </top>
-                                 <left>
-                                    <Pane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                 </left>
-                                 <right>
-                                    <Pane prefWidth="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                 </right>
-                                 <bottom>
-                                    <Pane prefHeight="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                 </bottom>
-                              </BorderPane>
-                           </children>
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
          </bottom>
          <center>
-            <VBox BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
                <children>
-                  <TitledPane fx:id="helpTitledPane" alignment="CENTER" animated="false" expanded="false" style="-fx-border-color: orange;" stylesheets="@../titledPane.css" text="What will the ERB help you do?">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                     <content>
-                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
-                           <content>
-                              <VBox spacing="10.0">
+                  <VBox fx:id="arrowVBox" alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" spacing="20.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <VBox>
+                                    <VBox fx:id="landingImageView1VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: red;">
                                        <children>
-                                          <Label text="It helps you" wrapText="true">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="-bring people together in a way that builds connections and energy for resilience action;" wrapText="true">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="-include local knowledge and experiences in resilience and social vulnerability assesment; and" wrapText="true">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="-write and implement a better resilience or hazard mitigation plan." wrapText="true">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
+                                          <ImageView fx:id="landingImageView1" VBox.vgrow="ALWAYS">
+                                             <image>
+                                                <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image1.jpg" />
+                                             </image>
+                                          </ImageView>
                                        </children>
                                     </VBox>
-                                    <VBox>
+                                    <VBox alignment="TOP_CENTER">
                                        <children>
-                                          <Label text="After going through the ERB, you will have:" wrapText="true">
+                                          <Label text="Get Started">
                                              <font>
-                                                <Font size="15.0" />
+                                                <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label text="-Built relationships with new groups and organizations in your community;" wrapText="true">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="-Identified who is most vulnerable to different hazards, why and how;" wrapText="true">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="-Assessed your community's resilience to disasters and climate change;" wrapText="true">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="-Identified actions to build community resilience in an equitable way." wrapText="true">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
+                                          <VBox>
+                                             <children>
+                                                <Hyperlink id="7" onAction="#hyperlinkAction" text="Explore" />
+                                                <Hyperlink onAction="#projectButtonAction" text="Start a new project" />
+                                                <Hyperlink onAction="#projectButtonAction" text="Continue your project" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </VBox>
                                  </children>
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
                               </VBox>
-                           </content>
-                        </ScrollPane>
-                     </content>
-                  </TitledPane>
-                  <VBox fx:id="arrowVBox" alignment="CENTER" VBox.vgrow="ALWAYS" />
+                              <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox fx:id="landingImageView2VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: green;">
+                                       <children>
+                                          <ImageView fx:id="landingImageView2" VBox.vgrow="ALWAYS">
+                                             <image>
+                                                <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image2.PNG" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER">
+                                       <children>
+                                          <Label text="See how others are using it">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <VBox>
+                                             <children>
+                                                <Hyperlink text="See Examples" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox fx:id="landingImageView3VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: blue;">
+                                       <children>
+                                          <ImageView fx:id="landingImageView3" VBox.vgrow="ALWAYS">
+                                             <image>
+                                                <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image3.PNG" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER">
+                                       <children>
+                                          <Label text="Learn more about ERB">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <VBox>
+                                             <children>
+                                                <Hyperlink id="4" onAction="#hyperlinkAction" text="Who is the tool for?" />
+                                                <Hyperlink id="1" onAction="#hyperlinkAction" text="Equity and resilience" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children></VBox>
                </children>
             </VBox>
          </center>
          <right>
             <VBox alignment="CENTER" maxWidth="250.0" spacing="10.0">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </right>
+        <left>
+            <VBox alignment="CENTER_LEFT" spacing="10.0">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </left>
+         <top>
+            <VBox BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
                <children>
                   <TitledPane animated="false" style="-fx-border-color: orange;" stylesheets="@../titledPane.css" text="Available Modes">
                      <font>
@@ -296,124 +170,6 @@
                         </VBox>
                      </content>
                   </TitledPane>
-                  <VBox alignment="CENTER">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#projectButtonAction" prefHeight="100.0" prefWidth="175.0" style="-fx-background-color: transparent;" wrapText="true">
-                           <graphic>
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <BorderPane>
-                                       <center>
-                                          <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-                                             <children>
-                                                <Label text="Start or continue" textFill="#9224b4">
-                                                   <font>
-                                                      <Font name="System Bold" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label text="my project" textFill="#9224b4">
-                                                   <font>
-                                                      <Font name="System Bold" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </VBox>
-                                       </center>
-                                       <top>
-                                          <Pane prefHeight="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </top>
-                                       <left>
-                                          <Pane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </left>
-                                       <right>
-                                          <Pane prefWidth="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </right>
-                                       <bottom>
-                                          <Pane prefHeight="5.0" style="-fx-background-color: #447ABF;" BorderPane.alignment="CENTER" />
-                                       </bottom>
-                                    </BorderPane>
-                                 </children>
-                              </VBox>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-         </right>
-        <left>
-            <VBox alignment="CENTER_LEFT" spacing="10.0">
-               <children>
-                  <Button id="3" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="How does it work?">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button id="4" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="Who is ERB for?">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button id="5" mnemonicParsing="false" onAction="#buttonAction" style="-fx-background-color: transparent; -fx-border-color: orange;" text="What makes ERB different?">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-         </left>
-         <top>
-            <VBox BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="10.0" />
-               </BorderPane.margin>
-               <children>
-                  <HBox fx:id="welcomeHBox" alignment="CENTER">
-                     <children>
-                        <Label text="Welcome to the Equitable Resilience Builder">
-                           <font>
-                              <Font name="System Bold" size="30.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Label minWidth="605.0" text="The ERB toolkit guides you through a collaborative process to strengthen your community's">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Hyperlink id="01" minWidth="138.0" onAction="#equitableResilienceHyperlinkClicked" text="equitable resilience">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Hyperlink>
-                        <Label minWidth="212.0" text="to disasters and climate change.">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
                </children>
             </VBox>
          </top>
