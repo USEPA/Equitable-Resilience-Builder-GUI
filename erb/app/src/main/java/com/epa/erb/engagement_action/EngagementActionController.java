@@ -9,7 +9,6 @@ import java.util.LinkedHashMap;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
@@ -37,7 +36,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -49,7 +47,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -79,16 +76,6 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	HBox keyPaneHBox;
 	@FXML
-	VBox detailsKeyPaneVBox;
-	@FXML
-	Pane materialKeyPane;
-	@FXML
-	Pane descriptionKeyPane;
-	@FXML
-	Pane whoKeyPane;
-	@FXML
-	Pane timeKeyPane;
-	@FXML
 	Pane completeKeyPane;
 	@FXML
 	Pane readyKeyPane;
@@ -108,12 +95,6 @@ public class EngagementActionController implements Initializable {
 	HBox body2HBox;
 	@FXML
 	VBox contentVBox;
-	@FXML
-	HBox attributePanelHBox;
-	@FXML
-	Label attributePanelCollapseLabel;
-	@FXML
-	VBox attributePanelContentVBox;
 	@FXML
 	Label goalProgressPercentLabel;
 	@FXML
@@ -137,11 +118,8 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	RadioButton completeRadioButton;
 	@FXML
-	CheckBox showDetailsCheckBox;
-	@FXML
 	VBox titledPaneVBox;
-	@FXML
-	HBox showDetailsHBox;
+
 
 	private App app;
 	private Project project;
@@ -167,9 +145,6 @@ public class EngagementActionController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		removeShowDetailsCheckBox(); // Default setting for removing spokes
-		removeDetailsKeyPaneVBox(); // Default setting for removing spokes
-		removeAttributeScrollPane(); // Default setting
 		treeView.setCellFactory(tv-> createTreeCell());
 		if (project.getProjectType().contentEquals("Goal Mode")) {
 			initGoalMode();
@@ -206,13 +181,9 @@ public class EngagementActionController implements Initializable {
 
 	private void initializeStyle() {
 		pathwayTitledPane.setStyle("-fx-box-border: transparent;");
-		materialKeyPane.setStyle("-fx-background-color: " + constants.getMaterialsColor() + ";");
-		descriptionKeyPane.setStyle("-fx-background-color: " + constants.getDescriptionColor() + ";");
-		whoKeyPane.setStyle("-fx-background-color: " + constants.getWhoColor() + ";");
 		completeKeyPane.setStyle("-fx-background-color: " + constants.getCompleteStatusColor() + ";");
 		readyKeyPane.setStyle("-fx-background-color: " + constants.getReadyStatusColor() + ";");
 		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
-		timeKeyPane.setStyle("-fx-background-color: " + constants.getTimeColor() + ";");
 		chapterProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
 	}
 
@@ -504,22 +475,6 @@ public class EngagementActionController implements Initializable {
 		Parent globalGoalTrackerRoot = loadGlobalGoalTracker();
 		showGlobalGoalTracker(globalGoalTrackerRoot);
 	}
-
-	@FXML
-	public void attributePanelCollapseClicked(MouseEvent mouseEvent) {
-		if (mouseEvent.getSource().toString().contains("VBox")) { // Don't allow for label
-			String attributePanelCollapseString = attributePanelCollapseLabel.getText();
-			if (attributePanelCollapseString.contentEquals(">") && !attributePanelCollapsed()) {
-				collapseAttributePanel();
-				attributePanelHBox.setMinWidth(0.0);
-				attributePanelCollapseLabel.setText("<");
-			} else if (attributePanelCollapseString.contentEquals("<") && attributePanelCollapsed()) {
-				unCollapseAttributePanel();
-				attributePanelHBox.setMinWidth(200.0);
-				attributePanelCollapseLabel.setText(">");
-			}
-		}
-	}
 	
 	public void treeViewClicked(TreeItem<ERBItem> oldItem, TreeItem<ERBItem> newItem) {
 		if (newItem != null) {			
@@ -554,7 +509,6 @@ public class EngagementActionController implements Initializable {
 		cleanContentVBox();
 		removeStatusHBox();
 		removeLocalProgressVBox();
-		removeAttributeScrollPane();
 		addERBKeyVBox(1);
 		generateChapterERBPathway(currentSelectedGoal);
 		if (currentSelectedGoal != null) {
@@ -570,7 +524,6 @@ public class EngagementActionController implements Initializable {
 		currentSelectedChapter = chapter;
 		cleanContentVBox();
 		removeStatusHBox();
-		removeAttributeScrollPane();
 		addERBKeyVBox(1);
 		if (project.getProjectType().contentEquals("Goal Mode"))
 			addLocalProgressVBox(1);
@@ -1060,8 +1013,6 @@ public class EngagementActionController implements Initializable {
 		if (goal != null) {
 			cleanERBPathwayDiagramHBox();
 			cleanListOfChapterDiagramControllers();
-			removeShowDetailsCheckBox();
-			removeDetailsKeyPaneVBox();
 			for (Chapter chapter : goal.getChapters()) {
 				Parent root = loadERBChapterDiagramRoot(chapter, goal.getChapters());
 				pathwayTitledPane.setText(goal.getGoalName() + " Pathway");
@@ -1102,30 +1053,6 @@ public class EngagementActionController implements Initializable {
 		return null;
 	}
 
-	private void collapseAttributePanel() {
-		if (attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
-			attributePanelHBox.getChildren().remove(attributePanelContentVBox);
-		}
-	}
-
-	private void unCollapseAttributePanel() {
-		if (!attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
-			attributePanelHBox.getChildren().add(1, attributePanelContentVBox);
-		}
-	}
-
-	private boolean attributePanelCollapsed() {
-		if (!attributePanelHBox.getChildren().contains(attributePanelContentVBox)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	private void cleanAttributePanelContentVBox() {
-		attributePanelContentVBox.getChildren().clear();
-	}
-
 	private void cleanERBPathwayDiagramHBox() {
 		erbPathwayDiagramHBox.getChildren().clear();
 	}
@@ -1140,14 +1067,6 @@ public class EngagementActionController implements Initializable {
 
 	private void cleanListOfChapterDiagramControllers() {
 		listOfChapterDiagramControllers.clear();
-	}
-
-	private void removeDetailsKeyPaneVBox() {
-		keyPaneHBox.getChildren().remove(detailsKeyPaneVBox);
-	}
-
-	private void removeShowDetailsCheckBox() {
-		titledPaneVBox.getChildren().remove(showDetailsHBox);
 	}
 
 	private void addLocalProgressVBox(int index) {
@@ -1171,11 +1090,7 @@ public class EngagementActionController implements Initializable {
 	private void removeERBKeyVBox() {
 		headingHBox.getChildren().remove(erbKeyVBox);
 	}
-
-	private void removeAttributeScrollPane() {
-		body2HBox.getChildren().remove(attributePanelHBox);
-	}
-
+	
 	public void removeStatusHBox() {
 		if (mainVBox.getChildren().contains(statusHBox)) {
 			mainVBox.getChildren().remove(statusHBox);
@@ -1294,22 +1209,6 @@ public class EngagementActionController implements Initializable {
 		return erbKeyVBox;
 	}
 
-	public Pane getMaterialKeyPane() {
-		return materialKeyPane;
-	}
-
-	public Pane getDescriptionKeyPane() {
-		return descriptionKeyPane;
-	}
-
-	public Pane getWhoKeyPane() {
-		return whoKeyPane;
-	}
-
-	public Pane getTimeKeyPane() {
-		return timeKeyPane;
-	}
-
 	public Pane getCompleteKeyPane() {
 		return completeKeyPane;
 	}
@@ -1348,18 +1247,6 @@ public class EngagementActionController implements Initializable {
 
 	public VBox getContentVBox() {
 		return contentVBox;
-	}
-
-	public HBox getAttributePanelHBox() {
-		return attributePanelHBox;
-	}
-
-	public Label getAttributePanelCollapseLabel() {
-		return attributePanelCollapseLabel;
-	}
-
-	public VBox getAttributePanelContentVBox() {
-		return attributePanelContentVBox;
 	}
 
 	public Label getGoalProgressPercentLabel() {
@@ -1406,10 +1293,6 @@ public class EngagementActionController implements Initializable {
 		return completeRadioButton;
 	}
 
-	public CheckBox getShowDetailsCheckBox() {
-		return showDetailsCheckBox;
-	}
-
 	public VBox getEngagementVBox() {
 		return engagementVBox;
 	}
@@ -1425,38 +1308,5 @@ public class EngagementActionController implements Initializable {
 	public void setCurrentSelectedDynamicActivity(InteractiveActivity currentSelectedDynamicActivity) {
 		this.currentSelectedDynamicActivity = currentSelectedDynamicActivity;
 	}
-	
-//-----------------------------Keep for attribute panel-----------------------------------------
-//	private Parent loadAttributePaneRoot(String attributeTitle, String attributeContent, String attributeColor) {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/AttributePane.fxml"));
-//			AttributePanelController attributePanelController = new AttributePanelController(attributeTitle, attributeContent, attributeColor, this);
-//			listOfAttributePanelControllers.add(attributePanelController);
-//			fxmlLoader.setController(attributePanelController);
-//			return fxmlLoader.load();
-//		} catch (Exception e) {
-//			logger.error(e.getMessage());
-//			return null;
-//		}
-//	}
-//	private boolean attributePanelContainsAttribute(String attributeLabel) {
-//		if (attributeLabel != null) {
-//			for (AttributePanelController attributePanelController : listOfAttributePanelControllers) {
-//				if (attributePanelController.getAttributeLabelText().contentEquals(attributeLabel)) {
-//					return true;
-//				}
-//			}
-//		}
-//		return false;
-//	}
-//	private void addBaseAttributesToAttributePanel(Activity activity) {
-//		// Example: generateAttribute("Objective", activity.getObjectives(),
-//	}
-//	void generateAttribute(String attributeTitle, String attributeContent, String attributeColor) {
-//		if (attributeContent!= null && attributeContent.trim().length() > 0 && !attributePanelContainsAttribute(attributeTitle)) {
-//			Parent root = loadAttributePaneRoot(attributeTitle, attributeContent, attributeColor);
-//			attributePanelContentVBox.getChildren().add(root);
-//			VBox.setVgrow(root, Priority.ALWAYS);
-//		}
-//	}
+
 }

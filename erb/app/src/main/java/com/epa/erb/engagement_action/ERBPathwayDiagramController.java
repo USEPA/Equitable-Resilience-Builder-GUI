@@ -42,33 +42,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	@FXML
 	VBox holderVBox;
 	@FXML
-	HBox topLinesHBox;
-	@FXML
-	HBox bottomLinesHBox;
-	@FXML
-	HBox topCirclesHBox;
-	@FXML
-	HBox bottomCirclesHBox;
-	@FXML
 	HBox centerHBox;
-	
-//Keep this code to add spokes back into pathway diagram
-//	@FXML
-//	Circle topLeftCircle;
-//	@FXML
-//	Circle topRightCircle;
-//	@FXML
-//	Circle bottomLeftCircle;
-//	@FXML
-//	Circle bottomRightCircle;
-//	@FXML
-//	Label topLeftCircleLabel;
-//	@FXML
-//	Label topRightCircleLabel;
-//	@FXML
-//	Label bottomLeftCircleLabel;
-//	@FXML
-//	Label bottomRightCircleLabel;
 
 	private Chapter chapter;
 	private Activity activity;
@@ -84,9 +58,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	private Logger logger = LogManager.getLogger(ERBPathwayDiagramController.class);
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		hideDetails(); //Default to remove spokes
-		
+	public void initialize(URL location, ResourceBundle resources) {		
 		handleControls();
 		setCircleColor();
 		setCircleToolTips();
@@ -98,43 +70,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	private void handleControls() {
 		if (activity.getLongName().length() == 0) {
 			centerCircleLabel.setVisible(false);
-		}
-		engagementActionController.getShowDetailsCheckBox().setSelected(true);
-		
-//Keep this code to add spokes back into pathway diagram
-//		if (activity.getMaterials().length() == 0) {
-//			topLeftCircleLabel.setVisible(false);
-//		}
-//		if (activity.getDescription().length() == 0) {
-//			topRightCircleLabel.setVisible(false);
-//		}
-//		if (activity.getWho().length() == 0) {
-//			bottomLeftCircleLabel.setVisible(false);
-//		}
-//		if (activity.getTime().length() == 0) {
-//			bottomRightCircleLabel.setVisible(false);
-//		}
-	}
-	
-	void hideDetails() {
-		holderVBox.getChildren().remove(topLinesHBox);
-		holderVBox.getChildren().remove(topCirclesHBox);
-		holderVBox.getChildren().remove(bottomLinesHBox);
-		holderVBox.getChildren().remove(bottomCirclesHBox);
-	}
-	
-	void showDetails() {
-		if(!holderVBox.getChildren().contains(topCirclesHBox)) {
-			holderVBox.getChildren().add(0, topCirclesHBox);
-		}
-		if(!holderVBox.getChildren().contains(topLinesHBox)) {
-			holderVBox.getChildren().add(1, topLinesHBox);
-		}
-		if(!holderVBox.getChildren().contains(bottomLinesHBox)) {
-			holderVBox.getChildren().add(3, bottomLinesHBox);
-		}
-		if(!holderVBox.getChildren().contains(bottomCirclesHBox)) {
-			holderVBox.getChildren().add(4, bottomCirclesHBox);
 		}
 	}
 	
@@ -168,16 +103,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	private void setCircleToolTips() {	
 		//Center Circle
 		setCenterCircleToolTip();
-		
-//Keep this code to add spokes back into pathway diagram
-//		//Top Left Circle
-//		createToolTip(splitString(activity.getMaterials().trim()), topLeftCircle, topLeftCircleLabel, constants.getMaterialsColor());
-//		//Top Right Circle
-//		createToolTip(splitString(activity.getDescription().trim()), topRightCircle, topRightCircleLabel, constants.getDescriptionColor());
-//		//Bottom Left Circle
-//		createToolTip(splitString(activity.getWho()), bottomLeftCircle, bottomLeftCircleLabel, constants.getWhoColor());
-//		//Bottom Right Circle
-//		createToolTip(splitString(activity.getTime()), bottomRightCircle, bottomRightCircleLabel, constants.getTimeColor());
 	}
 	
 	private void setCenterCircleToolTip() {
@@ -204,16 +129,6 @@ public class ERBPathwayDiagramController implements Initializable {
 	private void setCircleColor() {
 		//Center Circle
 		setCenterCircleColor();
-		
-//Keep this code to add spokes back into pathway diagram
-//		//Top Left Circle
-//		topLeftCircle.setStyle("-fx-fill: " + constants.getMaterialsColor() + ";");
-//		//Top Right Circle
-//		topRightCircle.setStyle("-fx-fill: " + constants.getDescriptionColor() + ";");
-//		//Bottom Left Circle
-//		bottomLeftCircle.setStyle("-fx-fill: " + constants.getWhoColor() + ";");
-//		//Bottom Right Circle
-//		bottomRightCircle.setStyle("-fx-fill: " + constants.getTimeColor() + ";");
 	}
 	
 	private void setCenterCircleColor() {
@@ -379,31 +294,4 @@ public class ERBPathwayDiagramController implements Initializable {
 	public Label getCenterCircleLabel() {
 		return centerCircleLabel;
 	}
-	
-//--------------------Keep this code to add spokes back into pathway diagram-----------------------
-//	public Circle getTopLeftCircle() {
-//	    return topLeftCircle;
-//  }	
-//	public Circle getTopRightCircle() {
-//		return topRightCircle;
-//	}
-//	public Circle getBottomLeftCircle() {
-//		return bottomLeftCircle;
-//	}
-//	public Circle getBottomRightCircle() {
-//		return bottomRightCircle;
-//	}
-//	public Label getTopLeftCircleLabel() {
-//		return topLeftCircleLabel;
-//	}
-//	public Label getTopRightCircleLabel() {
-//		return topRightCircleLabel;
-//	}
-//	public Label getBottomLeftCircleLabel() {
-//		return bottomLeftCircleLabel;
-//	}
-//	public Label getBottomRightCircleLabel() {
-//		return bottomRightCircleLabel;
-//	}
-	
 }
