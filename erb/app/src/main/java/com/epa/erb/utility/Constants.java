@@ -35,11 +35,12 @@ public class Constants {
 	//private String allChaptersColor	= "#C3C3C3"; 		    //Grey
 	private String allChaptersColor	= "#A7BFE8";				//Blue
 	
-	private String chapter1Color = "#A7E8BF";					//Mint Green
-	private String chapter2Color = "#CDA7E8";					//Purple
-	private String chapter3Color = "#E8F275";					//Green
-	private String chapter4Color = "#FC8D89";					//Red
-	private String chapter5Color = "#F8D0A7";					//Orange
+	private String chapter1Color = "#F1A858";					//Orange
+	private String chapter2Color = "#6FE658";					//Light Green
+	private String chapter3Color = "#35AF69";					//Green
+	private String chapter4Color = "#42C2D7";					//Light Blue
+	private String chapter5Color = "#427ED7";					//Blue
+
 
 	//Post It Note Stack
 	private String layer1ColorString = "#F7B2E0";				//Pink

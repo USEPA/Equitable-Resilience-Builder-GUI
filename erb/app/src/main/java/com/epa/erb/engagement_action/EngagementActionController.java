@@ -922,7 +922,7 @@ public class EngagementActionController implements Initializable {
 		};
 	}
 	
-	private TreeCell<ERBItem> createTreeCell(){
+	private TreeCell<ERBItem> createTreeCell() {
 		return new TreeCell<ERBItem>() {
 			@Override
 			protected void updateItem(ERBItem item, boolean empty) {
@@ -932,9 +932,75 @@ public class EngagementActionController implements Initializable {
 					setGraphic(null);
 				} else {
 					setText(item.getLongName());
+					String color = getTextColorForERBItem(item);
+					if (color != null) {
+						setStyle("-fx-text-fill: " + color);
+					}else {
+						setStyle("-fx-text-fill: black");
+					}
 				}
 			}
 		};
+	}
+	
+	private String getTextColorForERBItem(ERBItem erbItem) {
+		Chapter chapter = findChapterForGuid(erbItem.getGuid());
+		if (chapter != null) {
+			if (chapter.getNumber() == 1) {
+				return constants.getChapter1Color();
+			} else if (chapter.getNumber() == 2) {
+				return constants.getChapter2Color();
+			} else if (chapter.getNumber() == 3) {
+				return constants.getChapter3Color();
+			} else if (chapter.getNumber() == 4) {
+				return constants.getChapter4Color();
+			} else if (chapter.getNumber() == 5) {
+				return constants.getChapter5Color();
+			}
+		}
+		return null;
+	}
+	
+	private Chapter findChapterForGuid(String guid) {
+		if (guid != null) {
+			for (Chapter chapter : listOfUniqueChapters) {
+				if(chapter.getGuid().contentEquals(guid)) {
+					return chapter;
+				}
+				for (Activity activity : chapter.getAssignedActivities()) {
+					if (activity.getGuid().contentEquals(guid)) {
+						return chapter;
+					}
+					for (Step step : activity.getAssignedSteps()) {
+						if (step.getGuid().contentEquals(guid)) {
+							return chapter;
+						}
+						for (InteractiveActivity interactiveActivity : step.getAssignedDynamicActivities()) {
+							if (interactiveActivity.getGuid().contentEquals(guid)) {
+								return chapter;
+							}
+						}
+					}
+					for (InteractiveActivity interactiveActivity : activity.getAssignedDynamicActivities()) {
+						if (interactiveActivity.getGuid().contentEquals(guid)) {
+							return chapter;
+						}
+					}
+				}
+
+				for (Step step : chapter.getAssignedSteps()) {
+					if (step.getGuid().contentEquals(guid)) {
+						return chapter;
+					}
+					for (InteractiveActivity interactiveActivity : step.getAssignedDynamicActivities()) {
+						if (interactiveActivity.getGuid().contentEquals(guid)) {
+							return chapter;
+						}
+					}
+				}
+			}
+		}
+		return null;
 	}
 
 	private void goalSelected(Goal goal) {
