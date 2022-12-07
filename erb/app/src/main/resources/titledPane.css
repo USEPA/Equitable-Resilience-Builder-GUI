@@ -1,9 +1,0 @@
-.titled-pane > .title
-{
-    -fx-background-color: transparent;
-}
-
-#helpTitledPane.titled-pane .title > .arrow-button
-{
-    visibility: hidden;
-}
