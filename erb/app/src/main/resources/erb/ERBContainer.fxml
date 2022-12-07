@@ -51,23 +51,35 @@
                   </MenuBar>
                </children>
             </HBox>
-            <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
+            <HBox>
                <children>
-                  <Label fx:id="titleLabel" text="Equitable Resilience Builder">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                  </Label>
-                  <Label text="A collaborative process to strengthen your equitable resilience to disasters and climate change">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                  <ImageView fitHeight="78.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image1.PNG" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
+                     <children>
+                        <Label fx:id="titleLabel" text="Equitable Resilience Builder">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label text="A collaborative process to strengthen your equitable resilience to disasters and climate change">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </VBox>
                </children>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </VBox>
+            </HBox>
             <VBox fx:id="erbContainer" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
