@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER_RIGHT">
-         <children>
-            <Hyperlink text="My Portfolio" underline="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Hyperlink>
-         </children>
-      </HBox>
       <VBox fx:id="mainPanel" alignment="CENTER" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
