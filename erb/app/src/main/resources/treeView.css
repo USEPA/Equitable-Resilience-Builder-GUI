@@ -1,0 +1,6 @@
+.tree-cell > .tree-disclosure-node > .arrow  {
+    -fx-background-color: black;
+}
+.tree-cell:expanded > .tree-disclosure-node > .arrow {
+    -fx-background-color: #89C9EE;
+}

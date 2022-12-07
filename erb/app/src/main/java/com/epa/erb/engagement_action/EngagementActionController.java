@@ -174,6 +174,7 @@ public class EngagementActionController implements Initializable {
 		} else {
 			initFacilitatorMode();
 		}
+		treeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());
 	}
 
 	private void initGoalMode() {
