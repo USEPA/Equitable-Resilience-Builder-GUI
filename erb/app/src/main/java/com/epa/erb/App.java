@@ -40,39 +40,39 @@ public class App extends Application {
 	private ERBContainerController erbContainerController;
 	private Logger logger = LogManager.getLogger(App.class);
 	private EngagementActionController engagementActionController;
-	
+
 	private ArrayList<Step> availableSteps;
 	private ArrayList<Chapter> availableChapters;
 	private ArrayList<Activity> availableActivities;
 	private ArrayList<GoalCategory> availableGoalCategories;
 	private ArrayList<InteractiveActivity> availableInteractiveActivities;
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		setScreenSizePreferences(getScreenScale());
 		readAndStoreData();
 		showERBToolMain();
 	}
-	
+
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
-	
+
 	private void showERBToolMain() {
 		Parent erbContainerRoot = loadERBContainer();
 		launchERBLanding();
 		showERBContainer(erbContainerRoot);
 	}
-	
+
 	private int getScreenScale() {
 		return java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
 	}
-	
+
 	private void setScreenSizePreferences(int scale) {
-		if(scale > 0 && scale <=96) {
+		if (scale > 0 && scale <= 96) {
 			prefWidth = constants.getPrefWidthForScale100();
 			prefHeight = constants.getPrefHeightForScale100();
-		} else if (scale > 96 && scale <=125) {
+		} else if (scale > 96 && scale <= 125) {
 			prefWidth = constants.getPrefWidthForScale125();
 			prefHeight = constants.getPrefHeightForScale125();
 		} else if (scale > 125 && scale <= 144) {
@@ -83,13 +83,13 @@ public class App extends Application {
 			prefHeight = constants.getPrefHeightForScale175();
 		}
 	}
-	
+
 	public void launchERBLanding() {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();
 		Parent erbLandingRoot = mainPanelHandler.loadERBLanding(this);
 		loadNodeToERBContainer(erbLandingRoot);
 	}
-	
+
 	private Parent loadERBContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBContainer.fxml"));
@@ -104,7 +104,7 @@ public class App extends Application {
 			return null;
 		}
 	}
-	
+
 	private Stage erbContainerStage = null;
 	private void showERBContainer(Parent erbContainerRoot) {
 		if (erbContainerRoot != null) {
@@ -120,15 +120,15 @@ public class App extends Application {
 	}
 
 	private void erbCloseRequested() {
-		if(engagementActionController != null) {
+		if (engagementActionController != null) {
 			Project project = engagementActionController.getProject();
 			Goal goal = engagementActionController.getCurrentGoal();
 			ArrayList<Chapter> listOfUniqueChapters = engagementActionController.getListOfUniqueChapters();
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), listOfUniqueChapters);
 			fileHandler.createGUIDDirectoriesForGoal(project, goal, listOfUniqueChapters);
 		}
-	}	
-	
+	}
+
 	private void readAndStoreData() {
 		readAndStoreAvailableInteractiveActivities();
 		readAndStoreAvailableSteps();
@@ -137,37 +137,37 @@ public class App extends Application {
 		readAndStoreAvailableGoalCategories();
 		readAndStoreProjects();
 	}
-	
+
 	private void readAndStoreAvailableInteractiveActivities() {
 		File interactiveActivitiesFile = fileHandler.getStaticAvailableInteractiveActivitiesXMLFile();
 		availableInteractiveActivities = xmlManager.parseAvailableInteractiveActivitiesXML(interactiveActivitiesFile);
 	}
-	
+
 	private void readAndStoreAvailableChapters() {
 		File chaptersFile = fileHandler.getStaticChaptersXMLFile();
 		availableChapters = xmlManager.parseChaptersXML(chaptersFile);
 	}
-	
+
 	private void readAndStoreAvailableActivities() {
 		File availableActivitiesFile = fileHandler.getStaticAvailableActivitiesXMLFile();
 		availableActivities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile);
 	}
-	
+
 	private void readAndStoreAvailableSteps() {
 		File availableStepsFile = fileHandler.getStaticAvailableStepsXMLFile();
 		availableSteps = xmlManager.parseAvailableStepsXML(availableStepsFile);
 	}
-	
+
 	private void readAndStoreAvailableGoalCategories() {
 		File goalCategoriesFile = fileHandler.getStaticGoalCategoriesXMLFile();
 		availableGoalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
 	}
-	
+
 	private void readAndStoreProjects() {
 		File projectsDirectory = fileHandler.getProjectsDirectory();
 		projects = xmlManager.parseAllProjects(projectsDirectory, availableActivities);
 	}
-	
+
 	public void loadNodeToERBContainer(Node node) {
 		if (node != null) {
 			setNodeGrowPriority(node, Priority.ALWAYS);
@@ -177,93 +177,18 @@ public class App extends Application {
 			logger.error("Cannot load node to ERBContainer. node is null.");
 		}
 	}
-	
+
 	public void setNodeGrowPriority(Node node, Priority priority) {
 		if (node != null) {
 			VBox.setVgrow(node, priority);
 			HBox.setHgrow(node, priority);
 		}
 	}
-	
+
 	public void updateAvailableProjectsList() {
 		readAndStoreProjects();
 	}
-	
-	public GoalCategory getGoalCategoryByName(String goalCategoryName) {
-		if(goalCategoryName != null) {
-			for(GoalCategory goalCategory: availableGoalCategories) {
-				if(goalCategory.getCategoryName().contentEquals(goalCategoryName)) {
-					return goalCategory;
-				}
-			}
-		} else {
-			logger.error("Cannot getGoalCategoryByName. goalCategoryName is null.");
-			return null;
-		}
-		logger.debug("Cannot getGoalCategoryByName. GoalCategory returned is null");
-		return null;
-	}
-	
-	public InteractiveActivity getDynamicActivityById(String activityID) {
-		if (activityID != null) {
-			for (InteractiveActivity dynamicActivity : availableInteractiveActivities) {
-				if (dynamicActivity.getId().contentEquals(activityID)) {
-					return dynamicActivity;
-				}
-			}
-		} else {
-			logger.error("Cannot getDynamicActivityById. activityID is null.");
-			return null;
-		}
-		logger.debug("Cannot getDynamicActivityById. InteractiveActivity returned is null");
-		return null;
-	}
-	
-	public Step getStepByID(String stepID) {
-		if (stepID != null) {
-			for (Step step : availableSteps) {
-				if (step.getId().contentEquals(stepID)) {
-					return step;
-				}
-			}
-		} else {
-			logger.error("Cannot getStepByID. stepID is null.");
-			return null;
-		}
-		logger.debug("Cannot getStepByID. Step returned is null");
-		return null;
-	}
-	
-	public Activity getActivityByID(String activityID) {
-		if (activityID != null) {
-			for (Activity activity : availableActivities) {
-				if (activity.getId().contentEquals(activityID)) {
-					return activity;
-				}
-			}
-		} else {
-			logger.error("Cannot getActivityByID. activityID is null.");
-			return null;
-		}
-		logger.debug("Cannot getActivityByID. Activity returned is null");
-		return null;
-	}
-	
-	public Chapter getChapterByID(String chapterID) {
-		if(chapterID != null) {
-			for(Chapter chapter: availableChapters) {
-				if(chapter.getId().contentEquals(chapterID)) {
-					return chapter;
-				}
-			}
-		} else {
-			logger.error("Cannot getChapterByID. chapterID is null.");
-			return null;
-		}
-		logger.debug("Cannot getChapterByID.Chapter returned is null.");
-		return null;
-	}
-	
+
 	public String generateGUID() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}

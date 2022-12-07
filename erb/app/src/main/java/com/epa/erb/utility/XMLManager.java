@@ -19,6 +19,7 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.ERBItem;
+import com.epa.erb.ERBItemFinder;
 import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
@@ -41,6 +42,7 @@ public class XMLManager {
 		this.app = app;
 	}
 
+	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private Logger logger = LogManager.getLogger(XMLManager.class);
 	
 	//Parse Chapters
@@ -268,7 +270,7 @@ public class XMLManager {
 							if (chapterNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element chapterElement = (Element) chapterNode;
 								String chapterID = chapterElement.getAttribute("id");
-								Chapter chapter = app.getChapterByID(chapterID);
+								Chapter chapter = erbItemFinder.getChapterById(app.getAvailableChapters(), chapterID);
 								NodeList cActivityNodeList = chapterElement.getElementsByTagName("ChapterActivity");
 								ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
 								for (int j = 0; j < cActivityNodeList.getLength(); j++) {
@@ -277,7 +279,7 @@ public class XMLManager {
 									if (cActivityNode.getNodeType() == Node.ELEMENT_NODE) {
 										Element cActivityElement = (Element) cActivityNode;
 										String activityID = cActivityElement.getAttribute("id");
-										Activity activity = app.getActivityByID(activityID);
+										Activity activity = erbItemFinder.getActivityById(app.getAvailableActivities(), activityID);
 										if (activity != null) listOfChapterActivities.add(activity);
 										NodeList caStepsNodeList = cActivityElement.getElementsByTagName("ChapterActivityStep");
 										ArrayList<Step> listOfChapterActivitySteps = new ArrayList<Step>();
@@ -287,7 +289,7 @@ public class XMLManager {
 											if (caStepNode.getNodeType() == Node.ELEMENT_NODE) {
 												Element caStepElement = (Element) caStepNode;
 												String stepID = caStepElement.getAttribute("id");
-												Step step = app.getStepByID(stepID);
+												Step step = erbItemFinder.getStepById(app.getAvailableSteps(), stepID);
 												if (step != null) listOfChapterActivitySteps.add(step);
 												NodeList casDynamicActivitiesNodeList = caStepElement.getElementsByTagName("ChapterActivityStepInteractiveActivity");
 												ArrayList<InteractiveActivity> listOfChapterActivityStepDynamicActivities = new ArrayList<InteractiveActivity>();
@@ -297,7 +299,7 @@ public class XMLManager {
 													if (casDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
 														Element casDynamicActivityElement = (Element) casDynamicActivityNode;
 														String dynamicActivityID = casDynamicActivityElement.getAttribute("id");
-														InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+														InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
 														if (dynamicActivity != null) listOfChapterActivityStepDynamicActivities.add(dynamicActivity);
 													} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY ELEMENT
 												} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
@@ -313,7 +315,7 @@ public class XMLManager {
 											if (caDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
 												Element caDynamicActivityElement = (Element) caDynamicActivityNode;
 												String dynamicActivityID = caDynamicActivityElement.getAttribute("id");
-												InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+												InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
 												if (dynamicActivity != null) listOfChapterActivityDynamicActivities.add(dynamicActivity);
 											} // CHAPTER ACTIVITY DYNAMIC ACTIVITY ELEMENT
 										} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
@@ -328,7 +330,7 @@ public class XMLManager {
 									if (cStepNode.getNodeType() == Node.ELEMENT_NODE) {
 										Element cStepElement = (Element) cStepNode;
 										String stepID = cStepElement.getAttribute("id");
-										Step step = app.getStepByID(stepID);
+										Step step = erbItemFinder.getStepById(app.getAvailableSteps(), stepID);
 										NodeList csDynamicActivitesNodeList = cStepElement.getElementsByTagName("ChapterStepInteractiveActivity");
 										ArrayList<InteractiveActivity> listOfChapterStepDynamicActivities = new ArrayList<InteractiveActivity>();
 										for (int o = 0; o < csDynamicActivitesNodeList.getLength(); o++) {
@@ -337,7 +339,7 @@ public class XMLManager {
 											if (csDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
 												Element csDynamicActivityElement = (Element) csDynamicActivityNode;
 												String dynamicActivityID = csDynamicActivityElement.getAttribute("id");
-												InteractiveActivity dynamicActivity = app.getDynamicActivityById(dynamicActivityID);
+												InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
 												if (dynamicActivity != null) listOfChapterStepDynamicActivities.add(dynamicActivity);
 											} // CHAPTER STEP DYNAMIC ACTIVITY ELEMENT
 										} // CHAPTER STEP DYNAMIC ACTIVITY
@@ -418,7 +420,7 @@ public class XMLManager {
 									if(goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
 										Element goalCategoryElement = (Element) goalCategoryNode;
 										String categoryName = goalCategoryElement.getAttribute("categoryName");
-										GoalCategory goalCategory = app.getGoalCategoryByName(categoryName);
+										GoalCategory goalCategory = erbItemFinder.getGoalCategoryByName(app.getAvailableGoalCategories(), categoryName);
 										listOfSelectedGoalCategories.add(goalCategory);
 									}
 								}
@@ -481,7 +483,7 @@ public class XMLManager {
 								String activityStatus = cActivityElement.getAttribute("status");
 								String activityNotes = cActivityElement.getAttribute("notes");
 								String activityRating = cActivityElement.getAttribute("rating");
-								Activity genericActivity = app.getActivityByID(activityId);
+								Activity genericActivity = erbItemFinder.getActivityById(app.getAvailableActivities(), activityId);
 								if (genericActivity != null) {
 									Activity activity = new Activity(activityId, activityGuid, activityLongName, activityShortName, activityStatus, activityNotes, activityRating);
 									listOfChapterActivities.add(activity);
@@ -500,7 +502,7 @@ public class XMLManager {
 											String stepNotes = caStepElement.getAttribute("notes");
 											String stepRating = caStepElement.getAttribute("rating");
 											String stepType = caStepElement.getAttribute("type");
-											Step genericStep = app.getStepByID(stepId);
+											Step genericStep = erbItemFinder.getStepById(app.getAvailableSteps(), stepId);
 											if (genericStep != null) {
 												Step step = new Step(stepId, stepGuid, stepLongName, stepShortName, stepStatus, stepNotes, stepRating, stepType);
 												listOfChapterActivitySteps.add(step);
@@ -516,7 +518,7 @@ public class XMLManager {
 														String interactiveActivityLongName = casDynamicActivityElement.getAttribute("longName");
 														String interactiveActivityShortName = casDynamicActivityElement.getAttribute("shortName");
 														String interactiveActivityStatus = casDynamicActivityElement.getAttribute("status");
-														InteractiveActivity genericInteractiveActivity = app.getDynamicActivityById(interactiveActivityId);
+														InteractiveActivity genericInteractiveActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), interactiveActivityId);
 														if (genericInteractiveActivity != null) {
 															InteractiveActivity interactiveActivity = new InteractiveActivity(interactiveActivityId, interactiveActivityGuid, interactiveActivityLongName, interactiveActivityShortName, interactiveActivityStatus);
 															listOfChapterActivityStepDynamicActivities.add(interactiveActivity);
@@ -539,7 +541,7 @@ public class XMLManager {
 											String interactiveActivityLongName = caDynamicActivityElement.getAttribute("longName");
 											String interactiveActivityShortName = caDynamicActivityElement.getAttribute("shortName");
 											String interactiveActivityStatus = caDynamicActivityElement.getAttribute("status");
-											InteractiveActivity genericInteractiveActivity = app.getDynamicActivityById(interactiveActivityID);
+											InteractiveActivity genericInteractiveActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), interactiveActivityID);
 											if (genericInteractiveActivity != null) {
 												InteractiveActivity interactiveActivity = new InteractiveActivity(interactiveActivityID, interactiveActivityGuid, interactiveActivityLongName, interactiveActivityShortName, interactiveActivityStatus);
 												listOfChapterActivityDynamicActivities.add(interactiveActivity);
@@ -566,7 +568,7 @@ public class XMLManager {
 								String stepNotes = cStepElement.getAttribute("notes");
 								String stepRating = cStepElement.getAttribute("rating");
 								String stepType = cStepElement.getAttribute("type");
-								Step genericStep = app.getStepByID(stepId);
+								Step genericStep = erbItemFinder.getStepById(app.getAvailableSteps(), stepId);
 								if (genericStep != null) {
 									Step step = new Step(stepId, stepGuid, stepLongName, stepShortName, stepStatus, stepNotes, stepRating, stepType);
 									listOfChapterSteps.add(step);
@@ -582,7 +584,7 @@ public class XMLManager {
 											String interactiveActivityLongName = csDynamicActivityElement.getAttribute("longName");
 											String interactiveActivityShortName = csDynamicActivityElement.getAttribute("shortName");
 											String interactiveActivityStatus = csDynamicActivityElement.getAttribute("status");
-											InteractiveActivity genericInteractiveActivity = app.getDynamicActivityById(interactiveActivityId);
+											InteractiveActivity genericInteractiveActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), interactiveActivityId);
 											if (genericInteractiveActivity != null) {
 												InteractiveActivity interactiveActivity = new InteractiveActivity(interactiveActivityId, interactiveActivityGuid, interactiveActivityLongName, interactiveActivityShortName, interactiveActivityStatus);
 												listOfChapterStepDynamicActivities.add(interactiveActivity);

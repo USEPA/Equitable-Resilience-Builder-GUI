@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.ERBItem;
+import com.epa.erb.ERBItemFinder;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
@@ -66,6 +67,7 @@ public class MainFormController implements Initializable{
 	}
 		
 	private Project project;
+	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -142,8 +144,7 @@ public class MainFormController implements Initializable{
 	private void internalStepLinkClicked(String link) {
 		if (engagementActionController != null) {
 			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
-
-			Step step = findStep(link);
+			Step step = erbItemFinder.findStepById(engagementActionController.getListOfUniqueChapters(), link);
 			if (step != null) {
 				if (step.getId().length() == 4) {
 					Pane root = engagementActionController.loadStepContent(step);
@@ -183,7 +184,7 @@ public class MainFormController implements Initializable{
 		if (engagementActionController != null) {
 			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
 			if (link.length() == 5) {
-				Chapter chapter = findChapter(link);
+				Chapter chapter = erbItemFinder.findChapterForGuid( engagementActionController.getListOfUniqueChapters(), link);
 				if (chapter != null) {
 					ERBItem currentErbItem = engagementActionController.findTreeItem(chapter.getGuid()).getValue();
 //					System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
@@ -197,7 +198,7 @@ public class MainFormController implements Initializable{
 					}
 				}
 			}
-			Activity activity = findActivity(link);
+			Activity activity = erbItemFinder.findActivityById(engagementActionController.getListOfUniqueChapters(),link);
 			if (activity != null) {
 				ERBItem currentErbItem = engagementActionController.findTreeItem(activity.getGuid()).getValue();
 //				System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
@@ -224,44 +225,6 @@ public class MainFormController implements Initializable{
 	
 	private void hyperlinkJump(ERBItem erbItem) {
 		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(erbItem.getShortName(), erbItem.getId());
-	}
-	
-	private Chapter findChapter(String chapterId) {
-		for(Chapter chapter: engagementActionController.getListOfUniqueChapters()) {
-			if((chapter.getId()).contentEquals(chapterId)) {
-				return chapter;
-			}
-		}
-		return null;
-	}
-	
-	private Step findStep(String stepId) {
-		for (Chapter chapter : engagementActionController.getListOfUniqueChapters()) {
-			for (Step chapterStep : chapter.getAssignedSteps()) {
-				if (chapterStep.getId().contentEquals(stepId)) {
-					return chapterStep;
-				}
-			}
-			for (Activity activity : chapter.getAssignedActivities()) {
-				for (Step activityStep : activity.getAssignedSteps()) {
-					if (activityStep.getId().contentEquals(stepId)) {
-						return activityStep;
-					}
-				}
-			}
-		}
-		return null;
-	}
-	
-	private Activity findActivity(String activityId) {
-		for (Chapter chapter : engagementActionController.getListOfUniqueChapters()) {
-			for (Activity activity : chapter.getAssignedActivities()) {
-				if (activity.getId().contentEquals(activityId)) {
-					return activity;
-				}
-			}
-		}
-		return null;
 	}
 	
 	public void loadEngagementActionToContainer(EngagementActionController engagementActionController) {

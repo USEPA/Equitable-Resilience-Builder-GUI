@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.ERBItem;
+import com.epa.erb.ERBItemFinder;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.utility.Constants;
 import javafx.fxml.FXML;
@@ -79,6 +80,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 	
 	private Constants constants = new Constants();
+	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private Logger logger = LogManager.getLogger(ERBPathwayDiagramController.class);
 
 	@Override
@@ -137,7 +139,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 	
 	private void hideLeadingLines() {
-		int index = getIndexOfActivityInChapter(chapter, activity);
+		int index = erbItemFinder.getIndexOfActivityInChapter(chapter, activity);
 		if (chapter.getNumberOfAssignedActivities() == 1) {
 			hideLeftLeadingLine();
 			hideRightLeadingLine();
@@ -285,21 +287,6 @@ public class ERBPathwayDiagramController implements Initializable {
 			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
 			engagementActionController.treeViewClicked(null, treeItem); // handle tree item selected
 		}
-	}
-	
-	private int getIndexOfActivityInChapter(Chapter chapter, Activity activity) {
-		int count = 0;
-		if (chapter != null && activity != null) {
-			for (Activity a : chapter.getAssignedActivities()) {
-				if (a.getId().contentEquals(activity.getId())) {
-					return count;
-				}
-				count++;
-			}
-		} else {
-			logger.error("Cannot getIndexOfActivityInChapter. chapter or activity is null.");
-		}
-		return -1;
 	}
 	
 	/**

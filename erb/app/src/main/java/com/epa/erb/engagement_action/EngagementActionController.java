@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.ERBItem;
+import com.epa.erb.ERBItemFinder;
 import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
@@ -158,6 +159,7 @@ public class EngagementActionController implements Initializable {
 
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
+	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	private LinkedHashMap<ERBItem, TreeItem<ERBItem>> treeItemGuidTreeMap = new LinkedHashMap<ERBItem, TreeItem<ERBItem>>();
 	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
@@ -238,7 +240,7 @@ public class EngagementActionController implements Initializable {
 		} else {
 			TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
 			if (selectedTreeItem != null && selectedTreeItem.getValue().getShortName().contains("Chapter")) {
-				updateLocalProgress(getChapterForNameInGoal(selectedTreeItem.getValue().getShortName().trim(), currentSelectedGoal),currentSelectedGoal.getChapters());
+				updateLocalProgress(erbItemFinder.getChapterForNameInGoal(selectedTreeItem.getValue().getShortName().trim(), currentSelectedGoal),currentSelectedGoal.getChapters());
 			}
 		}
 	}
@@ -544,69 +546,6 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	public Chapter getChapterForActivity(Activity activity) {
-		for (Chapter chapter : listOfUniqueChapters) {
-			for (Activity chapterActivity : chapter.getAssignedActivities()) {
-				if (chapterActivity.getGuid().contentEquals(activity.getGuid())) {
-					return chapter;
-				}
-			}
-		}
-		return null;
-	}
-
-	public Chapter getChapterForStep(Step step) {
-		for (Chapter chapter : listOfUniqueChapters) {
-			for (Step chapterStep : chapter.getAssignedSteps()) {
-				if (chapterStep.getGuid().contentEquals(step.getGuid())) {
-					return chapter;
-				}
-			}
-		}
-		return null;
-	}
-
-	public Activity getActivityForStep(Step step) {
-		for (Chapter chapter : listOfUniqueChapters) {
-			for (Activity chapterActivity : chapter.getAssignedActivities()) {
-				for (Step activityStep : chapterActivity.getAssignedSteps()) {
-					if (activityStep.getGuid().contentEquals(step.getGuid())) {
-						return chapterActivity;
-					}
-				}
-			}
-		}
-		return null;
-	}
-
-	public Step getStepForDynamicActivity(InteractiveActivity dynamicActivity) {
-		for (Chapter chapter : listOfUniqueChapters) {
-			for (Activity chapterActivity : chapter.getAssignedActivities()) {
-				for (Step activityStep : chapterActivity.getAssignedSteps()) {
-					for (InteractiveActivity stepDynamicActivity : activityStep.getAssignedDynamicActivities()) {
-						if (stepDynamicActivity.getGuid().contentEquals(dynamicActivity.getGuid())) {
-							return activityStep;
-						}
-					}
-				}
-			}
-		}
-		return null;
-	}
-
-	public Activity getActivityForDynamicActivity(InteractiveActivity dynamicActivity) {
-		for (Chapter chapter : listOfUniqueChapters) {
-			for (Activity chapterActivity : chapter.getAssignedActivities()) {
-				for (InteractiveActivity activityDynamicActivity : chapterActivity.getAssignedDynamicActivities()) {
-					if (activityDynamicActivity.getGuid().contentEquals(dynamicActivity.getGuid())) {
-						return chapterActivity;
-					}
-				}
-			}
-		}
-		return null;
-	}
-
 	private void erbPathwayTreeItemSelected() {
 		currentSelectedDynamicActivity = null;
 		currentSelectedStep = null;
@@ -649,7 +588,8 @@ public class EngagementActionController implements Initializable {
 		currentSelectedDynamicActivity = null;
 		currentSelectedStep = null;
 		currentSelectedActivity = activity;
-		currentSelectedChapter = getChapterForActivity(activity);
+		currentSelectedChapter = erbItemFinder.getChapterForActivity(listOfUniqueChapters, activity);
+
 		cleanContentVBox();
 		if (project.getProjectType().contentEquals("Goal Mode")) {
 			addStatusHBox();
@@ -667,12 +607,13 @@ public class EngagementActionController implements Initializable {
 	private void stepTreeItemSelected(TreeItem<ERBItem> stepTreeItem, Step step) {
 		currentSelectedDynamicActivity = null;
 		currentSelectedStep = step;
-		currentSelectedActivity = getActivityForStep(step);
+		currentSelectedActivity = erbItemFinder.getActivityForStep(listOfUniqueChapters, step);
+
 		;
 		if (currentSelectedActivity != null) {
-			currentSelectedChapter = getChapterForActivity(currentSelectedActivity);
+			currentSelectedChapter = erbItemFinder.getChapterForActivity(listOfUniqueChapters, currentSelectedActivity);
 		} else {
-			currentSelectedChapter = getChapterForStep(step);
+			currentSelectedChapter = erbItemFinder.getChapterForStep(listOfUniqueChapters, step);
 		}
 		cleanContentVBox();
 		if (project.getProjectType().contentEquals("Goal Mode")) {
@@ -695,12 +636,14 @@ public class EngagementActionController implements Initializable {
 
 	private void dynamicActivitySelected(TreeItem<ERBItem> dynamicActivityTreeItem, InteractiveActivity dynamicActivity) {
 		currentSelectedDynamicActivity = dynamicActivity;
-		currentSelectedStep = getStepForDynamicActivity(dynamicActivity);
-		currentSelectedActivity = getActivityForDynamicActivity(dynamicActivity);
+		currentSelectedStep = erbItemFinder.getStepForInteractiveActivity(listOfUniqueChapters, dynamicActivity);
+		currentSelectedActivity = erbItemFinder.getActivityForInteractiveActivity(listOfUniqueChapters, dynamicActivity);
+
 		if (currentSelectedActivity != null) {
-			currentSelectedChapter = getChapterForActivity(currentSelectedActivity);
+			currentSelectedChapter = erbItemFinder.getChapterForActivity(listOfUniqueChapters, currentSelectedActivity);
 		} else {
-			currentSelectedChapter = getChapterForStep(currentSelectedStep);
+			currentSelectedChapter = erbItemFinder.getChapterForStep(listOfUniqueChapters, currentSelectedStep);
+
 		}
 		cleanContentVBox();
 		if (project.getProjectType().contentEquals("Goal Mode")) {
@@ -944,7 +887,7 @@ public class EngagementActionController implements Initializable {
 	}
 	
 	private String getTextColorForERBItem(ERBItem erbItem) {
-		Chapter chapter = findChapterForGuid(erbItem.getGuid());
+		Chapter chapter = erbItemFinder.findChapterForGuid(listOfUniqueChapters, erbItem.getGuid());
 		if (chapter != null) {
 			if (chapter.getNumber() == 1) {
 				return constants.getChapter1Color();
@@ -956,48 +899,6 @@ public class EngagementActionController implements Initializable {
 				return constants.getChapter4Color();
 			} else if (chapter.getNumber() == 5) {
 				return constants.getChapter5Color();
-			}
-		}
-		return null;
-	}
-	
-	private Chapter findChapterForGuid(String guid) {
-		if (guid != null) {
-			for (Chapter chapter : listOfUniqueChapters) {
-				if(chapter.getGuid().contentEquals(guid)) {
-					return chapter;
-				}
-				for (Activity activity : chapter.getAssignedActivities()) {
-					if (activity.getGuid().contentEquals(guid)) {
-						return chapter;
-					}
-					for (Step step : activity.getAssignedSteps()) {
-						if (step.getGuid().contentEquals(guid)) {
-							return chapter;
-						}
-						for (InteractiveActivity interactiveActivity : step.getAssignedDynamicActivities()) {
-							if (interactiveActivity.getGuid().contentEquals(guid)) {
-								return chapter;
-							}
-						}
-					}
-					for (InteractiveActivity interactiveActivity : activity.getAssignedDynamicActivities()) {
-						if (interactiveActivity.getGuid().contentEquals(guid)) {
-							return chapter;
-						}
-					}
-				}
-
-				for (Step step : chapter.getAssignedSteps()) {
-					if (step.getGuid().contentEquals(guid)) {
-						return chapter;
-					}
-					for (InteractiveActivity interactiveActivity : step.getAssignedDynamicActivities()) {
-						if (interactiveActivity.getGuid().contentEquals(guid)) {
-							return chapter;
-						}
-					}
-				}
 			}
 		}
 		return null;
@@ -1313,21 +1214,6 @@ public class EngagementActionController implements Initializable {
 	public void closeGlobalGoalTrackerStage() {
 		if (globalGoalTrackerStage != null) {
 			globalGoalTrackerStage.close();
-		}
-	}
-
-	public Chapter getChapterForNameInGoal(String chapterName, Goal goal) {
-		if (chapterName != null && goal != null) {
-			for (Chapter chapter : goal.getChapters()) {
-				if (chapter.getLongName().contentEquals(chapterName)) {
-					return chapter;
-				}
-			}
-			logger.debug("Chapter returned is null");
-			return null;
-		} else {
-			logger.error("Cannot getChapterForNameInGoal. chapterName or goal is null.");
-			return null;
 		}
 	}
 
