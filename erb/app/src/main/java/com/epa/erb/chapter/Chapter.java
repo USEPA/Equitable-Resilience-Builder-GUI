@@ -96,32 +96,31 @@ public class Chapter extends ERBItem{
 		return count;
 	}
 	
-	//TODO: FIX HERE
-//	public String getStatus() {
-//		boolean isReady = true; // if all activities are ready
-//		boolean isComplete = true; // if all activities are complete
-//		if (assignedActivities.size() > 0) {
-//			for (Activity activity : assignedActivities) {
-//				if (activity.getStatus().contentEquals("ready")) {
-//					isComplete = false;
-//				} else if (activity.getStatus().contentEquals("in progress")) {
-//					isComplete = false;
-//					isReady = false;
-//				} else if (activity.getStatus().contentEquals("complete")) {
-//					isReady = false;
-//				}
-//			}
-//			if (isComplete) {
-//				return "complete";
-//			} else if (isReady) {
-//				return "ready";
-//			} else {
-//				return "in progress";
-//			}
-//		} else {
-//			return "ready";
-//		}
-//	}
+	public String checkForStatus() {
+		boolean isReady = true; // if all activities are ready
+		boolean isComplete = true; // if all activities are complete
+		if (assignedActivities.size() > 0) {
+			for (Activity activity : assignedActivities) {
+				if (activity.getStatus().contentEquals("ready")) {
+					isComplete = false;
+				} else if (activity.getStatus().contentEquals("in progress")) {
+					isComplete = false;
+					isReady = false;
+				} else if (activity.getStatus().contentEquals("complete")) {
+					isReady = false;
+				}
+			}
+			if (isComplete) {
+				return "complete";
+			} else if (isReady) {
+				return "ready";
+			} else {
+				return "in progress";
+			}
+		} else {
+			return "ready";
+		}
+	}
 
 	public String getNotes() {
 		return notes;
@@ -164,6 +163,7 @@ public class Chapter extends ERBItem{
 	}
 
 	public String getStatus() {
+		status = checkForStatus();
 		return status;
 	}
 
