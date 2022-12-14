@@ -8,10 +8,7 @@
    <children>
       <VBox fx:id="mainPanel" alignment="CENTER" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image1.PNG" />
-               </image>
+            <ImageView fx:id="goalLandingImageView" fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
             </ImageView>
          </children></VBox>
    </children>

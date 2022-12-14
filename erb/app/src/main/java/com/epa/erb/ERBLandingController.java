@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -62,7 +63,9 @@ public class ERBLandingController implements Initializable{
 	}
 	
 	private void handleControls() {
-		
+		landingImageView1.setImage(new Image(getClass().getResourceAsStream("/landing_image1.jpg")));
+		landingImageView2.setImage(new Image(getClass().getResourceAsStream("/landing_image2.PNG")));
+		landingImageView3.setImage(new Image(getClass().getResourceAsStream("/landing_image3.PNG")));		
 	}
 	
 	@FXML

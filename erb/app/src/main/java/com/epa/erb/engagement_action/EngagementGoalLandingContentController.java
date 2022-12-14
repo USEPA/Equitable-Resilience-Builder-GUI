@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.chapter.Chapter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -15,6 +17,8 @@ public class EngagementGoalLandingContentController implements Initializable {
 
 	@FXML
 	VBox mainPanel;
+	@FXML
+	ImageView goalLandingImageView;
 
 	private ArrayList<Chapter> listOfChaptersInGoal;
 	private EngagementActionController engagementActionController;
@@ -33,6 +37,7 @@ public class EngagementGoalLandingContentController implements Initializable {
 
 	private void handleControls() {
 		handleControlsShown();
+		goalLandingImageView.setImage(new Image(getClass().getResourceAsStream("/landing_image1.PNG")));
 	}
 
 	private void handleControlsShown() {

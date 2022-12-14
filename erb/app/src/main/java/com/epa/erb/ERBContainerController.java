@@ -15,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -35,6 +37,8 @@ public class ERBContainerController implements Initializable{
 	Menu aboutMenu;
 	@FXML
 	HBox breadCrumbHBox;
+	@FXML
+	ImageView icon;
 	
 	private App app;
 	public ERBContainerController(App app) {
@@ -52,7 +56,23 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void handleControls() {
+		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image.jpg")));
+		imageView1.setFitWidth(25.0);
+		imageView1.setFitHeight(25.0);
+		introMenu.setGraphic(imageView1);
 		
+		ImageView imageView2 = new ImageView(new Image(getClass().getResourceAsStream("/resource_image.png")));
+		imageView2.setFitWidth(25.0);
+		imageView2.setFitHeight(25.0);
+		resourcesMenu.setGraphic(imageView2);
+
+		ImageView imageView3 = new ImageView(new Image(getClass().getResourceAsStream("/faq_image.png")));
+		imageView3.setFitWidth(25.0);
+		imageView3.setFitHeight(25.0);
+		aboutMenu.setGraphic(imageView3);
+		
+		icon.setImage(new Image(getClass().getResourceAsStream("/landing_image1.PNG")));
+
 	}
 	
 	private void handleResourceMenu() {

@@ -31,11 +31,7 @@
                                  <children>
                                     <VBox fx:id="landingImageView1VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: red;">
                                        <children>
-                                          <ImageView fx:id="landingImageView1" VBox.vgrow="ALWAYS">
-                                             <image>
-                                                <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image1.jpg" />
-                                             </image>
-                                          </ImageView>
+                                          <ImageView fx:id="landingImageView1" VBox.vgrow="ALWAYS"></ImageView>
                                        </children>
                                     </VBox>
                                     <VBox alignment="TOP_CENTER">
@@ -69,11 +65,7 @@
                                  <children>
                                     <VBox fx:id="landingImageView2VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: green;">
                                        <children>
-                                          <ImageView fx:id="landingImageView2" VBox.vgrow="ALWAYS">
-                                             <image>
-                                                <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image2.PNG" />
-                                             </image>
-                                          </ImageView>
+                                          <ImageView fx:id="landingImageView2" VBox.vgrow="ALWAYS"></ImageView>
                                        </children>
                                     </VBox>
                                     <VBox alignment="TOP_CENTER">
@@ -99,11 +91,7 @@
                                  <children>
                                     <VBox fx:id="landingImageView3VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: blue;">
                                        <children>
-                                          <ImageView fx:id="landingImageView3" VBox.vgrow="ALWAYS">
-                                             <image>
-                                                <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY23/Development/landing_image3.PNG" />
-                                             </image>
-                                          </ImageView>
+                                          <ImageView fx:id="landingImageView3" VBox.vgrow="ALWAYS"></ImageView>
                                        </children>
                                     </VBox>
                                     <VBox alignment="TOP_CENTER">
