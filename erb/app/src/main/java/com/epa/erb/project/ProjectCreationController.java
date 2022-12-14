@@ -34,8 +34,6 @@ public class ProjectCreationController implements Initializable {
 	ToggleGroup modeToggleGroup;
 	@FXML
 	TextField projectNameTextField;
-	@FXML
-	ListView<Project> projectsListView;
 
 	private String mode = "Facilitator Mode";
 	private FileHandler fileHandler = new FileHandler();
@@ -49,21 +47,11 @@ public class ProjectCreationController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
-		app.updateAvailableProjectsList();
-		setProjectsListViewCellFactory();
-		fillProjectsListView();
 	}
 	
 	private void modeChanged(Toggle oldToggle, Toggle newToggle) {
 		RadioButton newRadioButton = (RadioButton) newToggle;
 		mode = newRadioButton.getText();
-	}
-	
-	private void fillProjectsListView() {
-		ArrayList<Project> projects = app.getProjects();
-		for (Project project : projects) {
-			projectsListView.getItems().add(project);
-		}
 	}
 
 	@FXML
@@ -73,9 +61,7 @@ public class ProjectCreationController implements Initializable {
 			String cleanedProjectName = cleanStringForWindows(newProjectName);
 			Project project = new Project(newProjectName, mode, cleanedProjectName);
 			createNewProjectDirectory(project);
-			addProjectToListView(project);
-			projectsListView.getSelectionModel().select(project);
-			mouseClickedProject(null);
+			launchProject(project);
 		}
 	}
 
@@ -124,16 +110,6 @@ public class ProjectCreationController implements Initializable {
 			}
 		} else {
 			logger.error("Cannot createNewProjectDirectory. project is null.");
-		}
-	}
-
-	private void addProjectToListView(Project project) {
-		if (project != null) {
-			if (!projectsListView.getItems().contains(project)) {
-				projectsListView.getItems().add(project);
-			}
-		} else {
-			logger.error("Cannot addProjectToListView. project is null.");
 		}
 	}
 	
@@ -185,44 +161,26 @@ public class ProjectCreationController implements Initializable {
 		app.loadNodeToERBContainer(engagementActionRoot);
 	}
 	
-	private void setProjectsListViewCellFactory() {
-		projectsListView.setCellFactory(new Callback<ListView<Project>, ListCell<Project>>() {
-			@Override
-			public ListCell<Project> call(ListView<Project> param) {
-				ListCell<Project> cell = new ListCell<Project>() {
-					@Override
-					protected void updateItem(Project item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item != null) {
-							setText(item.getProjectName());
-							setFont(new Font(14.0));
-						}
-					}
-				};
-				return cell;
-			}
-		});
-	}
 	
-	private void mouseClickedProject(MouseEvent mouseEvent) {
-		if(mouseEvent == null || mouseEvent.getClickCount() == 2) {
-			Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
-			if(selectedProject != null) {
-				MainPanelHandler mainPanelHandler = new MainPanelHandler();
-				app.setSelectedProject(selectedProject);
-				if(isProjectNew(selectedProject)) {
-					if (mode.contentEquals("Goal Mode")) {
-						Parent goalCreationRoot = mainPanelHandler.loadGoalCreationToContainer(app, selectedProject, this);
-						app.loadNodeToERBContainer(goalCreationRoot);
-					} else {
-						createFacilitatorProject(selectedProject); 
-						loadEngagementActionToContainer(selectedProject);
-					}
-					app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
-					app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
+	private void launchProject(Project selectedProject) {
+		if (selectedProject != null) {
+			MainPanelHandler mainPanelHandler = new MainPanelHandler();
+			app.setSelectedProject(selectedProject);
+			if (isProjectNew(selectedProject)) {
+				if (mode.contentEquals("Goal Mode")) {
+					Parent goalCreationRoot = mainPanelHandler.loadGoalCreationToContainer(app, selectedProject, this);
+					app.loadNodeToERBContainer(goalCreationRoot);
+				} else {
+					createFacilitatorProject(selectedProject);
+					loadEngagementActionToContainer(selectedProject);
 				}
+				app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
+				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(
+						selectedProject.getProjectName() + " Landing",
+						mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
 			}
 		}
+
 	}
 
 }
