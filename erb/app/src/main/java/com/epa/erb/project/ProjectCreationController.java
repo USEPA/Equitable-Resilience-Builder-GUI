@@ -25,11 +25,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
 public class ProjectCreationController implements Initializable {
 
+	@FXML
+	HBox goalModeHBox;
 	@FXML
 	ToggleGroup modeToggleGroup;
 	@FXML
@@ -46,6 +49,7 @@ public class ProjectCreationController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		goalModeHBox.setVisible(false);
 		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
 	}
 	

@@ -45,7 +45,7 @@
                         <TextField fx:id="projectNameTextField" prefHeight="25.0" prefWidth="545.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <HBox fx:id="goalModeHBox" alignment="CENTER_LEFT" spacing="10.0">
                      <children>
                         <Label text="Mode Type:">
                            <font>
