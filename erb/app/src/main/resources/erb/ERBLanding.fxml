@@ -28,7 +28,7 @@
                            <children>
                               <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <VBox fx:id="landingImageView1VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: red;">
+                                    <VBox fx:id="landingImageView1VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: red;">
                                        <children>
                                           <ImageView fx:id="landingImageView1" VBox.vgrow="ALWAYS" />
                                        </children>
@@ -62,7 +62,7 @@
                               </VBox>
                               <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <VBox fx:id="landingImageView2VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: green;">
+                                    <VBox fx:id="landingImageView2VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: green;">
                                        <children>
                                           <ImageView fx:id="landingImageView2" VBox.vgrow="ALWAYS" />
                                        </children>
@@ -88,7 +88,7 @@
                               </VBox>
                               <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <VBox fx:id="landingImageView3VBox" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: blue;">
+                                    <VBox fx:id="landingImageView3VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: blue;">
                                        <children>
                                           <ImageView fx:id="landingImageView3" VBox.vgrow="ALWAYS" />
                                        </children>
