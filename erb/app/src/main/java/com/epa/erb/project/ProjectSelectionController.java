@@ -43,7 +43,9 @@ public class ProjectSelectionController implements Initializable{
 	private void fillProjectsListView() {
 		ArrayList<Project> projects = app.getProjects();
 		for (Project project : projects) {
+			if(!project.getProjectCleanedName().contentEquals("Explore")) {
 			projectsListView.getItems().add(project);
+			}
 		}
 	}
 	
@@ -70,13 +72,17 @@ public class ProjectSelectionController implements Initializable{
 	private void mouseClickedProject(MouseEvent mouseEvent) {
 		if (mouseEvent == null || mouseEvent.getClickCount() == 2) {
 			Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
-			if (selectedProject != null) {
-				MainPanelHandler mainPanelHandler = new MainPanelHandler();
-				app.setSelectedProject(selectedProject);
-				app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
-				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
-				loadEngagementActionToContainer(selectedProject);
-			}
+			loadProject(selectedProject);
+		}
+	}
+	
+	public void loadProject(Project project) {
+		if (project != null) {
+			MainPanelHandler mainPanelHandler = new MainPanelHandler();
+			app.setSelectedProject(project);
+			app.getErbContainerController().getMyBreadCrumbBar().setProject(project);
+			app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(project.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
+			loadEngagementActionToContainer(project);
 		}
 	}
 

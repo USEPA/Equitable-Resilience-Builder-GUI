@@ -4,6 +4,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
+import com.epa.erb.project.Project;
+import com.epa.erb.project.ProjectSelectionController;
 import com.epa.erb.utility.MainPanelHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,6 +86,15 @@ public class ERBLandingController implements Initializable{
 	public void labelAction(MouseEvent mouseEvent) {
 		Label label = (Label) mouseEvent.getSource();
 		loadContent(label.getId(), false);
+	}
+	
+	@FXML
+	public void exploreHyperlinkAction() {
+		ProjectSelectionController projectSelectionController = new ProjectSelectionController(app);
+		Project exploreProject = app.getExploreProject();
+		if(exploreProject != null) {
+			projectSelectionController.loadProject(exploreProject);
+		}
 	}
 	
 	private void loadContent(String id, boolean isResource) {

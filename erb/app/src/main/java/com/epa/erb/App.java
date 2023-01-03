@@ -167,6 +167,15 @@ public class App extends Application {
 		File projectsDirectory = fileHandler.getProjectsDirectory();
 		projects = xmlManager.parseAllProjects(projectsDirectory, availableActivities);
 	}
+	
+	public Project getExploreProject() {
+		for(Project project: projects) {
+			if(project.getProjectName().contentEquals("Explore")) {
+				return project;
+			}
+		}
+		return null;
+	}
 
 	public void loadNodeToERBContainer(Node node) {
 		if (node != null) {

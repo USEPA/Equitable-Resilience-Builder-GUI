@@ -42,7 +42,7 @@
                                           </Label>
                                           <VBox>
                                              <children>
-                                                <Hyperlink id="7" onAction="#hyperlinkAction" text="Explore">
+                                                <Hyperlink id="7" onAction="#exploreHyperlinkAction" text="Explore">
                                                    <font>
                                                       <Font size="16.0" />
                                                    </font></Hyperlink>

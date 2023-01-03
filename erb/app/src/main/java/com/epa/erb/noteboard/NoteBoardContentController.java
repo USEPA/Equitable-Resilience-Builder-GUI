@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -35,7 +36,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class NoteBoardContentController implements Initializable{
+public class NoteBoardContentController extends InteractiveActivity implements Initializable{
 
 	@FXML
 	TextField categoryTextField;
@@ -57,16 +58,17 @@ public class NoteBoardContentController implements Initializable{
 	Pane layer4Pane;
 	@FXML
 	Pane note; //layer 5
+	@FXML
+	Button addCategoryButton;
 	
 	private App app;
 	private Project project;
 	private Goal goal;
-	private InteractiveActivity dynamicActivity;
-	public NoteBoardContentController(App app,Project project, Goal goal, InteractiveActivity dynamicActivity ) {
+	public NoteBoardContentController(String id, String guid, String longName, String shortName, String status, App app,Project project, Goal goal ) {
+		super(id, guid, longName, shortName, status);
 		this.app = app;
 		this.project = project;
 		this.goal = goal;
-		this.dynamicActivity = dynamicActivity;
 	}
 	
 	private Constants constants = new Constants();
@@ -79,7 +81,10 @@ public class NoteBoardContentController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		handleControls();
 		checkForExistingNoteBoardData();
-		setActivityNameLabelText(dynamicActivity.getLongName());
+		setActivityNameLabelText(getLongName());
+		if(project.getProjectName().contentEquals("Explore")) {
+			setUnEditable();
+		}
 	}
 		
 	private void handleControls() {
@@ -103,7 +108,7 @@ public class NoteBoardContentController implements Initializable{
 		XMLManager xmlManager = new XMLManager(app);
 		setCategoryPostIts();
 		ArrayList<CategorySectionController> categories = getCategorySectionControllers();
-		xmlManager.writeNoteboardDataXML(fileHandler.getDynamicActivityDataXMLFile(project, goal, dynamicActivity), categories);
+		xmlManager.writeNoteboardDataXML(fileHandler.getDynamicActivityDataXMLFile(project, goal, this), categories);
 	}
 	
 	@FXML
@@ -150,9 +155,9 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private void checkForExistingNoteBoardData() {
-		boolean dataExists = noteBoardDataExists(project, goal, dynamicActivity);
+		boolean dataExists = noteBoardDataExists(project, goal, this);
 		if (dataExists) {
-			generateExistingNoteBoardControls(project, goal, dynamicActivity);
+			generateExistingNoteBoardControls(project, goal, this);
 		}
 	}
 	
@@ -252,6 +257,10 @@ public class NoteBoardContentController implements Initializable{
 		} else {
 			logger.error("Cannot removeNote. postItNotePane is null.");
 		}
+	}
+	
+	public void setUnEditable() {
+		addCategoryButton.setDisable(true);
 	}
 
 	private static final String TAB_DRAG_KEY = "pane";
@@ -395,14 +404,6 @@ public class NoteBoardContentController implements Initializable{
 
 	public void setGoal(Goal goal) {
 		this.goal = goal;
-	}
-
-	public InteractiveActivity getDynamicActivity() {
-		return dynamicActivity;
-	}
-
-	public void setDynamicActivity(InteractiveActivity dynamicActivity) {
-		this.dynamicActivity = dynamicActivity;
 	}
 
 	public ArrayList<PostItNoteController> getPostItNoteControllers() {

@@ -58,6 +58,11 @@ public class OutputFormController implements Initializable {
 			addContent(contentHashMap);
 		}
 		setColor();
+		if(engagementActionController != null) {
+			if(engagementActionController.getProject().getProjectName().contentEquals("Explore")) {
+				setUnEditable();
+			}
+		}
 	}
 	
 	private void setColor() {
@@ -142,6 +147,16 @@ public class OutputFormController implements Initializable {
 		textArea.setId("area");
 		textArea.setMinHeight(100);
 		return textArea;
+	}
+	
+	public void setUnEditable() {
+		for(int i =0; i < formVBox.getChildren().size(); i++) {
+			Object object = formVBox.getChildren().get(i);
+			if(object.toString().contains("TextArea")) {
+				TextArea textArea = (TextArea) object;
+				textArea.setEditable(false);
+			}
+		}
 	}
 
 	public App getApp() {

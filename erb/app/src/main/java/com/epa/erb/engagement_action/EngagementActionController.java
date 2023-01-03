@@ -251,7 +251,7 @@ public class EngagementActionController implements Initializable {
 	private VBox loadNoteBoardContentController(InteractiveActivity dynamicActivity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, dynamicActivity);
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(dynamicActivity.getId(), dynamicActivity.getGuid(), dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus(), app, project,currentSelectedGoal);
 			fxmlLoader.setController(noteBoardContentController);
 			VBox root = fxmlLoader.load();
 			return root;

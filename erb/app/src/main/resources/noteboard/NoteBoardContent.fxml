@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane minHeight="50.0" style="-fx-background-color: transparent;">
          <content>
@@ -52,7 +52,7 @@
          <children>
             <Label minWidth="50.0" text="Category:" />
             <TextField fx:id="categoryTextField" minWidth="150.0" />
-            <Button minWidth="75.0" mnemonicParsing="false" onAction="#addCategoryButtonAction" text="Add Category">
+            <Button fx:id="addCategoryButton" minWidth="75.0" mnemonicParsing="false" onAction="#addCategoryButtonAction" text="Add Category">
                <font>
                   <Font size="10.0" />
                </font>
