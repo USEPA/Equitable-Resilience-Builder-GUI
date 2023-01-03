@@ -4,7 +4,7 @@
 			<text
 			size="25.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Chapter 4: Let's dig into your community's resilience and equity">
 			</text>
 		</textBlock>
@@ -21,7 +21,7 @@
 			fontStyle="Hyperlink"
 			text="What are indicators of equitable resilience"
 			linkType="internalStep"
-			link="401">
+			link="0003">
 			</text>
 			<text
 			size="16.0"
@@ -68,7 +68,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="People you'll need">
 			</text>
 			<text
@@ -88,7 +88,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Time you'll need">
 			</text>
 			<text
@@ -120,7 +120,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Materials you'll need:">
 			</text>
 			<text
@@ -148,7 +148,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Chapter 4 Outputs:">
 			</text>
 			<text

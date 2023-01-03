@@ -1,0 +1,136 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Glossary">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Equitable Resilience.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" Resilience involves strengthening your community's capacity to prepare for, withstand, respond, adapt, and transform in the face of climate changes &amp; disasters. Equitable resilience does so in ways that:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Are culturally appropriate">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Are informed by local knowledge">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Use inclusive methods of making decisions">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Address how social and environmental inequalities lead to some community members bearing worse burdens than others from floods, accidental chemical releases, heat waves, etc.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Pay attention to how the benefits and costs of resilience actions are distributed">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Vulnerability and resilience">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Resilience: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="'The capacity of cities to ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="function">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=", so that the people living and working in cities, particularly the poor and vulnerable, survive and thrive no matter what stresses or shocks they encounter.' (ARUP/Rockefeller Foundation)">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Function: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The ability of the system to minimize the risk (likelihood/impacts), recover rapidly and learn from hazards in an equitable manner">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Equitable: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="'The consistent and systemic fair, just, and impartial treatment of all individuals, including individuals who belong to underserved communities that have been denied such treatment.' (United States Executive Order 14035 of June, 25 2021)">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Inclusive: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="'The recognition, appreciation, and use of the talents and skills of employees of all backgrounds.' (United States Executive Order 14035 of June, 25 2021)">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

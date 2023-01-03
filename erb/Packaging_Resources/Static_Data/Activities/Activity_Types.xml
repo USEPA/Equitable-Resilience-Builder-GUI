@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<activityTypes>
-	<activityType longName="Worksheet" shortName="Wksht" description="worksheet" fileExt=".docx" ></activityType>
-	<activityType longName="Workbook" shortName="Wkbk" description="workbook" fileExt=".xlsx" ></activityType>
-	<activityType longName="Workshop" shortName="Wkshp" description="workshop" fileExt=".docx" ></activityType>
-	<activityType longName="Noteboard" shortName="Ntbd" description="noteboard" fileExt="" ></activityType>
-</activityTypes>

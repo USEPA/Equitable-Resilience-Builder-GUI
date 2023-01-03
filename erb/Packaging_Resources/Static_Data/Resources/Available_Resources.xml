@@ -1,14 +1,14 @@
 <resources>
 	<resource
-	id="001"
+	id="01"
 	name="Glossary">
 	</resource>
 	<resource
-	id="002"
+	id="02"
 	name="Why is Storytelling Important">
 	</resource>
 	<resource
-	id="003"
+	id="03"
 	name="Storytelling Best Practices">
 	</resource>
 </resources>

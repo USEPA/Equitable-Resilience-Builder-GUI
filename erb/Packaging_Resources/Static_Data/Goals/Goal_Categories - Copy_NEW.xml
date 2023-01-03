@@ -1,0 +1,90 @@
+<goalCategories>
+	<goalCategory categoryName="All activities">
+		<chapters>
+			<chapter id="00001">
+				<assignedActivities>
+					<ChapterActivity activityID="000001">
+						<assignedSteps>
+							<ChapterActivityStep stepID="0000001"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity activityID="000002">
+						<assignedSteps>
+							<ChapterActivityStep stepID="0000002"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity activityID="000003">
+						<assignedSteps>
+							<ChapterActivityStep stepID="0000003"/>
+							<ChapterActivityStep stepID="0000004"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity activityID="000004"/>
+				</assignedActivities>
+			</chapter>
+			<chapter id="00002">
+				<assignedActivities>
+					<ChapterActivity activityID="000005"/>
+					<ChapterActivity activityID="000006"/>
+					<ChapterActivity activityID="000007"/>
+					<ChapterActivity activityID="000008"/>
+					<ChapterActivity activityID="000009"/>
+				</assignedActivities>
+				<assignedSteps>
+					<ChapterStep stepID="0001"/>
+					<ChapterStep stepID="0002"/>
+				</assignedSteps>
+			</chapter>
+			<chapter id="00003">
+				<assignedActivities>
+					<ChapterActivity activityID="000010"/>
+					<ChapterActivity activityID="000011"/>
+					<ChapterActivity activityID="000012"/>
+					<ChapterActivity activityID="000013"/>
+					<ChapterActivity activityID="000014"/>
+						<assignedDynamicActivities>
+							<ChapterActivityDynamicActivity activityID="0001"/>
+						</assignedDynamicActivities>
+					<ChapterActivity activityID="000015"/>
+					<ChapterActivity activityID="000016"/>
+				</assignedActivities>
+				<assignedSteps>
+					<ChapterStep stepID="0000005"/>
+				</assignedSteps>
+			</chapter>
+			<chapter id="00004">
+				<assignedActivities>
+					<ChapterActivity activityID="000017"/>
+					<ChapterActivity activityID="000018">
+						<assignedSteps>
+							<ChapterActivityStep stepID="0004"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity activityID="000019">
+						<assignedSteps>
+							<ChapterActivityStep stepID="0000006"/>
+							<ChapterActivityStep stepID="0000007"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity activityID="000020"/>
+				</assignedActivities>
+				<assignedSteps>
+					<ChapterStep stepID="0003"/>
+				</assignedSteps>
+			</chapter>
+			<chapter id="00005">
+				<assignedActivities>
+					<ChapterActivity activityID="000021"/>
+					<ChapterActivity activityID="000022"/>
+					<ChapterActivity activityID="000023"/>
+					<ChapterActivity activityID="000024"/>
+					<ChapterActivity activityID="000025"/>
+					<ChapterActivity activityID="000026"/>
+					<ChapterActivity activityID="000027"/>
+					<ChapterActivity activityID="000028"/>
+					<ChapterActivity activityID="000029"/>
+				</assignedActivities>
+			</chapter>
+		</chapters>
+	</goalCategory>
+</goalCategories>

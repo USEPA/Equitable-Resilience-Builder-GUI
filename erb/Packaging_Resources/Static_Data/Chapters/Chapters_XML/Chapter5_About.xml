@@ -4,7 +4,7 @@
 			<text
 			size="25.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Chapter 5: Taking Action">
 			</text>
 		</textBlock>
@@ -27,7 +27,7 @@
 			fontStyle="Hyperlink"
 			text="Summary of Hazards, Disasters, Threats and Equity Issues form"
 			linkType="internalStep"
-			link="301">
+			link="0000005">
 			</text>
 			<text
 			size="16.0"
@@ -55,7 +55,7 @@
 			fontStyle="Hyperlink"
 			text="resources on equity"
 			linkType="internalIntro"
-			link="01">
+			link="1">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -77,7 +77,7 @@
 			fontStyle="Hyperlink"
 			text="examples"
 			linkType="internalActivity"
-			link="14">
+			link="000004">
 			</text>
 			<text
 			size="16.0"
@@ -160,7 +160,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Chapter 5 Outputs:">
 			</text>
 			<text

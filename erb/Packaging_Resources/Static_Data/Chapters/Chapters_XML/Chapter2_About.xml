@@ -4,7 +4,7 @@
 			<text
 			size="25.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Chapter 2: Engage your community">
 			</text>
 		</textBlock>
@@ -91,7 +91,7 @@
 			fontStyle="Hyperlink"
 			text="here"
 			linkType="internalActivity"
-			link="21">
+			link="000005">
 			</text>
 			<text
 			size="16.0"
@@ -105,7 +105,7 @@
 			fontStyle="Hyperlink"
 			text="here"
 			linkType="internalActivity"
-			link="22">
+			link="000006">
 			</text>
 			<text
 			size="16.0"
@@ -119,7 +119,7 @@
 			fontStyle="Hyperlink"
 			text="here"
 			linkType="internalActivity"
-			link="23">
+			link="000007">
 			</text>
 			<text
 			size="16.0"
@@ -133,7 +133,21 @@
 			fontStyle="Hyperlink"
 			text="here"
 			linkType="internalStep"
-			link="201">
+			link="0001">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- If you want to learn more about community engagement best practices, click ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="here"
+			linkType="internalStep"
+			link="0002">
 			</text>
 		</textBlock>
 	</container>
@@ -142,7 +156,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="People you'll need">
 			</text>
 			<text
@@ -162,7 +176,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Time you'll need">
 			</text>
 			<text
@@ -176,7 +190,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Materials you'll need:">
 			</text>
 			<text
@@ -204,7 +218,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Chapter 2 Outputs:">
 			</text>
 			<text

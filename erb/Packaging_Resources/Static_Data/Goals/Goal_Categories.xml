@@ -1,92 +1,91 @@
 <goalCategories>
-	<goalCategory categoryName="Community Engagement">
-		<assignedActivities>
-			<!--
-			<assignedActivity activityID="02"/>
-			<assignedActivity activityID="08"/>
-			<assignedActivity activityID="14"/>
-			<assignedActivity activityID="17"/>
-			<assignedActivity activityID="18"/>
-			-->
-		</assignedActivities>
-	</goalCategory>
-	<goalCategory categoryName="Identify areas to improve equitable resilience.">
-		<assignedActivities>
-			<!--
-			<assignedActivity activityID="13"/>
-			<assignedActivity activityID="12"/>
-			<assignedActivity activityID="14"/>
-			<assignedActivity activityID="17"/>
-			<assignedActivity activityID="20"/>
-			<assignedActivity activityID="22"/>
-			<assignedActivity activityID="21"/>
-			<assignedActivity activityID="23"/>
-			-->
-		</assignedActivities>
-	</goalCategory>
-	<goalCategory categoryName="Include or improve inclusion of equity and social vulnerability in my HMP.">
-		<assignedActivities>
-			<!--
-			<assignedActivity activityID="14"/>
-			<assignedActivity activityID="13"/>
-			<assignedActivity activityID="17"/>
-			<assignedActivity activityID="20"/>
-			<assignedActivity activityID="21"/>
-			<assignedActivity activityID="22"/>
-			<assignedActivity activityID="23"/>
-			-->
-		</assignedActivities>
-	</goalCategory>
-	<goalCategory categoryName="Include emerging hazards in my HMP such as climate change projections, cyber-security and CBRN.">
-		<assignedActivities>
-			<!--
-			<assignedActivity activityID="14"/>
-			<assignedActivity activityID="21"/>
-			<assignedActivity activityID="22"/>
-			-->
-		</assignedActivities>
-	</goalCategory>
-	<goalCategory categoryName="Include cascading hazards in my HMP.">
-		<assignedActivities>
-			<!--
-			<assignedActivity activityID="14"/>
-			<assignedActivity activityID="12"/>
-			<assignedActivity activityID="21"/>
-			<assignedActivity activityID="22"/>
-			-->
-		</assignedActivities>
-	</goalCategory>
 	<goalCategory categoryName="All activities">
-		<assignedActivities>
-			<assignedActivity activityID="11"/>
-			<assignedActivity activityID="12"/>
-			<assignedActivity activityID="13"/>
-			<assignedActivity activityID="14"/>
-			<assignedActivity activityID="21"/>
-			<assignedActivity activityID="22"/>
-			<assignedActivity activityID="23"/>
-			<assignedActivity activityID="24"/>
-			<assignedActivity activityID="25"/>
-			<assignedActivity activityID="31"/>
-			<assignedActivity activityID="32"/>
-			<assignedActivity activityID="33"/>
-			<assignedActivity activityID="34"/>
-			<assignedActivity activityID="35"/>
-			<assignedActivity activityID="36"/>
-			<assignedActivity activityID="37"/>
-			<assignedActivity activityID="41"/>
-			<assignedActivity activityID="42"/>
-			<assignedActivity activityID="43"/>
-			<assignedActivity activityID="44"/>
-			<assignedActivity activityID="51"/>
-			<assignedActivity activityID="52"/>
-			<assignedActivity activityID="53"/>
-			<assignedActivity activityID="54"/>
-			<assignedActivity activityID="55"/>
-			<assignedActivity activityID="56"/>
-			<assignedActivity activityID="57"/>
-			<assignedActivity activityID="58"/>
-			<assignedActivity activityID="59"/>
-		</assignedActivities>
+		<chapters>
+			<chapter id="00001">
+				<assignedActivities>
+					<ChapterActivity id="000001">
+						<assignedSteps>
+							<ChapterActivityStep id="0000001"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity id="000002">
+						<assignedSteps>
+							<ChapterActivityStep id="0000002"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity id="000003">
+						<assignedSteps>
+							<ChapterActivityStep id="0000003"/>
+							<ChapterActivityStep id="0000004"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity id="000004"/>
+				</assignedActivities>
+			</chapter>
+			<chapter id="00002">
+				<assignedActivities>
+					<ChapterActivity id="000005"/>
+					<ChapterActivity id="000006"/>
+					<ChapterActivity id="000007"/>
+					<ChapterActivity id="000008"/>
+					<ChapterActivity id="000009"/>
+				</assignedActivities>
+				<assignedSteps>
+					<ChapterStep id="0001"/>
+					<ChapterStep id="0002"/>
+				</assignedSteps>
+			</chapter>
+			<chapter id="00003">
+				<assignedActivities>
+					<ChapterActivity id="000010"/>
+					<ChapterActivity id="000011"/>
+					<ChapterActivity id="000012"/>
+					<ChapterActivity id="000013"/>
+					<ChapterActivity id="000014">
+						<assignedInteractiveActivities>
+							<ChapterActivityInteractiveActivity id="00000001"/>
+						</assignedInteractiveActivities>
+					</ChapterActivity>
+					<ChapterActivity id="000015"/>
+					<ChapterActivity id="000016"/>
+				</assignedActivities>
+				<assignedSteps>
+					<ChapterStep id="0000005"/>
+				</assignedSteps>
+			</chapter>
+			<chapter id="00004">
+				<assignedActivities>
+					<ChapterActivity id="000017"/>
+					<ChapterActivity id="000018">
+						<assignedSteps>
+							<ChapterActivityStep id="0004"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity id="000019">
+						<assignedSteps>
+							<ChapterActivityStep id="0000006"/>
+							<ChapterActivityStep id="0000007"/>
+						</assignedSteps>
+					</ChapterActivity>
+					<ChapterActivity id="000020"/>
+				</assignedActivities>
+				<assignedSteps>
+					<ChapterStep id="0003"/>
+				</assignedSteps>
+			</chapter>
+			<chapter id="00005">
+				<assignedActivities>
+					<ChapterActivity id="000021"/>
+					<ChapterActivity id="000022"/>
+					<ChapterActivity id="000023"/>
+					<ChapterActivity id="000024"/>
+					<ChapterActivity id="000025"/>
+					<ChapterActivity id="000026"/>
+					<ChapterActivity id="000027"/>
+					<ChapterActivity id="000028"/>
+					<ChapterActivity id="000029"/>
+				</assignedActivities>
+			</chapter>
+		</chapters>
 	</goalCategory>
 </goalCategories>

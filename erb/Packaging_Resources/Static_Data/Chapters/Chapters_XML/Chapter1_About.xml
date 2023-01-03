@@ -4,7 +4,7 @@
 			<text
 			size="25.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Chapter 1: ERB Project Plan">
 			</text>
 		</textBlock>
@@ -108,7 +108,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Things you'll need">
 			</text>
 			<text
@@ -142,7 +142,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Chapter 1 Outputs:">
 			</text>
 			<text
