@@ -28,6 +28,8 @@ import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
+import com.epa.wordcloud.WordCloudController;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -257,6 +259,20 @@ public class EngagementActionController implements Initializable {
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			return null;
+		}
+	}
+	
+	private VBox loadWordCloudController(InteractiveActivity dynamicActivity) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/wordcloud/WordCloud.fxml"));
+			WordCloudController wordCloudController = new WordCloudController();
+			fxmlLoader.setController(wordCloudController);
+			VBox root = fxmlLoader.load();
+			return root;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -679,7 +695,7 @@ public class EngagementActionController implements Initializable {
 						for (InteractiveActivity uniqueDynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
 							ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
 							TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
-							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+							stepTreeItem.getChildren().add(dynamicActivityTreeItem);
 							treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
 						} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
 					} // CHAPTER ACTIVITY STEP
@@ -767,7 +783,7 @@ public class EngagementActionController implements Initializable {
 							InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivityGUID, dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus());
 							ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
 							TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
-							activityTreeItem.getChildren().add(dynamicActivityTreeItem);
+							stepTreeItem.getChildren().add(dynamicActivityTreeItem);
 							treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
 							uniqueStep.addDynamicActivity(uniqueDynamicActivity);
 						}//CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
@@ -923,6 +939,9 @@ public class EngagementActionController implements Initializable {
 			//TODO: Somehow make this not static
 			if (dynamicActivity.getId().contentEquals("00000001")) {
 				Pane root = loadNoteBoardContentController(dynamicActivity);
+				addContentToContentVBox(root, false);
+			} else if (dynamicActivity.getId().contentEquals("00000002")) {
+				Pane root = loadWordCloudController(dynamicActivity);
 				addContentToContentVBox(root, false);
 			}
 		} else {
