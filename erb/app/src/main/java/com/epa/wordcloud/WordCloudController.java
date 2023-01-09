@@ -46,6 +46,7 @@ public class WordCloudController implements Initializable {
 	TableColumn<WordCloudItem, String> countTableColumn;
 
 	WordCloudController wordCloudController = this;
+	ArrayList<WordCloudItem> mergeArrayList = new ArrayList<WordCloudItem>();
 
 	public WordCloudController() {
 
@@ -188,23 +189,17 @@ public class WordCloudController implements Initializable {
 
 	@FXML
 	public void mergeButtonAction() {
-		ArrayList<WordCloudItem> mergeArrayList = new ArrayList<WordCloudItem>();
-
 		int count = 0;
-		String p = "";
-		for(WordCloudItem wordCloudItem: tableView.getItems()) {
+		for(WordCloudItem wordCloudItem: mergeArrayList) {
 			if(wordCloudItem.isMerge()) {
-				mergeArrayList.add(wordCloudItem);
 				count = count + wordCloudItem.getCount();
-				p = wordCloudItem.getPhrase();
 			}
 		}
-		
 		for(WordCloudItem wordCloudItem: mergeArrayList) {
 			tableView.getItems().remove(wordCloudItem);
 		}
-		
-		addMergedPhrase(p, count);
+		addMergedPhrase(mergeArrayList.get(0).getPhrase(), count);
+		mergeArrayList.clear();
 	}
 
 	private class TableCheckCell extends TableCell<WordCloudItem, Boolean> {
@@ -218,8 +213,10 @@ public class WordCloudController implements Initializable {
 					WordCloudItem wordCloudItem = tableView.getItems().get(selectedIndex);
 					if (checkBox.isSelected()) {
 						wordCloudItem.setMerge(true);
+						mergeArrayList.add(wordCloudItem);
 					} else {
 						wordCloudItem.setMerge(false);
+						mergeArrayList.remove(wordCloudItem);
 					}
 				}
 			});
