@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -13,12 +14,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -189,17 +193,38 @@ public class WordCloudController implements Initializable {
 
 	@FXML
 	public void mergeButtonAction() {
-		int count = 0;
-		for(WordCloudItem wordCloudItem: mergeArrayList) {
-			if(wordCloudItem.isMerge()) {
-				count = count + wordCloudItem.getCount();
+		ButtonType continueMerging = showMergeConfirmation();
+		if (continueMerging == ButtonType.OK) {
+
+			int count = 0;
+			for (WordCloudItem wordCloudItem : mergeArrayList) {
+				if (wordCloudItem.isMerge()) {
+					count = count + wordCloudItem.getCount();
+				}
 			}
+			for (WordCloudItem wordCloudItem : mergeArrayList) {
+				tableView.getItems().remove(wordCloudItem);
+			}
+			addMergedPhrase(mergeArrayList.get(0).getPhrase(), count);
+			mergeArrayList.clear();
 		}
+	}
+	
+	private ButtonType showMergeConfirmation() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText(null);
+		alert.setContentText(getMergeConfirmationText());
+		Optional<ButtonType> result = alert.showAndWait();
+		return result.get();
+	}
+	
+	private String getMergeConfirmationText() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Are you sure you'd like to merge the following phrases?");
 		for(WordCloudItem wordCloudItem: mergeArrayList) {
-			tableView.getItems().remove(wordCloudItem);
+			stringBuilder.append("\n" + wordCloudItem.getPhrase());
 		}
-		addMergedPhrase(mergeArrayList.get(0).getPhrase(), count);
-		mergeArrayList.clear();
+		return stringBuilder.toString();
 	}
 
 	private class TableCheckCell extends TableCell<WordCloudItem, Boolean> {
