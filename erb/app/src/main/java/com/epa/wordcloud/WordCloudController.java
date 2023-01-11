@@ -2,11 +2,18 @@ package com.epa.wordcloud;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javax.imageio.ImageIO;
+import com.epa.erb.InteractiveActivity;
+import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.goal.Goal;
+import com.epa.erb.project.Project;
+import com.epa.erb.utility.FileHandler;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,11 +31,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.util.Callback;
+import javafx.concurrent.Worker.State;
 
 public class WordCloudController implements Initializable {
 
@@ -52,15 +62,18 @@ public class WordCloudController implements Initializable {
 	WordCloudController wordCloudController = this;
 	ArrayList<WordCloudItem> mergeArrayList = new ArrayList<WordCloudItem>();
 
-	public WordCloudController() {
-
+	private EngagementActionController engagementActionController;
+	private InteractiveActivity interactiveActivity;
+	public WordCloudController(EngagementActionController engagementActionController, InteractiveActivity interactiveActivity) {
+		this.engagementActionController = engagementActionController;
+		this.interactiveActivity = interactiveActivity;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initTableView();
 		addTextLimiter(inputTextField, 30);
-		loadWordCloudHTML();
+		
 		inputTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent keyEvent) {
@@ -69,6 +82,19 @@ public class WordCloudController implements Initializable {
 				}
 			}
 		});
+		
+		wordCloudWebView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
+            public void changed(ObservableValue ov, State oldState, State newState) {
+                if (newState == State.SUCCEEDED) {
+                	Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+		    				snapshotWordCloud();							
+						}
+					});
+                }
+            }
+        });
 	}
 
 	public void initTableView() {
@@ -108,13 +134,6 @@ public class WordCloudController implements Initializable {
 	public void updateTableView(WordCloudItem wordCloudItem) {
 		tableView.getItems().add(wordCloudItem);
 		tableView.refresh();
-	}
-
-	public void loadWordCloudHTML() {
-		File wordCloudHTMLFile = new File("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\JavaScript\\index.html");
-		if (wordCloudHTMLFile.exists()) {
-			wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toString());
-		}
 	}
 
 	@FXML
@@ -183,12 +202,34 @@ public class WordCloudController implements Initializable {
 	public void buildButtonAction() {
 		File wordCloudJSONPFile = new File("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\JavaScript\\wordcloud.jsonp");
 		writeWordCloudJSONPFile(wordCloudJSONPFile);
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				wordCloudWebView.getEngine().reload();
+
+		String webEngineLocation = wordCloudWebView.getEngine().getLocation();
+		if (webEngineLocation != null) {
+			wordCloudWebView.getEngine().reload();
+		} else {
+			File wordCloudHTMLFile = new File("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\JavaScript\\index.html");
+			if (wordCloudHTMLFile.exists()) {
+				wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toString());
 			}
-		});
+		}
+		
+		
+	}
+	
+	public void snapshotWordCloud() {
+		WritableImage writableImage = new WritableImage((int) wordCloudWebView.getWidth(), (int) wordCloudWebView.getHeight());
+		wordCloudWebView.snapshot(null, writableImage);
+		Project project = engagementActionController.getProject();
+		Goal goal = engagementActionController.getCurrentGoal();
+		String GUID = interactiveActivity.getGuid();
+		FileHandler fileHandler = new FileHandler();
+		File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal) + "\\" + GUID + "\\wordCloudImage.png");
+		if (saveFile.exists()) saveFile.delete();
+		try {
+			ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -336,6 +377,22 @@ public class WordCloudController implements Initializable {
 				}
 			}
 		});
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
+	}
+
+	public InteractiveActivity getInteractiveActivity() {
+		return interactiveActivity;
+	}
+
+	public void setInteractiveActivity(InteractiveActivity interactiveActivity) {
+		this.interactiveActivity = interactiveActivity;
 	}
 
 }

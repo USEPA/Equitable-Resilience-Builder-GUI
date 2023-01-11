@@ -12,6 +12,7 @@ module com.epa.erb {
 	requires transitive javafx.controls;
 	requires jdk.jsobject;
 	requires org.controlsfx.controls;
+	requires javafx.swing;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.goal to javafx.fxml;
 	opens com.epa.erb.chapter to javafx.fxml;

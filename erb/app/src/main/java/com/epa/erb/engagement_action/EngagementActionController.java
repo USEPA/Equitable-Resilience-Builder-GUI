@@ -266,7 +266,7 @@ public class EngagementActionController implements Initializable {
 	private VBox loadWordCloudController(InteractiveActivity dynamicActivity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/wordcloud/WordCloud.fxml"));
-			WordCloudController wordCloudController = new WordCloudController();
+			WordCloudController wordCloudController = new WordCloudController(this, dynamicActivity);
 			fxmlLoader.setController(wordCloudController);
 			VBox root = fxmlLoader.load();
 			return root;

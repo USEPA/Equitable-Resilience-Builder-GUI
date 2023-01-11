@@ -34,7 +34,7 @@ dependencies {
 
 javafx{
     version = '17'
-	modules = ['javafx.fxml', 'javafx.controls', 'javafx.graphics', 'javafx.web']
+	modules = ['javafx.fxml', 'javafx.controls', 'javafx.graphics', 'javafx.web', 'javafx.swing']
 }
 
 application {
