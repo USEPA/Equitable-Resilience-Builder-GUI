@@ -60,6 +60,7 @@ public class WordCloudController implements Initializable {
 	TableColumn<WordCloudItem, String> countTableColumn;
 
 	WordCloudController wordCloudController = this;
+	private FileHandler fileHandler = new FileHandler();
 	ArrayList<WordCloudItem> mergeArrayList = new ArrayList<WordCloudItem>();
 
 	private EngagementActionController engagementActionController;
@@ -73,6 +74,7 @@ public class WordCloudController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		initTableView();
 		addTextLimiter(inputTextField, 30);
+		copyWordCloudHTMLToGUIDDirectory();
 		
 		inputTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -84,17 +86,17 @@ public class WordCloudController implements Initializable {
 		});
 		
 		wordCloudWebView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
-            public void changed(ObservableValue ov, State oldState, State newState) {
-                if (newState == State.SUCCEEDED) {
-                	Platform.runLater(new Runnable() {
+			public void changed(ObservableValue ov, State oldState, State newState) {
+				if (newState == State.SUCCEEDED) {
+					Platform.runLater(new Runnable() {
 						@Override
 						public void run() {
-		    				snapshotWordCloud();							
+							snapshotWordCloud();
 						}
 					});
-                }
-            }
-        });
+				}
+			}
+		});
 	}
 
 	public void initTableView() {
@@ -188,7 +190,8 @@ public class WordCloudController implements Initializable {
 			for (WordCloudItem wordCloudItem : tableView.getItems()) {
 				printWriter.println("{");
 				printWriter.println("word: \"" + wordCloudItem.getPhrase() + "\",");
-				printWriter.println("size: \"" + wordCloudItem.getCount() + "\",");
+				printWriter.println("size: \"" + (wordCloudItem.getCount()*10) + "\","); //TODO: Fix scale here
+				printWriter.println("count: \"" + wordCloudItem.getCount() + "\",");
 				printWriter.println("},");
 			}
 			printWriter.println("]");
@@ -200,20 +203,20 @@ public class WordCloudController implements Initializable {
 
 	@FXML
 	public void buildButtonAction() {
-		File wordCloudJSONPFile = new File("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\JavaScript\\wordcloud.jsonp");
-		writeWordCloudJSONPFile(wordCloudJSONPFile);
+		Project project = engagementActionController.getProject();
+		Goal goal = engagementActionController.getCurrentGoal();
+		String GUID = interactiveActivity.getGuid();
+		writeWordCloudJSONPFile(fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, GUID));
 
 		String webEngineLocation = wordCloudWebView.getEngine().getLocation();
 		if (webEngineLocation != null) {
 			wordCloudWebView.getEngine().reload();
 		} else {
-			File wordCloudHTMLFile = new File("C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\JavaScript\\index.html");
+			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, GUID);
 			if (wordCloudHTMLFile.exists()) {
 				wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toString());
 			}
 		}
-		
-		
 	}
 	
 	public void snapshotWordCloud() {
@@ -222,7 +225,6 @@ public class WordCloudController implements Initializable {
 		Project project = engagementActionController.getProject();
 		Goal goal = engagementActionController.getCurrentGoal();
 		String GUID = interactiveActivity.getGuid();
-		FileHandler fileHandler = new FileHandler();
 		File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal) + "\\" + GUID + "\\wordCloudImage.png");
 		if (saveFile.exists()) saveFile.delete();
 		try {
@@ -231,12 +233,20 @@ public class WordCloudController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void copyWordCloudHTMLToGUIDDirectory() {
+		File staticHTMLFile = fileHandler.getStaticWordCloudHTML();
+		Project project = engagementActionController.getProject();
+		Goal goal = engagementActionController.getCurrentGoal();
+		String GUID = interactiveActivity.getGuid();
+		File destinationForHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, GUID);
+		fileHandler.copyFile(staticHTMLFile, destinationForHTMLFile);
+	}
 
 	@FXML
 	public void mergeButtonAction() {
 		ButtonType continueMerging = showMergeConfirmation();
 		if (continueMerging == ButtonType.OK) {
-
 			int count = 0;
 			for (WordCloudItem wordCloudItem : mergeArrayList) {
 				if (wordCloudItem.isMerge()) {
@@ -270,7 +280,6 @@ public class WordCloudController implements Initializable {
 
 	private class TableCheckCell extends TableCell<WordCloudItem, Boolean> {
 		final CheckBox checkBox = new CheckBox();
-
 		TableCheckCell(final TableView<WordCloudItem> tblView) {
 			checkBox.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -295,7 +304,6 @@ public class WordCloudController implements Initializable {
 			if(t != null) {
 				pVal = t;
 			}
-
 			super.updateItem(t, empty);
 			if (!empty) {
 				if(pVal) checkBox.setSelected(true);
@@ -307,7 +315,6 @@ public class WordCloudController implements Initializable {
 
 	private class PlusButtonCell extends TableCell<WordCloudItem, Boolean> {
 		final Button cellButton = new Button("+");
-
 		PlusButtonCell(final TableView<WordCloudItem> tblView, WordCloudController wordCloudController) {
 			cellButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -336,7 +343,6 @@ public class WordCloudController implements Initializable {
 
 	private class MinusButtonCell extends TableCell<WordCloudItem, Boolean> {
 		final Button cellButton = new Button("-");
-
 		MinusButtonCell(final TableView<WordCloudItem> tblView, WordCloudController wordCloudController) {
 			cellButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override

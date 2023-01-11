@@ -185,6 +185,16 @@ public class FileHandler {
 		}
 	}
 	
+	public File getIndexHTMLFileForInteractiveActivity(Project project, Goal goal, String guid) {
+		File HTMLFile = new File(getGUIDDataDirectory(project, goal) + "\\" + guid + "\\index.html");
+		return HTMLFile;
+	}
+	
+	public File getJSONPWordCloudFileForInteractiveActivity(Project project, Goal goal, String guid) {
+		File jsonpFile = new File(getGUIDDataDirectory(project, goal) + "\\" + guid + "\\wordcloud.jsonp");
+		return jsonpFile;
+	}
+	
 	//--------------------------------------------------------------------------
 	
 	public File getStaticSupportingDOCDirectory() {
@@ -276,6 +286,11 @@ public class FileHandler {
 			logger.error("Cannot getStaticResourceFormTextXML. id = " + id);
 			return null;
 		}
+	}
+	
+	public File getStaticWordCloudHTML() {
+		File wordCloudHTMLFile = new File(constants.getPathToERBFolder() + "\\JavaScript\\WordCloud\\index.html");
+		return wordCloudHTMLFile;
 	}
 	
 	//-------------------------------------------------------------------------
