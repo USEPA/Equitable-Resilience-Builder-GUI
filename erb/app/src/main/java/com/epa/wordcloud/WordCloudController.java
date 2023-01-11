@@ -44,6 +44,12 @@ import javafx.concurrent.Worker.State;
 public class WordCloudController implements Initializable {
 
 	@FXML
+	Button mergeButton;
+	@FXML
+	Button buildButton;
+	@FXML
+	Button addButton;
+	@FXML
 	WebView wordCloudWebView;
 	@FXML
 	TextField inputTextField;
@@ -78,6 +84,15 @@ public class WordCloudController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initTableView();
+		if(project.getProjectName().contentEquals("Explore")) {
+			setUnEditable();
+			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
+			if (wordCloudHTMLFile.exists()) {
+				wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toString());
+			}
+			return;
+		}
+		
 		checkForExistingWordCloudData();
 		addTextLimiter(inputTextField, 30);
 		copyWordCloudHTMLToGUIDDirectory();
@@ -103,7 +118,15 @@ public class WordCloudController implements Initializable {
 				}
 			}
 		});
+	}
+	
+	private void setUnEditable() {
+		inputTextField.setDisable(true);
+		mergeButton.setDisable(true);
+		addButton.setDisable(true);
+		buildButton.setDisable(true);
 		
+		//LOAD A SAMPLE WORD CLOUD
 	}
 	
 	@FXML

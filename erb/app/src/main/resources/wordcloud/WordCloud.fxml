@@ -29,14 +29,14 @@
                   <HBox alignment="CENTER_LEFT" spacing="20.0">
                      <children>
                         <TextField fx:id="inputTextField" />
-                        <Button mnemonicParsing="false" onAction="#addButtonAction" text="Add" />
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonAction" text="Add" />
                      </children>
                   </HBox>
                   <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#mergeButtonAction" text="Merge" />
+                              <Button fx:id="mergeButton" mnemonicParsing="false" onAction="#mergeButtonAction" text="Merge" />
                            </children>
                         </HBox>
                         <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
@@ -53,7 +53,7 @@
                         </TableView>
                         <HBox alignment="CENTER_RIGHT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#buildButtonAction" text="Build" />
+                              <Button fx:id="buildButton" mnemonicParsing="false" onAction="#buildButtonAction" text="Build" />
                            </children>
                         </HBox>
                      </children>
