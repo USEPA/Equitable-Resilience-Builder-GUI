@@ -6,14 +6,21 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
 import javax.imageio.ImageIO;
+
+import com.epa.erb.App;
 import com.epa.erb.InteractiveActivity;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.XMLManager;
+
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -63,16 +70,21 @@ public class WordCloudController implements Initializable {
 	private FileHandler fileHandler = new FileHandler();
 	ArrayList<WordCloudItem> mergeArrayList = new ArrayList<WordCloudItem>();
 
-	private EngagementActionController engagementActionController;
+	private App app;
+	private Project project;
+	private Goal goal;
 	private InteractiveActivity interactiveActivity;
-	public WordCloudController(EngagementActionController engagementActionController, InteractiveActivity interactiveActivity) {
-		this.engagementActionController = engagementActionController;
+	public WordCloudController(App app, Project project, Goal goal, InteractiveActivity interactiveActivity) {
+		this.app = app;
+		this.project = project;
+		this.goal = goal;
 		this.interactiveActivity = interactiveActivity;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initTableView();
+		checkForExistingWordCloudData();
 		addTextLimiter(inputTextField, 30);
 		copyWordCloudHTMLToGUIDDirectory();
 		
@@ -97,6 +109,37 @@ public class WordCloudController implements Initializable {
 				}
 			}
 		});
+	}
+	
+	@FXML
+	public void saveButtonAction() {
+		File dataXML = fileHandler.getDynamicActivityDataXMLFile(project, goal, interactiveActivity);
+		if (dataXML != null) {
+			XMLManager xmlManager = new XMLManager(app);
+			ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>(tableView.getItems());
+			xmlManager.writeWordCloudDataXML(dataXML, wordCloudItems);
+		}
+	}
+	
+	private void checkForExistingWordCloudData() {
+		if(wordCloudDataExists()) {
+			XMLManager xmlManager = new XMLManager(app);
+			File dataXML = fileHandler.getDynamicActivityDataXMLFile(project, goal, interactiveActivity);
+			ArrayList<WordCloudItem> parsedWordCloudItems = xmlManager.parseWordCloudDataXML(dataXML);
+			if(parsedWordCloudItems != null) {
+				for(WordCloudItem wordCloudItem: parsedWordCloudItems) {
+					createWordCloudItem(wordCloudItem.merge, wordCloudItem.getPhrase(), wordCloudItem.getCount(), wordCloudItem.getSize());
+				}
+			}
+		}
+	}
+	
+	private boolean wordCloudDataExists() {
+		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
+		if(jsonpFile.exists()) {
+			return true;
+		} 
+		return false;
 	}
 
 	public void initTableView() {
@@ -137,15 +180,23 @@ public class WordCloudController implements Initializable {
 		tableView.getItems().add(wordCloudItem);
 		tableView.refresh();
 	}
+	
+	public int adjustCountToSize(int count) {
+		return count * 10;
+	}
 
 	@FXML
 	public void addButtonAction() {
 		boolean merge = false;
 		String phrase = inputTextField.getText();
+		int count = 1;
+		int size = adjustCountToSize(count);
+		createWordCloudItem(merge, phrase, count, size);
+	}
+	
+	public void createWordCloudItem(boolean merge, String phrase, int count, int size) {
 		Button plusButton = new Button("+");
 		Button minusButton = new Button("-");
-		int count = 1;
-
 		if (phrase != null && phrase.trim().length() > 0) {
 			WordCloudItem existingCloudItem = phraseExists(phrase);
 			if (existingCloudItem != null) {
@@ -153,7 +204,7 @@ public class WordCloudController implements Initializable {
 				tableView.refresh();
 				inputTextField.clear();
 			} else { 
-				WordCloudItem wordCloudItem = new WordCloudItem(merge, phrase, plusButton, minusButton, count);
+				WordCloudItem wordCloudItem = new WordCloudItem(merge, phrase, plusButton, minusButton, count, size);
 				updateTableView(wordCloudItem);
 				inputTextField.clear();
 				inputTextField.requestFocus();
@@ -170,13 +221,13 @@ public class WordCloudController implements Initializable {
 		return null;
 	}
 	
-	public void addMergedPhrase(String phrase, int count) {
+	public void addMergedPhrase(String phrase, int count, int size) {
 		boolean merge = false;
 		Button plusButton = new Button("+");
 		Button minusButton = new Button("-");
 
 		if (phrase != null && phrase.trim().length() > 0) {
-			WordCloudItem wordCloudItem = new WordCloudItem(merge, phrase, plusButton, minusButton, count);
+			WordCloudItem wordCloudItem = new WordCloudItem(merge, phrase, plusButton, minusButton, count, size);
 			updateTableView(wordCloudItem);
 			inputTextField.clear();
 			inputTextField.requestFocus();
@@ -190,7 +241,7 @@ public class WordCloudController implements Initializable {
 			for (WordCloudItem wordCloudItem : tableView.getItems()) {
 				printWriter.println("{");
 				printWriter.println("word: \"" + wordCloudItem.getPhrase() + "\",");
-				printWriter.println("size: \"" + (wordCloudItem.getCount()*10) + "\","); //TODO: Fix scale here
+				printWriter.println("size: \"" + wordCloudItem.getSize() + "\",");
 				printWriter.println("count: \"" + wordCloudItem.getCount() + "\",");
 				printWriter.println("},");
 			}
@@ -203,16 +254,12 @@ public class WordCloudController implements Initializable {
 
 	@FXML
 	public void buildButtonAction() {
-		Project project = engagementActionController.getProject();
-		Goal goal = engagementActionController.getCurrentGoal();
-		String GUID = interactiveActivity.getGuid();
-		writeWordCloudJSONPFile(fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, GUID));
-
+		writeWordCloudJSONPFile(fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, interactiveActivity.getGuid()));
 		String webEngineLocation = wordCloudWebView.getEngine().getLocation();
 		if (webEngineLocation != null) {
 			wordCloudWebView.getEngine().reload();
 		} else {
-			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, GUID);
+			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
 			if (wordCloudHTMLFile.exists()) {
 				wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toString());
 			}
@@ -222,10 +269,7 @@ public class WordCloudController implements Initializable {
 	public void snapshotWordCloud() {
 		WritableImage writableImage = new WritableImage((int) wordCloudWebView.getWidth(), (int) wordCloudWebView.getHeight());
 		wordCloudWebView.snapshot(null, writableImage);
-		Project project = engagementActionController.getProject();
-		Goal goal = engagementActionController.getCurrentGoal();
-		String GUID = interactiveActivity.getGuid();
-		File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal) + "\\" + GUID + "\\wordCloudImage.png");
+		File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal) + "\\" + interactiveActivity.getGuid() + "\\wordCloudImage.png");
 		if (saveFile.exists()) saveFile.delete();
 		try {
 			ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
@@ -236,10 +280,7 @@ public class WordCloudController implements Initializable {
 	
 	public void copyWordCloudHTMLToGUIDDirectory() {
 		File staticHTMLFile = fileHandler.getStaticWordCloudHTML();
-		Project project = engagementActionController.getProject();
-		Goal goal = engagementActionController.getCurrentGoal();
-		String GUID = interactiveActivity.getGuid();
-		File destinationForHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, GUID);
+		File destinationForHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
 		fileHandler.copyFile(staticHTMLFile, destinationForHTMLFile);
 	}
 
@@ -256,7 +297,8 @@ public class WordCloudController implements Initializable {
 			for (WordCloudItem wordCloudItem : mergeArrayList) {
 				tableView.getItems().remove(wordCloudItem);
 			}
-			addMergedPhrase(mergeArrayList.get(0).getPhrase(), count);
+			int size = adjustCountToSize(count);
+			addMergedPhrase(mergeArrayList.get(0).getPhrase(), count, size);
 			mergeArrayList.clear();
 		}
 	}
@@ -297,7 +339,6 @@ public class WordCloudController implements Initializable {
 			});
 		}
 
-		// Display button if the row is not empty
 		@Override
 		protected void updateItem(Boolean t, boolean empty) {
 			boolean pVal=false;
@@ -321,8 +362,9 @@ public class WordCloudController implements Initializable {
 				public void handle(ActionEvent t) {
 					int selectedIndex = getTableRow().getIndex();
 					WordCloudItem wordCloudItem = tableView.getItems().get(selectedIndex);
-					int c = wordCloudItem.getCount();
-					wordCloudItem.setCount(c + 1);
+					int c = wordCloudItem.getCount() + 1;
+					wordCloudItem.setCount(c);
+					wordCloudItem.setSize(wordCloudController.adjustCountToSize(c));
 					tblView.refresh();
 				}
 			});
@@ -349,8 +391,9 @@ public class WordCloudController implements Initializable {
 				public void handle(ActionEvent t) {
 					int selectedIndex = getTableRow().getIndex();
 					WordCloudItem wordCloudItem = tableView.getItems().get(selectedIndex);
-					int c = wordCloudItem.getCount();
-					wordCloudItem.setCount(c - 1);
+					int c = wordCloudItem.getCount() -1;
+					wordCloudItem.setCount(c);
+					wordCloudItem.setSize(wordCloudController.adjustCountToSize(c));
 					if (wordCloudItem.getCount() <= 0) {
 						tblView.getItems().remove(wordCloudItem);
 					}
@@ -385,12 +428,28 @@ public class WordCloudController implements Initializable {
 		});
 	}
 
-	public EngagementActionController getEngagementActionController() {
-		return engagementActionController;
+	public App getApp() {
+		return app;
 	}
 
-	public void setEngagementActionController(EngagementActionController engagementActionController) {
-		this.engagementActionController = engagementActionController;
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
 	}
 
 	public InteractiveActivity getInteractiveActivity() {

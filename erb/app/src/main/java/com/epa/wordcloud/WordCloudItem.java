@@ -9,12 +9,14 @@ public class WordCloudItem {
 	Button plusButton;
 	Button minusButton;
 	int count;
-	public WordCloudItem(boolean merge, String phrase, Button plusButton, Button minusButton, int count) {
+	int size;
+	public WordCloudItem(boolean merge, String phrase, Button plusButton, Button minusButton, int count, int size) {
 		this.merge = merge;
 		this.phrase = phrase;
 		this.plusButton = plusButton;
 		this.minusButton = minusButton;
 		this.count = count;
+		this.size = size;
 	}
 	public boolean isMerge() {
 		return merge;
@@ -45,6 +47,12 @@ public class WordCloudItem {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
 	}
 
 }

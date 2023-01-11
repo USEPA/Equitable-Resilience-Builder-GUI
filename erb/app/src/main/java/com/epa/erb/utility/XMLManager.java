@@ -29,6 +29,8 @@ import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
+import com.epa.wordcloud.WordCloudItem;
+
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -767,6 +769,36 @@ public class XMLManager {
 		}
 	}
 	
+	public void writeWordCloudDataXML(File xmlFile, ArrayList<WordCloudItem> wordCloudItems) {
+		if (xmlFile != null && wordCloudItems != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("wordCloudItems");
+				document.appendChild(rootElement);
+				for (WordCloudItem wordCloudItem : wordCloudItems) {
+					Element wordCloudElement = document.createElement("wordCloudItem");
+					wordCloudElement.setAttribute("word", wordCloudItem.getPhrase());
+					wordCloudElement.setAttribute("size", String.valueOf(wordCloudItem.getSize()));
+					wordCloudElement.setAttribute("count", String.valueOf(wordCloudItem.getCount()));
+					rootElement.appendChild(wordCloudElement);
+				}
+
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot writeWordCloudDataXML. xmlFile or categories is null.");
+		}
+	}
+	
 	public void writeNoteboardDataXML(File xmlFile, ArrayList<CategorySectionController> categories) {
 		if (xmlFile != null && categories != null) {
 			try {
@@ -804,6 +836,39 @@ public class XMLManager {
 		} else {
 			logger.error("Cannot writeNoteboardDataXML. xmlFile or categories is null.");
 		}
+	}
+	
+	public ArrayList<WordCloudItem> parseWordCloudDataXML(File xmlFile){
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				
+				NodeList wordCloudItemNodeList = doc.getElementsByTagName("wordCloudItem");
+				ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>();
+				for(int i = 0; i < wordCloudItemNodeList.getLength(); i++) {
+					Node wordCloudItemNode = wordCloudItemNodeList.item(i);
+					//Category
+					if(wordCloudItemNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element wordCloudItemElement = (Element) wordCloudItemNode;
+						String word = wordCloudItemElement.getAttribute("word");
+						int size = Integer.parseInt(wordCloudItemElement.getAttribute("size"));
+						int count = Integer.parseInt(wordCloudItemElement.getAttribute("count"));
+						
+						WordCloudItem wordCloudItem = new WordCloudItem(false, word, null, null, count, size);
+						wordCloudItems.add(wordCloudItem);
+					}
+				}
+				return wordCloudItems;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
 	}
 	
 	public ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> parseNoteboardDataXML(File xmlFile) {
