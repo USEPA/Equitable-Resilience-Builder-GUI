@@ -6,21 +6,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-
 import javax.imageio.ImageIO;
-
 import com.epa.erb.App;
 import com.epa.erb.InteractiveActivity;
-import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
-
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -109,6 +103,7 @@ public class WordCloudController implements Initializable {
 				}
 			}
 		});
+		
 	}
 	
 	@FXML
@@ -181,8 +176,49 @@ public class WordCloudController implements Initializable {
 		tableView.refresh();
 	}
 	
-	public int adjustCountToSize(int count) {
-		return count * 10;
+	public void adjustCountToSize() {
+		int newMax = 50;
+		int newMin =10;
+		
+		for(WordCloudItem wordCloudItem: tableView.getItems()) {
+			int maxCount = getMaxCountInTable();
+			int minCount = getMinCountInTable();
+						
+			if(wordCloudItem.getCount() == 1) {
+				wordCloudItem.setSize(newMin);
+			} else {
+				//int v = ((count -minCount)/(maxCount - minCount))*(newMax - newMin) + newMin;
+
+				double r1 = wordCloudItem.getCount() - minCount; 
+				double r2 = maxCount - minCount; 
+				double r3 = r1/r2; 
+				double r4 = newMax - newMin; 
+				double r5 = (r3 * r4); 
+				int r6= (int) (r5 + newMin); 
+						
+				wordCloudItem.setSize(r6);
+			}
+		}
+	}
+	
+	private int getMaxCountInTable() {
+		int maxCount = tableView.getItems().get(0).getCount();
+		for (WordCloudItem wordCloudItem : tableView.getItems()) {
+			if (wordCloudItem.getCount() > maxCount) {
+				maxCount = wordCloudItem.getCount();
+			}
+		}
+		return maxCount;
+	}
+	
+	private int getMinCountInTable() {
+		int minCount = tableView.getItems().get(0).getCount();
+		for (WordCloudItem wordCloudItem : tableView.getItems()) {
+			if (wordCloudItem.getCount() < minCount) {
+				minCount = wordCloudItem.getCount();
+			}
+		}
+		return minCount;
 	}
 
 	@FXML
@@ -190,8 +226,9 @@ public class WordCloudController implements Initializable {
 		boolean merge = false;
 		String phrase = inputTextField.getText();
 		int count = 1;
-		int size = adjustCountToSize(count);
+		int size = count;
 		createWordCloudItem(merge, phrase, count, size);
+		adjustCountToSize();
 	}
 	
 	public void createWordCloudItem(boolean merge, String phrase, int count, int size) {
@@ -245,7 +282,14 @@ public class WordCloudController implements Initializable {
 				printWriter.println("count: \"" + wordCloudItem.getCount() + "\",");
 				printWriter.println("},");
 			}
+			printWriter.println("],");
+			printWriter.println("sizedata = [");
+			printWriter.println("{");
+			printWriter.println("height: \"" + (wordCloudWebView.getHeight()-75) + "\",");
+			printWriter.println("width: \"" + (wordCloudWebView.getWidth()-50) + "\",");
+			printWriter.println("},");
 			printWriter.println("]");
+			
 			printWriter.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -297,8 +341,9 @@ public class WordCloudController implements Initializable {
 			for (WordCloudItem wordCloudItem : mergeArrayList) {
 				tableView.getItems().remove(wordCloudItem);
 			}
-			int size = adjustCountToSize(count);
+			int size = count;
 			addMergedPhrase(mergeArrayList.get(0).getPhrase(), count, size);
+			adjustCountToSize();
 			mergeArrayList.clear();
 		}
 	}
@@ -362,10 +407,10 @@ public class WordCloudController implements Initializable {
 				public void handle(ActionEvent t) {
 					int selectedIndex = getTableRow().getIndex();
 					WordCloudItem wordCloudItem = tableView.getItems().get(selectedIndex);
-					int c = wordCloudItem.getCount() + 1;
+					int c = (wordCloudItem.getCount() + 1);
 					wordCloudItem.setCount(c);
-					wordCloudItem.setSize(wordCloudController.adjustCountToSize(c));
 					tblView.refresh();
+					adjustCountToSize();
 				}
 			});
 		}
@@ -391,13 +436,13 @@ public class WordCloudController implements Initializable {
 				public void handle(ActionEvent t) {
 					int selectedIndex = getTableRow().getIndex();
 					WordCloudItem wordCloudItem = tableView.getItems().get(selectedIndex);
-					int c = wordCloudItem.getCount() -1;
+					int c = (wordCloudItem.getCount() -1);
 					wordCloudItem.setCount(c);
-					wordCloudItem.setSize(wordCloudController.adjustCountToSize(c));
 					if (wordCloudItem.getCount() <= 0) {
 						tblView.getItems().remove(wordCloudItem);
 					}
 					tblView.refresh();
+					adjustCountToSize();
 				}
 			});
 		}
