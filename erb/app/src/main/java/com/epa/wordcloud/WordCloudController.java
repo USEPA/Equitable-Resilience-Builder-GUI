@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -83,18 +84,33 @@ public class WordCloudController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		wordCloudWebView.getEngine().setJavaScriptEnabled(true);
 		initTableView();
 		if(project.getProjectName().contentEquals("Explore")) {
 			setUnEditable();
-			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
+			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, "f398991fff65405cbb475302b6064e02");
+			System.out.println("Explore Project, HTML from: " + wordCloudHTMLFile.getPath());
 			if (wordCloudHTMLFile.exists()) {
-				wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toString());
+				System.out.println("Explore Project, Exists, Loading HTML: " + wordCloudHTMLFile.getPath());
+				try {
+					wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toURL().toString());
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				}
 			}
 			return;
 		}
 		
 		checkForExistingWordCloudData();
 		addTextLimiter(inputTextField, 30);
+		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
+		XMLManager xmlManager = new XMLManager(app);
+		System.out.println("Checking for existence of GUID data, looking for: " + jsonpFile.getParentFile());
+		if(!jsonpFile.getParentFile().exists()) {
+			System.out.println("Checking for existence of GUID data, does NOT exist, creating");
+			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), app.getEngagementActionController().getListOfUniqueChapters());
+			fileHandler.createGUIDDirectoriesForGoal(project, goal, app.getEngagementActionController().getListOfUniqueChapters());
+		}
 		copyWordCloudHTMLToGUIDDirectory();
 		
 		inputTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -125,8 +141,6 @@ public class WordCloudController implements Initializable {
 		mergeButton.setDisable(true);
 		addButton.setDisable(true);
 		buildButton.setDisable(true);
-		
-		//LOAD A SAMPLE WORD CLOUD
 	}
 	
 	@FXML
@@ -154,9 +168,12 @@ public class WordCloudController implements Initializable {
 	
 	private boolean wordCloudDataExists() {
 		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
+		System.out.println("Checking for existing data, looking for: " + jsonpFile.getPath());
 		if(jsonpFile.exists()) {
+			System.out.println("Checking for existing data, exists");
 			return true;
 		} 
+		System.out.println("Checking for existing data, does NOT exists");
 		return false;
 	}
 
@@ -210,6 +227,8 @@ public class WordCloudController implements Initializable {
 			if(wordCloudItem.getCount() == 1) {
 				wordCloudItem.setSize(newMin);
 			} else {
+				if(tableView.getItems().size() > 1) {
+				
 				//int v = ((count -minCount)/(maxCount - minCount))*(newMax - newMin) + newMin;
 
 				double r1 = wordCloudItem.getCount() - minCount; 
@@ -220,6 +239,9 @@ public class WordCloudController implements Initializable {
 				int r6= (int) (r5 + newMin); 
 						
 				wordCloudItem.setSize(r6);
+				}else {
+					wordCloudItem.setSize(newMin);
+				}
 			}
 		}
 	}
@@ -296,6 +318,7 @@ public class WordCloudController implements Initializable {
 
 	public void writeWordCloudJSONPFile(File JSONPFile) {
 		try {
+			System.out.println("Writing jsonp data to: " + JSONPFile.getPath());
 			PrintWriter printWriter = new PrintWriter(JSONPFile);
 			printWriter.println("wordclouddata = [");
 			for (WordCloudItem wordCloudItem : tableView.getItems()) {
@@ -321,14 +344,28 @@ public class WordCloudController implements Initializable {
 
 	@FXML
 	public void buildButtonAction() {
-		writeWordCloudJSONPFile(fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, interactiveActivity.getGuid()));
+		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
+		writeWordCloudJSONPFile(jsonpFile);
 		String webEngineLocation = wordCloudWebView.getEngine().getLocation();
+		System.out.println("Checking web engine location: " + webEngineLocation);
 		if (webEngineLocation != null) {
 			wordCloudWebView.getEngine().reload();
 		} else {
 			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
+			System.out.println("web engine location was null, loading from: " + wordCloudHTMLFile.getPath());
 			if (wordCloudHTMLFile.exists()) {
-				wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toString());
+				System.out.println("html file exists, loading it to web engine");
+				try {
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toURL().toString());
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -337,6 +374,7 @@ public class WordCloudController implements Initializable {
 		WritableImage writableImage = new WritableImage((int) wordCloudWebView.getWidth(), (int) wordCloudWebView.getHeight());
 		wordCloudWebView.snapshot(null, writableImage);
 		File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal) + "\\" + interactiveActivity.getGuid() + "\\wordCloudImage.png");
+		System.out.println("Taking snapshot of word cloud, trying to save to: " + saveFile.getPath());
 		if (saveFile.exists()) saveFile.delete();
 		try {
 			ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
@@ -348,6 +386,7 @@ public class WordCloudController implements Initializable {
 	public void copyWordCloudHTMLToGUIDDirectory() {
 		File staticHTMLFile = fileHandler.getStaticWordCloudHTML();
 		File destinationForHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
+		System.out.println("Copying " + staticHTMLFile.getPath()+ " to " + destinationForHTMLFile.getPath());
 		fileHandler.copyFile(staticHTMLFile, destinationForHTMLFile);
 	}
 
