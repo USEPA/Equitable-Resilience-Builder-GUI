@@ -31,6 +31,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -41,12 +43,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.util.Callback;
 import javafx.concurrent.Worker.State;
@@ -463,9 +469,35 @@ public class WordCloudController implements Initializable {
 		imageView.setFitWidth(wordCloudWebView.getWidth());
 		imageView.setFitHeight(wordCloudWebView.getHeight());
 		Image image = new Image(saveFile.getPath());
+		imageViewClicked(imageView);
 		imageView.setImage(image);
 		vBox.getChildren().clear();
 		vBox.getChildren().add(imageView);
+	}
+	
+	public void imageViewClicked(ImageView imageView) {
+		ContextMenu contextMenu = new ContextMenu();
+		MenuItem menuItem = new MenuItem("Save as");
+		menuItem.setOnAction(e -> saveImage(imageView, e));
+		contextMenu.getItems().add(menuItem);
+		imageView.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+			@Override
+			public void handle(ContextMenuEvent event) {
+				contextMenu.show(imageView, event.getSceneX(), event.getSceneY());
+			}
+		});
+
+	}
+	
+	public void saveImage(ImageView imageView, ActionEvent actionEvent) {
+		FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+        fileChooser.getExtensionFilters().add(extFilter);
+		File file = fileChooser.showSaveDialog(null);
+		if(file != null) {
+			File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal) + "\\" + interactiveActivity.getGuid() + "\\wordCloudImage.png");
+			fileHandler.copyFile(saveFile, file);
+		}
 	}
 	
 	public void copyWordCloudHTMLToGUIDDirectory() {
