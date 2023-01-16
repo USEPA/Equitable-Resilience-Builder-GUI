@@ -7,6 +7,9 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
@@ -30,6 +33,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -49,11 +53,17 @@ public class WordCloudController implements Initializable {
 	@FXML
 	Button buildButton;
 	@FXML
-	Button addButton;
+	Button shortAddButton;
+	@FXML
+	Button longAddButton;
 	@FXML
 	WebView wordCloudWebView;
 	@FXML
 	TextField inputTextField;
+	@FXML
+	TextArea inputTextArea;
+	@FXML
+	CheckBox excludeCommonCheckBox;
 	@FXML
 	TableView<WordCloudItem> tableView;
 	@FXML
@@ -69,6 +79,7 @@ public class WordCloudController implements Initializable {
 
 	WordCloudController wordCloudController = this;
 	private FileHandler fileHandler = new FileHandler();
+	private HashSet<String> excludedWordSet = new HashSet<String>();
 	ArrayList<WordCloudItem> mergeArrayList = new ArrayList<WordCloudItem>();
 
 	private App app;
@@ -84,6 +95,8 @@ public class WordCloudController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		excludeCommonCheckBox.setSelected(true);
+		setExcludedWordSet();
 		wordCloudWebView.getEngine().setJavaScriptEnabled(true);
 		initTableView();
 		if(project.getProjectName().contentEquals("Explore")) {
@@ -117,7 +130,7 @@ public class WordCloudController implements Initializable {
 			@Override
 			public void handle(KeyEvent keyEvent) {
 				if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-					addButtonAction();
+					shortAddButtonAction();
 				}
 			}
 		});
@@ -139,7 +152,8 @@ public class WordCloudController implements Initializable {
 	private void setUnEditable() {
 		inputTextField.setDisable(true);
 		mergeButton.setDisable(true);
-		addButton.setDisable(true);
+		shortAddButton.setDisable(true);
+		longAddButton.setDisable(true);
 		buildButton.setDisable(true);
 	}
 	
@@ -267,13 +281,63 @@ public class WordCloudController implements Initializable {
 	}
 
 	@FXML
-	public void addButtonAction() {
+	public void shortAddButtonAction() {
 		boolean merge = false;
 		String phrase = inputTextField.getText();
 		int count = 1;
 		int size = count;
 		createWordCloudItem(merge, phrase, count, size);
 		adjustCountToSize();
+	}
+	
+	@FXML
+	public void longAddButtonAction() {
+		boolean merge = false;
+		String phrase = inputTextArea.getText();
+		boolean excludeWords = excludeCommonCheckBox.isSelected();
+		HashMap<String, Integer> countMap = countWordOccurrences(excludeWords, phrase);
+		for(String word: countMap.keySet()) {
+			int count = countMap.get(word);
+			int size = count;
+			createWordCloudItem(merge, word, count, size);
+		}
+		adjustCountToSize();
+	}
+	
+	@FXML
+	public void excludeCommonCheckBoxAction() {
+		//Maybe do something here?
+	}
+	
+	public HashMap<String, Integer> countWordOccurrences(boolean excludeCommonWords, String string) {
+		HashMap<String, Integer> countMap = new HashMap<String, Integer>();
+		if(string !=null && string.length() > 0) {
+			String newLinesRemoved = string.replaceAll("\n", "");
+			String [] words = newLinesRemoved.split(" ");
+			for(String word: words) {
+				if(excludeCommonWords) { //If check box to exclude is selected
+					if(excludedWordSet.contains(word.toLowerCase().trim())) { //If is an excluded word
+						continue; //skip
+					} else { //If not an excluded word
+						increaseCountOfWord(countMap, word);
+					}
+				} else { //If check box to exclude is NOT selected
+					increaseCountOfWord(countMap, word);
+				}
+			}
+		}
+		return countMap;
+	}
+	
+	public void increaseCountOfWord(HashMap<String, Integer> countMap, String word) {
+		if (countMap.get(word) != null) {
+			int count = countMap.get(word);
+			count = count + 1;
+			countMap.put(word, count);
+		} else {
+			int count = 1;
+			countMap.put(word, count);
+		}
 	}
 	
 	public void createWordCloudItem(boolean merge, String phrase, int count, int size) {
@@ -285,10 +349,12 @@ public class WordCloudController implements Initializable {
 				existingCloudItem.setCount(existingCloudItem.getCount() + 1);
 				tableView.refresh();
 				inputTextField.clear();
+				inputTextArea.clear();
 			} else { 
 				WordCloudItem wordCloudItem = new WordCloudItem(merge, phrase, plusButton, minusButton, count, size);
 				updateTableView(wordCloudItem);
 				inputTextField.clear();
+				inputTextArea.clear();
 				inputTextField.requestFocus();
 			}
 		}
@@ -359,7 +425,6 @@ public class WordCloudController implements Initializable {
 					try {
 						Thread.sleep(5000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toURL().toString());
@@ -533,6 +598,10 @@ public class WordCloudController implements Initializable {
 				}
 			}
 		});
+	}
+
+	public void setExcludedWordSet() {
+		excludedWordSet.addAll(Arrays.asList("all", "just", "being", "over", "both", "through", "yourselves", "its", "before", "herself", "had", "should", "to", "only", "under", "ours", "has", "do", "them", "his", "very", "they", "not", "during", "now", "him", "nor", "did", "this", "she", "each", "further", "where", "few", "because", "doing", "some", "are", "our", "ourselves", "out", "what", "for", "while", "does", "above", "between", "t", "be", "we", "who", "were", "here", "hers", "by", "on", "about", "of", "against", "s", "or", "own", "into", "yourself", "down", "your", "from", "her", "their", "there", "been", "whom", "too", "themselves", "was", "until", "more", "himself", "that", "but", "don", "with", "than", "those", "he", "me", "myself", "these", "up", "will", "below", "can", "theirs", "my", "and", "then", "is", "am", "it", "an", "as", "itself", "at", "have", "in", "any", "if", "again", "no", "when", "same", "how", "other", "which", "you", "after", "most", "such", "why", "a", "off", "i", "yours", "so", "the", "having", "once"));
 	}
 
 	public App getApp() {
