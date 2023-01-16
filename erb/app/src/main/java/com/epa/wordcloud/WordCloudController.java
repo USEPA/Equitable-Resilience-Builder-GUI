@@ -3,6 +3,7 @@ package com.epa.wordcloud;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -37,9 +38,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
 import javafx.embed.swing.SwingFXUtils;
@@ -48,6 +53,8 @@ import javafx.concurrent.Worker.State;
 
 public class WordCloudController implements Initializable {
 
+	@FXML
+	VBox vBox;
 	@FXML
 	Button mergeButton;
 	@FXML
@@ -64,6 +71,8 @@ public class WordCloudController implements Initializable {
 	TextArea inputTextArea;
 	@FXML
 	CheckBox excludeCommonCheckBox;
+	@FXML
+	ImageView imageView;
 	@FXML
 	TableView<WordCloudItem> tableView;
 	@FXML
@@ -410,6 +419,10 @@ public class WordCloudController implements Initializable {
 
 	@FXML
 	public void buildButtonAction() {
+		if(!vBox.getChildren().contains(wordCloudWebView)) {
+			vBox.getChildren().clear();
+			vBox.getChildren().add(wordCloudWebView);
+		}
 		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, interactiveActivity.getGuid());
 		writeWordCloudJSONPFile(jsonpFile);
 		String webEngineLocation = wordCloudWebView.getEngine().getLocation();
@@ -446,6 +459,13 @@ public class WordCloudController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		ImageView imageView = new ImageView();
+		imageView.setFitWidth(wordCloudWebView.getWidth());
+		imageView.setFitHeight(wordCloudWebView.getHeight());
+		Image image = new Image(saveFile.getPath());
+		imageView.setImage(image);
+		vBox.getChildren().clear();
+		vBox.getChildren().add(imageView);
 	}
 	
 	public void copyWordCloudHTMLToGUIDDirectory() {

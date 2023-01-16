@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<VBox minHeight="300.0" minWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox minHeight="300.0" minWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox>
          <children>
@@ -81,7 +81,11 @@
             </VBox>
          </children>
       </HBox>
-      <WebView fx:id="wordCloudWebView" minHeight="300.0" minWidth="300.0" VBox.vgrow="ALWAYS" />
+      <VBox fx:id="vBox" alignment="CENTER" VBox.vgrow="ALWAYS">
+         <children>
+            <WebView fx:id="wordCloudWebView" maxHeight="-1.0" maxWidth="-1.0" minHeight="300.0" minWidth="700.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
       <HBox alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save Word Cloud" />
