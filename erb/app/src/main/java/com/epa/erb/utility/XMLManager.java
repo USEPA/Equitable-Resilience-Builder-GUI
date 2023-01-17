@@ -29,7 +29,7 @@ import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
-import com.epa.wordcloud.WordCloudItem;
+import com.epa.erb.wordcloud.WordCloudItem;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Font;

@@ -18,7 +18,7 @@ module com.epa.erb {
 	opens com.epa.erb.chapter to javafx.fxml;
 	opens com.epa.erb.project to javafx.fxml;
 	opens com.epa.erb.noteboard to javafx.fxml;
-	opens com.epa.wordcloud to javafx.fxml, javafx.base;
+	opens com.epa.erb.wordcloud to javafx.fxml, javafx.base;
 	opens com.epa.erb.engagement_action to javafx.fxml;
 	opens com.epa.erb.forms to javafx.fxml;
 	opens com.epa.erb.progress to javafx.fxml;

@@ -1,4 +1,4 @@
-package com.epa.wordcloud;
+package com.epa.erb.wordcloud;
 
 import java.io.File;
 import java.io.FileNotFoundException;

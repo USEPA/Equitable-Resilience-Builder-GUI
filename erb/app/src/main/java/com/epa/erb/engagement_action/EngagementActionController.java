@@ -28,7 +28,7 @@ import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
-import com.epa.wordcloud.WordCloudController;
+import com.epa.erb.wordcloud.WordCloudController;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

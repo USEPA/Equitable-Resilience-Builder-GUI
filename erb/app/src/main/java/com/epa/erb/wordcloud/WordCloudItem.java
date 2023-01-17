@@ -1,4 +1,4 @@
-package com.epa.wordcloud;
+package com.epa.erb.wordcloud;
 
 import javafx.scene.control.Button;
 
