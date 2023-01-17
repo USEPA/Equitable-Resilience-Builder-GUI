@@ -2,7 +2,7 @@ package com.epa.erb;
 
 import java.util.ArrayList;
 
-public class Step extends ERBItem{
+public class Step extends ERBItem {
 
 	private String id;
 	private String guid;

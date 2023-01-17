@@ -5,7 +5,7 @@ import com.epa.erb.Activity;
 import com.epa.erb.ERBItem;
 import com.epa.erb.Step;
 
-public class Chapter extends ERBItem{
+public class Chapter extends ERBItem {
 	
 	private String id;
 	private String guid;

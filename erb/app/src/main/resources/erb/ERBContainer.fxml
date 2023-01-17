@@ -43,7 +43,7 @@
             </HBox>
             <HBox>
                <children>
-                  <ImageView fx:id="icon" fitHeight="78.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="erbMiniImageView" fitHeight="78.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>

@@ -175,12 +175,12 @@ public class FileHandler {
 		}
 	}
 	
-	public File getDynamicActivityDataXMLFile(Project project, Goal goal, InteractiveActivity dynamicActivity) {
-		if(project != null && goal != null && dynamicActivity != null) {
-			File dynamicActivityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + dynamicActivity.getGuid() + "\\Data.xml");
+	public File getDynamicActivityDataXMLFile(Project project, Goal goal, String guid) {
+		if(project != null && goal != null && guid != null) {
+			File dynamicActivityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + guid + "\\Data.xml");
 			return dynamicActivityDataXMLFile;
 		} else {
-			logger.error("Cannot getDynamicActivityDataXMLFile. project = " + project + " goal = " + goal + " dynamicActivity = " + dynamicActivity);
+			logger.error("Cannot getDynamicActivityDataXMLFile. project = " + project + " goal = " + goal + " guid = " + guid);
 			return null;
 		}
 	}

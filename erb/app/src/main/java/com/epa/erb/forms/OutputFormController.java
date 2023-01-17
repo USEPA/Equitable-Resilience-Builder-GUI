@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
+import com.epa.erb.InteractiveActivity;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
@@ -19,7 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class OutputFormController implements Initializable {
+public class OutputFormController extends InteractiveActivity implements Initializable {
 
 	@FXML
 	VBox nodeVBox;
@@ -37,7 +38,8 @@ public class OutputFormController implements Initializable {
 	private App app;
 	private File xmlContentFileToParse;
 	private EngagementActionController engagementActionController;
-	public OutputFormController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
+	public OutputFormController(String id, String guid, String longName, String shortName, String status,App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
+		super(id, guid, longName, shortName, status);
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;

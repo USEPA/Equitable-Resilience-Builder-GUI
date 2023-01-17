@@ -41,7 +41,13 @@ public class ERBLandingController implements Initializable{
 		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		handleControls();
+		fillImageViews();
+	}
+	
+	private void fillImageViews() {
+		landingImageView1.setImage(new Image(getClass().getResourceAsStream("/landing_image1.jpg")));
+		landingImageView2.setImage(new Image(getClass().getResourceAsStream("/landing_image2.PNG")));
+		landingImageView3.setImage(new Image(getClass().getResourceAsStream("/landing_image3.PNG")));
 		landingImageView1VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView1.setFitWidth(newVal.doubleValue());
 		});
@@ -51,8 +57,7 @@ public class ERBLandingController implements Initializable{
 		landingImageView3VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView3.setFitWidth(newVal.doubleValue());
 		});
-		
-		
+
 		landingImageView1VBox.heightProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView1.setFitHeight(newVal.doubleValue());
 		});
@@ -63,12 +68,7 @@ public class ERBLandingController implements Initializable{
 			landingImageView3.setFitHeight(newVal.doubleValue());
 		});
 	}
-	
-	private void handleControls() {
-		landingImageView1.setImage(new Image(getClass().getResourceAsStream("/landing_image1.jpg")));
-		landingImageView2.setImage(new Image(getClass().getResourceAsStream("/landing_image2.PNG")));
-		landingImageView3.setImage(new Image(getClass().getResourceAsStream("/landing_image3.PNG")));		
-	}
+		
 	
 	@FXML
 	public void buttonAction(ActionEvent actionEvent) {

@@ -29,7 +29,6 @@ import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import com.epa.erb.wordcloud.WordCloudController;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -266,7 +265,7 @@ public class EngagementActionController implements Initializable {
 	private VBox loadWordCloudController(InteractiveActivity dynamicActivity) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/wordcloud/WordCloud.fxml"));
-			WordCloudController wordCloudController = new WordCloudController(app, project, currentSelectedGoal, dynamicActivity);
+			WordCloudController wordCloudController = new WordCloudController(dynamicActivity.getId(), dynamicActivity.getGuid(), dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus(), app, project, currentSelectedGoal);
 			fxmlLoader.setController(wordCloudController);
 			VBox root = fxmlLoader.load();
 			return root;
@@ -957,7 +956,7 @@ public class EngagementActionController implements Initializable {
 				Pane root = loadMainFormController(file);
 				return root;
 			} else if (step.getType().contentEquals("outputForm")) {
-				Pane root = loadOutputFormController(file);
+				Pane root = loadOutputFormController(file, step);
 				return root;
 			}
 		} else {
@@ -966,10 +965,10 @@ public class EngagementActionController implements Initializable {
 		return null;
 	}
 
-	private VBox loadOutputFormController(File xmlContentFileToParse) {
+	private VBox loadOutputFormController(File xmlContentFileToParse, Step step) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/OutputForm.fxml"));
-			OutputFormController outputFormController = new OutputFormController(app, xmlContentFileToParse, this);
+			OutputFormController outputFormController = new OutputFormController(step.getId(), step.getGuid(), step.getLongName(), step.getShortName(), step.getStatus(),app, xmlContentFileToParse, this);
 			fxmlLoader.setController(outputFormController);
 			VBox root = fxmlLoader.load();
 			return root;

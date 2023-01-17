@@ -38,24 +38,26 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	HBox breadCrumbHBox;
 	@FXML
-	ImageView icon;
+	ImageView erbMiniImageView;
 	
 	private App app;
 	public ERBContainerController(App app) {
 		this.app = app;
 	}
 	
+	private XMLManager xmlManager = new XMLManager(app);
 	private MyBreadCrumbBar myBreadCrumbBar;
 	private FileHandler fileHandler = new FileHandler();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		handleControls();
-		handleResourceMenu();
-		handleBreadCrumbBar();
+		fillImageViews();
+		populateLandingMenu();
+		populateResourceMenu();
+		populateBreadCrumbBar();
 	}
 	
-	private void handleControls() {
+	private void fillImageViews() {
 		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image.jpg")));
 		imageView1.setFitWidth(25.0);
 		imageView1.setFitHeight(25.0);
@@ -71,13 +73,10 @@ public class ERBContainerController implements Initializable{
 		imageView3.setFitHeight(25.0);
 		aboutMenu.setGraphic(imageView3);
 		
-		icon.setImage(new Image(getClass().getResourceAsStream("/landing_image1.PNG")));
-
+		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/landing_image1.PNG")));
 	}
 	
-	private void handleResourceMenu() {
-		XMLManager xmlManager = new XMLManager(app);
-		HandleLandingMenu(xmlManager);
+	private void populateResourceMenu() {
 		File resourceXMLFile = fileHandler.getStaticAvailableResourcesXMLFile();
 		HashMap<String, String> resources = xmlManager.parseAvailableResourcesXML(resourceXMLFile);
 		for(String idString: resources.keySet()) {
@@ -87,7 +86,7 @@ public class ERBContainerController implements Initializable{
 		}
 	}
 	
-	private void handleBreadCrumbBar() {
+	private void populateBreadCrumbBar() {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();
 		myBreadCrumbBar = new MyBreadCrumbBar(app);
 		myBreadCrumbBar.setStyle("-fx-padding: 3.5 0 0 0");
@@ -96,7 +95,7 @@ public class ERBContainerController implements Initializable{
 		breadCrumbHBox.getChildren().add(myBreadCrumbBar);
 	}
 	
-	private void HandleLandingMenu(XMLManager xmlManager) {
+	private void populateLandingMenu() {
 		File introXMLFile = fileHandler.getStaticAvailableIntroXMLFile();
 		HashMap<String, String> introPanels = xmlManager.parseAvailableIntroXML(introXMLFile);
 		for(String idString: introPanels.keySet()) {
@@ -145,7 +144,6 @@ public class ERBContainerController implements Initializable{
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/MainForm.fxml"));
 			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse, app.getEngagementActionController());
-
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;

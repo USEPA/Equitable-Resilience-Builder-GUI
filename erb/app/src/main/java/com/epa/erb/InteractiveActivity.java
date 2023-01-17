@@ -1,6 +1,6 @@
 package com.epa.erb;
 
-public class InteractiveActivity extends ERBItem{
+public class InteractiveActivity extends ERBItem {
 	
 	private String id;
 	private String guid;

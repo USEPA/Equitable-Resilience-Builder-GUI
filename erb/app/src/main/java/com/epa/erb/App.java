@@ -33,19 +33,19 @@ public class App extends Application {
 	private int prefWidth;
 	private int prefHeight;
 	private Project selectedProject;
-	private ArrayList<Project> projects;
-	private Constants constants = new Constants();
-	private FileHandler fileHandler = new FileHandler();
-	private XMLManager xmlManager = new XMLManager(this);
 	private ERBContainerController erbContainerController;
-	private Logger logger = LogManager.getLogger(App.class);
 	private EngagementActionController engagementActionController;
 
+	private ArrayList<Project> projects;
 	private ArrayList<Step> availableSteps;
 	private ArrayList<Chapter> availableChapters;
 	private ArrayList<Activity> availableActivities;
 	private ArrayList<GoalCategory> availableGoalCategories;
 	private ArrayList<InteractiveActivity> availableInteractiveActivities;
+	
+	private FileHandler fileHandler = new FileHandler();
+	private XMLManager xmlManager = new XMLManager(this);
+	private Logger logger = LogManager.getLogger(App.class);
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -69,6 +69,7 @@ public class App extends Application {
 	}
 
 	private void setScreenSizePreferences(int scale) {
+		Constants constants = new Constants();
 		if (scale > 0 && scale <= 96) {
 			prefWidth = constants.getPrefWidthForScale100();
 			prefHeight = constants.getPrefHeightForScale100();
