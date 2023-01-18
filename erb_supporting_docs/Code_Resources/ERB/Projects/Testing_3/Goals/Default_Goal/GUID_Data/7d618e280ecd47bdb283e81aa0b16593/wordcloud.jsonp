@@ -1,0 +1,43 @@
+wordclouddata = [
+{
+word: "paragraph",
+size: "10",
+count: "1",
+},
+{
+word: "works",
+size: "10",
+count: "1",
+},
+{
+word: "file",
+size: "10",
+count: "1",
+},
+{
+word: "parser",
+size: "10",
+count: "1",
+},
+{
+word: "directories",
+size: "10",
+count: "1",
+},
+{
+word: "moving",
+size: "10",
+count: "1",
+},
+{
+word: "Testing",
+size: "10",
+count: "1",
+},
+],
+sizedata = [
+{
+height: "225.0",
+width: "650.0",
+},
+]

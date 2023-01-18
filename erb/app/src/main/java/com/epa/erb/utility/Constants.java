@@ -1,5 +1,7 @@
 package com.epa.erb.utility;
 
+import java.io.File;
+
 public class Constants {
 		
 	//Scaling Sizes
@@ -53,16 +55,28 @@ public class Constants {
 	private String postItNoteColor = "#FFFFFF"; 				//White
 			
 	//Paths
-	//	private String pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
-	private String pathToERBFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB"; //Local
-	
-	//	private String pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
-	private String pathToERBProjectsFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Projects"; //Local
-	
-	//	private String pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
-	private String pathToERBStaticDataFolder = "C:\\Users\\AWILKE06\\OneDrive - Environmental Protection Agency (EPA)\\Documents\\Projects\\Metro-CERI\\FY22\\ERB\\Static_Data"; //Local
+	private String pathToERBFolder;
+	private String pathToERBProjectsFolder;
+	private String pathToERBStaticDataFolder;
 	
 	public Constants() {
+		setFilePathsStatic(); //For running tool locally
+		//setFilePathsDynamic(); //For packaging tool 
+	}
+	
+	private void setFilePathsStatic() {
+		File userDir = new File(System.getProperty("user.dir"));
+		File codeResourcesFile = new File(userDir.getParentFile().getParentFile() + "//erb_supporting_docs//Code_Resources");
+		
+		pathToERBFolder = codeResourcesFile.getPath() +  "\\ERB";
+		pathToERBProjectsFolder = codeResourcesFile.getPath() + "\\ERB\\Projects";
+		pathToERBStaticDataFolder = codeResourcesFile.getPath() +  "\\ERB\\Static_Data";
+	}
+	
+	private void setFilePathsDynamic() {
+		pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
+		pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
+		pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
 	}
 	
 	//-------------------------------------------------------------------------

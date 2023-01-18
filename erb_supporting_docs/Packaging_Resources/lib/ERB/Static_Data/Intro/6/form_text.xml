@@ -1,0 +1,33 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="About ERB">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The Equitable Resilience Builder (ERB) toolkit was developed by the U.S Environmental Protection Agency's Office of Research and Development using a human-centered design approach.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="ERB was developed in collaboration with many people and organizations. OW-OWOW. The Lab at OPM.">
+			</text>
+		</textBlock>
+		
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>
