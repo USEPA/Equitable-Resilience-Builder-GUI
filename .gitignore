@@ -10,6 +10,7 @@ build/
 .classpath
 .project
 
+erb_supporting_docs/Code_Resources/ERB/Projects/*
 erb/.settings/*.prefs
 erb/app/.settings/*.prefs
 .gradle/
