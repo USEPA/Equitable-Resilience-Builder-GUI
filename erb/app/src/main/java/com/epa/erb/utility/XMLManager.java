@@ -31,10 +31,15 @@ import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 public class XMLManager {
@@ -924,6 +929,8 @@ public class XMLManager {
 	public HashMap<String, ArrayList<TextFlow>> parseMainFormContentXML(File xmlFile, MainFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
+				FileHandler fileHandler = new FileHandler();
+				
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -947,37 +954,55 @@ public class XMLManager {
 								TextFlow textFlow = new TextFlow();
 								double maxTextLength = 0.0;
 								Element textBlockElement = (Element) textBlockNode;
-								NodeList textNodeList = textBlockElement.getElementsByTagName("text");
-								for (int k = 0; k < textNodeList.getLength(); k++) {
-									Node textNode = textNodeList.item(k);
-									// Text
-									if (textNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element textElement = (Element) textNode;
-										double size = Double.parseDouble(textElement.getAttribute("size"));
-										String fontFamily = textElement.getAttribute("fontFamily");
-										String fontStyle = textElement.getAttribute("fontStyle");
-										String text = textElement.getAttribute("text");
-										Text t = new Text(text);
-										if (fontStyle.contentEquals("Hyperlink")) {
-											String linkType = textElement.getAttribute("linkType");
-											String link = textElement.getAttribute("link");
-											t.setStyle("-fx-fill:#4d90bc");
-											t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-											t.setOnMouseEntered(e -> t.setUnderline(true));
-											t.setOnMouseExited(e -> t.setUnderline(false));
-											t.setOnMouseClicked(e-> formContentController.handleHyperlink(t, linkType, link));
-										} else {
-											if (fontStyle.contentEquals("Bold")) {
-												t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
-											} else if (fontStyle.contentEquals("Underlined")) {
-												t.setUnderline(true);
-												t.setFont(Font.font(fontFamily, size));
-											} else {
-												t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-											}
+								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
+								for(int l=0; l< textBlockChildrenNodeList.getLength(); l++) {
+									Node childNode = textBlockChildrenNodeList.item(l);
+									if(childNode.getNodeType() == Node.ELEMENT_NODE) {
+										String nodeName = childNode.getNodeName();
+										if(nodeName.contentEquals("text")) {
+												Node textNode = childNode;
+												// Text
+													Element textElement = (Element) textNode;
+													double size = Double.parseDouble(textElement.getAttribute("size"));
+													String fontFamily = textElement.getAttribute("fontFamily");
+													String fontStyle = textElement.getAttribute("fontStyle");
+													String text = textElement.getAttribute("text");
+													Text t = new Text(text);
+													if (fontStyle.contentEquals("Hyperlink")) {
+														String linkType = textElement.getAttribute("linkType");
+														String link = textElement.getAttribute("link");
+														t.setStyle("-fx-fill:#4d90bc");
+														t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+														t.setOnMouseEntered(e -> t.setUnderline(true));
+														t.setOnMouseExited(e -> t.setUnderline(false));
+														t.setOnMouseClicked(e-> formContentController.handleHyperlink(t, linkType, link));
+													} else {
+														if (fontStyle.contentEquals("Bold")) {
+															t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+														} else if (fontStyle.contentEquals("Underlined")) {
+															t.setUnderline(true);
+															t.setFont(Font.font(fontFamily, size));
+														} else {
+															t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+														}
+													}
+													HBox hBox = new HBox();
+													hBox.setAlignment(Pos.CENTER_LEFT);
+													hBox.getChildren().add(t);
+													textFlow.getChildren().add(hBox);
+													if(t.getText().length() > maxTextLength) maxTextLength = t.getText().length();
+										} else if (nodeName.contentEquals("icon")) {
+											Node iconNode = childNode;
+											//Icon
+											Element iconElement = (Element) iconNode;
+											double size = Double.parseDouble(iconElement.getAttribute("size"));
+											String id = iconElement.getAttribute("id");
+											ImageView imageView = new ImageView();
+											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											imageView.setFitWidth(size);
+											imageView.setFitHeight(size);
+											textFlow.getChildren().add(imageView);
 										}
-										textFlow.getChildren().add(t);
-										if(t.getText().length() > maxTextLength) maxTextLength = t.getText().length();
 									}
 								}
 								textFlow.setPrefWidth(maxTextLength * 2);

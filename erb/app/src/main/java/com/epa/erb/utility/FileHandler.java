@@ -283,6 +283,11 @@ public class FileHandler {
 		return wordCloudHTMLFile;
 	}
 	
+	public File getStaticIconImageFile(String id) {
+		File iconFile = new File(constants.getPathToERBStaticDataFolder() + "\\Icons\\Icons\\" + id + "\\icon.png");
+		return iconFile;
+	}
+	
 	//-------------------------------------------------------------------------
 	
 	public void openFileOnDesktop(File fileToToOpen) {
