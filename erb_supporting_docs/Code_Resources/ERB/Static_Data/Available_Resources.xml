@@ -1,0 +1,12 @@
+<resources>
+	<panel id="01" name="Glossary"/>
+	<panel id="02" name="Why is Storytelling Important"/>
+	<panel id="03" name="Storytelling Best Practices"/>
+	<panel id="1" name="Equity and resilience"/>
+	<panel id="2" name="How others are using ERB"/>
+	<panel id="3" name="How does it work"/>
+	<panel id="4" name="Who is ERB for"/>
+	<panel id="5" name="What makes erb different"/>
+	<panel id="6" name="How ERB was made"/>
+	<panel id="7" name="Explore ERB"/>
+</resources>

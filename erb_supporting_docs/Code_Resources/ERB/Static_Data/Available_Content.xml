@@ -1,0 +1,48 @@
+<content>
+	<panel id="000001" longName="Get a core team together" shortName="Gather Team" status="ready" type="mainForm"/>
+	<panel id="000002" longName="Set goals for using ERB" shortName="Set Goals" status="ready" type="mainForm"/>
+	<panel id="000003" longName="Make a Project Plan" shortName="Make Project Plan" status="ready" type="mainForm"/>
+	<panel id="000004" longName="Reflection and next steps" shortName="Reflection" status="ready" type="mainForm"/>
+	<panel id="000005" longName="Identify Communuity Connections: Identify and Diagram Community Connections" shortName="Identify Community Conn." status="ready" type="mainForm"/>
+	<panel id="000006" longName="Diagram Community Connections: Identify and Diagram Community Connections" shortName="Diagram Community Conn." status="ready" type="mainForm"/>
+	<panel id="000007" longName="Determine scope of engagement: Develop a Community Engagement Plan" shortName="Community Engagement" status="ready" type="mainForm"/>
+	<panel id="000008" longName="Write the plan: Develop a Community Engagement Plan" shortName="Write Engagement Plan" status="ready" type="mainForm"/>
+	<panel id="000009" longName="Reflection and next steps" shortName="Reflection" status="ready" type="mainForm"/>
+	<panel id="000010" longName="Gather information about hazards and disasters" shortName="Gather HDT Information" status="ready" type="mainForm"/>
+	<panel id="000011" longName="Gather information about equity" shortName="Gather Equity Information" status="ready" type="mainForm"/>
+	<panel id="000012" longName="Storytelling: Understanding community experiences with hazards, disasters, and threats" shortName="Storytelling: HDT" status="ready" type="mainForm"/>
+	<panel id="000013" longName="Survival scenario: Learning about group dynamics and vulnerability" shortName="Group Vulnerability" status="ready" type="mainForm"/>
+	<panel id="000014" longName="Mapping Hazards and Assets" shortName="Mapping Hazards" status="ready" type="mainForm"/>
+	<panel id="000015" longName="Participatory Social Vulnerability Assessment" shortName="Assess Social Vulnerability" status="ready" type="mainForm"/>
+	<panel id="000016" longName="Reflection and next steps" shortName="Reflection" status="ready" type="mainForm"/>
+	<panel id="000017" longName="Kickoff meeting to review and select indicators that are relevant to your community" shortName="Review and Select Indicators" status="ready" type="mainForm"/>
+	<panel id="000018" longName="Prepare for the indicators workshop and gather indicator data" shortName="Indicators Workshop Prep" status="ready" type="mainForm"/>
+	<panel id="000019" longName="Hold the indicators workshop" shortName="Hold Indicators Workshop" status="ready" type="mainForm"/>
+	<panel id="000020" longName="Reflection and next steps" shortName="Reflection" status="ready" type="mainForm"/>
+	<panel id="000021" longName="What comes next?" shortName="What comes next?" status="ready" type="mainForm"/>
+	<panel id="000022" longName="Storytelling about implementation" shortName="Storytelling: Implementation" status="ready" type="mainForm"/>
+	<panel id="000023" longName="How might we …so that statements" shortName="How Might We Statements" status="ready" type="mainForm"/>
+	<panel id="000024" longName="Storytelling on Equity" shortName="Storytelling on Equity" status="ready" type="mainForm"/>
+	<panel id="000025" longName="Brainstorming actions" shortName="Brainstorming Actions" status="ready" type="mainForm"/>
+	<panel id="000026" longName="Evalutate Actions" shortName="Evalutate Actions" status="ready" type="mainForm"/>
+	<panel id="000027" longName="Identify next steps and reflect" shortName="Next Steps" status="ready" type="mainForm"/>
+	<panel id="000028" longName="Finalize your project" shortName="Finalize Project" status="ready" type="mainForm"/>
+	<panel id="000029" longName="Reflection and next steps" shortName="Reflection" status="ready" type="mainForm"/>
+	<panel id="000030" longName="Centering Equity in Engagement" shortName="Centering Equity" status="ready" type="mainForm"/>
+	<panel id="000031" longName="Team Storytelling" shortName="Storytelling" status="ready" type="mainForm"/>
+	<panel id="000032" longName="Select activities to do in ERB" shortName="Activity Selection" status="ready" type="mainForm"/>
+	<panel id="000033" longName="Start Engaging!" shortName="Engage!" status="ready" type="mainForm"/>
+	<panel id="00000001" longName="Interactive Note Board Activity" shortName="Note Board Activity" status="ready" type="mainForm"/>
+	<panel id="00000002" longName="Interactive Word Cloud Activity" shortName="Word Cloud Activity" status="ready" type="mainForm"/>
+	<panel id="0000001" longName="Team storytelling activity" shortName="Team storytelling activity" status="ready" type="mainForm"/>
+	<panel id="0000002" longName="Goal setting scenario" shortName="Goal setting scenario" status="ready" type="mainForm"/>
+	<panel id="0000003" longName="Activity to Goal Matching Example" shortName="Activity to Goal Matching Example" status="ready" type="mainForm"/>
+	<panel id="0000004" longName="Activity Selection Scenarios" shortName="Activity Selection Scenarios" status="ready" type="mainForm"/>
+	<panel id="0001" longName="The Importance of Community Engagement and Building Relationships" shortName="The Importance of Community Engagement and Building Relationships" status="ready" type="mainForm"/>
+	<panel id="0002" longName="Community Engagement Best Practices" shortName="Community Engagement Best Practices" status="ready" type="mainForm"/>
+	<panel id="0000005" longName="Summary of Hazards, Disasters, Threats and Equity Issues in your community" shortName="Summary of Hazards, Disasters, Threats and Equity Issues in your community" status="ready" type="outputForm"/>
+	<panel id="0003" longName="What are indicators of equitable resilience" shortName="What are indicators of equitable resilience" status="ready" type="mainForm"/>
+	<panel id="0004" longName="What to expect with indicator cards" shortName="What to expect with indicator cards" status="ready" type="mainForm"/>
+	<panel id="0000006" longName="Sorting indicator cards activity" shortName="Sorting indicator cards activity" status="ready" type="mainForm" />
+	<panel id="0000007" longName="Lay your cards on the table activity" shortName="Lay your cards on the table activity" status="ready" type="mainForm"/>
+</content>
