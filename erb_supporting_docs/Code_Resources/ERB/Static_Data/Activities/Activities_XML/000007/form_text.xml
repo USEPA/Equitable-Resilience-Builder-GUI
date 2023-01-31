@@ -71,7 +71,7 @@
 			fontStyle="Hyperlink"
 			text="Community Engagement Plan"
 			linkType="externalDOC"
-			link="">
+			link="Ch2_CommunityEngagement_Plan.docx">
 			</text>
 			<text
 			size="16.0"
@@ -85,7 +85,7 @@
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
 			linkType="externalDOC"
-			link="">
+			link="Ch2_CommunityConnections_Table.docx">
 			</text>
 			<text
 			size="16.0"
@@ -136,8 +136,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch2_CommunityConnections_Table.docx">
 			</text>
 			<text
 			size="16.0"
@@ -155,8 +155,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Engagement Plan"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch2_CommunityEngagement_Plan.docx">
 			</text>
 		</textBlock>
 	</container>

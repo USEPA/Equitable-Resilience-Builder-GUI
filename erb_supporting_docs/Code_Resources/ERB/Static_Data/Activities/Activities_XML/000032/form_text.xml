@@ -91,9 +91,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Link to worksheet"
-			linkType=""
-			link="">
+			text="Centering equity worksheet"
+			linkType="externalDOC"
+			link="Ch2_CenteringEquityScenarios_Activity.docx">
 			</text>
 		</textBlock>
 	</container>

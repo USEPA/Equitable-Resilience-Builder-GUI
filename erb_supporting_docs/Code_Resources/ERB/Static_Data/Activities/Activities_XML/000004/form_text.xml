@@ -178,8 +178,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Engage your community"
-			linkType="externalDOC"
-			link="Chs_1_5_Reflection_Results.docx">
+			linkType="internalActivity"
+			link="00002">
 			</text>
 			<text
 			size="16.0"
@@ -247,8 +247,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Reflection diary"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Chs_1_5_Reflection_Results.docx">
 			</text>
 		</textBlock>
 	</container>

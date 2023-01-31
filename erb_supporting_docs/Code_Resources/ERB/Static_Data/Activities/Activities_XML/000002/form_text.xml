@@ -76,8 +76,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="activities worksheet"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch1_ActivitySelection_Worksheet.docx">
 			</text>
 			<text
 			size="16.0"
@@ -107,8 +107,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="example"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="0000010">
 			</text>
 			<text
 			size="16.0"
@@ -138,8 +138,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="the project plan"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -242,8 +242,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="the project plan"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 		</textBlock>
 	</container>
@@ -305,8 +305,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Activities worksheet"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch1_ActivitySelection_Worksheet.docx">
 			</text>
 			<text
 			size="16.0"
@@ -343,8 +343,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Example-activity selection"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="0000010">
 			</text>
 		</textBlock>
 	</container>

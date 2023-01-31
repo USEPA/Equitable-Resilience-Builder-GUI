@@ -88,8 +88,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Chapter 1"
-			linkType="internalStep"
-			link="0000003">
+			linkType="internalActivity"
+			link="0000001">
 			</text>
 			<text
 			size="16.0"

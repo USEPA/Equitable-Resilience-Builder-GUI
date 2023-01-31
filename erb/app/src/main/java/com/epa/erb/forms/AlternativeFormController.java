@@ -5,13 +5,19 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import org.w3c.dom.Node;
+
 import com.epa.erb.App;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.XMLManager;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;

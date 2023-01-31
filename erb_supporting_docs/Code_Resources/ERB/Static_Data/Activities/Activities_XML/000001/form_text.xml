@@ -232,8 +232,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="storytelling activity"
-			linkType="externalDOC"
-			link="Ch1_Storytelling_Exercise.docx">
+			linkType="internalActivity"
+			link="0000001">
 			</text>
 			<text
 			size="16.0"

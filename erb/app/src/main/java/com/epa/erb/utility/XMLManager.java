@@ -33,6 +33,7 @@ import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
 
 import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

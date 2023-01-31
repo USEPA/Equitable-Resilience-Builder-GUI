@@ -49,7 +49,7 @@
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
 			linkType="externalDOC"
-			link="">
+			link="Ch2_CommunityConnections_Table.docx">
 			</text>
 			<text
 			size="16.0"
@@ -100,8 +100,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch2_CommunityConnections_Table.docx">
 			</text>
 		</textBlock>
 	</container>
@@ -141,8 +141,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="https://www.epa.gov/ejscreen"
-			linkType=""
-			link="">
+			linkType="URL"
+			link="https://www.epa.gov/ejscreen">
 			</text>
 			<text
 			size="16.0"

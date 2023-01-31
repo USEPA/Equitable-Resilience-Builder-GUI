@@ -49,7 +49,7 @@
 			fontStyle="Hyperlink"
 			text="project plan"
 			linkType="externalDOC"
-			link="Ch1_Project_Plan_Template.docx">
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 			<text
 			size="16.0"
@@ -69,7 +69,7 @@
 			fontStyle="Hyperlink"
 			text="project plan"
 			linkType="externalDOC"
-			link="Ch1_Project_Plan_Template.docx">
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 			<text
 			size="16.0"
@@ -151,8 +151,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Project plan"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 		</textBlock>
 	</container>

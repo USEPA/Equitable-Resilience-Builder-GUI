@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -17,17 +16,13 @@
                </BorderPane.margin>
                <children>
                   <VBox fx:id="titleVBox" />
-                  <ScrollPane fitToHeight="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-                     <content>
-                        <HBox fx:id="hBox" alignment="CENTER" spacing="30.0">
-                           <children>
-                              <VBox fx:id="leftVBox" HBox.hgrow="ALWAYS" />
-                              <VBox fx:id="centerVBox" HBox.hgrow="ALWAYS" />
-                              <VBox fx:id="rightVBox" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
-                     </content>
-                  </ScrollPane>
+                  <HBox fx:id="hBox" alignment="CENTER" spacing="30.0">
+                     <children>
+                        <VBox fx:id="leftVBox" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="centerVBox" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="rightVBox" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </center>

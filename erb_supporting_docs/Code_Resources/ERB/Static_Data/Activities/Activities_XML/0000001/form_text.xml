@@ -68,8 +68,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="goals"
-			linkType="externalDOC"
-			link="Ch1_GoalSetting_Worksheet.docx">
+			linkType="internalActivity"
+			link="000031">
 			</text>
 			<text
 			size="16.0"
@@ -172,8 +172,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="word cloud"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="00000002">
 			</text>
 			<text
 			size="16.0"

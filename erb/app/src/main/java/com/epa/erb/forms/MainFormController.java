@@ -97,7 +97,7 @@ public class MainFormController implements Initializable{
 		}
 	}
 	
-	public void handleHyperlink(Text text, String linkType, String link) {		
+	public void handleHyperlink(Text text, String linkType, String link) {	
 		if(linkType.contentEquals("internalIntro")) {
 			internalIntroLinkClicked(link);
 		} else if (linkType.contentEquals("internalResource")){
@@ -184,7 +184,7 @@ public class MainFormController implements Initializable{
 		if (engagementActionController != null) {
 			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
 			if (link.length() == 5) {
-				Chapter chapter = erbItemFinder.findChapterForGuid( engagementActionController.getListOfUniqueChapters(), link);
+				Chapter chapter = erbItemFinder.getChapterById( engagementActionController.getListOfUniqueChapters(), link);
 				if (chapter != null) {
 					ERBItem currentErbItem = engagementActionController.findTreeItem(chapter.getGuid()).getValue();
 //					System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
@@ -197,20 +197,20 @@ public class MainFormController implements Initializable{
 						}
 					}
 				}
-			}
+			} else {
 			Activity activity = erbItemFinder.findActivityById(engagementActionController.getListOfUniqueChapters(),link);
 			if (activity != null) {
 				ERBItem currentErbItem = engagementActionController.findTreeItem(activity.getGuid()).getValue();
 //				System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
 //				System.out.println("Hyperlink made us jump 3");
 				for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-					if (erbItem.getGuid().contentEquals(activity.getGuid())) {
+					if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(activity.getGuid())) {
 						TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
 						engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
 						engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
 					}
 				}
-			}
+			}}
 		} else {
 			loadProjectSelectionPopup();
 			if (project != null) {
