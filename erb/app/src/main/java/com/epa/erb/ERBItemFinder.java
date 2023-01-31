@@ -44,47 +44,40 @@ public class ERBItemFinder {
 		logger.debug("Cannot getChapterById.Chapter returned is null.");
 		return null;
 	}
-	
-	private boolean exists;
-	
-	public Chapter getChapterForContentPanel(ArrayList<Chapter> chapters, ContentPanel contentPanel) {
-		exists = false;
-		if(contentPanel != null) {
-			for(Chapter chapter: chapters) {
-				ERBItem erbItem = new ERBItem(chapter.getId(), chapter.getGuid(), chapter.getLongName(), chapter.getShortName(), chapter);
-				checkForGuidInChapter(erbItem, contentPanel.getGuid());
-				if(exists) {
-					return chapter;
+
+	public Chapter getChapterForActivity(ArrayList<Chapter> chapters, Activity activity) {
+		if (activity != null) {
+			for (Chapter chapter : chapters) {
+				for (Activity chapterActivity : chapter.getAssignedActivities()) {
+					if (chapterActivity.getGuid().contentEquals(activity.getGuid())) {
+						return chapter;
+					}
 				}
 			}
+		} else {
+			logger.error("Cannot getChapterForActivity. activity is null.");
+			return null;
+
 		}
+		logger.error("Cannot getChapterForActivity. Chapter returned is null.");
 		return null;
 	}
-	
-	public void checkForGuidInChapter(ERBItem erbItem, String guid) {
-		ArrayList<ContentPanel> panelsToSearch = null;
-		if (erbItem != null) {
-			if (erbItem.getObject().toString().contains("Chapter")) {
-				Chapter chapter = (Chapter) erbItem.getObject();
-				panelsToSearch = chapter.getContentPanels();
-			} else {
-				ContentPanel contentPanel = (ContentPanel) erbItem.getObject();
-				panelsToSearch = contentPanel.getNextLayerContentPanels();
-			}
-			if (panelsToSearch != null) {
-				for (ContentPanel cp : panelsToSearch) {
-					if (cp.getGuid() != null) {
-						if (cp.getGuid().contentEquals(guid)) {
-							exists = true;
-						}
-					}
-					if (cp.getNextLayerContentPanels().size() > 0) {
-						ERBItem cpERBItem = new ERBItem(cp.getId(), cp.getGuid(), cp.getLongName(), cp.getShortName(), cp);
-						checkForGuidInChapter(cpERBItem, guid);
+
+	public Chapter getChapterForStep(ArrayList<Chapter> chapters, Step step) {
+		if (step != null) {
+			for (Chapter chapter : chapters) {
+				for (Step chapterStep : chapter.getAssignedSteps()) {
+					if (chapterStep.getGuid().contentEquals(step.getGuid())) {
+						return chapter;
 					}
 				}
 			}
+		} else {
+			logger.error("Cannot getChapterForStep. step is null.");
+			return null;
 		}
+		logger.error("Cannot getChapterForStep. Chapter returned is null.");
+		return null;
 	}
 
 	public Chapter getChapterForNameInGoal(String chapterName, Goal goal) {
@@ -101,49 +94,211 @@ public class ERBItemFinder {
 			return null;
 		}
 	}
-	
-	public ContentPanel getContentPanelById(ArrayList<ContentPanel> contentPanels, String id) {
-		if (id != null) {
-			for (ContentPanel contentPanel : contentPanels) {
-				if (contentPanel.getId().contentEquals(id)) {
-					return contentPanel;
-				}
-			}
-		} else {
-			logger.error("Cannot getContentPanelById. id is null.");
-			return null;
-		}
-		logger.debug("Cannot getContentPanelById. ContentPanel returned is null");
-		return null;
-	}
 
-	public ContentPanel findContentPanelById(ArrayList<Chapter> chapters, String id) {
-		if (id != null) {
+	public Chapter findChapterForGuid(ArrayList<Chapter> chapters, String guid) {
+		if (guid != null) {
 			for (Chapter chapter : chapters) {
-				for (ContentPanel contentPanel : chapter.getContentPanels()) {
-					if (contentPanel.getId().contentEquals(id)) {
-						return contentPanel;
+				if (chapter.getGuid().contentEquals(guid)) {
+					return chapter;
+				}
+				for (Activity activity : chapter.getAssignedActivities()) {
+					if (activity.getGuid().contentEquals(guid)) {
+						return chapter;
+					}
+					for (Step step : activity.getAssignedSteps()) {
+						if (step.getGuid().contentEquals(guid)) {
+							return chapter;
+						}
+						for (InteractiveActivity interactiveActivity : step.getAssignedDynamicActivities()) {
+							if (interactiveActivity.getGuid().contentEquals(guid)) {
+								return chapter;
+							}
+						}
+					}
+					for (InteractiveActivity interactiveActivity : activity.getAssignedDynamicActivities()) {
+						if (interactiveActivity.getGuid().contentEquals(guid)) {
+							return chapter;
+						}
+					}
+				}
+
+				for (Step step : chapter.getAssignedSteps()) {
+					if (step.getGuid().contentEquals(guid)) {
+						return chapter;
+					}
+					for (InteractiveActivity interactiveActivity : step.getAssignedDynamicActivities()) {
+						if (interactiveActivity.getGuid().contentEquals(guid)) {
+							return chapter;
+						}
 					}
 				}
 			}
 		} else {
-			logger.error("Cannot findContentPanelById. id is null.");
+			logger.error("Cannot findChapterForGuid. guid is null.");
 			return null;
 		}
-		logger.debug("Cannot findContentPanelById. ContentPanel returned is null");
+		logger.error("Cannot findChapterForGuid. Chapter returned is null.");
 		return null;
 	}
-	public int getIndexOfContentPanelInChapter(Chapter chapter, ContentPanel contentPanel) {
+
+	public Activity getActivityById(ArrayList<Activity> activities, String id) {
+		if (id != null) {
+			for (Activity activity : activities) {
+				if (activity.getId().contentEquals(id)) {
+					return activity;
+				}
+			}
+		} else {
+			logger.error("Cannot getActivityById. id is null.");
+			return null;
+		}
+		logger.debug("Cannot getActivityById. Activity returned is null");
+		return null;
+	}
+
+	public Activity findActivityById(ArrayList<Chapter> chapters, String id) {
+		if (id != null) {
+			for (Chapter chapter : chapters) {
+				for (Activity activity : chapter.getAssignedActivities()) {
+					if (activity.getId().contentEquals(id)) {
+						return activity;
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot getActivityById. id is null.");
+			return null;
+		}
+		logger.debug("Cannot getActivityById. Activity returned is null");
+		return null;
+	}
+
+	public Activity getActivityForStep(ArrayList<Chapter> chapters, Step step) {
+		if (step != null) {
+			for (Chapter chapter : chapters) {
+				for (Activity chapterActivity : chapter.getAssignedActivities()) {
+					for (Step activityStep : chapterActivity.getAssignedSteps()) {
+						if (activityStep.getGuid().contentEquals(step.getGuid())) {
+							return chapterActivity;
+						}
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot getActivityForStep. step is null.");
+			return null;
+		}
+		logger.error("Cannot getActivityForStep. Activity returned is null.");
+		return null;
+	}
+
+	public Activity getActivityForInteractiveActivity(ArrayList<Chapter> chapters,
+			InteractiveActivity interactiveActivity) {
+		if (interactiveActivity != null) {
+			for (Chapter chapter : chapters) {
+				for (Activity chapterActivity : chapter.getAssignedActivities()) {
+					for (InteractiveActivity activityDynamicActivity : chapterActivity.getAssignedDynamicActivities()) {
+						if (activityDynamicActivity.getGuid().contentEquals(interactiveActivity.getGuid())) {
+							return chapterActivity;
+						}
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot getActivityForInteractiveActivity. interactiveActivity is null.");
+			return null;
+		}
+		logger.error("Cannot getActivityForInteractiveActivity. Activity returned is null.");
+		return null;
+	}
+
+	public Step getStepForInteractiveActivity(ArrayList<Chapter> chapters, InteractiveActivity interactiveActivity) {
+		if (interactiveActivity != null) {
+			for (Chapter chapter : chapters) {
+				for (Activity chapterActivity : chapter.getAssignedActivities()) {
+					for (Step activityStep : chapterActivity.getAssignedSteps()) {
+						for (InteractiveActivity stepDynamicActivity : activityStep.getAssignedDynamicActivities()) {
+							if (stepDynamicActivity.getGuid().contentEquals(interactiveActivity.getGuid())) {
+								return activityStep;
+							}
+						}
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot getStepForInteractiveActivity. interactiveActivity is null.");
+			return null;
+		}
+		logger.error("Cannot getStepForInteractiveActivity. Step returned is null.");
+		return null;
+	}
+
+	public Step getStepById(ArrayList<Step> steps, String id) {
+		if (id != null) {
+			for (Step step : steps) {
+				if (step.getId().contentEquals(id)) {
+					return step;
+				}
+			}
+		} else {
+			logger.error("Cannot getStepById. id is null.");
+			return null;
+		}
+		logger.debug("Cannot getStepById. Step returned is null");
+		return null;
+	}
+
+	public Step findStepById(ArrayList<Chapter> chapters, String id) {
+		if (id != null) {
+			for (Chapter chapter : chapters) {
+				for (Step chapterStep : chapter.getAssignedSteps()) {
+					if (chapterStep.getId().contentEquals(id)) {
+						return chapterStep;
+					}
+				}
+				for (Activity activity : chapter.getAssignedActivities()) {
+					for (Step activityStep : activity.getAssignedSteps()) {
+						if (activityStep.getId().contentEquals(id)) {
+							return activityStep;
+						}
+					}
+				}
+			}
+		} else {
+			logger.error("Cannot getStepById. id is null.");
+			return null;
+		}
+		logger.debug("Cannot getStepById. Step returned is null");
+		return null;
+	}
+
+	public InteractiveActivity getInteractiveActivityById(ArrayList<InteractiveActivity> interactiveActivities,
+			String id) {
+		if (id != null) {
+			for (InteractiveActivity interactiveActivity : interactiveActivities) {
+				if (interactiveActivity.getId().contentEquals(id)) {
+					return interactiveActivity;
+				}
+			}
+		} else {
+			logger.error("Cannot getInteractiveActivityById. id is null.");
+			return null;
+		}
+		logger.debug("Cannot getInteractiveActivityById. InteractiveActivity returned is null");
+		return null;
+	}
+
+	public int getIndexOfActivityInChapter(Chapter chapter, Activity activity) {
 		int count = 0;
-		if (chapter != null && contentPanel != null) {
-			for (ContentPanel c : chapter.getContentPanels()) {
-				if (c.getId().contentEquals(contentPanel.getId())) {
+		if (chapter != null && activity != null) {
+			for (Activity a : chapter.getAssignedActivities()) {
+				if (a.getId().contentEquals(activity.getId())) {
 					return count;
 				}
 				count++;
 			}
 		} else {
-			logger.error("Cannot getIndexOfContentPanelInChapter. chapter or contentPanel is null.");
+			logger.error("Cannot getIndexOfActivityInChapter. chapter or activity is null.");
 		}
 		return -1;
 	}

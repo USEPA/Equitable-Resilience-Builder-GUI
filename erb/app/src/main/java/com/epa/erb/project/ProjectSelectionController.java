@@ -15,41 +15,40 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
-public class ProjectSelectionController implements Initializable {
+public class ProjectSelectionController implements Initializable{
 
 	@FXML
 	TextField projectNameTextField;
 	@FXML
 	ListView<Project> projectsListView;
-
+	
 	private App app;
-
 	public ProjectSelectionController(App app) {
 		this.app = app;
 	}
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		app.updateAvailableProjectsList();
 		setProjectsListViewCellFactory();
 		fillProjectsListView();
 	}
-
+	
 	public void loadEngagementActionToContainer(Project project) {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();
 		Parent engagementActionRoot = mainPanelHandler.loadEngagementActionRoot(app, project);
 		app.loadNodeToERBContainer(engagementActionRoot);
 	}
-
+	
 	private void fillProjectsListView() {
 		ArrayList<Project> projects = app.getProjects();
 		for (Project project : projects) {
-			if (!project.getProjectCleanedName().contentEquals("Explore")) {
-				projectsListView.getItems().add(project);
+			if(!project.getProjectCleanedName().contentEquals("Explore")) {
+			projectsListView.getItems().add(project);
 			}
 		}
 	}
-
+	
 	private void setProjectsListViewCellFactory() {
 		projectsListView.setCellFactory(new Callback<ListView<Project>, ListCell<Project>>() {
 			@Override
@@ -64,26 +63,25 @@ public class ProjectSelectionController implements Initializable {
 						}
 					}
 				};
-				cell.setOnMouseClicked(e -> mouseClickedProject(e));
+				cell.setOnMouseClicked(e-> mouseClickedProject(e));
 				return cell;
 			}
 		});
 	}
-
+	
 	private void mouseClickedProject(MouseEvent mouseEvent) {
 		if (mouseEvent == null || mouseEvent.getClickCount() == 2) {
 			Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
 			loadProject(selectedProject);
 		}
 	}
-
+	
 	public void loadProject(Project project) {
 		if (project != null) {
 			MainPanelHandler mainPanelHandler = new MainPanelHandler();
 			app.setSelectedProject(project);
 			app.getErbContainerController().getMyBreadCrumbBar().setProject(project);
-			app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(project.getProjectName() + " Landing",
-					mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
+			app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(project.getProjectName() + " Landing", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
 			loadEngagementActionToContainer(project);
 		}
 	}
@@ -103,5 +101,5 @@ public class ProjectSelectionController implements Initializable {
 	public ListView<Project> getProjectsListView() {
 		return projectsListView;
 	}
-
+	
 }

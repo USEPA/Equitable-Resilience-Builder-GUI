@@ -2,30 +2,25 @@
 	<goalCategory categoryName="All activities">
 		<chapters>
 			<chapter id="00001">
-				<assignedContent>
-					<layer1 id="000001">
-						<layer2 id="000017">
-							<layer3 id="000027">
-							</layer3>
-						</layer2>
-					</layer1>
-					<layer1 id="000031"/>
-					<layer1 id="000002"/>
-					<layer1 id="000032"/>
-					<layer1 id="000003"/>
-					<layer1 id="000004"/>
-				</assignedContent>
+				<assignedActivities>
+					<ChapterActivity id="000001"/>
+					<ChapterActivity id="000031"/>
+					<ChapterActivity id="000002"/>
+					<ChapterActivity id="000032"/>
+					<ChapterActivity id="000003"/>
+					<ChapterActivity id="000004"/>
+				</assignedActivities>
 			</chapter>
 			<chapter id="00002">
-				<assignedContent>
-					<layer1 id="000030"/>
-					<layer1 id="000005"/>
-					<layer1 id="000006"/>
-					<layer1 id="000007"/>
-					<layer1 id="000008"/>
-					<layer1 id="000009"/>
-					<layer1 id="000033"/>
-				</assignedContent>
+				<assignedActivities>
+					<ChapterActivity id="000030"/>
+					<ChapterActivity id="000005"/>
+					<ChapterActivity id="000006"/>
+					<ChapterActivity id="000007"/>
+					<ChapterActivity id="000008"/>
+					<ChapterActivity id="000009"/>
+					<ChapterActivity id="000033"/>
+				</assignedActivities>
 			</chapter>
 		</chapters>
 	</goalCategory>

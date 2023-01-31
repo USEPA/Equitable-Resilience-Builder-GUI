@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.epa.erb.ContentPanel;
+import com.epa.erb.Activity;
 import com.epa.erb.ERBItem;
 import com.epa.erb.ERBItemFinder;
 import com.epa.erb.chapter.Chapter;
@@ -45,18 +45,11 @@ public class ERBPathwayDiagramController implements Initializable {
 	HBox centerHBox;
 
 	private Chapter chapter;
-//	private Activity activity;
-	private ContentPanel contentPanel;
+	private Activity activity;
 	private EngagementActionController engagementActionController;
-//	public ERBPathwayDiagramController(Activity activity, Chapter chapter, EngagementActionController engagementActionController) {
-//		this.chapter = chapter;
-//		this.activity = activity;
-//		this.engagementActionController = engagementActionController;
-//	}
-	
-	public ERBPathwayDiagramController(ContentPanel contentPanel, Chapter chapter, EngagementActionController engagementActionController) {
+	public ERBPathwayDiagramController(Activity activity, Chapter chapter, EngagementActionController engagementActionController) {
 		this.chapter = chapter;
-		this.contentPanel = contentPanel;
+		this.activity = activity;
 		this.engagementActionController = engagementActionController;
 	}
 	
@@ -71,25 +64,25 @@ public class ERBPathwayDiagramController implements Initializable {
 		setCircleToolTips();
 		hideLeadingLines();
 		setCenterCircleLetter();
-		setActivityLabelText(contentPanel.getShortName());
+		setActivityLabelText(activity.getShortName());
 	}
 	
 	private void handleControls() {
-		if (contentPanel.getLongName().length() == 0) {
+		if (activity.getLongName().length() == 0) {
 			centerCircleLabel.setVisible(false);
 		}
 	}
 	
 	private void hideLeadingLines() {
-//		int index = erbItemFinder.getIndexOfActivityInChapter(chapter, activity);
-//		if (chapter.getNumberOfAssignedActivities() == 1) {
-//			hideLeftLeadingLine();
-//			hideRightLeadingLine();
-//		} else if (index == chapter.getNumberOfAssignedActivities() - 1) {
-//			hideRightLeadingLine();
-//		} else if (index == 0) {
-//			hideLeftLeadingLine();
-//		}
+		int index = erbItemFinder.getIndexOfActivityInChapter(chapter, activity);
+		if (chapter.getNumberOfAssignedActivities() == 1) {
+			hideLeftLeadingLine();
+			hideRightLeadingLine();
+		} else if (index == chapter.getNumberOfAssignedActivities() - 1) {
+			hideRightLeadingLine();
+		} else if (index == 0) {
+			hideLeftLeadingLine();
+		}
 	}
 
 	private void hideLeftLeadingLine() {
@@ -114,21 +107,21 @@ public class ERBPathwayDiagramController implements Initializable {
 	
 	private void setCenterCircleToolTip() {
 		// Center Circle
-		if (contentPanel.getStatus().contentEquals("ready")) {
-			createToolTip(splitString(contentPanel.getLongName()), centerCircle, centerCircleLabel,constants.getReadyStatusColor());
-		} else if (contentPanel.getStatus().contentEquals("complete")) {
-			createToolTip(splitString(contentPanel.getLongName()), centerCircle, centerCircleLabel,constants.getCompleteStatusColor());
-		} else if (contentPanel.getStatus().contentEquals("in progress")) {
-			createToolTip(splitString(contentPanel.getLongName()), centerCircle, centerCircleLabel,constants.getInProgressStatusColor());
+		if (activity.getStatus().contentEquals("ready")) {
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getReadyStatusColor());
+		} else if (activity.getStatus().contentEquals("complete")) {
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getCompleteStatusColor());
+		} else if (activity.getStatus().contentEquals("in progress")) {
+			createToolTip(splitString(activity.getLongName()), centerCircle, centerCircleLabel,constants.getInProgressStatusColor());
 		}
 	}
 	
 	private void setCenterCircleLetter() {
-		if (contentPanel.getStatus().contentEquals("ready")) {
+		if (activity.getStatus().contentEquals("ready")) {
 			centerCircleLabel.setText("R");
-		} else if (contentPanel.getStatus().contentEquals("complete")) {
+		} else if (activity.getStatus().contentEquals("complete")) {
 			centerCircleLabel.setText("C");
-		} else if (contentPanel.getStatus().contentEquals("in progress")) {
+		} else if (activity.getStatus().contentEquals("in progress")) {
 			centerCircleLabel.setText("I");
 		}
 	}
@@ -139,11 +132,11 @@ public class ERBPathwayDiagramController implements Initializable {
 	}
 	
 	private void setCenterCircleColor() {
-		if (contentPanel.getStatus().contentEquals("ready")) {
+		if (activity.getStatus().contentEquals("ready")) {
 			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
-		} else if (contentPanel.getStatus().contentEquals("complete")) {
+		} else if (activity.getStatus().contentEquals("complete")) {
 			centerCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
-		} else if (contentPanel.getStatus().contentEquals("in progress")) {
+		} else if (activity.getStatus().contentEquals("in progress")) {
 			centerCircle.setStyle("-fx-fill: " + constants.getInProgressStatusColor() + ";");
 		}
 	}
@@ -162,7 +155,7 @@ public class ERBPathwayDiagramController implements Initializable {
 	
 	@FXML
 	public void arrowClicked() {
-		ContentPanel nextActivity = engagementActionController.retrieveNextActivity(this);
+		Activity nextActivity = engagementActionController.retrieveNextActivity(this);
 		if(nextActivity != null) {
 			TreeItem<ERBItem> treeItem = engagementActionController.findTreeItem(nextActivity.getGuid());
 
@@ -175,35 +168,35 @@ public class ERBPathwayDiagramController implements Initializable {
 
 	@FXML
 	public void bottomRightCircleLabelClicked() {
-		String selectedActivityGUID = engagementActionController.getCurrentSelectedContentPanel().getId();
-		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(contentPanel.getId())) {
+		String selectedActivityGUID = engagementActionController.getCurrentActivity().getId();
+		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getId())) {
 		}		
 	}
 	
 	@FXML
 	public void bottomLeftCircleLabelClicked() {
-		String selectedActivityGUID = engagementActionController.getCurrentSelectedContentPanel().getId();
-		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(contentPanel.getId())) {
+		String selectedActivityGUID = engagementActionController.getCurrentActivity().getId();
+		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getId())) {
 		}
 	}
 
 	@FXML
 	public void topRightCircleLabelClicked() {
-		String selectedActivityGUID = engagementActionController.getCurrentSelectedContentPanel().getId();
-		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(contentPanel.getId())) {
+		String selectedActivityGUID = engagementActionController.getCurrentActivity().getId();
+		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getId())) {
 		}
 	}
 
 	@FXML
 	public void topLeftCircleLabelClicked() {
-		String selectedActivityGUID = engagementActionController.getCurrentSelectedContentPanel().getId();
-		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(contentPanel.getId())) {
+		String selectedActivityGUID = engagementActionController.getCurrentActivity().getId();
+		if (selectedActivityGUID != null && selectedActivityGUID.contentEquals(activity.getId())) {
 		}
 	}
 
 	@FXML
 	public void centerCircleClicked() {
-		TreeItem<ERBItem> treeItem = engagementActionController.findTreeItem(contentPanel.getGuid());
+		TreeItem<ERBItem> treeItem = engagementActionController.findTreeItem(activity.getGuid());
 
 		if (treeItem != null) {
 			engagementActionController.getTreeView().getSelectionModel().select(treeItem); // select tree item
@@ -258,12 +251,12 @@ public class ERBPathwayDiagramController implements Initializable {
 		this.chapter = chapter;
 	}
 
-	public ContentPanel getContentPanel() {
-		return contentPanel;
+	public Activity getActivity() {
+		return activity;
 	}
 
-	public void setContentPanel(ContentPanel contentPanel) {
-		this.contentPanel = contentPanel;
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 
 	public EngagementActionController getEngagementActionController() {

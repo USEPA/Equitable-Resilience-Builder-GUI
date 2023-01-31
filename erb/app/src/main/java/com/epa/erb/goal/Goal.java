@@ -2,6 +2,7 @@ package com.epa.erb.goal;
 
 import java.io.File;
 import java.util.ArrayList;
+import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.project.Project;
@@ -26,11 +27,11 @@ public class Goal {
 	private FileHandler fileHandler = new FileHandler();
 	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	
-	public void setChapters(Project project) {
+	public void setChapters(ArrayList<Activity> activities, Project project) {
 		File goalXMLFile = fileHandler.getGoalMetaXMLFile(project, this);
 		if (goalXMLFile != null && goalXMLFile.exists()) {
 			XMLManager xmlManager = new XMLManager(app);
-			chapters = xmlManager.parseGoalXML(goalXMLFile);
+			chapters = xmlManager.parseGoalXML(goalXMLFile, activities);
 		} else {
 			chapters = getAllChapters();
 		}

@@ -13,13 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 
 public class MainPanelHandler {
-
+	
 	private HashMap<String, String> mainPanelIdHashMap = new HashMap<String, String>();
-
+	
 	public MainPanelHandler() {
 		initMainPanelIdHashMap();
 	}
-
+	
 	private void initMainPanelIdHashMap() {
 		mainPanelIdHashMap.put("ERB Landing", "001");
 		mainPanelIdHashMap.put("Project Selection", "002");
@@ -27,19 +27,19 @@ public class MainPanelHandler {
 		mainPanelIdHashMap.put("Engagement", "004");
 		mainPanelIdHashMap.put("Project Creation", "005");
 	}
-
+	
 	public Parent loadERBLanding(App app) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBLanding.fxml"));
-			ERBLandingController erbLandingController = new ERBLandingController(app);
-			fxmlLoader.setController(erbLandingController);
+			ERBLandingController erbLandingNew2Controller = new ERBLandingController(app);
+			fxmlLoader.setController(erbLandingNew2Controller);
 			return fxmlLoader.load();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-
+	
 	public Parent loadProjectSelectionRoot(App app) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectSelection.fxml"));
@@ -54,7 +54,7 @@ public class MainPanelHandler {
 			return null;
 		}
 	}
-
+	
 	public Parent loadProjectCreationRoot(App app) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectCreation.fxml"));
@@ -69,13 +69,11 @@ public class MainPanelHandler {
 			return null;
 		}
 	}
-
-	public Parent loadGoalCreationToContainer(App app, Project project,
-			ProjectCreationController projectCreationController) {
+	
+	public Parent loadGoalCreationToContainer(App app, Project project, ProjectCreationController projectCreationController) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
-			GoalContainerController goalContainerController = new GoalContainerController(app, project,
-					projectCreationController);
+			GoalContainerController goalContainerController = new GoalContainerController(app, project, projectCreationController);
 			fxmlLoader.setController(goalContainerController);
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
@@ -86,7 +84,7 @@ public class MainPanelHandler {
 			return null;
 		}
 	}
-
+	
 	public Parent loadEngagementActionRoot(App app, Project project) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementAction.fxml"));
@@ -102,9 +100,9 @@ public class MainPanelHandler {
 			return null;
 		}
 	}
-
+	
 	public HashMap<String, String> getMainPanelIdHashMap() {
 		return mainPanelIdHashMap;
-	}
+	}	
 
 }

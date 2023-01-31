@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
-import com.epa.erb.ContentPanel;
+import com.epa.erb.InteractiveActivity;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
@@ -36,7 +36,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class NoteBoardContentController extends ContentPanel implements Initializable{
+public class NoteBoardContentController extends InteractiveActivity implements Initializable{
 
 	@FXML
 	TextField categoryTextField;
@@ -64,8 +64,8 @@ public class NoteBoardContentController extends ContentPanel implements Initiali
 	private App app;
 	private Project project;
 	private Goal goal;
-	public NoteBoardContentController(String id, String guid, String longName, String shortName, String status, String type, App app,Project project, Goal goal ) {
-		super(id, guid, longName, shortName, status, type);
+	public NoteBoardContentController(String id, String guid, String longName, String shortName, String status, App app,Project project, Goal goal ) {
+		super(id, guid, longName, shortName, status);
 		this.app = app;
 		this.project = project;
 		this.goal = goal;
@@ -161,7 +161,7 @@ public class NoteBoardContentController extends ContentPanel implements Initiali
 		}
 	}
 	
-	private void generateExistingNoteBoardControls(Project project, Goal goal, ContentPanel dynamicActivity) {
+	private void generateExistingNoteBoardControls(Project project, Goal goal, InteractiveActivity dynamicActivity) {
 		try {
 			XMLManager xmlManager = new XMLManager(app);
 			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(fileHandler.getDynamicActivityDataXMLFile(project, goal, dynamicActivity.getGuid()));
@@ -191,7 +191,7 @@ public class NoteBoardContentController extends ContentPanel implements Initiali
 		}
 	}
 	
-	private boolean noteBoardDataExists(Project project, Goal goal, ContentPanel dynamicActivity) {
+	private boolean noteBoardDataExists(Project project, Goal goal, InteractiveActivity dynamicActivity) {
 		File activityDataFile = fileHandler.getDynamicActivityDataXMLFile(project, goal, dynamicActivity.getGuid());
 		if(activityDataFile != null && activityDataFile.exists()) {
 			return true;

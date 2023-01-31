@@ -2,7 +2,7 @@ package com.epa.erb;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.FileHandler;
@@ -52,6 +52,7 @@ public class ERBContainerController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillImageViews();
+		populateLandingMenu();
 		populateResourceMenu();
 		populateBreadCrumbBar();
 	}
@@ -77,10 +78,11 @@ public class ERBContainerController implements Initializable{
 	
 	private void populateResourceMenu() {
 		File resourceXMLFile = fileHandler.getStaticAvailableResourcesXMLFile();
-		ArrayList<ResourcePanel> resources = xmlManager.parseAvailableResourcesXML(resourceXMLFile);
-		for(ResourcePanel resourcePanel: resources) {
-			MenuItem menuItem = createMenuItem(resourcePanel);
-			resourcesMenu.getItems().add(menuItem);
+		HashMap<String, String> resources = xmlManager.parseAvailableResourcesXML(resourceXMLFile);
+		for(String idString: resources.keySet()) {
+			String name = resources.get(idString);
+			MenuItem menuItem = createMenuItem(idString, name, true);
+			addMenuItem(menuItem, true);
 		}
 	}
 	
@@ -93,28 +95,47 @@ public class ERBContainerController implements Initializable{
 		breadCrumbHBox.getChildren().add(myBreadCrumbBar);
 	}
 	
-	private MenuItem createMenuItem(ResourcePanel resourcePanel) {
-		if (resourcePanel != null) {
-			MenuItem menuItem = new MenuItem(resourcePanel.getLongName());
-			menuItem.setId(resourcePanel.getId());
-			menuItem.setOnAction(e -> menuItemSelected(resourcePanel));
+	private void populateLandingMenu() {
+		File introXMLFile = fileHandler.getStaticAvailableIntroXMLFile();
+		HashMap<String, String> introPanels = xmlManager.parseAvailableIntroXML(introXMLFile);
+		for(String idString: introPanels.keySet()) {
+			String name = introPanels.get(idString);
+			MenuItem menuItem = createMenuItem(idString, name, false);
+			addMenuItem(menuItem,false);
+		}
+	}
+	
+	private MenuItem createMenuItem(String id, String name, boolean isResource) {
+		if (id != null && name != null) {
+			MenuItem menuItem = new MenuItem(name);
+			menuItem.setId(id);
+			menuItem.setOnAction(e -> menuItemSelected(menuItem, isResource));
 			return menuItem;
 		} else {
 			return null;
 		}
 	}
-
-	private void menuItemSelected(ResourcePanel resourcePanel) {
-		if (resourcePanel != null) {
-			File formContentXMLFile = fileHandler.getStaticSupportingFormTextXML(resourcePanel.getId());
-			//TODO:HANDLE IF IT IS NOT A MAIN FORM TYPE
+	
+	private void addMenuItem(MenuItem menuItem, boolean isResource) {
+		if(menuItem != null) {
+			if(isResource) {
+				resourcesMenu.getItems().add(menuItem);
+			} else {
+				introMenu.getItems().add(menuItem);
+			}
+		}
+	}
+	
+	private void menuItemSelected(MenuItem menuItem, boolean isResource) {
+		if (menuItem != null) {
+			File formContentXMLFile = getFormContentXML(menuItem.getId(), isResource);
 			VBox root = loadMainFormContentController(formContentXMLFile);
 			Stage stage = new Stage();
 			Scene scene = new Scene(root);
 			stage.setWidth(1150.0);
 			stage.setHeight(750.0);
 			stage.setScene(scene);
-			stage.setTitle(resourcePanel.getLongName());
+			stage.setTitle(menuItem.getText());
 			stage.showAndWait();
 		}
 	}
@@ -130,6 +151,17 @@ public class ERBContainerController implements Initializable{
 			return null;
 		}
 	}
+	
+	public File getFormContentXML(String id, boolean isResource) {
+		File xmlFile;
+		if (isResource) {
+			xmlFile = fileHandler.getStaticResourceFormTextXML(id);
+		} else {
+			xmlFile = fileHandler.getStaticIntroFormText(id);
+		}
+		return xmlFile;
+	}
+
 	public VBox getErbVBox() {
 		return erbVBox;
 	}
