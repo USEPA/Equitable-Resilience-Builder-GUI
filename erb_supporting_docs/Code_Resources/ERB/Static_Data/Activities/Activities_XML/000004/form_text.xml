@@ -22,7 +22,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="20.0"
+			width="20.0"
+			height="20.0"
 			id="000000012">
 			</icon>
 			<text
@@ -38,7 +39,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="20.0"
+			width="20.0"
+			height="20.0"
 			id="000000012">
 			</icon>
 			<text
@@ -54,7 +56,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="20.0"
+			width="20.0"
+			height="20.0"
 			id="000000012">
 			</icon>
 			<text
@@ -70,7 +73,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="20.0"
+			width="20.0"
+			height="20.0"
 			id="000000012">
 			</icon>
 			<text
@@ -200,7 +204,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="40.0"
+			width="40.0"
+			height="40.0"
 			id="000000006">
 			</icon>
 			<text
@@ -216,7 +221,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="40.0"
+			width="40.0"
+			height="40.0"
 			id="000000001">
 			</icon>
 			<text
@@ -232,7 +238,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="40.0"
+			width="40.0"
+			height="40.0"
 			id="000000002">
 			</icon>
 			<text
@@ -260,7 +267,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="50.0"
+			width="50.0"
+			height="50.0"
 			id="000000004">
 			</icon>
 			<text
@@ -270,7 +278,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -286,7 +295,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text

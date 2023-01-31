@@ -9,4 +9,7 @@
 	<step id="0004" longName="What to expect with indicator cards" shortName="What to expect with indicator cards" status="ready" notes="" rating="100" type="mainForm"/>
 	<step id="0000006" longName="Sorting indicator cards activity" shortName="Sorting indicator cards activity" status="ready" notes="" rating="100" type="mainForm" />
 	<step id="0000007" longName="Lay your cards on the table activity" shortName="Lay your cards on the table activity" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0000008" longName="Introduction to examples" shortName="Intro to examples" status="ready" notes="" rating="100" type="alternativeForm"/>
+	<step id="0000009" longName="Goal setting examples" shortName="Goal examples" status="ready" notes="" rating="100" type="alternativeForm"/>
+	<step id="0000010" longName="Activity selection examples" shortName="Activity examples" status="ready" notes="" rating="100" type="alternativeForm"/>
 </steps>

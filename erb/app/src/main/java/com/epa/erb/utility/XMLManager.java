@@ -23,6 +23,7 @@ import com.epa.erb.ERBItemFinder;
 import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -995,12 +996,98 @@ public class XMLManager {
 											Node iconNode = childNode;
 											//Icon
 											Element iconElement = (Element) iconNode;
-											double size = Double.parseDouble(iconElement.getAttribute("size"));
+											double width = Double.parseDouble(iconElement.getAttribute("width"));
+											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
 											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
-											imageView.setFitWidth(size);
-											imageView.setFitHeight(size);
+											imageView.setFitWidth(width);
+											imageView.setFitHeight(height);
+											textFlow.getChildren().add(imageView);
+										}
+									}
+								}
+								textFlow.setPrefWidth(maxTextLength * 2);
+								textBlocks.add(textFlow);
+							}
+						}
+						contentHashMap.put(containerId, textBlocks);
+					}
+				}
+				return contentHashMap;
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
+		}
+		return null;
+	}
+	
+	public HashMap<String, ArrayList<TextFlow>> parseAlternativeFormContentXML(File xmlFile, AlternativeFormController alternativeFormController) {
+		if (xmlFile != null && xmlFile.exists()) {
+			try {
+				FileHandler fileHandler = new FileHandler();
+				
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+
+				HashMap<String, ArrayList<TextFlow>> contentHashMap = new HashMap<String, ArrayList<TextFlow>>();
+
+				NodeList containerNodeList = doc.getElementsByTagName("container");
+				for (int i = 0; i < containerNodeList.getLength(); i++) {
+					Node containerNode = containerNodeList.item(i);
+					if (containerNode.getNodeType() == Node.ELEMENT_NODE) {
+						// Container
+						Element containerElement = (Element) containerNode;
+						String containerId = containerElement.getAttribute("id");
+						ArrayList<TextFlow> textBlocks = new ArrayList<TextFlow>();
+						NodeList textBlockNodeList = containerElement.getElementsByTagName("textBlock");
+						for (int j = 0; j < textBlockNodeList.getLength(); j++) {
+							Node textBlockNode = textBlockNodeList.item(j);
+							// TextBlock
+							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
+								TextFlow textFlow = new TextFlow();
+								double maxTextLength = 0.0;
+								Element textBlockElement = (Element) textBlockNode;
+								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
+								for(int l=0; l< textBlockChildrenNodeList.getLength(); l++) {
+									Node childNode = textBlockChildrenNodeList.item(l);
+									if(childNode.getNodeType() == Node.ELEMENT_NODE) {
+										String nodeName = childNode.getNodeName();
+										if(nodeName.contentEquals("text")) {
+												Node textNode = childNode;
+												// Text
+													Element textElement = (Element) textNode;
+													double size = Double.parseDouble(textElement.getAttribute("size"));
+													String fontFamily = textElement.getAttribute("fontFamily");
+													String fontStyle = textElement.getAttribute("fontStyle");
+													String text = textElement.getAttribute("text");
+													Text t = new Text(text);
+													if (fontStyle.contentEquals("Bold")) {
+														t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+													} else if (fontStyle.contentEquals("Underlined")) {
+														t.setUnderline(true);
+														t.setFont(Font.font(fontFamily, size));
+													} else {
+														t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+													}
+													textFlow.getChildren().add(t);
+													if(t.getText().length() > maxTextLength) maxTextLength = t.getText().length();
+										} else if (nodeName.contentEquals("icon")) {
+											Node iconNode = childNode;
+											//Icon
+											Element iconElement = (Element) iconNode;
+											double width = Double.parseDouble(iconElement.getAttribute("width"));
+											double height = Double.parseDouble(iconElement.getAttribute("height"));
+											String id = iconElement.getAttribute("id");
+											ImageView imageView = new ImageView();
+											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											imageView.setFitWidth(width);
+											imageView.setFitHeight(height);
 											textFlow.getChildren().add(imageView);
 										}
 									}

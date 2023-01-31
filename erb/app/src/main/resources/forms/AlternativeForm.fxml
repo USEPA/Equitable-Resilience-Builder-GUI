@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="nodeVBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane VBox.vgrow="ALWAYS">
+         <center>
+            <VBox fx:id="containerVBox" spacing="50.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="3.0" />
+               </BorderPane.margin>
+               <children>
+                  <VBox fx:id="titleVBox" />
+                  <ScrollPane fitToHeight="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                     <content>
+                        <HBox fx:id="hBox" alignment="CENTER" spacing="30.0">
+                           <children>
+                              <VBox fx:id="leftVBox" HBox.hgrow="ALWAYS" />
+                              <VBox fx:id="centerVBox" HBox.hgrow="ALWAYS" />
+                              <VBox fx:id="rightVBox" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <Pane fx:id="tP" prefHeight="10.0" BorderPane.alignment="CENTER" />
+         </top>
+         <left>
+            <Pane fx:id="lP" prefWidth="10.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane fx:id="rP" prefWidth="10.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <Pane fx:id="bP" prefHeight="10.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

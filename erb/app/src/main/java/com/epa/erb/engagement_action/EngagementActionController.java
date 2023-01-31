@@ -18,6 +18,7 @@ import com.epa.erb.ERBItemFinder;
 import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
+import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
 import com.epa.erb.goal.Goal;
@@ -958,11 +959,27 @@ public class EngagementActionController implements Initializable {
 			} else if (step.getType().contentEquals("outputForm")) {
 				Pane root = loadOutputFormController(file, step);
 				return root;
+			} else if (step.getType().contentEquals("alternativeForm")) {
+				Pane root = loadAlternativeFormController(file, step);
+				return root;
 			}
 		} else {
 			logger.error("Cannot loadStepContent. step = " + step);
 		}
 		return null;
+	}
+	
+	private VBox loadAlternativeFormController(File xmlFileToParse, Step step) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/AlternativeForm.fxml"));
+			AlternativeFormController alternativeFormController = new AlternativeFormController(app, xmlFileToParse, this);
+			fxmlLoader.setController(alternativeFormController);
+			VBox root = fxmlLoader.load();
+			return root;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 
 	private VBox loadOutputFormController(File xmlContentFileToParse, Step step) {

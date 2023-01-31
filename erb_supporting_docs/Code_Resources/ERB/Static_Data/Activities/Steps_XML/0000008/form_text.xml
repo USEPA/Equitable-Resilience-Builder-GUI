@@ -1,0 +1,93 @@
+<textBlocks>
+	<container id="titleVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How have communities used ERB?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="20.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Introduction to examples">
+			</text>
+		</textBlock>
+	</container>
+	<container id="leftVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Community Example 1:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;An EPA Regional staff member and a community organizer for environmental justice are working together to convene and activate a new group of community members in a rural county with EJ issues.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon width="200.0"
+			height="200.0" id="000000018"> </icon>
+		</textBlock>
+	</container>
+	<container id="centerVBox">
+	<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Community Example 2:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;A local environmental education and advocacy organization is leading the development of a watershed resilience plan and wants to incorporate equity into the plan.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon width="200.0"
+			height="200.0" id="000000019"> </icon>
+		</textBlock>
+		
+	</container>
+	<container id="rightVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Community Example 3:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;A county emergency manager is tasked with leading a commitee to update the county's Hazard Mitigation Plan. The previous plan has plenty on natural hazards but hasn't incorporated lessons learned from the COVID-19 pandemic.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon width="300.0"
+			height="200.0" id="000000020"> </icon>
+		</textBlock>
+	</container>
+</textBlocks>

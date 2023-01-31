@@ -9,8 +9,17 @@
 							<ChapterActivityInteractiveActivity id="00000002"/>
 						</assignedInteractiveActivities>
 					</ChapterActivity>
-					<ChapterActivity id="000031"/>
+					<ChapterActivity id="000031">
+					<assignedSteps>
+							<ChapterActivityStep id="0000008"/>
+							<ChapterActivityStep id="0000009"/>
+						</assignedSteps>
+					</ChapterActivity>
 					<ChapterActivity id="000002">
+					<assignedSteps>
+							<ChapterActivityStep id="0000008"/>
+							<ChapterActivityStep id="0000010"/>
+						</assignedSteps>
 					</ChapterActivity>
 					<ChapterActivity id="000003">
 					</ChapterActivity>

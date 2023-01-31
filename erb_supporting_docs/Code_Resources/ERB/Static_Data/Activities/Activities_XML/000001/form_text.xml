@@ -50,7 +50,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -66,7 +67,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -110,7 +112,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -126,7 +129,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -142,7 +146,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -158,7 +163,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -174,7 +180,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -190,7 +197,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
@@ -246,7 +254,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="40.0"
+			width="40.0"
+			height="40.0"
 			id="000000001">
 			</icon>
 			<text
@@ -258,7 +267,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="40.0"
+			width="40.0"
+			height="40.0"
 			id="000000002">
 			</icon>
 			<text
@@ -272,7 +282,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="40.0"
+			width="40.0"
+			height="40.0"
 			id="000000002">
 			</icon>
 			<text
@@ -296,7 +307,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="50.0"
+			width="50.0"
+			height="50.0"
 			id="000000004">
 			</icon>
 		</textBlock>
@@ -314,7 +326,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			size="25.0"
+			width="10.0"
+			height="10.0"
 			id="000000013">
 			</icon>
 			<text
