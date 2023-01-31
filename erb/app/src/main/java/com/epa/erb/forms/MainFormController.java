@@ -6,11 +6,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import com.epa.erb.Activity;
 import com.epa.erb.App;
+import com.epa.erb.ContentPanel;
 import com.epa.erb.ERBItem;
 import com.epa.erb.ERBItemFinder;
-import com.epa.erb.Step;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
@@ -67,6 +66,7 @@ public class MainFormController implements Initializable{
 	}
 		
 	private Project project;
+	private FileHandler fileHandler = new FileHandler();
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	
 	@Override
@@ -98,129 +98,116 @@ public class MainFormController implements Initializable{
 	}
 	
 	public void handleHyperlink(Text text, String linkType, String link) {		
-		if(linkType.contentEquals("internalIntro")) {
-			internalIntroLinkClicked(link);
-		} else if (linkType.contentEquals("internalResource")){
-			internalResourceLinkClicked(link);
-	    } else if (linkType.contentEquals("internalStep")) {
-			internalStepLinkClicked(link);
-		} else if (linkType.contentEquals("internalActivity")) {
-			internalActivityLinkClicked(link);
-		} else if (linkType.contentEquals("externalDOC")) {
-			externalDOCLinkClicked(link);
-		} else if (linkType.contentEquals("URL")) {
-			urlLinkClicked(link);
-		}
+//		if(linkType.contentEquals("internalIntro")) {
+//			internalIntroLinkClicked(link);
+//		} else if (linkType.contentEquals("internalResource")){
+//			internalResourceLinkClicked(link);
+//	    } else if (linkType.contentEquals("internalStep")) {
+//			internalStepLinkClicked(link);
+//		} else if (linkType.contentEquals("internalActivity")) {
+//			internalActivityLinkClicked(link);
+//		} else if (linkType.contentEquals("externalDOC")) {
+//			externalDOCLinkClicked(link);
+//		} else if (linkType.contentEquals("URL")) {
+//			urlLinkClicked(link);
+//		}
 	}
 	
-	public void internalIntroLinkClicked(String link) {
+	public void showFormTextXML(String link) {
 		if (!link.contentEquals("00")) {
-			File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, false);
+			File formContentXMLFile = fileHandler.getStaticSupportingFormTextXML(link);
 			Pane root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
 			Stage stage = new Stage();
 			Scene scene = new Scene(root);
 			stage.setWidth(1150.0);
 			stage.setHeight(750.0);
 			stage.setScene(scene);
-			stage.setTitle("Intro");
 			stage.showAndWait();
 		} else {
 			app.launchERBLanding();
 		}
 	}
 	
-	public void internalResourceLinkClicked(String link) {
-		File formContentXMLFile = app.getErbContainerController().getFormContentXML(link, true);
-		Pane root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
-		Stage stage = new Stage();
-		Scene scene = new Scene(root);
-		stage.setWidth(1150.0);
-		stage.setHeight(750.0);
-		stage.setScene(scene);
-		stage.setTitle("Resource");
-		stage.showAndWait();
-	}
-	
 	private void internalStepLinkClicked(String link) {
-		if (engagementActionController != null) {
-			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
-			Step step = erbItemFinder.findStepById(engagementActionController.getListOfUniqueChapters(), link);
-			if (step != null) {
-				if (step.getId().length() == 4) {
-					Pane root = engagementActionController.loadStepContent(step);
-					Stage stage = new Stage();
-					Scene scene = new Scene(root);
-					stage.setWidth(1150.0);
-					stage.setHeight(750.0);
-					stage.setScene(scene);
-					stage.setTitle(step.getLongName());
-					stage.showAndWait();
-				} else {
-					ERBItem currentErbItem = engagementActionController.findTreeItem(step.getGuid()).getValue();
-//					System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
-//					System.out.println("Hyperlink made us jump 1");
-					for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-						if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(step.getGuid())) {
-							TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
-							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
-							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
-						}
-					}
-				}
-			}
-		} else {
-			loadProjectSelectionPopup();
-			if (project != null) {
-				app.setSelectedProject(project);
-				engagementActionController = new EngagementActionController(app, project);
-				loadEngagementActionToContainer(engagementActionController);
-				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
-				internalStepLinkClicked(link);
-			}
-		}
+//		if (engagementActionController != null) {
+//			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+//			Step step = erbItemFinder.findStepById(engagementActionController.getListOfUniqueChapters(), link);
+//			if (step != null) {
+//				if (step.getId().length() == 4) {
+//					Pane root = engagementActionController.loadStepContent(step);
+//					Stage stage = new Stage();
+//					Scene scene = new Scene(root);
+//					stage.setWidth(1150.0);
+//					stage.setHeight(750.0);
+//					stage.setScene(scene);
+//					stage.setTitle(step.getLongName());
+//					stage.showAndWait();
+//				} else {
+//					ERBItem currentErbItem = engagementActionController.findTreeItem(step.getGuid()).getValue();
+////					System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
+////					System.out.println("Hyperlink made us jump 1");
+//					for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+//						if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(step.getGuid())) {
+//							TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+//							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+//							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
+//						}
+//					}
+//				}
+//			}
+//		} else {
+//			loadProjectSelectionPopup();
+//			if (project != null) {
+//				app.setSelectedProject(project);
+//				engagementActionController = new EngagementActionController(app, project);
+//				loadEngagementActionToContainer(engagementActionController);
+//				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
+//				internalStepLinkClicked(link);
+//			}
+//		}
 	}
 	
 	private void internalActivityLinkClicked(String link) {
-		if (engagementActionController != null) {
-			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
-			if (link.length() == 5) {
-				Chapter chapter = erbItemFinder.findChapterForGuid( engagementActionController.getListOfUniqueChapters(), link);
-				if (chapter != null) {
-					ERBItem currentErbItem = engagementActionController.findTreeItem(chapter.getGuid()).getValue();
-//					System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
-//					System.out.println("Hyperlink made us jump 2");
-					for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-						if (erbItem.getGuid()!= null && erbItem.getGuid().contentEquals(chapter.getGuid())) {
-							TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
-							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
-							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
-						}
-					}
-				}
-			}
-			Activity activity = erbItemFinder.findActivityById(engagementActionController.getListOfUniqueChapters(),link);
-			if (activity != null) {
-				ERBItem currentErbItem = engagementActionController.findTreeItem(activity.getGuid()).getValue();
-//				System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
-//				System.out.println("Hyperlink made us jump 3");
-				for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-					if (erbItem.getGuid().contentEquals(activity.getGuid())) {
-						TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
-						engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
-						engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
-					}
-				}
-			}
-		} else {
-			loadProjectSelectionPopup();
-			if (project != null) {
-				app.setSelectedProject(project);
-				engagementActionController = new EngagementActionController(app, project);
-				loadEngagementActionToContainer(engagementActionController);
-				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
-				internalActivityLinkClicked(link);
-			}
-		}
+//		if (engagementActionController != null) {
+//			TreeItem<ERBItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+//			if (link.length() == 5) {
+//				Chapter chapter = erbItemFinder.findChapterForGuid( engagementActionController.getListOfUniqueChapters(), link);
+//				if (chapter != null) {
+//					ERBItem currentErbItem = engagementActionController.findTreeItem(chapter.getGuid()).getValue();
+////					System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
+////					System.out.println("Hyperlink made us jump 2");
+//					for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+//						if (erbItem.getGuid()!= null && erbItem.getGuid().contentEquals(chapter.getGuid())) {
+//							TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+//							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+//							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
+//						}
+//					}
+//				}
+//			}
+//			ContentPanel activity = erbItemFinder.findContentPanelById(engagementActionController.getListOfUniqueChapters(),link);
+//			if (activity != null) {
+//				ERBItem currentErbItem = engagementActionController.findTreeItem(activity.getGuid()).getValue();
+////				System.out.println("HYPERLINK FROM " + currentErbItem.getLongName());
+////				System.out.println("Hyperlink made us jump 3");
+//				for (ERBItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+//					if (erbItem.getGuid().contentEquals(activity.getGuid())) {
+//						TreeItem<ERBItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+//						engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+//						engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
+//					}
+//				}
+//			}
+//		} else {
+//			loadProjectSelectionPopup();
+//			if (project != null) {
+//				app.setSelectedProject(project);
+//				engagementActionController = new EngagementActionController(app, project);
+//				loadEngagementActionToContainer(engagementActionController);
+//				engagementActionController.setCurrentSelectedGoal(project.getProjectGoals().get(0));
+//				internalActivityLinkClicked(link);
+//			}
+//		}
 	}
 	
 	private void hyperlinkJump(ERBItem erbItem) {

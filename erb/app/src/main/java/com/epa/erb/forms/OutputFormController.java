@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
-import com.epa.erb.InteractiveActivity;
+import com.epa.erb.ContentPanel;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
@@ -20,7 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class OutputFormController extends InteractiveActivity implements Initializable {
+public class OutputFormController extends ContentPanel implements Initializable {
 
 	@FXML
 	VBox nodeVBox;
@@ -38,8 +38,8 @@ public class OutputFormController extends InteractiveActivity implements Initial
 	private App app;
 	private File xmlContentFileToParse;
 	private EngagementActionController engagementActionController;
-	public OutputFormController(String id, String guid, String longName, String shortName, String status,App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
-		super(id, guid, longName, shortName, status);
+	public OutputFormController(String id, String guid, String longName, String shortName, String status, String type, App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
+		super(id, guid, longName, shortName, status, type);
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;
@@ -55,7 +55,8 @@ public class OutputFormController extends InteractiveActivity implements Initial
 			HashMap<ArrayList<Text>, String> contentHashMap = xmlManager.parseOutputFormContentXML(xmlContentFileToParse);
 			addContent(contentHashMap);
 		} else {
-			File dataXMLFile = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
+			File dataXMLFile = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedContentPanel());
+//			File dataXMLFile = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
 			HashMap<ArrayList<Text>, String> contentHashMap = xmlManager.parseOutputFormContentXML(dataXMLFile);
 			addContent(contentHashMap);
 		}
@@ -85,7 +86,8 @@ public class OutputFormController extends InteractiveActivity implements Initial
 	}
 	
 	private boolean checkForExisitingContent() {
-		File dataXMLFile = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
+		File dataXMLFile = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedContentPanel());
+//		File dataXMLFile = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
 		if(dataXMLFile != null && dataXMLFile.exists()) {
 			return true;
 		}
@@ -99,7 +101,8 @@ public class OutputFormController extends InteractiveActivity implements Initial
 		for(int i =0; i < formVBox.getChildren().size(); i++) {
 			listOfChildren.add(formVBox.getChildren().get(i));
 		}
-		File saveLocation = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
+		File saveLocation = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedContentPanel());
+//		File saveLocation = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
 		if(!saveLocation.getParentFile().exists()) {
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal()), engagementActionController.getListOfUniqueChapters());
 			fileHandler.createGUIDDirectoriesForGoal(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getListOfUniqueChapters());

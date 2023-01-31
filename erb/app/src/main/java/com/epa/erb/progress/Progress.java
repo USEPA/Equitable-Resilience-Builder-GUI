@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.epa.erb.Activity;
 import com.epa.erb.chapter.Chapter;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
@@ -28,39 +26,39 @@ public class Progress {
 	}
 	
 	public int getChapterPercentDone(Chapter chapter) {
-		if (chapter != null) {
-			double numberOfActivitiesInChapter = 0;
-			double numberOfCompletedActivitiesInChapter = 0;
-			for (Activity activity : chapter.getAssignedActivities()) {
-				numberOfActivitiesInChapter++;
-				if (activity.getStatus().contentEquals("complete")) {
-					numberOfCompletedActivitiesInChapter++;
-				}
-			}
-			return (int) ((numberOfCompletedActivitiesInChapter / numberOfActivitiesInChapter) * 100);
-		} else {
-			logger.error("Cannot getChapterPercentDone. chapter is null.");
+//		if (chapter != null) {
+//			double numberOfActivitiesInChapter = 0;
+//			double numberOfCompletedActivitiesInChapter = 0;
+//			for (Activity activity : chapter.getAssignedActivities()) {
+//				numberOfActivitiesInChapter++;
+//				if (activity.getStatus().contentEquals("complete")) {
+//					numberOfCompletedActivitiesInChapter++;
+//				}
+//			}
+//			return (int) ((numberOfCompletedActivitiesInChapter / numberOfActivitiesInChapter) * 100);
+//		} else {
+//			logger.error("Cannot getChapterPercentDone. chapter is null.");
 			return -1;
-		}
+//		}
 	}
 	
 	public int getGoalPercentDone(ArrayList<Chapter> listOfChaptersInGoal) {
-		if (listOfChaptersInGoal != null) {
-			double numberOfActivitiesInGoal = 0;
-			double numberOfCompletedActivitiesInGoal = 0;
-			for (Chapter chapter : listOfChaptersInGoal) {
-				for (Activity activity : chapter.getAssignedActivities()) {
-					numberOfActivitiesInGoal++;
-					if (activity.getStatus().contentEquals("complete")) {
-						numberOfCompletedActivitiesInGoal++;
-					}
-				}
-			}
-			return (int) ((numberOfCompletedActivitiesInGoal / numberOfActivitiesInGoal) * 100);
-		} else {
-			logger.error("Cannot getGoalPercentDone. listOfChaptersInGoal is null.");
+//		if (listOfChaptersInGoal != null) {
+//			double numberOfActivitiesInGoal = 0;
+//			double numberOfCompletedActivitiesInGoal = 0;
+//			for (Chapter chapter : listOfChaptersInGoal) {
+//				for (Activity activity : chapter.getAssignedActivities()) {
+//					numberOfActivitiesInGoal++;
+//					if (activity.getStatus().contentEquals("complete")) {
+//						numberOfCompletedActivitiesInGoal++;
+//					}
+//				}
+//			}
+//			return (int) ((numberOfCompletedActivitiesInGoal / numberOfActivitiesInGoal) * 100);
+//		} else {
+//			logger.error("Cannot getGoalPercentDone. listOfChaptersInGoal is null.");
 			return -1;
-		}
+//		}
 	}
 	
 	public int getProjectTotalPercent(Project project) {

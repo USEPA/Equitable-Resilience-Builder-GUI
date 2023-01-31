@@ -74,7 +74,7 @@ public class GoalCreationController implements Initializable{
 				String goalDescription = getGoalDescription();
 				ArrayList<GoalCategory> selectedGoalCategories = getSelectedGoalCategories();
 				Goal goal = new Goal(app,goalName, goalCleanedName, goalDescription, selectedGoalCategories);
-				goal.setChapters(app.getAvailableActivities(), project);
+				goal.setChapters(project);
 				addGoalToGoalsListView(goal);
 				cleanGoalUserInputFields();
 				uncheckAllGoalCategoryCheckBoxes();
@@ -90,7 +90,10 @@ public class GoalCreationController implements Initializable{
 		if(result.get() == ButtonType.OK) {
 			ArrayList<Goal> createdGoals = getCreatedGoals();
 			project.setProjectGoals(createdGoals);
-			writeProjectMetaData(project);
+			
+			File projectMetaFile = fileHandler.getProjectMetaXMLFile(project);
+			xmlManager.writeProjectMetaXML(projectMetaFile, project);
+			
 			writeGoalsMetaData(createdGoals);
 			projectCreationController.loadEngagementActionToContainer(project);
 		}
@@ -183,11 +186,6 @@ public class GoalCreationController implements Initializable{
 		return result;
 	}
 	
-	public void writeProjectMetaData(Project project) {
-		File projectMetaFile = fileHandler.getProjectMetaXMLFile(project);
-		xmlManager.writeProjectMetaXML(projectMetaFile, project);
-	}
-	
 	public void writeGoalsMetaData(ArrayList<Goal> goals) {
 		if (goals != null) {
 			createGoalsDirectory();
@@ -229,7 +227,11 @@ public class GoalCreationController implements Initializable{
 			File staticGlobalSupportingDOCDirectory = fileHandler.getStaticSupportingDOCDirectory();
 			for(File sourceFile: staticGlobalSupportingDOCDirectory.listFiles()) {
 				File destFile = new File(goalSupportingDOCDirectory + "\\" + sourceFile.getName());
-				fileHandler.copyFile(sourceFile, destFile);
+				if(sourceFile.isDirectory()) {
+				fileHandler.copyDirectory(sourceFile, destFile);
+				} else if (sourceFile.isFile()) {
+					fileHandler.copyFile(sourceFile, destFile);
+				}
 			}
 		}
 	}

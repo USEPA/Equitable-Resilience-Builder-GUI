@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
 import com.epa.erb.App;
-import com.epa.erb.InteractiveActivity;
+import com.epa.erb.ContentPanel;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
@@ -53,7 +53,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.util.Callback;
 import javafx.concurrent.Worker.State;
 
-public class WordCloudController extends InteractiveActivity implements Initializable {
+public class WordCloudController extends ContentPanel implements Initializable {
 
 	@FXML
 	VBox vBox;
@@ -96,8 +96,8 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	private App app;
 	private Project project;
 	private Goal goal;
-	public WordCloudController(String id, String guid, String longName, String shortName, String status, App app, Project project, Goal goal) {
-		super(id, guid, longName, shortName, status);
+	public WordCloudController(String id, String guid, String longName, String shortName, String status, String type, App app, Project project, Goal goal) {
+		super(id, guid, longName, shortName, status, type);
 		this.app = app;
 		this.project = project;
 		this.goal = goal;

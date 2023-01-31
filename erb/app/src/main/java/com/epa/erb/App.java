@@ -37,19 +37,16 @@ public class App extends Application {
 	private EngagementActionController engagementActionController;
 
 	private ArrayList<Project> projects;
-	private ArrayList<Step> availableSteps;
 	private ArrayList<Chapter> availableChapters;
-	private ArrayList<Activity> availableActivities;
+	private ArrayList<ContentPanel> availableContentPanels;
 	private ArrayList<GoalCategory> availableGoalCategories;
-	private ArrayList<InteractiveActivity> availableInteractiveActivities;
-	
+
 	private FileHandler fileHandler = new FileHandler();
 	private XMLManager xmlManager = new XMLManager(this);
 	private Logger logger = LogManager.getLogger(App.class);
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println(System.getProperty("java.version"));
 		setScreenSizePreferences(getScreenScale());
 		readAndStoreData();
 		showERBToolMain();
@@ -108,6 +105,7 @@ public class App extends Application {
 	}
 
 	private Stage erbContainerStage = null;
+
 	private void showERBContainer(Parent erbContainerRoot) {
 		if (erbContainerRoot != null) {
 			erbContainerStage = new Stage();
@@ -132,32 +130,20 @@ public class App extends Application {
 	}
 
 	private void readAndStoreData() {
-		readAndStoreAvailableInteractiveActivities();
-		readAndStoreAvailableSteps();
-		readAndStoreAvailableActivities();
+		readAndStoreAvailableContent();
 		readAndStoreAvailableChapters();
 		readAndStoreAvailableGoalCategories();
 		readAndStoreProjects();
 	}
 
-	private void readAndStoreAvailableInteractiveActivities() {
-		File interactiveActivitiesFile = fileHandler.getStaticAvailableInteractiveActivitiesXMLFile();
-		availableInteractiveActivities = xmlManager.parseAvailableInteractiveActivitiesXML(interactiveActivitiesFile);
+	private void readAndStoreAvailableContent() {
+		File contentFile = fileHandler.getStaticAvailableContentXMLFile();
+		availableContentPanels = xmlManager.parseAvailableContentXML(contentFile);
 	}
 
 	private void readAndStoreAvailableChapters() {
 		File chaptersFile = fileHandler.getStaticChaptersXMLFile();
 		availableChapters = xmlManager.parseChaptersXML(chaptersFile);
-	}
-
-	private void readAndStoreAvailableActivities() {
-		File availableActivitiesFile = fileHandler.getStaticAvailableActivitiesXMLFile();
-		availableActivities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile);
-	}
-
-	private void readAndStoreAvailableSteps() {
-		File availableStepsFile = fileHandler.getStaticAvailableStepsXMLFile();
-		availableSteps = xmlManager.parseAvailableStepsXML(availableStepsFile);
 	}
 
 	private void readAndStoreAvailableGoalCategories() {
@@ -167,18 +153,19 @@ public class App extends Application {
 
 	private void readAndStoreProjects() {
 		File projectsDirectory = fileHandler.getProjectsDirectory();
-		projects = xmlManager.parseAllProjects(projectsDirectory, availableActivities);
+		projects = xmlManager.parseAllProjects(projectsDirectory);
 	}
-	
+
 	public Project getExploreProject() {
-		for(Project project: projects) {
-			if(project.getProjectName().contentEquals("Explore")) {
+		for (Project project : projects) {
+			if (project.getProjectName().contentEquals("Explore")) {
 				return project;
 			}
 		}
 		return null;
 	}
 
+	//TODO:Move to utility
 	public void loadNodeToERBContainer(Node node) {
 		if (node != null) {
 			setNodeGrowPriority(node, Priority.ALWAYS);
@@ -189,6 +176,7 @@ public class App extends Application {
 		}
 	}
 
+	//TODO:Move to utility
 	public void setNodeGrowPriority(Node node, Priority priority) {
 		if (node != null) {
 			VBox.setVgrow(node, priority);
@@ -200,6 +188,7 @@ public class App extends Application {
 		readAndStoreProjects();
 	}
 
+	//TODO:Move to utility
 	public String generateGUID() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
@@ -244,32 +233,12 @@ public class App extends Application {
 		this.availableChapters = chapters;
 	}
 
-	public ArrayList<Activity> getAvailableActivities() {
-		return availableActivities;
-	}
-
-	public void setAvailableActivities(ArrayList<Activity> activities) {
-		this.availableActivities = activities;
-	}
-
-	public ArrayList<Step> getAvailableSteps() {
-		return availableSteps;
-	}
-
-	public void setAvailableSteps(ArrayList<Step> steps) {
-		this.availableSteps = steps;
-	}
-
-	public ArrayList<InteractiveActivity> getAvailableInteractiveActivities() {
-		return availableInteractiveActivities;
-	}
-
-	public void setAvailableInteractiveActivities(ArrayList<InteractiveActivity> interactiveActivities) {
-		this.availableInteractiveActivities = interactiveActivities;
-	}
-
 	public ArrayList<GoalCategory> getAvailableGoalCategories() {
 		return availableGoalCategories;
+	}
+
+	public ArrayList<ContentPanel> getAvailableContentPanels() {
+		return availableContentPanels;
 	}
 
 	public void setAvailableGoalCategories(ArrayList<GoalCategory> goalCategories) {

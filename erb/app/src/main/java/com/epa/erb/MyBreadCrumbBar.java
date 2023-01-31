@@ -54,7 +54,6 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 			
 		}
 	}
-
 	public App getApp() {
 		return app;
 	}

@@ -57,14 +57,14 @@ public class ERBChapterDiagramController implements Initializable{
 	}
 	
 	public void fillChapterCircleBasedOnStatus() {
-		String chapterStatus = chapter.getStatus();
-		if(chapterStatus.contentEquals("ready")) {
-			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
-		} else if (chapterStatus.contentEquals("in progress")) {
-			centerCircle.setStyle("-fx-fill: " + constants.getInProgressStatusColor() + ";");
-		} else if (chapterStatus.contentEquals("complete")) {
-			centerCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
-		}
+//		String chapterStatus = chapter.getStatus();
+//		if(chapterStatus.contentEquals("ready")) {
+//			centerCircle.setStyle("-fx-fill: " + constants.getReadyStatusColor() + ";");
+//		} else if (chapterStatus.contentEquals("in progress")) {
+//			centerCircle.setStyle("-fx-fill: " + constants.getInProgressStatusColor() + ";");
+//		} else if (chapterStatus.contentEquals("complete")) {
+//			centerCircle.setStyle("-fx-fill: " + constants.getCompleteStatusColor() + ";");
+//		}
 	}
 	
 	private void hideLeadingLines() {
