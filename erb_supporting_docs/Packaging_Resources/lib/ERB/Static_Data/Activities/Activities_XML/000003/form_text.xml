@@ -5,7 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Step 3. Select Activities and Make a Project Plan">
+			text="Make a Project Plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,21 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Now it's time to decide which of the ERB activities you want to do in Chapters 2-5 and put together a project plan for going through the ERB process.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Why do this: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;Depending on your specific goals, priority hazards, resource or time contraints, and existing community connections, it might make sense to do some but not all activities in the ERB toolkit.">
+			text="Determine the who, what, when, and how of your ERB project">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -35,55 +21,27 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="How to do this: ">
+			text="Why do this">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Meet with your team to review the activities in ERB and record the activities you've selected in your project plan ">
+			text="&#xD;The plan will help the core team make decisions, allocate, resources, manage expectations, coordinate work, and demonstrate progress.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="template"
-			linkType="externalDOC"
-			link="Ch1_Project_Plan_Template.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=". We've provided an ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="activity to goal matching example"
-			linkType="internalStep"
-			link="0000003">
+			fontStyle="Bold"
+			text="How to do this">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" and ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="activity selection scenarios"
-			linkType="internalStep"
-			link="0000004">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to help. Next, work on filling in planning and logistics details in the ">
+			text="&#xD;Hold a team meeting to work through the ">
 			</text>
 			<text
 			size="16.0"
@@ -91,13 +49,19 @@
 			fontStyle="Hyperlink"
 			text="project plan"
 			linkType="externalDOC"
-			link="Ch1_Project_Plan_Template.docx">
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" about how the activity lead and supporting core team members will carry out the activities. We've provided an example ">
+			text=".">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;Record your decisions in the ">
 			</text>
 			<text
 			size="16.0"
@@ -105,35 +69,27 @@
 			fontStyle="Hyperlink"
 			text="project plan"
 			linkType="externalDOC"
-			link="Ch1_Project_Plan_Example.docx">
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" to help. Pro tip: You can always come back and add more details to the plan. If you really want to get into specifics of activity planning, check out our ">
+			text=" for documentation.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="workshop agenda and facilitators guide"
-			linkType="externalDOC"
-			link="Workshop_facilitators_guide.docx">
+			fontStyle="Bold"
+			text="Output">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" and ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="workshop logistics organizer"
-			linkType="externalDOC"
-			link="Workshop_logistics_plan.docx">
+			text="&#xD;A completed project plan">
 			</text>
 		</textBlock>
 	</container>
@@ -143,53 +99,60 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Things you'll need">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Time:">
+			text="Planning">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" 1 hour prep, 2-5 hours meet">
+			text="&#xD;">
 			</text>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="000000006">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Materials:">
+			fontStyle="Regular"
+			text="Core team">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- Project plan ">
+			text="&#xD;">
 			</text>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="000000001">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="1.5 hours">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="000000002">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="template"
+			text="Project plan"
 			linkType="externalDOC"
-			link="Ch1_Project_Plan_Template.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Project plan ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="example"
-			linkType="externalDOC"
-			link="Ch1_Project_Plan_Example.docx">
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 		</textBlock>
 	</container>
@@ -199,13 +162,46 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Step 3 Output:">
+			text="Centering Equity">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Project plan">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000003">
+			</icon>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000005">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="&#xD; Collaboration and Voice">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="How might gender, age, and other social patterns affect who speaks out and who takes on which roles on the team?">
 			</text>
 		</textBlock>
 	</container>

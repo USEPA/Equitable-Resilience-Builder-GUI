@@ -1,12 +1,12 @@
 <activities>
 	<activity id="000001" longName="Get a core team together" shortName="Gather Team" status="ready" notes="" rating="100"/>
-	<activity id="000002" longName="Lay out goals for using ERB" shortName="Lay Out Goals" status="ready" notes="" rating="100"/>
+	<activity id="000002" longName="Select activities to do in ERB" shortName="Select activities" status="ready" notes="" rating="100"/>
 	<activity id="000003" longName="Make a Project Plan" shortName="Make Project Plan" status="ready" notes="" rating="100"/>
 	<activity id="000004" longName="Reflection and next steps" shortName="Reflection" status="ready" notes="" rating="100"/>
 	<activity id="000005" longName="Identify Communuity Connections: Identify and Diagram Community Connections" shortName="Identify Community Conn." status="ready" notes="" rating="100"/>
 	<activity id="000006" longName="Diagram Community Connections: Identify and Diagram Community Connections" shortName="Diagram Community Conn." status="ready" notes="" rating="100"/>
 	<activity id="000007" longName="Determine scope of engagement: Develop a Community Engagement Plan" shortName="Community Engagement" status="ready" notes="" rating="100"/>
-	<activity id="000008" longName="Write the plan: Develop a Community Engagement Plan" shortName="Write Engagement Plan" status="ready" notes="" rating="100"/>
+	<activity id="000008" longName="Write the Plan: Develop a Community Engagement Plan" shortName="Write Engagement Plan" status="ready" notes="" rating="100"/>
 	<activity id="000009" longName="Reflection and next steps" shortName="Reflection" status="ready" notes="" rating="100"/>
 	<activity id="000010" longName="Gather information about hazards and disasters" shortName="Gather HDT Information" status="ready" notes="" rating="100"/>
 	<activity id="000011" longName="Gather information about equity" shortName="Gather Equity Information" status="ready" notes="" rating="100"/>
@@ -28,4 +28,8 @@
 	<activity id="000027" longName="Identify next steps and reflect" shortName="Next Steps" status="ready" notes="" rating="100"/>
 	<activity id="000028" longName="Finalize your project" shortName="Finalize Project" status="ready" notes="" rating="100"/>
 	<activity id="000029" longName="Reflection and next steps" shortName="Reflection" status="ready" notes="" rating="100"/>
+	<activity id="000031" longName="Set goals for using ERB" shortName="Set Goals" status="ready" notes="" rating="100"/>
+	<activity id="000032" longName="Centering Equity in Engagement" shortName="Centering Equity" status="ready" notes="" rating="100"/>
+	<activity id="000033" longName="Start Engaging!" shortName="Start Engaging!" status="ready" notes="" rating="100"/>
+	<activity id="0000001" longName="Team storytelling activity" shortName="Team storytelling activity" status="ready" notes="" rating="100"/>
 </activities>

@@ -5,7 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 1: ERB Project Plan">
+			text="Plan your Project">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,93 +13,153 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This chapter will help you get started with using ERB. The four steps in chapter 1 are:">
+			text="Get started with your ERB project">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="20.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="1. ">
+			fontStyle="Bold"
+			text="Activities in this section">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
+			fontStyle="Regular"
 			text="Get a core team together.">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" The core team will make decisions and coordinate project activities.">
+			text="Team Storytelling">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- Activity: team storytelling">
+			text="Set goals for using ERB">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Select activity options to do in ERB">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Make a project plan">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Reflection and next steps">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="20.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="2. ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Lay out the team's goals for using ERB.">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" How does it feed into ongoing resilience planning?">
+			fontStyle="Bold"
+			text="What you'll have at the end">
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="20.0"
+			height="20.0"
+			id="000000012">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="3. ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Make a project plan.">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" Scope out how you'll undertake the activities in Chapters 2-5 given your timeline, resources, and goals.">
+			text="A core team to lead the ERB project">
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="20.0"
+			height="20.0"
+			id="000000012">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="4. ">
+			text="Storytelling word cloud">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Reflection and next steps.">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="20.0"
+			height="20.0"
+			id="000000012">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Each chapter has reflection prompts to check in and take stock.">
+			text="A list of goals you want to achieve">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="20.0"
+			height="20.0"
+			id="000000012">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A project plan including">
 			</text>
 		</textBlock>
 	</container>
@@ -109,31 +169,33 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Things you'll need">
+			text="Planning">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="000000001">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Time: Three 60-90 min. Meetings, time for phone calls">
+			text="Days to weeks">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="000000002">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Materials:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Templates">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Contact information">
+			text="Worksheet index">
 			</text>
 		</textBlock>
 	</container>
@@ -143,49 +205,46 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 1 Outputs:">
+			text="Centering Equity">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000003">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Core team">
+			text="Collaboration">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000004">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- List of team members">
+			text="Representation">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000005">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Team storytelling results">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- List of goals">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- List of activities">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Project plan">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Reflection results">
+			text="Voice">
 			</text>
 		</textBlock>
 	</container>

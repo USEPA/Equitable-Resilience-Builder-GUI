@@ -5,7 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Step 3: Reflection and Next Steps">
+			text="Reflection and Next Steps">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Congrats, you made it to the end of the second chapter!">
+			text="Congrats, you made it to the end of the engagement section!">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -27,7 +27,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Remember, the relationships you have, and continue to build, with community members/groups throughout the ERB process will be instrumental to the implementation of equitable actions. Engage your community throughout the ERB process to ensure you can utilize the relationships to inform the project later on. Keep in mind that communities are all unique - tailor the approach to your community.">
+			text="Remember, the relationships you have, and continue to build, with community members/groups throughout the ERB process will be instrumental to the implementation of equitable actions. Engage your community throughout the ERB process to ensure you can utilize the relationships to inform the project later on. Keep in mind that communities are all unique - tailor the approach to your community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -41,37 +41,109 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Take a minute to think about what you accomplished in this chapter. Reflect upon and discuss the following questions, either individually or with your core team:">
+			text="Take a minute to think about what you accomplished in this chapter. Reflect upon and discuss the following questions, either individually or with your core team:">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- What went well with you community engagement planning process?">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="What went well with your initial community engagement plan implementation?">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- What was a challenge in developing your community engagement process? How will you overcome it?">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="What was a challenge in developing your community engagement process? How will you overcome it?">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Who have you planned to engage that may not have been included in previous planning processes?">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Who have you engaged that may not have been included in previous planning processes?">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- How will you maintain relationships over the long-term?">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="How will you maintain relationships over the long-term?">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- How have you addressed issue of equity with your engagement plan?">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="How have you addressed issue of equity with your engagement plan?">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="What challenges did you encounter in initial engagement? How did you/will you address these challenges?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -85,7 +157,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Now that you've reflected, make any adjustments to your community engagement plan or project plan that may be needed. (Remember, it's okay to make changes!) Next, begin to contact community members and set dates for any engagement sessions you planned.">
+			text="Now that you've reflected, make any adjustments to your community engagement plan or project plan that may be needed. (Remember, it's okay to make changes!) Continue to contact community members and set dates for any engagement sessions you planned.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -93,7 +165,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Now you're ready for the next chapter - Click here to start on Chapter 3: ">
+			text="Now you're ready for the next chapter - Click here to start on ">
 			</text>
 			<text
 			size="16.0"
@@ -111,87 +183,43 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Thing's you'll need:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Time:">
+			text="Planning">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" 1 hr">
+			text="&#xD;">
 			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Materials:">
+			fontStyle="Regular"
+			text="1 hr">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- ">
+			text="&#xD;">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Community Engagement Plan"
-			linkType="externalDOC"
-			link="Ch2_Community_Engagement_Plan.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" worksheet">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Either already existing lists of community groups or your recently completed ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Community Connections Table"
-			linkType="externalDOC"
-			link="Ch2_Community_Connections_Table.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" &amp; ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Diagram of Community Connections"
-			linkType="externalDOC"
-			link="Ch2_Diagram_Community_Connections.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- ">
-			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Reflection diary"
 			linkType="externalDOC"
-			link="Chs_1_5_Reflection_Results.docx">
+			link="Ch1_Reflection_Diary.docx">
 			</text>
 		</textBlock>
 	</container>
@@ -201,13 +229,35 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Activity outputs:">
+			text="Centering Equity">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Completed reflection">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000016">
+			</icon>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000015">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="As you reflect on everything you've achieved in this section, you may also want to gather feedback from people you've started to engage. Are they clear about what you've asked of them, or what information you've shared? Do they have suggestions for deepening your engagement and reaching those hard-to-reach members of your community?">
 			</text>
 		</textBlock>
 	</container>

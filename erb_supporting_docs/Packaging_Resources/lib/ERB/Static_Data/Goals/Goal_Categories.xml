@@ -3,36 +3,38 @@
 		<chapters>
 			<chapter id="00001">
 				<assignedActivities>
-					<ChapterActivity id="000001">
-						<assignedSteps>
-							<ChapterActivityStep id="0000001">
-								<assignedInteractiveActivities>
-									<ChapterActivityStepInteractiveActivity id="00000002"/>
-								</assignedInteractiveActivities>
-							</ChapterActivityStep>
+					<ChapterActivity id="000001"></ChapterActivity>
+					<ChapterActivity id="0000001">
+						<assignedInteractiveActivities>
+							<ChapterActivityInteractiveActivity id="00000002"/>
+						</assignedInteractiveActivities>
+					</ChapterActivity>
+					<ChapterActivity id="000031">
+					<assignedSteps>
+							<ChapterActivityStep id="0000008"/>
+							<ChapterActivityStep id="0000009"/>
 						</assignedSteps>
 					</ChapterActivity>
 					<ChapterActivity id="000002">
-						<assignedSteps>
-							<ChapterActivityStep id="0000002"/>
+					<assignedSteps>
+							<ChapterActivityStep id="0000008"/>
+							<ChapterActivityStep id="0000010"/>
 						</assignedSteps>
 					</ChapterActivity>
 					<ChapterActivity id="000003">
-						<assignedSteps>
-							<ChapterActivityStep id="0000003"/>
-							<ChapterActivityStep id="0000004"/>
-						</assignedSteps>
 					</ChapterActivity>
 					<ChapterActivity id="000004"/>
 				</assignedActivities>
 			</chapter>
 			<chapter id="00002">
 				<assignedActivities>
+					<ChapterActivity id="000032"/>
 					<ChapterActivity id="000005"/>
 					<ChapterActivity id="000006"/>
 					<ChapterActivity id="000007"/>
 					<ChapterActivity id="000008"/>
 					<ChapterActivity id="000009"/>
+					<ChapterActivity id="000033"/>
 				</assignedActivities>
 				<assignedSteps>
 					<ChapterStep id="0001"/>

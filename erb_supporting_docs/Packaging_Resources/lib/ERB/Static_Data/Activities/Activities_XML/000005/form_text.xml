@@ -5,7 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Step 1: Identify and Diagram Community Connections">
+			text="Identify and Diagram Community Connections">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,15 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Activity 1: Identify Community Connections">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="In this activity, the core team will identify community connections to provide a foundation for a community engagement plan.">
+			text="In this activity, the core team will identify community connections to provide a foundation for a community engagement plan. This activity may also potentiall identify representation or knowledge gaps in your core team. You may choose to invite others to join your core team based on these gaps.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -35,7 +27,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;This activity will help the core team ensure that everyone who needs to be present in the ERB process will be included and that equity is centered. This activity may be different than other stakeholder analyses as it is centering trust and resilience in the community.">
+			text="This activity will help the core team ensure that everyone who needs to be present in the ERB process will be included.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -49,7 +41,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Core team meets for a 2-hours session. First, core team brings together any existing lists of community members and brainstorms, discusses underrepresented community members, and records potential community member connections in the ">
+			text="Gather your core team. First, the core team brings together any existing lists of community members. Then the team will brainstorm and discuss underrepresented community members. Record potential community member connections in the ">
 			</text>
 			<text
 			size="16.0"
@@ -57,7 +49,7 @@
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
 			linkType="externalDOC"
-			link="Ch2_Community_Connections_Table.docx">
+			link="Ch2_CommunityConnections_Table.docx">
 			</text>
 			<text
 			size="16.0"
@@ -73,57 +65,43 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Thing's you'll need:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Time:">
+			text="Planning">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" 2-hour meeting">
+			text="&#xD;">
 			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Materials:">
+			fontStyle="Regular"
+			text="Time: 2-hours meeting">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;-Sticky notes, virtual whiteboard already existing stakeholder map, network analysis, or community engagement summaries;">
+			text="&#xD;">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;-Template for ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Community Connections Table [">
-			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="link"
+			text="Community Connections Table"
 			linkType="externalDOC"
-			link="Ch2_Community_Connections_Table.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="]">
+			link="Ch2_CommunityConnections_Table.docx">
 			</text>
 		</textBlock>
 	</container>
@@ -133,13 +111,44 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Activity outputs:">
+			text="Centering Equity">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Completed Community Connections Table">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000004">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="When thinking about the groups in your community, make sure you consider smaller minority groups that might get overlooked. Using EPA's EJScreen Tool, ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.epa.gov/ejscreen"
+			linkType="URL"
+			link="https://www.epa.gov/ejscreen">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text=" can help you learn more about your community, if you need help.">
 			</text>
 		</textBlock>
 	</container>

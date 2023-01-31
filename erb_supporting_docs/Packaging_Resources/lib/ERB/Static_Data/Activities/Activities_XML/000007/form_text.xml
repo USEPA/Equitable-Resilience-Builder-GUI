@@ -5,7 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Step 2: Develop a Community Engagement Plan">
+			text="Develop a Community Engagement Plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -21,7 +21,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In this activity, you will determine how and in what ways community members will be engaged in the ERB process.">
+			text="In this activity, you will determine how and in what ways you will engage community members in the ERB process.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -35,7 +35,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;It is important to consider the type of engagement that is appropriate for your project. Different types of engagement have different levels of involvement by community members and different expectations for the impact of that involvement on decision making (see ">
+			text="It is important to consider the type of engagement that is appropriate for your project. Different types of engagement have different levels of involvement by community members and different expectations for the impact of that involvement on decision making (see ">
 			</text>
 			<text
 			size="16.0"
@@ -63,7 +63,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Core team will meet to review the opportunities for engagement throughout the ERB process. The team will discuss specific considerations of underrepresented groups in your community and how you might invite them to the table. Then the team will record how different audiences should be engaged throughout the ERB process in column 'E' of the ">
+			text="The core team will meet to review the opportunities for engagement throughout the ERB process. The team will discuss specific considerations of underrepresented groups in your community and how you might invite them to the table. Open the ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Engagement Plan"
+			linkType="externalDOC"
+			link="Ch2_CommunityEngagement_Plan.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" worksheet to find detailed instructions on completing column E of the ">
 			</text>
 			<text
 			size="16.0"
@@ -71,13 +85,13 @@
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
 			linkType="externalDOC"
-			link="Ch2_Community_Connections_Table.docx">
+			link="Ch2_CommunityConnections_Table.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=".">
+			text=" to complete this activity.">
 			</text>
 		</textBlock>
 	</container>
@@ -87,65 +101,62 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Thing's you'll need:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Time:">
+			text="Planning">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" 2-hour meeting">
+			text="&#xD;">
 			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Materials:">
+			fontStyle="Regular"
+			text="Time: 2-hour meeting">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- Collaborative notetaking materials (ex: either virtual or in-person white board)">
+			text="&#xD;">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- ">
-			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
 			linkType="externalDOC"
-			link="Ch2_Community_Connections_Table.docx">
+			link="Ch2_CommunityConnections_Table.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- ">
+			text="&#xD;">
 			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Engagement Plan"
 			linkType="externalDOC"
-			link="Ch2_Community_Engagement_Plan.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" worksheet">
+			link="Ch2_CommunityEngagement_Plan.docx">
 			</text>
 		</textBlock>
 	</container>
@@ -155,27 +166,30 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Activity outputs:">
+			text="Centering Equity">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Completed Scope of Engagement Activity within the ">
+			text="&#xD;">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Community Engagement Plan"
-			linkType="externalDOC"
-			link="Ch2_Community_Engagement_Plan.docx">
-			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000014">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" worksheet">
+			text="&#xD;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Remember- different groups of people may prefer different types of engagement. Make sure your scoping includes meeting people where they already are.">
 			</text>
 		</textBlock>
 	</container>

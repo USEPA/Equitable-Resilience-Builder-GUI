@@ -5,7 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 2: Engage your community">
+			text="Engage your community">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,205 +13,164 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This chapter helps you begin the community engagement process that will provide the foundation for your work in ERB. This chapter guides you through considerations for community engagement such as creating connections and building and maintaining relationships. This community engagement process will be important to completing the next ERB chapters.">
+			text="This section provides resources and activities to help you plan and get started with community engagement.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="There are three potential steps in Chapter 2:">
+			fontStyle="Bold"
+			text="In this section you can select activities that help you to:">
 			</text>
-		</textBlock>
-		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1. ">
+			text="&#xD;">
 			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Center Equity in Engagement">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
 			text="Identify and diagram your community connections.">
 			</text>
-		</textBlock>
-		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="2. ">
+			text="&#xD;">
 			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
-			text="Create a Community Engagement Plan.">
+			text="Create a Community Engagement Plan">
 			</text>
-		</textBlock>
-		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="3. ">
+			text="&#xD;">
 			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
-			text="Reflection.">
+			text="Start Community Engagement">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Each chapter concludes with reflection prompts to check in and take stock.">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Reflect">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="Depending on what information you already have on hand, here are the routes you can take:">
+			fontStyle="Bold"
+			text="What you'll have at the end of this section:">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- If you haven't done any community engagement yet, we recommend that you work through all Ch. 2 activities step-wise, starting ">
+			text="&#xD;">
 			</text>
+			<icon
+			width="20.0"
+			height="20.0"
+			id="000000012">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="here"
-			linkType="internalActivity"
-			link="000005">
+			fontStyle="Regular"
+			text="A Community Connections Table">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- If you need to update, expand, or identify gaps in your existing community network, begin with a community connections diagram ">
+			text="&#xD;">
 			</text>
+			<icon
+			width="20.0"
+			height="20.0"
+			id="000000012">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="here"
-			linkType="internalActivity"
-			link="000006">
+			fontStyle="Regular"
+			text="A Community Connections Diagram">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- If you are already well connected with your community, begin with the community engagement planning process ">
+			text="&#xD;">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="here"
-			linkType="internalActivity"
-			link="000007">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- If you want to learn more about the importance of equity-informed community engagement, click ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="here"
-			linkType="internalStep"
-			link="0001">
-			</text>
+			<icon
+			width="20.0"
+			height="20.0"
+			id="000000012">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- If you want to learn more about community engagement best practices, click ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="here"
-			linkType="internalStep"
-			link="0002">
+			text="A Community Engagement Plan">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="People you'll need">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Core team">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Key community group (consult as needed)">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Time you'll need">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Estimated 5 hours">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Materials you'll need:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Any existing community engagement planning materials">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Activity templates">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Collaborative notetaking materials (ex: either virtual or in-person white board)">
-			</text>
-		</textBlock>
+
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
@@ -219,25 +178,92 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 2 Outputs:">
+			text="Centering Equity">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- A Community Connections Table">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000014">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Empathy">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- A Community Connections Diagram">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000004">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Representation">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- A Community Engagement Plan">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000015">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Networking">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000016">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Adaptability">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000017">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Trust">
 			</text>
 		</textBlock>
 	</container>
