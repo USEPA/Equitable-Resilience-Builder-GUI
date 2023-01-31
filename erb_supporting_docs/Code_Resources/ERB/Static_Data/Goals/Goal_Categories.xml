@@ -3,14 +3,11 @@
 		<chapters>
 			<chapter id="00001">
 				<assignedActivities>
-					<ChapterActivity id="000001">
-						<assignedSteps>
-							<ChapterActivityStep id="0000001">
-								<assignedInteractiveActivities>
-									<ChapterActivityStepInteractiveActivity id="00000002"/>
-								</assignedInteractiveActivities>
-							</ChapterActivityStep>
-						</assignedSteps>
+					<ChapterActivity id="000001"></ChapterActivity>
+					<ChapterActivity id="0000001">
+						<assignedInteractiveActivities>
+							<ChapterActivityInteractiveActivity id="00000002"/>
+						</assignedInteractiveActivities>
 					</ChapterActivity>
 					<ChapterActivity id="000031"/>
 					<ChapterActivity id="000002">

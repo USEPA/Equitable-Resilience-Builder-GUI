@@ -31,4 +31,5 @@
 	<activity id="000031" longName="Set goals for using ERB" shortName="Set Goals" status="ready" notes="" rating="100"/>
 	<activity id="000032" longName="Centering Equity in Engagement" shortName="Centering Equity" status="ready" notes="" rating="100"/>
 	<activity id="000033" longName="Start Engaging!" shortName="Start Engaging!" status="ready" notes="" rating="100"/>
+	<activity id="0000001" longName="Team storytelling activity" shortName="Team storytelling activity" status="ready" notes="" rating="100"/>
 </activities>

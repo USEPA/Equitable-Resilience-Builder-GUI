@@ -1,5 +1,4 @@
 <steps>
-	<step id="0000001" longName="Team storytelling activity" shortName="Team storytelling activity" status="ready" notes="" rating="100" type="mainForm"/>
 	<step id="0000002" longName="Goal setting scenario" shortName="Goal setting scenario" status="ready" notes="" rating="100" type="mainForm"/>
 	<step id="0000003" longName="Activity to Goal Matching Example" shortName="Activity to Goal Matching Example" status="ready" notes="" rating="100" type="mainForm"/>
 	<step id="0000004" longName="Activity Selection Scenarios" shortName="Activity Selection Scenarios" status="ready" notes="" rating="100" type="mainForm"/>
