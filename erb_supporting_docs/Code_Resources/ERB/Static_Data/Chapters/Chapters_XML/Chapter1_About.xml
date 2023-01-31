@@ -164,7 +164,7 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="30.0"
+			size="40.0"
 			id="000000001">
 			</icon>
 			<text
@@ -176,7 +176,7 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="30.0"
+			size="40.0"
 			id="000000002">
 			</icon>
 			<text
@@ -198,7 +198,7 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="30.0"
+			size="50.0"
 			id="000000003">
 			</icon>
 			<text
@@ -210,7 +210,7 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="30.0"
+			size="50.0"
 			id="000000004">
 			</icon>
 			<text
@@ -222,7 +222,7 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			size="30.0"
+			size="50.0"
 			id="000000005">
 			</icon>
 			<text

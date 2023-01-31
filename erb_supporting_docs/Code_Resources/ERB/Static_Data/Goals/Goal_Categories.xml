@@ -12,27 +12,23 @@
 							</ChapterActivityStep>
 						</assignedSteps>
 					</ChapterActivity>
+					<ChapterActivity id="000031"/>
 					<ChapterActivity id="000002">
-						<assignedSteps>
-							<ChapterActivityStep id="0000002"/>
-						</assignedSteps>
 					</ChapterActivity>
 					<ChapterActivity id="000003">
-						<assignedSteps>
-							<ChapterActivityStep id="0000003"/>
-							<ChapterActivityStep id="0000004"/>
-						</assignedSteps>
 					</ChapterActivity>
 					<ChapterActivity id="000004"/>
 				</assignedActivities>
 			</chapter>
 			<chapter id="00002">
 				<assignedActivities>
+					<ChapterActivity id="000032"/>
 					<ChapterActivity id="000005"/>
 					<ChapterActivity id="000006"/>
 					<ChapterActivity id="000007"/>
 					<ChapterActivity id="000008"/>
 					<ChapterActivity id="000009"/>
+					<ChapterActivity id="000033"/>
 				</assignedActivities>
 				<assignedSteps>
 					<ChapterStep id="0001"/>

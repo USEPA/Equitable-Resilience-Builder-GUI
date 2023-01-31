@@ -986,10 +986,10 @@ public class XMLManager {
 															t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 														}
 													}
-													HBox hBox = new HBox();
-													hBox.setAlignment(Pos.CENTER_LEFT);
-													hBox.getChildren().add(t);
-													textFlow.getChildren().add(hBox);
+//													HBox hBox = new HBox();
+//													hBox.setAlignment(Pos.CENTER_LEFT);
+//													hBox.getChildren().add(t);
+													textFlow.getChildren().add(t);
 													if(t.getText().length() > maxTextLength) maxTextLength = t.getText().length();
 										} else if (nodeName.contentEquals("icon")) {
 											Node iconNode = childNode;

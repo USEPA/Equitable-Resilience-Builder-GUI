@@ -10,4 +10,10 @@
 	<image id="000000009" description="scroll with swirls"/>
 	<image id="000000010" description="cloud with lightening"/>
 	<image id="000000011" description="person balancing"/>
+	<image id="000000012" description="checkmark"/>
+	<image id="000000013" description="bullet point"/>
+	<image id="000000014" description="heart in circle"/>
+	<image id="000000015" description="person in circle with node branches"/>
+	<image id="000000016" description="infinity symbol"/>
+	<image id="000000017" description="shield with checkmark"/>
 </images>

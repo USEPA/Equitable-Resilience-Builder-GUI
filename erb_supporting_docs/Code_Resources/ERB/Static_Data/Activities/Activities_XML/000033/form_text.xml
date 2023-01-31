@@ -5,7 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Identify and Diagram Community Connections">
+			text="Start Engaging!">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In this activity, the core team will identify community connections to provide a foundation for a community engagement plan. This activity may also potentiall identify representation or knowledge gaps in your core team. You may choose to invite others to join your core team based on these gaps.">
+			text="In this step, the core team will begin to implement that community engagement plan.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -27,7 +27,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This activity will help the core team ensure that everyone who needs to be present in the ERB process will be included.">
+			text="A community engagement plan helps you figure out how you're going to communicate and coordinate with community members. This planning process can help you expand your community network, enhance inclusion, and strengthen community buy-in and participation in next ERB activities.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -41,21 +41,29 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Gather your core team. First, the core team brings together any existing lists of community members. Then the team will brainstorm and discuss underrepresented community members. Record potential community member connections in the ">
+			text="Refer to your completed ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Community Connections Table"
-			linkType="externalDOC"
+			text="Community Engagement Plan"
+			linkType=""
 			link="">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=".">
+			text=". Start with tackling the immediate action items you identified in the plan. Then, refer back to this plan as needed throughout the rest of the ERB activites.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Remember engagement takes time and the earlier you start, the better!">
 			</text>
 		</textBlock>
 	</container>
@@ -81,7 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Time: 2-hours meeting">
+			text="Time: Ongoing implementation, both independent and group work, across multiple months">
 			</text>
 			<text
 			size="16.0"
@@ -97,13 +105,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Community Connections Table"
+			text="Community Engagement Plan"
 			linkType=""
 			link="">
 			</text>
 		</textBlock>
 	</container>
-	<container id="bottomPanelVBox">
+		<container id="bottomPanelVBox">
 		<textBlock>
 			<text
 			size="16.0"
@@ -119,7 +127,7 @@
 			</text>
 			<icon
 			size="50.0"
-			id="000000004">
+			id="000000017">
 			</icon>
 			<text
 			size="16.0"
@@ -131,21 +139,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="When thinking about the groups in your community, make sure you consider smaller minority groups that might get overlooked. Using EPA's EJScreen Tool, ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="https://www.epa.gov/ejscreen"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text=" can help you learn more about your community, if you need help.">
+			text="In the early stages of your engagement, you may want to focus on building buy-in and trust with community members. You can build trust by being transparent about the resilience planning process and clarifying expectations.">
 			</text>
 		</textBlock>
 	</container>

@@ -5,15 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Step 1: Identify and Diagram Community Connections">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Activity 2: Diagram Community Connections">
+			text="Diagram Community Connections">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -35,7 +27,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;This activity will help capture the social network in your community, including flow of information and resources and central nodes of the community, as a diagnostic tool to identify gaps.">
+			text="This activity will help capture the social network in your community so that you can identify and address gaps in engagement. For example, the activity will guide you through documenting how people get their information, how resources are distributed and shared, and how organizations are connected.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -49,7 +41,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Once community connections are identified, the core team will meet to ">
+			text="The core team will meet to ">
 			</text>
 			<text
 			size="16.0"
@@ -63,7 +55,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=". The team will draw out specific relationships between community members/organizations. There relationships may include the flow of resources and information to identify where strong connections already exist and where they are missing.">
+			text=". We recommend building on the Community Connections Table completed in first activity. The team will draw out specific relationships between community members/organizations.">
 			</text>
 		</textBlock>
 	</container>
@@ -73,65 +65,59 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Thing's you'll need:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Time:">
+			text="Planning">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" 2-hour meeting">
+			text="&#xD;">
 			</text>
+			<icon
+			size="25.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
-			text="&#xD;Materials:">
+			fontStyle="Regular"
+			text="Time: 2-hour meeting">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;-White board or large sheet of paper">
+			text="&#xD;">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;-Either already existing lists of community groups or your recently completed ">
-			</text>
+			<icon
+			size="25.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
-			linkType="externalDOC"
-			link="Ch2_Community_Connections_Table.docx">
+			linkType=""
+			link="">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- ">
+			text="&#xD;">
 			</text>
+			<icon
+			size="25.0"
+			id="000000013">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Diagram Community Connections"
-			linkType="externalDOC"
-			link="Ch2_Diagram_Community_Connections.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" worksheet">
+			linkType=""
+			link="">
 			</text>
 		</textBlock>
 	</container>
@@ -141,21 +127,29 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Activity outputs:">
+			text="Centering Equity">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- A completed worksheet ">
+			text="&#xD;">
+			</text>
+			<icon
+			size="50.0"
+			id="000000015">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Diagram Community Connections"
-			linkType="externalDOC"
-			link="Ch2_Diagram_Community_Connections.docx">
+			fontStyle="Italic"
+			text="When you diagram your community connections, make sure you think about the flow of resources and information. This will help you identify where strong connections already exist, and where weak or non-existing connections could be made.">
 			</text>
 		</textBlock>
 	</container>
