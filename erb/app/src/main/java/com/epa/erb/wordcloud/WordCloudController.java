@@ -450,6 +450,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	}
 
 	public void writeWordCloudJSONPFile(File JSONPFile) {
+		
 		try {
 			PrintWriter printWriter = new PrintWriter(JSONPFile);
 			printWriter.println("wordclouddata = [");
@@ -463,8 +464,10 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			printWriter.println("],");
 			printWriter.println("sizedata = [");
 			printWriter.println("{");
-			printWriter.println("height: \"" + (wordCloudWebView.getHeight()-75) + "\",");
-			printWriter.println("width: \"" + (wordCloudWebView.getWidth()-50) + "\",");
+			int numberOfWords = tableView.getItems().size();
+			int size = ((numberOfWords/30) *100) +300;
+			printWriter.println("height: \"" + size + "\",");
+			printWriter.println("width: \"" + size + "\",");
 			printWriter.println("},");
 			printWriter.println("]");
 			
