@@ -111,7 +111,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		initTableView();
 		if(project.getProjectName().contentEquals("Explore")) {
 			setUnEditable();
-			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, "f398991fff65405cbb475302b6064e02");
+			File wordCloudHTMLFile =  new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + getGuid() + "\\index.html");
 			if (wordCloudHTMLFile.exists()) {
 				try {
 					wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toURL().toString());
@@ -130,7 +130,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), app.getEngagementActionController().getListOfUniqueChapters());
 			fileHandler.createGUIDDirectoriesForGoal(project, goal, app.getEngagementActionController().getListOfUniqueChapters());
 		}
-		copyWordCloudHTMLToGUIDDirectory();
+		copyWordCloudFilesToGUIDDirectory();
 		
 		inputTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -422,14 +422,10 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		if (webEngineLocation != null) {
 			wordCloudWebView.getEngine().reload();
 		} else {
-			File wordCloudHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, getGuid());
+			File wordCloudHTMLFile =  new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + getGuid() + "\\index.html");
+			System.out.println(wordCloudHTMLFile.getPath());
 			if (wordCloudHTMLFile.exists()) {
 				try {
-					try {
-						Thread.sleep(5000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
 					wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toURL().toString());
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
@@ -448,14 +444,14 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ImageView imageView = new ImageView();
-		imageView.setFitWidth(wordCloudWebView.getWidth());
-		imageView.setFitHeight(wordCloudWebView.getHeight());
-		Image image = new Image(saveFile.getPath());
-		imageViewClicked(imageView);
-		imageView.setImage(image);
-		vBox.getChildren().clear();
-		vBox.getChildren().add(imageView);
+//		ImageView imageView = new ImageView();
+//		imageView.setFitWidth(wordCloudWebView.getWidth());
+//		imageView.setFitHeight(wordCloudWebView.getHeight());
+//		Image image = new Image(saveFile.getPath());
+//		imageViewClicked(imageView);
+//		imageView.setImage(image);
+//		vBox.getChildren().clear();
+//		vBox.getChildren().add(imageView);
 	}
 	
 	public void imageViewClicked(ImageView imageView) {
@@ -483,10 +479,16 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		}
 	}
 	
-	public void copyWordCloudHTMLToGUIDDirectory() {
-		File staticHTMLFile = fileHandler.getStaticWordCloudHTML();
-		File destinationForHTMLFile = fileHandler.getIndexHTMLFileForInteractiveActivity(project, goal, getGuid());
-		fileHandler.copyFile(staticHTMLFile, destinationForHTMLFile);
+	public void copyWordCloudFilesToGUIDDirectory() {
+		File staticWordCloudDirectory = fileHandler.getStaticWordCloudDirectory();
+		
+		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
+		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+		
+		for(File sourceFile: staticWordCloudDirectory.listFiles()) {
+			File destFile = new File(guidDirectory.getPath() + "\\" + sourceFile.getName());
+			fileHandler.copyFile(sourceFile, destFile);
+		}		
 	}
 
 	@FXML
