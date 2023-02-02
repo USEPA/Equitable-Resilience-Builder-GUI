@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.imageio.ImageIO;
 import com.epa.erb.App;
 import com.epa.erb.InteractiveActivity;
@@ -300,9 +303,15 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		boolean excludeWords = excludeCommonCheckBox.isSelected();
 		HashMap<String, Integer> countMap = countWordOccurrences(excludeWords, phrase);
 		for(String word: countMap.keySet()) {
-			int count = countMap.get(word);
+			boolean isCleaned = false;
+			String cleanedWord = word;
+			while(!isCleaned) {
+				cleanedWord = cleanWord(cleanedWord);
+				isCleaned = wordIsClean(word);
+			}
+			int count = countMap.get(cleanedWord);
 			int size = count;
-			createWordCloudItem(merge, word, count, size);
+			createWordCloudItem(merge, cleanedWord, count, size);
 		}
 		adjustCountToSize();
 	}
@@ -312,20 +321,75 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		//Maybe do something here?
 	}
 	
+	public boolean wordIsClean(String word) {
+		if (word != null) {
+			Pattern lettersAndNumbers = Pattern.compile("([A-Za-z0-9])");
+			word = word.trim();
+			if (word.length() >= 2) {
+				String firstChar = word.substring(0, 1);
+				Matcher matcher1 = lettersAndNumbers.matcher(firstChar);
+
+				String lastChar = word.substring(word.length() - 1, word.length());
+				Matcher matcher2 = lettersAndNumbers.matcher(lastChar);
+
+				boolean firstCharOK = matcher1.matches();
+				boolean lastCharOK = matcher2.matches();
+
+				if (!firstCharOK || !lastCharOK) {
+					return false;
+				}
+			} else if(word.length() > 0) {
+				Matcher matcher = lettersAndNumbers.matcher(word);
+				return matcher.matches();
+			}
+		}
+		return true;
+	}
+	
+	public String cleanWord(String word) {
+		if (word != null) {
+			Pattern lettersAndNumbers = Pattern.compile("([A-Za-z0-9])");
+			word = word.trim();
+			if(word.length() >= 2) {
+				String firstChar = word.substring(0, 1);
+				Matcher matcher1 = lettersAndNumbers.matcher(firstChar);
+
+				String lastChar = word.substring(word.length() - 1, word.length());
+				Matcher matcher2 = lettersAndNumbers.matcher(lastChar);
+
+				boolean firstCharOK = matcher1.matches();
+				boolean lastCharOK = matcher2.matches();
+				
+				if(!firstCharOK) {
+					word = word.substring(1, word.length());
+				}
+				
+				if(!lastCharOK) {
+					word = word.substring(0, word.length()-1);
+				}
+				
+			} else if (word.length() > 0) {
+				return "";
+			}
+		}
+		return word;
+	}
+	
 	public HashMap<String, Integer> countWordOccurrences(boolean excludeCommonWords, String string) {
 		HashMap<String, Integer> countMap = new HashMap<String, Integer>();
 		if(string !=null && string.length() > 0) {
 			String newLinesRemoved = string.replaceAll("\n", "");
 			String [] words = newLinesRemoved.split(" ");
 			for(String word: words) {
+				String cleanedWord = cleanWord(word);
 				if(excludeCommonWords) { //If check box to exclude is selected
-					if(excludedWordSet.contains(word.toLowerCase().trim())) { //If is an excluded word
+					if(excludedWordSet.contains(cleanedWord.toLowerCase().trim())) { //If is an excluded word
 						continue; //skip
 					} else { //If not an excluded word
-						increaseCountOfWord(countMap, word);
+						increaseCountOfWord(countMap, cleanedWord);
 					}
 				} else { //If check box to exclude is NOT selected
-					increaseCountOfWord(countMap, word);
+					increaseCountOfWord(countMap, cleanedWord);
 				}
 			}
 		}
