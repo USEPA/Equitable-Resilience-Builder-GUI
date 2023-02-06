@@ -1,0 +1,82 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Explore ERB">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="It may seem like a lot, but the ERB process is designed to be flexible. We understand that all communities are different and face distinct disaster and climate change risks. We also realize that you may have unique resource constraints on getting your work done. You can decide which activities in which chapters to carry out, to make sure you can get the work done you need to do, in the most inclusive way possible given what you've done already and the time frame, resources, and team you have. Some places you might want to check out given your interests:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- You're expanding the social vulnerability component of an existing HMP? >> ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Ch 3 SVA step"
+			linkType="internalActivity"
+			link="000033">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- You want to better engage community members in resilience planning? >> ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Ch 2 landing page"
+			linkType="internalActivity"
+			link="00002">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- You need to figure out what the main hazards or threats to your community are? >> ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Ch 3 hazards ID step"
+			linkType="internalActivity"
+			link="000010">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- You want to check out indicators for assessing your community's built, natural, and social environments? >> ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Ch 4 step 1"
+			linkType="internalActivity"
+			link="000017">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

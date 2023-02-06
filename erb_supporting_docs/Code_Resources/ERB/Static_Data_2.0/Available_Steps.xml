@@ -1,0 +1,15 @@
+<steps>
+	<step id="0000002" longName="Goal setting scenario" shortName="Goal setting scenario" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0000003" longName="Activity to Goal Matching Example" shortName="Activity to Goal Matching Example" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0000004" longName="Activity Selection Scenarios" shortName="Activity Selection Scenarios" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0001" longName="The Importance of Community Engagement and Building Relationships" shortName="The Importance of Community Engagement and Building Relationships" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0002" longName="Community Engagement Best Practices" shortName="Community Engagement Best Practices" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0000005" longName="Summary of Hazards, Disasters, Threats and Equity Issues in your community" shortName="Summary of Hazards, Disasters, Threats and Equity Issues in your community" status="ready" notes="" rating="100" type="outputForm"/>
+	<step id="0003" longName="What are indicators of equitable resilience" shortName="What are indicators of equitable resilience" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0004" longName="What to expect with indicator cards" shortName="What to expect with indicator cards" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0000006" longName="Sorting indicator cards activity" shortName="Sorting indicator cards activity" status="ready" notes="" rating="100" type="mainForm" />
+	<step id="0000007" longName="Lay your cards on the table activity" shortName="Lay your cards on the table activity" status="ready" notes="" rating="100" type="mainForm"/>
+	<step id="0000008" longName="Introduction to examples" shortName="Intro to examples" status="ready" notes="" rating="100" type="alternativeForm"/>
+	<step id="0000009" longName="Goal setting examples" shortName="Goal examples" status="ready" notes="" rating="100" type="alternativeForm"/>
+	<step id="0000010" longName="Activity selection examples" shortName="Activity examples" status="ready" notes="" rating="100" type="alternativeForm"/>
+</steps>

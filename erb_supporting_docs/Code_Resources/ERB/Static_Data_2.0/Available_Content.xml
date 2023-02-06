@@ -1,0 +1,85 @@
+<content_xmls>
+	<content id="01" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="02" guid="" type="mainForm" status="ready" shortName="The Importance of Storytelling" longName="The Importance of Storytelling" />
+	<content id="03" guid="" type="mainForm" status="ready" shortName="Storytelling Best Practices" longName="Storytelling Best Practices" />
+	<content id="04" guid="" type="mainForm" status="ready" shortName="Equity and Resilience" longName="Equity and Resilience" />
+	<content id="05" guid="" type="mainForm" status="ready" shortName="How others are using ERB" longName="How others are using ERB" />
+	<content id="06" guid="" type="mainForm" status="ready" shortName="How does it work" longName="How does it work" />
+	<content id="07" guid="" type="mainForm" status="ready" shortName="Who are ERB users?" longName="Who are ERB users?" />
+	<content id="08" guid="" type="mainForm" status="ready" shortName="What makes ERB different?" longName="What makes ERB different?" />
+	<content id="09" guid="" type="mainForm" status="ready" shortName="About ERB" longName="About ERB" />
+	<content id="10" guid="" type="mainForm" status="ready" shortName="Explore ERB" longName="Explore ERB" />
+	<content id="11" guid="" type="mainForm" status="ready" shortName="Importance of Engagement" longName="The Importance of Community Engagement and Building Relationships" />
+	<content id="12" guid="" type="mainForm" status="ready" shortName="Community Engagement Best Practices" longName="Community Engagement Best Practices" />
+	<content id="13" guid="" type="mainForm" status="ready" shortName="Indicators of Equitable Resilience?" longName="What are Indicators of Equitable Resilience?" />
+	<content id="14" guid="" type="mainForm" status="ready" shortName="What to Expect with Indicator Cards" longName="What to Expect with Indicator Cards" />
+	<content id="15" guid="" type="mainForm" status="ready" shortName="About Chapter 1" longName="About Chapter 1" />
+	<content id="16" guid="" type="mainForm" status="ready" shortName="About Chapter 2" longName="About Chapter 2" />
+	<content id="17" guid="" type="mainForm" status="ready" shortName="About Chapter 3" longName="About Chapter 3" />
+	<content id="18" guid="" type="mainForm" status="ready" shortName="About Chapter 4" longName="About Chapter 4" />
+	<content id="19" guid="" type="mainForm" status="ready" shortName="About Chapter 5" longName="About Chapter 5" />
+	<content id="20" guid="" type="mainForm" status="ready" shortName="Team Storytelling" longName="Team Storytelling" />
+	<content id="21" guid="" type="mainForm" status="ready" shortName="Goal Setting Scenario" longName="Goal Setting Scenario" />
+	<content id="22" guid="" type="mainForm" status="ready" shortName="Activity to Goal Matching Example" longName="Activity to Goal Matching Example" />
+	<content id="23" guid="" type="mainForm" status="ready" shortName="Activity Selection Scenarios" longName="Activity Selection Scenarios" />
+	<content id="24" guid="" type="outputForm" status="ready" shortName="Summary of Hazards, Disasters, Threats, and Equity Issues in your Community" longName="Summary of Hazards, Disasters, Threats, and Equity Issues in your Community" />
+	<content id="25" guid="" type="mainForm" status="ready" shortName="Sorting Indicator Cards" longName="Sorting Indicator Cards" />
+	<content id="26" guid="" type="mainForm" status="ready" shortName="Lay your Cards on the Table" longName="Lay your Cards on the Table" />
+	<content id="27" guid="" type="alternativeForm" status="ready" shortName="How have Communities used ERB?" longName="How have Communities used ERB?" />
+	<content id="28" guid="" type="alternativeForm" status="ready" shortName="How have other Communities use the ERB Tool? Goal Setting Examples" longName="How have other Communities use the ERB Tool? Goal Setting Examples" />
+	<content id="29" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="30" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="31" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="32" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="33" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="34" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="35" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="36" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="37" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="38" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="39" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="40" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="41" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="42" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="43" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="44" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="45" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="46" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="47" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="48" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="49" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="50" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="51" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="52" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="53" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="54" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="55" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="56" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="57" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="58" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="59" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="60" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="61" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="62" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="63" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="64" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="65" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="66" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="67" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="68" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="69" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="70" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="71" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="72" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="73" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="74" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="75" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="76" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="77" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="78" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="79" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="80" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="81" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="82" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+	<content id="83" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
+</content_xmls>

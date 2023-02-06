@@ -1,0 +1,24 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="The importance of storytelling">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Storytelling can be an important tool. It can help teams empower themselves, build trust between community members, aid in trauma recovery, share local knowledge, and forge new relationships. It can be a creative and accessible way of learning about past experiences with hazards and disasters, and a vision for a resilient future.">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

@@ -1,0 +1,30 @@
+<introPanels>
+	<introPanel
+	id="1"
+	name="Equity and resilience">
+	</introPanel>
+	<introPanel
+	id="2"
+	name="How others are using ERB">
+	</introPanel>
+	<introPanel
+	id="3"
+	name="How does it work">
+	</introPanel>
+	<introPanel
+	id="4"
+	name="Who is ERB for">
+	</introPanel>
+	<introPanel
+	id="5"
+	name="What makes erb different">
+	</introPanel>
+	<introPanel
+	id="6"
+	name="How ERB was made">
+	</introPanel>
+	<introPanel
+	id="7"
+	name="Explore ERB">
+	</introPanel>
+</introPanels>

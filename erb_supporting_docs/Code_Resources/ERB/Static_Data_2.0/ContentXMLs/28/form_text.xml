@@ -1,0 +1,30 @@
+<textBlocks>
+	<container id="titleVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How have other communities used the ERB tool?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="20.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Goal setting examples">
+			</text>
+		</textBlock>
+	</container>
+	<container id="leftVBox">
+	</container>
+	<container id="centerVBox">
+	<textBlock>
+			<icon width="800.0"
+			height="350.0" id="000000021"> </icon>
+		</textBlock>
+	</container>
+	<container id="rightVBox">
+	</container>
+</textBlocks>
