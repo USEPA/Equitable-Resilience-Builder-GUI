@@ -11,10 +11,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.imageio.ImageIO;
 import com.epa.erb.App;
 import com.epa.erb.InteractiveActivity;
@@ -25,15 +25,20 @@ import com.epa.erb.utility.XMLManager;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -42,19 +47,18 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.util.Callback;
-import javafx.concurrent.Worker.State;
 
 public class WordCloudController extends InteractiveActivity implements Initializable {
 
@@ -69,15 +73,15 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	@FXML
 	Button longAddButton;
 	@FXML
-	WebView wordCloudWebView;
-	@FXML
 	TextField inputTextField;
 	@FXML
 	TextArea inputTextArea;
 	@FXML
+	ChoiceBox<String> wordCloudChoiceBox;
+	@FXML
 	CheckBox excludeCommonCheckBox;
 	@FXML
-	ImageView imageView;
+	Label numberOfWordsLabel;
 	@FXML
 	TableView<WordCloudItem> tableView;
 	@FXML
@@ -105,35 +109,30 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		this.project = project;
 		this.goal = goal;
 	}
-
+	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) {		
+		updateNumberOfTableItemsLabel();
 		excludeCommonCheckBox.setSelected(true);
 		setExcludedWordSet();
-		wordCloudWebView.getEngine().setJavaScriptEnabled(true);
 		initTableView();
+		addTextLimiter(inputTextField, 30);
+		
 		if(project.getProjectName().contentEquals("Explore")) {
 			setUnEditable();
-			File wordCloudHTMLFile =  new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + getGuid() + "\\index.html");
-			if (wordCloudHTMLFile.exists()) {
-				try {
-					wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toURL().toString());
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
-				}
-			}
 			return;
 		}
 		
-		checkForExistingWordCloudData();
-		addTextLimiter(inputTextField, 30);
-		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, getGuid());
-		XMLManager xmlManager = new XMLManager(app);
-		if(!jsonpFile.getParentFile().exists()) {
+		File guidDataDirectory =fileHandler.getGUIDDataDirectory(project, goal);
+		if(!guidDataDirectory.exists() || (guidDataDirectory.exists() && guidDataDirectory.listFiles().length == 0)) {
+			XMLManager xmlManager = new XMLManager(app);
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), app.getEngagementActionController().getListOfUniqueChapters());
 			fileHandler.createGUIDDirectoriesForGoal(project, goal, app.getEngagementActionController().getListOfUniqueChapters());
 		}
-		copyWordCloudFilesToGUIDDirectory();
+		
+		fillChoiceBox(getExistingSavedWordCloudNames());
+		wordCloudChoiceBox.getSelectionModel().select(0);
+		wordCloudChoiceBox.setOnAction(e-> choiceBoxSelection());
 		
 		inputTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -144,18 +143,90 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			}
 		});
 		
-		wordCloudWebView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
-			public void changed(ObservableValue ov, State oldState, State newState) {
-				if (newState == State.SUCCEEDED) {
-					Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							snapshotWordCloud();
-						}
-					});
+	}
+	
+	private void choiceBoxSelection() {
+		String wordCloudSelected = wordCloudChoiceBox.getSelectionModel().getSelectedItem();
+		if (wordCloudSelected != null) {
+			if (!wordCloudSelected.contentEquals("-")) {
+				XMLManager xmlManager = new XMLManager(app);
+				File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
+				File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+				File dataXML = new File(guidDirectory.getPath() + "\\" + wordCloudSelected + "\\data.xml");
+				ArrayList<WordCloudItem> parsedWordCloudItems = xmlManager.parseWordCloudDataXML(dataXML);
+				if (parsedWordCloudItems != null) {
+					for (WordCloudItem wordCloudItem : parsedWordCloudItems) {
+						createWordCloudItem(wordCloudItem.merge, wordCloudItem.getPhrase(), wordCloudItem.getCount(),
+								wordCloudItem.getSize());
+					}
+					buildButtonAction();
+				}
+			} else {
+				WebView wordCloudWebView = initWebView();
+				tableView.getItems().clear();
+				mergeArrayList.clear();
+				tableView.refresh();
+			}
+		}
+		updateNumberOfTableItemsLabel();
+	}
+	
+	private ArrayList<String> getExistingSavedWordCloudNames(){
+		ArrayList<String> wordCloudNames = new ArrayList<String>();
+		wordCloudNames.add("-");
+		Pattern p = Pattern.compile("^[0-9]{4}$");
+		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
+		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+		for(File dir: guidDirectory.listFiles()) {
+			Matcher m = p.matcher(dir.getName());
+			if(!m.matches()) {
+				wordCloudNames.add(dir.getName());
+			}
+		}
+		return wordCloudNames;
+	}
+	
+	private void fillChoiceBox(ArrayList<String> wordCloudSavedNames) {
+		wordCloudChoiceBox.getItems().clear();
+		for(String s: wordCloudSavedNames) {
+			wordCloudChoiceBox.getItems().add(s);
+		}
+	}
+	
+	private WebView initWebView() {
+		Random random = new Random();
+		WebView wordCloudWebView= new WebView();
+		vBox.getChildren().clear();
+		wordCloudWebView.setContextMenuEnabled(false);
+		wordCloudWebView.setPrefHeight(Region.USE_COMPUTED_SIZE);
+		wordCloudWebView.setPrefWidth(Region.USE_COMPUTED_SIZE);
+		wordCloudWebView.setMaxHeight(Region.USE_COMPUTED_SIZE);
+		wordCloudWebView.setMaxWidth(Region.USE_COMPUTED_SIZE);
+		wordCloudWebView.setMinHeight(250);
+		wordCloudWebView.setMinWidth(Region.USE_COMPUTED_SIZE);
+		wordCloudWebView.setOnMouseClicked(e-> webViewClicked(wordCloudWebView));
+		boolean idAlreadyExists = true;
+		String id = String.format("%04d", random.nextInt(10000));
+		while(idAlreadyExists) {
+			id = String.format("%04d", random.nextInt(10000));
+			idAlreadyExists = webViewIdExists(id);
+		}
+		wordCloudWebView.setId(id);
+		vBox.getChildren().add(wordCloudWebView);
+		return wordCloudWebView;
+	}
+	
+	public boolean webViewIdExists(String newId) {
+		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
+		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+		for(File dir: guidDirectory.listFiles()) {
+			if(dir.isDirectory()) {
+				if(dir.getName().contentEquals(newId)) {
+					return true;
 				}
 			}
-		});
+		}
+		return false;
 	}
 	
 	private void setUnEditable() {
@@ -168,33 +239,49 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	
 	@FXML
 	public void saveButtonAction() {
-		File dataXML = fileHandler.getDynamicActivityDataXMLFile(project, goal, getGuid());
-		if (dataXML != null) {
-			XMLManager xmlManager = new XMLManager(app);
-			ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>(tableView.getItems());
-			xmlManager.writeWordCloudDataXML(dataXML, wordCloudItems);
-		}
-	}
-	
-	private void checkForExistingWordCloudData() {
-		if(wordCloudDataExists()) {
-			XMLManager xmlManager = new XMLManager(app);
-			File dataXML = fileHandler.getDynamicActivityDataXMLFile(project, goal, getGuid());
-			ArrayList<WordCloudItem> parsedWordCloudItems = xmlManager.parseWordCloudDataXML(dataXML);
-			if(parsedWordCloudItems != null) {
-				for(WordCloudItem wordCloudItem: parsedWordCloudItems) {
-					createWordCloudItem(wordCloudItem.merge, wordCloudItem.getPhrase(), wordCloudItem.getCount(), wordCloudItem.getSize());
+		WordCloudSaveController controller = launchSave();
+		if(controller != null) {
+			String saveName = controller.getWordCloudSaveName();
+			if(saveStage.isShowing()) saveStage.close();
+			if(saveName != null) {
+				saveName = saveName.trim();
+				if(saveName.length() > 0) {
+					File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
+					File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+					File saveNameDirectory = new File(guidDirectory.getPath() + "\\" + saveName);
+					if(!saveNameDirectory.exists()) saveNameDirectory.mkdir();
+					File dataXML = new File(saveNameDirectory.getPath() + "\\data.xml");
+					if (dataXML != null) {
+						XMLManager xmlManager = new XMLManager(app);
+						ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>(tableView.getItems());
+						xmlManager.writeWordCloudDataXML(dataXML, wordCloudItems);
+						File saveFile = new File(saveNameDirectory.getPath() + "\\wordCloudImage.png");
+						snapshotWordCloud((WebView) vBox.getChildren().get(0), saveFile);
+						fillChoiceBox(getExistingSavedWordCloudNames());
+						wordCloudChoiceBox.getSelectionModel().select(0);
+					}
 				}
 			}
 		}
 	}
 	
-	private boolean wordCloudDataExists() {
-		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, getGuid());
-		if(jsonpFile.exists()) {
-			return true;
-		} 
-		return false;
+	Stage saveStage = null;
+	public WordCloudSaveController launchSave() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/wordcloud/WordCloudSave.fxml"));
+			WordCloudSaveController wordCloudSaveController = new WordCloudSaveController(project, goal, getGuid());
+			fxmlLoader.setController(wordCloudSaveController);
+			VBox root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			saveStage = new Stage();
+			saveStage.setScene(scene);
+			wordCloudSaveController.setStage(saveStage);
+			saveStage.showAndWait();
+			return wordCloudSaveController;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void initTableView() {
@@ -236,8 +323,16 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		tableView.refresh();
 	}
 	
+	@FXML
+	public void clearTableButtonAction() {
+		tableView.getItems().clear();
+		tableView.refresh();
+		mergeArrayList.clear();
+		WebView wordCloudWebView = initWebView();
+	}
+	
 	public void adjustCountToSize() {
-		int newMax = 50;
+		int newMax = 30;
 		int newMin =10;
 		
 		for(WordCloudItem wordCloudItem: tableView.getItems()) {
@@ -294,6 +389,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		int size = count;
 		createWordCloudItem(merge, phrase, count, size);
 		adjustCountToSize();
+		updateNumberOfTableItemsLabel();
 	}
 	
 	@FXML
@@ -313,7 +409,12 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			int size = count;
 			createWordCloudItem(merge, cleanedWord, count, size);
 		}
+		updateNumberOfTableItemsLabel();
 		adjustCountToSize();
+	}
+	
+	public void updateNumberOfTableItemsLabel() {
+		numberOfWordsLabel.setText(String.valueOf(tableView.getItems().size()));
 	}
 	
 	@FXML
@@ -350,6 +451,8 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		if (word != null) {
 			Pattern lettersAndNumbers = Pattern.compile("([A-Za-z0-9])");
 			word = word.trim();
+			word = word.replaceAll("[()]", "");
+
 			if(word.length() >= 2) {
 				String firstChar = word.substring(0, 1);
 				Matcher matcher1 = lettersAndNumbers.matcher(firstChar);
@@ -449,8 +552,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		}
 	}
 
-	public void writeWordCloudJSONPFile(File JSONPFile) {
-		
+	public void writeWordCloudJSONPFile(File JSONPFile, WebView webView) {
 		try {
 			PrintWriter printWriter = new PrintWriter(JSONPFile);
 			printWriter.println("wordclouddata = [");
@@ -464,97 +566,121 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			printWriter.println("],");
 			printWriter.println("sizedata = [");
 			printWriter.println("{");
+			int maxCountInTable = getMaxCountOfWordInTable();
+			if(maxCountInTable > 1) maxCountInTable = maxCountInTable/2;
 			int numberOfWords = tableView.getItems().size();
-			int size = ((numberOfWords/30) *100) +300;
+			int size = (((numberOfWords/20) *100) +300) * (maxCountInTable) ;
 			printWriter.println("height: \"" + size + "\",");
 			printWriter.println("width: \"" + size + "\",");
 			printWriter.println("},");
 			printWriter.println("]");
-			
 			printWriter.close();
+			
+			webView.setPrefWidth(size+10);
+			webView.setPrefHeight(size+40);
+			webView.setMinWidth(size+10);
+			webView.setMinHeight(size+40);
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	private int getMaxCountOfWordInTable() {
+		int max = 1;
+		for(WordCloudItem wordCloudItem: tableView.getItems()) {
+			if(wordCloudItem.getCount() > max) {
+				max = wordCloudItem.getCount();
+			}
+		}
+		return max;
+	}
 
 	@FXML
 	public void buildButtonAction() {
-		if(!vBox.getChildren().contains(wordCloudWebView)) {
-			vBox.getChildren().clear();
-			vBox.getChildren().add(wordCloudWebView);
-		}
-		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, getGuid());
-		writeWordCloudJSONPFile(jsonpFile);
+		WebView wordCloudWebView = initWebView();
+		copyWordCloudFilesToGUIDDirectory(wordCloudWebView.getId());
+		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, getGuid(), wordCloudWebView.getId());
+		writeWordCloudJSONPFile(jsonpFile, wordCloudWebView);
 		String webEngineLocation = wordCloudWebView.getEngine().getLocation();
 		if (webEngineLocation != null) {
-			wordCloudWebView.getEngine().reload();
 		} else {
-			File wordCloudHTMLFile =  new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + getGuid() + "\\index.html");
-			System.out.println(wordCloudHTMLFile.getPath());
-			if (wordCloudHTMLFile.exists()) {
-				try {
-					wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toURL().toString());
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					File wordCloudHTMLFile = new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + getGuid() + "\\" + wordCloudWebView.getId() + "\\index.html");
+					wordCloudWebView.getEngine().reload();
+					if (wordCloudHTMLFile.exists()) {
+						try {
+							wordCloudWebView.getEngine().load(wordCloudHTMLFile.toURI().toURL().toString());
+							wordCloudWebView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
+								public void changed(ObservableValue ov, State oldState, State newState) {
+									if (newState == State.SUCCEEDED) {
+										Platform.runLater(new Runnable() {
+											@Override
+											public void run() {
+												File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + getGuid() + "\\" + wordCloudWebView.getId() + "\\wordCloudImage.png");
+												snapshotWordCloud(wordCloudWebView, saveFile);
+											}
+										});
+									}
+								}
+							});
+						} catch (MalformedURLException e) {
+							e.printStackTrace();
+						}
+					}
 				}
-			}
+			});
 		}
 	}
 	
-	public void snapshotWordCloud() {
+	public void snapshotWordCloud(WebView wordCloudWebView, File saveFile) {
 		WritableImage writableImage = new WritableImage((int) wordCloudWebView.getWidth(), (int) wordCloudWebView.getHeight());
 		wordCloudWebView.snapshot(null, writableImage);
-		File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal) + "\\" + getGuid() + "\\wordCloudImage.png");
-		if (saveFile.exists()) saveFile.delete();
 		try {
 			ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//		ImageView imageView = new ImageView();
-//		imageView.setFitWidth(wordCloudWebView.getWidth());
-//		imageView.setFitHeight(wordCloudWebView.getHeight());
-//		Image image = new Image(saveFile.getPath());
-//		imageViewClicked(imageView);
-//		imageView.setImage(image);
-//		vBox.getChildren().clear();
-//		vBox.getChildren().add(imageView);
 	}
 	
-	public void imageViewClicked(ImageView imageView) {
+	@FXML
+	public void webViewClicked(WebView wordCloudWebView) {
 		ContextMenu contextMenu = new ContextMenu();
 		MenuItem menuItem = new MenuItem("Save as");
-		menuItem.setOnAction(e -> saveImage(imageView, e));
+		menuItem.setOnAction(e -> saveImage(wordCloudWebView));
 		contextMenu.getItems().add(menuItem);
-		imageView.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+		wordCloudWebView.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 			@Override
 			public void handle(ContextMenuEvent event) {
-				contextMenu.show(imageView, event.getSceneX(), event.getSceneY());
+				contextMenu.show(wordCloudWebView, event.getSceneX(), event.getSceneY());
 			}
 		});
-
 	}
 	
-	public void saveImage(ImageView imageView, ActionEvent actionEvent) {
+	public void saveImage(WebView wordCloudWebView) {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
         fileChooser.getExtensionFilters().add(extFilter);
 		File file = fileChooser.showSaveDialog(null);
 		if(file != null) {
-			File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal) + "\\" + getGuid() + "\\wordCloudImage.png");
-			fileHandler.copyFile(saveFile, file);
+			snapshotWordCloud(wordCloudWebView, file);
 		}
 	}
 	
-	public void copyWordCloudFilesToGUIDDirectory() {
+	public void copyWordCloudFilesToGUIDDirectory(String id) {
 		File staticWordCloudDirectory = fileHandler.getStaticWordCloudDirectory();
 		
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
 		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+		File webViewDir = new File(guidDirectory + "\\" + id);
+		if(!webViewDir.exists()) webViewDir.mkdir();
 		
 		for(File sourceFile: staticWordCloudDirectory.listFiles()) {
-			File destFile = new File(guidDirectory.getPath() + "\\" + sourceFile.getName());
-			fileHandler.copyFile(sourceFile, destFile);
+			File destFile = new File(webViewDir.getPath() + "\\" + sourceFile.getName());
+			
+			if(destFile !=null) fileHandler.copyFile(sourceFile, destFile);
 		}		
 	}
 
@@ -575,6 +701,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			addMergedPhrase(mergeArrayList.get(0).getPhrase(), count, size);
 			adjustCountToSize();
 			mergeArrayList.clear();
+			updateNumberOfTableItemsLabel();
 		}
 	}
 	
@@ -672,6 +799,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 						tblView.getItems().remove(wordCloudItem);
 					}
 					tblView.refresh();
+					updateNumberOfTableItemsLabel();
 					adjustCountToSize();
 				}
 			});

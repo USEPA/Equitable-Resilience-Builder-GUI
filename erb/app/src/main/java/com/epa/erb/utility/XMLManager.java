@@ -662,6 +662,7 @@ public class XMLManager {
 	}
 	
 	public void writeGoalMetaXML(File xmlFile, ArrayList<Chapter> chapters) {
+		System.out.println(xmlFile + " " + chapters);
 		if (xmlFile != null && chapters != null) {
 			try {
 				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

@@ -175,8 +175,8 @@ public class FileHandler {
 		}
 	}
 	
-	public File getJSONPWordCloudFileForInteractiveActivity(Project project, Goal goal, String guid) {
-		File jsonpFile = new File(getGUIDDataDirectory(project, goal) + "\\" + guid + "\\wordcloud.jsonp");
+	public File getJSONPWordCloudFileForInteractiveActivity(Project project, Goal goal, String guid, String webViewId) {
+		File jsonpFile = new File(getGUIDDataDirectory(project, goal) + "\\" + guid + "\\" + webViewId + "\\wordcloud.jsonp");
 		return jsonpFile;
 	}
 	
