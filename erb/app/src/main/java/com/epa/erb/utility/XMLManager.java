@@ -18,6 +18,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
+import com.epa.erb.ERBContentItem;
 import com.epa.erb.ERBItem;
 import com.epa.erb.ERBItemFinder;
 import com.epa.erb.InteractiveActivity;
@@ -451,6 +452,38 @@ public class XMLManager {
 			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
 		return null;	
+	}
+	
+	public ArrayList<ERBContentItem> parseContentXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				ArrayList<ERBContentItem> availableERBContentItems = new ArrayList<ERBContentItem>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList contentNodeList = doc.getElementsByTagName("content");
+				for(int i =0; i < contentNodeList.getLength();i++) {
+					Node contentNode = contentNodeList.item(i);
+					if(contentNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element contentElement = (Element) contentNode;
+						String id = contentElement.getAttribute("id");
+						String guid = contentElement.getAttribute("guid");
+						String type = contentElement.getAttribute("type");
+						String status = contentElement.getAttribute("status");
+						String longName = contentElement.getAttribute("longName");
+						String shortName = contentElement.getAttribute("shortName");
+						
+						ERBContentItem erbContentItem = new ERBContentItem(id, guid, type, status, longName, shortName);
+						availableERBContentItems.add(erbContentItem);
+					}
+				}
+				return availableERBContentItems;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		}
+		return null;
 	}
 	
 	// Parse Goal

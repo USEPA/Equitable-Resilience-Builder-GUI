@@ -43,6 +43,8 @@ public class App extends Application {
 	private ArrayList<GoalCategory> availableGoalCategories;
 	private ArrayList<InteractiveActivity> availableInteractiveActivities;
 	
+	private ArrayList<ERBContentItem> availableERBContentItems;
+	
 	private FileHandler fileHandler = new FileHandler();
 	private XMLManager xmlManager = new XMLManager(this);
 	private Logger logger = LogManager.getLogger(App.class);
@@ -137,6 +139,12 @@ public class App extends Application {
 		readAndStoreAvailableChapters();
 		readAndStoreAvailableGoalCategories();
 		readAndStoreProjects();
+		readAndStoreAvailableContent();
+	}
+	
+	private void readAndStoreAvailableContent() {
+		File contentFile = fileHandler.getStaticAvailableContentXMLFile();
+		availableERBContentItems = xmlManager.parseContentXML(contentFile);
 	}
 
 	private void readAndStoreAvailableInteractiveActivities() {
@@ -297,6 +305,10 @@ public class App extends Application {
 
 	public void setEngagementActionController(EngagementActionController engagementActionController) {
 		this.engagementActionController = engagementActionController;
+	}
+
+	public ArrayList<ERBContentItem> getAvailableERBContentItems() {
+		return availableERBContentItems;
 	}
 
 }

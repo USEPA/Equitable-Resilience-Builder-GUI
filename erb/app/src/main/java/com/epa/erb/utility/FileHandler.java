@@ -217,6 +217,11 @@ public class FileHandler {
 		}
 	}
 	
+	public File getStaticAvailableContentXMLFile() {
+		File availableContentXMLFile = new File(constants.getPathToERBStaticDataFolder() + "\\Available_Content.xml");
+		return availableContentXMLFile;
+	}
+	
 	public File getStaticAvailableInteractiveActivitiesXMLFile() {
 		File availableInterativeActivitiesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Interactive_Activities.xml");
 		return availableInterativeActivitiesFile;
