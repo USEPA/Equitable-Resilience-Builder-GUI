@@ -123,8 +123,6 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			return;
 		}
 		
-
-		
 		File guidDataDirectory =fileHandler.getGUIDDataDirectory(project, goal);
 		if(!guidDataDirectory.exists() || (guidDataDirectory.exists() && guidDataDirectory.listFiles().length == 0)) {
 			XMLManager xmlManager = new XMLManager(app);
@@ -330,10 +328,11 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		tableView.getItems().clear();
 		tableView.refresh();
 		mergeArrayList.clear();
+		WebView wordCloudWebView = initWebView();
 	}
 	
 	public void adjustCountToSize() {
-		int newMax = 50;
+		int newMax = 30;
 		int newMin =10;
 		
 		for(WordCloudItem wordCloudItem: tableView.getItems()) {
@@ -567,8 +566,10 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			printWriter.println("],");
 			printWriter.println("sizedata = [");
 			printWriter.println("{");
+			int maxCountInTable = getMaxCountOfWordInTable();
+			if(maxCountInTable > 1) maxCountInTable = maxCountInTable/2;
 			int numberOfWords = tableView.getItems().size();
-			int size = ((numberOfWords/30) *100) +300;
+			int size = (((numberOfWords/20) *100) +300) * (maxCountInTable) ;
 			printWriter.println("height: \"" + size + "\",");
 			printWriter.println("width: \"" + size + "\",");
 			printWriter.println("},");
@@ -583,6 +584,16 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private int getMaxCountOfWordInTable() {
+		int max = 1;
+		for(WordCloudItem wordCloudItem: tableView.getItems()) {
+			if(wordCloudItem.getCount() > max) {
+				max = wordCloudItem.getCount();
+			}
+		}
+		return max;
 	}
 
 	@FXML
