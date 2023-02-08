@@ -92,6 +92,7 @@ public class ERBLandingController implements Initializable{
 	public void exploreHyperlinkAction() {
 		ProjectSelectionController projectSelectionController = new ProjectSelectionController(app);
 		Project exploreProject = app.getExploreProject();
+		System.out.println("Explore Proj: " + exploreProject);
 		if(exploreProject != null) {
 			projectSelectionController.loadProject(exploreProject);
 		}

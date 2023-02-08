@@ -26,6 +26,10 @@ var layout = d3.layout.cloud()
   .on("end", draw);
 layout.start();
 
+var dataViz= document.getElementById("my_dataviz");
+var dataVizText = dataViz.childNodes[0];
+dataVizText.textContent=wordclouddata.length + " Words";
+
 // This function takes the output of 'layout' above and draw the words
 // Wordcloud features that are THE SAME from one word to the other can be here
 function draw(words) {
