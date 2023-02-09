@@ -23,29 +23,18 @@ import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
-import com.epa.erb.progress.GlobalProgressTrackerController;
-import com.epa.erb.progress.Progress;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import com.epa.erb.wordcloud.WordCloudController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TitledPane;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -53,74 +42,31 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class EngagementActionController implements Initializable {
 
 	@FXML
 	VBox engagementVBox;
 	@FXML
+	HBox saveHBox;
+	@FXML
 	Label goalLabel;
 	@FXML
 	ComboBox<Goal> goalComboBox;
-	@FXML
-	HBox headingHBox;
-	@FXML
-	HBox saveHBox;
-	@FXML
-	TitledPane pathwayTitledPane;
-	@FXML
-	HBox erbPathwayDiagramHBox;
-	@FXML
-	ScrollPane erbPathwayDiagramScrollPane;
-	@FXML
-	VBox erbKeyVBox;
-	@FXML
-	HBox keyPaneHBox;
-	@FXML
-	Pane completeKeyPane;
-	@FXML
-	Pane readyKeyPane;
-	@FXML
-	Pane inProgressKeyPane;
-	@FXML
-	VBox treeViewVBox;
-	@FXML
-	TreeView<ERBItem> treeView;
-	@FXML
-	VBox localProgressVBox;
-	@FXML
-	VBox mainVBox;
-	@FXML
-	HBox statusHBox;
-	@FXML
-	HBox body2HBox;
-	@FXML
-	VBox contentVBox;
-	@FXML
-	Label goalProgressPercentLabel;
-	@FXML
-	Label goalConfidencePercentLabel;
-	@FXML
-	VBox goalProgressVBox;
-	@FXML
-	VBox goalProgressBar;
-	@FXML
-	ProgressIndicator chapterProgressIndicator;
 	@FXML
 	Button previousButton;
 	@FXML
 	Button nextButton;
 	@FXML
-	ToggleGroup activityStatusToggleGroup;
+	VBox treeViewVBox;
 	@FXML
-	RadioButton readyRadioButton;
+	TreeView<ERBItem> treeView;
 	@FXML
-	RadioButton inProgressRadioButton;
+	VBox mainVBox;
 	@FXML
-	RadioButton completeRadioButton;
+	HBox body2HBox;
 	@FXML
-	VBox titledPaneVBox;
+	VBox contentVBox;
 
 
 	private App app;
@@ -142,80 +88,26 @@ public class EngagementActionController implements Initializable {
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
 	private LinkedHashMap<ERBItem, TreeItem<ERBItem>> treeItemGuidTreeMap = new LinkedHashMap<ERBItem, TreeItem<ERBItem>>();
-	private ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers = new ArrayList<ERBPathwayDiagramController>();
-	private ArrayList<ERBChapterDiagramController> listOfChapterDiagramControllers = new ArrayList<ERBChapterDiagramController>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		treeView.setCellFactory(tv-> createTreeCell());
 		if (project.getProjectType().contentEquals("Goal Mode")) {
-			initGoalMode();
 		} else {
 			initFacilitatorMode();
 		}
 		treeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());
 	}
 
-	private void initGoalMode() {
-		fillGoalComboBox(project);
-		goalComboBox.setCellFactory(lv -> createGoalCell());
-		goalComboBox.setButtonCell(createGoalCell());
-		initializeGoalSelection(project);
-		handleControls();
-	}
-
 	private void initFacilitatorMode() {
 		initializeGoalSelection(project);
 		addTreeViewListener();
-		initializeStyle();
 		hideGoalSelection();
 		removeSaveHBox();
-		removePathwayPane();
-		removeLocalProgressPane();
-	}
-
-	private void handleControls() {
-		initializeStyle();
-		addProgressListeners();
-		addGoalChangeListener();
-		addTreeViewListener();
-	}
-
-	private void initializeStyle() {
-		pathwayTitledPane.setStyle("-fx-box-border: transparent;");
-		completeKeyPane.setStyle("-fx-background-color: " + constants.getCompleteStatusColor() + ";");
-		readyKeyPane.setStyle("-fx-background-color: " + constants.getReadyStatusColor() + ";");
-		inProgressKeyPane.setStyle("-fx-background-color: " + constants.getInProgressStatusColor() + ";");
-		chapterProgressIndicator.setStyle("-fx-progress-color: " + constants.getAllChaptersColor() + ";");
 	}
 
 	private void addTreeViewListener() {
 		treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));
-	}
-
-	private void addProgressListeners() {
-		localProgressVBox.heightProperty().addListener(e -> localProgressPaneSizeChanged());
-		localProgressVBox.widthProperty().addListener(e -> localProgressPaneSizeChanged());
-	}
-
-	private void addGoalChangeListener() {
-		goalComboBox.valueProperty().addListener(new ChangeListener<Goal>() {
-			@Override
-			public void changed(ObservableValue ov, Goal origG, Goal newG) {
-				goalChanged(origG, newG);
-			}
-		});
-	}
-
-	private void localProgressPaneSizeChanged() {
-		if (currentSelectedActivity != null) {
-			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
-		} else {
-			TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-			if (selectedTreeItem != null && selectedTreeItem.getValue().getShortName().contains("Chapter")) {
-				updateLocalProgress(erbItemFinder.getChapterForNameInGoal(selectedTreeItem.getValue().getShortName().trim(), currentSelectedGoal),currentSelectedGoal.getChapters());
-			}
-		}
 	}
 
 	private void initializeGoalSelection(Project project) {
@@ -277,58 +169,6 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	private Parent loadERBChapterDiagramRoot(Chapter chapter, ArrayList<Chapter> chapters) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBChapterDiagram.fxml"));
-			ERBChapterDiagramController erbChapterDiagramController = new ERBChapterDiagramController(chapter, chapters, this);
-			listOfChapterDiagramControllers.add(erbChapterDiagramController);
-			fxmlLoader.setController(erbChapterDiagramController);
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return null;
-		}
-	}
-
-	private Parent loadERBPathwayDiagramRoot(Activity activity, Chapter chapter) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ERBPathwayDiagram.fxml"));
-			ERBPathwayDiagramController erbPathwayDiagramController = new ERBPathwayDiagramController(activity, chapter, this);
-			listOfPathwayDiagramControllers.add(erbPathwayDiagramController);
-			fxmlLoader.setController(erbPathwayDiagramController);
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return null;
-		}
-	}
-
-	private Parent loadGlobalGoalTracker() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progress/GlobalProgressTracker.fxml"));
-			GlobalProgressTrackerController globalGoalTrackerController = new GlobalProgressTrackerController(app, project);
-			fxmlLoader.setController(globalGoalTrackerController);
-			return fxmlLoader.load();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return null;
-		}
-	}
-
-	private Stage globalGoalTrackerStage = null;
-
-	private void showGlobalGoalTracker(Parent globalGoalTrackerRoot) {
-		if (globalGoalTrackerRoot != null) {
-			globalGoalTrackerStage = new Stage();
-			Scene scene = new Scene(globalGoalTrackerRoot);
-			globalGoalTrackerStage.setScene(scene);
-			globalGoalTrackerStage.setTitle("ERB: Goal Tracker");
-			globalGoalTrackerStage.show();
-		} else {
-			logger.error("Cannot showGlobalGoalTracker. globalGoalTrackerRoot = " + globalGoalTrackerRoot);
-		}
-	}
-
 	private void setDynamicDimensions(Pane pane, ScrollPane scrollPane) {
 		if (pane != null) {
 			pane.setPrefHeight(app.getPrefHeight());
@@ -341,65 +181,6 @@ public class EngagementActionController implements Initializable {
 			VBox.setVgrow(scrollPane, Priority.ALWAYS);
 			HBox.setHgrow(scrollPane, Priority.ALWAYS);
 		}
-	}
-
-	private void goalChanged(Goal origGoal, Goal newGoal) {
-		if (origGoal != null) {
-			goalSelected(newGoal);
-		}
-	}
-
-	@FXML
-	public void showDetailsCheckboxAction() {
-
-	}
-
-	@FXML
-	public void activityStatusRadioButtonAction() {
-		RadioButton radioButton = (RadioButton) activityStatusToggleGroup.getSelectedToggle();
-		TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
-		if (selectedTreeItem != null) {
-			ERBItem selectedErbItem = selectedTreeItem.getValue();
-			String GUIDOfItemClicked = selectedTreeItem.getValue().getGuid();
-			Object itemClicked = selectedErbItem.getObject();
-			String status = getActivityStatusForRadioButtonState(radioButton);
-			if (itemClicked != null) {
-				if (itemClicked.toString().contains("InteractiveActivity")) {
-					InteractiveActivity dynamicActivity = (InteractiveActivity) itemClicked;
-					dynamicActivity.setStatus(status);
-				} else if (itemClicked.toString().contains("Step")) {
-					Step step = (Step) itemClicked;
-					step.setStatus(status);
-				} else if (itemClicked.toString().contains("Activity")) {
-					Activity activity = (Activity) itemClicked;
-					activity.setStatus(status);
-				} else if (itemClicked.toString().contains("Chapter")) {
-					Chapter chapter = (Chapter) itemClicked;
-				}
-			}
-			for (ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
-				if (erbPathwayDiagramController.getActivity().getGuid().contentEquals(GUIDOfItemClicked)) {
-					erbPathwayDiagramController.getActivity().setStatus(status);
-					erbPathwayDiagramController.updateStatus();
-				}
-			}
-		}
-		updateLocalProgress(currentSelectedChapter, listOfUniqueChapters);
-	}
-
-	private String getActivityStatusForRadioButtonState(RadioButton radioButton) {
-		if (radioButton != null) {
-			if (radioButton.getText().contentEquals("Ready")) {
-				return "ready";
-			} else if (radioButton.getText().contentEquals("In Progress")) {
-				return "in progress";
-			} else if (radioButton.getText().contentEquals("Complete")) {
-				return "complete";
-			}
-		} else {
-			logger.error("Cannot changeActivityStatus. radioButton is null.");
-		}
-		return "ready"; //default
 	}
 
 	@FXML
@@ -485,12 +266,6 @@ public class EngagementActionController implements Initializable {
 		xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, currentSelectedGoal), listOfUniqueChapters);
 		fileHandler.createGUIDDirectoriesForGoal(project, currentSelectedGoal, listOfUniqueChapters);
 	}
-
-	@FXML
-	public void goalLabelClicked() {
-		Parent globalGoalTrackerRoot = loadGlobalGoalTracker();
-		showGlobalGoalTracker(globalGoalTrackerRoot);
-	}
 	
 	public void treeViewClicked(TreeItem<ERBItem> oldItem, TreeItem<ERBItem> newItem) {
 		if (newItem != null) {			
@@ -523,10 +298,6 @@ public class EngagementActionController implements Initializable {
 		currentSelectedActivity = null;
 		currentSelectedChapter = null;
 		cleanContentVBox();
-		removeStatusHBox();
-		removeLocalProgressVBox();
-		addERBKeyVBox(1);
-		generateChapterERBPathway(currentSelectedGoal);
 		if (currentSelectedGoal != null) {
 			Pane root = loadChapterLanding(listOfUniqueChapters);
 			addContentToContentVBox(root, true);
@@ -539,18 +310,11 @@ public class EngagementActionController implements Initializable {
 		currentSelectedActivity = null;
 		currentSelectedChapter = chapter;
 		cleanContentVBox();
-		removeStatusHBox();
-		addERBKeyVBox(1);
-		if (project.getProjectType().contentEquals("Goal Mode"))
-			addLocalProgressVBox(1);
-		generateActivityERBPathway(currentSelectedChapter);
 		if (currentSelectedChapter != null) {
 			File file = fileHandler.getStaticChapterFormAbout(currentSelectedChapter);
 			Pane root = loadMainFormController(file);
 			addContentToContentVBox(root, true);
 		}
-		if (currentSelectedChapter != null && currentSelectedGoal != null)
-			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 
 	private void activityTreeItemSelected(TreeItem<ERBItem> activityTreeItem, Activity activity) {
@@ -560,17 +324,8 @@ public class EngagementActionController implements Initializable {
 		currentSelectedChapter = erbItemFinder.getChapterForActivity(listOfUniqueChapters, activity);
 
 		cleanContentVBox();
-		if (project.getProjectType().contentEquals("Goal Mode")) {
-			addStatusHBox();
-			addLocalProgressVBox(1);
-		}
-		addERBKeyVBox(1);
 		loadActivityContent(currentSelectedActivity);
-		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
-		highlightActivityDiagram(currentSelectedActivity);
-		if (currentSelectedChapter != null && currentSelectedGoal != null)
-			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 
 	private void stepTreeItemSelected(TreeItem<ERBItem> stepTreeItem, Step step) {
@@ -585,22 +340,9 @@ public class EngagementActionController implements Initializable {
 			currentSelectedChapter = erbItemFinder.getChapterForStep(listOfUniqueChapters, step);
 		}
 		cleanContentVBox();
-		if (project.getProjectType().contentEquals("Goal Mode")) {
-			if(currentSelectedActivity != null) {
-				addStatusHBox();
-			} else {
-				removeStatusHBox();
-			}
-			addLocalProgressVBox(1);
-		}
-		addERBKeyVBox(1);
 		Pane root = loadStepContent(currentSelectedStep);
 		addContentToContentVBox(root, false);
-		generateActivityERBPathway(currentSelectedChapter);
 		setActivityStatusRadioButton(currentSelectedActivity);
-		highlightActivityDiagram(currentSelectedActivity);
-		if (currentSelectedChapter != null && currentSelectedGoal != null)
-			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 
 	private void dynamicActivitySelected(TreeItem<ERBItem> dynamicActivityTreeItem, InteractiveActivity dynamicActivity) {
@@ -615,16 +357,8 @@ public class EngagementActionController implements Initializable {
 
 		}
 		cleanContentVBox();
-		if (project.getProjectType().contentEquals("Goal Mode")) {
-			addStatusHBox();
-			addLocalProgressVBox(1);
-		}
-		addERBKeyVBox(1);
 		// --
 		loadDynamicActivityContent(dynamicActivity);
-		generateActivityERBPathway(currentSelectedChapter);
-		if (currentSelectedChapter != null && currentSelectedGoal != null)
-			updateLocalProgress(currentSelectedChapter, currentSelectedGoal.getChapters());
 	}
 
 	public void addContentToContentVBox(Pane root, boolean setDynamicDimensions) {
@@ -808,31 +542,6 @@ public class EngagementActionController implements Initializable {
 			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + genericChapters);
 		}
 	}
-
-	private void fillGoalComboBox(Project project) {
-		if (project != null) {
-			for (Goal goal : project.getProjectGoals()) {
-				goalComboBox.getItems().add(goal);
-			}
-		} else {
-			logger.error("Cannot fillGoalComboBox. project = " + project);
-		}
-	}
-
-	private ListCell<Goal> createGoalCell() {
-		return new ListCell<Goal>() {
-			@Override
-			protected void updateItem(Goal item, boolean empty) {
-				super.updateItem(item, empty);
-				if (empty || item == null) {
-					setText(null);
-					setGraphic(null);
-				} else {
-					setText(item.getGoalName());
-				}
-			}
-		};
-	}
 	
 	private TreeCell<ERBItem> createTreeCell() {
 		return new TreeCell<ERBItem>() {
@@ -890,22 +599,9 @@ public class EngagementActionController implements Initializable {
 					fillAndStoreTreeViewData(listOfChapters); //LIST OF CHAPTERS IS NOT UNIQUE
 				}
 				initializeTreeViewSelection();
-				generateChapterERBPathway(currentSelectedGoal);
 			}
 		} else {
 			logger.error("Cannot execute goalSelected. goal = " + goal);
-		}
-	}
-
-	public void updateLocalProgress(Chapter chapter, ArrayList<Chapter> chapters) {
-		Progress progress = new Progress();
-		if (chapter != null) {
-			int chapterProgress = progress.getChapterPercentDone(chapter);
-			progress.setChapterProgress(chapterProgressIndicator, chapterProgress);
-		}
-		if (chapters != null) {
-			int goalProgress = progress.getGoalPercentDone(chapters);
-			progress.setGoalProgress(goalProgressVBox, goalProgressBar, goalProgressPercentLabel, goalProgress);
 		}
 	}
 
@@ -1008,69 +704,14 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	public Activity retrieveNextActivity(ERBPathwayDiagramController currentErbPathwayDiagramController) {
-		int indexOfCurrentController = listOfPathwayDiagramControllers.indexOf(currentErbPathwayDiagramController);
-		if (indexOfCurrentController >= 0) {
-			int indexOfNextController = indexOfCurrentController + 1;
-			ERBPathwayDiagramController nextErbPathwayDiagramController = listOfPathwayDiagramControllers.get(indexOfNextController);
-			return nextErbPathwayDiagramController.getActivity();
-		}
-		return null;
-	}
-
-	private void highlightActivityDiagram(Activity activity) {
-		if(activity != null && activity.getGuid() != null) {
-		for (ERBPathwayDiagramController erbPathwayDiagramController : listOfPathwayDiagramControllers) {
-			if (erbPathwayDiagramController.getActivity().getGuid().contentEquals(activity.getGuid())) {
-				erbPathwayDiagramController.highlightDiagram();
-			} else {
-				erbPathwayDiagramController.unHighlightDiagram();
-			}
-		}
-		}
-	}
-
 	private void setActivityStatusRadioButton(Activity activity) {
 		if (activity != null) {
 			if (activity.getStatus().contentEquals("ready")) {
-				readyRadioButton.setSelected(true);
 			} else if (activity.getStatus().contentEquals("in progress")) {
-				inProgressRadioButton.setSelected(true);
 			} else if (activity.getStatus().contentEquals("complete")) {
-				completeRadioButton.setSelected(true);
 			}
 		} else {
 			logger.error("Cannot setActivityStatusRadioButton. activity = " + activity);
-		}
-	}
-
-	private void generateChapterERBPathway(Goal goal) {
-		if (goal != null) {
-			cleanERBPathwayDiagramHBox();
-			cleanListOfChapterDiagramControllers();
-			for (Chapter chapter : goal.getChapters()) {
-				Parent root = loadERBChapterDiagramRoot(chapter, goal.getChapters());
-				pathwayTitledPane.setText(goal.getGoalName() + " Pathway");
-				if (root != null)
-					erbPathwayDiagramHBox.getChildren().add(root);
-			}
-		} else {
-			logger.error("Cannot generateChapterERBPathway. goal = " + goal);
-		}
-	}
-
-	private void generateActivityERBPathway(Chapter chapter) {
-		if (chapter != null) {
-			cleanERBPathwayDiagramHBox();
-			cleanListOfActivityDiagramControllers();
-			for (Activity activity : chapter.getAssignedActivities()) {
-				Parent root = loadERBPathwayDiagramRoot(activity, chapter);
-				pathwayTitledPane.setText(chapter.getLongName() + " Pathway");
-				if (root != null)
-					erbPathwayDiagramHBox.getChildren().add(root);
-			}
-		} else {
-			logger.error("Cannot generateActivityERBPathway. chapter = " + chapter);
 		}
 	}
 
@@ -1088,54 +729,9 @@ public class EngagementActionController implements Initializable {
 		return null;
 	}
 
-	private void cleanERBPathwayDiagramHBox() {
-		erbPathwayDiagramHBox.getChildren().clear();
-	}
 
 	public void cleanContentVBox() {
 		contentVBox.getChildren().clear();
-	}
-
-	private void cleanListOfActivityDiagramControllers() {
-		listOfPathwayDiagramControllers.clear();
-	}
-
-	private void cleanListOfChapterDiagramControllers() {
-		listOfChapterDiagramControllers.clear();
-	}
-
-	private void addLocalProgressVBox(int index) {
-		if (!treeViewVBox.getChildren().contains(localProgressVBox)) {
-			treeViewVBox.getChildren().add(index, localProgressVBox);
-		}
-	}
-
-	private void removeLocalProgressVBox() {
-		if (treeViewVBox.getChildren().contains(localProgressVBox)) {
-			treeViewVBox.getChildren().remove(localProgressVBox);
-		}
-	}
-
-	private void addERBKeyVBox(int index) {
-		if (!headingHBox.getChildren().contains(erbKeyVBox)) {
-			headingHBox.getChildren().add(index, erbKeyVBox);
-		}
-	}
-
-	private void removeERBKeyVBox() {
-		headingHBox.getChildren().remove(erbKeyVBox);
-	}
-	
-	public void removeStatusHBox() {
-		if (mainVBox.getChildren().contains(statusHBox)) {
-			mainVBox.getChildren().remove(statusHBox);
-		}
-	}
-
-	private void addStatusHBox() {
-		if (!mainVBox.getChildren().contains(statusHBox)) {
-			mainVBox.getChildren().add(0, statusHBox);
-		}
 	}
 
 	private void hideGoalSelection() {
@@ -1146,24 +742,6 @@ public class EngagementActionController implements Initializable {
 	private void removeSaveHBox() {
 		if (engagementVBox.getChildren().contains(saveHBox)) {
 			engagementVBox.getChildren().remove(saveHBox);
-		}
-	}
-
-	private void removePathwayPane() {
-		if (engagementVBox.getChildren().contains(pathwayTitledPane)) {
-			engagementVBox.getChildren().remove(pathwayTitledPane);
-		}
-	}
-
-	private void removeLocalProgressPane() {
-		if (treeViewVBox.getChildren().contains(localProgressVBox)) {
-			treeViewVBox.getChildren().remove(localProgressVBox);
-		}
-	}
-
-	public void closeGlobalGoalTrackerStage() {
-		if (globalGoalTrackerStage != null) {
-			globalGoalTrackerStage.close();
 		}
 	}
 
@@ -1211,51 +789,9 @@ public class EngagementActionController implements Initializable {
 		this.treeItemGuidTreeMap = treeItemIdTreeMap;
 	}
 
-	public ArrayList<ERBPathwayDiagramController> getListOfPathwayDiagramControllers() {
-		return listOfPathwayDiagramControllers;
-	}
-
-	public void setListOfPathwayDiagramControllers(
-			ArrayList<ERBPathwayDiagramController> listOfPathwayDiagramControllers) {
-		this.listOfPathwayDiagramControllers = listOfPathwayDiagramControllers;
-	}
-
-	public Stage getGlobalGoalTrackerStage() {
-		return globalGoalTrackerStage;
-	}
-
-	public void setGlobalGoalTrackerStage(Stage globalGoalTrackerStage) {
-		this.globalGoalTrackerStage = globalGoalTrackerStage;
-	}
-
 	public ComboBox<Goal> getGoalComboBox() {
 		return goalComboBox;
 	}
-
-	public HBox getHeadingHBox() {
-		return headingHBox;
-	}
-
-	public HBox getErbPathwayDiagramHBox() {
-		return erbPathwayDiagramHBox;
-	}
-
-	public VBox getErbKeyVBox() {
-		return erbKeyVBox;
-	}
-
-	public Pane getCompleteKeyPane() {
-		return completeKeyPane;
-	}
-
-	public Pane getReadyKeyPane() {
-		return readyKeyPane;
-	}
-
-	public Pane getInProgressKeyPane() {
-		return inProgressKeyPane;
-	}
-
 	public VBox getTreeViewVBox() {
 		return treeViewVBox;
 	}
@@ -1263,17 +799,9 @@ public class EngagementActionController implements Initializable {
 	public TreeView<ERBItem> getTreeView() {
 		return treeView;
 	}
-
-	public VBox getLocalProgressVBox() {
-		return localProgressVBox;
-	}
-
+	
 	public VBox getMainVBox() {
 		return mainVBox;
-	}
-
-	public HBox getStatusHBox() {
-		return statusHBox;
 	}
 
 	public HBox getBody2HBox() {
@@ -1284,48 +812,12 @@ public class EngagementActionController implements Initializable {
 		return contentVBox;
 	}
 
-	public Label getGoalProgressPercentLabel() {
-		return goalProgressPercentLabel;
-	}
-
-	public Label getGoalConfidencePercentLabel() {
-		return goalConfidencePercentLabel;
-	}
-
-	public VBox getGoalProgressVBox() {
-		return goalProgressVBox;
-	}
-
-	public VBox getGoalProgressBar() {
-		return goalProgressBar;
-	}
-
-	public ProgressIndicator getChapterProgressIndicator() {
-		return chapterProgressIndicator;
-	}
-
 	public Button getPreviousButton() {
 		return previousButton;
 	}
 
 	public Button getNextButton() {
 		return nextButton;
-	}
-
-	public ToggleGroup getActivityStatusToggleGroup() {
-		return activityStatusToggleGroup;
-	}
-
-	public RadioButton getReadyRadioButton() {
-		return readyRadioButton;
-	}
-
-	public RadioButton getInProgressRadioButton() {
-		return inProgressRadioButton;
-	}
-
-	public RadioButton getCompleteRadioButton() {
-		return completeRadioButton;
 	}
 
 	public VBox getEngagementVBox() {

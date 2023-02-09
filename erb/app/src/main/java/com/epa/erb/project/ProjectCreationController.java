@@ -17,18 +17,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.util.Callback;
-
 public class ProjectCreationController implements Initializable {
 
 	@FXML
@@ -172,8 +166,7 @@ public class ProjectCreationController implements Initializable {
 			app.setSelectedProject(selectedProject);
 			if (isProjectNew(selectedProject)) {
 				if (mode.contentEquals("Goal Mode")) {
-					Parent goalCreationRoot = mainPanelHandler.loadGoalCreationToContainer(app, selectedProject, this);
-					app.loadNodeToERBContainer(goalCreationRoot);
+
 				} else {
 					createFacilitatorProject(selectedProject);
 					loadEngagementActionToContainer(selectedProject);

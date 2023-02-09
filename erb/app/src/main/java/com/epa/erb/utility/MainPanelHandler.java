@@ -4,7 +4,6 @@ import java.util.HashMap;
 import com.epa.erb.App;
 import com.epa.erb.ERBLandingController;
 import com.epa.erb.engagement_action.EngagementActionController;
-import com.epa.erb.goal.GoalContainerController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectCreationController;
 import com.epa.erb.project.ProjectSelectionController;
@@ -60,21 +59,6 @@ public class MainPanelHandler {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/ProjectCreation.fxml"));
 			ProjectCreationController projectCreationController = new ProjectCreationController(app);
 			fxmlLoader.setController(projectCreationController);
-			VBox root = fxmlLoader.load();
-			root.setPrefWidth(app.getPrefWidth());
-			root.setPrefHeight(app.getPrefHeight());
-			return root;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	public Parent loadGoalCreationToContainer(App app, Project project, ProjectCreationController projectCreationController) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/goal/GoalContainer.fxml"));
-			GoalContainerController goalContainerController = new GoalContainerController(app, project, projectCreationController);
-			fxmlLoader.setController(goalContainerController);
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
 			root.setPrefHeight(app.getPrefHeight());
