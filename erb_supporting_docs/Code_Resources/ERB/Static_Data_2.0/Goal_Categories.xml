@@ -1,105 +1,62 @@
 <goalCategories>
 	<goalCategory categoryName="All activities">
-		<chapters>
-			<chapter id="00001">
-				<assignedActivities>
-					<ChapterActivity id="000001"></ChapterActivity>
-					<ChapterActivity id="0000001">
-						<assignedInteractiveActivities>
-							<ChapterActivityInteractiveActivity id="00000002"/>
-						</assignedInteractiveActivities>
-					</ChapterActivity>
-					<ChapterActivity id="000031">
-					<assignedSteps>
-							<ChapterActivityStep id="0000008"/>
-							<ChapterActivityStep id="0000009"/>
-						</assignedSteps>
-					</ChapterActivity>
-					<ChapterActivity id="000002">
-					<assignedSteps>
-							<ChapterActivityStep id="0000008"/>
-							<ChapterActivityStep id="0000010"/>
-						</assignedSteps>
-					</ChapterActivity>
-					<ChapterActivity id="000003">
-					</ChapterActivity>
-					<ChapterActivity id="000004"/>
-				</assignedActivities>
-			</chapter>
-			<chapter id="00002">
-				<assignedActivities>
-					<ChapterActivity id="000032"/>
-					<ChapterActivity id="000005"/>
-					<ChapterActivity id="000006"/>
-					<ChapterActivity id="000007"/>
-					<ChapterActivity id="000008"/>
-					<ChapterActivity id="000009"/>
-					<ChapterActivity id="000033"/>
-				</assignedActivities>
-				<assignedSteps>
-					<ChapterStep id="0001"/>
-					<ChapterStep id="0002"/>
-				</assignedSteps>
-			</chapter>
-			<chapter id="00003">
-				<assignedActivities>
-					<ChapterActivity id="000010"/>
-					<ChapterActivity id="000011"/>
-					<ChapterActivity id="000012">
-						<assignedInteractiveActivities>
-							<ChapterActivityInteractiveActivity id="00000002"/>
-						</assignedInteractiveActivities>
-					</ChapterActivity>
-					<ChapterActivity id="000013"/>
-					<ChapterActivity id="000014">
-						<assignedInteractiveActivities>
-							<ChapterActivityInteractiveActivity id="00000001"/>
-						</assignedInteractiveActivities>
-					</ChapterActivity>
-					<ChapterActivity id="000015"/>
-					<ChapterActivity id="000016"/>
-				</assignedActivities>
-				<assignedSteps>
-					<ChapterStep id="0000005"/>
-				</assignedSteps>
-			</chapter>
-			<chapter id="00004">
-				<assignedActivities>
-					<ChapterActivity id="000017"/>
-					<ChapterActivity id="000018">
-						<assignedSteps>
-							<ChapterActivityStep id="0004"/>
-						</assignedSteps>
-					</ChapterActivity>
-					<ChapterActivity id="000019">
-						<assignedSteps>
-							<ChapterActivityStep id="0000006"/>
-							<ChapterActivityStep id="0000007"/>
-						</assignedSteps>
-					</ChapterActivity>
-					<ChapterActivity id="000020"/>
-				</assignedActivities>
-				<assignedSteps>
-					<ChapterStep id="0003"/>
-				</assignedSteps>
-			</chapter>
-			<chapter id="00005">
-				<assignedActivities>
-					<ChapterActivity id="000021"/>
-					<ChapterActivity id="000022">
-						<assignedInteractiveActivities>
-							<ChapterActivityInteractiveActivity id="00000002"/>
-						</assignedInteractiveActivities>
-					</ChapterActivity>
-					<ChapterActivity id="000023"/>
-					<ChapterActivity id="000024"/>
-					<ChapterActivity id="000025"/>
-					<ChapterActivity id="000026"/>
-					<ChapterActivity id="000027"/>
-					<ChapterActivity id="000028"/>
-					<ChapterActivity id="000029"/>
-				</assignedActivities>
-			</chapter>
-		</chapters>
+		<contents>
+			<content id="15">
+				<content id="30"/>
+				<content id="20">
+					<content id="84"/>
+				</content>
+				<content id="59">
+					<content id="27"/>
+					<content id="28"/>
+				</content>
+				<content id="31">
+					<content id="27"/>
+					<content id="29"/>
+				</content>
+				<content id="32"/>
+				<content id="33"/>
+			</content>
+			<content id="16">
+				<content id="60"/>
+				<content id="34"/>
+				<content id="35"/>
+				<content id="36"/>
+				<content id="37"/>
+				<content id="38"/>
+				<content id="61"/>
+			</content>
+			<content id="17">
+				<content id="24"/>
+				<content id="39"/>
+				<content id="40"/>
+				<content id="41">
+					<content id="84"/>
+				</content>
+				<content id="43">
+					<content id="85"/>
+				</content>
+				<content id="44"/>
+				<content id="45"/>
+			</content>
+			<content id="18">
+				<content id="46"/>
+				<content id="47"/>
+				<content id="48"/>
+				<content id="56"/>
+			</content>
+			<content id="19">
+				<content id="50"/>
+				<content id="51">
+					<content id="84"/>
+				</content>
+				<content id="52"/>
+				<content id="53"/>
+				<content id="54"/>
+				<content id="55"/>
+				<content id="57"/>
+				<content id="58"/>
+			</content>
+		</contents>
 	</goalCategory>
 </goalCategories>

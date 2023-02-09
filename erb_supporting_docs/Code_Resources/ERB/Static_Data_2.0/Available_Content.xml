@@ -82,4 +82,6 @@
 	<content id="81" guid="" type="Image" status="ready" shortName="Person in Hazard Vest" longName="Person in Hazard Vest" />
 	<content id="82" guid="" type="Image" status="ready" shortName="Goal Setting Examples" longName="Goal Setting Examples" />
 	<content id="83" guid="" type="Image" status="ready" shortName="Activity Selection Examples" longName="Activity Selection Examples" />
+	<content id="84" guid="" type="InteractiveActivity" status="ready" shortName="Word Cloud" longName="Word Cloud" />
+	<content id="85" guid="" type="InteractiveActivity" status="ready" shortName="Noteboard" longName="Noteboard" />
 </content_xmls>

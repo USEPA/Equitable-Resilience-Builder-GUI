@@ -19,7 +19,6 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
-import com.epa.erb.ERBItem;
 import com.epa.erb.ERBItemFinder;
 import com.epa.erb.InteractiveActivity;
 import com.epa.erb.Step;
@@ -32,17 +31,12 @@ import com.epa.erb.noteboard.CategorySectionController;
 import com.epa.erb.noteboard.PostItNoteController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
-
-import javafx.geometry.Pos;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 public class XMLManager {
@@ -52,6 +46,7 @@ public class XMLManager {
 		this.app = app;
 	}
 
+	private IdAssignments idAssignments = new IdAssignments();
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private Logger logger = LogManager.getLogger(XMLManager.class);
 	
@@ -90,111 +85,7 @@ public class XMLManager {
 		}
 		return null;
 	}
-	
-	//Parse AvailableActivities
-	public ArrayList<Activity> parseAvailableActivitiesXML(File xmlFile){
-		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
-			try {
-				ArrayList<Activity> availableActivities = new ArrayList<Activity>();
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(xmlFile);
-				doc.getDocumentElement().normalize();
-				NodeList activitiesNodeList = doc.getElementsByTagName("activity");
-				for (int i = 0; i < activitiesNodeList.getLength(); i++) {
-					Node activityNode = activitiesNodeList.item(i);
-					// Activity
-					if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element activityElement = (Element) activityNode;
-						String activityID = activityElement.getAttribute("id");
-						String longName = activityElement.getAttribute("longName");
-						String shortName = activityElement.getAttribute("shortName");
-						String status = activityElement.getAttribute("status");
-						String notes = activityElement.getAttribute("notes");
-						String rating = activityElement.getAttribute("rating");
-						Activity activity = new Activity(activityID, null, longName, shortName, status, notes, rating);
-						availableActivities.add(activity);
-					}
-				}
-				return availableActivities;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
-		}
-		return null;
-	}
-	
-	// Parse AvailableSteps
-	public ArrayList<Step> parseAvailableStepsXML(File xmlFile) {
-		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
-			try {
-				ArrayList<Step> availableSteps = new ArrayList<Step>();
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(xmlFile);
-				doc.getDocumentElement().normalize();
-				NodeList stepsNodeList = doc.getElementsByTagName("step");
-				for (int i = 0; i < stepsNodeList.getLength(); i++) {
-					Node stepNode = stepsNodeList.item(i);
-					// Step
-					if (stepNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element stepElement = (Element) stepNode;
-						String id = stepElement.getAttribute("id");
-						String longName = stepElement.getAttribute("longName");
-						String shortName = stepElement.getAttribute("shortName");
-						String status = stepElement.getAttribute("status");
-						String notes = stepElement.getAttribute("notes");
-						String rating = stepElement.getAttribute("rating");
-						String type = stepElement.getAttribute("type");
-						Step step = new Step(id, null, longName, shortName, status, notes, rating, type);
-						availableSteps.add(step);
-					}
-				}
-				return availableSteps ;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
-		}
-		return null;
-	}
-	
-	// Parse AvailableInteractiveActivities
-	public ArrayList<InteractiveActivity> parseAvailableInteractiveActivitiesXML(File xmlFile) {
-		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
-			try {
-				ArrayList<InteractiveActivity> availableDynamicActivities = new ArrayList<InteractiveActivity>();
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(xmlFile);
-				doc.getDocumentElement().normalize();
-				NodeList dynamicActivitiesNodeList = doc.getElementsByTagName("interactive_activity");
-				for (int i = 0; i < dynamicActivitiesNodeList.getLength(); i++) {
-					Node dynamicActivityNode = dynamicActivitiesNodeList.item(i);
-					// Dynamic Activity
-					if (dynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element dynamicActivityElement = (Element) dynamicActivityNode;
-						String id = dynamicActivityElement.getAttribute("id");
-						String longName = dynamicActivityElement.getAttribute("longName");
-						String shortName = dynamicActivityElement.getAttribute("shortName");
-						String status = dynamicActivityElement.getAttribute("status");
-						InteractiveActivity interactiveActivity = new InteractiveActivity(id, null, longName, shortName, status);
-						availableDynamicActivities.add(interactiveActivity);
-					}
-				}
-				return availableDynamicActivities;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
-		}
-		return null;
-	}
-	
+		
 	// Parse AvailableResources
 	public HashMap<String, String> parseAvailableResourcesXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
@@ -255,145 +146,130 @@ public class XMLManager {
 		return null;
 	}
 	
-	// Parse GoalCategories
-	public ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile) {
-		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
-			try {
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(xmlFile);
-				doc.getDocumentElement().normalize();
-
-				ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>();
-				NodeList goalCategoryNodeList = doc.getElementsByTagName("goalCategory");
-				for (int h = 0; h < goalCategoryNodeList.getLength(); h++) {
-					Node goalCategoryNode = goalCategoryNodeList.item(h);
-					// GOAL CATEGORY
-					if (goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element goalCategoryElement = (Element) goalCategoryNode;
-						String goalCategoryName = goalCategoryElement.getAttribute("categoryName");
-						ArrayList<Chapter> chapters = new ArrayList<Chapter>();
-						NodeList chapterNodeList = goalCategoryElement.getElementsByTagName("chapter");
-						for (int i = 0; i < chapterNodeList.getLength(); i++) {
-							Node chapterNode = chapterNodeList.item(i);
-							// CHAPTER
-							if (chapterNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element chapterElement = (Element) chapterNode;
-								String chapterID = chapterElement.getAttribute("id");
-								Chapter chapter = erbItemFinder.getChapterById(app.getAvailableChapters(), chapterID);
-								NodeList cActivityNodeList = chapterElement.getElementsByTagName("ChapterActivity");
-								ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
-								for (int j = 0; j < cActivityNodeList.getLength(); j++) {
-									Node cActivityNode = cActivityNodeList.item(j);
-									// CHAPTER -> ACTIVITY
-									if (cActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element cActivityElement = (Element) cActivityNode;
-										String activityID = cActivityElement.getAttribute("id");
-										Activity activity = erbItemFinder.getActivityById(app.getAvailableActivities(), activityID);
-										if (activity != null) listOfChapterActivities.add(activity);
-										NodeList caStepsNodeList = cActivityElement.getElementsByTagName("ChapterActivityStep");
-										ArrayList<Step> listOfChapterActivitySteps = new ArrayList<Step>();
-										for (int k = 0; k < caStepsNodeList.getLength(); k++) {
-											Node caStepNode = caStepsNodeList.item(k);
-											// CHAPTER -> ACTIVITY -> STEP
-											if (caStepNode.getNodeType() == Node.ELEMENT_NODE) {
-												Element caStepElement = (Element) caStepNode;
-												String stepID = caStepElement.getAttribute("id");
-												Step step = erbItemFinder.getStepById(app.getAvailableSteps(), stepID);
-												if (step != null) listOfChapterActivitySteps.add(step);
-												NodeList casDynamicActivitiesNodeList = caStepElement.getElementsByTagName("ChapterActivityStepInteractiveActivity");
-												ArrayList<InteractiveActivity> listOfChapterActivityStepDynamicActivities = new ArrayList<InteractiveActivity>();
-												for (int l = 0; l < casDynamicActivitiesNodeList.getLength(); l++) {
-													Node casDynamicActivityNode = casDynamicActivitiesNodeList.item(l);
-													// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-													if (casDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-														Element casDynamicActivityElement = (Element) casDynamicActivityNode;
-														String dynamicActivityID = casDynamicActivityElement.getAttribute("id");
-														InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
-														if (dynamicActivity != null) listOfChapterActivityStepDynamicActivities.add(dynamicActivity);
-													} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY ELEMENT
-												} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
-												step.setAssignedDynamicActivities(listOfChapterActivityStepDynamicActivities);
-											} // CHAPTER ACTIVITY STEP ELEMENT
-										} // CHAPTER ACTIVITY STEP
-										activity.setAssignedSteps(listOfChapterActivitySteps);
-										NodeList caDynamicActivitesNodeList = cActivityElement.getElementsByTagName("ChapterActivityInteractiveActivity");
-										ArrayList<InteractiveActivity> listOfChapterActivityDynamicActivities = new ArrayList<InteractiveActivity>();
-										for (int m = 0; m < caDynamicActivitesNodeList.getLength(); m++) {
-											Node caDynamicActivityNode = caDynamicActivitesNodeList.item(m);
-											// CHAPTER -> ACTIVITY -> DYNAMIC ACTIVITY
-											if (caDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-												Element caDynamicActivityElement = (Element) caDynamicActivityNode;
-												String dynamicActivityID = caDynamicActivityElement.getAttribute("id");
-												InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
-												if (dynamicActivity != null) listOfChapterActivityDynamicActivities.add(dynamicActivity);
-											} // CHAPTER ACTIVITY DYNAMIC ACTIVITY ELEMENT
-										} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
-										activity.setAssignedDynamicActivities(listOfChapterActivityDynamicActivities);
-									} // CHAPTER ACTIVITY ELEMENT
-								} // CHAPTER ACTIVITY
-								NodeList cStepNodeList = chapterElement.getElementsByTagName("ChapterStep");
-								ArrayList<Step> listOfChapterSteps = new ArrayList<Step>();
-								for (int n = 0; n < cStepNodeList.getLength(); n++) {
-									Node cStepNode = cStepNodeList.item(n);
-									// CHAPTER -> STEP
-									if (cStepNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element cStepElement = (Element) cStepNode;
-										String stepID = cStepElement.getAttribute("id");
-										Step step = erbItemFinder.getStepById(app.getAvailableSteps(), stepID);
-										NodeList csDynamicActivitesNodeList = cStepElement.getElementsByTagName("ChapterStepInteractiveActivity");
-										ArrayList<InteractiveActivity> listOfChapterStepDynamicActivities = new ArrayList<InteractiveActivity>();
-										for (int o = 0; o < csDynamicActivitesNodeList.getLength(); o++) {
-											Node csDynamicActivityNode = csDynamicActivitesNodeList.item(o);
-											// CHAPTER -> STEP -> DYNAMIC ACTIVITY
-											if (csDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-												Element csDynamicActivityElement = (Element) csDynamicActivityNode;
-												String dynamicActivityID = csDynamicActivityElement.getAttribute("id");
-												InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
-												if (dynamicActivity != null) listOfChapterStepDynamicActivities.add(dynamicActivity);
-											} // CHAPTER STEP DYNAMIC ACTIVITY ELEMENT
-										} // CHAPTER STEP DYNAMIC ACTIVITY
-										step.setAssignedDynamicActivities(listOfChapterStepDynamicActivities);
-										if (step != null) listOfChapterSteps.add(step);
-									} // CHAPTER STEP ELEMENT
-								} // CHAPTER STEP
-								chapter.setAssignedSteps(listOfChapterSteps);
-								chapter.setAssignedActivities(listOfChapterActivities);
-								chapters.add(chapter);
-							} // CHAPTER ELEMENT
-						} // CHAPTER
-						GoalCategory goalCategory = new GoalCategory(goalCategoryName, chapters);
-						goalCategories.add(goalCategory);
-					} // GOAL CATEGORY ELEMENT
-				} // GOAL CATEGORY
-				return goalCategories;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				e.printStackTrace();
-			}
-		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
-		}
-		return null;
-	}
+//	// Parse GoalCategories
+//	public ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile) {
+//		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+//			try {
+//				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+//				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+//				Document doc = dBuilder.parse(xmlFile);
+//				doc.getDocumentElement().normalize();
+//
+//				ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>();
+//				NodeList goalCategoryNodeList = doc.getElementsByTagName("goalCategory");
+//				for (int h = 0; h < goalCategoryNodeList.getLength(); h++) {
+//					Node goalCategoryNode = goalCategoryNodeList.item(h);
+//					// GOAL CATEGORY
+//					if (goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
+//						Element goalCategoryElement = (Element) goalCategoryNode;
+//						String goalCategoryName = goalCategoryElement.getAttribute("categoryName");
+//						ArrayList<Chapter> chapters = new ArrayList<Chapter>();
+//						NodeList chapterNodeList = goalCategoryElement.getElementsByTagName("chapter");
+//						for (int i = 0; i < chapterNodeList.getLength(); i++) {
+//							Node chapterNode = chapterNodeList.item(i);
+//							// CHAPTER
+//							if (chapterNode.getNodeType() == Node.ELEMENT_NODE) {
+//								Element chapterElement = (Element) chapterNode;
+//								String chapterID = chapterElement.getAttribute("id");
+//								Chapter chapter = erbItemFinder.getChapterById(app.getAvailableChapters(), chapterID);
+//								NodeList cActivityNodeList = chapterElement.getElementsByTagName("ChapterActivity");
+//								ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
+//								for (int j = 0; j < cActivityNodeList.getLength(); j++) {
+//									Node cActivityNode = cActivityNodeList.item(j);
+//									// CHAPTER -> ACTIVITY
+//									if (cActivityNode.getNodeType() == Node.ELEMENT_NODE) {
+//										Element cActivityElement = (Element) cActivityNode;
+//										String activityID = cActivityElement.getAttribute("id");
+//										Activity activity = erbItemFinder.getActivityById(app.getAvailableActivities(), activityID);
+//										if (activity != null) listOfChapterActivities.add(activity);
+//										NodeList caStepsNodeList = cActivityElement.getElementsByTagName("ChapterActivityStep");
+//										ArrayList<Step> listOfChapterActivitySteps = new ArrayList<Step>();
+//										for (int k = 0; k < caStepsNodeList.getLength(); k++) {
+//											Node caStepNode = caStepsNodeList.item(k);
+//											// CHAPTER -> ACTIVITY -> STEP
+//											if (caStepNode.getNodeType() == Node.ELEMENT_NODE) {
+//												Element caStepElement = (Element) caStepNode;
+//												String stepID = caStepElement.getAttribute("id");
+//												Step step = erbItemFinder.getStepById(app.getAvailableSteps(), stepID);
+//												if (step != null) listOfChapterActivitySteps.add(step);
+//												NodeList casDynamicActivitiesNodeList = caStepElement.getElementsByTagName("ChapterActivityStepInteractiveActivity");
+//												ArrayList<InteractiveActivity> listOfChapterActivityStepDynamicActivities = new ArrayList<InteractiveActivity>();
+//												for (int l = 0; l < casDynamicActivitiesNodeList.getLength(); l++) {
+//													Node casDynamicActivityNode = casDynamicActivitiesNodeList.item(l);
+//													// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
+//													if (casDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
+//														Element casDynamicActivityElement = (Element) casDynamicActivityNode;
+//														String dynamicActivityID = casDynamicActivityElement.getAttribute("id");
+//														InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
+//														if (dynamicActivity != null) listOfChapterActivityStepDynamicActivities.add(dynamicActivity);
+//													} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY ELEMENT
+//												} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
+//												step.setAssignedDynamicActivities(listOfChapterActivityStepDynamicActivities);
+//											} // CHAPTER ACTIVITY STEP ELEMENT
+//										} // CHAPTER ACTIVITY STEP
+//										activity.setAssignedSteps(listOfChapterActivitySteps);
+//										NodeList caDynamicActivitesNodeList = cActivityElement.getElementsByTagName("ChapterActivityInteractiveActivity");
+//										ArrayList<InteractiveActivity> listOfChapterActivityDynamicActivities = new ArrayList<InteractiveActivity>();
+//										for (int m = 0; m < caDynamicActivitesNodeList.getLength(); m++) {
+//											Node caDynamicActivityNode = caDynamicActivitesNodeList.item(m);
+//											// CHAPTER -> ACTIVITY -> DYNAMIC ACTIVITY
+//											if (caDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
+//												Element caDynamicActivityElement = (Element) caDynamicActivityNode;
+//												String dynamicActivityID = caDynamicActivityElement.getAttribute("id");
+//												InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
+//												if (dynamicActivity != null) listOfChapterActivityDynamicActivities.add(dynamicActivity);
+//											} // CHAPTER ACTIVITY DYNAMIC ACTIVITY ELEMENT
+//										} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
+//										activity.setAssignedDynamicActivities(listOfChapterActivityDynamicActivities);
+//									} // CHAPTER ACTIVITY ELEMENT
+//								} // CHAPTER ACTIVITY
+//								NodeList cStepNodeList = chapterElement.getElementsByTagName("ChapterStep");
+//								ArrayList<Step> listOfChapterSteps = new ArrayList<Step>();
+//								for (int n = 0; n < cStepNodeList.getLength(); n++) {
+//									Node cStepNode = cStepNodeList.item(n);
+//									// CHAPTER -> STEP
+//									if (cStepNode.getNodeType() == Node.ELEMENT_NODE) {
+//										Element cStepElement = (Element) cStepNode;
+//										String stepID = cStepElement.getAttribute("id");
+//										Step step = erbItemFinder.getStepById(app.getAvailableSteps(), stepID);
+//										NodeList csDynamicActivitesNodeList = cStepElement.getElementsByTagName("ChapterStepInteractiveActivity");
+//										ArrayList<InteractiveActivity> listOfChapterStepDynamicActivities = new ArrayList<InteractiveActivity>();
+//										for (int o = 0; o < csDynamicActivitesNodeList.getLength(); o++) {
+//											Node csDynamicActivityNode = csDynamicActivitesNodeList.item(o);
+//											// CHAPTER -> STEP -> DYNAMIC ACTIVITY
+//											if (csDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
+//												Element csDynamicActivityElement = (Element) csDynamicActivityNode;
+//												String dynamicActivityID = csDynamicActivityElement.getAttribute("id");
+//												InteractiveActivity dynamicActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), dynamicActivityID);
+//												if (dynamicActivity != null) listOfChapterStepDynamicActivities.add(dynamicActivity);
+//											} // CHAPTER STEP DYNAMIC ACTIVITY ELEMENT
+//										} // CHAPTER STEP DYNAMIC ACTIVITY
+//										step.setAssignedDynamicActivities(listOfChapterStepDynamicActivities);
+//										if (step != null) listOfChapterSteps.add(step);
+//									} // CHAPTER STEP ELEMENT
+//								} // CHAPTER STEP
+//								chapter.setAssignedSteps(listOfChapterSteps);
+//								chapter.setAssignedActivities(listOfChapterActivities);
+//								chapters.add(chapter);
+//							} // CHAPTER ELEMENT
+//						} // CHAPTER
+//						GoalCategory goalCategory = new GoalCategory(goalCategoryName, chapters);
+//						goalCategories.add(goalCategory);
+//					} // GOAL CATEGORY ELEMENT
+//				} // GOAL CATEGORY
+//				return goalCategories;
+//			} catch (Exception e) {
+//				logger.error(e.getMessage());
+//				e.printStackTrace();
+//			}
+//		} else {
+//			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+//		}
+//		return null;
+//	}
 	
 	//Parse all projects
-	public ArrayList<Project> parseAllProjects(File ERBProjectDirectory, ArrayList<Activity> activities){
-		ArrayList<Project> projects = new ArrayList<Project>();
-		if(ERBProjectDirectory != null && ERBProjectDirectory.exists()) {
-			File [] projectDirectories = ERBProjectDirectory.listFiles();
-			for(File projectDirectory : projectDirectories) {
-				if(projectDirectory.isDirectory()) {
-					File projectMetaFile = new File(projectDirectory.getPath() + "\\Meta.xml");
-					if(projectMetaFile.exists()) {
-						Project project = parseProjectXML(projectMetaFile, activities);
-						projects.add(project);
-					}
-				}
-			}
-		}
-		return projects;
-	}
+
 	
 	//Parse Project
 	public Project parseProjectXML(File xmlFile, ArrayList<Activity> activities){
@@ -454,37 +330,7 @@ public class XMLManager {
 		return null;	
 	}
 	
-	public ArrayList<ERBContentItem> parseContentXML(File xmlFile) {
-		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
-			try {
-				ArrayList<ERBContentItem> availableERBContentItems = new ArrayList<ERBContentItem>();
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(xmlFile);
-				doc.getDocumentElement().normalize();
-				NodeList contentNodeList = doc.getElementsByTagName("content");
-				for(int i =0; i < contentNodeList.getLength();i++) {
-					Node contentNode = contentNodeList.item(i);
-					if(contentNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element contentElement = (Element) contentNode;
-						String id = contentElement.getAttribute("id");
-						String guid = contentElement.getAttribute("guid");
-						String type = contentElement.getAttribute("type");
-						String status = contentElement.getAttribute("status");
-						String longName = contentElement.getAttribute("longName");
-						String shortName = contentElement.getAttribute("shortName");
-						
-						ERBContentItem erbContentItem = new ERBContentItem(id, guid, type, status, longName, shortName);
-						availableERBContentItems.add(erbContentItem);
-					}
-				}
-				return availableERBContentItems;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		}
-		return null;
-	}
+	
 	
 	// Parse Goal
 	public ArrayList<Chapter> parseGoalXML(File xmlFile, ArrayList<Activity> activities) {
@@ -652,47 +498,7 @@ public class XMLManager {
 		return null;
 	}
 	
-	public void writeProjectMetaXML(File xmlFile, Project project) {
-		if (xmlFile != null && project != null) {
-			try {
-				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-				Document document = documentBuilder.newDocument();
-				Element rootElement = document.createElement("project");
-				document.appendChild(rootElement);
-				rootElement.setAttribute("projectName", project.getProjectName());
-				rootElement.setAttribute("projectType", project.getProjectType());
-				rootElement.setAttribute("projectCleanedName", project.getProjectCleanedName());
-				Element goalsElement = document.createElement("goals");
-				for (Goal goal : project.getProjectGoals()) {
-					Element goalElement = document.createElement("goal");
-					goalElement.setAttribute("goalName", goal.getGoalName());
-					goalElement.setAttribute("goalCleanedName", goal.getGoalCleanedName());
-					goalElement.setAttribute("goalDescription", goal.getGoalDescription());
-					Element goalsCategoryElement = document.createElement("goalsCategories");
-					for (GoalCategory goalCategory : goal.getListOfSelectedGoalCategories()) {
-						Element goalCategoryElement = document.createElement("goalCategory");
-						goalCategoryElement.setAttribute("categoryName", goalCategory.getCategoryName());
-						goalsCategoryElement.appendChild(goalCategoryElement);
-					}
-					goalElement.appendChild(goalsCategoryElement);
-					goalsElement.appendChild(goalElement);
-				}
-				rootElement.appendChild(goalsElement);
-
-				TransformerFactory transformerFactory = TransformerFactory.newInstance();
-				Transformer transformer = transformerFactory.newTransformer();
-				DOMSource domSource = new DOMSource(document);
-
-				StreamResult file = new StreamResult(xmlFile);
-				transformer.transform(domSource, file);
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error("Cannot writeProjectMetaXML. xmlFile or project is null.");
-		}
-	}
+	
 	
 	public void writeGoalMetaXML(File xmlFile, ArrayList<Chapter> chapters) {
 		System.out.println(xmlFile + " " + chapters);
@@ -1256,6 +1062,158 @@ public class XMLManager {
 			}
 		} else {
 			logger.error("Cannot writeOutputFormDataXML. xmlFile or outputFormNodes is null.");
+		}
+	}
+	
+	
+	//-------------------------------------CHECKED------------------------------------------------------------------
+	
+	public ArrayList<ERBContentItem> parseContentXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				ArrayList<ERBContentItem> availableERBContentItems = new ArrayList<ERBContentItem>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList contentNodeList = doc.getElementsByTagName("content");
+				for(int i =0; i < contentNodeList.getLength();i++) {
+					Node contentNode = contentNodeList.item(i);
+					if(contentNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element contentElement = (Element) contentNode;
+						String id = contentElement.getAttribute("id");
+						String guid = contentElement.getAttribute("guid");
+						String type = contentElement.getAttribute("type");
+						String status = contentElement.getAttribute("status");
+						String longName = contentElement.getAttribute("longName");
+						String shortName = contentElement.getAttribute("shortName");
+						
+						ERBContentItem erbContentItem = new ERBContentItem(id, guid, type, status, longName, shortName);
+						availableERBContentItems.add(erbContentItem);
+					}
+				}
+				return availableERBContentItems;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		}
+		return null;
+	}
+	
+	// Parse GoalCategories
+	public ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+
+				ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>();
+				NodeList goalCategoryNodeList = doc.getElementsByTagName("goalCategory");
+				for (int h = 0; h < goalCategoryNodeList.getLength(); h++) {
+					Node goalCategoryNode = goalCategoryNodeList.item(h);
+					if (goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element goalCategoryElement = (Element) goalCategoryNode;
+						String goalCategoryName = goalCategoryElement.getAttribute("categoryName");
+						parseXML(goalCategoryNode, null);											
+						GoalCategory goalCategory = new GoalCategory(goalCategoryName, erbContentItems);
+						goalCategories.add(goalCategory);
+					}
+				}
+				return goalCategories;
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+				e.printStackTrace();
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}	
+
+	ERBContentItem erbContentItemTrack;
+	ArrayList<ERBContentItem> erbContentItems = new ArrayList<ERBContentItem>();
+
+	public void parseXML(Node node, Node parent) {
+		if (node.getNodeType() == Node.ELEMENT_NODE) {
+			Element nodeElement = (Element) node;
+			String id = nodeElement.getAttribute("id");
+			ERBContentItem erbContentItem = app.findERBContentItemForId(id);
+			if (id != null && id.length() > 0) {
+				if (idAssignments.getChapterIdAssignments().contains(id)) {
+					erbContentItems.add(erbContentItem);
+				} else {
+					Element parentElement = (Element) parent;
+					erbContentItemTrack = app.findERBContentItemForId(parentElement.getAttribute("id"));
+					erbContentItemTrack.addChildERBContentItem(erbContentItem);
+				}
+			}
+			if (node.hasChildNodes()) {
+				NodeList children = node.getChildNodes();
+				for (int i = 0; i < children.getLength(); i++) {
+					parseXML(children.item(i), node);
+				}
+			}
+		}
+	}
+	
+	public ArrayList<Project> parseAllProjects(File ERBProjectDirectory, ArrayList<Activity> activities){
+		ArrayList<Project> projects = new ArrayList<Project>();
+		if(ERBProjectDirectory != null && ERBProjectDirectory.exists()) {
+			File [] projectDirectories = ERBProjectDirectory.listFiles();
+			for(File projectDirectory : projectDirectories) {
+				if(projectDirectory.isDirectory()) {
+					File projectMetaFile = new File(projectDirectory.getPath() + "\\Meta.xml");
+					if(projectMetaFile.exists()) {
+						Project project = parseProjectXML(projectMetaFile, activities);
+						projects.add(project);
+					}
+				}
+			}
+		}
+		return projects;
+	}
+	
+	public void writeProjectMetaXML(File xmlFile, Project project) {
+		if (xmlFile != null && project != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("project");
+				document.appendChild(rootElement);
+				rootElement.setAttribute("projectName", project.getProjectName());
+				rootElement.setAttribute("projectType", project.getProjectType());
+				rootElement.setAttribute("projectCleanedName", project.getProjectCleanedName());
+				Element goalsElement = document.createElement("goals");
+				for (Goal goal : project.getProjectGoals()) {
+					Element goalElement = document.createElement("goal");
+					goalElement.setAttribute("goalName", goal.getGoalName());
+					goalElement.setAttribute("goalCleanedName", goal.getGoalCleanedName());
+					goalElement.setAttribute("goalDescription", goal.getGoalDescription());
+					Element goalsCategoryElement = document.createElement("goalsCategories");
+					for (GoalCategory goalCategory : goal.getListOfSelectedGoalCategories()) {
+						Element goalCategoryElement = document.createElement("goalCategory");
+						goalCategoryElement.setAttribute("categoryName", goalCategory.getCategoryName());
+						goalsCategoryElement.appendChild(goalCategoryElement);
+					}
+					goalElement.appendChild(goalsCategoryElement);
+					goalsElement.appendChild(goalElement);
+				}
+				rootElement.appendChild(goalsElement);
+
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot writeProjectMetaXML. xmlFile or project is null.");
 		}
 	}
 

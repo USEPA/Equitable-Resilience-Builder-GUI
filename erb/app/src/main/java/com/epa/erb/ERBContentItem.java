@@ -1,5 +1,7 @@
 package com.epa.erb;
 
+import java.util.ArrayList;
+
 public class ERBContentItem {
 	
 	String id;
@@ -17,6 +19,15 @@ public class ERBContentItem {
 		this.shortName = shortName;
 		
 	}
+	
+	ArrayList<ERBContentItem> childERBContentItems = new ArrayList<ERBContentItem>();
+	
+	public void addChildERBContentItem(ERBContentItem erbContentItem) {
+		if(erbContentItem != null) {
+			childERBContentItems.add(erbContentItem);
+		}
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -52,6 +63,16 @@ public class ERBContentItem {
 	}
 	public void setShortName(String shortName) {
 		this.shortName = shortName;
+	}
+	public ArrayList<ERBContentItem> getChildERBContentItems() {
+		return childERBContentItems;
+	}
+	public void setChildERBContentItems(ArrayList<ERBContentItem> childERBContentItems) {
+		this.childERBContentItems = childERBContentItems;
+	}
+	
+	public String toString() {
+		return "id = " + id;
 	}
 
 }

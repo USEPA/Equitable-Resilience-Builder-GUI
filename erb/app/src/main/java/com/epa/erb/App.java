@@ -133,38 +133,25 @@ public class App extends Application {
 	}
 
 	private void readAndStoreData() {
-		readAndStoreAvailableInteractiveActivities();
-		readAndStoreAvailableSteps();
-		readAndStoreAvailableActivities();
-		readAndStoreAvailableChapters();
+		readAndStoreAvailableContent();
 		readAndStoreAvailableGoalCategories();
 		readAndStoreProjects();
-		readAndStoreAvailableContent();
 	}
 	
 	private void readAndStoreAvailableContent() {
 		File contentFile = fileHandler.getStaticAvailableContentXMLFile();
 		availableERBContentItems = xmlManager.parseContentXML(contentFile);
 	}
-
-	private void readAndStoreAvailableInteractiveActivities() {
-		File interactiveActivitiesFile = fileHandler.getStaticAvailableInteractiveActivitiesXMLFile();
-		availableInteractiveActivities = xmlManager.parseAvailableInteractiveActivitiesXML(interactiveActivitiesFile);
-	}
-
-	private void readAndStoreAvailableChapters() {
-		File chaptersFile = fileHandler.getStaticChaptersXMLFile();
-		availableChapters = xmlManager.parseChaptersXML(chaptersFile);
-	}
-
-	private void readAndStoreAvailableActivities() {
-		File availableActivitiesFile = fileHandler.getStaticAvailableActivitiesXMLFile();
-		availableActivities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile);
-	}
-
-	private void readAndStoreAvailableSteps() {
-		File availableStepsFile = fileHandler.getStaticAvailableStepsXMLFile();
-		availableSteps = xmlManager.parseAvailableStepsXML(availableStepsFile);
+	
+	public ERBContentItem findERBContentItemForId(String id) {
+		if(id!= null) {
+		for(ERBContentItem erbContentItem: availableERBContentItems) {
+			if(erbContentItem.getId().contentEquals(id)) {
+				return erbContentItem;
+			}
+		}
+		}
+		return null;
 	}
 
 	private void readAndStoreAvailableGoalCategories() {
@@ -255,24 +242,12 @@ public class App extends Application {
 		return availableActivities;
 	}
 
-	public void setAvailableActivities(ArrayList<Activity> activities) {
-		this.availableActivities = activities;
-	}
-
 	public ArrayList<Step> getAvailableSteps() {
 		return availableSteps;
 	}
 
-	public void setAvailableSteps(ArrayList<Step> steps) {
-		this.availableSteps = steps;
-	}
-
 	public ArrayList<InteractiveActivity> getAvailableInteractiveActivities() {
 		return availableInteractiveActivities;
-	}
-
-	public void setAvailableInteractiveActivities(ArrayList<InteractiveActivity> interactiveActivities) {
-		this.availableInteractiveActivities = interactiveActivities;
 	}
 
 	public ArrayList<GoalCategory> getAvailableGoalCategories() {

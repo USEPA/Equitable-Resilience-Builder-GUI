@@ -218,7 +218,7 @@ public class FileHandler {
 	}
 	
 	public File getStaticAvailableContentXMLFile() {
-		File availableContentXMLFile = new File(constants.getPathToERBStaticDataFolder() + "\\Available_Content.xml");
+		File availableContentXMLFile = new File(constants.getPathToERBFolder() + "\\Static_Data_2.0\\Available_Content.xml");
 		return availableContentXMLFile;
 	}
 	
@@ -244,7 +244,7 @@ public class FileHandler {
 	}
 	
 	public File getStaticGoalCategoriesXMLFile() {
-		File goalCategoriesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Goals\\Goal_Categories.xml");
+		File goalCategoriesFile = new File(constants.getPathToERBFolder() + "\\Static_Data_2.0\\Goal_Categories.xml");
 		return goalCategoriesFile;
 	}
 	

@@ -35,4 +35,7 @@ public class IdAssignments {
 		return resourceIdAssignments;
 	}
 
+	public ArrayList<String> getChapterIdAssignments() {
+		return chapterIdAssignments;
+	}
 }

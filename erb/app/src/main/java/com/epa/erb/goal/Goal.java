@@ -39,15 +39,16 @@ public class Goal {
 	
 	private ArrayList<Chapter> getAllChapters() {
 		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
-		ArrayList<String> chapNums = new ArrayList<String>();
-		for (GoalCategory goalCategory : listOfSelectedGoalCategories) {
-			for (Chapter chapter : goalCategory.getGoalChapters()) {
-				if(!chapNums.contains(String.valueOf(chapter.getNumber()))) {
-					chapNums.add(String.valueOf(chapter.getNumber()));
-					chapters.add(chapter);
-				}
-			}
-		}
+		//TODO: FIX HERE
+//		ArrayList<String> chapNums = new ArrayList<String>();
+//		for (GoalCategory goalCategory : listOfSelectedGoalCategories) {
+//			for (Chapter chapter : goalCategory.getGoalChapters()) {
+//				if(!chapNums.contains(String.valueOf(chapter.getNumber()))) {
+//					chapNums.add(String.valueOf(chapter.getNumber()));
+//					chapters.add(chapter);
+//				}
+//			}
+//		}
 		return chapters;
 	}
 	
