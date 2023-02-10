@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.MainPanelHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
@@ -45,7 +46,7 @@ public class ERBContainerController implements Initializable{
 		this.app = app;
 	}
 	
-	private XMLManager xmlManager = new XMLManager(app);
+	private IdAssignments idAssignments = new IdAssignments();
 	private MyBreadCrumbBar myBreadCrumbBar;
 	private FileHandler fileHandler = new FileHandler();
 	
@@ -77,12 +78,12 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void populateResourceMenu() {
-		File resourceXMLFile = fileHandler.getStaticAvailableResourcesXMLFile();
-		HashMap<String, String> resources = xmlManager.parseAvailableResourcesXML(resourceXMLFile);
-		for(String idString: resources.keySet()) {
-			String name = resources.get(idString);
-			MenuItem menuItem = createMenuItem(idString, name, true);
-			addMenuItem(menuItem, true);
+		for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
+			if(idAssignments.getResourceIdAssignments().contains(erbContentItem.getId())){
+				String name = erbContentItem.getLongName();
+				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+				addMenuItem(menuItem, true);
+			}
 		}
 	}
 	
@@ -96,12 +97,12 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void populateLandingMenu() {
-		File introXMLFile = fileHandler.getStaticAvailableIntroXMLFile();
-		HashMap<String, String> introPanels = xmlManager.parseAvailableIntroXML(introXMLFile);
-		for(String idString: introPanels.keySet()) {
-			String name = introPanels.get(idString);
-			MenuItem menuItem = createMenuItem(idString, name, false);
-			addMenuItem(menuItem,false);
+		for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
+			if(idAssignments.getIntroIdAssignments().contains(erbContentItem.getId())){
+				String name = erbContentItem.getLongName();
+				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+				addMenuItem(menuItem, true);
+			}
 		}
 	}
 	

@@ -127,7 +127,7 @@ public class App extends Application {
 			Project project = engagementActionController.getProject();
 			Goal goal = engagementActionController.getCurrentGoal();
 			ArrayList<Chapter> listOfUniqueChapters = engagementActionController.getListOfUniqueChapters();
-			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), listOfUniqueChapters);
+			xmlManager.writeGoalMetaXML2(fileHandler.getGoalMetaXMLFile(project, goal),availableGoalCategories.get(0).getErbContentItems());
 			fileHandler.createGUIDDirectoriesForGoal(project, goal, listOfUniqueChapters);
 		}
 	}
