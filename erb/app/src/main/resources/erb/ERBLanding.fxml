@@ -76,7 +76,7 @@
                                           </Label>
                                           <VBox>
                                              <children>
-                                                <Hyperlink text="See Examples">
+                                                <Hyperlink id="2" onAction="#hyperlinkAction" text="See Examples">
                                                    <font>
                                                       <Font size="16.0" />
                                                    </font></Hyperlink>
