@@ -1,6 +1,10 @@
 package com.epa.erb.utility;
 
 import java.util.HashMap;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.App;
 import com.epa.erb.ERBLandingController;
 import com.epa.erb.engagement_action.EngagementActionController;
@@ -15,6 +19,7 @@ import javafx.scene.layout.VBox;
 public class MainPanelHandler {
 	
 	private HashMap<String, String> mainPanelIdHashMap = new HashMap<String, String>();
+	private Logger logger = LogManager.getLogger(MainPanelHandler.class);
 	
 	public MainPanelHandler() {
 		initMainPanelIdHashMap();
@@ -35,7 +40,8 @@ public class MainPanelHandler {
 			fxmlLoader.setController(erbLandingNew2Controller);
 			return fxmlLoader.load();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 			return null;
 		}
 	}
@@ -50,7 +56,8 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 			return null;
 		}
 	}
@@ -65,7 +72,8 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 			return null;
 		}
 	}
@@ -80,7 +88,8 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 			return null;
 		}
 	}
@@ -96,7 +105,8 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 			return null;
 		}
 	}

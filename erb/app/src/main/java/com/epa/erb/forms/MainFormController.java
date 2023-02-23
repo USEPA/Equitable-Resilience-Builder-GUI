@@ -6,6 +6,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.ERBItem;
@@ -68,6 +72,7 @@ public class MainFormController implements Initializable{
 		
 	private Project project;
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
+	private Logger logger = LogManager.getLogger(MainFormController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -94,6 +99,8 @@ public class MainFormController implements Initializable{
 					tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
 				}
 			}
+		} else {
+			logger.error("Cannot setColor. engagementActionController or engagementActionController.getCurrentChapter() is null.");
 		}
 	}
 	
@@ -236,7 +243,8 @@ public class MainFormController implements Initializable{
 			root.setPrefHeight(app.getPrefHeight());
 			app.loadNodeToERBContainer(root);
 		}catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 		}
 	}
 	
@@ -277,7 +285,8 @@ public class MainFormController implements Initializable{
 			projectPopupStage.setScene(scene);
 			projectPopupStage.showAndWait();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 		}
 	}
 	
@@ -285,7 +294,8 @@ public class MainFormController implements Initializable{
 		try {
 			Desktop.getDesktop().browse(new URL(link).toURI());
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 		}
 	}
 	
@@ -297,6 +307,8 @@ public class MainFormController implements Initializable{
 			addTextFlowsToVBox(topPanelVBox, topPanelTextFlows);
 			ArrayList<TextFlow> bottomPanelTextFlows = formContentHashMap.get("bottomPanelVBox");
 			addTextFlowsToVBox(bottomPanelVBox, bottomPanelTextFlows);
+		} else {
+			logger.error("Cannot addContent. formContentHashMap is null.");
 		}
 	}
 	
@@ -338,6 +350,8 @@ public class MainFormController implements Initializable{
 			for (TextFlow textFlow : textFlows) {
 				vBox.getChildren().add(textFlow);
 			}
+		} else {
+			logger.error("Cannot addTextFlowsToVBox. textFlows or vBox is null.");
 		}
 	}
 

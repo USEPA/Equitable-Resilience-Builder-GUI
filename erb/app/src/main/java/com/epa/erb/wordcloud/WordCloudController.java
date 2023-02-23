@@ -16,6 +16,10 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.App;
 import com.epa.erb.InteractiveActivity;
 import com.epa.erb.goal.Goal;
@@ -99,6 +103,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	private FileHandler fileHandler = new FileHandler();
 	private HashSet<String> excludedWordSet = new HashSet<String>();
 	ArrayList<WordCloudItem> mergeArrayList = new ArrayList<WordCloudItem>();
+	private Logger logger = LogManager.getLogger(WordCloudController.class);
 
 	private App app;
 	private Project project;
@@ -279,7 +284,8 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			saveStage.showAndWait();
 			return wordCloudSaveController;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 		}
 		return null;
 	}
@@ -582,7 +588,8 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			webView.setMinHeight(size+40);
 			
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 		}
 	}
 	
@@ -627,7 +634,8 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 								}
 							});
 						} catch (MalformedURLException e) {
-							e.printStackTrace();
+							logger.error(e.getMessage());
+//							e.printStackTrace();
 						}
 					}
 				}
@@ -641,7 +649,8 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		try {
 			ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+//			e.printStackTrace();
 		}
 	}
 	

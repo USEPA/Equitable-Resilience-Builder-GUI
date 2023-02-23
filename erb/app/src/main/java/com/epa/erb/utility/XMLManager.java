@@ -368,7 +368,7 @@ public class XMLManager {
 				return goalCategories;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		} else {
 			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
@@ -662,7 +662,7 @@ public class XMLManager {
 	}
 	
 	public void writeGoalMetaXML(File xmlFile, ArrayList<Chapter> chapters) {
-		System.out.println(xmlFile + " " + chapters);
+//		System.out.println(xmlFile + " " + chapters);
 		if (xmlFile != null && chapters != null) {
 			try {
 				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -1018,7 +1018,7 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -1103,7 +1103,7 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -1160,7 +1160,7 @@ public class XMLManager {
 				}
 				return contentList;
 			} catch (Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {

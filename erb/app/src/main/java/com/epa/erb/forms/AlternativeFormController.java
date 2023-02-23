@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
 
 import com.epa.erb.App;
@@ -50,6 +52,7 @@ public class AlternativeFormController implements Initializable{
 	private App app;
 	private File xmlContentFileToParse;
 	private EngagementActionController engagementActionController;
+	private Logger logger = LogManager.getLogger(AlternativeFormController.class);
 	public AlternativeFormController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
@@ -81,6 +84,8 @@ public class AlternativeFormController implements Initializable{
 					tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
 				}
 			}
+		} else {
+			logger.error("Cannot setColor. engagementActionController or engagementActionController.getCurrentChapter() is null.");
 		}
 	}
 	
@@ -94,6 +99,8 @@ public class AlternativeFormController implements Initializable{
 			addTextFlowsToVBox(centerVBox, topPanelTextFlows);
 			ArrayList<TextFlow> bottomPanelTextFlows = formContentHashMap.get("rightVBox");
 			addTextFlowsToVBox(rightVBox, bottomPanelTextFlows);
+		} else {
+			logger.error("Cannot addContent. formContentHashMap is null.");
 		}
 	}
 	
@@ -114,6 +121,8 @@ public class AlternativeFormController implements Initializable{
 			for (TextFlow textFlow : textFlows) {
 				vBox.getChildren().add(textFlow);
 			}
+		} else {
+			logger.error("Cannot addTextFlowstoVBox. textFlows or vBox is null.");
 		}
 	}
 

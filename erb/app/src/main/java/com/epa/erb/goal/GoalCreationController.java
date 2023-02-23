@@ -231,6 +231,8 @@ public class GoalCreationController implements Initializable{
 				File destFile = new File(goalSupportingDOCDirectory + "\\" + sourceFile.getName());
 				fileHandler.copyFile(sourceFile, destFile);
 			}
+		} else {
+			logger.error("Cannot copyGlobalSupportingDocsToGoalSupportingDocs. goalSupportingDOCDirectory is null.");
 		}
 	}
 	
@@ -260,6 +262,8 @@ public class GoalCreationController implements Initializable{
 		File goalDirectory = fileHandler.getGoalsDirectory(project);
 		if(goalDirectory != null && !goalDirectory.exists()) {
 			goalDirectory.mkdir();
+		} else {
+			logger.error("Cannot createGoalsDirectory. goalDirectory is null or goalDirectory.exists().");
 		}
 	}
 		

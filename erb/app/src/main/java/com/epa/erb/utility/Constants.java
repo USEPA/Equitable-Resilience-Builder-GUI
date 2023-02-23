@@ -67,7 +67,7 @@ public class Constants {
 	private void setFilePathsStatic() {
 		File userDir = new File(System.getProperty("user.dir"));
 		File codeResourcesFile = new File(userDir.getParentFile().getParentFile() + "//erb_supporting_docs//Code_Resources");
-		
+		System.out.print(userDir);
 		pathToERBFolder = codeResourcesFile.getPath() +  "\\ERB";
 		pathToERBProjectsFolder = codeResourcesFile.getPath() + "\\ERB\\Projects";
 		pathToERBStaticDataFolder = codeResourcesFile.getPath() +  "\\ERB\\Static_Data";

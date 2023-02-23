@@ -1,7 +1,12 @@
 package com.epa.erb.chapter;
 
 import java.util.ArrayList;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.Activity;
+import com.epa.erb.App;
 import com.epa.erb.ERBItem;
 import com.epa.erb.Step;
 
@@ -27,6 +32,7 @@ public class Chapter extends ERBItem {
 		
 	private ArrayList<Step> assignedSteps = new ArrayList<Step>();
 	private ArrayList<Activity> assignedActivities = new ArrayList<Activity>();
+	private Logger logger = LogManager.getLogger(Chapter.class);
 
 	public Chapter cloneChapter() {
 		Chapter clonedChapter = new Chapter(id, guid, longName, shortName, status, notes, description, number);
@@ -38,24 +44,32 @@ public class Chapter extends ERBItem {
 	public void addStep(Step step) {
 		if (step != null) {
 			assignedSteps.add(step);
+		} else {
+			logger.error("Cannot addStep. step is null.");
 		}
 	}
 	
 	public void removeStep(Step step) {
 		if (step != null) {
 			assignedSteps.remove(step);
+		} else {
+			logger.error("Cannot removeStep. step is null.");
 		}
 	}
 
 	public void addActivity(Activity activity) {
 		if (activity != null) {
 			assignedActivities.add(activity);
+		} else {
+			logger.error("Cannot addActivity. activity is null.");
 		}
 	}
 	
 	public void removeActivity(Activity activity) {
 		if (activity != null) {
 			assignedActivities.remove(activity);
+		} else {
+			logger.error("Cannot removeActivity. activity is null.");
 		}
 	}
 

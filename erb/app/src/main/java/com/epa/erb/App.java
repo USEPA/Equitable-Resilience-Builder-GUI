@@ -192,6 +192,8 @@ public class App extends Application {
 		if (node != null) {
 			VBox.setVgrow(node, priority);
 			HBox.setHgrow(node, priority);
+		} else {
+			logger.error("Cannot setNodeGrowPriority. node is null.");
 		}
 	}
 

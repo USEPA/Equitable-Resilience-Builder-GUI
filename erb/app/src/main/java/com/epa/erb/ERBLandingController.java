@@ -3,6 +3,10 @@ package com.epa.erb;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
@@ -35,6 +39,7 @@ public class ERBLandingController implements Initializable{
 	VBox landingImageView3VBox;
 	
 	private App app;
+	private Logger logger = LogManager.getLogger(ERBLandingController.class);
 	public ERBLandingController(App app) {
 		this.app = app;
 	}
@@ -92,9 +97,11 @@ public class ERBLandingController implements Initializable{
 	public void exploreHyperlinkAction() {
 		ProjectSelectionController projectSelectionController = new ProjectSelectionController(app);
 		Project exploreProject = app.getExploreProject();
-		System.out.println("Explore Proj: " + exploreProject);
+//		System.out.println("Explore Proj: " + exploreProject);
 		if(exploreProject != null) {
 			projectSelectionController.loadProject(exploreProject);
+		} else {
+			logger.error("Cannot exploreProject. exploreProject is null.");
 		}
 	}
 	

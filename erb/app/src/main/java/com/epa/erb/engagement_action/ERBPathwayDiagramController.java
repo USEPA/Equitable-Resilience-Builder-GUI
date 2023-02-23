@@ -149,7 +149,7 @@ public class ERBPathwayDiagramController implements Initializable {
 			tooltip.setStyle("-fx-background-color: " + color + " ; -fx-text-fill: black;");
 			circle.setStyle("-fx-fill: " + color + ";");
 		} else {
-			logger.error("Cannot createToolTip. a param is null.");
+			logger.error("Cannot createToolTip. a param (toolTipText, circle, circlelabel, color) is null.");
 		}
 	}
 	

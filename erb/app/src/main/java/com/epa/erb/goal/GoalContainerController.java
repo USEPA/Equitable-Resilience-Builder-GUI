@@ -45,7 +45,7 @@ public class GoalContainerController implements Initializable{
 			return fxmlLoader.load();
 		}catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
+//			e.printStackTrace();
 			return null;
 		}
 	}

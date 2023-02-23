@@ -27,7 +27,7 @@ public class EngagementGoalLandingContentController implements Initializable {
 		this.engagementActionController = engagementActionController;
 	}
 
-	private Logger logger = LogManager.getLogger(EngagementGoalLandingContentController.class);
+//	private Logger logger = LogManager.getLogger(EngagementGoalLandingContentController.class);
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -272,7 +272,7 @@ public class EngagementActionController implements Initializable {
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
+//			e.printStackTrace();
 			return null;
 		}
 	}
@@ -470,6 +470,7 @@ public class EngagementActionController implements Initializable {
 							previousErbItem = iterator.previous();
 							return treeItemGuidTreeMap.get(previousErbItem);
 						} catch (Exception e) {
+							logger.error(e.getMessage());
 							return null;
 						}
 					}
@@ -512,8 +513,6 @@ public class EngagementActionController implements Initializable {
 			} else {
 				erbPathwayTreeItemSelected();
 			}
-		} else {
-
 		}
 	}
 

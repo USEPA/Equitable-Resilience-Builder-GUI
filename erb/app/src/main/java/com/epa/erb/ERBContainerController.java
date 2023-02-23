@@ -4,6 +4,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
@@ -48,6 +52,7 @@ public class ERBContainerController implements Initializable{
 	private XMLManager xmlManager = new XMLManager(app);
 	private MyBreadCrumbBar myBreadCrumbBar;
 	private FileHandler fileHandler = new FileHandler();
+	private Logger logger = LogManager.getLogger(ERBContainerController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -112,6 +117,7 @@ public class ERBContainerController implements Initializable{
 			menuItem.setOnAction(e -> menuItemSelected(menuItem, isResource));
 			return menuItem;
 		} else {
+			logger.error("Cannot createMenuItem. id or name is null.");
 			return null;
 		}
 	}
@@ -123,6 +129,8 @@ public class ERBContainerController implements Initializable{
 			} else {
 				introMenu.getItems().add(menuItem);
 			}
+		} else {
+			logger.error("Cannot addMenuItem. menuItem is null.");
 		}
 	}
 	
@@ -148,6 +156,7 @@ public class ERBContainerController implements Initializable{
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			return null;
 		}
 	}

@@ -2,6 +2,9 @@ package com.epa.erb;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Step extends ERBItem {
 
 	private String id;
@@ -23,6 +26,7 @@ public class Step extends ERBItem {
 	}
 
 	private ArrayList<InteractiveActivity> assignedDynamicActivities = new ArrayList<InteractiveActivity>();
+	private Logger logger = LogManager.getLogger(Step.class);
 
 	public Step cloneStep() {
 		Step clonedStep = new Step(id, guid, longName, shortName, status, notes, rating, type);
@@ -33,12 +37,16 @@ public class Step extends ERBItem {
 	public void addDynamicActivity(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			assignedDynamicActivities.add(dynamicActivity);
+		} else {
+			logger.error("Cannot addDynamicActivity. dynamicActivity is null.");
 		}
 	}
 
 	public void removeDynamicActivity(InteractiveActivity dynamicActivity) {
 		if (dynamicActivity != null) {
 			assignedDynamicActivities.remove(dynamicActivity);
+		} else {
+			logger.error("Cannot removeDynamicActivity. dynamicActivity is null.");
 		}
 	}
 
