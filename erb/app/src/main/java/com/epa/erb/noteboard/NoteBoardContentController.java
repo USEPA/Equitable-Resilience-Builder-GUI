@@ -109,7 +109,7 @@ public class NoteBoardContentController implements Initializable{
 		XMLManager xmlManager = new XMLManager(app);
 		setCategoryPostIts();
 		ArrayList<CategorySectionController> categories = getCategorySectionControllers();
-		xmlManager.writeNoteboardDataXML(fileHandler.getDynamicActivityDataXMLFile(project, goal, erbContentItem.getGuid()), categories);
+		xmlManager.writeNoteboardDataXML(fileHandler.getDataXMLFile(project, goal, erbContentItem), categories);
 	}
 	
 	@FXML
@@ -165,7 +165,7 @@ public class NoteBoardContentController implements Initializable{
 	private void generateExistingNoteBoardControls(Project project, Goal goal) {
 		try {
 			XMLManager xmlManager = new XMLManager(app);
-			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(fileHandler.getDynamicActivityDataXMLFile(project, goal, erbContentItem.getGuid()));
+			ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = xmlManager.parseNoteboardDataXML(fileHandler.getDataXMLFile(project, goal, erbContentItem));
 			if(listOfCategoryHashMaps != null) {
 			for (int i = 0; i < listOfCategoryHashMaps.size(); i++) {
 				HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMap = listOfCategoryHashMaps.get(i);
@@ -193,7 +193,7 @@ public class NoteBoardContentController implements Initializable{
 	}
 	
 	private boolean noteBoardDataExists(Project project, Goal goal) {
-		File activityDataFile = fileHandler.getDynamicActivityDataXMLFile(project, goal, erbContentItem.getGuid());
+		File activityDataFile = fileHandler.getDataXMLFile(project, goal, erbContentItem);
 		if(activityDataFile != null && activityDataFile.exists()) {
 			return true;
 		}

@@ -55,9 +55,7 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	VBox treeViewVBox;
 	@FXML
-//	TreeView<ERBItem> treeView;
 	TreeView<ERBContentItem> treeView;
-
 	@FXML
 	VBox mainVBox;
 	@FXML
@@ -73,15 +71,12 @@ public class EngagementActionController implements Initializable {
 		this.project = project;
 	}
 	
-	
-	ArrayList<ERBContentItem> listOfUniqueERBContentItems = new ArrayList<ERBContentItem>();
-
 	private Goal currentSelectedGoal = null;
-	private ERBContentItem currentSelectedERBContentItem = null;
-
 	private FileHandler fileHandler = new FileHandler();
 	MainPanelHandler mainPanelHandler = new MainPanelHandler();
+	private ERBContentItem currentSelectedERBContentItem = null;
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
+	ArrayList<ERBContentItem> listOfUniqueERBContentItems = new ArrayList<ERBContentItem>();
 	private LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>> treeItemGuidTreeMap = new LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>>();
 
 	@Override
@@ -314,7 +309,7 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 	
-	private void fillAndStoreTreeViewData_GUIDS2(ArrayList<ERBContentItem> uniqueChapters) { // HAS GUIDS
+	private void fillAndStoreTreeViewData_hasGUIDS(ArrayList<ERBContentItem> uniqueChapters) { // HAS GUIDS
 		if (uniqueChapters != null) {
 			treeItemGuidTreeMap.clear();
 			listOfUniqueERBContentItems.clear();
@@ -326,7 +321,7 @@ public class EngagementActionController implements Initializable {
 			treeItemGuidTreeMap.put(rootERBContentItem, rootTreeItem);
 
 			for (ERBContentItem contentItem : uniqueChapters) {
-				addChildrenToTreeView2(contentItem, null, rootTreeItem);
+				addChildrenToTreeView_hasGUIDS(contentItem, null, rootTreeItem);
 			}
 			listOfUniqueERBContentItems = uniqueChapters;
 
@@ -335,19 +330,18 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 	
-	public void addChildrenToTreeView2(ERBContentItem contentItem, ERBContentItem contentItemParent, TreeItem<ERBContentItem> rootTreeItem) {
+	public void addChildrenToTreeView_hasGUIDS(ERBContentItem contentItem, ERBContentItem contentItemParent, TreeItem<ERBContentItem> rootTreeItem) {
 		TreeItem<ERBContentItem> treeItem = new TreeItem<ERBContentItem>(contentItem);
 		rootTreeItem.getChildren().add(treeItem);
 		treeItemGuidTreeMap.put(contentItem, treeItem);
 		if (contentItem.getChildERBContentItems().size() > 0) {
 			for (ERBContentItem erbContentItemChild : contentItem.getChildERBContentItems()) {
-				addChildrenToTreeView2(erbContentItemChild, contentItem, treeItem);
+				addChildrenToTreeView_hasGUIDS(erbContentItemChild, contentItem, treeItem);
 			}
 		}
 	}
 	
-	//NO GUIDS
-		private void fillAndStoreTreeViewData2(ArrayList<ERBContentItem> genericContentItems) {
+	private void fillAndStoreTreeViewData_noGUIDS(ArrayList<ERBContentItem> genericContentItems) {
 			if (genericContentItems != null) {
 				treeItemGuidTreeMap.clear();
 				listOfUniqueERBContentItems.clear();
@@ -358,7 +352,7 @@ public class EngagementActionController implements Initializable {
 				treeItemGuidTreeMap.put(rootERBContentItem, rootTreeItem);
 
 				for (ERBContentItem contentItem : genericContentItems) {
-					addChildrenToTreeView(contentItem, null, rootTreeItem);
+					addChildrenToTreeView_noGUIDS(contentItem, null, rootTreeItem);
 				}
 				
 				listOfUniqueERBContentItems = genericContentItems;
@@ -368,7 +362,7 @@ public class EngagementActionController implements Initializable {
 			}
 		}
 		
-		public void addChildrenToTreeView(ERBContentItem contentItem, ERBContentItem contentItemParent, TreeItem<ERBContentItem> rootTreeItem) {
+		public void addChildrenToTreeView_noGUIDS(ERBContentItem contentItem, ERBContentItem contentItemParent, TreeItem<ERBContentItem> rootTreeItem) {
 			String guid = app.generateGUID();
 			contentItem.setGuid(guid);
 			TreeItem<ERBContentItem> treeItem = new TreeItem<ERBContentItem>(contentItem);
@@ -376,7 +370,7 @@ public class EngagementActionController implements Initializable {
 			treeItemGuidTreeMap.put(contentItem, treeItem);
 			if (contentItem.getChildERBContentItems().size() > 0) {
 				for (ERBContentItem erbContentItemChild : contentItem.getChildERBContentItems()) {
-					addChildrenToTreeView(erbContentItemChild, contentItem, treeItem);
+					addChildrenToTreeView_noGUIDS(erbContentItemChild, contentItem, treeItem);
 				}
 			}
 		}
@@ -409,9 +403,9 @@ public class EngagementActionController implements Initializable {
 					}
 				}
 				if(hasGUIDs) {
-					fillAndStoreTreeViewData_GUIDS2(contentItems); //LIST OF CHAPTERS IS ALREADY UNIQUE
+					fillAndStoreTreeViewData_hasGUIDS(contentItems); //LIST OF CHAPTERS IS ALREADY UNIQUE
 				} else {
-					fillAndStoreTreeViewData2(contentItems); //LIST OF CHAPTERS IS NOT UNIQUE
+					fillAndStoreTreeViewData_noGUIDS(contentItems); //LIST OF CHAPTERS IS NOT UNIQUE
 
 				}
 				initializeTreeViewSelection();

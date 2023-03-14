@@ -5,8 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.goal.GoalCategory;
 
-import javafx.scene.control.TreeItem;
-
 public class ERBItemFinder {
 
 	private Logger logger = LogManager.getLogger(ERBItemFinder.class);
@@ -27,11 +25,6 @@ public class ERBItemFinder {
 			return null;
 		}
 		logger.debug("Cannot getGoalCategoryByName. GoalCategory returned is null");
-		return null;
-	}
-	
-	public ERBContentItem getParent(ArrayList<ERBContentItem> uniqueERBContentItems, TreeItem<ERBContentItem> currentSelectedTreeItem) {
-		//ERBContentItem currentERBContentItem = currentSelectedTreeItem.getValue();
 		return null;
 	}
 	

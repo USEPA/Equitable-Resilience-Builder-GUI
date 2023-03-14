@@ -166,7 +166,7 @@ public class WordCloudController implements Initializable {
 					buildButtonAction();
 				}
 			} else {
-				WebView wordCloudWebView = initWebView();
+				initWebView();
 				
 			}
 		}
@@ -332,7 +332,7 @@ public class WordCloudController implements Initializable {
 		tableView.getItems().clear();
 		tableView.refresh();
 		mergeArrayList.clear();
-		WebView wordCloudWebView = initWebView();
+		initWebView();
 	}
 	
 	public void adjustCountToSize() {

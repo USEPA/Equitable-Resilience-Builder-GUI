@@ -6,14 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
-import com.epa.erb.ERBContentItem;
 import com.epa.erb.engagement_action.EngagementActionController;
-import com.epa.erb.utility.Constants;
-import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -46,12 +42,10 @@ public class AlternativeFormController extends FormController implements Initial
 	
 	private App app;
 	private File xmlContentFileToParse;
-	private EngagementActionController engagementActionController;
 	public AlternativeFormController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
 		super(app, xmlContentFileToParse, engagementActionController);
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
-		this.engagementActionController = engagementActionController;
 	}
 
 	@Override

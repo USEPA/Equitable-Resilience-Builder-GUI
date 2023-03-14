@@ -31,17 +31,16 @@ public class App extends Application {
 
 	private int prefWidth;
 	private int prefHeight;
+	private XMLManager xmlManager;
 	private Project selectedProject;
+	private FileHandler fileHandler = new FileHandler();
+	private Logger logger = LogManager.getLogger(App.class);
 	private ERBContainerController erbContainerController;
 	private EngagementActionController engagementActionController;
 
 	private ArrayList<Project> projects;
 	private ArrayList<GoalCategory> availableGoalCategories;	
 	private ArrayList<ERBContentItem> availableERBContentItems;
-	
-	private FileHandler fileHandler = new FileHandler();
-	private XMLManager xmlManager;
-	private Logger logger = LogManager.getLogger(App.class);
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {

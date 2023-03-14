@@ -59,26 +59,6 @@ public class FileHandler {
 		}
 	}
 	
-	public File getActivitiesDirectory(Project project, Goal goal) {
-		if (project != null && goal != null) {
-			File activitiesDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Activities_XML");
-			return activitiesDirectory;
-		} else {
-			logger.error("Cannot getActivitiesDirectory. project = " + project + " goal = " + goal);
-			return null;
-		}
-	}
-	
-	public File getStepsDirectory(Project project, Goal goal) {
-		if (project != null && goal != null) {
-			File stepsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Steps_XML");
-			return stepsDirectory;
-		} else {
-			logger.error("Cannot getStepsDirectory. project = " + project + " goal = " + goal);
-			return null;
-		}
-	}
-	
 	public File getSupportingDOCDirectory(Project project, Goal goal) {
 		if(project != null && goal != null) {
 			File supportingDOCDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Supporting_DOC");
@@ -131,16 +111,6 @@ public class FileHandler {
 		}
 	}
 	
-	public File getDynamicActivityDataXMLFile(Project project, Goal goal, String guid) {
-		if(project != null && goal != null && guid != null) {
-			File dynamicActivityDataXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data\\" + guid + "\\Data.xml");
-			return dynamicActivityDataXMLFile;
-		} else {
-			logger.error("Cannot getDynamicActivityDataXMLFile. project = " + project + " goal = " + goal + " guid = " + guid);
-			return null;
-		}
-	}
-	
 	public File getJSONPWordCloudFileForInteractiveActivity(Project project, Goal goal, String guid, String webViewId) {
 		File jsonpFile = new File(getGUIDDataDirectory(project, goal) + "\\" + guid + "\\" + webViewId + "\\wordcloud.jsonp");
 		return jsonpFile;
@@ -153,54 +123,24 @@ public class FileHandler {
 		return supportingDOCDirectory;
 	}
 	
-	public File getStaticAvailableActivitiesXMLFile() {
-		File availableActivitiesFile = new File(constants.getPathToERBStaticDataFolder()+ "\\Activities\\Available_Activities.xml");
-		return availableActivitiesFile;
-	}
-	
-	public File getStaticAvailableStepsXMLFile() {
-		File availableStepsFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Steps.xml");
-		return availableStepsFile;
-	}
-	
 	public File getStaticAvailableContentXMLFile() {
-		File availableContentXMLFile = new File(constants.getPathToERBFolder() + "\\Static_Data_2.0\\Available_Content.xml");
+		File availableContentXMLFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Available_Content.xml");
 		return availableContentXMLFile;
 	}
 	
-	public File getStaticAvailableInteractiveActivitiesXMLFile() {
-		File availableInterativeActivitiesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Available_Interactive_Activities.xml");
-		return availableInterativeActivitiesFile;
-	}
-	
-	public File getStaticChaptersXMLFile() {
-		File chaptersFile = new File(constants.getPathToERBStaticDataFolder() + "\\Chapters\\Chapters.xml");
-		return chaptersFile;
-	}
-	
 	public File getStaticGoalCategoriesXMLFile() {
-		File goalCategoriesFile = new File(constants.getPathToERBFolder() + "\\Static_Data_2.0\\Goal_Categories.xml");
+		File goalCategoriesFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Goal_Categories.xml");
 		return goalCategoriesFile;
-	}
-	
-	public File getStaticAvailableIntroXMLFile() {
-		File availableIntroFile = new File(constants.getPathToERBStaticDataFolder() + "\\Intro\\Available_Intro.xml");
-		return availableIntroFile;
 	}
 	
 	public File getStaticFormContentXML(String id) {
 		if(id != null) {
-			File formContentFile = new File(constants.getPathToERBFolder() + "\\Static_Data_2.0\\ContentXMLs\\" + id + "\\form_text.xml");
+			File formContentFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\ContentXMLs\\" + id + "\\form_text.xml");
 			return formContentFile;
 		} else {
 			logger.error("Cannot getStaticFormContentXML. id = " + id);
 			return null;
 		}
-	}
-	
-	public File getStaticAvailableResourcesXMLFile() {
-		File availableResourcesFile = new File(constants.getPathToERBStaticDataFolder() + "\\Resources\\Available_Resources.xml");
-		return availableResourcesFile;
 	}
 	
 	public File getStaticWordCloudDirectory() {
