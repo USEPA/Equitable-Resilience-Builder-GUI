@@ -1,0 +1,154 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Step 3. Hold the indicators workshop">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In this step, the core team will hold the indicators workshop with community member participants.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;We will learn from the participants where systems and topics fall on resilience and equity continuums.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;Detailed instructions are ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="here"
+			linkType="externalDOC"
+			link="Ch4_Instructions.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#xD;1. At the workshop, divide into groups for each system (or topic). Have the breakout groups sort the indicator cards and place them into resilience and equity diagrams.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#xD;2. Think back to Chapter 3 stories">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- In what aspects/areas did you hear about least/greatest resiliency?">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- In what aspects/areas did you hear about least/greatest equity?">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- How might these stories change/inform your indicator sorting?">
+			</text>
+		</textBlock>
+	</container>
+<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Thing's you'll need:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="&#xD;Time:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 2 hours">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="&#xD;Materials:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Completed indicator cards (printed)">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Posterboards for resilience and equity diagrams">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;&#x9;- Easel, sticky notes, and markers">
+			</text>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="This output:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Sorted indicator cards">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Resilience and equity diagrams">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

@@ -1,0 +1,187 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Develop a Community Engagement Plan">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Activity 2: Write the plan">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In this activity, the core team will finalize the details of a community engagement plan.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A community engagement plan helps you figure out how you're going to communicate and coordinate with community members. This planning process can help you expand your community network, enhance inclusion, and strengthen community buy-in and participation in next ERB activities.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Refer to the materials that you put together earlier in this chapter or existing community engagement materials you have. Use the table provided in the ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Engagement Plan"
+			linkType="externalDOC"
+			link="Ch2_CommunityEngagement_Plan.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" template to decide: the activities that are appropriate to communicate and reach your audience; how much time each activity will take; when you want to have them; venue; and how you will recruit.">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Planning">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Time: 1-3 weeks of development, both independent and group work">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Engagement Plan"
+			linkType="externalDOC"
+			link="Ch2_CommunityEngagement_Plan.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Connections Table"
+			linkType="externalDOC"
+			link="Ch2_CommunityConnections_Table.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="000000013">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Diagram of Community Connections"
+			linkType="externalDOC"
+			link="Ch2_DiagramCommunityConnections.docx">
+			</text>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Centering Equity">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="000000016">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Planning in an iterative process. This activity helps you get started with engagement. However, we recommend that you periodically revisit and update your plan as you expand your network and learn more about the needs of your community.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

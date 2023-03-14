@@ -1,0 +1,62 @@
+<goalCategories>
+	<goalCategory categoryName="All activities">
+		<contents>
+			<content id="15">
+				<content id="30"/>
+				<content id="20">
+					<content id="84"/>
+				</content>
+				<content id="59">
+					<content id="27"/>
+					<content id="28"/>
+				</content>
+				<content id="31">
+					<content id="27"/>
+					<content id="29"/>
+				</content>
+				<content id="32"/>
+				<content id="33"/>
+			</content>
+			<content id="16">
+				<content id="60"/>
+				<content id="34"/>
+				<content id="35"/>
+				<content id="36"/>
+				<content id="37"/>
+				<content id="38"/>
+				<content id="61"/>
+			</content>
+			<content id="17">
+				<content id="24"/>
+				<content id="39"/>
+				<content id="40"/>
+				<content id="41">
+					<content id="84"/>
+				</content>
+				<content id="43">
+					<content id="85"/>
+				</content>
+				<content id="44"/>
+				<content id="45"/>
+			</content>
+			<content id="18">
+				<content id="46"/>
+				<content id="47"/>
+				<content id="48"/>
+				<content id="56"/>
+			</content>
+			<content id="19">
+				<content id="50"/>
+				<content id="51">
+					<content id="84"/>
+				</content>
+				<content id="52"/>
+				<content id="53"/>
+				<content id="54"/>
+				<content id="55"/>
+				<content id="57"/>
+				<content id="58"/>
+			</content>
+		</contents>
+	</goalCategory>
+</goalCategories>

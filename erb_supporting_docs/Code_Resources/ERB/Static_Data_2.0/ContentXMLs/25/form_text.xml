@@ -1,0 +1,104 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Sorting indicator cards activity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Have the breakout groups sort the indicator cards.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;We will understand where systems (and topics) fall relative to others in terms of resilience and equity.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;At the workshop, have the breakout groups for each system (or topic) sort the indicator cards into Least Resilient, Moderately Resilient, and Most Resilient. Next, within each category, order the cards from Least Equitable to Moderately Equitable to Highly Equitable.">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="People you'll need: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Breakout groups">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#xD;Time you'll need: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Activity time - 1 hour">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#xD;Materials you'll need: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Indicator cards">
+			</text>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Outputs:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;- Sorted indicator cards">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

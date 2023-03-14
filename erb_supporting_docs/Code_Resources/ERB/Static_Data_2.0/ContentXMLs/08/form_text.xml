@@ -1,0 +1,132 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What makes ERB different?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What makes ERB different from other resilience tools is:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;1. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Equity.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" It encourages attention to equity in the content of the toolkit and the inclusive process of using it.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;2. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Holistic.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" You can see how the built, natural, and social environments all affect resilience and equity.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;3. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Adaptable.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" You can use it for different types of resilience planning: watershed, hazard mitigation, disaster preparedness, climate adaptation, etc.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;4. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Flexible.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" You can select which activities best suit your goals, timeline, and resources.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;5. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Iterative.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" It encourages reflection and returning to revise key points, as needed.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;6. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Continuity.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" It documents what you've done so someone from your office can come back in a few years to see how things have changed.">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

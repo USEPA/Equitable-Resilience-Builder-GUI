@@ -43,6 +43,8 @@ public class App extends Application {
 	private ArrayList<GoalCategory> availableGoalCategories;
 	private ArrayList<InteractiveActivity> availableInteractiveActivities;
 	
+	private ArrayList<ERBContentItem> availableERBContentItems;
+	
 	private FileHandler fileHandler = new FileHandler();
 	private XMLManager xmlManager = new XMLManager(this);
 	private Logger logger = LogManager.getLogger(App.class);
@@ -125,38 +127,31 @@ public class App extends Application {
 			Project project = engagementActionController.getProject();
 			Goal goal = engagementActionController.getCurrentGoal();
 			ArrayList<Chapter> listOfUniqueChapters = engagementActionController.getListOfUniqueChapters();
-			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), listOfUniqueChapters);
+			xmlManager.writeGoalMetaXML2(fileHandler.getGoalMetaXMLFile(project, goal),availableGoalCategories.get(0).getErbContentItems());
 			fileHandler.createGUIDDirectoriesForGoal(project, goal, listOfUniqueChapters);
 		}
 	}
 
 	private void readAndStoreData() {
-		readAndStoreAvailableInteractiveActivities();
-		readAndStoreAvailableSteps();
-		readAndStoreAvailableActivities();
-		readAndStoreAvailableChapters();
+		readAndStoreAvailableContent();
 		readAndStoreAvailableGoalCategories();
 		readAndStoreProjects();
 	}
-
-	private void readAndStoreAvailableInteractiveActivities() {
-		File interactiveActivitiesFile = fileHandler.getStaticAvailableInteractiveActivitiesXMLFile();
-		availableInteractiveActivities = xmlManager.parseAvailableInteractiveActivitiesXML(interactiveActivitiesFile);
+	
+	private void readAndStoreAvailableContent() {
+		File contentFile = fileHandler.getStaticAvailableContentXMLFile();
+		availableERBContentItems = xmlManager.parseContentXML(contentFile);
 	}
-
-	private void readAndStoreAvailableChapters() {
-		File chaptersFile = fileHandler.getStaticChaptersXMLFile();
-		availableChapters = xmlManager.parseChaptersXML(chaptersFile);
-	}
-
-	private void readAndStoreAvailableActivities() {
-		File availableActivitiesFile = fileHandler.getStaticAvailableActivitiesXMLFile();
-		availableActivities = xmlManager.parseAvailableActivitiesXML(availableActivitiesFile);
-	}
-
-	private void readAndStoreAvailableSteps() {
-		File availableStepsFile = fileHandler.getStaticAvailableStepsXMLFile();
-		availableSteps = xmlManager.parseAvailableStepsXML(availableStepsFile);
+	
+	public ERBContentItem findERBContentItemForId(String id) {
+		if(id!= null) {
+		for(ERBContentItem erbContentItem: availableERBContentItems) {
+			if(erbContentItem.getId().contentEquals(id)) {
+				return erbContentItem;
+			}
+		}
+		}
+		return null;
 	}
 
 	private void readAndStoreAvailableGoalCategories() {
@@ -249,24 +244,12 @@ public class App extends Application {
 		return availableActivities;
 	}
 
-	public void setAvailableActivities(ArrayList<Activity> activities) {
-		this.availableActivities = activities;
-	}
-
 	public ArrayList<Step> getAvailableSteps() {
 		return availableSteps;
 	}
 
-	public void setAvailableSteps(ArrayList<Step> steps) {
-		this.availableSteps = steps;
-	}
-
 	public ArrayList<InteractiveActivity> getAvailableInteractiveActivities() {
 		return availableInteractiveActivities;
-	}
-
-	public void setAvailableInteractiveActivities(ArrayList<InteractiveActivity> interactiveActivities) {
-		this.availableInteractiveActivities = interactiveActivities;
 	}
 
 	public ArrayList<GoalCategory> getAvailableGoalCategories() {
@@ -299,6 +282,10 @@ public class App extends Application {
 
 	public void setEngagementActionController(EngagementActionController engagementActionController) {
 		this.engagementActionController = engagementActionController;
+	}
+
+	public ArrayList<ERBContentItem> getAvailableERBContentItems() {
+		return availableERBContentItems;
 	}
 
 }
