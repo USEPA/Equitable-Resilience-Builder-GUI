@@ -5,26 +5,21 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.w3c.dom.Node;
-
 import com.epa.erb.App;
+import com.epa.erb.ERBContentItem;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.Constants;
+import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.XMLManager;
-
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
-public class AlternativeFormController implements Initializable{
+
+public class AlternativeFormController extends FormController implements Initializable{
 	
 	@FXML
 	VBox containerVBox;
@@ -52,8 +47,8 @@ public class AlternativeFormController implements Initializable{
 	private App app;
 	private File xmlContentFileToParse;
 	private EngagementActionController engagementActionController;
-	private Logger logger = LogManager.getLogger(AlternativeFormController.class);
 	public AlternativeFormController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
+		super(app, xmlContentFileToParse, engagementActionController);
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;
@@ -65,28 +60,7 @@ public class AlternativeFormController implements Initializable{
 		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseAlternativeFormContentXML(xmlContentFileToParse, this);
 		addContent(formContentHashMap);
 		hideEmptyControls();
-		setColor();
-	}
-	
-	private void setColor() {
-		Constants constants = new Constants();
-		if (engagementActionController != null && engagementActionController.getCurrentChapter() != null) {
-			if (engagementActionController.getTreeView().getSelectionModel().getSelectedItem() != null) {
-				if (engagementActionController.getCurrentChapter().getNumber() == 1) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter1Color());
-				} else if (engagementActionController.getCurrentChapter().getNumber() == 2) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter2Color());
-				} else if (engagementActionController.getCurrentChapter().getNumber() == 3) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter3Color());
-				} else if (engagementActionController.getCurrentChapter().getNumber() == 4) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter4Color());
-				} else if (engagementActionController.getCurrentChapter().getNumber() == 5) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
-				}
-			}
-		} else {
-			logger.error("Cannot setColor. engagementActionController or engagementActionController.getCurrentChapter() is null.");
-		}
+		setColor(tP);
 	}
 	
 	public void addContent(HashMap<String, ArrayList<TextFlow>> formContentHashMap) {
@@ -99,8 +73,14 @@ public class AlternativeFormController implements Initializable{
 			addTextFlowsToVBox(centerVBox, topPanelTextFlows);
 			ArrayList<TextFlow> bottomPanelTextFlows = formContentHashMap.get("rightVBox");
 			addTextFlowsToVBox(rightVBox, bottomPanelTextFlows);
-		} else {
-			logger.error("Cannot addContent. formContentHashMap is null.");
+		}
+	}
+	
+	public void addTextFlowsToVBox(VBox vBox, ArrayList<TextFlow> textFlows) {
+		if (textFlows != null && vBox != null) {
+			for (TextFlow textFlow : textFlows) {
+				vBox.getChildren().add(textFlow);
+			}
 		}
 	}
 	
@@ -115,15 +95,4 @@ public class AlternativeFormController implements Initializable{
 			hBox.getChildren().remove(leftVBox);
 		}
 	}
-	
-	public void addTextFlowsToVBox(VBox vBox, ArrayList<TextFlow> textFlows) {
-		if (textFlows != null && vBox != null) {
-			for (TextFlow textFlow : textFlows) {
-				vBox.getChildren().add(textFlow);
-			}
-		} else {
-			logger.error("Cannot addTextFlowstoVBox. textFlows or vBox is null.");
-		}
-	}
-
 }

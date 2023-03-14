@@ -29,7 +29,6 @@ public class ProjectSelectionController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		app.updateAvailableProjectsList();
 		setProjectsListViewCellFactory();
 		fillProjectsListView();
 	}

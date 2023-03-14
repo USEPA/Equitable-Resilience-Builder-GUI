@@ -76,7 +76,7 @@
                                           </Label>
                                           <VBox>
                                              <children>
-                                                <Hyperlink id="2" onAction="#hyperlinkAction" text="See Examples">
+                                                <Hyperlink text="See Examples">
                                                    <font>
                                                       <Font size="16.0" />
                                                    </font></Hyperlink>
@@ -102,11 +102,11 @@
                                           </Label>
                                           <VBox>
                                              <children>
-                                                <Hyperlink id="4" onAction="#hyperlinkAction" text="Who is the tool for?">
+                                                <Hyperlink id="07" onAction="#hyperlinkAction" text="Who is the tool for?">
                                                    <font>
                                                       <Font size="16.0" />
                                                    </font></Hyperlink>
-                                                <Hyperlink id="1" onAction="#hyperlinkAction" text="Equity and resilience">
+                                                <Hyperlink id="04" onAction="#hyperlinkAction" text="Equity and resilience">
                                                    <font>
                                                       <Font size="16.0" />
                                                    </font></Hyperlink>

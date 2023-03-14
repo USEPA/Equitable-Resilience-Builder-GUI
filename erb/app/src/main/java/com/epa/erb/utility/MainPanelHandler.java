@@ -1,13 +1,10 @@
 package com.epa.erb.utility;
 
 import java.util.HashMap;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.App;
 import com.epa.erb.ERBLandingController;
 import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.engagement_action.EngagementGoalLandingContentController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectCreationController;
 import com.epa.erb.project.ProjectSelectionController;
@@ -18,18 +15,19 @@ import javafx.scene.layout.VBox;
 public class MainPanelHandler {
 	
 	private HashMap<String, String> mainPanelIdHashMap = new HashMap<String, String>();
-	private Logger logger = LogManager.getLogger(MainPanelHandler.class);
 	
 	public MainPanelHandler() {
 		initMainPanelIdHashMap();
 	}
 	
 	private void initMainPanelIdHashMap() {
-		mainPanelIdHashMap.put("ERB Landing", "001");
-		mainPanelIdHashMap.put("Project Selection", "002");
-		mainPanelIdHashMap.put("Goal Creation", "003");
-		mainPanelIdHashMap.put("Engagement", "004");
-		mainPanelIdHashMap.put("Project Creation", "005");
+		mainPanelIdHashMap.put("ERB Landing", "86");
+		mainPanelIdHashMap.put("Project Selection", "87");
+		mainPanelIdHashMap.put("Goal Creation", "88");
+		mainPanelIdHashMap.put("Engagement", "89");
+		mainPanelIdHashMap.put("Project Creation", "90");
+		mainPanelIdHashMap.put("ERB Dashboard", "90");
+
 	}
 	
 	public Parent loadERBLanding(App app) {
@@ -39,8 +37,7 @@ public class MainPanelHandler {
 			fxmlLoader.setController(erbLandingNew2Controller);
 			return fxmlLoader.load();
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-//			e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -55,8 +52,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-//			e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -71,8 +67,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-//			e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -88,8 +83,21 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-//			e.printStackTrace();
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public VBox loadERBDashboardRoot(App app) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementGoalLandingContent.fxml"));
+			EngagementGoalLandingContentController chapterLandingController = new EngagementGoalLandingContentController(app.getEngagementActionController());
+			fxmlLoader.setController(chapterLandingController);
+			VBox root = fxmlLoader.load();
+			root.setPrefWidth(app.getPrefWidth());
+			root.setPrefHeight(app.getPrefHeight());
+			return root;
+		} catch (Exception e) {
 			return null;
 		}
 	}

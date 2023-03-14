@@ -36,18 +36,18 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();
 		String mainPanelId = breadCrumbIdHashMap.get(breadCrumb);
 		//TODO: How to not make static
-		if(mainPanelId.contentEquals("001")) {
+		if(mainPanelId.contentEquals("86")) {
 			Parent root = mainPanelHandler.loadERBLanding(app);
 			app.loadNodeToERBContainer(root);
-		}else if(mainPanelId.contentEquals("002")) {
+		}else if(mainPanelId.contentEquals("87")) {
 			Parent root = mainPanelHandler.loadProjectSelectionRoot(app);
 			app.loadNodeToERBContainer(root);
-		}else if(mainPanelId.contentEquals("003")) {
+		}else if(mainPanelId.contentEquals("88")) {
 			//Don't allow right now
-		}else if(mainPanelId.contentEquals("004")) {
+		}else if(mainPanelId.contentEquals("89")) {
 			Parent root = mainPanelHandler.loadEngagementActionRoot(app, project);
 			app.loadNodeToERBContainer(root);
-		}else if(mainPanelId.contentEquals("005")){
+		}else if(mainPanelId.contentEquals("90")){
 			Parent root = mainPanelHandler.loadProjectCreationRoot(app);
 			app.loadNodeToERBContainer(root);
 		} else {

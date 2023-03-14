@@ -16,12 +16,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.App;
-import com.epa.erb.InteractiveActivity;
+import com.epa.erb.ERBContentItem;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
@@ -64,7 +60,7 @@ import javafx.stage.Stage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.util.Callback;
 
-public class WordCloudController extends InteractiveActivity implements Initializable {
+public class WordCloudController implements Initializable {
 
 	@FXML
 	VBox vBox;
@@ -103,16 +99,16 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	private FileHandler fileHandler = new FileHandler();
 	private HashSet<String> excludedWordSet = new HashSet<String>();
 	ArrayList<WordCloudItem> mergeArrayList = new ArrayList<WordCloudItem>();
-	private Logger logger = LogManager.getLogger(WordCloudController.class);
 
 	private App app;
 	private Project project;
 	private Goal goal;
-	public WordCloudController(String id, String guid, String longName, String shortName, String status, App app, Project project, Goal goal) {
-		super(id, guid, longName, shortName, status);
+	private ERBContentItem erbContentItem;
+	public WordCloudController(App app, Project project, Goal goal, ERBContentItem erbContentItem) {
 		this.app = app;
 		this.project = project;
 		this.goal = goal;
+		this.erbContentItem = erbContentItem;
 	}
 	
 	@Override
@@ -131,8 +127,8 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		File guidDataDirectory =fileHandler.getGUIDDataDirectory(project, goal);
 		if(!guidDataDirectory.exists() || (guidDataDirectory.exists() && guidDataDirectory.listFiles().length == 0)) {
 			XMLManager xmlManager = new XMLManager(app);
-			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), app.getEngagementActionController().getListOfUniqueChapters());
-			fileHandler.createGUIDDirectoriesForGoal(project, goal, app.getEngagementActionController().getListOfUniqueChapters());
+			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal), app.getEngagementActionController().getListOfUniqueERBContentItems());
+			fileHandler.createGUIDDirectoriesForGoal2(project, goal, app.getEngagementActionController().getListOfUniqueERBContentItems());
 		}
 		
 		fillChoiceBox(getExistingSavedWordCloudNames());
@@ -153,10 +149,13 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	private void choiceBoxSelection() {
 		String wordCloudSelected = wordCloudChoiceBox.getSelectionModel().getSelectedItem();
 		if (wordCloudSelected != null) {
+			tableView.getItems().clear();
+			mergeArrayList.clear();
+			tableView.refresh();
 			if (!wordCloudSelected.contentEquals("-")) {
 				XMLManager xmlManager = new XMLManager(app);
 				File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-				File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+				File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
 				File dataXML = new File(guidDirectory.getPath() + "\\" + wordCloudSelected + "\\data.xml");
 				ArrayList<WordCloudItem> parsedWordCloudItems = xmlManager.parseWordCloudDataXML(dataXML);
 				if (parsedWordCloudItems != null) {
@@ -168,9 +167,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 				}
 			} else {
 				WebView wordCloudWebView = initWebView();
-				tableView.getItems().clear();
-				mergeArrayList.clear();
-				tableView.refresh();
+				
 			}
 		}
 		updateNumberOfTableItemsLabel();
@@ -181,7 +178,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		wordCloudNames.add("-");
 		Pattern p = Pattern.compile("^[0-9]{4}$");
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
 		for(File dir: guidDirectory.listFiles()) {
 			Matcher m = p.matcher(dir.getName());
 			if(!m.matches()) {
@@ -223,7 +220,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	
 	public boolean webViewIdExists(String newId) {
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
 		for(File dir: guidDirectory.listFiles()) {
 			if(dir.isDirectory()) {
 				if(dir.getName().contentEquals(newId)) {
@@ -252,7 +249,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 				saveName = saveName.trim();
 				if(saveName.length() > 0) {
 					File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-					File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+					File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
 					File saveNameDirectory = new File(guidDirectory.getPath() + "\\" + saveName);
 					if(!saveNameDirectory.exists()) saveNameDirectory.mkdir();
 					File dataXML = new File(saveNameDirectory.getPath() + "\\data.xml");
@@ -261,9 +258,11 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 						ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>(tableView.getItems());
 						xmlManager.writeWordCloudDataXML(dataXML, wordCloudItems);
 						File saveFile = new File(saveNameDirectory.getPath() + "\\wordCloudImage.png");
+						if(vBox.getChildren().size()>0) {
 						snapshotWordCloud((WebView) vBox.getChildren().get(0), saveFile);
 						fillChoiceBox(getExistingSavedWordCloudNames());
 						wordCloudChoiceBox.getSelectionModel().select(0);
+						}
 					}
 				}
 			}
@@ -274,7 +273,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	public WordCloudSaveController launchSave() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/wordcloud/WordCloudSave.fxml"));
-			WordCloudSaveController wordCloudSaveController = new WordCloudSaveController(project, goal, getGuid());
+			WordCloudSaveController wordCloudSaveController = new WordCloudSaveController(project, goal, erbContentItem.getGuid());
 			fxmlLoader.setController(wordCloudSaveController);
 			VBox root = fxmlLoader.load();
 			Scene scene = new Scene(root);
@@ -284,8 +283,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			saveStage.showAndWait();
 			return wordCloudSaveController;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -588,8 +586,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			webView.setMinHeight(size+40);
 			
 		} catch (FileNotFoundException e) {
-			logger.error(e.getMessage());
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
@@ -607,7 +604,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	public void buildButtonAction() {
 		WebView wordCloudWebView = initWebView();
 		copyWordCloudFilesToGUIDDirectory(wordCloudWebView.getId());
-		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, getGuid(), wordCloudWebView.getId());
+		File jsonpFile = fileHandler.getJSONPWordCloudFileForInteractiveActivity(project, goal, erbContentItem.getGuid(), wordCloudWebView.getId());
 		writeWordCloudJSONPFile(jsonpFile, wordCloudWebView);
 		String webEngineLocation = wordCloudWebView.getEngine().getLocation();
 		if (webEngineLocation != null) {
@@ -615,7 +612,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
-					File wordCloudHTMLFile = new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + getGuid() + "\\" + wordCloudWebView.getId() + "\\index.html");
+					File wordCloudHTMLFile = new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + erbContentItem.getGuid() + "\\" + wordCloudWebView.getId() + "\\index.html");
 					wordCloudWebView.getEngine().reload();
 					if (wordCloudHTMLFile.exists()) {
 						try {
@@ -626,7 +623,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 										Platform.runLater(new Runnable() {
 											@Override
 											public void run() {
-												File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + getGuid() + "\\" + wordCloudWebView.getId() + "\\wordCloudImage.png");
+												File saveFile = new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\" + erbContentItem.getGuid() + "\\" + wordCloudWebView.getId() + "\\wordCloudImage.png");
 												snapshotWordCloud(wordCloudWebView, saveFile);
 											}
 										});
@@ -634,8 +631,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 								}
 							});
 						} catch (MalformedURLException e) {
-							logger.error(e.getMessage());
-//							e.printStackTrace();
+							e.printStackTrace();
 						}
 					}
 				}
@@ -644,13 +640,15 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 	}
 	
 	public void snapshotWordCloud(WebView wordCloudWebView, File saveFile) {
-		WritableImage writableImage = new WritableImage((int) wordCloudWebView.getWidth(), (int) wordCloudWebView.getHeight());
-		wordCloudWebView.snapshot(null, writableImage);
-		try {
-			ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
-		} catch (IOException e) {
-			logger.error(e.getMessage());
-//			e.printStackTrace();
+		if (wordCloudWebView.getWidth() > 0 && wordCloudWebView.getHeight() > 0) {
+			WritableImage writableImage = new WritableImage((int) wordCloudWebView.getWidth(),
+					(int) wordCloudWebView.getHeight());
+			wordCloudWebView.snapshot(null, writableImage);
+			try {
+				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -682,7 +680,7 @@ public class WordCloudController extends InteractiveActivity implements Initiali
 		File staticWordCloudDirectory = fileHandler.getStaticWordCloudDirectory();
 		
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + getGuid());
+		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
 		File webViewDir = new File(guidDirectory + "\\" + id);
 		if(!webViewDir.exists()) webViewDir.mkdir();
 		

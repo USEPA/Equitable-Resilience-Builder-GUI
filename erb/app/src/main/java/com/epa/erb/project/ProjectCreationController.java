@@ -131,7 +131,7 @@ public class ProjectCreationController implements Initializable {
 	}
 	
 	private ArrayList<Goal> createFacilitatorProjectGoals(GoalCreation goalCreationController, Project project) {
-		Goal defaultGoal = createGoal(goalCreationController);
+		Goal defaultGoal = createGoal(goalCreationController, project);
 		ArrayList<Goal> goals = new ArrayList<Goal>(Arrays.asList(defaultGoal));
 		project.setProjectGoals(goals);
 		return goals;
@@ -142,14 +142,14 @@ public class ProjectCreationController implements Initializable {
 		goalCreationController.writeGoalsMetaData(projectGoals);
 	}
 	
-	private Goal createGoal(GoalCreation goalCreationController) {
+	private Goal createGoal(GoalCreation goalCreationController, Project project) {
 		String goalName = "Default Goal";
 		String goalCleanedName = goalCreationController.cleanStringForWindows(goalName);
 		String goalDescription = "Default goal holding all chapters and activities.";
 		GoalCategory goalCategory = goalCreationController.getGoalCategory("All activities");
 		ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>(Arrays.asList(goalCategory));
 		Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription, goalCategories);
-		goal.setChapters(app.getAvailableActivities(), goalCreationController.getProject());
+		goal.setContentItems(project);
 		return goal;
 	}
 	

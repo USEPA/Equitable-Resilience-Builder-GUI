@@ -133,8 +133,6 @@ public class PostItNoteController implements Initializable{
 	void closeEditsStage() {
 		if(editsStage != null) {
 			editsStage.close();
-		} else {
-			logger.error("Cannot closeEditsStage. editsStage is null.");
 		}
 	}
 	

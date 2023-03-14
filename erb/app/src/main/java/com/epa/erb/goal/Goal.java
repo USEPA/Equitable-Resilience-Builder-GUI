@@ -2,9 +2,8 @@ package com.epa.erb.goal;
 
 import java.io.File;
 import java.util.ArrayList;
-import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.chapter.Chapter;
+import com.epa.erb.ERBContentItem;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
@@ -16,7 +15,7 @@ public class Goal {
 	private String goalCleanedName;
 	private String goalDescription;
 	private ArrayList<GoalCategory> listOfSelectedGoalCategories;
-	public Goal(App app,String goalName, String goalCleanedName, String goalDescription, ArrayList<GoalCategory> listOfSelectedGoalCategories ) {
+	public Goal(App app, String goalName, String goalCleanedName, String goalDescription, ArrayList<GoalCategory> listOfSelectedGoalCategories ) {
 		this.app = app;
 		this.goalName = goalName;
 		this.goalCleanedName = goalCleanedName;
@@ -25,31 +24,18 @@ public class Goal {
 	}
 	
 	private FileHandler fileHandler = new FileHandler();
-	ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	
-	public void setChapters(ArrayList<Activity> activities, Project project) {
-		File goalXMLFile = fileHandler.getGoalMetaXMLFile(project, this);
-		if (goalXMLFile != null && goalXMLFile.exists()) {
-			XMLManager xmlManager = new XMLManager(app);
-			chapters = xmlManager.parseGoalXML(goalXMLFile, activities);
-		} else {
-			chapters = getAllChapters();
+	private ArrayList<ERBContentItem> listOfContentItemsInGoal = new ArrayList<ERBContentItem>();
+	public void setContentItems(Project project) {
+		XMLManager xmlManager= new XMLManager(app);
+		File goalMetaXML = fileHandler.getGoalMetaXMLFile(project, this);
+		if(goalMetaXML.exists()) {
+			listOfContentItemsInGoal = xmlManager.parseGoalXML(goalMetaXML);
+		}else {
+			for(GoalCategory gC: listOfSelectedGoalCategories) {
+				listOfContentItemsInGoal.addAll(gC.getErbContentItems());
+			}
 		}
-	}
-	
-	private ArrayList<Chapter> getAllChapters() {
-		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
-		//TODO: FIX HERE
-//		ArrayList<String> chapNums = new ArrayList<String>();
-//		for (GoalCategory goalCategory : listOfSelectedGoalCategories) {
-//			for (Chapter chapter : goalCategory.getGoalChapters()) {
-//				if(!chapNums.contains(String.valueOf(chapter.getNumber()))) {
-//					chapNums.add(String.valueOf(chapter.getNumber()));
-//					chapters.add(chapter);
-//				}
-//			}
-//		}
-		return chapters;
 	}
 	
 	public App getApp() {
@@ -92,12 +78,7 @@ public class Goal {
 		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
 	}
 
-	public ArrayList<Chapter> getChapters() {
-		return chapters;
+	public ArrayList<ERBContentItem> getListOfContentItemsInGoal() {
+		return listOfContentItemsInGoal;
 	}
-
-	public void setChapters(ArrayList<Chapter> chapters) {
-		this.chapters = chapters;
-	}
-
 }

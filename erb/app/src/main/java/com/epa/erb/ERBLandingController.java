@@ -3,10 +3,6 @@ package com.epa.erb;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
@@ -39,7 +35,6 @@ public class ERBLandingController implements Initializable{
 	VBox landingImageView3VBox;
 	
 	private App app;
-	private Logger logger = LogManager.getLogger(ERBLandingController.class);
 	public ERBLandingController(App app) {
 		this.app = app;
 	}
@@ -78,19 +73,19 @@ public class ERBLandingController implements Initializable{
 	@FXML
 	public void buttonAction(ActionEvent actionEvent) {
 		Button button = (Button) actionEvent.getSource();
-		loadContent(button.getId(), false);
+		loadContent(button.getId());
 	}
 	
 	@FXML
 	public void hyperlinkAction(ActionEvent actionEvent) {
 		Hyperlink hyperlink = (Hyperlink) actionEvent.getSource();
-		loadContent(hyperlink.getId(), false);
+		loadContent(hyperlink.getId());
 	}
 	
 	@FXML
 	public void labelAction(MouseEvent mouseEvent) {
 		Label label = (Label) mouseEvent.getSource();
-		loadContent(label.getId(), false);
+		loadContent(label.getId());
 	}
 	
 	@FXML
@@ -99,20 +94,13 @@ public class ERBLandingController implements Initializable{
 		Project exploreProject = app.getExploreProject();
 		if(exploreProject != null) {
 			projectSelectionController.loadProject(exploreProject);
-		} else {
-			logger.error("Cannot exploreProject. exploreProject is null.");
 		}
 	}
 	
-	private void loadContent(String id, boolean isResource) {
-		File formContentXMLFile = app.getErbContainerController().getFormContentXML(id, isResource);
+	private void loadContent(String id) {
+		File formContentXMLFile = app.getErbContainerController().getFormContentXML(id);
 		MainFormController mainFormController = new MainFormController(app, formContentXMLFile, app.getEngagementActionController());
-		if(isResource) {
-			mainFormController.internalResourceLinkClicked(id);
-		}else {
-			mainFormController.internalIntroLinkClicked(id);
-
-		}
+		mainFormController.internalPopupLinkClicked(id);
 	}
 	
 	@FXML

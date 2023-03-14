@@ -7,18 +7,29 @@ public class IdAssignments {
 	private ArrayList<String> introIdAssignments = new ArrayList<String>();
 	private ArrayList<String> chapterIdAssignments = new ArrayList<String>();
 	private ArrayList<String> resourceIdAssignments = new ArrayList<String>();
+	private ArrayList<String> backgroundIdAssignments = new ArrayList<String>();
+	
 	public IdAssignments() {
 		fillIntroIdAssignments();
 		fillChapterIdAssignemnts();
 		fillResourceIdAssignments();
+		fillBackgroundIdAssignments();
 	}
 	
 	public void fillIntroIdAssignments() {
-		introIdAssignments.add("09");
 	}
 	
 	public void fillResourceIdAssignments() {
+		resourceIdAssignments.add("01");
 		resourceIdAssignments.add("02");
+		resourceIdAssignments.add("03");
+		resourceIdAssignments.add("04");
+		resourceIdAssignments.add("05");
+		resourceIdAssignments.add("06");
+		resourceIdAssignments.add("07");
+		resourceIdAssignments.add("08");
+		resourceIdAssignments.add("09");
+		resourceIdAssignments.add("10");
 	}
 	
 	public void fillChapterIdAssignemnts() {
@@ -28,6 +39,14 @@ public class IdAssignments {
 		chapterIdAssignments.add("18");
 		chapterIdAssignments.add("19");		
 	}
+	
+	public void fillBackgroundIdAssignments() {
+		backgroundIdAssignments.add("11");
+		backgroundIdAssignments.add("12");
+		backgroundIdAssignments.add("13");
+		backgroundIdAssignments.add("14");	
+	}
+	
 	public ArrayList<String> getIntroIdAssignments() {
 		return introIdAssignments;
 	}
@@ -37,5 +56,9 @@ public class IdAssignments {
 
 	public ArrayList<String> getChapterIdAssignments() {
 		return chapterIdAssignments;
+	}
+
+	public ArrayList<String> getBackgroundIdAssignments() {
+		return backgroundIdAssignments;
 	}
 }

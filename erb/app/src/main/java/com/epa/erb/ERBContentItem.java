@@ -20,6 +20,10 @@ public class ERBContentItem {
 		
 	}
 	
+	public ERBContentItem() {
+		
+	}
+	
 	ArrayList<ERBContentItem> childERBContentItems = new ArrayList<ERBContentItem>();
 	
 	public void addChildERBContentItem(ERBContentItem erbContentItem) {

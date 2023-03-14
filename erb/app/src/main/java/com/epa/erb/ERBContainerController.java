@@ -2,17 +2,11 @@ package com.epa.erb;
 
 import java.io.File;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.MainPanelHandler;
-import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -53,7 +47,6 @@ public class ERBContainerController implements Initializable{
 	private IdAssignments idAssignments = new IdAssignments();
 	private MyBreadCrumbBar myBreadCrumbBar;
 	private FileHandler fileHandler = new FileHandler();
-	private Logger logger = LogManager.getLogger(ERBContainerController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -118,7 +111,6 @@ public class ERBContainerController implements Initializable{
 			menuItem.setOnAction(e -> menuItemSelected(menuItem, isResource));
 			return menuItem;
 		} else {
-			logger.error("Cannot createMenuItem. id or name is null.");
 			return null;
 		}
 	}
@@ -130,14 +122,12 @@ public class ERBContainerController implements Initializable{
 			} else {
 				introMenu.getItems().add(menuItem);
 			}
-		} else {
-			logger.error("Cannot addMenuItem. menuItem is null.");
 		}
 	}
 	
 	private void menuItemSelected(MenuItem menuItem, boolean isResource) {
 		if (menuItem != null) {
-			File formContentXMLFile = getFormContentXML(menuItem.getId(), isResource);
+			File formContentXMLFile = getFormContentXML(menuItem.getId());
 			VBox root = loadMainFormContentController(formContentXMLFile);
 			Stage stage = new Stage();
 			Scene scene = new Scene(root);
@@ -157,18 +147,12 @@ public class ERBContainerController implements Initializable{
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
 			return null;
 		}
 	}
 	
-	public File getFormContentXML(String id, boolean isResource) {
-		File xmlFile;
-		if (isResource) {
-			xmlFile = fileHandler.getStaticResourceFormTextXML(id);
-		} else {
-			xmlFile = fileHandler.getStaticIntroFormText(id);
-		}
+	public File getFormContentXML(String id) {
+		File xmlFile = fileHandler.getStaticFormContentXML(id);
 		return xmlFile;
 	}
 

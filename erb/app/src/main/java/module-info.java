@@ -15,7 +15,6 @@ module com.epa.erb {
 	requires javafx.swing;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.goal to javafx.fxml;
-	opens com.epa.erb.chapter to javafx.fxml;
 	opens com.epa.erb.project to javafx.fxml;
 	opens com.epa.erb.noteboard to javafx.fxml;
 	opens com.epa.erb.wordcloud to javafx.fxml, javafx.base;

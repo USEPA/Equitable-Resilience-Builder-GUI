@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.epa.erb.chapter.Chapter;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -37,20 +36,16 @@ public class App extends Application {
 	private EngagementActionController engagementActionController;
 
 	private ArrayList<Project> projects;
-	private ArrayList<Step> availableSteps;
-	private ArrayList<Chapter> availableChapters;
-	private ArrayList<Activity> availableActivities;
-	private ArrayList<GoalCategory> availableGoalCategories;
-	private ArrayList<InteractiveActivity> availableInteractiveActivities;
-	
+	private ArrayList<GoalCategory> availableGoalCategories;	
 	private ArrayList<ERBContentItem> availableERBContentItems;
 	
 	private FileHandler fileHandler = new FileHandler();
-	private XMLManager xmlManager = new XMLManager(this);
+	private XMLManager xmlManager;
 	private Logger logger = LogManager.getLogger(App.class);
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		xmlManager = new XMLManager(this);
 		setScreenSizePreferences(getScreenScale());
 		readAndStoreData();
 		showERBToolMain();
@@ -126,9 +121,8 @@ public class App extends Application {
 		if (engagementActionController != null) {
 			Project project = engagementActionController.getProject();
 			Goal goal = engagementActionController.getCurrentGoal();
-			ArrayList<Chapter> listOfUniqueChapters = engagementActionController.getListOfUniqueChapters();
-			xmlManager.writeGoalMetaXML2(fileHandler.getGoalMetaXMLFile(project, goal),availableGoalCategories.get(0).getErbContentItems());
-			fileHandler.createGUIDDirectoriesForGoal(project, goal, listOfUniqueChapters);
+			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal),engagementActionController.getListOfUniqueERBContentItems());
+			fileHandler.createGUIDDirectoriesForGoal2(project, goal, engagementActionController.getListOfUniqueERBContentItems());
 		}
 	}
 
@@ -144,12 +138,12 @@ public class App extends Application {
 	}
 	
 	public ERBContentItem findERBContentItemForId(String id) {
-		if(id!= null) {
-		for(ERBContentItem erbContentItem: availableERBContentItems) {
-			if(erbContentItem.getId().contentEquals(id)) {
-				return erbContentItem;
+		if (id != null) {
+			for (ERBContentItem erbContentItem : availableERBContentItems) {
+				if (erbContentItem.getId().contentEquals(id)) {
+					return erbContentItem;
+				}
 			}
-		}
 		}
 		return null;
 	}
@@ -161,7 +155,7 @@ public class App extends Application {
 
 	private void readAndStoreProjects() {
 		File projectsDirectory = fileHandler.getProjectsDirectory();
-		projects = xmlManager.parseAllProjects(projectsDirectory, availableActivities);
+		projects = xmlManager.parseAllProjects(projectsDirectory );
 	}
 	
 	public Project getExploreProject() {
@@ -187,8 +181,6 @@ public class App extends Application {
 		if (node != null) {
 			VBox.setVgrow(node, priority);
 			HBox.setHgrow(node, priority);
-		} else {
-			logger.error("Cannot setNodeGrowPriority. node is null.");
 		}
 	}
 
@@ -230,26 +222,6 @@ public class App extends Application {
 
 	public void setProjects(ArrayList<Project> projects) {
 		this.projects = projects;
-	}
-
-	public ArrayList<Chapter> getAvailableChapters() {
-		return availableChapters;
-	}
-
-	public void setAvailableChapters(ArrayList<Chapter> chapters) {
-		this.availableChapters = chapters;
-	}
-
-	public ArrayList<Activity> getAvailableActivities() {
-		return availableActivities;
-	}
-
-	public ArrayList<Step> getAvailableSteps() {
-		return availableSteps;
-	}
-
-	public ArrayList<InteractiveActivity> getAvailableInteractiveActivities() {
-		return availableInteractiveActivities;
 	}
 
 	public ArrayList<GoalCategory> getAvailableGoalCategories() {

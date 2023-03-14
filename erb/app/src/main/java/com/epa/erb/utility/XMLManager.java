@@ -16,13 +16,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import com.epa.erb.Activity;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.ERBItemFinder;
-import com.epa.erb.InteractiveActivity;
-import com.epa.erb.Step;
-import com.epa.erb.chapter.Chapter;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.goal.Goal;
@@ -42,6 +38,7 @@ import javafx.scene.text.TextFlow;
 public class XMLManager {
 
 	private App app;
+
 	public XMLManager(App app) {
 		this.app = app;
 	}
@@ -49,373 +46,7 @@ public class XMLManager {
 	private IdAssignments idAssignments = new IdAssignments();
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private Logger logger = LogManager.getLogger(XMLManager.class);
-	
-	// Parse Goal
-	public ArrayList<Chapter> parseGoalXML(File xmlFile, ArrayList<Activity> activities) {
-		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
-			try {
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(xmlFile);
-				doc.getDocumentElement().normalize();
 
-				ArrayList<Chapter> chapters = new ArrayList<Chapter>();
-				NodeList chapterNodeList = doc.getElementsByTagName("Chapter");
-				for (int i = 0; i < chapterNodeList.getLength(); i++) {
-					Node chapterNode = chapterNodeList.item(i);
-					// CHAPTER
-					if (chapterNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element chapterElement = (Element) chapterNode;
-						String chapterId = chapterElement.getAttribute("id");
-						String chapterGuid = chapterElement.getAttribute("guid");
-						String chapterLongName = chapterElement.getAttribute("longName");
-						String chapterShortName = chapterElement.getAttribute("shortName");
-						String chapterStatus= chapterElement.getAttribute("status");
-						String chapterNotes = chapterElement.getAttribute("notes");
-						String chapterDescription = chapterElement.getAttribute("description");
-						int chapterNumber = Integer.parseInt(chapterElement.getAttribute("number"));
-						Chapter chapter = new Chapter(chapterId, chapterGuid, chapterLongName, chapterShortName, chapterStatus, chapterNotes, chapterDescription, chapterNumber);
-						NodeList cActivityNodeList = chapterElement.getElementsByTagName("ChapterActivity");
-						ArrayList<Activity> listOfChapterActivities = new ArrayList<Activity>();
-						for (int j = 0; j < cActivityNodeList.getLength(); j++) {
-							Node cActivityNode = cActivityNodeList.item(j);
-							// CHAPTER -> ACTIVITY
-							if (cActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element cActivityElement = (Element) cActivityNode;
-								String activityId = cActivityElement.getAttribute("id");
-								String activityGuid = cActivityElement.getAttribute("guid");
-								String activityLongName = cActivityElement.getAttribute("longName");
-								String activityShortName = cActivityElement.getAttribute("shortName");
-								String activityStatus = cActivityElement.getAttribute("status");
-								String activityNotes = cActivityElement.getAttribute("notes");
-								String activityRating = cActivityElement.getAttribute("rating");
-								Activity genericActivity = erbItemFinder.getActivityById(app.getAvailableActivities(), activityId);
-								if (genericActivity != null) {
-									Activity activity = new Activity(activityId, activityGuid, activityLongName, activityShortName, activityStatus, activityNotes, activityRating);
-									listOfChapterActivities.add(activity);
-									NodeList caStepsNodeList = cActivityElement.getElementsByTagName("ChapterActivityStep");
-									ArrayList<Step> listOfChapterActivitySteps = new ArrayList<Step>();
-									for (int k = 0; k < caStepsNodeList.getLength(); k++) {
-										Node caStepNode = caStepsNodeList.item(k);
-										// CHAPTER -> ACTIVITY -> STEP
-										if (caStepNode.getNodeType() == Node.ELEMENT_NODE) {
-											Element caStepElement = (Element) caStepNode;
-											String stepId = caStepElement.getAttribute("id");
-											String stepGuid = caStepElement.getAttribute("guid");
-											String stepLongName = caStepElement.getAttribute("longName");
-											String stepShortName = caStepElement.getAttribute("shortName");
-											String stepStatus = caStepElement.getAttribute("status");
-											String stepNotes = caStepElement.getAttribute("notes");
-											String stepRating = caStepElement.getAttribute("rating");
-											String stepType = caStepElement.getAttribute("type");
-											Step genericStep = erbItemFinder.getStepById(app.getAvailableSteps(), stepId);
-											if (genericStep != null) {
-												Step step = new Step(stepId, stepGuid, stepLongName, stepShortName, stepStatus, stepNotes, stepRating, stepType);
-												listOfChapterActivitySteps.add(step);
-												NodeList casDynamicActivitiesNodeList = caStepElement.getElementsByTagName("ChapterActivityStepDynamicActivity");
-												ArrayList<InteractiveActivity> listOfChapterActivityStepDynamicActivities = new ArrayList<InteractiveActivity>();
-												for (int l = 0; l < casDynamicActivitiesNodeList.getLength(); l++) {
-													Node casDynamicActivityNode = casDynamicActivitiesNodeList.item(l);
-													// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-													if (casDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-														Element casDynamicActivityElement = (Element) casDynamicActivityNode;
-														String interactiveActivityId = casDynamicActivityElement.getAttribute("id");
-														String interactiveActivityGuid = casDynamicActivityElement.getAttribute("guid");
-														String interactiveActivityLongName = casDynamicActivityElement.getAttribute("longName");
-														String interactiveActivityShortName = casDynamicActivityElement.getAttribute("shortName");
-														String interactiveActivityStatus = casDynamicActivityElement.getAttribute("status");
-														InteractiveActivity genericInteractiveActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), interactiveActivityId);
-														if (genericInteractiveActivity != null) {
-															InteractiveActivity interactiveActivity = new InteractiveActivity(interactiveActivityId, interactiveActivityGuid, interactiveActivityLongName, interactiveActivityShortName, interactiveActivityStatus);
-															listOfChapterActivityStepDynamicActivities.add(interactiveActivity);
-														} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY NULL
-													} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY ELEMENT
-												} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
-												step.setAssignedDynamicActivities(listOfChapterActivityStepDynamicActivities);
-											} // CHAPTER ACTIVITY STEP NULL
-										} // CHAPTER ACTIVITY STEP ELEMENT
-									} // CHAPTER ACTIVITY STEP
-									NodeList caDynamicActivitesNodeList = cActivityElement.getElementsByTagName("ChapterActivityDynamicActivity");
-									ArrayList<InteractiveActivity> listOfChapterActivityDynamicActivities = new ArrayList<InteractiveActivity>();
-									for (int m = 0; m < caDynamicActivitesNodeList.getLength(); m++) {
-										Node caDynamicActivityNode = caDynamicActivitesNodeList.item(m);
-										// CHAPTER -> ACTIVITY -> DYNAMIC ACTIVITY
-										if (caDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-											Element caDynamicActivityElement = (Element) caDynamicActivityNode;
-											String interactiveActivityID = caDynamicActivityElement.getAttribute("id");
-											String interactiveActivityGuid = caDynamicActivityElement.getAttribute("guid");
-											String interactiveActivityLongName = caDynamicActivityElement.getAttribute("longName");
-											String interactiveActivityShortName = caDynamicActivityElement.getAttribute("shortName");
-											String interactiveActivityStatus = caDynamicActivityElement.getAttribute("status");
-											InteractiveActivity genericInteractiveActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), interactiveActivityID);
-											if (genericInteractiveActivity != null) {
-												InteractiveActivity interactiveActivity = new InteractiveActivity(interactiveActivityID, interactiveActivityGuid, interactiveActivityLongName, interactiveActivityShortName, interactiveActivityStatus);
-												listOfChapterActivityDynamicActivities.add(interactiveActivity);
-											} // CHAPTER ACTIVITY DYNAMIC ACTIVITY NULL
-										} // CHAPTER ACTIVITY DYNAMIC ACTIVITY ELEMENT
-									} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
-									activity.setAssignedDynamicActivities(listOfChapterActivityDynamicActivities);
-									activity.setAssignedSteps(listOfChapterActivitySteps);
-								} // CHAPTER ACTIVITY NULL
-							} // CHAPTER ACTIVITY ELEMENT
-						} // CHAPTER ACTIVITY
-						NodeList cStepNodeList = chapterElement.getElementsByTagName("ChapterStep");
-						ArrayList<Step> listOfChapterSteps = new ArrayList<Step>();
-						for (int n = 0; n < cStepNodeList.getLength(); n++) {
-							Node cStepNode = cStepNodeList.item(n);
-							// CHAPTER -> STEP
-							if (cStepNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element cStepElement = (Element) cStepNode;
-								String stepId = cStepElement.getAttribute("id");
-								String stepGuid = cStepElement.getAttribute("guid");
-								String stepLongName = cStepElement.getAttribute("longName");
-								String stepShortName = cStepElement.getAttribute("shortName");
-								String stepStatus = cStepElement.getAttribute("status");
-								String stepNotes = cStepElement.getAttribute("notes");
-								String stepRating = cStepElement.getAttribute("rating");
-								String stepType = cStepElement.getAttribute("type");
-								Step genericStep = erbItemFinder.getStepById(app.getAvailableSteps(), stepId);
-								if (genericStep != null) {
-									Step step = new Step(stepId, stepGuid, stepLongName, stepShortName, stepStatus, stepNotes, stepRating, stepType);
-									listOfChapterSteps.add(step);
-									NodeList csDynamicActivitesNodeList = cStepElement.getElementsByTagName("ChapterStepDynamicActivity");
-									ArrayList<InteractiveActivity> listOfChapterStepDynamicActivities = new ArrayList<InteractiveActivity>();
-									for (int o = 0; o < csDynamicActivitesNodeList.getLength(); o++) {
-										Node csDynamicActivityNode = csDynamicActivitesNodeList.item(o);
-										// CHAPTER -> STEP -> DYNAMIC ACTIVITY
-										if (csDynamicActivityNode.getNodeType() == Node.ELEMENT_NODE) {
-											Element csDynamicActivityElement = (Element) csDynamicActivityNode;
-											String interactiveActivityId = csDynamicActivityElement.getAttribute("id");
-											String interactiveActivityGuid = csDynamicActivityElement.getAttribute("guid");
-											String interactiveActivityLongName = csDynamicActivityElement.getAttribute("longName");
-											String interactiveActivityShortName = csDynamicActivityElement.getAttribute("shortName");
-											String interactiveActivityStatus = csDynamicActivityElement.getAttribute("status");
-											InteractiveActivity genericInteractiveActivity = erbItemFinder.getInteractiveActivityById(app.getAvailableInteractiveActivities(), interactiveActivityId);
-											if (genericInteractiveActivity != null) {
-												InteractiveActivity interactiveActivity = new InteractiveActivity(interactiveActivityId, interactiveActivityGuid, interactiveActivityLongName, interactiveActivityShortName, interactiveActivityStatus);
-												listOfChapterStepDynamicActivities.add(interactiveActivity);
-											} // CHAPTER STEP DYNAMIC ACTIVITY NULL
-										} // CHAPTER STEP DYNAMIC ACTIVITY ELEMENT
-									} // CHAPTER STEP DYNAMIC ACTIVITY
-									step.setAssignedDynamicActivities(listOfChapterStepDynamicActivities);
-								} // CHAPTER STEP NULL
-							} // CHAPTER STEP ELEMENT
-						} // CHAPTER STEP
-						chapter.setAssignedSteps(listOfChapterSteps);
-						chapter.setAssignedActivities(listOfChapterActivities);
-						chapters.add(chapter);
-					}
-				}
-				return chapters;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
-		}
-		return null;
-	}
-	
-	public void writeGoalMetaXML2(File xmlFile, ArrayList<ERBContentItem> erbContentItems) {
-		if (xmlFile != null && erbContentItems != null) {
-			try {
-				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-				Document document = documentBuilder.newDocument();
-				Element rootElement = document.createElement("contents");
-				document.appendChild(rootElement);
-				for(ERBContentItem erbContentItem: erbContentItems) {
-					writeXML(erbContentItem, null, rootElement, document);
-				}
-				TransformerFactory transformerFactory = TransformerFactory.newInstance();
-				Transformer transformer = transformerFactory.newTransformer();
-				DOMSource domSource = new DOMSource(document);
-				StreamResult file = new StreamResult(xmlFile);
-				transformer.transform(domSource, file);
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error("Cannot writeGoalMetaXML. xmlFile or erbContentItems is null.");
-		}
-	}
-	
-	Element elementToTrack;
-	public void writeXML(ERBContentItem erbContentItem, ERBContentItem erbContentItemParent, Element rootElement, Document document) {
-		Element element = document.createElement("content");
-		element.setAttribute("id", erbContentItem.getId());
-		element.setAttribute("guid", erbContentItem.getGuid());
-		element.setAttribute("type", erbContentItem.getType());
-		element.setAttribute("status", erbContentItem.getStatus());
-		element.setAttribute("longName", erbContentItem.getLongName());
-		element.setAttribute("shortName", erbContentItem.getShortName());
-		if(idAssignments.getChapterIdAssignments().contains(erbContentItem.getId())) {
-			rootElement.appendChild(element);
-			elementToTrack = element;
-		} else {
-			String proposedStartId = element.getAttribute("id");
-			String proposedEndId = elementToTrack.getAttribute("id");
-			
-			String neededStartId = element.getAttribute("id");
-			String neededEndId = erbContentItemParent.getId();
-			
-			if((!proposedStartId.contentEquals(neededStartId) || (!proposedEndId.contentEquals(neededEndId)))){
-			
-			System.out.println("Proposed: " + element.getAttribute("id") + " -> " + elementToTrack.getAttribute("id"));
-			System.out.println("Needed: " + element.getAttribute("id") + " -> " + erbContentItemParent.getId());
-			}
-			
-			//elementToTrack.appendChild(element);
-		}
-		if(erbContentItem.getChildERBContentItems().size()>0) {
-			for(ERBContentItem erbContentItemChild: erbContentItem.getChildERBContentItems()) {
-				writeXML(erbContentItemChild, erbContentItem, rootElement, document);
-			}
-		}
-		
-		
-		
-		
-//		if (node.getNodeType() == Node.ELEMENT_NODE) {
-//			Element nodeElement = (Element) node;
-//			String id = nodeElement.getAttribute("id");
-//			ERBContentItem erbContentItem = app.findERBContentItemForId(id);
-//			if (id != null && id.length() > 0) {
-//				if (idAssignments.getChapterIdAssignments().contains(id)) {
-//					erbContentItems.add(erbContentItem);
-//				} else {
-//					Element parentElement = (Element) parent;
-//					erbContentItemTrack_Write = app.findERBContentItemForId(parentElement.getAttribute("id"));
-//					erbContentItemTrack_Write.addChildERBContentItem(erbContentItem);
-//				}
-//			}
-//			if (node.hasChildNodes()) {
-//				NodeList children = node.getChildNodes();
-//				for (int i = 0; i < children.getLength(); i++) {
-//					parseXML(children.item(i), node);
-//				}
-//			}
-//		}
-	}
-	
-	
-	
-	public void writeGoalMetaXML(File xmlFile, ArrayList<Chapter> chapters) {
-//		System.out.println(xmlFile + " " + chapters);
-		if (xmlFile != null && chapters != null) {
-			try {
-				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-				Document document = documentBuilder.newDocument();
-				Element rootElement = document.createElement("chapters");
-				document.appendChild(rootElement);
-				// CHAPTER
-				for (Chapter chapter : chapters) {
-					Element chapterElement = document.createElement("Chapter");
-					chapterElement.setAttribute("id", chapter.getId());
-					chapterElement.setAttribute("guid", chapter.getGuid());
-					chapterElement.setAttribute("longName", chapter.getLongName());
-					chapterElement.setAttribute("shortName", chapter.getShortName());
-					chapterElement.setAttribute("status", chapter.getStatus());
-					chapterElement.setAttribute("notes", chapter.getNotes());
-					chapterElement.setAttribute("description", chapter.getDescription());
-					chapterElement.setAttribute("number", String.valueOf(chapter.getNumber()));
-					Element assignedActivitiesElement = document.createElement("assignedActivities");
-					// CHAPTER -> ACTIVITY
-					for (Activity activity : chapter.getAssignedActivities()) {
-						Element assignedActivityElement = document.createElement("ChapterActivity");
-						assignedActivityElement.setAttribute("id", activity.getId());
-						assignedActivityElement.setAttribute("guid", activity.getGuid());
-						assignedActivityElement.setAttribute("longName", activity.getLongName());
-						assignedActivityElement.setAttribute("shortName", activity.getShortName());
-						assignedActivityElement.setAttribute("status", activity.getStatus());
-						assignedActivityElement.setAttribute("notes", activity.getNotes());
-						assignedActivityElement.setAttribute("rating", activity.getRating());
-						assignedActivitiesElement.appendChild(assignedActivityElement);
-						Element assignedStepsElement = document.createElement("assignedSteps");
-						// CHAPTER -> ACTIVITY -> STEP
-						for (Step step : activity.getAssignedSteps()) {
-							Element assignedActivityStepElement = document.createElement("ChapterActivityStep");
-							assignedActivityStepElement.setAttribute("id", step.getId());
-							assignedActivityStepElement.setAttribute("guid", step.getGuid());
-							assignedActivityStepElement.setAttribute("longName", step.getLongName());
-							assignedActivityStepElement.setAttribute("shortName", step.getShortName());
-							assignedActivityStepElement.setAttribute("status", step.getStatus());
-							assignedActivityStepElement.setAttribute("notes", step.getNotes());
-							assignedActivityStepElement.setAttribute("rating", step.getRating());
-							assignedActivityStepElement.setAttribute("type", step.getType());
-							assignedStepsElement.appendChild(assignedActivityStepElement);
-							Element assignedDynamicActivitiesElement = document.createElement("assignedDynamicActivities");
-							// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-							for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
-								Element assignedActivityDynamicActivityElement = document.createElement("ChapterActivityStepDynamicActivity");
-								assignedActivityDynamicActivityElement.setAttribute("id", dynamicActivity.getId());
-								assignedActivityDynamicActivityElement.setAttribute("guid", dynamicActivity.getGuid());
-								assignedActivityDynamicActivityElement.setAttribute("longName", dynamicActivity.getLongName());
-								assignedActivityDynamicActivityElement.setAttribute("shortName", dynamicActivity.getShortName());
-								assignedActivityDynamicActivityElement.setAttribute("status",dynamicActivity.getStatus());
-								assignedDynamicActivitiesElement.appendChild(assignedActivityDynamicActivityElement);
-							} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
-							assignedActivityStepElement.appendChild(assignedDynamicActivitiesElement);
-						} // CHAPTER ACTIVITY STEP
-						assignedActivityElement.appendChild(assignedStepsElement);
-						Element assignedDynamicActivitiesElement = document.createElement("assignedDynamicActivities");
-						// CHAPTER -> ACTIVITY -> DYNAMIC ACTIVITY
-						for (InteractiveActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
-							Element assignedActivityDynamicActivityElement = document.createElement("ChapterActivityDynamicActivity");
-							assignedActivityDynamicActivityElement.setAttribute("id", dynamicActivity.getId());
-							assignedActivityDynamicActivityElement.setAttribute("guid", dynamicActivity.getGuid());
-							assignedActivityDynamicActivityElement.setAttribute("longName", dynamicActivity.getLongName());
-							assignedActivityDynamicActivityElement.setAttribute("shortName", dynamicActivity.getShortName());
-							assignedActivityDynamicActivityElement.setAttribute("status", dynamicActivity.getStatus());
-							assignedDynamicActivitiesElement.appendChild(assignedActivityDynamicActivityElement);
-						} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
-						assignedActivityElement.appendChild(assignedDynamicActivitiesElement);
-					} // CHAPTER ACTIVITY
-					Element assignedStepsElement = document.createElement("assignedSteps");
-					// CHAPTER -> STEP
-					for (Step step : chapter.getAssignedSteps()) {
-						Element assignedStepElement = document.createElement("ChapterStep");
-						assignedStepElement.setAttribute("id", step.getId());
-						assignedStepElement.setAttribute("guid", step.getGuid());
-						assignedStepElement.setAttribute("longName", step.getLongName());
-						assignedStepElement.setAttribute("shortName", step.getShortName());
-						assignedStepElement.setAttribute("status", step.getStatus());
-						assignedStepElement.setAttribute("notes", step.getNotes());
-						assignedStepElement.setAttribute("rating", step.getRating());
-						assignedStepElement.setAttribute("type", step.getType());
-						assignedStepsElement.appendChild(assignedStepElement);
-						Element assignedDynamicActivitiesElement = document.createElement("assignedDynamicActivities");
-						// CHAPTER -> STEP -> DYNAMIC ACTIVITY
-						for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
-							Element assignedStepDynamicActivityElement = document.createElement("ChapterStepDynamicActivity");
-							assignedStepDynamicActivityElement.setAttribute("id", dynamicActivity.getId());
-							assignedStepDynamicActivityElement.setAttribute("guid", dynamicActivity.getGuid());
-							assignedStepDynamicActivityElement.setAttribute("longName", dynamicActivity.getLongName());
-							assignedStepDynamicActivityElement.setAttribute("shortName", dynamicActivity.getShortName());
-							assignedStepDynamicActivityElement.setAttribute("status", dynamicActivity.getStatus());
-							assignedDynamicActivitiesElement.appendChild(assignedStepDynamicActivityElement);
-						} // CHAPTER STEP DYNAMIC ACTIVITY
-						assignedStepElement.appendChild(assignedDynamicActivitiesElement);
-					} // CHAPTER STEP
-					chapterElement.appendChild(assignedActivitiesElement);
-					chapterElement.appendChild(assignedStepsElement);
-					rootElement.appendChild(chapterElement);
-				} // CHAPTER
-				
-				TransformerFactory transformerFactory = TransformerFactory.newInstance();
-				Transformer transformer = transformerFactory.newTransformer();
-				DOMSource domSource = new DOMSource(document);
-				StreamResult file = new StreamResult(xmlFile);
-				transformer.transform(domSource, file);
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error("Cannot writeGoalMetaXML. xmlFile or chapters is null.");
-		}
-	}
-	
 	public void writeWordCloudDataXML(File xmlFile, ArrayList<WordCloudItem> wordCloudItems) {
 		if (xmlFile != null && wordCloudItems != null) {
 			try {
@@ -445,7 +76,7 @@ public class XMLManager {
 			logger.error("Cannot writeWordCloudDataXML. xmlFile or categories is null.");
 		}
 	}
-	
+
 	public void writeNoteboardDataXML(File xmlFile, ArrayList<CategorySectionController> categories) {
 		if (xmlFile != null && categories != null) {
 			try {
@@ -484,26 +115,26 @@ public class XMLManager {
 			logger.error("Cannot writeNoteboardDataXML. xmlFile or categories is null.");
 		}
 	}
-	
-	public ArrayList<WordCloudItem> parseWordCloudDataXML(File xmlFile){
+
+	public ArrayList<WordCloudItem> parseWordCloudDataXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
-				
+
 				NodeList wordCloudItemNodeList = doc.getElementsByTagName("wordCloudItem");
 				ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>();
-				for(int i = 0; i < wordCloudItemNodeList.getLength(); i++) {
+				for (int i = 0; i < wordCloudItemNodeList.getLength(); i++) {
 					Node wordCloudItemNode = wordCloudItemNodeList.item(i);
-					//Category
-					if(wordCloudItemNode.getNodeType() == Node.ELEMENT_NODE) {
+					// Category
+					if (wordCloudItemNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element wordCloudItemElement = (Element) wordCloudItemNode;
 						String word = wordCloudItemElement.getAttribute("word");
 						int size = Integer.parseInt(wordCloudItemElement.getAttribute("size"));
 						int count = Integer.parseInt(wordCloudItemElement.getAttribute("count"));
-						
+
 						WordCloudItem wordCloudItem = new WordCloudItem(false, word, null, null, count, size);
 						wordCloudItems.add(wordCloudItem);
 					}
@@ -517,7 +148,7 @@ public class XMLManager {
 		}
 		return null;
 	}
-	
+
 	public ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> parseNoteboardDataXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
@@ -525,22 +156,22 @@ public class XMLManager {
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
-				
+
 				NodeList categoryNodeList = doc.getElementsByTagName("category");
-				ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = new ArrayList<HashMap<String,ArrayList<HashMap<String,String>>>>();
-				for(int i = 0; i < categoryNodeList.getLength(); i++) {
+				ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> listOfCategoryHashMaps = new ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>>();
+				for (int i = 0; i < categoryNodeList.getLength(); i++) {
 					Node categoryNode = categoryNodeList.item(i);
-					//Category
-					if(categoryNode.getNodeType() == Node.ELEMENT_NODE) {
+					// Category
+					if (categoryNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element categoryElement = (Element) categoryNode;
 						String categoryName = categoryElement.getAttribute("name");
-						HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMaps = new HashMap<String, ArrayList<HashMap<String,String>>>();
+						HashMap<String, ArrayList<HashMap<String, String>>> categoryHashMaps = new HashMap<String, ArrayList<HashMap<String, String>>>();
 						NodeList noteNodeList = categoryElement.getElementsByTagName("note");
-						ArrayList<HashMap<String, String>> listOfNotesHashMaps = new ArrayList<HashMap<String,String>>();
-						for(int j =0; j<noteNodeList.getLength(); j++) {
+						ArrayList<HashMap<String, String>> listOfNotesHashMaps = new ArrayList<HashMap<String, String>>();
+						for (int j = 0; j < noteNodeList.getLength(); j++) {
 							Node noteNode = noteNodeList.item(j);
-							//Note
-							if(noteNode.getNodeType() == Node.ELEMENT_NODE) {
+							// Note
+							if (noteNode.getNodeType() == Node.ELEMENT_NODE) {
 								HashMap<String, String> noteHashMap = new HashMap<String, String>();
 								Element nodeElement = (Element) noteNode;
 								String color = nodeElement.getAttribute("color");
@@ -567,12 +198,12 @@ public class XMLManager {
 		}
 		return null;
 	}
-	
+
 	public HashMap<String, ArrayList<TextFlow>> parseMainFormContentXML(File xmlFile, MainFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				FileHandler fileHandler = new FileHandler();
-				
+
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -597,51 +228,50 @@ public class XMLManager {
 								double maxTextLength = 0.0;
 								Element textBlockElement = (Element) textBlockNode;
 								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
-								for(int l=0; l< textBlockChildrenNodeList.getLength(); l++) {
+								for (int l = 0; l < textBlockChildrenNodeList.getLength(); l++) {
 									Node childNode = textBlockChildrenNodeList.item(l);
-									if(childNode.getNodeType() == Node.ELEMENT_NODE) {
+									if (childNode.getNodeType() == Node.ELEMENT_NODE) {
 										String nodeName = childNode.getNodeName();
-										if(nodeName.contentEquals("text")) {
-												Node textNode = childNode;
-												// Text
-													Element textElement = (Element) textNode;
-													double size = Double.parseDouble(textElement.getAttribute("size"));
-													String fontFamily = textElement.getAttribute("fontFamily");
-													String fontStyle = textElement.getAttribute("fontStyle");
-													String text = textElement.getAttribute("text");
-													Text t = new Text(text);
-													if (fontStyle.contentEquals("Hyperlink")) {
-														String linkType = textElement.getAttribute("linkType");
-														String link = textElement.getAttribute("link");
-														t.setStyle("-fx-fill:#4d90bc");
-														t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-														t.setOnMouseEntered(e -> t.setUnderline(true));
-														t.setOnMouseExited(e -> t.setUnderline(false));
-														t.setOnMouseClicked(e-> formContentController.handleHyperlink(t, linkType, link));
-													} else {
-														if (fontStyle.contentEquals("Bold")) {
-															t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
-														} else if (fontStyle.contentEquals("Underlined")) {
-															t.setUnderline(true);
-															t.setFont(Font.font(fontFamily, size));
-														} else {
-															t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-														}
-													}
-//													HBox hBox = new HBox();
-//													hBox.setAlignment(Pos.CENTER_LEFT);
-//													hBox.getChildren().add(t);
-													textFlow.getChildren().add(t);
-													if(t.getText().length() > maxTextLength) maxTextLength = t.getText().length();
+										if (nodeName.contentEquals("text")) {
+											Node textNode = childNode;
+											// Text
+											Element textElement = (Element) textNode;
+											double size = Double.parseDouble(textElement.getAttribute("size"));
+											String fontFamily = textElement.getAttribute("fontFamily");
+											String fontStyle = textElement.getAttribute("fontStyle");
+											String text = textElement.getAttribute("text");
+											Text t = new Text(text);
+											if (fontStyle.contentEquals("Hyperlink")) {
+												String linkType = textElement.getAttribute("linkType");
+												String link = textElement.getAttribute("link");
+												t.setStyle("-fx-fill:#4d90bc");
+												t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+												t.setOnMouseEntered(e -> t.setUnderline(true));
+												t.setOnMouseExited(e -> t.setUnderline(false));
+												t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+											} else {
+												if (fontStyle.contentEquals("Bold")) {
+													t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+												} else if (fontStyle.contentEquals("Underlined")) {
+													t.setUnderline(true);
+													t.setFont(Font.font(fontFamily, size));
+												} else {
+													t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+												}
+											}
+											textFlow.getChildren().add(t);
+											if (t.getText().length() > maxTextLength)
+												maxTextLength = t.getText().length();
 										} else if (nodeName.contentEquals("icon")) {
 											Node iconNode = childNode;
-											//Icon
+											// Icon
 											Element iconElement = (Element) iconNode;
 											double width = Double.parseDouble(iconElement.getAttribute("width"));
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
-											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											imageView.setImage(
+													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
 											textFlow.getChildren().add(imageView);
@@ -657,7 +287,7 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-//				e.printStackTrace();
+				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -665,12 +295,13 @@ public class XMLManager {
 		}
 		return null;
 	}
-	
-	public HashMap<String, ArrayList<TextFlow>> parseAlternativeFormContentXML(File xmlFile, AlternativeFormController alternativeFormController) {
+
+	public HashMap<String, ArrayList<TextFlow>> parseAlternativeFormContentXML(File xmlFile,
+			AlternativeFormController alternativeFormController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				FileHandler fileHandler = new FileHandler();
-				
+
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -695,38 +326,40 @@ public class XMLManager {
 								double maxTextLength = 0.0;
 								Element textBlockElement = (Element) textBlockNode;
 								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
-								for(int l=0; l< textBlockChildrenNodeList.getLength(); l++) {
+								for (int l = 0; l < textBlockChildrenNodeList.getLength(); l++) {
 									Node childNode = textBlockChildrenNodeList.item(l);
-									if(childNode.getNodeType() == Node.ELEMENT_NODE) {
+									if (childNode.getNodeType() == Node.ELEMENT_NODE) {
 										String nodeName = childNode.getNodeName();
-										if(nodeName.contentEquals("text")) {
-												Node textNode = childNode;
-												// Text
-													Element textElement = (Element) textNode;
-													double size = Double.parseDouble(textElement.getAttribute("size"));
-													String fontFamily = textElement.getAttribute("fontFamily");
-													String fontStyle = textElement.getAttribute("fontStyle");
-													String text = textElement.getAttribute("text");
-													Text t = new Text(text);
-													if (fontStyle.contentEquals("Bold")) {
-														t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
-													} else if (fontStyle.contentEquals("Underlined")) {
-														t.setUnderline(true);
-														t.setFont(Font.font(fontFamily, size));
-													} else {
-														t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-													}
-													textFlow.getChildren().add(t);
-													if(t.getText().length() > maxTextLength) maxTextLength = t.getText().length();
+										if (nodeName.contentEquals("text")) {
+											Node textNode = childNode;
+											// Text
+											Element textElement = (Element) textNode;
+											double size = Double.parseDouble(textElement.getAttribute("size"));
+											String fontFamily = textElement.getAttribute("fontFamily");
+											String fontStyle = textElement.getAttribute("fontStyle");
+											String text = textElement.getAttribute("text");
+											Text t = new Text(text);
+											if (fontStyle.contentEquals("Bold")) {
+												t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+											} else if (fontStyle.contentEquals("Underlined")) {
+												t.setUnderline(true);
+												t.setFont(Font.font(fontFamily, size));
+											} else {
+												t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+											}
+											textFlow.getChildren().add(t);
+											if (t.getText().length() > maxTextLength)
+												maxTextLength = t.getText().length();
 										} else if (nodeName.contentEquals("icon")) {
 											Node iconNode = childNode;
-											//Icon
+											// Icon
 											Element iconElement = (Element) iconNode;
 											double width = Double.parseDouble(iconElement.getAttribute("width"));
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
-											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											imageView.setImage(
+													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
 											textFlow.getChildren().add(imageView);
@@ -742,7 +375,7 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-//				e.printStackTrace();
+				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -750,7 +383,7 @@ public class XMLManager {
 		}
 		return null;
 	}
-	
+
 	public HashMap<ArrayList<Text>, String> parseOutputFormContentXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
@@ -785,7 +418,7 @@ public class XMLManager {
 										String fontFamily = textElement.getAttribute("fontFamily");
 										String fontStyle = textElement.getAttribute("fontStyle");
 										String text = textElement.getAttribute("text");
-										
+
 										Text t = new Text(text);
 										t.setFont(Font.font(fontFamily, size));
 										t.setId(fontStyle);
@@ -799,7 +432,7 @@ public class XMLManager {
 				}
 				return contentList;
 			} catch (Exception e) {
-//				e.printStackTrace();
+				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -807,7 +440,7 @@ public class XMLManager {
 		}
 		return null;
 	}
-	
+
 	public void writeOutputFormDataXML(File xmlFile, ArrayList<javafx.scene.Node> outputFormNodes) {
 		if (xmlFile != null && outputFormNodes != null) {
 			try {
@@ -818,13 +451,13 @@ public class XMLManager {
 				document.appendChild(rootElement);
 				Element containerElement = document.createElement("container");
 				containerElement.setAttribute("id", "formVBox");
-				for(javafx.scene.Node node: outputFormNodes) {
+				for (javafx.scene.Node node : outputFormNodes) {
 					Element textBlockElement = document.createElement("textBlock");
 					textBlockElement.setAttribute("type", node.getId());
-					
-					if(node.toString().contains("TextFlow")) {
+
+					if (node.toString().contains("TextFlow")) {
 						TextFlow textFlow = (TextFlow) node;
-						for(int i =0; i < textFlow.getChildren().size(); i++) {
+						for (int i = 0; i < textFlow.getChildren().size(); i++) {
 							Text text = (Text) textFlow.getChildren().get(i);
 							Element textElement = document.createElement("text");
 							textElement.setAttribute("size", String.valueOf(text.getFont().getSize()));
@@ -838,7 +471,7 @@ public class XMLManager {
 						Element textElement = document.createElement("text");
 						textElement.setAttribute("size", "16.0");
 						textElement.setAttribute("fontFamily", "System");
-						if(textArea.getText() != null && textArea.getText().length() > 0) {
+						if (textArea.getText() != null && textArea.getText().length() > 0) {
 							textElement.setAttribute("text", textArea.getText());
 							textElement.setAttribute("fontStyle", "Regular");
 						} else {
@@ -864,10 +497,9 @@ public class XMLManager {
 			logger.error("Cannot writeOutputFormDataXML. xmlFile or outputFormNodes is null.");
 		}
 	}
-	
-	
-	//-------------------------------------CHECKED------------------------------------------------------------------
-	
+
+	// -------------------------------------CHECKED------------------------------------------------------------------
+
 	public ArrayList<ERBContentItem> parseContentXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
@@ -877,9 +509,9 @@ public class XMLManager {
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
 				NodeList contentNodeList = doc.getElementsByTagName("content");
-				for(int i =0; i < contentNodeList.getLength();i++) {
+				for (int i = 0; i < contentNodeList.getLength(); i++) {
 					Node contentNode = contentNodeList.item(i);
-					if(contentNode.getNodeType() == Node.ELEMENT_NODE) {
+					if (contentNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element contentElement = (Element) contentNode;
 						String id = contentElement.getAttribute("id");
 						String guid = contentElement.getAttribute("guid");
@@ -887,7 +519,6 @@ public class XMLManager {
 						String status = contentElement.getAttribute("status");
 						String longName = contentElement.getAttribute("longName");
 						String shortName = contentElement.getAttribute("shortName");
-						
 						ERBContentItem erbContentItem = new ERBContentItem(id, guid, type, status, longName, shortName);
 						availableERBContentItems.add(erbContentItem);
 					}
@@ -899,7 +530,11 @@ public class XMLManager {
 		}
 		return null;
 	}
-	
+
+	ERBContentItem goalCategoryERBContentItem;
+	ArrayList<ERBContentItem> nestedGoalCategoryERBContentItems = new ArrayList<ERBContentItem>();
+	ArrayList<ERBContentItem> allGoalCategoryERBContentItems = new ArrayList<ERBContentItem>();
+
 	// Parse GoalCategories
 	public ArrayList<GoalCategory> parseGoalCategoriesXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
@@ -908,7 +543,6 @@ public class XMLManager {
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
-
 				ArrayList<GoalCategory> goalCategories = new ArrayList<GoalCategory>();
 				NodeList goalCategoryNodeList = doc.getElementsByTagName("goalCategory");
 				for (int h = 0; h < goalCategoryNodeList.getLength(); h++) {
@@ -916,57 +550,56 @@ public class XMLManager {
 					if (goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element goalCategoryElement = (Element) goalCategoryNode;
 						String goalCategoryName = goalCategoryElement.getAttribute("categoryName");
-						parseXML(goalCategoryNode, null);											
-						GoalCategory goalCategory = new GoalCategory(goalCategoryName, erbContentItems);
+						parseGoalCategoryNodes(goalCategoryNode, null);
+						GoalCategory goalCategory = new GoalCategory(goalCategoryName, nestedGoalCategoryERBContentItems);
 						goalCategories.add(goalCategory);
 					}
 				}
 				return goalCategories;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
-				e.printStackTrace();
 			}
 		} else {
 			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
 		return null;
-	}	
+	}
 
-	ERBContentItem erbContentItemTrack;
-	ArrayList<ERBContentItem> erbContentItems = new ArrayList<ERBContentItem>();
-
-	public void parseXML(Node node, Node parent) {
+	public void parseGoalCategoryNodes(Node node, Node parent) {
 		if (node.getNodeType() == Node.ELEMENT_NODE) {
 			Element nodeElement = (Element) node;
-			String id = nodeElement.getAttribute("id");
+			String id = nodeElement.getAttribute("id").trim();
 			ERBContentItem erbContentItem = app.findERBContentItemForId(id);
+			ERBContentItem clonedContentItem = erbContentItem;
+			if (erbContentItem != null) clonedContentItem = new ERBContentItem(erbContentItem.getId(), erbContentItem.getGuid(), erbContentItem.getType(), erbContentItem.getStatus(), erbContentItem.getLongName(), erbContentItem.getShortName());
+			allGoalCategoryERBContentItems.add(clonedContentItem);
 			if (id != null && id.length() > 0) {
 				if (idAssignments.getChapterIdAssignments().contains(id)) {
-					erbContentItems.add(erbContentItem);
+					nestedGoalCategoryERBContentItems.add(clonedContentItem);
 				} else {
 					Element parentElement = (Element) parent;
-					erbContentItemTrack = app.findERBContentItemForId(parentElement.getAttribute("id"));
-					erbContentItemTrack.addChildERBContentItem(erbContentItem);
+					goalCategoryERBContentItem = findParentERBContentItem(parentElement.getAttribute("id"), allGoalCategoryERBContentItems);
+					goalCategoryERBContentItem.addChildERBContentItem(clonedContentItem);
 				}
 			}
 			if (node.hasChildNodes()) {
 				NodeList children = node.getChildNodes();
 				for (int i = 0; i < children.getLength(); i++) {
-					parseXML(children.item(i), node);
+					parseGoalCategoryNodes(children.item(i), node);
 				}
 			}
 		}
 	}
-	
-	public ArrayList<Project> parseAllProjects(File ERBProjectDirectory, ArrayList<Activity> activities){
+
+	public ArrayList<Project> parseAllProjects(File ERBProjectDirectory) {
 		ArrayList<Project> projects = new ArrayList<Project>();
-		if(ERBProjectDirectory != null && ERBProjectDirectory.exists()) {
-			File [] projectDirectories = ERBProjectDirectory.listFiles();
-			for(File projectDirectory : projectDirectories) {
-				if(projectDirectory.isDirectory()) {
+		if (ERBProjectDirectory != null && ERBProjectDirectory.exists()) {
+			File[] projectDirectories = ERBProjectDirectory.listFiles();
+			for (File projectDirectory : projectDirectories) {
+				if (projectDirectory.isDirectory()) {
 					File projectMetaFile = new File(projectDirectory.getPath() + "\\Meta.xml");
-					if(projectMetaFile.exists()) {
-						Project project = parseProjectXML(projectMetaFile, activities);
+					if (projectMetaFile.exists()) {
+						Project project = parseProjectXML(projectMetaFile);
 						projects.add(project);
 					}
 				}
@@ -975,6 +608,64 @@ public class XMLManager {
 		return projects;
 	}
 	
+	public Project parseProjectXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				NodeList projectNodeList = doc.getElementsByTagName("project");
+				for (int i = 0; i < projectNodeList.getLength(); i++) {
+					Node projectNode = projectNodeList.item(i);
+					// Project
+					if (projectNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element projectElement = (Element) projectNode;
+						String projectName = projectElement.getAttribute("projectName");
+						String projectType = projectElement.getAttribute("projectType");
+						String projectCleanedName = projectElement.getAttribute("projectCleanedName");
+						ArrayList<Goal> listOfGoals = new ArrayList<Goal>();
+						NodeList goalsNodeList = projectElement.getElementsByTagName("goal");
+						for (int j = 0; j < goalsNodeList.getLength(); j++) {
+							Node goalNode = goalsNodeList.item(j);
+							// Goal
+							if (goalNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element goalElement = (Element) goalNode;
+								String goalName = goalElement.getAttribute("goalName");
+								String goalCleanedName = goalElement.getAttribute("goalCleanedName");
+								ArrayList<GoalCategory> listOfSelectedGoalCategories = new ArrayList<GoalCategory>();
+								String goalDescription = goalElement.getAttribute("goalDescription");
+								NodeList goalCategoryNodeList = goalElement.getElementsByTagName("goalCategory");
+								for (int k = 0; k < goalCategoryNodeList.getLength(); k++) {
+									Node goalCategoryNode = goalCategoryNodeList.item(k);
+									// Goal Category
+									if (goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
+										Element goalCategoryElement = (Element) goalCategoryNode;
+										String categoryName = goalCategoryElement.getAttribute("categoryName");
+										GoalCategory goalCategory = erbItemFinder.getGoalCategoryByName(app.getAvailableGoalCategories(), categoryName);
+										listOfSelectedGoalCategories.add(goalCategory);
+									}
+								}
+								Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription, listOfSelectedGoalCategories);
+								listOfGoals.add(goal);
+							}
+						}
+						Project project = new Project(projectName, projectType, projectCleanedName, listOfGoals);
+						for (Goal goal : listOfGoals) {
+							goal.setContentItems(project);
+						}
+						return project;
+					}
+				}
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
+
 	public void writeProjectMetaXML(File xmlFile, Project project) {
 		if (xmlFile != null && project != null) {
 			try {
@@ -1006,7 +697,6 @@ public class XMLManager {
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
 				DOMSource domSource = new DOMSource(document);
-
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
@@ -1016,63 +706,147 @@ public class XMLManager {
 			logger.error("Cannot writeProjectMetaXML. xmlFile or project is null.");
 		}
 	}
+
+	public void writeGoalMetaXML(File xmlFile, ArrayList<ERBContentItem> erbContentItems) {
+		if (xmlFile != null && erbContentItems != null) {
+			try {
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.newDocument();
+				Element rootElement = document.createElement("contents");
+				document.appendChild(rootElement);
+				for (ERBContentItem erbContentItem : erbContentItems) {
+					writeGoalNodes(erbContentItem, null, rootElement, document);
+				}
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource domSource = new DOMSource(document);
+				StreamResult file = new StreamResult(xmlFile);
+				transformer.transform(domSource, file);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot writeGoalMetaXML. xmlFile or erbContentItems is null.");
+		}
+	}
+
+	Element elementToTrack;
+	ArrayList<Element> listOfElements = new ArrayList<Element>();
+
+	public void writeGoalNodes(ERBContentItem erbContentItem, ERBContentItem erbContentItemParent, Element rootElement, Document document) {
+		Element element = document.createElement("content");
+		element.setAttribute("id", erbContentItem.getId());
+		element.setAttribute("guid", erbContentItem.getGuid());
+		element.setAttribute("type", erbContentItem.getType());
+		element.setAttribute("status", erbContentItem.getStatus());
+		element.setAttribute("longName", erbContentItem.getLongName());
+		element.setAttribute("shortName", erbContentItem.getShortName());
+		listOfElements.add(element);
+		if (idAssignments.getChapterIdAssignments().contains(erbContentItem.getId())) {
+			rootElement.appendChild(element);
+			elementToTrack = element;
+		} else {
+			Element parentElement = searchForGoalElementById(erbContentItemParent.getId());
+			if (parentElement != null) parentElement.appendChild(element);
+		}
+		if (erbContentItem.getChildERBContentItems().size() > 0) {
+			for (ERBContentItem erbContentItemChild : erbContentItem.getChildERBContentItems()) {
+				writeGoalNodes(erbContentItemChild, erbContentItem, rootElement, document);
+			}
+		}
+	}
+
+	private Element searchForGoalElementById(String id) {
+		for (Element e : listOfElements) {
+			if (e.getAttribute("id").contentEquals(id)) {
+				return e;
+			}
+		}
+		return null;
+	}
 	
-	public Project parseProjectXML(File xmlFile, ArrayList<Activity> activities){
+	ERBContentItem goalERBContentItem = new ERBContentItem();
+	ArrayList<ERBContentItem> nestedGoalERBContentItems = new ArrayList<ERBContentItem>();
+	ArrayList<ERBContentItem> allGoalERBContentItems = new ArrayList<ERBContentItem>();
+
+	public ArrayList<ERBContentItem> parseGoalXML(File xmlFile) {
+		allGoalERBContentItems.clear();
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
-				NodeList projectNodeList = doc.getElementsByTagName("project");
-				for(int i = 0; i < projectNodeList.getLength(); i++) {
-					Node projectNode = projectNodeList.item(i);
-					//Project
-					if(projectNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element projectElement = (Element) projectNode;
-						String projectName = projectElement.getAttribute("projectName");
-						String projectType = projectElement.getAttribute("projectType");
-						String projectCleanedName = projectElement.getAttribute("projectCleanedName");
-						ArrayList<Goal> listOfGoals = new ArrayList<Goal>();
-						NodeList goalsNodeList = projectElement.getElementsByTagName("goal");
-						for(int j =0; j < goalsNodeList.getLength(); j++) {
-							Node goalNode = goalsNodeList.item(j);
-							//Goal
-							if(goalNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element goalElement = (Element) goalNode;
-								String goalName = goalElement.getAttribute("goalName");
-								String goalCleanedName = goalElement.getAttribute("goalCleanedName");
-								ArrayList<GoalCategory> listOfSelectedGoalCategories = new ArrayList<GoalCategory>();
-								String goalDescription = goalElement.getAttribute("goalDescription");
-								NodeList goalCategoryNodeList = goalElement.getElementsByTagName("goalCategory");
-								for (int k = 0; k < goalCategoryNodeList.getLength(); k++) {
-									Node goalCategoryNode = goalCategoryNodeList.item(k);
-									//Goal Category
-									if(goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
-										Element goalCategoryElement = (Element) goalCategoryNode;
-										String categoryName = goalCategoryElement.getAttribute("categoryName");
-										GoalCategory goalCategory = erbItemFinder.getGoalCategoryByName(app.getAvailableGoalCategories(), categoryName);
-										listOfSelectedGoalCategories.add(goalCategory);
-									}
-								}
-								Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription, listOfSelectedGoalCategories);
-								listOfGoals.add(goal);
-							}
-						}
-						Project project = new Project(projectName, projectType, projectCleanedName, listOfGoals);
-						for(Goal goal: listOfGoals) {
-							goal.setChapters(activities, project);
-						}
-						return project;
+				NodeList contentsList = doc.getElementsByTagName("contents");
+				for (int h = 0; h < contentsList.getLength(); h++) {
+					Node contentsNode = contentsList.item(h);
+					if (contentsNode.getNodeType() == Node.ELEMENT_NODE) {
+						parseGoalNodes(contentsNode, null);
 					}
 				}
+				return nestedGoalERBContentItems;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
 		} else {
 			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
-		return null;	
+		return null;
 	}
 
+	public void parseGoalNodes(Node node, Node parent) {
+		if (node.getNodeType() == Node.ELEMENT_NODE) {
+			Element nodeElement = (Element) node;
+			String id = nodeElement.getAttribute("id").trim();
+			if (id != null && id.length() > 0) {
+				String guid = nodeElement.getAttribute("guid");
+				String longName = nodeElement.getAttribute("longName");
+				String shortName = nodeElement.getAttribute("shortName");
+				String status = nodeElement.getAttribute("status");
+				String type = nodeElement.getAttribute("type");
+				ERBContentItem erbContentItem = new ERBContentItem(id, guid, type, status, longName, shortName);
+				allGoalERBContentItems.add(erbContentItem);
+
+				if (idAssignments.getChapterIdAssignments().contains(id)) {
+					nestedGoalERBContentItems.add(erbContentItem); // Adding chapter
+				} else {
+					Element parentElement = (Element) parent;
+					String pid = parentElement.getAttribute("id").trim();
+					goalERBContentItem = findParentERBContentItem(pid, allGoalERBContentItems);
+					if (goalERBContentItem != null) goalERBContentItem.addChildERBContentItem(erbContentItem);
+				}
+			}
+			if (node.hasChildNodes()) {
+				NodeList children = node.getChildNodes();
+				for (int i = 0; i < children.getLength(); i++) {
+					Node childNode = children.item(i);
+					if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+						parseGoalNodes(childNode, node);
+					}
+				}
+			}
+		}
+	}
+
+	private ERBContentItem findParentERBContentItem(String erbContentId, ArrayList<ERBContentItem> itemsToSearch) {
+		if (erbContentId != null) {
+			for (ERBContentItem erbContentItem : itemsToSearch) {
+				if (erbContentItem != null) {
+					if (erbContentItem.getId().contentEquals(erbContentId)) {
+						return erbContentItem;
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
 }

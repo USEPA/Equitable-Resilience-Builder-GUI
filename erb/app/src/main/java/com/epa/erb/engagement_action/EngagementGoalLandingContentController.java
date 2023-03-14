@@ -1,11 +1,7 @@
 package com.epa.erb.engagement_action;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import com.epa.erb.chapter.Chapter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -20,14 +16,10 @@ public class EngagementGoalLandingContentController implements Initializable {
 	@FXML
 	ImageView goalLandingImageView;
 
-	private ArrayList<Chapter> listOfChaptersInGoal;
 	private EngagementActionController engagementActionController;
-	public EngagementGoalLandingContentController(ArrayList<Chapter> listOfChaptersInGoal, EngagementActionController engagementActionController) {
-		this.listOfChaptersInGoal = listOfChaptersInGoal;
+	public EngagementGoalLandingContentController(EngagementActionController engagementActionController) {
 		this.engagementActionController = engagementActionController;
 	}
-
-//	private Logger logger = LogManager.getLogger(EngagementGoalLandingContentController.class);
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -67,14 +59,6 @@ public class EngagementGoalLandingContentController implements Initializable {
 
 	public void setEngagementActionController(EngagementActionController engagementActionController) {
 		this.engagementActionController = engagementActionController;
-	}
-
-	public ArrayList<Chapter> getListOfAllChapters() {
-		return listOfChaptersInGoal;
-	}
-
-	public void setListOfAllChapters(ArrayList<Chapter> listOfAllChapters) {
-		this.listOfChaptersInGoal = listOfAllChapters;
 	}
 
 }

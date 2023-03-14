@@ -11,21 +11,16 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.epa.erb.Activity;
 import com.epa.erb.App;
-import com.epa.erb.ERBItem;
-import com.epa.erb.ERBItemFinder;
-import com.epa.erb.InteractiveActivity;
-import com.epa.erb.Step;
-import com.epa.erb.chapter.Chapter;
+import com.epa.erb.ERBContentItem;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.project.Project;
-import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.MainPanelHandler;
 import com.epa.erb.utility.XMLManager;
 import com.epa.erb.wordcloud.WordCloudController;
 import javafx.fxml.FXML;
@@ -60,7 +55,9 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	VBox treeViewVBox;
 	@FXML
-	TreeView<ERBItem> treeView;
+//	TreeView<ERBItem> treeView;
+	TreeView<ERBContentItem> treeView;
+
 	@FXML
 	VBox mainVBox;
 	@FXML
@@ -75,19 +72,17 @@ public class EngagementActionController implements Initializable {
 		this.app = app;
 		this.project = project;
 	}
-	ArrayList<Chapter> listOfUniqueChapters = new ArrayList<Chapter>();
 	
-	private Goal currentSelectedGoal = null;
-	private Step currentSelectedStep = null;
-	private Chapter currentSelectedChapter = null;
-	private Activity currentSelectedActivity = null;
-	private InteractiveActivity currentSelectedDynamicActivity = null;
+	
+	ArrayList<ERBContentItem> listOfUniqueERBContentItems = new ArrayList<ERBContentItem>();
 
-	private Constants constants = new Constants();
+	private Goal currentSelectedGoal = null;
+	private ERBContentItem currentSelectedERBContentItem = null;
+
 	private FileHandler fileHandler = new FileHandler();
-	private ERBItemFinder erbItemFinder = new ERBItemFinder();
+	MainPanelHandler mainPanelHandler = new MainPanelHandler();
 	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	private LinkedHashMap<ERBItem, TreeItem<ERBItem>> treeItemGuidTreeMap = new LinkedHashMap<ERBItem, TreeItem<ERBItem>>();
+	private LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>> treeItemGuidTreeMap = new LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -120,32 +115,19 @@ public class EngagementActionController implements Initializable {
 	}
 
 	private void initializeTreeViewSelection() {
-		for (ERBItem erbItem : treeItemGuidTreeMap.keySet()) {
-			TreeItem<ERBItem> treeItem = treeItemGuidTreeMap.get(erbItem);
-			if (treeItem.getValue().getId() == "004") {
+		for (ERBContentItem erbItem : treeItemGuidTreeMap.keySet()) {
+			TreeItem<ERBContentItem> treeItem = treeItemGuidTreeMap.get(erbItem);
+			if (treeItem.getValue().getId() == "91") {
 				getTreeView().getSelectionModel().select(treeItem);
 				treeViewClicked(null, treeItem);
 			}
 		}
 	}
 
-	private VBox loadChapterLanding(ArrayList<Chapter> chapters) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementGoalLandingContent.fxml"));
-			EngagementGoalLandingContentController chapterLandingController = new EngagementGoalLandingContentController(chapters, this);
-			fxmlLoader.setController(chapterLandingController);
-			VBox root = fxmlLoader.load();
-			return root;
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return null;
-		}
-	}
-
-	private VBox loadNoteBoardContentController(InteractiveActivity dynamicActivity) {
+	private VBox loadNoteBoardContentController() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(dynamicActivity.getId(), dynamicActivity.getGuid(), dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus(), app, project,currentSelectedGoal);
+			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, currentSelectedERBContentItem);
 			fxmlLoader.setController(noteBoardContentController);
 			VBox root = fxmlLoader.load();
 			return root;
@@ -155,16 +137,16 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 	
-	private VBox loadWordCloudController(InteractiveActivity dynamicActivity) {
+	private VBox loadWordCloudController() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/wordcloud/WordCloud.fxml"));
-			WordCloudController wordCloudController = new WordCloudController(dynamicActivity.getId(), dynamicActivity.getGuid(), dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus(), app, project, currentSelectedGoal);
+			WordCloudController wordCloudController = new WordCloudController(app, project, currentSelectedGoal, currentSelectedERBContentItem);
 			fxmlLoader.setController(wordCloudController);
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-//			e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -185,9 +167,9 @@ public class EngagementActionController implements Initializable {
 
 	@FXML
 	public void previousButtonAction() {
-		TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<ERBContentItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
 		if (selectedTreeItem != null) {
-			TreeItem<ERBItem> previousTreeItem = getPreviousTreeItem(selectedTreeItem.getValue());
+			TreeItem<ERBContentItem> previousTreeItem = getPreviousTreeItem(selectedTreeItem.getValue());
 			if (previousTreeItem != null) {
 				treeView.getSelectionModel().select(previousTreeItem);
 				treeViewClicked(null, previousTreeItem);
@@ -197,9 +179,9 @@ public class EngagementActionController implements Initializable {
 
 	@FXML
 	public void nextButtonAction() {
-		TreeItem<ERBItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
+		TreeItem<ERBContentItem> selectedTreeItem = treeView.getSelectionModel().getSelectedItem();
 		if (selectedTreeItem != null) {
-			TreeItem<ERBItem> nextTreeItem = getNextTreeItem(selectedTreeItem.getValue());
+			TreeItem<ERBContentItem> nextTreeItem = getNextTreeItem(selectedTreeItem.getValue());
 			if (nextTreeItem != null) {
 				treeView.getSelectionModel().select(nextTreeItem);
 				treeViewClicked(null, nextTreeItem);
@@ -207,21 +189,21 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 	
-	public TreeItem<ERBItem> getNextTreeItem(ERBItem currentErbItem) {
-		Iterator<ERBItem> iterator = treeItemGuidTreeMap.keySet().iterator();
+	public TreeItem<ERBContentItem> getNextTreeItem(ERBContentItem currentErbItem) {
+		Iterator<ERBContentItem> iterator = treeItemGuidTreeMap.keySet().iterator();
 		while (iterator.hasNext()) {
-			ERBItem erbItem = iterator.next();
+			ERBContentItem erbItem = iterator.next();
 			if (currentErbItem.getGuid() != null) {
 				if (erbItem.getGuid() != null && (erbItem.getGuid().contentEquals(currentErbItem.getGuid()))) {
 					if (iterator.hasNext()) {
-						ERBItem nextErbItem = iterator.next();
+						ERBContentItem nextErbItem = iterator.next();
 						return treeItemGuidTreeMap.get(nextErbItem);
 					}
 				}
 			} else {
 				if (erbItem.getId().contentEquals(currentErbItem.getId())) {
 					if (iterator.hasNext()) {
-						ERBItem nextErbItem = iterator.next();
+						ERBContentItem nextErbItem = iterator.next();
 						return treeItemGuidTreeMap.get(nextErbItem);
 					}
 				}
@@ -230,15 +212,14 @@ public class EngagementActionController implements Initializable {
 		return null;
 	}
 	
-	public TreeItem<ERBItem> getPreviousTreeItem(ERBItem currentErbItem) {
-		ListIterator<ERBItem> iterator = treeItemGuidTreeMap.keySet().stream().collect(Collectors.toList())
-				.listIterator();
+	public TreeItem<ERBContentItem> getPreviousTreeItem(ERBContentItem currentErbItem) {
+		ListIterator<ERBContentItem> iterator = treeItemGuidTreeMap.keySet().stream().collect(Collectors.toList()).listIterator();
 		while (iterator.hasNext()) {
-			ERBItem erbItem = iterator.next();
+			ERBContentItem erbItem = iterator.next();
 			if (currentErbItem.getGuid() != null) {
 				if (erbItem.getGuid() != null && (erbItem.getGuid().contentEquals(currentErbItem.getGuid()))) {
 					if (iterator.hasPrevious()) {
-						ERBItem previousErbItem = iterator.previous();
+						ERBContentItem previousErbItem = iterator.previous();
 						previousErbItem = iterator.previous();
 						return treeItemGuidTreeMap.get(previousErbItem);
 					}
@@ -246,12 +227,11 @@ public class EngagementActionController implements Initializable {
 			} else {
 				if (erbItem.getId().contentEquals(currentErbItem.getId())) {
 					if (iterator.hasPrevious()) {
-						ERBItem previousErbItem = iterator.previous();
+						ERBContentItem previousErbItem = iterator.previous();
 						try {
 							previousErbItem = iterator.previous();
 							return treeItemGuidTreeMap.get(previousErbItem);
 						} catch (Exception e) {
-							logger.error(e.getMessage());
 							return null;
 						}
 					}
@@ -264,100 +244,61 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	public void saveButtonAction() {		
 		XMLManager xmlManager = new XMLManager(app);
-		xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, currentSelectedGoal), listOfUniqueChapters);
-		fileHandler.createGUIDDirectoriesForGoal(project, currentSelectedGoal, listOfUniqueChapters);
+		xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, currentSelectedGoal), listOfUniqueERBContentItems);
+		fileHandler.createGUIDDirectoriesForGoal2(project, currentSelectedGoal, listOfUniqueERBContentItems);
+
 	}
 	
-	public void treeViewClicked(TreeItem<ERBItem> oldItem, TreeItem<ERBItem> newItem) {
+	public void treeViewClicked(TreeItem<ERBContentItem> oldItem, TreeItem<ERBContentItem> newItem) {
 		if (newItem != null) {			
-			Object itemClicked = newItem.getValue().getObject();
+			Object itemClicked = newItem.getValue();
 			if (itemClicked != null) {
-				if (itemClicked.toString().contains("InteractiveActivity")) {
-					InteractiveActivity dynamicActivity = (InteractiveActivity) itemClicked;
-					dynamicActivitySelected(newItem, dynamicActivity);
-				} else if (itemClicked.toString().contains("Step")) {
-					Step step = (Step) itemClicked;
-					stepTreeItemSelected(newItem, step);
-				} else if (itemClicked.toString().contains("Activity")) {
-					Activity activity = (Activity) itemClicked;
-					activityTreeItemSelected(newItem, activity);
-				} else if (itemClicked.toString().contains("Chapter")) {
-					Chapter chapter = (Chapter) itemClicked;
-					chapterTreeItemSelected(newItem, chapter);
-				}
+				ERBContentItem erbContentItem = (ERBContentItem) itemClicked;
+				currentSelectedERBContentItem = erbContentItem;
+				ERBContentItemSelected(erbContentItem);
 			} else {
 				erbPathwayTreeItemSelected();
+			}
+		} else {
+
+		}
+	}
+	
+	public void ERBContentItemSelected(ERBContentItem erbContentItem) {
+		File contentXMLFile = fileHandler.getStaticFormContentXML(erbContentItem.getId());
+		cleanContentVBox();
+		if (erbContentItem.getId().contentEquals("91")) {
+			Pane root = mainPanelHandler.loadERBDashboardRoot(app);
+			addContentToContentVBox(root, true);
+		} else {
+			System.out.println("Type = " + erbContentItem.getType());
+			if (erbContentItem.getType().contentEquals("mainForm")) {
+				Pane root = loadMainFormController(contentXMLFile);
+				addContentToContentVBox(root, true);
+			} else if (erbContentItem.getType().contentEquals("outputForm")) {
+				Pane root = loadOutputFormController2(contentXMLFile, erbContentItem);
+				addContentToContentVBox(root, true);
+			} else if (erbContentItem.getType().contentEquals("alternativeForm")) {
+				Pane root = loadAlternativeFormController(contentXMLFile);
+				addContentToContentVBox(root, true);
+			} else if (erbContentItem.getType().contentEquals("interactiveActivity")) {
+				if (erbContentItem.getLongName().contentEquals("Word Cloud")) {
+					Pane root = loadWordCloudController();
+					addContentToContentVBox(root, true);
+				} else if (erbContentItem.getLongName().contentEquals("Noteboard")) {
+					Pane root = loadNoteBoardContentController();
+					addContentToContentVBox(root, true);
+				}
 			}
 		}
 	}
 
 	private void erbPathwayTreeItemSelected() {
-		currentSelectedDynamicActivity = null;
-		currentSelectedStep = null;
-		currentSelectedActivity = null;
-		currentSelectedChapter = null;
 		cleanContentVBox();
 		if (currentSelectedGoal != null) {
-			Pane root = loadChapterLanding(listOfUniqueChapters);
+			Pane root = mainPanelHandler.loadERBDashboardRoot(app);
 			addContentToContentVBox(root, true);
 		}
-	}
-
-	private void chapterTreeItemSelected(TreeItem<ERBItem> chapterTreeItem, Chapter chapter) {
-		currentSelectedDynamicActivity = null;
-		currentSelectedStep = null;
-		currentSelectedActivity = null;
-		currentSelectedChapter = chapter;
-		cleanContentVBox();
-		if (currentSelectedChapter != null) {
-			File file = fileHandler.getStaticChapterFormAbout(currentSelectedChapter);
-			Pane root = loadMainFormController(file);
-			addContentToContentVBox(root, true);
-		}
-	}
-
-	private void activityTreeItemSelected(TreeItem<ERBItem> activityTreeItem, Activity activity) {
-		currentSelectedDynamicActivity = null;
-		currentSelectedStep = null;
-		currentSelectedActivity = activity;
-		currentSelectedChapter = erbItemFinder.getChapterForActivity(listOfUniqueChapters, activity);
-
-		cleanContentVBox();
-		loadActivityContent(currentSelectedActivity);
-		setActivityStatusRadioButton(currentSelectedActivity);
-	}
-
-	private void stepTreeItemSelected(TreeItem<ERBItem> stepTreeItem, Step step) {
-		currentSelectedDynamicActivity = null;
-		currentSelectedStep = step;
-		currentSelectedActivity = erbItemFinder.getActivityForStep(listOfUniqueChapters, step);
-
-		;
-		if (currentSelectedActivity != null) {
-			currentSelectedChapter = erbItemFinder.getChapterForActivity(listOfUniqueChapters, currentSelectedActivity);
-		} else {
-			currentSelectedChapter = erbItemFinder.getChapterForStep(listOfUniqueChapters, step);
-		}
-		cleanContentVBox();
-		Pane root = loadStepContent(currentSelectedStep);
-		addContentToContentVBox(root, false);
-		setActivityStatusRadioButton(currentSelectedActivity);
-	}
-
-	private void dynamicActivitySelected(TreeItem<ERBItem> dynamicActivityTreeItem, InteractiveActivity dynamicActivity) {
-		currentSelectedDynamicActivity = dynamicActivity;
-		currentSelectedStep = erbItemFinder.getStepForInteractiveActivity(listOfUniqueChapters, dynamicActivity);
-		currentSelectedActivity = erbItemFinder.getActivityForInteractiveActivity(listOfUniqueChapters, dynamicActivity);
-
-		if (currentSelectedActivity != null) {
-			currentSelectedChapter = erbItemFinder.getChapterForActivity(listOfUniqueChapters, currentSelectedActivity);
-		} else {
-			currentSelectedChapter = erbItemFinder.getChapterForStep(listOfUniqueChapters, currentSelectedStep);
-
-		}
-		cleanContentVBox();
-		// --
-		loadDynamicActivityContent(dynamicActivity);
 	}
 
 	public void addContentToContentVBox(Pane root, boolean setDynamicDimensions) {
@@ -372,230 +313,106 @@ public class EngagementActionController implements Initializable {
 			logger.error("Cannot addContentToContentVBox. root is null.");
 		}
 	}
-
-	private void fillAndStoreTreeViewData_GUIDS(ArrayList<Chapter> uniqueChapters) { // HAS GUIDS
+	
+	private void fillAndStoreTreeViewData_GUIDS2(ArrayList<ERBContentItem> uniqueChapters) { // HAS GUIDS
 		if (uniqueChapters != null) {
 			treeItemGuidTreeMap.clear();
+			listOfUniqueERBContentItems.clear();
 
-			ERBItem rootErbItem = new ERBItem("004", null, "ERB Pathway" , "ERB Pathway", null);
-			TreeItem<ERBItem> rootTreeItem = new TreeItem<ERBItem>(rootErbItem);
+			ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Pathway", "ERB Pathway");
+			TreeItem<ERBContentItem> rootTreeItem = new TreeItem<ERBContentItem>(rootERBContentItem);
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
-			treeItemGuidTreeMap.put(rootErbItem, rootTreeItem);
+			treeItemGuidTreeMap.put(rootERBContentItem, rootTreeItem);
 
-			// CHAPTER
-			for (Chapter uniqueChapter : uniqueChapters) {
-				ERBItem chapterERBItem = new ERBItem(uniqueChapter.getId(), uniqueChapter.getGuid(), uniqueChapter.getLongName(), uniqueChapter.getShortName(), uniqueChapter);
-				TreeItem<ERBItem> chapterTreeItem = new TreeItem<ERBItem>(chapterERBItem);
-				rootTreeItem.getChildren().add(chapterTreeItem);
-				treeItemGuidTreeMap.put(chapterERBItem, chapterTreeItem);
+			for (ERBContentItem contentItem : uniqueChapters) {
+				addChildrenToTreeView2(contentItem, null, rootTreeItem);
+			}
+			listOfUniqueERBContentItems = uniqueChapters;
 
-				// CHAPTER -> STEP
-				for (Step uniqueStep : uniqueChapter.getAssignedSteps()) {
-					ERBItem chapterStepERBItem = new ERBItem(uniqueStep.getId(), uniqueStep.getGuid(), uniqueStep.getLongName(), uniqueStep.getShortName(), uniqueStep);
-					TreeItem<ERBItem> chapterStepTreeItem = new TreeItem<ERBItem>(chapterStepERBItem);
-					if (uniqueStep.getId().length() != 4) {
-						chapterTreeItem.getChildren().add(chapterStepTreeItem);
-						treeItemGuidTreeMap.put(chapterStepERBItem, chapterStepTreeItem);
-					}
-					
-					// CHAPTER -> STEP -> DYNAMIC ACTIVITY
-					for (InteractiveActivity uniqueDynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
-						ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
-						TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
-						chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
-						treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
-					} // CHAPTER STEP DYYNAMIC ACTIVITY
-				} // CHAPTER STEP
-
-				// CHAPTER -> ACTIVITY
-				for (Activity uniqueActivity : uniqueChapter.getAssignedActivities()) {
-					ERBItem activityERBItem = new ERBItem(uniqueActivity.getId(), uniqueActivity.getGuid(), uniqueActivity.getLongName(), uniqueActivity.getShortName(), uniqueActivity);
-					TreeItem<ERBItem> activityTreeItem = new TreeItem<ERBItem>(activityERBItem);
-					chapterTreeItem.getChildren().add(activityTreeItem);
-					treeItemGuidTreeMap.put(activityERBItem, activityTreeItem);
-					
-					// CHAPTER -> ACTIVITY -> STEP
-					for (Step uniqueStep : uniqueActivity.getAssignedSteps()) {
-						ERBItem stepERBItem = new ERBItem(uniqueStep.getId(), uniqueStep.getGuid(), uniqueStep.getLongName(), uniqueStep.getShortName(), uniqueStep);
-						TreeItem<ERBItem> stepTreeItem = new TreeItem<ERBItem>(stepERBItem);
-						if (uniqueStep.getId().length() != 4) {
-							activityTreeItem.getChildren().add(stepTreeItem);
-							treeItemGuidTreeMap.put(stepERBItem, stepTreeItem);
-						}
-						
-						// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-						for (InteractiveActivity uniqueDynamicActivity : uniqueStep.getAssignedDynamicActivities()) {
-							ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
-							TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
-							stepTreeItem.getChildren().add(dynamicActivityTreeItem);
-							treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
-						} // CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
-					} // CHAPTER ACTIVITY STEP
-
-					// CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
-					for (InteractiveActivity uniqueDynamicActivity : uniqueActivity.getAssignedDynamicActivities()) {
-						ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
-						TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
-						activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-						treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
-					} // CHAPTER ACTIVITY DYNAMIC ACTIVITY
-				} // CHAPTER ACTIVITY
-				listOfUniqueChapters.add(uniqueChapter);
-			} // CHAPTER
 		} else {
 			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + uniqueChapters);
 		}
 	}
 	
-	private void fillAndStoreTreeViewData(ArrayList<Chapter> genericChapters) { // Does not have GUIDS
-		if (genericChapters != null) {
-			treeItemGuidTreeMap.clear();
-			ERBItem rootErbItem = new ERBItem("004", null, "ERB Pathway" , "ERB Pathway", null);
-			TreeItem<ERBItem> rootTreeItem = new TreeItem<ERBItem>(rootErbItem);
-			rootTreeItem.setExpanded(true);
-			treeView.setRoot(rootTreeItem);
-			treeItemGuidTreeMap.put(rootErbItem, rootTreeItem);
-
-			// CHAPTER
-			for (Chapter chapter : genericChapters) {
-				String chapterGUID = app.generateGUID();
-				Chapter uniqueChapter = new Chapter(chapter.getId(), chapterGUID, chapter.getLongName(), chapter.getShortName(), chapter.getStatus(), chapter.getNotes(), chapter.getDescription(), chapter.getNumber());
-				ERBItem chapterERBItem = new ERBItem(uniqueChapter.getId(), uniqueChapter.getGuid(), uniqueChapter.getLongName(), uniqueChapter.getShortName(), uniqueChapter);
-				TreeItem<ERBItem> chapterTreeItem = new TreeItem<ERBItem>(chapterERBItem);
-				rootTreeItem.getChildren().add(chapterTreeItem);
-				treeItemGuidTreeMap.put(chapterERBItem, chapterTreeItem);
-				
-				// CHAPTER -> STEP
-				for (Step step : chapter.getAssignedSteps()) {
-					String stepGUID = app.generateGUID();
-					Step uniqueStep = new Step(step.getId(), stepGUID, step.getLongName(), step.getShortName(), step.getStatus(), step.getNotes(), step.getRating(), step.getType());
-					ERBItem chapterStepERBItem = new ERBItem(uniqueStep.getId(), uniqueStep.getGuid(), uniqueStep.getLongName(), uniqueStep.getShortName(), uniqueStep);
-					TreeItem<ERBItem> chapterStepTreeItem = new TreeItem<ERBItem>(chapterStepERBItem);
-					if(uniqueStep.getId().length() != 4) {
-						chapterTreeItem.getChildren().add(chapterStepTreeItem);
-						treeItemGuidTreeMap.put(chapterStepERBItem, chapterStepTreeItem);
-					}
-					
-					// CHAPTER -> STEP -> DYNAMIC ACTIVITY
-					for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
-						String dynamicActivityGUID = app.generateGUID();
-						InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivityGUID, dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus());
-						ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
-						TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
-						chapterStepTreeItem.getChildren().add(dynamicActivityTreeItem);
-						treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
-						uniqueStep.addDynamicActivity(uniqueDynamicActivity);
-					}//CHAPTER STEP DYNAMIC ACTIVITY
-					uniqueChapter.addStep(uniqueStep);
-				}//CHAPTER STEP
-
-				// CHAPTER -> ACTIVITY
-				for (Activity activity : chapter.getAssignedActivities()) {
-					String activityGUID = app.generateGUID();
-					Activity uniqueActivity = new Activity(activity.getId(), activityGUID, activity.getLongName(), activity.getShortName(), activity.getStatus(), activity.getNotes(), activity.getRating());
-					ERBItem activityERBItem = new ERBItem(uniqueActivity.getId(), uniqueActivity.getGuid(), uniqueActivity.getLongName(), uniqueActivity.getShortName(), uniqueActivity);
-					TreeItem<ERBItem> activityTreeItem = new TreeItem<ERBItem>(activityERBItem);
-					chapterTreeItem.getChildren().add(activityTreeItem);
-					treeItemGuidTreeMap.put(activityERBItem, activityTreeItem);
-					
-					// CHAPTER -> ACTIVITY -> STEP
-					for (Step step : activity.getAssignedSteps()) {
-						String stepGUID = app.generateGUID();
-						Step uniqueStep = new Step(step.getId(), stepGUID, step.getLongName(), step.getShortName(), step.getStatus(), step.getNotes(), step.getRating(), step.getType());
-						ERBItem stepERBItem = new ERBItem(uniqueStep.getId(), uniqueStep.getGuid(), uniqueStep.getLongName(), uniqueStep.getShortName(), uniqueStep);
-						TreeItem<ERBItem> stepTreeItem = new TreeItem<ERBItem>(stepERBItem);
-						if(uniqueStep.getId().length() != 4) {
-							activityTreeItem.getChildren().add(stepTreeItem);
-							treeItemGuidTreeMap.put(stepERBItem, stepTreeItem);
-						}
-						
-						// CHAPTER -> ACTIVITY -> STEP -> DYNAMIC ACTIVITY
-						for (InteractiveActivity dynamicActivity : step.getAssignedDynamicActivities()) {
-							String dynamicActivityGUID = app.generateGUID();
-							InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivityGUID, dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus());
-							ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
-							TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
-							stepTreeItem.getChildren().add(dynamicActivityTreeItem);
-							treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
-							uniqueStep.addDynamicActivity(uniqueDynamicActivity);
-						}//CHAPTER ACTIVITY STEP DYNAMIC ACTIVITY
-						uniqueActivity.addStep(uniqueStep);
-					}//CHAPTER ACTIVITY STEP
-
-					// CHAPTER -> ACTIIVTY -> DYNAMIC ACTIVITY
-					for (InteractiveActivity dynamicActivity : activity.getAssignedDynamicActivities()) {
-						String dynamicActivityGUID = app.generateGUID();
-						InteractiveActivity uniqueDynamicActivity = new InteractiveActivity(dynamicActivity.getId(), dynamicActivityGUID, dynamicActivity.getLongName(), dynamicActivity.getShortName(), dynamicActivity.getStatus());
-						ERBItem dynamicActivityERBItem = new ERBItem(uniqueDynamicActivity.getId(), uniqueDynamicActivity.getGuid(), uniqueDynamicActivity.getLongName(), uniqueDynamicActivity.getShortName(), uniqueDynamicActivity);
-						TreeItem<ERBItem> dynamicActivityTreeItem = new TreeItem<ERBItem>(dynamicActivityERBItem);
-						activityTreeItem.getChildren().add(dynamicActivityTreeItem);
-						treeItemGuidTreeMap.put(dynamicActivityERBItem, dynamicActivityTreeItem);
-						uniqueActivity.addDynamicActivity(uniqueDynamicActivity);
-					}//CHAPTER ACTIVITY DYNAMIC ACTIVITY
-					uniqueChapter.addActivity(uniqueActivity);
-				}//CHAPTER ACTIVITY
-				listOfUniqueChapters.add(uniqueChapter);
-			}//CHAPTER
-		} else {
-			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + genericChapters);
+	public void addChildrenToTreeView2(ERBContentItem contentItem, ERBContentItem contentItemParent, TreeItem<ERBContentItem> rootTreeItem) {
+		TreeItem<ERBContentItem> treeItem = new TreeItem<ERBContentItem>(contentItem);
+		rootTreeItem.getChildren().add(treeItem);
+		treeItemGuidTreeMap.put(contentItem, treeItem);
+		if (contentItem.getChildERBContentItems().size() > 0) {
+			for (ERBContentItem erbContentItemChild : contentItem.getChildERBContentItems()) {
+				addChildrenToTreeView2(erbContentItemChild, contentItem, treeItem);
+			}
 		}
 	}
 	
-	private TreeCell<ERBItem> createTreeCell() {
-		return new TreeCell<ERBItem>() {
+	//NO GUIDS
+		private void fillAndStoreTreeViewData2(ArrayList<ERBContentItem> genericContentItems) {
+			if (genericContentItems != null) {
+				treeItemGuidTreeMap.clear();
+				listOfUniqueERBContentItems.clear();
+				ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Pathway", "ERB Pathway");
+				TreeItem<ERBContentItem> rootTreeItem = new TreeItem<ERBContentItem>(rootERBContentItem);
+				rootTreeItem.setExpanded(true);
+				treeView.setRoot(rootTreeItem);
+				treeItemGuidTreeMap.put(rootERBContentItem, rootTreeItem);
+
+				for (ERBContentItem contentItem : genericContentItems) {
+					addChildrenToTreeView(contentItem, null, rootTreeItem);
+				}
+				
+				listOfUniqueERBContentItems = genericContentItems;
+
+			} else {
+				logger.error("Cannot fillAndStoreTreeViewData2. genericContentItems = " + genericContentItems);
+			}
+		}
+		
+		public void addChildrenToTreeView(ERBContentItem contentItem, ERBContentItem contentItemParent, TreeItem<ERBContentItem> rootTreeItem) {
+			String guid = app.generateGUID();
+			contentItem.setGuid(guid);
+			TreeItem<ERBContentItem> treeItem = new TreeItem<ERBContentItem>(contentItem);
+			rootTreeItem.getChildren().add(treeItem);
+			treeItemGuidTreeMap.put(contentItem, treeItem);
+			if (contentItem.getChildERBContentItems().size() > 0) {
+				for (ERBContentItem erbContentItemChild : contentItem.getChildERBContentItems()) {
+					addChildrenToTreeView(erbContentItemChild, contentItem, treeItem);
+				}
+			}
+		}
+	
+	private TreeCell<ERBContentItem> createTreeCell() {
+		return new TreeCell<ERBContentItem>() {
 			@Override
-			protected void updateItem(ERBItem item, boolean empty) {
+			protected void updateItem(ERBContentItem item, boolean empty) {
 				super.updateItem(item, empty);
 				if (empty || item == null) {
 					setText(null);
 					setGraphic(null);
 				} else {
 					setText(item.getLongName());
-					String color = getTextColorForERBItem(item);
-					if (color != null) {
-						setStyle("-fx-text-fill: " + color);
-					}else {
-						setStyle("-fx-text-fill: black");
-					}
 				}
 			}
 		};
-	}
-	
-	private String getTextColorForERBItem(ERBItem erbItem) {
-		Chapter chapter = erbItemFinder.findChapterForGuid(listOfUniqueChapters, erbItem.getGuid());
-		if (chapter != null) {
-			if (chapter.getNumber() == 1) {
-				return constants.getChapter1Color();
-			} else if (chapter.getNumber() == 2) {
-				return constants.getChapter2Color();
-			} else if (chapter.getNumber() == 3) {
-				return constants.getChapter3Color();
-			} else if (chapter.getNumber() == 4) {
-				return constants.getChapter4Color();
-			} else if (chapter.getNumber() == 5) {
-				return constants.getChapter5Color();
-			}
-		}
-		return null;
 	}
 
 	private void goalSelected(Goal goal) {
 		if (goal != null) {
 			currentSelectedGoal = goal;
-			ArrayList<Chapter> listOfChapters = goal.getChapters();
-			if (listOfChapters != null) {
+			
+			ArrayList<ERBContentItem> contentItems = goal.getListOfContentItemsInGoal();
+			if(contentItems != null) {
 				boolean hasGUIDs = false;
-				if(listOfChapters.get(0) != null) {
-					if(listOfChapters.get(0).getGuid() != null && listOfChapters.get(0).getGuid().length() > 0) {
+				if(contentItems.get(0) != null) {
+					if(contentItems.get(0).getGuid() != null && contentItems.get(0).getGuid().length() > 0) {
 						hasGUIDs= true;
 					}
 				}
 				if(hasGUIDs) {
-					fillAndStoreTreeViewData_GUIDS(listOfChapters); //LIST OF CHAPTERS IS ALREADY UNIQUE
+					fillAndStoreTreeViewData_GUIDS2(contentItems); //LIST OF CHAPTERS IS ALREADY UNIQUE
 				} else {
-					fillAndStoreTreeViewData(listOfChapters); //LIST OF CHAPTERS IS NOT UNIQUE
+					fillAndStoreTreeViewData2(contentItems); //LIST OF CHAPTERS IS NOT UNIQUE
+
 				}
 				initializeTreeViewSelection();
 			}
@@ -603,68 +420,8 @@ public class EngagementActionController implements Initializable {
 			logger.error("Cannot execute goalSelected. goal = " + goal);
 		}
 	}
-
-	private void loadActivityContent(Activity activity) {
-		if (activity != null) {
-			if (project.getProjectType().contentEquals("Facilitator Mode")) {
-				loadActivityContentFacilitatorMode(activity);
-			} else {
-				loadActivityContentGoalMode(activity);
-			}
-		} else {
-			logger.error("Cannot loadActivityContent. activity = " + activity);
-		}
-	}
-
-	private void loadActivityContentFacilitatorMode(Activity activity) {
-		File file = fileHandler.getStaticActivityFormText(activity);
-		Pane root = loadMainFormController(file);
-		addContentToContentVBox(root, false);
-	}
-
-	private void loadActivityContentGoalMode(Activity activity) {
-		File file = fileHandler.getStaticActivityFormText(activity);
-		Pane root = loadMainFormController(file);
-		addContentToContentVBox(root, false);
-
-	}
-
-	private void loadDynamicActivityContent(InteractiveActivity dynamicActivity) {
-		if (dynamicActivity != null) {
-			//TODO: Somehow make this not static
-			if (dynamicActivity.getId().contentEquals("00000001")) {
-				Pane root = loadNoteBoardContentController(dynamicActivity);
-				addContentToContentVBox(root, false);
-			} else if (dynamicActivity.getId().contentEquals("00000002")) {
-				Pane root = loadWordCloudController(dynamicActivity);
-				addContentToContentVBox(root, false);
-			}
-		} else {
-			logger.error("Cannot loadDynamicActivityContent. InteractiveActivity = " + dynamicActivity);
-
-		}
-	}
-
-	public Pane loadStepContent(Step step) {
-		if (step != null) {
-			File file = fileHandler.getStaticStepFormText(step);
-			if (step.getType().contentEquals("mainForm")) {
-				Pane root = loadMainFormController(file);
-				return root;
-			} else if (step.getType().contentEquals("outputForm")) {
-				Pane root = loadOutputFormController(file, step);
-				return root;
-			} else if (step.getType().contentEquals("alternativeForm")) {
-				Pane root = loadAlternativeFormController(file, step);
-				return root;
-			}
-		} else {
-			logger.error("Cannot loadStepContent. step = " + step);
-		}
-		return null;
-	}
 	
-	private VBox loadAlternativeFormController(File xmlFileToParse, Step step) {
+	private VBox loadAlternativeFormController(File xmlFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/AlternativeForm.fxml"));
 			AlternativeFormController alternativeFormController = new AlternativeFormController(app, xmlFileToParse, this);
@@ -676,11 +433,11 @@ public class EngagementActionController implements Initializable {
 			return null;
 		}
 	}
-
-	private VBox loadOutputFormController(File xmlContentFileToParse, Step step) {
+	
+	private VBox loadOutputFormController2(File xmlContentFileToParse, ERBContentItem item) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/OutputForm.fxml"));
-			OutputFormController outputFormController = new OutputFormController(step.getId(), step.getGuid(), step.getLongName(), step.getShortName(), step.getStatus(),app, xmlContentFileToParse, this);
+			OutputFormController outputFormController = new OutputFormController(item.getId(), item.getGuid(), item.getLongName(), item.getShortName(), item.getStatus(),app, xmlContentFileToParse, this);
 			fxmlLoader.setController(outputFormController);
 			VBox root = fxmlLoader.load();
 			return root;
@@ -703,20 +460,9 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	private void setActivityStatusRadioButton(Activity activity) {
-		if (activity != null) {
-			if (activity.getStatus().contentEquals("ready")) {
-			} else if (activity.getStatus().contentEquals("in progress")) {
-			} else if (activity.getStatus().contentEquals("complete")) {
-			}
-		} else {
-			logger.error("Cannot setActivityStatusRadioButton. activity = " + activity);
-		}
-	}
-
-	public TreeItem<ERBItem> findTreeItem(String guid) {
+	public TreeItem<ERBContentItem> findTreeItem(String guid) {
 		if (guid != null) {
-			for (ERBItem erbItem : treeItemGuidTreeMap.keySet()) {
+			for (ERBContentItem erbItem : treeItemGuidTreeMap.keySet()) {
 				if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(guid)) {
 					return treeItemGuidTreeMap.get(erbItem);
 				}
@@ -744,14 +490,6 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	public Chapter getCurrentChapter() {
-		return currentSelectedChapter;
-	}
-
-	public Activity getCurrentActivity() {
-		return currentSelectedActivity;
-	}
-
 	public Goal getCurrentGoal() {
 		return currentSelectedGoal;
 	}
@@ -760,8 +498,12 @@ public class EngagementActionController implements Initializable {
 		this.currentSelectedGoal = currentSelectedGoal;
 	}
 
-	public Step getCurrentSelectedStep() {
-		return currentSelectedStep;
+	public ERBContentItem getCurrentSelectedERBContentItem() {
+		return currentSelectedERBContentItem;
+	}
+
+	public void setCurrentSelectedERBContentItem(ERBContentItem currentSelectedERBContentItem) {
+		this.currentSelectedERBContentItem = currentSelectedERBContentItem;
 	}
 
 	public App getApp() {
@@ -780,11 +522,11 @@ public class EngagementActionController implements Initializable {
 		this.project = project;
 	}
 
-	public HashMap<ERBItem, TreeItem<ERBItem>> getTreeItemIdTreeMap() {
+	public HashMap<ERBContentItem, TreeItem<ERBContentItem>> getTreeItemIdTreeMap() {
 		return treeItemGuidTreeMap;
 	}
 
-	public void setTreeItemIdTreeMap(LinkedHashMap<ERBItem, TreeItem<ERBItem>> treeItemIdTreeMap) {
+	public void setTreeItemIdTreeMap(LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>> treeItemIdTreeMap) {
 		this.treeItemGuidTreeMap = treeItemIdTreeMap;
 	}
 
@@ -795,7 +537,7 @@ public class EngagementActionController implements Initializable {
 		return treeViewVBox;
 	}
 	
-	public TreeView<ERBItem> getTreeView() {
+	public TreeView<ERBContentItem> getTreeView() {
 		return treeView;
 	}
 	
@@ -823,16 +565,8 @@ public class EngagementActionController implements Initializable {
 		return engagementVBox;
 	}
 
-	public ArrayList<Chapter> getListOfUniqueChapters() {
-		return listOfUniqueChapters;
-	}
-
-	public InteractiveActivity getCurrentSelectedDynamicActivity() {
-		return currentSelectedDynamicActivity;
-	}
-
-	public void setCurrentSelectedDynamicActivity(InteractiveActivity currentSelectedDynamicActivity) {
-		this.currentSelectedDynamicActivity = currentSelectedDynamicActivity;
+	public ArrayList<ERBContentItem> getListOfUniqueERBContentItems() {
+		return listOfUniqueERBContentItems;
 	}
 
 }

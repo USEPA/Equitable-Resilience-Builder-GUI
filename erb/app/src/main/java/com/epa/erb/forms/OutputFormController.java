@@ -6,21 +6,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
-import com.epa.erb.InteractiveActivity;
+import com.epa.erb.ERBContentItem;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TreeItem;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class OutputFormController extends InteractiveActivity implements Initializable {
+public class OutputFormController extends FormController implements Initializable {
 
 	@FXML
 	VBox nodeVBox;
@@ -39,7 +41,7 @@ public class OutputFormController extends InteractiveActivity implements Initial
 	private File xmlContentFileToParse;
 	private EngagementActionController engagementActionController;
 	public OutputFormController(String id, String guid, String longName, String shortName, String status,App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
-		super(id, guid, longName, shortName, status);
+		super(app, xmlContentFileToParse, engagementActionController);
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;
@@ -55,11 +57,11 @@ public class OutputFormController extends InteractiveActivity implements Initial
 			HashMap<ArrayList<Text>, String> contentHashMap = xmlManager.parseOutputFormContentXML(xmlContentFileToParse);
 			addContent(contentHashMap);
 		} else {
-			File dataXMLFile = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
+			File dataXMLFile = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedERBContentItem());
 			HashMap<ArrayList<Text>, String> contentHashMap = xmlManager.parseOutputFormContentXML(dataXMLFile);
 			addContent(contentHashMap);
 		}
-		setColor();
+		setColor(tP);
 		if(engagementActionController != null) {
 			if(engagementActionController.getProject().getProjectName().contentEquals("Explore")) {
 				setUnEditable();
@@ -67,44 +69,12 @@ public class OutputFormController extends InteractiveActivity implements Initial
 		}
 	}
 	
-	private void setColor() {
-		Constants constants = new Constants();
-		if (engagementActionController != null && engagementActionController.getCurrentChapter() != null) {
-			if (engagementActionController.getCurrentChapter().getNumber() == 1) {
-				tP.setStyle("-fx-background-color: " + constants.getChapter1Color());
-			} else if (engagementActionController.getCurrentChapter().getNumber() == 2) {
-				tP.setStyle("-fx-background-color: " + constants.getChapter2Color());
-			} else if (engagementActionController.getCurrentChapter().getNumber() == 3) {
-				tP.setStyle("-fx-background-color: " + constants.getChapter3Color());
-			} else if (engagementActionController.getCurrentChapter().getNumber() == 4) {
-				tP.setStyle("-fx-background-color: " + constants.getChapter4Color());
-			} else if (engagementActionController.getCurrentChapter().getNumber() == 5) {
-				tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
-			}
-		}
-	}
-	
 	private boolean checkForExisitingContent() {
-		File dataXMLFile = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
+		File dataXMLFile = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedERBContentItem());
 		if(dataXMLFile != null && dataXMLFile.exists()) {
 			return true;
 		}
 		return false;
-	}
-	
-	@FXML
-	public void saveButtonAction() {
-		XMLManager xmlManager = new XMLManager(app);
-		ArrayList<Node> listOfChildren = new ArrayList<Node>();
-		for(int i =0; i < formVBox.getChildren().size(); i++) {
-			listOfChildren.add(formVBox.getChildren().get(i));
-		}
-		File saveLocation = fileHandler.getStepDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedStep());
-		if(!saveLocation.getParentFile().exists()) {
-			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal()), engagementActionController.getListOfUniqueChapters());
-			fileHandler.createGUIDDirectoriesForGoal(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getListOfUniqueChapters());
-		}
-		xmlManager.writeOutputFormDataXML(saveLocation, listOfChildren);
 	}
 	
 	private void addContent(HashMap<ArrayList<Text>, String> contentHashMap) {
@@ -149,6 +119,22 @@ public class OutputFormController extends InteractiveActivity implements Initial
 		textArea.setId("area");
 		textArea.setMinHeight(100);
 		return textArea;
+	}
+	
+	@FXML
+	public void saveButtonAction() {
+		XMLManager xmlManager = new XMLManager(app);
+		ArrayList<Node> listOfChildren = new ArrayList<Node>();
+		for(int i =0; i < formVBox.getChildren().size(); i++) {
+			listOfChildren.add(formVBox.getChildren().get(i));
+		}
+		File saveLocation = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedERBContentItem());
+		if(!saveLocation.getParentFile().exists()) {
+			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal()), engagementActionController.getListOfUniqueERBContentItems());
+			fileHandler.createGUIDDirectoriesForGoal2(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getListOfUniqueERBContentItems());
+
+		}
+		xmlManager.writeOutputFormDataXML(saveLocation, listOfChildren);
 	}
 	
 	public void setUnEditable() {
