@@ -38,7 +38,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -55,7 +55,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -69,7 +69,7 @@
 			fontStyle="Hyperlink"
 			text="goals"
 			linkType="internalActivity"
-			link="000031">
+			link="59">
 			</text>
 			<text
 			size="16.0"
@@ -86,7 +86,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -111,7 +111,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -142,7 +142,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -159,7 +159,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -173,7 +173,7 @@
 			fontStyle="Hyperlink"
 			text="word cloud"
 			linkType="internalStep"
-			link="00000002">
+			link="84">
 			</text>
 			<text
 			size="16.0"
@@ -214,7 +214,7 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="000000006">
+			id="67">
 			</icon>
 			<text
 			size="16.0"
@@ -231,7 +231,7 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="000000001">
+			id="62">
 			</icon>
 			<text
 			size="16.0"
@@ -248,7 +248,7 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="000000002">
+			id="63">
 			</icon>
 			<text
 			size="16.0"
@@ -277,12 +277,12 @@
 			<icon
 			width="50.0"
 			height="50.0"
-			id="000000007">
+			id="68">
 			</icon>
 			<icon
 			width="50.0"
 			height="50.0"
-			id="000000008">
+			id="69">
 			</icon>
 			<text
 			size="16.0"
@@ -293,7 +293,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -310,7 +310,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"

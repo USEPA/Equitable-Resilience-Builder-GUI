@@ -46,7 +46,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -63,7 +63,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -94,7 +94,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -108,7 +108,7 @@
 			fontStyle="Hyperlink"
 			text="example"
 			linkType="internalStep"
-			link="0000010">
+			link="29">
 			</text>
 			<text
 			size="16.0"
@@ -125,7 +125,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -164,7 +164,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -181,7 +181,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -198,7 +198,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -215,7 +215,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -264,7 +264,7 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="000000006">
+			id="67">
 			</icon>
 			<text
 			size="16.0"
@@ -281,7 +281,7 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="000000001">
+			id="62">
 			</icon>
 			<text
 			size="16.0"
@@ -298,7 +298,7 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="000000002">
+			id="63">
 			</icon>
 			<text
 			size="16.0"
@@ -317,7 +317,7 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="000000002">
+			id="63">
 			</icon>
 			<text
 			size="16.0"
@@ -336,7 +336,7 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="000000009">
+			id="70">
 			</icon>
 			<text
 			size="16.0"
@@ -344,7 +344,7 @@
 			fontStyle="Hyperlink"
 			text="Example-activity selection"
 			linkType="internalStep"
-			link="0000010">
+			link="29">
 			</text>
 		</textBlock>
 	</container>
@@ -365,12 +365,12 @@
 			<icon
 			width="50.0"
 			height="50.0"
-			id="000000010">
+			id="71">
 			</icon>
 			<icon
 			width="50.0"
 			height="50.0"
-			id="000000011">
+			id="72">
 			</icon>
 			<text
 			size="16.0"
@@ -381,7 +381,7 @@
 			<icon
 			width="10.0"
 			height="10.0"
-			id="000000013">
+			id="74">
 			</icon>
 			<text
 			size="16.0"

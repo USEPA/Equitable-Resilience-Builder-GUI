@@ -119,7 +119,7 @@ public class FileHandler {
 	//--------------------------------------------------------------------------
 	
 	public File getStaticSupportingDOCDirectory() {
-		File supportingDOCDirectory = new File(constants.getPathToERBStaticDataFolder() + "\\Activities\\Supporting_DOC");
+		File supportingDOCDirectory = new File(constants.getPathToERBStaticDataFolder() + "\\Supporting_DOC");
 		return supportingDOCDirectory;
 	}
 	
@@ -149,7 +149,7 @@ public class FileHandler {
 	}
 	
 	public File getStaticIconImageFile(String id) {
-		File iconFile = new File(constants.getPathToERBStaticDataFolder() + "\\Icons\\Icons\\" + id + "\\icon.png");
+		File iconFile = new File(constants.getPathToERBStaticDataFolder() + "\\ContentXMLs\\" + id + "\\icon.png");
 		return iconFile;
 	}
 	

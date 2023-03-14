@@ -52,10 +52,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="in-depth communication guide"
-			linkType="externalDOC"
-			link="Ch2_in_depth_communication_guide.docx">
+			fontStyle="Regular"
+			text="in-depth communication guide">
 			</text>
 			<text
 			size="16.0"

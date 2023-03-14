@@ -13,21 +13,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="ERB is a toolkit containing 5 chapters that guide you through a process for building equitable resilience in your community (see ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="diagram"
-			linkType="externalDOC"
-			link="ERB_flow_diagram.pptx">
+			text="ERB is a toolkit containing 5 chapters that guide you through a process for building equitable resilience in your community.">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="). Depending on the goals you come up with, you will proceed through the chapters in different ways.">
+			text=". Depending on the goals you come up with, you will proceed through the chapters in different ways.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -151,15 +143,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- The first step is to create an ERB project ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="from the landing page"
-			linkType="internalIntro"
-			link="001">
+			text="&#xD;- The first step is to create an ERB project.">
 			</text>
 		</textBlock>
 		<textBlock>

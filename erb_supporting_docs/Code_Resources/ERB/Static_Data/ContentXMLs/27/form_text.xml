@@ -38,7 +38,7 @@
 			text="&#xD;">
 			</text>
 			<icon width="200.0"
-			height="200.0" id="000000018"> </icon>
+			height="200.0" id="79"> </icon>
 		</textBlock>
 	</container>
 	<container id="centerVBox">
@@ -62,7 +62,7 @@
 			text="&#xD;">
 			</text>
 			<icon width="200.0"
-			height="200.0" id="000000019"> </icon>
+			height="200.0" id="80"> </icon>
 		</textBlock>
 		
 	</container>
@@ -87,7 +87,7 @@
 			text="&#xD;">
 			</text>
 			<icon width="300.0"
-			height="200.0" id="000000020"> </icon>
+			height="200.0" id="81"> </icon>
 		</textBlock>
 	</container>
 </textBlocks>

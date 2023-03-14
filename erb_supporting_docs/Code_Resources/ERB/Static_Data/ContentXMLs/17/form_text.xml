@@ -61,7 +61,7 @@
 			fontStyle="Hyperlink"
 			text="Summary of Hazards, Disasters, Threats and Equity Issues form"
 			linkType="internalStep"
-			link="0000005">
+			link="24">
 			</text>
 			<text
 			size="16.0"
@@ -89,7 +89,7 @@
 			fontStyle="Hyperlink"
 			text="Chapter 1"
 			linkType="internalActivity"
-			link="0000001">
+			link="15">
 			</text>
 			<text
 			size="16.0"

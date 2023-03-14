@@ -26,10 +26,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Ch 3 SVA step"
-			linkType="internalActivity"
-			link="000033">
+			fontStyle="Regular"
+			text="Ch 3 SVA step">
 			</text>
 			<text
 			size="16.0"
@@ -40,10 +38,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Ch 2 landing page"
-			linkType="internalActivity"
-			link="00002">
+			fontStyle="Regular"
+			text="Ch 2 landing page">
 			</text>
 			<text
 			size="16.0"
@@ -54,10 +50,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Ch 3 hazards ID step"
-			linkType="internalActivity"
-			link="000010">
+			fontStyle="Regular"
+			text="Ch 3 hazards ID step">
 			</text>
 			<text
 			size="16.0"
@@ -68,10 +62,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Ch 4 step 1"
-			linkType="internalActivity"
-			link="000017">
+			fontStyle="Regular"
+			text="Ch 4 step 1">
 			</text>
 		</textBlock>
 	</container>
