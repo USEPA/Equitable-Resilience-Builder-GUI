@@ -28,6 +28,15 @@
          </children>
       </HBox>
       <Pane maxHeight="2.0" minHeight="2.0" prefHeight="2.0" style="-fx-background-color: #CCCCCC;" />
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio">
+               <HBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
       <HBox fx:id="navigationHBox" alignment="TOP_CENTER">
          <children>
             <HBox fx:id="previousHBox" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">

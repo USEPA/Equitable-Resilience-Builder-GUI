@@ -26,6 +26,7 @@ import com.epa.erb.wordcloud.WordCloudController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -37,6 +38,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class EngagementActionController implements Initializable {
 
@@ -116,6 +118,24 @@ public class EngagementActionController implements Initializable {
 				getTreeView().getSelectionModel().select(treeItem);
 				treeViewClicked(null, treeItem);
 			}
+		}
+	}
+	
+	@FXML
+	private void myPortfolioButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/MyPortfolio.fxml"));
+			MyPortfolioController conteoller = new MyPortfolioController(this);
+			fxmlLoader.setController(conteoller);
+			VBox root = fxmlLoader.load();
+			conteoller.launch();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

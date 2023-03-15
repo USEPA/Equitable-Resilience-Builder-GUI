@@ -79,6 +79,17 @@ public class FileHandler {
 		}
 	}
 	
+	public File getMyPortfolioDirectory(Project project, Goal goal) {
+		if(project != null && goal != null) {
+			File myPortfolioDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\MyPortfolio");
+			return myPortfolioDirectory;
+		} else {
+			logger.error("Cannot getMyPortfolioDirectory. project = " + project + " goal = " + goal);
+			return null;
+		}
+	}
+	
+	
 	//--------------------------------------------------------------------------
 	
 	public File getProjectMetaXMLFile(Project project) {
