@@ -5,7 +5,7 @@
 			size="25.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 3: Identify Hazards and Equity Issues">
+			text="Assess: Build Knowledge and Relationships">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,61 +13,288 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identifying the hazards, disasters, and threats (HDT) your community currently faces or might face in the future is the starting point for a realistic discussion about what your vulnerabilities are and how you can be more resilient. Understanding who is most impacted by those HDT, and how and why, is the foundation for improving equity.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="In this chapter you can select activities that will help you:">
+			text="Collaborate with local resident to assess hazards, equity and resilience in your community. Create connections around resilience. Use local knowledge and online data to assess:">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Explore data and information on hazards, disasters, and threats your community faces">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;What hazards do we most have to worry about - now and in the future?">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Gather data on equity">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Who in the community might experience hazards differently, and why?">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Engage community members to understand their experiences with HDT">
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;How resilient are our community's built, natural, and environmental support systems- and for whom?">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Identify who in your community is most impacted by HDT and how, and discuss the root causes of these impacts and existing inequities">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="As you do the activities, use the ">
+			text="&#xD; This will help you develop priorities for taking action to build ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Summary of Hazards, Disasters, Threats and Equity Issues form"
+			text="equitable resilience"
 			linkType="internalStep"
-			link="24">
+			link="01">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" on the next page to record what you learn about HDT and equity in your community. You can use this to help you do the activities in Chapters 4 and 5.">
+			text=" in the next section of ERB.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Activites to select from">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#xD;Workshop 1. Community relationships and listening">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;Plan for the workshop while centering equity">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;Workshop Activity options:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Share stories about hazards and equity">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Explore future scenarios">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Build relationships">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Gather more information">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;Decide what topics you want to learn more about and how you want to collect local or online data on hazards, equity, and resilient systems.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="REgular"
+			text="&#xD;Gather the information and manage it to use in resilience planning and in workshop 2">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#xD;Workshop 2. Collaborative assessment">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;Plan for the workshop in co-production way">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;Workshop Activity options:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Participatory mapping">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Card sorting">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Equity discussion">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you'll have at the end">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" Local knowledge and other data to use in resilience planning">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" Key takeaways to use in the next section on taking action">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -75,65 +302,98 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Getting community participation in these activities can be done in a variety of ways, such as through workshops or one-on-one enagement.">
+			text="&#xD;">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- See ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Chapter 1"
-			linkType="internalActivity"
-			link="15">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" for examples of ERB projects with selected chapters and activities">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Open the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Example ERB workshop agenda and facilitators guide"
-			linkType="externalDOC"
-			link="Workshop_facilitators_guide.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" and ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Example ERB workshop logistics plan"
-			linkType="externalDOC"
-			link="Workshop_logistics_plan.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" and customize them for planning your workshops.">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="900.0"
+			height="450.0"
+			id="99">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="875"
+			height="475.0"
+			id="100">
+			</icon>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you will need">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Core team, local partners, community members">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;It depends">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="63">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Equitable Resilience Concepts Worksheet"
+			linkType="externalDOC"
+			link="Ch3_EquitableResilienceConcepts_Worksheet.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;">
+			</text>
+		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
@@ -141,43 +401,81 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 3 Outputs:">
+			text="Centering Equity">
+			</text>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#xD;You will see tips on implementing the following themes:">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Summary of existing data on HDT">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="64">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Collaboration">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Summary of existing data on equity">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="65">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Representation">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Storytelling notes">
+			text="&#xD;">
+			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="66">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;Voice">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Hazards and asset maps">
+			text="&#xD;">
 			</text>
+			<icon
+			width="50.0"
+			height="50.0"
+			id="75">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Social vulnerability assessment">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- List of top current and future hazards, disasters, and threats.">
+			text="&#9;Empathy">
 			</text>
 		</textBlock>
 	</container>

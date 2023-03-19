@@ -1,0 +1,18 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="25.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Manage the Data">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		
+	</container>
+	<container id="bottomPanelVBox">
+		
+	</container>
+</textBlocks>

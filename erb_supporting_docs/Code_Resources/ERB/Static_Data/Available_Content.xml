@@ -15,7 +15,7 @@
 	<content id="14" guid="" type="mainForm" status="ready" shortName="What to Expect with Indicator Cards" longName="What to Expect with Indicator Cards" />
 	<content id="15" guid="" type="mainForm" status="ready" shortName="Plan your Project" longName="Plan your Project" />
 	<content id="16" guid="" type="mainForm" status="ready" shortName="Engage your Community" longName="Engage your Community" />
-	<content id="17" guid="" type="mainForm" status="ready" shortName="Hazards and Social Vulnerability" longName="Hazards and Social Vulnerability" />
+	<content id="17" guid="" type="mainForm" status="ready" shortName="Assess" longName="Assess" />
 	<content id="18" guid="" type="mainForm" status="ready" shortName="Indicators" longName="Indicators" />
 	<content id="19" guid="" type="mainForm" status="ready" shortName="Taking Action" longName="Taking Action" />
 	<content id="20" guid="" type="mainForm" status="ready" shortName="Team Storytelling" longName="Team Storytelling" />
@@ -84,4 +84,23 @@
 	<content id="83" guid="" type="Image" status="ready" shortName="Activity Selection Examples" longName="Activity Selection Examples" />
 	<content id="84" guid="" type="interactiveActivity" status="ready" shortName="Word Cloud" longName="Word Cloud" />
 	<content id="85" guid="" type="interactiveActivity" status="ready" shortName="Noteboard" longName="Noteboard" />
+	<content id="92" guid="" type="mainForm" status="ready" shortName="Listen and Connect" longName="Listen and Connect" />
+	<content id="93" guid="" type="mainForm" status="ready" shortName="Plan Workshop" longName="Plan Workshop while Centering Equity" />
+	<content id="94" guid="" type="mainForm" status="ready" shortName="Share Stories" longName="Share Stories" />
+	<content id="95" guid="" type="mainForm" status="ready" shortName="Explore Future Scenarios" longName="Explore Future Scenarios" />
+	<content id="96" guid="" type="mainForm" status="ready" shortName="Build Relationships" longName="Build Relationships" />
+	<content id="97" guid="" type="mainForm" status="ready" shortName="Expand your Knowledge" longName="Expand your Knowledge" />
+	<content id="98" guid="" type="mainForm" status="ready" shortName="Scope Information Needs" longName="Scope Information Needs" />
+	<content id="99" guid="" type="Image" status="ready" shortName="Ch 3 about 4 column image" longName="Ch 3 about 4 column image" />
+	<content id="100" guid="" type="Image" status="ready" shortName="Ch 3 about 3 column image" longName="Ch 3 about 3 column image" />
+	<content id="102" guid="" type="mainForm" status="ready" shortName="Hazards Data" longName="Hazards Data" />
+	<content id="103" guid="" type="mainForm" status="ready" shortName="Equity Data" longName="Equity Data" />
+	<content id="105" guid="" type="mainForm" status="ready" shortName="Resilient Systems Data" longName="Resilient Systems Data" />
+	<content id="106" guid="" type="mainForm" status="ready" shortName="Gather the Data" longName="Gather the Data" />
+	<content id="107" guid="" type="mainForm" status="ready" shortName="Manage the Data" longName="Manage the Data" />
+	<content id="108" guid="" type="mainForm" status="ready" shortName="Collaborate on Assessment" longName="Collaborate on Assessment" />
+	<content id="109" guid="" type="mainForm" status="ready" shortName="Participatory Mapping" longName="Participatory Mapping" />
+	<content id="110" guid="" type="mainForm" status="ready" shortName="Sort Resilience Indicators" longName="Sort Resilience Indicators" />
+	<content id="111" guid="" type="mainForm" status="ready" shortName="Discuss Equity" longName="Discuss Equity" />
+	<content id="112" guid="" type="mainForm" status="ready" shortName="Reflection and Next Steps" longName="Reflection and Next Steps" />	
 </content_xmls>
