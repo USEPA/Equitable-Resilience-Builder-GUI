@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class PostItNoteEditsController implements Initializable{
@@ -18,8 +19,8 @@ public class PostItNoteEditsController implements Initializable{
 	@FXML
 	TextArea postItNoteTextArea;
 
-	private PostItNoteController postItNoteController;
-	public PostItNoteEditsController(PostItNoteController postItNoteController) {
+	private NoteBoardItemController postItNoteController;
+	public PostItNoteEditsController(NoteBoardItemController postItNoteController) {
 		this.postItNoteController = postItNoteController;
 	}
 	
@@ -39,6 +40,7 @@ public class PostItNoteEditsController implements Initializable{
 	private void checkAndSetExistingText() {
 		if (postItNoteController.getTextFlow().getChildren().size() > 0) {
 			Text text = (Text) postItNoteController.getTextFlow().getChildren().get(0);
+			text.setFont(new Font(14.0));
 			if (text != null) {
 				String postItString = text.getText();
 				postItNoteTextArea.setText(postItString);
@@ -56,9 +58,9 @@ public class PostItNoteEditsController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-		postItNoteController.setPostItNoteText(postItNoteTextArea.getText());
-		postItNoteController.setPostItContentsColor(parseColorAsHex(colorPicker.getValue()));
-		postItNoteController.closeEditsStage();
+		postItNoteController.setNoteBoardItemText(postItNoteTextArea.getText());
+//		postItNoteController.setPostItContentsColor(parseColorAsHex(colorPicker.getValue()));
+//		postItNoteController.closeEditsStage();
 //		postItNoteController.getNoteBoardContentController().getActivity().setSaved(false);
 	}
 	
@@ -87,11 +89,11 @@ public class PostItNoteEditsController implements Initializable{
 		if(text != null) postItNoteTextArea.setText(text);
 	}
 
-	public PostItNoteController getPostItNoteController() {
+	public NoteBoardItemController getPostItNoteController() {
 		return postItNoteController;
 	}
 
-	public void setPostItNoteController(PostItNoteController postItNoteController) {
+	public void setPostItNoteController(NoteBoardItemController postItNoteController) {
 		this.postItNoteController = postItNoteController;
 	}
 

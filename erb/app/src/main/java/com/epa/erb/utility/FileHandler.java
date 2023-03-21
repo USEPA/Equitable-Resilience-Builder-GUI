@@ -139,6 +139,11 @@ public class FileHandler {
 		return availableContentXMLFile;
 	}
 	
+	public File getStaticIndicatorCardsXMLFile() {
+		File indicatorCardsXMLFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Indicator_Cards.xml");
+		return indicatorCardsXMLFile;
+	}
+	
 	public File getStaticGoalCategoriesXMLFile() {
 		File goalCategoriesFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Goal_Categories.xml");
 		return goalCategoriesFile;

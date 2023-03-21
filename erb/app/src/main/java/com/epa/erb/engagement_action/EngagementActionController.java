@@ -18,6 +18,7 @@ import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.NoteBoardContentController;
+import com.epa.erb.noteboard.NoteBoard_LinearRanking;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
@@ -139,12 +140,13 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	private VBox loadNoteBoardContentController() {
+	private VBox loadNoteBoard_LinearRankingController() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, project,currentSelectedGoal, currentSelectedERBContentItem);
+			NoteBoard_LinearRanking noteBoardContentController = new NoteBoard_LinearRanking(app, project, currentSelectedGoal, currentSelectedERBContentItem);
 			fxmlLoader.setController(noteBoardContentController);
 			VBox root = fxmlLoader.load();
+			noteBoardContentController.setUpNoteBoard(1);
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -301,7 +303,7 @@ public class EngagementActionController implements Initializable {
 					Pane root = loadWordCloudController();
 					addContentToContentVBox(root, true);
 				} else if (erbContentItem.getLongName().contentEquals("Noteboard")) {
-					Pane root = loadNoteBoardContentController();
+					Pane root = loadNoteBoard_LinearRankingController();
 					addContentToContentVBox(root, true);
 				}
 			}

@@ -19,12 +19,13 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.ERBItemFinder;
+import com.epa.erb.IndicatorCard;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
-import com.epa.erb.noteboard.CategorySectionController;
-import com.epa.erb.noteboard.PostItNoteController;
+import com.epa.erb.noteboard.NoteBoardRowController;
+import com.epa.erb.noteboard.NoteBoardItemController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
 import javafx.scene.control.TextArea;
@@ -77,37 +78,37 @@ public class XMLManager {
 		}
 	}
 
-	public void writeNoteboardDataXML(File xmlFile, ArrayList<CategorySectionController> categories) {
+	public void writeNoteboardDataXML(File xmlFile, ArrayList<NoteBoardRowController> categories) {
 		if (xmlFile != null && categories != null) {
 			try {
-				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-				Document document = documentBuilder.newDocument();
-				Element rootElement = document.createElement("categories");
-				document.appendChild(rootElement);
-				for (CategorySectionController category : categories) {
-					Element categoryElement = document.createElement("category");
-					categoryElement.setAttribute("name", category.getCategoryName());
-					Element notesElement = document.createElement("notes");
-					for (PostItNoteController postItNoteController : category.getListOfPostItNoteControllers()) {
-						Element noteElement = document.createElement("note");
-						noteElement.setAttribute("content", postItNoteController.getPostItNoteText());
-						noteElement.setAttribute("color", postItNoteController.getPostItNoteColor());
-						noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
-						noteElement.setAttribute("position",
-								String.valueOf(postItNoteController.getPostItNoteIndex(category)));
-						notesElement.appendChild(noteElement);
-					}
-					categoryElement.appendChild(notesElement);
-					rootElement.appendChild(categoryElement);
-				}
-
-				TransformerFactory transformerFactory = TransformerFactory.newInstance();
-				Transformer transformer = transformerFactory.newTransformer();
-				DOMSource domSource = new DOMSource(document);
-
-				StreamResult file = new StreamResult(xmlFile);
-				transformer.transform(domSource, file);
+//				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+//				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+//				Document document = documentBuilder.newDocument();
+//				Element rootElement = document.createElement("categories");
+//				document.appendChild(rootElement);
+//				for (NoteBoardRowController category : categories) {
+//					Element categoryElement = document.createElement("category");
+//					categoryElement.setAttribute("name", category.getCategoryName());
+//					Element notesElement = document.createElement("notes");
+//					for (NoteBoardItemController postItNoteController : category.getListOfPostItNoteControllers()) {
+//						Element noteElement = document.createElement("note");
+//						noteElement.setAttribute("content", postItNoteController.getPostItNoteText());
+//						noteElement.setAttribute("color", postItNoteController.getPostItNoteColor());
+//						noteElement.setAttribute("likes", postItNoteController.getNumberLabel().getText());
+//						noteElement.setAttribute("position",
+//								String.valueOf(postItNoteController.getPostItNoteIndex(category)));
+//						notesElement.appendChild(noteElement);
+//					}
+//					categoryElement.appendChild(notesElement);
+//					rootElement.appendChild(categoryElement);
+//				}
+//
+//				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+//				Transformer transformer = transformerFactory.newTransformer();
+//				DOMSource domSource = new DOMSource(document);
+//
+//				StreamResult file = new StreamResult(xmlFile);
+//				transformer.transform(domSource, file);
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
@@ -195,6 +196,60 @@ public class XMLManager {
 			}
 		} else {
 			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
+		}
+		return null;
+	}
+	
+	public ArrayList<IndicatorCard> parseIndicatorCardsXML(File xmlFile){
+		if (xmlFile != null && xmlFile.exists()) {
+			try {
+				ArrayList<IndicatorCard> indicatorCards = new ArrayList<IndicatorCard>();
+				FileHandler fileHandler = new FileHandler();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+
+				NodeList cardNodeList = doc.getElementsByTagName("card");
+				for (int i = 0; i < cardNodeList.getLength(); i++) {
+					Node cardNode = cardNodeList.item(i);
+					if (cardNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element cardElement = (Element) cardNode;
+						String system = cardElement.getAttribute("system");
+						String indicator = cardElement.getAttribute("indicator");
+						String definition = cardElement.getAttribute("definition");
+						String unitOfMeasurement = cardElement.getAttribute("unitOfMeasurement");
+						String resilienceValue = cardElement.getAttribute("resilienceValue");
+						String assessment = cardElement.getAttribute("assessment");
+						String quantitativeDataSources = cardElement.getAttribute("quantitativeDataSources");
+						String quantitativeCollProcess = cardElement.getAttribute("quantitativeCollProcess");
+						String qualitativeCollProcess = cardElement.getAttribute("qualitativeCollProcess");
+						String additionalInformation = cardElement.getAttribute("additionalInformation");
+					
+						ArrayList<String> questionsToAnswer = new ArrayList<String>();
+						NodeList questions = cardElement.getElementsByTagName("questionsToAnswer");
+						Element questionsElement = (Element) questions.item(0);						
+						NodeList q = questionsElement.getElementsByTagName("question");
+						for(int j=0; j<q.getLength(); j++) {
+							Node qNode = q.item(j);
+							if (qNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element qElement = (Element) qNode;
+								String questionText = qElement.getAttribute("text");
+								questionsToAnswer.add(questionText);
+							}
+						}
+						
+						IndicatorCard indicatorCard = new IndicatorCard(system, indicator, definition, unitOfMeasurement, resilienceValue, assessment, questionsToAnswer, quantitativeDataSources, quantitativeCollProcess, qualitativeCollProcess, additionalInformation);
+						indicatorCards.add(indicatorCard);
+					}
+				}
+				return indicatorCards;
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
 		}
 		return null;
 	}

@@ -1,0 +1,39 @@
+<indicatorCards>
+	<card
+		system="Social Environment"
+		indicator="Social Cohesion"
+		definition="The strength of relationships and the sense of solidarity among members of a community based on distribution of social capital and shares group resources."
+		unitOfMeasurement="Qualitative-low, medium, or high social cohesion"
+		resilienceValue="Relationships are important for physical health and psychosocial well-being. Social cohesion can therefore both directly benefit people and indirectly buffer them from risk factors that might otherwise damage their wellbeing and decrease their resilience to hazards, disasters and threats. The protective nature of social support may be especially important for populations that experience discrimination or exclusion. For example, during natural disasters like heat waves, elderly individuals living in neighborhoods with low social cohesion may lack social support from concerned neighbors who will check on them, and they have fewer safe communal areas where they can seek refuge."
+		assessment="Qualitative"
+		quantitativeDataSources=""
+		quantitativeDataCollProcess=""
+		qualitativeDataCollProcess="1. Host listening sessions with community members to determine low, medium, or high social cohesion. Make sure you identify the scale at which you are referencing (is this a particular community, neighborhood, municipality, county, state). 2. Consult with community based organizations, civic groups, and others to determine specific concerns identified across the specified area. 3. Cross check that information with community experience."
+		additionalInformation="See U.S. DHHS Office of Diesease Prevention and Health Promotion for more information: https://health.gov/healthypeople/priority-areas/social-determinants-health/literature-summaries/social-cohesion"
+	>
+		<questionsToAnswer>
+			<question text="Relationships are conceptualized through terms such as social cohesion, social capital, social networks, and social support. "/>
+			<question text="Shared group resources like knowledge of opportunities (for examples job opportunities, local funding"/>
+			<question text="Social networks are sources of multiple forms of social support, such as emotional support (e.g., encouragement after a setback) and instrumental support (e.g., a ride to a doctor’s appointment). perceived fairness, perceived helpfulness, group membership, and trust). "/>
+			<question text="Collective efficacy, an aspect of social capital and social cohesion, is grounded on mutual trust and describes a community’s ability to create change and exercise informal social control (i.e., influence behavior through social norms. "/>
+			<question text="Social isolation is also a measure of social cohesion and support in a community. Do you perceive social networks are stronger/weaker in this part of town than other parts?"/>
+		</questionsToAnswer>
+	</card>	
+	<card
+		system="Social Environment"
+		indicator="Linguistic Isolation"
+		definition="The number of people 5 years and older that do not speak English well."
+		unitOfMeasurement="Qualitative - Low, medium, high linguistic isolation. Quantitative - # of Persons; % of Total Population"
+		resilienceValue="Communication, education, and information sharing are critical to efforts to avoid, respond to, and recover from disaster events and climate hazards. English is the predominant spoken language of institutional systems and related resources for most government operations in the US, making those without the ability to speak English likely to be excluded from key evacuation and emergency preparedness messaging."
+		assessment="Both"
+		quantitativeDataSources="Headwaters Economics Economic Profile System - Demographics Report Tool and/or Populations at Risk Tool; ATSDR/CDC SVI; US Census ACS"
+		quantitativeDataCollProcess="1. Access Headwaters Economics Economic Profile System: headwaterseconomics.org/apps/economic-profile-system/ 2. Enter your area of interest (city, county, etc.) in the search bar. 3. Download the Populations at Risk Report by clicking on the blue download icon. 4. Open the Populations at Risk Report and scroll to Language Proficiency"
+		qualitativeDataCollProcess=""
+		additionalInformation="Consider that federal databases likely are not accurate for this indicator, because it is often used as a proxy for immigration status and may be underreported. As a result, local immigrant support organizations may be your best access for this issue. This issue matters most when you want to inform, educate, collaborate, or otherwise communicate with people who may not speak your language. The best outcomes occur when you can ensure you are reaching your whole community, using the language that best utilizes their full capacity to interact and contribute meaningfully. "
+	>
+		<questionsToAnswer>
+			<question text="How many people in your community five years and older speak English less than well according to the Census Bureau data guidelines?"/>
+			<question text="What percentage of the total population in your community are five years and older and speak English less than well according to the Census Bureau data guidelines?"/>
+		</questionsToAnswer>
+	</card>	
+</indicatorCards>

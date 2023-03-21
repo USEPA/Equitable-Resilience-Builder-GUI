@@ -39,6 +39,7 @@ public class App extends Application {
 	private EngagementActionController engagementActionController;
 
 	private ArrayList<Project> projects;
+	private ArrayList<IndicatorCard> indicatorCards;
 	private ArrayList<GoalCategory> availableGoalCategories;	
 	private ArrayList<ERBContentItem> availableERBContentItems;
 
@@ -51,7 +52,11 @@ public class App extends Application {
 	}
 
 	public static void main(String[] args) {
-		Application.launch(args);
+		try {
+			Application.launch(args);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void showERBToolMain() {
@@ -126,9 +131,15 @@ public class App extends Application {
 	}
 
 	private void readAndStoreData() {
+		readAndStoreIndicatorCards();
 		readAndStoreAvailableContent();
 		readAndStoreAvailableGoalCategories();
 		readAndStoreProjects();
+	}
+	
+	private void readAndStoreIndicatorCards() {
+		File contentFile = fileHandler.getStaticIndicatorCardsXMLFile();
+		indicatorCards = xmlManager.parseIndicatorCardsXML(contentFile);
 	}
 	
 	private void readAndStoreAvailableContent() {
@@ -258,5 +269,10 @@ public class App extends Application {
 	public ArrayList<ERBContentItem> getAvailableERBContentItems() {
 		return availableERBContentItems;
 	}
+
+	public ArrayList<IndicatorCard> getIndicatorCards() {
+		return indicatorCards;
+	}
+	
 
 }
