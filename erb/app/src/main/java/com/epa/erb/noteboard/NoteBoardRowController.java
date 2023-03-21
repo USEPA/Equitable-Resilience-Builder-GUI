@@ -44,11 +44,15 @@ public class NoteBoardRowController implements Initializable {
 			if (db.hasString()) {
 				Pane target = p;
 				Pane sourceItem = (Pane) event.getGestureSource();
-				System.out.println("Target row = " + target);
-				System.out.println("Source row = " + sourceItem.getId());
 				VBox sourceItemVBox = (VBox) sourceItem;
 				HBox targetHBox = (HBox) target;
-				targetHBox.getChildren().add(sourceItemVBox);
+				if(targetHBox.getChildren().contains(sourceItemVBox)) {
+					int targetIndex = targetHBox.getChildren().size() -1;
+					targetHBox.getChildren().remove(sourceItemVBox);
+					targetHBox.getChildren().add(targetIndex, sourceItemVBox);
+				} else {
+					targetHBox.getChildren().add(sourceItemVBox);
+				}
 				success = true;
 			}
 			event.setDropCompleted(success);

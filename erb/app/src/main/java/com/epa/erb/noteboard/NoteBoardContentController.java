@@ -141,18 +141,14 @@ public class NoteBoardContentController implements Initializable{
 			if (db.hasString()) {
 				Pane target = p;
 				Pane sourceItem = (Pane) event.getGestureSource();
-				System.out.println("Target vbox = " + target);
-				System.out.println("Source vbox = " + sourceItem);
 				VBox sourceItemVBox = (VBox) sourceItem;
 				VBox targetVBox = (VBox) target;
-				if (target.getId().contentEquals("noteBoardItemVBox")) {
-					if (targetVBox.getChildren().contains(sourceItemVBox)) { // Reorder
-						int targetIndex = 0;
-						targetVBox.getChildren().remove(sourceItemVBox);
-						targetVBox.getChildren().add(targetIndex, sourceItemVBox);
-					} else {
-						targetVBox.getChildren().add(0, sourceItemVBox); // Add
-					}
+				if (targetVBox.getChildren().contains(sourceItemVBox)) { // Reorder
+					int targetIndex = targetVBox.getChildren().size() - 1;
+					targetVBox.getChildren().remove(sourceItemVBox);
+					targetVBox.getChildren().add(targetIndex, sourceItemVBox);
+				} else {
+					targetVBox.getChildren().add(0, sourceItemVBox); // Add
 				}
 				success = true;
 			}

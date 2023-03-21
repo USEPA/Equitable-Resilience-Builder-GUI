@@ -21,7 +21,13 @@
       </HBox>
       <HBox spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox fx:id="noteBoardItemVBox" alignment="CENTER" minWidth="225.0" spacing="10.0" style="-fx-background-color: gray;" />
+            <VBox fx:id="noteBoardItemVBox" alignment="TOP_CENTER" minWidth="225.0" spacing="10.0" style="-fx-background-color: gray;">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding></VBox>
             <Separator orientation="VERTICAL" />
             <HBox HBox.hgrow="ALWAYS">
                <children>

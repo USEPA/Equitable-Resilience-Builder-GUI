@@ -29,16 +29,12 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 			if (db.hasString()) {
 				Pane target = p;
 				Pane sourceItem = (Pane) event.getGestureSource();
-				System.out.println("Target item = " + target);
-				System.out.println("Source item = " + sourceItem.getId());
 				VBox sourceItemVBox = (VBox) sourceItem;
 				VBox targetVBox = (VBox) target;
-				VBox parentVBox = (VBox) targetVBox.getParent();
-				System.out.println("Parent = " + parentVBox);
-				int targetIndex = parentVBox.getChildren().indexOf(targetVBox);
-				System.out.println("Target Index = " + targetIndex);
-				parentVBox.getChildren().remove(sourceItemVBox);
-				parentVBox.getChildren().add(targetIndex, sourceItemVBox);
+				Pane parent = (Pane) targetVBox.getParent();
+				int targetIndex = parent.getChildren().indexOf(targetVBox);
+				parent.getChildren().remove(sourceItemVBox);
+				parent.getChildren().add(targetIndex, sourceItemVBox);
 				success = true;
 			}
 			event.setDropCompleted(success);
