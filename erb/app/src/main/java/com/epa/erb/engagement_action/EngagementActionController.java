@@ -140,7 +140,7 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 
-	private VBox loadNoteBoard_LinearRankingController() {
+	private Pane loadNoteBoard_LinearRankingController() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
 			NoteBoard_LinearRanking noteBoardContentController = new NoteBoard_LinearRanking(app, project, currentSelectedGoal, currentSelectedERBContentItem);

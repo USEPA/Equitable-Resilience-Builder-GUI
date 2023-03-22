@@ -89,7 +89,7 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="20.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Activites to select from">
@@ -269,8 +269,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			width="15.0"
-			height="15.0"
+			width="14.0"
+			height="14.0"
 			id="73">
 			</icon>
 			<text
@@ -286,8 +286,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			width="15.0"
-			height="15.0"
+			width="14.0"
+			height="14.0"
 			id="73">
 			</icon>
 			<text
@@ -335,8 +335,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="35.0"
+			height="35.0"
 			id="67">
 			</icon>
 			<text
@@ -352,8 +352,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="35.0"
+			height="35.0"
 			id="62">
 			</icon>
 			<text
@@ -369,8 +369,8 @@
 			text="&#xD;">
 			</text>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="35.0"
+			height="35.0"
 			id="63">
 			</icon>
 			<text

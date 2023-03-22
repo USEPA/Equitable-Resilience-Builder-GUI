@@ -1,5 +1,7 @@
 package com.epa.erb.noteboard;
 
+import com.epa.erb.IndicatorCard;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.input.ClipboardContent;
@@ -11,11 +13,20 @@ import javafx.scene.layout.VBox;
 
 public class NoteBoardItem_Indicator extends NoteBoardItemController{
 
-	public NoteBoardItem_Indicator(NoteBoardContentController noteBoardContentController) {
+	private IndicatorCard indicatorCard;
+	public NoteBoardItem_Indicator(NoteBoardContentController noteBoardContentController, IndicatorCard indicatorCard) {
 		super(noteBoardContentController);
-		// TODO Auto-generated constructor stub
+		this.indicatorCard = indicatorCard;
 	}
 	
+	protected void setIndicatorCardText() {
+		setNoteBoardItemText(getIndicatorCardText());
+	}
+	
+	private String getIndicatorCardText() {
+		return indicatorCard.getSystem() + "\n" + indicatorCard.getIndicator();
+	}
+
 	private static final String TAB_DRAG_KEY = "pane";
 	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
 	protected void setDrag_IndicatorCard(Pane p) {
@@ -48,5 +59,9 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 			draggingTab.set(p);
 			event.consume();
 		});
+	}
+	
+	public IndicatorCard getIndicatorCard() {
+		return indicatorCard;
 	}
 }

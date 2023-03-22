@@ -11,6 +11,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class NoteBoardRowController implements Initializable {
@@ -21,6 +22,18 @@ public class NoteBoardRowController implements Initializable {
 	HBox rowHBox;
 	
 	public NoteBoardRowController() {
+
+	}
+	
+	protected void createColumns(int numberOfColumns) {
+		if (numberOfColumns > 1) {
+			for(int i =0; i < numberOfColumns; i++) {
+				HBox columnHBox = new HBox();
+				columnHBox.setStyle("-fx-background-color: red");
+				columnHBox.setHgrow(columnHBox, Priority.ALWAYS);
+				rowHBox.getChildren().add(columnHBox);
+			}
+		}
 
 	}
 	

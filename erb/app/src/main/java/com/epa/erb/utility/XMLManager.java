@@ -28,6 +28,8 @@ import com.epa.erb.noteboard.NoteBoardRowController;
 import com.epa.erb.noteboard.NoteBoardItemController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
+
+import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,6 +37,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.scene.layout.HBox;
+
 
 public class XMLManager {
 
@@ -280,6 +284,7 @@ public class XMLManager {
 							// TextBlock
 							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
 								TextFlow textFlow = new TextFlow();
+								HBox hBox = new HBox();
 								double maxTextLength = 0.0;
 								Element textBlockElement = (Element) textBlockNode;
 								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
@@ -314,6 +319,7 @@ public class XMLManager {
 													t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 												}
 											}
+											
 											textFlow.getChildren().add(t);
 											if (t.getText().length() > maxTextLength)
 												maxTextLength = t.getText().length();
@@ -329,10 +335,14 @@ public class XMLManager {
 													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
+											hBox.getChildren().add(imageView);
 											textFlow.getChildren().add(imageView);
 										}
 									}
 								}
+//								textFlow.getChildren().add(hBox);
+								System.out.println("BASELINE = " + textFlow.getBaselineOffset());
+								textFlow.setStyle("-fx-background-color:green;-fx-text-alignment: center-left;");
 								textFlow.setPrefWidth(maxTextLength * 2);
 								textBlocks.add(textFlow);
 							}

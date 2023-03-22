@@ -18,7 +18,7 @@ public class NoteBoard_LinearRanking extends NoteBoardContentController {
 	public void setUpNoteBoard(int numberOfRows) {
 		removeTopLabelHBox();
 		removeBottomLabelHBox();
-		createRows(numberOfRows);
+		createRows(numberOfRows, 1);
 		createIndicatorCards();
 	}
 	
@@ -36,7 +36,7 @@ public class NoteBoard_LinearRanking extends NoteBoardContentController {
 	
 	private void createIndicatorCards() {
 		for(IndicatorCard card: app.getIndicatorCards()) {
-			VBox cardVBox = (VBox) loadIndicatorCard(card.getIndicator());
+			VBox cardVBox = (VBox) loadIndicatorCard(card);
 			noteBoardItemVBox.getChildren().add(cardVBox);
 		}
 	}

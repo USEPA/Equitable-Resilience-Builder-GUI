@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+
+<VBox fx:id="vBox" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -19,7 +20,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+      <HBox fx:id="contentHBox" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox fx:id="noteBoardItemVBox" alignment="TOP_CENTER" minWidth="225.0" spacing="10.0" style="-fx-background-color: gray;">
                <HBox.margin>
@@ -27,7 +28,8 @@
                </HBox.margin>
                <padding>
                   <Insets top="10.0" />
-               </padding></VBox>
+               </padding>
+            </VBox>
             <Separator orientation="VERTICAL" />
             <HBox HBox.hgrow="ALWAYS">
                <children>
@@ -36,7 +38,8 @@
                         <Label minHeight="20.0" minWidth="84.0" text="Less resilient">
                            <font>
                               <Font name="System Bold" size="14.0" />
-                           </font></Label>
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox fx:id="centerVBox" HBox.hgrow="ALWAYS">
@@ -46,7 +49,8 @@
                               <Label minHeight="20.0" minWidth="101.0" text="More equitable">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
-                                 </font></Label>
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
                         <VBox fx:id="mainVBox" VBox.vgrow="ALWAYS" />
@@ -55,7 +59,8 @@
                               <Label minHeight="20.0" minWidth="93.0" text="Less equitable">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
-                                 </font></Label>
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
                      </children>
@@ -65,16 +70,26 @@
                         <Label minHeight="20.0" minWidth="92.0" text="More resilient">
                            <font>
                               <Font name="System Bold" size="14.0" />
-                           </font></Label>
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                </children>
             </HBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER">
+      <HBox alignment="CENTER_LEFT">
          <children>
-            <Button mnemonicParsing="false" onAction="#saveBoardButtonAction" text="Save Board" />
+            <HBox HBox.hgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#saveBoardButtonAction" text="Save Board" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#nextButtonAction" text="Next" />
+               </children>
+            </HBox>
          </children>
       </HBox>
    </children>

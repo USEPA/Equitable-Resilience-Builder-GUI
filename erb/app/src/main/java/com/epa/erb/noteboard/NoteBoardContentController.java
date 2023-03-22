@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
+import com.epa.erb.IndicatorCard;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
@@ -31,6 +32,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollPane;
 
 public class NoteBoardContentController implements Initializable{
 
@@ -42,6 +44,10 @@ public class NoteBoardContentController implements Initializable{
 	VBox centerVBox;
 	@FXML
 	VBox noteBoardItemVBox;
+	@FXML
+	HBox contentHBox;
+	@FXML
+	VBox vBox;
 	
 	//---------
 	@FXML
@@ -68,8 +74,6 @@ public class NoteBoardContentController implements Initializable{
 	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private Logger logger = LogManager.getLogger(NoteBoardContentController.class);
-	protected ArrayList<NoteBoardItemController> noteBoardItemControllers = new ArrayList<NoteBoardItemController>();
-	private ArrayList<NoteBoardRowController> noteBoardRowControllers = new ArrayList<NoteBoardRowController>();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -78,25 +82,25 @@ public class NoteBoardContentController implements Initializable{
 		setDrag_NoteBoardItemVBox(noteBoardItemVBox);
 	}
 	
-	public void createRows(int numberOfRows) {
+	public void createRows(int numberOfRows, int numberOfColumns) {
 		if(numberOfRows>0) {
 			for(int i =0; i < numberOfRows; i++) {
-				HBox rowHBox = (HBox) loadNoteBoardRow();
+				HBox rowHBox = (HBox) loadNoteBoardRow(numberOfColumns);
 				mainVBox.getChildren().add(rowHBox);
 			}
 		}
 	}
 	
-	private Parent loadNoteBoardRow() {
+	private Parent loadNoteBoardRow(int numberOfColumns) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardRow.fxml"));
 			NoteBoardRowController noteBoardRowController = new NoteBoardRowController();
 			fxmlLoader.setController(noteBoardRowController);
 			HBox rowHBox = fxmlLoader.load();
+			noteBoardRowController.createColumns(numberOfColumns);
 //			rowHBox.setOnContextMenuRequested(e-> showNoteBoardRowContextMenu(rowHBox, e));
 			//setDrag(noteBoardRowController.getPostItHBox(), noteBoardRowController);
 			VBox.setVgrow(rowHBox, Priority.ALWAYS);
-			noteBoardRowControllers.add(noteBoardRowController);
 			return rowHBox;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -106,21 +110,33 @@ public class NoteBoardContentController implements Initializable{
 	
 	@FXML
 	public void saveBoardButtonAction() {
-		XMLManager xmlManager = new XMLManager(app);
-//		setCategoryPostIts();
-		ArrayList<NoteBoardRowController> categories = getRowControllers();
-		xmlManager.writeNoteboardDataXML(fileHandler.getDataXMLFile(project, goal, erbContentItem), categories);
+
 	}
 	
-	protected Pane loadIndicatorCard(String cardText) {
+	@FXML
+	private void nextButtonAction() {
+		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
+//			NoteBoard_QuadrantRanking noteBoardContentController = new NoteBoard_QuadrantRanking(app, project, goal, erbContentItem, noteBoardItemControllers);
+//			fxmlLoader.setController(noteBoardContentController);
+//			VBox root = fxmlLoader.load();
+//			noteBoardContentController.setUpNoteBoard(2);
+//			app.getEngagementActionController().cleanContentVBox();
+//			app.getEngagementActionController().addContentToContentVBox(root, true);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
+	protected Pane loadIndicatorCard(IndicatorCard indicatorCard) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardItem.fxml"));
-			NoteBoardItem_Indicator noteBoardIndicatorItem = new NoteBoardItem_Indicator(this);
+			NoteBoardItem_Indicator noteBoardIndicatorItem = new NoteBoardItem_Indicator(this, indicatorCard);
 			fxmlLoader.setController(noteBoardIndicatorItem);
 			VBox vBox = fxmlLoader.load();
-			noteBoardIndicatorItem.setNoteBoardItemText(cardText);
+			noteBoardIndicatorItem.setIndicatorCardText();
 			noteBoardIndicatorItem.setDrag_IndicatorCard(vBox);
-			noteBoardItemControllers.add(noteBoardIndicatorItem);
+			noteBoardIndicatorItem.removePlusHBox();
 			return vBox;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -429,17 +445,17 @@ public class NoteBoardContentController implements Initializable{
 		this.goal = goal;
 	}
 
-	public ArrayList<NoteBoardItemController> getNoteBoardItemControllers() {
-		return noteBoardItemControllers;
-	}
+//	public ArrayList<NoteBoardItemController> getNoteBoardItemControllers() {
+//		return noteBoardItemControllers;
+//	}
 
 //	public void setPostItNoteControllers(ArrayList<NoteBoardItemController> postItNoteControllers) {
 //		this.noteBoardItemControllers = postItNoteControllers;
 //	}
 
-	public ArrayList<NoteBoardRowController> getRowControllers() {
-		return noteBoardRowControllers;
-	}
+//	public ArrayList<NoteBoardRowController> getRowControllers() {
+//		return noteBoardRowControllers;
+//	}
 
 //	public void setCategorySectionControllers(ArrayList<NoteBoardRowController> categorySectionControllers) {
 //		this.noteBoardRowControllers = categorySectionControllers;
