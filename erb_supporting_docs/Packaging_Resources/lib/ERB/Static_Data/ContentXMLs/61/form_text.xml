@@ -1,0 +1,131 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Start Engaging!">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In this step, the core team will begin to implement that community engagement plan.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A community engagement plan helps you figure out how you're going to communicate and coordinate with community members. This planning process can help you expand your community network, enhance inclusion, and strengthen community buy-in and participation in next ERB activities.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Refer to your completed ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Engagement Plan"
+			linkType="externalDOC"
+			link="Ch2_CommunityEngagement_Plan.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Start with tackling the immediate action items you identified in the plan. Then, refer back to this plan as needed throughout the rest of the ERB activites.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Remember engagement takes time and the earlier you start, the better!">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Planning">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Time: Ongoing implementation, both independent and group work, across multiple months">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Engagement Plan"
+			linkType="externalDOC"
+			link="Ch2_CommunityEngagement_Plan.docx">
+			</text>
+		</textBlock>
+	</container>
+		<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Centering Equity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="78">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="In the early stages of your engagement, you may want to focus on building buy-in and trust with community members. You can build trust by being transparent about the resilience planning process and clarifying expectations.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>
