@@ -94,6 +94,10 @@ public class WordCloudController implements Initializable {
 	TableColumn<WordCloudItem, Boolean> minusTableColumn;
 	@FXML
 	TableColumn<WordCloudItem, String> countTableColumn;
+	@FXML
+	Button saveWordCloudButton;
+	@FXML
+	Button clearButton;
 
 	WordCloudController wordCloudController = this;
 	private FileHandler fileHandler = new FileHandler();
@@ -237,6 +241,11 @@ public class WordCloudController implements Initializable {
 		shortAddButton.setDisable(true);
 		longAddButton.setDisable(true);
 		buildButton.setDisable(true);
+		wordCloudChoiceBox.setDisable(true);
+		excludeCommonCheckBox.setDisable(true);
+		inputTextArea.setDisable(true);
+		saveWordCloudButton.setDisable(true);
+		clearButton.setDisable(true);
 	}
 	
 	@FXML

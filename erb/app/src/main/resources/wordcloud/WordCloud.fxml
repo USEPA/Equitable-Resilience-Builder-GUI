@@ -112,7 +112,7 @@
                                  <children>
                                     <HBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#clearTableButtonAction" text="Clear Table" />
+                                          <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearTableButtonAction" text="Clear Table" />
                                        </children>
                                     </HBox>
                                     <Button fx:id="buildButton" mnemonicParsing="false" onAction="#buildButtonAction" text="Build Word Cloud" />
@@ -125,7 +125,7 @@
                   <VBox fx:id="vBox" alignment="CENTER" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save Word Cloud" />
+                        <Button fx:id="saveWordCloudButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save Word Cloud" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
