@@ -14,11 +14,13 @@ import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.IdAssignments;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
 
 public class FormController {
 
@@ -48,7 +50,17 @@ public class FormController {
 			externalDOCLinkClicked(link, project);
 		} else if (linkType.contentEquals("URL")) {
 			urlLinkClicked(link);
+		} else if (linkType.length() == 0 || link.length() ==0) {
+			showLinkNotAvailable();
 		}
+	}
+	
+	public void showLinkNotAvailable() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Link not available");
+		alert.setContentText("This link is not available yet.");
+		alert.showAndWait();
 	}
 
 	public void internalPanelLinkClicked(String link) {

@@ -188,8 +188,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Engagement and Outreach"
-			linkType="internalActivity"
-			link="16">
+			linkType=""
+			link="">
 			</text>
 			<text
 			size="16.0"
