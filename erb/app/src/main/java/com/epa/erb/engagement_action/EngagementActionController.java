@@ -282,6 +282,7 @@ public class EngagementActionController implements Initializable {
 	}
 	
 	public void ERBContentItemSelected(ERBContentItem erbContentItem) {
+		if(erbContentItem!=null) {
 		File contentXMLFile = fileHandler.getStaticFormContentXML(erbContentItem.getId());
 		cleanContentVBox();
 		if (erbContentItem.getId().contentEquals("91")) {
@@ -307,6 +308,7 @@ public class EngagementActionController implements Initializable {
 					addContentToContentVBox(root, true);
 				}
 			}
+		}
 		}
 	}
 

@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Team storytelling">
@@ -18,23 +18,21 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;It will help you">
+			text="It will help you">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -46,12 +44,8 @@
 			fontStyle="Regular"
 			text="Build team rapport">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -77,12 +71,8 @@
 			fontStyle="Regular"
 			text=" for going through the ERB">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -97,17 +87,13 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -133,12 +119,8 @@
 			fontStyle="Regular"
 			text=" worksheet for everyone">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -150,12 +132,8 @@
 			fontStyle="Regular"
 			text="Use the prompts to share 5-minute stories in small groups">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -184,33 +162,31 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Output">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Word cloud of storytelling themes">
+			text="Word cloud of storytelling themes">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Planning">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -222,12 +198,8 @@
 			fontStyle="Regular"
 			text="Core team">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -239,12 +211,8 @@
 			fontStyle="Regular"
 			text="1 hour">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -263,34 +231,26 @@
 		<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="68">
 			</icon>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="69">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
+			</icon>		
+		</textBlock>
+		<textBlock>
+		<icon
 			width="10.0"
 			height="10.0"
 			id="74">
@@ -301,13 +261,9 @@
 			fontStyle="Italic"
 			text="Active listening is a skill to cultivate for community engagement">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
+		</textBlock>
+		<textBlock>
+		<icon
 			width="10.0"
 			height="10.0"
 			id="74">

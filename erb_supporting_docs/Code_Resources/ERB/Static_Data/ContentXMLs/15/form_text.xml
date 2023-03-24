@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Plan your Project">
@@ -18,7 +18,7 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Activities in this section">
@@ -104,7 +104,7 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you'll have at the end">
@@ -112,8 +112,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="20.0"
-			height="20.0"
+			width="15.0"
+			height="15.0"
 			id="73">
 			</icon>
 			<text
@@ -125,8 +125,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="20.0"
-			height="20.0"
+			width="15.0"
+			height="15.0"
 			id="73">
 			</icon>
 			<text
@@ -138,8 +138,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="20.0"
-			height="20.0"
+			width="15.0"
+			height="15.0"
 			id="73">
 			</icon>
 			<text
@@ -151,8 +151,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="20.0"
-			height="20.0"
+			width="15.0"
+			height="15.0"
 			id="73">
 			</icon>
 			<text
@@ -166,7 +166,7 @@
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Planning">
@@ -202,7 +202,7 @@
 		<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
@@ -210,8 +210,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="64">
 			</icon>
 			<text
@@ -223,8 +223,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="65">
 			</icon>
 			<text
@@ -236,8 +236,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="66">
 			</icon>
 			<text

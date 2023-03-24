@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Develop a Community Engagement Plan">
@@ -12,7 +12,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
+			fontStyle="Bold"
 			text="Activity 1: Determine scope of engagement">
 			</text>
 		</textBlock>
@@ -35,21 +35,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="It is important to consider the type of engagement that is appropriate for your project. Different types of engagement have different levels of involvement by community members and different expectations for the impact of that involvement on decision making (see ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="figure"
-			linkType="externalDOC"
-			link="figure_23.png">
+			text="It is important to consider the type of engagement that is appropriate for your project. Different types of engagement have different levels of involvement by community members and different expectations for the impact of that involvement on decision making (see figure). ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="). More intensive engagement may require more time and effort, however, that effort can pay off with improved trust and relationships and more actionable results.">
+			text="More intensive engagement may require more time and effort, however, that effort can pay off with improved trust and relationships and more actionable results.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -94,21 +86,24 @@
 			text=" to complete this activity.">
 			</text>
 		</textBlock>
+		<textBlock>
+			<icon
+			width="500.0"
+			height="250.0"
+			id="113">
+			</icon>
+		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Planning">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -120,12 +115,8 @@
 			fontStyle="Regular"
 			text="Time: 2-hour meeting">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -139,12 +130,8 @@
 			linkType="externalDOC"
 			link="Ch2_CommunityConnections_Table.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -163,28 +150,18 @@
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="75">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"

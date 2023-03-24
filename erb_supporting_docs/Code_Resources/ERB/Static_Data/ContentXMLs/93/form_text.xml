@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Plan Workshop while Centering Equity">
@@ -18,31 +18,29 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;Engaging people from all parts of your community is a must-have for success. Workshops are a good way of bringing people from different parts of the community together, but can also be difficult for people to attend. People need to feel included and comfortable in order to participate fully. Removing barriers and being intentional about practicing equity will go a long way towards productive workshops and building relationships.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
+			fontStyle="Regular"
+			text="Engaging people from all parts of your community is a must-have for success. Workshops are a good way of bringing people from different parts of the community together, but can also be difficult for people to attend. People need to feel included and comfortable in order to participate fully. Removing barriers and being intentional about practicing equity will go a long way towards productive workshops and building relationships.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -52,14 +50,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Work with a local partner, if you can, to co-plan this event">
+			text="Work with a local partner, if you can, to co-plan this event">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -69,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Use the ">
+			text="Use the ">
 			</text>
 			<text
 			size="16.0"
@@ -77,20 +71,16 @@
 			fontStyle="Hyperlink"
 			text="Workshop Prep Worksheet"
 			linkType="externalDOC"
-			link="">
+			link="Ch3_WorkshopPrep_Worksheet.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" to select which activities to do and take steps to recruit a diverse group of attendees and offer a welcoming environment">
+			text=" to select which activites to do and take steps to recruit a diverse group of attendees and offer a welcoming environment">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -100,7 +90,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Use the ">
+			text="Use the ">
 			</text>
 			<text
 			size="16.0"
@@ -108,7 +98,7 @@
 			fontStyle="Hyperlink"
 			text="Workshop 1 Facilitators Guide"
 			linkType="externalDOC"
-			link="">
+			link="Ch3_Workshop1_FacilitatorsGuide.docx">
 			</text>
 			<text
 			size="16.0"
@@ -116,12 +106,8 @@
 			fontStyle="Regular"
 			text=" to prepare activities">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -131,22 +117,18 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Identify a facilitator to lead portions of the workshop">
+			text="Identify a facilitator to lead portions of the workshop">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Outputs">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -156,14 +138,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Identified workshop facilitator">
+			text="Identified workshop facilitator">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -173,14 +151,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Prepared workshop activities">
+			text="Prepared workshop activities">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -190,14 +164,14 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Identified potential barriers to participation and solutions.">
+			text="Identified potential barriers to participation and solutions.">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you will need">
@@ -213,7 +187,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Core team and local partners">
+			text="Core team and local partners">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -226,7 +200,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Days to weeks">
+			text="Days to weeks">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -235,34 +209,24 @@
 			height="40.0"
 			id="63">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop Prep Worksheet"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop 1 Facilitators Guide"
-			linkType=""
-			link="">
-			</text>
+			<listBlock>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Workshop Prep Worksheet"
+				linkType="externalDOC"
+				link="Ch3_WorkshopPrep_Worksheet.docx">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Workshop 1 Facilitators Guide"
+				linkType="externalDOC"
+				link="Ch3_Workshop1_FacilitatorsGuide.docx">
+				</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -270,12 +234,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -289,17 +247,13 @@
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -309,14 +263,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;In addition to workshops, or if workshops are not feasible, reach out to community groups for one-on-one conversations.">
+			text="In addition to workshops, or if workshops are not feasible, reach out to community groups for one-on-one conversations.">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -326,7 +276,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Another idea is to attend local meeting and activities. These actions are another way to incorporate local voices and expand representation.">
+			text="Another idea is to attend local meeting and activities. These actions are another way to incorporate local voices and expand representation.">
 			</text>
 		</textBlock>
 	</container>

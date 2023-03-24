@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Assess: Build Knowledge and Relationships">
@@ -15,12 +15,8 @@
 			fontStyle="Regular"
 			text="Collaborate with local resident to assess hazards, equity and resilience in your community. Create connections around resilience. Use local knowledge and online data to assess:">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -30,14 +26,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;What hazards do we most have to worry about - now and in the future?">
+			text="What hazards do we most have to worry about - now and in the future?">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -47,14 +39,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Who in the community might experience hazards differently, and why?">
+			text="Who in the community might experience hazards differently, and why?">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -64,21 +52,23 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;How resilient are our community's built, natural, and environmental support systems- and for whom?">
+			text="How resilient are our community's built, natural, and environmental support systems- and for whom?">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD; This will help you develop priorities for taking action to build ">
+			text="This will help you develop priorities for taking action to build ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="equitable resilience"
-			linkType="internalStep"
-			link="01">
+			linkType=""
+			link="">
 			</text>
 			<text
 			size="16.0"
@@ -89,35 +79,37 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Activites to select from">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="&#xD;Workshop 1. Community relationships and listening">
+			text="Workshop 1. Community relationships and listening">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Plan for the workshop while centering equity">
+			text="Plan for the workshop while centering equity">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Workshop Activity options:">
+			text="Workshop Activity options:">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -127,14 +119,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Share stories about hazards and equity">
+			text="Share stories about hazards and equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -144,14 +132,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Explore future scenarios">
+			text="Explore future scenarios">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -161,7 +145,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Build relationships">
+			text="Build relationships">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -171,17 +155,21 @@
 			fontStyle="Bold"
 			text="Gather more information">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Decide what topics you want to learn more about and how you want to collect local or online data on hazards, equity, and resilient systems.">
+			text="Decide what topics you want to learn more about and how you want to collect local or online data on hazards, equity, and resilient systems.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="REgular"
-			text="&#xD;Gather the information and manage it to use in resilience planning and in workshop 2">
+			text="Gather the information and manage it to use in resilience planning and in workshop 2">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -189,133 +177,109 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="&#xD;Workshop 2. Collaborative assessment">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;Plan for the workshop in co-production way">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;Workshop Activity options:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;Participatory mapping">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;Card sorting">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;Equity discussion">
+			text="Workshop 2. Collaborative assessment">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Plan for the workshop in co-production way">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Workshop Activity options:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Participatory mapping">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Card sorting">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Equity discussion">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you'll have at the end">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="14.0"
-			height="14.0"
+			width="15.0"
+			height="15.0"
 			id="73">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Local knowledge and other data to use in resilience planning">
+			text="Local knowledge and other data to use in resilience planning">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="14.0"
-			height="14.0"
+			width="15.0"
+			height="15.0"
 			id="73">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Key takeaways to use in the next section on taking action">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
+			text="Key takeaways to use in the next section on taking action">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="900.0"
-			height="450.0"
+			width="500.0"
+			height="250.0"
 			id="99">
 			</icon>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="875"
-			height="475.0"
+			width="500"
+			height="250.0"
 			id="100">
 			</icon>
 		</textBlock>
@@ -323,62 +287,44 @@
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you will need">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="35.0"
-			height="35.0"
+			width="40.0"
+			height="40.0"
 			id="67">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Core team, local partners, community members">
+			text="Core team, local partners, community members">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="35.0"
-			height="35.0"
+			width="40.0"
+			height="40.0"
 			id="62">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;It depends">
+			text="It depends">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="35.0"
-			height="35.0"
+			width="40.0"
+			height="40.0"
 			id="63">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -387,95 +333,75 @@
 			linkType="externalDOC"
 			link="Ch3_EquitableResilienceConcepts_Worksheet.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="14.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;You will see tips on implementing the following themes:">
+			text="You will see tips on implementing the following themes:">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="64">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Collaboration">
+			text="Collaboration">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="65">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Representation">
+			text="Representation">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="66">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Voice">
+			text="Voice">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="75">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Empathy">
+			text="Empathy">
 			</text>
 		</textBlock>
 	</container>

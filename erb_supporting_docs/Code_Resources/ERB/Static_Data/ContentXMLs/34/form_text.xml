@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Identify and Diagram Community Connections">
@@ -62,17 +62,13 @@
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Planning">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -84,12 +80,8 @@
 			fontStyle="Regular"
 			text="Time: 2-hours meeting">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -108,28 +100,18 @@
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering Equity:">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="65">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"

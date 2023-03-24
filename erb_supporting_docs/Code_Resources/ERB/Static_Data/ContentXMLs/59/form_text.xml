@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Set goals for using ERB">
@@ -18,30 +18,34 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;To decide which activities to do in ERB and who needs to participate.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
+			fontStyle="Regular"
+			text="To decide which activities to do in ERB and who needs to participate.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Hold a team meeting to work through the ">
+			text="Hold a team meeting to work through the ">
 			</text>
 			<text
 			size="16.0"
@@ -51,11 +55,13 @@
 			linkType="externalDOC"
 			link="Ch1_GoalSetting_Worksheet.docx">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Look through our ">
+			text="Look through our ">
 			</text>
 			<text
 			size="16.0"
@@ -71,11 +77,13 @@
 			fontStyle="Regular"
 			text=" if you get stuck.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Record your shared goals in your ">
+			text="Record your shared goals in your ">
 			</text>
 			<text
 			size="16.0"
@@ -88,23 +96,21 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What should our goals be?">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Consider">
+			text="Consider">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -116,12 +122,8 @@
 			fontStyle="Regular"
 			text="Your team's specific charge (watershed resilience, update land use plan)">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -133,12 +135,8 @@
 			fontStyle="Regular"
 			text="Local disaster and climate risks (extreme heat, chemical release)">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -153,33 +151,31 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Output">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Completed goals section of the project plan">
+			text="Completed goals section of the project plan">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Planning">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -191,12 +187,8 @@
 			fontStyle="Regular"
 			text="Core team">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -208,36 +200,22 @@
 			fontStyle="Regular"
 			text="1-1.5 hours">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text=" Goals worksheet"
+			text="Goals worksheet"
 			linkType="externalDOC"
 			link="Ch1_GoalSetting_Worksheet.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="63">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -246,12 +224,9 @@
 			linkType="externalDOC"
 			link="Ch1_ProjectPlan_Template.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -270,34 +245,28 @@
 		<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="66">
 			</icon>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="&#xD; Voice">
+			text="Voice">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"

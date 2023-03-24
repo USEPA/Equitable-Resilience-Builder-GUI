@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Share Stories">
@@ -18,31 +18,29 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;Sharing stories help people get to know each other better and creates a collaborative atmosphere. It provides local knowledge for resilience planning. It prompts discussion about how people experience hazards in different ways and why this might be so.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
+			fontStyle="Regular"
+			text="Sharing stories help people get to know each other better and creates a collaborative atmosphere. It provides local knowledge for resilience planning. It prompts discussion about how people experience hazards in different ways and why this might be so.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -52,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Put participants in groups of 3 and pass out the ">
+			text="Put participants in groups of 3 and pass out the ">
 			</text>
 			<text
 			size="16.0"
@@ -60,14 +58,10 @@
 			fontStyle="Hyperlink"
 			text="Hazards Storytelling Prompt"
 			linkType="externalDOC"
-			link="">
+			link="Ch3_HazardsStorytelling_Prompt.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -77,14 +71,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Everyone takes turns being a storyteller, listener, and notetaker in their group">
+			text="Everyone takes turns being a storyteller, listener, and notetaker in their group">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -94,14 +84,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Return to the larger group and discuss key themes">
+			text="Return to the larger group and discuss key themes">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -111,15 +97,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Write highlights in the ">
+			text="Write highlights in the ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Word Cloud"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="84">
 			</text>
 			<text
 			size="16.0"
@@ -132,23 +118,19 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways Form"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_Reflection_Diary.docx">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Outputs">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -165,8 +147,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Word Cloud"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="84">
 			</text>
 			<text
 			size="16.0"
@@ -174,12 +156,8 @@
 			fontStyle="Regular"
 			text=" of story highlights">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -189,15 +167,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Complete ">
+			text="Complete ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways Form"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_Reflection_Diary.docx">
 			</text>
 			<text
 			size="16.0"
@@ -205,12 +183,8 @@
 			fontStyle="Regular"
 			text=" about hazards, equity and assets">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -220,14 +194,14 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Shared understanding and emotional connections">
+			text="Shared understanding and emotional connections">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you will need">
@@ -243,7 +217,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;20-30 people and facilitator">
+			text="20-30 people and facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -256,7 +230,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;1 hour">
+			text="1 hour">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -265,85 +239,52 @@
 			height="40.0"
 			id="63">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Hazards Storytelling Prompt"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
+			linkType="externalDOC"
+			link="Ch3_HazardsStorytelling_Prompt.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Workshop 1 Facilitators Guide"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
+			linkType="externalDOC"
+			link="Ch3_Workshop1_FacilitatorsGuide.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Word Cloud"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
+			linkType="internalStep"
+			link="84">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways Form"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_Reflection_Diary.docx">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
+			</listBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -353,7 +294,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;This activity is another opportunity to incorporate local knowledge and voices into your resilience planning.">
+			text="This activity is another opportunity to incorporate local knowledge and voices into your resilience planning.">
 			</text>
 		</textBlock>
 	</container>

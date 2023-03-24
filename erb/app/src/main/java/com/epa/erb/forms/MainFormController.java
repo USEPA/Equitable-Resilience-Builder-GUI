@@ -44,10 +44,12 @@ public class MainFormController extends FormController implements Initializable{
 	
 	private App app;
 	private File xmlContentFileToParse;
+	private EngagementActionController engagementActionController;
 	public MainFormController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
 		super(app, xmlContentFileToParse, engagementActionController);
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
+		this.engagementActionController = engagementActionController;
 	}
 		
 	private Project project;
@@ -55,26 +57,26 @@ public class MainFormController extends FormController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLManager xmlManager = new XMLManager(app);
-		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseMainFormContentXML(xmlContentFileToParse, this);
+		HashMap<String, ArrayList<HBox>> formContentHashMap = xmlManager.parseMainFormContentXML(xmlContentFileToParse, this);
 		addContent(formContentHashMap);
 		hideEmptyControls();
 		setColor(tP);
 	}
 	
-	public void addContent(HashMap<String, ArrayList<TextFlow>> formContentHashMap) {
+	public void addContent(HashMap<String, ArrayList<HBox>> formContentHashMap) {
 		if(formContentHashMap != null) {
-			ArrayList<TextFlow> formContentTextFlows = formContentHashMap.get("formVBox");
+			ArrayList<HBox> formContentTextFlows = formContentHashMap.get("formVBox");
 			addTextFlowsToVBox(formVBox, formContentTextFlows);
-			ArrayList<TextFlow> topPanelTextFlows = formContentHashMap.get("topPanelVBox");
+			ArrayList<HBox> topPanelTextFlows = formContentHashMap.get("topPanelVBox");
 			addTextFlowsToVBox(topPanelVBox, topPanelTextFlows);
-			ArrayList<TextFlow> bottomPanelTextFlows = formContentHashMap.get("bottomPanelVBox");
+			ArrayList<HBox> bottomPanelTextFlows = formContentHashMap.get("bottomPanelVBox");
 			addTextFlowsToVBox(bottomPanelVBox, bottomPanelTextFlows);
 		}
 	}
 	
-	public void addTextFlowsToVBox(VBox vBox, ArrayList<TextFlow> textFlows) {
+	public void addTextFlowsToVBox(VBox vBox, ArrayList<HBox> textFlows) {
 		if (textFlows != null && vBox != null) {
-			for (TextFlow textFlow : textFlows) {
+			for (HBox textFlow : textFlows) {
 				vBox.getChildren().add(textFlow);
 			}
 		}

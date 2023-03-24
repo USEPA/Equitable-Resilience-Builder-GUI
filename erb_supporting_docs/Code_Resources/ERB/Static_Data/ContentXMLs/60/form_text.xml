@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity in Engagement">
@@ -37,12 +37,8 @@
 			fontStyle="Bold"
 			text="How to do this:">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -54,17 +50,13 @@
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Planning">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -76,12 +68,8 @@
 			fontStyle="Regular"
 			text="1hr">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -100,32 +88,30 @@
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="75">
 			</icon>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="65">
 			</icon>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="&#xD;Developing empathy for why people want to participate in public activities, and why it might be hard for them, can lead to a more inclusive engagement plan. Think about what engagement activities will reach different types of people, especially groups that might have significat barriers or under-representation.">
+			text="Developing empathy for why people want to participate in public activities, and why it might be hard for them, can lead to a more inclusive engagement plan. Think about what engagement activities will reach different types of people, especially groups that might have significat barriers or under-representation.">
 			</text>
 		</textBlock>
 	</container>

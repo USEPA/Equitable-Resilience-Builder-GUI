@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Community Engagement Best Practices">
@@ -23,23 +23,29 @@
 			fontStyle="Regular"
 			text="- Include participants in planning and decision-making discussions and reports of results.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Inform participants regularly about project progress and how their contributions have impacted the project.">
+			text="- Inform participants regularly about project progress and how their contributions have impacted the project.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Evalutate your project throughout with participants to ensure it is meeting the needs of your community.">
+			text="- Evalutate your project throughout with participants to ensure it is meeting the needs of your community.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Stay up to date by attending pre-existing community group meetings to continue to learn about their needs and goals. This demonstrates commitment and builds trust with community members.">
+			text="- Stay up to date by attending pre-existing community group meetings to continue to learn about their needs and goals. This demonstrates commitment and builds trust with community members.">
 			</text>
 		</textBlock>
 		<textBlock>

@@ -51,28 +51,28 @@ public class AlternativeFormController extends FormController implements Initial
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLManager xmlManager = new XMLManager(app);
-		HashMap<String, ArrayList<TextFlow>> formContentHashMap = xmlManager.parseAlternativeFormContentXML(xmlContentFileToParse, this);
+		HashMap<String, ArrayList<HBox>> formContentHashMap = xmlManager.parseAlternativeFormContentXML(xmlContentFileToParse, this);
 		addContent(formContentHashMap);
 		hideEmptyControls();
 		setColor(tP);
 	}
 	
-	public void addContent(HashMap<String, ArrayList<TextFlow>> formContentHashMap) {
+	public void addContent(HashMap<String, ArrayList<HBox>> formContentHashMap) {
 		if(formContentHashMap != null) {
-			ArrayList<TextFlow> titleContentTextFlows = formContentHashMap.get("titleVBox");
+			ArrayList<HBox> titleContentTextFlows = formContentHashMap.get("titleVBox");
 			addTextFlowsToVBox(titleVBox, titleContentTextFlows);
-			ArrayList<TextFlow> formContentTextFlows = formContentHashMap.get("leftVBox");
+			ArrayList<HBox> formContentTextFlows = formContentHashMap.get("leftVBox");
 			addTextFlowsToVBox(leftVBox, formContentTextFlows);
-			ArrayList<TextFlow> topPanelTextFlows = formContentHashMap.get("centerVBox");
+			ArrayList<HBox> topPanelTextFlows = formContentHashMap.get("centerVBox");
 			addTextFlowsToVBox(centerVBox, topPanelTextFlows);
-			ArrayList<TextFlow> bottomPanelTextFlows = formContentHashMap.get("rightVBox");
+			ArrayList<HBox> bottomPanelTextFlows = formContentHashMap.get("rightVBox");
 			addTextFlowsToVBox(rightVBox, bottomPanelTextFlows);
 		}
 	}
 	
-	public void addTextFlowsToVBox(VBox vBox, ArrayList<TextFlow> textFlows) {
+	public void addTextFlowsToVBox(VBox vBox, ArrayList<HBox> textFlows) {
 		if (textFlows != null && vBox != null) {
-			for (TextFlow textFlow : textFlows) {
+			for (HBox textFlow : textFlows) {
 				vBox.getChildren().add(textFlow);
 			}
 		}

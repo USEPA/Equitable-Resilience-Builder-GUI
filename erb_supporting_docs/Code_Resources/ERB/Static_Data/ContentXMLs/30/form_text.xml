@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Get a core team together">
@@ -23,32 +23,32 @@
 			fontStyle="Bold"
 			text="Why do this">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;It'll help to have five to seven people to make decisions and lead ERB activities.">
+			text="It'll help to have five to seven people to make decisions and lead ERB activities.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
-			text="How to do this">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Use the recruitment guide to">
+			text="Use the recruitment guide to">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -60,12 +60,8 @@
 			fontStyle="Regular"
 			text="Identify possible team members">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -80,16 +76,18 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Output">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Core team">
+			text="Core team">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -99,18 +97,16 @@
 			fontStyle="Bold"
 			text="Who should be on the core team?">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Consider">
+			text="Consider">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -122,12 +118,8 @@
 			fontStyle="Regular"
 			text="The demographic composition of your community">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -139,12 +131,8 @@
 			fontStyle="Regular"
 			text="How city and county agencies are organized">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -156,12 +144,8 @@
 			fontStyle="Regular"
 			text="Who is working on related topics">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -173,12 +157,8 @@
 			fontStyle="Regular"
 			text="Who works well together">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -190,12 +170,8 @@
 			fontStyle="Regular"
 			text="Who has time to be an active contributor">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -215,17 +191,21 @@
 			fontStyle="Bold"
 			text="Get started with your team">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Establish group decision-making process and identify roles and responsibilities.">
+			text="Establish group decision-making process and identify roles and responsibilities.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Our ">
+			text="Our ">
 			</text>
 			<text
 			size="16.0"
@@ -246,7 +226,7 @@
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Planning">
@@ -271,6 +251,7 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -279,13 +260,6 @@
 			linkType="externalDOC"
 			link="Ch1_Recruitment_Guide.docx">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="63">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -294,12 +268,13 @@
 			linkType="externalDOC"
 			link="">
 			</text>
+			</listBlock>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
@@ -307,8 +282,8 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="65">
 			</icon>
 		</textBlock>
@@ -319,12 +294,8 @@
 			fontStyle="Italic"
 			text="Representation">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"

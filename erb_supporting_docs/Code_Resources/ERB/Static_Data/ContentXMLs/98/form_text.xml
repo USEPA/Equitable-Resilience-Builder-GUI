@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Scope Information Needs">
@@ -18,17 +18,13 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -38,28 +34,18 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
 			id="74">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -71,8 +57,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_Reflection_Diary.docx">
 			</text>
 			<text
 			size="16.0"
@@ -80,23 +66,13 @@
 			fontStyle="Regular"
 			text=" from Workshop 1 and what participants wanted to learn more about.">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
 			id="74">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -108,8 +84,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Project Plan"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
 			<text
 			size="16.0"
@@ -117,35 +93,21 @@
 			fontStyle="Regular"
 			text=" and discuss what information you might need to meet these goals.">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
 			id="74">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Learn about local and online data options for hazards, equity, and resilient systems.">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -155,8 +117,29 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#032;&#032;">
+			text="Review the ">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Master Indicators List"
+			linkType="externalDOC"
+			link="Ch3_IndicatorsMaster_List.xlsx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" and data sources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -168,8 +151,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Scoping Information Gathering Worksheet"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_ScopingInformationGathering.docx">
 			</text>
 			<text
 			size="16.0"
@@ -177,12 +160,8 @@
 			fontStyle="Regular"
 			text=".">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -192,39 +171,23 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
 			text="Decide what data sources to use and who on the core team will be the point person.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Outputs">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="20.0"
-			height="20.0"
+			width="15.0"
+			height="15.0"
 			id="73">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -236,7 +199,7 @@
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you will need">
@@ -252,20 +215,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#009;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
 			text="Core team">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -275,65 +228,35 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#009;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
 			text="90 minutes">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="63">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#009;">
-			</text>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Scoping Information Gathering"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#009;&#009;">
+			linkType="externalDOC"
+			link="Ch3_ScopingInformationGathering.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Project Plan"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch1_ProjectPlan_Template.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+			</listBlock>
+			</textBlock>
+			<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -342,23 +265,17 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="&#009;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Data Scoping Example"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="114">
 			</text>
 		</textBlock>	
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering equity">
@@ -366,39 +283,23 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="65">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#009;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
 			text="When gathering data, consider if there are existing reports from local community organizations with information you can use.">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="64">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#009;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"

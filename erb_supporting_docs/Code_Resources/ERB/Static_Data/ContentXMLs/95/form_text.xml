@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Explore Future Scenarios">
@@ -18,37 +18,37 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;Scenarios prompt us to thibk about risks we haven't thought about yet. They spark insight into how hazards and vulnerability might change over time. They help us plan what to do in the next few years to create resilient systems in the long term.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
+			fontStyle="Regular"
+			text="Scenarios prompt us to thibk about risks we haven't thought about yet. They spark insight into how hazards and vulnerability might change over time. They help us plan what to do in the next few years to create resilient systems in the long term.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Before the workshop, pick 2-3 scenarios to explore">
+			text="Before the workshop, pick 2-3 scenarios to explore">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -58,7 +58,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Select from the ">
+			text="Select from the ">
 			</text>
 			<text
 			size="16.0"
@@ -66,14 +66,10 @@
 			fontStyle="Hyperlink"
 			text="Future Scenarios Worksheet"
 			linkType="externalDOC"
-			link="">
+			link="Ch3_FutureScenarios_Worksheet.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -83,7 +79,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Alternatively, create one that speaks to local circumstances">
+			text="Alternatively, create one that speaks to local circumstances">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -91,14 +87,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;In the workshop, divide into groups of 5-8">
+			text="In the workshop, divide into groups of 5-8">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -108,14 +100,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Read the scenario and discuss what might happen to different people in the community should this incident occur">
+			text="Read the scenario and discuss what might happen to different people in the community should this incident occur">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -125,14 +113,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Draw how cascading impacts might affect social, built, and natural environment systems">
+			text="Draw how cascading impacts might affect social, built, and natural environment systems">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -142,14 +126,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Envision what ideal systems would look like that prevent some of these impacts for people who might be at greater risk">
+			text="Envision what ideal systems would look like that prevent some of these impacts for people who might be at greater risk">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -159,22 +139,18 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Brainstorm about decisions that could be made in the near-term that would help lead to this envisioned positive future">
+			text="Brainstorm about decisions that could be made in the near-term that would help lead to this envisioned positive future">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Outputs">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -184,14 +160,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" List of potential cascading failures across resilient systems">
+			text="List of potential cascading failures across resilient systems">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -201,14 +173,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Awareness of who might be most vulnerable">
+			text="Awareness of who might be most vulnerable">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -218,14 +186,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Description of shared ideals for resilient systems">
+			text="Description of shared ideals for resilient systems">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -235,14 +199,14 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" List of potential near-term decisions">
+			text="List of potential near-term decisions">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you will need">
@@ -258,7 +222,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;20-30 people and facilitator">
+			text="20-30 people and facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -271,7 +235,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;1 hour">
+			text="1 hour">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -280,57 +244,36 @@
 			height="40.0"
 			id="63">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Future Scenarios Worksheet"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
+			linkType="externalDOC"
+			link="Ch3_FutureScenarios_Worksheet.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Workshop 1 Facilitators Guide"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_Workshop1_FacilitatorsGuide.docx">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
+			</listBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -340,7 +283,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;When thinking about cascading issues for different groups, remember to consider groups that might be the most vulnerable or have the least support">
+			text="When thinking about cascading issues for different groups, remember to consider groups that might be the most vulnerable or have the least support">
 			</text>
 		</textBlock>
 	</container>

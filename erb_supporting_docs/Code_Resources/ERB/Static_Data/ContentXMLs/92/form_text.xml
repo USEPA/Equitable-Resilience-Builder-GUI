@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Listen and Connect">
@@ -18,102 +18,92 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;Local knowledge and perspectives are the fountain of ERB assessment. This workshop generates shared understandings of hazard most likely to affect your community, now and in the future. It reveals how and why people in the community experience hazards differently. It points to key assets that can help. It helps strengthen the relationships that support resilience.">
-			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Local knowledge and perspectives are the fountain of ERB assessment. This workshop generates shared understandings of hazard most likely to affect your community, now and in the future. It reveals how and why people in the community experience hazards differently. It points to key assets that can help. It helps strengthen the relationships that support resilience.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Plan workshop while centering equity">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;Workshop Activity options:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;Storytelling on hazards and equity">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;Future scenarios">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;Create connections">
+			text="Plan workshop while centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
+			fontStyle="Regular"
+			text="Workshop Activity options:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Storytelling on hazards and equity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Future scenarios">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Create connections">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
 			fontStyle="Bold"
 			text="Outputs">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -123,14 +113,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Word Cloud">
+			text="Word Cloud">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -140,14 +126,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Community building">
+			text="Community building">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -157,15 +139,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Key takeaways to use to ">
+			text="Key takeaways to use to ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="build knowledge"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="97">
 			</text>
 			<text
 			size="16.0"
@@ -178,15 +160,15 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Workshop 2"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="108">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you will need">
@@ -202,7 +184,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Core team, local partners, community members, facilitators">
+			text="Core team, local partners, community members, facilitators">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -215,7 +197,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;2-5 hour workshop">
+			text="2-5 hour workshop">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -224,62 +206,40 @@
 			height="40.0"
 			id="63">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop Prep Worksheet"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop 1 Facilitators Guide"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Hazards Storytelling Prompt"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType=""
-			link="">
-			</text>
+			<listBlock>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Workshop Prep Worksheet"
+				linkType="externalDOC"
+				link="Ch3_WorkshopPrep_Worksheet.docx">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Workshop 1 Facilitators Guide"
+				linkType="externalDOC"
+				link="Ch3_Workshop1_FacilitatorsGuide.docx">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Hazards Storytelling Prompt"
+				linkType="externalDOC"
+				link="Ch3_HazardsStorytelling_Prompt.docx">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Key Takeaways Form"
+				linkType="externalDOC"
+				link="Ch3_Reflection_Diary.docx">
+				</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -287,12 +247,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -306,17 +260,13 @@
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -326,7 +276,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Use community voices to consider the root causes of social, health, and economic inquities and how these inequities often overlap to create complicated and unique vulnerabilities to different hazards.">
+			text="Use community voices to consider the root causes of social, health, and economic inquities and how these inequities often overlap to create complicated and unique vulnerabilities to different hazards.">
 			</text>
 		</textBlock>
 	</container>

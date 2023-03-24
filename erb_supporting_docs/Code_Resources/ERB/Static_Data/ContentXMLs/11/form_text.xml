@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="The Importance of Community Engagement and Building Relationships">
@@ -23,29 +23,37 @@
 			fontStyle="Regular"
 			text="- Helps to build relationships and trust between you and your community, which in turn can decrease community stress and conflict.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Keeps community members informed about planning processes and progress.">
+			text="- Keeps community members informed about planning processes and progress.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Provides opportunities to gather input/feedback on approaches.">
+			text="- Provides opportunities to gather input/feedback on approaches.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Empower historically under-valued or under-represented community groups.">
+			text="- Empower historically under-valued or under-represented community groups.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Expand capability of the resilience planning team to get things accomplished. ">
+			text="- Expand capability of the resilience planning team to get things accomplished. ">
 			</text>
 		</textBlock>
 	</container>

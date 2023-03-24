@@ -29,6 +29,7 @@ import com.epa.erb.noteboard.NoteBoardItemController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -38,6 +39,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.FlowPane;
+
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 
 
 public class XMLManager {
@@ -258,7 +264,7 @@ public class XMLManager {
 		return null;
 	}
 
-	public HashMap<String, ArrayList<TextFlow>> parseMainFormContentXML(File xmlFile, MainFormController formContentController) {
+	public HashMap<String, ArrayList<HBox>> parseMainFormContentXML(File xmlFile, MainFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				FileHandler fileHandler = new FileHandler();
@@ -268,8 +274,7 @@ public class XMLManager {
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
 
-				HashMap<String, ArrayList<TextFlow>> contentHashMap = new HashMap<String, ArrayList<TextFlow>>();
-
+				HashMap<String, ArrayList<HBox>> contentHashMap = new HashMap<String, ArrayList<HBox>>();
 				NodeList containerNodeList = doc.getElementsByTagName("container");
 				for (int i = 0; i < containerNodeList.getLength(); i++) {
 					Node containerNode = containerNodeList.item(i);
@@ -277,15 +282,14 @@ public class XMLManager {
 						// Container
 						Element containerElement = (Element) containerNode;
 						String containerId = containerElement.getAttribute("id");
-						ArrayList<TextFlow> textBlocks = new ArrayList<TextFlow>();
+						ArrayList<HBox> textBlocks = new ArrayList<HBox>();
 						NodeList textBlockNodeList = containerElement.getElementsByTagName("textBlock");
 						for (int j = 0; j < textBlockNodeList.getLength(); j++) {
 							Node textBlockNode = textBlockNodeList.item(j);
 							// TextBlock
 							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
+								HBox textFlowHBox = new HBox();
 								TextFlow textFlow = new TextFlow();
-								HBox hBox = new HBox();
-								double maxTextLength = 0.0;
 								Element textBlockElement = (Element) textBlockNode;
 								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
 								for (int l = 0; l < textBlockChildrenNodeList.getLength(); l++) {
@@ -319,10 +323,7 @@ public class XMLManager {
 													t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 												}
 											}
-											
 											textFlow.getChildren().add(t);
-											if (t.getText().length() > maxTextLength)
-												maxTextLength = t.getText().length();
 										} else if (nodeName.contentEquals("icon")) {
 											Node iconNode = childNode;
 											// Icon
@@ -331,20 +332,53 @@ public class XMLManager {
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
-											imageView.setImage(
-													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
-											hBox.getChildren().add(imageView);
-											textFlow.getChildren().add(imageView);
+											textFlowHBox.getChildren().add(imageView);											
+										} else if(nodeName.contentEquals("listBlock")) {
+											Node listBlockNode = childNode;
+											Element listBlockElement = (Element) listBlockNode;
+											NodeList textInListNodeList = listBlockElement.getElementsByTagName("text");
+											VBox listVBox = new VBox();
+											for(int m=0; m<textInListNodeList.getLength();m++) {
+												Node textNode = textInListNodeList.item(m);
+												if(textNode.getNodeType() == Node.ELEMENT_NODE) {
+													Element textElement = (Element) textNode;
+													double size = Double.parseDouble(textElement.getAttribute("size"));
+													String fontFamily = textElement.getAttribute("fontFamily");
+													String fontStyle = textElement.getAttribute("fontStyle");
+													String text = textElement.getAttribute("text");
+													Text t = new Text(text);
+													if (fontStyle.contentEquals("Hyperlink")) {
+														String linkType = textElement.getAttribute("linkType");
+														String link = textElement.getAttribute("link");
+														t.setStyle("-fx-fill:#4d90bc");
+														t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+														t.setOnMouseEntered(e -> t.setUnderline(true));
+														t.setOnMouseExited(e -> t.setUnderline(false));
+														t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+													} else {
+														if (fontStyle.contentEquals("Bold")) {
+															t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+														} else if (fontStyle.contentEquals("Underlined")) {
+															t.setUnderline(true);
+															t.setFont(Font.font(fontFamily, size));
+														} else {
+															t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+														}
+													}
+													listVBox.getChildren().add(t);
+												}
+											}
+											textFlowHBox.getChildren().add(listVBox);
 										}
 									}
 								}
-//								textFlow.getChildren().add(hBox);
-								System.out.println("BASELINE = " + textFlow.getBaselineOffset());
-								textFlow.setStyle("-fx-background-color:green;-fx-text-alignment: center-left;");
-								textFlow.setPrefWidth(maxTextLength * 2);
-								textBlocks.add(textFlow);
+								textFlowHBox.setSpacing(10.0);
+								textFlowHBox.getChildren().add(textFlow);											
+								textFlowHBox.setAlignment(Pos.CENTER_LEFT);
+								textBlocks.add(textFlowHBox);
 							}
 						}
 						contentHashMap.put(containerId, textBlocks);
@@ -352,7 +386,6 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -361,8 +394,8 @@ public class XMLManager {
 		return null;
 	}
 
-	public HashMap<String, ArrayList<TextFlow>> parseAlternativeFormContentXML(File xmlFile,
-			AlternativeFormController alternativeFormController) {
+	public HashMap<String, ArrayList<HBox>> parseAlternativeFormContentXML(File xmlFile,
+			AlternativeFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				FileHandler fileHandler = new FileHandler();
@@ -372,8 +405,7 @@ public class XMLManager {
 				Document doc = dBuilder.parse(xmlFile);
 				doc.getDocumentElement().normalize();
 
-				HashMap<String, ArrayList<TextFlow>> contentHashMap = new HashMap<String, ArrayList<TextFlow>>();
-
+				HashMap<String, ArrayList<HBox>> contentHashMap = new HashMap<String, ArrayList<HBox>>();
 				NodeList containerNodeList = doc.getElementsByTagName("container");
 				for (int i = 0; i < containerNodeList.getLength(); i++) {
 					Node containerNode = containerNodeList.item(i);
@@ -381,14 +413,14 @@ public class XMLManager {
 						// Container
 						Element containerElement = (Element) containerNode;
 						String containerId = containerElement.getAttribute("id");
-						ArrayList<TextFlow> textBlocks = new ArrayList<TextFlow>();
+						ArrayList<HBox> textBlocks = new ArrayList<HBox>();
 						NodeList textBlockNodeList = containerElement.getElementsByTagName("textBlock");
 						for (int j = 0; j < textBlockNodeList.getLength(); j++) {
 							Node textBlockNode = textBlockNodeList.item(j);
 							// TextBlock
 							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
+								HBox textFlowHBox = new HBox();
 								TextFlow textFlow = new TextFlow();
-								double maxTextLength = 0.0;
 								Element textBlockElement = (Element) textBlockNode;
 								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
 								for (int l = 0; l < textBlockChildrenNodeList.getLength(); l++) {
@@ -404,17 +436,25 @@ public class XMLManager {
 											String fontStyle = textElement.getAttribute("fontStyle");
 											String text = textElement.getAttribute("text");
 											Text t = new Text(text);
-											if (fontStyle.contentEquals("Bold")) {
-												t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
-											} else if (fontStyle.contentEquals("Underlined")) {
-												t.setUnderline(true);
-												t.setFont(Font.font(fontFamily, size));
-											} else {
+											if (fontStyle.contentEquals("Hyperlink")) {
+												String linkType = textElement.getAttribute("linkType");
+												String link = textElement.getAttribute("link");
+												t.setStyle("-fx-fill:#4d90bc");
 												t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+												t.setOnMouseEntered(e -> t.setUnderline(true));
+												t.setOnMouseExited(e -> t.setUnderline(false));
+												t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+											} else {
+												if (fontStyle.contentEquals("Bold")) {
+													t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+												} else if (fontStyle.contentEquals("Underlined")) {
+													t.setUnderline(true);
+													t.setFont(Font.font(fontFamily, size));
+												} else {
+													t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+												}
 											}
 											textFlow.getChildren().add(t);
-											if (t.getText().length() > maxTextLength)
-												maxTextLength = t.getText().length();
 										} else if (nodeName.contentEquals("icon")) {
 											Node iconNode = childNode;
 											// Icon
@@ -423,16 +463,53 @@ public class XMLManager {
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
-											imageView.setImage(
-													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
-											textFlow.getChildren().add(imageView);
+											textFlowHBox.getChildren().add(imageView);											
+										} else if(nodeName.contentEquals("listBlock")) {
+											Node listBlockNode = childNode;
+											Element listBlockElement = (Element) listBlockNode;
+											NodeList textInListNodeList = listBlockElement.getElementsByTagName("text");
+											VBox listVBox = new VBox();
+											for(int m=0; m<textInListNodeList.getLength();m++) {
+												Node textNode = textInListNodeList.item(m);
+												if(textNode.getNodeType() == Node.ELEMENT_NODE) {
+													Element textElement = (Element) textNode;
+													double size = Double.parseDouble(textElement.getAttribute("size"));
+													String fontFamily = textElement.getAttribute("fontFamily");
+													String fontStyle = textElement.getAttribute("fontStyle");
+													String text = textElement.getAttribute("text");
+													Text t = new Text(text);
+													if (fontStyle.contentEquals("Hyperlink")) {
+														String linkType = textElement.getAttribute("linkType");
+														String link = textElement.getAttribute("link");
+														t.setStyle("-fx-fill:#4d90bc");
+														t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+														t.setOnMouseEntered(e -> t.setUnderline(true));
+														t.setOnMouseExited(e -> t.setUnderline(false));
+														t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+													} else {
+														if (fontStyle.contentEquals("Bold")) {
+															t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+														} else if (fontStyle.contentEquals("Underlined")) {
+															t.setUnderline(true);
+															t.setFont(Font.font(fontFamily, size));
+														} else {
+															t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+														}
+													}
+													listVBox.getChildren().add(t);
+												}
+											}
+											textFlowHBox.getChildren().add(listVBox);
 										}
 									}
 								}
-								textFlow.setPrefWidth(maxTextLength * 2);
-								textBlocks.add(textFlow);
+								textFlowHBox.setSpacing(10.0);
+								textFlowHBox.getChildren().add(textFlow);											
+								textFlowHBox.setAlignment(Pos.CENTER_LEFT);
+								textBlocks.add(textFlowHBox);
 							}
 						}
 						contentHashMap.put(containerId, textBlocks);

@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What makes ERB different?">
@@ -15,11 +15,13 @@
 			fontStyle="Bold"
 			text="What makes ERB different from other resilience tools is:">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;1. ">
+			text="1. ">
 			</text>
 			<text
 			size="16.0"
@@ -33,11 +35,13 @@
 			fontStyle="Regular"
 			text=" It encourages attention to equity in the content of the toolkit and the inclusive process of using it.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;2. ">
+			text="2. ">
 			</text>
 			<text
 			size="16.0"
@@ -51,11 +55,13 @@
 			fontStyle="Regular"
 			text=" You can see how the built, natural, and social environments all affect resilience and equity.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;3. ">
+			text="3. ">
 			</text>
 			<text
 			size="16.0"
@@ -69,11 +75,13 @@
 			fontStyle="Regular"
 			text=" You can use it for different types of resilience planning: watershed, hazard mitigation, disaster preparedness, climate adaptation, etc.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;4. ">
+			text="4. ">
 			</text>
 			<text
 			size="16.0"
@@ -87,11 +95,13 @@
 			fontStyle="Regular"
 			text=" You can select which activities best suit your goals, timeline, and resources.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;5. ">
+			text="5. ">
 			</text>
 			<text
 			size="16.0"
@@ -105,11 +115,13 @@
 			fontStyle="Regular"
 			text=" It encourages reflection and returning to revise key points, as needed.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;6. ">
+			text="6. ">
 			</text>
 			<text
 			size="16.0"

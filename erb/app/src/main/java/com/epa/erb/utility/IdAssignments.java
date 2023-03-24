@@ -45,6 +45,11 @@ public class IdAssignments {
 		backgroundIdAssignments.add("12");
 		backgroundIdAssignments.add("13");
 		backgroundIdAssignments.add("14");	
+		backgroundIdAssignments.add("114");	
+		backgroundIdAssignments.add("118");	
+		backgroundIdAssignments.add("121");	
+		backgroundIdAssignments.add("123");	
+
 	}
 	
 	public ArrayList<String> getIntroIdAssignments() {

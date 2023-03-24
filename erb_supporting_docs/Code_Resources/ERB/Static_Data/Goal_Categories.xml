@@ -29,13 +29,17 @@
 			<content id="17">
 				<content id="92">
 					<content id="93"/>
-					<content id="94"/>
+					<content id="94">
+						<content id="84"/>
+					</content>
 					<content id="95"/>
 					<content id="96"/>
 				</content>
 				<content id="97">
 					<content id="98">
-						<content id="102"/>
+						<content id="102">
+							<content id="116"/>
+						</content>
 						<content id="103"/>
 						<content id="105"/>
 					</content>
@@ -50,24 +54,6 @@
 					<content id="111"/>
 				</content>
 				<content id="112"/>
-			</content>
-			<content id="18">
-				<content id="46"/>
-				<content id="47"/>
-				<content id="48"/>
-				<content id="56"/>
-			</content>
-			<content id="19">
-				<content id="50"/>
-				<content id="51">
-					<content id="84"/>
-				</content>
-				<content id="52"/>
-				<content id="53"/>
-				<content id="54"/>
-				<content id="55"/>
-				<content id="57"/>
-				<content id="58"/>
 			</content>
 		</contents>
 	</goalCategory>

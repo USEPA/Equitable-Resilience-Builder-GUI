@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What to expect with indicator cards">
@@ -45,11 +45,13 @@
 			fontStyle="Bold"
 			text="Where to get the information for each indicator card? ">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;Some indicators may have an existing dataset you can link to, while others you may need to consult with a representative of a municipal, county, or state agency.">
+			text="Some indicators may have an existing dataset you can link to, while others you may need to consult with a representative of a municipal, county, or state agency.">
 			</text>
 		</textBlock>
 		<textBlock>

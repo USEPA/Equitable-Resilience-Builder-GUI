@@ -102,5 +102,16 @@
 	<content id="109" guid="" type="mainForm" status="ready" shortName="Participatory Mapping" longName="Participatory Mapping" />
 	<content id="110" guid="" type="mainForm" status="ready" shortName="Sort Resilience Indicators" longName="Sort Resilience Indicators" />
 	<content id="111" guid="" type="mainForm" status="ready" shortName="Discuss Equity" longName="Discuss Equity" />
-	<content id="112" guid="" type="mainForm" status="ready" shortName="Reflection and Next Steps" longName="Reflection and Next Steps" />	
+	<content id="112" guid="" type="mainForm" status="ready" shortName="Reflection and Next Steps" longName="Reflection and Next Steps" />
+	<content id="113" guid="" type="Image" status="ready" shortName="Ch 2 Activity 1 Figure" longName="Ch 2 Activity 1 Figure" />
+	<content id="114" guid="" type="mainForm" status="ready" shortName="Data Scoping Example" longName="Data Scoping Example" />
+	<content id="115" guid="" type="Image" status="ready" shortName="Data Scoping Example Image" longName="Data Scoping Example Image" />
+	<content id="116" guid="" type="alternativeForm" status="ready" shortName="Hazards Data Example" longName="Hazards Data Example" />
+	<content id="117" guid="" type="Image" status="ready" shortName="Equity Data Example Image" longName="Equity Data Example Image" />
+	<content id="118" guid="" type="mainForm" status="ready" shortName="Equity Data Example" longName="Equity Data Example" />
+	<content id="119" guid="" type="Image" status="ready" shortName="Equitable Resilience Systems Image" longName="Equitable Resilience Systems Image" />
+	<content id="120" guid="" type="Image" status="ready" shortName="Map w/Stickies Image" longName="Map w/Stickies Image" />
+	<content id="121" guid="" type="mainForm" status="ready" shortName="Map w/Stickies" longName="Map w/Stickies" />
+	<content id="122" guid="" type="Image" status="ready" shortName="Sorted Cards Example Image" longName="Sorted Cards Example Image" />
+	<content id="123" guid="" type="mainForm" status="ready" shortName="Sorted Cards Example" longName="Sorted Cards Example" />
 </content_xmls>

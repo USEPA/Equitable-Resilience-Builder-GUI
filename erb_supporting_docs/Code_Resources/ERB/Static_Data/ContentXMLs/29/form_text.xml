@@ -2,7 +2,7 @@
 	<container id="titleVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="How have other communities used the ERB tool?">
@@ -10,7 +10,7 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Activity selection examples">

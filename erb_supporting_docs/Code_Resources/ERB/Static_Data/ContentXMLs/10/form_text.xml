@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Explore ERB">
@@ -21,7 +21,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- You're expanding the social vulnerability component of an existing HMP? >> ">
+			text="- You're expanding the social vulnerability component of an existing HMP? >> ">
 			</text>
 			<text
 			size="16.0"
@@ -29,11 +29,13 @@
 			fontStyle="Regular"
 			text="Ch 3 SVA step">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- You want to better engage community members in resilience planning? >> ">
+			text="- You want to better engage community members in resilience planning? >> ">
 			</text>
 			<text
 			size="16.0"
@@ -41,11 +43,13 @@
 			fontStyle="Regular"
 			text="Ch 2 landing page">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- You need to figure out what the main hazards or threats to your community are? >> ">
+			text="- You need to figure out what the main hazards or threats to your community are? >> ">
 			</text>
 			<text
 			size="16.0"
@@ -53,11 +57,13 @@
 			fontStyle="Regular"
 			text="Ch 3 hazards ID step">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- You want to check out indicators for assessing your community's built, natural, and social environments? >> ">
+			text="- You want to check out indicators for assessing your community's built, natural, and social environments? >> ">
 			</text>
 			<text
 			size="16.0"

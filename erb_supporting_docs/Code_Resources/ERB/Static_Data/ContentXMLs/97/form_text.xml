@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Expand your Knowledge">
@@ -18,17 +18,13 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -38,17 +34,13 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -66,8 +58,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Scope Information Gathering"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_ScopingInformationGathering.docx">
 			</text>
 			<text
 			size="16.0"
@@ -89,69 +81,39 @@
 			fontStyle="Regular"
 			text="local or online data on">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
 			id="74">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Hazards">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
 			id="74">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
 			id="74">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -172,23 +134,13 @@
 			fontStyle="Regular"
 			text="the data to put into">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
 			id="74">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -200,26 +152,16 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Workshop 2"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="108">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
 			id="74">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -231,15 +173,11 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Workshop 2"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="108">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -249,39 +187,23 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#032;&#032;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
 			text="Other products the core team is developing">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Outputs">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="20.0"
-			height="20.0"
+			width="15.0"
+			height="15.0"
 			id="73">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#032;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -293,7 +215,7 @@
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you will need">
@@ -309,20 +231,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#009;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
 			text="Core team and local knowledge holders">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -332,76 +244,40 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#009;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
 			text="Days to weeks">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="63">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#009;">
-			</text>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Scoping Information Gathering"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#009;&#009;">
+			linkType="externalDOC"
+			link="Ch3_ScopingInformationGathering.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Equitable Resilience Handout"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_EquitableResilienceConcepts_Worksheet.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#009;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -415,7 +291,7 @@
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="20.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
@@ -423,16 +299,10 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="66">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#009;">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"

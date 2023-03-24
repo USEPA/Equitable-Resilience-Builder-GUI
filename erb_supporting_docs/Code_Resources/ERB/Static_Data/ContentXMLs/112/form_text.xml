@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Reflection and Next Steps">
@@ -10,17 +10,13 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Congratulations, you accomplished a lot!">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -32,12 +28,8 @@
 			fontStyle="Regular"
 			text="Brought community members together to share and connect">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -49,12 +41,8 @@
 			fontStyle="Regular"
 			text="Learned about people's experiences with hazards and community assets that help">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -66,12 +54,8 @@
 			fontStyle="Regular"
 			text="Imagined possible futures given changing climate and hazard risks">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -83,12 +67,8 @@
 			fontStyle="Regular"
 			text="Revealed how people experience hazards differently, and why">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -100,12 +80,8 @@
 			fontStyle="Regular"
 			text="Mapped hazards and assets in your community">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -117,12 +93,8 @@
 			fontStyle="Regular"
 			text="Assessed how resilient and equitable local social, built, and natural environment systems are">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="15.0"
 			height="15.0"
@@ -137,17 +109,13 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Reflection">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -165,7 +133,7 @@
 			fontStyle="Hyperlink"
 			text="Reflection Diary"
 			linkType="externalDOC"
-			link="">
+			link="Ch3_Reflection_Diary.docx">
 			</text>
 			<text
 			size="16.0"
@@ -173,12 +141,8 @@
 			fontStyle="Regular"
 			text=" prompts and record responses">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -188,7 +152,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#032;Write down any more ">
+			text="Write down any more ">
 			</text>
 			<text
 			size="16.0"
@@ -196,22 +160,18 @@
 			fontStyle="Hyperlink"
 			text="Key Takeaways"
 			linkType="externalDOC"
-			link="">
+			link="Ch3_Reflection_Diary.docx">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Next Steps">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -237,12 +197,8 @@
 			fontStyle="Regular"
 			text=" about what you've done and learned">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="10.0"
 			height="10.0"
@@ -267,17 +223,13 @@
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="What you will need">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -287,14 +239,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Core team">
+			text="Core team">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -304,101 +252,68 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;1 hour">
+			text="1 hour">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="63">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Reflection diary"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#9;&#9;">
+			linkType="externalDOC"
+			link="Ch3_Reflection_Diary.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways Form"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Ch3_Reflection_Diary.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
+			</listBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Centering Equity">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="65">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;The reflection diary questions help you think about how you've centered equity in ERB so far.">
+			text="The reflection diary questions help you think about how you've centered equity in ERB so far.">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;">
-			</text>
+		</textBlock>
+		<textBlock>
 			<icon
-			width="50.0"
-			height="50.0"
+			width="40.0"
+			height="40.0"
 			id="75">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="&#9;Don't forget to think about how well you've represented your community and how you've built empathy for different perspectives.">
+			text="Don't forget to think about how well you've represented your community and how you've built empathy for different perspectives.">
 			</text>
 		</textBlock>
 	</container>
