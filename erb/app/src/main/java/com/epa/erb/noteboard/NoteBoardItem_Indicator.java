@@ -7,9 +7,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
 
 public class NoteBoardItem_Indicator extends NoteBoardItemController{
 

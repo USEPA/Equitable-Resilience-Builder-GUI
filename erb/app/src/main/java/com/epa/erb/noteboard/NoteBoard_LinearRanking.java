@@ -5,8 +5,6 @@ import com.epa.erb.ERBContentItem;
 import com.epa.erb.IndicatorCard;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class NoteBoard_LinearRanking extends NoteBoardContentController {
@@ -18,7 +16,7 @@ public class NoteBoard_LinearRanking extends NoteBoardContentController {
 	public void setUpNoteBoard(int numberOfRows) {
 		removeTopLabelHBox();
 		removeBottomLabelHBox();
-		createRows(numberOfRows, 1);
+		createRows(numberOfRows, 1, true);
 		createIndicatorCards();
 	}
 	

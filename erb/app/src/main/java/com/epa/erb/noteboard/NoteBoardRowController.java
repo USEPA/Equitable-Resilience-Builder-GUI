@@ -6,6 +6,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -21,28 +22,31 @@ public class NoteBoardRowController implements Initializable {
 	@FXML
 	HBox rowHBox;
 	
-	public NoteBoardRowController() {
-
+	HBox rankedItemsHBox;
+	public NoteBoardRowController(HBox rankedItemsHBox) {
+		this.rankedItemsHBox = rankedItemsHBox;
 	}
 	
 	protected void createColumns(int numberOfColumns) {
 		if (numberOfColumns > 1) {
 			for(int i =0; i < numberOfColumns; i++) {
 				HBox columnHBox = new HBox();
-				columnHBox.setStyle("-fx-background-color: red");
+				columnHBox.setStyle("-fx-border-color: #E4E4E4");
+				setDrag_Column(columnHBox);
 				columnHBox.setHgrow(columnHBox, Priority.ALWAYS);
+				columnHBox.setAlignment(Pos.CENTER);
 				rowHBox.getChildren().add(columnHBox);
 			}
 		}
-
 	}
-	
-//	private ArrayList<NoteBoardItemController> listOfPostItNoteControllers = new ArrayList<NoteBoardItemController>();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		setDrag_Row(rowHBox);
 	}	
+	
+	public void turnOnRowDrag() {
+		setDrag_Row(rowHBox);
+	}
 	
 	private static final String TAB_DRAG_KEY = "pane";
 	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
@@ -80,30 +84,51 @@ public class NoteBoardRowController implements Initializable {
 			event.consume();
 		});
 	}
-	
-//	private ArrayList<NoteBoardItemController> orderListOfPostItNoteControllers() {
-//		listOfPostItNoteControllers = sortArray(listOfPostItNoteControllers);
-//		return listOfPostItNoteControllers;
-//	}
-	
-//	public ArrayList<NoteBoardItemController> sortArray(ArrayList<NoteBoardItemController> inputArray) {
-//		for (int i = 1; i < inputArray.size(); i++) {
-//			NoteBoardItemController postItNoteController = inputArray.get(i);
-//			int key = inputArray.get(i).getPostItNoteIndex(this);
-//			for (int j = i - 1; j >= 0; j--) {
-//				if (key < inputArray.get(j).getPostItNoteIndex(this)) {
-//					inputArray.set(j + 1, inputArray.get(j));
-//					if (j == 0) {
-//						inputArray.set(0, postItNoteController);
-//					}
-//				} else {
-//					inputArray.set(j + 1, postItNoteController);
-//					break;
-//				}
-//			}
-//		}
-//		return inputArray;
-//	}
+
+	protected void setDrag_Column(Pane p) {
+		p.setOnDragOver(event -> {
+			event.acceptTransferModes(TransferMode.MOVE);
+			event.consume();
+		});
+		p.setOnDragDropped(event -> {
+			Dragboard db = event.getDragboard();
+			boolean success = false;
+			if (db.hasString()) {
+				Pane target = p;
+				Pane source = (Pane) event.getGestureSource();
+				Pane sourceParent = (Pane) source.getParent();	
+				
+				if (sourceParent.getId() != null && (sourceParent.getId().contentEquals("rowHBox"))) {
+					if (target.toString().contains("HBox")) {
+						if (target.getChildren().size() > 0) {
+							VBox existingVBoxChild = (VBox) target.getChildren().get(0);
+							sourceParent.getChildren().add(existingVBoxChild);
+						}
+						target.getChildren().add(source);
+					}
+				} else {
+					if (target.getChildren().size() > 0) {
+						VBox existingVBoxChild = (VBox) target.getChildren().get(0);
+						sourceParent.getChildren().clear();
+						sourceParent.getChildren().add(existingVBoxChild);
+					}
+					target.getChildren().clear();
+					target.getChildren().add(source);
+				}
+				success = true;
+			}
+			event.setDropCompleted(success);
+			event.consume();
+		});
+		p.setOnDragDetected(event -> {
+			Dragboard dragboard = p.startDragAndDrop(TransferMode.MOVE);
+			ClipboardContent clipboardContent = new ClipboardContent();
+			clipboardContent.putString(TAB_DRAG_KEY);
+			dragboard.setContent(clipboardContent);
+			draggingTab.set(p);
+			event.consume();
+		});
+	}
 
 	public HBox getCategoryHBox() {
 		return mainHBox;
@@ -111,14 +136,5 @@ public class NoteBoardRowController implements Initializable {
 
 	public HBox getPostItHBox() {
 		return rowHBox;
-	}
-
-//	public void setListOfPostItNoteControllers(ArrayList<NoteBoardItemController> listOfPostItNoteControllers) {
-//		this.listOfPostItNoteControllers = listOfPostItNoteControllers;
-//	}
-	
-//	public ArrayList<NoteBoardItemController> getListOfPostItNoteControllers() {
-//		return orderListOfPostItNoteControllers();
-//	}	
-	
+	}	
 }

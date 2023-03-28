@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox fx:id="noteBoardItemVBox" maxHeight="250.0" maxWidth="200.0" minHeight="250.0" minWidth="200.0" onMouseClicked="#postItNoteClicked" prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="noteBoardItemVBox" maxHeight="200.0" maxWidth="150.0" minHeight="200.0" minWidth="150.0" prefHeight="200.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="mainVBox">
          <children>
-            <HBox fx:id="plusHBox" alignment="TOP_RIGHT" spacing="1.0" style="-fx-background-color: transparent;">
-               <children>
-                  <Label onMouseClicked="#minusClicked" style="-fx-background-color: transparent;" text="-" />
-                  <Label fx:id="numberLabel" text="0" />
-                  <Label onMouseClicked="#plusClicked" style="-fx-background-color: transparent;" text="+" />
-               </children>
-            </HBox>
-            <TextFlow fx:id="textFlow" onMouseClicked="#postItNoteClicked" VBox.vgrow="ALWAYS">
+            <TextFlow fx:id="textFlow" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
