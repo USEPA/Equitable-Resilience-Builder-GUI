@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -24,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+
 
 public class NoteBoardContentController implements Initializable{
 
@@ -39,6 +41,8 @@ public class NoteBoardContentController implements Initializable{
 	HBox contentHBox;
 	@FXML
 	VBox vBox;
+	@FXML
+	ChoiceBox<String> indicatorChoiceBox;
 	
 	//---------
 	@FXML
@@ -68,8 +72,26 @@ public class NoteBoardContentController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		fillIndicatorChoiceBox();
 		setTitleText(erbContentItem.getLongName());
 		setDrag_NoteBoardItemVBox(noteBoardItemVBox);
+		indicatorChoiceBox.getSelectionModel().select(0);
+		indicatorChoiceBox.setOnAction(e-> indicatorChoiceBoxSelection());		
+	}
+	
+	private void indicatorChoiceBoxSelection() {
+		String indicatorSystemSelected = indicatorChoiceBox.getSelectionModel().getSelectedItem();
+
+	}
+	
+	private void fillIndicatorChoiceBox() {
+		indicatorChoiceBox.getItems().clear();
+		indicatorChoiceBox.getItems().add("All");
+		for(IndicatorCard iC: app.getIndicatorCards()) {
+			if(!indicatorChoiceBox.getItems().contains(iC.getSystem())) {
+				indicatorChoiceBox.getItems().add(iC.getSystem());
+			}
+		}
 	}
 	
 	public void createRows(int numberOfRows, int numberOfColumns, boolean setRowDrag) {
@@ -100,7 +122,7 @@ public class NoteBoardContentController implements Initializable{
 	
 	@FXML
 	public void saveBoardButtonAction() {
-
+		
 	}
 	
 	@FXML
