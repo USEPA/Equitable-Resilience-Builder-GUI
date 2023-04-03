@@ -114,4 +114,21 @@
 	<content id="121" guid="" type="mainForm" status="ready" shortName="Map w/Stickies" longName="Map w/Stickies" />
 	<content id="122" guid="" type="Image" status="ready" shortName="Sorted Cards Example Image" longName="Sorted Cards Example Image" />
 	<content id="123" guid="" type="mainForm" status="ready" shortName="Sorted Cards Example" longName="Sorted Cards Example" />
+	<content id="125" guid="" type="mainForm" status="ready" shortName="Put Results into Action" longName="Put Results into Action" />
+	<content id="126" guid="" type="mainForm" status="ready" shortName="Storytelling on Project Implementation" longName="Storytelling on Project Implementation" />
+	<content id="127" guid="" type="mainForm" status="ready" shortName="Define the Problems to Solve" longName="Define the Problems to Solve" />
+	<content id="128" guid="" type="mainForm" status="ready" shortName="Results to Action" longName="Results to Action" />
+	<content id="129" guid="" type="mainForm" status="ready" shortName="Warm Up Activity" longName="Warm Up Activity" />
+	<content id="130" guid="" type="mainForm" status="ready" shortName="Create Vision Statements" longName="Create Vision Statements" />
+	<content id="131" guid="" type="mainForm" status="ready" shortName="Brainstorm Actions" longName="Brainstorm Actions" />
+	<content id="132" guid="" type="mainForm" status="ready" shortName="Evaluate Actions" longName="Evaluate Actions" />
+	<content id="133" guid="" type="mainForm" status="ready" shortName="Strategy Planning" longName="Strategy Planning" />
+	<content id="134" guid="" type="mainForm" status="ready" shortName="Workshop Wrap-Up" longName="Workshop Wrap-Up" />
+	<content id="135" guid="" type="mainForm" status="ready" shortName="Reflection and Next Steps" longName="Reflection and Next Steps" />
+	<content id="136" guid="" type="outputForm" status="ready" shortName="Key Takeaways from Strategizing" longName="Key Takeaways from Strategizing" />
+	<content id="138" guid="" type="mainForm" status="ready" shortName="Document Your Project" longName="Document Your Project" />
+	<content id="139" guid="" type="mainForm" status="ready" shortName="Next Steps for Outreach and Engagement" longName="Next Steps for Outreach and Engagement" />
+	<content id="140" guid="" type="mainForm" status="ready" shortName="Next Steps for Implementation" longName="Next Steps for Implementation" />
+	<content id="141" guid="" type="mainForm" status="ready" shortName="Use Monitoring to Support Future Action" longName="Use Monitoring to Support Future Action" />
+	<content id="142" guid="" type="mainForm" status="ready" shortName="Reflection and Next Steps" longName="Reflection and Next Steps" />
 </content_xmls>
