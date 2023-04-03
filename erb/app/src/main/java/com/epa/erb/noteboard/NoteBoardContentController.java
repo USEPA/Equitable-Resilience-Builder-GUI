@@ -43,6 +43,8 @@ public class NoteBoardContentController implements Initializable{
 	VBox vBox;
 	@FXML
 	ChoiceBox<String> indicatorChoiceBox;
+	@FXML
+	VBox dropDownVBox;
 	
 	//---------
 	@FXML
@@ -81,7 +83,7 @@ public class NoteBoardContentController implements Initializable{
 	
 	private void indicatorChoiceBoxSelection() {
 		String indicatorSystemSelected = indicatorChoiceBox.getSelectionModel().getSelectedItem();
-
+		
 	}
 	
 	private void fillIndicatorChoiceBox() {

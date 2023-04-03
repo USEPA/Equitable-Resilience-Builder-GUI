@@ -22,7 +22,7 @@
       </HBox>
       <HBox fx:id="contentHBox" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" spacing="5.0">
+            <VBox fx:id="dropDownVBox" alignment="TOP_CENTER" spacing="5.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
