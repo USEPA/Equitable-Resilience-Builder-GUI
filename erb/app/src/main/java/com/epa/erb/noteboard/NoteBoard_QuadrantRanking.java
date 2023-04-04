@@ -3,8 +3,7 @@ package com.epa.erb.noteboard;
 import java.util.ArrayList;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
-import com.epa.erb.goal.Goal;
-import com.epa.erb.project.Project;
+import com.epa.erb.IndicatorCard;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
@@ -18,8 +17,8 @@ import javafx.scene.layout.Priority;
 public class NoteBoard_QuadrantRanking extends NoteBoardContentController {
 
 	ArrayList<NoteBoardRowController> linearRowControllers = new ArrayList<NoteBoardRowController>();
-	public NoteBoard_QuadrantRanking(App app, Project project, Goal goal, ERBContentItem erbContentItem, ArrayList<NoteBoardRowController> linearRowControllers) {
-		super(app, project, goal, erbContentItem);
+	public NoteBoard_QuadrantRanking(App app, ERBContentItem erbContentItem, ArrayList<NoteBoardRowController> linearRowControllers, ArrayList<IndicatorCard> indicatorCards) {
+		super(app, erbContentItem, indicatorCards);
 		this.linearRowControllers = linearRowControllers;
 	}
 

@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -10,7 +9,6 @@
    <children>
       <VBox HBox.hgrow="ALWAYS">
          <children>
-            <Separator />
             <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="100.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                <content>
                   <HBox fx:id="rowHBox" alignment="CENTER_LEFT" spacing="10.0" />

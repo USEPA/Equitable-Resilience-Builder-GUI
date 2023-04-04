@@ -8,8 +8,6 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.IndicatorCard;
-import com.epa.erb.goal.Goal;
-import com.epa.erb.project.Project;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -58,14 +56,12 @@ public class NoteBoardContentController implements Initializable{
 	//---------
 	
 	protected App app;
-	private Project project;
-	private Goal goal;
 	private ERBContentItem erbContentItem;
-	public NoteBoardContentController(App app,Project project, Goal goal, ERBContentItem erbContentItem ) {
+	protected ArrayList<IndicatorCard> indicatorCards;
+	public NoteBoardContentController(App app, ERBContentItem erbContentItem, ArrayList<IndicatorCard> indicatorCards ) {
 		this.app = app;
-		this.project = project;
-		this.goal = goal;
 		this.erbContentItem = erbContentItem;
+		this.indicatorCards = indicatorCards;
 	}
 	
 	HBox rankedItemsHBox;
@@ -84,7 +80,7 @@ public class NoteBoardContentController implements Initializable{
 	private void indicatorChoiceBoxSelection() {
 		String indicatorSystemSelected = indicatorChoiceBox.getSelectionModel().getSelectedItem();
 		noteBoardItemVBox.getChildren().clear();
-		for(IndicatorCard indicatorCard: app.getIndicatorCards()) {
+		for(IndicatorCard indicatorCard: indicatorCards) {
 			if(indicatorSystemSelected.contentEquals("All") || indicatorCard.getSystem().contentEquals(indicatorSystemSelected)) {
 				VBox cardVBox = (VBox) loadIndicatorCard(indicatorCard);
 				noteBoardItemVBox.getChildren().add(cardVBox);		
@@ -95,7 +91,7 @@ public class NoteBoardContentController implements Initializable{
 	private void fillIndicatorChoiceBox() {
 		indicatorChoiceBox.getItems().clear();
 		indicatorChoiceBox.getItems().add("All");
-		for(IndicatorCard iC: app.getIndicatorCards()) {
+		for(IndicatorCard iC: indicatorCards) {
 			if(!indicatorChoiceBox.getItems().contains(iC.getSystem())) {
 				indicatorChoiceBox.getItems().add(iC.getSystem());
 			}
@@ -137,7 +133,7 @@ public class NoteBoardContentController implements Initializable{
 	private void nextButtonAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoard_QuadrantRanking noteBoardContentController = new NoteBoard_QuadrantRanking(app, project, goal, erbContentItem, rowControllers);
+			NoteBoard_QuadrantRanking noteBoardContentController = new NoteBoard_QuadrantRanking(app, erbContentItem, rowControllers, indicatorCards);
 			fxmlLoader.setController(noteBoardContentController);
 			VBox root = fxmlLoader.load();
 			noteBoardContentController.setUpNoteBoard(4);
@@ -213,22 +209,6 @@ public class NoteBoardContentController implements Initializable{
 		this.app = app;
 	}
 
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
-	public Goal getGoal() {
-		return goal;
-	}
-
-	public void setGoal(Goal goal) {
-		this.goal = goal;
-	}
-
 	public Label getTitleText() {
 		return titleLabel;
 	}
@@ -247,6 +227,14 @@ public class NoteBoardContentController implements Initializable{
 
 	public VBox getvBox() {
 		return vBox;
-	}		
+	}
+
+	public ArrayList<IndicatorCard> getIndicatorCards() {
+		return indicatorCards;
+	}
+
+	public void setIndicatorCards(ArrayList<IndicatorCard> indicatorCards) {
+		this.indicatorCards = indicatorCards;
+	}	
 
 }
