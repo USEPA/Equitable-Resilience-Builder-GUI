@@ -157,6 +157,17 @@ public class App extends Application {
 		}
 		return null;
 	}
+	
+	public IndicatorCard findIndicatorItemForId(String id) {
+		if(id != null) {
+			for(IndicatorCard indicatorCard: indicatorCards) {
+				if(indicatorCard.getId().contentEquals(id)) {
+					return indicatorCard;
+				}
+			}
+		}
+		return null;
+	}
 
 	private void readAndStoreAvailableGoalCategories() {
 		File goalCategoriesFile = fileHandler.getStaticGoalCategoriesXMLFile();

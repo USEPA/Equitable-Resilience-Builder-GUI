@@ -225,6 +225,7 @@ public class XMLManager {
 					Node cardNode = cardNodeList.item(i);
 					if (cardNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element cardElement = (Element) cardNode;
+						String id = cardElement.getAttribute("id");
 						String system = cardElement.getAttribute("system");
 						String indicator = cardElement.getAttribute("indicator");
 						String definition = cardElement.getAttribute("definition");
@@ -249,7 +250,7 @@ public class XMLManager {
 							}
 						}
 						
-						IndicatorCard indicatorCard = new IndicatorCard(system, indicator, definition, unitOfMeasurement, resilienceValue, assessment, questionsToAnswer, quantitativeDataSources, quantitativeCollProcess, qualitativeCollProcess, additionalInformation);
+						IndicatorCard indicatorCard = new IndicatorCard(id, system, indicator, definition, unitOfMeasurement, resilienceValue, assessment, questionsToAnswer, quantitativeDataSources, quantitativeCollProcess, qualitativeCollProcess, additionalInformation);
 						indicatorCards.add(indicatorCard);
 					}
 				}

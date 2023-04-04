@@ -83,7 +83,13 @@ public class NoteBoardContentController implements Initializable{
 	
 	private void indicatorChoiceBoxSelection() {
 		String indicatorSystemSelected = indicatorChoiceBox.getSelectionModel().getSelectedItem();
-		
+		noteBoardItemVBox.getChildren().clear();
+		for(IndicatorCard indicatorCard: app.getIndicatorCards()) {
+			if(indicatorSystemSelected.contentEquals("All") || indicatorCard.getSystem().contentEquals(indicatorSystemSelected)) {
+				VBox cardVBox = (VBox) loadIndicatorCard(indicatorCard);
+				noteBoardItemVBox.getChildren().add(cardVBox);		
+			}
+		}
 	}
 	
 	private void fillIndicatorChoiceBox() {
@@ -148,6 +154,7 @@ public class NoteBoardContentController implements Initializable{
 			NoteBoardItem_Indicator noteBoardIndicatorItem = new NoteBoardItem_Indicator(this, indicatorCard);
 			fxmlLoader.setController(noteBoardIndicatorItem);
 			VBox vBox = fxmlLoader.load();
+			vBox.setId(indicatorCard.getId());
 			noteBoardIndicatorItem.setIndicatorCardText();
 			noteBoardIndicatorItem.setDrag_IndicatorCard(vBox);
 			return vBox;

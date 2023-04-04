@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class IndicatorCard {
 	
+	String id;
 	String system;
 	String indicator;
 	String definition;
@@ -16,7 +17,8 @@ public class IndicatorCard {
 	String qualitativeDataCollProcess;
 	String additionalInformation;
 	
-	public IndicatorCard(String s, String i, String d, String m, String rV, String a, ArrayList<String> q, String qnDS, String qnDC, String qlDC, String etc) {
+	public IndicatorCard(String id, String s, String i, String d, String m, String rV, String a, ArrayList<String> q, String qnDS, String qnDC, String qlDC, String etc) {
+		this.id = id;
 		this.system = s;
 		this.indicator = i;
 		this.definition = d;
@@ -28,6 +30,14 @@ public class IndicatorCard {
 		this.quantitativeDataCollProcess = qnDC;
 		this.qualitativeDataCollProcess = qlDC;
 		this.additionalInformation = etc;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getSystem() {

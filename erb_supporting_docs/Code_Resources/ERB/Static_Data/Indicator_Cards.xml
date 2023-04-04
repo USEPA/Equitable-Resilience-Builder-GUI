@@ -1,5 +1,6 @@
 <indicatorCards>
 	<card
+		id="1"
 		system="Social Environment"
 		indicator="Social Cohesion"
 		definition="The strength of relationships and the sense of solidarity among members of a community based on distribution of social capital and shares group resources."
@@ -20,6 +21,7 @@
 		</questionsToAnswer>
 	</card>	
 	<card
+		id="2"
 		system="Social Environment"
 		indicator="Linguistic Isolation"
 		definition="The number of people 5 years and older that do not speak English well."
@@ -34,6 +36,23 @@
 		<questionsToAnswer>
 			<question text="How many people in your community five years and older speak English less than well according to the Census Bureau data guidelines?"/>
 			<question text="What percentage of the total population in your community are five years and older and speak English less than well according to the Census Bureau data guidelines?"/>
+		</questionsToAnswer>
+	</card>	
+	<card
+		id="3"
+		system="Built Environment"
+		indicator="Housing Habitability"
+		definition="Number of homes that have basic plumbing and kitchen facilities (these are a proxy for habitable housing conditions)."
+		unitOfMeasurement="number of Homes; percent of Total Households."
+		resilienceValue="Poor quality and unstable housing quality can expose residents to a variety of hazards including toxins, mold, pests and conditions that can trigger asthma and increase risks of injuries. Residents living in uninhabitable housing conditions are particularly vulnerable under a changing climate."
+		assessment="Both"
+		quantitativeDataSources=""
+		quantitativeDataCollProcess="Responses to this indicator should be three-fold. In the short term, it is crucial to Improve Healthy Food Access for households facing food insecurity, especially for residents living in units without kitchens or other basic facilities. This is especially true in areas with low supermarket access, retail density, and per capita income and high poverty. Some jurisdictions have already completed food security plans, and many health departments or social service agencies have plans or programs to address food insecurity. These can be valuable sources of data and additional policy recommendations. In the longer term, jurisdictions should target poor quality housing with policies and programs to Preserve and Improve Existing Housing. Consult your jurisdiction’s Housing Element, the U.S. Department of Housing and Urban Development’s Comprehensive Housing Affordability Strategy (CHAS) data, and local homeless counts (if available) for more information about local housing conditions, partner with local community based organizations, affordable housing developers/residents, and others to identify community housing needs, and target policies and programs accordingly. Without careful attention to retaining existing tenants and neighborhoods residents, efforts to improve housing quality can have the unintended consequence of displacing those residents in most need of healthy community conditions, such as low-income households, people with disabilities, the elderly, and people of color. It is essential to pass policies to Stabilize Residents and Neighborhoods well in advance of upgrading housing stock. Areas with high housing cost burdens, crowding, poverty and low educational attainment, per capita income and homeownership are often more vulnerable to displacement, particularly when they are in, or close to, hot real estate markets, transit, and jobs centers. Researchers at the University of California, Berkeley have developed methodologies for understanding displacement risk and dynamics in the Bay Area and Los Angeles County. These easy to use tools are available here. While upgrading housing is essential to addressing this indicator, it can take many years."
+		qualitativeDataCollProcess="1. Host listening sessions with community members to determine low, medium, or high social cohesion. Make sure you identify the scale at which you are referencing (is this a particular community, neighborhood, municipality, county, state). 2. Consult with community based organizations, civic groups, and others to determine specific concerns identified across the specified area. 3. Cross check that information with community experience."
+		additionalInformation="Consider that federal databases likely are not accurate for this indicator, because it is often used as a proxy for immigration status and may be underreported. As a result, local immigrant support organizations may be your best access for this issue. This issue matters most when you want to inform, educate, collaborate, or otherwise communicate with people who may not speak your language. The best outcomes occur when you can ensure you are reaching your whole community, using the language that best utilizes their full capacity to interact and contribute meaningfully. "
+	>
+		<questionsToAnswer>
+			
 		</questionsToAnswer>
 	</card>	
 </indicatorCards>
