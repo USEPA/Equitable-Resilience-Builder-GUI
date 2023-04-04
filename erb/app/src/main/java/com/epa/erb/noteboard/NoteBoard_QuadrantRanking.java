@@ -27,7 +27,7 @@ public class NoteBoard_QuadrantRanking extends NoteBoardContentController {
 		removeNoteBoardItemVBox();
 		HBox rankedItemsHBox = createRankedNoteBoardItemHBox();
 		setRankedItemsHBox(rankedItemsHBox);
-		createRows(numberOfRows, 6, false);
+		createRows(numberOfRows, 4, false);
 		fillRankedNoteBoardItemHBox(rankedItemsHBox);
 		setNewDrag(rankedItemsHBox);
 		contentHBox.getChildren().remove(dropDownVBox);

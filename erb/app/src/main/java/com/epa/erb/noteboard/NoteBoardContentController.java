@@ -134,7 +134,7 @@ public class NoteBoardContentController implements Initializable{
 			NoteBoard_QuadrantRanking noteBoardContentController = new NoteBoard_QuadrantRanking(app, project, goal, erbContentItem, rowControllers);
 			fxmlLoader.setController(noteBoardContentController);
 			VBox root = fxmlLoader.load();
-			noteBoardContentController.setUpNoteBoard(6);
+			noteBoardContentController.setUpNoteBoard(4);
 			app.getEngagementActionController().cleanContentVBox();
 			app.getEngagementActionController().addContentToContentVBox(root, true);
 		} catch (Exception e) {
