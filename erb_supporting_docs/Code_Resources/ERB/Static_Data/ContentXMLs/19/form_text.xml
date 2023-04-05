@@ -2,10 +2,10 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 5: Taking Action">
+			text="Onward">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,33 +13,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Welcome to the Taking Action chapter! The activities in this chapter will help you: ">
+			text="Wrap up project within ERB and move onward to share results and take the next steps towards building equitable resilience in your community.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Identify the most powerful actions to build equitable resilience in your community, based on the information you've gathered so far and captured in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Summary of Hazards, Disasters, Threats and Equity Issues form"
-			linkType="internalStep"
-			link="24">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Set up a way forward for implementing these actions">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Reflect on what you have accomplished with your project and think about next steps.">
+			fontStyle="Bold"
+			text="Why do this">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -47,164 +29,214 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This chapter is about collectively coming up with actions that different organizations, sectors, government agencies, and members of your community can use to help build equitable resilience. If you're not entirely sure what building resilience in an equitable way could entail, check out these ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="resources on equity"
-			linkType="internalIntro"
-			link="04">
+			text="It helps you make sure that future resilience work is grounded in the relationships you've built and what you've leared about hazards, equity, and resilient systems from going through ERB.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="To get started, browse through the activities in the chapter and decide with your core team which ones you'd like to complete, how you will get community input, and how you will customize the activities for your specific needs and goals.">
+			fontStyle="Bold"
+			text="How to do this">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- See Chapter 1 for ">
+			text="Document your project">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="examples"
-			linkType="internalActivity"
-			link="15">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" of ERB projects with selected chapters and activities">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;&#x9;- If you are going to convene a workshop, use the ">
+			text="Outreach and engagement">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Example ERB workshop agenda and facilitators guide"
-			linkType="externalDOC"
-			link="Workshop_facilitators_guide.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" and ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Example ERB workshop logistics plan"
-			linkType="externalDOC"
-			link="Workshop_logistics_plan.docx">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" and customize them for planning your workshops.">
+			text="Take next steps on actions strategized on">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Prepare for ongoing monitoring and learning">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="By the end of the chapter you should walk away with:">
+			fontStyle="Bold"
+			text="What you'll have at the end">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- A list of key action areas developed together with members of your community">
+			text="Materials saved in ERB ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Stronger connections with local organizations and residents">
+			fontStyle="Hyperlink"
+			text="My Portfolio"
+			linkType=""
+			link="">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Documentation of what you've done with ERB">
+			text="Materials downloaded from ERB My Portfolio">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- A list of next steps for the core team and others to implement actions">
+			text="A strong foundation for action">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team, team lead, local partners">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="1-4 hours">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="My Portfolio"
+			linkType=""
+			link="">
+			</text>
+		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 5 Outputs:">
+			text="Centering Equity">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
-			size="16.0"
+			size="14.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- What comes next worksheet">
+			text="You will see tips on implementing the following themes:">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- How Might We Statements">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Equity principles">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Actions brainstorming">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Actions short list">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Next steps list">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Documentation of your ERB process">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="65">
+			</icon>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="66">
+			</icon>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="76">
+			</icon>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="64">
+			</icon>
 		</textBlock>
 	</container>
 </textBlocks>
