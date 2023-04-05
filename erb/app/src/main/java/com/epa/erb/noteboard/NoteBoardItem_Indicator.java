@@ -19,6 +19,19 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 		this.indicatorCard = indicatorCard;
 	}
 	
+	protected void setColor() {
+		if(indicatorCard.getSystem().contentEquals("Social Environment")) {
+			noteBoardItemVBox.setStyle("-fx-background-color: " + indicatorCard.getSocialEnvironmentSystemColor());
+			textFlow.setStyle("-fx-background-color: " + indicatorCard.getSocialEnvironmentSystemColor());
+		} else if (indicatorCard.getSystem().contentEquals("Built Environment")) {
+			noteBoardItemVBox.setStyle("-fx-background-color: " + indicatorCard.getBuiltEnvironmentSystemColor());
+			textFlow.setStyle("-fx-background-color: " + indicatorCard.getBuiltEnvironmentSystemColor());
+		} else if (indicatorCard.getSystem().contentEquals("Natural Environment")) {
+			noteBoardItemVBox.setStyle("-fx-background-color: " + indicatorCard.getNaturalEnvironmentSystemColor());
+			textFlow.setStyle("-fx-background-color: " + indicatorCard.getNaturalEnvironmentSystemColor());
+		}
+	}
+	
 	protected void setIndicatorCardText() {
 		setNoteBoardItemText(getIndicatorCardText());
 	}

@@ -7,9 +7,9 @@
 
 <VBox fx:id="noteBoardItemVBox" maxHeight="200.0" maxWidth="150.0" minHeight="200.0" minWidth="150.0" prefHeight="200.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="mainVBox">
+      <VBox fx:id="mainVBox" style="-fx-background-color: transparent;">
          <children>
-            <TextFlow fx:id="textFlow" VBox.vgrow="ALWAYS">
+            <TextFlow fx:id="textFlow" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

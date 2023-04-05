@@ -151,6 +151,7 @@ public class NoteBoardContentController implements Initializable{
 			fxmlLoader.setController(noteBoardIndicatorItem);
 			VBox vBox = fxmlLoader.load();
 			vBox.setId(indicatorCard.getId());
+			noteBoardIndicatorItem.setColor();
 			noteBoardIndicatorItem.setIndicatorCardText();
 			noteBoardIndicatorItem.setDrag_IndicatorCard(vBox);
 			return vBox;

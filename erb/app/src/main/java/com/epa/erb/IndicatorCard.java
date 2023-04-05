@@ -32,6 +32,11 @@ public class IndicatorCard {
 		this.additionalInformation = etc;
 	}
 	
+	private final String socialEnvironmentSystemColor = "#A6D0E2"; //Blue
+	private final String builtEnvironmentSystemColor = "#F0C485"; //Orange
+	private final String naturalEnvironmentSystemColor = "#CBE2A6"; //Green
+
+	
 	public String getId() {
 		return id;
 	}
@@ -127,5 +132,16 @@ public class IndicatorCard {
 	public void setAdditionalInformation(String additionalInformation) {
 		this.additionalInformation = additionalInformation;
 	}
-	
+
+	public String getSocialEnvironmentSystemColor() {
+		return socialEnvironmentSystemColor;
+	}
+
+	public String getBuiltEnvironmentSystemColor() {
+		return builtEnvironmentSystemColor;
+	}
+
+	public String getNaturalEnvironmentSystemColor() {
+		return naturalEnvironmentSystemColor;
+	}	
 }
