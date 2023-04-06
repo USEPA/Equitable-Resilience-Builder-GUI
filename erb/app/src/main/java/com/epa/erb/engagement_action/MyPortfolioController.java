@@ -131,9 +131,11 @@ public class MyPortfolioController implements Initializable{
 	public void uploadFileButtonAction() {
 		FileChooser choose = new FileChooser();
 		File sourceFile = choose.showOpenDialog(null);
+		if(sourceFile != null && sourceFile.exists()) {
 		String uploadedFrom = engagementActionController.getCurrentSelectedERBContentItem().getShortName();
 		handleNewFile(sourceFile, uploadedFrom);
 		addSinglePortfolioDocumentToTableView(sourceFile,uploadedFrom);
+		}
 	}
 	
 	public void createMyPortfolioDirectory() {
