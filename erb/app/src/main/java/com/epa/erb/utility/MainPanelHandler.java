@@ -21,7 +21,7 @@ public class MainPanelHandler {
 	}
 	
 	private void initMainPanelIdHashMap() {
-		mainPanelIdHashMap.put("ERB Landing", "86");
+		mainPanelIdHashMap.put("ERB Home", "86");
 		mainPanelIdHashMap.put("Project Selection", "87");
 		mainPanelIdHashMap.put("Goal Creation", "88");
 		mainPanelIdHashMap.put("Engagement", "89");

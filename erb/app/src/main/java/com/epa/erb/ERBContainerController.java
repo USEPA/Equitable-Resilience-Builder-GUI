@@ -89,7 +89,7 @@ public class ERBContainerController implements Initializable{
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();
 		myBreadCrumbBar = new MyBreadCrumbBar(app);
 		myBreadCrumbBar.setStyle("-fx-padding: 3.5 0 0 0");
-		String erbLandingString = "ERB Landing";
+		String erbLandingString = "ERB Home";
 		myBreadCrumbBar.initMyBreadCrumbBar(erbLandingString, mainPanelHandler.getMainPanelIdHashMap().get(erbLandingString));
 		breadCrumbHBox.getChildren().add(myBreadCrumbBar);
 	}

@@ -339,7 +339,7 @@ public class EngagementActionController implements Initializable {
 			treeItemGuidTreeMap.clear();
 			listOfUniqueERBContentItems.clear();
 
-			ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Pathway", "ERB Pathway");
+			ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections", "ERB Sections");
 			TreeItem<ERBContentItem> rootTreeItem = new TreeItem<ERBContentItem>(rootERBContentItem);
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
@@ -370,7 +370,7 @@ public class EngagementActionController implements Initializable {
 			if (genericContentItems != null) {
 				treeItemGuidTreeMap.clear();
 				listOfUniqueERBContentItems.clear();
-				ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Pathway", "ERB Pathway");
+				ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections", "ERB Sections");
 				TreeItem<ERBContentItem> rootTreeItem = new TreeItem<ERBContentItem>(rootERBContentItem);
 				rootTreeItem.setExpanded(true);
 				treeView.setRoot(rootTreeItem);

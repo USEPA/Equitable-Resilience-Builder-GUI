@@ -173,7 +173,7 @@ public class ProjectCreationController implements Initializable {
 				}
 				app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
 				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(
-						selectedProject.getProjectName() + " Landing",
+						selectedProject.getProjectName() + " Dashboard",
 						mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
 			}
 		}
