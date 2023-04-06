@@ -92,17 +92,36 @@ public class FormController {
 		if (idAssignments.getChapterIdAssignments().contains(link)) {
 			for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
 				if (erbItem.getId() != null && erbItem.getId().contentEquals(link)) {
-					TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+					TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap()
+							.get(erbItem);
 					engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
 					engagementActionController.treeViewClicked(erbTreeItem, erbTreeItem);
 				}
 			}
-		}else {
+		} else {
 			parentERBContentItem = null;
 			TreeItem<ERBContentItem> currentSelectedTreeItem = engagementActionController.getTreeView()
 					.getSelectionModel().getSelectedItem();
+			if (currentSelectedTreeItem.getValue().getChildERBContentItems().size() > 0) {
+				ERBContentItem childItem = erbItemFinder
+						.getERBContentItemById(currentSelectedTreeItem.getValue().getChildERBContentItems(), link);
+				if (childItem != null) {
+					engagementActionController.ERBContentItemSelected(childItem);
+					for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+						if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(childItem.getGuid())) {
+							TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap()
+									.get(erbItem);
+							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
+						}
+					}
+					return;
+				}
+			}
+			System.out.println("First Parent: " + currentSelectedTreeItem.getParent());
 			// Get parent chapter for current selected item
 			getSectionParent(currentSelectedTreeItem);
+			System.out.println("Searched Parent: " + parentERBContentItem);
 			if (parentERBContentItem != null) {
 				ERBContentItem item = erbItemFinder
 						.getERBContentItemById(parentERBContentItem.getChildERBContentItems(), link);

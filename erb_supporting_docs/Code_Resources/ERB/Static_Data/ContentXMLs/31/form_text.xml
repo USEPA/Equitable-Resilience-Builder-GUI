@@ -98,7 +98,7 @@
 			fontStyle="Hyperlink"
 			text="example"
 			linkType="internalStep"
-			link="29">
+			link="27">
 			</text>
 			<text
 			size="16.0"
@@ -293,7 +293,7 @@
 			fontStyle="Hyperlink"
 			text="Example-activity selection"
 			linkType="internalStep"
-			link="29">
+			link="27">
 			</text>
 		</textBlock>
 	</container>

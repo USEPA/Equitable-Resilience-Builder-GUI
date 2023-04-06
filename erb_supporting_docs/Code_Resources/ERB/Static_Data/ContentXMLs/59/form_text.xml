@@ -69,7 +69,7 @@
 			fontStyle="Hyperlink"
 			text="example"
 			linkType="internalStep"
-			link="28">
+			link="27">
 			</text>
 			<text
 			size="16.0"
@@ -238,7 +238,7 @@
 			fontStyle="Hyperlink"
 			text="Example-setting goals"
 			linkType="internalStep"
-			link="28">
+			link="27">
 			</text>
 		</textBlock>
 	</container>
