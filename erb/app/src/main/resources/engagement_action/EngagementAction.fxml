@@ -40,18 +40,11 @@
       <HBox fx:id="navigationHBox" alignment="TOP_CENTER">
          <children>
             <HBox fx:id="previousHBox" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-               <children>
-                  <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" text="Previous" />
-               </children>
                <padding>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </padding>
             </HBox>
-            <HBox fx:id="nextHBox" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
-               <children>
-                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next" />
-               </children>
-            </HBox>
+            <HBox fx:id="nextHBox" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="3.0" right="3.0" />
@@ -61,6 +54,23 @@
          <children>
             <VBox fx:id="treeViewVBox">
                <children>
+                  <HBox>
+                     <children>
+                        <HBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" text="Previous" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
                   <TreeView fx:id="treeView" minWidth="250.0" prefHeight="250.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
