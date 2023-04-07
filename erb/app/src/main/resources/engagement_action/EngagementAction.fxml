@@ -28,6 +28,11 @@
          </children>
       </HBox>
       <Pane maxHeight="2.0" minHeight="2.0" prefHeight="2.0" style="-fx-background-color: #CCCCCC;" />
+      <Label fx:id="exploreModeLabel" text="Important: You are in Explore Mode. In order to use the interactive activites or to edit forms, create a project on the ERB Home page">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
       <HBox alignment="CENTER_RIGHT">
          <children>
             <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio">

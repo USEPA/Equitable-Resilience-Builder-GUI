@@ -64,6 +64,8 @@ public class EngagementActionController implements Initializable {
 	HBox body2HBox;
 	@FXML
 	VBox contentVBox;
+	@FXML
+	Label exploreModeLabel;
 
 
 	private App app;
@@ -87,6 +89,9 @@ public class EngagementActionController implements Initializable {
 		if (project.getProjectType().contentEquals("Goal Mode")) {
 		} else {
 			initFacilitatorMode();
+		}
+		if(!project.getProjectName().contentEquals("Explore")) {
+			engagementVBox.getChildren().remove(exploreModeLabel);
 		}
 		treeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());
 	}
