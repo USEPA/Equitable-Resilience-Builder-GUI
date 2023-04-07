@@ -26,8 +26,8 @@
 	<content id="25" guid="" type="mainForm" status="ready" shortName="Sorting Indicator Cards" longName="Sorting Indicator Cards" />
 	<content id="26" guid="" type="mainForm" status="ready" shortName="Lay your Cards on the Table" longName="Lay your Cards on the Table" />
 	<content id="27" guid="" type="alternativeForm" status="ready" shortName="How have Communities used ERB?" longName="How have Communities used ERB?" />
-	<content id="28" guid="" type="alternativeForm" status="ready" shortName="How have other Communities used the ERB Tool? Goal Setting Examples" longName="How have other Communities used the ERB Tool? Goal Setting Examples" />
-	<content id="29" guid="" type="alternativeForm" status="ready" shortName="How have other Communities used the ERB Tool? Activity Selection Examples" longName="How have other Communities used the ERB Tool? Activity Selection Examples" />
+	<content id="28" guid="" type="alternativeForm" status="ready" shortName="Goal Setting Examples" longName="Goal Setting Examples" />
+	<content id="29" guid="" type="alternativeForm" status="ready" shortName="Activity Selection Examples" longName="Activity Selection Examples" />
 	<content id="30" guid="" type="mainForm" status="ready" shortName="Get a Core Team Together" longName="Get a Core Team Together" />
 	<content id="31" guid="" type="mainForm" status="ready" shortName="Select Activities to do in ERB" longName="Select Activities to do in ERB" />
 	<content id="32" guid="" type="mainForm" status="ready" shortName="Make a Project Plan" longName="Make a Project Plan" />
