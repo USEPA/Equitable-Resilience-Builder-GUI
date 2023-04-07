@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefWidth="901.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+      <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
          <content>
-            <VBox>
+            <VBox spacing="5.0">
                <children>
                   <HBox>
                      <children>
@@ -45,15 +45,35 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Separator>
-                  <HBox maxHeight="250.0" spacing="20.0">
+                  <VBox>
+                     <children>
+                        <Label text="Step 1. Enter word or phrase below OR Enter a block of text.">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Step 2. Add to Table">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Step 3. Build Word Cloud">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox spacing="20.0" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox>
                            <children>
                               <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label text="Enter phrase or word below.">
+                                    <Label text="Word or Phrase">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font size="13.0" />
                                        </font></Label>
                                     <HBox alignment="CENTER_LEFT" spacing="20.0">
                                        <children>
@@ -65,14 +85,18 @@
                               </VBox>
                               <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label text="Enter a block of text below.">
+                                    <Label text="Block of Text">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font size="13.0" />
                                        </font></Label>
                                     <HBox alignment="CENTER_LEFT" spacing="20.0">
                                        <children>
-                                          <TextArea fx:id="inputTextArea" prefHeight="200.0" prefWidth="200.0" />
-                                          <Button fx:id="longAddButton" mnemonicParsing="false" onAction="#longAddButtonAction" text="Add to table" />
+                                          <TextArea fx:id="inputTextArea" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                          <VBox alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="longAddButton" mnemonicParsing="false" onAction="#longAddButtonAction" text="Add" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </HBox>
                                     <CheckBox fx:id="excludeCommonCheckBox" mnemonicParsing="false" onAction="#excludeCommonCheckBoxAction" text="Exclude common words">
@@ -96,7 +120,7 @@
                                     </HBox>
                                  </children>
                               </HBox>
-                              <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+                              <TableView fx:id="tableView" minHeight="250.0" VBox.vgrow="ALWAYS">
                                 <columns>
                                   <TableColumn fx:id="mergeTableColumn" prefWidth="75.0" text="Merge" />
                                   <TableColumn fx:id="phraseTableColumn" prefWidth="75.0" text="Phrase" />
@@ -123,7 +147,7 @@
                      </children>
                   </HBox>
                   <VBox fx:id="vBox" alignment="CENTER" VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER">
+                  <HBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
                      <children>
                         <Button fx:id="saveWordCloudButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save Word Cloud" />
                      </children>
