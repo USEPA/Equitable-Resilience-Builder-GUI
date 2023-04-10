@@ -38,15 +38,19 @@
             <Separator orientation="VERTICAL" />
             <HBox HBox.hgrow="ALWAYS">
                <children>
-                  <VBox fx:id="leftLabelVBox" alignment="CENTER">
+                  <HBox>
                      <children>
-                        <Label minHeight="20.0" minWidth="84.0" text="Less resilient">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
+                        <VBox fx:id="leftLabelVBox" alignment="CENTER">
+                           <children>
+                              <Label minHeight="20.0" minWidth="84.0" text="Less resilient">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </HBox>
                   <VBox fx:id="centerVBox" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox fx:id="topLabelHBox" alignment="CENTER">
@@ -58,7 +62,11 @@
                               </Label>
                            </children>
                         </HBox>
-                        <VBox fx:id="mainVBox" VBox.vgrow="ALWAYS" />
+                        <VBox VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox fx:id="mainVBox" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
                         <HBox fx:id="bottomLabelHBox" alignment="CENTER">
                            <children>
                               <Label minHeight="20.0" minWidth="93.0" text="Less equitable">
@@ -70,15 +78,19 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox fx:id="rightLabelVBox" alignment="CENTER">
+                  <HBox>
                      <children>
-                        <Label minHeight="20.0" minWidth="92.0" text="More resilient">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
+                        <VBox fx:id="rightLabelVBox" alignment="CENTER">
+                           <children>
+                              <Label minHeight="20.0" minWidth="92.0" text="More resilient">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </HBox>
                </children>
             </HBox>
          </children>
