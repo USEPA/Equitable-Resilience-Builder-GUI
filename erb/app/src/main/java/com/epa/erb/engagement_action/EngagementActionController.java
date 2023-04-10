@@ -102,6 +102,23 @@ public class EngagementActionController implements Initializable {
 		hideGoalSelection();
 		removeSaveHBox();
 	}
+	
+	@FXML
+	public void worksheetIndexAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/WorksheetIndex.fxml"));
+			WorksheetIndexController controller = new WorksheetIndexController(project, currentSelectedGoal);
+			fxmlLoader.setController(controller);
+			VBox root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
 	private void addTreeViewListener() {
 		treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));

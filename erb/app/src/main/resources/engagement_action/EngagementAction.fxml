@@ -35,6 +35,7 @@
       </Label>
       <HBox alignment="CENTER_RIGHT">
          <children>
+            <Button mnemonicParsing="false" onAction="#worksheetIndexAction" text="Worksheet Index" />
             <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio">
                <HBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
