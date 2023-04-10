@@ -57,8 +57,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
+			linkType="internalStep"
+			link="136">
 			</text>
 			<text
 			size="16.0"

@@ -159,8 +159,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
+			linkType="internalStep"
+			link="136">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -275,8 +275,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways Form"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
+			linkType="internalStep"
+			link="136">
 			</text>
 			</listBlock>
 		</textBlock>

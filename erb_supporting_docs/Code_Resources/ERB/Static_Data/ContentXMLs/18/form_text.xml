@@ -20,8 +20,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways on Hazards, Equity, and Resilient Sytems"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="136">
 			</text>
 			<text
 			size="16.0"
@@ -171,8 +171,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways Form on Hazards, Equity, and Resilient Systems"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="136">
 			</text>
 		</textBlock>
 	</container>

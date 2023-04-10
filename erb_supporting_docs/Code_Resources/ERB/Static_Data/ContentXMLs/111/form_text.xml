@@ -97,8 +97,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeways"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
+			linkType="internalStep"
+			link="136">
 			</text>
 			<text
 			size="16.0"

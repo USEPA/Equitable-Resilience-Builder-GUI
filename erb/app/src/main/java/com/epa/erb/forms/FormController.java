@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -36,6 +37,10 @@ public class FormController {
 
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private IdAssignments idAssignments = new IdAssignments();
+	
+	public void handleImageClicked(MouseEvent e) {
+		
+	}
 	
 	public void handleHyperlink(Text text, String linkType, String link, Project project) {
 		if (linkType.contentEquals("internalIntro")) {
@@ -92,25 +97,21 @@ public class FormController {
 		if (idAssignments.getChapterIdAssignments().contains(link)) {
 			for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
 				if (erbItem.getId() != null && erbItem.getId().contentEquals(link)) {
-					TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap()
-							.get(erbItem);
+					TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
 					engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
 					engagementActionController.treeViewClicked(erbTreeItem, erbTreeItem);
 				}
 			}
 		} else {
 			parentERBContentItem = null;
-			TreeItem<ERBContentItem> currentSelectedTreeItem = engagementActionController.getTreeView()
-					.getSelectionModel().getSelectedItem();
+			TreeItem<ERBContentItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
 			if (currentSelectedTreeItem.getValue().getChildERBContentItems().size() > 0) {
-				ERBContentItem childItem = erbItemFinder
-						.getERBContentItemById(currentSelectedTreeItem.getValue().getChildERBContentItems(), link);
+				ERBContentItem childItem = erbItemFinder.getERBContentItemById(currentSelectedTreeItem.getValue().getChildERBContentItems(), link);
 				if (childItem != null) {
 					engagementActionController.ERBContentItemSelected(childItem);
 					for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
 						if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(childItem.getGuid())) {
-							TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap()
-									.get(erbItem);
+							TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
 							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
 							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
 						}
@@ -118,20 +119,33 @@ public class FormController {
 					return;
 				}
 			}
-			System.out.println("First Parent: " + currentSelectedTreeItem.getParent());
 			// Get parent chapter for current selected item
 			getSectionParent(currentSelectedTreeItem);
-			System.out.println("Searched Parent: " + parentERBContentItem);
 			if (parentERBContentItem != null) {
-				ERBContentItem item = erbItemFinder
-						.getERBContentItemById(parentERBContentItem.getChildERBContentItems(), link);
-				engagementActionController.ERBContentItemSelected(item);
-				for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
-					if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(item.getGuid())) {
-						TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap()
-								.get(erbItem);
-						engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
-						engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
+				ERBContentItem item = erbItemFinder.getERBContentItemById(parentERBContentItem.getChildERBContentItems(), link);
+				if (item != null) {
+					engagementActionController.ERBContentItemSelected(item);
+					for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+						if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(item.getGuid())) {
+							TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
+						}
+					}
+				} else {
+					for(TreeItem<ERBContentItem> erbContent: engagementActionController.getTreeView().getRoot().getChildren()) {
+						ERBContentItem item2 = erbItemFinder.getERBContentItemById(erbContent.getValue().getChildERBContentItems(), link);
+						if(item2 != null) {
+							engagementActionController.ERBContentItemSelected(item2);
+							for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
+								if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(item2.getGuid())) {
+									TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+									engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
+									engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
+									return;
+								}
+							}
+						}
 					}
 				}
 			}

@@ -336,6 +336,7 @@ public class XMLManager {
 											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
+											imageView.setOnMouseClicked(e-> formContentController.handleImageClicked(e));
 											textFlowHBox.getChildren().add(imageView);											
 										} else if(nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;

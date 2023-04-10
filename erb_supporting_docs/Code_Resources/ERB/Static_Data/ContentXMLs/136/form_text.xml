@@ -1,0 +1,98 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock type="block">
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Key Takeaways from Strategizing">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="As you complete the activites in this section, add your key takeaways here.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="1. What are your key take-aways from the implementation storytelling?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- In order to keep people motivated for the long-haul, plan and celebrate small wins.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="2. What are your key take-aways from the warm-up activity (disaster role play or equity storytelling)?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Everyone reacts differently in a diaster, and that's ok.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Know who are your most vulnerable neighbors and check in on them.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="3. What are the key take-aways from the workshop wrap-up discussion?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- It takes intention to ensure equity so be intentional about building it into the process.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Conflict is ok, but have a facilitator who knows how to acknowledge and deal with it.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>
