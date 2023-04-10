@@ -336,7 +336,7 @@ public class XMLManager {
 											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
-											imageView.setOnMouseClicked(e-> formContentController.handleImageClicked(e));
+											imageView.setOnMouseClicked(e-> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
 											textFlowHBox.getChildren().add(imageView);											
 										} else if(nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;
@@ -468,6 +468,7 @@ public class XMLManager {
 											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
+											imageView.setOnMouseClicked(e-> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
 											textFlowHBox.getChildren().add(imageView);											
 										} else if(nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;

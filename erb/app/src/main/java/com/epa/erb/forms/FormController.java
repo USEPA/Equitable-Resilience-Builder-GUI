@@ -3,6 +3,9 @@ package com.epa.erb.forms;
 import java.awt.Desktop;
 import java.io.File;
 import java.net.URL;
+
+import javax.imageio.ImageIO;
+
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.ERBItemFinder;
@@ -12,16 +15,25 @@ import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.IdAssignments;
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeItem;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 
 public class FormController {
 
@@ -35,11 +47,31 @@ public class FormController {
 		this.engagementActionController = engagementActionController;
 	}
 
+	private FileHandler fileHandler = new FileHandler();
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private IdAssignments idAssignments = new IdAssignments();
 	
-	public void handleImageClicked(MouseEvent e) {
-		
+	public void handleImageClicked(MouseEvent event, File imageFile, ImageView image) {
+		if(event.getButton() == MouseButton.SECONDARY) {
+			ContextMenu contextMenu = new ContextMenu();
+			MenuItem menuItem = new MenuItem("Save As");
+			menuItem.setOnAction(e->saveImage(imageFile));
+			contextMenu.getItems().add(menuItem);
+			image.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+				@Override
+				public void handle(ContextMenuEvent event) {
+					contextMenu.show(image, event.getSceneX(), event.getSceneY());
+				}
+			});
+		}
+	}
+	
+	private void saveImage(File origImageFile) {
+		FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+        fileChooser.getExtensionFilters().add(extFilter);
+		File file = fileChooser.showSaveDialog(null);
+		fileHandler.copyFile(origImageFile, file);
 	}
 	
 	public void handleHyperlink(Text text, String linkType, String link, Project project) {
