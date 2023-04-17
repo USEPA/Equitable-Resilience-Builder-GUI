@@ -104,6 +104,22 @@ public class EngagementActionController implements Initializable {
 	}
 	
 	@FXML
+	public void myPortfolioButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/MyPortfolio.fxml"));
+			MyPortfolioController controller = new MyPortfolioController(app, project, currentSelectedGoal);
+			fxmlLoader.setController(controller);
+			VBox root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
 	public void worksheetIndexAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/WorksheetIndex.fxml"));
@@ -144,10 +160,10 @@ public class EngagementActionController implements Initializable {
 	}
 	
 	@FXML
-	private void myPortfolioButtonAction() {
+	private void externalDocUploadButtonAction() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/MyPortfolio.fxml"));
-			MyPortfolioController conteoller = new MyPortfolioController(this);
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ExternalFileUploader.fxml"));
+			ExternalFileUploaderController conteoller = new ExternalFileUploaderController(this);
 			fxmlLoader.setController(conteoller);
 			VBox root = fxmlLoader.load();
 			conteoller.launch();

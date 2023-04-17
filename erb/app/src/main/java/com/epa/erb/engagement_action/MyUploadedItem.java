@@ -2,17 +2,32 @@ package com.epa.erb.engagement_action;
 
 import javafx.scene.text.Text;
 
-public class MyPortfolioItem {
+public class MyUploadedItem {
 	
 	private int fileNumber;
 	private Text fileName;
 	private String modifiedDate;
 	private String uploadedFrom;
-	public MyPortfolioItem(int fileNumber, Text fileName,String modifiedDate, String uploadedFrom) {
+	public MyUploadedItem(int fileNumber, Text fileName,String modifiedDate, String uploadedFrom) {
 		this.fileNumber = fileNumber;
 		this.fileName = fileName;
 		this.modifiedDate = modifiedDate;
 		this.uploadedFrom = uploadedFrom;
+	}
+	
+	private boolean selectedForExport;
+	public MyUploadedItem(boolean selectedForExport, int fileNumber, Text fileName,String modifiedDate) {
+		this.selectedForExport = selectedForExport;
+		this.fileNumber = fileNumber;
+		this.fileName = fileName;
+		this.modifiedDate = modifiedDate;
+	}
+	
+	public boolean isSelectedForExport() {
+		return selectedForExport;
+	}
+	public void setSelectedForExport(boolean selectedForExport) {
+		this.selectedForExport = selectedForExport;
 	}
 	public int getFileNumber() {
 		return fileNumber;

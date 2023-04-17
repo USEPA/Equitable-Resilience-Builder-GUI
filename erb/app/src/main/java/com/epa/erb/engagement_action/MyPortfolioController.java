@@ -1,176 +1,186 @@
 package com.epa.erb.engagement_action;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.FileHandler;
+import com.epa.erb.App;
+import com.epa.erb.ERBContentItem;
+import com.epa.erb.goal.Goal;
+import com.epa.erb.project.Project;
+import java.io.File;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
 import javafx.util.Callback;
-import java.io.PrintWriter;
-import java.util.*;
+import com.epa.erb.utility.XMLManager;
+import javafx.stage.FileChooser;
 
-public class MyPortfolioController implements Initializable{
+
+public class MyPortfolioController implements Initializable {
 
 	@FXML
-	TableColumn<MyPortfolioItem, Integer> numberColumn;
+	TreeView<String> myPortfolioTreeView;
 	@FXML
-	TableColumn<MyPortfolioItem, Text> nameColumn;
+	TableView<MyUploadedItem> tableView;
 	@FXML
-	TableColumn<MyPortfolioItem, String> modifiedColumn;
+	TableColumn<MyUploadedItem, Boolean> selectColumn;
 	@FXML
-	TableColumn<MyPortfolioItem, String> uploadSourceColumn;
+	TableColumn<MyUploadedItem, Integer> numberColumn;
 	@FXML
-	TableView<MyPortfolioItem> tableView;
+	TableColumn<MyUploadedItem, Text> nameColumn;
+	@FXML
+	TableColumn<MyUploadedItem, String> modifiedColumn;
 	
-	private EngagementActionController engagementActionController;
-	public MyPortfolioController(EngagementActionController engagementActionController) {
-		this.engagementActionController = engagementActionController;
+	private HashMap<String, ArrayList<MyUploadedItem>> hash = new HashMap<String, ArrayList<MyUploadedItem>>();
+	
+	private App app;
+	private Project project;
+	private Goal goal;
+	public MyPortfolioController(App app, Project project, Goal goal) {
+		this.app = app;
+		this.project = project;
+		this.goal = goal;
 	}
 	
 	private FileHandler fileHandler = new FileHandler();
+	private XMLManager xmlManager = new XMLManager(app);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-	}
-	
-	public void launch() {
 		initTableView();
-		createMyPortfolioDirectory();
-		loadMyPortfolioDocumentsToTableView();
+		fillTreeView();
+		myPortfolioTreeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));
+		myPortfolioTreeView.getSelectionModel().clearAndSelect(0);
 	}
 	
-	private void loadMyPortfolioDocumentsToTableView() {
-		tableView.getItems().clear();
-		if (engagementActionController != null) {
-			File portfolioDirectory = fileHandler.getMyPortfolioDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
-			if (portfolioDirectory != null && portfolioDirectory.exists()) {
-				for(File uploadedDir: portfolioDirectory.listFiles()) {
-					
-					int fileNumber = Integer.parseInt(uploadedDir.getName());
-					Text fileName = new Text("");
-					String lastModified = "";
-					String uploadedFrom = "";
-					
-					for(File uploadedFile : uploadedDir.listFiles()) {
-						if(uploadedFile.getName().contentEquals("about.txt")) {
-							try {
-								Scanner scanner = new Scanner(uploadedFile);
-								while(scanner.hasNextLine()) {
-									String line = scanner.nextLine();
-									String [] split = line.split(":");
-									uploadedFrom = split[1].trim();
-								}
-								scanner.close();
-							} catch (FileNotFoundException e) {
-								e.printStackTrace();
-							}
-							
-						} else {
-							long modifiedLong = uploadedFile.lastModified();
-							lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
-							fileName = new Text(uploadedFile.getName());
-							fileName.setUnderline(true);
-							fileName.setFill(Color.BLUE);
-						}
+	public void treeViewClicked(TreeItem<String> oldItem, TreeItem<String> newItem) {
+		if (newItem != null) {			
+			String itemClicked = newItem.getValue();
+			if (itemClicked != null) {
+				tableView.getItems().clear();
+				String xmlSection = itemClicked;
+				ArrayList<MyUploadedItem> items = hash.get(xmlSection);
+				for(MyUploadedItem uT:items) {
+					tableView.getItems().add(uT);
+
+				}		
+			}
+		}
+		tableView.refresh();
+	}
+	
+	@FXML
+	public void exportButtonAction() {
+		HashMap<String, ArrayList<MyUploadedItem>> exportHash = getItemsReadyForExport();
+		if(exportHash != null && exportHash.size() > 0) {
+			FileChooser fileChooser = new FileChooser();
+			File saveFile = fileChooser.showSaveDialog(null);
+			if(saveFile != null) {
+				if(!saveFile.exists()) saveFile.mkdir();
+				for(String section: exportHash.keySet()) {
+					File sectionDir = new File(saveFile.getPath() + "\\" + section);
+					if(!sectionDir.exists()) sectionDir.mkdir();
+					for(MyUploadedItem ut: exportHash.get(section)) {
+						File sourceFile = new File(fileHandler.getSupportingDOCDirectory(project, goal) + "\\" + ut.getFileName().getText());
+						File destFile = new File(sectionDir.getPath() + "\\" + ut.getFileName().getText());
+						fileHandler.copyFile(sourceFile, destFile);
 					}
-					MyPortfolioItem myPortfolioItem = new MyPortfolioItem(fileNumber, fileName, lastModified, uploadedFrom);
-					tableView.getItems().add(myPortfolioItem);
-					fileNumber = fileNumber+1;
 				}
 			}
 		}
 	}
 	
-	private void addSinglePortfolioDocumentToTableView(File sourceFile, String uploadSource) {
-		if (engagementActionController != null) {
-			int fileNumber = tableView.getItems().size() + 1;
-			long modifiedLong = sourceFile.lastModified();
-			String lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
-			Text text = new Text(sourceFile.getName());
-			text.setUnderline(true);
-			text.setFill(Color.BLUE);
-			MyPortfolioItem myPortfolioItem = new MyPortfolioItem(fileNumber, text, lastModified, uploadSource);
-			tableView.getItems().add(myPortfolioItem);
-			fileNumber = fileNumber + 1;
+	private HashMap<String, ArrayList<MyUploadedItem>> getItemsReadyForExport(){
+		HashMap<String, ArrayList<MyUploadedItem>> exportHash = new HashMap<String, ArrayList<MyUploadedItem>>();
+		for(String section: hash.keySet()) {
+			ArrayList<MyUploadedItem> items = hash.get(section);
+			ArrayList<MyUploadedItem> readyItems = new ArrayList<MyUploadedItem>();
+			for(MyUploadedItem item: items) {
+				if(item.isSelectedForExport()) {
+					readyItems.add(item);
+				}
+			}
+			if(readyItems.size() >0) exportHash.put(section, readyItems);
 		}
+		return exportHash;
 	}
 	
-	private void handleNewFile(File sourceFile, String uploadSource) {
-		//Create dir
-		int fileNumber = tableView.getItems().size() + 1;
-		File portfolioDir = fileHandler.getMyPortfolioDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
-		File destDir = new File(portfolioDir + "\\" + fileNumber);
-		if(!destDir.exists()) destDir.mkdir();
-		//Copy file
-		File destFile = new File(destDir + "\\" + sourceFile.getName());
-		fileHandler.copyFile(sourceFile, destFile);
-		//Create about file
-		File aboutFile = new File(destDir + "\\" + "about.txt");
-		try {
-			PrintWriter printWriter = new PrintWriter(aboutFile);
-			printWriter.println("uploadSource : " + uploadSource);
-			printWriter.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}	
-	}
-	
-	@FXML
-	public void uploadFileButtonAction() {
-		FileChooser choose = new FileChooser();
-		File sourceFile = choose.showOpenDialog(null);
-		if(sourceFile != null && sourceFile.exists()) {
-		String uploadedFrom = engagementActionController.getCurrentSelectedERBContentItem().getShortName();
-		handleNewFile(sourceFile, uploadedFrom);
-		addSinglePortfolioDocumentToTableView(sourceFile,uploadedFrom);
-		}
-	}
-	
-	public void createMyPortfolioDirectory() {
-		if(engagementActionController != null) {
-			File portfolioDirectory = fileHandler.getMyPortfolioDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
-			if(portfolioDirectory != null) {
-				portfolioDirectory.mkdir();
+	private void fillTreeView() {
+		IdAssignments id = new IdAssignments();
+		ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections", "ERB Sections");
+		ArrayList<String> rootFileNames = xmlManager.parseWorksheetsXML(fileHandler.getStaticWorksheetsXMLFile(), rootERBContentItem.getShortName());			
+		hash.put(rootERBContentItem.getShortName(), createListOfUploadedItems(rootFileNames));
+		TreeItem<String> rootTreeItem = new TreeItem<String>(rootERBContentItem.getLongName());
+		rootTreeItem.setExpanded(true);
+		myPortfolioTreeView.setRoot(rootTreeItem);
+
+		for (ERBContentItem contentItem : app.getAvailableERBContentItems()) {
+			if (id.getChapterIdAssignments().contains(contentItem.getId())) {
+				TreeItem<String> treeItem = new TreeItem<String>(contentItem.getLongName());
+				ArrayList<String> fileNames = xmlManager.parseWorksheetsXML(fileHandler.getStaticWorksheetsXMLFile(), contentItem.getShortName());			
+				hash.put(contentItem.getShortName(), createListOfUploadedItems(fileNames));		
+				rootTreeItem.getChildren().add(treeItem);
 			}
 		}
 	}
 	
-	private void fileNameClicked(Text fileName) {
-		File portfolioDirectory = fileHandler.getMyPortfolioDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
-		int fileNumber = tableView.getSelectionModel().getSelectedItem().getFileNumber();
-		File fileToOpen = new File(portfolioDirectory.getPath() + "\\" + fileNumber + "\\" + fileName.getText());
-		if(fileToOpen.exists()) {
-			fileHandler.openFileOnDesktop(fileToOpen);
+	private ArrayList<MyUploadedItem> createListOfUploadedItems(ArrayList<String> fileNames){
+		ArrayList<MyUploadedItem> itemsForSection = new ArrayList<MyUploadedItem>();
+		int count =1;
+		for(String file: fileNames) {
+			MyUploadedItem uT = createUploadedItem(file, count);
+			itemsForSection.add(uT);
+			count++;
 		}
+		return itemsForSection;
 	}
 	
-	public void initTableView() {		
+	private MyUploadedItem createUploadedItem(String file, int count) {
+		File f = new File(fileHandler.getSupportingDOCDirectory(project, goal) + "\\" + file);
+		Text fileName = new Text(file);
+		long modifiedLong = f.lastModified();
+		String lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
+		MyUploadedItem uT = new MyUploadedItem(false, count, fileName, lastModified );
+		return uT;
+	}
+
+	public void initTableView() {
+		selectColumn.setCellValueFactory(new PropertyValueFactory("selectedForExport"));
+		selectColumn
+				.setCellFactory(new Callback<TableColumn<MyUploadedItem, Boolean>, TableCell<MyUploadedItem, Boolean>>() {
+					@Override
+					public TableCell<MyUploadedItem, Boolean> call(TableColumn<MyUploadedItem, Boolean> arg0) {
+						return new TableCheckCell(tableView);
+					}
+				});
+		
 		numberColumn.setCellValueFactory(
-		        new PropertyValueFactory<MyPortfolioItem,Integer>("fileNumber")
+		        new PropertyValueFactory<MyUploadedItem,Integer>("fileNumber")
 		    );
 		nameColumn.setCellValueFactory(
-		        new PropertyValueFactory<MyPortfolioItem,Text>("fileName")
+		        new PropertyValueFactory<MyUploadedItem,Text>("fileName")
 		    );
-		nameColumn.setCellFactory(new Callback<TableColumn<MyPortfolioItem, Text>, TableCell<MyPortfolioItem, Text>>() {
+		nameColumn.setCellFactory(new Callback<TableColumn<MyUploadedItem, Text>, TableCell<MyUploadedItem, Text>>() {
 		        public TableCell call(TableColumn param) {
-		            return new TableCell<MyPortfolioItem, Text>() {
+		            return new TableCell<MyUploadedItem, Text>() {
 		                @Override
 		                public void updateItem(Text item, boolean empty) {
 		                    super.updateItem(item, empty);
 		                    if (!isEmpty()) {		                        
-		                        this.setOnMouseClicked(e-> fileNameClicked(item));
 		                        setGraphic(item);
 		                    }
 		                }
@@ -180,12 +190,64 @@ public class MyPortfolioController implements Initializable{
 		
 		
 		modifiedColumn.setCellValueFactory(
-		        new PropertyValueFactory<MyPortfolioItem,String>("modifiedDate")
-		    );
-		
-		uploadSourceColumn.setCellValueFactory(
-		        new PropertyValueFactory<MyPortfolioItem,String>("uploadedFrom")
+		        new PropertyValueFactory<MyUploadedItem,String>("modifiedDate")
 		    );
 	}
+	
+	private class TableCheckCell extends TableCell<MyUploadedItem, Boolean> {
+		final CheckBox checkBox = new CheckBox();
+		TableCheckCell(final TableView<MyUploadedItem> tblView) {
+			checkBox.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent t) {
+					int selectedIndex = getTableRow().getIndex();
+					MyUploadedItem myUploadedItem = tableView.getItems().get(selectedIndex);
+					if (checkBox.isSelected()) {
+						myUploadedItem.setSelectedForExport(true);
+					} else {
+						myUploadedItem.setSelectedForExport(false);
+					}
+				}
+			});
+		}
+
+		@Override
+		protected void updateItem(Boolean t, boolean empty) {
+			boolean pVal=false;
+			if(t != null) {
+				pVal = t;
+			}
+			super.updateItem(t, empty);
+			if (!empty) {
+				if(pVal) checkBox.setSelected(true);
+				setGraphic(checkBox);
+				setStyle("-fx-alignment: CENTER");
+			}
+		}
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
+	}	
 
 }

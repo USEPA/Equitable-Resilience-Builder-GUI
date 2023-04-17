@@ -79,6 +79,16 @@ public class FileHandler {
 		}
 	}
 	
+	public File getMyUploadsDirectory(Project project, Goal goal) {
+		if(project != null && goal != null) {
+			File myUploadsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\MyUploads");
+			return myUploadsDirectory;
+		} else {
+			logger.error("Cannot getMyUploadsDirectory. project = " + project + " goal = " + goal);
+			return null;
+		}
+	}
+	
 	public File getMyPortfolioDirectory(Project project, Goal goal) {
 		if(project != null && goal != null) {
 			File myPortfolioDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\MyPortfolio");
@@ -88,6 +98,7 @@ public class FileHandler {
 			return null;
 		}
 	}
+	
 	
 	
 	//--------------------------------------------------------------------------
@@ -137,6 +148,11 @@ public class FileHandler {
 	public File getStaticAvailableContentXMLFile() {
 		File availableContentXMLFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Available_Content.xml");
 		return availableContentXMLFile;
+	}
+	
+	public File getStaticWorksheetsXMLFile() {
+		File worksheetsXMLFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Worksheets.xml");
+		return worksheetsXMLFile;
 	}
 	
 	public File getStaticIndicatorCardsXMLFile() {

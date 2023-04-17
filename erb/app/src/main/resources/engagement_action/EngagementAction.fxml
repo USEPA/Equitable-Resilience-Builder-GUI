@@ -33,12 +33,13 @@
             <Font name="System Italic" size="13.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER_RIGHT">
+      <HBox alignment="CENTER_RIGHT" spacing="5.0">
          <children>
             <Button mnemonicParsing="false" onAction="#worksheetIndexAction" text="Worksheet Index" />
-            <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio">
+            <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio" />
+            <Button mnemonicParsing="false" onAction="#externalDocUploadButtonAction" text="Upload External File">
                <HBox.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
          </children>
