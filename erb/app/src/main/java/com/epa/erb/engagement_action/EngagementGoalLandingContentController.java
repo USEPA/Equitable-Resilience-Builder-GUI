@@ -7,10 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 public class EngagementGoalLandingContentController implements Initializable {
 
+	@FXML
+	TextFlow textFlow;
 	@FXML
 	VBox mainPanel;
 	@FXML
@@ -41,12 +45,31 @@ public class EngagementGoalLandingContentController implements Initializable {
 	}
 
 	public void setAboutTextAreaText(Text text) {
-		String string = text.getText();
-		string = string.replaceAll("\r", "\n");
+		textFlow.getChildren().add(text);
+		
 	}
 
 	Text getAboutText() {
-		return new Text("The Equitable Resilience Builder (ERB) is an application that assists communities with resilience planning. ERB engages communities in a guided process to inclusively assess their vulnerability and resilience to disasters and climate change, then use the results to prioritize actions to build resilience in an equitable way.");
+		Text text = new Text();
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("There are 5 sections to this toolkit:");
+		stringBuilder.append("\n\t");
+		stringBuilder.append("1. Plan your project");
+		stringBuilder.append("\n\t");
+		stringBuilder.append("2. Engage your community");
+		stringBuilder.append("\n\t");
+		stringBuilder.append("3. Assess hazards, equity and resilience");
+		stringBuilder.append("\n\t");
+		stringBuilder.append("4. Strategize actions");
+		stringBuilder.append("\n\t");
+		stringBuilder.append("5. Wrap up and move forward");
+		stringBuilder.append("\n");
+		stringBuilder.append("You can navigate the pages in the sections using the tree on the left. Each section contains a series of activities that make up the ERB toolkit. There is one page per activity. Each page contains an overview of the activity, with more information provided in documents attached on upper right side of the page, under the header \"What you'll need.\" On the lower right side of the page, you'll see the header \"Centering equity,\" which contains icons and tips for how to carry out the activities in an inclusive way");
+
+		text.setFont(new Font(20.0));
+
+		text.setText(stringBuilder.toString());
+		return text;
 	}
 	
 	public VBox getMainPanel() {
