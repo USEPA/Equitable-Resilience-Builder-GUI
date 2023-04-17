@@ -37,7 +37,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#worksheetIndexAction" text="Worksheet Index" />
             <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio" />
-            <Button mnemonicParsing="false" onAction="#externalDocUploadButtonAction" text="Upload External File">
+            <Button mnemonicParsing="false" onAction="#externalDocUploadButtonAction" text="Upload File">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

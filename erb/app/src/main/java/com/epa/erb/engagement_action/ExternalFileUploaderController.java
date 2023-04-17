@@ -54,9 +54,9 @@ public class ExternalFileUploaderController implements Initializable{
 	private void loadMyUploadedDocumentsToTableView() {
 		tableView.getItems().clear();
 		if (engagementActionController != null) {
-			File portfolioDirectory = fileHandler.getMyUploadsDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
-			if (portfolioDirectory != null && portfolioDirectory.exists()) {
-				for(File uploadedDir: portfolioDirectory.listFiles()) {
+			File uploadsDirectory = fileHandler.getMyUploadsDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
+			if (uploadsDirectory != null && uploadsDirectory.exists()) {
+				for(File uploadedDir: uploadsDirectory.listFiles()) {
 					
 					int fileNumber = Integer.parseInt(uploadedDir.getName());
 					Text fileName = new Text("");

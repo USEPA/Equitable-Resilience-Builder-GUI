@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
 import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.App;
@@ -13,6 +15,8 @@ import com.epa.erb.ERBContentItem;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import java.io.File;
+import java.io.FileNotFoundException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import com.epa.erb.utility.XMLManager;
@@ -94,8 +99,14 @@ public class MyPortfolioController implements Initializable {
 				for(String section: exportHash.keySet()) {
 					File sectionDir = new File(saveFile.getPath() + "\\" + section);
 					if(!sectionDir.exists()) sectionDir.mkdir();
+					
 					for(MyUploadedItem ut: exportHash.get(section)) {
-						File sourceFile = new File(fileHandler.getSupportingDOCDirectory(project, goal) + "\\" + ut.getFileName().getText());
+						File sourceFile = null;
+						if(section.contentEquals("Uploaded")) {
+							sourceFile = new File(fileHandler.getMyUploadsDirectory(project, goal) + "\\" + ut.getFileNumber() + "\\" + ut.getFileName().getText());
+						}else {
+							sourceFile = new File(fileHandler.getSupportingDOCDirectory(project, goal) + "\\" + ut.getFileName().getText());
+						}
 						File destFile = new File(sectionDir.getPath() + "\\" + ut.getFileName().getText());
 						fileHandler.copyFile(sourceFile, destFile);
 					}
@@ -136,6 +147,49 @@ public class MyPortfolioController implements Initializable {
 				rootTreeItem.getChildren().add(treeItem);
 			}
 		}
+		
+		ERBContentItem uploadedERBContentItem = new ERBContentItem(null, null, "mainForm", null, "Uploaded", "Uploaded");
+		hash.put(uploadedERBContentItem.getShortName(), getListOfUserUploadedItems());
+		TreeItem<String> uploadedTreeItem = new TreeItem<String>(uploadedERBContentItem.getShortName());
+		rootTreeItem.getChildren().add(uploadedTreeItem);
+		
+	}
+	
+	private ArrayList<MyUploadedItem> getListOfUserUploadedItems(){
+		ArrayList<MyUploadedItem> uploadedItems = new ArrayList<MyUploadedItem>();
+		File uploadsDirectory = fileHandler.getMyUploadsDirectory(project, goal);
+		if (uploadsDirectory != null && uploadsDirectory.exists()) {
+			for(File uploadedDir: uploadsDirectory.listFiles()) {
+				int fileNumber = Integer.parseInt(uploadedDir.getName());
+				Text fileName = new Text("");
+				String lastModified = "";
+				String uploadedFrom = "";
+				
+				for(File uploadedFile : uploadedDir.listFiles()) {
+					if(uploadedFile.getName().contentEquals("about.txt")) {
+						try {
+							Scanner scanner = new Scanner(uploadedFile);
+							while(scanner.hasNextLine()) {
+								String line = scanner.nextLine();
+								String [] split = line.split(":");
+								uploadedFrom = split[1].trim();
+							}
+							scanner.close();
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}
+						
+					} else {
+						long modifiedLong = uploadedFile.lastModified();
+						lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
+						fileName = new Text(uploadedFile.getName());
+					}
+				}
+				MyUploadedItem myUploadedItem = new MyUploadedItem(fileNumber, fileName, lastModified, uploadedFrom);
+				uploadedItems.add(myUploadedItem);
+			}
+		}
+		return uploadedItems;
 	}
 	
 	private ArrayList<MyUploadedItem> createListOfUploadedItems(ArrayList<String> fileNames){
