@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Scenarios prompt us to thibk about risks we haven't thought about yet. They spark insight into how hazards and vulnerability might change over time. They help us plan what to do in the next few years to create resilient systems in the long term.">
+			text="Scenarios prompt us to think about risks we haven’t thought about yet. They spark insight into how hazards and vulnerability might change over time. They help us plan what do to in the next few years to create resilient systems in the long term.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -58,15 +58,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Select from the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Future Scenarios Worksheet"
-			linkType="externalDOC"
-			link="Ch3_FutureScenarios_Worksheet.docx">
+			text="Select from the Future Scenarios Instructions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -202,6 +194,19 @@
 			text="List of potential near-term decisions">
 			</text>
 		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Key Takeaways">
+			</text>
+		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
@@ -249,19 +254,26 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Future Scenarios Worksheet"
-			linkType="externalDOC"
-			link="Ch3_FutureScenarios_Worksheet.docx">
+			text="Future Scenarios Instructions"
+			linkType=""
+			link="">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Workshop 1 Facilitators Guide"
-			linkType="externalDOC"
-			link="Ch3_Workshop1_FacilitatorsGuide.docx">
+			text="Key Takeaways"
+			linkType=""
+			link="">
 			</text>
 			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -270,7 +282,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -283,7 +295,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="When thinking about cascading issues for different groups, remember to consider groups that might be the most vulnerable or have the least support">
+			text="When thinking about cascading issues for different groups, remember to consider groups that might be the most vulnerable or have the least support. ">
 			</text>
 		</textBlock>
 	</container>

@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review and select indicators that tell you about current conditions of your community’s built, natural, and social environment systems">
+			text="The suggested indicators cover a broad range of built, natural, and social environment resilience">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The suggested indicators cover a broad range of built, natural, and social environment resilience. Reviewing the indicators for relevance and deciding on what data to use, local or online, will help you collect the information most effectively.">
+			text="Reviewing the indicators for relevance and deciding on what data to use, local or online, will help you collect the information most effectively.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,35 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="With the core team, review the indicators in ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Master Indicators List"
-			linkType="externalDOC"
-			link="Ch3_IndicatorsMaster_List.xlsx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" and select the ones you want to include in the Indicator Card Sorting Activity. Select the indicators that are most relevant to your resilience goals in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Project Plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=".">
+			text="With the core team, review the indicators in Indicators Master List and select the ones you want to include in the Indicator Activity. Select the indicators that are most relevant to your resilience goals in the Project Plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -91,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Also look at possible data sources in the list for qualitative and quantitative data to use.">
+			text="Also look at possible data sources in the list for qualitative and quantitative data to use">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -110,7 +82,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" If there's anything you want to know that is not covered, feel free to add your own indicators to the master list.">
+			text=" If there’s anything you want to know that is not covered, feel free to add your own indicators to the master list">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -133,13 +105,6 @@
 			fontStyle="Regular"
 			text="List of selected indicators you'll use">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="400.0"
-			height="300.0"
-			id="119">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
@@ -183,15 +148,32 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Indicators Master List"
-			linkType="externalDOC"
-			link="Ch3_IndicatorsMaster_List.xlsx">
+			linkType=""
+			link="">
 			</text>
-		</textBlock>		
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicator Activity Instructions"
+			linkType=""
+			link="">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+		</textBlock>	
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
@@ -212,7 +194,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="You may want to add your own indicators to assess based on issues of concern in your community.">
+			text="You may want to add your own indicators to assess based on issues of concern in your community. ">
 			</text>
 		</textBlock>	
 	</container>

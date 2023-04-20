@@ -50,13 +50,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Review:">
+			text="Review: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Take time to walk around the room and look at the Actions Brainstorming other groups have done">
+			text="Take time to walk around the room and look at the Actions Brainstorming other groups have done">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -69,13 +69,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Analyze and Evaluate:">
+			text="Analyze and Evaluate: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Discuss the impact that the actions will have on equity and hazard mitigation. How can the actions be most impactful?">
+			text="Discuss the impact that the actions will have on equity and hazard mitigation. How can the actions be most impactful?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -88,13 +88,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Prioritize:">
+			text="Prioritize: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Share your discussions with the larger group; if desired, vote on which actions should be prioritized">
+			text="Share your discussions with the larger group; if desired, vote on which actions should be prioritized and selected for Strategy Planning Activity (if doing)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -107,15 +107,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Complete the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Evaluating Actions worksheet"
-			linkType=""
-			link="">
+			text="Complete Evaluating Equitable Resilience Building Actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -123,7 +115,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Outputs">
+			text="Output">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -136,7 +128,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="At least 10 potential actions for each Vision Statement with descriptions of how they will impact increase equity and hazard resilience">
+			text="At least 10 potential actions for each Vision Statement with descriptions of how they will impact increase equity and hazard resilience recorded in the Evaluating Equitable Resilience Building Actions document">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -185,7 +177,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Community Participants">
+			text="Participants">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -207,14 +199,24 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Evaluating Actions Worksheet"
+			text="Evaluating Equitable Resilience"
 			linkType=""
 			link="">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Building Actions"
+			linkType=""
+			link="">
+			</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -222,14 +224,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text=""
-			linkType=""
-			link="">
-			</text>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -238,7 +232,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>

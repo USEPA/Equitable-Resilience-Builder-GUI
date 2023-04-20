@@ -10,7 +10,7 @@
 		</textBlock>
 		<textBlock type="block">
 			<text
-			size="18.0"
+			size="14.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="As you complete the activites in this section, add your key takeaways here.">
@@ -71,7 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="3. What are the key take-aways from the workshop wrap-up discussion?">
+			text="3. Workshop wrap-up: Where is there interest in working together, how, and who else needs to be involved?">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -85,13 +85,69 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;- It takes intention to ensure equity so be intentional about building it into the process.">
+			text="&#xD;- To reduce impacts from flooding, government should work with community members to identify drainage systems that need maintenance, and where the community volunteers can remove debris.">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;- Conflict is ok, but have a facilitator who knows how to acknowledge and deal with it.">
+			text="&#xD;- Households in areas of severe flooding should be informed.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="4. Workshop wrap-up: What are the opportunities for taking action, and what barriers need to be addressed? ">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Opportunities to reduce severity of flooding and increase green infrastructure.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Barriers are funding available for disaster recovery.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="5. Workshop wrap-up: How should outputs from this workshop be shared more widely, and who needs to be updated?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Community email, magazine, newsletter, or flyers in trusted locations.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Neighbors in areas where actions are being taken need to be updated.">
 			</text>
 		</textBlock>
 	</container>

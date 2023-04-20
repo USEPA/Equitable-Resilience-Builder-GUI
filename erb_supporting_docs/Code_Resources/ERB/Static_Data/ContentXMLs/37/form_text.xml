@@ -5,15 +5,23 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Develop a Community Engagement Plan">
+			text="Plan Workshop 2: Collaborative Assessment">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Take steps to reduce barriers to participation and empower participants as you prepare for the workshop.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Activity 2: Write the plan">
+			text="Why do this">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -21,49 +29,127 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In this activity, the core team will finalize the details of a community engagement plan.">
+			text="Engaging people from all parts of your community is a must-have for success. Workshops are a good way of bringing people from different parts of the community together, but can also be difficult for people to attend. People need to feel included and comfortable in order to participate fully. Removing barriers and being intentional about practicing equity will go a long way towards productive workshops and building relationships.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Why do this: ">
+			text="How to do this">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A community engagement plan helps you figure out how you're going to communicate and coordinate with community members. This planning process can help you expand your community network, enhance inclusion, and strengthen community buy-in and participation in next ERB activities.">
+			text="Work with a local partner, if you can, to co-plan this event">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Take steps take to recruit a diverse group of attendees and offer a welcoming environment">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Use the Facilitators Guide for Workshops to prepare activities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Revisit the goals in your Project Plan and discuss what information and activities you might need to meet these goals">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Identify a facilitator to lead portions of the workshop">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="How to do this: ">
+			text="Outputs">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Refer to the materials that you put together earlier in this chapter or existing community engagement materials you have. Use the table provided in the ">
+			text="Identified workshop facilitator">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Community Engagement Plan"
-			linkType="externalDOC"
-			link="Ch2_CommunityEngagement_Plan.docx">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" template to decide: the activities that are appropriate to communicate and reach your audience; how much time each activity will take; when you want to have them; venue; and how you will recruit.">
+			text="Prepared workshop activities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Identified potential barriers to participation and solutions">
 			</text>
 		</textBlock>
 	</container>
@@ -73,65 +159,63 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="40.0"
+			height="40.0"
+			id="67">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Time: 1-3 weeks of development, both independent and group work">
+			text="Core team and local partners">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Days to weeks">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Community Engagement Plan"
-			linkType="externalDOC"
-			link="Ch2_CommunityEngagement_Plan.docx">
+			text="Facilitators Guide for Workshops"
+			linkType=""
+			link="">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="40.0"
+			height="40.0"
+			id="70">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Community Connections Table"
-			linkType="externalDOC"
-			link="Ch2_CommunityConnections_Table.docx">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Diagram of Community Connections"
-			linkType="externalDOC"
-			link="Ch2_DiagramCommunityConnections.docx">
+			text="Urban Waters Story Map"
+			linkType=""
+			link="">
 			</text>
 		</textBlock>
 	</container>
@@ -141,20 +225,27 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
-			id="77">
+			id="66">
 			</icon>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="65">
+			</icon>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
-			text="Planning in an iterative process. This activity helps you get started with engagement. However, we recommend that you periodically revisit and update your plan as you expand your network and learn more about the needs of your community.">
+			fontStyle="Regular"
+			text="In addition to workshops, or if workshops are not feasible, reach out to community groups for one-on-one conversations. Another idea is to attend local meetings and activities. These actions are another way to incorporate local voices and expand representation.">
 			</text>
 		</textBlock>
 	</container>

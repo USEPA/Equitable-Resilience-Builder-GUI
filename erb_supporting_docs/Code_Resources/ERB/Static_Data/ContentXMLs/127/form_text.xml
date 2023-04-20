@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Define the Problems to Solve">
+			text="Define your Action Areas">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,49 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Look through the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways on Hazards, Equity, and Resilient Systems"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=", the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Storytelling Word Cloud"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=", and ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Goals"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" from your project plan.">
+			text="Look through the Key Takeaways on Assessment, the Storytelling Word Cloud, and goals from your Project Plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -105,21 +63,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the techniques and examples in the ">
+			text="Use the Identify Action Areas document to generate statements about resilience problems">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Problem Statement Worksheet"
-			linkType=""
-			link="">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" to generate problem statements.">
+			text="You may want to share these Action Areas with workshop participants before the workshop and determine if they have a preference for their break-out group">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -140,7 +97,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Problem statements to use in the Results to Action workshop">
+			text="Problem statements recorded in the Identify Action Areas document to use in the Results to Action workshop">
 			</text>
 		</textBlock>
 	</container>
@@ -190,7 +147,15 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Key Takeaways on &#xD;Hazards, Equity, and Resilient &#xD;Systems"
+				text="Identify Action Areas"
+				linkType=""
+				link="">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Key Takeaways Form on Assessment"
 				linkType=""
 				link="">
 				</text>
@@ -202,6 +167,14 @@
 				linkType=""
 				link="">
 				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Indicators Visual"
+				linkType=""
+				link="">
+				</text>
 			</listBlock>
 		</textBlock>
 		<textBlock>
@@ -210,24 +183,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<listBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Goals"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Problem Statement Worksheet"
-			linkType=""
-			link="">
-			</text>
-			</listBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -236,7 +191,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -249,7 +204,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Invite local partners to generate problem statements with the core team.">
+			text="Invite local partners to generate problem statements with the core team. This will strengthen the representation of perspectives in the project.">
 			</text>
 		</textBlock>
 	</container>

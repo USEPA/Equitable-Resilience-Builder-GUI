@@ -2,10 +2,10 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Sorting indicator cards activity">
+			text="Plan Workshop 3">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,91 +13,239 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Have the breakout groups sort the indicator cards.">
+			text="Take steps to reduce barriers to participation and empower participants as you prepare for the workshop.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
-			text="Why do this: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;We will understand where systems (and topics) fall relative to others in terms of resilience and equity.">
+			text="Engaging people from all parts of your community is a must-have for success. Workshops are a good way of bringing people from different parts of the community together, but can also be difficult for people to attend. People need to feel included and comfortable in order to participate fully. Removing barriers and being intentional about practicing equity will go a long way towards productive workshops and building relationships.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="How to do this: ">
+			text="How to do this">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;At the workshop, have the breakout groups for each system (or topic) sort the indicator cards into Least Resilient, Moderately Resilient, and Most Resilient. Next, within each category, order the cards from Least Equitable to Moderately Equitable to Highly Equitable.">
+			text="Work with a local partner, if you can, to co-plan this event">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Take steps to recruit a diverse group of attendees and offer a welcoming environment">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Use the Facilitators Guide for Workshops to prepare activities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Revisit the goals in your Project Plan and discuss what information and activities you might need to meet these goals">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Identify a facilitator to lead portions of the workshop">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Outputs">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Identified workshop facilitator">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Prepared workshop activities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Identified potential barriers to participation and solutions">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="People you'll need: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Breakout groups">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="&#xD;Time you'll need: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Activity time - 1 hour">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="&#xD;Materials you'll need: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Indicator cards">
+			text="What you will need">
 			</text>
 		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team and local partners">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Days to weeks">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Facilitators Guide for Workshops"
+			linkType=""
+			link="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Urban Waters Story Map"
+			linkType=""
+			link="">
+			</text>
+		</textBlock>		
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Outputs:">
+			text="Centering equity">
 			</text>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="66">
+			</icon>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="65">
+			</icon>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Sorted indicator cards">
+			text="In addition to workshops, or if workshops are not feasible, reach out to community groups for one-on-one conversations. Another idea is to attend local meetings and activities. These actions are another way to incorporate local voices and expand representation.">
 			</text>
 		</textBlock>
 	</container>

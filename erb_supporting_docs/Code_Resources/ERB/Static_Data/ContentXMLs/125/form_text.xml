@@ -21,7 +21,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Transition to next phase of implementation by reflecting on goals and most needed actions for consideration to meet those goals">
+			text="Transition to the next phase of implementation by reflecting on your goals and most needed actions for consideration to meet those goals">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -139,7 +139,7 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Implementation Storytelling Prompt"
+				text="Implementation Storytelling Exercise"
 				linkType=""
 				link="">
 				</text>
@@ -147,7 +147,7 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Key Takeaways on &#xD;Hazards, Equity, and Resilient Systems"
+				text="Key Takeaways Form Assessment"
 				linkType=""
 				link="">
 				</text>
@@ -159,6 +159,14 @@
 				linkType=""
 				link="">
 				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Project Plan"
+				linkType=""
+				link="">
+				</text>
 			</listBlock>
 		</textBlock>
 		<textBlock>
@@ -167,14 +175,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Goals"
-			linkType=""
-			link="">
-			</text>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -183,7 +183,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -196,7 +196,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Through storytelling, give everyone a voice to share successes and pitfalls">
+			text="Through storytelling, give everyone a voice to share successes and pitfalls.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -209,7 +209,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Actively listen during storytelling to learn from everyone’s experiences">
+			text="Actively listen during storytelling to learn from everyone’s experiences.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -222,7 +222,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Collaborate to develop problem statements you will use in the results to action workshop">
+			text="Collaborate to develop problem statements you will use in the results to action workshop.">
 			</text>
 		</textBlock>
 	</container>

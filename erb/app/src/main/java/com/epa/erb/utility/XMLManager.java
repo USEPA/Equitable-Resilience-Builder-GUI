@@ -35,6 +35,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -308,7 +309,6 @@ public class XMLManager {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				FileHandler fileHandler = new FileHandler();
-
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -328,6 +328,7 @@ public class XMLManager {
 							Node textBlockNode = textBlockNodeList.item(j);
 							// TextBlock
 							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
+								System.out.println("--------------------NEW TEXT BLOCK----------------------------");
 								HBox textFlowHBox = new HBox();
 								TextFlow textFlow = new TextFlow();
 								Element textBlockElement = (Element) textBlockNode;
@@ -359,6 +360,8 @@ public class XMLManager {
 												} else if (fontStyle.contentEquals("Underlined")) {
 													t.setUnderline(true);
 													t.setFont(Font.font(fontFamily, size));
+												} else if (fontStyle.contentEquals("Italic")) {
+													t.setFont(Font.font(fontFamily, FontPosture.ITALIC, size));
 												} else {
 													t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 												}
@@ -375,49 +378,71 @@ public class XMLManager {
 											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
-											imageView.setOnMouseClicked(e-> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
-											textFlowHBox.getChildren().add(imageView);											
-										} else if(nodeName.contentEquals("listBlock")) {
+											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
+											textFlowHBox.getChildren().add(imageView);
+										} else if (nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;
 											Element listBlockElement = (Element) listBlockNode;
-											NodeList textInListNodeList = listBlockElement.getElementsByTagName("text");
+											NodeList childrenNodeList = listBlockElement.getChildNodes();
 											VBox listVBox = new VBox();
-											for(int m=0; m<textInListNodeList.getLength();m++) {
-												Node textNode = textInListNodeList.item(m);
-												if(textNode.getNodeType() == Node.ELEMENT_NODE) {
-													Element textElement = (Element) textNode;
-													double size = Double.parseDouble(textElement.getAttribute("size"));
-													String fontFamily = textElement.getAttribute("fontFamily");
-													String fontStyle = textElement.getAttribute("fontStyle");
-													String text = textElement.getAttribute("text");
-													Text t = new Text(text);
-													if (fontStyle.contentEquals("Hyperlink")) {
-														String linkType = textElement.getAttribute("linkType");
-														String link = textElement.getAttribute("link");
-														t.setStyle("-fx-fill:#4d90bc");
-														t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-														t.setOnMouseEntered(e -> t.setUnderline(true));
-														t.setOnMouseExited(e -> t.setUnderline(false));
-														t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
-													} else {
-														if (fontStyle.contentEquals("Bold")) {
-															t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
-														} else if (fontStyle.contentEquals("Underlined")) {
-															t.setUnderline(true);
-															t.setFont(Font.font(fontFamily, size));
-														} else {
-															t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+											for (int n = 0; n < childrenNodeList.getLength(); n++) {
+												Node cNode = childrenNodeList.item(n);
+												if (cNode.getNodeType() == Node.ELEMENT_NODE) {
+													String nName = cNode.getNodeName();
+													if (nName.contentEquals("text")) {
+														Node textNode = cNode;
+														if (textNode.getNodeType() == Node.ELEMENT_NODE) {
+															Element textElement = (Element) textNode;
+															double size = Double.parseDouble(textElement.getAttribute("size"));
+															String fontFamily = textElement.getAttribute("fontFamily");
+															String fontStyle = textElement.getAttribute("fontStyle");
+															String text = textElement.getAttribute("text");
+															Text t = new Text(text);
+															if (fontStyle.contentEquals("Hyperlink")) {
+																String linkType = textElement.getAttribute("linkType");
+																String link = textElement.getAttribute("link");
+																t.setStyle("-fx-fill:#4d90bc");
+																t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+																t.setOnMouseEntered(e -> t.setUnderline(true));
+																t.setOnMouseExited(e -> t.setUnderline(false));
+																t.setOnMouseClicked(e -> formContentController.handleHyperlink(t,linkType, link, app.getSelectedProject()));
+															} else {
+																if (fontStyle.contentEquals("Bold")) {
+																	t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+																} else if (fontStyle.contentEquals("Underlined")) {
+																	t.setUnderline(true);
+																	t.setFont(Font.font(fontFamily, size));
+																} else {
+																	t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+																}
+															}
+															listVBox.getChildren().add(t);
 														}
+													} else if (nName.contentEquals("icon")) {
+														Node iconNode = cNode;
+														// Icon
+														Element iconElement = (Element) iconNode;
+														double width = Double.parseDouble(iconElement.getAttribute("width"));
+														double height = Double.parseDouble(iconElement.getAttribute("height"));
+														String id = iconElement.getAttribute("id");
+														ImageView imageView = new ImageView();
+														imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+														imageView.setFitWidth(width);
+														imageView.setFitHeight(height);
+														imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
+														listVBox.getChildren().add(imageView);
 													}
-													listVBox.getChildren().add(t);
+
 												}
+
 											}
+
 											textFlowHBox.getChildren().add(listVBox);
 										}
 									}
 								}
 								textFlowHBox.setSpacing(10.0);
-								textFlowHBox.getChildren().add(textFlow);											
+								textFlowHBox.getChildren().add(textFlow);
 								textFlowHBox.setAlignment(Pos.CENTER_LEFT);
 								textBlocks.add(textFlowHBox);
 							}

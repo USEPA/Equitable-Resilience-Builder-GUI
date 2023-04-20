@@ -58,15 +58,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Disaster scenario role play: Instructions are in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Disaster Scenario Worksheet"
-			linkType=""
-			link="">
+			text="Disaster scenario role play: Instructions are in the Disaster Scenario Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -79,15 +71,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Storytelling about equity: Instructions are in the ">
+			text="Storytelling about equity: Instructions are in the Equity Storytelling Exercise">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Equity Storytelling Worksheet"
-			linkType=""
-			link="">
+			fontStyle="Regular"
+			text="Assign a notetaker in each breakout group to record major themes and lessons learned. At the end of the activity, the notetaker will share their notes with the Facilitators who will compile and add the notes to the Key Takeaways Form on Strategizing.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -127,6 +119,19 @@
 			text="Selected warm-up activity">
 			</text>
 		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Key Takeaways Form on Strategizing">
+			</text>
+		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 		<textBlock>
@@ -147,7 +152,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants">
+			text="Participants">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -174,7 +179,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Disaster Scenario Worksheet"
+			text="Disaster Scenario Exercise"
 			linkType=""
 			link="">
 			</text>
@@ -182,7 +187,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Equity Storytelling Worksheet"
+			text="Equity Storytelling Exercise"
+			linkType=""
+			link="">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Key Takeaways Form on Strategizing"
 			linkType=""
 			link="">
 			</text>
@@ -194,14 +207,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text=""
-			linkType=""
-			link="">
-			</text>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -210,10 +215,11 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -224,8 +230,7 @@
 			height="40.0"
 			id="64">
 			</icon>
-		</textBlock>
-		<textBlock>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"

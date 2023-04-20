@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Assess: Build Knowledge and Relationships">
+			text="Assess Hazards, Equity and Resilience">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Collaborate with local resident to assess hazards, equity and resilience in your community. Create connections around resilience. Use local knowledge and online data to assess:">
+			text="In this section, you will collaborate with local residents to assess hazards, equity, and resilience in your community, create connections around resilience, and use local knowledge and online data to answer:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -60,21 +60,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This will help you develop priorities for taking action to build ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="equitable resilience"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" in the next section of ERB.">
+			text="This will help you develop priorities for taking action to build equitable resilience.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -90,7 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Workshop 1. Community relationships and listening">
+			text="Workshop 1. Community Relationships and Listening">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -161,15 +147,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Decide what topics you want to learn more about and how you want to collect local or online data on hazards, equity, and resilient systems.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="REgular"
-			text="Gather the information and manage it to use in resilience planning and in workshop 2">
+			text="Decide, gather, and manage information on what topics you want to learn more about and how you want to collect local or online data on hazards, equity, and resilient systems">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -177,7 +155,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Workshop 2. Collaborative assessment">
+			text="Workshop 2. Collaborative Assessment">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -185,7 +163,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Plan for the workshop in co-production way">
+			text="Plan for the workshop in a collaborative way">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -219,7 +197,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Card sorting">
+			text="Sorting resilience indicators">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -240,7 +218,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="What you'll have at the end">
+			text="What you will have at the end">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -266,22 +244,8 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Key takeaways to use in the next section on taking action">
+			text="Key Takeaways to use in the next section on taking action">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="525.0"
-			height="235.0"
-			id="99">
-			</icon>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="500"
-			height="250.0"
-			id="100">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
@@ -316,7 +280,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="It depends">
+			text="Varies">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -329,10 +293,17 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Equitable Resilience Concepts Worksheet"
+			text="Equitable Resilience Handout"
 			linkType="externalDOC"
 			link="Ch3_EquitableResilienceConcepts_Worksheet.docx">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
@@ -341,7 +312,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -353,56 +324,60 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="64">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Collaboration">
-			</text>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="64">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Collaboration">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="65">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Representation">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="66">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Voice">
+				</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="65">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Representation">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="66">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Voice">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="75">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Empathy">
-			</text>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="75">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Empathy">
+				</text>
+			</listBlock>
 		</textBlock>
 	</container>
 </textBlocks>

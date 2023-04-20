@@ -13,12 +13,12 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Determine the who, what, when, and how of your ERB project">
+			text="Determine the who, what, when, and how of your ERB project. Scope out what you can do given the time, resources, goals, and mandate you have.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The plan will help the core team make decisions, allocate, resources, manage expectations, coordinate work, and demonstrate progress.">
+			text="The plan will help the core team make decisions, allocate resources, manage expectations, coordinate work, and demonstrate progress. It's designed to be a living document that you can revisit throughout the planning process.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -41,47 +41,29 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Hold a team meeting to work through the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="project plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=".">
+			text="Hold one or more team meetings to work through the Project Plan Template">
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Record your decisions in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="project plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" for documentation.">
+			text="Record your decisions in the template">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -93,11 +75,16 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A completed project plan">
+			text="Project Plan">
 			</text>
 		</textBlock>
 	</container>
@@ -107,7 +94,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -146,9 +133,22 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Project plan"
+			text="Project Plan Template"
 			linkType="externalDOC"
 			link="Ch1_ProjectPlan_Template.docx">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="See example in template">
 			</text>
 		</textBlock>
 	</container>
@@ -158,7 +158,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -167,31 +167,11 @@
 			height="40.0"
 			id="64">
 			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="66">
-			</icon>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text="Collaboration and Voice">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="How might gender, age, and other social patterns affect who speaks out and who takes on which roles on the team?">
+			text="When writing your project plan, make sure that everyone gets an opportunity to contribute and select their roles. Be mindful that factors such as gender, age, and other social patterns affect who speaks out.">
 			</text>
 		</textBlock>
 	</container>

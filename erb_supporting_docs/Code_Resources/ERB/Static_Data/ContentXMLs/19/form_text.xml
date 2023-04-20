@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Onward">
+			text="Wrap Up and Move Forward">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Wrap up project within ERB and move onward to share results and take the next steps towards building equitable resilience in your community.">
+			text="Wrap up your project within ERB and move forward to share results and take the next steps towards building equitable resilience in your community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="It helps you make sure that future resilience work is grounded in the relationships you've built and what you've leared about hazards, equity, and resilient systems from going through ERB.">
+			text="It helps you make sure that future resilience work is grounded in the relationships you've built and what you've learned about hazards, equity, and resilient systems from going through ERB.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,7 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Take next steps on actions strategized on">
+			text="Take next steps on identified actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -110,15 +110,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Materials saved in ERB ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="My Portfolio"
-			linkType=""
-			link="">
+			text="Activities and results saved in My Portfolio">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -131,7 +123,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Materials downloaded from ERB My Portfolio">
+			text="A Monitoring plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -144,7 +136,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A strong foundation for action">
+			text="Next steps for implementation">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Next steps for outreach and engagement">
 			</text>
 		</textBlock>
 	</container>
@@ -198,6 +203,13 @@
 			link="">
 			</text>
 		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
@@ -205,7 +217,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -217,26 +229,60 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="65">
-			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="66">
-			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="76">
-			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="64">
-			</icon>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="65">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Representation">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="66">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Voice">
+				</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="76">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Networking">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="64">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Collaboration">
+				</text>
+			</listBlock>
 		</textBlock>
 	</container>
 </textBlocks>

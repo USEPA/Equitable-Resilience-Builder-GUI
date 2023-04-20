@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Next Steps for Implementation">
+			text="Implement Actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,35 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Meet with the core team and review the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="strategy worksheet"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" you completed wit. Discuss and identify which actions are highest priorities based on the input you heard and what resources you will need to complete each action. Create action teams or workgroups that can begin implementation. You may follow the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="implementation worksheet"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to help guide you through this process.">
+			text="Meet with the core team to review the priority actions and next steps identified in the ‘Results to Action’ Workshop using the documents in My Portfolio. Create action teams or workgroups that can begin implementation. You may use the Implementation Worksheet as a guide through this process.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -81,7 +53,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Outputs">
+			text="Output">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -107,7 +79,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Development of action teams/workgroups">
+			text="Development of action teams/workgroups for implementation">
 			</text>
 		</textBlock>
 	</container>
@@ -143,7 +115,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1-2 hours + ongoing weekly/monthly allotment">
+			text="1-2 hours + ongoing">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -157,7 +129,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Strategy worksheet"
+			text="My Portfolio"
 			linkType=""
 			link="">
 			</text>
@@ -170,6 +142,13 @@
 			link="">
 			</text>
 			</listBlock>
+			</textBlock>
+			<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -178,10 +157,11 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -192,8 +172,7 @@
 			height="40.0"
 			id="65">
 			</icon>
-		</textBlock>
-		<textBlock>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"

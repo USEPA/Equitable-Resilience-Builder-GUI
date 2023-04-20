@@ -13,49 +13,104 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In this activity, the core team will diagram community connections to provide a foundation for a community engagement plan.">
+			text="Diagram the connections among different people, groups, and organizations in your community.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
-			text="Why do this: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
 			fontStyle="Regular"
-			text="This activity will help capture the social network in your community so that you can identify and address gaps in engagement. For example, the activity will guide you through documenting how people get their information, how resources are distributed and shared, and how organizations are connected.">
+			text="Understanding how people or groups (i.e. actors) are connected -- by flows of resources, communication, and/or information -- can help you craft your engagement plan to best reach and include different local constituencies.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="How to do this: ">
-			</text>
+			text="How to do this">
+			</text>	
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The core team will meet to ">
+			text="Meet with your core team and draw out specific relationships between community members/organizations that are involved or affected by resilience planning">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Diagram Community Connections"
-			linkType="externalDOC"
-			link="Ch2_DiagramCommunityConnections.docx">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=". We recommend building on the Community Connections Table completed in first activity. The team will draw out specific relationships between community members/organizations.">
+			text="We recommend building on the Community Connections Table activity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Discuss the trends/patterns you see in your diagram">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Discuss how you can include what you've learned through this activity in your engagement plan">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Outputs">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A completed diagram showing actors in your community and how they are connected">
 			</text>
 		</textBlock>
 	</container>
@@ -65,50 +120,71 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="40.0"
+			height="40.0"
+			id="67">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Time: 2-hour meeting">
+			text="Core team">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="40.0"
+			height="40.0"
+			id="62">
 			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="1-2 hours">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
-			linkType="externalDOC"
-			link="Ch2_CommunityConnections_Table.docx">
+			linkType=""
+			link="">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Diagram Community Connections"
-			linkType="externalDOC"
-			link="Ch2_DiagramCommunityConnections.docx">
+			linkType=""
+			link="">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="See the Diagram Community Connections document">
 			</text>
 		</textBlock>
 	</container>
@@ -118,7 +194,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -131,7 +207,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="When you diagram your community connections, make sure you think about the flow of resources and information. This will help you identify where strong connections already exist, and where weak or non-existing connections could be made.">
+			text="When you diagram your community connections, pay attention to which actors have many connections. The actors with the most connections may be helpful in facilitating connections with other more isolated actors.">
 			</text>
 		</textBlock>
 	</container>

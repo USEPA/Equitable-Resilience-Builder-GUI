@@ -110,7 +110,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Work with your core team and other local experts to figure out how do carry out monitoring to evaluate outcomes and support implementation efforts">
+			text="Work with your core team and other local experts to figure out how do carry out monitoring to evaluate outcomes and support implementation efforts. You may use the Monitoring Plan Worksheet as a guide.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -118,7 +118,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Outputs">
+			text="Output">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -150,20 +150,12 @@
 			height="40.0"
 			id="67">
 			</icon>
-			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core Team, University Researchers,">
+			text="Core team, university researchers, government agencies">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Government Agencies">
-			</text>
-			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -184,6 +176,7 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -192,6 +185,15 @@
 			linkType=""
 			link="">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Monitoring Plan Worksheet"
+			linkType=""
+			link="">
+			</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -233,7 +235,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>

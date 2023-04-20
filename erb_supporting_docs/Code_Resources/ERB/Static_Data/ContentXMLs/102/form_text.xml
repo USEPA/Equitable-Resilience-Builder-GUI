@@ -17,6 +17,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -25,6 +30,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -33,6 +43,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -41,6 +56,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -49,6 +69,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -57,6 +82,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -65,6 +95,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -73,6 +108,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -81,6 +121,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -89,6 +134,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -203,9 +253,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Hazards data worksheet"
-			linkType="externalDOC"
-			link="Ch3_HazardsData_Worksheet.docx">
+			text="Collect Hazards Data"
+			linkType=""
+			link="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -218,9 +268,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Hazards data example"
-			linkType="internalStep"
-			link="116">
+			text="Hazards Data Example"
+			linkType=""
+			link="">
 			</text>
 		</textBlock>		
 	</container>
@@ -230,29 +280,21 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
-			id="66">
+			id="65">
 			</icon>
-			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Using indicators can be a transparent way of assessing your current state of equitable resilience, as well as tracking progress over time.">
+			text="When thinking about the hazards in your community, remember to include hazards that might affect some areas of your community more than others. For example, is there one neighborhood that floods more than others? Does one street of homes have drinking water concerns? Are some houses downwind of air pollutants more than others?">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="You may want to add your own indicators to the list provided based on issues of concern in your community.">
-			</text>
-			</listBlock>
 		</textBlock>	
 	</container>
 </textBlocks>

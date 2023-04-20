@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Introduce the Problem Statements and explain how they were selected (and any polling that happened prior to this workshop)">
+			text="Introduce the Action Areas and explain how they were selected">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants break up into small groups, with at least one group for each problem statements">
+			text="Workshop participants break up into small groups, with at least one group for each action area">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,7 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Break-out groups create a vision statement for their problem, &quot;What do we want this issue to look like in 10 years?&quot;">
+			text="Break-out groups create a vision statement for their problem, discussing who will &quot;What do we want this issue to look like in 10 years?&quot;">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -121,7 +121,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A vision statement for each problem identified">
+			text="A vision statement for each problem identified recorded in the Vision Statement Worksheet">
 			</text>
 		</textBlock>
 	</container>
@@ -144,7 +144,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants, Facilitator">
+			text="Participants, facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -157,7 +157,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="30 minutes">
+			text="15 minutes">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -170,7 +170,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Vision Statement Worksheet"
+			text="Vision Statement Discussion"
 			linkType=""
 			link="">
 			</text>
@@ -181,14 +181,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="EXAMPLE"
-			linkType=""
-			link="">
-			</text>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -197,7 +189,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -210,7 +202,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Vision statements should consider equity">
+			text="Vision statements should identify the communities that will benefit from taking action to address the problem. These could be geographic such as neighborhoods, or population groups such as LGBTQ youth.">
 			</text>
 		</textBlock>
 	</container>

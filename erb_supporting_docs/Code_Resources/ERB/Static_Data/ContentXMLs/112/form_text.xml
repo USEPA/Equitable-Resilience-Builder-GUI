@@ -116,51 +116,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#032;Discuss the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Reflection Diary"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" prompts and record responses">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Write down any more ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways"
-			linkType="internalStep"
-			link="136">
+			text="Take time to think about what you accomplished, challenges that arose, and new solutions you developed. Reflect upon and discuss the questions offered in the your Reflection Diary, either individually or with your core team, and take some notes.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -168,7 +128,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Next Steps">
+			text="Next steps">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -181,21 +141,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Carry out ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Engagement and Outreach"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" about what you've done and learned">
+			text="Carry out Engagement and Outreach about what you’ve done and learned">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -208,15 +154,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Head on to the final part of the ERB where you'll begin to ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Design Actions"
-			linkType=""
-			link="">
+			text="Head on to the final part of ERB where you’ll begin to Design Actions">
 			</text>
 		</textBlock>
 	</container>
@@ -274,11 +212,26 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
+			text="Key Takeaways Form on Community"
+			linkType="internalStep"
+			link="136">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Resilience, Hazards, and Equity"
 			linkType="internalStep"
 			link="136">
 			</text>
 			</listBlock>
+			<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+		</textBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -287,33 +240,27 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="65">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="The reflection diary questions help you think about how you've centered equity in ERB so far.">
-			</text>
-		</textBlock>
-		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="75">
 			</icon>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
-			text="Don't forget to think about how well you've represented your community and how you've built empathy for different perspectives.">
+			fontStyle="Regular"
+			text="The reflection diary questions help you think about how you’ve centered equity in ERB so far. Don't forget to think about how well you've represented your community and how you've built empathy for different perspectives.">
 			</text>
 		</textBlock>
 	</container>

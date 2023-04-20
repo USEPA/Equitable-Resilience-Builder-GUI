@@ -5,12 +5,12 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Final Reflection and Next Steps">
+			text="Reflect and Celebrate">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="18.0"
+			size="14.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Congratulations, you accomplished a lot!">
@@ -128,46 +128,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="What are the things you want to remember from the ERB process?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="What will help you if you repeat the ERB process or another resilience planning activity in the future?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="What were the successes?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="What was a challenge as you completed the ERB process?">
+			text="What are the successes you want to celebrate from the ERB process?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -207,19 +168,6 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="What is your plan for updating your resilience plan in the future?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="How will you continue your engagement long-term?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -274,6 +222,28 @@
 			text="1 hour">
 			</text>
 		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Reflection Diary"
+			linkType=""
+			link="">
+			</text>
+		</textBlock>
+		<textBlock>
+		<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+		</icon>
+		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
@@ -281,7 +251,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>

@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Next Steps for Outreach and Engagement">
+			text="Maintain Outreach and Engagement">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,21 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Complete the last section of the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Community Engagement Plan Worksheet"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" (Activity 3):">
+			text="Complete the last section of the Community Engagement Plan:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -168,7 +154,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1-2 hours + ongoing weekly/monthly allotment">
+			text="1-2 hours + ongoing">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -177,14 +163,31 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Community Engagement Plan Worksheet"
+			text="My Portfolio"
 			linkType=""
 			link="">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Engagement Plan"
+			linkType=""
+			link="">
+			</text>
+			</listBlock>
+		</textBlock>
+			<textBlock>
+		<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+		</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -193,7 +196,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>

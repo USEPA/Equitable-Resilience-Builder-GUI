@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Engage your community">
+			text="Engage Your Community">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,15 +13,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This section provides resources and activities to help you plan and get started with community engagement.">
+			text="This section provides resources and activities to help you plan and get started with community engagement for ERB. The ERB engagement process is unique because it guides you through getting to know your community and understanding how people are connected. It provides activities that help you reduce barriers to participation and expand inclusion and equitable representation.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="In this section you can select activities that help you to:">
+			text="In this section you can select activities that help you to">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -33,8 +33,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
-			text="Center Equity in Engagement">
+			fontStyle="Regular"
+			text="Empathize with and reduce barriers to participation">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -46,8 +46,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
-			text="Identify and diagram your community connections.">
+			fontStyle="Regular"
+			text="Identify and diagram community connections">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -59,7 +59,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
+			fontStyle="Regular"
 			text="Create a Community Engagement Plan">
 			</text>
 		</textBlock>
@@ -72,8 +72,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
-			text="Start Community Engagement">
+			fontStyle="Regular"
+			text="Start community engagement">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -85,7 +85,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
+			fontStyle="Regular"
 			text="Reflect">
 			</text>
 		</textBlock>
@@ -94,7 +94,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="What you'll have at the end of this section:">
+			text="What you will have at the end">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -107,7 +107,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A Community Connections Table">
+			text="A completed community engagement plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -120,7 +120,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A Community Connections Diagram">
+			text="Expanded connections with local groups">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -133,12 +133,93 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A Community Engagement Plan">
+			text="Awareness of how to reduce barriers to participation">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
-
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Several 1-2 hour work sessions and outreach opportunities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+			<listBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Equity and Engagement Exercise"
+			linkType=""
+			link="">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Connections Table"
+			linkType=""
+			link="">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Diagram Community Connections"
+			linkType=""
+			link="">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Engagement Plan"
+			linkType=""
+			link="">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
@@ -146,73 +227,77 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="75">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Empathy">
-			</text>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="65">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Representation">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="78">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Trust">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="75">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Empathy">
+				</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="65">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Representation">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="76">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Networking">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="77">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Adaptability">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="78">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Trust">
-			</text>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="77">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Adaptability">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="76">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Networking">
+				</text>
+			</listBlock>
 		</textBlock>
 	</container>
 </textBlocks>

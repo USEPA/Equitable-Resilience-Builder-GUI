@@ -118,35 +118,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Record highlights in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=".">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text="Note:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" In this conversation, distinguish between considerations for implementation and the final list of next steps (i.e. who is responsible for carrying out actions).">
+			text="Assign a Core Team member to record highlights and lessons learned from this activity in the Key Takeaways Form on Strategizing.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -167,22 +139,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Next steps for implementation">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType=""
-			link="">
+			text="Key Takeaways Form on Strategizing">
 			</text>
 		</textBlock>
 	</container>
@@ -205,7 +162,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants">
+			text="Participants">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -218,7 +175,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="45 minutes">
+			text="20 minutes">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -238,11 +195,18 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
+			text="Key Takeaways Form on Strategizing"
 			linkType=""
 			link="">
 			</text>
 			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -251,41 +215,39 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="65">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Reflect to see if actions align with identified equity priorities and needs">
-			</text>
-		</textBlock>
-		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="78">
 			</icon>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="64">
+			</icon>
+			</listBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Reflect to see if actions align with identified equity priorities and needs. ">
+			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Identifying tangible next steps can support development of trust and collaboration between participants.">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="64">
-			</icon>
 		</textBlock>
 	</container>
 </textBlocks>

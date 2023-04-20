@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Reflection and next steps">
+			text="Reflection and Next Steps">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -39,7 +39,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identified shared goals for using ERB">
+			text="Identified goals for your project">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -52,7 +52,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Prioritized activities to do">
+			text="Reviewed activity options in the ERB toolkit">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -65,15 +65,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Prepared your ERB project plan">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="At the end of each section, we encourage teams to meet, reflect on what you've achieved and figure out next steps.">
+			text="Prepared your project plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -81,7 +73,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Why do this? ">
+			text="Reflect">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -89,15 +81,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Check in with everyone. Celebrate your progress. Adjust your approach.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="How to do this">
+			text="At the end of each section, we encourage teams to meet to reflect on what they've achieved so far.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -105,21 +89,72 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="As a team, discuss one or more prompts in the ">
+			text="As a team, discuss one or more questions in the Reflection Diary.">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="reflection diary"
-			linkType="externalDOC"
-			link="Chs_1_5_Reflection_Results.docx">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=".">
+			text="Is the core team representative of the community?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="What can we do to enable everyone on the team to participate?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Do we want to modify any of our goals, or add new ones?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Are there key expertise gaps to fill on the team to meet our goals?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Does anyone on the team have issues or concerns that they would like to be addressed?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -127,15 +162,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Record notes in the diary and save for documentation.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Output">
+			text="Record notes in the Diary and save in ERB or a file location of your choosing.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -143,7 +170,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Reflection diary">
+			text="Take any actions needed to adjust your approach based on reflections.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -155,33 +182,29 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Take any actions needed to adjust your approach">
+			text="Adjust your approach, as needed, based on this reflection">
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Move on to the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Engage your community"
-			linkType="internalActivity"
-			link="16">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" section!">
+			text="Go to the next section in the toolkit: Engage Your Community">
 			</text>
 		</textBlock>
 	</container>
@@ -235,6 +258,13 @@
 			link="Chs_1_5_Reflection_Results.docx">
 			</text>
 		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
@@ -246,36 +276,23 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="65">
-		</icon>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
 			</icon>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="64">
+			</icon>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
-			text="Are there key gaps to fill on the core team to make it more representative?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text="What can we do to enable team members to participate?">
+			fontStyle="Regular"
+			text="Consider if you need to add any other members to the core team to improve representation. Think about how you can enable all team members to participate">
 			</text>
 		</textBlock>
 	</container>

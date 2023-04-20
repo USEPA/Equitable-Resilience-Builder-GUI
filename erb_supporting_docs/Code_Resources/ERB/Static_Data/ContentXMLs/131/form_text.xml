@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Small groups of workshop participants brainstorm actions that could help achieve their vision statements.">
+			text="Small groups of workshop participants brainstorm actions that could be used to achieve their vision statements.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Assign people to be a notetaker and a facilitator">
+			text="Assign someone in each group to be a notetaker">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Propose actions to help your community reach the vision statement for your problem area. Use prompt questions on the worksheet to guide your thinking. Notetaker writes actions down on an easel pad for everyone to see.">
+			text="Propose actions to help your community reach the vision statement for your problem area. Notetaker writes actions down on an easel pad for everyone to see">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,15 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Categorize your actions using the criteria in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Actions Brainstorming Worksheet"
-			linkType=""
-			link="">
+			text="Categorize your actions using the criteria in the Actions Brainstorming Instructions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -97,7 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Add or revise actions as your group discusses their reactions and opinions to the list">
+			text="Add or revise actions as your group considers the prompt question and discusses their reactions and opinions to the list of actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -110,15 +102,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The notetaker fills in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Actions Brainstorming Worksheet"
-			linkType=""
-			link="">
+			text="The notetaker fills in the group’s findings the Actions Brainstorming Instructions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -139,7 +123,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A list of possible actions">
+			text="A list of possible actions recorded in the Actions Brainstorming Worksheet">
 			</text>
 		</textBlock>
 	</container>
@@ -162,7 +146,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants">
+			text="Participants">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -188,7 +172,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Actions Brainstorming"
+			text="Actions Brainstorming Instructions"
 			linkType=""
 			link="">
 			</text>
@@ -203,7 +187,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Actions Brainstorming"
+			text="Actions Brainstorming Example"
 			linkType=""
 			link="">
 			</text>
@@ -215,10 +199,11 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -239,8 +224,7 @@
 			height="40.0"
 			id="69">
 			</icon>
-		</textBlock>
-		<textBlock>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"

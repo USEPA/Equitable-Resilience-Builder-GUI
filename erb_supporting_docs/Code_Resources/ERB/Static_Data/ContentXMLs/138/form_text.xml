@@ -50,29 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Follow instructions in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="User Guide"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to save materials in ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="My Portfolio"
-			linkType=""
-			link="">
+			text="Follow instructions in the User Guide to save materials in My Portfolio">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -85,21 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Download selected materials from ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="My Portfolio"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to a file location of your choosing">
+			text="Download selected materials from My Portfolio to a file location of your choosing">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -107,7 +71,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Outputs">
+			text="Output">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -120,13 +84,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Materials saved in ERB ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="My Portfolio">
+			text="Materials saved in ERB My Portfolio">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -203,6 +161,13 @@
 				</text>
 			</listBlock>
 		</textBlock>
+		<textBlock>
+		<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+		</icon>
+		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
@@ -210,7 +175,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>

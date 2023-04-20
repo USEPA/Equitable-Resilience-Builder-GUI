@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Local knowledge and perspectives are the fountain of ERB assessment. This workshop generates shared understandings of hazard most likely to affect your community, now and in the future. It reveals how and why people in the community experience hazards differently. It points to key assets that can help. It helps strengthen the relationships that support resilience.">
+			text="Local knowledge and perspectives are the foundation of ERB’s approach to assessment. This workshop generates shared understandings of hazards most likely to affect your community, now and in the future. It reveals how and why people in the community experience hazards differently. It points to key assets that help. The workshop also will strengthen the relationships that support resilience.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,7 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Plan workshop while centering equity">
+			text="Plan the 'Listen and Connect' workshop using the Facilitators Guide">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -66,7 +66,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Storytelling on hazards and equity">
+			text="Hazards Storytelling Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -113,7 +113,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Word Cloud">
+			text="Word cloud">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -139,29 +139,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Key takeaways to use to ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="build knowledge"
-			linkType="internalStep"
-			link="97">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" and plan ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop 2"
-			linkType="internalStep"
-			link="108">
+			text="Key Takeaways to use to Build Knowledge and plan Workshop 2">
 			</text>
 		</textBlock>
 	</container>
@@ -197,7 +175,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="2-5 hour workshop">
+			text="2-5 hours">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -211,33 +189,25 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Workshop Prep Worksheet"
-				linkType="externalDOC"
-				link="Ch3_WorkshopPrep_Worksheet.docx">
+				text="Facilitators Guide for Workshops"
+				linkType=""
+				link="">
 				</text>
 				<text
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Workshop 1 Facilitators Guide"
-				linkType="externalDOC"
-				link="Ch3_Workshop1_FacilitatorsGuide.docx">
+				text="Hazards Storytelling Exercise"
+				linkType=""
+				link="">
 				</text>
 				<text
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Hazards Storytelling Prompt"
-				linkType="externalDOC"
-				link="Ch3_HazardsStorytelling_Prompt.docx">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Key Takeaways Form"
-				linkType="internalStep"
-				link="136">
+				text="Key Takeaways"
+				linkType=""
+				link="">
 				</text>
 			</listBlock>
 		</textBlock>
@@ -263,7 +233,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -276,7 +246,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use community voices to consider the root causes of social, health, and economic inquities and how these inequities often overlap to create complicated and unique vulnerabilities to different hazards.">
+			text="Use community voices to consider the root causes of social, health, and economic inequities and how these inequities often overlap to create complicated and unique vulnerabilities to different hazards.">
 			</text>
 		</textBlock>
 	</container>

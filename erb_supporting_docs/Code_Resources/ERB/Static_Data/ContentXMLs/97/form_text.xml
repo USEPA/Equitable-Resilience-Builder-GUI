@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Expand your Knowledge">
+			text="Expand Your Knowledge">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Based on what you heard in workshop 1, collect more information to assess hazards, equity, and resilient systems in your community.">
+			text="Based on what you heard in the Listen and Connect workshop, collect more information to assess hazards, equity, and resilient systems in your community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This will generate information to use in resilience planning for workshop 2.">
+			text="This will generate information to use in resilience planning and for your Workshop 2: Collaborative Assessment">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -51,21 +51,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="your information needs: Use ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Scope Information Gathering"
-			linkType="externalDOC"
-			link="Ch3_ScopingInformationGathering.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to learn about potential data sources and to decide how to best allocate the time and resources you have for collecting data.">
+			text="your information needs: use Scope Information Gathering to learn about potential data sources and to decide how to best allocate the time and resources you have for collecting data">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -118,7 +104,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Resilient natural, built, and social environment systems">
+			text="Resilient systems">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -145,15 +131,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Baseline maps for ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop 2"
-			linkType="internalStep"
-			link="108">
+			text="Baseline maps for Workshop 2">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -166,15 +144,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Indicator cards for ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop 2"
-			linkType="internalStep"
-			link="108">
+			text="Indicator cards for Workshop 2">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -253,7 +223,6 @@
 			height="40.0"
 			id="63">
 			</icon>
-			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -262,15 +231,6 @@
 			linkType="externalDOC"
 			link="Ch3_ScopingInformationGathering.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Equitable Resilience Handout"
-			linkType="externalDOC"
-			link="Ch3_EquitableResilienceConcepts_Worksheet.docx">
-			</text>
-			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -278,14 +238,24 @@
 			height="40.0"
 			id="70">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Example of Data Types"
+			text="Hazards Data Example"
 			linkType=""
 			link="">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Equity Data Example"
+			linkType=""
+			link="">
+			</text>
+			</listBlock>
 		</textBlock>			
 	</container>
 	<container id="bottomPanelVBox">
@@ -294,7 +264,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -307,7 +277,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Local knowledge provides the foundation for assessing hazards, equity, and resilient systems in ERB.">
+			text="When gathering local data, you may want to consult local partners to identify good sources of information. But be mindful of data ethics. For more guidance, follow our Data Ethics guidance in the Resources tab. ">
 			</text>	
 		</textBlock>
 	</container>

@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Strategize">
+			text="Strategize Actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,21 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Welcome to the stage where you will strategize about actions that diffferent organizations, sectors, government agencies, and members of your community can take to strengthen resilience equitably. Starting with your ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways on Hazards, Equity, and Resilient Sytems"
-			linkType="internalStep"
-			link="136">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=", host a workshop to brainstorm and evaluate actions with community members.">
+			text="Welcome to the stage where you will strategize about actions that different organizations, sectors, government agencies, and members of your community can take to strengthen resilience equitably. Starting with your Key Takeaways Form on Hazards, Equity, and Resilient Systems, host a workshop to brainstorm and evaluate actions with community members.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -74,7 +60,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Action workshop with community members">
+			text="Results to Action workshop with community members">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -95,7 +81,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A list of key action">
+			text="A list of key actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -144,7 +130,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core Team and Workshop Participants">
+			text="Core team and participants">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -170,10 +156,17 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways Form on Hazards, Equity, and Resilient Systems"
-			linkType="internalStep"
-			link="136">
+			text="Key Takeaways Form on Assessment"
+			linkType=""
+			link="">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
@@ -182,7 +175,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -194,45 +187,86 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="71">
-			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="68">
-			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="64">
-			</icon>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="68">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Active Listening">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="64">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Collaboration">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="77">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Adaptability">
+				</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="66">
-			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="77">
-			</icon>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="78">
-			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="65">
-			</icon>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="66">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Voice">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="78">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Trust">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="65">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Representation">
+				</text>
+			</listBlock>
 		</textBlock>
 	</container>
 </textBlocks>

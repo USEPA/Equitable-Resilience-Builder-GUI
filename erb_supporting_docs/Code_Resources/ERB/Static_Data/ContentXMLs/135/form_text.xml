@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Final Reflection and Next Steps">
+			text="Reflection and Next Steps">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -26,7 +26,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Reflected on implementation successes and pitfalls to inform future equitable implementation planning">
+			text="Discussed implementation successes and pitfalls to inform future implementation of equitable resilience actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -125,7 +125,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="What are some things you learned in the workshop that you need to consider as you move forward to taking action and implementation?">
+			text="What did you learn in the workshop that you need to consider moving forward?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -201,14 +201,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text=""
-			linkType=""
-			link="">
-			</text>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -217,10 +209,11 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -231,8 +224,7 @@
 			height="40.0"
 			id="75">
 			</icon>
-		</textBlock>
-		<textBlock>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"

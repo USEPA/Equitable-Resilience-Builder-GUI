@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Explore data sources and decide what additional data you'll collect to use in workshop 3 for other products you're making.">
+			text="Explore data sources and decide what additional data you’ll collect to use in workshop 2 and for other products you need to deliver.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,21 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Discuss ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways"
-			linkType="internalStep"
-			link="136">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" from Workshop 1 and what participants wanted to learn more about.">
+			text="Discuss Key Takeaways from Workshop 1 and what participants wanted to learn more about">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -77,21 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Revisit the goals in your ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Project Plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" and discuss what information you might need to meet these goals.">
+			text="Revisit the goals in your Project Plan and discuss what information you might need to meet these goals">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -104,7 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Learn about local and online data options for hazards, equity, and resilient systems.">
+			text="Review the Indicators Master List, Hazards data, and equity data to learn about local and online data options for hazards, equity, and resilient systems">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -117,21 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Master Indicators List"
-			linkType="externalDOC"
-			link="Ch3_IndicatorsMaster_List.xlsx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" and data sources">
+			text="Estimate your team’s capacity for gathering this data using the Scoping Information Gathering document">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -144,34 +102,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Estimate your team's capacity for gathering this data using the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Scoping Information Gathering Worksheet"
-			linkType="externalDOC"
-			link="Ch3_ScopingInformationGathering.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=".">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Decide what data sources to use and who on the core team will be the point person.">
+			text="Decide what data sources to use and who on the core team will be the point person ">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -250,6 +181,14 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
+			text="Indicators Master List"
+			linkType=""
+			link="">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
 			text="Project Plan"
 			linkType="externalDOC"
 			link="Ch1_ProjectPlan_Template.docx">
@@ -285,26 +224,13 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="65">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="When gathering data, consider if there are existing reports from local community organizations with information you can use.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
 			id="64">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Check out our data ethics guidance in ERBpedia for how to gather local and online data in a sensitive way.">
+			text="Estimating your team's capacity for data gathering is important because you don't want to over burden your community or team. You want your data gathering to be mutually beneficial to all involved, not extractive.">
 			</text>
 		</textBlock>
 	</container>

@@ -50,21 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Implementation Storytelling Prompt"
-			linkType=""
-			link="">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" as a guide for the exercise">
+			text="Follow the instructions in the Implementation Storytelling Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -77,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share stories among the core team, or invite others as well">
+			text="Share stories among the core team">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -90,7 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Discuss implications for implementing resilience actions coming out of the ERB process">
+			text="Discuss implications for implementing the resilience actions coming out of the ERB process">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -103,15 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Record principles and lessons learned in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType=""
-			link="">
+			text="Compile principles and lessons learned from the breakout groups and record them in the Key Takeaways Form on Strategizing">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -144,10 +122,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType=""
-			link="">
+			fontStyle="Regular"
+			text="Key Takeaways Form on Strategizing">
 			</text>
 		</textBlock>
 	</container>
@@ -170,7 +146,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core Team, Invited Participants">
+			text="Core Team">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -183,7 +159,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1 hour">
+			text="1 Hour">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -197,7 +173,7 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Implementation Storytelling Prompt"
+				text="Implementation Storytelling Exercise"
 				linkType=""
 				link="">
 				</text>
@@ -209,6 +185,14 @@
 				linkType=""
 				link="">
 				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Key Takeaways Form on Strategizing"
+				linkType=""
+				link="">
+				</text>
 			</listBlock>
 		</textBlock>
 		<textBlock>
@@ -217,14 +201,6 @@
 			height="40.0"
 			id="70">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType=""
-			link="">
-			</text>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -233,7 +209,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -246,7 +222,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Think about how past implementation of local projects and programs centered equity (or not)?">
+			text="Think about how past implementation of local projects and programs may provide lessons learned for this project. Gathering these lessons from community members can be informative.">
 			</text>
 		</textBlock>
 	</container>
