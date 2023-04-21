@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,6 +36,8 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	Menu aboutMenu;
 	@FXML
+	MenuBar menuBar;
+	@FXML
 	HBox breadCrumbHBox;
 	@FXML
 	ImageView erbMiniImageView;
@@ -54,6 +57,8 @@ public class ERBContainerController implements Initializable{
 		populateLandingMenu();
 		populateResourceMenu();
 		populateBreadCrumbBar();
+		
+		menuBar.getStylesheets().add(getClass().getResource("/menuBar.css").toString());
 	}
 	
 	private void fillImageViews() {
@@ -88,6 +93,7 @@ public class ERBContainerController implements Initializable{
 	private void populateBreadCrumbBar() {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();
 		myBreadCrumbBar = new MyBreadCrumbBar(app);
+		myBreadCrumbBar.getStylesheets().add(getClass().getResource("/breadCrumb.css").toString());
 		myBreadCrumbBar.setStyle("-fx-padding: 3.5 0 0 0");
 		String erbLandingString = "ERB Home";
 		myBreadCrumbBar.initMyBreadCrumbBar(erbLandingString, mainPanelHandler.getMainPanelIdHashMap().get(erbLandingString));

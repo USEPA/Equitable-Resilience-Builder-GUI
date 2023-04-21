@@ -14,7 +14,7 @@
          <children>
             <Label text="Word Cloud">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>
@@ -23,7 +23,7 @@
          <children>
             <Label text="WordCloud Name:">
                <font>
-                  <Font size="15.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <TextField fx:id="wordCloudNameTextField" />
@@ -36,7 +36,10 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT">
          <children>
-            <Button mnemonicParsing="false" onAction="#okButtonAction" text="OK" />
+            <Button mnemonicParsing="false" onAction="#okButtonAction" text="OK">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </HBox>
    </children>

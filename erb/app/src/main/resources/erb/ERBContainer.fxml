@@ -17,7 +17,7 @@
             <HBox alignment="CENTER_LEFT" style="-fx-border-color: #D0D0D0;">
                <children>
                   <HBox fx:id="breadCrumbHBox" alignment="CENTER_LEFT" style="-fx-background-color: #E7E7E7;" HBox.hgrow="ALWAYS" />
-                  <MenuBar nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #E7E7E7;">
+                  <MenuBar fx:id="menuBar" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #E7E7E7;">
                     <menus>
                         <Menu fx:id="introMenu" mnemonicParsing="false" text="Instructions/FAQ">
                            <graphic>
@@ -57,7 +57,7 @@
                         </Label>
                         <Label text="Inclusive planning for disasters and climate change">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="20.0" />
                            </font>
                         </Label>
                      </children>

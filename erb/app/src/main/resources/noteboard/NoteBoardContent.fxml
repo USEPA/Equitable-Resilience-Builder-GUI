@@ -44,7 +44,7 @@
                            <children>
                               <Label minHeight="20.0" minWidth="84.0" text="Less resilient">
                                  <font>
-                                    <Font name="System Bold" size="14.0" />
+                                    <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
                            </children>
@@ -57,7 +57,7 @@
                            <children>
                               <Label minHeight="20.0" minWidth="101.0" text="More equitable">
                                  <font>
-                                    <Font name="System Bold" size="14.0" />
+                                    <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
                            </children>
@@ -71,7 +71,7 @@
                            <children>
                               <Label minHeight="20.0" minWidth="93.0" text="Less equitable">
                                  <font>
-                                    <Font name="System Bold" size="14.0" />
+                                    <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
                            </children>
@@ -84,7 +84,7 @@
                            <children>
                               <Label minHeight="20.0" minWidth="92.0" text="More resilient">
                                  <font>
-                                    <Font name="System Bold" size="14.0" />
+                                    <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
                            </children>
@@ -100,12 +100,18 @@
             <HBox HBox.hgrow="ALWAYS" />
             <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#saveBoardButtonAction" text="Save Board" />
+                  <Button mnemonicParsing="false" onAction="#saveBoardButtonAction" text="Save Board">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                </children>
             </HBox>
             <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#nextButtonAction" text="Next" />
+                  <Button mnemonicParsing="false" onAction="#nextButtonAction" text="Next">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                </children>
             </HBox>
          </children>

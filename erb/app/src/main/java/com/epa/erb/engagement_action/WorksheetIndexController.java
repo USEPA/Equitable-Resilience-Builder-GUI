@@ -32,6 +32,8 @@ public class WorksheetIndexController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		ArrayList<File> worksheets = getWorksheets();
 		addWorksheetsToList(worksheets);
+		worksheetListView.getStylesheets().add(getClass().getResource("/listView.css").toString());
+
 	}
 	
 	private void addWorksheetsToList(ArrayList<File> worksheets) {

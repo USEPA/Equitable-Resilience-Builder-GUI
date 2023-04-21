@@ -42,7 +42,7 @@ public class ExternalFileUploaderController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		tableView.getStylesheets().add(getClass().getResource("/tableView.css").toString());
 	}
 	
 	public void launch() {

@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
             <Label text="Post It Note">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
          </children>
@@ -24,7 +24,10 @@
       <ColorPicker fx:id="colorPicker" prefHeight="26.0" prefWidth="50.0" />
       <HBox alignment="CENTER">
          <children>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </HBox>
    </children>

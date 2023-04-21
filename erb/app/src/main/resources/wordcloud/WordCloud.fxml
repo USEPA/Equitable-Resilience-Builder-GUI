@@ -25,7 +25,7 @@
                      <children>
                         <Label text="Word Cloud">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
                      </children>
@@ -34,7 +34,7 @@
                      <children>
                         <Label text="Existing word clouds:">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
                         <ChoiceBox fx:id="wordCloudChoiceBox" prefWidth="150.0" />
@@ -49,17 +49,17 @@
                      <children>
                         <Label text="Step 1. Enter word or phrase below OR Enter a block of text.">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="16.0" />
                            </font>
                         </Label>
                         <Label text="Step 2. Add to Table">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="16.0" />
                            </font>
                         </Label>
                         <Label text="Step 3. Build Word Cloud">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="16.0" />
                            </font>
                         </Label>
                      </children>
@@ -73,12 +73,15 @@
                                  <children>
                                     <Label text="Word or Phrase">
                                        <font>
-                                          <Font size="13.0" />
+                                          <Font size="16.0" />
                                        </font></Label>
                                     <HBox alignment="CENTER_LEFT" spacing="20.0">
                                        <children>
                                           <TextField fx:id="inputTextField" />
-                                          <Button fx:id="shortAddButton" mnemonicParsing="false" onAction="#shortAddButtonAction" text="Add" />
+                                          <Button fx:id="shortAddButton" mnemonicParsing="false" onAction="#shortAddButtonAction" text="Add">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -87,21 +90,24 @@
                                  <children>
                                     <Label text="Block of Text">
                                        <font>
-                                          <Font size="13.0" />
+                                          <Font size="16.0" />
                                        </font></Label>
                                     <HBox alignment="CENTER_LEFT" spacing="20.0">
                                        <children>
                                           <TextArea fx:id="inputTextArea" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                           <VBox alignment="CENTER">
                                              <children>
-                                                <Button fx:id="longAddButton" mnemonicParsing="false" onAction="#longAddButtonAction" text="Add" />
+                                                <Button fx:id="longAddButton" mnemonicParsing="false" onAction="#longAddButtonAction" text="Add">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font></Button>
                                              </children>
                                           </VBox>
                                        </children>
                                     </HBox>
                                     <CheckBox fx:id="excludeCommonCheckBox" mnemonicParsing="false" onAction="#excludeCommonCheckBoxAction" text="Exclude common words">
                                        <font>
-                                          <Font size="13.0" />
+                                          <Font size="16.0" />
                                        </font></CheckBox>
                                  </children>
                               </VBox>
@@ -111,10 +117,16 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="30.0">
                                  <children>
-                                    <Button fx:id="mergeButton" mnemonicParsing="false" onAction="#mergeButtonAction" text="Merge" />
+                                    <Button fx:id="mergeButton" mnemonicParsing="false" onAction="#mergeButtonAction" text="Merge">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Button>
                                     <HBox alignment="CENTER_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label text="Word Count: " />
+                                          <Label text="Word Count: ">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font></Label>
                                           <Label fx:id="numberOfWordsLabel" />
                                        </children>
                                     </HBox>
@@ -136,10 +148,16 @@
                                  <children>
                                     <HBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearTableButtonAction" text="Clear Table" />
+                                          <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearTableButtonAction" text="Clear Table">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
-                                    <Button fx:id="buildButton" mnemonicParsing="false" onAction="#buildButtonAction" text="Build Word Cloud" />
+                                    <Button fx:id="buildButton" mnemonicParsing="false" onAction="#buildButtonAction" text="Build Word Cloud">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Button>
                                  </children>
                               </HBox>
                            </children>
@@ -149,7 +167,10 @@
                   <VBox fx:id="vBox" alignment="CENTER" VBox.vgrow="ALWAYS" />
                   <HBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button fx:id="saveWordCloudButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save Word Cloud" />
+                        <Button fx:id="saveWordCloudButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save Word Cloud">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

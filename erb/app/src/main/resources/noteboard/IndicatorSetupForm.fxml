@@ -19,7 +19,7 @@
          <children>
             <Label text="What indicators do you want to bring to your workshop?">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
@@ -27,7 +27,7 @@
       <VBox fx:id="indicatorListVBox" spacing="5.0" />
       <TitledPane animated="false" style="-fx-border-color: transparent;" text="Adding New Indicators">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
          <content>
             <VBox>
@@ -36,15 +36,21 @@
                      <children>
                         <Label text="Would you like to add a new indicator?">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="16.0" />
                            </font>
                         </Label>
                         <RadioButton mnemonicParsing="false" text="Yes">
                            <toggleGroup>
                               <ToggleGroup fx:id="newIndicator" />
                            </toggleGroup>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="No" toggleGroup="$newIndicator" />
+                        <RadioButton mnemonicParsing="false" text="No" toggleGroup="$newIndicator">
+                           <font>
+                              <Font size="14.0" />
+                           </font></RadioButton>
                      </children>
                   </VBox>
                </children>
@@ -53,7 +59,10 @@
       </TitledPane>
       <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
          <children>
-            <Button mnemonicParsing="false" onAction="#beginButtonAction" text="Begin" />
+            <Button mnemonicParsing="false" onAction="#beginButtonAction" text="Begin">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </HBox>
    </children>

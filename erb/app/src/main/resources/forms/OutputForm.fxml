@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="nodeVBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="nodeVBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane VBox.vgrow="ALWAYS">
          <center>
@@ -16,7 +17,10 @@
                   <VBox fx:id="formVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save Form" />
+                        <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save Form">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

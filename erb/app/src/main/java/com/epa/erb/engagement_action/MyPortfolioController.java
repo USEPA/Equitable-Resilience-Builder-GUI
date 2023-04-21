@@ -70,6 +70,8 @@ public class MyPortfolioController implements Initializable {
 		fillTreeView();
 		myPortfolioTreeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));
 		myPortfolioTreeView.getSelectionModel().clearAndSelect(0);
+		myPortfolioTreeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());
+		tableView.getStylesheets().add(getClass().getResource("/tableView.css").toString());
 	}
 	
 	public void treeViewClicked(TreeItem<String> oldItem, TreeItem<String> newItem) {

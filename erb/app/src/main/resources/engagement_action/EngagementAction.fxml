@@ -24,7 +24,10 @@
                   <ComboBox fx:id="goalComboBox" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </HBox>
       <Pane maxHeight="2.0" minHeight="2.0" prefHeight="2.0" style="-fx-background-color: #CCCCCC;" />
@@ -35,12 +38,21 @@
       </Label>
       <HBox alignment="CENTER_RIGHT" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#worksheetIndexAction" text="Worksheet Index" />
-            <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio" />
+            <Button mnemonicParsing="false" onAction="#worksheetIndexAction" text="Worksheet Index">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
             <Button mnemonicParsing="false" onAction="#externalDocUploadButtonAction" text="Upload File">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
          </children>
       </HBox>
@@ -65,12 +77,18 @@
                      <children>
                         <HBox HBox.hgrow="ALWAYS">
                            <children>
-                              <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" text="Previous" />
+                              <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" text="Previous">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
                            </children>
                         </HBox>
                         <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                            <children>
-                              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next" />
+                              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
                            </children>
                         </HBox>
                      </children>

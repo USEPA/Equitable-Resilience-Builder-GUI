@@ -37,22 +37,22 @@
                                        <children>
                                           <Label text="Get Started">
                                              <font>
-                                                <Font name="System Bold" size="20.0" />
+                                                <Font name="System Bold" size="22.0" />
                                              </font>
                                           </Label>
                                           <VBox>
                                              <children>
                                                 <Hyperlink id="7" onAction="#exploreHyperlinkAction" text="Explore">
                                                    <font>
-                                                      <Font size="16.0" />
+                                                      <Font size="18.0" />
                                                    </font></Hyperlink>
                                                 <Hyperlink onAction="#projectCreationButtonAction" text="Start a new project">
                                                    <font>
-                                                      <Font size="16.0" />
+                                                      <Font size="18.0" />
                                                    </font></Hyperlink>
                                                 <Hyperlink onAction="#projectContinueButtonAction" text="Continue your project">
                                                    <font>
-                                                      <Font size="16.0" />
+                                                      <Font size="18.0" />
                                                    </font></Hyperlink>
                                              </children>
                                           </VBox>
@@ -71,14 +71,14 @@
                                        <children>
                                           <Label text="See how others are using it">
                                              <font>
-                                                <Font name="System Bold" size="20.0" />
+                                                <Font name="System Bold" size="22.0" />
                                              </font>
                                           </Label>
                                           <VBox>
                                              <children>
                                                 <Hyperlink text="See Examples">
                                                    <font>
-                                                      <Font size="16.0" />
+                                                      <Font size="18.0" />
                                                    </font></Hyperlink>
                                              </children>
                                           </VBox>
@@ -97,18 +97,18 @@
                                        <children>
                                           <Label text="Learn more about ERB">
                                              <font>
-                                                <Font name="System Bold" size="20.0" />
+                                                <Font name="System Bold" size="22.0" />
                                              </font>
                                           </Label>
                                           <VBox>
                                              <children>
                                                 <Hyperlink id="07" onAction="#hyperlinkAction" text="Who is the tool for?">
                                                    <font>
-                                                      <Font size="16.0" />
+                                                      <Font size="18.0" />
                                                    </font></Hyperlink>
                                                 <Hyperlink id="04" onAction="#hyperlinkAction" text="Equity and resilience">
                                                    <font>
-                                                      <Font size="16.0" />
+                                                      <Font size="18.0" />
                                                    </font></Hyperlink>
                                              </children>
                                           </VBox>

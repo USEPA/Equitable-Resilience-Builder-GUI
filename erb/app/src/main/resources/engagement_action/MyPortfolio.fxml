@@ -14,7 +14,7 @@
    <children>
       <Label text="MyPortfolio">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <VBox.margin>
             <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
@@ -35,7 +35,10 @@
                </columnResizePolicy></TableView>
             <VBox HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#exportButtonAction" text="Export" />
+                  <Button mnemonicParsing="false" onAction="#exportButtonAction" text="Export">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                </children>
             </VBox>
          </children>
