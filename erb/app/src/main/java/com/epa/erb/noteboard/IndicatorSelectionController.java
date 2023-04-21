@@ -51,7 +51,7 @@ public class IndicatorSelectionController implements Initializable{
 		                if (item == null || empty) {
 		                    setGraphic(null);
 		                } else {
-		                    setText(item.getSystem() + "; " + item.getIndicator());
+		                    setText(item.getSystem() + " - " + item.getIndicator());
 		                }
 		            }
 		        } ;
