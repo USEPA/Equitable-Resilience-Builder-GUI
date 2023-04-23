@@ -41,6 +41,10 @@ public class ERBContainerController implements Initializable{
 	HBox breadCrumbHBox;
 	@FXML
 	ImageView erbMiniImageView;
+	@FXML
+	HBox headerHBox;
+	@FXML
+	HBox erbAboutHBox;
 	
 	private App app;
 	public ERBContainerController(App app) {
@@ -77,7 +81,7 @@ public class ERBContainerController implements Initializable{
 		imageView3.setFitHeight(25.0);
 		aboutMenu.setGraphic(imageView3);
 		
-		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/landing_image1.PNG")));
+		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/dashboard_image.PNG")));
 	}
 	
 	private void populateResourceMenu() {
@@ -156,6 +160,19 @@ public class ERBContainerController implements Initializable{
 			return null;
 		}
 	}
+	
+	public void removeHeaderHBox() {
+		if(erbVBox.getChildren().contains(headerHBox)) {
+			erbVBox.getChildren().remove(headerHBox);
+		}
+	}
+	
+	public void removeERBAboutHBox() {
+		if(erbVBox.getChildren().contains(erbAboutHBox)) {
+			erbVBox.getChildren().remove(erbAboutHBox);
+		}
+	}
+	
 	
 	public File getFormContentXML(String id) {
 		File xmlFile = fileHandler.getStaticFormContentXML(id);

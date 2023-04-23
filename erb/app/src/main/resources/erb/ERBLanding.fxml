@@ -1,154 +1,242 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane VBox.vgrow="ALWAYS">
-         <bottom>
-            <VBox BorderPane.alignment="CENTER">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-         </bottom>
-         <center>
-            <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+      <StackPane prefHeight="150.0" prefWidth="850.0">
+         <children>
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" height="244.0" stroke="#00000001" strokeType="INSIDE" width="850.0">
+               <fill>
+                  <LinearGradient endX="0.44075829383886256" endY="0.4360189573459715" startX="0.4407582938388625" startY="0.009478672985781991">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.7470760345458984" green="0.8573586940765381" blue="0.9605262875556946" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <VBox alignment="BOTTOM_LEFT" minHeight="200.0">
                <children>
-                  <VBox fx:id="arrowVBox" alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                  <Label text="Equitable Resilience Builder" textFill="#4fb1c9">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label text="Inclusive planning for disasters and climate change" textFill="#3b5a8a">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+      <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0">
+         <fill>
+            <LinearGradient endX="0.862559241706161" endY="0.6303317535545023">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.42800000309944153" blue="0.11999999731779099" opacity="0.8702290058135986" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="1.0" green="0.2059047669172287" blue="0.11999999731779099" opacity="0.9200000166893005" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9932885906040269">
+                     <color>
+                        <Color red="0.9200000166893005" green="0.5303800106048584" blue="0.21160000562667847" opacity="0.927480936050415" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9200000166893005" green="0.5303800106048584" blue="0.21160000562667847" opacity="0.927480936050415" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <StackPane fx:id="bottomStackPane" VBox.vgrow="ALWAYS">
+         <children>
+            <Rectangle fx:id="rectangle3" arcHeight="5.0" arcWidth="5.0" height="394.0" stroke="#00000001" strokeType="INSIDE" width="838.0">
+               <fill>
+                  <LinearGradient endX="0.44075829383886256" endY="0.4360189573459715" startX="0.4407582938388625" startY="0.009478672985781991">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.7470760345458984" green="0.8573586940765381" blue="0.9605262875556946" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <HBox alignment="CENTER" spacing="20.0">
+                        <VBox fx:id="landingImageView1VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0">
                            <children>
-                              <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
+                              <ImageView fx:id="landingImageView1" preserveRatio="true" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <HBox alignment="CENTER" minHeight="40.0" style="-fx-background-color: #F25F23;">
                                  <children>
-                                    <VBox fx:id="landingImageView1VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: red;">
-                                       <children>
-                                          <ImageView fx:id="landingImageView1" VBox.vgrow="ALWAYS" />
-                                       </children>
-                                    </VBox>
-                                    <VBox alignment="TOP_CENTER">
-                                       <children>
-                                          <Label text="Get Started">
-                                             <font>
-                                                <Font name="System Bold" size="22.0" />
-                                             </font>
-                                          </Label>
-                                          <VBox>
-                                             <children>
-                                                <Hyperlink id="7" onAction="#exploreHyperlinkAction" text="Explore">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Hyperlink>
-                                                <Hyperlink onAction="#projectCreationButtonAction" text="Start a new project">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Hyperlink>
-                                                <Hyperlink onAction="#projectContinueButtonAction" text="Continue your project">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Hyperlink>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
+                                    <Label text="Elements of ERB" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
                                  </children>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
+                              </HBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <VBox fx:id="landingImageView2VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: green;">
-                                       <children>
-                                          <ImageView fx:id="landingImageView2" VBox.vgrow="ALWAYS" />
-                                       </children>
-                                    </VBox>
-                                    <VBox alignment="TOP_CENTER">
-                                       <children>
-                                          <Label text="See how others are using it">
-                                             <font>
-                                                <Font name="System Bold" size="22.0" />
-                                             </font>
-                                          </Label>
-                                          <VBox>
-                                             <children>
-                                                <Hyperlink text="See Examples">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Hyperlink>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <VBox fx:id="landingImageView3VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: blue;">
-                                       <children>
-                                          <ImageView fx:id="landingImageView3" VBox.vgrow="ALWAYS" />
-                                       </children>
-                                    </VBox>
-                                    <VBox alignment="TOP_CENTER">
-                                       <children>
-                                          <Label text="Learn more about ERB">
-                                             <font>
-                                                <Font name="System Bold" size="22.0" />
-                                             </font>
-                                          </Label>
-                                          <VBox>
-                                             <children>
-                                                <Hyperlink id="07" onAction="#hyperlinkAction" text="Who is the tool for?">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Hyperlink>
-                                                <Hyperlink id="04" onAction="#hyperlinkAction" text="Equity and resilience">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font></Hyperlink>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
+                                    <Hyperlink text="Equity &amp; resilience">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink text="Storytelling">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink text="Resilience indicators">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink text="Community engagement">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink text="Local knowledge">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
                                  </children>
                               </VBox>
                            </children>
-                        </HBox>
-                     </children></VBox>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="landingImageView2VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0">
+                           <children>
+                              <ImageView fx:id="landingImageView2" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <HBox alignment="CENTER" minHeight="40.0" style="-fx-background-color: #F25F23;">
+                                 <children>
+                                    <Label text="Get Started" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Hyperlink text="Start a new project">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink text="Continue your project">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="landingImageView3VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0">
+                           <children>
+                              <ImageView fx:id="landingImageView3" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <HBox alignment="CENTER" minHeight="40.0" style="-fx-background-color: #F25F23;">
+                                 <children>
+                                    <Label text="Supporting Info" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Hyperlink text="About">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Hyperlink text="Glossary">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Hyperlink text="Explore the tool">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Hyperlink text="User instructions">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Hyperlink text="Examples">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Hyperlink>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-         </center>
-         <right>
-            <VBox alignment="CENTER" maxWidth="250.0" spacing="10.0">
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-         </right>
-        <left>
-            <VBox alignment="CENTER_LEFT" spacing="10.0">
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-         </left>
-         <top>
-            <VBox BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="10.0" />
-               </BorderPane.margin>
-            </VBox>
-         </top>
-      </BorderPane>
+            </HBox>
+         </children>
+      </StackPane>
    </children>
 </VBox>

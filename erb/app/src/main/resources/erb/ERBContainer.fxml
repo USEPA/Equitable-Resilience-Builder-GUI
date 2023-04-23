@@ -14,7 +14,7 @@
    <content>
       <VBox fx:id="erbVBox">
          <children>
-            <HBox alignment="CENTER_LEFT" style="-fx-border-color: #D0D0D0;">
+            <HBox fx:id="headerHBox" alignment="CENTER_LEFT" style="-fx-border-color: #D0D0D0;">
                <children>
                   <HBox fx:id="breadCrumbHBox" alignment="CENTER_LEFT" style="-fx-background-color: #E7E7E7;" HBox.hgrow="ALWAYS" />
                   <MenuBar fx:id="menuBar" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #E7E7E7;">
@@ -41,7 +41,7 @@
                   </MenuBar>
                </children>
             </HBox>
-            <HBox>
+            <HBox fx:id="erbAboutHBox">
                <children>
                   <ImageView fx:id="erbMiniImageView" fitHeight="78.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>

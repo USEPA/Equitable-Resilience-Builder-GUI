@@ -17,7 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 
 public class ERBLandingController implements Initializable{
 
@@ -33,6 +35,16 @@ public class ERBLandingController implements Initializable{
 	ImageView landingImageView3;
 	@FXML
 	VBox landingImageView3VBox;
+	@FXML
+	Rectangle rectangle1;
+	@FXML
+	Rectangle rectangle2;
+	@FXML
+	Rectangle rectangle3;
+	@FXML
+	VBox vBox;
+	@FXML
+	StackPane bottomStackPane;
 	
 	private App app;
 	public ERBLandingController(App app) {
@@ -41,16 +53,27 @@ public class ERBLandingController implements Initializable{
 		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		app.getErbContainerController().removeHeaderHBox();
+		app.getErbContainerController().removeERBAboutHBox();
 		fillImageViews();
+		
+        rectangle1.widthProperty().bind(vBox.widthProperty());
+        rectangle2.widthProperty().bind(vBox.widthProperty());
+        rectangle3.widthProperty().bind(vBox.widthProperty());
+        rectangle3.heightProperty().bind(bottomStackPane.heightProperty());
+
+        
+
 	}
 	
 	private void fillImageViews() {
-		landingImageView1.setImage(new Image(getClass().getResourceAsStream("/landing_image1.jpg")));
+		landingImageView1.setImage(new Image(getClass().getResourceAsStream("/landing_image1.PNG")));
 		landingImageView2.setImage(new Image(getClass().getResourceAsStream("/landing_image2.PNG")));
 		landingImageView3.setImage(new Image(getClass().getResourceAsStream("/landing_image3.PNG")));
 		landingImageView1VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView1.setFitWidth(newVal.doubleValue());
 		});
+		landingImageView1.setSmooth(false);
 		landingImageView2VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView2.setFitWidth(newVal.doubleValue());
 		});
