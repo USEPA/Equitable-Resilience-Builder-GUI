@@ -173,6 +173,18 @@ public class ERBContainerController implements Initializable{
 		}
 	}
 	
+	public void addHeaderHBox() {
+		if(!erbVBox.getChildren().contains(headerHBox)) {
+			erbVBox.getChildren().add(0,headerHBox);
+		}
+	}
+	
+	public void addERBAboutHBox() {
+		if(!erbVBox.getChildren().contains(erbAboutHBox)) {
+			erbVBox.getChildren().add(1, erbAboutHBox);
+		}
+	}
+	
 	
 	public File getFormContentXML(String id) {
 		File xmlFile = fileHandler.getStaticFormContentXML(id);

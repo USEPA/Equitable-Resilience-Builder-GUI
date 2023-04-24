@@ -171,12 +171,12 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Hyperlink text="Start a new project">
+                        <Hyperlink onAction="#projectCreationButtonAction" text="Start a new project">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink text="Continue your project">
+                        <Hyperlink onAction="#projectContinueButtonAction" text="Continue your project">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>

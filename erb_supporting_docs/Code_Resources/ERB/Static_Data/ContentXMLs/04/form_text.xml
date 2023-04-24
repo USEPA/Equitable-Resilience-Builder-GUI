@@ -5,15 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Equity and resilience">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="What is equitable resilience? ">
+			text="What is Equitable Resilience?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -21,29 +13,304 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Check out our definition ">
+			text="Building community resilience to climate change and hazards must center equity throughout the planning process.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="850.0"
+			height="500.0"
+			id="99">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="10.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Figure 1. Key ERB concepts and their relevance to equitable resilience.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Equitable resilience considers social vulnerability and varying access to power, knowledge, and resources. It requires starting from people’s own perception of their position with their social and environmental relationships [1]. The impacts of climate change and hazards are not experienced evenly within and across communities. Certain population groups such as the elderly, youth, persons with disabilities, low-income householders, Black, Latinx, Asian American, Indigenous, and other persons of color, and immigrants tend to experience greater financial, health, and social impacts from disasters.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Equitable resilience describes the capacity to withstand, respond, adapt, and transform in the face of climate change and disasters in ways that are culturally appropriate, participatory, and enhances the resilience of the community, not just individual resilience. Equitable resilience acknowledges deeply rooted social forces that affect how community members are made vulnerable to disaster and climate risk, may experience cascading consequences of incidents, and bear disproportionate benefits burdens of actions to increase resilience [2].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Equitable Resilience Builder (ERB) process (Figure 2) is designed to support local practitioners integrate equitable and resilience ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="into various types of planning activities.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="850.0"
+			height="500.0"
+			id="100">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="10.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Figure 2. The ERB process centers integrates equity and engagement throughout the planning process.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How do communities benefit from using the ERB tool?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A resilient community is one in which all members of a community can effectively prepare for and recover from hazard impacts. The ERB tool and activities centers equity throughout the planning process">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Relationships">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A stronger network of community organizations and agencies to share information and resources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Recognition">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Facilitation guides for holding workshops in trauma-informed ways">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Activity guides for soliciting community perspectives">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Local knowledge is valued and utilized alongside scientific data">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Information">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Data and maps on hazards, equity, and resilient community systems">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Locally meaningful and measurable indicators to measure future change in built, natural, and social environment systems">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Action">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A collaboratively prioritized set of actions and next steps for strengthening community resilience in an equitable way">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Resources to learn more:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Building Alliances for Equitable Resilience: Advancing Equitable Resilience Through Partnerships and Diverse Perspectives. 2021 Resilient Nation Partnership and FEMA. ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="here"
-			linkType="internalResource"
-			link="01">
+			text="https://www.fema.gov/sites/default/files/documents/fema_rnpn_building-alliances-for-equitable-resilience.pdf"
+			linkType="URL"
+			link="https://www.fema.gov/sites/default/files/documents/fema_rnpn_building-alliances-for-equitable-resilience.pdf">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=". ERB centers equity in the content of the toolkit and the process for using it.">
+			text="Federal Plan for Equitable Long-Term Recover and Resilience. 2022.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Example of an Equity-first approach to climate adaptation. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://digital.sandiego.edu/cgi/viewcontent.cgi?article=1018&#x26;context=npi-sdclimate"
+			linkType="URL"
+			link="https://digital.sandiego.edu/cgi/viewcontent.cgi?article=1018&#x26;context=npi-sdclimate">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="NIST, 2019. Toward a More Resilient Community: An Overview of the Community Resilience Planning Guide for Buildings and Infrastructure System. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.nist.gov/system/files/documents/2019/04/03/nist_community_resilience_12_page_brochure.pdf"
+			linkType="URL"
+			link="https://www.nist.gov/system/files/documents/2019/04/03/nist_community_resilience_12_page_brochure.pdf">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Why does ERB content center equity and resilience?">
+			text="References:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -51,7 +318,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- Disasters and climate change tend to hit certain populations and neighborhoods harder than others for reasons that often trace back to underlying social and environmental inequailities.">
+			text="[1] Matin, N, Forrester, J., and J. Ensor. 2018. What is equitable resilience? World Development. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1016/j.worlddev.2018.04.020"
+			linkType="URL"
+			link="https://doi.org/10.1016/j.worlddev.2018.04.020">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -59,71 +334,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- Getting hit harder mean that they suffer cascading consequences (e.g., health and well-being, economic) and struggle more to recover.">
+			text="[2] Fry, M., Maxwell, K., Eisenhauer, E., Julius, S., Kiessling, B, Matsler, M., Ollove, M. and S. Romanoski. 2023. Centering Equity in the Development of a Community Resilience Planning Resource. ">
 			</text>
-		</textBlock>
-		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="- Resilience-building actions that also address equity are more likely to benefit those who need it most and have fewer negative outcomes for those already made vulnerable to disasters and climate change.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="How does the ERB process center equity?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="An equitable resilience process is inclusive and supports community empowerment. ERB guides you through how to:">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Establish a core team that is representative of local constituencies.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Figure out who's working on resilience-related topics and expand your exisiting network.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Hold community workshops to examine hazards, vulnerability, and resilience.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Use storytelling to ensure local voices are heard.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Collaboratively prioritize resilience and equity building actions that different groups will work on.">
+			fontStyle="Hyperlink"
+			text="https://dx.doi.org/10.2139/ssrn.4318601"
+			linkType="URL"
+			link="https://dx.doi.org/10.2139/ssrn.4318601">
 			</text>
 		</textBlock>
 	</container>

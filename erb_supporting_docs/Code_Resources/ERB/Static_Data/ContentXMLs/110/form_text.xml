@@ -211,8 +211,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Example of Sorted Cards"
-			linkType=""
-			link="">
+			linkType="internalStep"
+			link="123">
 			</text>
 		</textBlock>			
 	</container>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,30 +12,37 @@
    <children>
       <BorderPane VBox.vgrow="ALWAYS">
          <center>
-            <HBox fx:id="hBox" alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox fx:id="formVBox" minWidth="450.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding></VBox>
-                  <VBox fx:id="rightPanelVBox" minWidth="300.0" spacing="25.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <VBox fx:id="topPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding></VBox>
-                        <Separator fx:id="separator" />
-                        <VBox fx:id="bottomPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding></VBox>
-                     </children>
-                  </VBox>
-               </children>
+            <ScrollPane fitToWidth="true" style="-fx-border-color: transparent; -fx-background-color: transparent;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="3.0" />
                </BorderPane.margin>
-            </HBox>
+               <content>
+                  <HBox fx:id="hBox" alignment="CENTER" spacing="20.0">
+                     <children>
+                        <VBox fx:id="formVBox" minWidth="450.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                        <VBox fx:id="rightPanelVBox" minWidth="300.0" spacing="25.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox fx:id="topPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <Separator fx:id="separator" />
+                              <VBox fx:id="bottomPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
          </center>
          <top>
             <Pane fx:id="tP" prefHeight="10.0" BorderPane.alignment="CENTER" />

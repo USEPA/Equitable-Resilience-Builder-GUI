@@ -86,6 +86,10 @@ public class EngagementActionController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		treeView.setCellFactory(tv-> createTreeCell());
+		
+		app.getErbContainerController().addHeaderHBox();
+		app.getErbContainerController().addERBAboutHBox();
+		
 		if (project.getProjectType().contentEquals("Goal Mode")) {
 		} else {
 			initFacilitatorMode();

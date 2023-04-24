@@ -385,6 +385,9 @@ public class XMLManager {
 											Element listBlockElement = (Element) listBlockNode;
 											NodeList childrenNodeList = listBlockElement.getChildNodes();
 											VBox listVBox = new VBox();
+											listVBox.setMinWidth(400);
+											HBox.setHgrow(listVBox, Priority.ALWAYS);
+											System.out.println("List Box");
 											for (int n = 0; n < childrenNodeList.getLength(); n++) {
 												Node cNode = childrenNodeList.item(n);
 												if (cNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -396,6 +399,8 @@ public class XMLManager {
 															double size = Double.parseDouble(textElement.getAttribute("size"));
 															String fontFamily = textElement.getAttribute("fontFamily");
 															String fontStyle = textElement.getAttribute("fontStyle");
+															System.out.println("Text");
+															TextFlow lTextFlow = new TextFlow();
 															String text = textElement.getAttribute("text");
 															Text t = new Text(text);
 															if (fontStyle.contentEquals("Hyperlink")) {
@@ -416,7 +421,8 @@ public class XMLManager {
 																	t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 																}
 															}
-															listVBox.getChildren().add(t);
+															lTextFlow.getChildren().add(t);
+															listVBox.getChildren().add(lTextFlow);
 														}
 													} else if (nName.contentEquals("icon")) {
 														Node iconNode = cNode;
@@ -425,6 +431,7 @@ public class XMLManager {
 														double width = Double.parseDouble(iconElement.getAttribute("width"));
 														double height = Double.parseDouble(iconElement.getAttribute("height"));
 														String id = iconElement.getAttribute("id");
+														System.out.println("ImageView");
 														ImageView imageView = new ImageView();
 														imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 														imageView.setFitWidth(width);
@@ -436,7 +443,7 @@ public class XMLManager {
 												}
 
 											}
-
+											System.out.println("Adding list box to text flow");
 											textFlowHBox.getChildren().add(listVBox);
 										}
 									}

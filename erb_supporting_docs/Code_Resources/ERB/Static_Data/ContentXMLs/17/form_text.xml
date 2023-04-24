@@ -64,6 +64,18 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="200.0"
+			height="100.0"
+			id="99">
+			</icon>
+			<icon
+			width="200.0"
+			height="100.0"
+			id="154">
+			</icon>
+		</textBlock>
+		<textBlock>
 			<text
 			size="18.0"
 			fontFamily="System"
