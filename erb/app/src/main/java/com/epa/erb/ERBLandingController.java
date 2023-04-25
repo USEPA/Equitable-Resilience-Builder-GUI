@@ -67,9 +67,9 @@ public class ERBLandingController implements Initializable{
 	}
 	
 	private void fillImageViews() {
-		landingImageView1.setImage(new Image(getClass().getResourceAsStream("/landing_image1.PNG")));
-		landingImageView2.setImage(new Image(getClass().getResourceAsStream("/landing_image2.PNG")));
-		landingImageView3.setImage(new Image(getClass().getResourceAsStream("/landing_image3.PNG")));
+		landingImageView1.setImage(new Image(getClass().getResourceAsStream("/landing1.png")));
+		landingImageView2.setImage(new Image(getClass().getResourceAsStream("/landing2.png")));
+		landingImageView3.setImage(new Image(getClass().getResourceAsStream("/landing3.png")));
 		landingImageView1VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView1.setFitWidth(newVal.doubleValue());
 		});

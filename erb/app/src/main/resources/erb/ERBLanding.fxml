@@ -104,7 +104,7 @@
                      <children>
                         <VBox fx:id="landingImageView1VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0">
                            <children>
-                              <ImageView fx:id="landingImageView1" preserveRatio="true" VBox.vgrow="ALWAYS" />
+                              <ImageView fx:id="landingImageView1" smooth="false" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER">
