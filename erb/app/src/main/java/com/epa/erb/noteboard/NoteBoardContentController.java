@@ -18,6 +18,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -151,8 +152,9 @@ public class NoteBoardContentController implements Initializable{
 			fxmlLoader.setController(noteBoardIndicatorItem);
 			VBox vBox = fxmlLoader.load();
 			vBox.setId(indicatorCard.getId());
-			noteBoardIndicatorItem.setColor();
-			noteBoardIndicatorItem.setIndicatorCardText();
+			noteBoardIndicatorItem.setColorAndImage();
+			noteBoardIndicatorItem.addFrontIndicatorCardText();
+			vBox.setOnMouseClicked(e-> noteBoardIndicatorItem.flipCard(e));
 			noteBoardIndicatorItem.setDrag_IndicatorCard(vBox);
 			return vBox;
 		} catch (Exception e) {

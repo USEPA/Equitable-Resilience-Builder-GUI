@@ -58,7 +58,7 @@ public class PostItNoteEditsController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-		postItNoteController.setNoteBoardItemText(postItNoteTextArea.getText());
+//		postItNoteController.setNoteBoardItemText(postItNoteTextArea.getText());
 //		postItNoteController.setPostItContentsColor(parseColorAsHex(colorPicker.getValue()));
 //		postItNoteController.closeEditsStage();
 //		postItNoteController.getNoteBoardContentController().getActivity().setSaved(false);

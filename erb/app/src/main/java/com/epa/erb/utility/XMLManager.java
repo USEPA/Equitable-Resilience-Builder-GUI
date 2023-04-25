@@ -269,14 +269,17 @@ public class XMLManager {
 						String system = cardElement.getAttribute("system");
 						String indicator = cardElement.getAttribute("indicator");
 						String definition = cardElement.getAttribute("definition");
-						String unitOfMeasurement = cardElement.getAttribute("unitOfMeasurement");
 						String resilienceValue = cardElement.getAttribute("resilienceValue");
-						String assessment = cardElement.getAttribute("assessment");
+						String equityValue = cardElement.getAttribute("equityValue");
+						String localConcern = cardElement.getAttribute("localConcern");
 						String quantitativeDataSources = cardElement.getAttribute("quantitativeDataSources");
 						String quantitativeCollProcess = cardElement.getAttribute("quantitativeCollProcess");
 						String qualitativeCollProcess = cardElement.getAttribute("qualitativeCollProcess");
 						String additionalInformation = cardElement.getAttribute("additionalInformation");
-					
+						String rawDataCollectionNotes = cardElement.getAttribute("rawDataCollectionNotes");
+						String dataPoints = cardElement.getAttribute("dataPoints");
+						String thresholds = cardElement.getAttribute("thresholds");
+						
 						ArrayList<String> questionsToAnswer = new ArrayList<String>();
 						NodeList questions = cardElement.getElementsByTagName("questionsToAnswer");
 						Element questionsElement = (Element) questions.item(0);						
@@ -289,8 +292,7 @@ public class XMLManager {
 								questionsToAnswer.add(questionText);
 							}
 						}
-						
-						IndicatorCard indicatorCard = new IndicatorCard(id, system, indicator, definition, unitOfMeasurement, resilienceValue, assessment, questionsToAnswer, quantitativeDataSources, quantitativeCollProcess, qualitativeCollProcess, additionalInformation);
+						IndicatorCard indicatorCard = new IndicatorCard(id, system, indicator, definition, resilienceValue, equityValue, localConcern, quantitativeDataSources, quantitativeCollProcess, qualitativeCollProcess, additionalInformation, rawDataCollectionNotes, dataPoints, thresholds, questionsToAnswer);
 						indicatorCards.add(indicatorCard);
 					}
 				}

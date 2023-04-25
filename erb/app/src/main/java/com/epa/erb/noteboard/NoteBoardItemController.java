@@ -8,6 +8,8 @@ import com.epa.erb.utility.Constants;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -21,6 +23,10 @@ public class NoteBoardItemController implements Initializable{
 	Label numberLabel;
 	@FXML
 	TextFlow textFlow;
+	@FXML
+	ImageView imageView;
+	@FXML
+	ScrollPane scrollPane;
 	@FXML
 	VBox noteBoardItemVBox;
 
@@ -49,15 +55,6 @@ public class NoteBoardItemController implements Initializable{
 		noteBoardItemVBox.setStyle("-fx-background-color: " + constants.getPostItNoteColor() + ";");
 	}
 	
-	void setNoteBoardItemText(String text) {
-		if (text != null) {
-			Text textToAdd = new Text(text);
-			textFlow.getChildren().clear();
-			textFlow.getChildren().add(textToAdd);
-		} else {
-			logger.error("Cannot setPostItNoteText. text is null.");
-		}
-	}
 
 	void setNumberLabelText(String text) {
 		numberLabel.setText(text);
