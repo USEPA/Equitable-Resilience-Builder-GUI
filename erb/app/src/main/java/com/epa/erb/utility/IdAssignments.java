@@ -4,19 +4,28 @@ import java.util.ArrayList;
 
 public class IdAssignments {
 	
-	private ArrayList<String> introIdAssignments = new ArrayList<String>();
+	private ArrayList<String> faqIdAssignments = new ArrayList<String>();
+	private ArrayList<String> aboutIdAssignments = new ArrayList<String>();
 	private ArrayList<String> chapterIdAssignments = new ArrayList<String>();
 	private ArrayList<String> resourceIdAssignments = new ArrayList<String>();
 	private ArrayList<String> backgroundIdAssignments = new ArrayList<String>();
 	
 	public IdAssignments() {
-		fillIntroIdAssignments();
+		fillFAQIdAssignments();
+		fillAboutIdAssignments();
 		fillChapterIdAssignemnts();
 		fillResourceIdAssignments();
 		fillBackgroundIdAssignments();
 	}
 	
-	public void fillIntroIdAssignments() {
+	public void fillFAQIdAssignments() {
+		
+	}
+	
+	public void fillAboutIdAssignments() {
+		aboutIdAssignments.add("07");
+		aboutIdAssignments.add("08");
+		aboutIdAssignments.add("09");
 	}
 	
 	public void fillResourceIdAssignments() {
@@ -26,9 +35,6 @@ public class IdAssignments {
 		resourceIdAssignments.add("04");
 		resourceIdAssignments.add("05");
 		resourceIdAssignments.add("06");
-		resourceIdAssignments.add("07");
-		resourceIdAssignments.add("08");
-		resourceIdAssignments.add("09");
 		resourceIdAssignments.add("10");
 	}
 	
@@ -41,20 +47,17 @@ public class IdAssignments {
 	}
 	
 	public void fillBackgroundIdAssignments() {
-		backgroundIdAssignments.add("11");
-		backgroundIdAssignments.add("12");
-		backgroundIdAssignments.add("13");
-		backgroundIdAssignments.add("14");	
-		backgroundIdAssignments.add("114");	
-		backgroundIdAssignments.add("118");	
-		backgroundIdAssignments.add("121");	
-		backgroundIdAssignments.add("123");	
-
+		
 	}
 	
-	public ArrayList<String> getIntroIdAssignments() {
-		return introIdAssignments;
+	public ArrayList<String> getFAQIdAssignments() {
+		return faqIdAssignments;
 	}
+	
+	public ArrayList<String> getAboutIdAssignments() {
+		return aboutIdAssignments;
+	}
+
 	public ArrayList<String> getResourceIdAssignments() {
 		return resourceIdAssignments;
 	}

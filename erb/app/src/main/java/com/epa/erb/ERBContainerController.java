@@ -30,7 +30,7 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	Label titleLabel;
 	@FXML
-	Menu introMenu;
+	Menu faqMenu;
 	@FXML
 	Menu resourcesMenu;
 	@FXML
@@ -58,7 +58,8 @@ public class ERBContainerController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillImageViews();
-		populateLandingMenu();
+		populateFAQMenu();
+		populateAboutMenu();
 		populateResourceMenu();
 		populateBreadCrumbBar();
 		
@@ -69,7 +70,7 @@ public class ERBContainerController implements Initializable{
 		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image.jpg")));
 		imageView1.setFitWidth(25.0);
 		imageView1.setFitHeight(25.0);
-		introMenu.setGraphic(imageView1);
+		faqMenu.setGraphic(imageView1);
 		
 		ImageView imageView2 = new ImageView(new Image(getClass().getResourceAsStream("/resource_image.png")));
 		imageView2.setFitWidth(25.0);
@@ -89,10 +90,32 @@ public class ERBContainerController implements Initializable{
 			if(idAssignments.getResourceIdAssignments().contains(erbContentItem.getId())){
 				String name = erbContentItem.getLongName();
 				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-				addMenuItem(menuItem, true);
+				resourcesMenu.getItems().add(menuItem);
 			}
 		}
 	}
+	
+	
+	private void populateFAQMenu() {
+		for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
+			if(idAssignments.getFAQIdAssignments().contains(erbContentItem.getId())){
+				String name = erbContentItem.getLongName();
+				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+				faqMenu.getItems().add(menuItem);
+			}
+		}
+	}
+	
+	private void populateAboutMenu() {
+		for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
+			if(idAssignments.getAboutIdAssignments().contains(erbContentItem.getId())){
+				String name = erbContentItem.getLongName();
+				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+				aboutMenu.getItems().add(menuItem);
+			}
+		}
+	}
+	
 	
 	private void populateBreadCrumbBar() {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();
@@ -103,39 +126,19 @@ public class ERBContainerController implements Initializable{
 		myBreadCrumbBar.initMyBreadCrumbBar(erbLandingString, mainPanelHandler.getMainPanelIdHashMap().get(erbLandingString));
 		breadCrumbHBox.getChildren().add(myBreadCrumbBar);
 	}
-	
-	private void populateLandingMenu() {
-		for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
-			if(idAssignments.getIntroIdAssignments().contains(erbContentItem.getId())){
-				String name = erbContentItem.getLongName();
-				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-				addMenuItem(menuItem, true);
-			}
-		}
-	}
-	
+
 	private MenuItem createMenuItem(String id, String name, boolean isResource) {
 		if (id != null && name != null) {
 			MenuItem menuItem = new MenuItem(name);
 			menuItem.setId(id);
-			menuItem.setOnAction(e -> menuItemSelected(menuItem, isResource));
+			menuItem.setOnAction(e -> menuItemSelected(menuItem));
 			return menuItem;
 		} else {
 			return null;
 		}
 	}
 	
-	private void addMenuItem(MenuItem menuItem, boolean isResource) {
-		if(menuItem != null) {
-			if(isResource) {
-				resourcesMenu.getItems().add(menuItem);
-			} else {
-				introMenu.getItems().add(menuItem);
-			}
-		}
-	}
-	
-	private void menuItemSelected(MenuItem menuItem, boolean isResource) {
+	private void menuItemSelected(MenuItem menuItem) {
 		if (menuItem != null) {
 			File formContentXMLFile = getFormContentXML(menuItem.getId());
 			VBox root = loadMainFormContentController(formContentXMLFile);

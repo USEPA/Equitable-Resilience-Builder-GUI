@@ -103,7 +103,7 @@ public class FormController {
 	public void internalPanelLinkClicked(String link) {
 		if (idAssignments.getResourceIdAssignments().contains(link)) {
 			internalPopupLinkClicked(link);
-		} else if (idAssignments.getIntroIdAssignments().contains(link)) {
+		} else if (idAssignments.getFAQIdAssignments().contains(link)) {
 			internalPopupLinkClicked(link);
 		} else if (idAssignments.getBackgroundIdAssignments().contains(link)) {
 			internalPopupLinkClicked(link);

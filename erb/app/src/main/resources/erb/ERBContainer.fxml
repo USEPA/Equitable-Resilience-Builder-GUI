@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -19,11 +20,14 @@
                   <HBox fx:id="breadCrumbHBox" alignment="CENTER_LEFT" style="-fx-background-color: #E7E7E7;" HBox.hgrow="ALWAYS" />
                   <MenuBar fx:id="menuBar" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #E7E7E7;">
                     <menus>
-                        <Menu fx:id="introMenu" mnemonicParsing="false" text="Instructions/FAQ">
+                        <Menu fx:id="faqMenu" mnemonicParsing="false" text="FAQ">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                               </ImageView>
                            </graphic>
+                           <items>
+                              <MenuItem disable="true" mnemonicParsing="false" text="This page is still under development" />
+                           </items>
                         </Menu>
                       <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources">
                            <graphic>
