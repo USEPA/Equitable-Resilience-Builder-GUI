@@ -79,7 +79,7 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void fillImageViews() {
-		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image.png")));
+		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image_white.png")));
 		imageView1.setFitWidth(25.0);
 		imageView1.setFitHeight(25.0);
 		faqMenu.setGraphic(imageView1);
@@ -95,7 +95,7 @@ public class ERBContainerController implements Initializable{
 				+ "-fx-font-size: 14px;"
 				+ "}");
 		
-		ImageView imageView2 = new ImageView(new Image(getClass().getResourceAsStream("/resource_image.png")));
+		ImageView imageView2 = new ImageView(new Image(getClass().getResourceAsStream("/resources_image_white.png")));
 		imageView2.setFitWidth(25.0);
 		imageView2.setFitHeight(25.0);
 		resourcesMenu.setGraphic(imageView2);
@@ -111,7 +111,7 @@ public class ERBContainerController implements Initializable{
 				+ "-fx-font-size: 14px;"
 				+ "}");
 
-		ImageView imageView3 = new ImageView(new Image(getClass().getResourceAsStream("/faq_image.png")));
+		ImageView imageView3 = new ImageView(new Image(getClass().getResourceAsStream("/faq_image_white.png")));
 		imageView3.setFitWidth(25.0);
 		imageView3.setFitHeight(25.0);
 		aboutMenu.setGraphic(imageView3);
@@ -127,7 +127,7 @@ public class ERBContainerController implements Initializable{
 				+ "-fx-font-size: 14px;"
 				+ "}");
 		
-		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/landing1.PNG")));
+		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/bridge_90_90.PNG")));
 	}
 	
 	private void populateResourceMenu() {

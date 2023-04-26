@@ -8,7 +8,7 @@
 }
 
 .menu .label:hover {
-     -fx-text-fill: black; 
+     -fx-text-fill: #4fb1c9; 
 }
 
 .context-menu {
