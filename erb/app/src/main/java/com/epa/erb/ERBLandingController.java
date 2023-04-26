@@ -132,7 +132,9 @@ public class ERBLandingController implements Initializable{
 		Parent projectSelectionRoot = mainPanelHandler.loadProjectSelectionRoot(app);
 		String projectSelectionString = "Project Selection";
 		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(projectSelectionString, mainPanelHandler.getMainPanelIdHashMap().get(projectSelectionString));
-		app.loadNodeToERBContainer(projectSelectionRoot);			
+		app.loadNodeToERBContainer(projectSelectionRoot);	
+		app.getErbContainerController().addHeaderHBox();
+		app.getErbContainerController().addERBAboutHBox();
 	}
 	
 	@FXML
@@ -141,7 +143,9 @@ public class ERBLandingController implements Initializable{
 		Parent projectCreationRoot = mainPanelHandler.loadProjectCreationRoot(app);
 		String projectCreationString = "Project Creation";
 		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(projectCreationString, mainPanelHandler.getMainPanelIdHashMap().get(projectCreationString));
-		app.loadNodeToERBContainer(projectCreationRoot);			
+		app.loadNodeToERBContainer(projectCreationRoot);	
+		app.getErbContainerController().addHeaderHBox();
+		app.getErbContainerController().addERBAboutHBox();
 	}
 
 	public App getApp() {

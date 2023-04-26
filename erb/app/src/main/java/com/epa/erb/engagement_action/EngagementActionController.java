@@ -66,6 +66,12 @@ public class EngagementActionController implements Initializable {
 	VBox contentVBox;
 	@FXML
 	Label exploreModeLabel;
+	@FXML
+	Button worksheetIndexButton;
+	@FXML
+	Button myPortfolioButton;
+	@FXML
+	Button uploadFileButton;
 
 
 	private App app;
@@ -87,9 +93,6 @@ public class EngagementActionController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		treeView.setCellFactory(tv-> createTreeCell());
 		
-		app.getErbContainerController().addHeaderHBox();
-		app.getErbContainerController().addERBAboutHBox();
-		
 		if (project.getProjectType().contentEquals("Goal Mode")) {
 		} else {
 			initFacilitatorMode();
@@ -98,6 +101,67 @@ public class EngagementActionController implements Initializable {
 			engagementVBox.getChildren().remove(exploreModeLabel);
 		}
 		treeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());
+		
+		
+		worksheetIndexButton.setStyle("-fx-background-color: linear-gradient(#B95A17, #D56B20), "
+				+ "linear-gradient(#ffffff, #D56B20),"
+				+ "linear-gradient(#ffffff, #D56B20),"
+				+ "linear-gradient(#ffffff 0%, #D56B20 50%, #D56B20 100%),"
+				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+				+ "-fx-background-radius: 30;"
+				+ "-fx-background-insets: 0,1,2,3,0;"
+				+ "-fx-text-fill: white;"
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-size: 14px;"
+				+ "}");
+		
+		myPortfolioButton.setStyle("-fx-background-color: linear-gradient(#B95A17, #D56B20), "
+				+ "linear-gradient(#ffffff, #D56B20),"
+				+ "linear-gradient(#ffffff, #D56B20),"
+				+ "linear-gradient(#ffffff 0%, #D56B20 50%, #D56B20 100%),"
+				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+				+ "-fx-background-radius: 30;"
+				+ "-fx-background-insets: 0,1,2,3,0;"
+				+ "-fx-text-fill: white;"
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-size: 14px;"
+				+ "}");
+		
+		uploadFileButton.setStyle("-fx-background-color: linear-gradient(#B95A17, #D56B20), "
+				+ "linear-gradient(#ffffff, #D56B20),"
+				+ "linear-gradient(#ffffff, #D56B20),"
+				+ "linear-gradient(#ffffff 0%, #D56B20 50%, #D56B20 100%),"
+				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+				+ "-fx-background-radius: 30;"
+				+ "-fx-background-insets: 0,1,2,3,0;"
+				+ "-fx-text-fill: white;"
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-size: 14px;"
+				+ "}");
+		
+		previousButton.setStyle("-fx-background-color: linear-gradient(#757676, #939393), "
+				+ "linear-gradient(#ffffff, #939393),"
+				+ "linear-gradient(#ffffff, #939393),"
+				+ "linear-gradient(#ffffff 0%, #939393 50%, #939393 100%),"
+				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+				+ "-fx-background-radius: 30;"
+				+ "-fx-background-insets: 0,1,2,3,0;"
+				+ "-fx-text-fill: white;"
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-size: 14px;"
+				+ "}");
+		
+		nextButton.setStyle("-fx-background-color: linear-gradient(#757676, #939393), "
+				+ "linear-gradient(#ffffff, #939393),"
+				+ "linear-gradient(#ffffff, #939393),"
+				+ "linear-gradient(#ffffff 0%, #939393 50%, #939393 100%),"
+				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+				+ "-fx-background-radius: 30;"
+				+ "-fx-background-insets: 0,1,2,3,0;"
+				+ "-fx-text-fill: white;"
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-size: 14px;"
+				+ "}");
 	}
 
 	private void initFacilitatorMode() {

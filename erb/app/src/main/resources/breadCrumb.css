@@ -1,3 +1,16 @@
 .crumb {
     -fx-font-size: 14;
 }
+
+.bread-crumb-bar .button {
+  -fx-background-color: linear-gradient(#757676, #939393), 
+				linear-gradient(#ffffff, #939393),
+				linear-gradient(#ffffff, #939393),
+				linear-gradient(#ffffff 0%, #939393 50%, #939393 100%),
+				linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+				-fx-background-radius: 30;
+				-fx-background-insets: 0,1,2,3,0;
+				-fx-text-fill: white;
+				-fx-font-weight: bold;
+				fx-font-size: 14px;
+}

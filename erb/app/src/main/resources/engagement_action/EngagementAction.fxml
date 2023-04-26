@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -30,7 +29,6 @@
                </font></Button>
          </children>
       </HBox>
-      <Pane maxHeight="2.0" minHeight="2.0" prefHeight="2.0" style="-fx-background-color: #CCCCCC;" />
       <Label fx:id="exploreModeLabel" text="Important: You are in Explore Mode. In order to use the interactive activites or to edit forms, create a project on the ERB Home page">
          <font>
             <Font name="System Italic" size="13.0" />
@@ -38,15 +36,15 @@
       </Label>
       <HBox alignment="CENTER_RIGHT" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#worksheetIndexAction" text="Worksheet Index">
+            <Button fx:id="worksheetIndexButton" mnemonicParsing="false" onAction="#worksheetIndexAction" text="Worksheet Index">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio">
+            <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#externalDocUploadButtonAction" text="Upload File">
+            <Button fx:id="uploadFileButton" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" text="Upload File">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

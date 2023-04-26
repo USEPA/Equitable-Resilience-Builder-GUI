@@ -33,7 +33,7 @@ public class EngagementGoalLandingContentController implements Initializable {
 
 	private void handleControls() {
 		handleControlsShown();
-		goalLandingImageView.setImage(new Image(getClass().getResourceAsStream("/dashboard_image.PNG")));
+		goalLandingImageView.setImage(new Image(getClass().getResourceAsStream("/landing1.PNG")));
 	}
 
 	private void handleControlsShown() {

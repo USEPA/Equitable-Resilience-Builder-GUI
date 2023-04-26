@@ -19,7 +19,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class ERBContainerController implements Initializable{
@@ -46,6 +48,12 @@ public class ERBContainerController implements Initializable{
 	HBox headerHBox;
 	@FXML
 	HBox erbAboutHBox;
+	@FXML
+	Rectangle rectangle1;
+	@FXML
+	Rectangle rectangle2;
+	@FXML
+	StackPane erbAboutStackPane;
 	
 	private App app;
 	public ERBContainerController(App app) {
@@ -64,26 +72,62 @@ public class ERBContainerController implements Initializable{
 		populateResourceMenu();
 		populateBreadCrumbBar();
 		
+        rectangle1.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
+        rectangle2.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
+
 		menuBar.getStylesheets().add(getClass().getResource("/menuBar.css").toString());
 	}
 	
 	private void fillImageViews() {
-		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image.jpg")));
+		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image.png")));
 		imageView1.setFitWidth(25.0);
 		imageView1.setFitHeight(25.0);
 		faqMenu.setGraphic(imageView1);
+		faqMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
+				+ "linear-gradient(#ffffff, #1268BE),"
+				+ "linear-gradient(#ffffff, #1268BE),"
+				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
+				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+				+ "-fx-background-radius: 30;"
+				+ "-fx-background-insets: 0,1,2,3,0;"
+				+ "-fx-text-fill: white;"
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-size: 14px;"
+				+ "}");
 		
 		ImageView imageView2 = new ImageView(new Image(getClass().getResourceAsStream("/resource_image.png")));
 		imageView2.setFitWidth(25.0);
 		imageView2.setFitHeight(25.0);
 		resourcesMenu.setGraphic(imageView2);
+		resourcesMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
+				+ "linear-gradient(#ffffff, #1268BE),"
+				+ "linear-gradient(#ffffff, #1268BE),"
+				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
+				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+				+ "-fx-background-radius: 30;"
+				+ "-fx-background-insets: 0,1,2,3,0;"
+				+ "-fx-text-fill: white;"
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-size: 14px;"
+				+ "}");
 
 		ImageView imageView3 = new ImageView(new Image(getClass().getResourceAsStream("/faq_image.png")));
 		imageView3.setFitWidth(25.0);
 		imageView3.setFitHeight(25.0);
 		aboutMenu.setGraphic(imageView3);
+		aboutMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
+				+ "linear-gradient(#ffffff, #1268BE),"
+				+ "linear-gradient(#ffffff, #1268BE),"
+				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
+				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+				+ "-fx-background-radius: 30;"
+				+ "-fx-background-insets: 0,1,2,3,0;"
+				+ "-fx-text-fill: white;"
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-size: 14px;"
+				+ "}");
 		
-		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/dashboard_image.PNG")));
+		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/landing1.PNG")));
 	}
 	
 	private void populateResourceMenu() {
@@ -185,8 +229,9 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	public void removeERBAboutHBox() {
-		if(erbVBox.getChildren().contains(erbAboutHBox)) {
-			erbVBox.getChildren().remove(erbAboutHBox);
+		if(erbVBox.getChildren().contains(erbAboutStackPane)) {
+			erbVBox.getChildren().remove(erbAboutStackPane);
+			erbVBox.getChildren().remove(rectangle2);
 		}
 	}
 	
@@ -197,8 +242,9 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	public void addERBAboutHBox() {
-		if(!erbVBox.getChildren().contains(erbAboutHBox)) {
-			erbVBox.getChildren().add(1, erbAboutHBox);
+		if(!erbVBox.getChildren().contains(erbAboutStackPane)) {
+			erbVBox.getChildren().add(1, erbAboutStackPane);
+			erbVBox.getChildren().add(2, rectangle2);
 		}
 	}
 	

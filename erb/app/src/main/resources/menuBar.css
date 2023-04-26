@@ -1,7 +1,16 @@
-.menu-bar .label {
-  -fx-font-size: 14;
-}
- 
 .menu-item .label {
   -fx-font-size: 14;
+  -fx-text-fill: black;  
+}
+
+.menu .label {
+     -fx-text-fill: white;
+}
+
+.menu .label:hover {
+     -fx-text-fill: black; 
+}
+
+.context-menu {
+    -fx-background-color: #568BC1;
 }

@@ -387,9 +387,7 @@ public class XMLManager {
 											Element listBlockElement = (Element) listBlockNode;
 											NodeList childrenNodeList = listBlockElement.getChildNodes();
 											VBox listVBox = new VBox();
-											listVBox.setMinWidth(400);
-											HBox.setHgrow(listVBox, Priority.ALWAYS);
-											System.out.println("List Box");
+											listVBox.setMaxWidth(400.00);
 											for (int n = 0; n < childrenNodeList.getLength(); n++) {
 												Node cNode = childrenNodeList.item(n);
 												if (cNode.getNodeType() == Node.ELEMENT_NODE) {

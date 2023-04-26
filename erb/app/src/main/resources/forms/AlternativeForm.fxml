@@ -27,7 +27,7 @@
             </VBox>
          </center>
          <top>
-            <Pane fx:id="tP" prefHeight="10.0" BorderPane.alignment="CENTER" />
+            <Pane fx:id="tP" BorderPane.alignment="CENTER" />
          </top>
          <left>
             <Pane fx:id="lP" prefWidth="10.0" BorderPane.alignment="CENTER" />

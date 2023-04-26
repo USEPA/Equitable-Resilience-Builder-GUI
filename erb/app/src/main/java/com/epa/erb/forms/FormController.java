@@ -263,17 +263,17 @@ public class FormController {
 				TreeItem<ERBContentItem> erbContentItemSelected = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
 				getSectionParent(erbContentItemSelected);
 				ERBContentItem parent = parentERBContentItem;
-				if (parent.getId().contentEquals("15")) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter1Color());
-				} else if (parent.getId().contentEquals("16")) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter2Color());
-				} else if (parent.getId().contentEquals("17")) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter3Color());
-				} else if (parent.getId().contentEquals("18")) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter4Color());
-				} else if (parent.getId().contentEquals("19")) {
-					tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
-				}
+//				if (parent.getId().contentEquals("15")) {
+//					tP.setStyle("-fx-background-color: " + constants.getChapter1Color());
+//				} else if (parent.getId().contentEquals("16")) {
+//					tP.setStyle("-fx-background-color: " + constants.getChapter2Color());
+//				} else if (parent.getId().contentEquals("17")) {
+//					tP.setStyle("-fx-background-color: " + constants.getChapter3Color());
+//				} else if (parent.getId().contentEquals("18")) {
+//					tP.setStyle("-fx-background-color: " + constants.getChapter4Color());
+//				} else if (parent.getId().contentEquals("19")) {
+//					tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
+//				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
