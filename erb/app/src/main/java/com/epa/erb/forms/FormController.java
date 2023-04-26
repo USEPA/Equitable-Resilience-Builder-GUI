@@ -75,15 +75,17 @@ public class FormController {
 	}
 	
 	public void handleHyperlink(Text text, String linkType, String link, Project project) {
-		if (linkType.contentEquals("internalIntro")) {
+		if (linkType.contentEquals("internal")) {
 			internalPanelLinkClicked(link);
-		} else if (linkType.contentEquals("internalResource")) {
-			internalPanelLinkClicked(link);
-		} else if (linkType.contentEquals("internalStep")) {
-			internalPanelLinkClicked(link);
-		} else if (linkType.contentEquals("internalActivity")) {
-			internalPanelLinkClicked(link);
-		} else if (linkType.contentEquals("externalDOC")) {
+		} 
+//		else if (linkType.contentEquals("internalResource")) {
+//			internalPanelLinkClicked(link);
+//		} else if (linkType.contentEquals("internalStep")) {
+//			internalPanelLinkClicked(link);
+//		} else if (linkType.contentEquals("internalActivity")) {
+//			internalPanelLinkClicked(link);
+//		}
+		else if (linkType.contentEquals("externalDOC")) {
 			externalDOCLinkClicked(link, project);
 		} else if (linkType.contentEquals("URL")) {
 			urlLinkClicked(link);
@@ -105,22 +107,35 @@ public class FormController {
 			internalPopupLinkClicked(link);
 		} else if (idAssignments.getFAQIdAssignments().contains(link)) {
 			internalPopupLinkClicked(link);
+		} else if (idAssignments.getAboutIdAssignments().contains(link)) {
+			internalPopupLinkClicked(link);
 		} else if (idAssignments.getBackgroundIdAssignments().contains(link)) {
 			internalPopupLinkClicked(link);
+		} else if (link.contentEquals("MyPortfolio")) {
+			engagementActionController.myPortfolioButtonAction();
 		} else {
 			internalContentLinkClicked(link);
 		}
 	}
 
 	public void internalPopupLinkClicked(String link) {
+		ERBContentItem erbContentItem = app.findERBContentItemForId(link);
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(link);
-		Pane root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
+		Pane root = null;
+		if(erbContentItem.getType().contentEquals("mainForm")) {
+			root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
+		} else if (erbContentItem.getType().contentEquals("alternativeForm")) {
+			root = app.getErbContainerController().loadAlternativeFormContentController(formContentXMLFile);
+
+		}
+		if(root != null) {
 		Stage stage = new Stage();
 		Scene scene = new Scene(root);
 		stage.setWidth(1150.0);
 		stage.setHeight(750.0);
 		stage.setScene(scene);
 		stage.showAndWait();
+		}
 	}
 
 	protected ERBContentItem parentERBContentItem = null;

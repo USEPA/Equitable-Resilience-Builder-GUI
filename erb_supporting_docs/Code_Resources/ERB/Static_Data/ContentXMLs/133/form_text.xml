@@ -186,8 +186,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Strategy Chart"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Strategy_Chart.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -201,8 +201,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Strategy Chart Example"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="152">
 			</text>
 		</textBlock>
 	</container>

@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
+import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.MainPanelHandler;
@@ -163,6 +164,19 @@ public class ERBContainerController implements Initializable{
 			return null;
 		}
 	}
+	
+	public VBox loadAlternativeFormContentController(File xmlContentFileToParse) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/AlternativeForm.fxml"));
+			AlternativeFormController formContentController = new AlternativeFormController(app, xmlContentFileToParse, app.getEngagementActionController());
+			fxmlLoader.setController(formContentController);
+			VBox root = fxmlLoader.load();
+			return root;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 	
 	public void removeHeaderHBox() {
 		if(erbVBox.getChildren().contains(headerHBox)) {

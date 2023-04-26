@@ -174,24 +174,24 @@
 				fontFamily="System"
 				fontStyle="Hyperlink"
 				text="Implementation Storytelling Exercise"
-				linkType=""
-				link="">
+				linkType="externalDOC"
+				link="Implementation_Storytelling_Exercise.docx">
 				</text>
 				<text
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
 				text="Word Cloud"
-				linkType=""
-				link="">
+				linkType="internal"
+				link="84">
 				</text>
 				<text
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
 				text="Key Takeaways Form on Strategizing"
-				linkType=""
-				link="">
+				linkType="internal"
+				link="136">
 				</text>
 			</listBlock>
 		</textBlock>

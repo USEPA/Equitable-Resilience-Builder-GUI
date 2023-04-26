@@ -175,15 +175,15 @@
 			fontStyle="Hyperlink"
 			text="Scoping Information Gathering"
 			linkType="externalDOC"
-			link="Ch3_ScopingInformationGathering.docx">
+			link="Scoping_Information_Gathering.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Indicators Master List"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Indicators_Master_List.xlsx">
 			</text>
 			<text
 			size="16.0"
@@ -191,7 +191,7 @@
 			fontStyle="Hyperlink"
 			text="Project Plan"
 			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
+			link="Project_Plan_Template.docx">
 			</text>
 			</listBlock>
 			</textBlock>
@@ -206,7 +206,7 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Data Scoping Example"
-			linkType="internalStep"
+			linkType="internal"
 			link="114">
 			</text>
 		</textBlock>	

@@ -254,8 +254,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Collect Hazards Data"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Collect_Hazards_Data.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -269,8 +269,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Hazards Data Example"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="116">
 			</text>
 		</textBlock>		
 	</container>

@@ -129,8 +129,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Equity and Engagement Exercise"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Equity_in_Engagement_Exercise.docx">
 			</text>
 		</textBlock>
 		<textBlock>

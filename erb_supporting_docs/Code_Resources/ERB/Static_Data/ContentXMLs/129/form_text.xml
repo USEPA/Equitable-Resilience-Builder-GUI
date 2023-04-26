@@ -180,24 +180,24 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Disaster Scenario Exercise"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Disaster_Scenario_Exercise.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Equity Storytelling Exercise"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Equity_Storytelling_Exercise.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways Form on Strategizing"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="136">
 			</text>
 			</listBlock>
 		</textBlock>

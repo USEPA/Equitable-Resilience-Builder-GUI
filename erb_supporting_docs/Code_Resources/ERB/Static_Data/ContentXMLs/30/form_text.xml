@@ -230,15 +230,15 @@
 			fontStyle="Hyperlink"
 			text="Recruitment guide"
 			linkType="externalDOC"
-			link="Ch1_Recruitment_Guide.docx">
+			link="Recruitment_Guide.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Youth engagement guide"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="10">
 			</text>
 			</listBlock>
 		</textBlock>

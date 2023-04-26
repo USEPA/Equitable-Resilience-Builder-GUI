@@ -47,7 +47,12 @@ public class IdAssignments {
 	}
 	
 	public void fillBackgroundIdAssignments() {
-		
+		backgroundIdAssignments.add("27");
+		backgroundIdAssignments.add("114");
+		backgroundIdAssignments.add("121");
+		backgroundIdAssignments.add("123");
+		backgroundIdAssignments.add("152");
+
 	}
 	
 	public ArrayList<String> getFAQIdAssignments() {

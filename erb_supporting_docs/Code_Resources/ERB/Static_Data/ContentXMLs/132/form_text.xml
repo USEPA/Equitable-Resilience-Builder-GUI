@@ -199,24 +199,14 @@
 			height="40.0"
 			id="63">
 			</icon>
-			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Evaluating Equitable Resilience"
-			linkType=""
-			link="">
+			text="Evaluating Equitable Resilience Building Actions"
+			linkType="externalDOC"
+			link="Evaluating_Equitable_Resilience_Building_Actions.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Building Actions"
-			linkType=""
-			link="">
-			</text>
-			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon

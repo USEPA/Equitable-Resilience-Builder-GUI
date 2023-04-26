@@ -174,24 +174,24 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Results to Action Workshop Agenda Builder"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Results_to_Action_Workshop_Agenda_Builder.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Facilitators Guide for Workshops"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Facilitators_Guide_for_Workshops.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Reflection Diary"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Reflection_Diary.docx">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -206,8 +206,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Results to Action Workshop Sample Agenda"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Results_to_Action_Workshop_Sample_Agenda.docx">
 			</text>
 		</textBlock>		
 	</container>

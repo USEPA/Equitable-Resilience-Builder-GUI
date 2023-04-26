@@ -173,8 +173,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Equity Discussion Instructions"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Equity_Discussion_Instructions.docx">
 			</text>
 		</textBlock>	
 		<textBlock>

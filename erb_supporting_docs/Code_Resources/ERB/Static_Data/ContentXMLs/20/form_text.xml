@@ -188,15 +188,15 @@
 			fontStyle="Hyperlink"
 			text="Team Storytelling Exercise"
 			linkType="externalDOC"
-			link="Ch1_Storytelling_Exercise.docx">
+			link="Team_Storytelling_Exercise.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Word Cloud"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="84">
 			</text>
 			</listBlock>
 		</textBlock>

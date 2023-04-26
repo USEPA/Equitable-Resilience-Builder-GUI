@@ -171,8 +171,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Vision Statement Discussion"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Vision_Statement_Discussion.docx">
 			</text>
 		</textBlock>
 		<textBlock>

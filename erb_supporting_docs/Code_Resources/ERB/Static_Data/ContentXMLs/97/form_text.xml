@@ -229,7 +229,7 @@
 			fontStyle="Hyperlink"
 			text="Scoping Information Gathering"
 			linkType="externalDOC"
-			link="Ch3_ScopingInformationGathering.docx">
+			link="Scoping_Information_Gathering.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -244,16 +244,16 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Hazards Data Example"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="116">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Equity Data Example"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="118">
 			</text>
 			</listBlock>
 		</textBlock>			

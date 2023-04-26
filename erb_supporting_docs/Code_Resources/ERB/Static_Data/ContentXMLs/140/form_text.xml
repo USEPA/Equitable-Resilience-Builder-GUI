@@ -130,16 +130,16 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="My Portfolio"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="MyPortfolio">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Implementation worksheet"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Implementation_Worksheet.docx">
 			</text>
 			</listBlock>
 			</textBlock>

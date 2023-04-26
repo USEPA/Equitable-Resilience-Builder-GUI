@@ -182,16 +182,16 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Indicator cards"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Indicators_Master_List.xlsx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Monitoring Plan Worksheet"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Monitoring_Plan_Worksheet.docx">
 			</text>
 			</listBlock>
 		</textBlock>

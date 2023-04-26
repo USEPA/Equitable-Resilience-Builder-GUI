@@ -197,24 +197,24 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Community_Connections_Table.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Diagram Community Connections"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Diagram_Community_Connections.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Engagement Plan Template"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Community_Engagement_Plan_Template.docx">
 			</text>
 			</listBlock>
 		</textBlock>

@@ -173,8 +173,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Actions Brainstorming Instructions"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Actions_Brainstorming_Instructions.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -188,8 +188,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Actions Brainstorming Example"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="143">
 			</text>
 		</textBlock>
 	</container>

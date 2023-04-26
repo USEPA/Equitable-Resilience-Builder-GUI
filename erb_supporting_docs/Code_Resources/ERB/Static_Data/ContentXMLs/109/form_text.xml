@@ -180,16 +180,16 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Mapping Activity Instructions"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Mapping_Activity_Instructions.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="144">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -204,7 +204,7 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Example Map with Stickies"
-			linkType="internalStep"
+			linkType="internal"
 			link="121">
 			</text>
 		</textBlock>			

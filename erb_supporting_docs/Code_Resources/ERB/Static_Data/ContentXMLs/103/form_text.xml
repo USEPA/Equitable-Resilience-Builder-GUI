@@ -116,8 +116,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Collect Equity Data"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Collect_Equity_Data.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -131,8 +131,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Equity Data Example"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="118">
 			</text>
 		</textBlock>			
 	</container>

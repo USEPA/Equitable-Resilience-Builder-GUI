@@ -184,8 +184,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Facilitators Guide for Workshops"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Facilitators_Guide_for_Workshops.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -199,8 +199,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Urban Waters Story Map"
-			linkType=""
-			link="">
+			linkType="URL"
+			link="https://storymaps.arcgis.com/stories/c1a5ae06b5964f078ada4a3c5e8b99a7">
 			</text>
 		</textBlock>			
 	</container>

@@ -157,8 +157,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways Form on Assessment"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="136">
 			</text>
 		</textBlock>
 		<textBlock>

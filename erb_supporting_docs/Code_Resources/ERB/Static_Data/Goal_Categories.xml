@@ -3,8 +3,7 @@
 		<contents>
 			<content id="15">
 				<content id="30"/>
-				<content id="20">
-					<content id="27"/>
+				<content id="20">		
 					<content id="84"/>
 				</content>
 				<content id="59">
@@ -27,7 +26,9 @@
 			<content id="17">
 				<content id="92">
 					<content id="93"/>
-					<content id="94"/>
+					<content id="94">
+						<content id="84"/>
+					</content>
 					<content id="95"/>
 					<content id="96"/>
 				</content>

@@ -160,8 +160,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Community Connections Table"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Community_Connections_Table.docx">
 			</text>
 		</textBlock>
 		<textBlock>

@@ -199,8 +199,8 @@
 				fontFamily="System"
 				fontStyle="Hyperlink"
 				text="Facilitators Guide for Workshops"
-				linkType=""
-				link="">
+				linkType="externalDOC"
+				link="Facilitators_Guide_for_Workshops.docx">
 				</text>
 		</textBlock>
 		<textBlock>

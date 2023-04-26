@@ -178,7 +178,7 @@
 			fontStyle="Hyperlink"
 			text="Project Plan Template"
 			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
+			link="Project_Plan_Template.docx">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -193,8 +193,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Activity Selection"
-			linkType="internalStep"
-			link="27">
+			linkType="internal"
+			link="29">
 			</text>
 		</textBlock>
 	</container>

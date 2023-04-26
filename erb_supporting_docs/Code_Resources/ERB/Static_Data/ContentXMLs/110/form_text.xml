@@ -187,16 +187,16 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Indicator Activity Instructions"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="Indicator_Activity_Instructions.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Indicator matrix"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="85">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -211,7 +211,7 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Example of Sorted Cards"
-			linkType="internalStep"
+			linkType="internal"
 			link="123">
 			</text>
 		</textBlock>			
