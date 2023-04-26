@@ -451,7 +451,7 @@ public class EngagementActionController implements Initializable {
 					setText(null);
 					setGraphic(null);
 				} else {
-					setText(item.getLongName());
+					setText(item.getShortName());
 				}
 			}
 		};

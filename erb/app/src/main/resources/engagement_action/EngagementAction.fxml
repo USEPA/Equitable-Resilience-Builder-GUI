@@ -96,7 +96,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <TreeView fx:id="treeView" minWidth="250.0" prefHeight="250.0" VBox.vgrow="ALWAYS" />
+                  <TreeView fx:id="treeView" minWidth="275.0" prefHeight="275.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <VBox fx:id="mainVBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">

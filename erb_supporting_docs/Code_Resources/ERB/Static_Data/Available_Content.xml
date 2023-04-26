@@ -16,9 +16,9 @@
 	<content id="19" guid="" type="mainForm" status="ready" shortName="Wrap up/Move Forward" longName="Wrap Up and Move Forward" />
 	<content id="20" guid="" type="mainForm" status="ready" shortName="Team Storytelling" longName="Team Storytelling Exercise" />
 	<content id="25" guid="" type="mainForm" status="ready" shortName="Plan Workshop 3" longName="Plan Workshop 3" />
-	<content id="27" guid="" type="alternativeForm" status="ready" shortName="Example:Using ERB" longName="How have communities used ERB?" />
-	<content id="28" guid="" type="alternativeForm" status="ready" shortName="Example:Goals" longName="Goal setting examples" />
-	<content id="29" guid="" type="alternativeForm" status="ready" shortName="Example:Activities" longName="Activity selection examples" />
+	<content id="27" guid="" type="alternativeForm" status="ready" shortName="Example: Using ERB" longName="How have communities used ERB?" />
+	<content id="28" guid="" type="alternativeForm" status="ready" shortName="Example: Goals" longName="Goal setting examples" />
+	<content id="29" guid="" type="alternativeForm" status="ready" shortName="Example: Activities" longName="Activity selection examples" />
 	<content id="30" guid="" type="mainForm" status="ready" shortName="Assemble a Core Team" longName="Get a Core Team Together" />
 	<content id="31" guid="" type="mainForm" status="ready" shortName="Select ERB Activites" longName="Select ERB Activites" />
 	<content id="32" guid="" type="mainForm" status="ready" shortName="Make a Project Plan" longName="Make a Project Plan" />
@@ -66,14 +66,14 @@
 	<content id="133" guid="" type="mainForm" status="ready" shortName="Strategy Planning" longName="Strategy Planning" />
 	<content id="134" guid="" type="mainForm" status="ready" shortName="Workshop Wrap-Up" longName="Workshop Wrap-Up" />
 	<content id="135" guid="" type="mainForm" status="ready" shortName="Reflection/Next Steps" longName="Reflection and Next Steps" />
-	<content id="136" guid="" type="outputForm" status="ready" shortName="Key Takeaways:Action" longName="Key Takeaways on Strategizing" />
+	<content id="136" guid="" type="outputForm" status="ready" shortName="Key Takeaways: Action" longName="Key Takeaways on Strategizing" />
 	<content id="138" guid="" type="mainForm" status="ready" shortName="Document Your Project" longName="Document Your Project" />
 	<content id="139" guid="" type="mainForm" status="ready" shortName="Long-term Engagement" longName="Maintain Outreach and Engagement" />
 	<content id="140" guid="" type="mainForm" status="ready" shortName="Implement Actions" longName="Implement Actions" />
 	<content id="141" guid="" type="mainForm" status="ready" shortName="Monitoring Change" longName="Use Monitoring to Support Future Action" />
 	<content id="142" guid="" type="mainForm" status="ready" shortName="Reflection and Celebrate" longName="Reflection and Celebrate" />
-	<content id="143" guid="" type="outputForm" status="ready" shortName="Example:Brainstorming" longName="Actions Brainstorming Example" />
-	<content id="144" guid="" type="outputForm" status="ready" shortName="Key Takeaways:Assess" longName="Key Takeaways from Assessment" />
+	<content id="143" guid="" type="outputForm" status="ready" shortName="Example: Brainstorming" longName="Actions Brainstorming Example" />
+	<content id="144" guid="" type="outputForm" status="ready" shortName="Key Takeaways: Assess" longName="Key Takeaways from Assessment" />
 	<content id="151" guid="" type="mainForm" status="ready" shortName="Workshop Agenda Builder" longName="Results to Action Workshop Agenda Builder" />
 	<content id="152" guid="" type="mainForm" status="ready" shortName="Strategy Chart Example" longName="Strategy Chart Example" />
 </content_xmls>
