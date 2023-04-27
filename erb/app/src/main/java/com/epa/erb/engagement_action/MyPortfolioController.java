@@ -137,13 +137,13 @@ public class MyPortfolioController implements Initializable {
 		ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections", "ERB Sections");
 		ArrayList<String> rootFileNames = xmlManager.parseWorksheetsXML(fileHandler.getStaticWorksheetsXMLFile(), rootERBContentItem.getShortName());			
 		hash.put(rootERBContentItem.getShortName(), createListOfUploadedItems(rootFileNames));
-		TreeItem<String> rootTreeItem = new TreeItem<String>(rootERBContentItem.getLongName());
+		TreeItem<String> rootTreeItem = new TreeItem<String>(rootERBContentItem.getShortName());
 		rootTreeItem.setExpanded(true);
 		myPortfolioTreeView.setRoot(rootTreeItem);
 
 		for (ERBContentItem contentItem : app.getAvailableERBContentItems()) {
 			if (id.getChapterIdAssignments().contains(contentItem.getId())) {
-				TreeItem<String> treeItem = new TreeItem<String>(contentItem.getLongName());
+				TreeItem<String> treeItem = new TreeItem<String>(contentItem.getShortName());
 				ArrayList<String> fileNames = xmlManager.parseWorksheetsXML(fileHandler.getStaticWorksheetsXMLFile(), contentItem.getShortName());			
 				hash.put(contentItem.getShortName(), createListOfUploadedItems(fileNames));		
 				rootTreeItem.getChildren().add(treeItem);

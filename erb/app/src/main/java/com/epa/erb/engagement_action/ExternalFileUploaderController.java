@@ -107,6 +107,29 @@ public class ExternalFileUploaderController implements Initializable{
 		}
 	}
 	
+	public void pushToUploaded(File sourceFile, String uploadSource) {
+		if (engagementActionController != null) {
+			File uploadDir = fileHandler.getMyUploadsDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
+			if(!uploadDir.exists()) uploadDir.mkdir();
+			int fileNumber = uploadDir.listFiles().length + 1;			
+			
+			File destDir = new File(uploadDir + "\\" + fileNumber);
+			if(!destDir.exists()) destDir.mkdir();
+			//Copy file
+			File destFile = new File(destDir + "\\" + sourceFile.getName());
+			fileHandler.copyFile(sourceFile, destFile);
+			//Create about file
+			File aboutFile = new File(destDir + "\\" + "about.txt");
+			try {
+				PrintWriter printWriter = new PrintWriter(aboutFile);
+				printWriter.println("uploadSource : " + uploadSource);
+				printWriter.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}	
+		}
+	}
+	
 	private void handleNewFile(File sourceFile, String uploadSource) {
 		//Create dir
 		int fileNumber = tableView.getItems().size() + 1;

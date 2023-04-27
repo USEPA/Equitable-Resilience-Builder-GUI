@@ -1,11 +1,14 @@
 package com.epa.erb.forms;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.io.PrintWriter;
 import com.epa.erb.App;
+import com.epa.erb.engagement_action.ExternalFileUploaderController;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
@@ -15,7 +18,6 @@ import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -134,6 +136,35 @@ public class OutputFormController extends FormController implements Initializabl
 
 		}
 		xmlManager.writeOutputFormDataXML(saveLocation, listOfChildren);
+		String fileName = engagementActionController.getCurrentSelectedERBContentItem().getShortName().replaceAll(" ", "_").replaceAll(":", "_");
+		File outputTextFile = new File(fileHandler.getGUIDDataDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal())+"\\" + engagementActionController.getCurrentSelectedERBContentItem().getGuid() + "\\" + fileName + ".txt");
+		writeOutputFormToTextFile(listOfChildren,outputTextFile);
+		ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(engagementActionController);
+		exFileUploader.pushToUploaded(outputTextFile, "Key Takeaways");
+	}
+	
+	private void writeOutputFormToTextFile(ArrayList<javafx.scene.Node> outputFormNodes, File file) {
+		try {
+			PrintWriter printWriter = new PrintWriter(file);
+			for (javafx.scene.Node node : outputFormNodes) {
+				if (node.toString().contains("TextFlow")) {
+					TextFlow textFlow = (TextFlow) node;
+					StringBuilder stringBuilder = new StringBuilder();
+					for (int i = 0; i < textFlow.getChildren().size(); i++) {
+						Text text = (Text) textFlow.getChildren().get(i);
+						stringBuilder.append(text.getText());
+					}
+					printWriter.println(stringBuilder.toString());
+				} else if (node.toString().contains("TextArea")) {
+					TextArea textArea = (TextArea) node;
+					String text = textArea.getText();
+					printWriter.println(text);
+				}
+			}
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void setUnEditable() {
