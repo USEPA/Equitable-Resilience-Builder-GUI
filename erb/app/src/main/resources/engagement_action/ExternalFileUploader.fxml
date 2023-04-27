@@ -33,7 +33,7 @@
                </columnResizePolicy></TableView>
             <VBox HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#uploadFileButtonAction" text="Upload File">
+                  <Button mnemonicParsing="false" onAction="#uploadFileButtonAction" stylesheets="@../button.css" text="Upload File">
                      <font>
                         <Font size="14.0" />
                      </font></Button>

@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefWidth="901.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefWidth="901.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+      <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background: white; -fx-border-color: white;">
          <content>
-            <VBox spacing="5.0">
+            <VBox fx:id="box" spacing="5.0">
                <children>
                   <HBox>
                      <children>
@@ -74,14 +74,16 @@
                                     <Label text="Word or Phrase">
                                        <font>
                                           <Font size="16.0" />
-                                       </font></Label>
+                                       </font>
+                                    </Label>
                                     <HBox alignment="CENTER_LEFT" spacing="20.0">
                                        <children>
                                           <TextField fx:id="inputTextField" />
-                                          <Button fx:id="shortAddButton" mnemonicParsing="false" onAction="#shortAddButtonAction" text="Add">
+                                          <Button fx:id="shortAddButton" mnemonicParsing="false" onAction="#shortAddButtonAction" stylesheets="@../button.css" text="Add">
                                              <font>
                                                 <Font size="14.0" />
-                                             </font></Button>
+                                             </font>
+                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -91,16 +93,18 @@
                                     <Label text="Block of Text">
                                        <font>
                                           <Font size="16.0" />
-                                       </font></Label>
+                                       </font>
+                                    </Label>
                                     <HBox alignment="CENTER_LEFT" spacing="20.0">
                                        <children>
                                           <TextArea fx:id="inputTextArea" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                           <VBox alignment="CENTER">
                                              <children>
-                                                <Button fx:id="longAddButton" mnemonicParsing="false" onAction="#longAddButtonAction" text="Add">
+                                                <Button fx:id="longAddButton" mnemonicParsing="false" onAction="#longAddButtonAction" stylesheets="@../button.css" text="Add">
                                                    <font>
                                                       <Font size="14.0" />
-                                                   </font></Button>
+                                                   </font>
+                                                </Button>
                                              </children>
                                           </VBox>
                                        </children>
@@ -108,7 +112,8 @@
                                     <CheckBox fx:id="excludeCommonCheckBox" mnemonicParsing="false" onAction="#excludeCommonCheckBoxAction" text="Exclude common words">
                                        <font>
                                           <Font size="16.0" />
-                                       </font></CheckBox>
+                                       </font>
+                                    </CheckBox>
                                  </children>
                               </VBox>
                            </children>
@@ -117,16 +122,18 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="30.0">
                                  <children>
-                                    <Button fx:id="mergeButton" mnemonicParsing="false" onAction="#mergeButtonAction" text="Merge">
+                                    <Button fx:id="mergeButton" mnemonicParsing="false" onAction="#mergeButtonAction" stylesheets="@../button.css" text="Merge">
                                        <font>
                                           <Font size="14.0" />
-                                       </font></Button>
+                                       </font>
+                                    </Button>
                                     <HBox alignment="CENTER_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
                                        <children>
                                           <Label text="Word Count: ">
                                              <font>
                                                 <Font size="14.0" />
-                                             </font></Label>
+                                             </font>
+                                          </Label>
                                           <Label fx:id="numberOfWordsLabel" />
                                        </children>
                                     </HBox>
@@ -148,16 +155,18 @@
                                  <children>
                                     <HBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearTableButtonAction" text="Clear Table">
+                                          <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearTableButtonAction" stylesheets="@../button.css" text="Clear Table">
                                              <font>
                                                 <Font size="14.0" />
-                                             </font></Button>
+                                             </font>
+                                          </Button>
                                        </children>
                                     </HBox>
-                                    <Button fx:id="buildButton" mnemonicParsing="false" onAction="#buildButtonAction" text="Build Word Cloud">
+                                    <Button fx:id="buildButton" mnemonicParsing="false" onAction="#buildButtonAction" stylesheets="@../button.css" text="Build Word Cloud">
                                        <font>
                                           <Font size="14.0" />
-                                       </font></Button>
+                                       </font>
+                                    </Button>
                                  </children>
                               </HBox>
                            </children>
@@ -167,10 +176,11 @@
                   <VBox fx:id="vBox" alignment="CENTER" VBox.vgrow="ALWAYS" />
                   <HBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button fx:id="saveWordCloudButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save Word Cloud">
+                        <Button fx:id="saveWordCloudButton" mnemonicParsing="false" onAction="#saveButtonAction" stylesheets="@../button.css" text="Save Word Cloud">
                            <font>
                               <Font size="14.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

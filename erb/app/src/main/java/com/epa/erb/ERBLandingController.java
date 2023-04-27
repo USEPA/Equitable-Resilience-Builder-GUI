@@ -3,6 +3,8 @@ package com.epa.erb;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.epa.erb.forms.FormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
@@ -102,7 +104,12 @@ public class ERBLandingController implements Initializable{
 	@FXML
 	public void hyperlinkAction(ActionEvent actionEvent) {
 		Hyperlink hyperlink = (Hyperlink) actionEvent.getSource();
-		loadContent(hyperlink.getId());
+		if(hyperlink.getId() !=null) {
+			loadContent(hyperlink.getId());
+		} else {
+			FormController formController = new FormController(app,null,null);
+			formController.showLinkNotAvailable();
+		}
 	}
 	
 	@FXML

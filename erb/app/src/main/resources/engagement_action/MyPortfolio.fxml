@@ -35,7 +35,7 @@
                </columnResizePolicy></TableView>
             <VBox HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#exportButtonAction" text="Export">
+                  <Button mnemonicParsing="false" onAction="#exportButtonAction" stylesheets="@../button.css" text="Export">
                      <font>
                         <Font size="14.0" />
                      </font></Button>

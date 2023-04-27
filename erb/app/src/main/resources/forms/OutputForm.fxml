@@ -12,15 +12,16 @@
    <children>
       <BorderPane VBox.vgrow="ALWAYS">
          <center>
-            <VBox BorderPane.alignment="CENTER">
+            <VBox fx:id="vBox">
                <children>
                   <VBox fx:id="formVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save Form">
+                        <Button mnemonicParsing="false" onAction="#saveButtonAction" stylesheets="@../button.css" text="Save Form">
                            <font>
                               <Font size="14.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

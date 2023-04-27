@@ -10,17 +10,14 @@
    <children>
       <BorderPane VBox.vgrow="ALWAYS">
          <center>
-            <VBox fx:id="containerVBox" spacing="50.0" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets top="3.0" />
-               </BorderPane.margin>
+            <VBox fx:id="containerVBox" spacing="50.0">
                <children>
                   <VBox fx:id="titleVBox" />
                   <HBox fx:id="hBox" alignment="CENTER" spacing="30.0">
                      <children>
-                        <VBox fx:id="leftVBox" HBox.hgrow="ALWAYS" />
-                        <VBox fx:id="centerVBox" HBox.hgrow="ALWAYS" />
-                        <VBox fx:id="rightVBox" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="leftVBox" />
+                        <VBox fx:id="centerVBox" />
+                        <VBox fx:id="rightVBox" />
                      </children>
                   </HBox>
                </children>

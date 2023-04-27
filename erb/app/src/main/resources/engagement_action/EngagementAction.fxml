@@ -34,17 +34,17 @@
             <Font name="System Italic" size="13.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER_RIGHT" spacing="5.0">
+      <HBox alignment="CENTER_RIGHT" spacing="5.0" style="-fx-background-color: white;">
          <children>
-            <Button fx:id="worksheetIndexButton" mnemonicParsing="false" onAction="#worksheetIndexAction" text="Worksheet Index">
+            <Button fx:id="worksheetIndexButton" mnemonicParsing="false" onAction="#worksheetIndexAction" stylesheets="@../orange_buttons.css" text="Worksheet Index">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" text="MyPortfolio">
+            <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" stylesheets="@../orange_buttons.css" text="MyPortfolio">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="uploadFileButton" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" text="Upload File">
+            <Button fx:id="uploadFileButton" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" stylesheets="@../orange_buttons.css" text="Upload File">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -56,18 +56,18 @@
       </HBox>
       <HBox fx:id="navigationHBox" alignment="TOP_CENTER">
          <children>
-            <HBox fx:id="previousHBox" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+            <HBox fx:id="previousHBox" alignment="CENTER_LEFT" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </padding>
             </HBox>
-            <HBox fx:id="nextHBox" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
+            <HBox fx:id="nextHBox" alignment="CENTER_RIGHT" style="-fx-background-color: white;" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="3.0" right="3.0" />
          </VBox.margin>
       </HBox>
-      <HBox fx:id="bodyHBox" VBox.vgrow="ALWAYS">
+      <HBox fx:id="bodyHBox" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
          <children>
             <VBox fx:id="treeViewVBox">
                <children>
@@ -75,7 +75,7 @@
                      <children>
                         <HBox HBox.hgrow="ALWAYS">
                            <children>
-                              <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" text="Previous">
+                              <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" stylesheets="@../button.css" text="Previous">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Button>
@@ -83,7 +83,7 @@
                         </HBox>
                         <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                            <children>
-                              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next">
+                              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" stylesheets="@../button.css" text="Next">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Button>
@@ -101,7 +101,7 @@
                <children>
                   <HBox fx:id="body2HBox" VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox fx:id="contentVBox" alignment="CENTER" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="contentVBox" alignment="CENTER" />
                      </children>
                   </HBox>
                </children>

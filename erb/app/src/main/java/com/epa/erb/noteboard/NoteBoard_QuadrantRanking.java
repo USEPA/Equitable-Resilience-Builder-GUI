@@ -1,9 +1,12 @@
 package com.epa.erb.noteboard;
 
+import java.io.File;
 import java.util.ArrayList;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.IndicatorCard;
+import com.epa.erb.goal.Goal;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
@@ -13,13 +16,47 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 public class NoteBoard_QuadrantRanking extends NoteBoardContentController {
 
 	ArrayList<NoteBoardRowController> linearRowControllers = new ArrayList<NoteBoardRowController>();
-	public NoteBoard_QuadrantRanking(App app, ERBContentItem erbContentItem, ArrayList<NoteBoardRowController> linearRowControllers, ArrayList<IndicatorCard> indicatorCards) {
-		super(app, erbContentItem, indicatorCards);
+	public NoteBoard_QuadrantRanking(App app, Goal goal, ERBContentItem erbContentItem, ArrayList<NoteBoardRowController> linearRowControllers, ArrayList<IndicatorCard> indicatorCards) {
+		super(app, goal, erbContentItem, indicatorCards);
 		this.linearRowControllers = linearRowControllers;
+	}
+	
+	protected void loadNoteBoardNew() {
+		deleteExistingQuadrantData();
+	}
+	
+	protected void loadNoteBoardExisting() {
+		handleBankedCards();
+		handleRankedCards();
+	}
+	
+	private void handleRankedCards() {
+		if(quadrantDirectory.exists()) {
+			File rankedIdsFile = new File(quadrantDirectory.getPath() + "\\rankedIds.txt");
+			ArrayList<ArrayList<IndicatorCard>> cards = parseForMultiRowIndicatorIds(rankedIdsFile);
+			// ROW
+			for (int i = 0; i < rowControllers.size(); i++) {
+				HBox rankedHBox = rowControllers.get(i).rowHBox;
+				ArrayList<IndicatorCard> rankedRow = cards.get(i);
+				// CELL
+				for (int j = 0; j < rankedHBox.getChildren().size(); j++) {
+					HBox cellHBox = (HBox) rankedHBox.getChildren().get(j);
+					IndicatorCard iC = rankedRow.get(j);
+					if(iC != null) {
+						cellHBox.getChildren().add(loadIndicatorCard(iC));
+					}
+				}
+			}
+		}
+	}
+	
+	private void deleteExistingQuadrantData() {
+		fileHandler.deleteDirectory(quadrantDirectory);
 	}
 
 	public void setUpNoteBoard(int numberOfRows) {
@@ -30,6 +67,22 @@ public class NoteBoard_QuadrantRanking extends NoteBoardContentController {
 		fillRankedNoteBoardItemHBox(rankedItemsHBox);
 		setNewDrag(rankedItemsHBox);
 		contentHBox.getChildren().remove(dropDownVBox);
+		hideNextButton();
+		showPreviousButton();
+		saveBoardButton.setVisible(true);
+
+	}
+	
+	private void handleBankedCards() {
+		if(quadrantDirectory.exists()) {
+			File bankedIdsFile = new File(quadrantDirectory.getPath() + "\\bankedIds.txt");
+			ArrayList<IndicatorCard> bankedCards = parseForIndicatorIds(bankedIdsFile);
+			HBox rowHBox = (HBox) rankedItemsHBox.getChildren().get(0);
+			rowHBox.getChildren().clear();
+			for(IndicatorCard card: bankedCards) {
+				rowHBox.getChildren().add(loadIndicatorCard(card));
+			}
+		}
 	}
 	
 	private void removeNoteBoardItemVBox() {

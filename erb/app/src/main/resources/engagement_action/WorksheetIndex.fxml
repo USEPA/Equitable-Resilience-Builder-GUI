@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="465.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="Welcome to the Worksheet Index">
+      <Label alignment="CENTER" contentDisplay="TOP" prefHeight="30.0" prefWidth="398.0" text="Welcome to the Worksheet Index">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

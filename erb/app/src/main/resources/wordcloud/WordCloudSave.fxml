@@ -36,7 +36,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT">
          <children>
-            <Button mnemonicParsing="false" onAction="#okButtonAction" text="OK">
+            <Button mnemonicParsing="false" onAction="#okButtonAction" stylesheets="@../button.css" text="OK">
                <font>
                   <Font size="14.0" />
                </font></Button>

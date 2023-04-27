@@ -120,27 +120,27 @@
                               </HBox>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Hyperlink text="Equity &amp; resilience">
+                                    <Hyperlink id="04" onAction="#hyperlinkAction" text="Equity &amp; resilience">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink text="Storytelling">
+                                    <Hyperlink id="02" onAction="#hyperlinkAction" text="Storytelling">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink text="Resilience indicators">
+                                    <Hyperlink id="06" onAction="#hyperlinkAction" text="Resilience indicators">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink text="Community engagement">
+                                    <Hyperlink onAction="#hyperlinkAction" text="Community engagement">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink text="Local knowledge">
+                                    <Hyperlink onAction="#hyperlinkAction" text="Local knowledge">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -205,27 +205,27 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Hyperlink text="About">
+                              <Hyperlink id="09" onAction="#hyperlinkAction" text="About">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Hyperlink text="Glossary">
+                              <Hyperlink id="01" onAction="#hyperlinkAction" text="Glossary">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Hyperlink text="Explore the tool">
+                              <Hyperlink onAction="#exploreHyperlinkAction" text="Explore the tool">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Hyperlink text="User instructions">
+                              <Hyperlink onAction="#hyperlinkAction" text="User instructions">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Hyperlink text="Examples">
+                              <Hyperlink onAction="#hyperlinkAction" text="Examples">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

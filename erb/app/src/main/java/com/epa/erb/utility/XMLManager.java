@@ -554,6 +554,7 @@ public class XMLManager {
 													String fontFamily = textElement.getAttribute("fontFamily");
 													String fontStyle = textElement.getAttribute("fontStyle");
 													String text = textElement.getAttribute("text");
+													TextFlow tflow = new TextFlow();
 													Text t = new Text(text);
 													if (fontStyle.contentEquals("Hyperlink")) {
 														String linkType = textElement.getAttribute("linkType");
@@ -573,7 +574,8 @@ public class XMLManager {
 															t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 														}
 													}
-													listVBox.getChildren().add(t);
+													tflow.getChildren().add(t);
+													listVBox.getChildren().add(tflow);
 												}
 											}
 											textFlowHBox.getChildren().add(listVBox);

@@ -53,6 +53,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
@@ -62,6 +63,8 @@ import javafx.util.Callback;
 
 public class WordCloudController implements Initializable {
 
+	@FXML
+	VBox box;
 	@FXML
 	VBox vBox;
 	@FXML
@@ -116,7 +119,17 @@ public class WordCloudController implements Initializable {
 	}
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {		
+	public void initialize(URL location, ResourceBundle resources) {	
+				
+		mergeButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+		shortAddButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+		longAddButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+		clearButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+		buildButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+		saveWordCloudButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+
+
+		
 		updateNumberOfTableItemsLabel();
 		excludeCommonCheckBox.setSelected(true);
 		setExcludedWordSet();

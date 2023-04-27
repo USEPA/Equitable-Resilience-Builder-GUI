@@ -69,7 +69,7 @@
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#createButtonAction" text="Create">
+                        <Button mnemonicParsing="false" onAction="#createButtonAction" stylesheets="@../button.css" text="Create">
                            <font>
                               <Font size="14.0" />
                            </font></Button>

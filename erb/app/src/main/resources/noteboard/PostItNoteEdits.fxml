@@ -24,7 +24,7 @@
       <ColorPicker fx:id="colorPicker" prefHeight="26.0" prefWidth="50.0" />
       <HBox alignment="CENTER">
          <children>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" text="Save">
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" stylesheets="@../button.css" text="Save">
                <font>
                   <Font size="14.0" />
                </font></Button>

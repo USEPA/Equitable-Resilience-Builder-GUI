@@ -1,10 +1,15 @@
 package com.epa.erb.noteboard;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
+import com.epa.erb.ERBContentItem;
 import com.epa.erb.IndicatorCard;
 import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.utility.FileHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,9 +19,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class IndicatorSetupFormController implements Initializable{
 
+	@FXML
+	VBox vBox;
 	@FXML
 	VBox indicatorListVBox;
 	
@@ -24,28 +33,111 @@ public class IndicatorSetupFormController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 	}
 	
+	FileHandler fileHandler = new FileHandler();
+	private File guidDirectory;
+	
 	private EngagementActionController engagementActionController;
-	public IndicatorSetupFormController(EngagementActionController engagementActionController) {
+	private ERBContentItem erbContentItem;
+	public IndicatorSetupFormController(EngagementActionController engagementActionController,ERBContentItem erbContentItem) {
 		this.engagementActionController = engagementActionController;
+		this.erbContentItem = erbContentItem;
+		guidDirectory = new File(fileHandler.getGUIDDataDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal()) + "\\" + erbContentItem.getGuid());
+	}
+	
+	public void setUp() {
+		addIndicatorSelections();
+		if(areExistingSelectedIndicators()) {
+			ArrayList<IndicatorCard> cards = getExistingSelectedIndicators();
+			loadExistingIndicators(cards);
+		}
 	}
 	
 	@FXML
-	public void beginButtonAction() {
+	public void beginButtonAction() {		
 		boolean selectedIndicatorsAreUnique = areSelectedIndicatorsUnique();
 		if(selectedIndicatorsAreUnique) {
-			ArrayList<IndicatorCard> selectedIndicatorCards = getSelectedIndicatorCards();
-			
-			Pane root = loadNoteBoard_LinearRankingController(selectedIndicatorCards);
-			engagementActionController.cleanContentVBox();
-			engagementActionController.addContentToContentVBox(root, true);
+			if(areExistingSelectedIndicators() && selectedMatchSaved()) {
+				Pane root = loadNoteBoard_LinearRankingController(new ArrayList<IndicatorCard>(), false);
+				engagementActionController.cleanContentVBox();
+				engagementActionController.addContentToContentVBox(root, true);
+			} else {
+				ArrayList<IndicatorCard> selectedIndicatorCards = getSelectedIndicatorCards();
+				writeSelectedIndicators(selectedIndicatorCards);
+				Pane root = loadNoteBoard_LinearRankingController(selectedIndicatorCards, true);
+				engagementActionController.cleanContentVBox();
+				engagementActionController.addContentToContentVBox(root, true);
+			}
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setContentText("Please select unique indicator cards.");
 			alert.showAndWait();
+		}
+	}
+	
+	private boolean selectedMatchSaved() {
+		ArrayList<IndicatorCard> current = getSelectedIndicatorCards();
+		ArrayList<IndicatorCard> saved = getExistingSelectedIndicators();
+		if(current.size() == saved.size()) {
+			if(current.containsAll(saved) && saved.containsAll(current)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private ArrayList<IndicatorCard> getExistingSelectedIndicators() {
+		ArrayList<IndicatorCard> cards = new ArrayList<IndicatorCard>();
+		File selectedIndicatorsFile = new File(guidDirectory.getPath() + "\\selectedIndicatorIds.txt");
+		if(selectedIndicatorsFile.exists()) {
+			try {
+				Scanner scanner = new Scanner(selectedIndicatorsFile);
+				while(scanner.hasNextLine()) {
+					String id = scanner.nextLine();
+					IndicatorCard iC= engagementActionController.getApp().findIndicatorItemForId(id);
+					cards.add(iC);
+				}
+				scanner.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		return cards;
+	}
+	
+	private void loadExistingIndicators(ArrayList<IndicatorCard> cards) {
+		if(cards != null && cards.size() > 0) {
+			for(int i =0; i < indicatorListVBox.getChildren().size(); i++) {
+				HBox listHBox = (HBox) indicatorListVBox.getChildren().get(i);
+				ComboBox<IndicatorCard> comboBox = (ComboBox<IndicatorCard>) listHBox.getChildren().get(1);
+				if(i <cards.size()) comboBox.getSelectionModel().select(cards.get(i));
+			}
+		}
+	}
+	
+	private boolean areExistingSelectedIndicators() {
+		File selectedIndicatorsFile = new File(guidDirectory.getPath() + "\\selectedIndicatorIds.txt");
+		if(selectedIndicatorsFile.exists()) {
+			return true;
+		}
+		return false;
+	}
+	
+	private void writeSelectedIndicators(ArrayList<IndicatorCard> selectedIndicatorCards) {
+		if(selectedIndicatorCards != null && selectedIndicatorCards.size()>0) {
+			File selectedIndicatorsFile = new File(guidDirectory.getPath() + "\\selectedIndicatorIds.txt");
+			try {
+				PrintWriter printWriter = new PrintWriter(selectedIndicatorsFile);
+				for(IndicatorCard card: selectedIndicatorCards) {
+					printWriter.println(card.getId());
+				}
+				printWriter.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -79,15 +171,21 @@ public class IndicatorSetupFormController implements Initializable{
 		return true;
 	}
 	
-	private Pane loadNoteBoard_LinearRankingController(ArrayList<IndicatorCard> selectedIndicatorCards) {
+	private Pane loadNoteBoard_LinearRankingController(ArrayList<IndicatorCard> selectedIndicatorCards, boolean isNew) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
-			NoteBoard_LinearRanking noteBoardContentController = new NoteBoard_LinearRanking(engagementActionController.getApp(), engagementActionController.getCurrentSelectedERBContentItem(), selectedIndicatorCards);
+			NoteBoard_LinearRanking noteBoardContentController = new NoteBoard_LinearRanking(engagementActionController.getApp(), engagementActionController.getCurrentGoal() ,engagementActionController.getCurrentSelectedERBContentItem(), selectedIndicatorCards);
 			fxmlLoader.setController(noteBoardContentController);
 			VBox root = fxmlLoader.load();
 			noteBoardContentController.setUpNoteBoard(1);
+			if(isNew) {
+				noteBoardContentController.loadNoteBoardNew();
+			} else {
+				noteBoardContentController.loadNoteBoardExisting();
+			}
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

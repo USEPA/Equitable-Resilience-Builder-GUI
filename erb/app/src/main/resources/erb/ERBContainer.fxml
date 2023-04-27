@@ -126,7 +126,7 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-            <VBox fx:id="erbContainer" VBox.vgrow="ALWAYS" />
+            <VBox fx:id="erbContainer" style="-fx-background-color: white;" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </content>

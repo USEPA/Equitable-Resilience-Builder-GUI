@@ -15,6 +15,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextFlow;
 
 public class MainFormController extends FormController implements Initializable{
@@ -61,6 +62,7 @@ public class MainFormController extends FormController implements Initializable{
 		addContent(formContentHashMap);
 		hideEmptyControls();
 		setColor(tP);
+
 	}
 	
 	public void addContent(HashMap<String, ArrayList<HBox>> formContentHashMap) {

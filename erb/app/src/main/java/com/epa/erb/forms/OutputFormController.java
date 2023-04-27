@@ -15,11 +15,14 @@ import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 public class OutputFormController extends FormController implements Initializable {
 
+	@FXML
+	VBox vBox;
 	@FXML
 	VBox nodeVBox;
 	@FXML

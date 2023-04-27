@@ -13,11 +13,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
+import com.epa.erb.IndicatorCard;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.noteboard.IndicatorSetupFormController;
+import com.epa.erb.noteboard.NoteBoard_LinearRanking;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
@@ -100,68 +102,10 @@ public class EngagementActionController implements Initializable {
 		if(!project.getProjectName().contentEquals("Explore")) {
 			engagementVBox.getChildren().remove(exploreModeLabel);
 		}
-		treeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());
+		treeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());		
 		
-		
-		worksheetIndexButton.setStyle("-fx-background-color: linear-gradient(#B95A17, #D56B20), "
-				+ "linear-gradient(#ffffff, #D56B20),"
-				+ "linear-gradient(#ffffff, #D56B20),"
-				+ "linear-gradient(#ffffff 0%, #D56B20 50%, #D56B20 100%),"
-				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-				+ "-fx-background-radius: 30;"
-				+ "-fx-background-insets: 0,1,2,3,0;"
-				+ "-fx-text-fill: white;"
-				+ "-fx-font-weight: bold;"
-				+ "-fx-font-size: 14px;"
-				+ "}");
-		
-		myPortfolioButton.setStyle("-fx-background-color: linear-gradient(#B95A17, #D56B20), "
-				+ "linear-gradient(#ffffff, #D56B20),"
-				+ "linear-gradient(#ffffff, #D56B20),"
-				+ "linear-gradient(#ffffff 0%, #D56B20 50%, #D56B20 100%),"
-				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-				+ "-fx-background-radius: 30;"
-				+ "-fx-background-insets: 0,1,2,3,0;"
-				+ "-fx-text-fill: white;"
-				+ "-fx-font-weight: bold;"
-				+ "-fx-font-size: 14px;"
-				+ "}");
-		
-		uploadFileButton.setStyle("-fx-background-color: linear-gradient(#B95A17, #D56B20), "
-				+ "linear-gradient(#ffffff, #D56B20),"
-				+ "linear-gradient(#ffffff, #D56B20),"
-				+ "linear-gradient(#ffffff 0%, #D56B20 50%, #D56B20 100%),"
-				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-				+ "-fx-background-radius: 30;"
-				+ "-fx-background-insets: 0,1,2,3,0;"
-				+ "-fx-text-fill: white;"
-				+ "-fx-font-weight: bold;"
-				+ "-fx-font-size: 14px;"
-				+ "}");
-		
-		previousButton.setStyle("-fx-background-color: linear-gradient(#757676, #939393), "
-				+ "linear-gradient(#ffffff, #939393),"
-				+ "linear-gradient(#ffffff, #939393),"
-				+ "linear-gradient(#ffffff 0%, #939393 50%, #939393 100%),"
-				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-				+ "-fx-background-radius: 30;"
-				+ "-fx-background-insets: 0,1,2,3,0;"
-				+ "-fx-text-fill: white;"
-				+ "-fx-font-weight: bold;"
-				+ "-fx-font-size: 14px;"
-				+ "}");
-		
-		nextButton.setStyle("-fx-background-color: linear-gradient(#757676, #939393), "
-				+ "linear-gradient(#ffffff, #939393),"
-				+ "linear-gradient(#ffffff, #939393),"
-				+ "linear-gradient(#ffffff 0%, #939393 50%, #939393 100%),"
-				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-				+ "-fx-background-radius: 30;"
-				+ "-fx-background-insets: 0,1,2,3,0;"
-				+ "-fx-text-fill: white;"
-				+ "-fx-font-weight: bold;"
-				+ "-fx-font-size: 14px;"
-				+ "}");
+		previousButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+		nextButton.getStylesheets().add(getClass().getResource("/button.css").toString());
 	}
 
 	private void initFacilitatorMode() {
@@ -245,13 +189,13 @@ public class EngagementActionController implements Initializable {
 		}
 	}
 	
-	private Pane loadIndicatorSetupFormController() {
+	public Pane loadIndicatorSetupFormController(ERBContentItem erbContentItem) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/IndicatorSetupForm.fxml"));
-			IndicatorSetupFormController indicatorSetupFormController = new IndicatorSetupFormController(this);
+			IndicatorSetupFormController indicatorSetupFormController = new IndicatorSetupFormController(this, erbContentItem);
 			fxmlLoader.setController(indicatorSetupFormController);
 			VBox root = fxmlLoader.load();
-			indicatorSetupFormController.addIndicatorSelections();
+			indicatorSetupFormController.setUp();
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -259,6 +203,20 @@ public class EngagementActionController implements Initializable {
 			return null;
 		}
 	}
+	
+//	private Pane loadNoteBoard_LinearRankingController(ERBContentItem erbContentItem) {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
+//			NoteBoard_LinearRanking noteBoardContentController = new NoteBoard_LinearRanking(app, currentSelectedGoal ,currentSelectedERBContentItem, new ArrayList<IndicatorCard>());
+//			fxmlLoader.setController(noteBoardContentController);
+//			VBox root = fxmlLoader.load();
+//			noteBoardContentController.setUpNoteBoard(1);
+//			return root;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
 	
 	private VBox loadWordCloudController() {
 		try {
@@ -410,9 +368,17 @@ public class EngagementActionController implements Initializable {
 					Pane root = loadWordCloudController();
 					addContentToContentVBox(root, true);
 				} else if (erbContentItem.getLongName().contentEquals("Noteboard")) {
-//					Pane root = loadNoteBoard_LinearRankingController();
-					Pane root = loadIndicatorSetupFormController();
-					addContentToContentVBox(root, true);
+					
+					File guidDirectory = new File(fileHandler.getGUIDDataDirectory(getProject(), getCurrentGoal()) + "\\" + erbContentItem.getGuid());
+					File linearDirectory = new File(guidDirectory.getPath() + "\\linearRanking");
+//					if(linearDirectory.exists()) {
+//						Pane root = loadNoteBoard_LinearRankingController(erbContentItem);
+//						addContentToContentVBox(root, true);
+//					}else {
+						Pane root = loadIndicatorSetupFormController(erbContentItem);
+						addContentToContentVBox(root, true);
+
+//					}
 				}
 			}
 		}

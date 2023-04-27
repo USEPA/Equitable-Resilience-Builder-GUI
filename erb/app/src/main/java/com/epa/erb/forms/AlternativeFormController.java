@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextFlow;
 
 public class AlternativeFormController extends FormController implements Initializable{

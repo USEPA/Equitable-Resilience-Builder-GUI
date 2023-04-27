@@ -1,9 +1,9 @@
-.crumb {
-    -fx-font-size: 14;
+.button:hover{
+    -fx-text-fill: #4fb1c9;
 }
 
-.bread-crumb-bar .button {
-  -fx-background-color: linear-gradient(#757676, #939393), 
+.button {
+	-fx-background-color: linear-gradient(#757676, #939393), 
 				linear-gradient(#ffffff, #939393),
 				linear-gradient(#ffffff, #939393),
 				linear-gradient(#ffffff 0%, #939393 50%, #939393 100%),
@@ -12,9 +12,9 @@
 				-fx-background-insets: 0,1,2,3,0;
 				-fx-text-fill: white;
 				-fx-font-weight: bold;
-				fx-font-size: 14px;
+				-fx-font-size: 14px;
+				
+   			 
+   			 
 }
-
-.bread-crumb-bar .button:hover {
-     -fx-text-fill: #4fb1c9; 
-}
+	

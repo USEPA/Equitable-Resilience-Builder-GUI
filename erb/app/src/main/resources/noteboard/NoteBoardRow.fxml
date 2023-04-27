@@ -12,9 +12,12 @@
       <VBox HBox.hgrow="ALWAYS">
          <children>
             <Separator prefWidth="200.0" />
-            <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="100.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="100.0" prefHeight="250.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                <content>
-                  <HBox fx:id="rowHBox" alignment="CENTER_LEFT" spacing="10.0" />
+                  <HBox fx:id="rowHBox" alignment="CENTER_LEFT" maxHeight="300.0" spacing="10.0">
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding></HBox>
                </content>
             </ScrollPane>
             <Separator prefWidth="200.0" />
