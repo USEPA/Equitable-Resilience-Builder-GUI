@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -116,7 +116,7 @@
                </children></HBox>
             <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="saveBoardButton" mnemonicParsing="false" onAction="#saveBoardButtonAction" stylesheets="@../button.css" text="Save Board">
+                  <Button fx:id="saveBoardButton" mnemonicParsing="false" onAction="#saveBoardButtonAction" stylesheets="@../button.css" text="Push to My Portfolio">
                      <font>
                         <Font size="14.0" />
                      </font></Button>

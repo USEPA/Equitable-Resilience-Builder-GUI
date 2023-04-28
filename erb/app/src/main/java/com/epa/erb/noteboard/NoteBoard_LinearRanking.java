@@ -54,7 +54,6 @@ public class NoteBoard_LinearRanking extends NoteBoardContentController {
 		createRows(numberOfRows, 1, true);
 		showPreviousButton();
 		showNextButton();
-		saveBoardButton.setVisible(false);
 	}
 	
 	private void removeTopLabelHBox() {

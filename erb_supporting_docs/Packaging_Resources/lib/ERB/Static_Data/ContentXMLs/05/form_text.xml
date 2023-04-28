@@ -147,8 +147,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="A Toolkit for Data Ethics in the Participatory Sciences"
-			linkType=""
-			link="">
+			linkType="URL"
+			link="https://citizenscience.org/wp-content/uploads/2022/11/Data-Ethics-Toolkit.pdf">
 			</text>
 			<text
 			size="16.0"
@@ -274,8 +274,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="United Nations Declaration on the Rights of Indigenous Peoples (UNDRIP)"
-			linkType=""
-			link="">
+			linkType="URL"
+			link="https://www.un.org/development/desa/indigenouspeoples/wp-content/uploads/sites/19/2018/11/UNDRIP_E_web.pdf">
 			</text>
 			<text
 			size="16.0"

@@ -226,7 +226,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
+			fontStyle="Regular"
 			text="Sharing stories is a way that ERB incorporates local knowledge, which is vital for inclusion and representation. ">
 			</text>
 		</textBlock>
@@ -239,7 +239,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
+			fontStyle="Regular"
 			text="During storytelling, make sure you employ active listening, by responding to each other's experiences in a respectful way. ">
 			</text>
 		</textBlock>

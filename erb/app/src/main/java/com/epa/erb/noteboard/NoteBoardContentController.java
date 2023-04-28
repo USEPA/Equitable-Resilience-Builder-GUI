@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.IndicatorCard;
+import com.epa.erb.engagement_action.ExternalFileUploaderController;
 import com.epa.erb.goal.Goal;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,9 +19,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -86,6 +89,7 @@ public class NoteBoardContentController implements Initializable{
 		this.indicatorCards = indicatorCards;
 		
 		guidDirectory = new File(fileHandler.getGUIDDataDirectory(app.getSelectedProject(), goal) + "\\" + erbContentItem.getGuid());
+		if(!guidDirectory.exists()) guidDirectory.mkdir();
 		linearDirectory = new File(guidDirectory.getPath() + "\\linearRanking");
 		quadrantDirectory = new File(guidDirectory.getPath() + "\\quadrantRanking");
 
@@ -102,7 +106,7 @@ public class NoteBoardContentController implements Initializable{
 			setExistingLinearBankedData();
 		}
 		fillIndicatorChoiceBox();
-		setTitleText(erbContentItem.getLongName());
+		setTitleText("Indicators");
 		setDrag_NoteBoardItemVBox(noteBoardItemVBox);
 		indicatorChoiceBox.getSelectionModel().select(0);
 		indicatorChoiceBox.setOnAction(e-> indicatorChoiceBoxSelection());	
@@ -184,9 +188,18 @@ public class NoteBoardContentController implements Initializable{
 	public void saveBoardButtonAction() {
 		if(previousButton.isVisible() && nextButton.isVisible()) {
 			linearSave();
+			File rankedCardsFile = new File(linearDirectory.getPath() + "\\Linear_Ranked_Cards.txt");
+			writeCardsFile(getIndicatorIdsInLinearRanked(), rankedCardsFile);
+			ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app.getEngagementActionController());
+			exFileUploader.pushToUploaded(rankedCardsFile, "Indicators_Ranking");
+			
 		}
 		else if(previousButton.isVisible() && !nextButton.isVisible()) {
 			quadrantSave();
+			File rankedCardsFile = new File(quadrantDirectory.getPath() + "\\Quadrant_Ranked_Cards.txt");
+			writeMultiRowCardsFile(getIndicatorIdsInQuadrantRanking(),rankedCardsFile);
+			ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app.getEngagementActionController());
+			exFileUploader.pushToUploaded(rankedCardsFile, "Indicators_Matrix");
 		}
 	}
 	
@@ -200,6 +213,7 @@ public class NoteBoardContentController implements Initializable{
 		ArrayList<String> rankedIds = getIndicatorIdsInLinearRanked();
 		File rankedIdsFile = new File(linearDirectory.getPath() + "\\rankedIds.txt");
 		writeIdsFile(rankedIds, rankedIdsFile);
+		
 	}
 	
 	private void quadrantSave() {
@@ -212,6 +226,7 @@ public class NoteBoardContentController implements Initializable{
 		ArrayList<ArrayList<String>> rankedIds = getIndicatorIdsInQuadrantRanking();
 		File rankedIdsFile = new File(quadrantDirectory.getPath() + "\\rankedIds.txt");
 		writeMultiRowIdsFile(rankedIds,rankedIdsFile);
+		
 	}
 	
 	private void writeIdsFile(ArrayList<String> ids ,File file ) {
@@ -229,6 +244,22 @@ public class NoteBoardContentController implements Initializable{
 		}
 	}
 	
+	private void writeCardsFile(ArrayList<String> ids ,File file) {
+		if(ids != null && ids.size() > 0) {
+			try {
+				PrintWriter printWriter = new PrintWriter(file);
+				for(String id : ids) {
+					IndicatorCard card = app.findIndicatorItemForId(id);
+					if(card!=null) printWriter.println(card.getSystem() + "-" + card.getIndicator());
+				}
+				printWriter.close();
+			} catch (FileNotFoundException e) {
+			}
+		} else if (ids != null && ids.size() == 0) {
+			file.delete();
+		}
+	}
+	
 	private void writeMultiRowIdsFile(ArrayList<ArrayList<String>> ids ,File file ) {
 		if(ids != null && ids.size() > 0) {
 			try {
@@ -237,6 +268,30 @@ public class NoteBoardContentController implements Initializable{
 					StringBuilder stringBuilder = new StringBuilder();
 					for(String id : row) {
 						stringBuilder.append(id + "\t");
+					}
+					printWriter.println(stringBuilder.toString());
+				}
+				printWriter.close();
+			} catch (FileNotFoundException e) {
+			}
+		} else if (ids != null && ids.size() == 0) {
+			file.delete();
+		}
+	}
+	
+	private void writeMultiRowCardsFile(ArrayList<ArrayList<String>> ids ,File file ) {
+		if(ids != null && ids.size() > 0) {
+			try {
+				PrintWriter printWriter = new PrintWriter(file);
+				for(ArrayList<String> row: ids) {
+					StringBuilder stringBuilder = new StringBuilder();
+					for(String id : row) {
+						IndicatorCard card = app.findIndicatorItemForId(id);
+						if(card != null) {
+							stringBuilder.append(card.getSystem() + "-" + card.getIndicator() + "\t");
+						}else {
+							stringBuilder.append("-" + "\t");
+						}
 					}
 					printWriter.println(stringBuilder.toString());
 				}
@@ -404,10 +459,13 @@ public class NoteBoardContentController implements Initializable{
 	@FXML
 	private void previousButtonAction() {
 		if(previousButton.isVisible() && nextButton.isVisible()) {
+			linearSave();
 			Pane root = app.getEngagementActionController().loadIndicatorSetupFormController(erbContentItem);
 			app.getEngagementActionController().cleanContentVBox();
 			app.getEngagementActionController().addContentToContentVBox(root, true);
+			showPreviousAlert("If new and/or different indicator cards are selected, your previously saved resilience and equity rankings will be reset.");
 		} else if (previousButton.isVisible() && !nextButton.isVisible()) {
+			quadrantSave();
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardContent.fxml"));
 				NoteBoard_LinearRanking noteBoardContentController = new NoteBoard_LinearRanking(app, goal ,erbContentItem, new ArrayList<IndicatorCard>());
@@ -417,9 +475,18 @@ public class NoteBoardContentController implements Initializable{
 				noteBoardContentController.loadNoteBoardExisting();
 				app.getEngagementActionController().cleanContentVBox();
 				app.getEngagementActionController().addContentToContentVBox(root, true);
+				showPreviousAlert("If indicator cards are rearranged, your previously saved resilience and equity rankings will be reset.");
 			} catch (Exception e) {
 			}
 		}
+	}
+	
+	private void showPreviousAlert(String text) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Indicators Alert");
+		alert.setContentText(text);
+		alert.showAndWait();
 	}
 
 	private ArrayList<IndicatorCard> getExistingSelectedIndicators() {

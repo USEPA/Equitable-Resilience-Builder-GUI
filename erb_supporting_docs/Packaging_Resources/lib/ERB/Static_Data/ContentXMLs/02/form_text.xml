@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="What is Storytelling">
+			text="What is Storytelling?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -120,8 +120,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="trauma-informed approach"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="03">
 			</text>
 			<text
 			size="16.0"
@@ -212,9 +212,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="https://knowledge.aidr.org.au/resources/ajem-apr-2014-disaster-survivors-a-narrative-approach-towards-emotional-recovery/"
+			text="https://www.abc.net.au/radio/programs/after-the-disaster/episodes"
 			linkType="URL"
-			link="https://knowledge.aidr.org.au/resources/ajem-apr-2014-disaster-survivors-a-narrative-approach-towards-emotional-recovery/">
+			link="https://www.abc.net.au/radio/programs/after-the-disaster/episodes">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -234,8 +234,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Hazard Mitigation Plan"
-			linkType=""
-			link="">
+			linkType="URL"
+			link="https://www.everettwa.gov/DocumentCenter/View/13998/EverettHMP_2018?bidId=">
 			</text>
 		</textBlock>
 		<textBlock>
