@@ -40,7 +40,7 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" stylesheets="@../orange_buttons.css" text="MyPortfolio">
+            <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" stylesheets="@../orange_buttons.css" text="My Portfolio">
                <font>
                   <Font size="14.0" />
                </font></Button>

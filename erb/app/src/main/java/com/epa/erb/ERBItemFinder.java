@@ -44,7 +44,6 @@ public class ERBItemFinder {
 	}
 	
 	public void searchERBContentItemChildrenById(ERBContentItem erbContentItem, String id) {
-		System.out.println("Searching " + erbContentItem.getLongName());
 		if(erbContentItem != null) {
 			if(!erbContentItem.getId().contentEquals(id)) {
 				if(erbContentItem.getChildERBContentItems().size()>0) {

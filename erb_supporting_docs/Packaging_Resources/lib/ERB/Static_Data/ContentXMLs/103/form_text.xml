@@ -29,15 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Equity data helps you understand who in your community might be most vulnerable to hazards, and why.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Data sources we suggest using in ERB are local and online.">
+			text="Equity data helps you understand who in your community might be most vulnerable to hazards, and why. Data sources we suggest using in ERB are local and online.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -53,15 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Check out local and online sources of data.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Figure out what data you want to know more about.">
+			text="Check out local and online sources of data, and figure out what you want to more know about.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -131,9 +115,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Equity data worksheet"
+			text="Collect Equity Data"
 			linkType="externalDOC"
-			link="Ch3_EquityData_Worksheet.docx">
+			link="Collect_Equity_Data.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -146,8 +130,8 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Equity data example"
-			linkType="internalStep"
+			text="Equity Data Example"
+			linkType="internal"
 			link="118">
 			</text>
 		</textBlock>			
@@ -171,7 +155,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Make sure you are clear that it is not that people are inherently vulnerable, it is that they are made vulnerable by social, political, environmental, and other circumstances.">
+			text="When discussing vulnerability, make sure you're clear that it is not that people are inherently vulnerable, it is that they are made vulnerable by social, political, environmental, and other circumstances. Labeling people or groups as vulnerable can be stigmatizing.">
 			</text>
 		</textBlock>	
 	</container>

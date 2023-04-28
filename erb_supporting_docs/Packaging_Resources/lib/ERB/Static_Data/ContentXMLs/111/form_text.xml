@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Discuss equity">
+			text="Discuss Equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Participants discuss what the underlying reasons for disparities in who is affected most by hazards, how, and why, and how actions to strengthen community resilience can take this understanding into account.">
+			text="Participants discuss the underlying reasons for disparities and how actions to strengthen community resilience can take equity into account">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,21 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Equity Discussion Worksheet"
-			linkType="externalDOC"
-			link="Ch3_EquityDiscussion_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to prepare prompts about what was learned about the root causes of vulnerability in the community and how this can inform resilience efforts moving forward">
+			text="Use the Equity Discussion Instructions to prepare prompts about what was learned about the root causes of vulnerability in the community and how this can inform resilience efforts moving forward">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -90,21 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="After the workshop, fill out the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeways"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" form">
+			text="After the workshop, fill out the Key Takeaways form">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -174,7 +146,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants and facilitators">
+			text="Participants and facilitators">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -196,25 +168,22 @@
 			height="40.0"
 			id="63">
 			</icon>
-			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Equity Discussion Worksheet"
+			text="Equity Discussion Instructions"
 			linkType="externalDOC"
-			link="Ch3_EquityDiscussion_Worksheet.docx">
+			link="Equity_Discussion_Instructions.docx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop 2 Facilitator's Guide"
-			linkType="externalDOC"
-			link="Ch3_Workshop2_FacilitatorsGuide.docx">
-			</text>
-			</listBlock>
-		</textBlock>		
+		</textBlock>	
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
@@ -222,7 +191,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>

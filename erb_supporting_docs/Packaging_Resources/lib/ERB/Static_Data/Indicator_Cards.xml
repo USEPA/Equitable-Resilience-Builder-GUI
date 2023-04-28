@@ -1,39 +1,138 @@
 <indicatorCards>
 	<card
+		id="1"
 		system="Social Environment"
-		indicator="Social Cohesion"
-		definition="The strength of relationships and the sense of solidarity among members of a community based on distribution of social capital and shares group resources."
-		unitOfMeasurement="Qualitative-low, medium, or high social cohesion"
-		resilienceValue="Relationships are important for physical health and psychosocial well-being. Social cohesion can therefore both directly benefit people and indirectly buffer them from risk factors that might otherwise damage their wellbeing and decrease their resilience to hazards, disasters and threats. The protective nature of social support may be especially important for populations that experience discrimination or exclusion. For example, during natural disasters like heat waves, elderly individuals living in neighborhoods with low social cohesion may lack social support from concerned neighbors who will check on them, and they have fewer safe communal areas where they can seek refuge."
-		assessment="Qualitative"
-		quantitativeDataSources=""
-		quantitativeDataCollProcess=""
-		qualitativeDataCollProcess="1. Host listening sessions with community members to determine low, medium, or high social cohesion. Make sure you identify the scale at which you are referencing (is this a particular community, neighborhood, municipality, county, state). 2. Consult with community based organizations, civic groups, and others to determine specific concerns identified across the specified area. 3. Cross check that information with community experience."
-		additionalInformation="See U.S. DHHS Office of Diesease Prevention and Health Promotion for more information: https://health.gov/healthypeople/priority-areas/social-determinants-health/literature-summaries/social-cohesion"
+		indicator="Physical and Mental Health"
+		definition="The physical and mental health characteristics of the community."
+		resilienceValue="The physical and mental health of the human population is the foundation of the overall functioning of a community. Resilient deilvery of services during normal conditions as well as during emergency scenarios must be able to address the array of local needs that characterize local communities and neighborhoods."
+		equityValue="Health concerns within a community can vary dramatically across racial, economic, and ethnic lines, and must be considered in the cultural and historical contexts that shape them, especially in areas of high air pollution, toxic site exposure, lead exposure, mining waste exposure, and other components of the built environment."
+		localConcern="Community is experiencing X, Y, Z, and sees the impacts on A, B, C"
+		quantitativeDataSources="CDC PLACES provides nation-wide census tract level estimates for a wide variety of major diseases, e.g. diabetes, kidney disease, cancer, heart disease, high blood pressure, etc. USALEEP provides life expectancy values for all U.S. States. Local Public Health agencies can provide more detailed disease incidence summaries in many jurisdictions. "
+		quantitativeDataCollProcess="1. Examine the CDC PLACES mapper to determine which health conditions are important in your community. Based on this survey, determine which factors you need to highlight. 2. Utilize the 'GIS Friendly' CDC PLACES datasets to determine tract-level patterns of disease incidence. 3. Utilize whatever local, county, or state public health datasets are available. Confer with Public Health personnel if possible to determine local issues and known areas of concern. "
+		qualitativeDataCollProcess="1. Host listening sessions with community members to determine low, medium, or high physical and mentaion health throughout the community and in specific neighborhoods. Make sure you identify the scale at which you are referencing (is this a particular community, neighborhood, municipality, county, state). 2. Consult with community based organizations, civic groups, and others to determine specific concerns identified across the specified area. 3. Cross check that information with community experience."
+		additionalInformation="There are a significant number of health concerns that are mapped by the CDC PLACES index. Communities can selected the diseases that are most prevalent and/or have the most connection with the hazards, disasters, and threats identified by the community. It is also appropriate to consider how to best complement these national data summaries with locally relevant and specific data from community, county, or state health departments. Consider if it is useful for a community to pull out individual disease burdens with known climate connections (asthma, COPD, Diabeties, etc.) individually in the indicator menu or leave this category general and allow the community to customize the metrics as needed. What sepcific considerations do populations have for emergency response and evacuation? Does the community track households requiring electricity for medical equipment, those with limited mobility, or other support services?"
+		rawDataCollectionNotes=""
+		dataPoints=""
+		thresholds=""
 	>
 		<questionsToAnswer>
-			<question text="Relationships are conceptualized through terms such as social cohesion, social capital, social networks, and social support. "/>
-			<question text="Shared group resources like knowledge of opportunities (for examples job opportunities, local funding"/>
-			<question text="Social networks are sources of multiple forms of social support, such as emotional support (e.g., encouragement after a setback) and instrumental support (e.g., a ride to a doctor’s appointment). perceived fairness, perceived helpfulness, group membership, and trust). "/>
-			<question text="Collective efficacy, an aspect of social capital and social cohesion, is grounded on mutual trust and describes a community’s ability to create change and exercise informal social control (i.e., influence behavior through social norms. "/>
-			<question text="Social isolation is also a measure of social cohesion and support in a community. Do you perceive social networks are stronger/weaker in this part of town than other parts?"/>
+			<question text="What is the general health and mental and physical well-being of the community?"/>
+			<question text="What diseases are present and how do they negatively affect community members health?"/>
+			<question text="How many people and what percentage of the population are affected by each of these diseases?"/>
+			<question text="Do these numbers and percentages vary by neighborhood, race, or ethnicity?"/>
 		</questionsToAnswer>
 	</card>	
 	<card
+		id="2"
 		system="Social Environment"
-		indicator="Linguistic Isolation"
-		definition="The number of people 5 years and older that do not speak English well."
-		unitOfMeasurement="Qualitative - Low, medium, high linguistic isolation. Quantitative - # of Persons; % of Total Population"
-		resilienceValue="Communication, education, and information sharing are critical to efforts to avoid, respond to, and recover from disaster events and climate hazards. English is the predominant spoken language of institutional systems and related resources for most government operations in the US, making those without the ability to speak English likely to be excluded from key evacuation and emergency preparedness messaging."
-		assessment="Both"
-		quantitativeDataSources="Headwaters Economics Economic Profile System - Demographics Report Tool and/or Populations at Risk Tool; ATSDR/CDC SVI; US Census ACS"
-		quantitativeDataCollProcess="1. Access Headwaters Economics Economic Profile System: headwaterseconomics.org/apps/economic-profile-system/ 2. Enter your area of interest (city, county, etc.) in the search bar. 3. Download the Populations at Risk Report by clicking on the blue download icon. 4. Open the Populations at Risk Report and scroll to Language Proficiency"
-		qualitativeDataCollProcess=""
-		additionalInformation="Consider that federal databases likely are not accurate for this indicator, because it is often used as a proxy for immigration status and may be underreported. As a result, local immigrant support organizations may be your best access for this issue. This issue matters most when you want to inform, educate, collaborate, or otherwise communicate with people who may not speak your language. The best outcomes occur when you can ensure you are reaching your whole community, using the language that best utilizes their full capacity to interact and contribute meaningfully. "
+		indicator="Multi-lingual Disaster Preparedness Messaging"
+		definition="The number of people 5 years and older that can easily access disaster preparedness, post-disaster and emergency response messaging."
+		resilienceValue="Communication, education, and information sharing are critical to efforts to avoid, respond to, and recover from disaster events and climate hazards. Ensuring that disaster and preparedness information is provided in multiple languages and in formats that are easily accessible and culturally appropriate will help ensure that information is relevant and useful to all segments of the community ."
+		equityValue="Disaster response messaging within a community can vary dramatically across racial, economic, and ethnic lines. Messaging must be delivered in multiple languages and formats to ensure it is easily accesssible and culturally appropriate."
+		localConcern="Community is experiencing X, Y, Z, and sees the impacts on A, B, C"
+		quantitativeDataSources="Community Text alert registration and list serves"
+		quantitativeDataCollProcess="If the community is using a technological solution such as a text alert system, how many people and what percentage of the population is registered for that alert system? Does it provide inforamtion in multiple languages that are appropriate for the community."
+		qualitativeDataCollProcess="1. Contact your local emergency management operations professionals and identify relevant emergency and evacuation notification protocols specific to your community. 2. Review what technologies, tools, and methods are being utilized. 3. Have conversations with community members across a wide variety of demographics and socioeconomic scales to identify whether or not all of the community understands how to effectively access this information. 4. Coordinate with the local emergency operations team to identify gaps and solutions to accessibility issues for disaster preparedness measures. (add meeting with leaders - number leaders)"
+		additionalInformation="Consider that federal databases on language proficiency are generally not accurate for this indicator, because it is often used as a proxy for immigration status and may be underreported. As a result, local immigrant support organizations may be your best access for this issue. This issue matters most when you want to inform, educate, collaborate, or otherwise communicate with people who may not speak your language. The best outcomes occur when you can ensure you are reaching your whole community, using the language that best utilizes their full capacity to interact and contribute meaningfully."
+		rawDataCollectionNotes=""
+		dataPoints=""
+		thresholds=""
 	>
 		<questionsToAnswer>
-			<question text="How many people in your community five years and older speak English less than well according to the Census Bureau data guidelines?"/>
-			<question text="What percentage of the total population in your community are five years and older and speak English less than well according to the Census Bureau data guidelines?"/>
+			<question text="How accessible are emergency and disaster preparedness, response, and recovery resources, support, and messaging to all community members?"/>
+			<question text="Are warning messages (e.g. reverse 911, text alerts, community sirens) and technologies culturally relevant and understandable by community members?"/>
+			<question text="Are messages and platforms available and accessible in all relevant languages?"/>
 		</questionsToAnswer>
 	</card>	
+	<card
+		id="3"
+		system="Social Environment"
+		indicator="Financial Security"
+		definition="The number of people whose individual or household income is at least 200% the Federal Poverty Threshold"
+		resilienceValue="Financial security and economic opportunity is a powerful predictors of good health. Financial resourcesl support communities’ and individuals’ capacity to bear the burdens of a extreme weather events and man-made hazards, by enhancing their ability to prepare for and adapt to changes. Targeting resilience building efforts to address poverty and increase financial security can improve and support social, economic, environmental, and racial justice and equity."
+		equityValue="Financial security within a community can vary dramatically across racial, economic, and ethnic lines."
+		localConcern="Community is experiencing X, Y, Z, and sees the impacts on A, B, C"
+		quantitativeDataSources="Headwaters Economics Economic Profile System - Demographics Report Tool and/or Populations at Risk Tool; ATSDR/CDC SVI; US Census ACS"
+		quantitativeDataCollProcess="1. Access Headwaters Economics Economic Profile System: headwaterseconomics.org/apps/economic-profile-system/ 2. Enter your area of interest (city, county, etc.) in the search bar. 3. Download the 'Populations at Risk' Report by clicking on the blue download icon. 4. Open the Populations at Risk Report and scroll to 'Individuals in Poverty' and/or 'Families in Povert' "
+		qualitativeDataCollProcess=""
+		additionalInformation="High Cost of Living (HCOL) areas effectively raise the economic price line below which you can't really achieve a decent standard of living, and are forced to compromise critical factors that could improve your resilience."
+		rawDataCollectionNotes=""
+		dataPoints=""
+		thresholds=""
+	>
+		<questionsToAnswer>
+			<question text="How many people  living in your community (or what percentage) have incomes above 200% of the Federal Poverty Limit?"/>
+			<question text="Do these numbers or percentages vary by neighborhood (census tract), race, or ethnicity?"/>
+		</questionsToAnswer>
+	</card>	
+	<card
+		id="4"
+		system="Built Environment"
+		indicator="Proximity to Superfund Sites"
+		definition="The number and condition of Superfund sites within or in close proximity to the community."
+		resilienceValue="Superfund sites require long-term responses for clean up of hazardous materials. Extreme weather events, pollutants/contaminants can be dispersed and impact critical water resources through flooding, for example."
+		equityValue="Superfund sites, as well as other hazardous waste sites, are often located in overburdened communities facing low income, racial biases, and other social vulnerabilities."
+		localConcern="Community is experiencing X, Y, Z, and sees the impacts on A, B, C"
+		quantitativeDataSources="Environmental Protection Agency Environmental Justice Screening Tool"
+		quantitativeDataCollProcess="1. Access the EPA Environmental Justice Screening Tool. 2. Use the search bar to identify your community. 3. Select the filter applicable to 'superfund sites' in your community. 4. Evaluate the answers to the Data questions. 5. Supplement and/or refine the numbers above with local data, if applicable. 6. Use the data to determine next steps."
+		qualitativeDataCollProcess="1. Host listening sessions with community members to determine low, medium, or exposure to hazardous waste treatment and disposal facility sources. Make sure you identify the scale at which you are referencing (is this a particular community, neighborhood, municipality, county, state). 1. Consult with your regional EPA office (or equivalent) to determine the number of hazardous sites locally/regionally. 2. Consult with local planners, public works, and/or research (or equivalent) personnel to determine specific concerns identified across the specified area. 3. Cross check that information with community experience."
+		additionalInformation="Cross check the hazaroud site locations with known and current/future projected climate hazard areas. Are there any concerns with future contamination and spread?"
+		rawDataCollectionNotes=""
+		dataPoints=""
+		thresholds=""
+	>
+		<questionsToAnswer>
+			<question text="How many hazardous sites exist in your community?"/>
+			<question text="How many superfund sites exist within 5 km of your community and what condition are those sites?"/>
+			<question text="How many people or households live within 5 km of an industrial facility required to have a Risk Management Plan and what is the condition of those facilities?"/>
+			<question text="How many hazardous waste disposal and treatment facilities exist within 5 km of your community and what is the condition of those facilities?"/>
+			<question text="Do these numbers and percentages vary by neighborhood, race, or ethnicity?"/>
+		</questionsToAnswer>
+	</card>	
+	<card
+		id="5"
+		system="Built Environment"
+		indicator="Access to Cooling Spaces"
+		definition="Rental Housing Units whose residents spend less than 30%  of their monthly income on rent and household utility bills."
+		resilienceValue="Access to cooling spaces, particularly during extreme heat events, can limit impacts on young people, older adults, and individuals with physical conditions that decrease their ability to thermally regulate their body temperature."
+		equityValue=""
+		localConcern="Community is experiencing X, Y, Z, and sees the impacts on A, B, C"
+		quantitativeDataSources="Trust for Public Lands map "
+		quantitativeDataCollProcess=""
+		qualitativeDataCollProcess="1. Host listening sessions with community members to determine low, medium, or high heat island exposure. Make sure you identify the scale at which you are referencing (is this a particular community, neighborhood, municipality, county, state). 2. Consult with local planners, public works, and/or research (or equivalent) personnel to determine specific concerns identified across the specified area. 3. Cross check that information with community experience."
+		additionalInformation="Extreme heat is the leading cause of weather-related mortality in the United States, killing more people than any other type of weather-related event. In some regions, the number of extreme heat days are nearly certain to increase along with high average humidity levels. Previous research has identified that the distribution of impervious surfaces (concrete, asphalt, gravel, roofs) that concentrate heat and raise local temperatures present a disproportionate burden upon the city’s Black and poor communities. Trust for Public Lands has a nationwide dataset of this based on 2018 or so data, I think (they are updating on a rolling basis). See: https://www.arcgis.com/home/item.html?id=4f6d72903c9741a6a6ee6349f5393572 Groundwork USA also was trying to develop a nationwide surface. Baltimore and others have done some community based mapping or urban heat island temperatures. "
+		rawDataCollectionNotes=""
+		dataPoints=""
+		thresholds=""
+	>
+		<questionsToAnswer>
+			<question text="Are there specific characteristics of that particular neighborhood that lead to decreased heat island effect exposure (e.g., more tree canopy coverage)?"/>
+			<question text="Where can community member access cooling centers?"/>
+			<question text="How do they decide to access those centers?"/>
+		</questionsToAnswer>
+	</card>	
+	<card
+		id="6"
+		system="Natural Environment"
+		indicator="Tree Canopy Coverage"
+		definition="The percent of tree canopy coverage by neighborhood across a community."
+		resilienceValue="Trees provide a wide variety of benefits for a neighborhood including shade for cooling, absorbtion of precipitation during heavy rainfall events, and absorbtion of pollution."
+		equityValue="Areas with lower tree canopy coverage are frequently correlated with historical patterns of racist segregation as white, wealthy neighborhoods are much more likely to have high levels of tree canopy coverage."
+		localConcern="Community is experiencing X, Y, Z, and sees the impacts on A, B, C"
+		quantitativeDataSources="Neighborhoods at Risk; a bunch of different places depending on the state."
+		quantitativeDataCollProcess="1. Access Neighborhoods at Risk at https://bit.ly/3P8x4Ec 2. Use the search bar to identify your community. 3. Select the filter applicable to “area lacking tree canopy” in your community. 4. Evaluate the answers to the Data questions. 5. Supplement and/or refine the numbers above with local data, if applicable. 6. Use the data to determine next steps."
+		qualitativeDataCollProcess="1. Host listening sessions with community members to determine low, medium, or high tree canopy coverage. Make sure you identify the scale at which you are referencing (is this a particular community, neighborhood, and/or they whole municipality). 2. Consult with local parks and recreation (or equivalent) personnel to determine the spatial extent of tree canopy coverage across the specified area. 3. Cross check that information with community experience."
+		additionalInformation="Consider rural areas, municipalities in ecosystems without many trees (desert southwest), etc. Also consider how forestry, particularly urban forest management will be affected by changing climate conditions (hotter temperatures, more disease or pests)."
+		rawDataCollectionNotes=""
+		dataPoints=""
+		thresholds=""
+	>
+		<questionsToAnswer>
+			<question text="Do the neighborhoods in the community each have low, medium, or high tree canopy coverage?"/>
+			<question text="What percentage of the neighborhood's total land surface area is tree canopy coverage?"/>
+			<question text="At a finer level, are the trees in places where they shade walkable streets, transit stops, or public spaces and buildings?"/>
+			<question text="Do these numbers or percentages vary by neighborhood (census tract), race, or ethnicity?"/>
+		</questionsToAnswer>
+	</card>	
+	
 </indicatorCards>

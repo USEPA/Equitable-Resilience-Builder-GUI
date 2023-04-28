@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Explore ERB">
+			text="A Guide to Engaging Youth in Hazard and Disaster Resilience Planning">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="It may seem like a lot, but the ERB process is designed to be flexible. We understand that all communities are different and face distinct disaster and climate change risks. We also realize that you may have unique resource constraints on getting your work done. You can decide which activities in which chapters to carry out, to make sure you can get the work done you need to do, in the most inclusive way possible given what you've done already and the time frame, resources, and team you have. Some places you might want to check out given your interests:">
+			text="Millions of children and youth around the world are impacted by hazards and disasters every year. Although children and youth are rarely included in local disaster resilience planning processes, they can be a valuable resource. This guide equips resilience planners and other practitioners with the concepts, knowledge, and best practices necessary to meaningfully engage with youth in the hazard and disaster resilience planning process.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How are Children and Youth Defined?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -21,13 +29,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- You're expanding the social vulnerability component of an existing HMP? >> ">
+			text="Countries, government agencies and organizations define 'children' and “youth” differently [1]. The U.S. Environmental Protection Agency's 2021 Policy on Children's Health defines children from conception, infancy, early childhood and through adolescence until 21 years of age [2] . However, different stages of childhood have different needs and youth engagement strategies need to be age-appropriate. This guide is intended to facilitate engagement of older children, approximately ages 12 to 21, and uses 'children' and 'youth' interchangeably.">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="Ch 3 SVA step">
+			fontStyle="Bold"
+			text="How are Children and Youth Vulnerable to Hazards and Disasters?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -35,13 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- You want to better engage community members in resilience planning? >> ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Ch 2 landing page">
+			text="Children are especially vulnerable to the world around them. Due to factors such as unique physiology, limited ability to cope with stress, dependence on adults, lack of political or economic influence, and an underdeveloped metabolism and immune system, children are particularly vulnerable to the harmful effects of hazards and disasters. They experience multiple forms of vulnerability including physical, psychological/emotional, and educational (Figure 1). Physically, youth experience higher rates of injury and death from disasters [3]. When displaced and/or facing homelessness, children are at a higher risk for physical and sexual violence [4].  Further, due to physiological factors such as a developing immune system and lower body fluid, children and youth are more susceptible to acute illnesses, disease outbreaks, cold and heat stress, dehydration, malnutrition and more [5]. With developing organs, metabolisms and immune systems, they are also more sensitive to toxic chemicals that can result from hazards and disasters such as sewage, chemical and oil releases, asbestos, and black mold[6]. Children eat more, drink more, and breathe more in proportion to their body size than adults, which can lead to higher exposures to these toxics.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -49,13 +53,36 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- You need to figure out what the main hazards or threats to your community are? >> ">
+			text="Due to a more limited ability to process trauma, youth experiencing hazards and disasters are also more susceptible to emotional and psychological disorders and distress, including post-traumatic stress disorder (PTSD), depression, anxiety, behavioral issues and trouble sleeping [3], [5]. Hazards and disasters can disrupt students’ education by damaging school buildings, causing teacher shortages, and displacing students and teachers. As a result, youth often miss days of school, move around to different schools, and/or drop out of school entirely. These factors, in combination with emotional trauma from disasters and individual risk factors, lead to hindered academic performance, inhibited cognitive function, and delayed social development[3], [5], [6].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Figure 1: ">
 			</text>
 			<text
-			size="16.0"
+			size="14.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Ch 3 hazards ID step">
+			text="Examples of Child Physical, Emotional and Psychological, and Educational Vulnerability to Hazards and Disasters">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="575.0"
+			height="300.0"
+			id="148">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why Include Children and Youth in Resilience Planning?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,13 +90,652 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- You want to check out indicators for assessing your community's built, natural, and social environments? >> ">
+			text="While youth are vulnerable to hazards and disasters, they are also resilient. Opportunities to participate in disaster preparedness and response activities enhance this resilience [4]. Participation benefits youth by improving cognitive, social, and emotional development, promoting a sense of empowerment, and reducing marginalization [7], [8]. Further, children have many strengths to contribute to resilience and recovery planning. For instance, they are skilled at organizing and advocating, they can translate and mediate between generations, they can raise awareness in their community and with peers (e.g., via social media), they can be first responders, and much more [9]. Finally, in accordance with the Convention on the Rights of the Child [10], children and youth have a right to participate in hazard and disaster planning. Despite these factors, they are often viewed as passive victims and excluded from planning and emergency preparedness processes. ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="20.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Best Practices">
+			</text>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Meaningfully Engage Children and Youth ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Ch 4 step 1">
+			text="Meaningful participation is essential for successfully engaging youth in hazard and disaster resilience planning. Roger Hart described a ladder of child participation in a 1992 essay (Figure 2) [11]. Meaningful participation goes beyond simply inviting youth to a meeting — it involves actively engaging youth and ensuring that their input and voices are heard. Allowing youth to lead or co-lead discussions and activities fosters the highest levels of participation. Consulting with youth and/or informing youth also fall under meaningful participation, though lower in the hierarchy. It is critical to avoid unethical and tokenistic participation. Examples of this include manipulating youth, not valuing and acting on the views expressed by youth, or not allowing youth to express their views in the first place.">
+			</text>
+			</listBlock>
+			<listBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Sidebar 1: Additional Resources">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="To learn more about how to meaningfully engage children and youth, see the following resources:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Words into Action Engaging children and youth in disaster risk reduction and resilience building [1]">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	The IASC Guidelines on Working with and for Young People in Humanitarian and Protected Crises [12]">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Figure 2: ">
+			</text>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Hart’s Ladder of Child Participation">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="325.0"
+			height="225.0"
+			id="149">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="12.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Caption: Figure adapted from Roger Hart’s 1992 essay [11]">
+			</text>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Address Adultism Bias">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Meaningful youth engagement also requires addressing “adultism”. Adults often view children as passive and helpless, which leads them to exclude children from discussing topics that are deemed difficult, complex or potentially harmful [12]. Some adults may also believe that including children in decision making processes threatens the adults’ authority. Research demonstrates that resistance from adults is a major barrier to child and youth participation, but working in partnership with children can positively change the way adults view them[4]. Adults must actively work to overcome their implicit or explicit bias(es) towards children by centering youth voices and recognizing their rights to participate[9]">
+			</text>
+			</listBlock>
+			<listBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Sidebar 2: Facilitation Tips">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In group settings with youth and adults, facilitators can address adultism by explicitly recognizing and uplifting youth when they are speaking and verbally encouraging youth to participate.">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Center Diversity, Equity, and Inclusion">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="It is important to recognize that children and youth are not homogenous. Children’s intersecting identities and social location (e.g., race, gender, sexuality, social class, ability, geography, resources, legal status, immigration status, and housing status) will impact their vulnerability to hazards and disasters. Planning for equitable resilience requires intentional recruitment of youth from diverse backgrounds, especially harder-to-reach youth. While it is important to utilize existing structures to recruit youth, such as school clubs and community youth organizations, marginalized youth may not have the opportunity for youth leadership positions or membership in established youth groups and clubs.">
+			</text>
+			</listBlock>
+			<listBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Sidebar 3: Capacity Considerations">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Strategies to equitably include diverse youth will require funding, time, and resources. Consider including budget lines for these efforts in grant applications and proposals [12].">
+			</text>
+			</listBlock>
+		</textBlock>		
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Inclusive practices to consider when engaging youth include, but are not limited to, the following: ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Translating materials into other languages and/or having a translator on hand for youth with low proficiency in English. This includes providing materials in Braille and sign language when feasible and applicable.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Making grade-level appropriate and easy-to-read materials.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Partnering with trusted community organizations (e.g., disability organizations, LGBTQ+ organizations, youth groups for children of color) and staffing with local trusted facilitators.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Asking everyone to state their pronouns when introducing themselves for gender inclusivity.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Eliminating barriers to participation by providing stipends, safe spaces, transportation or other resources as needed.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Employ Non-Traditional Engagement Methods">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Research suggests that meaningful engagement of children and youth is best achieved through experiential activities[7]. These activities (Figure 3) can allow youth to demonstrate their expertise and take more ownership of the process. They also allow children to be creative and have fun, keeping them engaged. Youth can use these tools to share stories, assess risk and vulnerability, express ideas, plan for recovery, reflect, define priorities and more.">
+			</text>
+			</listBlock>
+			<listBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Sidebar 4: Additional Resources">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="To learn more about the pros and cons of different youth engagement methods and how to cater to specific needs and capabilities, with detailed examples, see Children and Young People’s Participation in Disaster Risk Reduction [7].">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Figure 3: ">
+			</text>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Examples of Experiential Youth Engagement Activities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="450.0"
+			height="200.0"
+			id="150">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Philippines Example: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In Eastern Samar Province, Philippines, youth from ages 12-21 years old used participatory video (PV) as a research tool to understand resilience to disasters in their communities. While adults provided assistance when needed, youth led the projects. The final videos, which were presented to policymakers and community members, revealed how environmental exposures (e.g., coastal location) and sensitivities (e.g., poor infrastructure) led to increased hazard and disaster risk. They also uncovered social and political causes of vulnerability to said risk[13].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Portugal Example: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In Loures, Portugal, teenagers used photography to capture poor school infrastructure. They used cellphones to take photos of climate-related vulnerabilities in their schools, such as absent classroom heating, flooded playing fields, and trash filled gutters. They also conducted interviews with teachers and fellow classmates. The students presented their photos, sharing ideas and demands, to school stakeholders and local authorities [7]. ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Protect Youth and Ensure Ethical Interactions">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="It is essential to engage children and youth ethically in a way that keeps them safe and protected throughout the process. This requires proactive work to identify and reduce harm or risk potentially posed to children and youth through their participation. Some suggestions for ensuring ethical child and youth engagement are:">
+			</text>
+			</listBlock>
+			<listBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Sidebar 5: Additional Resources">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="To learn more about informed consent and child rights, see the IASC Guidelines on Working with and for Young People in Humanitarian and Protected Crises [12]">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="To learn more about how to address trauma, see the Equitable Resilience Builder Trauma Informed Approaches Guide.">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Obtain informed consent from youth and legal guardians for activities such as:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="o	Participation in hazard and disaster resilience planning activities.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="o	The use and dissemination of products developed by youth.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="o Interactions with the media.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="o Use and disseminations of photographs/videos with youth.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Conduct comprehensive background checks when recruiting adult facilitators/staff/volunteers.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Develop a written agreement between all participants (children and adults) that establishes ground rules for participation.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Have mental health professional(s) present (e.g., social worker(s)) and/or provide mental health resources due the traumatic nature of hazards and disasters.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Ensure youth know their rights for protection, safety, survival, education and participation [1].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Consider engaging youth and adults in separate sessions initially, to ensure youth voices are heard, and then provide opportunities for youth and adults to interact.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Conclusion">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="To plan and prepare for equitable resilience across all individuals in a community, children and youth must be included in decision-making processes. Children and youth have a right to be protected from the harmful physical, psychological, emotional, and educational impacts of hazards and disasters — elevating their voices and experiences is critical to ensuring that protection. Youth participation can occur on many levels and engagement activities can be tailored to specific needs and interests. While younger youth can be consulted and informed, older youth can serve as leaders on the core planning team and assist with planning activities, facilitating sessions, designing materials, and mentoring younger participants. Meaningful and intentional engagement of youth enhances community resilience across generations.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="References:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[1]	'Words into Action: Engaging children and youth in disaster risk reduction and resilience building,' United Nations Office for Disaster Risk Reduction (UNDRR), 2020. [Online]. Available: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.undrr.org/engaging-children-and-youth-disaster-risk-reduction-and-resilience-building"
+			linkType="URL"
+			link="https://www.undrr.org/engaging-children-and-youth-disaster-risk-reduction-and-resilience-building">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[2]	'2021 policy on children’s health,' U.S. Environmental Protection Agency, 2021. [Online]. Available: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.epa.gov/system/files/documents/2021-10/2021-policy-on-childrens-health.pdf"
+			linkType="URL"
+			link="https://www.epa.gov/system/files/documents/2021-10/2021-policy-on-childrens-health.pdf">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[3]	L. Peek, 'Children and disasters: Understanding vulnerability, developing capacities, and promoting resilience-an introduction,' Child Youth Environ, vol. 18, no. 1, 2008.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[4]	Y. Lopez, J. Hayden, K. Cologon, and F. Hadley, 'Child participation and disaster risk reduction,' Int J Early Years Educ, vol. 20, no. 3, 2012, doi: 10.1080/09669760.2012.716712. ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[5]	C. Kousky, 'Impacts of Natural Disasters on Children,' 2016. [Online]. Available: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="www.futureofchildren.org"
+			linkType="URL"
+			link="www.futureofchildren.org">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[6]	A. Fothergill, 'Children, Youth, and Disaster Children, Youth, and Disaster Children, Youth, and Disaster,' Oxford Research Encyclopedia of Natural Hazard Science, no. July 2017, 2017.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[7]	B. Pfefferbaum, R. L. Pfefferbaum, and R. L. Van Horn, 'Involving children in disaster risk reduction: the importance of participation,' Eur J Psychotraumatol, vol. 9, no. sup2, 2018, doi: 10.1080/20008198.2018.1425577.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[8]	R. S. Cox, T. T. Hill, T. Plush, C. Heykoop, and C. Tremblay, 'More than a checkbox: engaging youth in disaster risk reduction and resilience in Canada,' Natural Hazards, vol. 98, no. 1, 2019, doi: 10.1007/s11069-018-3509-3.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[9]	M. Mort, I. Rodríguez-Giralt, and A. Delicado, Children and Young People’s Participation in Disaster Risk Reduction. 2020. doi: 10.47674/9781447354437.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[10]	'Convention on the Rights of the Child,' United Nations Human Rights Office of the High Commissioner, 1989. [Online]. Available: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+			linkType="URL"
+			link="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[11]	R. a. Hart, Children’s Participation: from Tokenism to Citizenship, vol. 4. 1992.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[12]	'IASC Guidelines on Working with and for Young People in Humanitarian and Protracted Crises,' Inter-Agency Standing Committee, 2020. [Online]. Available:  ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://interagencystandingcommittee.org/events/iasc-guidelines-working-and-young-people-humanitarian-and-protracted-crises"
+			linkType="URL"
+			link="https://interagencystandingcommittee.org/events/iasc-guidelines-working-and-young-people-humanitarian-and-protracted-crises">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[13]	'A Child-Centred Disaster Management Framework for Europe,' CUIDAR Project, 2020. [Online]. Available: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.lancaster.ac.uk/cuidar/en/framework/"
+			linkType="URL"
+			link="https://www.lancaster.ac.uk/cuidar/en/framework/">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[14]	K. Haynes and T. M. Tanner, 'Empowering young people and strengthening resilience: youth-centred participatory video as a tool for climate change adaptation and disaster risk reduction,' Child Geogr, vol. 13, no. 3, 2015, doi: 10.1080/14733285.2013.848599.">
 			</text>
 		</textBlock>
 	</container>

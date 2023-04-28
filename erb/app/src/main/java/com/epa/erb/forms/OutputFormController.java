@@ -163,7 +163,6 @@ public class OutputFormController extends FormController implements Initializabl
 			}
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
 	}
 	

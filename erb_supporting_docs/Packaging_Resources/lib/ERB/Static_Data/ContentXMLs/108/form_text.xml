@@ -5,7 +5,15 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Collaborate on assessment">
+			text="Assess Resilience">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Host a second workshop where community members, organizations, and agencies come together to collaboratively assess resilience.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -21,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Hold a workshop to collaboratively assess what hazards, equity, and resilient systems data can tell you about your community.">
+			text="It provides a greater variety of perspectives on what the data mean and about the state of equitable resilience in your community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -44,42 +52,42 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Italic"
 			text="Participatory mapping">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" – Participants use blank maps or baseline hazards and equity maps to mark the locations of hazards and assets and discuss who is most affected in different places.">
+			text="– Participants use blank maps or baseline hazards and equity maps to mark the locations of hazards and assets and discuss who is most affected in different places.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Italic"
 			text="Sort resilience indicators">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" – Participants sort cards to assess how resilient and equitable social, built, and natural environment systems are in your community.">
+			text="– Participants sort cards to assess how resilient and equitable the social, built, and natural environment systems are in your community.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Italic"
 			text="Discuss equity">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" – Discuss considerations for how resilience-building actions might need to take root causes of inequities into account.">
+			text="– Discuss considerations for how resilience- building actions might need to take root causes of inequities into account.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -87,7 +95,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Outputs">
+			text="Output">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -162,7 +170,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Half-day workshop">
+			text="Half day">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -175,9 +183,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Workshop 2 Facilitators Guide"
+			text="Facilitators Guide for Workshops"
 			linkType="externalDOC"
-			link="Ch3_Workshop2_FacilitatorsGuide.docx">
+			link="Facilitators_Guide_for_Workshops.docx">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -190,9 +198,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Urban waters story map"
-			linkType=""
-			link="">
+			text="Urban Waters Story Map"
+			linkType="URL"
+			link="https://storymaps.arcgis.com/stories/c1a5ae06b5964f078ada4a3c5e8b99a7">
 			</text>
 		</textBlock>			
 	</container>
@@ -202,7 +210,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -228,7 +236,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Community members carry out this assessment alongside staff from local agencies and organizations.">
+			text="Community members carry out this assessment alongside staff from local agencies and organizations">
 			</text>	
 		</textBlock>
 	</container>

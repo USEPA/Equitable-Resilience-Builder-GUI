@@ -8,17 +8,20 @@ public class Project {
 	private String projectName;
 	private String projectType;
 	private String projectCleanedName;
-	public Project(String projectName, String projectType, String projectCleanedName) {
+	private String projectDescription;
+	public Project(String projectName, String projectType, String projectCleanedName, String projectDescription) {
 		this.projectName = projectName;
 		this.projectType = projectType;
 		this.projectCleanedName = projectCleanedName;
+		this.projectDescription = projectDescription;
 	}
 	
 	private ArrayList<Goal> projectGoals;
-	public Project(String projectName, String projectType, String projectCleanedName, ArrayList<Goal> projectGoals) {
+	public Project(String projectName, String projectType, String projectCleanedName, String projectDescription, ArrayList<Goal> projectGoals) {
 		this.projectName = projectName;
 		this.projectType = projectType;
 		this.projectCleanedName = projectCleanedName;
+		this.projectDescription = projectDescription;
 		this.projectGoals = projectGoals;
 	}
 	
@@ -44,6 +47,14 @@ public class Project {
 
 	public void setProjectCleanedName(String projectCleanedName) {
 		this.projectCleanedName = projectCleanedName;
+	}
+
+	public String getProjectDescription() {
+		return projectDescription;
+	}
+
+	public void setProjectDescription(String projectDescription) {
+		this.projectDescription = projectDescription;
 	}
 
 	public ArrayList<Goal> getProjectGoals() {

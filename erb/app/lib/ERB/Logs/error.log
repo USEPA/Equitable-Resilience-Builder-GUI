@@ -7,3 +7,7 @@
 | ERROR | 2022-09-30 13:30:45 | XMLManager.java:788 | Cannot parseFormContentXML. xmlFile = C:\Users\AWILKE06\OneDrive - Environmental Protection Agency (EPA)\Documents\Projects\Metro-CERI\FY22\ERB\Static_Data\Intro\00\form_text.xml
 | ERROR | 2022-09-30 13:30:49 | FileHandler.java:123 | Cannot getProjectMetaXMLFile. project = null.
 | ERROR | 2022-09-30 13:49:38 | FileHandler.java:123 | Cannot getProjectMetaXMLFile. project = null.
+| ERROR | 2023-04-28 06:37:40 | FileHandler.java:229 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\MetroCERI\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
+| ERROR | 2023-04-28 06:54:37 | FileHandler.java:195 | C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\MetroCERI\erb_supporting_docs\Code_Resources\ERB\Projects\A_Test\Goals\Default_Goal\Supporting_DOC\Equity_Storytelling_Exercise.docx either does not exist or desktop is not supported.
+| ERROR | 2023-04-28 09:46:34 | FileHandler.java:195 | C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\MetroCERI\erb_supporting_docs\Code_Resources\ERB\Projects\A_Test\Goals\Default_Goal\Supporting_DOC\Equity_Storytelling_Exercise.docx either does not exist or desktop is not supported.
+| ERROR | 2023-04-28 09:46:36 | FileHandler.java:195 | C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\MetroCERI\erb_supporting_docs\Code_Resources\ERB\Projects\A_Test\Goals\Default_Goal\Supporting_DOC\Equity_Storytelling_Exercise.docx either does not exist or desktop is not supported.

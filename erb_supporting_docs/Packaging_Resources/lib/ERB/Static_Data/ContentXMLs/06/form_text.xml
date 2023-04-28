@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="How does it work">
+			text="What are Resilience Indicators?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,123 +13,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="ERB is a toolkit containing 5 chapters that guide you through a process for building equitable resilience in your community.">
+			text="Community resilience to extreme events, natural or manmade hazards, or changes in environmental conditions because of climate change can be improved with increased awareness of potential risks. Resilience indicators identify sources of potential vulnerability so that further assessment and targeted adaptation strategies can be taken.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Depending on the goals you come up with, you will proceed through the chapters in different ways.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="1. ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Project planning.">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" Get a core team together to set your goals for your ERB process and put together a project plan.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="2. ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Community engagement.">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" Carry out a social network analysis and begin the outreach that is the foundation for inclusive participation in ERB workshops.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="3. ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Hazard and social vulnerability identification.">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" Hold community workshops to identify hazards from disasters and climate change from and figure out who is made most vulnerable to these hazards, why, and how.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="4. ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Equitable resilience assessment.">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" Use indicators and local knowledge to measure how the built, natural, and social environments affect resilience and equity in your community.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="5. ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Taking action.">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" Hold community workshops to identify how you're going to take action to address resilience and equity needs.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="What do you need to get started?">
+			text="What is a resilience indicator?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -137,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- Interest and support from your office and other local constituencies in strengthening resilience and equity">
+			text="Resilience indicators are summary measures that provide information on the state of or change in built, social, or natural systems that can help characterize their vulnerability and adaptive capacity. Indicators can help community leaders assess needs, prioritize goals, and establish baselines for monitoring progress and recognizing success [1].">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -145,31 +37,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- 4-6 people who can join your core team">
+			text="However, community indicators are often based on national data sets and assumptions that do not make sense for every community. To be useful for community planning, indicators need to be developed with input from local leaders and community members and tailored to assess local context.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Resources and capability to facilitate 2-3 community workshops (virtual or in-person)">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- The first step is to create an ERB project.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="What outputs will you get? ">
+			text="Using the Equitable Resilience Builder (ERB) to identify indicators for hazards, equity, and resilience">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -177,7 +53,22 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Depending on the path you take through the ERB, you will generate:">
+			text="The ERB tool offers an iterative process for integrating community data on hazards and equity to develop and identify indicators so that further assessment and targeted adaptation strategies can be undertaken in an equitable, resource-effective manner [2].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="650.0"
+			height="300.0"
+			id="147">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="10.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Figure 1. Caption – Indicators in ERB…">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -185,7 +76,78 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- Ch. 1: Project plan, team storytelling">
+			text="Resilience indicators can also help practitioners and policy makers understand costs and benefits of enhancing resilience at all scales. Importantly, resilience indicators can provide insight into the complexity, interdependence, and uncertainty that exists in communities and vulnerability to external events or stressors.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Resources to learn more:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Commonly Used Indicators from Peer-Reviewed Research. FEMA, 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.fema.gov/sites/default/files/documents/fema_2022-community-resilience-indicator-analysis.pdf"
+			linkType="URL"
+			link="https://www.fema.gov/sites/default/files/documents/fema_2022-community-resilience-indicator-analysis.pdf">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Resilience Analysis and Planning Tool. FEMA,">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://fema.maps.arcgis.com/apps/webappviewer/index.html?id=90c0c996a5e242a79345cdbc5f758fc6"
+			linkType="URL"
+			link="https://fema.maps.arcgis.com/apps/webappviewer/index.html?id=90c0c996a5e242a79345cdbc5f758fc6">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="U.S. EPA. Evaluating Urban Resilience to Climate Change: A Multi-Sector Approach (Final Report). U.S. Environmental Protection Agency, Washington, D.C., EPA/600/R-16/365F, 2017.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="References:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -193,7 +155,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- Ch. 2: Social network analysis, stronger relationships, and community empowerment around resilience">
+			text="[1] Cutter, S.L. The landscape of disaster resilience indicators in the USA. Nat Hazards 80, 741–758 (2016). ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1007/s11069-015-1993-2"
+			linkType="URL"
+			link="https://doi.org/10.1007/s11069-015-1993-2">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -201,23 +171,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- Ch. 3: Hazard identification slides, social vulnerability assessment table, community storytelling">
+			text="[2] Sinha, P., Julius, S., Fry, M., Truesdale, R., Cajka, J., Eddy, M., Doraiswamy, P., and D. Womack. (In Review). Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach ">
 			</text>
-		</textBlock>
-		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="- Ch. 4: Resilience indicator measurements and visualization">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Ch. 5: List of action items for building equitable resilience, documentation of what you've accomplished">
+			fontStyle="Hyperlink"
+			text="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4232780"
+			linkType="URL"
+			link="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4232780">
 			</text>
 		</textBlock>
 	</container>

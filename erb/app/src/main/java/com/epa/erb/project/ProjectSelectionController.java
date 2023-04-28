@@ -10,15 +10,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
 public class ProjectSelectionController implements Initializable{
 
 	@FXML
+	VBox vBox;
+	@FXML
+	Rectangle rectangle1;
+	@FXML
 	TextField projectNameTextField;
+	@FXML
+	TextArea descriptionTextArea;
 	@FXML
 	ListView<Project> projectsListView;
 	
@@ -31,6 +40,8 @@ public class ProjectSelectionController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		setProjectsListViewCellFactory();
 		fillProjectsListView();
+        rectangle1.widthProperty().bind(vBox.widthProperty().subtract(5.0));
+        descriptionTextArea.getStylesheets().add(getClass().getResource("/textArea.css").toString());		
 	}
 	
 	public void loadEngagementActionToContainer(Project project) {
@@ -72,6 +83,9 @@ public class ProjectSelectionController implements Initializable{
 		if (mouseEvent == null || mouseEvent.getClickCount() == 2) {
 			Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
 			loadProject(selectedProject);
+		} else if (mouseEvent.getClickCount() ==1 ) {
+			Project selectedProject = projectsListView.getSelectionModel().getSelectedItem();
+			descriptionTextArea.setText(selectedProject.getProjectDescription());
 		}
 	}
 	

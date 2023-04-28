@@ -102,7 +102,6 @@ public class IndicatorSetupFormController implements Initializable{
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}
 		}
 		return cards;
@@ -136,7 +135,6 @@ public class IndicatorSetupFormController implements Initializable{
 				}
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}
 		}
 	}
@@ -185,7 +183,6 @@ public class IndicatorSetupFormController implements Initializable{
 			}
 			return root;
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -206,7 +203,6 @@ public class IndicatorSetupFormController implements Initializable{
 			indicatorSelectionController.fillIndicatorChoiceBox();
 			return root;
 		}catch (Exception e) {
-			e.printStackTrace();
 		}
 		return null;
 	}

@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Gather the Data">
+			text="Gather Data">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Gathering this information and put it to use">
+			text="Gather information on hazards, equity, and resilience before you put it to use.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -58,27 +58,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Hazards:">
+			text="Hazards: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Use the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Hazards Data Worksheet"
-			linkType="externalDOC"
-			link="Ch3_HazardsData_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to identify the top hazards your community faces now and in the future.">
+			text="Use the Collect Hazards Data document to identify the top hazards your community faces now and in the future">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -91,27 +77,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Equity:">
+			text="Equity: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Use the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Equity Data Worksheet"
-			linkType="externalDOC"
-			link="Ch3_EquityData_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to identify equity concerns that your community faces.">
+			text="Use the Collect Equity Data document to identify equity concerns that your community faces">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -124,27 +96,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Resilient systems:">
+			text="Resilient systems: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Using the indicators selected from the previous section, delegate the gathering of indicator data to core team members and fill in the data gathered in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Indicators Master List"
-			linkType="externalDOC"
-			link="Ch3_IndicatorsMaster_List.xlsx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" spreadsheet.">
+			text="Using the indicators selected from the previous section, delegate the gathering of indicator data to core team members and fill in the data gathered in the Indicators Master List spreadsheet">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -180,42 +138,6 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Data on hazards, equity, and resilience via the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Hazards Data Worksheet"
-			linkType="externalDOC"
-			link="Ch3_HazardsData_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=", ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Equity Data Worksheet"
-			linkType="externalDOC"
-			link="Ch3_EquityData_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=", and ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Indicators Master List"
-			linkType="externalDOC"
-			link="Ch3_IndicatorsMaster_List.xlsx">
 			</text>
 		</textBlock>	
 	</container>
@@ -265,17 +187,17 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Hazards Data Worksheet"
+			text="Collect Hazards Data"
 			linkType="externalDOC"
-			link="Ch3_HazardsData_Worksheet.docx">
+			link="Collect_Hazards_Data.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Equity Data Worksheet"
+			text="Collect Equity Data"
 			linkType="externalDOC"
-			link="Ch3_EquityData_Worksheet.docx">
+			link="Collect_Equity_Data.docx">
 			</text>
 			<text
 			size="16.0"
@@ -283,10 +205,17 @@
 			fontStyle="Hyperlink"
 			text="Indicators Master List"
 			linkType="externalDOC"
-			link="Ch3_IndicatorsMaster_List.xlsx">
+			link="Indicators_Master_List.xlsx">
 			</text>
 			</listBlock>
-		</textBlock>		
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
@@ -294,7 +223,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -307,7 +236,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the Key Takeaways from Workshop 1 to make sure you are gathering information to develop a deeper understanding of these issues.">
+			text="Use the Key Takeaways from Workshop 1 to make sure you are gathering information to develop a deeper understanding of the issues. ">
 			</text>
 		</textBlock>	
 	</container>

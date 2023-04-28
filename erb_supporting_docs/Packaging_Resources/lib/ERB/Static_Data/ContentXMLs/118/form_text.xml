@@ -1,13 +1,170 @@
 <textBlocks>
-	<container id="formVBox">
+	<container id="titleVBox">
 		<textBlock>
-			<icon width="1100.0"
-			height="500.0" id="117"> </icon>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Information on Equity">
+			</text>
 		</textBlock>
 	</container>
-	<container id="topPanelVBox">
+	<container id="leftVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Community demographics and economics">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Possible Online Sources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="EPA EJ Screen"
+			linkType="URL"
+			link="https://www.epa.gov/ejscreen">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="State EJ tools">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Neighborhoods at Risk"
+			linkType="URL"
+			link="https://headwaterseconomics.org/tools/neighborhoods-at-risk/tool-about/">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Possible Local Sources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Planning department">
+			</text>
+		</textBlock>
 	</container>
-	<container id="bottomPanelVBox">
-	
+	<container id="centerVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Health issues">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Possible Online Sources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="State health department">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="CDC Interactive Atlas"
+			linkType="URL"
+			link="https://www.cdc.gov/dhdsp/maps/atlas/index.htm">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Possible Local Sources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Local health department">
+			</text>
+		</textBlock>
+	</container>
+	<container id="rightVBox">
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Local equity concerns">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Possible Online Sources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="EPA EJ Screen"
+			linkType="URL"
+			link="https://www.epa.gov/ejscreen">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Possible Local Sources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Community Based Organizations">
+			</text>
+		</textBlock>
 	</container>
 </textBlocks>

@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="22.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="About ERB">
@@ -13,7 +13,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The Equitable Resilience Builder (ERB) toolkit was developed by the U.S Environmental Protection Agency's Office of Research and Development using a human-centered design approach.">
+			text="Version: ERB 2.0">
+			</text>
+		</textBlock>	
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Year: 2023">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -21,10 +29,33 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="ERB was developed in collaboration with many people and organizations. OW-OWOW. The Lab at OPM.">
+			text="Created by: U.S. Environmental Protection Agency, Office of Research and Development">
 			</text>
 		</textBlock>
-		
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Contact: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="CESER@epa.gov"
+			linkType="URL"
+			link="">
+			</text>
+		</textBlock>	
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Code repository: Github">
+			</text>
+		</textBlock>
 	</container>
 	<container id="topPanelVBox">
 	</container>

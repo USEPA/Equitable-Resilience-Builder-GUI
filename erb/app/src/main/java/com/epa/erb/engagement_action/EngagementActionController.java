@@ -125,7 +125,6 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -142,7 +141,6 @@ public class EngagementActionController implements Initializable {
 			stage.showAndWait();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
@@ -183,7 +181,6 @@ public class EngagementActionController implements Initializable {
 			stage.showAndWait();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 	
@@ -197,7 +194,6 @@ public class EngagementActionController implements Initializable {
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -225,7 +221,6 @@ public class EngagementActionController implements Initializable {
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -351,7 +346,6 @@ public class EngagementActionController implements Initializable {
 			Pane root = mainPanelHandler.loadERBDashboardRoot(app);
 			addContentToContentVBox(root, true);
 		} else {
-			System.out.println("Type = " + erbContentItem.getType());
 			if (erbContentItem.getType().contentEquals("mainForm")) {
 				Pane root = loadMainFormController(contentXMLFile);
 				addContentToContentVBox(root, true);

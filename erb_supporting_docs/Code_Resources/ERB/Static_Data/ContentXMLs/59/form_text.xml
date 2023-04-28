@@ -211,7 +211,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
+			fontStyle="Regular"
 			text="Do your goals address deep concerns across the community? If you're not sure, you might want to request input from others outside the core team.">
 			</text>
 		</textBlock>

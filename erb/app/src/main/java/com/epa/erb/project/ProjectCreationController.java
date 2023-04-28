@@ -19,10 +19,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 public class ProjectCreationController implements Initializable {
 
 	@FXML
@@ -31,6 +34,12 @@ public class ProjectCreationController implements Initializable {
 	ToggleGroup modeToggleGroup;
 	@FXML
 	TextField projectNameTextField;
+	@FXML
+	TextArea projectDescriptionTextArea;
+	@FXML
+	Rectangle rectangle1;
+	@FXML
+	VBox vBox;
 
 	private String mode = "Facilitator Mode";
 	private FileHandler fileHandler = new FileHandler();
@@ -43,6 +52,7 @@ public class ProjectCreationController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+        rectangle1.widthProperty().bind(vBox.widthProperty().subtract(5.0));
 		goalModeHBox.setVisible(false);
 		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
 	}
@@ -57,7 +67,8 @@ public class ProjectCreationController implements Initializable {
 		String newProjectName = projectNameTextField.getText().trim();
 		if (isValidNewProjectName(newProjectName)) {
 			String cleanedProjectName = cleanStringForWindows(newProjectName);
-			Project project = new Project(newProjectName, mode, cleanedProjectName);
+			String projectDescription = projectDescriptionTextArea.getText().trim();
+			Project project = new Project(newProjectName, mode, cleanedProjectName, projectDescription);
 			createNewProjectDirectory(project);
 			launchProject(project);
 		}

@@ -22,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeItem;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
@@ -63,6 +64,15 @@ public class FormController {
 					contextMenu.show(image, event.getSceneX(), event.getSceneY());
 				}
 			});
+		} else {
+			Stage stage = new Stage();
+			VBox vBox = new VBox();
+			ImageView imageView = new ImageView();
+			imageView.setImage(new Image(imageFile.getPath()));
+			vBox.getChildren().add(imageView);
+			Scene scene = new Scene(vBox);
+			stage.setScene(scene);
+			stage.showAndWait();
 		}
 	}
 	
@@ -222,7 +232,6 @@ public class FormController {
 				File fileToOpen = new File(supportingDOCDirectory + "\\" + link);
 				fileHandler.openFileOnDesktop(fileToOpen);
 			} else {
-				System.out.println("ENAGEMENT ACTION CONTROLLER IS NULL. WHY");
 			}
 		}
 	}
@@ -239,7 +248,6 @@ public class FormController {
 		try {
 			Desktop.getDesktop().browse(new URL(link).toURI());
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -252,7 +260,6 @@ public class FormController {
 			root.setPrefHeight(app.getPrefHeight());
 			app.loadNodeToERBContainer(root);
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -275,7 +282,6 @@ public class FormController {
 //					tP.setStyle("-fx-background-color: " + constants.getChapter5Color());
 //				}
 			} catch (Exception e) {
-				e.printStackTrace();
 			}
 		}
 	}

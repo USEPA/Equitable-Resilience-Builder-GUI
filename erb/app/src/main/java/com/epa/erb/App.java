@@ -55,7 +55,6 @@ public class App extends Application {
 		try {
 			Application.launch(args);
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -103,6 +102,7 @@ public class App extends Application {
 			return root;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Select among options for things to do in the workshop to strengthen ties among workshop participants">
+			text="Select among options for things to do in the workshop to strengthen ties among workshop participants.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,15 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Check out ideas in the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Build Relationships Worksheet"
-			linkType="externalDOC"
-			link="Ch3_BuildRelationships_Worksheet.docx">
+			text="Check out ideas in Options for Connecting People in Workshops">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -191,7 +183,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants and facilitator">
+			text="Participants and facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -217,10 +209,17 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Build Relationships Worksheet"
+			text="Options for Connecting People in Workshops"
 			linkType="externalDOC"
-			link="Ch3_BuildRelationships_Worksheet.docx">
+			link="Options_for_Connecting_People_in_Workshops.docx">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -229,7 +228,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>

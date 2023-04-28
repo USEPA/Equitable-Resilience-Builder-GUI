@@ -5,7 +5,281 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Storytelling Best Practices">
+			text="What is a Trauma-Informed Approach?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A trauma-informed approach to equitable resilience planning recognizes that individuals experience climate change and hazards differently and emphasizes trust, safety, history, and relationship building to avoid re-traumatization.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What is Trauma?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Communities and individuals may have experienced trauma that can impact resilience planning efforts. According to the U.S. Substance Abuse and Mental Health Services Agency (SAMHSA),  ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="trauma">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" is an event or series of events experienced as harmful or life-threatening that has persistent adverse effects on individual functioning, and mental, physical, social, emotional, or spiritual well-being [1]. That trauma may include the emotional toll of disaster on survivors, as well as experiences of marginalization and discrimination.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Planning for community resilience needs to acknowledge trauma and minimize the potential for re-traumatization as much as possible. This requires adopting a  ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="trauma-informed approach">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" when engaging with communities in resilience and recovery planning.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="850.0"
+			height="500.0"
+			id="113">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="10.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Figure 1 Six principles to guide a trauma-informed approach, adapted from [2].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Trauma-informed practices prioritize ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="trust-building, transparency, ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="and ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="social connectedness ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="to reduce the impact of trauma through collaborative community processes [3-4]. This approach involves:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Understanding and avoiding potential triggers">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Prioritizing relationship building">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Creating safe environments where individuals can speak without judgement">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Providing the option of smaller-sized gatherings and private sessions">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Maintaining confidentiality to ensure cultural safety">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Spending time with the community to get to know the people and their culture">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Establishing follow-up protocols so communities can access additional resources">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The Equitable Resilience Builder encourages a trauma-informed approach throughout the community planning process. For example, this means understanding historical context or working with an advisory board before engaging a community or ensuring a facilitator is trained in trauma-informed and justice approaches. Activities included in the ERB chapters, such as storytelling, reflection, equity and resilience indicators, provide space and opportunity to build trust and empathy, and integrate these understandings into equitable resilience planning efforts.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="References:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[1] SAMHSA. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.samhsa.gov/trauma-violence"
+			linkType="URL"
+			link="https://www.samhsa.gov/trauma-violence">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[2] CDC. 2020. Six Principles of a Trauma-Informed Approach.  ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.cdc.gov/orr/infographics/6_principles_trauma_info.htm"
+			linkType="URL"
+			link="https://www.cdc.gov/orr/infographics/6_principles_trauma_info.htm">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[3] Njenga, J. (n.d) Unearthing Stories: Considering Perspectives of Trauma Survivors. Culture, Trauma Informed Methods. Narratives Inc. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://narrativesinc.com/unearthing-stories/"
+			linkType="URL"
+			link="https://narrativesinc.com/unearthing-stories/">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[4] Rosenberg, H., Errett, N.A., and Eisenman, D.P. (2022). Working with Disaster-Affected Communities to Envision Healthier Futures: A Trauma-Informed Approach to Post-Disaster Recovery Planning. Environmental Research and Public Health. 19, 1723. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.3390/ijerph19031723"
+			linkType="URL"
+			link="https://doi.org/10.3390/ijerph19031723">
 			</text>
 		</textBlock>
 	</container>

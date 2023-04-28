@@ -22,7 +22,7 @@
 	<container id="centerVBox">
 	<textBlock>
 			<icon width="800.0"
-			height="350.0" id="82"> </icon>
+			height="330.0" id="82"> </icon>
 		</textBlock>
 	</container>
 	<container id="rightVBox">

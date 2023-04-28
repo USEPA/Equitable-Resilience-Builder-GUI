@@ -2,72 +2,10 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="22.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Bold"
-			text="Glossary">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Equitable Resilience.">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" Resilience involves strengthening your community's capacity to prepare for, withstand, respond, adapt, and transform in the face of climate changes &amp; disasters. Equitable resilience does so in ways that:">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Are culturally appropriate">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Are informed by local knowledge">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Use inclusive methods of making decisions">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Address how social and environmental inequalities lead to some community members bearing worse burdens than others from floods, accidental chemical releases, heat waves, etc.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Pay attention to how the benefits and costs of resilience actions are distributed">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Underlined"
-			text="Vulnerability and resilience">
+			fontStyle="Italic"
+			text="ERB Glossary of Terms">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -75,25 +13,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Resilience: ">
+			text="Community*: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="'The capacity of cities to ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="function">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=", so that the people living and working in cities, particularly the poor and vulnerable, survive and thrive no matter what stresses or shocks they encounter.' (ARUP/Rockefeller Foundation)">
+			text="A group of people that live in the same vicinity (e.g., county, city, neighborhood) or share a common defining characteristic [1]. In the ERB process, set of community participants may vary with respect to goals of project.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -101,13 +27,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Function: ">
+			text="Community resilience*: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The ability of the system to minimize the risk (likelihood/impacts), recover rapidly and learn from hazards in an equitable manner">
+			text="Community resilience is the ability for a local group or place to withstand, recover, adapt, and transform in the face of an external stressor or disruption, such as hazards, disasters, and climate change. Capacity and resources that support resilience are a product of social, built, and environmental systems at different scales.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -115,27 +41,165 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Equitable: ">
+			text="Equitable Resilience: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="'The consistent and systemic fair, just, and impartial treatment of all individuals, including individuals who belong to underserved communities that have been denied such treatment.' (United States Executive Order 14035 of June, 25 2021)">
+			text="A form of human-environmental resilience which considers issues of social vulnerability and differentiated access to power, knowledge, and resources [2].">
 			</text>
 		</textBlock>
-			<textBlock>
+		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Inclusive: ">
+			text="Equity: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="'The recognition, appreciation, and use of the talents and skills of employees of all backgrounds.' (United States Executive Order 14035 of June, 25 2021)">
+			text="The consistent and systematic fair, just, and impartial treatment of all individuals, including individuals who belong to underserved communities that have been denied such treatment, such as Black, Latino, and Indigenous and Native American persons, Asian Americans and Pacific Islanders and other persons of color; members of religious minorities; lesbian, gay, bisexual, transgender, and queer (LGBTQ+) persons; persons with disabilities; persons who live in rural areas; and persons otherwise adversely affected by persistent poverty or inequality [3].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Hazards*: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Any type of danger that a community might experience now or in the future, such as a flood, drought, pandemic, chemical spill, air pollution, leaking underground storage tank, and a changing climate.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Indicators: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Resilience indicators are summary measures that provide information on the state of or change in built, social, or natural systems that can help characterize their vulnerability and adaptive capacity [4].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Social Vulnerability: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The ways in which people and communities are vulnerable to the effects of hazards and disasters that go beyond physical exposure, including social, economic, health, cultural, and historical factors [5].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="*Definitions are from this research team, unless otherwise cited">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Reference:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[1] Maxwell and Kiessling, 2022. Building Trust and Relationships in Cleanup Community Engagement, from Theory to Practice. U.S. Environmental Protection Agency, Washington, DC, EPA/600/R-22/104. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=355943&#x26;Lab=CESER"
+			linkType="URL"
+			link="https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=355943&#x26;Lab=CESER">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[2] Matin, Forrester, and Ensor, 2018. What is equitable resilience? World Development, 109. 197-205. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1016/j.worlddev.2018.04.020"
+			linkType="URL"
+			link="https://doi.org/10.1016/j.worlddev.2018.04.020">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[3] The White House, 2021. Executive Order on Advancing Racial Equity and Support for Underserved Communities Through the Federal Government. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/20/executive-order-advancing-racial-equity-and-support-for-underserved-communities-through-the-federal-government/"
+			linkType="URL"
+			link="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/20/executive-order-advancing-racial-equity-and-support-for-underserved-communities-through-the-federal-government/">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[4] Sinha, P., Julius, S., Fry, M., Truesdale, R., Cajka, J., Eddy, M., Doraiswamy, P., and D. Womack. (In Review). Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4232780"
+			linkType="URL"
+			link="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4232780">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[5] Maxwell, 2021. Intersection of Social Vulnerability and Resilience to Extreme Weather and Other Disasters- the Equitable Resilience. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://cfpub.epa.gov/si/si_public_file_download.cfm?p_download_id=542560&#x26;Lab=CESER"
+			linkType="URL"
+			link="https://cfpub.epa.gov/si/si_public_file_download.cfm?p_download_id=542560&#x26;Lab=CESER">
 			</text>
 		</textBlock>
 	</container>

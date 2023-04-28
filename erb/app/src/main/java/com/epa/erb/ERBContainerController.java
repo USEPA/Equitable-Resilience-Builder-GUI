@@ -127,7 +127,7 @@ public class ERBContainerController implements Initializable{
 				+ "-fx-font-size: 14px;"
 				+ "}");
 		
-		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/bridge_90_90.PNG")));
+		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/bridge_90_90.png")));
 	}
 	
 	private void populateResourceMenu() {

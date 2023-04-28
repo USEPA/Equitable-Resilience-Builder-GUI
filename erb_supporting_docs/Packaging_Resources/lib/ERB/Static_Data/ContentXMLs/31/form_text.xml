@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Select activites to do in ERB">
+			text="Select ERB Activities">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Teams pick which ERB activities best fit their needs.">
+			text="Look over the options for activities in the ERB toolkit, which include: storytelling; community engagement; hosting workshops to collaboratively assess hazards, equity, and resilience; gathering additional data for this assessment; and hosting a workshop to identify and prioritize equitable resilience action.  Make initial selections for which activities best support your goals and can be accomplished in the time you have.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="ERB is not a one-size-fits-all. Find the right sections and activities that fit your groups goals, capacity, and needs.">
+			text="The ERB toolkit contains a number of activities relevant to different planning goals. It's flexible and meant to be customized to fit your needs, which depends on your goals, technical capacities, timeline, and other considerations.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -41,16 +41,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review the activities in each section of ERB.">
+			text="Look through the sections of this toolkit and the menu of activities in the Project Plan Template. Note which ones you're most likely to do. Consider">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,21 +58,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="activities worksheet"
-			linkType="externalDOC"
-			link="Ch1_ActivitySelection_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to figure out which activities to do.">
+			text="Your goals for using ERB">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -90,84 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Look through our ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="example"
-			linkType="internalStep"
-			link="29">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" if you get stuck.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Add the list of selected activities to ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="the project plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Which activities should we select?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Consider">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Your goals are for using ERB">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Disaster risks in your area">
+			text="Disaster risks and environmental hazards in your area">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -193,7 +97,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Existing community connections">
+			text="Existing community connections your team has">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Look through our example of Activity Selection to see what other communities have chosen">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -205,19 +117,16 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Completed activities section of ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="the project plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
+			text="Completed activity review section of your Project Plan">
 			</text>
 		</textBlock>
 	</container>
@@ -227,7 +136,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -267,17 +176,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Activities worksheet"
+			text="Project Plan Template"
 			linkType="externalDOC"
-			link="Ch1_ActivitySelection_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Project plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
+			link="Project_Plan_Template.docx">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -291,8 +192,8 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Example-activity selection"
-			linkType="internalStep"
+			text="Activity Selection"
+			linkType="internal"
 			link="29">
 			</text>
 		</textBlock>
@@ -303,32 +204,20 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
-			id="71">
-			</icon>
-			<icon
-			width="40.0"
-			height="40.0"
 			id="72">
-			</icon>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Which activities will help your community address the greatest distaster risks to residents in the most vulnerable situations?">
+			text="As your picking ERB activities, consider which activities will help your community address the greatest disaster risks to residents in the most vulnerable situations.">
 			</text>
 		</textBlock>
 	</container>

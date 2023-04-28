@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Plan your Project">
+			text="Plan Your Project">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Get started with your ERB project">
+			text="Get started with your ERB project. This begins with putting together a core team for leading and organizing this effort. You'll see the key role that storytelling will play throughout ERB and use it to establish your goals for going through ERB. You'll review the menu of activities you can choose to do in the ERB toolkit. The project plan you'll create is flexible and you'll be able to revisit it throughout the process.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -34,7 +34,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Get a core team together.">
+			text="Get a core team together">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -47,7 +47,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Team Storytelling">
+			text="Team storytelling">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -73,7 +73,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Select activity options to do in ERB">
+			text="Review ERB menu of activities">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -107,7 +107,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="What you'll have at the end">
+			text="What you will have at the end">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -146,7 +146,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A list of goals you want to achieve">
+			text="A list of goals">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -159,7 +159,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A project plan including">
+			text="A project plan">
 			</text>
 		</textBlock>
 	</container>
@@ -169,7 +169,20 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -191,11 +204,46 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="Worksheet index">
+			fontStyle="Hyperlink"
+			text="Recruitment Guide"
+			linkType="externalDOC"
+			link="Recruitment_Guide.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Team Storytelling Exercise"
+			linkType="externalDOC"
+			link="Team_Storytelling_Exercise.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Project Plan Template"
+			linkType="externalDOC"
+			link="Project_Plan_Template.docx">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="How Have Communities Used ERB?"
+			linkType="internal"
+			link="27">
 			</text>
 		</textBlock>
 	</container>
@@ -205,47 +253,98 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="You will see tips on implementing the following themes:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="64">
 			</icon>
 			<text
-			size="16.0"
+			size="14.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Collaboration">
 			</text>
-		</textBlock>
-		<textBlock>
+			</listBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="65">
 			</icon>
 			<text
-			size="16.0"
+			size="14.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Representation">
 			</text>
-		</textBlock>
-		<textBlock>
+			</listBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="66">
 			</icon>
 			<text
-			size="16.0"
+			size="14.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Voice">
 			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="68">
+			</icon>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Active listening">
+			</text>
+			</listBlock>
+			<listBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="69">
+			</icon>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Local knowledge">
+			</text>
+			</listBlock>
+			<listBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="72">
+			</icon>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Vulnerability">
+			</text>
+			</listBlock>
 		</textBlock>
 	</container>
 </textBlocks>

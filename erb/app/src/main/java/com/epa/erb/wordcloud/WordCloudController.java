@@ -305,7 +305,6 @@ public class WordCloudController implements Initializable {
 			saveStage.showAndWait();
 			return wordCloudSaveController;
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return null;
 	}
@@ -608,7 +607,6 @@ public class WordCloudController implements Initializable {
 			webView.setMinHeight(size+40);
 			
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -653,7 +651,6 @@ public class WordCloudController implements Initializable {
 								}
 							});
 						} catch (MalformedURLException e) {
-							e.printStackTrace();
 						}
 					}
 				}
@@ -669,7 +666,6 @@ public class WordCloudController implements Initializable {
 			try {
 				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
 			} catch (IOException e) {
-				e.printStackTrace();
 			}
 		}
 	}

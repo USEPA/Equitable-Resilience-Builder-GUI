@@ -8,14 +8,6 @@
 			text="How have communities used ERB?">
 			</text>
 		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Introduction to examples">
-			</text>
-		</textBlock>
 	</container>
 	<container id="leftVBox">
 		<textBlock>
@@ -31,11 +23,11 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="An EPA Regional staff member and a community organizer for environmental justice are working together to convene and activate a new group of community members in a rural county with EJ issues.">
+			text="An EPA Regional staff member and a community organizer for environmental justice are working together to convene and activate a new group of community members in a rural county with EJ issues. ">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon width="200.0"
+			<icon width="300.0"
 			height="200.0" id="79"> </icon>
 		</textBlock>
 	</container>
@@ -53,14 +45,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A local environmental education and advocacy organization is leading the development of a watershed resilience plan and wants to incorporate equity into the plan.">
+			text="A local environmental education and advocacy organization is leading the development of a watershed resilience plan and wants to incorporate equity into the plan. ">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon width="200.0"
+			<icon width="300.0"
 			height="200.0" id="80"> </icon>
 		</textBlock>
-		
 	</container>
 	<container id="rightVBox">
 		<textBlock>
@@ -76,7 +67,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A county emergency manager is tasked with leading a commitee to update the county's Hazard Mitigation Plan. The previous plan has plenty on natural hazards but hasn't incorporated lessons learned from the COVID-19 pandemic.">
+			text="A county emergency manager is tasked with leading a committee to update the county's Hazard Mitigation Plan. The previous plan has plenty on natural hazards but hasn't incorporated lessons learned from the COVID-19 pandemic.">
 			</text>
 		</textBlock>
 		<textBlock>

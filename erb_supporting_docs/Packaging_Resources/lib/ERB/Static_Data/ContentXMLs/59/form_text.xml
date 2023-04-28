@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Set goals for using ERB">
+			text="Set Goals for Using ERB">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identify your goals for the ERB process">
+			text="Identify your team's goals for going through the ERB process. You might already have a specific charge. Your team can also generate a range of goals that address local issues of concern.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="To decide which activities to do in ERB and who needs to participate.">
+			text="The goals you establish will shape your decisions about which activities to select and who to engage. They can be refined as you progress.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,15 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Hold a team meeting to work through the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="goals worksheet"
-			linkType="externalDOC"
-			link="Ch1_GoalSetting_Worksheet.docx">
+			text="Hold a team meeting to work through the Set Goals for Using ERB section of the Project Plan Template.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -61,45 +53,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Look through our ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="example"
-			linkType="internalStep"
-			link="28">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" if you get stuck.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Record your shared goals in your ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="project plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="What should our goals be?">
+			text="Look through our example on Setting Goals if you get stuck.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -120,7 +74,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Your team's specific charge (watershed resilience, update land use plan)">
+			text="Your team's specific charge (create watershed resilience plan, update land use plan)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -146,7 +100,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Societal concerns (youth incarceration, local economy)">
+			text="Societal concerns (youth incarceration, empty storefronts)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -158,11 +112,16 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Completed goals section of the project plan">
+			text="Completed goals section of the Project Plan">
 			</text>
 		</textBlock>
 	</container>
@@ -172,7 +131,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -212,17 +171,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Goals worksheet"
+			text="Project Plan Template"
 			linkType="externalDOC"
-			link="Ch1_GoalSetting_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Project plan"
-			linkType="externalDOC"
-			link="Ch1_ProjectPlan_Template.docx">
+			link="Project_Plan_Template.docx">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -236,8 +187,8 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Example-setting goals"
-			linkType="internalStep"
+			text="Setting Goals"
+			linkType="internal"
 			link="28">
 			</text>
 		</textBlock>
@@ -248,7 +199,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -257,26 +208,11 @@
 			height="40.0"
 			id="66">
 			</icon>
-		</textBlock>
-		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Voice">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text="Are you able to get input from a wider range of community members when setting goals?">
+			text="Do your goals address deep concerns across the community? If you're not sure, you might want to request input from others outside the core team.">
 			</text>
 		</textBlock>
 	</container>

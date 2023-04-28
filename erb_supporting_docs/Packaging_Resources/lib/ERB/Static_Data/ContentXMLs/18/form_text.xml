@@ -2,10 +2,10 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 4: Let's dig into your community's resilience and equity">
+			text="Strategize Actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,168 +13,260 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In this chapter, you will work with a set of indicators (See ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="What are indicators of equitable resilience"
-			linkType="internalStep"
-			link="13">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to assess how resilient and equitable your community's built, natural, and social support systems are. This information will help you identify your community's greatest needs for equitable actions to build resilience to hazards and disasters. These results will help you identify and prioritize in Ch. 5.">
+			text="Welcome to the stage where you will strategize about actions that different organizations, sectors, government agencies, and members of your community can take to strengthen resilience equitably. Starting with your Key Takeaways Form on Hazards, Equity, and Resilient Systems, host a workshop to brainstorm and evaluate actions with community members.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="Steps:">
+			fontStyle="Bold"
+			text="Activities in this section">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Kickoff meeting to review and select built, natural, and social environment indicators that are relevant to your community.">
+			text="Storytelling about implementation success and pitfalls">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Prepare for the indicators workshop and gather indicator data.">
+			text="Problem statement indentification">
 			</text>
+		</textBlock>
+			<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Host the indicators workshop">
+			text="Results to Action workshop with community members">
 			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you'll have at the end">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Reflect on the workshop accomplishments and discuss next steps.">
+			text="A list of key actions">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Stronger connections with local organizations and residents">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Next steps and commitments to implement actions">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
-			<textBlock>
+		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="People you'll need">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- You and core team">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Community members">
+			text="What you will need">
 			</text>
 		</textBlock>
 		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Time you'll need">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- 2-hour kickoff meeting">
-			</text>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Data gathering and workshop preparation (hours variable)">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- 2-hour indicators workshop">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- 1-hour reflection discussion">
+			text="Core team and participants">
 			</text>
 		</textBlock>
 		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Materials you'll need:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Indicators workbook">
-			</text>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Indicator card template">
+			text="Variable">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Posterboards, easel, sticky notes, and markers">
+			fontStyle="Hyperlink"
+			text="Key Takeaways Form on Assessment"
+			linkType="internal"
+			link="136">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Chapter 4 Outputs:">
+			text="Centering equity">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
-			size="16.0"
+			size="14.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;- Indicator cards">
+			text="You will see tips on implementing the following themes:">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Sorted indicators cards">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Resilience and equity diagrams">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Reflection discussion notes">
-			</text>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="68">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Active Listening">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="64">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Collaboration">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="77">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Adaptability">
+				</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="66">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Voice">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="78">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Trust">
+				</text>
+			</listBlock>
+			<listBlock>
+				<icon
+				width="40.0"
+				height="40.0"
+				id="65">
+				</icon>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Regular"
+				text="Representation">
+				</text>
+			</listBlock>
 		</textBlock>
 	</container>
 </textBlocks>

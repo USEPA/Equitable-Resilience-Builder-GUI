@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Get a core team together">
+			text="Get a Core Team Together">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,12 +13,12 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identify and invite people to be on the ERB core team">
+			text="Identify and invite five to ten people to be on the ERB core team that will lead ERB activities and make decisions.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Why do this">
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="It'll help to have five to seven people to make decisions and lead ERB activities.">
+			text="You'll be able to share plan creation and responsibilities with a group of people who have a variety of expertise and representation from different parts of the community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,34 +76,10 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Output">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core team">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Who should be on the core team?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Consider">
+			text="Consider the following as you select the core team">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -155,7 +131,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Who works well together">
+			text="Who works well on teams">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -186,40 +162,23 @@
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Get started with your team">
+			text="Output">
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Establish group decision-making process and identify roles and responsibilities.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Our ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="storytelling activity"
-			linkType="internalActivity"
-			link="20">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" can help get to know your team.">
+			text="Core team">
 			</text>
 		</textBlock>
 	</container>
@@ -229,7 +188,20 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Team lead">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -242,7 +214,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1-3 weeks">
+			text="Days to weeks">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -258,17 +230,30 @@
 			fontStyle="Hyperlink"
 			text="Recruitment guide"
 			linkType="externalDOC"
-			link="Ch1_Recruitment_Guide.docx">
+			link="Recruitment_Guide.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Youth engagement guide"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="10">
 			</text>
 			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="See example in recruitment guide">
+			</text>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
@@ -277,7 +262,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -286,34 +271,24 @@
 			height="40.0"
 			id="65">
 			</icon>
-		</textBlock>
-		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
-			text="Representation">
+			fontStyle="Regular"
+			text="When selecting team members, consider age, race, ethnicity, religion, gender identity, LGBTQIA, people with disabilities, local leaders, and intersectional identities.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="40.0"
+			height="40.0"
+			id="64">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Age, race, ethnicity, religion, gender identity, LGBTQIA, people with disabilities, local lenders, members of ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="multiple groups"
-			linkType=""
-			link="">
+			text="Such collaborations can enhance the process and the products so that a variety of needs and perspectives are included.">
 			</text>
 		</textBlock>
 	</container>

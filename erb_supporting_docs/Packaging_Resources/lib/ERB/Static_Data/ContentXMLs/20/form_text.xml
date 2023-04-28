@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Team storytelling">
+			text="Team Storytelling Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core team members share stories about resilience">
+			text="Core team members share stories about resilience-building experiences in their community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="It will help you">
+			text="Sharing stories is an integral part of the ERB process. Learn more about why in our Resources tab. This exercise will help you">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -55,21 +55,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Set ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="goals"
-			linkType="internalActivity"
-			link="59">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" for going through the ERB">
+			text="Set goals for going through ERB">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -82,7 +68,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use storytelling in community workshops">
+			text="Lead storytelling exercises in community workshops">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -103,21 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Print copies of ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="team storytelling"
-			linkType="externalDOC"
-			link="Ch1_Storytelling_Exercise.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" worksheet for everyone">
+			text="Print copies of the Team Storytelling Exercise for everyone">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -143,21 +115,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Input highlights into the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="word cloud"
-			linkType="internalStep"
-			link="84">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" to see common themes">
+			text="Input highlights into the Word Cloud to see common themes">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -169,6 +127,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -218,14 +181,31 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Team storytelling"
+			text="Team Storytelling Exercise"
 			linkType="externalDOC"
-			link="Ch1_Storytelling_Exercise.docx">
+			link="Team_Storytelling_Exercise.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Word Cloud"
+			linkType="internal"
+			link="84">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
@@ -234,7 +214,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -243,36 +223,24 @@
 			height="40.0"
 			id="68">
 			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Sharing stories is a way that ERB incorporates local knowledge, which is vital for inclusion and representation. ">
+			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
 			id="69">
-			</icon>		
-		</textBlock>
-		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Active listening is a skill to cultivate for community engagement">
-			</text>
-		</textBlock>
-		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text="Local knowledge is an important data source that supports empowerment">
+			text="During storytelling, make sure you employ active listening, by responding to each other's experiences in a respectful way. ">
 			</text>
 		</textBlock>
 	</container>

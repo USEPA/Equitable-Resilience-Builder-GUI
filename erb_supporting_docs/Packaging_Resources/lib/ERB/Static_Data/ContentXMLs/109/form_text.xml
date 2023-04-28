@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Participatory mapping">
+			text="Participatory Mapping">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -89,21 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="After the workshop, fill out the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" form">
+			text="After the workshop, fill out the Key Takeaways form">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -136,16 +122,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
 			fontStyle="Regular"
-			text=" on hazards and assets">
+			text="Key Takeaways on hazards and assets">
 			</text>
 		</textBlock>	
 	</container>
@@ -201,25 +179,17 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Mapping Activity Worksheet"
+			text="Mapping Activity Instructions"
 			linkType="externalDOC"
-			link="Ch3_MappingActivity_Worksheet.docx">
+			link="Mapping_Activity_Instructions.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Key Takeaways"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop 2 Facilitators Guide"
-			linkType="externalDOC"
-			link="Ch3_Workshop2_FacilitatorsGuide.docx">
+			linkType="internal"
+			link="144">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -233,8 +203,8 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Example map with stickies"
-			linkType="internalStep"
+			text="Example Map with Stickies"
+			linkType="internal"
 			link="121">
 			</text>
 		</textBlock>			
@@ -254,20 +224,12 @@
 			height="40.0"
 			id="75">
 			</icon>
-			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Some participants will be more familiar with working with maps than others. Take time to identify landmarks on the map to orient everyone.">
+			text="Some participants will be more familiar with working with maps than others. Take time to identify landmarks on the map to orient everyone. Participants may not want to put sensitive information onto a map. Respect their choices.">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Participants may not want to put sensitive information onto a map. Respect their choices.">
-			</text>	
-			</listBlock>
 		</textBlock>
 	</container>
 </textBlocks>

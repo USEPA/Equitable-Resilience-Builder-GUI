@@ -25,13 +25,11 @@ import com.epa.erb.forms.MainFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.noteboard.NoteBoardRowController;
-import com.epa.erb.noteboard.NoteBoardItemController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
-
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
@@ -41,11 +39,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.FlowPane;
-
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-
 
 public class XMLManager {
 
@@ -241,7 +234,6 @@ public class XMLManager {
 				}
 				return worksheets;
 			} catch (Exception e) {
-				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -298,7 +290,6 @@ public class XMLManager {
 				}
 				return indicatorCards;
 			} catch (Exception e) {
-				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -330,7 +321,6 @@ public class XMLManager {
 							Node textBlockNode = textBlockNodeList.item(j);
 							// TextBlock
 							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
-								System.out.println("--------------------NEW TEXT BLOCK----------------------------");
 								HBox textFlowHBox = new HBox();
 								TextFlow textFlow = new TextFlow();
 								Element textBlockElement = (Element) textBlockNode;
@@ -380,6 +370,8 @@ public class XMLManager {
 											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
+											Tooltip toolTip = new Tooltip("Click image to expand");
+											Tooltip.install(imageView, toolTip);
 											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
 											textFlowHBox.getChildren().add(imageView);
 										} else if (nodeName.contentEquals("listBlock")) {
@@ -399,7 +391,6 @@ public class XMLManager {
 															double size = Double.parseDouble(textElement.getAttribute("size"));
 															String fontFamily = textElement.getAttribute("fontFamily");
 															String fontStyle = textElement.getAttribute("fontStyle");
-															System.out.println("Text");
 															TextFlow lTextFlow = new TextFlow();
 															String text = textElement.getAttribute("text");
 															Text t = new Text(text);
@@ -431,11 +422,12 @@ public class XMLManager {
 														double width = Double.parseDouble(iconElement.getAttribute("width"));
 														double height = Double.parseDouble(iconElement.getAttribute("height"));
 														String id = iconElement.getAttribute("id");
-														System.out.println("ImageView");
 														ImageView imageView = new ImageView();
 														imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 														imageView.setFitWidth(width);
 														imageView.setFitHeight(height);
+														Tooltip toolTip = new Tooltip("Please click image to view");
+														Tooltip.install(imageView, toolTip);
 														imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
 														listVBox.getChildren().add(imageView);
 													}
@@ -443,7 +435,6 @@ public class XMLManager {
 												}
 
 											}
-											System.out.println("Adding list box to text flow");
 											textFlowHBox.getChildren().add(listVBox);
 										}
 									}
@@ -593,7 +584,6 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -650,7 +640,6 @@ public class XMLManager {
 				}
 				return contentList;
 			} catch (Exception e) {
-				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
 		} else {
@@ -842,6 +831,8 @@ public class XMLManager {
 						String projectName = projectElement.getAttribute("projectName");
 						String projectType = projectElement.getAttribute("projectType");
 						String projectCleanedName = projectElement.getAttribute("projectCleanedName");
+						String projectDescription = projectElement.getAttribute("projectDescription");
+
 						ArrayList<Goal> listOfGoals = new ArrayList<Goal>();
 						NodeList goalsNodeList = projectElement.getElementsByTagName("goal");
 						for (int j = 0; j < goalsNodeList.getLength(); j++) {
@@ -868,7 +859,7 @@ public class XMLManager {
 								listOfGoals.add(goal);
 							}
 						}
-						Project project = new Project(projectName, projectType, projectCleanedName, listOfGoals);
+						Project project = new Project(projectName, projectType, projectCleanedName, projectDescription, listOfGoals);
 						for (Goal goal : listOfGoals) {
 							goal.setContentItems(project);
 						}
@@ -895,6 +886,7 @@ public class XMLManager {
 				rootElement.setAttribute("projectName", project.getProjectName());
 				rootElement.setAttribute("projectType", project.getProjectType());
 				rootElement.setAttribute("projectCleanedName", project.getProjectCleanedName());
+				rootElement.setAttribute("projectDescription", project.getProjectDescription());
 				Element goalsElement = document.createElement("goals");
 				for (Goal goal : project.getProjectGoals()) {
 					Element goalElement = document.createElement("goal");

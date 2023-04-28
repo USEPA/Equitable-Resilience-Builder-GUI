@@ -5,74 +5,126 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
    </padding>
    <children>
-      <HBox alignment="CENTER_LEFT">
+      <StackPane>
          <children>
-            <Label minWidth="175.0" text="Project Creation">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0">
+               <fill>
+                  <LinearGradient endX="0.47393364928909953" endY="0.48341232227488157" startX="0.47393364928909953">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.9098039269447327" green="0.7137255072593689" blue="0.6000000238418579" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label minWidth="175.0" text="Project Creation">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </StackPane>
       <Separator prefWidth="200.0" />
-      <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+      <HBox spacing="10.0">
          <children>
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="New Project" underline="true">
+                  <Label text="A project holds all of the data required for the ERB Process.  When a project is created all the pre-fabricated templates are copied into a new directory that serves as the sandbox where files can be updated, imported, and exported." wrapText="true">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <VBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="Project Name:">
+                        <Label text="New Project" underline="true">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="projectNameTextField" prefHeight="25.0" prefWidth="545.0" />
+                        <HBox>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label minWidth="100.0" text="Project Name:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="projectNameTextField" prefHeight="25.0" prefWidth="545.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label minWidth="140.0" text="Project Description:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea fx:id="projectDescriptionTextArea" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="goalModeHBox" alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Label text="Mode Type:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton fx:id="facilitatorModeRadioButton" mnemonicParsing="false" selected="true" text="Facilitator Mode">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="modeToggleGroup" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="goalModeRadioButton" mnemonicParsing="false" text="Goal Mode" toggleGroup="$modeToggleGroup">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </RadioButton>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox fx:id="goalModeHBox" alignment="CENTER_LEFT" spacing="10.0">
-                     <children>
-                        <Label text="Mode Type:">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <RadioButton fx:id="facilitatorModeRadioButton" mnemonicParsing="false" selected="true" text="Facilitator Mode">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <toggleGroup>
-                              <ToggleGroup fx:id="modeToggleGroup" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="goalModeRadioButton" mnemonicParsing="false" text="Goal Mode" toggleGroup="$modeToggleGroup">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </RadioButton>
-                     </children>
-                  </HBox>
+                  </VBox>
                   <HBox alignment="CENTER">
                      <children>
                         <Button mnemonicParsing="false" onAction="#createButtonAction" stylesheets="@../button.css" text="Create">
                            <font>
                               <Font size="14.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                      </children>
                   </HBox>
                </children>

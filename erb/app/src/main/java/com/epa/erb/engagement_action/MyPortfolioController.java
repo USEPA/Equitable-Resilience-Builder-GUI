@@ -178,7 +178,6 @@ public class MyPortfolioController implements Initializable {
 							}
 							scanner.close();
 						} catch (FileNotFoundException e) {
-							e.printStackTrace();
 						}
 						
 					} else {

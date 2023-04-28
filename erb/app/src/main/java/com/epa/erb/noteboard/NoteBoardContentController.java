@@ -223,7 +223,6 @@ public class NoteBoardContentController implements Initializable{
 				}
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}
 		} else if (ids != null && ids.size() == 0) {
 			file.delete();
@@ -243,7 +242,6 @@ public class NoteBoardContentController implements Initializable{
 				}
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}
 		} else if (ids != null && ids.size() == 0) {
 			file.delete();
@@ -263,7 +261,6 @@ public class NoteBoardContentController implements Initializable{
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}
 		}
 		return cards;
@@ -291,7 +288,6 @@ public class NoteBoardContentController implements Initializable{
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}
 		}
 		return cards;
@@ -422,7 +418,6 @@ public class NoteBoardContentController implements Initializable{
 				app.getEngagementActionController().cleanContentVBox();
 				app.getEngagementActionController().addContentToContentVBox(root, true);
 			} catch (Exception e) {
-				e.printStackTrace();
 			}
 		}
 	}
@@ -440,7 +435,6 @@ public class NoteBoardContentController implements Initializable{
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}
 		}
 		return cards;
@@ -459,7 +453,6 @@ public class NoteBoardContentController implements Initializable{
 			noteBoardIndicatorItem.setDrag_IndicatorCard(vBox);
 			return vBox;
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}

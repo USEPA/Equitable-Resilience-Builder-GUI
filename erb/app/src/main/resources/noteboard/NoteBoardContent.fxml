@@ -23,7 +23,7 @@
       </HBox>
       <HBox fx:id="contentHBox" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox fx:id="dropDownVBox" alignment="TOP_CENTER" minWidth="200.0" spacing="5.0">
+            <VBox fx:id="dropDownVBox" alignment="TOP_CENTER" maxHeight="800.0" minWidth="200.0" spacing="5.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -31,7 +31,7 @@
                   <ChoiceBox fx:id="indicatorChoiceBox" prefWidth="150.0" />
                   <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                      <content>
-                        <VBox fx:id="noteBoardItemVBox" alignment="TOP_CENTER" maxHeight="800.0" minHeight="800.0" minWidth="175.0" prefWidth="175.0" spacing="10.0" style="-fx-background-color: #E4E4E4;">
+                        <VBox fx:id="noteBoardItemVBox" alignment="TOP_CENTER" minHeight="800.0" minWidth="175.0" prefWidth="175.0" spacing="10.0" style="-fx-background-color: #E4E4E4;">
                            <padding>
                               <Insets top="10.0" />
                            </padding>

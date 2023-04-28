@@ -74,7 +74,6 @@ public class ExternalFileUploaderController implements Initializable{
 								}
 								scanner.close();
 							} catch (FileNotFoundException e) {
-								e.printStackTrace();
 							}
 							
 						} else {
@@ -125,7 +124,6 @@ public class ExternalFileUploaderController implements Initializable{
 				printWriter.println("uploadSource : " + uploadSource);
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}	
 		}
 	}
@@ -146,7 +144,6 @@ public class ExternalFileUploaderController implements Initializable{
 			printWriter.println("uploadSource : " + uploadSource);
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}	
 	}
 	

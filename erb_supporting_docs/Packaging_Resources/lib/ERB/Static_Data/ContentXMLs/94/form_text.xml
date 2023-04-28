@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Sharing stories help people get to know each other better and creates a collaborative atmosphere. It provides local knowledge for resilience planning. It prompts discussion about how people experience hazards in different ways and why this might be so.">
+			text="Sharing stories helps people get to know each other better and creates a collaborative atmosphere. It provides local knowledge for resilience planning. It prompts discussion about how people experience hazards in different ways and why this might be so.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,15 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Put participants in groups of 3 and pass out the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Hazards Storytelling Prompt"
-			linkType="externalDOC"
-			link="Ch3_HazardsStorytelling_Prompt.docx">
+			text="Put participants in groups of 3 and pass out the Hazards Storytelling Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -97,29 +89,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Write highlights in the ">
+			text="Write highlights in the Word Cloud">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Word Cloud"
-			linkType="internalStep"
-			link="84">
-			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=". After the workshop, fill out the ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
+			text="After the workshop, fill out the Key Takeaways">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -140,21 +123,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" Complete ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Word Cloud"
-			linkType="internalStep"
-			link="84">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" of story highlights">
+			text="Word Cloud of story highlights">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -167,21 +136,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Complete ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" about hazards, equity and assets">
+			text="Key Takeaways Form">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -217,7 +172,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="20-30 people and facilitator">
+			text="20-30 people + facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -244,35 +199,34 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Hazards Storytelling Prompt"
+			text="Hazards Storytelling Exercise"
 			linkType="externalDOC"
-			link="Ch3_HazardsStorytelling_Prompt.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Workshop 1 Facilitators Guide"
-			linkType="externalDOC"
-			link="Ch3_Workshop1_FacilitatorsGuide.docx">
+			link="Hazards_Storytelling_Exercise.docx">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Word Cloud"
-			linkType="internalStep"
+			linkType="internal"
 			link="84">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways Form"
-			linkType="externalDOC"
-			link="Ch3_Reflection_Diary.docx">
+			text="Key Takeaways"
+			linkType="internal"
+			link="144">
 			</text>
 			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -281,7 +235,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -294,7 +248,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This activity is another opportunity to incorporate local knowledge and voices into your resilience planning.">
+			text="This activity is another opportunity to  incorporate local knowledge and voices, but sharing experiences with disasters can be emotional. Make sure you create a safe, non-threatening atmosphere where people feel comfortable sharing. ">
 			</text>
 		</textBlock>
 	</container>

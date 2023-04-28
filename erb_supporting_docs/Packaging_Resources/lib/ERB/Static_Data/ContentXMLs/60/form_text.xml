@@ -13,29 +13,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In this activity, the core team will work through several scenarios to help them empathize with different types of people in their community. The activity will help identify potential barriers to public participation and guide the core team through identifying solutions.">
+			text="Work through several scenarios to  empathize with different types of people in your community and their potential barriers to public participation. Brainstorm solutions you can use in the ERB process.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Why do this:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" This activity will help the core team ensure that a diversity of needs and perspectives are addressed in the community engagement plan.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="How to do this:">
+			text="Why do this">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -43,7 +29,57 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Meet with your core team and work through the directions on the centering equity worksheet. The activity includes 3 breakout group scenarios and larger group discussion.">
+			text="This activity will help the core team figure out which measures to include in the community engagement plan to address diverse needs and perspectives.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Meet with your core team and work through the directions on the Equity and Engagement Exercise. The activity includes 3 breakout group scenarios and larger group discussion. ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Outputs">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Recognition of differing needs and motivation for participation in community engagement">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Strategies for addressing obstacles to participation">
 			</text>
 		</textBlock>
 	</container>
@@ -53,14 +89,27 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
 			</icon>
 			<text
 			size="16.0"
@@ -71,18 +120,25 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="40.0"
+			height="40.0"
+			id="63">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Centering equity worksheet"
+			text="Equity and Engagement Exercise"
 			linkType="externalDOC"
-			link="Ch2_CenteringEquityScenarios_Activity.docx">
+			link="Equity_in_Engagement_Exercise.docx">
 			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -91,10 +147,11 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Centering Equity">
+			text="Centering equity">
 			</text>
 		</textBlock>
 		<textBlock>
+			<listBlock>
 			<icon
 			width="40.0"
 			height="40.0"
@@ -105,8 +162,7 @@
 			height="40.0"
 			id="65">
 			</icon>
-		</textBlock>
-		<textBlock>
+			</listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"

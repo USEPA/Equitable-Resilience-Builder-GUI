@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<icon width="1000.0"
-			height="500.0" id="122"> </icon>
+			height="390.0" id="122"> </icon>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
