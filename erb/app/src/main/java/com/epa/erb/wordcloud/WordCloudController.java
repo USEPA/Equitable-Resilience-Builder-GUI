@@ -428,7 +428,7 @@ public class WordCloudController implements Initializable {
 			String cleanedWord = word;
 			while(!isCleaned) {
 				cleanedWord = cleanWord(cleanedWord);
-				isCleaned = wordIsClean(word);
+				isCleaned = wordIsClean(cleanedWord);
 			}
 			int count = countMap.get(cleanedWord);
 			int size = count;
@@ -506,7 +506,7 @@ public class WordCloudController implements Initializable {
 	public HashMap<String, Integer> countWordOccurrences(boolean excludeCommonWords, String string) {
 		HashMap<String, Integer> countMap = new HashMap<String, Integer>();
 		if(string !=null && string.length() > 0) {
-			String newLinesRemoved = string.replaceAll("\n", "");
+			String newLinesRemoved = string.replaceAll("\n", " ");
 			String [] words = newLinesRemoved.split(" ");
 			for(String word: words) {
 				String cleanedWord = cleanWord(word);

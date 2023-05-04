@@ -39,6 +39,7 @@ public class ProjectSelectionController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setProjectsListViewCellFactory();
+		app.updateAvailableProjectsList();
 		fillProjectsListView();
         rectangle1.widthProperty().bind(vBox.widthProperty().subtract(5.0));
         descriptionTextArea.getStylesheets().add(getClass().getResource("/textArea.css").toString());		
