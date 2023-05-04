@@ -141,8 +141,8 @@ public class FormController {
 		if(root != null) {
 		Stage stage = new Stage();
 		Scene scene = new Scene(root);
-		stage.setWidth(1150.0);
-		stage.setHeight(750.0);
+		stage.setWidth(app.getPrefWidth());
+		stage.setHeight(app.getPrefHeight());
 		stage.setScene(scene);
 		stage.showAndWait();
 		}

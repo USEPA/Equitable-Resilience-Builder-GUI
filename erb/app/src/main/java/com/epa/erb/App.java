@@ -13,6 +13,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -46,7 +48,8 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		xmlManager = new XMLManager(this);
-		setScreenSizePreferences(getScreenScale());
+		setScreenResolutionPreferences(getScreenResolution());
+		setScreenSizePreferences(getScreenSize());
 		readAndStoreData();
 		showERBToolMain();
 	}
@@ -64,19 +67,24 @@ public class App extends Application {
 		showERBContainer(erbContainerRoot);
 	}
 
-	private int getScreenScale() {
+	private int getScreenResolution() {
 		return java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
 	}
+	
+	private Dimension getScreenSize() {
+		return java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
-	private void setScreenSizePreferences(int scale) {
+	}
+
+	private void setScreenResolutionPreferences(int resolution) {
 		Constants constants = new Constants();
-		if (scale > 0 && scale <= 96) {
+		if (resolution > 0 && resolution <= 96) {
 			prefWidth = constants.getPrefWidthForScale100();
 			prefHeight = constants.getPrefHeightForScale100();
-		} else if (scale > 96 && scale <= 125) {
+		} else if (resolution > 96 && resolution <= 125) {
 			prefWidth = constants.getPrefWidthForScale125();
 			prefHeight = constants.getPrefHeightForScale125();
-		} else if (scale > 125 && scale <= 144) {
+		} else if (resolution > 125 && resolution <= 144) {
 			prefWidth = constants.getPrefWidthForScale150();
 			prefHeight = constants.getPrefHeightForScale150();
 		} else {
@@ -84,6 +92,25 @@ public class App extends Application {
 			prefHeight = constants.getPrefHeightForScale175();
 		}
 	}
+	
+	private void setScreenSizePreferences(Dimension size) {
+		System.out.println(size);
+		double width = size.getWidth();
+		double height = size.getHeight();
+		
+		Constants constants = new Constants();
+		if(width >= 1680) {
+			prefWidth = constants.getPrefWidthForScale100();
+			prefHeight = constants.getPrefHeightForScale100();
+		} else if (width >= 1280) {
+			prefWidth = constants.getPrefWidthForScale125();
+			prefHeight = constants.getPrefHeightForScale125();
+		} else if (width >= 1024) {
+			prefWidth = constants.getPrefWidthForScale150();
+			prefHeight = constants.getPrefHeightForScale150();
+		}
+	}
+	
 
 	public void launchERBLanding() {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler();

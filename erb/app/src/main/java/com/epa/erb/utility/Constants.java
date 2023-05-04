@@ -14,6 +14,10 @@ public class Constants {
 	private int prefHeightForScale175 = 500;
 	private int prefWidthForScale175 = 900;
 	
+//	1920
+//	1680
+//	1280
+	
 	//Activity
 	private String activityTypeColor = "";
 		//Status
