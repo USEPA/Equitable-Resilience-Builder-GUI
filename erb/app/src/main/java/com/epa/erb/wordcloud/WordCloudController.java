@@ -740,10 +740,17 @@ public class WordCloudController implements Initializable {
 	
 	private String getMergeConfirmationText() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("Are you sure you'd like to merge the following phrases?");
+		stringBuilder.append("Are you sure you'd like to merge the following? \n");
+		int count =0;
 		for(WordCloudItem wordCloudItem: mergeArrayList) {
-			stringBuilder.append("\n" + wordCloudItem.getPhrase());
+			if(count == mergeArrayList.size()-1) {
+				stringBuilder.append(wordCloudItem.getPhrase());
+			}else {
+				stringBuilder.append(wordCloudItem.getPhrase() + ", ");
+			}
+			count ++;
 		}
+		stringBuilder.append(" -> " + mergeArrayList.get(0).getPhrase());
 		return stringBuilder.toString();
 	}
 
