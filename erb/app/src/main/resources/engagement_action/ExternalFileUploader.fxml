@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label text="Upload External File">
          <font>
@@ -31,12 +31,17 @@
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy></TableView>
-            <VBox HBox.hgrow="ALWAYS">
+            <VBox spacing="25.0" HBox.hgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" onAction="#uploadFileButtonAction" stylesheets="@../button.css" text="Upload File">
                      <font>
                         <Font size="14.0" />
                      </font></Button>
+                  <Button mnemonicParsing="false" onAction="#removeFileButtonAction" stylesheets="@../button.css" text="Remove File">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </children>

@@ -1,8 +1,8 @@
 <textBlocks>
 	<container id="formVBox">
 		<textBlock>
-			<icon width="1100.0"
-			height="500.0" id="115"> </icon>
+			<icon width="800.0"
+			height="384.0" id="115"> </icon>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">

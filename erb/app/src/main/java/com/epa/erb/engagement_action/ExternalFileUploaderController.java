@@ -9,10 +9,16 @@ import java.util.ResourceBundle;
 import com.epa.erb.utility.FileHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -167,12 +173,34 @@ public class ExternalFileUploaderController implements Initializable{
 		}
 	}
 	
-	private void fileNameClicked(Text fileName) {
+	private void fileNameClicked(MouseEvent e, Text fileName) {
 		File uploadsDirectory = fileHandler.getMyUploadsDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
 		int fileNumber = tableView.getSelectionModel().getSelectedItem().getFileNumber();
 		File fileToOpen = new File(uploadsDirectory.getPath() + "\\" + fileNumber + "\\" + fileName.getText());
-		if(fileToOpen.exists()) {
-			fileHandler.openFileOnDesktop(fileToOpen);
+		if (e.getButton() == MouseButton.PRIMARY) {
+			if (fileToOpen.exists()) {
+				fileHandler.openFileOnDesktop(fileToOpen);
+			}
+		}
+	}
+	
+	@FXML
+	public void removeFileButtonAction() {
+		MyUploadedItem uploadItem = tableView.getSelectionModel().getSelectedItem();
+		if(uploadItem!=null) {
+			File uploadsDirectory = fileHandler.getMyUploadsDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
+			int fileNumber = tableView.getSelectionModel().getSelectedItem().getFileNumber();
+			File dirToDelete = new File(uploadsDirectory.getPath() + "\\" + fileNumber);
+			fileHandler.deleteDirectory(dirToDelete);
+			tableView.getItems().remove(uploadItem);
+			tableView.refresh();
+			
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText(null);
+			alert.setContentText("Please select a file from the table to remove.");
+			alert.setTitle("Remove File");
+			alert.showAndWait();
 		}
 	}
 	
@@ -190,7 +218,7 @@ public class ExternalFileUploaderController implements Initializable{
 		                public void updateItem(Text item, boolean empty) {
 		                    super.updateItem(item, empty);
 		                    if (!isEmpty()) {		                        
-		                        this.setOnMouseClicked(e-> fileNameClicked(item));
+		                        this.setOnMouseClicked(e-> fileNameClicked(e,item));
 		                        setGraphic(item);
 		                    }
 		                }

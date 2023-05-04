@@ -372,7 +372,7 @@ public class XMLManager {
 											imageView.setFitHeight(height);
 											Tooltip toolTip = new Tooltip("Click image to expand");
 											Tooltip.install(imageView, toolTip);
-											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
+											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView, id));
 											textFlowHBox.getChildren().add(imageView);
 										} else if (nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;
@@ -428,7 +428,7 @@ public class XMLManager {
 														imageView.setFitHeight(height);
 														Tooltip toolTip = new Tooltip("Please click image to view");
 														Tooltip.install(imageView, toolTip);
-														imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
+														imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView, id));
 														listVBox.getChildren().add(imageView);
 													}
 
@@ -530,7 +530,7 @@ public class XMLManager {
 											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
-											imageView.setOnMouseClicked(e-> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView));
+											imageView.setOnMouseClicked(e-> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView, id));
 											textFlowHBox.getChildren().add(imageView);											
 										} else if(nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;

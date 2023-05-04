@@ -52,7 +52,7 @@ public class FormController {
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private IdAssignments idAssignments = new IdAssignments();
 	
-	public void handleImageClicked(MouseEvent event, File imageFile, ImageView image) {
+	public void handleImageClicked(MouseEvent event, File imageFile, ImageView image, String id) {
 		if(event.getButton() == MouseButton.SECONDARY) {
 			ContextMenu contextMenu = new ContextMenu();
 			MenuItem menuItem = new MenuItem("Save As");
@@ -68,12 +68,42 @@ public class FormController {
 			Stage stage = new Stage();
 			VBox vBox = new VBox();
 			ImageView imageView = new ImageView();
-			imageView.setImage(new Image(imageFile.getPath()));
+			String enlargedId = getEnlargedId(id);
+			imageView.setImage(new Image(fileHandler.getStaticIconImageFile(enlargedId).getPath()));
 			vBox.getChildren().add(imageView);
 			Scene scene = new Scene(vBox);
 			stage.setScene(scene);
 			stage.showAndWait();
 		}
+	}
+	
+	private String getEnlargedId(String id) {
+		if(id.contentEquals("155")){
+			return "99";
+		} else if(id.contentEquals("156")){
+			return "100";
+		}else if(id.contentEquals("157")){
+			return "147";
+		}else if(id.contentEquals("158")){
+			return "113";
+		}else if(id.contentEquals("159")){
+			return "146";
+		}else if(id.contentEquals("160")){
+			return "148";
+		}else if(id.contentEquals("161")){
+			return "149";
+		}else if(id.contentEquals("162")){
+			return "150";
+		} else if(id.contentEquals("163")){
+			return "154";
+		} else if(id.contentEquals("79")){
+			return "164";
+		} else if(id.contentEquals("80")){
+			return "165";
+		} else if(id.contentEquals("81")){
+			return "166";
+		}
+		return id;
 	}
 	
 	private void saveImage(File origImageFile) {
