@@ -62,6 +62,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <Label text="*Note: Use the Merge button to combine like words or phrases in the table">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                   <Separator prefWidth="200.0" />
@@ -91,11 +96,16 @@
                               </VBox>
                               <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label text="Block of Text">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="Block of Text">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="(no character limit)" />
+                                       </children>
+                                    </HBox>
                                     <Label text="Text added here will be split into words." />
                                     <HBox alignment="CENTER_LEFT" spacing="20.0">
                                        <children>
@@ -144,9 +154,9 @@
                               <TableView fx:id="tableView" minHeight="250.0" VBox.vgrow="ALWAYS">
                                 <columns>
                                   <TableColumn fx:id="mergeTableColumn" prefWidth="75.0" text="Merge" />
-                                  <TableColumn fx:id="phraseTableColumn" prefWidth="75.0" text="Phrase" />
-                                    <TableColumn fx:id="plusTableColumn" prefWidth="75.0" text="+" />
-                                    <TableColumn fx:id="minusTableColumn" prefWidth="75.0" text="-" />
+                                  <TableColumn fx:id="phraseTableColumn" prefWidth="75.0" text="Phrase/Word" />
+                                    <TableColumn fx:id="plusTableColumn" prefWidth="75.0" text="Increase Count" />
+                                    <TableColumn fx:id="minusTableColumn" prefWidth="75.0" text="Decrease Count" />
                                     <TableColumn fx:id="countTableColumn" prefWidth="75.0" text="Count" />
                                 </columns>
                                  <columnResizePolicy>
