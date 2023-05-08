@@ -150,7 +150,7 @@ public class MyPortfolioController implements Initializable {
 			}
 		}
 		
-		ERBContentItem uploadedERBContentItem = new ERBContentItem(null, null, "mainForm", null, "Uploaded", "Uploaded");
+		ERBContentItem uploadedERBContentItem = new ERBContentItem(null, null, "mainForm", null, "Completed Forms and Uploads", "Completed Forms and Uploads");
 		hash.put(uploadedERBContentItem.getShortName(), getListOfUserUploadedItems());
 		TreeItem<String> uploadedTreeItem = new TreeItem<String>(uploadedERBContentItem.getShortName());
 		rootTreeItem.getChildren().add(uploadedTreeItem);
