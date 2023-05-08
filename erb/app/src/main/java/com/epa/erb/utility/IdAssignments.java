@@ -26,6 +26,7 @@ public class IdAssignments {
 		aboutIdAssignments.add("07");
 		aboutIdAssignments.add("08");
 		aboutIdAssignments.add("09");
+		aboutIdAssignments.add("167");
 	}
 	
 	public void fillResourceIdAssignments() {
