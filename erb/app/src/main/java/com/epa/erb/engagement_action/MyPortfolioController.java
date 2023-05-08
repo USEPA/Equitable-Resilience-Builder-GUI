@@ -208,7 +208,7 @@ public class MyPortfolioController implements Initializable {
 		File f = new File(fileHandler.getSupportingDOCDirectory(project, goal) + "\\" + file);
 		Text fileName = new Text(file);
 		long modifiedLong = f.lastModified();
-		String lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
+		String lastModified = new SimpleDateFormat("MM-dd-yyyy HH-mm-ss").format(new Date(modifiedLong));
 		MyUploadedItem uT = new MyUploadedItem(false, count, fileName, lastModified );
 		return uT;
 	}
