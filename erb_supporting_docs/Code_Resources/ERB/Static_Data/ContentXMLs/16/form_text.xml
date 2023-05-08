@@ -231,6 +231,14 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<text
+			size="14.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="You will see tips on implementing the following themes:">
+			</text>
+		</textBlock>
+		<textBlock>
 			<listBlock>
 				<icon
 				width="40.0"

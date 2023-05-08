@@ -203,6 +203,7 @@ public class IndicatorSetupFormController implements Initializable{
 			indicatorSelectionController.fillIndicatorChoiceBox();
 			return root;
 		}catch (Exception e) {
+			e.printStackTrace();
 		}
 		return null;
 	}

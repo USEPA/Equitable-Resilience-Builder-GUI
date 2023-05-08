@@ -16,12 +16,9 @@ public class IndicatorSelectionController implements Initializable{
 
 	@FXML
 	ComboBox<IndicatorCard> indicatorComboBox;
-	@FXML
-	Label numberLabel;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		numberLabel.setText(number + ".");
 		
 	}
 

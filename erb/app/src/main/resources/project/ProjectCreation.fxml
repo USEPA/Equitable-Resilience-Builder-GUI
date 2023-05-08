@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
    </padding>
@@ -58,18 +58,13 @@
          <children>
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="A project holds all of the data required for the ERB Process.  When a project is created all the pre-fabricated templates are copied into a new directory that serves as the sandbox where files can be updated, imported, and exported." wrapText="true">
+                  <Label text="Creating a new project makes a space in the tool where you can save all of your work and upload materials. Later, you can download it by clicking on the &quot;MyPortfolio&quot; button." wrapText="true">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
                   <VBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="New Project" underline="true">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                         <HBox>
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">

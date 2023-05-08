@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="engagementVBox" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="engagementVBox" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="saveHBox" alignment="CENTER_RIGHT">
          <children>
@@ -29,9 +29,9 @@
                </font></Button>
          </children>
       </HBox>
-      <Label fx:id="exploreModeLabel" text="Important: You are in Explore Mode. In order to use the interactive activites or to edit forms, create a project on the ERB Home page">
+      <Label fx:id="exploreModeLabel" text="Important: You are in Explore Mode. In order to use the interactive activites or to edit forms, create a project on the ERB Home page" textFill="#b96f1a">
          <font>
-            <Font name="System Italic" size="13.0" />
+            <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
       <HBox alignment="CENTER_RIGHT" spacing="5.0" style="-fx-background-color: white;">
