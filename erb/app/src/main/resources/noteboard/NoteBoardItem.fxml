@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
@@ -8,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox fx:id="noteBoardItemVBox" maxHeight="200.0" maxWidth="150.0" minHeight="200.0" minWidth="150.0" prefHeight="200.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="noteBoardItemVBox" maxHeight="200.0" maxWidth="150.0" minHeight="200.0" minWidth="150.0" prefHeight="200.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane fx:id="scrollPane" fitToWidth="true" VBox.vgrow="ALWAYS">
+      <ScrollPane fx:id="scrollPane" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
          <content>
             <VBox fx:id="mainVBox" style="-fx-background-color: transparent;">
                <children>
@@ -31,6 +32,11 @@
             </VBox>
          </content>
       </ScrollPane>
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <Label text="-&gt;" />
+         </children>
+      </HBox>
    </children>
    <effect>
       <DropShadow />
