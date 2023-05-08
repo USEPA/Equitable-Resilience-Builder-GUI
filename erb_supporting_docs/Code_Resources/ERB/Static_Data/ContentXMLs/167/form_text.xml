@@ -2,7 +2,7 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="18.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Disclaimer">
