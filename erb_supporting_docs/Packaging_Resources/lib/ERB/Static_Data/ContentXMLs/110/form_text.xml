@@ -194,9 +194,25 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Indicator matrix"
+			text="Indicator Board"
 			linkType="internal"
 			link="85">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicator Card Template"
+			linkType="externalDOC"
+			link="Indicator_Card_Template.pptx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicators Master List"
+			linkType="externalDOC"
+			link="Indicators_Master_List.xlsx">
 			</text>
 			</listBlock>
 		</textBlock>

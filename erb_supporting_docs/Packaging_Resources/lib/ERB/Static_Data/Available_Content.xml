@@ -68,12 +68,13 @@
 	<content id="135" guid="" type="mainForm" status="ready" shortName="Reflection/Next Steps" longName="Reflection and Next Steps" />
 	<content id="136" guid="" type="outputForm" status="ready" shortName="Key Takeaways: Action" longName="Key Takeaways on Strategizing" />
 	<content id="138" guid="" type="mainForm" status="ready" shortName="Document Your Project" longName="Document Your Project" />
-	<content id="139" guid="" type="mainForm" status="ready" shortName="Long-term Engagement" longName="Maintain Outreach and Engagement" />
+	<content id="139" guid="" type="mainForm" status="ready" shortName="Maintain Engagement" longName="Maintain Outreach and Engagement" />
 	<content id="140" guid="" type="mainForm" status="ready" shortName="Implement Actions" longName="Implement Actions" />
 	<content id="141" guid="" type="mainForm" status="ready" shortName="Monitoring Change" longName="Use Monitoring to Support Future Action" />
 	<content id="142" guid="" type="mainForm" status="ready" shortName="Reflection and Celebrate" longName="Reflection and Celebrate" />
-	<content id="143" guid="" type="outputForm" status="ready" shortName="Example: Brainstorming" longName="Actions Brainstorming Example" />
+	<content id="143" guid="" type="mainForm" status="ready" shortName="Example: Brainstorming" longName="Actions Brainstorming Example" />
 	<content id="144" guid="" type="outputForm" status="ready" shortName="Key Takeaways: Assess" longName="Key Takeaways from Assessment" />
 	<content id="151" guid="" type="mainForm" status="ready" shortName="Workshop Agenda Builder" longName="Results to Action Workshop Agenda Builder" />
 	<content id="152" guid="" type="mainForm" status="ready" shortName="Strategy Chart Example" longName="Strategy Chart Example" />
+	<content id="167" guid="" type="mainForm" status="ready" shortName="Disclaimer" longName="Disclaimer" />
 </content_xmls>

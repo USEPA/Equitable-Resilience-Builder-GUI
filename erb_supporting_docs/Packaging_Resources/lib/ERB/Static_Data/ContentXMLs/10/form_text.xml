@@ -45,7 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Children are especially vulnerable to the world around them. Due to factors such as unique physiology, limited ability to cope with stress, dependence on adults, lack of political or economic influence, and an underdeveloped metabolism and immune system, children are particularly vulnerable to the harmful effects of hazards and disasters. They experience multiple forms of vulnerability including physical, psychological/emotional, and educational (Figure 1). Physically, youth experience higher rates of injury and death from disasters [3]. When displaced and/or facing homelessness, children are at a higher risk for physical and sexual violence [4].  Further, due to physiological factors such as a developing immune system and lower body fluid, children and youth are more susceptible to acute illnesses, disease outbreaks, cold and heat stress, dehydration, malnutrition and more [5]. With developing organs, metabolisms and immune systems, they are also more sensitive to toxic chemicals that can result from hazards and disasters such as sewage, chemical and oil releases, asbestos, and black mold[6]. Children eat more, drink more, and breathe more in proportion to their body size than adults, which can lead to higher exposures to these toxics.">
+			text="Children are especially vulnerable to the world around them. Due to factors such as unique physiology, limited ability to cope with stress, dependence on adults, lack of political or economic influence, and an underdeveloped metabolism and immune system, children are particularly vulnerable to the harmful effects of hazards and disasters. They experience multiple forms of vulnerability including physical, psychological/emotional, and educational (Figure 1). Physically, youth experience higher rates of injury and death from disasters [3]. When displaced and/or facing homelessness, children are at a higher risk for physical and sexual violence [4].  Further, due to physiological factors such as a developing immune system and lower body fluid, children and youth are more susceptible to acute illnesses, disease outbreaks, cold and heat stress, dehydration, malnutrition and more [5]. With developing organs, metabolisms and immune systems, they are also more sensitive to toxic chemicals that can result from hazards and disasters such as sewage, chemical and oil releases, asbestos, and black mold [6]. Children eat more, drink more, and breathe more in proportion to their body size than adults, which can lead to higher exposures to these toxics.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -53,7 +53,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Due to a more limited ability to process trauma, youth experiencing hazards and disasters are also more susceptible to emotional and psychological disorders and distress, including post-traumatic stress disorder (PTSD), depression, anxiety, behavioral issues and trouble sleeping [3], [5]. Hazards and disasters can disrupt students’ education by damaging school buildings, causing teacher shortages, and displacing students and teachers. As a result, youth often miss days of school, move around to different schools, and/or drop out of school entirely. These factors, in combination with emotional trauma from disasters and individual risk factors, lead to hindered academic performance, inhibited cognitive function, and delayed social development[3], [5], [6].">
+			text="Due to a more limited ability to process trauma, youth experiencing hazards and disasters are also more susceptible to emotional and psychological disorders and distress, including post-traumatic stress disorder (PTSD), depression, anxiety, behavioral issues and trouble sleeping [3], [5]. Hazards and disasters can disrupt students’ education by damaging school buildings, causing teacher shortages, and displacing students and teachers. As a result, youth often miss days of school, move around to different schools, and/or drop out of school entirely. These factors, in combination with emotional trauma from disasters and individual risk factors, lead to hindered academic performance, inhibited cognitive function, and delayed social development [3], [5], [6].">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -72,9 +72,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="575.0"
-			height="300.0"
-			id="148">
+			width="200.0"
+			height="105.0"
+			id="160">
 			</icon>
 		</textBlock>
 		<textBlock>
@@ -133,13 +133,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="•	Words into Action Engaging children and youth in disaster risk reduction and resilience building [1]">
+			text="•	Words into Action Engaging children and youth in disaster risk reduction and resilience building [1].">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="•	The IASC Guidelines on Working with and for Young People in Humanitarian and Protected Crises [12]">
+			text="•	The IASC Guidelines on Working with and for Young People in Humanitarian and Protected Crises [12].">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -159,9 +159,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="325.0"
-			height="225.0"
-			id="149">
+			width="200.0"
+			height="107.0"
+			id="161">
 			</icon>
 		</textBlock>
 		<textBlock>
@@ -184,7 +184,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Meaningful youth engagement also requires addressing “adultism”. Adults often view children as passive and helpless, which leads them to exclude children from discussing topics that are deemed difficult, complex or potentially harmful [12]. Some adults may also believe that including children in decision making processes threatens the adults’ authority. Research demonstrates that resistance from adults is a major barrier to child and youth participation, but working in partnership with children can positively change the way adults view them[4]. Adults must actively work to overcome their implicit or explicit bias(es) towards children by centering youth voices and recognizing their rights to participate[9]">
+			text="Meaningful youth engagement also requires addressing “adultism”. Adults often view children as passive and helpless, which leads them to exclude children from discussing topics that are deemed difficult, complex or potentially harmful [12]. Some adults may also believe that including children in decision making processes threatens the adults’ authority. Research demonstrates that resistance from adults is a major barrier to child and youth participation, but working in partnership with children can positively change the way adults view them [4]. Adults must actively work to overcome their implicit or explicit bias(es) towards children by centering youth voices and recognizing their rights to participate [9].">
 			</text>
 			</listBlock>
 			<listBlock>
@@ -317,7 +317,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Research suggests that meaningful engagement of children and youth is best achieved through experiential activities[7]. These activities (Figure 3) can allow youth to demonstrate their expertise and take more ownership of the process. They also allow children to be creative and have fun, keeping them engaged. Youth can use these tools to share stories, assess risk and vulnerability, express ideas, plan for recovery, reflect, define priorities and more.">
+			text="Research suggests that meaningful engagement of children and youth is best achieved through experiential activities [7]. These activities (Figure 3) can allow youth to demonstrate their expertise and take more ownership of the process. They also allow children to be creative and have fun, keeping them engaged. Youth can use these tools to share stories, assess risk and vulnerability, express ideas, plan for recovery, reflect, define priorities and more.">
 			</text>
 			</listBlock>
 			<listBlock>
@@ -351,9 +351,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="450.0"
-			height="200.0"
-			id="150">
+			width="200.0"
+			height="79.0"
+			id="162">
 			</icon>
 		</textBlock>
 		<textBlock>
@@ -367,7 +367,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In Eastern Samar Province, Philippines, youth from ages 12-21 years old used participatory video (PV) as a research tool to understand resilience to disasters in their communities. While adults provided assistance when needed, youth led the projects. The final videos, which were presented to policymakers and community members, revealed how environmental exposures (e.g., coastal location) and sensitivities (e.g., poor infrastructure) led to increased hazard and disaster risk. They also uncovered social and political causes of vulnerability to said risk[13].">
+			text="In Eastern Samar Province, Philippines, youth from ages 12-21 years old used participatory video (PV) as a research tool to understand resilience to disasters in their communities. While adults provided assistance when needed, youth led the projects. The final videos, which were presented to policymakers and community members, revealed how environmental exposures (e.g., coastal location) and sensitivities (e.g., poor infrastructure) led to increased hazard and disaster risk. They also uncovered social and political causes of vulnerability to said risk [13].">
 			</text>
 		</textBlock>
 		<textBlock>

@@ -34,7 +34,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Storytelling about implementation success and pitfalls">
+			text="Storytelling about implementation successes and pitfalls">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -47,7 +47,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Problem statement indentification">
+			text="Problem statement identification">
 			</text>
 		</textBlock>
 			<textBlock>
@@ -156,7 +156,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways Form on Assessment"
+			text="Key Takeaways"
 			linkType="internal"
 			link="136">
 			</text>

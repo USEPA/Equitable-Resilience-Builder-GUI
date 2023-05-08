@@ -176,15 +176,6 @@
 			height="40.0"
 			id="63">
 			</icon>
-			<listBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Indicator cards"
-			linkType="externalDOC"
-			link="Indicators_Master_List.xlsx">
-			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -193,7 +184,6 @@
 			linkType="externalDOC"
 			link="Monitoring_Plan_Worksheet.docx">
 			</text>
-			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -240,7 +230,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Monitoring and evaluation can ensure that actions and implementation efforts are aligned with equity and resilience needs and priorities.">
+			text="Monitoring and evaluation can ensure that actions and implementation efforts are aligned with equity and resilience needs and priorities. Sharing results of monitoring and evaluating is important for demonstrating transparency and accountability, which are critical for building trust with communities.">
 			</text>
 		</textBlock>
 	</container>

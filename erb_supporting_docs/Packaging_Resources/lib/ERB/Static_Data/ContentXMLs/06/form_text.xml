@@ -58,9 +58,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="650.0"
-			height="300.0"
-			id="147">
+			width="200.0"
+			height="84.0"
+			id="157">
 			</icon>
 		</textBlock>
 		<textBlock>
@@ -118,7 +118,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Resilience Analysis and Planning Tool. FEMA,">
+			text="Resilience Analysis and Planning Tool. FEMA, ">
 			</text>
 			<text
 			size="16.0"
@@ -171,7 +171,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[2] Sinha, P., Julius, S., Fry, M., Truesdale, R., Cajka, J., Eddy, M., Doraiswamy, P., and D. Womack. (In Review). Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach ">
+			text="[2] Sinha, P., Julius, S., Fry, M., Truesdale, R., Cajka, J., Eddy, M., Doraiswamy, P., and D. Womack. (In Review). Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach. ">
 			</text>
 			<text
 			size="16.0"

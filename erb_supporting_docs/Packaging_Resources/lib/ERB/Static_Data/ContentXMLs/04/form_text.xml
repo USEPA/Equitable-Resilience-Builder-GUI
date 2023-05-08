@@ -18,9 +18,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="650.0"
-			height="300.0"
-			id="99">
+			width="200.0"
+			height="87.0"
+			id="155">
 			</icon>
 		</textBlock>
 		<textBlock>
@@ -52,13 +52,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The">
+			text="The ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Equitable Resilience Builder (ERB) process (Figure 2) is designed to support local practitioners integrate equitable and resilience ">
+			text="Equitable Resilience Builder (ERB) process (Figure 2) is designed to support local practitioners integrate equity and resilience ">
 			</text>
 			<text
 			size="16.0"
@@ -69,9 +69,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="850.0"
-			height="500.0"
-			id="100">
+			width="200.0"
+			height="112.0"
+			id="156">
 			</icon>
 		</textBlock>
 		<textBlock>
