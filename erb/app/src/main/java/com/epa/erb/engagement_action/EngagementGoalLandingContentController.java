@@ -64,7 +64,7 @@ public class EngagementGoalLandingContentController implements Initializable {
 		stringBuilder.append("\n\t");
 		stringBuilder.append("5. Wrap up and move forward");
 		stringBuilder.append("\n");
-		stringBuilder.append("You can navigate the pages in the sections using the tree on the left. Each section contains a series of activities that make up the ERB toolkit. There is one page per activity. Each page contains an overview of the activity, with more information provided in documents attached on upper right side of the page, under the header \"What you'll need.\" On the lower right side of the page, you'll see the header \"Centering equity,\" which contains icons and tips for how to carry out the activities in an inclusive way");
+		stringBuilder.append("You can navigate the pages in the sections using the tree on the left. Each section contains a series of activities that make up the ERB toolkit. There is one page per activity. Each page contains an overview of the activity, with more information provided in documents attached on upper right side of the page, under the header \"What you'll need.\" On the lower right side of the page, you'll see the header \"Centering equity,\" which contains icons and tips for how to carry out the activities in an inclusive way. To get back to the ERB home page, click the \"ERB Home\" button.");
 
 		text.setFont(new Font(20.0));
 
