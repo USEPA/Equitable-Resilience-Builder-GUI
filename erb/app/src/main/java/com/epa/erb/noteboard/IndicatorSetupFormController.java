@@ -156,7 +156,6 @@ public class IndicatorSetupFormController implements Initializable{
 		ArrayList<String> indicatorIds = new ArrayList<String>();
 		for (int i = 0; i < indicatorListVBox.getChildren().size(); i++) {
 			HBox child = (HBox) indicatorListVBox.getChildren().get(i);
-			System.out.println("Child: " + child + " " + child.getChildren());
 			ComboBox<IndicatorCard> comboBox = (ComboBox<IndicatorCard>) child.getChildren().get(0);
 			IndicatorCard indicatorCard = comboBox.getSelectionModel().getSelectedItem();
 			if (indicatorCard != null) {

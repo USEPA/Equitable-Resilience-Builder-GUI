@@ -94,7 +94,6 @@ public class App extends Application {
 	}
 	
 	private void setScreenSizePreferences(Dimension size) {
-		System.out.println(size);
 		double width = size.getWidth();
 		double height = size.getHeight();
 		
