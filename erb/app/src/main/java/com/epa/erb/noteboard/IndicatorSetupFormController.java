@@ -111,7 +111,7 @@ public class IndicatorSetupFormController implements Initializable{
 		if(cards != null && cards.size() > 0) {
 			for(int i =0; i < indicatorListVBox.getChildren().size(); i++) {
 				HBox listHBox = (HBox) indicatorListVBox.getChildren().get(i);
-				ComboBox<IndicatorCard> comboBox = (ComboBox<IndicatorCard>) listHBox.getChildren().get(1);
+				ComboBox<IndicatorCard> comboBox = (ComboBox<IndicatorCard>) listHBox.getChildren().get(0);
 				if(i <cards.size()) comboBox.getSelectionModel().select(cards.get(i));
 			}
 		}
@@ -143,7 +143,7 @@ public class IndicatorSetupFormController implements Initializable{
 		ArrayList<IndicatorCard> cards = new ArrayList<IndicatorCard>();
 		for (int i = 0; i < indicatorListVBox.getChildren().size(); i++) {
 			HBox child = (HBox) indicatorListVBox.getChildren().get(i);
-			ComboBox<IndicatorCard> comboBox = (ComboBox<IndicatorCard>) child.getChildren().get(1);
+			ComboBox<IndicatorCard> comboBox = (ComboBox<IndicatorCard>) child.getChildren().get(0);
 			IndicatorCard indicatorCard = comboBox.getSelectionModel().getSelectedItem();
 			if (indicatorCard != null) {
 				cards.add(indicatorCard);
@@ -156,7 +156,8 @@ public class IndicatorSetupFormController implements Initializable{
 		ArrayList<String> indicatorIds = new ArrayList<String>();
 		for (int i = 0; i < indicatorListVBox.getChildren().size(); i++) {
 			HBox child = (HBox) indicatorListVBox.getChildren().get(i);
-			ComboBox<IndicatorCard> comboBox = (ComboBox<IndicatorCard>) child.getChildren().get(1);
+			System.out.println("Child: " + child + " " + child.getChildren());
+			ComboBox<IndicatorCard> comboBox = (ComboBox<IndicatorCard>) child.getChildren().get(0);
 			IndicatorCard indicatorCard = comboBox.getSelectionModel().getSelectedItem();
 			if (indicatorCard != null) {
 				if (!indicatorIds.contains(indicatorCard.getId())) {
