@@ -84,7 +84,7 @@ public class ExternalFileUploaderController implements Initializable{
 							
 						} else {
 							long modifiedLong = uploadedFile.lastModified();
-							lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
+							lastModified = new SimpleDateFormat("MM-dd-yyyy HH-mm-ss").format(new Date(modifiedLong));
 							fileName = new Text(uploadedFile.getName());
 							fileName.setUnderline(true);
 							fileName.setFill(Color.BLUE);
@@ -102,7 +102,7 @@ public class ExternalFileUploaderController implements Initializable{
 		if (engagementActionController != null) {
 			int fileNumber = tableView.getItems().size() + 1;
 			long modifiedLong = sourceFile.lastModified();
-			String lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
+			String lastModified = new SimpleDateFormat("MM-ddS-yyyy HH-mm-ss").format(new Date(modifiedLong));
 			Text text = new Text(sourceFile.getName());
 			text.setUnderline(true);
 			text.setFill(Color.BLUE);
