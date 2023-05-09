@@ -39,7 +39,9 @@ public class App extends Application {
 	private Logger logger = LogManager.getLogger(App.class);
 	private ERBContainerController erbContainerController;
 	private EngagementActionController engagementActionController;
+	private Constants constants = new Constants();
 
+	
 	private ArrayList<Project> projects;
 	private ArrayList<IndicatorCard> indicatorCards;
 	private ArrayList<GoalCategory> availableGoalCategories;	
@@ -48,8 +50,7 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		xmlManager = new XMLManager(this);
-		setScreenResolutionPreferences(getScreenResolution());
-		setScreenSizePreferences(getScreenSize());
+		sizeScreen(getScreenResolution(), getScreenSize());
 		readAndStoreData();
 		showERBToolMain();
 	}
@@ -75,39 +76,13 @@ public class App extends Application {
 		return java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
 	}
-
-	private void setScreenResolutionPreferences(int resolution) {
-		Constants constants = new Constants();
-		if (resolution > 0 && resolution <= 96) {
-			prefWidth = constants.getPrefWidthForScale100();
-			prefHeight = constants.getPrefHeightForScale100();
-		} else if (resolution > 96 && resolution <= 125) {
-			prefWidth = constants.getPrefWidthForScale125();
-			prefHeight = constants.getPrefHeightForScale125();
-		} else if (resolution > 125 && resolution <= 144) {
-			prefWidth = constants.getPrefWidthForScale150();
-			prefHeight = constants.getPrefHeightForScale150();
-		} else {
-			prefWidth = constants.getPrefWidthForScale175();
-			prefHeight = constants.getPrefHeightForScale175();
-		}
-	}
 	
-	private void setScreenSizePreferences(Dimension size) {
+	private void sizeScreen(int resolution, Dimension size) {
 		double width = size.getWidth();
 		double height = size.getHeight();
 		
-		Constants constants = new Constants();
-		if(width >= 1680) {
-			prefWidth = constants.getPrefWidthForScale100();
-			prefHeight = constants.getPrefHeightForScale100();
-		} else if (width >= 1280) {
-			prefWidth = constants.getPrefWidthForScale125();
-			prefHeight = constants.getPrefHeightForScale125();
-		} else if (width >= 1024) {
-			prefWidth = constants.getPrefWidthForScale150();
-			prefHeight = constants.getPrefHeightForScale150();
-		}
+		prefWidth = (int) (width -150);
+		prefHeight = (int) (height -100);
 	}
 	
 

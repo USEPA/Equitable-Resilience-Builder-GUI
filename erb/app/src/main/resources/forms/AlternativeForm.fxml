@@ -8,12 +8,12 @@
 
 <VBox fx:id="nodeVBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane VBox.vgrow="ALWAYS">
+      <BorderPane>
          <center>
             <VBox fx:id="containerVBox" spacing="50.0">
                <children>
                   <VBox fx:id="titleVBox" />
-                  <HBox fx:id="hBox" alignment="CENTER" spacing="30.0">
+                  <HBox fx:id="hBox" alignment="CENTER" spacing="20.0">
                      <children>
                         <VBox fx:id="leftVBox" />
                         <VBox fx:id="centerVBox" />

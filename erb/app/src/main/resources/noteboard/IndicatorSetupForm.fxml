@@ -9,24 +9,24 @@
 
 <VBox fx:id="vBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox>
+      <HBox minWidth="710.0">
          <children>
-            <Label text="What indicators do you want to bring to your workshop?">
+            <Label minWidth="481.0" text="What indicators do you want to bring to your workshop?">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Label text="Select a set of unique indicators that will be ranked by resilience, and then placed into an equitability matrix" wrapText="true">
+      <Label minWidth="750.0" text="Select a set of unique indicators that will be ranked by resilience, and then placed into an equitability matrix">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <VBox fx:id="indicatorListVBox" spacing="5.0" />
+      <VBox fx:id="indicatorListVBox" minHeight="450.0" minWidth="500.0" spacing="5.0" />
       <HBox VBox.vgrow="ALWAYS">
          <children>
-            <Button mnemonicParsing="false" onAction="#beginButtonAction" stylesheets="@../button.css" text="Begin">
+            <Button minWidth="60.0" mnemonicParsing="false" onAction="#beginButtonAction" stylesheets="@../button.css" text="Begin">
                <font>
                   <Font size="14.0" />
                </font>
