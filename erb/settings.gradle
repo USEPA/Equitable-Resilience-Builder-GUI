@@ -5,5 +5,5 @@
  *
  */
 
-rootProject.name = 'erb'
+rootProject.name = 'metroceri_erb'
 include('app')
