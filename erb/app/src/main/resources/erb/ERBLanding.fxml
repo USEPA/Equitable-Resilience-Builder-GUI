@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="150.0" prefWidth="850.0">
          <children>
@@ -125,7 +125,7 @@
                            <children>
                               <HBox alignment="CENTER" minHeight="40.0" style="-fx-background-color: #F25F23;">
                                  <children>
-                                    <Label text="Elements of ERB" textFill="WHITE">
+                                    <Label text="What is ERB" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
@@ -134,27 +134,17 @@
                               </HBox>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Hyperlink id="04" onAction="#hyperlinkAction" text="Equity &amp; resilience">
+                                    <Hyperlink onAction="#hyperlinkAction" text="The 5 sections of ERB">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink id="02" onAction="#hyperlinkAction" text="Storytelling">
+                                    <Hyperlink onAction="#hyperlinkAction" text="How ERB centers equity">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink id="06" onAction="#hyperlinkAction" text="Resilience indicators">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Hyperlink>
-                                    <Hyperlink onAction="#hyperlinkAction" text="Community engagement">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Hyperlink>
-                                    <Hyperlink onAction="#hyperlinkAction" text="Local knowledge">
+                                    <Hyperlink onAction="#hyperlinkAction" text="Examples of ERB projects">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -195,6 +185,11 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
+                                    <Hyperlink onAction="#exploreHyperlinkAction" text="Explore the tool">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
                                  </children>
                               </VBox>
                            </children>
@@ -212,7 +207,7 @@
                            <children>
                               <HBox alignment="CENTER" minHeight="40.0" style="-fx-background-color: #F25F23;">
                                  <children>
-                                    <Label text="Supporting Info" textFill="WHITE">
+                                    <Label text="Support" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
@@ -223,27 +218,17 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
+                              <Hyperlink onAction="#hyperlinkAction" text="Quick-start guide">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Hyperlink onAction="#hyperlinkAction" text="Additional resources">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Hyperlink>
                               <Hyperlink id="09" onAction="#hyperlinkAction" text="About">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Hyperlink id="01" onAction="#hyperlinkAction" text="Glossary">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Hyperlink onAction="#exploreHyperlinkAction" text="Explore the tool">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Hyperlink onAction="#hyperlinkAction" text="User instructions">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Hyperlink onAction="#hyperlinkAction" text="Examples">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
