@@ -1,0 +1,34 @@
+<textBlocks>
+	<container id="formVBox">
+		
+		<textBlock>
+		</textBlock>
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="The 5 sections of ERB">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The Equitable Resilience Builder (ERB) is a downloadable application designed to be used by state, Tribal, territorial, county, or municipal agencies that work on environment, emergency management, public health, sustainability, land use, and climate risk management that supports communities in strengthening resilience to disasters and climate change, with a focus on equity. It contains 5 sections. Each section has a series of activities that a core team carries out in conjunction with community organizations and members.">
+			</text>
+		</textBlock>	
+		<textBlock>
+			<icon
+			width="1000.0"
+			height="550.0"
+			id="174">
+			</icon>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

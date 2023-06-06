@@ -134,17 +134,17 @@
                               </HBox>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Hyperlink onAction="#hyperlinkAction" text="The 5 sections of ERB">
+                                    <Hyperlink id="173" onAction="#hyperlinkAction" text="The 5 sections of ERB">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink onAction="#hyperlinkAction" text="How ERB centers equity">
+                                    <Hyperlink id="175" onAction="#hyperlinkAction" text="How ERB centers equity">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink onAction="#hyperlinkAction" text="Examples of ERB projects">
+                                    <Hyperlink onAction="#exampleProjectsHyperlinkAction" text="Examples of ERB projects">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -185,7 +185,7 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink onAction="#exploreHyperlinkAction" text="Explore the tool">
+                                    <Hyperlink fx:id="exploreHyperlink" onAction="#exploreHyperlinkAction" text="Explore the tool">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -218,12 +218,12 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Hyperlink onAction="#hyperlinkAction" text="Quick-start guide">
+                              <Hyperlink id="171" onAction="#hyperlinkAction" text="Quick-start guide">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Hyperlink onAction="#hyperlinkAction" text="Additional resources">
+                              <Hyperlink id="172" onAction="#hyperlinkAction" text="Additional resources">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

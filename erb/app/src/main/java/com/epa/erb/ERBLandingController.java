@@ -8,6 +8,7 @@ import com.epa.erb.forms.FormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectSelectionController;
+import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -47,6 +49,8 @@ public class ERBLandingController implements Initializable{
 	VBox vBox;
 	@FXML
 	StackPane bottomStackPane;
+	@FXML
+	Hyperlink exploreHyperlink;
 	
 	private App app;
 	public ERBLandingController(App app) {
@@ -64,7 +68,7 @@ public class ERBLandingController implements Initializable{
         rectangle3.widthProperty().bind(vBox.widthProperty());
         rectangle3.heightProperty().bind(bottomStackPane.heightProperty());
 
-        
+        exploreHyperlink.setTooltip(new Tooltip("Explore mode is a way of checking out the tool. You are not able to save any work."));
 
 	}
 	
@@ -94,6 +98,13 @@ public class ERBLandingController implements Initializable{
 		});
 	}
 		
+	@FXML
+	public void exampleProjectsHyperlinkAction() {
+		FileHandler fileHandler = new FileHandler();
+		File supportingDocDir = fileHandler.getStaticSupportingDOCDirectory();
+		File fileToOpen = new File(supportingDocDir + "\\Examples.pdf");
+		fileHandler.openFileOnDesktop(fileToOpen);
+	}
 	
 	@FXML
 	public void buttonAction(ActionEvent actionEvent) {
