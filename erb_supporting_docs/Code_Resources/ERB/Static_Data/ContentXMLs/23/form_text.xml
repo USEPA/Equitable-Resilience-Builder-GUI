@@ -2,70 +2,34 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Activity Selection Scenarios">
+			text="MyPortfolio">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Scenario 1:">
-			</text>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;An EPA Regional staff member and a community organizer for environmental justice are working together to convene and activate a new group of community members in a rural county with EJ issues. They decide, based on their goals and activity requirements, to do the following activities:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;Chapters 1 and 2 - accomplished through planning the workshops. Chapter 3-All; Chapter 4- none, since community workshops also need to fit in emergency preparedness. Chapter 5- All.">
+			text="WHAT: Click on the MyPortfolio tab to view and download the project files you have created. You create project files in three ways. Write in Word or Excel documents that are part of Supporting Materials.  Write in a Key Takeaways or other forms. Upload images or other files.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Scenario 2:">
-			</text>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;A local environmental education and advocacy organization is leading the development of a watershed resilience plan. They decide, based on their goals and activity requirements, to do the following activities:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;Chapter 1- project plan; Chapter 2- none, organizations leading this have strong community connections already; Chapter 3- all, Chapter 4- none, too technical and time consuming for the project team; Chapter 5- all.">
+			text="WHY: View your project’s files in one place. See which files you’ve worked on. Download and save materials as documentation of what you have done.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Scenario 3:">
-			</text>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;A county emergency manager is tasked with leading a committee to update the county's Hazard Mitigation Plan. The previous plan has plenty on natural hazards but hasn't incorporated lessons learned from the COVID-19 pandemic. The committee decides, based on their goals and activity requirement, to do the following activities:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;Chapter 1- make a project plan; Chapter 2- originally decided it was too time-consuming, changed their mind after they started planning for community workshops; Chapter 3- Data on hazards and equity, social vulnerability assessment; Chapter 4- All; Chapter 5- activity brainstorming">
+			text="HOW: Click on the MyPortfolio tab. A box will open. Click on the name of an ERB section and you’ll see a list of files on the right. Check the date on “Modified by” to see which files you’ve worked on. Click on the Export button to save the files to a location of your choosing on your desktop or laptop.">
 			</text>
 		</textBlock>
 	</container>

@@ -2,109 +2,93 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Lay your cards on the table activity">
+			text="FAQ">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="Have the breakout groups take the indicator cards they sorted and lay them on the table.">
+			fontStyle="Bold"
+			text="Do I have to complete each section of ERB?">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Why do this: ">
-			</text>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;We will visually compare across systems and topics to understand which are the most and least equitable, which hazards appear to have the most impact, and where potential problem areas might be in terms of resilience.">
+			text="You do not! Users can select which sections, and activities within a section, to undertake. The Plan Your Project section helps you figure out what best meets your needs and capacity. You can revisit this section at any time to make changes to your Project Plan.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="How to do this: ">
+			text="How do I save my project?">
 			</text>
+		</textBlock>
+		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;At the workshop, have the breakout groups for each system (or topic) divide the posterboard into four quadrants (as pictured below). Have participants place indicator cards into quadrant positions based on relative degree of resilience and equity in their community.">
+			text="The project you are working on saves directly within the ERB tool as you work through it. You can also download saved work to your desktop or laptop at any point using MyPortfolio.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Will EPA collect any data from me if I use ERB?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="No. Once you download the ERB software to your computer, the EPA has no access to it. All the information you enter into ERB is kept within the app. You can decide whether you want to download and save project files to another location on your desktop or laptop.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Troubleshooting">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Email ">
+			</text>
+			<text 
+			size="18.0" 
+			fontFamily="System" 
+			fontStyle="Hyperlink" 
+			text="CESER@epa.gov" 
+			linkType="URL" 
+			link="CESER@epa.gov"> 
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" if you have technical difficulties using the tool.">
 			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="People you'll need: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Breakout groups">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="&#xD;Time you'll need: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Activity time - 1 hour">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="&#xD;Materials you'll need: ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Posterboard for resilience and equity diagram">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Easel, sticky notes, and marker">
-			</text>
-		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Outputs:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;- Resilience and equity diagrams">
-			</text>
-		</textBlock>
 	</container>
 </textBlocks>

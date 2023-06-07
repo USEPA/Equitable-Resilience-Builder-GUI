@@ -19,7 +19,13 @@ public class IdAssignments {
 	}
 	
 	public void fillFAQIdAssignments() {
-		
+		faqIdAssignments.add("11");
+		faqIdAssignments.add("12");
+		faqIdAssignments.add("13");
+		faqIdAssignments.add("21");
+		faqIdAssignments.add("22");
+		faqIdAssignments.add("23");
+		faqIdAssignments.add("26");
 	}
 	
 	public void fillAboutIdAssignments() {
