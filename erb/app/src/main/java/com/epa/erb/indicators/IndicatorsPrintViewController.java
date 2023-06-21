@@ -3,8 +3,6 @@ package com.epa.erb.indicators;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.scene.Scene;
-import com.epa.erb.print.PrinterSelectionController;
 import com.epa.erb.App;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.noteboard.NoteBoardItem_Indicator;
@@ -13,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class IndicatorsPrintViewController implements Initializable {
 
@@ -25,13 +22,15 @@ public class IndicatorsPrintViewController implements Initializable {
 	private App app;
 	public IndicatorsPrintViewController(App app) {
 		this.app = app;
-	}
+	}	
 		
-	private void addCardsToHBox() {
+	private void addCardsToHBox(ArrayList<IndicatorCard> cards) {
 		NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, app.getEngagementActionController().getCurrentGoal(), app.getEngagementActionController().getCurrentSelectedERBContentItem(), app.getIndicatorCards());
 		int count = 0;
 		HBox cardHBox = null;
-		for (IndicatorCard indicatorCard : app.getIndicatorCards()) {
+		IndicatorSaveDataParser iSDP = new IndicatorSaveDataParser(app);
+		ArrayList<String> selectedData = iSDP.getSavedSelectedData_InPerson();
+		for (IndicatorCard indicatorCard : cards) {
 			try {
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardItem.fxml"));
 				NoteBoardItem_Indicator noteBoardIndicatorItem = new NoteBoardItem_Indicator(noteBoardContentController, indicatorCard);
@@ -44,7 +43,14 @@ public class IndicatorsPrintViewController implements Initializable {
 				noteBoardIndicatorItem.removeFlipHBox();
 				noteBoardIndicatorItem.resizeImageView();
 				noteBoardIndicatorItem.setColorAndImage();
-				noteBoardIndicatorItem.setTextForPrinting();
+//				noteBoardIndicatorItem.setTextForPrinting();
+				if(selectedData != null) {
+					System.out.println("HERE 1: " + selectedData);
+					for(String data: selectedData) {
+						System.out.println("HERE 2: " + data);
+						noteBoardIndicatorItem.addTextForPrinting(data);
+					}
+				}
 
 				if (count == 0) {
 					cardHBox = new HBox();
@@ -60,10 +66,12 @@ public class IndicatorsPrintViewController implements Initializable {
 			}
 		}
 	}
-	
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		addCardsToHBox();
+		IndicatorSaveDataParser iSDP = new IndicatorSaveDataParser(app);
+		ArrayList<IndicatorCard> cards = iSDP.getSavedSelectedIndicatorCards_InPerson();
+		addCardsToHBox(cards);
 	}
 	
 	@FXML

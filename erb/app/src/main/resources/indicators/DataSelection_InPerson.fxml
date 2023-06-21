@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox minWidth="710.0">
+         <children>
+            <Label minWidth="481.0" text="Select data to display on selected indicator cards">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <CheckBox fx:id="defaultDataCheckBox" mnemonicParsing="false" onAction="#defaultDataCheckBoxAction" text="Default data">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <Label text="OR">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+         <content>
+            <VBox fx:id="dataVBox" spacing="5.0" />
+         </content>
+      </ScrollPane>
+      <HBox fx:id="printHBox" alignment="CENTER_RIGHT" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#printIndicatorCardsButtonAction" text="Print indicator cards" />
+            <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+   </padding>
+</VBox>

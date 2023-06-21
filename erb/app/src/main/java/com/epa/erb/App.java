@@ -25,9 +25,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
-import com.epa.erb.excel.IndicatorWorkbookParser;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.indicators.IndicatorCard;
+import com.epa.erb.indicators.IndicatorWorkbookParser;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
@@ -145,8 +145,8 @@ public class App extends Application {
 	}
 	
 	private void readAndStoreIndicatorCards() {
-		IndicatorWorkbookParser workbookParser = new IndicatorWorkbookParser();
-		indicatorCards = workbookParser.test();
+//		IndicatorWorkbookParser workbookParser = new IndicatorWorkbookParser();
+//		indicatorCards = workbookParser.parseForIndicatorCards();
 	}
 	
 	private void readAndStoreAvailableContent() {

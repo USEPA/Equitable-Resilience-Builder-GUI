@@ -36,6 +36,18 @@ public class WorkbookParser {
 		return allSheets;
 	}
 	
+	public Sheet getWorksheet(XSSFWorkbook xssfWorkbook, String sheetName){
+		ArrayList<Sheet> allSheets = getWorksheets(xssfWorkbook);
+		if(allSheets.size()> 0) {
+			for(Sheet sheet: allSheets) {
+				if(sheet.getSheetName().contentEquals(sheetName)) {
+					return sheet;
+				}
+			}
+		}
+		return null;
+	}
+	
 	public ArrayList<String> getWorksheetNames(XSSFWorkbook xssfWorkbook){
 		ArrayList<String> allSheetNames = new ArrayList<String>();
 		ArrayList<Sheet> allSheets = getWorksheets(xssfWorkbook);

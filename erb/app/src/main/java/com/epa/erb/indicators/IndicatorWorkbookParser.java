@@ -1,16 +1,30 @@
-package com.epa.erb.excel;
+package com.epa.erb.indicators;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.epa.erb.indicators.IndicatorCard;
+import com.epa.erb.excel.WorkbookParser;
 
 public class IndicatorWorkbookParser extends WorkbookParser{
 
-	public IndicatorWorkbookParser() {
-		
+	private File workbookFile;
+	public IndicatorWorkbookParser(File workbookFile) {
+		this.workbookFile = workbookFile;
+	}
+	
+	public Sheet getIndicatorSheet() {
+		try {
+			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(workbookFile);
+			return getWorksheet(xssfWorkbook, "Combined Indicator Menu");
+		} catch (InvalidFormatException | IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	private int getNumColumns(Sheet indicatorSheet) {
@@ -28,16 +42,16 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 		return getColumnValues(indicatorSheet, 0).size();
 	}
 	
-	public ArrayList<IndicatorCard> test() {
+	public ArrayList<IndicatorCard> parseForIndicatorCards(Sheet indicatorSheet) {
 		ArrayList<IndicatorCard> indicatorCards = new ArrayList<IndicatorCard>();
-		String filePath = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Indicators_Master_List.xlsx";
-		XSSFWorkbook workbook = getXSSFWorkbook(filePath);
-		Sheet indicatorSheet = null;
-		for(Sheet worksheet: getWorksheets(workbook)) {
-			if(worksheet.getSheetName().contentEquals("Combined Indicator Menu")) {
-				indicatorSheet = worksheet;
-			}
-		}
+//		String filePath = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Indicators_Master_List.xlsx";
+//		XSSFWorkbook workbook = getXSSFWorkbook(filePath);
+//		Sheet indicatorSheet = null;
+//		for(Sheet worksheet: getWorksheets(workbook)) {
+//			if(worksheet.getSheetName().contentEquals("Combined Indicator Menu")) {
+//				indicatorSheet = worksheet;
+//			}
+//		}
 		if(indicatorSheet != null) {
 			ArrayList<String> headerValues = getRowValues(indicatorSheet, 0);
 			int systemColumnIndex = -1;
@@ -54,6 +68,7 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 			int rawDataCollectionColumnIndex = -1;
 			int dataPointsColumnIndex = -1;
 			int thresholdColumnIndex = -1;
+			int dataCollection_y_nColumnIndex = -1;
 			
 			for(int i=0; i < getNumColumns(indicatorSheet); i++) {
 				String headerVal =  headerValues.get(i);
@@ -79,13 +94,15 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 					qualDataCollectionColumnIndex=i;
 				} else if (headerVal.contains("Additional Details")) {
 					additionalInfoColumnIndex=i;
-				}  else if (headerVal.contentEquals("Raw Data Collection Notes")) {
+				}  else if (headerVal.contains("data collection process")) {
 					rawDataCollectionColumnIndex=i;
 				} else if (headerVal.contains("Data Points")) {
 					dataPointsColumnIndex=i;
-				} else if (headerVal.contains("Thresholds")) {
+				} else if (headerVal.contains("threshold value")) {
 					thresholdColumnIndex=i;
-				}		
+				} else if (headerVal.contentEquals("Data Collection (Y/N)")) {
+					dataCollection_y_nColumnIndex=i;
+				}
 			}
 						
 			for(int j =1; j < getNumRows(indicatorSheet); j++) {
@@ -106,7 +123,8 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 				String rdColl = rowValues.get(rawDataCollectionColumnIndex);
 				String dP = rowValues.get(dataPointsColumnIndex);
 				String t = rowValues.get(thresholdColumnIndex);
-				IndicatorCard indicatorCard = new IndicatorCard(id, s, i, d, rV, eV, lC, q, qnDS, qnDC, qlDC, aI, rdColl, dP, t);
+				String dCYN = rowValues.get(dataCollection_y_nColumnIndex);
+				IndicatorCard indicatorCard = new IndicatorCard(id, s, i, d, rV, eV, lC, q, qnDS, qnDC, qlDC, aI, rdColl, dP, t, dCYN);
 				indicatorCards.add(indicatorCard);
 			}
 		}

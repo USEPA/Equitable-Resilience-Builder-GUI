@@ -79,6 +79,16 @@ public class FileHandler {
 		}
 	}
 	
+	public File getIndicatorsDirectory(Project project, Goal goal) {
+		if(project != null && goal != null) {
+			File indicatorsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Indicators");
+			return indicatorsDirectory;
+		} else {
+			logger.error("Cannot getIndicatorsDirectory. project = " + project + " goal = " + goal);
+			return null;
+		}
+	}
+	
 	public File getMyUploadsDirectory(Project project, Goal goal) {
 		if(project != null && goal != null) {
 			File myUploadsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\MyUploads");

@@ -1,60 +1,68 @@
-package com.epa.erb.noteboard;
+package com.epa.erb.indicators;
 
-import com.epa.erb.indicators.IndicatorCard;
-
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
+public class IndicatorCardController implements Initializable{
 
-//public class NoteBoardItem_Indicator extends NoteBoardItemController{
-public class NoteBoardItem_Indicator extends NoteBoardItemController{
-
-
+	@FXML
+	VBox indicatorCardVBox;
+	@FXML
+	ScrollPane indicatorCardScrollPane;
+	@FXML
+	VBox contentVBox;
+	@FXML
+	HBox imageViewHBox;
+	@FXML
+	ImageView imageView;
+	@FXML
+	TextFlow textFlow;
+	
 	private IndicatorCard indicatorCard;
-	public NoteBoardItem_Indicator(NoteBoardContentController noteBoardContentController, IndicatorCard indicatorCard) {
-		super(noteBoardContentController);
+	public IndicatorCardController(IndicatorCard indicatorCard) {
 		this.indicatorCard = indicatorCard;
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
 	}
 	
 	public void setColorAndImage() {
 		if(indicatorCard.getSystem().contentEquals("Social Environment")) {
-			noteBoardItemVBox.setStyle("-fx-background-color: " + indicatorCard.getSocialEnvironmentSystemColor());
+			indicatorCardVBox.setStyle("-fx-background-color: " + indicatorCard.getSocialEnvironmentSystemColor());
 			textFlow.setStyle("-fx-background-color: " + indicatorCard.getSocialEnvironmentSystemColor());
-			scrollPane.setStyle("-fx-background: " + indicatorCard.getSocialEnvironmentSystemColor());
+			indicatorCardScrollPane.setStyle("-fx-background: " + indicatorCard.getSocialEnvironmentSystemColor());
 			imageView.setImage(new Image(getClass().getResourceAsStream("/socialEnvironment.png")));
 		} else if (indicatorCard.getSystem().contentEquals("Built Environment")) {
-			noteBoardItemVBox.setStyle("-fx-background-color: " + indicatorCard.getBuiltEnvironmentSystemColor());
+			indicatorCardVBox.setStyle("-fx-background-color: " + indicatorCard.getBuiltEnvironmentSystemColor());
 			textFlow.setStyle("-fx-background-color: " + indicatorCard.getBuiltEnvironmentSystemColor());
-			scrollPane.setStyle("-fx-background: " + indicatorCard.getBuiltEnvironmentSystemColor());
+			indicatorCardScrollPane.setStyle("-fx-background: " + indicatorCard.getBuiltEnvironmentSystemColor());
 			imageView.setImage(new Image(getClass().getResourceAsStream("/builtEnvironment.png")));
 		} else if (indicatorCard.getSystem().contentEquals("Natural Environment")) {
-			noteBoardItemVBox.setStyle("-fx-background-color: " + indicatorCard.getNaturalEnvironmentSystemColor());
+			indicatorCardVBox.setStyle("-fx-background-color: " + indicatorCard.getNaturalEnvironmentSystemColor());
 			textFlow.setStyle("-fx-background-color: " + indicatorCard.getNaturalEnvironmentSystemColor());
-			scrollPane.setStyle("-fx-background: " + indicatorCard.getNaturalEnvironmentSystemColor());
+			indicatorCardScrollPane.setStyle("-fx-background: " + indicatorCard.getNaturalEnvironmentSystemColor());
 			imageView.setImage(new Image(getClass().getResourceAsStream("/naturalEnvironment.png")));
 		}
 	}
 	
-	public void removeFlipHBox() {
-		if(noteBoardItemVBox.getChildren().contains(flipHBox)) {
-			noteBoardItemVBox.getChildren().remove(flipHBox);
-		}
-	}
-	
-	public void resizeImageView() {
-		imageView.setFitWidth(50.0);
-		imageView.setFitHeight(50.0);
+	public void resizeImageView(double size) {
+		imageView.setFitWidth(size);
+		imageView.setFitHeight(size);
 	}
 	
 	protected void flipCard(MouseEvent e) {
@@ -70,7 +78,7 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 	public void addTextForPrinting(String field) {
 		System.out.println("Field " + field);
 		if(field.contentEquals("Default data")) {
-			setTextForPrinting();
+			addAllTextForPrinting();
 		} else if(field.contentEquals("System")) {
 			
 			Text title = new Text("\n" + field + ":");
@@ -223,7 +231,7 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 	}
 	
 	
-	public void setTextForPrinting() {
+	public void addAllTextForPrinting() {
 		textFlow.getChildren().clear();
 
 		// Indicator
@@ -362,42 +370,9 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 		textFlow.getChildren().add(localConcernsText);
 		
 	}
-
-	private static final String TAB_DRAG_KEY = "pane";
-	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
-	protected void setDrag_IndicatorCard(Pane p) {
-		p.setOnDragOver(event -> {
-			event.acceptTransferModes(TransferMode.MOVE);
-			event.consume();
-		});
-		p.setOnDragDropped(event -> {
-			Dragboard db = event.getDragboard();
-			boolean success = false;
-			if (db.hasString()) {
-				Pane target = p;
-				Pane sourceItem = (Pane) event.getGestureSource();
-				VBox sourceItemVBox = (VBox) sourceItem;
-				VBox targetVBox = (VBox) target;
-				Pane parent = (Pane) targetVBox.getParent();
-				int targetIndex = parent.getChildren().indexOf(targetVBox);
-				parent.getChildren().remove(sourceItemVBox);
-				parent.getChildren().add(targetIndex, sourceItemVBox);
-				success = true;
-			}
-			event.setDropCompleted(success);
-			event.consume();
-		});
-		p.setOnDragDetected(event -> {
-			Dragboard dragboard = p.startDragAndDrop(TransferMode.MOVE);
-			ClipboardContent clipboardContent = new ClipboardContent();
-			clipboardContent.putString(TAB_DRAG_KEY);
-			dragboard.setContent(clipboardContent);
-			draggingTab.set(p);
-			event.consume();
-		});
-	}
 	
 	public IndicatorCard getIndicatorCard() {
 		return indicatorCard;
-	}
+	}	
+
 }

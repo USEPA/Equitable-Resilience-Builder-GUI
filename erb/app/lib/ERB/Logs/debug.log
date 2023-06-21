@@ -4792,3 +4792,906 @@
 | DEBUG | 2023-06-21 09:38:26 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
 | DEBUG | 2023-06-21 09:38:26 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
 | DEBUG | 2023-06-21 09:38:26 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 11:18:12 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 11:18:13 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 11:18:13 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 12:29:58 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:29:58 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 12:54:40 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:54:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 12:55:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 12:55:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 13:27:16 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:27:16 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 13:32:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 13:32:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:32:31 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 13:33:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:33:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 13:33:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:33:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 13:34:15 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:34:15 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 13:34:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:34:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 13:46:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 13:46:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:46:40 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 13:49:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 13:49:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 13:49:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 15:06:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 15:06:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 15:06:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 15:06:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 15:06:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 15:06:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 15:06:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 15:06:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 15:06:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 15:06:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:06:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 15:07:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:07:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 15:07:41 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 15:07:41 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:04:17 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:04:17 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:04:18 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:04:36 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:04:36 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:19:25 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:19:25 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:22:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:22:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:23:06 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:23:06 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:26:52 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:26:52 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:27:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:27:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:34:48 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:34:48 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:36:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:36:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:51:43 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:51:43 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:51:43 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:51:43 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:51:43 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:51:43 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:51:43 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:51:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:51:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:51:44 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:51:44 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 16:53:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 16:53:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 17:00:29 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 17:00:29 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 17:00:29 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 17:00:29 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 17:00:29 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 17:00:29 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 17:00:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 17:00:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 17:00:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 17:00:30 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 17:00:30 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:38:28 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:38:28 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:38:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:38:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:40:22 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:22 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:40:37 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:37 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:40:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:40:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:41:50 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:41:50 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:41:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:41:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:43:23 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:43:23 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:43:34 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:43:34 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:47:03 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:47:03 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:47:07 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:47:07 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:49:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:49:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:49:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:49:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:49:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:49:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:49:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:49:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:49:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:49:39 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:49:39 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:49:46 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:49:46 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:53:53 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:53:53 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:54:38 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:54:38 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item1.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item2.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item3.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /customXml/_rels/item4.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/_rels/workbook.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet2.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet3.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /xl/worksheets/_rels/sheet4.xml.rels
+| DEBUG | 2023-06-21 18:54:55 | PackageRelationshipCollection.java:309 | Parsing relationship: /_rels/.rels
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://customschemas.google.com/relationships/workbookmetadata
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps
+| DEBUG | 2023-06-21 18:54:55 | POIXMLFactory.java:65 | using default POIXMLDocumentPart for http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings

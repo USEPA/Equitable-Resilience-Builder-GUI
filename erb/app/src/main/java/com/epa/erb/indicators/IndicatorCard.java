@@ -19,8 +19,9 @@ public class IndicatorCard {
 	String rawDataCollectionNotes;
 	String dataPoints;
 	String thresholds;
+	String dataCollection_y_n;
 	
-	public IndicatorCard(String id, String s, String i, String d, String rV, String eV, String lC, ArrayList<String> q, String qnDS, String qnDC, String qlDC, String aI, String rdColl, String dP, String t ) {
+	public IndicatorCard(String id, String s, String i, String d, String rV, String eV, String lC, ArrayList<String> q, String qnDS, String qnDC, String qlDC, String aI, String rdColl, String dP, String t, String dataCollection_y_n ) {
 		this.id = id;
 		this.system = s;
 		this.indicator = i;
@@ -36,6 +37,7 @@ public class IndicatorCard {
 		this.rawDataCollectionNotes = rdColl;
 		this.dataPoints = dP;
 		this.thresholds = t;
+		this.dataCollection_y_n = dataCollection_y_n;
 	}
 	
 	private final String socialEnvironmentSystemColor = "#A6D0E2"; //Blue
@@ -140,5 +142,36 @@ public class IndicatorCard {
 	}
 	public void setQuestionsToAnswer(ArrayList<String> questionsToAnswer) {
 		this.dataQuestionsToAnswer = questionsToAnswer;
+	}
+	public ArrayList<String> getDataQuestionsToAnswer() {
+		return dataQuestionsToAnswer;
+	}
+	public void setDataQuestionsToAnswer(ArrayList<String> dataQuestionsToAnswer) {
+		this.dataQuestionsToAnswer = dataQuestionsToAnswer;
+	}
+	public String getQuantitativeDataCollectionProcess() {
+		return quantitativeDataCollectionProcess;
+	}
+	public void setQuantitativeDataCollectionProcess(String quantitativeDataCollectionProcess) {
+		this.quantitativeDataCollectionProcess = quantitativeDataCollectionProcess;
+	}
+	public String getQualitativeDataCollectionProcess() {
+		return qualitativeDataCollectionProcess;
+	}
+	public void setQualitativeDataCollectionProcess(String qualitativeDataCollectionProcess) {
+		this.qualitativeDataCollectionProcess = qualitativeDataCollectionProcess;
+	}
+	public String getDataCollection_y_n() {
+		return dataCollection_y_n;
+	}
+	public void setDataCollection_y_n(String dataCollection_y_n) {
+		this.dataCollection_y_n = dataCollection_y_n;
+	}
+	public String getDataQuestionsToAnswerAsString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for(String q: dataQuestionsToAnswer) {
+			stringBuilder.append(q + "\n");
+		}
+		return stringBuilder.toString();
 	}
 }
