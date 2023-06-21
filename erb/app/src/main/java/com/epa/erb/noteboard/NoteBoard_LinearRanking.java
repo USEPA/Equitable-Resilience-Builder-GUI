@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
-import com.epa.erb.IndicatorCard;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.indicators.IndicatorCard;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;

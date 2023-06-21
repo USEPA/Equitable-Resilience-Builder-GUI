@@ -3,7 +3,8 @@ package com.epa.erb.noteboard;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
-import com.epa.erb.IndicatorCard;
+import com.epa.erb.indicators.IndicatorCard;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;

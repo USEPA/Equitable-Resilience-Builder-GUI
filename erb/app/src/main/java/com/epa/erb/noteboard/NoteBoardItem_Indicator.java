@@ -1,6 +1,6 @@
 package com.epa.erb.noteboard;
 
-import com.epa.erb.IndicatorCard;
+import com.epa.erb.indicators.IndicatorCard;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -17,7 +17,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 
+//public class NoteBoardItem_Indicator extends NoteBoardItemController{
 public class NoteBoardItem_Indicator extends NoteBoardItemController{
+
 
 	private IndicatorCard indicatorCard;
 	public NoteBoardItem_Indicator(NoteBoardContentController noteBoardContentController, IndicatorCard indicatorCard) {
@@ -25,7 +27,7 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 		this.indicatorCard = indicatorCard;
 	}
 	
-	protected void setColorAndImage() {
+	public void setColorAndImage() {
 		if(indicatorCard.getSystem().contentEquals("Social Environment")) {
 			noteBoardItemVBox.setStyle("-fx-background-color: " + indicatorCard.getSocialEnvironmentSystemColor());
 			textFlow.setStyle("-fx-background-color: " + indicatorCard.getSocialEnvironmentSystemColor());
@@ -44,6 +46,17 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 		}
 	}
 	
+	public void removeFlipHBox() {
+		if(noteBoardItemVBox.getChildren().contains(flipHBox)) {
+			noteBoardItemVBox.getChildren().remove(flipHBox);
+		}
+	}
+	
+	public void resizeImageView() {
+		imageView.setFitWidth(50.0);
+		imageView.setFitHeight(50.0);
+	}
+	
 	protected void flipCard(MouseEvent e) {
 		if(e.getClickCount() == 1) {
 			if(textFlow.getId().contentEquals("FRONT")) {
@@ -52,6 +65,73 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 				addFrontIndicatorCardText();
 			}
 		}
+	}
+	
+	public void setTextForPrinting() {
+		textFlow.getChildren().clear();
+
+		// Indicator
+		Text indicatorText = new Text(indicatorCard.getIndicator());
+		indicatorText.setFont(Font.font("System", FontWeight.BOLD, 15.0));
+		textFlow.getChildren().add(indicatorText);
+
+		// Definintion
+		Text definitionText = new Text("\n" + indicatorCard.getDefinition());
+		definitionText.setFont(Font.font("System", FontPosture.ITALIC, 12.0));
+		textFlow.getChildren().add(definitionText);
+
+		// Data Points
+		Text dataPointsText = new Text("\nData Points");
+		dataPointsText.setFont(Font.font("System", FontWeight.BOLD, 14.0));
+		textFlow.getChildren().add(dataPointsText);
+		
+		Text dataPoints = new Text("\n" + indicatorCard.getDataPoints());
+		dataPoints.setFont(Font.font("System", FontWeight.NORMAL, 12.0));
+		textFlow.getChildren().add(dataPoints);
+
+		// Thresholds/Comparisons:
+		Text thresholdsText = new Text("\nThresholds/Comparisons:");
+		thresholdsText.setFont(Font.font("System", FontWeight.BOLD, 14.0));
+		textFlow.getChildren().add(thresholdsText);
+		
+		Text threshold = new Text("\n" +indicatorCard.getThresholds());
+		threshold.setFont(Font.font("System", FontWeight.NORMAL, 12.0));
+		textFlow.getChildren().add(threshold);
+		
+		Text empty = new Text("\n");		
+		textFlow.getChildren().add(empty);
+		
+		Text backTitle = new Text("\nWhy does this matter?");
+		backTitle.setFont(Font.font("System", FontWeight.BOLD, 14.0));
+		textFlow.getChildren().add(backTitle);
+
+		// Resilience
+		Text resilienceTextTitle = new Text("\nResilience");
+		resilienceTextTitle.setFont(Font.font("System", FontWeight.BOLD, 14.0));
+		textFlow.getChildren().add(resilienceTextTitle);
+
+		Text resilienceText = new Text("\n" + indicatorCard.getResilienceValue());
+		resilienceText.setFont(Font.font("System", FontWeight.NORMAL, 12.0));
+		textFlow.getChildren().add(resilienceText);
+
+		// Equity
+		Text equityTextTitle = new Text("\nEquity");
+		equityTextTitle.setFont(Font.font("System", FontWeight.BOLD, 14.0));
+		textFlow.getChildren().add(equityTextTitle);
+
+		Text equityText = new Text("\n" + indicatorCard.getEquityValue());
+		equityText.setFont(Font.font("System", FontWeight.NORMAL, 12.0));
+		textFlow.getChildren().add(equityText);
+
+		// Local Concerns
+		Text localConcernsTextTitle = new Text("\nLocal Concerns");
+		localConcernsTextTitle.setFont(Font.font("System", FontWeight.BOLD, 14.0));
+		textFlow.getChildren().add(localConcernsTextTitle);
+
+		Text localConcernsText = new Text("\n" + indicatorCard.getLocalConcern());
+		localConcernsText.setFont(Font.font("System", FontWeight.NORMAL, 12.0));
+		textFlow.getChildren().add(localConcernsText);
+
 	}
 	
 	protected void addFrontIndicatorCardText() {	

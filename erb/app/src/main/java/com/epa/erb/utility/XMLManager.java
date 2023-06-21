@@ -19,11 +19,11 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.ERBItemFinder;
-import com.epa.erb.IndicatorCard;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
+import com.epa.erb.indicators.IndicatorCard;
 import com.epa.erb.noteboard.NoteBoardRowController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
@@ -246,48 +246,48 @@ public class XMLManager {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				ArrayList<IndicatorCard> indicatorCards = new ArrayList<IndicatorCard>();
-				FileHandler fileHandler = new FileHandler();
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(xmlFile);
-				doc.getDocumentElement().normalize();
-
-				NodeList cardNodeList = doc.getElementsByTagName("card");
-				for (int i = 0; i < cardNodeList.getLength(); i++) {
-					Node cardNode = cardNodeList.item(i);
-					if (cardNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element cardElement = (Element) cardNode;
-						String id = cardElement.getAttribute("id");
-						String system = cardElement.getAttribute("system");
-						String indicator = cardElement.getAttribute("indicator");
-						String definition = cardElement.getAttribute("definition");
-						String resilienceValue = cardElement.getAttribute("resilienceValue");
-						String equityValue = cardElement.getAttribute("equityValue");
-						String localConcern = cardElement.getAttribute("localConcern");
-						String quantitativeDataSources = cardElement.getAttribute("quantitativeDataSources");
-						String quantitativeCollProcess = cardElement.getAttribute("quantitativeCollProcess");
-						String qualitativeCollProcess = cardElement.getAttribute("qualitativeCollProcess");
-						String additionalInformation = cardElement.getAttribute("additionalInformation");
-						String rawDataCollectionNotes = cardElement.getAttribute("rawDataCollectionNotes");
-						String dataPoints = cardElement.getAttribute("dataPoints");
-						String thresholds = cardElement.getAttribute("thresholds");
-						
-						ArrayList<String> questionsToAnswer = new ArrayList<String>();
-						NodeList questions = cardElement.getElementsByTagName("questionsToAnswer");
-						Element questionsElement = (Element) questions.item(0);						
-						NodeList q = questionsElement.getElementsByTagName("question");
-						for(int j=0; j<q.getLength(); j++) {
-							Node qNode = q.item(j);
-							if (qNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element qElement = (Element) qNode;
-								String questionText = qElement.getAttribute("text");
-								questionsToAnswer.add(questionText);
-							}
-						}
-						IndicatorCard indicatorCard = new IndicatorCard(id, system, indicator, definition, resilienceValue, equityValue, localConcern, quantitativeDataSources, quantitativeCollProcess, qualitativeCollProcess, additionalInformation, rawDataCollectionNotes, dataPoints, thresholds, questionsToAnswer);
-						indicatorCards.add(indicatorCard);
-					}
-				}
+//				FileHandler fileHandler = new FileHandler();
+//				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+//				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+//				Document doc = dBuilder.parse(xmlFile);
+//				doc.getDocumentElement().normalize();
+//
+//				NodeList cardNodeList = doc.getElementsByTagName("card");
+//				for (int i = 0; i < cardNodeList.getLength(); i++) {
+//					Node cardNode = cardNodeList.item(i);
+//					if (cardNode.getNodeType() == Node.ELEMENT_NODE) {
+//						Element cardElement = (Element) cardNode;
+//						String id = cardElement.getAttribute("id");
+//						String system = cardElement.getAttribute("system");
+//						String indicator = cardElement.getAttribute("indicator");
+//						String definition = cardElement.getAttribute("definition");
+//						String resilienceValue = cardElement.getAttribute("resilienceValue");
+//						String equityValue = cardElement.getAttribute("equityValue");
+//						String localConcern = cardElement.getAttribute("localConcern");
+//						String quantitativeDataSources = cardElement.getAttribute("quantitativeDataSources");
+//						String quantitativeCollProcess = cardElement.getAttribute("quantitativeCollProcess");
+//						String qualitativeCollProcess = cardElement.getAttribute("qualitativeCollProcess");
+//						String additionalInformation = cardElement.getAttribute("additionalInformation");
+//						String rawDataCollectionNotes = cardElement.getAttribute("rawDataCollectionNotes");
+//						String dataPoints = cardElement.getAttribute("dataPoints");
+//						String thresholds = cardElement.getAttribute("thresholds");
+//						
+//						ArrayList<String> questionsToAnswer = new ArrayList<String>();
+//						NodeList questions = cardElement.getElementsByTagName("questionsToAnswer");
+//						Element questionsElement = (Element) questions.item(0);						
+//						NodeList q = questionsElement.getElementsByTagName("question");
+//						for(int j=0; j<q.getLength(); j++) {
+//							Node qNode = q.item(j);
+//							if (qNode.getNodeType() == Node.ELEMENT_NODE) {
+//								Element qElement = (Element) qNode;
+//								String questionText = qElement.getAttribute("text");
+//								questionsToAnswer.add(questionText);
+//							}
+//						}
+//						IndicatorCard indicatorCard = new IndicatorCard(id, system, indicator, definition, resilienceValue, equityValue, localConcern, quantitativeDataSources, quantitativeCollProcess, qualitativeCollProcess, additionalInformation, rawDataCollectionNotes, dataPoints, thresholds, questionsToAnswer);
+//						indicatorCards.add(indicatorCard);
+//					}
+//				}
 				return indicatorCards;
 			} catch (Exception e) {
 				logger.error(e.getMessage());

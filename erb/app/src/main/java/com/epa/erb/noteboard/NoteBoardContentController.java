@@ -7,9 +7,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
-import com.epa.erb.IndicatorCard;
 import com.epa.erb.engagement_action.ExternalFileUploaderController;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.indicators.IndicatorCard;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -88,10 +89,12 @@ public class NoteBoardContentController implements Initializable{
 		this.erbContentItem = erbContentItem;
 		this.indicatorCards = indicatorCards;
 		
+		if(erbContentItem != null) {
 		guidDirectory = new File(fileHandler.getGUIDDataDirectory(app.getSelectedProject(), goal) + "\\" + erbContentItem.getGuid());
 		if(!guidDirectory.exists()) guidDirectory.mkdir();
 		linearDirectory = new File(guidDirectory.getPath() + "\\linearRanking");
 		quadrantDirectory = new File(guidDirectory.getPath() + "\\quadrantRanking");
+		}
 
 	}
 	
@@ -507,7 +510,7 @@ public class NoteBoardContentController implements Initializable{
 		return cards;
 	}
 	
-	protected Pane loadIndicatorCard(IndicatorCard indicatorCard) {
+	public Pane loadIndicatorCard(IndicatorCard indicatorCard) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/NoteBoardItem.fxml"));
 			NoteBoardItem_Indicator noteBoardIndicatorItem = new NoteBoardItem_Indicator(this, indicatorCard);

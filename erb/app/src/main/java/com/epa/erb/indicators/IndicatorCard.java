@@ -1,4 +1,4 @@
-package com.epa.erb;
+package com.epa.erb.indicators;
 
 import java.util.ArrayList;
 
@@ -11,16 +11,16 @@ public class IndicatorCard {
 	String resilienceValue;
 	String equityValue;
 	String localConcern;
+	ArrayList<String> dataQuestionsToAnswer;
 	String quantitativeDataSources;
-	String quantitativeDataCollProcess;
-	String qualitativeDataCollProcess;
+	String quantitativeDataCollectionProcess;
+	String qualitativeDataCollectionProcess;
 	String additionalInformation;
 	String rawDataCollectionNotes;
 	String dataPoints;
 	String thresholds;
-	ArrayList<String> questionsToAnswer;
 	
-	public IndicatorCard(String id, String s, String i, String d, String rV, String eV, String lC,  String qnDS, String qnDC, String qlDC, String aI, String rdColl, String dP, String t, ArrayList<String> q) {
+	public IndicatorCard(String id, String s, String i, String d, String rV, String eV, String lC, ArrayList<String> q, String qnDS, String qnDC, String qlDC, String aI, String rdColl, String dP, String t ) {
 		this.id = id;
 		this.system = s;
 		this.indicator = i;
@@ -28,14 +28,14 @@ public class IndicatorCard {
 		this.resilienceValue = rV;
 		this.equityValue = eV;
 		this.localConcern =lC;
+		this.dataQuestionsToAnswer = q;
 		this.quantitativeDataSources = qnDS;
-		this.quantitativeDataCollProcess = qnDC;
-		this.qualitativeDataCollProcess = qlDC;
+		this.quantitativeDataCollectionProcess = qnDC;
+		this.qualitativeDataCollectionProcess = qlDC;
 		this.additionalInformation = aI;
 		this.rawDataCollectionNotes = rdColl;
 		this.dataPoints = dP;
 		this.thresholds = t;
-		this.questionsToAnswer = q;
 	}
 	
 	private final String socialEnvironmentSystemColor = "#A6D0E2"; //Blue
@@ -100,16 +100,16 @@ public class IndicatorCard {
 		this.quantitativeDataSources = quantitativeDataSources;
 	}
 	public String getQuantitativeDataCollProcess() {
-		return quantitativeDataCollProcess;
+		return quantitativeDataCollectionProcess;
 	}
 	public void setQuantitativeDataCollProcess(String quantitativeDataCollProcess) {
-		this.quantitativeDataCollProcess = quantitativeDataCollProcess;
+		this.quantitativeDataCollectionProcess = quantitativeDataCollProcess;
 	}
 	public String getQualitativeDataCollProcess() {
-		return qualitativeDataCollProcess;
+		return qualitativeDataCollectionProcess;
 	}
 	public void setQualitativeDataCollProcess(String qualitativeDataCollProcess) {
-		this.qualitativeDataCollProcess = qualitativeDataCollProcess;
+		this.qualitativeDataCollectionProcess = qualitativeDataCollProcess;
 	}
 	public String getAdditionalInformation() {
 		return additionalInformation;
@@ -136,9 +136,9 @@ public class IndicatorCard {
 		this.thresholds = thresholds;
 	}
 	public ArrayList<String> getQuestionsToAnswer() {
-		return questionsToAnswer;
+		return dataQuestionsToAnswer;
 	}
 	public void setQuestionsToAnswer(ArrayList<String> questionsToAnswer) {
-		this.questionsToAnswer = questionsToAnswer;
+		this.dataQuestionsToAnswer = questionsToAnswer;
 	}
 }

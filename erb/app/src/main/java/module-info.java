@@ -6,6 +6,7 @@ module com.epa.erb {
 	requires java.base;
 	requires java.desktop;
 	requires jdk.compiler;
+	requires org.apache.poi.ooxml;
 	requires org.apache.commons.io;
 	requires org.apache.logging.log4j;
 	requires transitive javafx.graphics;
@@ -15,8 +16,11 @@ module com.epa.erb {
 	requires javafx.swing;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.goal to javafx.fxml;
+	opens com.epa.erb.print to javafx.fxml;
 	opens com.epa.erb.project to javafx.fxml;
 	opens com.epa.erb.noteboard to javafx.fxml;
+	opens com.epa.erb.indicators to javafx.fxml;
+	opens com.epa.erb.excel to javafx.fxml;
 	opens com.epa.erb.wordcloud to javafx.fxml, javafx.base;
 	opens com.epa.erb.engagement_action to javafx.fxml, javafx.base;
 	opens com.epa.erb.forms to javafx.fxml;

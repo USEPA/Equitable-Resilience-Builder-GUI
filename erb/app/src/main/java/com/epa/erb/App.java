@@ -20,9 +20,14 @@ import java.util.ArrayList;
 import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.excel.IndicatorWorkbookParser;
 import com.epa.erb.goal.GoalCategory;
+import com.epa.erb.indicators.IndicatorCard;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
@@ -59,6 +64,7 @@ public class App extends Application {
 		try {
 			Application.launch(args);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -139,8 +145,8 @@ public class App extends Application {
 	}
 	
 	private void readAndStoreIndicatorCards() {
-		File contentFile = fileHandler.getStaticIndicatorCardsXMLFile();
-		indicatorCards = xmlManager.parseIndicatorCardsXML(contentFile);
+		IndicatorWorkbookParser workbookParser = new IndicatorWorkbookParser();
+		indicatorCards = workbookParser.test();
 	}
 	
 	private void readAndStoreAvailableContent() {

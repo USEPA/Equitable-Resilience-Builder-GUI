@@ -17,7 +17,12 @@ import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.indicators.IndicatorCard;
+import com.epa.erb.indicators.IndicatorsPrintViewController;
 import com.epa.erb.noteboard.IndicatorSetupFormController;
+import com.epa.erb.noteboard.NoteBoardContentController;
+import com.epa.erb.noteboard.NoteBoardItem_Indicator;
+import com.epa.erb.print.PrinterSelectionController;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
@@ -26,6 +31,7 @@ import com.epa.erb.wordcloud.WordCloudController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -104,6 +110,54 @@ public class EngagementActionController implements Initializable {
 		
 		previousButton.getStylesheets().add(getClass().getResource("/button.css").toString());
 		nextButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+	}
+	
+	@FXML
+	public void openIndicators() {
+		File indicatorsFile = new File(fileHandler.getSupportingDOCDirectory(project, currentSelectedGoal) + "\\Indicators_Master_List.xlsx");
+		if(indicatorsFile.exists()) {
+			fileHandler.openFileOnDesktop(indicatorsFile);
+		}
+	}
+	
+	@FXML
+	public void printIndicators() {
+		
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorsPrintView.fxml"));
+			IndicatorsPrintViewController indicatorsPrintView = new IndicatorsPrintViewController(app);
+			fxmlLoader.setController(indicatorsPrintView);
+			fxmlLoader.load();
+			showPrinters(indicatorsPrintView);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void showPrinters(IndicatorsPrintViewController indicatorsPrintView) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/print/PrinterSelection.fxml"));
+			PrinterSelectionController printerSelectionController = new PrinterSelectionController(indicatorsPrintView);
+			fxmlLoader.setController(printerSelectionController);
+			VBox root = fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Printer Selection");
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void selectIndicators() {
+		
+	}
+	
+	@FXML
+	public void interactiveIndicators() {
+		
 	}
 
 	private void initFacilitatorMode() {

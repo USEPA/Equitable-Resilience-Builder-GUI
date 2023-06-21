@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
-import com.epa.erb.IndicatorCard;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.indicators.IndicatorCard;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
