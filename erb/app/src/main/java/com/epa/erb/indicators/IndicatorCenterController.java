@@ -29,7 +29,7 @@ public class IndicatorCenterController implements Initializable{
 	
 	@FXML
 	public void indicatorsListHyperlinkAction() {
-		File indicatorsListFile = new File(fileHandler.getSupportingDOCDirectory(eAC.getProject(), eAC.getCurrentGoal()) + "\\Indicators_Master_List.xlsx");
+		File indicatorsListFile = new File(fileHandler.getSupportingDOCDirectory(eAC.getProject(), eAC.getCurrentGoal()) + "\\Indicators_List.xlsx");
 		if(indicatorsListFile.exists()) {
 			fileHandler.openFileOnDesktop(indicatorsListFile);
 		}

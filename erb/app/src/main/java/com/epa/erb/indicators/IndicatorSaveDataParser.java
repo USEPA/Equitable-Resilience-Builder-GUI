@@ -39,7 +39,7 @@ public class IndicatorSaveDataParser {
 	}
 	
 	public ArrayList<IndicatorCard> getSavedSelectedIndicatorCards_InPerson() {
-		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_Master_List.xlsx");
+		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
 		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(indicatorWorkbookFile);
 		ArrayList<IndicatorCard> cards = iWP.parseForIndicatorCards();
 
@@ -93,7 +93,7 @@ public class IndicatorSaveDataParser {
 	}
 	
 	public ArrayList<IndicatorCard> getSavedSelectedIndicatorCards_Virtual() {
-		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_Master_List.xlsx");
+		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
 		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(indicatorWorkbookFile);
 		ArrayList<IndicatorCard> cards = iWP.parseForIndicatorCards();
 
@@ -108,77 +108,4 @@ public class IndicatorSaveDataParser {
 		return savedCards;
 	}
 	
-	public ArrayList<String> getSavedRankedIndicatorIds_VirtualRanking(String guid) {
-		File virtualRankedCardsFile = new File(indicatorsDir + "\\Ranking_Virtual\\" + guid + "\\Ranking_CardsRanked_Virtual.txt");
-		if(virtualRankedCardsFile.exists()) {
-			ArrayList<String> indicatorIds = new ArrayList<String>();
-			try {
-				Scanner scanner = new Scanner(virtualRankedCardsFile);
-				while (scanner.hasNextLine()) {
-					String line = scanner.nextLine();
-					indicatorIds.add(line.trim());
-				}
-				scanner.close();
-				return indicatorIds;
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-	
-	public ArrayList<IndicatorCard> getSavedRankedIndicatorCards_VirtualRanking(String guid) {
-		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_Master_List.xlsx");
-		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(indicatorWorkbookFile);
-		ArrayList<IndicatorCard> cards = iWP.parseForIndicatorCards();
-		
-		ArrayList<String> ids = getSavedRankedIndicatorIds_VirtualRanking(guid);
-		ArrayList<IndicatorCard> savedCards = new ArrayList<IndicatorCard>();
-		
-		for(IndicatorCard iC: cards) {
-			if(ids.contains(iC.getId())) {
-				savedCards.add(iC);
-			}
-		}
-		return savedCards;
-	}
-	
-	public ArrayList<String> getSavedBankedIndicatorIds_VirtualRanking(String guid) {
-		File virtualBankedCardsFile = new File(indicatorsDir + "\\Ranking_Virtual\\" + guid +  "\\Ranking_CardsBanked_Virtual.txt");
-		if(virtualBankedCardsFile.exists()) {
-			ArrayList<String> indicatorIds = new ArrayList<String>();
-			try {
-				Scanner scanner = new Scanner(virtualBankedCardsFile);
-				while (scanner.hasNextLine()) {
-					String line = scanner.nextLine();
-					indicatorIds.add(line.trim());
-				}
-				scanner.close();
-				return indicatorIds;
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-	
-	public ArrayList<IndicatorCard> getSavedBankedIndicatorCards_VirtualRanking(String guid) {
-		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_Master_List.xlsx");
-		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(indicatorWorkbookFile);
-		ArrayList<IndicatorCard> cards = iWP.parseForIndicatorCards();
-		
-		ArrayList<String> ids = getSavedBankedIndicatorIds_VirtualRanking(guid);
-		ArrayList<IndicatorCard> savedCards = new ArrayList<IndicatorCard>();
-		
-		for(IndicatorCard iC: cards) {
-			if(ids.contains(iC.getId())) {
-				savedCards.add(iC);
-			}
-		}
-		return savedCards;
-	}
-	
-	
-	
-
 }

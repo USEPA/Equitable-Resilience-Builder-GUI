@@ -85,7 +85,6 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		ArrayList<IndicatorCard> cards = iSDP.getSavedSelectedIndicatorCards_Virtual();
 		if (cards != null && cards.size() > 0) {
 			for (IndicatorCard card : cards) {
-				System.out.println("Adding " + card.getIndicator());
 				try {
 					Pane cVBox = loadIndicatorCard(card);
 					indicatorCardVBox.getChildren().add(cVBox);
@@ -226,7 +225,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	}
 	
 	private IndicatorCard [] getIndicatorCardsInRanked() {
-		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_Master_List.xlsx");
+		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
 		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(indicatorWorkbookFile);
 		ArrayList<IndicatorCard> allCards = iWP.parseForIndicatorCards();
 		ArrayList<String> indicatorIds = getIndicatorCardIdsInRanked();

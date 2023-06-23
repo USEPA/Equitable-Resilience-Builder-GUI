@@ -132,7 +132,7 @@ public class EngagementActionController implements Initializable {
 	
 //	@FXML
 //	public void openIndicators() {
-//		File indicatorsFile = new File(fileHandler.getSupportingDOCDirectory(project, currentSelectedGoal) + "\\Indicators_Master_List.xlsx");
+//		File indicatorsFile = new File(fileHandler.getSupportingDOCDirectory(project, currentSelectedGoal) + "\\Indicators_List.xlsx");
 //		if(indicatorsFile.exists()) {
 //			fileHandler.openFileOnDesktop(indicatorsFile);
 //		}

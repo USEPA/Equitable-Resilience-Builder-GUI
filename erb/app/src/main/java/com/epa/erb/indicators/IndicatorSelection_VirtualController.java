@@ -44,7 +44,7 @@ public class IndicatorSelection_VirtualController implements Initializable{
 	}
 	
 	private void initWBParser() {
-		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_Master_List.xlsx");
+		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
 		iWP = new IndicatorWorkbookParser(indicatorWorkbookFile);
 	}
 	
