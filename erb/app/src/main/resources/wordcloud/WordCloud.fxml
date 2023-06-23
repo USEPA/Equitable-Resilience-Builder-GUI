@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefWidth="901.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefWidth="901.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background: white; -fx-border-color: white;">
          <content>
@@ -47,7 +47,7 @@
                   </Separator>
                   <VBox>
                      <children>
-                        <Label minWidth="430.0" text="Step 1. Enter word or phrase below OR Enter a block of text.">
+                        <Label minWidth="430.0" text="Step 1. Enter a word or phrase below OR Enter a block of text.">
                            <font>
                               <Font size="16.0" />
                            </font>

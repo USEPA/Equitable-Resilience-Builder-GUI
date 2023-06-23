@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identify and invite four to six people to be on the ERB core team that will lead ERB activities and make decisions.">
+			text="Identify and invite five to ten people to be on the ERB core team that will lead ERB activities and make decisions.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -71,7 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Send them an invitation email with our intro to ERB">
+			text="Send them an invitation email with the introduction to ERB">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -157,7 +157,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Are there accomodations that can be made to support participation">
+			text="Are there accomodations that can be made to support participation?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -228,7 +228,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Recruitment guide"
+			text="Recruitment Guide"
 			linkType="externalDOC"
 			link="Recruitment_Guide.docx">
 			</text>
@@ -236,7 +236,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Youth engagement guide"
+			text="Youth Engagement"
 			linkType="internal"
 			link="10">
 			</text>
@@ -275,7 +275,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="When selecting team members, consider age, race, ethnicity, religion, gender identity, LGBTQIA, people with disabilities, local leaders, and intersectional identities.">
+			text="When selecting team members, consider age, race, ethnicity, religion, gender identity, LGBTQIA+, people with disabilities, local leaders, and intersectional identities.">
 			</text>
 		</textBlock>
 		<textBlock>

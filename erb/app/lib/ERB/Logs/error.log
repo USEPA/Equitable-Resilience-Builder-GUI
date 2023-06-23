@@ -27,3 +27,4 @@
 | ERROR | 2023-06-13 09:35:58 | FileHandler.java:229 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
 | ERROR | 2023-06-13 09:35:58 | FileHandler.java:229 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\~$Indicators_Master_List.xlsx (The process cannot access the file because it is being used by another process)
 | ERROR | 2023-06-23 08:38:44 | XMLManager.java:453 | Invalid URL: unknown protocol: c
+| ERROR | 2023-06-23 10:11:49 | XMLManager.java:453 | Element type "text" must be followed by either attribute specifications, ">" or "/>".
