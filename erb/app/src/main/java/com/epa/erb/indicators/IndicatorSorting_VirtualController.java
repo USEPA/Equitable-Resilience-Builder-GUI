@@ -69,6 +69,8 @@ public class IndicatorSorting_VirtualController implements Initializable{
 		int numCards = cards.size();
 		int maxRows = 2;
 		int maxColumns = 4;
+		int minRows = 2;
+		int minColumns = 3;
 		int numGrids = 4;
 
 		int numRowsForSorting = 1;
@@ -85,6 +87,9 @@ public class IndicatorSorting_VirtualController implements Initializable{
 				}
 			}
 		}
+		if(numRowsForSorting < minRows) numRowsForSorting = minRows;
+		if(numColumnsForSorting < minColumns) numColumnsForSorting = minColumns;
+		
 		GridPane gridPane1 = createRankingGridPane(numRowsForSorting, numColumnsForSorting);
 		majorGridPane.add(gridPane1, 0, 0);
 		gridPane1.setStyle("-fx-border-color: #FFE400; -fx-background-color: #FFF6AD");
@@ -104,7 +109,6 @@ public class IndicatorSorting_VirtualController implements Initializable{
 		for(int i = 0; i < numberOfRows; i++) {
 			for(int j =0; j< numberOfColumns;j++) {
 				VBox gridVBox = new VBox();
-				gridVBox.setStyle("-fx-border-color: #DADADA");
 				gridVBox.setAlignment(Pos.CENTER);
 				gridPane.add(gridVBox, j, i);
 				gridPane.widthProperty().addListener((obs, oldVal, newVal) -> {
