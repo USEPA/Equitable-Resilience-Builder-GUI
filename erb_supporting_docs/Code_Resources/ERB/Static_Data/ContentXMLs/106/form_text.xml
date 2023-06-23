@@ -207,6 +207,14 @@
 			linkType="externalDOC"
 			link="Indicators_List.xlsx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicator Center"
+			linkType="internal"
+			link="85">
+			</text>
 			</listBlock>
 		</textBlock>
 		<textBlock>

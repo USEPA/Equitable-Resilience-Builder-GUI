@@ -11,6 +11,7 @@ import com.epa.erb.ERBContentItem;
 import com.epa.erb.ERBItemFinder;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
+import com.epa.erb.indicators.IndicatorCenterController;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
@@ -118,7 +119,23 @@ public class FormController {
 	
 	public void handleHyperlink(Text text, String linkType, String link, Project project) {
 		if (linkType.contentEquals("internal")) {
-			internalPanelLinkClicked(link);
+			if(link.contentEquals("85")) {
+				try {
+					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCenter.fxml"));
+					IndicatorCenterController indicatorCenterController = new IndicatorCenterController(engagementActionController);
+					fxmlLoader.setController(indicatorCenterController);
+					VBox root = fxmlLoader.load();
+					Stage stage = new Stage();
+					stage.setTitle("Indicator Center");
+					Scene scene = new Scene(root);
+					stage.setScene(scene);
+					stage.show();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {
+				internalPanelLinkClicked(link);
+			}
 		} 
 //		else if (linkType.contentEquals("internalResource")) {
 //			internalPanelLinkClicked(link);
