@@ -25,7 +25,7 @@
       </HBox>
       <HBox>
          <children>
-            <ScrollPane fx:id="rankedScrollPane" fitToHeight="true" minHeight="105.0" style="-fx-background: white; -fx-border-color: white;" HBox.hgrow="ALWAYS">
+            <ScrollPane fx:id="rankedScrollPane" fitToHeight="true" minHeight="105.0" style="-fx-border-color: white;" HBox.hgrow="ALWAYS">
                <content>
                   <HBox fx:id="rankedHBox" spacing="5.0" />
                </content>
@@ -34,7 +34,7 @@
       </HBox>
       <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background: white; -fx-border-color: white;" VBox.vgrow="ALWAYS">
          <content>
-            <BorderPane style="-fx-background-color: white;">
+            <BorderPane fx:id="borderPane" style="-fx-background-color: white;">
                <left>
                   <Label minHeight="20.0" minWidth="100.0" text="Less resilient" BorderPane.alignment="CENTER">
                      <font>

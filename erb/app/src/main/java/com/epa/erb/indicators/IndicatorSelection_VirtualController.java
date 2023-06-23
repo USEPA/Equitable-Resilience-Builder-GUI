@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
 import com.epa.erb.utility.FileHandler;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -82,12 +81,12 @@ public class IndicatorSelection_VirtualController implements Initializable{
 	
 	@FXML
 	public void rankingButtonAction() {
+		saveButtonAction();
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorRanking_Virtual.fxml"));
 			IndicatorRanking_VirtualController iRV = new IndicatorRanking_VirtualController(app);
 			fxmlLoader.setController(iRV);
 			VBox root = fxmlLoader.load();
-			iRV.loadDataFromIndicatorSelection();
 			Stage stage = new Stage();
 			stage.setTitle("Indicator Ranking");
 			Scene scene = new Scene(root);

@@ -1,15 +1,19 @@
 package com.epa.erb.indicators;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javax.imageio.ImageIO;
+import java.io.File;
 import com.epa.erb.App;
+import com.epa.erb.engagement_action.ExternalFileUploaderController;
 import com.epa.erb.utility.FileHandler;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -40,13 +45,14 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	@FXML
 	Button saveButton;
 	@FXML
+	VBox vBoxToSnapshot;
+	@FXML
 	VBox indicatorCardVBox;
 	@FXML
 	ScrollPane rankingScrollPane;
 	@FXML
 	ComboBox<String> indicatorChoiceBox;
 	
-	private String loadedGuid = new String();
 	private FileHandler fileHandler = new FileHandler();
 	
 	private App app;
@@ -68,66 +74,23 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		    double newWidth = newVal.doubleValue()-10.0;
 		    rankingHBox.setMinWidth(newWidth);
 		});
-	}
-	
-	public void loadDataFromPreviousSession(String guid) {
-		indicatorCardVBox.getChildren().clear();
-		rankingHBox.getChildren().clear();
-		setLoadedGuid(guid);
-		System.out.println("Loaded guid " + guid);
 		
-		IndicatorSaveDataParser iSDP = new IndicatorSaveDataParser(app);
-		ArrayList<IndicatorCard> bankedCards = iSDP.getSavedBankedIndicatorCards_VirtualRanking(guid);
-		ArrayList<IndicatorCard> rankedCards = iSDP.getSavedRankedIndicatorCards_VirtualRanking(guid);
-
-		for(IndicatorCard card: bankedCards) {
-			try {
-				Pane cVBox = loadIndicatorCard(card);
-				indicatorCardVBox.getChildren().add(cVBox);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}	
-		
-		for(IndicatorCard card: rankedCards) {
-			try {
-				Pane cVBox = loadIndicatorCard(card);
-				rankingHBox.getChildren().add(cVBox);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}	
+		loadDataFromIndicatorSelection();
 	}
 	
-	public void loadDataFromIndicatorSelection() {
-		setLoadedGuid(new String());
-		System.out.println("Indicator guid " + getLoadedGuid());
+	private void loadDataFromIndicatorSelection() {
 		IndicatorSaveDataParser iSDP = new IndicatorSaveDataParser(app);
-		ArrayList<IndicatorCard> cards =  iSDP.getSavedSelectedIndicatorCards_Virtual();
-		for(IndicatorCard card: cards) {
-			try {
-				Pane cVBox = loadIndicatorCard(card);
-				indicatorCardVBox.getChildren().add(cVBox);
-			} catch (Exception e) {
-				e.printStackTrace();
+		ArrayList<IndicatorCard> cards = iSDP.getSavedSelectedIndicatorCards_Virtual();
+		if (cards != null && cards.size() > 0) {
+			for (IndicatorCard card : cards) {
+				System.out.println("Adding " + card.getIndicator());
+				try {
+					Pane cVBox = loadIndicatorCard(card);
+					indicatorCardVBox.getChildren().add(cVBox);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-		}		
-	}
-	
-	@FXML
-	public void loadPreviousDataButtonAction() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorRanking_Virtual_PreviousDataSelection.fxml"));
-			IndicatorRanking_Virtual_PreviousDataSelectionController iRVPDC = new IndicatorRanking_Virtual_PreviousDataSelectionController(app, this);
-			fxmlLoader.setController(iRVPDC);
-			VBox root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Load previous indicator ranking data");
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -189,8 +152,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	public void quadrantButtonAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorSorting_Virtual.fxml"));
-			IndicatorSorting_VirtualController iSV = new IndicatorSorting_VirtualController(app);
-			iSV.initCards(null); //TODO: Fix here
+			IndicatorSorting_VirtualController iSV = new IndicatorSorting_VirtualController(app, getIndicatorCardsInRanked());
 			fxmlLoader.setController(iSV);
 			VBox root = fxmlLoader.load();
 			Stage stage = new Stage();
@@ -205,33 +167,23 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	
 	@FXML
 	public void saveButtonAction() {
-		String guid = app.generateGUID();
-		if(getLoadedGuid().length()>0) {
-			guid = getLoadedGuid();
+		if (vBoxToSnapshot.getWidth() > 0 && vBoxToSnapshot.getHeight() > 0) {
+			WritableImage writableImage = new WritableImage((int) vBoxToSnapshot.getWidth(), (int) vBoxToSnapshot.getHeight());
+			vBoxToSnapshot.snapshot(null, writableImage);
+			try {
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM_dd_yyyy_HH.mm.ss");  
+				LocalDateTime now = LocalDateTime.now();  
+				File rankingVirtualDir = createIndicatorsRankingVirtualDir();
+				File virtualRankedSnapshotSave = new File(rankingVirtualDir + "\\RankingSnapshot_" + dtf.format(now) + ".png");
+				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", virtualRankedSnapshotSave);
+				ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app.getEngagementActionController());
+				exFileUploader.pushToUploaded(virtualRankedSnapshotSave, "Indicator Center");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		setLoadedGuid(guid);
-		System.out.println("GUID for saving " + guid);
-		File rankingVirtualDir = createIndicatorsRankingVirtualDir();
-		File guidDir = new File(rankingVirtualDir + "\\" + guid);
-		if(!guidDir.exists()) guidDir.mkdir();
-		File virtualRankedCardsFile = new File(guidDir + "\\Ranking_CardsRanked_Virtual.txt");
-		File virtualBankedCardsFile = new File(guidDir + "\\Ranking_CardsBanked_Virtual.txt");
-		writeRankedIndicatorIds(virtualRankedCardsFile);
-		writeBankedIndicatorIds(virtualBankedCardsFile);
 	}
 		
-	private File createIndicatorsRankingVirtualDir() {
-		File indicatorsDir = fileHandler.getIndicatorsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
-		if(!indicatorsDir.exists()) {
-			indicatorsDir.mkdir();
-		}
-		File rankingVirtualDir = new File(indicatorsDir + "\\Ranking_Virtual");
-		if(!rankingVirtualDir.exists()) {
-			rankingVirtualDir.mkdir();
-		}
-		return rankingVirtualDir;
-	}
-
 	private Pane loadIndicatorCard(IndicatorCard card) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCard.fxml"));
@@ -257,15 +209,6 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		}
 	}
 	
-	private ArrayList<String> getIndicatorCardIdsInBank(){
-		ArrayList<String> indicatorIds = new ArrayList<String>();
-		for(int i =0; i < indicatorCardVBox.getChildren().size();i++) {
-			VBox indicatorVBox = (VBox) indicatorCardVBox.getChildren().get(i);
-			if(indicatorVBox!= null) indicatorIds.add(indicatorVBox.getId());
-		}
-		return indicatorIds;
-	}
-	
 	private ArrayList<String> getIndicatorCardIdsInRanked(){
 		ArrayList<String> indicatorIds = new ArrayList<String>();
 		if(rankingHBox.getChildren().size() > 0) {
@@ -277,28 +220,32 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		return indicatorIds;
 	}
 	
-	public void writeRankedIndicatorIds(File file) {
-		try {
-			PrintWriter printWriter = new PrintWriter(file);
-			for (String id : getIndicatorCardIdsInRanked()) {
-				printWriter.println(id);
+	private IndicatorCard [] getIndicatorCardsInRanked() {
+		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_Master_List.xlsx");
+		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(indicatorWorkbookFile);
+		ArrayList<IndicatorCard> allCards = iWP.parseForIndicatorCards();
+		ArrayList<String> indicatorIds = getIndicatorCardIdsInRanked();
+
+		IndicatorCard [] cds = new IndicatorCard [indicatorIds.size()];
+		for(IndicatorCard iC: allCards) {
+			if(indicatorIds.contains(iC.getId())) {
+				cds[indicatorIds.indexOf(iC.getId())] = iC;
 			}
-			printWriter.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
+		return cds;
 	}
 	
-	public void writeBankedIndicatorIds(File file) {
-		try {
-			PrintWriter printWriter = new PrintWriter(file);
-			for (String id : getIndicatorCardIdsInBank()) {
-				printWriter.println(id);
-			}
-			printWriter.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+	private File createIndicatorsRankingVirtualDir() {
+		File indicatorsDir = fileHandler.getIndicatorsDirectory(app.getSelectedProject(),
+				app.getEngagementActionController().getCurrentGoal());
+		if (!indicatorsDir.exists()) {
+			indicatorsDir.mkdir();
 		}
+		File rankingVirtualDir = new File(indicatorsDir + "\\Ranking_Virtual");
+		if (!rankingVirtualDir.exists()) {
+			rankingVirtualDir.mkdir();
+		}
+		return rankingVirtualDir;
 	}
 	
 	private static final String TAB_DRAG_KEY = "pane";
@@ -372,13 +319,108 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			event.consume();
 		});
 	}
+	
+//	private ArrayList<String> getIndicatorCardIdsInBank(){
+//	ArrayList<String> indicatorIds = new ArrayList<String>();
+//	for(int i =0; i < indicatorCardVBox.getChildren().size();i++) {
+//		VBox indicatorVBox = (VBox) indicatorCardVBox.getChildren().get(i);
+//		if(indicatorVBox!= null) indicatorIds.add(indicatorVBox.getId());
+//	}
+//	return indicatorIds;
+//}
+//	public void writeRankedIndicatorIds(File file) {
+//	try {
+//		PrintWriter printWriter = new PrintWriter(file);
+//		for (String id : getIndicatorCardIdsInRanked()) {
+//			printWriter.println(id);
+//		}
+//		printWriter.close();
+//	} catch (FileNotFoundException e) {
+//		e.printStackTrace();
+//	}
+//}
 
-	public String getLoadedGuid() {
-		return loadedGuid;
-	}
-
-	public void setLoadedGuid(String loadedGuid) {
-		this.loadedGuid = loadedGuid;
-	}
-
+//public void writeBankedIndicatorIds(File file) {
+//	try {
+//		PrintWriter printWriter = new PrintWriter(file);
+//		for (String id : getIndicatorCardIdsInBank()) {
+//			printWriter.println(id);
+//		}
+//		printWriter.close();
+//	} catch (FileNotFoundException e) {
+//		e.printStackTrace();
+//	}
+//}
+//	
+//	public void loadDataFromPreviousSession(String guid) {
+//	indicatorCardVBox.getChildren().clear();
+//	rankingHBox.getChildren().clear();
+//	setLoadedGuid(guid);
+//	System.out.println("Loaded guid " + guid);
+//	
+//	IndicatorSaveDataParser iSDP = new IndicatorSaveDataParser(app);
+//	ArrayList<IndicatorCard> bankedCards = iSDP.getSavedBankedIndicatorCards_VirtualRanking(guid);
+//	ArrayList<IndicatorCard> rankedCards = iSDP.getSavedRankedIndicatorCards_VirtualRanking(guid);
+//
+//	for(IndicatorCard card: bankedCards) {
+//		try {
+//			Pane cVBox = loadIndicatorCard(card);
+//			indicatorCardVBox.getChildren().add(cVBox);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}	
+//	
+//	for(IndicatorCard card: rankedCards) {
+//		try {
+//			Pane cVBox = loadIndicatorCard(card);
+//			rankingHBox.getChildren().add(cVBox);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}	
+//}
+//	private File createIndicatorsRankingVirtualDir() {
+//	File indicatorsDir = fileHandler.getIndicatorsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
+//	if(!indicatorsDir.exists()) {
+//		indicatorsDir.mkdir();
+//	}
+//	File rankingVirtualDir = new File(indicatorsDir + "\\Ranking_Virtual");
+//	if(!rankingVirtualDir.exists()) {
+//		rankingVirtualDir.mkdir();
+//	}
+//	return rankingVirtualDir;
+//}
+//	@FXML
+//	public void saveButtonAction() {
+//		String guid = app.generateGUID();
+//		if(getLoadedGuid().length()>0) {
+//			guid = getLoadedGuid();
+//		}
+//		setLoadedGuid(guid);
+//		System.out.println("GUID for saving " + guid);
+//		File rankingVirtualDir = createIndicatorsRankingVirtualDir();
+//		File guidDir = new File(rankingVirtualDir + "\\" + guid);
+//		if(!guidDir.exists()) guidDir.mkdir();
+//		File virtualRankedCardsFile = new File(guidDir + "\\Ranking_CardsRanked_Virtual.txt");
+//		File virtualBankedCardsFile = new File(guidDir + "\\Ranking_CardsBanked_Virtual.txt");
+//		writeRankedIndicatorIds(virtualRankedCardsFile);
+//		writeBankedIndicatorIds(virtualBankedCardsFile);
+//	}
+//	@FXML
+//	public void loadPreviousDataButtonAction() {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorRanking_Virtual_PreviousDataSelection.fxml"));
+//			IndicatorRanking_Virtual_PreviousDataSelectionController iRVPDC = new IndicatorRanking_Virtual_PreviousDataSelectionController(app, this);
+//			fxmlLoader.setController(iRVPDC);
+//			VBox root = fxmlLoader.load();
+//			Stage stage = new Stage();
+//			stage.setTitle("Load previous indicator ranking data");
+//			Scene scene = new Scene(root);
+//			stage.setScene(scene);
+//			stage.show();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
