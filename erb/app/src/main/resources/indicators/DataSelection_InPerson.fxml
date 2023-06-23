@@ -20,7 +20,7 @@
             </Label>
          </children>
       </HBox>
-      <CheckBox fx:id="defaultDataCheckBox" mnemonicParsing="false" onAction="#defaultDataCheckBoxAction" text="Default data">
+      <CheckBox fx:id="defaultDataCheckBox" mnemonicParsing="false" onAction="#defaultDataCheckBoxAction" text="Default data (Indicator, Definition, Data Points, Thresholds, Resilience Value, Equity Value, Local Concerns)" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>

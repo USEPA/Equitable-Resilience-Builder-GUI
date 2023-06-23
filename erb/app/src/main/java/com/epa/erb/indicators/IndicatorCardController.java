@@ -130,7 +130,7 @@ public class IndicatorCardController implements Initializable{
 	}
 	
 	public void addTextForPrinting(String field) {
-		if(field.contentEquals("Default data")) {
+		if(field.contains("Default data")) {
 			addAllTextForPrinting();
 		} else if(field.contentEquals("System")) {
 			

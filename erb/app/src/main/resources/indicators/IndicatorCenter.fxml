@@ -33,7 +33,7 @@
          <children>
             <Label text="1. Add new indicator(s)" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label text="How to: " underline="true" wrapText="true">
@@ -43,7 +43,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label text="a). Click the folloring hyperlink to open the indicators list workbook:" wrapText="true">
+                  <Label text="a). Click the following hyperlink to open the indicators list workbook:" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -66,7 +66,7 @@
          <children>
             <Label text="2. Select indicators for data collection" wrapText="true">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label text="How to: " underline="true" wrapText="true">
@@ -76,7 +76,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label text="a). Click the folloring hyperlink to open the indicators list workbook:" wrapText="true">
+                  <Label text="a). Click the following hyperlink to open the indicators list workbook:" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -99,7 +99,7 @@
          <children>
             <Label text="3. Collect data" wrapText="true">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label text="How to: " underline="true" wrapText="true">
@@ -114,7 +114,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label text="b). Click the folloring hyperlink to open the indicators list workbook:" wrapText="true">
+                  <Label text="b). Click the following hyperlink to open the indicators list workbook:" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -145,7 +145,7 @@
       </HBox>
       <Label text="Once you have decided to complete the indicator activity, choose whether to complete Option 1 and/or Option 2." wrapText="true">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <VBox>
