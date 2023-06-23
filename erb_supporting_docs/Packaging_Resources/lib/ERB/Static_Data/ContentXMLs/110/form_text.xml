@@ -194,7 +194,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Indicator Board"
+			text="Indicator Center"
 			linkType="internal"
 			link="85">
 			</text>
@@ -210,9 +210,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Indicators Master List"
+			text="Indicators List"
 			linkType="externalDOC"
-			link="Indicators_Master_List.xlsx">
+			link="Indicators_List.xlsx">
 			</text>
 			</listBlock>
 		</textBlock>

@@ -176,6 +176,7 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -184,6 +185,15 @@
 			linkType="externalDOC"
 			link="Monitoring_Plan_Worksheet.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicator Center"
+			linkType="internal"
+			link="85">
+			</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon

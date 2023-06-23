@@ -1,0 +1,184 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Quick-start guide">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why might I want to use this tool?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The Equitable Resilience Builder supports communities in strengthening resilience to disasters and climate change, with a focus on equity. By using this tool, you and your community will develop different types of resilience plans tailored to your needs and concerns (e.g., climate adaptation, hazard mitigation, emergency preparedness). The process is collaborative, with planners and community members working together to prioritize actions to build community resilience in an equitable way.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What is explore mode?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Explore mode gives you the ability to check out the content of this tool without creating a project. You will be able to view the pages within the tool, open workbooks and other materials, and try out different features. Any work you do will not be saved.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What is a project?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In ERB, a project is a designated workspace that saves content you create within the tool. You create content using supporting materials (documents or spreadsheets in the Worksheet Index) or using ERB features (word cloud, key takeaways, reflection diary, indicator card sorting visualization).">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="An ERB project helps you pull together a core team to collaboratively develop and implement a plan to address current or potential future hazards, climate change, equity issues, and resilience. You will end up with a set of actions and strategies for moving forward as well as a plan for monitoring and continued outreach.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How do I start a project?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="From the ERB home page, click the Start a Project link. You will be taken to a screen to enter a name and description for your project. You can create and save more than one project at a time, which allows you to use ERB now and in the future for different resilience plans.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How do I navigate through the tool?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="There are five sections in ERB: Plan your Project, Engage your Community, Assess Hazards, Equity, and Resilience, Strategize Actions, and Moving Forward. These sections are always visible in the table of contents tree on the left side of the page. Each section contains a home page and a series of sub-pages that contain activities you can complete.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="You can navigate from one page to the next in a section using the previous and next buttons located on the left above the table of contents, or you can click directly on the table of contents to navigate to a page of your choosing.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Do I have to complete each section?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="You do not! Users can select which sections, and activities within a section, to undertake. The Plan Your Project section helps you figure out what best meets your needs and capacity.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How do I save a project?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The project you are working on saves directly within the ERB tool as you work through it. You can also download saved work to your desktop at any point using the MyPortfolio button.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How do I open a project I was working on?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="On the home page, click Continue my Project. On the next screen, select the name of the project that you want to continue.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Will EPA collect any data from me if I use ERB?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="No. Once you download the application to your computer, the EPA has no access to it. All the information that you enter into ERB is kept within the application. You can decide whether you want to download and save project files to another location on your desktop or laptop.">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

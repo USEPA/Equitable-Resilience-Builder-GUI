@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="indicatorHBox" alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="indicatorHBox" alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <CheckBox fx:id="indicatorCheckBox" mnemonicParsing="false">
          <font>

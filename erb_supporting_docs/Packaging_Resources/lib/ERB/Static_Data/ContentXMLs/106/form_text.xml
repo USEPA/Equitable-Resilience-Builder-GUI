@@ -102,7 +102,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Using the indicators selected from the previous section, delegate the gathering of indicator data to core team members and fill in the data gathered in the Indicators Master List spreadsheet">
+			text="Using the indicators selected from the previous section, delegate the gathering of indicator data to core team members and fill in the data gathered in the Indicators List spreadsheet">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -203,9 +203,17 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Indicators Master List"
+			text="Indicators List"
 			linkType="externalDOC"
-			link="Indicators_Master_List.xlsx">
+			link="Indicators_List.xlsx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicator Center"
+			linkType="internal"
+			link="85">
 			</text>
 			</listBlock>
 		</textBlock>

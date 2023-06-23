@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" prefHeight="730.0" prefWidth="1061.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" prefHeight="730.0" prefWidth="1061.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -46,25 +46,41 @@
                   </Label>
                </left>
                <top>
-                  <Label minHeight="20.0" minWidth="120.0" text="More equitable" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                     </padding>
-                  </Label>
+                  <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Increase resilience and preserve equity" textFill="#cdc956">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label minHeight="20.0" minWidth="120.0" text="More equitable">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="249.0" text="Doing well, monitor for changes" textFill="#1bb21b">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </top>
-               <bottom>
-                  <Label minHeight="20.0" minWidth="110.0" text="Less equitable" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                     </padding>
-                  </Label>
-               </bottom>
                <right>
                   <Label minHeight="20.0" minWidth="105.0" text="More resilient" BorderPane.alignment="CENTER">
                      <font>
@@ -87,6 +103,42 @@
                     </rowConstraints>
                   </GridPane>
                </center>
+               <bottom>
+                  <HBox BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="Most urgent issues to address" textFill="#dd1f1f">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label minHeight="20.0" minWidth="120.0" text="Less equitable">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="162.0">
+                           <children>
+                              <Label text="Equity blind spots" textFill="#cdc956">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </bottom>
             </BorderPane>
          </content>
       </ScrollPane>

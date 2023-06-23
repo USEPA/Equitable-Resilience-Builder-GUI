@@ -1,12 +1,13 @@
 <textBlocks>
 	<container id="formVBox">
-		<textBlock>
+		<!--<textBlock>
 			<icon
 			width="250.0"
 			height="77.0"
 			id="170">
 			</icon>
 		</textBlock>
+		<-->
 		<textBlock>
 		</textBlock>
 		<textBlock>
@@ -14,7 +15,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="About ERB">
+			text="About">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -22,7 +23,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Version: ERB 2.0">
+			text="Version: ERB 1.0">
 			</text>
 		</textBlock>	
 		<textBlock>
@@ -65,12 +66,13 @@
 			text="Code repository: Github">
 			</text>
 		</textBlock>
+
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This application is distributed solely for the purpose of pre-dissemination peer review under applicable information quality guidelines. It has not been formally disseminated by the U.S. Environmental Protection Agency. It does not represent and should not be construed to represent any agency determination or policy. Mention of trade names or commercial products does not constitute endorsement or recommendation for use.">
+			text="Disclaimer: This application is distributed solely for the purpose of pre-dissemination peer review under applicable information quality guidelines. It has not been formally disseminated by the U.S. Environmental Protection Agency. It does not represent and should not be construed to represent any agency determination or policy. Mention of trade names or commercial products does not constitute endorsement or recommendation for use. Execution of any software program, and modification to system configuration files must be made at the user's own risk. Neither the U.S. EPA nor the program author(s) can assume responsibility for program modification, content, output, interpretation, or usage. This program has been extensively tested and verified. However, as for all complex software, it may not be completely free of errors and may not be applicable for all cases. In no event will the U.S. EPA be liable for direct, indirect, special, incidental, or consequential damages arising out of the use of the program and/or associated documentation.">
 			</text>
 		</textBlock>
 	</container>

@@ -76,7 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review the Indicators Master List, Hazards data, and equity data to learn about local and online data options for hazards, equity, and resilient systems">
+			text="Review the Indicators List, Hazards data, and equity data to learn about local and online data options for hazards, equity, and resilient systems">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -181,9 +181,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Indicators Master List"
+			text="Indicators List"
 			linkType="externalDOC"
-			link="Indicators_Master_List.xlsx">
+			link="Indicators_List.xlsx">
 			</text>
 			<text
 			size="16.0"
@@ -192,6 +192,14 @@
 			text="Project Plan"
 			linkType="externalDOC"
 			link="Project_Plan_Template.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicator Center"
+			linkType="internal"
+			link="85">
 			</text>
 			</listBlock>
 			</textBlock>

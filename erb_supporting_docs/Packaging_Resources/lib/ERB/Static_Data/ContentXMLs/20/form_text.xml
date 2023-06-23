@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Sharing stories is an integral part of the ERB process. Learn more about why in our Resources tab. This exercise will help you">
+			text="Sharing stories is an integral part of the ERB process. Learn more about why in the Resources tab. This exercise will help you">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -146,7 +146,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Planning">
+			text="What you will need">
 			</text>
 		</textBlock>
 		<textBlock>

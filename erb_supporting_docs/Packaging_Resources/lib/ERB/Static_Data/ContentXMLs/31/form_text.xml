@@ -105,7 +105,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Look through our example of Activity Selection to see what other communities have chosen">
+			text="Look through the Activity Selection example  to see what other communities have chosen">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -216,8 +216,8 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
-			text="As your picking ERB activities, consider which activities will help your community address the greatest disaster risks to residents in the most vulnerable situations.">
+			fontStyle="Regular"
+			text="As you are picking ERB activities, consider which activities will help your community address the greatest disaster risks to residents in the most vulnerable situations.">
 			</text>
 		</textBlock>
 	</container>

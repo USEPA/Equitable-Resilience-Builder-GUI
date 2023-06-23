@@ -5,67 +5,31 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Community Engagement Best Practices">
+			text="Word cloud">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The following points are things to continually consider about your engagement:">
+			text="WHAT: Word clouds are a feature in ERB that supports storytelling. You will find them as sub-pages to each storytelling activity page in the Table of contents.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- Include participants in planning and decision-making discussions and reports of results.">
+			text="WHY: Word clouds are a way to visualize key themes and concepts that emerge from the stories that people share. You can use them to help you set goals for using ERB, select indicators, and identify actions to take.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- Inform participants regularly about project progress and how their contributions have impacted the project.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Evalutate your project throughout with participants to ensure it is meeting the needs of your community.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- Stay up to date by attending pre-existing community group meetings to continue to learn about their needs and goals. This demonstrates commitment and builds trust with community members.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Refer to our ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="in-depth communication guide">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" if you would like more help formulating communication materials.">
+			text="HOW: During or after a storytelling exercise, input words or phrases from people’s stories into the Word Cloud page associated with that exercise. Make sure you have permission first! When you are done, click the build word cloud button. The word cloud will appear at the bottom of the page. You can save and download the word cloud using MyPortfolio.">
 			</text>
 		</textBlock>
 	</container>

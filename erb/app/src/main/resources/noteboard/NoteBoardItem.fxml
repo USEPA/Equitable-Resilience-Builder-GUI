@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox fx:id="noteBoardItemVBox" maxHeight="200.0" maxWidth="150.0" minHeight="200.0" minWidth="150.0" prefHeight="200.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="noteBoardItemVBox" maxHeight="200.0" maxWidth="150.0" minHeight="200.0" minWidth="150.0" prefHeight="200.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane fx:id="scrollPane" fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
          <content>

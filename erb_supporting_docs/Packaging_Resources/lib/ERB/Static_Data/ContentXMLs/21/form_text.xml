@@ -2,94 +2,34 @@
 	<container id="formVBox">
 		<textBlock>
 			<text
-			size="25.0"
+			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Goal setting scenario">
+			text="Reflection diary">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Scenario 1:">
-			</text>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;An EPA Regional staff member and a community organizer for environmental justice are working together to convene and activate a new group of community members in a rural county with EJ issues. They decided that their Goals for Going through the ERB Process are:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Bring together community leaders and members who have not gotten together to discuss EJ issues before and empower/activate them to take action">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Increase community members' knowledge about emergency preparedness">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Identify potential actions for the group to take">
+			text="WHAT: The core team takes time to think about what went well and what they can improve on next time when ERB activities and community engagement.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Scenario 2:">
-			</text>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;A local environmental education and advocacy organization is leading the development of a watershed resilience plan. They decide that their Goals for Going through the ERB Process are:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Collect input for the resilience plan from community members in the watershed, particularly with a focus on equity issues">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Convene workshops in sub-watersheds to bring together local environmental organizations, neighborhood associations, and other groups who have not worked together before, to help them improve their community engagement.">
+			text="WHY: Record lessons learned about what worked well, or not so well, and why. Use these insights as you plan activities for the next section of ERB or to help future ERB users in your community.">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Scenario 3:">
-			</text>
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#xD;A county emergency manager is tasked with leading a committee to update the county's Hazard Mitigation Plan. The previous plan has plenty on natural hazards but hasn't incorporated lessons learned from the COVID-19 pandemic. The committee decides that their Goals for Going through the ERB Process are:">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Improve the plan's social vulnerability assessment">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#xD;&#x9;- Incorporate pandemics and other biological incidents into the plan">
+			text="HOW: The last page of each section is a Reflection and Next Steps page. On this page, look for the link to the Reflection Diary next to the clipboard icon on the What you’ll need part of the page. Get together with the core team to respond to the questions and record your answers in the diary. You can download the diary using MyPortfolio.">
 			</text>
 		</textBlock>
 	</container>
