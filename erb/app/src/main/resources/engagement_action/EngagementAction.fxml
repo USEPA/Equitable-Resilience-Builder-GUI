@@ -36,7 +36,6 @@
       </Label>
       <HBox alignment="CENTER_RIGHT" spacing="5.0" style="-fx-background-color: white;">
          <children>
-            <Button mnemonicParsing="false" onAction="#indicatorCenterButtonAction" stylesheets="@../orange_buttons.css" text="Indicator Center" />
             <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" stylesheets="@../orange_buttons.css" text="My Portfolio">
                <font>
                   <Font size="14.0" />

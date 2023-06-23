@@ -112,23 +112,23 @@ public class EngagementActionController implements Initializable {
 		previousButton.getStylesheets().add(getClass().getResource("/button.css").toString());
 		nextButton.getStylesheets().add(getClass().getResource("/button.css").toString());
 	}
-	
-	@FXML
-	public void indicatorCenterButtonAction() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCenter.fxml"));
-			IndicatorCenterController indicatorCenterController = new IndicatorCenterController(this);
-			fxmlLoader.setController(indicatorCenterController);
-			VBox root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Indicator Center");
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	
+//	@FXML
+//	public void indicatorCenterButtonAction() {
+//		try {
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCenter.fxml"));
+//			IndicatorCenterController indicatorCenterController = new IndicatorCenterController(this);
+//			fxmlLoader.setController(indicatorCenterController);
+//			VBox root = fxmlLoader.load();
+//			Stage stage = new Stage();
+//			stage.setTitle("Indicator Center");
+//			Scene scene = new Scene(root);
+//			stage.setScene(scene);
+//			stage.show();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 //	@FXML
 //	public void openIndicators() {
