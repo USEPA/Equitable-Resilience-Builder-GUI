@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
             <Label text="Welcome to the Indicator Center">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Label>
          </children>
@@ -24,7 +24,7 @@
          <children>
             <Label text="Indicator creation and data collection" wrapText="true">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
          </children>
@@ -33,31 +33,31 @@
          <children>
             <Label text="1. Add new indicator(s)" wrapText="true">
                <font>
-                  <Font size="16.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
             <Label text="How to: " underline="true" wrapText="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT">
                <children>
                   <Label text="a). Click the folloring hyperlink to open the indicators list workbook:" wrapText="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <Hyperlink onAction="#indicatorsListHyperlinkAction" text="Indicators List">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Hyperlink>
                </children>
             </HBox>
             <Label text="b). Insert a new row into the list containing the relevant information for the new indicator." wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
          </children>
@@ -71,26 +71,26 @@
             </Label>
             <Label text="How to: " underline="true" wrapText="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT">
                <children>
                   <Label text="a). Click the folloring hyperlink to open the indicators list workbook:" wrapText="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <Hyperlink onAction="#indicatorsListHyperlinkAction" text="Indicators List">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Hyperlink>
                </children>
             </HBox>
             <Label text="b). Indicate whether data collection will be done for each indicator using the &quot;Data Collection (Y/N)&quot; column." wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
          </children>
@@ -104,31 +104,31 @@
             </Label>
             <Label text="How to: " underline="true" wrapText="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label text="a). Use external sources to collect data on selected indicators." wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
             <HBox alignment="CENTER_LEFT">
                <children>
                   <Label text="b). Click the folloring hyperlink to open the indicators list workbook:" wrapText="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <Hyperlink onAction="#indicatorsListHyperlinkAction" text="Indicators List">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Hyperlink>
                </children>
             </HBox>
             <Label text="c). Enter the infomation into the indicators list in the relevant column(s) for the selected indicator." wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
          </children>
@@ -138,36 +138,36 @@
          <children>
             <Label text="Indicator activity">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
          </children>
       </HBox>
       <Label text="Once you have decided to complete the indicator activity, choose whether to complete Option 1 and/or Option 2." wrapText="true">
          <font>
-            <Font size="16.0" />
+            <Font size="20.0" />
          </font>
       </Label>
       <VBox>
          <children>
             <Label text="Option 1: In person indicator activity" wrapText="true">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label text="About:" underline="true" wrapText="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label text="In this activity you will select the indicators you wish to use, select the data to display on the indicators cards, and print the cards for an in person ranking and sorting experience." wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
             <Hyperlink onAction="#indicatorsInPersonHyperlinkAction" text="Click here to select indicators for in person activity">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Hyperlink>
          </children>
@@ -176,22 +176,22 @@
          <children>
             <Label text="Option 2: Virtual indicator activity" wrapText="true">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label text="About:" underline="true" wrapText="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label text="In this activity you will select the indicators you wish to use, select the data to display on the indicators cards, and use the ERB tool to rank and sort the cards." wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Hyperlink text="Click here to select indicators for virtual activity">
+            <Hyperlink onAction="#indicatorsVirtualHyperlinkAction" text="Click here to select indicators for virtual activity">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Hyperlink>
          </children>

@@ -2,19 +2,29 @@ package com.epa.erb.indicators;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 public class IndicatorCardController implements Initializable{
 
@@ -41,6 +51,34 @@ public class IndicatorCardController implements Initializable{
 		
 	}
 	
+	public void turnOnMouseClicked() {
+		indicatorCardVBox.setOnMouseClicked(e-> cardClicked());
+	}
+	
+	private void cardClicked() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCard.fxml"));
+			IndicatorCardController iCController = new IndicatorCardController(indicatorCard);
+			fxmlLoader.setController(iCController);
+			VBox cVBox = fxmlLoader.load();
+			cVBox.setPrefWidth(600);
+			cVBox.setMaxWidth(600);
+			cVBox.setMinWidth(600);
+			cVBox.setPrefHeight(750);
+			cVBox.setMinHeight(750);
+			cVBox.setMaxHeight(750);
+			cVBox.setId(indicatorCard.getId());
+			iCController.setColorAndImage();
+			iCController.addAllTextForPrinting();
+			Stage stage = new Stage();
+			Scene scene = new Scene(cVBox);
+			stage.setScene(scene);
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void setColorAndImage() {
 		if(indicatorCard.getSystem().contentEquals("Social Environment")) {
 			indicatorCardVBox.setStyle("-fx-background-color: " + indicatorCard.getSocialEnvironmentSystemColor());
@@ -60,6 +98,12 @@ public class IndicatorCardController implements Initializable{
 		}
 	}
 	
+	public void removeImageView() {
+		if(contentVBox.getChildren().contains(imageViewHBox)) {
+			contentVBox.getChildren().remove(imageViewHBox);
+		}
+	}
+	
 	public void resizeImageView(double size) {
 		imageView.setFitWidth(size);
 		imageView.setFitHeight(size);
@@ -75,8 +119,17 @@ public class IndicatorCardController implements Initializable{
 		}
 	}
 	
+	public void addTextForRanking() {		
+		Text indicatorTitle = new Text("\n Indicator:");
+		indicatorTitle.setFont(Font.font("System", FontWeight.BOLD, 10.0));
+		textFlow.getChildren().add(indicatorTitle);
+		
+		Text indicatorText = new Text("\n" + indicatorCard.getIndicator());
+		indicatorText.setFont(Font.font("System", FontWeight.NORMAL, 10.0));
+		textFlow.getChildren().add(indicatorText);
+	}
+	
 	public void addTextForPrinting(String field) {
-		System.out.println("Field " + field);
 		if(field.contentEquals("Default data")) {
 			addAllTextForPrinting();
 		} else if(field.contentEquals("System")) {
@@ -369,6 +422,44 @@ public class IndicatorCardController implements Initializable{
 		
 		textFlow.getChildren().add(localConcernsText);
 		
+	}
+	
+	private static final String TAB_DRAG_KEY = "pane";
+	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
+	public void setDrag_IndicatorCard(Pane p) {
+		p.setOnDragOver(event -> {
+			event.acceptTransferModes(TransferMode.MOVE);
+			event.consume();
+		});
+		p.setOnDragDropped(event -> {
+			Dragboard db = event.getDragboard();
+			boolean success = false;
+			if (db.hasString()) {
+				Pane target = p;
+				Pane source = (Pane) event.getGestureSource();
+				VBox sourceVBox = (VBox) source;
+				VBox targetVBox = (VBox) target;
+				Pane parent = (Pane) targetVBox.getParent();
+				if(parent.getId() == null) {
+					
+				} else {
+					int targetIndex = parent.getChildren().indexOf(targetVBox);
+					parent.getChildren().remove(sourceVBox);
+					parent.getChildren().add(targetIndex, sourceVBox);
+				}
+				success = true;
+			}
+			event.setDropCompleted(success);
+			event.consume();
+		});
+		p.setOnDragDetected(event -> {
+			Dragboard dragboard = p.startDragAndDrop(TransferMode.MOVE);
+			ClipboardContent clipboardContent = new ClipboardContent();
+			clipboardContent.putString(TAB_DRAG_KEY);
+			dragboard.setContent(clipboardContent);
+			draggingTab.set(p);
+			event.consume();
+		});
 	}
 	
 	public IndicatorCard getIndicatorCard() {

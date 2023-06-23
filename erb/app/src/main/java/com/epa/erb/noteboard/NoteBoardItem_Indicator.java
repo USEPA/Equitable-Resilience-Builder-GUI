@@ -68,7 +68,6 @@ public class NoteBoardItem_Indicator extends NoteBoardItemController{
 	}
 	
 	public void addTextForPrinting(String field) {
-		System.out.println("Field " + field);
 		if(field.contentEquals("Default data")) {
 			setTextForPrinting();
 		} else if(field.contentEquals("System")) {

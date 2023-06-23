@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.File;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.FileHandler;
@@ -42,6 +41,23 @@ public class IndicatorCenterController implements Initializable{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorSelection_InPerson.fxml"));
 			IndicatorSelection_InPersonController iSIP = new IndicatorSelection_InPersonController(eAC.getApp());
 			fxmlLoader.setController(iSIP);
+			VBox root = fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Indicator Selection");
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void indicatorsVirtualHyperlinkAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorSelection_Virtual.fxml"));
+			IndicatorSelection_VirtualController iSV = new IndicatorSelection_VirtualController(eAC.getApp());
+			fxmlLoader.setController(iSV);
 			VBox root = fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setTitle("Indicator Selection");

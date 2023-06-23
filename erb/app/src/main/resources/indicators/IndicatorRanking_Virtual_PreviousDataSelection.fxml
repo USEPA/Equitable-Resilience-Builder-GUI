@@ -10,16 +10,15 @@
 
 <VBox spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="Available Printers">
+      <Label text="Available Saved Data">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ListView fx:id="printerListView" VBox.vgrow="ALWAYS" />
-      <Label fx:id="label" />
+      <ListView fx:id="dataListView" VBox.vgrow="ALWAYS" />
       <HBox alignment="CENTER_LEFT">
          <children>
-            <Button mnemonicParsing="false" onAction="#okButtonAction" stylesheets="@../button.css" text="Print" />
+            <Button mnemonicParsing="false" onAction="#loadButtonAction" stylesheets="@../button.css" text="Load" />
          </children>
       </HBox>
    </children>

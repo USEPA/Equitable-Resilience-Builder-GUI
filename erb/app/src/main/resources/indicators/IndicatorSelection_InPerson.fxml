@@ -8,26 +8,38 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox minWidth="710.0">
          <children>
             <Label minWidth="481.0" text="Select indicators to use in the in person activity">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+      <ScrollPane fitToWidth="true" style="-fx-background: white; -fx-border-color: white;">
          <content>
             <VBox fx:id="indicatorVBox" spacing="5.0" />
          </content>
       </ScrollPane>
-      <HBox fx:id="dataSelectionHBox" alignment="CENTER_RIGHT" spacing="10.0">
+      <HBox fx:id="dataSelectionHBox" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button mnemonicParsing="false" onAction="#dataSelectionButtonAction" text="Continue to data selection" />
-            <Button mnemonicParsing="false" onAction="#saveButtonAction" text="Save" />
+            <HBox HBox.hgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#saveButtonAction" stylesheets="@../button.css" text="Save and continue later" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#dataSelectionButtonAction" stylesheets="@../button.css" text="Save and continue to data selection">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </HBox>
    </children>

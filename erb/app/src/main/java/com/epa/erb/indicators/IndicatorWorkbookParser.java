@@ -12,22 +12,24 @@ import com.epa.erb.excel.WorkbookParser;
 
 public class IndicatorWorkbookParser extends WorkbookParser{
 
+	private Sheet indicatorSheet;
+	
 	private File workbookFile;
 	public IndicatorWorkbookParser(File workbookFile) {
 		this.workbookFile = workbookFile;
+		setIndicatorSheet();
 	}
 	
-	public Sheet getIndicatorSheet() {
+	public void setIndicatorSheet() {
 		try {
 			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(workbookFile);
-			return getWorksheet(xssfWorkbook, "Combined Indicator Menu");
+			indicatorSheet = getWorksheet(xssfWorkbook, "Combined Indicator Menu");
 		} catch (InvalidFormatException | IOException e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 	
-	private int getNumColumns(Sheet indicatorSheet) {
+	private int getNumColumns() {
 		ArrayList<String> rowValues = getRowValues(indicatorSheet, 0);
 		ArrayList<String> nonEmptyValues = new ArrayList<String>();
 		for(String rowVal: rowValues) {
@@ -38,20 +40,12 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 		return nonEmptyValues.size();
 	}
 	
-	private int getNumRows(Sheet indicatorSheet) {
+	private int getNumRows() {
 		return getColumnValues(indicatorSheet, 0).size();
 	}
 	
-	public ArrayList<IndicatorCard> parseForIndicatorCards(Sheet indicatorSheet) {
+	public ArrayList<IndicatorCard> parseForIndicatorCards() {
 		ArrayList<IndicatorCard> indicatorCards = new ArrayList<IndicatorCard>();
-//		String filePath = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Indicators_Master_List.xlsx";
-//		XSSFWorkbook workbook = getXSSFWorkbook(filePath);
-//		Sheet indicatorSheet = null;
-//		for(Sheet worksheet: getWorksheets(workbook)) {
-//			if(worksheet.getSheetName().contentEquals("Combined Indicator Menu")) {
-//				indicatorSheet = worksheet;
-//			}
-//		}
 		if(indicatorSheet != null) {
 			ArrayList<String> headerValues = getRowValues(indicatorSheet, 0);
 			int systemColumnIndex = -1;
@@ -70,7 +64,7 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 			int thresholdColumnIndex = -1;
 			int dataCollection_y_nColumnIndex = -1;
 			
-			for(int i=0; i < getNumColumns(indicatorSheet); i++) {
+			for(int i=0; i < getNumColumns(); i++) {
 				String headerVal =  headerValues.get(i);
 				if(headerVal.contentEquals("System")) {
 					systemColumnIndex = i;
@@ -105,7 +99,7 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 				}
 			}
 						
-			for(int j =1; j < getNumRows(indicatorSheet); j++) {
+			for(int j =1; j < getNumRows(); j++) {
 				ArrayList<String> rowValues = getRowValues(indicatorSheet, j);
 				String id = String.valueOf(j);
 				String s = rowValues.get(systemColumnIndex);
@@ -141,5 +135,15 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 		}
 		return dataQuestions;
 	}
+
+	public File getWorkbookFile() {
+		return workbookFile;
+	}
+
+	public Sheet getIndicatorSheet() {
+		return indicatorSheet;
+	}
+	
+	
 	
 }

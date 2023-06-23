@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,29 +12,19 @@
    <children>
       <HBox minWidth="710.0">
          <children>
-            <Label minWidth="481.0" text="Select data to display on selected indicator cards">
+            <Label minWidth="481.0" text="Select indicators to use in the virtual activity">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <CheckBox fx:id="defaultDataCheckBox" mnemonicParsing="false" onAction="#defaultDataCheckBoxAction" text="Default data">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </CheckBox>
-      <Label text="OR">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
       <ScrollPane fitToWidth="true" style="-fx-background: white; -fx-border-color: white;">
          <content>
-            <VBox fx:id="dataVBox" spacing="5.0" />
+            <VBox fx:id="indicatorVBox" spacing="5.0" />
          </content>
       </ScrollPane>
-      <HBox fx:id="printHBox" spacing="10.0" VBox.vgrow="ALWAYS">
+      <HBox fx:id="dataSelectionHBox" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
             <HBox HBox.hgrow="ALWAYS">
                <children>
@@ -44,7 +33,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#printIndicatorCardsButtonAction" stylesheets="@../button.css" text="Save and continue to printing" />
+                  <Button mnemonicParsing="false" onAction="#rankingButtonAction" stylesheets="@../button.css" text="Save and continue to ranking activity" />
                </children>
             </HBox>
          </children>

@@ -45,9 +45,7 @@ public class IndicatorsPrintViewController implements Initializable {
 				noteBoardIndicatorItem.setColorAndImage();
 //				noteBoardIndicatorItem.setTextForPrinting();
 				if(selectedData != null) {
-					System.out.println("HERE 1: " + selectedData);
 					for(String data: selectedData) {
-						System.out.println("HERE 2: " + data);
 						noteBoardIndicatorItem.addTextForPrinting(data);
 					}
 				}
