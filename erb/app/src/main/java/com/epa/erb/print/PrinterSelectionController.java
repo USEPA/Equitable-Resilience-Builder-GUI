@@ -7,9 +7,13 @@ import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.epa.erb.indicators.DataSelection_InPersonController;
 import com.epa.erb.indicators.IndicatorsPrintViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -24,8 +28,10 @@ public class PrinterSelectionController implements Initializable{
 	ListView<Printer> printerListView;
 		
 	private IndicatorsPrintViewController iPWC;
-	public PrinterSelectionController(IndicatorsPrintViewController iPWC) {
+	private DataSelection_InPersonController dSIPC;
+	public PrinterSelectionController(IndicatorsPrintViewController iPWC, DataSelection_InPersonController dSIPC) {
 		this.iPWC = iPWC;
+		this.dSIPC = dSIPC;
 	}
 	
 	public void fillPrinterListView() {
@@ -85,6 +91,16 @@ public class PrinterSelectionController implements Initializable{
 				}	
 			}
 		}
+		dSIPC.getPrinterSelectionStage().close();
+		showPrintedAlert();
+	}
+	
+	private void showPrintedAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setContentText("Printing is complete!");
+		alert.setTitle("Printing");
+		alert.showAndWait();
 	}
 
 }

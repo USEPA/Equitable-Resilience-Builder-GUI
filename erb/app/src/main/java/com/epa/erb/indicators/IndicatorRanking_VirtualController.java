@@ -56,8 +56,10 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	private FileHandler fileHandler = new FileHandler();
 	
 	private App app;
-	public IndicatorRanking_VirtualController(App app) {
+	private IndicatorSelection_VirtualController iSVC;
+	public IndicatorRanking_VirtualController(App app, IndicatorSelection_VirtualController iSVC) {
 		this.app = app;
+		this.iSVC = iSVC;
 	}
 	
 	@Override
@@ -148,21 +150,24 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		});
 	}
 	
+	private Stage virtualIndicatorSortingStage = null;
+	
 	@FXML
 	public void quadrantButtonAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorSorting_Virtual.fxml"));
-			IndicatorSorting_VirtualController iSV = new IndicatorSorting_VirtualController(app, getIndicatorCardsInRanked());
+			IndicatorSorting_VirtualController iSV = new IndicatorSorting_VirtualController(app, getIndicatorCardsInRanked(), this);
 			fxmlLoader.setController(iSV);
 			VBox root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Indicator Sorting");
+			virtualIndicatorSortingStage = new Stage();
+			virtualIndicatorSortingStage.setTitle("Indicator Sorting");
 			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+			virtualIndicatorSortingStage.setScene(scene);
+			virtualIndicatorSortingStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		iSVC.getVirtualIndicatorRankingStage().close();
 	}
 	
 	@FXML
@@ -318,6 +323,10 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			draggingTab.set(p);
 			event.consume();
 		});
+	}
+
+	public Stage getVirtualIndicatorSortingStage() {
+		return virtualIndicatorSortingStage;
 	}
 	
 //	private ArrayList<String> getIndicatorCardIdsInBank(){

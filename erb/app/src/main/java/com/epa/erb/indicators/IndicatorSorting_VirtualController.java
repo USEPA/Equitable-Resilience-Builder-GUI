@@ -60,9 +60,11 @@ public class IndicatorSorting_VirtualController implements Initializable{
 		
 	private App app;
 	private IndicatorCard [] cards;
-	public IndicatorSorting_VirtualController(App app, IndicatorCard [] cards) {
+	private IndicatorRanking_VirtualController iRVC;
+	public IndicatorSorting_VirtualController(App app, IndicatorCard [] cards, IndicatorRanking_VirtualController iRVC) {
 		this.app = app;
 		this.cards = cards;
+		this.iRVC = iRVC;
 	}
 	
 	@Override

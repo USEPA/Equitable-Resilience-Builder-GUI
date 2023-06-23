@@ -33,9 +33,11 @@ public class DataSelection_InPersonController implements Initializable{
 	
 	private App app;
 	private ArrayList<String> dataOptions;
-	public DataSelection_InPersonController(App app, ArrayList<String> dataOptions) {
+	private IndicatorSelection_InPersonController iSINC;
+	public DataSelection_InPersonController(App app, ArrayList<String> dataOptions, IndicatorSelection_InPersonController iSINC) {
 		this.app = app;
 		this.dataOptions = dataOptions;
+		this.iSINC = iSINC;
 	}
 	
 	@Override
@@ -92,6 +94,11 @@ public class DataSelection_InPersonController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
+		save();
+		iSINC.getInPersonDataSelectionStage().close();
+	}
+	
+	private void save() {
 		File indicatorsDir = createIndicatorsDir();
 		File inPersonDataSelectionFile = new File(indicatorsDir + "\\DataSelection_InPerson.txt");
 		writeSelectedData(inPersonDataSelectionFile);
@@ -127,6 +134,7 @@ public class DataSelection_InPersonController implements Initializable{
 	
 	@FXML
 	public void printIndicatorCardsButtonAction() {
+		save();
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorsPrintView.fxml"));
 			IndicatorsPrintViewController indicatorsPrintView = new IndicatorsPrintViewController(app);
@@ -136,22 +144,31 @@ public class DataSelection_InPersonController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		iSINC.getInPersonDataSelectionStage().close();
 	}
+	
+	private Stage printerSelectionStage = null;
 	
 	private void showPrinters(IndicatorsPrintViewController indicatorsPrintView) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/print/PrinterSelection.fxml"));
-			PrinterSelectionController printerSelectionController = new PrinterSelectionController(indicatorsPrintView);
+			PrinterSelectionController printerSelectionController = new PrinterSelectionController(indicatorsPrintView, this);
 			fxmlLoader.setController(printerSelectionController);
 			VBox root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Printer Selection");
+			printerSelectionStage = new Stage();
+			printerSelectionStage.setTitle("Printer Selection");
 			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+			printerSelectionStage.setScene(scene);
+			printerSelectionStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
+
+	public Stage getPrinterSelectionStage() {
+		return printerSelectionStage;
+	}
+	
 
 }

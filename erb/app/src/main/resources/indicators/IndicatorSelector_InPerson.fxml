@@ -6,7 +6,7 @@
 
 <HBox fx:id="indicatorHBox" alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <CheckBox fx:id="indicatorCheckBox" mnemonicParsing="false">
+      <CheckBox fx:id="indicatorCheckBox" mnemonicParsing="false" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>

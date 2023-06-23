@@ -31,8 +31,10 @@ public class IndicatorSelection_VirtualController implements Initializable{
 	private ArrayList<CheckBox> selectedCheckBoxes = new ArrayList<CheckBox>();
 	
 	private App app;
-	public IndicatorSelection_VirtualController(App app) {
+	private IndicatorCenterController iCC;
+	public IndicatorSelection_VirtualController(App app, IndicatorCenterController iCC) {
 		this.app = app;
+		this.iCC = iCC;
 	}
 	
 	@Override
@@ -79,26 +81,33 @@ public class IndicatorSelection_VirtualController implements Initializable{
 		}
 	}
 	
+	private Stage virtualIndicatorRankingStage = null;
 	@FXML
 	public void rankingButtonAction() {
-		saveButtonAction();
+		save();
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorRanking_Virtual.fxml"));
-			IndicatorRanking_VirtualController iRV = new IndicatorRanking_VirtualController(app);
+			IndicatorRanking_VirtualController iRV = new IndicatorRanking_VirtualController(app, this);
 			fxmlLoader.setController(iRV);
 			VBox root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Indicator Ranking");
+			virtualIndicatorRankingStage = new Stage();
+			virtualIndicatorRankingStage.setTitle("Indicator Ranking");
 			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+			virtualIndicatorRankingStage.setScene(scene);
+			virtualIndicatorRankingStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		iCC.getVirtualIndicatorSelectionStage().close();
 	}
 	
 	@FXML
 	public void saveButtonAction() {
+		save();
+		iCC.getVirtualIndicatorSelectionStage().close();
+	}
+	
+	private void save() {
 		File indicatorsDir = createIndicatorsDir();
 		File virtualCardSelectionFile = new File(indicatorsDir + "\\CardSelection_Virtual.txt");
 		writeSelectedIndicators(virtualCardSelectionFile);
@@ -129,4 +138,7 @@ public class IndicatorSelection_VirtualController implements Initializable{
 		return indicatorsDir;
 	}
 
+	public Stage getVirtualIndicatorRankingStage() {
+		return virtualIndicatorRankingStage;
+	}
 }

@@ -35,40 +35,48 @@ public class IndicatorCenterController implements Initializable{
 		}
 	}
 	
+	private Stage inPersonIndicatorSelectionStage = null;
 	@FXML
 	public void indicatorsInPersonHyperlinkAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorSelection_InPerson.fxml"));
-			IndicatorSelection_InPersonController iSIP = new IndicatorSelection_InPersonController(eAC.getApp());
+			IndicatorSelection_InPersonController iSIP = new IndicatorSelection_InPersonController(eAC.getApp(), this);
 			fxmlLoader.setController(iSIP);
 			VBox root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Indicator Selection");
+			inPersonIndicatorSelectionStage = new Stage();
+			inPersonIndicatorSelectionStage.setTitle("Indicator Selection");
 			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+			inPersonIndicatorSelectionStage.setScene(scene);
+			inPersonIndicatorSelectionStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	private Stage virtualIndicatorSelectionStage = null;
 	@FXML
 	public void indicatorsVirtualHyperlinkAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorSelection_Virtual.fxml"));
-			IndicatorSelection_VirtualController iSV = new IndicatorSelection_VirtualController(eAC.getApp());
+			IndicatorSelection_VirtualController iSV = new IndicatorSelection_VirtualController(eAC.getApp(), this);
 			fxmlLoader.setController(iSV);
 			VBox root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Indicator Selection");
+			virtualIndicatorSelectionStage = new Stage();
+			virtualIndicatorSelectionStage.setTitle("Indicator Selection");
 			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+			virtualIndicatorSelectionStage.setScene(scene);
+			virtualIndicatorSelectionStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+	public Stage getInPersonIndicatorSelectionStage() {
+		return inPersonIndicatorSelectionStage;
+	}
+
+	public Stage getVirtualIndicatorSelectionStage() {
+		return virtualIndicatorSelectionStage;
+	}
 
 }

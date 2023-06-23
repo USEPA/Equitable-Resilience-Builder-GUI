@@ -30,8 +30,10 @@ public class IndicatorSelection_InPersonController implements Initializable {
 	private FileHandler fileHandler = new FileHandler();
 		
 	private App app;
-	public IndicatorSelection_InPersonController(App app) {
+	private IndicatorCenterController iCC;
+	public IndicatorSelection_InPersonController(App app, IndicatorCenterController iCC) {
 		this.app = app;
+		this.iCC = iCC;
 	}
 	
 	
@@ -68,8 +70,14 @@ public class IndicatorSelection_InPersonController implements Initializable {
 		}
 	}
 	
+	
 	@FXML
 	public void saveButtonAction() {
+		save();
+		iCC.getInPersonIndicatorSelectionStage().close();
+	}
+	
+	private void save() {
 		File indicatorsDir = createIndicatorsDir();
 		File inPersonCardSelectionFile = new File(indicatorsDir + "\\CardSelection_InPerson.txt");
 		writeSelectedIndicators(inPersonCardSelectionFile);
@@ -100,21 +108,28 @@ public class IndicatorSelection_InPersonController implements Initializable {
 		return indicatorsDir;
 	}
 	
+	private Stage inPersonDataSelectionStage = null;
 	@FXML
 	public void dataSelectionButtonAction() {
+		save();
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/DataSelection_InPerson.fxml"));
-			DataSelection_InPersonController dSIP = new DataSelection_InPersonController(app, iWP.getRowValues(iWP.getIndicatorSheet(), 0));
+			DataSelection_InPersonController dSIP = new DataSelection_InPersonController(app, iWP.getRowValues(iWP.getIndicatorSheet(), 0), this);
 			fxmlLoader.setController(dSIP);
 			VBox root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Data Selection");
+			inPersonDataSelectionStage = new Stage();
+			inPersonDataSelectionStage.setTitle("Data Selection");
 			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+			inPersonDataSelectionStage.setScene(scene);
+			inPersonDataSelectionStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		iCC.getInPersonIndicatorSelectionStage().close();
 	}
 
+
+	public Stage getInPersonDataSelectionStage() {
+		return inPersonDataSelectionStage;
+	}
 }
