@@ -95,6 +95,7 @@ public class IndicatorSelection_VirtualController implements Initializable{
 			virtualIndicatorRankingStage.setHeight(app.getPopUpPrefHeight());
 			virtualIndicatorRankingStage.setTitle("Indicator Ranking");
 			Scene scene = new Scene(root);
+			virtualIndicatorRankingStage.setOnCloseRequest(e-> iRV.closeRequested(e));
 			virtualIndicatorRankingStage.setScene(scene);
 			virtualIndicatorRankingStage.show();
 		} catch (Exception e) {

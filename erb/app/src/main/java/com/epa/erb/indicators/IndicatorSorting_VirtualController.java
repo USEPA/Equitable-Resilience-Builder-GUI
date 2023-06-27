@@ -6,6 +6,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -21,8 +22,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -32,6 +36,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.WindowEvent;
 
 public class IndicatorSorting_VirtualController implements Initializable{
 
@@ -65,6 +70,23 @@ public class IndicatorSorting_VirtualController implements Initializable{
 		this.app = app;
 		this.cards = cards;
 		this.iRVC = iRVC;
+	}
+	
+	public void closeRequested(WindowEvent e) {
+		Optional<ButtonType> result = showNoSaveWarning();
+		if(result.get() == ButtonType.OK) {
+			iRVC.getVirtualIndicatorSortingStage().close();
+		} else {
+			e.consume();
+		}
+	}
+	
+	private Optional<ButtonType> showNoSaveWarning() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Warning");
+		alert.setContentText("Closing this window will result in a reset of indicator quadrants. Please use the save button if you wish to save a snapshot of your indicator quadrants to My Portfolio.");
+		return alert.showAndWait();
 	}
 	
 	@Override

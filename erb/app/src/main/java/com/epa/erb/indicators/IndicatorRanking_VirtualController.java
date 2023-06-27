@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -14,11 +15,15 @@ import com.epa.erb.utility.FileHandler;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -32,6 +37,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 public class IndicatorRanking_VirtualController implements Initializable {
@@ -60,6 +66,15 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	public IndicatorRanking_VirtualController(App app, IndicatorSelection_VirtualController iSVC) {
 		this.app = app;
 		this.iSVC = iSVC;
+	}
+	
+	public void closeRequested(WindowEvent e) {
+		Optional<ButtonType> result = showNoSaveWarning();
+		if(result.get() == ButtonType.OK) {
+			iSVC.getVirtualIndicatorRankingStage().close();
+		} else {
+			e.consume();
+		}
 	}
 	
 	@Override
@@ -149,10 +164,20 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		});
 	}
 	
+	private Optional<ButtonType> showNoSaveWarning() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Warning");
+		alert.setContentText("Closing this window will result in a reset of indicator rankings. Please use the save button if you wish to save a snapshot of your indicator rankings to My Portfolio.");
+		return alert.showAndWait();
+	}
+	
 	private Stage virtualIndicatorSortingStage = null;
 	
 	@FXML
 	public void quadrantButtonAction() {
+		Optional<ButtonType> result = showNoSaveWarning();
+		if(result.get() == ButtonType.OK) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorSorting_Virtual.fxml"));
 			IndicatorSorting_VirtualController iSV = new IndicatorSorting_VirtualController(app, getIndicatorCardsInRanked(), this);
@@ -163,12 +188,14 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			virtualIndicatorSortingStage.setHeight(app.getPopUpPrefHeight());
 			virtualIndicatorSortingStage.setTitle("Indicator Sorting");
 			Scene scene = new Scene(root);
+			virtualIndicatorSortingStage.setOnCloseRequest(e-> iSV.closeRequested(e));
 			virtualIndicatorSortingStage.setScene(scene);
 			virtualIndicatorSortingStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		iSVC.getVirtualIndicatorRankingStage().close();
+	}
 	}
 	
 	@FXML
