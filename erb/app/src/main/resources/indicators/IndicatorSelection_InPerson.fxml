@@ -26,12 +26,12 @@
       </ScrollPane>
       <HBox fx:id="dataSelectionHBox" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+            <HBox alignment="BOTTOM_LEFT" HBox.hgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" onAction="#saveButtonAction" stylesheets="@../button.css" text="Save and continue later" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+            <HBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" onAction="#dataSelectionButtonAction" stylesheets="@../button.css" text="Save and continue to data selection">
                      <font>

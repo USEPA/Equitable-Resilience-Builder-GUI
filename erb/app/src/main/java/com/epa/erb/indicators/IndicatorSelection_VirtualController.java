@@ -91,6 +91,8 @@ public class IndicatorSelection_VirtualController implements Initializable{
 			fxmlLoader.setController(iRV);
 			VBox root = fxmlLoader.load();
 			virtualIndicatorRankingStage = new Stage();
+			virtualIndicatorRankingStage.setWidth(app.getPopUpPrefWidth());
+			virtualIndicatorRankingStage.setHeight(app.getPopUpPrefHeight());
 			virtualIndicatorRankingStage.setTitle("Indicator Ranking");
 			Scene scene = new Scene(root);
 			virtualIndicatorRankingStage.setScene(scene);

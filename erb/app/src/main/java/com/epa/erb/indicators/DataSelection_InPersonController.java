@@ -156,6 +156,8 @@ public class DataSelection_InPersonController implements Initializable{
 			fxmlLoader.setController(printerSelectionController);
 			VBox root = fxmlLoader.load();
 			printerSelectionStage = new Stage();
+			printerSelectionStage.setWidth(app.getPopUpPrefWidth());
+			printerSelectionStage.setHeight(app.getPopUpPrefHeight());
 			printerSelectionStage.setTitle("Printer Selection");
 			Scene scene = new Scene(root);
 			printerSelectionStage.setScene(scene);

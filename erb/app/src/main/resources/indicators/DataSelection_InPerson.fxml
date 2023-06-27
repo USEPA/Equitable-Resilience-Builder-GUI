@@ -37,12 +37,12 @@
       </ScrollPane>
       <HBox fx:id="printHBox" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+            <HBox alignment="BOTTOM_LEFT" HBox.hgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" onAction="#saveButtonAction" stylesheets="@../button.css" text="Save and continue later" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+            <HBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" onAction="#printIndicatorCardsButtonAction" stylesheets="@../button.css" text="Save and continue to printing" />
                </children>

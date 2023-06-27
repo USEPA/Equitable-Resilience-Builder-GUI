@@ -3,7 +3,7 @@ package com.epa.erb.forms;
 import java.awt.Desktop;
 import java.io.File;
 import java.net.URL;
-
+import javafx.scene.Parent;
 import javax.imageio.ImageIO;
 
 import com.epa.erb.App;
@@ -124,8 +124,10 @@ public class FormController {
 					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCenter.fxml"));
 					IndicatorCenterController indicatorCenterController = new IndicatorCenterController(engagementActionController);
 					fxmlLoader.setController(indicatorCenterController);
-					VBox root = fxmlLoader.load();
+					Parent root = fxmlLoader.load();
 					Stage stage = new Stage();
+					stage.setWidth(app.getPopUpPrefWidth());
+					stage.setHeight(app.getPopUpPrefHeight());
 					stage.setTitle("Indicator Center");
 					Scene scene = new Scene(root);
 					stage.setScene(scene);

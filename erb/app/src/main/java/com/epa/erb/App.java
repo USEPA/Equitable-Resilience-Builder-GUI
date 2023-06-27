@@ -38,6 +38,8 @@ public class App extends Application {
 
 	private int prefWidth;
 	private int prefHeight;
+	private int popUpPrefWidth;
+	private int popUpPrefHeight;
 	private XMLManager xmlManager;
 	private Project selectedProject;
 	private FileHandler fileHandler = new FileHandler();
@@ -89,6 +91,9 @@ public class App extends Application {
 		
 		prefWidth = (int) (width -150);
 		prefHeight = (int) (height -100);
+		
+		popUpPrefWidth = (int) (width -350);
+		popUpPrefHeight = (int) (height -200);
 	}
 	
 
@@ -230,6 +235,22 @@ public class App extends Application {
 
 	public int getPrefHeight() {
 		return prefHeight;
+	}
+
+	public int getPopUpPrefWidth() {
+		return popUpPrefWidth;
+	}
+
+	public void setPopUpPrefWidth(int popUpPrefWidth) {
+		this.popUpPrefWidth = popUpPrefWidth;
+	}
+
+	public int getPopUpPrefHeight() {
+		return popUpPrefHeight;
+	}
+
+	public void setPopUpPrefHeight(int popUpPrefHeight) {
+		this.popUpPrefHeight = popUpPrefHeight;
 	}
 
 	public void setPrefHeight(int prefHeight) {

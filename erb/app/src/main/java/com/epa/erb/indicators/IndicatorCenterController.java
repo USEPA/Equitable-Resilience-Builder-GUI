@@ -44,6 +44,8 @@ public class IndicatorCenterController implements Initializable{
 			fxmlLoader.setController(iSIP);
 			VBox root = fxmlLoader.load();
 			inPersonIndicatorSelectionStage = new Stage();
+			inPersonIndicatorSelectionStage.setWidth(eAC.getApp().getPopUpPrefWidth());
+			inPersonIndicatorSelectionStage.setHeight(eAC.getApp().getPopUpPrefHeight());
 			inPersonIndicatorSelectionStage.setTitle("Indicator Selection");
 			Scene scene = new Scene(root);
 			inPersonIndicatorSelectionStage.setScene(scene);
@@ -62,6 +64,8 @@ public class IndicatorCenterController implements Initializable{
 			fxmlLoader.setController(iSV);
 			VBox root = fxmlLoader.load();
 			virtualIndicatorSelectionStage = new Stage();
+			virtualIndicatorSelectionStage.setWidth(eAC.getApp().getPopUpPrefWidth());
+			virtualIndicatorSelectionStage.setHeight(eAC.getApp().getPopUpPrefHeight());
 			virtualIndicatorSelectionStage.setTitle("Indicator Selection");
 			Scene scene = new Scene(root);
 			virtualIndicatorSelectionStage.setScene(scene);

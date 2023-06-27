@@ -3,6 +3,8 @@ package com.epa.erb.indicators;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.epa.erb.App;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -41,9 +43,11 @@ public class IndicatorCardController implements Initializable{
 	@FXML
 	TextFlow textFlow;
 	
+	private App app;
 	private IndicatorCard indicatorCard;
-	public IndicatorCardController(IndicatorCard indicatorCard) {
+	public IndicatorCardController(IndicatorCard indicatorCard, App app) {
 		this.indicatorCard = indicatorCard;
+		this.app = app;
 	}
 	
 	@Override
@@ -58,7 +62,7 @@ public class IndicatorCardController implements Initializable{
 	private void cardClicked() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCard.fxml"));
-			IndicatorCardController iCController = new IndicatorCardController(indicatorCard);
+			IndicatorCardController iCController = new IndicatorCardController(indicatorCard, app);
 			fxmlLoader.setController(iCController);
 			VBox cVBox = fxmlLoader.load();
 			cVBox.setPrefWidth(600);
@@ -71,6 +75,8 @@ public class IndicatorCardController implements Initializable{
 			iCController.setColorAndImage();
 			iCController.addAllTextForPrinting();
 			Stage stage = new Stage();
+			stage.setWidth(app.getPopUpPrefWidth()-350);
+			stage.setHeight(app.getPopUpPrefHeight() + 100);
 			Scene scene = new Scene(cVBox);
 			stage.setScene(scene);
 			stage.show();

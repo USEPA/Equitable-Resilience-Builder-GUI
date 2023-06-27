@@ -118,6 +118,8 @@ public class IndicatorSelection_InPersonController implements Initializable {
 			fxmlLoader.setController(dSIP);
 			VBox root = fxmlLoader.load();
 			inPersonDataSelectionStage = new Stage();
+			inPersonDataSelectionStage.setWidth(app.getPopUpPrefWidth());
+			inPersonDataSelectionStage.setHeight(app.getPopUpPrefHeight());
 			inPersonDataSelectionStage.setTitle("Data Selection");
 			Scene scene = new Scene(root);
 			inPersonDataSelectionStage.setScene(scene);

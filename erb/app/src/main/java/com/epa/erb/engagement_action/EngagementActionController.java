@@ -194,6 +194,8 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
+			stage.setWidth(app.getPopUpPrefWidth());
+			stage.setHeight(app.getPopUpPrefHeight());
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
@@ -209,6 +211,8 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
+			stage.setWidth(app.getPopUpPrefWidth());
+			stage.setHeight(app.getPopUpPrefHeight());
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
@@ -249,6 +253,8 @@ public class EngagementActionController implements Initializable {
 			conteoller.launch();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
+			stage.setWidth(app.getPopUpPrefWidth());
+			stage.setHeight(app.getPopUpPrefHeight());
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {

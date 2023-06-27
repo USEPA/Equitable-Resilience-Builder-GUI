@@ -159,6 +159,8 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			fxmlLoader.setController(iSV);
 			VBox root = fxmlLoader.load();
 			virtualIndicatorSortingStage = new Stage();
+			virtualIndicatorSortingStage.setWidth(app.getPopUpPrefWidth());
+			virtualIndicatorSortingStage.setHeight(app.getPopUpPrefHeight());
 			virtualIndicatorSortingStage.setTitle("Indicator Sorting");
 			Scene scene = new Scene(root);
 			virtualIndicatorSortingStage.setScene(scene);
@@ -191,7 +193,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	private Pane loadIndicatorCard(IndicatorCard card) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCard.fxml"));
-			IndicatorCardController iCController = new IndicatorCardController(card);
+			IndicatorCardController iCController = new IndicatorCardController(card, app);
 			fxmlLoader.setController(iCController);
 			VBox cVBox = fxmlLoader.load();
 			cVBox.setPrefWidth(70);
