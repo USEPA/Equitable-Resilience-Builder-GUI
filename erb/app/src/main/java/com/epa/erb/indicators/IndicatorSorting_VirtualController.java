@@ -61,6 +61,8 @@ public class IndicatorSorting_VirtualController implements Initializable{
 	@FXML
 	BorderPane borderPane;
 	
+	int numRowsForSorting = 1;
+	int numColumnsForSorting = 1;
 	private FileHandler fileHandler = new FileHandler();
 		
 	private App app;
@@ -109,8 +111,6 @@ public class IndicatorSorting_VirtualController implements Initializable{
 		int minColumns = 3;
 		int numGrids = 4;
 
-		int numRowsForSorting = 1;
-		int numColumnsForSorting = 1;
 		outerLoop: {
 			for (int i = 1; i <= maxRows; i++) {
 				for (int j = 1; j <= maxColumns; j++) {
@@ -284,6 +284,22 @@ public class IndicatorSorting_VirtualController implements Initializable{
 				Pane source = (Pane) event.getGestureSource();
 				if(target.getChildren().size() ==0) { 
 					target.getChildren().add(source);
+				} else  {
+					GridPane gP = (GridPane) target.getParent();
+					int children = 0;
+					for(Object pa: gP.getChildren()) {
+						VBox child = (VBox) pa;
+						if(child.getChildren().size() > 0) {
+							children++;
+						}
+					}
+					if(children == 6) {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setHeaderText(null);
+						alert.setTitle("Quadrant Full");
+						alert.setContentText("This quadrant is full. Please remove an indicator card from this quadrant to add a new one.");
+						alert.showAndWait();
+					}					
 				}
 				success = true;
 			}
