@@ -99,12 +99,13 @@ public class MyPortfolioController implements Initializable {
 			if(saveFile != null) {
 				if(!saveFile.exists()) saveFile.mkdir();
 				for(String section: exportHash.keySet()) {
-					File sectionDir = new File(saveFile.getPath() + "\\" + section);
+					String sectionCleaned = section.replaceAll("\\/", " ");
+					File sectionDir = new File(saveFile.getPath() + "\\" + sectionCleaned);
 					if(!sectionDir.exists()) sectionDir.mkdir();
 					
 					for(MyUploadedItem ut: exportHash.get(section)) {
 						File sourceFile = null;
-						if(section.contentEquals("Uploaded")) {
+						if(section.contentEquals("Completed Forms and Uploads")) {
 							sourceFile = new File(fileHandler.getMyUploadsDirectory(project, goal) + "\\" + ut.getFileNumber() + "\\" + ut.getFileName().getText());
 						}else {
 							sourceFile = new File(fileHandler.getSupportingDOCDirectory(project, goal) + "\\" + ut.getFileName().getText());
