@@ -9,13 +9,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="erbScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="erbScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox fx:id="erbVBox">
          <children>
@@ -48,25 +45,7 @@
             </HBox>
             <StackPane fx:id="erbAboutStackPane">
                <children>
-                  <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="#00000001" strokeType="INSIDE" width="850.0">
-                     <fill>
-                        <LinearGradient endX="0.44075829383886256" endY="0.4360189573459715" startX="0.4407582938388625" startY="0.009478672985781991">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.7470760345458984" green="0.8573586940765381" blue="0.9605262875556946" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <HBox fx:id="erbAboutHBox">
+                  <HBox fx:id="erbAboutHBox" style="-fx-background-color: white;">
                      <children>
                         <ImageView fx:id="erbMiniImageView" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
@@ -94,34 +73,7 @@
                   </HBox>
                </children>
             </StackPane>
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0">
-               <fill>
-                  <LinearGradient endX="0.862559241706161" endY="0.6303317535545023">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="1.0" green="0.42800000309944153" blue="0.11999999731779099" opacity="0.8702290058135986" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.006711409395973154">
-                           <color>
-                              <Color red="1.0" green="0.2059047669172287" blue="0.11999999731779099" opacity="0.9200000166893005" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.9932885906040269">
-                           <color>
-                              <Color red="0.9200000166893005" green="0.5303800106048584" blue="0.21160000562667847" opacity="0.927480936050415" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.9200000166893005" green="0.5303800106048584" blue="0.21160000562667847" opacity="0.927480936050415" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#f25f23ed" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0" />
             <VBox fx:id="erbContainer" style="-fx-background-color: white;" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>

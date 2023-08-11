@@ -40,11 +40,7 @@ public class ERBLandingController implements Initializable{
 	@FXML
 	VBox landingImageView3VBox;
 	@FXML
-	Rectangle rectangle1;
-	@FXML
 	Rectangle rectangle2;
-	@FXML
-	Rectangle rectangle3;
 	@FXML
 	VBox vBox;
 	@FXML
@@ -63,10 +59,9 @@ public class ERBLandingController implements Initializable{
 		app.getErbContainerController().removeERBAboutHBox();
 		fillImageViews();
 		
-        rectangle1.widthProperty().bind(vBox.widthProperty());
         rectangle2.widthProperty().bind(vBox.widthProperty());
-        rectangle3.widthProperty().bind(vBox.widthProperty());
-        rectangle3.heightProperty().bind(bottomStackPane.heightProperty());
+//        rectangle3.widthProperty().bind(vBox.widthProperty());
+//        rectangle3.heightProperty().bind(bottomStackPane.heightProperty());
 
         exploreHyperlink.setTooltip(new Tooltip("Explore mode is a way of checking out the tool. You are not able to save any work."));
 

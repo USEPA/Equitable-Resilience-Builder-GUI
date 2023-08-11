@@ -8,34 +8,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="150.0" prefWidth="850.0">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" height="244.0" stroke="#00000001" strokeType="INSIDE" width="850.0">
-               <fill>
-                  <LinearGradient endX="0.44075829383886256" endY="0.4360189573459715" startX="0.4407582938388625" startY="0.009478672985781991">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.7470760345458984" green="0.8573586940765381" blue="0.9605262875556946" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
             <VBox alignment="BOTTOM_LEFT" minHeight="200.0">
                <children>
                   <VBox VBox.vgrow="ALWAYS">
@@ -64,54 +43,9 @@
             </VBox>
          </children>
       </StackPane>
-      <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0">
-         <fill>
-            <LinearGradient endX="0.862559241706161" endY="0.6303317535545023">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="0.42800000309944153" blue="0.11999999731779099" opacity="0.8702290058135986" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006711409395973154">
-                     <color>
-                        <Color red="1.0" green="0.2059047669172287" blue="0.11999999731779099" opacity="0.9200000166893005" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9932885906040269">
-                     <color>
-                        <Color red="0.9200000166893005" green="0.5303800106048584" blue="0.21160000562667847" opacity="0.927480936050415" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.9200000166893005" green="0.5303800106048584" blue="0.21160000562667847" opacity="0.927480936050415" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
+      <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#f25f23ed" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0" />
       <StackPane fx:id="bottomStackPane" VBox.vgrow="ALWAYS">
          <children>
-            <Rectangle fx:id="rectangle3" arcHeight="5.0" arcWidth="5.0" height="394.0" stroke="#00000001" strokeType="INSIDE" width="838.0">
-               <fill>
-                  <LinearGradient endX="0.44075829383886256" endY="0.4360189573459715" startX="0.4407582938388625" startY="0.009478672985781991">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.7470760345458984" green="0.8573586940765381" blue="0.9605262875556946" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
             <HBox alignment="CENTER" spacing="5.0">
                <children>
                   <VBox alignment="TOP_CENTER" spacing="5.0" HBox.hgrow="ALWAYS">

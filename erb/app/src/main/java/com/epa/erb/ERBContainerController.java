@@ -49,8 +49,6 @@ public class ERBContainerController implements Initializable{
 	@FXML
 	HBox erbAboutHBox;
 	@FXML
-	Rectangle rectangle1;
-	@FXML
 	Rectangle rectangle2;
 	@FXML
 	StackPane erbAboutStackPane;
@@ -72,7 +70,6 @@ public class ERBContainerController implements Initializable{
 		populateResourceMenu();
 		populateBreadCrumbBar();
 		
-        rectangle1.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
         rectangle2.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
 
 		menuBar.getStylesheets().add(getClass().getResource("/menuBar.css").toString());
