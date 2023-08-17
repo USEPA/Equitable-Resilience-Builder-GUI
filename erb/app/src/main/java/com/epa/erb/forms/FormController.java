@@ -105,6 +105,12 @@ public class FormController {
 			return "166";
 		} else if (id.contentEquals("170")) {
 			return "169";
+		} else if (id.contentEquals("181")) {
+			return "182";
+		} else if (id.contentEquals("183")) {
+			return "184";
+		} else if (id.contentEquals("185")) {
+			return "186";
 		}
 		return id;
 	}

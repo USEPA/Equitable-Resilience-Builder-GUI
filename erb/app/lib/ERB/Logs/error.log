@@ -34,3 +34,10 @@
 | ERROR | 2023-07-19 14:29:23 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\OneDrive - Environmental Protection Agency (EPA)\Documents\Export\Wrap up\Move Forward\Monitoring_Plan_Worksheet.docx (The system cannot find the path specified)
 | ERROR | 2023-07-19 14:32:30 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\OneDrive - Environmental Protection Agency (EPA)\Documents\T1\Wrap up\Move Forward\Implementation_Worksheet.docx (The system cannot find the path specified)
 | ERROR | 2023-07-19 14:32:30 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\OneDrive - Environmental Protection Agency (EPA)\Documents\T1\Wrap up\Move Forward\Monitoring_Plan_Worksheet.docx (The system cannot find the path specified)
+| ERROR | 2023-08-17 11:34:01 | XMLManager.java:453 | The reference to entity "type" must end with the ';' delimiter.
+| ERROR | 2023-08-17 11:34:16 | XMLManager.java:453 | The reference to entity "type" must end with the ';' delimiter.
+| ERROR | 2023-08-17 11:34:34 | XMLManager.java:453 | The reference to entity "type" must end with the ';' delimiter.
+| ERROR | 2023-08-17 14:12:28 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
+| ERROR | 2023-08-17 14:24:30 | XMLManager.java:453 | Element type "text" must be followed by either attribute specifications, ">" or "/>".
+| ERROR | 2023-08-17 14:35:51 | XMLManager.java:453 | The reference to entity "context" must end with the ';' delimiter.
+| ERROR | 2023-08-17 15:33:02 | XMLManager.java:453 | The entity name must immediately follow the '&' in the entity reference.

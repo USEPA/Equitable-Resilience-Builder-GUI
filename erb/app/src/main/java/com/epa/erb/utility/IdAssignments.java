@@ -41,6 +41,7 @@ public class IdAssignments {
 		resourceIdAssignments.add("05");
 		resourceIdAssignments.add("06");
 		resourceIdAssignments.add("10");
+		resourceIdAssignments.add("187");
 	}
 	
 	public void fillChapterIdAssignemnts() {
