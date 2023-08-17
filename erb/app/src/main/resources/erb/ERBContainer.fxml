@@ -21,7 +21,7 @@
                   <HBox fx:id="breadCrumbHBox" alignment="CENTER_LEFT" style="-fx-background-color: #FFFFFF; -fx-border-color: transparent;" HBox.hgrow="ALWAYS" />
                   <MenuBar fx:id="menuBar" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #FFFFFF; -fx-border-color: transparent;">
                     <menus>
-                        <Menu fx:id="aboutMenu" mnemonicParsing="false" text="About Us">
+                        <Menu fx:id="aboutMenu" mnemonicParsing="false" text="About">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                               </ImageView>
