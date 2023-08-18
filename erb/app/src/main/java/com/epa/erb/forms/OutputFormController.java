@@ -6,6 +6,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.w3c.dom.Element;
+
 import java.io.PrintWriter;
 import com.epa.erb.App;
 import com.epa.erb.engagement_action.ExternalFileUploaderController;
@@ -14,12 +19,21 @@ import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.scene.control.Separator;
 
 public class OutputFormController extends FormController implements Initializable {
 
@@ -87,8 +101,66 @@ public class OutputFormController extends FormController implements Initializabl
 			} else if (type.contentEquals("area")) {
 				TextArea textArea = createTextArea(textBlock);
 				formVBox.getChildren().add(textArea);
+			} else if (type.contentEquals("dynamic area")) {
+				handleDynamicArea(textBlock, formVBox.getChildren().size(), false);
 			}
 		}
+	}
+	private void handleDynamicArea(ArrayList<Text> textBlock, int indexToAddDynamicAreaVBox, boolean cleanCopy) {
+		VBox dynamicAreaVBox = new VBox();
+		dynamicAreaVBox.setPadding(new Insets(10,10,10,10));
+		dynamicAreaVBox.setSpacing(5);
+		for(Text text: textBlock) {
+			HashMap<String, String> textAndResponse = parseTextAndResponse(text.getText());
+			Text copyText =copyText(text);
+			copyText.setText(textAndResponse.get("prompt"));
+			copyText.setWrappingWidth(250);
+			HBox textHBox = new HBox();
+			VBox.setVgrow(textHBox, Priority.ALWAYS);
+			TextArea textArea = new TextArea();
+			if(!cleanCopy) textArea.setText(textAndResponse.get("response"));
+			HBox.setHgrow(textArea, Priority.ALWAYS);
+			textHBox.getChildren().add(copyText);
+			textHBox.getChildren().add(textArea);
+			textHBox.setSpacing(20.0);
+			dynamicAreaVBox.getChildren().add(textHBox);
+		}
+		dynamicAreaVBox.setStyle("-fx-border-color: gray");
+		Separator separator = new Separator();
+		separator.setHalignment(HPos.LEFT);
+		dynamicAreaVBox.getChildren().add(separator);
+		HBox buttonHBox = new HBox();
+		buttonHBox.setAlignment(Pos.CENTER_RIGHT);
+		Button addButton = new Button ("Add");
+		buttonHBox.getChildren().add(addButton);
+		dynamicAreaVBox.getChildren().add(buttonHBox);
+		dynamicAreaVBox.setId("dynamic area");
+		formVBox.getChildren().add(indexToAddDynamicAreaVBox, dynamicAreaVBox);
+		addButton.setOnAction(e-> handleDynamicArea(textBlock, indexToAddDynamicAreaVBox + 1, true));
+	}
+	
+	private HashMap<String, String> parseTextAndResponse(String text) {
+		HashMap<String, String> results = new HashMap<String, String>();
+		Pattern promptPattern = Pattern.compile("(\\[(.*?)\\])");
+		Matcher matcher = promptPattern.matcher(text);
+		if(matcher.find()) {
+			String prompt = matcher.group(2);
+			results.put("prompt", prompt);
+			
+			String leftOverString = text.replace(matcher.group(1), "").trim();
+			if(leftOverString.length() > 0) {
+				results.put("response", leftOverString);
+			}
+		}
+		return results;	
+	}
+	
+	private Text copyText(Text text) {
+		Text copyText = new Text();
+		copyText.setText(text.getText());
+		copyText.setFont(text.getFont());
+		copyText.setId(text.getId());
+		return copyText;
 	}
 	
 	private TextFlow createTextFlow(ArrayList<Text> textBlock) {
@@ -159,6 +231,26 @@ public class OutputFormController extends FormController implements Initializabl
 					TextArea textArea = (TextArea) node;
 					String text = textArea.getText();
 					printWriter.println(text);
+					printWriter.println();
+				} else if (node.toString().contains("VBox")) {
+					VBox vBox = (VBox) node;
+					for (javafx.scene.Node child : vBox.getChildren()) {
+						if (child.toString().contains("HBox")) {
+							HBox hbox = (HBox) child;
+							if (hbox.getChildren().size() == 2) {
+								Text promptText = (Text) hbox.getChildren().get(0);
+								TextArea responseTextArea = (TextArea) hbox.getChildren().get(1);
+								printWriter.println("Prompt: " + promptText.getText());
+								if(responseTextArea.getText()!= null) {
+									printWriter.println("Response: " + responseTextArea.getText());
+								} else {
+									printWriter.println("Response: ");
+								}
+							}
+						}
+					}
+					printWriter.println("---");
+					printWriter.println();
 				}
 			}
 			printWriter.close();

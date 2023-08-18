@@ -661,7 +661,6 @@ public class XMLManager {
 				for (javafx.scene.Node node : outputFormNodes) {
 					Element textBlockElement = document.createElement("textBlock");
 					textBlockElement.setAttribute("type", node.getId());
-
 					if (node.toString().contains("TextFlow")) {
 						TextFlow textFlow = (TextFlow) node;
 						for (int i = 0; i < textFlow.getChildren().size(); i++) {
@@ -686,6 +685,28 @@ public class XMLManager {
 							textElement.setAttribute("fontStyle", "Prompt");
 						}
 						textBlockElement.appendChild(textElement);
+					} else if (node.toString().contains("VBox")) {
+						VBox vBox = (VBox) node;
+						for(javafx.scene.Node child: vBox.getChildren()) {
+							if(child.toString().contains("HBox")) {
+								HBox hbox = (HBox) child;
+								if(hbox.getChildren().size() ==2) {
+								Text promptText = (Text) hbox.getChildren().get(0);
+								TextArea responseTextArea = (TextArea) hbox.getChildren().get(1);
+								Element textElement = document.createElement("text");
+								textElement.setAttribute("size", String.valueOf(promptText.getFont().getSize()));
+								textElement.setAttribute("fontFamily", promptText.getFont().getFamily());
+								textElement.setAttribute("fontStyle", promptText.getId());
+								if(responseTextArea.getText() != null) {
+									textElement.setAttribute("text", "[" + promptText.getText()+ "]" + responseTextArea.getText());
+								} else {
+									textElement.setAttribute("text", "[" + promptText.getText()+ "]");
+								}
+								textBlockElement.appendChild(textElement);
+								}
+							}
+						}
+						
 					}
 					containerElement.appendChild(textBlockElement);
 				}
