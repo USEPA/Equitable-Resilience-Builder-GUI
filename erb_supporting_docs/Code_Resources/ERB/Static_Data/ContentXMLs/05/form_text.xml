@@ -21,6 +21,14 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
 			text="What are data ethics?">
 			</text>
 		</textBlock>
@@ -235,6 +243,14 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
 			text="Institutional requirements">
 			</text>
 		</textBlock>
@@ -244,6 +260,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Core team members may need to follow specific legal or institutional requirements regarding data. The information gathered as part of the ERB process is geared to supporting decision-making, not scientific research per se. It does not entail gathering data about people to produce generalizable knowledge. Rules for human subjects research may not be applicable. Nevertheless, depending on their institution’s policies, university scientists on the core team might still have to coordinate with their Institutional Review Board. Federal or state government employees might be bound by other data protocol.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -299,6 +323,14 @@
 			height="165.0"
 			id="185">
 			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
 		</textBlock>
 		<textBlock>
 			<text
@@ -422,6 +454,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="grounded in Indigenous Peoples’ worldviews should inform the use of data across time in order to minimize harm, maximize benefits, promote justice, and allow for future use.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

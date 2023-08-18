@@ -18,6 +18,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
@@ -30,6 +38,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Countries, government agencies, and organizations define 'children' and 'youth' differently ​[1]​. The U.S. Environmental Protection Agency's 2021 Policy on Children's Health defines children from conception, infancy, early childhood, and through adolescence until 21 years of age ​[2]​ . However, different stages of childhood have different needs and youth engagement strategies need to be age appropriate. This guide is intended to facilitate engagement of older children, approximately ages 12 to 21, and uses 'children' and 'youth' interchangeably.">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -57,6 +73,14 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="633.0"
 			height="319.0"
@@ -79,6 +103,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
@@ -91,6 +123,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="While youth are vulnerable to hazards and disasters, they are also resilient. Opportunities to participate in disaster preparedness and response activities enhance this resilience ​[4]​. Participation benefits youth by improving cognitive, social, and emotional development, promoting a sense of empowerment, and reducing marginalization ​[7], [8]​. Further, children have many strengths to contribute to resilience and recovery planning. For instance, they are skilled at organizing and advocating, they can translate and mediate between generations, they can raise awareness in their community and with peers (e.g., via social media), they can be first responders, and much more ​[9]​. Finally, in accordance with the Convention on the Rights of the Child ​[10]​, children and youth have a right to participate in hazard and disaster planning. Despite these factors, they are often viewed as passive victims and excluded from planning and emergency preparedness processes.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -115,6 +155,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Meaningful participation is essential for successfully engaging youth in hazard and disaster resilience planning. Roger Hart described a ladder of child participation in a 1992 essay (Figure 2) ​[11]​. Meaningful participation goes beyond simply inviting youth to a meeting — it involves actively engaging youth and ensuring that their input and voices are heard. Allowing youth to lead or co-lead discussions and activities fosters the highest levels of participation. Consulting with youth and/or informing youth also fall under meaningful participation, though lower in the hierarchy. It is critical to avoid unethical and tokenistic participation. Examples of this include manipulating youth, not valuing and acting on the views expressed by youth, or not allowing youth to express their views in the first place. ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -145,6 +193,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
@@ -166,6 +222,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
@@ -184,6 +248,14 @@
 			height="259.0"
 			id="178">
 			</icon>
+		</textBlock>	
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
 		</textBlock>		
 		<textBlock>
 			<text
@@ -273,6 +345,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
@@ -326,6 +406,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
@@ -342,6 +430,14 @@
 			height="267.0"
 			id="179">
 			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
 		</textBlock>
 		<textBlock>
 			<text
@@ -500,6 +596,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
@@ -512,6 +616,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="To plan and prepare for equitable resilience across all individuals in a community, children and youth must be included in decision-making processes. Children and youth have a right to be protected from the harmful physical, psychological, emotional, and educational impacts of hazards and disasters — elevating their voices and experiences is critical to ensuring that protection. Youth participation can occur on many levels and engagement activities can be tailored to specific needs and interests. While younger youth can be consulted and informed, older youth can serve as leaders on the core planning team and assist with planning activities, facilitating sessions, designing materials, and mentoring younger participants. Meaningful and intentional engagement of youth enhances community resilience across generations.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
