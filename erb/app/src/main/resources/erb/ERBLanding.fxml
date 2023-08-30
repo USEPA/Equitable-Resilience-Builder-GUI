@@ -13,13 +13,13 @@
 
 <VBox fx:id="vBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane prefHeight="150.0" prefWidth="850.0">
+      <StackPane>
          <children>
-            <VBox alignment="BOTTOM_LEFT" minHeight="200.0">
+            <VBox alignment="BOTTOM_LEFT">
                <children>
-                  <VBox VBox.vgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="55.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../epa_log.png" />
                            </image>
