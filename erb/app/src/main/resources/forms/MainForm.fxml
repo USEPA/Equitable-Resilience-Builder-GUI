@@ -19,12 +19,12 @@
                <content>
                   <HBox fx:id="hBox" alignment="CENTER" spacing="20.0" style="-fx-background-color: transparent;">
                      <children>
-                        <VBox fx:id="formVBox" minWidth="450.0" spacing="5.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                        <VBox fx:id="formVBox" spacing="5.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </VBox>
-                        <VBox fx:id="rightPanelVBox" minWidth="350.0" spacing="25.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                        <VBox fx:id="rightPanelVBox" spacing="25.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                            <children>
                               <VBox fx:id="topPanelVBox" spacing="10.0" VBox.vgrow="ALWAYS">
                                  <padding>

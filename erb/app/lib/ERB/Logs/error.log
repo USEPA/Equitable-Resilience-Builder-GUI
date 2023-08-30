@@ -41,3 +41,20 @@
 | ERROR | 2023-08-17 14:24:30 | XMLManager.java:453 | Element type "text" must be followed by either attribute specifications, ">" or "/>".
 | ERROR | 2023-08-17 14:35:51 | XMLManager.java:453 | The reference to entity "context" must end with the ';' delimiter.
 | ERROR | 2023-08-17 15:33:02 | XMLManager.java:453 | The entity name must immediately follow the '&' in the entity reference.
+| ERROR | 2023-08-30 15:39:54 | EngagementActionController.java:619 | 
+/C:/Users/awilke06/Documents/Eclipse_Repos/MetroCERI/metroceri_erb/erb/app/build/resources/main/forms/MainForm.fxml
+
+| ERROR | 2023-08-30 15:39:54 | EngagementActionController.java:475 | Cannot addContentToContentVBox. root is null.
+| ERROR | 2023-08-30 15:39:54 | EngagementActionController.java:619 | 
+/C:/Users/awilke06/Documents/Eclipse_Repos/MetroCERI/metroceri_erb/erb/app/build/resources/main/forms/MainForm.fxml
+
+| ERROR | 2023-08-30 15:39:54 | EngagementActionController.java:475 | Cannot addContentToContentVBox. root is null.
+| ERROR | 2023-08-30 16:44:16 | XMLManager.java:456 | Invalid URL: unknown protocol: c
+| ERROR | 2023-08-30 16:44:16 | XMLManager.java:456 | Invalid URL: unknown protocol: c
+| ERROR | 2023-08-30 16:44:20 | XMLManager.java:456 | Invalid URL: unknown protocol: c
+| ERROR | 2023-08-30 16:44:20 | XMLManager.java:456 | Invalid URL: unknown protocol: c
+| ERROR | 2023-08-30 16:45:16 | XMLManager.java:456 | Invalid URL: unknown protocol: c
+| ERROR | 2023-08-30 16:45:20 | XMLManager.java:456 | Invalid URL: unknown protocol: c
+| ERROR | 2023-08-30 16:45:45 | XMLManager.java:456 | Invalid URL: unknown protocol: c
+| ERROR | 2023-08-30 16:45:47 | XMLManager.java:456 | Invalid URL: unknown protocol: c
+| ERROR | 2023-08-30 16:46:19 | XMLManager.java:456 | Invalid URL: unknown protocol: c

@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextFlow;
@@ -73,6 +75,19 @@ public class MainFormController extends FormController implements Initializable{
 			addTextFlowsToVBox(topPanelVBox, topPanelTextFlows);
 			ArrayList<HBox> bottomPanelTextFlows = formContentHashMap.get("bottomPanelVBox");
 			addTextFlowsToVBox(bottomPanelVBox, bottomPanelTextFlows);
+			
+			if(topPanelTextFlows.size() > 0) {
+				String expands = topPanelTextFlows.get(0).getId();
+				if(expands.contentEquals("false")) {
+					rightPanelVBox.setMinWidth(250.0);
+					rightPanelVBox.setMaxWidth(250.0);
+					formVBox.setMinWidth(450.0);
+				} else if (expands.length() == 0) {
+					rightPanelVBox.setMinWidth(250.0);
+					rightPanelVBox.setMaxWidth(250.0);
+					formVBox.setMinWidth(450.0);
+				}
+			}
 		}
 	}
 	

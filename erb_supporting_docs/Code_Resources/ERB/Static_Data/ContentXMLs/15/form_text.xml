@@ -1,5 +1,5 @@
 <textBlocks>
-	<container id="formVBox">
+	<container id="formVBox" expands="false">
 		<textBlock>
 			<text
 			size="22.0"
@@ -163,10 +163,16 @@
 			</text>
 		</textBlock>
 	</container>
-	<container id="topPanelVBox">
-
+	<container id="topPanelVBox" expands="true">
+		<textBlock>
+			<icon
+			width="500.0"
+			height="339.0"
+			id="188">
+			</icon>
+		</textBlock>
 	</container>
-		<container id="bottomPanelVBox">
+	<container id="bottomPanelVBox" expands="true">
 		
 	</container>
 </textBlocks>

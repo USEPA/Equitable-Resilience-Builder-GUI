@@ -111,10 +111,16 @@
 			</text>
 		</textBlock>
 	</container>
-	<container id="topPanelVBox">
-		
+	<container id="topPanelVBox" expands="true">
+		<textBlock>
+			<icon
+			width="499.0"
+			height="282.0"
+			id="191">
+			</icon>
+		</textBlock>
 	</container>
-		<container id="bottomPanelVBox">
+	<container id="bottomPanelVBox" expands="true">
 		
 	</container>
 </textBlocks>

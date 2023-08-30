@@ -315,6 +315,7 @@ public class XMLManager {
 						// Container
 						Element containerElement = (Element) containerNode;
 						String containerId = containerElement.getAttribute("id");
+						String containerExpand = containerElement.getAttribute("expands");
 						ArrayList<HBox> textBlocks = new ArrayList<HBox>();
 						NodeList textBlockNodeList = containerElement.getElementsByTagName("textBlock");
 						for (int j = 0; j < textBlockNodeList.getLength(); j++) {
@@ -322,6 +323,7 @@ public class XMLManager {
 							// TextBlock
 							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
 								HBox textFlowHBox = new HBox();
+								
 								TextFlow textFlow = new TextFlow();
 								Element textBlockElement = (Element) textBlockNode;
 								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
@@ -442,6 +444,7 @@ public class XMLManager {
 								textFlowHBox.setSpacing(10.0);
 								textFlowHBox.getChildren().add(textFlow);
 								textFlowHBox.setAlignment(Pos.CENTER_LEFT);
+								textFlowHBox.setId(containerExpand);
 								textBlocks.add(textFlowHBox);
 							}
 						}

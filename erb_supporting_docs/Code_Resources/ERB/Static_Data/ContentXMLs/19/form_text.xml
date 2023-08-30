@@ -153,10 +153,16 @@
 			</text>
 		</textBlock>
 	</container>
-	<container id="topPanelVBox">
-		
+	<container id="topPanelVBox" expands="true">
+		<textBlock>
+			<icon
+			width="499.0"
+			height="333.0"
+			id="192">
+			</icon>
+		</textBlock>
 	</container>
-		<container id="bottomPanelVBox">
-	
+	<container id="bottomPanelVBox" expands="true">
+		
 	</container>
 </textBlocks>
