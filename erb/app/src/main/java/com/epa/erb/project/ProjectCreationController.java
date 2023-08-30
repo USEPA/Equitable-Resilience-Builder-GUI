@@ -36,8 +36,8 @@ public class ProjectCreationController implements Initializable {
 	TextField projectNameTextField;
 	@FXML
 	TextArea projectDescriptionTextArea;
-	@FXML
-	Rectangle rectangle1;
+//	@FXML
+//	Rectangle rectangle1;
 	@FXML
 	VBox vBox;
 
@@ -52,7 +52,7 @@ public class ProjectCreationController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-        rectangle1.widthProperty().bind(vBox.widthProperty().subtract(5.0));
+//        rectangle1.widthProperty().bind(vBox.widthProperty().subtract(5.0));
 		goalModeHBox.setVisible(false);
 		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
 	}

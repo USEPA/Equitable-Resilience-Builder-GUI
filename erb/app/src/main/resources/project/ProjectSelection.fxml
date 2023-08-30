@@ -8,34 +8,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" prefHeight="750.0" prefWidth="1150.0" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" prefHeight="750.0" prefWidth="1150.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane>
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0">
-               <fill>
-                  <LinearGradient endX="0.47393364928909953" endY="0.48341232227488157" startX="0.47393364928909953">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.9098039269447327" green="0.7137255072593689" blue="0.6000000238418579" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
             <HBox alignment="CENTER_LEFT">
                <children>
                   <Label minWidth="175.0" text="Project Selection">
