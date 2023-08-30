@@ -29,14 +29,14 @@
                         <Insets left="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <Label text="Equitable Resilience Builder" textFill="#4fb1c9">
+                  <Label text="Equitable Resilience Builder" textFill="#580aad">
                      <font>
-                        <Font name="System Bold" size="30.0" />
+                        <Font name="System Bold" size="32.0" />
                      </font>
                   </Label>
-                  <Label text="Inclusive planning for disasters and climate change" textFill="#3b5a8a">
+                  <Label text="Inclusive planning for disasters and climate change" textFill="#e59d25">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font size="22.0" />
                      </font>
                   </Label>
                </children>

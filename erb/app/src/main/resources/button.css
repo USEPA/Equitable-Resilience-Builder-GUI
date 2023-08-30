@@ -1,8 +1,8 @@
 .button:hover{
-    -fx-text-fill: #4fb1c9;
+    -fx-text-fill: #DEDEDE;
 }
 
-.button {
+/* .button {
 	-fx-background-color: linear-gradient(#757676, #939393), 
 				linear-gradient(#ffffff, #939393),
 				linear-gradient(#ffffff, #939393),
@@ -12,9 +12,12 @@
 				-fx-background-insets: 0,1,2,3,0;
 				-fx-text-fill: white;
 				-fx-font-weight: bold;
-				-fx-font-size: 16px;
-				
-   			 
-   			 
+				-fx-font-size: 16px;	 
+}
+*/
+
+.button {
+	-fx-text-fill: #580aad;
+	-fx-background-color: #FFFFFF;
 }
 	

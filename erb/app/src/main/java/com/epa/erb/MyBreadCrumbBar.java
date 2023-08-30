@@ -20,13 +20,13 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 	private Project project;
 	
 	public void initMyBreadCrumbBar(String crumb, String id) {
-		TreeItem<String> breadCrumb = new TreeItem<String> (crumb);
+		TreeItem<String> breadCrumb = new TreeItem<String> (crumb.toUpperCase());
 		setSelectedCrumb(breadCrumb);
 		breadCrumbIdHashMap.put(breadCrumb, id);
 	}
 	
 	public void addBreadCrumb(String crumb, String id) {
-		TreeItem<String> breadCrumb = new TreeItem<String> (crumb);
+		TreeItem<String> breadCrumb = new TreeItem<String> (crumb.toUpperCase());
 		getSelectedCrumb().getChildren().add(breadCrumb);
 		setSelectedCrumb(breadCrumb);
 		breadCrumbIdHashMap.put(breadCrumb, id);

@@ -16,31 +16,9 @@
    <content>
       <VBox fx:id="erbVBox">
          <children>
-            <HBox fx:id="headerHBox" alignment="CENTER_LEFT" style="-fx-border-color: transparent;">
+            <HBox fx:id="headerHBox" alignment="CENTER_LEFT" style="-fx-border-color: #FFFFFF; -fx-background-color: #FFFFFF;">
                <children>
                   <HBox fx:id="breadCrumbHBox" alignment="CENTER_LEFT" style="-fx-background-color: #FFFFFF; -fx-border-color: transparent;" HBox.hgrow="ALWAYS" />
-                  <MenuBar fx:id="menuBar" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #FFFFFF; -fx-border-color: transparent;">
-                    <menus>
-                        <Menu fx:id="aboutMenu" mnemonicParsing="false" text="About">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                              </ImageView>
-                           </graphic>
-                        </Menu>
-                      <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                              </ImageView>
-                           </graphic>
-                        </Menu>
-                        <Menu fx:id="faqMenu" mnemonicParsing="false" text="Instructions">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                              </ImageView>
-                           </graphic>
-                        </Menu>
-                    </menus>
-                  </MenuBar>
                </children>
             </HBox>
             <StackPane fx:id="erbAboutStackPane">
@@ -54,14 +32,14 @@
                         </ImageView>
                         <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
                            <children>
-                              <Label fx:id="titleLabel" text="Equitable Resilience Builder" textFill="#4fb1c9">
+                              <Label fx:id="titleLabel" text="Equitable Resilience Builder" textFill="#580aad">
                                  <font>
-                                    <Font name="System Bold" size="30.0" />
+                                    <Font name="System Bold" size="32.0" />
                                  </font>
                               </Label>
-                              <Label text="Inclusive planning for disasters and climate change" textFill="#3b5a8a">
+                              <Label text="Inclusive planning for disasters and climate change" textFill="#e59d25">
                                  <font>
-                                    <Font name="System Bold" size="18.0" />
+                                    <Font size="22.0" />
                                  </font>
                               </Label>
                            </children>
@@ -69,11 +47,22 @@
                               <Insets left="10.0" />
                            </padding>
                         </VBox>
+                        <VBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <MenuBar fx:id="menuBar" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #FFFFFF;">
+                                <menus>
+                                    <Menu fx:id="faqMenu" mnemonicParsing="false" text="Instructions" />
+                                  <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources" />
+                                    <Menu fx:id="aboutMenu" mnemonicParsing="false" text="About" />
+                                </menus>
+                              </MenuBar>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </children>
             </StackPane>
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#f25f23ed" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#f25f23ed" height="5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0" />
             <VBox fx:id="erbContainer" style="-fx-background-color: white;" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>

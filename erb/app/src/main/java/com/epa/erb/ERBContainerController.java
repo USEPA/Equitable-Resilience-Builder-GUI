@@ -76,53 +76,53 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void fillImageViews() {
-		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image_white.png")));
-		imageView1.setFitWidth(25.0);
-		imageView1.setFitHeight(25.0);
-		faqMenu.setGraphic(imageView1);
-		faqMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
-				+ "linear-gradient(#ffffff, #1268BE),"
-				+ "linear-gradient(#ffffff, #1268BE),"
-				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
-				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-				+ "-fx-background-radius: 30;"
-				+ "-fx-background-insets: 0,1,2,3,0;"
-				+ "-fx-text-fill: white;"
-				+ "-fx-font-weight: bold;"
-				+ "-fx-font-size: 14px;"
-				+ "}");
+//		ImageView imageView1 = new ImageView(new Image(getClass().getResourceAsStream("/about_image_white.png")));
+//		imageView1.setFitWidth(25.0);
+//		imageView1.setFitHeight(25.0);
+//		faqMenu.setGraphic(imageView1);
+//		faqMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
+//				+ "linear-gradient(#ffffff, #1268BE),"
+//				+ "linear-gradient(#ffffff, #1268BE),"
+//				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
+//				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+//				+ "-fx-background-radius: 30;"
+//				+ "-fx-background-insets: 0,1,2,3,0;"
+//				+ "-fx-text-fill: white;"
+//				+ "-fx-font-weight: bold;"
+//				+ "-fx-font-size: 14px;"
+//				+ "}");
 		
-		ImageView imageView2 = new ImageView(new Image(getClass().getResourceAsStream("/resources_image_white.png")));
-		imageView2.setFitWidth(25.0);
-		imageView2.setFitHeight(25.0);
-		resourcesMenu.setGraphic(imageView2);
-		resourcesMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
-				+ "linear-gradient(#ffffff, #1268BE),"
-				+ "linear-gradient(#ffffff, #1268BE),"
-				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
-				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-				+ "-fx-background-radius: 30;"
-				+ "-fx-background-insets: 0,1,2,3,0;"
-				+ "-fx-text-fill: white;"
-				+ "-fx-font-weight: bold;"
-				+ "-fx-font-size: 14px;"
-				+ "}");
+//		ImageView imageView2 = new ImageView(new Image(getClass().getResourceAsStream("/resources_image_white.png")));
+//		imageView2.setFitWidth(25.0);
+//		imageView2.setFitHeight(25.0);
+//		resourcesMenu.setGraphic(imageView2);
+//		resourcesMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
+//				+ "linear-gradient(#ffffff, #1268BE),"
+//				+ "linear-gradient(#ffffff, #1268BE),"
+//				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
+//				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+//				+ "-fx-background-radius: 30;"
+//				+ "-fx-background-insets: 0,1,2,3,0;"
+//				+ "-fx-text-fill: white;"
+//				+ "-fx-font-weight: bold;"
+//				+ "-fx-font-size: 14px;"
+//				+ "}");
 
-		ImageView imageView3 = new ImageView(new Image(getClass().getResourceAsStream("/faq_image_white.png")));
-		imageView3.setFitWidth(25.0);
-		imageView3.setFitHeight(25.0);
-		aboutMenu.setGraphic(imageView3);
-		aboutMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
-				+ "linear-gradient(#ffffff, #1268BE),"
-				+ "linear-gradient(#ffffff, #1268BE),"
-				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
-				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-				+ "-fx-background-radius: 30;"
-				+ "-fx-background-insets: 0,1,2,3,0;"
-				+ "-fx-text-fill: white;"
-				+ "-fx-font-weight: bold;"
-				+ "-fx-font-size: 14px;"
-				+ "}");
+//		ImageView imageView3 = new ImageView(new Image(getClass().getResourceAsStream("/faq_image_white.png")));
+//		imageView3.setFitWidth(25.0);
+//		imageView3.setFitHeight(25.0);
+//		aboutMenu.setGraphic(imageView3);
+//		aboutMenu.setStyle("-fx-background-color: linear-gradient(#16669A, #1268BE), "
+//				+ "linear-gradient(#ffffff, #1268BE),"
+//				+ "linear-gradient(#ffffff, #1268BE),"
+//				+ "linear-gradient(#ffffff 0%, #1268BE 50%, #1268BE 100%),"
+//				+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+//				+ "-fx-background-radius: 30;"
+//				+ "-fx-background-insets: 0,1,2,3,0;"
+//				+ "-fx-text-fill: white;"
+//				+ "-fx-font-weight: bold;"
+//				+ "-fx-font-size: 14px;"
+//				+ "}");
 		
 		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/bridge_90_90.png")));
 	}

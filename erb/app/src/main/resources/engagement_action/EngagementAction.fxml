@@ -5,11 +5,13 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="engagementVBox" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="engagementVBox" prefHeight="750.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="saveHBox" alignment="CENTER_RIGHT">
          <children>
@@ -36,23 +38,67 @@
       </Label>
       <HBox alignment="CENTER_RIGHT" spacing="5.0" style="-fx-background-color: white;">
          <children>
-            <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" stylesheets="@../orange_buttons.css" text="My Portfolio">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            <Button fx:id="uploadFileButton" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" stylesheets="@../orange_buttons.css" text="Upload File">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="worksheetIndexButton1" mnemonicParsing="false" onAction="#worksheetIndexAction" stylesheets="@../orange_buttons.css" text="Worksheet Index">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
+            <HBox alignment="CENTER" minWidth="275.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Button fx:id="previousButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#previousButtonAction" stylesheets="@../button.css" text="PREVIOUS">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../previous.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT">
+                     <children>
+                        <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" stylesheets="@../button.css" text="NEXT">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../next.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" style="-fx-background-color: #FFFFFF;" text="My Portfolio" textFill="#00549c">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="uploadFileButton" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" style="-fx-background-color: #FFFFFF;" text="Upload File" textFill="#00549c">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="worksheetIndexButton1" mnemonicParsing="false" onAction="#worksheetIndexAction" style="-fx-background-color: #FFFFFF;" text="Worksheet Index" textFill="#00549c">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </HBox>
       <HBox fx:id="navigationHBox" alignment="TOP_CENTER">
@@ -72,29 +118,6 @@
          <children>
             <VBox fx:id="treeViewVBox">
                <children>
-                  <HBox>
-                     <children>
-                        <HBox HBox.hgrow="ALWAYS">
-                           <children>
-                              <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousButtonAction" stylesheets="@../button.css" text="Previous">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font></Button>
-                           </children>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" stylesheets="@../button.css" text="Next">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font></Button>
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
                   <TreeView fx:id="treeView" minWidth="275.0" prefHeight="275.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>

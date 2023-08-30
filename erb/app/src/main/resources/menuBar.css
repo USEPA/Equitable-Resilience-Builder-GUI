@@ -1,16 +1,25 @@
 .menu-item .label {
-  -fx-font-size: 14;
-  -fx-text-fill: black;  
+  -fx-font-size: 16;
+  -fx-text-fill: #580aad;  
 }
 
 .menu .label {
-     -fx-text-fill: white;
+	-fx-font-size: 16;
+     -fx-text-fill: #580aad;
 }
 
-.menu .label:hover {
-     -fx-text-fill: #4fb1c9; 
+ .menu .label:hover {
+     -fx-text-fill: #DEDEDE; 
 }
 
 .context-menu {
-    -fx-background-color: #568BC1;
+    -fx-background-color: #FFFFFF;
+}
+
+.menu-item:focused {
+     -fx-background-color: #DEDEDE;
+}
+
+.menu-bar {
+    -fx-selection-bar: transparent ;
 }
