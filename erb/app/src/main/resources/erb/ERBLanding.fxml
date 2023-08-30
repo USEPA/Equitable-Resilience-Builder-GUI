@@ -76,17 +76,17 @@
                                  <children>
                                     <Hyperlink id="173" onAction="#hyperlinkAction" text="The 5 sections of ERB">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font size="20.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink id="175" onAction="#hyperlinkAction" text="How ERB centers equity">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font size="20.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink onAction="#exampleProjectsHyperlinkAction" text="Examples of ERB projects">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font size="20.0" />
                                        </font>
                                     </Hyperlink>
                                  </children>
@@ -120,17 +120,17 @@
                                  <children>
                                     <Hyperlink onAction="#projectCreationButtonAction" text="Start a new project">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font size="20.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink onAction="#projectContinueButtonAction" text="Continue your project">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font size="20.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="exploreHyperlink" onAction="#exploreHyperlinkAction" text="Explore the tool">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font size="20.0" />
                                        </font>
                                     </Hyperlink>
                                  </children>
@@ -166,17 +166,17 @@
                            <children>
                               <Hyperlink id="171" onAction="#hyperlinkAction" text="Quick-start guide">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Hyperlink>
                               <Hyperlink id="172" onAction="#hyperlinkAction" text="Additional resources">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Hyperlink>
                               <Hyperlink id="09" onAction="#hyperlinkAction" text="About">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Hyperlink>
                            </children>
