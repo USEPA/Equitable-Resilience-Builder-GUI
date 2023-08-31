@@ -33,6 +33,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -302,6 +303,18 @@ public class EngagementActionController implements Initializable {
 			return null;
 		}
 	}
+	
+	private ScrollPane loadIndicatorCenterController() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCenter.fxml"));
+			IndicatorCenterController indicatorCenterController = new IndicatorCenterController(this);
+			fxmlLoader.setController(indicatorCenterController);
+			return fxmlLoader.load();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+	}
 
 	private void setDynamicDimensions(Pane pane, ScrollPane scrollPane) {
 		if (pane != null) {
@@ -438,19 +451,13 @@ public class EngagementActionController implements Initializable {
 					Pane root = loadWordCloudController();
 					addContentToContentVBox(root, true);
 				} else if (erbContentItem.getLongName().contentEquals("Noteboard")) {
-					
-					File guidDirectory = new File(fileHandler.getGUIDDataDirectory(getProject(), getCurrentGoal()) + "\\" + erbContentItem.getGuid());
-					File linearDirectory = new File(guidDirectory.getPath() + "\\linearRanking");
-//					if(linearDirectory.exists()) {
-//						Pane root = loadNoteBoard_LinearRankingController(erbContentItem);
-//						addContentToContentVBox(root, true);
-//					}else {
-						Pane root = loadIndicatorSetupFormController(erbContentItem);
-						addContentToContentVBox(root, true);
-
-//					}
+					Pane root = loadIndicatorSetupFormController(erbContentItem);
+					addContentToContentVBox(root, true);
+				} else if (erbContentItem.getLongName().contentEquals("Indicator Center")) {
+					ScrollPane root = loadIndicatorCenterController();
+					addContentToContentVBox(root, true);
 				}
-			}
+			} 
 		}
 		}
 	}
@@ -468,6 +475,19 @@ public class EngagementActionController implements Initializable {
 			contentVBox.getChildren().add(root);
 			if (setDynamicDimensions) {
 				setDynamicDimensions(root, null);
+			} else {
+				VBox.setVgrow(root, Priority.ALWAYS);
+			}
+		} else {
+			logger.error("Cannot addContentToContentVBox. root is null.");
+		}
+	}
+	
+	public void addContentToContentVBox(ScrollPane root, boolean setDynamicDimensions) {
+		if (root != null) {
+			contentVBox.getChildren().add(root);
+			if (setDynamicDimensions) {
+				setDynamicDimensions(null, root);
 			} else {
 				VBox.setVgrow(root, Priority.ALWAYS);
 			}
