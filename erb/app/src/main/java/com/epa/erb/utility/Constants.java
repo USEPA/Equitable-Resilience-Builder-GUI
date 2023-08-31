@@ -5,17 +5,25 @@ import java.io.File;
 public class Constants {
 		
 	//Scaling Sizes
-	private int prefHeightForScale100 = 950;
-	private int prefWidthForScale100 = 1350;
+//	private int prefHeightForScale100 = 950;
+//	private int prefWidthForScale100 = 1350;
+	private int prefHeightForScale100 = 750;
+	private int prefWidthForScale100 = 850;
 	
-	private int prefHeightForScale125 = 750;
-	private int prefWidthForScale125 = 1150;
+//	private int prefHeightForScale125 = 750;
+//	private int prefWidthForScale125 = 1150;
+	private int prefHeightForScale125 = 550;
+	private int prefWidthForScale125 = 950;
 	
-	private int prefHeightForScale150 = 600;
-	private int prefWidthForScale150 = 1000;
+//	private int prefHeightForScale150 = 600;
+//	private int prefWidthForScale150 = 1000;
+	private int prefHeightForScale150 = 400;
+	private int prefWidthForScale150 = 800;
 	
-	private int prefHeightForScale175 = 500;
-	private int prefWidthForScale175 = 900;
+//	private int prefHeightForScale175 = 500;
+//	private int prefWidthForScale175 = 900;
+	private int prefHeightForScale175 = 300;
+	private int prefWidthForScale175 = 700;
 	
 //	1920
 //	1680

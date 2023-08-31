@@ -85,15 +85,40 @@ public class App extends Application {
 
 	}
 	
-	private void sizeScreen(int resolution, Dimension size) {
+	private void sizeScreen(int dpiValue, Dimension size) {
 		double width = size.getWidth();
 		double height = size.getHeight();
 		
-		prefWidth = (int) (width -150);
-		prefHeight = (int) (height -100);
+		int dpiScale = getScaleForDPIValue(dpiValue);
+		int maxWidthToSubtract = 650;
+		int maxHeightToSubtract = 250;
+		int widthToSubtract = maxWidthToSubtract-((maxWidthToSubtract*dpiScale/100)-maxWidthToSubtract);
+		int heightToSubtract = maxHeightToSubtract-((maxHeightToSubtract*dpiScale/100)-maxHeightToSubtract);
 		
-		popUpPrefWidth = (int) (width -350);
-		popUpPrefHeight = (int) (height -200);
+		prefWidth = (int) (width -widthToSubtract);
+		prefHeight = (int) (height - heightToSubtract);
+		
+		int popUpMaxWidthToSubtract = 750;
+		int popUpMaxHeightToSubtract = 350;
+		int popUpWidthToSubtract = popUpMaxWidthToSubtract-((popUpMaxWidthToSubtract*dpiScale/100)-popUpMaxWidthToSubtract);
+		int popUpHeightToSubtract = popUpMaxHeightToSubtract-((popUpMaxHeightToSubtract*dpiScale/100)-popUpMaxHeightToSubtract);
+		
+		popUpPrefWidth = (int) (width -popUpWidthToSubtract);
+		popUpPrefHeight = (int) (height -popUpHeightToSubtract);
+	}
+	
+	public int getScaleForDPIValue(int dpiValue) {
+		int lowestDPIValue = 96;
+		int lowestDPIScale = 100;
+		int highestDPIScale = 500;
+		
+		for (int i = lowestDPIScale; i <= highestDPIScale; i = i+25) {
+			int calculatedDPIValue = (lowestDPIValue * i)/100;
+			if(dpiValue == calculatedDPIValue) {
+				return i;
+			}
+		}
+		return 100; //Default
 	}
 	
 
