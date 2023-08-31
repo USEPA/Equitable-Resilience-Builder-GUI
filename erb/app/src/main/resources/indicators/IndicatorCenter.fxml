@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane style="-fx-background: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane style="-fx-background: white; -fx-border-color: transparent; -fx-background-color: #FFFFFF; border-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox spacing="10.0" style="-fx-background-color: white;">
          <children>
