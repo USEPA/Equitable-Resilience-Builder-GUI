@@ -90,4 +90,7 @@
 	<content id="175" guid="" type="mainForm" status="ready" shortName="How ERB centers equity" longName="How ERB centers equity" />
 	<content id="187" guid="" type="mainForm" status="ready" shortName="Equity Principles for Resilience Planning" longName="Equity Principles for Resilience Planning" />
 	<content id="193" guid="" type="interactiveActivity" status="ready" shortName="Indicator Center" longName="Indicator Center" />
+	<content id="199" guid="" type="mainForm" status="ready" shortName="Core team kickoff " longName="Core team kickoff" />
+	<content id="200" guid="" type="mainForm" status="ready" shortName="Explore Equitable Resilience" longName="Explore Equitable Resilience" />
+	<content id="201" guid="" type="mainForm" status="ready" shortName="Finding Funding" longName="Finding Funding to Support Taking Action" />
 </content_xmls>
