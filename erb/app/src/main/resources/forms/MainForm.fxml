@@ -12,7 +12,7 @@
    <children>
       <BorderPane VBox.vgrow="ALWAYS">
          <center>
-            <ScrollPane fitToWidth="true" style="-fx-border-color: white; -fx-background: white;" BorderPane.alignment="CENTER">
+            <ScrollPane fitToWidth="true" style="-fx-border-color: white; -fx-background: white; -fx-background-color: white; -fx-border: white;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="3.0" />
                </BorderPane.margin>
