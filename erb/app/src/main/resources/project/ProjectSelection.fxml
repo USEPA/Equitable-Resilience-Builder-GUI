@@ -26,7 +26,7 @@
          </children>
       </StackPane>
       <Separator prefWidth="200.0" />
-      <Label text="Single click on a project to see the description.  Double click to load a project.  Once a project is loaded the various worksheets and activities can be reviewed, modified, and exported." wrapText="true">
+      <Label text="Single click on a project to see the description.  Double click to load a project." wrapText="true">
          <font>
             <Font size="15.0" />
          </font>

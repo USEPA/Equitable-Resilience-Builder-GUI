@@ -95,7 +95,7 @@ public class ProjectSelectionController implements Initializable{
 			MainPanelHandler mainPanelHandler = new MainPanelHandler();
 			app.setSelectedProject(project);
 			app.getErbContainerController().getMyBreadCrumbBar().setProject(project);
-			app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(project.getProjectName() + " Dashboard", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
+			app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(project.getProjectName() + " Project", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
 			loadEngagementActionToContainer(project);
 		}
 	}

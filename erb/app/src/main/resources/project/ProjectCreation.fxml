@@ -36,9 +36,9 @@
          <children>
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Creating a new project makes a space in the tool where you can save all of your work and upload materials. Later, you can download it by clicking on the &quot;MyPortfolio&quot; button." wrapText="true">
+                  <Label text="Creating a new project makes a workspace in the tool where you can save all of your work and upload materials." wrapText="true">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <VBox VBox.vgrow="ALWAYS">
