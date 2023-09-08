@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="What is Data Ethics?">
+			text="Data Ethics Considerations">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Throughout the Equitable Resilience Building (ERB) process, the core team will be collecting community information through a range of methods (e.g., workshops, mapping activities). This information is vital for understanding your community’s needs and working through resilience planning. However, it’s important that this information is collected and managed ethically.">
+			text="Throughout the ERB process, the core team and workshop participants collaborate to gather information or data about their community. They visualize and analyze this information (e.g., using indicator card sorting) to assess hazards, equity, and resilience. This information is vital for understanding community needs and identifying actions to take. However, it is important that the core team approach this issue with care by observing data ethics.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -21,15 +21,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="What is data ethics?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Data ethics are principles that guide how data is gathered, stored, and shared. The purpose of ethical data practices is to ensure there aren’t any adverse impacts to the people or groups being studied. Failure to follow data ethics can undermine relationships, trust, and the planning process overall.">
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -37,15 +29,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Principles of data ethics include [1]:">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text="Upholding informed consent">
+			text="What are data ethics?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -53,15 +37,189 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Upholding ‘informed consent’ means that community members participate in activities willingly or voluntarily with complete information on what it entails to be part of the ERB process.">
+			text="Data ethics are principles and practices to generate, collect, administer, store, share, and use information or data [1, 2, 3]. This concept stems from the scientific world and is codified in Belmont Forum principles and federal rules for human subjects research. In ERB, the term is used in a broader sense of how the core team and its partners can carry out data actions in ways that:">
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Italic"
-			text="Confidentiality and privacy">
+			fontStyle="Underlined"
+			text="Do no harm">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" and ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="minimize burdens">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" to those involved or other groups ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Provide short and long-term ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="benefits">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" in a fair and just way">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Offer equal opportunities">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" for making contributions">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Provide ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="informed choices">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" to solicit ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="voluntary participation">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Respect and uphold cultural worldviews and ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="forms of knowledge">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Accept boundaries">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" about what people are willing to share">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Be careful stewards of ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="privacy and confidentiality">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Acknowledge ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Indigenous data sovereignty">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -69,15 +227,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Confidentiality and privacy refer to how personal data, such as identity, is handled by a researcher.  Researchers should protect a participant’s identity and personal information, so that it is not available to others. Examples of personal information that may be protected are full names, birth date, address, and social security numbers.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text="'Do no harm'">
+			text="Data ethics are necessary because historically, Black, Indigenous, people of color, and other socially marginalized populations in the United States have experienced extractive science that provided no benefit to them and even caused direct harm. These legacies of unethical actions affect how even the most well-intentioned requests for information for resilience planning are viewed in some communities.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -85,23 +235,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;Researchers should ensure that data collection and the broader research process does not harm the person or group being studied. Additionally, the research should benefit the people/group being studied and promote their safety and welfare.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Italic"
-			text="Practicing honesty and integrity">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;Upholding honesty and integrity mean that the researcher reports data findings as accurately and complete as possible. This facilitates trust building between the researcher and people/group being studied.">
+			text="Following data ethics can enhance the value of information for resilience planning and strengthen community connections. Failure to do so can undermine relationships and trust. It can also lead to difficulties for community residents, businesses, and organizations.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -109,7 +243,15 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Types of data used in ERB">
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Institutional requirements">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -117,7 +259,23 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Thinking about the types of data possibly collected throughout ERB will help project leaders identify and consider the ethical obligations and solutions (Table 1). Each data type may include sensitive information which could result in harm to people and/or the environment if accessed inappropriately.">
+			text="Core team members may need to follow specific legal or institutional requirements regarding data. The information gathered as part of the ERB process is geared to supporting decision-making, not scientific research per se. It does not entail gathering data about people to produce generalizable knowledge. Rules for human subjects research may not be applicable. Nevertheless, depending on their institution’s policies, university scientists on the core team might still have to coordinate with their Institutional Review Board. Federal or state government employees might be bound by other data protocol.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Putting principles into practice in ERB">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -125,13 +283,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Table 1. Types of data used in ERB">
+			text="Table 1 gives some examples of what types of information and data might be part of ERB activities, and ethical situations that might arise.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="10.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Table 1. Type of data, example of data, in which ERB activity, hypothetical ethical situation">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
 			width="200.0"
-			height="145.0"
+			height="129.0"
 			id="159">
 			</icon>
 		</textBlock>
@@ -140,118 +306,30 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Table adapted from ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="A Toolkit for Data Ethics in the Participatory Sciences"
-			linkType="URL"
-			link="https://citizenscience.org/wp-content/uploads/2022/11/Data-Ethics-Toolkit.pdf">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text=" [2]">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="20.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Tips for ERB project leaders">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Consent for information gathering">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Consent entails that the project leaders adequately explain the purpose of the activities and information gathering, and that participants understand what is being proposed and that participants can make a free choice about joining the process. Consider having a 1-2-page summary for community members that provides the goals of the project and how data will be collected and shared.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Address privacy concerns">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="There are several techniques that can help decrease or remove privacy risks that could harm people and/or the environment. These techniques may include:">
+			text="Table 2 discusses what steps the core team might take to put ethical principles into practice, to address the hypothetical situations listed above and other ethical considerations.">
 			</text>
 		</textBlock>
 			<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
-			size="16.0"
+			size="10.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Minimization ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- collecting only the data necessary">
+			text="Table 2. Putting data ethics principles into practice in ERB">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
+			width="200.0"
+			height="165.0"
+			id="185">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Obfuscation ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- blurring of collected data to prevent privacy risks">
-			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Security ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="- ensuring that access to information is controlled">
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -259,7 +337,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Use CARE Principles when working with Indigenous communities [3]">
+			text="Indigenous Knowledge and Data Sovereignty">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -281,7 +359,27 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=", which reaffirms the rights of Indigenous Peoples to control data about their peoples, lands and resources. The CARE Principles for Indigenous Data Governance address concerns related to the people and purpose of Collective benefit, Authority to control, Responsibility, and Ethics.">
+			text=", which reaffirms the rights of Indigenous Peoples to control data about their peoples, lands, and resources. The ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="CARE Principles for Indigenous Data Governance">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" address concerns related to the people and purpose of collective benefit, authority to control, responsibility, and ethics [4].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Federal guidance on Indigenous Knowledge recognizes its value and offers guidelines on how to ethically and respectfully work with Indigenous people and Tribal Nations to include Indigenous Knowledge in decision-making [5]. State, county, and municipal governments may have their own guidance and policies for working with sovereign Tribal nations and Indigenous Peoples.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -295,7 +393,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="is more likely to be realized when data ecosystems are designed to support Indigenous nations and when the use/reuse of data for resource allocation is consistent with community values.">
+			text="is more likely to be realized when data ecosystems are designed to support Indigenous nations and when the use/reuse of data for resource allocation is consistent with community values. ">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -315,7 +413,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" their data. Access to ‘data for governance’ is vital to support self-determination and Indigenous nations should be actively involved in ‘governance of data’ to ensure ethical reuse of data.">
+			text="their data. Access to ‘data for governance’ is vital to support self-determination and Indigenous nations should be actively involved in ‘governance of data’ to ensure ethical reuse of data.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -323,19 +421,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="There is a ">
+			text="Data collectors have a ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="responsibility">
+			text="responsibility ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" to engage respectfully with indigenous communities to ensure the use of Indigenous data supports capacity development, increasing community data capabilities, and the strengthening of Indigenous languages and cultures.">
+			text="to engage respectfully with indigenous communities to ensure the use of Indigenous data supports capacity development, increasing community data capabilities, and the strengthening of Indigenous languages and cultures.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -343,19 +441,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Similarly, Indigenous Peoples’ ">
+			text="Similarly, ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="ethics">
+			text="ethics ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" should inform the use of data across time in order to minimize harm, maximize benefits, promote justice, and allow for future use.">
+			text="grounded in Indigenous Peoples’ worldviews should inform the use of data across time in order to minimize harm, maximize benefits, promote justice, and allow for future use.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -363,7 +461,15 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="References:">
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="References">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -371,7 +477,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[1] Kang and Hwang. 2021. Ethical Conducts in Qualitative Research Methodology: Participant Observation and Interview Process. Journal of Research and Publication Ethics. 2(2) 5-10.">
+			text="[1] Kang and Hwang. 2021. Ethical conducts in qualitative research methodology: Participant observation and interview process. Journal of Research and Publication Ethics 2(2): 5-10. PMID: 25512833; PMCID: PMC4263394.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -379,7 +485,23 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[2] Cooper, C.B., Rasmussen, L. M., and Johns, E.D. 2022. A Toolkit for Data Ethics in the Participatory Sciences. Citizen Science Association. ">
+			text="[2] Keenan &amp; Maxwell. 2022. Rethinking the design of resilience and adaptation indicators supporting coastal communities. Journal of Environmental Planning and Management 65(12): 2297-2317. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1080/09640568.2021.1971635"
+			linkType="URL"
+			link="https://doi.org/10.1080/09640568.2021.1971635">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[3] Cooper, Rasmussen, and Johns. 2022. A Toolkit for Data Ethics in the Participatory Sciences. Citizen Science Association. ">
 			</text>
 			<text
 			size="16.0"
@@ -388,6 +510,38 @@
 			text="https://citizenscience.org/data-ethics/"
 			linkType="URL"
 			link="https://citizenscience.org/data-ethics/">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[4] Carroll, et al. 2021. Operationalizing the CARE and FAIR Principles for Indigenous data futures. Sci Data 8(108). ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1038/s41597-021-00892-0"
+			linkType="URL"
+			link="https://doi.org/10.1038/s41597-021-00892-0">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[5] Council on Environmental Quality, Office of Science and Technology Policy. 2022. Memorandum, Guidance for Federal Departments and Agencies on Indigenous Knowledge. Washington, D.C.: Executive Office of the President. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.whitehouse.gov/wp-content/uploads/2022/12/OSTP-CEQ-IK-Guidance.pdf"
+			linkType="URL"
+			link="https://www.whitehouse.gov/wp-content/uploads/2022/12/OSTP-CEQ-IK-Guidance.pdf">
 			</text>
 		</textBlock>
 	</container>

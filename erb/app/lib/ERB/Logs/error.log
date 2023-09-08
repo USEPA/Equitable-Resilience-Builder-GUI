@@ -65,3 +65,4 @@
 | ERROR | 2023-08-31 08:59:49 | EngagementActionController.java:483 | Cannot addContentToContentVBox. root is null.
 | ERROR | 2023-09-01 15:37:19 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
 | ERROR | 2023-09-05 07:41:55 | XMLManager.java:456 | The character reference must end with the ';' delimiter.
+| ERROR | 2023-09-07 14:46:06 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)

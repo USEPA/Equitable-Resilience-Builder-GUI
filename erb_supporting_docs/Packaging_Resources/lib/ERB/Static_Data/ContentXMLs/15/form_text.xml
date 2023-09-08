@@ -1,5 +1,5 @@
 <textBlocks>
-	<container id="formVBox">
+	<container id="formVBox" expands="false">
 		<textBlock>
 			<text
 			size="22.0"
@@ -163,188 +163,16 @@
 			</text>
 		</textBlock>
 	</container>
-	<container id="topPanelVBox">
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="What you will need">
-			</text>
-		</textBlock>
+	<container id="topPanelVBox" expands="true">
 		<textBlock>
 			<icon
-			width="40.0"
-			height="40.0"
-			id="67">
+			width="500.0"
+			height="339.0"
+			id="188">
 			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Core team">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="62">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Days to weeks">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="63">
-			</icon>
-			<listBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Recruitment Guide"
-			linkType="externalDOC"
-			link="Recruitment_Guide.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Team Storytelling Exercise"
-			linkType="externalDOC"
-			link="Team_Storytelling_Exercise.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Project Plan Template"
-			linkType="externalDOC"
-			link="Project_Plan_Template.docx">
-			</text>
-			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="How Have Communities Used ERB?"
-			linkType="internal"
-			link="27">
-			</text>
 		</textBlock>
 	</container>
-		<container id="bottomPanelVBox">
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Centering equity">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="You will see tips on implementing the following themes:">
-			</text>
-		</textBlock>
-		<textBlock>
-			<listBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="64">
-			</icon>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Collaboration">
-			</text>
-			</listBlock>
-			<listBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="65">
-			</icon>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Representation">
-			</text>
-			</listBlock>
-			<listBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="66">
-			</icon>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Voice">
-			</text>
-			</listBlock>
-		</textBlock>
-		<textBlock>
-			<listBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="68">
-			</icon>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Active listening">
-			</text>
-			</listBlock>
-			<listBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="69">
-			</icon>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Local knowledge">
-			</text>
-			</listBlock>
-			<listBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="72">
-			</icon>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Vulnerability">
-			</text>
-			</listBlock>
-		</textBlock>
+	<container id="bottomPanelVBox" expands="true">
+		
 	</container>
 </textBlocks>
