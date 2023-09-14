@@ -22,7 +22,7 @@
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label minWidth="175.0" text="Project Creation">
+                  <Label minWidth="175.0" text="Create a Project">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
@@ -43,11 +43,11 @@
                   </Label>
                   <VBox VBox.vgrow="ALWAYS">
                      <children>
-                        <HBox>
+                        <VBox spacing="10.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
-                                    <Label minWidth="100.0" text="Project Name:">
+                                    <Label minWidth="140.0" text="Project Name:">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -55,7 +55,7 @@
                                     <TextField fx:id="projectNameTextField" prefHeight="25.0" prefWidth="250.0" />
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
                                     <Label minWidth="140.0" text="Project Description:">
                                        <font>
@@ -66,7 +66,7 @@
                                  </children>
                               </HBox>
                            </children>
-                        </HBox>
+                        </VBox>
                         <HBox fx:id="goalModeHBox" alignment="CENTER_LEFT" spacing="10.0">
                            <children>
                               <Label text="Mode Type:">

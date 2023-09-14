@@ -16,7 +16,7 @@
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label minWidth="175.0" text="Project Selection">
+                  <Label minWidth="175.0" text="Select a Project">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -53,7 +53,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="descriptionTextArea" editable="false" VBox.vgrow="ALWAYS">
+                  <TextArea fx:id="descriptionTextArea" editable="false" style="-fx-border-color: #CBCBCB;" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="15.0" />
                      </font></TextArea>
