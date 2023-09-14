@@ -47,6 +47,12 @@ public class ERBLandingController implements Initializable{
 	StackPane bottomStackPane;
 	@FXML
 	Hyperlink exploreHyperlink;
+	@FXML
+	Rectangle epaLogRectangle;
+	@FXML
+	ImageView epaLogoImageView;
+	@FXML
+	ImageView erbMiniImageView;
 	
 	private App app;
 	public ERBLandingController(App app) {
@@ -60,6 +66,8 @@ public class ERBLandingController implements Initializable{
 		fillImageViews();
 		
         rectangle2.widthProperty().bind(vBox.widthProperty());
+        epaLogRectangle.widthProperty().bind(vBox.widthProperty().subtract(epaLogoImageView.getFitWidth() + 110));
+
 //        rectangle3.widthProperty().bind(vBox.widthProperty());
 //        rectangle3.heightProperty().bind(bottomStackPane.heightProperty());
 
@@ -91,6 +99,9 @@ public class ERBLandingController implements Initializable{
 		landingImageView3VBox.heightProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView3.setFitHeight(newVal.doubleValue());
 		});
+		
+		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/bridge_90_90.png")));
+
 	}
 		
 	@FXML
