@@ -6,15 +6,17 @@
 }
 
 .tree-view .tree-cell{
-    -fx-background-color: #FFE3D3;
-    -fx-text-fill: #4C5CA2 ;
+    -fx-background-color: #FEEBDF;
+    -fx-text-fill: #25215C ;
+    -fx-font-weight: bold;
 }
 
 .tree-view .tree-cell:selected{
-    -fx-background-color: #FDF7DA;
-     -fx-text-fill: #864CA2 ;
+    -fx-background-color: #FFFCED;
+     -fx-text-fill: #A455AE ;
+    -fx-font-weight: bold;
 }
 
 .tree-cell{
-    -fx-font-size: 14;
+    -fx-font-size: 16;
 }
