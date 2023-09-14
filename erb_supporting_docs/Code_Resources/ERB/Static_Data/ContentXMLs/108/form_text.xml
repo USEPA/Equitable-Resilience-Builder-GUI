@@ -59,7 +59,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="– Participants use blank maps or baseline hazards and equity maps to mark the locations of hazards and assets and discuss who is most affected in different places.">
+			text=" – Participants use blank maps or baseline hazards and equity maps to mark the locations of hazards and assets and discuss who is most affected in different places.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -73,7 +73,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="– Participants sort cards to assess how resilient and equitable the social, built, and natural environment systems are in your community.">
+			text=" – Participants sort cards to assess how resilient and equitable the social, built, and natural environment systems are in your community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -87,7 +87,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="– Discuss considerations for how resilience- building actions might need to take root causes of inequities into account.">
+			text=" – Discuss considerations for how resilience-building actions might need to take root causes of inequities into account.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -157,7 +157,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core team, local partners, community members">
+			text="Core team, facilitators, workshop participants">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -170,7 +170,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Half day">
+			text="Half day workshop">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -183,7 +183,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Facilitators Guide for Workshops"
+			text="Facilitator's Guide for Workshops"
 			linkType="externalDOC"
 			link="Facilitators_Guide_for_Workshops.docx">
 			</text>
@@ -200,7 +200,7 @@
 			fontStyle="Hyperlink"
 			text="Urban Waters Story Map"
 			linkType="URL"
-			link="https://storymaps.arcgis.com/stories/c1a5ae06b5964f078ada4a3c5e8b99a7">
+			link="https://storymaps.arcgis.com/stories/0f304067072d40a6a9d21f398902e990">
 			</text>
 		</textBlock>			
 	</container>
@@ -224,7 +224,7 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Use your community engagement plan to make sure workshop participants are representative of your community.">
-			</text>	
+			</text>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -236,7 +236,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Community members carry out this assessment alongside staff from local agencies and organizations">
+			text="Community members can carry out this assessment alongside staff from local agencies and organizations">
 			</text>	
 		</textBlock>
 	</container>

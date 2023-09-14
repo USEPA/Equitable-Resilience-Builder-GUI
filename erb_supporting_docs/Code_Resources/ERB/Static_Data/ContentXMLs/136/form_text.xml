@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Key Takeaways from Strategizing">
+			text="Key Takeaways on Strategizing Actions">
 			</text>
 		</textBlock>
 		<textBlock type="block">
@@ -21,7 +21,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1. What are your key take-aways from the implementation storytelling?">
+			text="1. [Implementation Storytelling] What lessons from the Implementation Storytelling activity will you incorporate in your ERB process? (Core team)">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -43,7 +43,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="2. What are your key take-aways from the warm-up activity (disaster role play or equity storytelling)?">
+			text="2. State which warm-up activity participants chose to complete in the workshop then answer the associate question:">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -71,7 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="3. [Action Area Identification]">
+			text="3. [Identify Action Areas] List each Action Area">
 			</text>
 		</textBlock>
 		<textBlock type="dynamic area">
@@ -111,7 +111,35 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="4. Workshop wrap-up: What are the opportunities for taking action, and what barriers need to be addressed? ">
+			text="4. Workshop wrap-up: Where is there interest in working together, how, and who else needs to be involved?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- To reduce impacts from flooding, government should work with community members to identify drainage systems that need maintenance, and where the community volunteers can remove debris.">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Households in areas of severe flooding should be informed.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="5. Workshop wrap-up: What are the opportunities for taking action, and what barriers need to be addressed? ">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -139,7 +167,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="5. Workshop wrap-up: How should outputs from this workshop be shared more widely, and who needs to be updated?">
+			text="6. Workshop wrap-up: How should outputs from this workshop be shared more widely, and who needs to be updated?">
 			</text>
 		</textBlock>
 		<textBlock type="area">

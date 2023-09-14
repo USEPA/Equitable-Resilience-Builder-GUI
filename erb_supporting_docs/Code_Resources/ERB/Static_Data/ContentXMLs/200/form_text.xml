@@ -76,7 +76,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review the Equitable Resilience Handout and other ERB resources on ">
+			text="Review the Equitable Resilience Handout, ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Glossary"
+			linkType="internal"
+			link="01">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=", and other resources on ">
 			</text>
 			<text
 			size="16.0"

@@ -5,7 +5,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="ERB Glossary of Terms">
+			text="Glossary of Terms and Acronyms">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -13,13 +13,41 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Community*: ">
+			text="CBO: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A group of people that live in the same vicinity (e.g., county, city, neighborhood) or share a common defining characteristic [1]. In the ERB process, set of community participants may vary with respect to goals of project.">
+			text="Acronym stands for community-based organization.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="CBRN: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Acronym stands for chemical, biological, radiological, or nuclear agents. It refers to categories of contaminants harmful to human health and the environment that could be released during a homeland security incident or other disaster.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Community: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A group of people that live in the same vicinity (e.g., county, city, neighborhood) or share a common defining characteristic [1]. The community members involved in the ERB process may vary with respect to the type of planning, hazards of concern, and social organization.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -33,7 +61,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Community resilience is the ability for a local group or place to withstand, recover, adapt, and transform in the face of an external stressor or disruption, such as hazards, disasters, and climate change. Capacity and resources that support resilience are a product of social, built, and environmental systems at different scales.">
+			text="The ability for a group of people or a place to withstand, recover, adapt, and transform in the face of a stressor or disruption such as an environmental hazard, disaster, or climate change. The capacity and resources that support community resilience are a product of social, built, and natural environment systems at different scales.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -41,13 +69,97 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Equitable Resilience: ">
+			text="Disaster*: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A form of human-environmental resilience which considers issues of social vulnerability and differentiated access to power, knowledge, and resources [2].">
+			text="A disruption or extreme that overwhelms the capacity of local ecological, governance, social, and infrastructure systems to function, leading to negative short and long-term impacts on infrastructure and the built environment, health and well-being, economy and livelihoods, culture, society, and ecosystems. Disasters are commonly viewed as acute incidents (e.g., tornado, hurricane, chemical spill), but can also be slow-onset (e.g., drought, sea-level rise) or even chronic (e.g., pollution, poverty) [2]. This definition does not distinguish anthropogenic from so-called natural disasters, following anthropological understandings of all disasters as “unnatural,” that is, the generative forces that shape both the incident and its impacts stem from societal phenomena [3]. For example, in an earthquake, it is not only geophysical forces that cause damaged buildings and loss of lives; human and social factors such as the robustness and enforcement of building codes, education about risk reduction behaviors, social networks, and humanitarian assistance also affect loss and suffering.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Environmental Justice: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&quot;the fair treatment and meaningful involvement of all people regardless of race, color, national origin, or income with respect to the development, implementation and enforcement of environmental laws, regulations and policies.&quot; (Executive Order 12898). In the social science literature, it has several dimensions:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Procedural Justice">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" - Fair and equitable institutional processes of governance, including public participation">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Distributional Justice">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" - Equal access to goods, liberties, and opportunities; and fair processes for allocating burdens">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Recognitional Justice">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" - Acknowledgement and addressing differences between social and cultural groups in their practices, values, and needs">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Capabilities Justice">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" - &quot;Provision of support to people and groups, based on social context, for participation in governance, agency for self-determination, and quality of life&quot; [1].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Equitable Resilience*: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The capacity for communities to withstand, adapt, transform in the face of climate change and disasters in ways that are culturally appropriate, participatory, and responsive to social vulnerabilities to disasters and climate change, and to the potentially unequal benefits and burdens of adaptation and resilience interventions.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -61,7 +173,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The consistent and systematic fair, just, and impartial treatment of all individuals, including individuals who belong to underserved communities that have been denied such treatment, such as Black, Latino, and Indigenous and Native American persons, Asian Americans and Pacific Islanders and other persons of color; members of religious minorities; lesbian, gay, bisexual, transgender, and queer (LGBTQIA+) persons; persons with disabilities; persons who live in rural areas; and persons otherwise adversely affected by persistent poverty or inequality [3].">
+			text="&quot;The consistent and systematic fair, just, and impartial treatment of all individuals, including individuals who belong to underserved communities that have been denied such treatment, such as Black, Latino, and Indigenous and Native American persons, Asian Americans and Pacific Islanders and other persons of color; members of religious minorities; lesbian, gay, bisexual, transgender, and queer (LGBTQ+) persons; persons with disabilities; persons who live in rural areas; and persons otherwise adversely affected by persistent poverty or inequality&quot; [4] ">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -69,13 +181,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Hazards*: ">
+			text="Hazard*: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Any type of danger that a community might experience now or in the future, such as a flood, drought, pandemic, chemical spill, air pollution, leaking underground storage tank, and a changing climate.">
+			text="Any type of danger that a community or population might experience now or in the future, such as a flood, drought, pandemic, chemical spill, air pollution, leaking underground storage tank, and a changing climate.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -83,13 +195,83 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Indicators: ">
+			text="Indigenous Knowledge: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Resilience indicators are summary measures that provide information on the state of or change in built, social, or natural systems that can help characterize their vulnerability and adaptive capacity [4].">
+			text="&quot;a body of observations, oral and written knowledge, innovations, practices, and beliefs developed by Tribes and Indigenous Peoples through interaction and experience with the environment&quot; [5].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Intersectional: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&quot;Multiple social identities such as race, gender, sexual orientation, SES [socioeconomic status], and disability intersect at the micro level of individual experience to reflect interlocking systems of privilege and oppression (i.e., racism, sexism, heterosexism, classism) at the macro social-structural level&quot; [6].">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="LGBTQIA+: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Acronym stands for lesbian, gay, bisexual, transgender, queer or questioning, intersex, and asexual.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="NGO: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Acronym stands for non-governmental organization.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Participatory mapping: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A process for making maps that uses techniques to solicit input from members of the public in representing spatial information, especially about the relationship of people to their local environment and community features.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Resilience Indicators*: ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Summary measures that provide information on the state of or change in the built, social, and natural environment systems that support community resilience.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -103,7 +285,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The ways in which people and communities are vulnerable to the effects of hazards and disasters that go beyond physical exposure, including social, economic, health, cultural, and historical factors [5].">
+			text="The ways in which distinct populations, social groups, and communities are differentially made vulnerable to hazards, disasters, and climate change. These ways often reflect historic or contemporary social and environmental injustices. Socioeconomic, health, cultural, governance, environmental, and historical factors shape exposure and susceptibility to incidents. These factors affect disparities in knowledge, resources, and power to prepare for and recover from incidents. They also influence the degree to which individuals, families, neighborhoods, and communities face cascading consequences over time to mental and physical health, well-being, economic security, and social life [7, 8].">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -111,7 +293,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="*Definitions are from this research team, unless otherwise cited">
+			text="*Definitions are from the research team">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -119,7 +301,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="References:">
+			text="References">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -127,7 +309,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[1] Maxwell and Kiessling, 2022. Building Trust and Relationships in Cleanup Community Engagement, from Theory to Practice. U.S. Environmental Protection Agency, Washington, DC, EPA/600/R-22/104. ">
+			text="[1] Maxwell and Kiessling. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Building Trust and Relationships in Cleanup Community Engagement, from Theory to Practice">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". U.S. Environmental Protection Agency, Washington, DC, EPA/600/R-22/104. ">
 			</text>
 			<text
 			size="16.0"
@@ -138,20 +332,24 @@
 			link="https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=355943&#x26;Lab=CESER">
 			</text>
 		</textBlock>
-		<textBlock>
+				<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[2] Matin, Forrester, and Ensor, 2018. What is equitable resilience? World Development, 109. 197-205. ">
+			text="[2] Erikson. 1995. ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="https://doi.org/10.1016/j.worlddev.2018.04.020"
-			linkType="URL"
-			link="https://doi.org/10.1016/j.worlddev.2018.04.020">
+			fontStyle="Italic"
+			text="A New Species of Trouble: the Human Experience of Modern Disasters">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". New York, NY: W.W. Norton.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -159,7 +357,27 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[3] The White House, 2021. Executive Order on Advancing Racial Equity and Support for Underserved Communities Through the Federal Government. ">
+			text="[3] Oliver-Smith. 1999. &quot;What is a Disaster?&quot;: Anthropological Perspectives on a Persistent Question. In: Oliver-Smith &#38; Hoffman, Eds. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="The Angry Earth: Disasters in Anthropological Perspective">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". New York, NY: Routledge, pp. 18-34.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[4] The White House. 2021. Executive Order on Advancing Racial Equity and Support for Underserved Communities Through the Federal Government. ">
 			</text>
 			<text
 			size="16.0"
@@ -175,7 +393,91 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[4] Sinha, P., Julius, S., Fry, M., Truesdale, R., Cajka, J., Eddy, M., Doraiswamy, P., and D. Womack. (In Review). Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach ">
+			text="[5] Council on Environmental Quality, Office of Science and Technology Policy. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Memorandum, Guidance for Federal Departments and Agencies on Indigenous Knowledge">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, D.C.: Executive Office of the President. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.whitehouse.gov/wp-content/uploads/2022/12/OSTP-CEQ-IK-Guidance.pdf"
+			linkType="URL"
+			link="https://www.whitehouse.gov/wp-content/uploads/2022/12/OSTP-CEQ-IK-Guidance.pdf">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[6] Bowleg. 2012. The problem with the phrase women and minorities: intersectionality-an important theoretical framework for public health. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Am J Public Health">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". 102(7):1267-73. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.2105/AJPH.2012.300750"
+			linkType="URL"
+			link="https://doi.org/10.2105/AJPH.2012.300750">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[7] Fry et al. 2023. Centering equity in the development of a community resilience planning resource ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Climate Risk Management">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 40: 100520. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1016/j.crm.2023.100520"
+			linkType="URL"
+			link="https://doi.org/10.1016/j.crm.2023.100520">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[8] Sinha, et al. 2022. Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach. ">
 			</text>
 			<text
 			size="16.0"
@@ -184,22 +486,6 @@
 			text="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4232780"
 			linkType="URL"
 			link="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4232780">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="[5] Maxwell, 2021. Intersection of Social Vulnerability and Resilience to Extreme Weather and Other Disasters- the Equitable Resilience. ">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="https://cfpub.epa.gov/si/si_public_file_download.cfm?p_download_id=542560&#x26;Lab=CESER"
-			linkType="URL"
-			link="https://cfpub.epa.gov/si/si_public_file_download.cfm?p_download_id=542560&#x26;Lab=CESER">
 			</text>
 		</textBlock>
 	</container>

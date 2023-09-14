@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants work through scenarios about possible future hazard risks and impacts to explore transformative futures.">
+			text="Workshop participants explore potential impacts from and solutions to possible disaster scenarios that might affect them in the near future or as the climate changes.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,7 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Before the workshop, pick 2-3 scenarios to explore">
+			text="Before the workshop, pick 2-3 disaster scenarios to explore">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -92,7 +92,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Read the scenario and discuss what might happen to different people in the community should this incident occur">
+			text="Discuss what might happen to different people in the community should this incident occur">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -132,6 +132,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Brainstorm about decisions that could be made in the near-term that would help lead to this envisioned positive future">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Afterwards, record highlights in the Key Takeaways Form.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -227,7 +235,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="20-30 people and facilitator">
+			text="20-30 people + facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -254,6 +262,14 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
+			text="Facilitator's Guide for Workshops"
+			linkType="externalDOC"
+			link="Facilitators_Guide_for_Workshops.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
 			text="Future Scenarios Instructions"
 			linkType="externalDOC"
 			link="Future_Scenarios_Instructions.docx">
@@ -262,7 +278,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways"
+			text="Key Takeaways on Assessment"
 			linkType="internal"
 			link="144">
 			</text>
@@ -295,7 +311,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="When thinking about cascading issues for different groups, remember to consider groups that might be the most vulnerable or have the least support. ">
+			text="When thinking about the impacts of cascading issues for different groups, remember to consider groups that might be the most vulnerable or have the least support. ">
 			</text>
 		</textBlock>
 	</container>

@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Small groups of workshop participants assess brainstormed actions, modify, and prioritize them based on how impactful they are likely to be in achieving the vision statement.">
+			text="Workshop participants vote on priority actions and discuss how to maximize benefits, potential trade-offs, and synergies with other actions in break-out groups.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,13 +50,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Review: ">
+			text="Initial prioritization: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Take time to walk around the room and look at the Actions Brainstorming other groups have done">
+			text="Review the actions brainstorming and identify initial priority actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -69,13 +69,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Analyze and Evaluate: ">
+			text="Evaluate: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Discuss the impact that the actions will have on equity and hazard mitigation. How can the actions be most impactful?">
+			text="Discuss the impact that the actions will have on equity and hazard mitigation, as well as trade-offs and synergies.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -88,13 +88,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Prioritize: ">
+			text="Final prioritization: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share your discussions with the larger group; if desired, vote on which actions should be prioritized and selected for Strategy Planning Activity (if doing)">
+			text="Share your discussions with the entire group and select actions for the Strategy Planning Activity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -107,7 +107,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Complete Evaluating Equitable Resilience Building Actions">
+			text="Record actions in the Key Takeaways on Strategizing Actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -128,7 +128,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="At least 10 potential actions for each Vision Statement with descriptions of how they will impact increase equity and hazard resilience recorded in the Evaluating Equitable Resilience Building Actions document">
+			text="Prioritized actions for each Action Area">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -141,20 +141,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Actions ranked in order of priority">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Greater detail on pros and cons of each action">
+			text="Details on maximizing equity and hazard mitigation for each action">
 			</text>
 		</textBlock>
 	</container>
@@ -177,7 +164,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Participants">
+			text="Workshop participants, facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -190,7 +177,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="~1.5 hours">
+			text="1-2 hours">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -199,6 +186,7 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -207,6 +195,15 @@
 			linkType="externalDOC"
 			link="Evaluating_Equitable_Resilience_Building_Actions.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Key Takeaways on Strategizing Actions"
+			linkType="internal"
+			link="136">
+			</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon

@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants locate hazards and assets on a map of their community and discuss.">
+			text="Workshop participants locate hazards and/or assets on a map of their community and discuss.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share key hazards and equity data results">
+			text="Core team uses the Mapping Activity Preparation Guide to prepare mapping base layers">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,33 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Divide into breakout groups of 4-6. Each group gets a map where they draw or label hazards, who is most impacted in specific places, and where assets that can help are">
+			text="Facilitators use Mapping Activity Instructions to lead the participatory mapping activity with workshop participants">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team shares key hazards and equity data results">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Workshop participants divide into breakout groups of 4-6. Each group gets a map where they draw or label hazards, who is most impacted in specific places, and where assets that can help are">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -110,7 +136,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Maps with key hazards, equity of impacts, and assets">
+			text="Maps with key hazards, equity of impacts">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Maps with key assets">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -159,7 +198,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1.5 hours">
+			text="1.5-3 hours">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -173,7 +212,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="4-5 large Printed Maps">
+			text="4-5 large printed maps of the community">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Mapping Activity Preparation Guide"
+			linkType="externalDOC"
+			link="Mapping_Activity_Preparation_Guide.docx">
 			</text>
 			<text
 			size="16.0"
@@ -187,7 +234,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways"
+			text="Key Takeaways on Assessment"
 			linkType="internal"
 			link="144">
 			</text>

@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Come up with an exhaustive list of possible actions that could be taken by different groups and individuals.">
+			text="Create a list of possible actions that could be taken by different groups and individuals.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Propose actions to help your community reach the vision statement for your problem area. Notetaker writes actions down on an easel pad for everyone to see">
+			text="Propose actions to help your community reach the vision statement for your Action Area and list on an easel pad">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -102,7 +102,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The notetaker fills in the group’s findings the Actions Brainstorming Instructions">
+			text="The notetaker fills in the group’s findings in the Actions Brainstorming Instructions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -123,7 +123,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A list of possible actions recorded in the Actions Brainstorming Worksheet">
+			text="A list of possible actions">
 			</text>
 		</textBlock>
 	</container>
@@ -146,7 +146,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Participants">
+			text="Workshop participants, facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -229,7 +229,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Ensure everyone has the ability to propose and revise actions. This activity provides the opportunity for all members of the community workshop to draw on their knowledge and experiences to produce collaborative, locally relevant actions to improve equity and reduce hazard impacts in the community.">
+			text="Ensure everyone can propose and revise actions. This activity provides the opportunity for all members of the community workshop to draw on their knowledge and experiences to produce collaborative, locally relevant actions to improve equity and reduce hazard impacts in the community.">
 			</text>
 		</textBlock>
 	</container>

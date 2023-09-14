@@ -29,7 +29,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Sharing stories is an integral part of the ERB process. Learn more about why in the Resources tab. This exercise will help you">
+			text="Sharing stories is an integral part of the ERB process. Learn more about ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Why Storytelling"
+			linkType="internal"
+			link="02">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" in Resources. This exercise will help you:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -55,7 +69,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Set goals for going through ERB">
+			text="Set initial team goals for going through ERB">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -68,7 +82,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Lead storytelling exercises in community workshops">
+			text="Lead storytelling exercises in upcoming community workshops">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -102,6 +116,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			text="Activity lead establishes a safe space for sharing">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
 			text="Use the prompts to share 5-minute stories in small groups">
 			</text>
 		</textBlock>
@@ -115,7 +142,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Input highlights into the Word Cloud to see common themes">
+			text="Discuss common themes that emerge">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -136,7 +163,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Word cloud of storytelling themes">
+			text="Team storytelling results">
 			</text>
 		</textBlock>
 	</container>
@@ -159,7 +186,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core team">
+			text="Core team, activity lead">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -172,7 +199,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1 hour">
+			text="1-2 hours">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -194,9 +221,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Word Cloud"
-			linkType="internal"
-			link="84">
+			text="How to Use Storytelling"
+			linkType=""
+			link="">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -221,20 +248,20 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="68">
+			id="69">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Sharing stories is a way that ERB incorporates local knowledge, which is vital for inclusion and representation. ">
+			text="Sharing stories is one way that ERB incorporates local knowledge, which is vital for inclusion and representation. ">
 			</text>
 		</textBlock>
 		<textBlock>
 			<icon
 			width="40.0"
 			height="40.0"
-			id="69">
+			id="68">
 			</icon>
 			<text
 			size="16.0"

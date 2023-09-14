@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="As vision statements are transformed into actions, you can monitor how hazards, equity, and resilient systems are changing after your community has gone through the ERB process.">
+			text="As you implement actions, you can monitor how hazards, equity, and resilient systems are changing after your community has gone through the ERB process.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -42,7 +42,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Corroborate that actions align with stated priorities">
+			text="Checking that actions align with stated priorities">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -98,6 +98,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Increase support for future actions">
+			</text>
+		</textBlock>
+		<textBlock>
 			<text
 			size="18.0"
 			fontFamily="System"
@@ -110,7 +123,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Work with your core team and other local experts to figure out how do carry out monitoring to evaluate outcomes and support implementation efforts. You may use the Monitoring Plan Worksheet as a guide.">
+			text="Work with your core team and other local experts to figure out how to carry out monitoring to evaluate outcomes and support implementation efforts. Identify a team member or local group as the 'Monitoring Lead' of each action. You may use the Monitoring Plan Worksheet as a guide.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -181,6 +194,14 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
+			text="Indicator Cards"
+			linkType=""
+			link="">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
 			text="Monitoring Plan Worksheet"
 			linkType="externalDOC"
 			link="Monitoring_Plan_Worksheet.docx">
@@ -206,7 +227,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="City of Denver Covid Recovery Funding Dashboard"
+			text="City of Denver COVID Recovery Funding Dashboard"
 			linkType="URL"
 			link="https://storymaps.arcgis.com/stories/6b885654359d41508a97bc8f8ea46ca6">
 			</text>
@@ -240,7 +261,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Monitoring and evaluation can ensure that actions and implementation efforts are aligned with equity and resilience needs and priorities. Sharing results of monitoring and evaluating is important for demonstrating transparency and accountability, which are critical for building trust with communities.">
+			text="Monitoring and evaluation can ensure that actions and implementation efforts are aligned with equity and resilience needs and priorities.">
 			</text>
 		</textBlock>
 	</container>

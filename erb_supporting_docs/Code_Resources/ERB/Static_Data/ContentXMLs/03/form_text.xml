@@ -108,7 +108,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="to reduce the impact of trauma through collaborative community processes [3-4]. This approach involves:">
+			text="to reduce the impact of trauma through collaborative community processes [2-4]. This approach involves:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -207,7 +207,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The Equitable Resilience Builder encourages a trauma-informed approach throughout the community planning process. For example, this means understanding historical context or working with an advisory board before engaging a community or ensuring a facilitator is trained in trauma-informed and justice approaches. Activities included in the ERB chapters, such as storytelling, reflection, equity and resilience indicators, provide space and opportunity to build trust and empathy, and integrate these understandings into equitable resilience planning efforts.">
+			text="The Equitable Resilience Builder encourages a trauma-informed approach throughout the community planning process. For example, this means understanding historical context or working with an advisory board before engaging a community or ensuring a facilitator is trained in trauma-informed and justice approaches. Activities included in the ERB sections, such as storytelling, provide space and opportunity to build trust and empathy, and integrate these understandings into equitable resilience planning efforts.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -215,7 +215,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="References:">
+			text="References">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -223,7 +223,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[1] SAMHSA. ">
+			text="[1] SAMHSA. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Trauma and Violence">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, D.C.: Substance Abuse and Mental Health Services Administration. ">
 			</text>
 			<text
 			size="16.0"
@@ -239,7 +251,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[2] CDC. 2020. Six Principles of a Trauma-Informed Approach. ">
+			text="[2] Centers for Disease Control and Prevention. 2020. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Six Principles of a Trauma-Informed Approach">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Atlanta, GA: Centers for Disease Control and Prevention. ">
 			</text>
 			<text
 			size="16.0"
@@ -255,7 +279,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[3] Njenga, J. (n.d) Unearthing Stories: Considering Perspectives of Trauma Survivors. Culture, Trauma Informed Methods. Narratives Inc. ">
+			text="[3] Njenga. 2021. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Unearthing Stories: Considering Perspectives of Trauma Survivors">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Winnipeg, Manitoba, Canada: Narratives Inc. ">
 			</text>
 			<text
 			size="16.0"
@@ -271,7 +307,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[4] Rosenberg, H., Errett, N.A., and Eisenman, D.P. (2022). Working with Disaster-Affected Communities to Envision Healthier Futures: A Trauma-Informed Approach to Post-Disaster Recovery Planning. Environmental Research and Public Health. 19, 1723. ">
+			text="[4] Rosenberg, Errett, and Eisenman. 2022. Working with disaster-Affected communities to envision healthier futures: A trauma-informed approach to post-disaster recovery planning ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Environmental Research and Public Health">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". 19(3): 1723. ">
 			</text>
 			<text
 			size="16.0"

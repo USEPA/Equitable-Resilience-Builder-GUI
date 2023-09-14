@@ -29,7 +29,31 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="HOW: Access supporting materials in two ways. From ERB activity pages, look for the What you’ll need part of the page and click on the links next to the clipboard icon. From the Worksheet Index, click on the name of the supporting material you’re looking for.">
+			text="HOW: Access supporting materials in two ways. From ERB activity pages, look for the ">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you'll need">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" part of the page and click on the links next to the clipboard icon. From the ">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Worksheet Index">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=", click on the name of the supporting material you’re looking for.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -37,7 +61,19 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A word document or excel spreadsheet will open. You can write directly in the these and they will save within the tool. Use the MyPortfolio tab to download selected supporting materials to your desktop and save them there. See the User Guide for detailed instructions.">
+			text="A word document or excel spreadsheet will open. You can write directly in the these and they will save within the tool. Use the ">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="My Portfolio">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" tab to download selected supporting materials to your desktop and save them there. See the User Guide for detailed instructions.">
 			</text>
 		</textBlock>
 	</container>

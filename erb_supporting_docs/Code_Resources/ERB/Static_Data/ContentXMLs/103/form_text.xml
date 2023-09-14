@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This could include demographic and economic information">
+			text="This could include demographic and economic information.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,7 +45,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Check out local and online sources of data, and figure out what you want to more know about.">
+			text="Check out local and online sources of data using Collect Equity Data and figure out what you want to know more about. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="See examples of Equity Data Sources"
+			linkType="internal"
+			link="118">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=".">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -66,7 +80,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="You'll know what data you want to collect and how">
+			text="You'll know what equity data you want to collect and how">
 			</text>
 		</textBlock>
 	</container>
@@ -130,7 +144,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Equity Data Example"
+			text="Equity Data Sources"
 			linkType="internal"
 			link="118">
 			</text>
@@ -155,7 +169,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="When discussing vulnerability, make sure you're clear that it is not that people are inherently vulnerable, it is that they are made vulnerable by social, political, environmental, and other circumstances. Labeling people or groups as vulnerable can be stigmatizing.">
+			text="When discussing vulnerability, make sure you're clear that it is not that people are inherently vulnerable; it is that they are made vulnerable by social, political, environmental, and other circumstances. Avoid labeling people or groups as vulnerable which can be stigmatizing. See the ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Glossary"
+			linkType="internal"
+			link="01">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" for definitions.">
 			</text>
 		</textBlock>	
 	</container>

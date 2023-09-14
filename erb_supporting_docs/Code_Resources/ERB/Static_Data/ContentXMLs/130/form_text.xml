@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants create a vision statement of a transformative future that solves the problems identified.">
+			text="Workshop participants create a vision statement for each action area that will be used to guide brainstorming actions.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Involving community participants in creating vision statements for the problem areas identified will help ensure that the vision is broadly shared and begin the process of thinking about how the vision can be achieved.">
+			text="Involving community participants in creating vision statements for the Action Areas identified will help ensure that the vision is broadly shared and begin the process of thinking about how the vision can be achieved.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,7 +76,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Break-out groups create a vision statement for their problem, discussing who will &quot;What do we want this issue to look like in 10 years?&quot;">
+			text="Break-out groups create a vision statement for their Action Area, discussing who will &quot;What do we want this issue to look like in 10 years?&quot;">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="After the workshop, record the results in Key Takeaways Form on Strategizing Actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -92,7 +105,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Problem statement: Flooding is severely impacting residents of Parkview neighborhood.">
+			text="Action Area: Flooding is severely impacting residents of Parkview neighborhood.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -100,7 +113,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Vision statement: In 10 years the impacts of flooding should be reduced in Parkview neighborhood and residents should be better able to prepare for and recover from flooding.">
+			text="Vision statement: In 10 years, the impacts of flooding should be reduced in Parkview neighborhood and residents should be better able to prepare for and recover from flooding.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -121,7 +134,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A vision statement for each problem identified recorded in the Vision Statement Worksheet">
+			text="A vision statement for each Action Area">
 			</text>
 		</textBlock>
 	</container>
@@ -144,7 +157,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Participants, facilitator">
+			text="Workshop participants, facilitator">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -157,7 +170,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="15 minutes">
+			text="30 minutes">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -166,6 +179,7 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -174,6 +188,15 @@
 			linkType="externalDOC"
 			link="Vision_Statement_Discussion.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Key Takeaways on Strategizing Actions"
+			linkType="internal"
+			link="136">
+			</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon

@@ -5,15 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="How have other communities used the ERB tool?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Goal setting examples">
+			text="Goal Setting Examples">
 			</text>
 		</textBlock>
 	</container>

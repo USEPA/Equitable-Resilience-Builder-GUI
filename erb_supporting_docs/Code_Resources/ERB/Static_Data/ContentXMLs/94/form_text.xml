@@ -89,7 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Write highlights in the Word Cloud">
+			text="Analyze storytelling results using techniques from How to Use Storytelling">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -123,7 +123,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Word Cloud of story highlights">
+			text="Storytelling results in the Key Takeaways Form">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -136,20 +136,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Key Takeaways Form">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Shared understanding and emotional connections">
+			text="Shared understanding and community connections">
 			</text>
 		</textBlock>
 	</container>
@@ -185,7 +172,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1 hour">
+			text="1 to 1.5 hours">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -207,15 +194,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Word Cloud"
-			linkType="internal"
-			link="84">
+			text="How to Use Storytelling"
+			linkType=""
+			link="">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways"
+			text="Key Takeaways on Assessment"
 			linkType="internal"
 			link="144">
 			</text>
@@ -248,7 +235,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This activity is another opportunity to  incorporate local knowledge and voices, but sharing experiences with disasters can be emotional. Make sure you create a safe, non-threatening atmosphere where people feel comfortable sharing. ">
+			text="This activity is an opportunity to incorporate local knowledge and voices, but sharing experiences with disasters can be emotional. Make sure you create a supportive atmosphere where people feel comfortable sharing. ">
 			</text>
 		</textBlock>
 	</container>

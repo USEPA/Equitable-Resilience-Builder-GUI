@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Congratulations, you accomplished a lot!">
+			text="Congratulations, you have come a long way!">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -55,7 +55,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A better understanding of differing perspectives on resilience and equity">
+			text="A better understanding of community perspectives on resilience and equity">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -108,6 +108,19 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Identified actions to build community resilience in an equitable way">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Identified next steps for implementation, monitoring, and continuing outreach and engagement">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -183,7 +196,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Continue to fulfill your goals for continued outreach and resilience planning. Revisit the ERB process periodically as things change in your community.">
+			text="Document your process and share what you accomplished. Revisit the ERB process periodically as things change in your community.">
 			</text>
 		</textBlock>
 	</container>
@@ -264,7 +277,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="As you reflect on what you've accomplished, continue to think about how you can sustain your commitments to equity in ongoing resilience work. One way to do this is through consistent opportunities for  collaboration with community members.">
+			text="As you reflect on what you've accomplished, continue to think about how you can sustain your commitments to equity in ongoing resilience work. One way to do this is through consistent opportunities for collaboration with community members.">
 			</text>
 		</textBlock>
 	</container>

@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Bring together any existing lists of community groups and organizations">
+			text="Identify existing community groups and organizations">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Discuss and describe different groups within your community">
+			text="Discuss and describe these different groups within your community">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -97,7 +97,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A list of people/groups you want to include in your engagement plan">
+			text="A list of people/groups you want to include in your community engagement plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -202,6 +202,12 @@
 			<text
 			size="16.0"
 			fontFamily="System"
+			fontStyle="Regular"
+			text="[">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="https://www.epa.gov/ejscreen"
 			linkType="URL"
@@ -211,7 +217,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" can help you learn more about your community, if you need help.">
+			text="]">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" can help you learn more about your community.">
 			</text>
 		</textBlock>
 	</container>
