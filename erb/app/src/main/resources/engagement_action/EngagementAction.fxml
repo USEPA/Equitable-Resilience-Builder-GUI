@@ -125,7 +125,7 @@
                <children>
                   <HBox fx:id="body2HBox" VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox fx:id="contentVBox" alignment="CENTER" />
+                        <VBox fx:id="contentVBox" alignment="CENTER" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
