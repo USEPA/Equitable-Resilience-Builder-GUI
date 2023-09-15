@@ -183,7 +183,7 @@
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                  </graphic>
                               </Hyperlink>
-                              <Hyperlink id="172" onAction="#hyperlinkAction" text="Additional resources" textFill="#5e5e5e">
+                              <Hyperlink id="172" onAction="#hyperlinkAction" text="How to customize ERB" textFill="#5e5e5e">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

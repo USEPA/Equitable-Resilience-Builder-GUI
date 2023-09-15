@@ -71,7 +71,7 @@ public class ERBLandingController implements Initializable{
 //        rectangle3.widthProperty().bind(vBox.widthProperty());
 //        rectangle3.heightProperty().bind(bottomStackPane.heightProperty());
 
-        exploreHyperlink.setTooltip(new Tooltip("Explore mode is a way of checking out the tool. You are not able to save any work."));
+        exploreHyperlink.setTooltip(new Tooltip("\"Explore mode\" is a way of checking out the tool. You are not able to save any work."));
 
 	}
 	

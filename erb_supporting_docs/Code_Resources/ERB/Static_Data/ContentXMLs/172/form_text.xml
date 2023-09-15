@@ -5,15 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Additional resources">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="">
+			text="How to customize ERB">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -21,67 +13,30 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="To learn more about the science behind ERB, check out these resources:">
+			text="When you open up ERB there will be 5 sections each with multiple activities you can do. It may seem overwhelming at first, but you don’t need to do it all! We recognize that different users might have different amounts of time and resources, and be at different points in the resilience planning process. To help you get started choosing activities that best fit your needs and goals, we offer some suggestions below. You’ll be able to review ERB activities in more detail in the Plan section (the first section of ERB). Here are a few ways you could narrow down which ERB content is right for you:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="589.0"
+			height="447.0"
+			id="202">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="We do recommend that all users do these activities, to get the most out of what ERB has to offer: ">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Maxwell, K. (2018). A coupled human–natural systems framework of community resilience. Journal of Natural Resources Policy Research 8 (1-2): 110–130.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text 
-			size="16.0" 
-			fontFamily="System" 
-			fontStyle="Hyperlink" 
-			text="https://doi.org/10.5325/naturesopolirese.8.1-2.0110" 
-			linkType="URL" 
-			link="https://doi.org/10.5325/naturesopolirese.8.1-2.0110"> 
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="EPA (2017). Evaluating Urban Resilience to Climate Change: A Multi-Sector Approach. Washington, D.C. EPA/600/R-16/365F.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text 
-			size="16.0" 
-			fontFamily="System" 
-			fontStyle="Hyperlink" 
-			text="https://cfpub.epa.gov/si/si&#95;public&#95;record&#95;report.cfm?Lab=NCEA&#38;dirEntryId=322482" 
-			linkType="URL" 
-			link="https://cfpub.epa.gov/si/si_public_record_report.cfm?Lab=NCEA&#38;dirEntryId=322482"> 
+			fontStyle="Italic"
+			text="Listening to local knowledge and experiences: ">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -89,37 +44,15 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="To learn more about how ERB was developed, check out this article: ">
+			text="Hazards storytelling        Assess Section">
 			</text>
 		</textBlock>
 		<textBlock>
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Fry, M., K. Maxwell, E. Eisenhauer, S. Julius, B. Kiessling, M. Matsler, M. Ollove, S. Romanoski (2023). Centering equity in the development of a community resilience planning resource. Climate Risk Management 40:100520. ">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text 
-			size="16.0" 
-			fontFamily="System" 
-			fontStyle="Hyperlink" 
-			text="https://doi.org/10.1016/j.crm.2023.100520" 
-			linkType="URL" 
-			link="https://doi.org/10.1016/j.crm.2023.100520"> 
+			fontStyle="Italic"
+			text="Identifying actions to strengthen resilience:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -127,21 +60,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="To learn more about how to use ERB, check out the User Guide:">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="EPA. 2023. Equitable Resilience Builder User Guide.">
+			text="Action workshop        Strategize Section">
 			</text>
 		</textBlock>
 	</container>

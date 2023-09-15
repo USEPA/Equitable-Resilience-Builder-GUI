@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The Equitable Resilience Builder supports communities in strengthening resilience to disasters and climate change, with a focus on equity. By using this tool, you and your community will develop different types of resilience plans tailored to your needs and concerns (e.g., climate adaptation, hazard mitigation, emergency preparedness). The process is collaborative, with planners and community members working together to prioritize actions to build community resilience in an equitable way.">
+			text="The Equitable Resilience Builder (ERB) supports communities in strengthening resilience to disasters and climate change, with a focus on equity. By using this tool, you and your community will develop different types of resilience plans tailored to your needs and concerns (e.g., climate adaptation, hazard mitigation, emergency preparedness). The process is collaborative, with planners and community members working together to prioritize actions to build community resilience in an equitable way.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -173,7 +173,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="No. Once you download the application to your computer, the EPA has no access to it. All the information that you enter into ERB is kept within the application. You can decide whether you want to download and save project files to another location on your desktop or laptop.">
+			text="No. ERB was created by the U.S. Environmental Protection Agency (EPA), but once you download the application to your computer, the EPA has no access to it. All the information that you enter into ERB is kept within the application. You can decide whether you want to download and save project files to another location on your desktop or laptop.">
 			</text>
 		</textBlock>
 	</container>

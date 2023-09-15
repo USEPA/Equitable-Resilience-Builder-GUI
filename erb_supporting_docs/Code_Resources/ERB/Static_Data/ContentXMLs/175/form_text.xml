@@ -15,7 +15,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="The ERB centers equity by:">
+			text="An equitable process is the foundation for equitable outcomes. The ERB centers equity by:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -28,7 +28,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Guiding users through identifying and conducting outreach to disproportionately impacted members of the community">
+			text="Guiding users through identifying and engaging disproportionately impacted members of the community">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -41,7 +41,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Reducing barriers to attending workshops and participating in activities">
+			text="Reducing barriers to attending workshops and participating in planning activities">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -54,7 +54,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Using a guided process and activities that make sure that community members have a voice in community planning">
+			text="Using a guided process and activities that are facilitated with equity principles including inclusivity, accessibility, accountability, justice, relationship building, and strengthening capacity.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -68,19 +68,6 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Illuminating who is made most vulnerable to disaster and climate change impacts, why, and how with attention to deeply rooted social and environmental inequalities">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="12.0"
-			height="12.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Helping users to recognize trauma in their community and utilize appropriate communication and outreach methods">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -119,7 +106,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Facilitating resilience plans and actions which see benefits equitable distributed across the community">
+			text="Developing actions which see benefits equitably distributed across the community">
 			</text>
 		</textBlock>
 	</container>
