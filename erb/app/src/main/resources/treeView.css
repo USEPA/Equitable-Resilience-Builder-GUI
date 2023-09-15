@@ -1,8 +1,8 @@
 .tree-cell > .tree-disclosure-node > .arrow  {
-    -fx-background-color: #E56A24;
+    -fx-background-color: #D96727;
 }
 .tree-cell:expanded > .tree-disclosure-node > .arrow {
-    -fx-background-color: #C24C09;
+    -fx-background-color: #D96727;
 }
 
 .tree-view .tree-cell{
@@ -13,7 +13,7 @@
 
 .tree-view .tree-cell:selected{
     -fx-background-color: #FFFCED;
-     -fx-text-fill: #A455AE ;
+     -fx-text-fill: #562C87 ;
     -fx-font-weight: bold;
 }
 

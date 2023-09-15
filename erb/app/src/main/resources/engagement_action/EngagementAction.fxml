@@ -31,7 +31,7 @@
                </font></Button>
          </children>
       </HBox>
-      <Label fx:id="exploreModeLabel" text="Important: You are in Explore Mode. In order to use the interactive activites or to edit forms, create a project on the ERB Home page" textFill="#b96f1a">
+      <Label fx:id="exploreModeLabel" text="Important: You are in Explore Mode. In order to use the interactive activites or to edit forms, create a project on the ERB Home page" textFill="#d96727">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
@@ -79,12 +79,12 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" style="-fx-background-color: #FFFFFF;" text="My Portfolio" textFill="#00549c">
+                  <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" style="-fx-background-color: #FFFFFF;" text="My Portfolio" textFill="#316188">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="uploadFileButton" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" style="-fx-background-color: #FFFFFF;" text="Upload File" textFill="#00549c">
+                  <Button fx:id="uploadFileButton" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" style="-fx-background-color: #FFFFFF;" text="Upload File" textFill="#316188">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -92,7 +92,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="worksheetIndexButton1" mnemonicParsing="false" onAction="#worksheetIndexAction" style="-fx-background-color: #FFFFFF;" text="Worksheet Index" textFill="#00549c">
+                  <Button fx:id="worksheetIndexButton1" mnemonicParsing="false" onAction="#worksheetIndexAction" style="-fx-background-color: #FFFFFF;" text="Worksheet Index" textFill="#316188">
                      <font>
                         <Font size="14.0" />
                      </font>

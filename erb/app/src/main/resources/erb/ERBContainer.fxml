@@ -32,12 +32,12 @@
                         </ImageView>
                         <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
                            <children>
-                              <Label fx:id="titleLabel" text="Equitable Resilience Builder" textFill="#580aad">
+                              <Label fx:id="titleLabel" text="Equitable Resilience Builder" textFill="#562c87">
                                  <font>
                                     <Font name="System Bold" size="32.0" />
                                  </font>
                               </Label>
-                              <Label text="Inclusive planning for disasters and climate change" textFill="#c3831c">
+                              <Label text="Inclusive planning for disasters and climate change" textFill="#d96727">
                                  <font>
                                     <Font size="22.0" />
                                  </font>
@@ -62,7 +62,7 @@
                   </HBox>
                </children>
             </StackPane>
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#f25f23ed" height="5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#d96727ed" height="5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0" />
             <VBox fx:id="erbContainer" style="-fx-background-color: white;" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
