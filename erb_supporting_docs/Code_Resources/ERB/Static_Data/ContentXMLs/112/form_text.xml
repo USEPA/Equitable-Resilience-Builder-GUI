@@ -217,13 +217,6 @@
 			link="144">
 			</text>
 			</listBlock>
-			<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
-		</textBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">

@@ -336,3 +336,4 @@
 | ERROR | 2023-09-15 12:03:35 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
 | ERROR | 2023-09-15 14:03:53 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
 | ERROR | 2023-09-15 16:04:05 | XMLManager.java:456 | The entity "emsp" was referenced, but not declared.
+| ERROR | 2023-09-15 16:10:54 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)

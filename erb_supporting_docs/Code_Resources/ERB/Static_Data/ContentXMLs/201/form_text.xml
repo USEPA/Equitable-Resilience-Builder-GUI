@@ -151,19 +151,6 @@
 			link="Funding_and_Financing_Guide.docx">
 			</text>
 		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="">
-			</text>
-		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
 		<textBlock>

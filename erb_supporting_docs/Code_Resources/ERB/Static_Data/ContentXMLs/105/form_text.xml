@@ -179,13 +179,6 @@
 			link="Indicators_List.xlsx">
 			</text>
 			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>	
 	</container>
 	<container id="bottomPanelVBox">
