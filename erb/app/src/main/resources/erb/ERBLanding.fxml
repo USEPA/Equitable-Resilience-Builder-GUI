@@ -42,7 +42,7 @@
             </HBox>
          </children>
       </StackPane>
-      <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#0f76abed" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0" />
+      <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#0f76abed" height="5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="825.0" />
       <StackPane fx:id="bottomStackPane" VBox.vgrow="ALWAYS">
          <children>
             <HBox alignment="CENTER" spacing="5.0">
@@ -212,13 +212,13 @@
       </StackPane>
       <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: white;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0f76ab" height="10.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="87.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0f76ab" height="5.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="87.0" />
             <ImageView fx:id="epaLogoImageView" fitHeight="55.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../epa_log.png" />
                </image>
             </ImageView>
-            <Rectangle fx:id="epaLogRectangle" arcHeight="5.0" arcWidth="5.0" fill="#0f76ab" height="10.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="641.0" />
+            <Rectangle fx:id="epaLogRectangle" arcHeight="5.0" arcWidth="5.0" fill="#0f76ab" height="5.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="641.0" />
          </children>
       </HBox>
    </children>
