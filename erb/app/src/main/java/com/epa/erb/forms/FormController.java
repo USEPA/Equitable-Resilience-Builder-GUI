@@ -48,6 +48,11 @@ public class FormController {
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;
 	}
+	
+	public FormController(App app, EngagementActionController engagementActionController) {
+		this.app = app;
+		this.engagementActionController = engagementActionController;
+	}
 
 	private FileHandler fileHandler = new FileHandler();
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();

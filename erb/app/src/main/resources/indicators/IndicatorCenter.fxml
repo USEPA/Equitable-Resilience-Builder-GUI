@@ -25,6 +25,35 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label text="Resilience indicators can help practitioners and policy makers understand costs and benefits of enhancing resilience at all scales. For more information about what indicators are and how they are used in this tool, click here:" wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink onAction="#resilienceIndicatorsBackgroundHyperlinkAction" text="Resilience Indicators Background">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Label text="NOTE: We recommend that teams begin with a small set of indicators the first time using the ERB tool. This initial set of indicators should be selected based on topics brought up in previous community storytelling exercises. Indicators can be added at any time as capacity to address new topics emerges." wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
             <HBox>
                <children>
                   <Label text="Indicator creation and data collection" wrapText="true">

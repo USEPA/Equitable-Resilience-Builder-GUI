@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
 import com.epa.erb.engagement_action.EngagementActionController;
+import com.epa.erb.forms.FormController;
 import com.epa.erb.utility.FileHandler;
 
 
@@ -53,6 +54,12 @@ public class IndicatorCenterController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void resilienceIndicatorsBackgroundHyperlinkAction() {
+		FormController controller = new FormController(eAC.getApp(), eAC);
+		controller.internalPopupLinkClicked("06");
 	}
 	
 	private Stage virtualIndicatorSelectionStage = null;
