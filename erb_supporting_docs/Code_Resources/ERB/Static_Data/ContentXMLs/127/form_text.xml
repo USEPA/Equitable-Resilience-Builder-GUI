@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review the Key Takeaways on Assessment, Indicator Diagram, and goals from your Project Plan">
+			text="Review the Key Takeaways on Assessment and goals from your Project Plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -179,14 +179,6 @@
 				text="Project Plan Template"
 				linkType="externalDOC"
 				link="Project_Plan_Template.docx">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Indicator Diagram"
-				linkType=""
-				link="">
 				</text>
 				<text
 				size="16.0"

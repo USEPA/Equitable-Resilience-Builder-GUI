@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Follow instructions in the User Guide to save materials in My Portfolio">
+			text="If needed, review the resource on how to use My Portfolio from the Instructions drop-down">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -184,14 +184,6 @@
 				text="My Portfolio"
 				linkType="internal"
 				link="MyPortfolio">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="User Guide"
-				linkType=""
-				link="">
 				</text>
 			</listBlock>
 		</textBlock>
