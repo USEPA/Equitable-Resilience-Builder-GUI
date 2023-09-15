@@ -8,14 +8,6 @@
 			text="Actions Brainstorming Example">
 			</text>
 		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Goal setting examples">
-			</text>
-		</textBlock>
 	</container>
 	<container id="leftVBox">
 	</container>

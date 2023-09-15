@@ -237,8 +237,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Youth Engagement Guide"
-			linkType="internal"
-			link="10">
+			linkType="externalDOC"
+			link="Youth_Engagement_Guide.docx">
 			</text>
 			</listBlock>
 		</textBlock>

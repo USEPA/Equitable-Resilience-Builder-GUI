@@ -131,7 +131,7 @@ public class OutputFormController extends FormController implements Initializabl
 		dynamicAreaVBox.getChildren().add(separator);
 		HBox buttonHBox = new HBox();
 		buttonHBox.setAlignment(Pos.CENTER_RIGHT);
-		Button addButton = new Button ("Add");
+		Button addButton = new Button ("Add Action Area");
 		buttonHBox.getChildren().add(addButton);
 		dynamicAreaVBox.getChildren().add(buttonHBox);
 		dynamicAreaVBox.setId("dynamic area");

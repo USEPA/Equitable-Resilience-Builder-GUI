@@ -174,8 +174,8 @@
 				fontFamily="System"
 				fontStyle="Hyperlink"
 				text="Final Report Template"
-				linkType=""
-				link="">
+				linkType="externalDOC"
+				link="Final_Report_Template.docx">
 				</text>
 				<text
 				size="16.0"

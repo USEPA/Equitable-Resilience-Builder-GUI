@@ -9,11 +9,13 @@
 		<worksheet name="Recruitment_Guide.docx"/>
 		<worksheet name="Team_Storytelling_Exercise.docx"/>
 		<worksheet name="Exploring_Equity_Exercise.docx"/>
+		<worksheet name="Youth_Engagement_Guide.docx"/>
+		<worksheet name="How_to_Use_Storytelling.docx"/>
 	</section>
 	<section name="Engage">
-		<worksheet name="Equity_in_Engagement_Exercise.docx"/>
+		<worksheet name="Equity_and_Engagement_Exercise.docx"/>
 		<worksheet name="Community_Connections_Table.docx"/>
-		<worksheet name="Community_Engagement_Plan_Template.docx"/>
+		<worksheet name="Community_Engagement_Plan.docx"/>
 		<worksheet name="Diagram_Community_Connections.docx"/>
 	</section>
 	<section name="Assess">
@@ -48,6 +50,7 @@
 		<worksheet name="Implementation_Worksheet.docx"/>
 		<worksheet name="Monitoring_Plan_Worksheet.docx"/>
 		<worksheet name="Funding_and_Financing_Guide.docx"/>
+		<worksheet name="Final_Report_Template.docx"/>
 	</section>
 </worksheet_assignments>
 

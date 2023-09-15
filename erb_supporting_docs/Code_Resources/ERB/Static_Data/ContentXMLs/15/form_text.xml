@@ -20,8 +20,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="storytelling"
-			link=""
-			linkType="">
+			link="02"
+			linkType="internal">
 			</text>
 			<text
 			size="16.0"

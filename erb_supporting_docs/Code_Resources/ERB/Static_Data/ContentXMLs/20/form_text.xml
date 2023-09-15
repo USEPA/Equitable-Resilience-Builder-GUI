@@ -222,8 +222,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="How to Use Storytelling"
-			linkType=""
-			link="">
+			linkType="externalDOC"
+			link="How_to_Use_Storytelling.docx">
 			</text>
 			</listBlock>
 		</textBlock>

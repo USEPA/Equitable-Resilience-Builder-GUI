@@ -110,7 +110,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Action areas to use in the Results to Action workshop">
+			text="Action Areas to use in the Results to Action workshop">
 			</text>
 		</textBlock>
 	</container>
@@ -195,14 +195,6 @@
 				text="Key Takeaways on Strategizing Actions"
 				linkType="internal"
 				link="136">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Indicator Center"
-				linkType="internal"
-				link="85">
 				</text>
 			</listBlock>
 		</textBlock>

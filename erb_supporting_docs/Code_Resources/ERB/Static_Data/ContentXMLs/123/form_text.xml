@@ -1,8 +1,24 @@
 <textBlocks>
 	<container id="formVBox">
 		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Example of Completed Indicator Diagram">
+			</text>
+		</textBlock>
+		<textBlock>
 			<icon width="1000.0"
 			height="390.0" id="122"> </icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="In this example, the placement of Violence in Schools indicates that the issue currently burdens specific communities more than others (less equitable) and it is happening at such a high rate that it is reducing community resilience (less resilient)">
+			</text>
 		</textBlock>
 	</container>
 	<container id="topPanelVBox">
