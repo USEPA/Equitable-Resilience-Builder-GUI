@@ -53,7 +53,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="descriptionTextArea" editable="false" style="-fx-border-color: #CBCBCB;" VBox.vgrow="ALWAYS">
+                  <TextArea fx:id="descriptionTextArea" editable="false" style="-fx-border-color: #CBCBCB;" wrapText="true" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="15.0" />
                      </font></TextArea>

@@ -62,7 +62,7 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextArea fx:id="projectDescriptionTextArea" HBox.hgrow="ALWAYS" />
+                                    <TextArea fx:id="projectDescriptionTextArea" wrapText="true" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
                            </children>
