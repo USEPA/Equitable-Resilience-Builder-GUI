@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane style="-fx-background: white; -fx-border-color: transparent; -fx-background-color: #FFFFFF; border-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fitToWidth="true" style="-fx-background: white; -fx-border-color: transparent; -fx-background-color: #FFFFFF; border-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox spacing="10.0" style="-fx-background-color: white;">
          <children>
@@ -25,23 +25,23 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER_LEFT">
+            <VBox>
                <children>
                   <Label text="Resilience indicators can help practitioners and policy makers understand costs and benefits of enhancing resilience at all scales. For more information about what indicators are and how they are used in this tool, click here:" wrapText="true">
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
                   </Label>
-                  <Hyperlink onAction="#resilienceIndicatorsBackgroundHyperlinkAction" text="Resilience Indicators Background">
+                  <Hyperlink onAction="#resilienceIndicatorsBackgroundHyperlinkAction" style="-fx-border-color: transparent;" text="Resilience Indicators Background">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Hyperlink>
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
+            </VBox>
             <HBox alignment="CENTER_LEFT">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
