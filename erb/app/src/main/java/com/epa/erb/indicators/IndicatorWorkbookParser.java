@@ -23,7 +23,7 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 	public void setIndicatorSheet() {
 		try {
 			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(workbookFile);
-			indicatorSheet = getWorksheet(xssfWorkbook, "Combined Indicator Menu");
+			indicatorSheet = getWorksheet(xssfWorkbook, "Indicator Menu");
 		} catch (InvalidFormatException | IOException e) {
 			e.printStackTrace();
 		}
@@ -80,7 +80,7 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 					localConcernColumnIndex=i;
 				} else if (headerVal.contentEquals("Data Questions to Answer")){
 					dataQuestionsColumnIndex=i;
-				} else if (headerVal.contentEquals("Quantitative Data Sources")) {
+				} else if (headerVal.contentEquals("Data Sources")) {
 					quanDataSourcesColumnIndex=i;
 				} else if (headerVal.contentEquals("Quantitative Data Collection Process")) {
 					quanDataCollectionColumnIndex=i;
@@ -117,8 +117,8 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 				String rdColl = rowValues.get(rawDataCollectionColumnIndex);
 				String dP = rowValues.get(dataPointsColumnIndex);
 				String t = rowValues.get(thresholdColumnIndex);
-				String dCYN = rowValues.get(dataCollection_y_nColumnIndex);
-				IndicatorCard indicatorCard = new IndicatorCard(id, s, i, d, rV, eV, lC, q, qnDS, qnDC, qlDC, aI, rdColl, dP, t, dCYN);
+//				String dCYN = rowValues.get(dataCollection_y_nColumnIndex);
+				IndicatorCard indicatorCard = new IndicatorCard(id, s, i, d, rV, eV, lC, q, qnDS, qnDC, qlDC, aI, rdColl, dP, t, "Y");
 				indicatorCards.add(indicatorCard);
 			}
 		}
