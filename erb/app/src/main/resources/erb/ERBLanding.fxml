@@ -67,7 +67,7 @@
                               </HBox>
                               <VBox>
                                  <children>
-                                    <Hyperlink id="173" onAction="#hyperlinkAction" text="The 5 sections of ERB" textFill="#5e5e5e">
+                                    <Hyperlink id="173" onAction="#hyperlinkAction" style="-fx-border-color: transparent;" text="The 5 sections of ERB" textFill="#5e5e5e">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -75,7 +75,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                        </graphic>
                                     </Hyperlink>
-                                    <Hyperlink id="175" onAction="#hyperlinkAction" text="How ERB centers equity" textFill="#5e5e5e">
+                                    <Hyperlink id="175" onAction="#hyperlinkAction" style="-fx-border-color: transparent;" text="How ERB centers equity" textFill="#5e5e5e">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -83,7 +83,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                        </graphic>
                                     </Hyperlink>
-                                    <Hyperlink onAction="#exampleProjectsHyperlinkAction" text="Examples of ERB projects" textFill="#5e5e5e">
+                                    <Hyperlink onAction="#exampleProjectsHyperlinkAction" style="-fx-border-color: transparent;" text="Examples of ERB projects" textFill="#5e5e5e">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -120,7 +120,7 @@
                               </HBox>
                               <VBox>
                                  <children>
-                                    <Hyperlink onAction="#projectCreationButtonAction" text="Start a new project" textFill="#5e5e5e">
+                                    <Hyperlink onAction="#projectCreationButtonAction" style="-fx-border-color: transparent;" text="Start a new project" textFill="#5e5e5e">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -128,7 +128,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                        </graphic>
                                     </Hyperlink>
-                                    <Hyperlink onAction="#projectContinueButtonAction" text="Continue your project" textFill="#5e5e5e">
+                                    <Hyperlink onAction="#projectContinueButtonAction" style="-fx-border-color: transparent;" text="Continue your project" textFill="#5e5e5e">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -136,7 +136,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                        </graphic>
                                     </Hyperlink>
-                                    <Hyperlink fx:id="exploreHyperlink" onAction="#exploreHyperlinkAction" text="Explore the tool" textFill="#5e5e5e">
+                                    <Hyperlink fx:id="exploreHyperlink" onAction="#exploreHyperlinkAction" style="-fx-border-color: transparent;" text="Explore the tool" textFill="#5e5e5e">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -175,7 +175,7 @@
                         </VBox>
                         <VBox>
                            <children>
-                              <Hyperlink id="171" onAction="#hyperlinkAction" text="Quick-start guide" textFill="#5e5e5e">
+                              <Hyperlink id="171" onAction="#hyperlinkAction" style="-fx-border-color: transparent;" text="Quick-start guide" textFill="#5e5e5e">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -183,7 +183,7 @@
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                  </graphic>
                               </Hyperlink>
-                              <Hyperlink id="172" onAction="#hyperlinkAction" text="How to customize ERB" textFill="#5e5e5e">
+                              <Hyperlink id="172" onAction="#hyperlinkAction" style="-fx-border-color: transparent;" text="How to customize ERB" textFill="#5e5e5e">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -191,7 +191,7 @@
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                  </graphic>
                               </Hyperlink>
-                              <Hyperlink id="09" onAction="#hyperlinkAction" text="About" textFill="#5e5e5e">
+                              <Hyperlink id="09" onAction="#hyperlinkAction" style="-fx-border-color: transparent;" text="About" textFill="#5e5e5e">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
