@@ -37,7 +37,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Countries, government agencies, and organizations define 'children' and 'youth' differently ​[1]​. The U.S. Environmental Protection Agency's 2021 Policy on Children's Health defines children from conception, infancy, early childhood, and through adolescence until 21 years of age ​[2]​ . However, different stages of childhood have different needs and youth engagement strategies need to be age appropriate. This guide is intended to facilitate engagement of older children, approximately ages 12 to 21, and uses 'children' and 'youth' interchangeably.">
+			text="Countries, government agencies, and organizations define &quot;children&quot; and &quot;youth&quot; differently ​[1]​. The U.S. Environmental Protection Agency's 2021 Policy on Children's Health defines children from conception, infancy, early childhood, and through adolescence until 21 years of age ​[2]​ . However, different stages of childhood have different needs and youth engagement strategies need to be age appropriate. This guide is intended to facilitate engagement of older children, approximately ages 12 to 21, and uses &quot;children&quot; and &quot;youth&quot; interchangeably.">
 			</text>
 		</textBlock>
 			<textBlock>
@@ -69,7 +69,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Due to a more limited ability to process trauma, youth experiencing hazards and disasters are also more susceptible to emotional and psychological disorders and distress, including post-traumatic stress disorder (PTSD), depression, anxiety, behavioral issues, and trouble sleeping ​[3], [5]​. Hazards and disasters can disrupt students’ education by damaging school buildings, causing teacher shortages, and displacing students and teachers. As a result, youth often miss days of school, move around to different schools, and/or drop out of school entirely. These factors, in combination with emotional trauma from disasters and individual risk factors, lead to hindered academic performance, inhibited cognitive function, and delayed social development​[3], [5], [6]​. ">
+			text="Due to a more limited ability to process trauma, youth experiencing hazards and disasters are also more susceptible to emotional and psychological disorders and distress, including post-traumatic stress disorder (PTSD), depression, anxiety, behavioral issues, and trouble sleeping ​[3], [5]​. Hazards and disasters can disrupt students’ education by damaging school buildings, causing teacher shortages, and displacing students and teachers. As a result, youth often miss days of school, move around to different schools, and/or drop out of school entirely. These factors, in combination with emotional trauma from disasters and individual risk factors, lead to hindered academic performance, inhibited cognitive function, and delayed social development​ [3], [5], [6]​. ">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -212,7 +212,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Meaningful youth engagement also requires addressing 'adultism.' Adults often view children as passive and helpless, which leads them to exclude children from discussing topics that are deemed difficult, complex, or potentially harmful [12]. Some adults might also believe that including children in decision making processes threatens the adults’ authority. Research demonstrates that resistance from adults is a major barrier to child and youth participation, but working in partnership with children can positively change the way adults view them[4]. Adults must actively work to overcome their implicit or explicit bias(es) towards children by centering youth voices and recognizing their rights to participate[9]">
+			text="Meaningful youth engagement also requires addressing &quot;adultism&quot;. Adults often view children as passive and helpless, which leads them to exclude children from discussing topics that are deemed difficult, complex, or potentially harmful [12]. Some adults might also believe that including children in decision making processes threatens the adults’ authority. Research demonstrates that resistance from adults is a major barrier to child and youth participation, but working in partnership with children can positively change the way adults view them [4]. Adults must actively work to overcome their implicit or explicit bias(es) towards children by centering youth voices and recognizing their rights to participate [9].">
 			</text>
 			<icon
 			width="250.0"
@@ -401,7 +401,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="- In Eastern Samar Province, Philippines, youth ages 12-21 years old used participatory video as a research tool to understand resilience to disasters in their communities. While adults provided assistance when needed, youth led the projects. The final videos, which were presented to policymakers and community members, revealed how environmental exposures (e.g., coastal location) and sensitivities (e.g., poor infrastructure) led to increased hazard and disaster risk. They also uncovered social and political causes of vulnerability to said risk[13].">
+			text="- In Eastern Samar Province, Philippines, youth ages 12-21 years old used participatory video as a research tool to understand resilience to disasters in their communities. While adults provided assistance when needed, youth led the projects. The final videos, which were presented to policymakers and community members, revealed how environmental exposures (e.g., coastal location) and sensitivities (e.g., poor infrastructure) led to increased hazard and disaster risk. They also uncovered social and political causes of vulnerability to said risk [13].">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -631,7 +631,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="References:">
+			text="References">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -639,7 +639,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[1]	'Words into Action: Engaging children and youth in disaster risk reduction and resilience building,' United Nations Office for Disaster Risk Reduction (UNDRR), 2020. [Online]. Available: ">
+			text="[1]	UNDRR. 2020. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Words into Action: Engaging children and youth in disaster risk reduction and resilience building">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Geneva, Switzerland: United Nations Office for Disaster Risk Reduction. ">
 			</text>
 			<text
 			size="16.0"
@@ -655,7 +667,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[2]	'2021 policy on children’s health,' U.S. Environmental Protection Agency, 2021. [Online]. Available: ">
+			text="[2]	EPA. 2021. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="2021 policy on children’s health">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, D.C.: Environmental Protection Agency. ">
 			</text>
 			<text
 			size="16.0"
@@ -671,7 +695,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[3]	L. Peek, 'Children and disasters: Understanding vulnerability, developing capacities, and promoting resilience-an introduction,' Child Youth Environ, vol. 18, no. 1, 2008.">
+			text="[3]	Peek. 2008. Children and disasters: Understanding vulnerability, developing capacities, and promoting resilience-an introduction. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Child Youth, and Environments,">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="18. https://www.jstor.org/stable/10.7721/chilyoutenvi.18.1.0001">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -679,7 +715,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[4]	Y. Lopez, J. Hayden, K. Cologon, and F. Hadley, 'Child participation and disaster risk reduction,' Int J Early Years Educ, vol. 20, no. 3, 2012, doi: 10.1080/09669760.2012.716712. ">
+			text="[4]	Lopez, et al. 2012. Child participation and disaster risk reduction. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="International Journal of Early Years Education">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 20(3). https://doi.org/10.1080/09669760.2012.716712">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -687,15 +735,29 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[5]	C. Kousky, 'Impacts of Natural Disasters on Children,' 2016. [Online]. Available: ">
+			text="[5]	Kousky. 2016. Impacts of Natural Disasters on Children. Future of Children, 26(1). https://futureofchildren.princeton.edu/sites/g/files/toruqf2411/files/media/children_and_climate_change_26_1_full_journal.pdf">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[6]	Fothergill. 2017. Children, Youth, and Disaster Children. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Oxford Research Encyclopedia of Natural Hazard Science. ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="www.futureofchildren.org"
+			text="https://doi.org/10.1093/acrefore/9780199389407.013.23"
 			linkType="URL"
-			link="www.futureofchildren.org">
+			link="https://doi.org/10.1093/acrefore/9780199389407.013.23">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -703,7 +765,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[6]	A. Fothergill, 'Children, Youth, and Disaster Children, Youth, and Disaster Children, Youth, and Disaster,' Oxford Research Encyclopedia of Natural Hazard Science, no. July 2017, 2017.">
+			text="[7]	Pfefferbaum, Pfefferbaum, and Van Horn. 2018. Involving children in disaster risk reduction: the importance of participation. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="European Journal of Psychotraumatology ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 9(2). https://doi.org/10.1080/20008198.2018.1425577">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -711,7 +785,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[7]	B. Pfefferbaum, R. L. Pfefferbaum, and R. L. Van Horn, 'Involving children in disaster risk reduction: the importance of participation,' Eur J Psychotraumatol, vol. 9, no. sup2, 2018, doi: 10.1080/20008198.2018.1425577.">
+			text="[8]	Cox, et al. 2019. More than a checkbox: engaging youth in disaster risk reduction and resilience in Canada. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Natural Hazards">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 98: 213-227. https://doi.org/10.1007/s11069-018-3509-3">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -719,7 +805,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[8]	R. S. Cox, T. T. Hill, T. Plush, C. Heykoop, and C. Tremblay, 'More than a checkbox: engaging youth in disaster risk reduction and resilience in Canada,' Natural Hazards, vol. 98, no. 1, 2019, doi: 10.1007/s11069-018-3509-3.">
+			text="[9]	Mort, Rodríguez-Giralt, and Delicado. 2020. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Children and Young People’s Participation in Disaster Risk Reduction">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". https://doi.org/10.47674/9781447354437">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -727,15 +825,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[9]	M. Mort, I. Rodríguez-Giralt, and A. Delicado, Children and Young People’s Participation in Disaster Risk Reduction. 2020. doi: 10.47674/9781447354437.">
+			text="[10]	OHCHR. 1989. ">
 			</text>
-		</textBlock>
-		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Convention on the Rights of the Child">
+			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[10]	'Convention on the Rights of the Child,' United Nations Human Rights Office of the High Commissioner, 1989. [Online]. Available: ">
+			text=". United Nations Human Rights Office of the High Commissioner. ">
 			</text>
 			<text
 			size="16.0"
@@ -751,7 +853,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[11]	R. a. Hart, Children’s Participation: from Tokenism to Citizenship, vol. 4. 1992.">
+			text="[11]	Hart. 1992. Children’s Participation: from Tokenism to Citizenship. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Innocenti Essays">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 4. https://www.unicef-irc.org/publications/100-childrens-participation-from-tokenism-to-citizenship.html">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -759,7 +873,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[12]	'IASC Guidelines on Working with and for Young People in Humanitarian and Protracted Crises,' Inter-Agency Standing Committee, 2020. [Online]. Available:  ">
+			text="[12]	IASC. 2020. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="IASC Guidelines on Working with and for Young People in Humanitarian and Protracted Crises">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Inter-Agency Standing Committee. ">
 			</text>
 			<text
 			size="16.0"
@@ -775,7 +901,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[13]	'A Child-Centred Disaster Management Framework for Europe,' CUIDAR Project, 2020. [Online]. Available: ">
+			text="[13]	CUIDAR. 2020. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="A Child-Centred Disaster Management Framework for Europe">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Cultures of Disaster Resilience among children and young people. ">
 			</text>
 			<text
 			size="16.0"
@@ -791,7 +929,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[14]	K. Haynes and T. M. Tanner, 'Empowering young people and strengthening resilience: youth-centred participatory video as a tool for climate change adaptation and disaster risk reduction,' Child Geogr, vol. 13, no. 3, 2015, doi: 10.1080/14733285.2013.848599.">
+			text="[14]	Haynes and Tanner. 2015. Empowering young people and strengthening resilience: youth-centred participatory video as a tool for climate change adaptation and disaster risk reduction. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Childrens Geographies">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 13(5): 357-371. https://doi.org/10.1080/14733285.2013.848599">
 			</text>
 		</textBlock>
 	</container>

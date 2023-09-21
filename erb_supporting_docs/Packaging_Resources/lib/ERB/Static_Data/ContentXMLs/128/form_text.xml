@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Workshop 3 - Results to Action">
+			text="Plan Workshop 3: Results to Action">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="You can select the activities that are most relevant and figure out  whom to invite and how to make it happen.">
+			text="Involving community participants in identifying actions that can be taken to address equitable resilience issues is critical to making sure actions will meet the needs of the community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Get together with your core team and review the Reflection Diary to build on what worked in previous workshops, especially for reducing barriers to participation">
+			text="Get together with your core team and review the Reflection Diary to build on what worked in previous workshops, especially for reducing barriers to participation.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review the workshop activities described in the rest of this section and use the Results to Action Workshop Agenda Builder to select the activities you plan to include">
+			text="Review your goals from your Project Plan and define objectives for the workshop to meet your goals.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Review the workshop activities described in the rest of this section and use the Results to Action Workshop Agenda Builder to select the activities you plan to include to meet your objectives.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -89,7 +102,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Coordinate with any other local partners necessary to address the issues identified in the Problem Statements activity">
+			text="Coordinate with any other local partners necessary to address the Action Areas the workshop will focus on.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -146,7 +159,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core Team">
+			text="Core team and local partners">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -159,7 +172,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1 to 1.5 hours">
+			text="1-1.5 hours">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -181,7 +194,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Facilitators Guide for Workshops"
+			text="Facilitator's Guide for Workshops"
 			linkType="externalDOC"
 			link="Facilitators_Guide_for_Workshops.docx">
 			</text>
@@ -193,6 +206,14 @@
 			linkType="externalDOC"
 			link="Reflection_Diary.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Project Plan Template"
+			linkType="externalDOC"
+			link="Project_Plan_Template.docx">
+			</text>
 			</listBlock>
 		</textBlock>
 		<textBlock>
@@ -201,6 +222,7 @@
 			height="40.0"
 			id="70">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -209,6 +231,15 @@
 			linkType="externalDOC"
 			link="Results_to_Action_Workshop_Sample_Agenda.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Urban Waters Story Map"
+			linkType="URL"
+			link="https://storymaps.arcgis.com/stories/0f304067072d40a6a9d21f398902e990">
+			</text>
+			</listBlock>
 		</textBlock>		
 	</container>
 	<container id="bottomPanelVBox">
@@ -231,6 +262,19 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Invite participants who are or are likely to be affected by the problems listed in your problem statements. If they have not been involved so far, be prepared to update them on what you have done so far and what your goals are.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="78">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Be clear about how the results of the workshop will be used, and how they will benefit participants.">
 			</text>
 		</textBlock>
 	</container>

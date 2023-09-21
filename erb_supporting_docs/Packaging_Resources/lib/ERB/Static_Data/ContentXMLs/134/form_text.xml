@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="To identify a tangible actions and immediate next steps that lay the groundwork for long term implementation.">
+			text="To identify tangible actions and immediate next steps that lay the groundwork for long-term implementation.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -118,7 +118,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Assign a Core Team member to record highlights and lessons learned from this activity in the Key Takeaways Form on Strategizing.">
+			text="Record highlights and lessons learned from this activity in the Key Takeaways on Strategizing Actions.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -139,7 +139,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Key Takeaways Form on Strategizing">
+			text="Commitments and actionable steps">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Key Takeaways on Strategizing Action">
 			</text>
 		</textBlock>
 	</container>
@@ -184,21 +197,22 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Flip chart or white board">
+			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways"
+			text="Key Takeaways on Strategizing Actions"
 			linkType="internal"
 			link="136">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
+			</listBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">

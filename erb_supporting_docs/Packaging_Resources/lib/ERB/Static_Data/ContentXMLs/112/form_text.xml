@@ -120,7 +120,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Take time to think about what you accomplished, challenges that arose, and new solutions you developed. Reflect upon and discuss the questions offered in the your Reflection Diary, either individually or with your core team, and take some notes.">
+			text="Take time to think about what you accomplished, challenges that arose, and new solutions you developed. Reflect upon and discuss the questions offered in the Reflection Diary, either individually or with your core team, and take some notes.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -154,7 +154,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Head on to the final part of ERB where you’ll begin to Design Actions">
+			text="Head on to the final part of ERB where you’ll begin to Strategize Actions to build resilience">
 			</text>
 		</textBlock>
 	</container>
@@ -204,7 +204,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Reflection diary"
+			text="Reflection Diary"
 			linkType="externalDOC"
 			link="Reflection_Diary.docx">
 			</text>
@@ -212,18 +212,11 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Key Takeaways"
+			text="Key Takeaways on Assessment"
 			linkType="internal"
 			link="144">
 			</text>
 			</listBlock>
-			<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
-		</textBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">

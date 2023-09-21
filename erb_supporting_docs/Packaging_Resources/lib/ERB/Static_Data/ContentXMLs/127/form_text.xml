@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Generate statements that define the resilience problems that the Results to Action workshop will tackle">
+			text="Generate statements that define the resilience problems that the Results to Action workshop will tackle.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A number of issues likely came up in your assessment of hazards, equity, and resilient systems. This lets you focus the next workshop on a manageable set of issues that reflect local priorities and build on what you've learned so far.">
+			text="Several issues likely came up in your assessment of hazards, equity, and resilient systems. This lets you focus the next workshop on a manageable set of issues that reflect local priorities and build on what you've learned so far.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Look through the Key Takeaways on Assessment, the Storytelling Word Cloud, and goals from your Project Plan">
+			text="Review the Key Takeaways on Assessment and goals from your Project Plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the Identify Action Areas document to generate statements about resilience problems">
+			text="Use the Identify Action Areas to generate statements about resilience problems">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Record the Action Areas in the Key Takeaways Form on Strategizing Actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -97,7 +110,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Problem statements recorded in the Identify Action Areas document to use in the Results to Action workshop">
+			text="Action Areas to use in the Results to Action workshop">
 			</text>
 		</textBlock>
 	</container>
@@ -120,7 +133,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core Team">
+			text="Core team">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -155,34 +168,27 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Key Takeaways"
+				text="Key Takeaways on Assessment"
+				linkType="internal"
+				link="144">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Project Plan Template"
+				linkType="externalDOC"
+				link="Project_Plan_Template.docx">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Key Takeaways on Strategizing Actions"
 				linkType="internal"
 				link="136">
 				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Storytelling Word Cloud"
-				linkType="internal"
-				link="84">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Indicator Center"
-				linkType="internal"
-				link="85">
-				</text>
 			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -204,7 +210,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Invite local partners to generate problem statements with the core team. This will strengthen the representation of perspectives in the project.">
+			text="Invite local partners to generate Action Area statements with the core team. This will strengthen the representation of perspectives in the project. Keep some notes about how you selected the Action Areas so you can explain transparently during the workshops.">
 			</text>
 		</textBlock>
 	</container>

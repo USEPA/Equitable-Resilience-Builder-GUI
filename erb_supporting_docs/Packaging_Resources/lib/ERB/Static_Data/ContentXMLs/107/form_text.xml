@@ -45,7 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Prepare the following:">
+			text="Prepare the following">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -58,13 +58,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Community Hazards and Equity Base Layer Maps: ">
+			text="Community Hazard and Equity Base Layer Maps: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Refer to Mapping Activity Preparation Guide, Collect Hazards Data document, and Collect Equity Data document. Use available mapping tools to generate community maps with relevant hazards and assets, or print out blank community maps if you haven’t collected any data.">
+			text="Refer to Collect Hazards Data, Collect Equity Data, and Mapping Activity Preparation Guide. Use available mapping tools to generate community maps with relevant hazards and assets, or print out blank community maps if you haven’t collected any data.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -83,7 +83,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Prepare indicator cards for the upcoming workshop based on the instructions and template in the Indicator Card Template (if printing cards and doing activity in-person), or by populating them by filling out the Indicator Board (if doing activity online).">
+			text="Prepare indicator cards for the upcoming workshop based on the instructions and template in the Indicator Card Template (if printing cards and doing activity in-person), or by populating them by filling out the Indicator List in the Indicator Center (if doing activity online).">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -194,18 +194,27 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
+			text="Indicators List"
+			linkType="externalDOC"
+			link="Indicators_List.xlsx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
 			text="Indicator Center"
 			linkType="internal"
 			link="85">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Key Takeaways on Assessment"
+			linkType="internal"
+			link="144">
+			</text>
 			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -227,7 +236,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Make any information you gather available and accessible to all members of the community.">
+			text="Data that will ultimately be publicly released should be &quot;ground truthed&quot; or reviewed with community members to ensure it accurately represents the community and includes additional context needed for interpretation. Gathering this kind of feedback can be part of the workshops by asking participants if maps, indicators, etc. accurately reflect their experiences.  ">
 			</text>
 		</textBlock>	
 	</container>

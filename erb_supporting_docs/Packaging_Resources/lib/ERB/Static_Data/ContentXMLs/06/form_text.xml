@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Community resilience to extreme events, natural or human-caused hazards, or changes in environmental conditions because of climate change can be improved with increased awareness of potential risks. Resilience indicators identify sources of potential vulnerability so that further assessment and targeted adaptation strategies can be taken.">
+			text="Community resilience to extreme events, hazards, or changes in environmental conditions because of climate change can be improved with increased awareness of potential risks. Resilience indicators identify sources of potential vulnerability so that further assessment and targeted adaptation strategies can be taken.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,7 +45,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Using the Equitable Resilience Builder (ERB) to identify indicators for hazards, equity, and resilience">
+			text="Using the Equitable Resilience Builder (ERB) to assess hazards, equity, and resilience">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -97,7 +97,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Commonly Used Indicators from Peer-Reviewed Research. FEMA, 2022. ">
+			text="FEMA. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Commonly Used Indicators from Peer-Reviewed Research. ">
 			</text>
 			<text
 			size="16.0"
@@ -118,7 +124,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Resilience Analysis and Planning Tool. FEMA, ">
+			text="FEMA. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Resilience Analysis and Planning Tool">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, D.C., Federal Emergency Management Agency. ">
 			</text>
 			<text
 			size="16.0"
@@ -139,7 +157,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="U.S. EPA. Evaluating Urban Resilience to Climate Change: A Multi-Sector Approach (Final Report). U.S. Environmental Protection Agency, Washington, D.C., EPA/600/R-16/365F, 2017.">
+			text="U.S. EPA. 2017. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Evaluating Urban Resilience to Climate Change: A Multi-Sector Approach (Final Report)">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". U.S. Environmental Protection Agency, Washington, D.C., EPA/600/R-16/365F.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -147,7 +177,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="References:">
+			text="References">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -155,7 +185,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[1] Cutter, S.L. The landscape of disaster resilience indicators in the USA. Nat Hazards 80, 741–758 (2016). ">
+			text="[1] Cutter. 2016. The landscape of disaster resilience indicators in the USA. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Natural Hazards">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 80, 741–758. ">
 			</text>
 			<text
 			size="16.0"
@@ -171,7 +213,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[2] Sinha, P., Julius, S., Fry, M., Truesdale, R., Cajka, J., Eddy, M., Doraiswamy, P., and D. Womack. (In Review). Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach. ">
+			text="[2] Sinha, et al. 2022. Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach. ">
 			</text>
 			<text
 			size="16.0"

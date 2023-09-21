@@ -13,7 +13,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="The suggested indicators cover a broad range of built, natural, and social environment resilience">
+			text="Resilience indicators can help practitioners and policy makers understand costs and benefits of enhancing resilience at different scales. For more information, check out the ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Resilience Indicators Background"
+			linkType="internal"
+			link="06">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" Resource.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +43,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Reviewing the indicators for relevance and deciding on what data to use, local or online, will help you collect the information most effectively.">
+			text="Reviewing the indicators for relevance and deciding on what data to use will help you collect the information most effectively.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,7 +64,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="With the core team, review the indicators in Indicators List and select the ones you want to include in the Indicator Activity. Select the indicators that are most relevant to your resilience goals in the Project Plan">
+			text="Review the built, natural, and social environment indicators on the Indicators List and select which ones to collect data on">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +77,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Also look at possible data sources in the list for qualitative and quantitative data to use">
+			text="Look at suggested qualitative and quantitative data sources on the list">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -82,7 +96,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" If there’s anything you want to know that is not covered, feel free to add your own indicators to the list">
+			text=" If there’s anything you want to know that is not covered, feel free to add your own indicators to the spreadsheet">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -110,7 +124,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="List of selected indicators you'll use">
+			text="You’ll know what resilient systems data you want to collect and how">
 			</text>
 		</textBlock>
 	</container>
@@ -164,30 +178,7 @@
 			linkType="externalDOC"
 			link="Indicators_List.xlsx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Indicator Activity Instructions"
-			linkType="externalDOC"
-			link="Indicator_Activity_Instructions.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Indicator Center"
-			linkType="internal"
-			link="85">
-			</text>
 			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>	
 	</container>
 	<container id="bottomPanelVBox">

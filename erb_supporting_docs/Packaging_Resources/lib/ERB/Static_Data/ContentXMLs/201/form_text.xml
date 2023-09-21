@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="With your core team, review the Funding and Finance Tactics guide and identify strategies you can pursue to identify funding resources. ">
+			text="With your core team, review the Funding and Finance Guide and identify strategies you can pursue to identify funding resources. ">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -97,7 +97,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A set of tactics to pursue to identify funding and finance sources for implementing actions.">
+			text="A set of tactics to pursue to identify funding and finance sources for implementing actions">
 			</text>
 		</textBlock>
 	</container>
@@ -146,22 +146,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Funding and Finance guide"
+			text="Funding and Finance Guide"
 			linkType="externalDOC"
 			link="Funding_and_Financing_Guide.docx">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="">
 			</text>
 		</textBlock>
 	</container>

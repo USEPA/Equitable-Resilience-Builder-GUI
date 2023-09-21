@@ -80,7 +80,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="o Emergency preparedness role playing (30 minutes)">
 			</text>
 		</textBlock>
@@ -94,7 +94,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="o Storytelling equity implementation (30 minutes)">
 			</text>
 		</textBlock>
@@ -121,7 +121,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="o Action Area Vision Statements (30 minutes)">
 			</text>
 		</textBlock>
@@ -135,7 +135,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="o Actions Brainstorming (45 minutes)">
 			</text>
 		</textBlock>
@@ -149,7 +149,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="o Action Evaluation">
 			</text>
 		</textBlock>
@@ -186,7 +186,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="Part 1 (20 minutes)">
 			</text>
 		</textBlock>
@@ -199,7 +199,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="Part 2 Option A (30-45 minutes)">
 			</text>
 		</textBlock>
@@ -212,7 +212,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="Part 2 Option B (90 minutes)">
 			</text>
 		</textBlock>
@@ -225,7 +225,7 @@
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="Part 3 (40 minutes)">
 			</text>
 		</textBlock>

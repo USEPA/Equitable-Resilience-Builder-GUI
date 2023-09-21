@@ -45,7 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Meet with the core team to review the priority actions and next steps identified in the ‘Results to Action’ Workshop using the documents in My Portfolio. Create action teams or workgroups that can begin implementation. You may use the Implementation Worksheet as a guide through this process.">
+			text="Meet with the core team to review the priority actions and next steps identified in the ‘Results to Action’ Workshop using the documents in My Portfolio. Create action teams or workgroups that can begin implementation. You may use the Implementation Worksheet as a guide through this process. You may also want to look for examples of how actions have been implemented in other places by searching resources like the Adaptation Clearinghouse (link at right).">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -149,6 +149,14 @@
 			height="40.0"
 			id="70">
 			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Adaptation Clearinghouse"
+			linkType="URL"
+			link="https://www.adaptationclearinghouse.org/">
+			</text>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -177,7 +185,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="As you prioritize implementation next steps, think about the experiences, values, and ideas you heard about during your engagement and storytelling so far. Begin implementation by reaching back to your established networks.">
+			text="As you prioritize implementation next steps, think about the experiences, values, and ideas you heard about during your engagement and storytelling so far, especially from the most marginalized participants. Begin implementation by reaching back to your established networks.">
 			</text> 
 		</textBlock>
 	</container>

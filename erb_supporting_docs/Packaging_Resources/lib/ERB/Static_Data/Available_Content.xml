@@ -9,17 +9,17 @@
 	<content id="08" guid="" type="mainForm" status="ready" shortName="What makes ERB different?" longName="What makes ERB different?" />
 	<content id="09" guid="" type="mainForm" status="ready" shortName="About ERB" longName="About ERB" />
 	<content id="10" guid="" type="mainForm" status="ready" shortName="Youth Engagement Guide" longName="Youth Engagement Guide" />
-	<content id="11" guid="" type="mainForm" status="ready" shortName="Supporting materials" longName="Supporting materials" />
-	<content id="12" guid="" type="mainForm" status="ready" shortName="Word cloud" longName="Word cloud" />
-	<content id="13" guid="" type="mainForm" status="ready" shortName="Indicator card sorting" longName="Indicator card sorting" />
+	<content id="11" guid="" type="mainForm" status="ready" shortName="Supporting materials" longName="Supporting Materials" />
+	<content id="12" guid="" type="mainForm" status="ready" shortName="Word Cloud" longName="Word Cloud" />
+	<content id="13" guid="" type="mainForm" status="ready" shortName="Indicator Card Sorting" longName="Indicator Card Sorting" />
 	<content id="15" guid="" type="mainForm" status="ready" shortName="Plan" longName="Plan Your Project" />
 	<content id="16" guid="" type="mainForm" status="ready" shortName="Engage" longName="Engage Your Community" />
 	<content id="17" guid="" type="mainForm" status="ready" shortName="Assess" longName="Assess Hazards, Equity, and Resilience" />
 	<content id="18" guid="" type="mainForm" status="ready" shortName="Strategize" longName="Strategize Actions" />
-	<content id="19" guid="" type="mainForm" status="ready" shortName="Wrap up/Move Forward" longName="Wrap Up and Move Forward" />
+	<content id="19" guid="" type="mainForm" status="ready" shortName="Move Forward" longName="Move Forward" />
 	<content id="20" guid="" type="mainForm" status="ready" shortName="Team Storytelling" longName="Team Storytelling Exercise" />
-	<content id="21" guid="" type="mainForm" status="ready" shortName="Reflection diary" longName="Reflection diary" />
-	<content id="22" guid="" type="mainForm" status="ready" shortName="Key takeaways" longName="Key takeaways" />
+	<content id="21" guid="" type="mainForm" status="ready" shortName="Reflection Diary" longName="Reflection Diary" />
+	<content id="22" guid="" type="mainForm" status="ready" shortName="Key Takeaways" longName="Key Takeaways" />
 	<content id="23" guid="" type="mainForm" status="ready" shortName="MyPortfolio" longName="MyPortfolio" />
 	<content id="25" guid="" type="mainForm" status="ready" shortName="Plan Workshop 3" longName="Plan Workshop 3" />
 	<content id="26" guid="" type="mainForm" status="ready" shortName="FAQ" longName="FAQ" />
@@ -58,8 +58,8 @@
 	<content id="111" guid="" type="mainForm" status="ready" shortName="Discuss Equity" longName="Discuss Equity" />
 	<content id="112" guid="" type="mainForm" status="ready" shortName="Reflection/Next Steps" longName="Reflection and Next Steps" />
 	<content id="114" guid="" type="mainForm" status="ready" shortName="Data Scoping Example" longName="Data Scoping Example" />
-	<content id="116" guid="" type="alternativeForm" status="ready" shortName="Hazards Data Example" longName="Hazards Data Example" />
-	<content id="118" guid="" type="alternativeForm" status="ready" shortName="Equity Data Example" longName="Equity Data Example" />
+	<content id="116" guid="" type="alternativeForm" status="ready" shortName="Hazards Data Sources" longName="Hazards Data Sources" />
+	<content id="118" guid="" type="alternativeForm" status="ready" shortName="Equity Data Sources" longName="Equity Data Sources" />
 	<content id="121" guid="" type="mainForm" status="ready" shortName="Map w/Stickies" longName="Map w/Stickies" />
 	<content id="123" guid="" type="mainForm" status="ready" shortName="Sorted Cards Example" longName="Sorted Cards Example" />
 	<content id="125" guid="" type="mainForm" status="ready" shortName="Put Results into Action" longName="Put Results into Action" />

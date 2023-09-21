@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Save project materials to use in the future and serve as documentation to support your findings.">
+			text="Save project materials to use in the future and serve as documentation to support your findings. You may want to compile your assessment results and key takeaways to share your progress publicly.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A new team can come back in a year, or five years, and use ERB to re-assess how your community is doing.">
+			text="Sharing your results publicly can help garner more support for your efforts and increase transparency and accountability. Documenting your project allows a new team to come back in a year, or five years, and use ERB to re-assess how your community is doing.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,7 +50,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Follow instructions in the User Guide to save materials in My Portfolio">
+			text="If needed, review the resource on how to use My Portfolio from the Instructions drop-down">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -64,6 +64,19 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Download selected materials from My Portfolio to a file location of your choosing">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Use the Final Report Template to compile results into a single document that you can edit and share">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -98,6 +111,19 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Materials downloaded from ERB">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A final report of results">
 			</text>
 		</textBlock>
 	</container>
@@ -147,26 +173,19 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="My Portfolio"
-				linkType="internal"
-				link="MyPortfolio">
+				text="Final Report Template"
+				linkType="externalDOC"
+				link="Final_Report_Template.docx">
 				</text>
 				<text
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="User Guide"
-				linkType=""
-				link="">
+				text="My Portfolio"
+				linkType="internal"
+				link="MyPortfolio">
 				</text>
 			</listBlock>
-		</textBlock>
-		<textBlock>
-		<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-		</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -188,7 +207,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="You can import and save images of all materials generated at the workshops to make sure participants' input is included in final documentation.">
+			text="You can import and save images of whiteboards and other materials generated at the workshops to make sure participants' input is included.">
 			</text>
 		</textBlock>
 	</container>

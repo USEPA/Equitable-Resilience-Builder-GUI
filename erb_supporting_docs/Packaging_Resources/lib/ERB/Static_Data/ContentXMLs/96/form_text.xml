@@ -45,7 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Check out ideas in Options for Connecting People in Workshops">
+			text="Check out ideas in the Options for Connecting People section of the Facilitator’s Guide for Workshops">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -196,7 +196,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1/2 - 1 hour">
+			text="30 minutes-1 hour">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -209,17 +209,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Options for Connecting People in Workshops"
+			text="Facilitator's Guide for Workshops"
 			linkType="externalDOC"
-			link="Options_for_Connecting_People_in_Workshops.docx">
+			link="Facilitators_Guide_for_Workshops.docx">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -241,7 +234,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="While you build relationships, think about activities that support sharing of diverse perspectives and two-way engagement.">
+			text="Creating opportunities to connect takes time, but can be the most valuable part of a workshop. When people from different backgrounds get to know each other it paves the way for resolving differences. While you build relationships, think about activities that support sharing of diverse perspectives and two-way engagement.">
 			</text>
 		</textBlock>
 	</container>

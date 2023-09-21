@@ -5,15 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="How have other communities used the ERB tool?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Activity selection examples">
+			text="Activity Selection Examples">
 			</text>
 		</textBlock>
 	</container>
@@ -22,7 +14,7 @@
 	<container id="centerVBox">
 	<textBlock>
 			<icon width="800.0"
-			height="400.0" id="83"> </icon>
+			height="345.0" id="83"> </icon>
 		</textBlock>
 	</container>
 	<container id="rightVBox">

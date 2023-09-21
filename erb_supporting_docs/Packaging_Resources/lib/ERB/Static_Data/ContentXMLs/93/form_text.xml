@@ -29,7 +29,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Engaging people from all parts of your community is a must-have for success. Workshops are a good way of bringing people from different parts of the community together, but can also be difficult for people to attend. People need to feel included and comfortable in order to participate fully. Removing barriers and being intentional about inclusion will go a long way towards productive workshops and building relationships.">
+			text="Engaging people from all parts of your community is a ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="must-have">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" for success. Workshops are a good way of bringing people from different parts of the community together but can also be difficult for people to attend. People need to feel included and comfortable in order to participate fully. Removing barriers and being intentional about inclusion will go a long way towards productive workshops and building relationships.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +75,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Take steps to recruit a diverse group of attendees and offer a welcoming environment">
+			text="Refer to your Community Engagement Plan to guide recruitment of a diverse group of attendees and offer a welcoming environment">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,7 +88,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the Facilitators Guide to prepare activities">
+			text="Use the Facilitators Guide to prepare activities and tailor them for your community">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -89,7 +101,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Revisit the goals in your Project Plan and discuss what information and activities you might need to meet these goals">
+			text="Review your goals from your project plan and define objectives for the workshop to meet your goals">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -194,14 +206,24 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 				<text
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Facilitators Guide for Workshops"
+				text="Community Engagement Plan"
+				linkType="externalDOC"
+				link="Community_Engagement_Plan.docx">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Facilitator's Guide for Workshops"
 				linkType="externalDOC"
 				link="Facilitators_Guide_for_Workshops.docx">
 				</text>
+			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -215,7 +237,7 @@
 			fontStyle="Hyperlink"
 			text="Urban Waters Story Map"
 			linkType="URL"
-			link="https://storymaps.arcgis.com/stories/c1a5ae06b5964f078ada4a3c5e8b99a7">
+			link="https://storymaps.arcgis.com/stories/0f304067072d40a6a9d21f398902e990">
 			</text>
 		</textBlock>
 	</container>
@@ -245,7 +267,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In addition to workshops, or if workshops are not feasible, reach out to community groups for one-on-one conversations. Another idea is to attend local meetings and activities. These actions are another way to incorporate local voices and expand representation.">
+			text="In addition to workshops, or if workshops are not feasible, reach out to community groups for one-on-one conversations. You can also attend meetings and activities organized by local groups to learn about their concerns and start to build relationships. These actions are another way to incorporate community voices and expand representation.">
 			</text>
 		</textBlock>
 	</container>

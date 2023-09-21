@@ -52,7 +52,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Reviewed activity options in the ERB toolkit">
+			text="Reviewed and selected activity options">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -73,7 +73,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Reflect">
+			text="Reflection">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -81,7 +81,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="At the end of each section, we encourage teams to meet to reflect on what they've achieved so far.">
+			text="At the end of each ERB section, we encourage teams to ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="reflect"
+			linkType="externalDOC"
+			link="Reflection_Diary.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" on what they've achieved so far and what they might want to do differently moving forward.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -89,7 +103,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="As a team, discuss one or more questions in the Reflection Diary.">
+			text="As a team, discuss one or more questions in the Reflection Diary. Questions include:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -128,20 +142,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Do we want to modify any of our goals, or add new ones?">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Are there key expertise gaps to fill on the team to meet our goals?">
+			text="Do we want to modify our initial goals, or add new ones?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -162,7 +163,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Record notes in the Diary and save in ERB or a file location of your choosing.">
+			text="Record notes in the Reflection Diary and save in ERB or a file location of your choosing.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -170,7 +171,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Take any actions needed to adjust your approach based on reflections.">
+			text="Take any actions needed to adjust your approach.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -204,7 +205,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Go to the next section in the toolkit: Engage Your Community">
+			text="Go to the next section in the tool: Engage Your Community">
 			</text>
 		</textBlock>
 	</container>
@@ -253,17 +254,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Reflection diary"
+			text="Reflection Diary"
 			linkType="externalDOC"
 			link="Reflection_Diary.docx">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
@@ -292,7 +286,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Consider if you need to add any other members to the core team to improve representation. Think about how you can enable all team members to participate">
+			text="Consider if you need to add any other members to the core team to improve representation. Think about how you can enable all team members to participate and foster inclusive team dynamics.">
 			</text>
 		</textBlock>
 	</container>

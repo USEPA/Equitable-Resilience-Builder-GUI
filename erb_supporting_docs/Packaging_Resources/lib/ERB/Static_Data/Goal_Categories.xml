@@ -5,9 +5,7 @@
 				<content id="30"/>
 				<content id="199"/>
 				<content id="200"/>
-				<content id="20">		
-					<content id="84"/>
-				</content>
+				<content id="20"/>
 				<content id="59">
 					<content id="28"/>
 				</content>
@@ -28,9 +26,7 @@
 			<content id="17">
 				<content id="92">
 					<content id="93"/>
-					<content id="94">
-						<content id="84"/>
-					</content>
+					<content id="94"/>
 					<content id="95"/>
 					<content id="96"/>
 				</content>
@@ -60,14 +56,11 @@
 			</content>
 			<content id="18">
 				<content id="125">
-					<content id="126">
-						<content id="84"/>
-					</content>
+					<content id="126"/>
 					<content id="127"/>
 				</content>
 				<content id="128">
 					<content id="151"/>
-					<content id="25"/>
 					<content id="129"/>
 					<content id="130"/>
 					<content id="131">

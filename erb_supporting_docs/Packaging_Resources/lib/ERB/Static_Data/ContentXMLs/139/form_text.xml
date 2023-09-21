@@ -45,7 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Complete the last section of the Community Engagement Plan:">
+			text="Complete &quot;Activity 3: Assess and Maintain Progress&quot; in the Community Engagement Plan:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -58,7 +58,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Assess your progress - Review what you’ve done so far and identify areas for further action">
+			text="Assess your progress - Review the Key Takeaways from Strategizing Action and the Implementation Plan in My Portfolio">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -71,7 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Sustain relationships built - Continue to nurture trust and connections with community members">
+			text="Sustain relationships built - Continue to nurture trust and connections with community members (examples: reoccurring meetings, sharing progress at community events)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -84,7 +84,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share outputs - Make data and information available and accessible to the community and decision-makers">
+			text="Share outputs - Make data and information available and accessible to the community and decision-makers (examples: website, factsheet, newsletter, social media page)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -141,7 +141,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core team">
+			text="Core team, community organizations">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -178,16 +178,9 @@
 			fontStyle="Hyperlink"
 			text="Community Engagement Plan"
 			linkType="externalDOC"
-			link="Community_Engagement_Plan_Template.docx">
+			link="Community_Engagement_Plan.docx">
 			</text>
 			</listBlock>
-		</textBlock>
-			<textBlock>
-		<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-		</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">

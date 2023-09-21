@@ -37,7 +37,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Data ethics are principles and practices to generate, collect, administer, store, share, and use information or data [1, 2, 3]. This concept stems from the scientific world and is codified in Belmont Forum principles and federal rules for human subjects research. In ERB, the term is used in a broader sense of how the core team and its partners can carry out data actions in ways that:">
+			text="Data ethics are principles and practices to generate, collect, administer, store, share, and use information or data [1, 2, 3]. In western science, this concept is codified in Belmont Forum principles and federal rules for human subjects research. In ERB, the term is used in a broader sense of how the core team and its partners can carry out data actions in ways that:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -259,7 +259,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core team members may need to follow specific legal or institutional requirements regarding data. The information gathered as part of the ERB process is geared to supporting decision-making, not scientific research per se. It does not entail gathering data about people to produce generalizable knowledge. Rules for human subjects research may not be applicable. Nevertheless, depending on their institution’s policies, university scientists on the core team might still have to coordinate with their Institutional Review Board. Federal or state government employees might be bound by other data protocol.">
+			text="Core team members may need to follow specific legal or institutional requirements regarding data, including local knowledge. The information gathered as part of the ERB process is geared to supporting decision-making, not scientific research per se. It does not entail gathering data about people to produce generalizable knowledge. Rules for human subjects research may not be applicable. Nevertheless, depending on their institution’s policies, university scientists on the core team might still have to coordinate with their Institutional Review Board. Federal, Tribal, and state government employees might be bound by other data protocol.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -371,7 +371,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" address concerns related to the people and purpose of collective benefit, authority to control, responsibility, and ethics [4].">
+			text=" address Collective benefit, Authority to control, Responsibility, and Ethics [4].">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -379,7 +379,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Federal guidance on Indigenous Knowledge recognizes its value and offers guidelines on how to ethically and respectfully work with Indigenous people and Tribal Nations to include Indigenous Knowledge in decision-making [5]. State, county, and municipal governments may have their own guidance and policies for working with sovereign Tribal nations and Indigenous Peoples.">
+			text="Federal guidance on Indigenous Knowledges recognizes its value and offers guidelines on how to ethically and respectfully work with Indigenous people and Tribal and Indian Nations to include Indigenous Knowledges in decision-making [5]. State, county, and municipal governments may have their own guidance and policies for working with sovereign Tribal nations and Indigenous Peoples.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -433,7 +433,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="to engage respectfully with indigenous communities to ensure the use of Indigenous data supports capacity development, increasing community data capabilities, and the strengthening of Indigenous languages and cultures.">
+			text="to engage respectfully with indigenous communities to ensure the use of Indigenous Knowledges supports capacity development, increasing community data capabilities, and the strengthening of Indigenous languages and cultures.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -458,6 +458,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="When working with sovereign Tribal nations and Indigenous communities, it is vital to discuss and agree on how ethical data principles will be implemented and to check-in regularly.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
@@ -477,7 +485,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[1] Kang and Hwang. 2021. Ethical conducts in qualitative research methodology: Participant observation and interview process. Journal of Research and Publication Ethics 2(2): 5-10. PMID: 25512833; PMCID: PMC4263394.">
+			text="[1] Kang and Hwang. 2021. Ethical conducts in qualitative research methodology: Participant observation and interview process. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Journal of Research and Publication Ethics">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 2(2): 5-10. PMID: 25512833; PMCID: PMC4263394.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -485,7 +505,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[2] Keenan &amp; Maxwell. 2022. Rethinking the design of resilience and adaptation indicators supporting coastal communities. Journal of Environmental Planning and Management 65(12): 2297-2317. ">
+			text="[2] Keenan &#38; Maxwell. 2022. Rethinking the design of resilience and adaptation indicators supporting coastal communities. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Journal of Environmental Planning and Management">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 65(12): 2297-2317. ">
 			</text>
 			<text
 			size="16.0"
@@ -501,7 +533,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[3] Cooper, Rasmussen, and Johns. 2022. A Toolkit for Data Ethics in the Participatory Sciences. Citizen Science Association. ">
+			text="[3] Cooper, Rasmussen, and Johns. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="A Toolkit for Data Ethics in the Participatory Sciences">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Citizen Science Association. ">
 			</text>
 			<text
 			size="16.0"
@@ -517,7 +561,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[4] Carroll, et al. 2021. Operationalizing the CARE and FAIR Principles for Indigenous data futures. Sci Data 8(108). ">
+			text="[4] Carroll, et al. 2021. Operationalizing the CARE and FAIR Principles for Indigenous data futures. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Data Science Journal">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 8(108). ">
 			</text>
 			<text
 			size="16.0"
@@ -533,7 +589,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[5] Council on Environmental Quality, Office of Science and Technology Policy. 2022. Memorandum, Guidance for Federal Departments and Agencies on Indigenous Knowledge. Washington, D.C.: Executive Office of the President. ">
+			text="[5] Council on Environmental Quality, Office of Science and Technology Policy. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Memorandum, Guidance for Federal Departments and Agencies on Indigenous Knowledge">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, D.C.: Executive Office of the President. ">
 			</text>
 			<text
 			size="16.0"

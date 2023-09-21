@@ -21,7 +21,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Transition to the next phase of implementation by reflecting on your goals and most needed actions for consideration to meet those goals">
+			text="Get started with putting results into action by learning from previous experiences with implementing projects and deciding on which action areas to focus on in Workshop 3.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -42,7 +42,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share stories about implementation successes and pitfalls to shape the next phase of resilience work in your community">
+			text="Share stories about successes and pitfalls from implementation of previous projects in your community">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -55,7 +55,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use findings from the previous section to figure out the specific problems you will tackle in the workshop">
+			text="Use assessment findings to figure out the specific problems you will tackle in your next workshop">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,7 +76,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Word cloud on implementation successes and pitfalls">
+			text="Key Takeaways on implementation successes and pitfalls">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -89,7 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Problem statements for use in the action workshop">
+			text="Action Areas for use in the action workshop">
 			</text>
 		</textBlock>
 	</container>
@@ -112,7 +112,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core Team">
+			text="Core team">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -128,90 +128,8 @@
 			text="2 hours">
 			</text>
 		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="63">
-			</icon>
-			<listBlock>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Implementation Storytelling Exercise"
-				linkType="externalDOC"
-				link="Implementation_Storytelling_Exercise.docx">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Key Takeaways"
-				linkType="internal"
-				link="136">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Storytelling Word Cloud"
-				linkType="internal"
-				link="84">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Project Plan"
-				linkType="externalDOC"
-				link="Project_Plan_Template.docx">
-				</text>
-			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
-		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
-		<textBlock>
-			<text
-			size="18.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Centering equity">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="66">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Through storytelling, give everyone a voice to share successes and pitfalls.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="68">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Actively listen during storytelling to learn from everyone’s experiences.">
-			</text>
-		</textBlock>
 		<textBlock>
 			<icon
 			width="40.0"
@@ -222,7 +140,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Collaborate to develop problem statements you will use in the results to action workshop.">
+			text="Consider ways that resilience actions can start to correct past injustices and strengthen capacity by building off of existing community assets. ">
 			</text>
 		</textBlock>
 	</container>

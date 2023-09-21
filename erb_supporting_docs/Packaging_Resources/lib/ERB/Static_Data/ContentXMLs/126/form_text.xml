@@ -89,7 +89,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Compile principles and lessons learned from the breakout groups and record them in the Key Takeaways Form on Strategizing">
+			text="Compile principles and lessons learned from the breakout groups and record them in the Key Takeaways on Strategizing Actions">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -110,7 +110,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Storytelling word cloud">
+			text="Storytelling summaries">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -123,7 +123,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Key Takeaways Form on Strategizing">
+			text="Key Takeaways Form on Strategizing Actions">
 			</text>
 		</textBlock>
 	</container>
@@ -146,7 +146,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core Team">
+			text="Core team, activity lead, invited participants">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -159,7 +159,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1 Hour">
+			text="1-1.5 hours">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -181,26 +181,19 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Word Cloud"
-				linkType="internal"
-				link="84">
+				text="How to Use Storytelling"
+				linkType="externalDOC"
+				link="How_to_Use_Storytelling.docx">
 				</text>
 				<text
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Key Takeaways"
+				text="Key Takeaways on Strategizing Actions"
 				linkType="internal"
 				link="136">
 				</text>
 			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -222,7 +215,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Think about how past implementation of local projects and programs may provide lessons learned for this project. Gathering these lessons from community members can be informative.">
+			text="Think about how past implementation of local projects and programs did or did not improve equity may provide lessons learned for this project. Gathering these lessons from community members can be informative.">
 			</text>
 		</textBlock>
 	</container>

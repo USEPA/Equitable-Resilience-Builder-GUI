@@ -71,7 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="It takes time to build relationships and trust-- the earlier you start, the better!">
+			text="It takes time to build relationships and trust -- the earlier you start, the better!">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -154,17 +154,10 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Community Engagement Plan Template"
+			text="Community Engagement Plan"
 			linkType="externalDOC"
-			link="Community_Engagement_Plan_Template.docx">
+			link="Community_Engagement_Plan.docx">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">
@@ -186,7 +179,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="In the early stages of your engagement, you may want to focus on building buy-in and trust with community members. You can build trust by being transparent about the resilience planning process and clarifying expectations">
+			text="In the early stages of your engagement, you may want to focus on building buy-in and trust with community members. You can build trust by being transparent about the resilience planning process and clarifying expectations.">
 			</text>
 		</textBlock>
 	</container>

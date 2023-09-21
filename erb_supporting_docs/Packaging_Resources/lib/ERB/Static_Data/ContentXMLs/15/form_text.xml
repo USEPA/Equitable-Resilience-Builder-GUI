@@ -13,7 +13,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Get started with your ERB project. This begins with putting together a core team for leading and organizing this effort. You'll see the key role that storytelling will play throughout ERB and use it to establish your goals for going through ERB. You'll review the menu of activities you can choose to do in the ERB toolkit. The project plan you'll create is flexible and you'll be able to revisit it throughout the process.">
+			text="Get started with your ERB project. This begins with putting together a core team for leading and organizing this effort. You'll see the key role that ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="storytelling"
+			link="02"
+			linkType="internal">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" will play throughout the ERB process and use it to establish initial goals. You'll review the menu of activities you can choose to do in the ERB tool. The project plan you'll create is flexible and you'll be able to revisit it throughout the process. The activities in this section are organized in a way that others have found useful but could be done in any order or skipping some entirely.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -47,7 +61,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Team storytelling exercise">
+			text="Core team kickoff">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Team storytelling">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -73,7 +100,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review ERB menu of activities">
+			text="Select ERB activities to do">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -86,7 +113,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Make a project plan">
+			text="Complete a project plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -133,7 +160,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Storytelling word cloud">
+			text="Team storytelling results">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -146,20 +173,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A list of goals">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="A project plan">
+			text="A project plan with a list of goals, selected activities, and team roles, rules, and responsibilities">
 			</text>
 		</textBlock>
 	</container>

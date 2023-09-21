@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Wrap Up and Move Forward">
+			text="Move Forward">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="It helps you make sure that future resilience work is grounded in the relationships you've built and what you've learned about hazards, equity, and resilient systems from going through ERB.">
+			text="This section will help you make sure that future resilience work is grounded in the relationships you've built and what you've learned about hazards, equity, and resilient systems from going through ERB.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Outreach and engagement">
+			text="Plan how to maintain outreach and engagement">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Explore options for funding and financing">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -123,7 +136,20 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A monitoring plan">
+			text="Next steps for outreach and engagement">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Tactics to pursue funding and financing">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -149,7 +175,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Next steps for outreach and engagement">
+			text="A monitoring plan">
 			</text>
 		</textBlock>
 	</container>

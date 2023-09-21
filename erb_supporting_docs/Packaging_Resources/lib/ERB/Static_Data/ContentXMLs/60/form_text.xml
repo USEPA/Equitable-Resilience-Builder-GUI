@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Work through several scenarios to  empathize with different types of people in your community and their potential barriers to public participation. Brainstorm solutions you can use in the ERB process.">
+			text="Work through several scenarios to empathize with different types of people in your community and their potential barriers to public participation. Brainstorm solutions that you can use in the ERB process.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -115,7 +115,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1hr">
+			text="1 hour">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -130,15 +130,8 @@
 			fontStyle="Hyperlink"
 			text="Equity and Engagement Exercise"
 			linkType="externalDOC"
-			link="Equity_in_Engagement_Exercise.docx">
+			link="Equity_and_Engagement_Exercise.docx">
 			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">

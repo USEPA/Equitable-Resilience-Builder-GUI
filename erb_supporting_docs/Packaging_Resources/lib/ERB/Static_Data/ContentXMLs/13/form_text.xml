@@ -13,7 +13,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="WHAT: Sort indicators cards based on a collective assessment of how resilient and how equitable they show the built, natural, and social environment systems of your community to be at this time. Cards are sorted into a quadrant diagram.">
+			text="WHAT: Sort indicators cards based on a collective assessment of how resilient and how equitable they show the built, natural, and social environment systems of your community to be at this time. Cards are sorted into a four-quadrant Indicator Diagram.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="HOW: The core team has already collected data to measure the indicator (if they decided to gather additional data) and has input this information into ERB. Sorting indicator cards is done in a workshop setting. It can be done in two ways, offline and within the ERB tool. Both ways sort the indicators into a quadrant diagram based on how resilient and how equitable participants think the indicators show your community to be. Currently, changes to the spreadsheet do not automatically result in changes to the indicator cards.">
+			text="HOW: The core team has already collected data to measure the indicator (if they decided to gather additional data) and has input this information into ERB. Sorting indicator cards is done in a workshop setting. It can be done in two ways, offline and within the ERB tool. Both ways sort the indicators into an Indicator Diagram based on how resilient and how equitable participants think the indicators show your community to be.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -37,15 +37,75 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="To sort cards offline, print out cards for the indicators you’ve chosen using the Indicator Card template. In the workshop, participants sort the indicators using a resilience axis and an equity axis to create the quadrant diagram. See details in the Workshop 2 Facilitators Guide and Indicator Activity Instructions in the Worksheet Index. After the workshop, you can take photos of quadrant diagram(s) and save them in ERB using Upload File.">
+			text="To sort cards offline, print out cards for the indicators you’ve chosen using the Indicator Card template. In the workshop, participants sort the indicators using a resilience axis and an equity axis to create the quadrant diagram. See details in the ">
 			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Workshop 2 Facilitators Guide">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" and ">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Indicator Activity Instructions">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" in the ">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Worksheet Index">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". After the workshop, you can take photos of the Indicator Diagram and save them in ERB using ">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Upload File">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=".">
+			</text>	
 		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="To sort cards within the ERB tool, use the Indicators Board page in the Assess section. Click on dropdown boxes to select the indicators you will use, then click Begin. On the next page, drag-and-drop indicator cards in the gray box, ordering them from least to most resilient. Click the Next button. On the next page, drag-and-drop each card into the grey boxes, ordering them from least to most equitable. This creates a quadrant visualization. Click the “Push to My Portfolio” button to save your final ranking. See the Indicator Activity Instructions for more details.">
+			text="To sort cards within the ERB tool, link to the Indicators Center in the Assess section. See the ">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Underlined"
+			text="Indicator Activity Instructions">
+			</text>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" for more details.">
 			</text>
 		</textBlock>
 	</container>

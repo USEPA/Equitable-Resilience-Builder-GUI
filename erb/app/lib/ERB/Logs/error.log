@@ -337,3 +337,10 @@
 | ERROR | 2023-09-15 14:03:53 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
 | ERROR | 2023-09-15 16:04:05 | XMLManager.java:456 | The entity "emsp" was referenced, but not declared.
 | ERROR | 2023-09-15 16:10:54 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
+| ERROR | 2023-09-15 16:34:21 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
+| ERROR | 2023-09-18 12:59:21 | XMLManager.java:794 | C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb\app\lib\ERB\Static_Data\Goal_Categories.xml either does not exist or cannot be read
+| ERROR | 2023-09-18 12:59:21 | App.java:141 | 
+/C:/Users/awilke06/Documents/Eclipse_Repos/MetroCERI/metroceri_erb/erb/app/build/resources/main/erb/ERBContainer.fxml
+
+| ERROR | 2023-09-18 12:59:21 | App.java:157 | Cannot show ERBContainer. erbContainerRoot is null.
+| ERROR | 2023-09-21 14:24:46 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)

@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Having an open conversation about inequities and hazards facing the community will help establish consensus between community members and the core team.">
+			text="Having an open conversation about inequities and hazards facing the community will help build common understanding and spur thinking for brainstorming actions in the next section">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -168,6 +168,7 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -176,14 +177,16 @@
 			linkType="externalDOC"
 			link="Equity_Discussion_Instructions.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Key Takeaways on Assessment"
+			linkType="internal"
+			link="144">
+			</text>
+			</listBlock>
 		</textBlock>	
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
-		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
 		<textBlock>
@@ -204,7 +207,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Actively encourage sharing from community members historically most impacted by hazards, and provide multiple ways they can do so.">
+			text="Actively encourage sharing from community members historically most impacted by hazards and provide multiple ways they can do so.">
 			</text>	
 		</textBlock>
 	</container>

@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identify and invite five to ten people to be on the ERB core team that will lead ERB activities and make decisions.">
+			text="Identify and invite five to ten people from local government agencies, business or non-profit organizations, and community constituencies to be on the ERB core team that will lead ERB activities and make decisions.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -71,7 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Send them an invitation email with the introduction to ERB">
+			text="Send them an invitation">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -236,9 +236,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Youth Engagement"
-			linkType="internal"
-			link="10">
+			text="Youth Engagement Guide"
+			linkType="externalDOC"
+			link="Youth_Engagement_Guide.docx">
 			</text>
 			</listBlock>
 		</textBlock>
@@ -275,7 +275,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="When selecting team members, consider age, race, ethnicity, religion, gender identity, LGBTQIA+, people with disabilities, local leaders, and intersectional identities.">
+			text="When selecting team members, be inclusive of diverse constituencies such as age, race, ethnicity, language, religion, gender identity, LGBTQIA+, people with disabilities, local leaders, and other ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="intersectional identities"
+			linkType=""
+			link="">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=".">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -288,7 +302,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Such collaborations can enhance the process and the products so that a variety of needs and perspectives are included.">
+			text="Make sure all team members are compensated fairly for their time.">
 			</text>
 		</textBlock>
 	</container>

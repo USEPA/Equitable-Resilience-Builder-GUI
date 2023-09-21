@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Gather information on hazards, equity, and resilience before you put it to use.">
+			text="Gather information on hazards, equity, and resilience before using it in Workshop 2.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -45,7 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Collect data for the following:">
+			text="Assign core team members to be the point person to collect data for the following:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -64,7 +64,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the Collect Hazards Data document to identify the top hazards your community faces now and in the future">
+			text="Use Collect Hazards Data to collect local and online data on hazards your community faces now and, in the future">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -83,7 +83,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the Collect Equity Data document to identify equity concerns that your community faces">
+			text="Use Collect Equity Data to collect local and online data on equity concerns that your community faces">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -102,7 +102,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Using the indicators selected from the previous section, delegate the gathering of indicator data to core team members and fill in the data gathered in the Indicators List spreadsheet">
+			text="Use the Indicators List to collect qualitative and quantitative data on the resilience of local systems">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -207,22 +207,7 @@
 			linkType="externalDOC"
 			link="Indicators_List.xlsx">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Indicator Center"
-			linkType="internal"
-			link="85">
-			</text>
 			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -244,7 +229,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the Key Takeaways from Workshop 1 to make sure you are gathering information to develop a deeper understanding of the issues. ">
+			text="If you cannot find data about an issue, consider a project to collect it by working with affected community groups and universities.">
 			</text>
 		</textBlock>	
 	</container>

@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="How and in what ways you will engage community members in the ERB process? Write a plan that aligns with the goals you've set, activities you're likely to do, and the capacity of the core team; the plan should target the inclusion of marginalized groups in your community.">
+			text="How and in what ways will you engage community members in the ERB process? Write a plan that aligns with the core team's capacity, your planned goals and activities, and that targets the inclusion of marginalized groups in your community.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -29,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Different types of engagement have different levels of involvement by community members. Expectations and goals for involvement might be different between groups. Engagement planning that is attentive to these issues is more successful.  ">
+			text="Different types of engagement have different levels of involvement by community members. Expectations and goals for involvement may be different between groups. Engagement planning that is attentive to these issues is more successful.  ">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,25 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Learn about what types of engagement are likely to work best for different groups in your community">
+			text="Identify:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;•	Appropriate levels of engagement for different groups in your community in various ERB activities
+">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;•	The core team's capacity for different levels of engagement  
+">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,20 +94,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Discuss the core team's capacity for different amounts and forms of engagement">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Write a plan using the Community Engagement Plan Template">
+			text="Write a plan using the Community Engagement Plan">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -155,20 +160,12 @@
 			height="40.0"
 			id="62">
 			</icon>
-			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="2 hour scoping session">
+			text="Several hours">
 			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="2-3 hour plan writing session">
-			</text>
-			</listBlock>
 		</textBlock>
 		<textBlock>
 			<icon
@@ -197,18 +194,11 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Community Engagement Plan Template"
+			text="Community Engagement Plan"
 			linkType="externalDOC"
-			link="Community_Engagement_Plan_Template.docx">
+			link="Community_Engagement_Plan.docx">
 			</text>
 			</listBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="40.0"
-			height="40.0"
-			id="70">
-			</icon>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">
@@ -230,7 +220,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Different groups of people might prefer different types of engagement. Your plan can specify how to communicate with them through preferred media in a culturally appropriate way.">
+			text="Different groups of people may prefer different types of engagement. Your plan can specify how to communicate with them through preferred media in a culturally appropriate way.">
 			</text>
 		</textBlock>
 	</container>

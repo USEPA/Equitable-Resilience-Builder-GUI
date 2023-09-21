@@ -45,15 +45,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Plan the 'Listen and Connect' workshop using the Facilitator's Guide">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Workshop Activity options:">
+			text="Plan the &quot;Listen and Connect&quot; workshop using the Facilitator's Guide for Workshops. Activity options are:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -101,19 +93,6 @@
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Outputs">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Word cloud">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -175,7 +154,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="2-5 hours">
+			text="2-5 hours for the workshop">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -197,15 +176,7 @@
 				size="16.0"
 				fontFamily="System"
 				fontStyle="Hyperlink"
-				text="Hazards Storytelling Exercise"
-				linkType="externalDOC"
-				link="Hazards_Storytelling_Exercise.docx">
-				</text>
-				<text
-				size="16.0"
-				fontFamily="System"
-				fontStyle="Hyperlink"
-				text="Key Takeaways"
+				text="Key Takeaways on Assessment"
 				linkType="internal"
 				link="144">
 				</text>
@@ -223,7 +194,7 @@
 			fontStyle="Hyperlink"
 			text="Urban Waters Story Map"
 			linkType="URL"
-			link="https://storymaps.arcgis.com/stories/c1a5ae06b5964f078ada4a3c5e8b99a7">
+			link="https://storymaps.arcgis.com/stories/0f304067072d40a6a9d21f398902e990">
 			</text>
 		</textBlock>
 	</container>
@@ -246,7 +217,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use community voices to consider the root causes of social, health, and economic inequities and how these inequities often overlap to create complicated and unique vulnerabilities to different hazards.">
+			text="Listening to community members' experiences and perspectives on social, health, and economic inequities is the first step to understanding the causes of vulnerability to hazards. Often these inequities overlap to create complicated and unique vulnerabilities to different hazards.">
 			</text>
 		</textBlock>
 	</container>

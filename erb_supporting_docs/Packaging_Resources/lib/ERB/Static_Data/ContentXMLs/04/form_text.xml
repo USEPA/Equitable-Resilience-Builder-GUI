@@ -13,7 +13,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="The capacity for communities to withstand, adapt, transform in the face of climate change and disasters in ways that are culturally appropriate, participatory, and responsive to social vulnerabilities to disasters and climate change, and to the potentially unequal benefits and burdens of adaptation and resilience interventions (Glossary) ">
+			text="The capacity for communities to withstand, adapt, transform in the face of climate change and disasters in ways that are culturally appropriate, participatory, and responsive to social vulnerabilities to disasters and climate change, and to the potentially unequal benefits and burdens of adaptation and resilience interventions">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" (Glossary) ">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -84,7 +90,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Resilience, hazard mitigation, and climate change adaptations run the risk of make social and environmental inequalities worse. This can occur if historically marginalized groups are not listened to in planning. It can also occur if resilience solutions do not specifically attempt to identify and rectify inequalities.">
+			text="Resilience, hazard mitigation, and climate change adaptations run the risk of making social and environmental inequalities worse. This can occur if historically marginalized groups are not listened to in planning. It can also occur if resilience solutions do not specifically attempt to identify and rectify inequalities.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -165,7 +171,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Facilitation guides for holding workshops in trauma-informed ways">
+			text="Facilitation guides for holding workshops">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -275,7 +281,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="FEMA. 2021. Building Alliances for Equitable Resilience: Advancing Equitable Resilience Through Partnerships and Diverse Perspectives. Washington, D.C.: Federal Emergency Management Agency and Resilient Nation Partnership. ">
+			text="FEMA. 2021. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Building Alliances for Equitable Resilience: Advancing Equitable Resilience Through Partnerships and Diverse Perspectives">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, D.C.: Federal Emergency Management Agency and Resilient Nation Partnership. ">
 			</text>
 			<text
 			size="16.0"
@@ -291,7 +309,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="ELTRR Interagency Work Group. 2022. Federal Plan for Equitable Long-Term Recovery and Resilience for Social, Behavioral, and Community Health. Washington, DC. ">
+			text="ELTRR Interagency Work Group. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Federal Plan for Equitable Long-Term Recovery and Resilience for Social, Behavioral, and Community Health">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, DC. ">
 			</text>
 			<text
 			size="16.0"
@@ -307,7 +337,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="EPA. 2023. Disaster-Resilient Design Concepts. Washington, D.C.: U.S. Environmental Protection Agency, Publication No. 230K22001. ">
+			text="EPA. 2023. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Disaster-Resilient Design Concepts">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, D.C.: U.S. Environmental Protection Agency, Publication No. 230K22001. ">
 			</text>
 			<text
 			size="16.0"
@@ -323,7 +365,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="San Diego Regional Climate Collaborative. 2022. An Equity-first approach to climate adaptation. San Diego, CA: University of San Diego ">
+			text="San Diego Regional Climate Collaborative. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="An Equity-first approach to climate adaptation">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". San Diego, CA: University of San Diego ">
 			</text>
 			<text
 			size="16.0"
@@ -339,7 +393,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="NIST. 2019. Toward a More Resilient Community: An Overview of the Community Resilience Planning Guide for Buildings and Infrastructure System. Gaithersburg, MD: National Institute of Standards and Technology. ">
+			text="NIST. 2019. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Toward a More Resilient Community: An Overview of the Community Resilience Planning Guide for Buildings and Infrastructure System">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Gaithersburg, MD: National Institute of Standards and Technology. ">
 			</text>
 			<text
 			size="16.0"
@@ -363,7 +429,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[1] Matin, Forrester, and Ensor. 2018. What is equitable resilience? World Development 109: 197-205. ">
+			text="[1] Matin, Forrester, and Ensor. 2018. What is equitable resilience?">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text=" World Development">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text=" 109: 197-205. ">
 			</text>
 			<text
 			size="16.0"
@@ -379,7 +457,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[2] Fry, M., Maxwell, K., Eisenhauer, E., Julius, S., Kiessling, B, Matsler, M., Ollove, M. and S. Romanoski. 2023. Centering Equity in the Development of a Community Resilience Planning Resource. [2] Fry, et al. 2023. Centering Equity in the Development of a Community Resilience Planning Resource. Climate Risk Management 40. ">
+			text="[2] Fry, et al. 2023. Centering Equity in the Development of a Community Resilience Planning Resource. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Climate Risk Management">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 40: 100520. ">
 			</text>
 			<text
 			size="16.0"
@@ -395,7 +485,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[3] EPA. 2021. Climate Change and Social Vulnerability in the United States: A Focus on Six Impacts. U.S. Environmental Protection Agency, EPA 430-R-21-003. ">
+			text="[3] EPA. 2021. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Climate Change and Social Vulnerability in the United States: A Focus on Six Impacts">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". U.S. Environmental Protection Agency, EPA 430-R-21-003. ">
 			</text>
 			<text
 			size="16.0"
@@ -411,7 +513,19 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[4] Thomas, et al. 2019. Explaining differential vulnerability to climate change: a social science review. WIREs Climate Change, 10(2): e565, ">
+			text="[4] Thomas, et al. 2019. Explaining differential vulnerability to climate change: a social science review. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="WIREs Climate Change">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=", 10(2): e565, ">
 			</text>
 			<text
 			size="16.0"

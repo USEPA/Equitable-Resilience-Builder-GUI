@@ -243,7 +243,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Hazards Data Example"
+			text="Hazards Data Sources"
 			linkType="internal"
 			link="116">
 			</text>
@@ -251,7 +251,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Equity Data Example"
+			text="Equity Data Sources"
 			linkType="internal"
 			link="118">
 			</text>
@@ -271,13 +271,13 @@
 			<icon
 			width="40.0"
 			height="40.0"
-			id="66">
+			id="69">
 			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="When gathering local data, you may want to consult local partners to identify good sources of information. But be mindful of data ethics. For more guidance, follow our Data Ethics guidance in the Resources tab. ">
+			text="Consulting local partners can help identify good sources of information, but needs to be mindful of best practices for local knowledge and Indigenous data sovereignty.">
 			</text>	
 		</textBlock>
 	</container>

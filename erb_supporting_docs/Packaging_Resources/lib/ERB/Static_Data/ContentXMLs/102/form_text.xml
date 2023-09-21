@@ -13,7 +13,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="This could include information about hazards your community might face">
+			text="This could include information about hazards your community might face such as:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -53,6 +53,19 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Floods">
+			</text>
+		</textBlock>
+		<textBlock>
+		<icon
+			width="10.0"
+			height="10.0"
+			id="74">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Tornados">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -159,7 +172,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Hazards data helps you figure out what the top hazards your community faces today and may face in the future.">
+			text="Hazards data helps you figure out what the top hazards your community faces today or in the future.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -183,7 +196,35 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Check out local and online sources">
+			text="Check out local and online sources in ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Collect Hazards Data"
+			linkType="externalDOC"
+			link="Collect_Hazards_Data.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="See examples of Hazards Data Sources"
+			linkType="internal"
+			link="116">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=".">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -204,7 +245,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="You'll know what data you want to collect and how">
+			text="You'll know what hazards data you want to collect and how">
 			</text>
 		</textBlock>
 	</container>
@@ -268,7 +309,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Hazards Data Example"
+			text="Hazards Data Sources"
 			linkType="internal"
 			link="116">
 			</text>
