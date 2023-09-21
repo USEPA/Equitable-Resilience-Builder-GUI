@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" prefHeight="750.0" prefWidth="1150.0" spacing="10.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+
+<VBox fx:id="vBox" spacing="10.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane>
          <children>
@@ -56,7 +57,8 @@
                   <TextArea fx:id="descriptionTextArea" editable="false" style="-fx-border-color: #CBCBCB;" wrapText="true" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="15.0" />
-                     </font></TextArea>
+                     </font>
+                  </TextArea>
                </children>
             </VBox>
          </children>

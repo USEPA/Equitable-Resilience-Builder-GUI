@@ -36,6 +36,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 
 public class FormController {
 
@@ -54,6 +55,7 @@ public class FormController {
 		this.engagementActionController = engagementActionController;
 	}
 
+	private Constants constants = new Constants();
 	private FileHandler fileHandler = new FileHandler();
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 	private IdAssignments idAssignments = new IdAssignments();
@@ -72,13 +74,17 @@ public class FormController {
 			});
 		} else {
 			Stage stage = new Stage();
+			ScrollPane scrollPane = new ScrollPane();
 			VBox vBox = new VBox();
 			ImageView imageView = new ImageView();
 			String enlargedId = getEnlargedId(id);
 			imageView.setImage(new Image(fileHandler.getStaticIconImageFile(enlargedId).getPath()));
 			vBox.getChildren().add(imageView);
-			Scene scene = new Scene(vBox);
+			scrollPane.setContent(vBox);
+			Scene scene = new Scene(scrollPane);
 			stage.setScene(scene);
+			stage.setWidth(constants.getPrefWidthForImages());
+			stage.setHeight(constants.getPrefHeightForImages());
 			stage.showAndWait();
 		}
 	}

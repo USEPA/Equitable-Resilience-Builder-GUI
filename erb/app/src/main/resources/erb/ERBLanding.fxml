@@ -21,7 +21,7 @@
                </StackPane.margin>
                <children>
                   <ImageView fx:id="erbMiniImageView" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
-                  <VBox alignment="BOTTOM_LEFT">
+                  <VBox alignment="BOTTOM_LEFT" HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="Equitable Resilience Builder" textFill="#3a527d">
                            <font>

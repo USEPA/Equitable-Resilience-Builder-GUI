@@ -30,14 +30,14 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
+                        <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label fx:id="titleLabel" text="Equitable Resilience Builder" textFill="#3a527d">
+                              <Label fx:id="titleLabel" text="Equitable Resilience Builder" textFill="#3a527d" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="32.0" />
                                  </font>
                               </Label>
-                              <Label text="Inclusive planning for disasters and climate change" textFill="#562c87">
+                              <Label text="Inclusive planning for disasters and climate change" textFill="#562c87" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="25.0" />
                                  </font>
@@ -47,7 +47,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
+                        <VBox alignment="BOTTOM_RIGHT" minWidth="215.0">
                            <children>
                               <MenuBar fx:id="menuBar" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #FFFFFF;">
                                 <menus>

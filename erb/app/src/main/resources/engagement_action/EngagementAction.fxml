@@ -79,12 +79,12 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="myPortfolioButton" mnemonicParsing="false" onAction="#myPortfolioButtonAction" style="-fx-background-color: #FFFFFF;" text="My Portfolio" textFill="#316188">
+                  <Button fx:id="myPortfolioButton" minWidth="95.0" mnemonicParsing="false" onAction="#myPortfolioButtonAction" style="-fx-background-color: #FFFFFF;" text="My Portfolio" textFill="#316188">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="uploadFileButton" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" style="-fx-background-color: #FFFFFF;" text="Upload File" textFill="#316188">
+                  <Button fx:id="uploadFileButton" minWidth="88.0" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" style="-fx-background-color: #FFFFFF;" text="Upload File" textFill="#316188">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -92,7 +92,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="worksheetIndexButton1" mnemonicParsing="false" onAction="#worksheetIndexAction" style="-fx-background-color: #FFFFFF;" text="Worksheet Index" textFill="#316188">
+                  <Button fx:id="worksheetIndexButton1" minWidth="122.0" mnemonicParsing="false" onAction="#worksheetIndexAction" style="-fx-background-color: #FFFFFF;" text="Worksheet Index" textFill="#316188">
                      <font>
                         <Font size="14.0" />
                      </font>

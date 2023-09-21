@@ -1,33 +1,12 @@
 package com.epa.erb.utility;
 
+import java.awt.Dimension;
 import java.io.File;
 
 public class Constants {
-		
-	//Scaling Sizes
-//	private int prefHeightForScale100 = 950;
-//	private int prefWidthForScale100 = 1350;
-	private int prefHeightForScale100 = 750;
-	private int prefWidthForScale100 = 850;
 	
-//	private int prefHeightForScale125 = 750;
-//	private int prefWidthForScale125 = 1150;
-	private int prefHeightForScale125 = 550;
-	private int prefWidthForScale125 = 950;
-	
-//	private int prefHeightForScale150 = 600;
-//	private int prefWidthForScale150 = 1000;
-	private int prefHeightForScale150 = 400;
-	private int prefWidthForScale150 = 800;
-	
-//	private int prefHeightForScale175 = 500;
-//	private int prefWidthForScale175 = 900;
-	private int prefHeightForScale175 = 300;
-	private int prefWidthForScale175 = 700;
-	
-//	1920
-//	1680
-//	1280
+	private int prefHeightForImages = 0;
+	private int prefWidthForImages = 0;
 	
 	//Activity
 	private String activityTypeColor = "";
@@ -77,6 +56,7 @@ public class Constants {
 	public Constants() {
 		setFilePathsStatic(); //For running tool locally
 		//setFilePathsDynamic(); //For packaging tool 
+		sizeScreen(getScreenResolution(), getScreenSize());
 	}
 	
 	private void setFilePathsStatic() {
@@ -93,32 +73,51 @@ public class Constants {
 		pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
 		pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
 	}
+
+	private int getScreenResolution() {
+		return java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
+	}
+	
+	private Dimension getScreenSize() {
+		return java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+
+	}
+	
+	private void sizeScreen(int dpiValue, Dimension size) {
+		double width = size.getWidth();
+		double height = size.getHeight();
+		
+		int dpiScale = getScaleForDPIValue(dpiValue);
+		int maxWidthToSubtract = 850;
+		int maxHeightToSubtract = 450;
+		int widthToSubtract = maxWidthToSubtract-((maxWidthToSubtract*dpiScale/100)-maxWidthToSubtract);
+		int heightToSubtract = maxHeightToSubtract-((maxHeightToSubtract*dpiScale/100)-maxHeightToSubtract);
+		
+		prefWidthForImages = (int) (width -widthToSubtract);
+		prefHeightForImages = (int) (height - heightToSubtract);
+	}
+	
+	public int getScaleForDPIValue(int dpiValue) {
+		int lowestDPIValue = 96;
+		int lowestDPIScale = 100;
+		int highestDPIScale = 500;
+		
+		for (int i = lowestDPIScale; i <= highestDPIScale; i = i+25) {
+			int calculatedDPIValue = (lowestDPIValue * i)/100;
+			if(dpiValue == calculatedDPIValue) {
+				return i;
+			}
+		}
+		return 100; //Default
+	}
 	
 	//-------------------------------------------------------------------------
 	
-	public int getPrefHeightForScale100() {
-		return prefHeightForScale100;
+	public int getPrefHeightForImages() {
+		return prefHeightForImages;
 	}
-	public int getPrefWidthForScale100() {
-		return prefWidthForScale100;
-	}
-	public int getPrefHeightForScale125() {
-		return prefHeightForScale125;
-	}
-	public int getPrefWidthForScale125() {
-		return prefWidthForScale125;
-	}
-	public int getPrefHeightForScale150() {
-		return prefHeightForScale150;
-	}
-	public int getPrefWidthForScale150() {
-		return prefWidthForScale150;
-	}
-	public int getPrefHeightForScale175() {
-		return prefHeightForScale175;
-	}
-	public int getPrefWidthForScale175() {
-		return prefWidthForScale175;
+	public int getPrefWidthForImages() {
+		return prefWidthForImages;
 	}
 	public String getActivityTypeColor() {
 		return activityTypeColor;
