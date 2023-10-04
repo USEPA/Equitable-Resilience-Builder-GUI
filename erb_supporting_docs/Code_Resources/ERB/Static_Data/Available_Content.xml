@@ -5,12 +5,9 @@
 	<content id="04" guid="" type="mainForm" status="ready" shortName="Equitable Resilience" longName="Equitable Resilience" />
 	<content id="05" guid="" type="mainForm" status="ready" shortName="Data Ethics" longName="Data Ethics" />
 	<content id="06" guid="" type="mainForm" status="ready" shortName="Resilience Indicators Background" longName="Resilience Indicators Background" />
-	<content id="07" guid="" type="mainForm" status="ready" shortName="Who are ERB users?" longName="Who are ERB users?" />
-	<content id="08" guid="" type="mainForm" status="ready" shortName="What makes ERB different?" longName="What makes ERB different?" />
 	<content id="09" guid="" type="mainForm" status="ready" shortName="About ERB" longName="About ERB" />
 	<content id="10" guid="" type="mainForm" status="ready" shortName="Youth Engagement Guide" longName="Youth Engagement Guide" />
 	<content id="11" guid="" type="mainForm" status="ready" shortName="Supporting materials" longName="Supporting Materials" />
-	<content id="12" guid="" type="mainForm" status="ready" shortName="Word Cloud" longName="Word Cloud" />
 	<content id="13" guid="" type="mainForm" status="ready" shortName="Indicator Card Sorting" longName="Indicator Card Sorting" />
 	<content id="15" guid="" type="mainForm" status="ready" shortName="Plan" longName="Plan Your Project" />
 	<content id="16" guid="" type="mainForm" status="ready" shortName="Engage" longName="Engage Your Community" />
@@ -21,7 +18,6 @@
 	<content id="21" guid="" type="mainForm" status="ready" shortName="Reflection Diary" longName="Reflection Diary" />
 	<content id="22" guid="" type="mainForm" status="ready" shortName="Key Takeaways" longName="Key Takeaways" />
 	<content id="23" guid="" type="mainForm" status="ready" shortName="MyPortfolio" longName="MyPortfolio" />
-	<content id="25" guid="" type="mainForm" status="ready" shortName="Plan Workshop 3" longName="Plan Workshop 3" />
 	<content id="26" guid="" type="mainForm" status="ready" shortName="FAQ" longName="FAQ" />
 	<content id="27" guid="" type="alternativeForm" status="ready" shortName="Example: Using ERB" longName="How have communities used ERB?" />
 	<content id="28" guid="" type="alternativeForm" status="ready" shortName="Example: Goals" longName="Goal setting examples" />
@@ -38,8 +34,6 @@
 	<content id="59" guid="" type="mainForm" status="ready" shortName="Set Goals for Using ERB" longName="Set Goals for Using ERB" />
 	<content id="60" guid="" type="mainForm" status="ready" shortName="Equitable Engagement" longName="Centering Equity in Engagement" />
 	<content id="61" guid="" type="mainForm" status="ready" shortName="Start Engaging!" longName="Start Engaging!" />
-	<content id="84" guid="" type="interactiveActivity" status="ready" shortName="Word Cloud" longName="Word Cloud" />
-	<content id="85" guid="" type="interactiveActivity" status="ready" shortName="Noteboard" longName="Noteboard" />
 	<content id="92" guid="" type="mainForm" status="ready" shortName="Listen and Connect" longName="Listen and Connect" />
 	<content id="93" guid="" type="mainForm" status="ready" shortName="Plan Workshop 1" longName="Plan Workshop 1: Listen and Connect" />
 	<content id="94" guid="" type="mainForm" status="ready" shortName="Share Stories" longName="Share Stories" />

@@ -1,13 +1,5 @@
 <textBlocks>
 	<container id="formVBox">
-		<!--<textBlock>
-			<icon
-			width="250.0"
-			height="77.0"
-			id="170">
-			</icon>
-		</textBlock>
-		<-->
 		<textBlock>
 		</textBlock>
 		<textBlock>

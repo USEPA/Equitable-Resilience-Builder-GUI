@@ -367,29 +367,6 @@
 			text="Research suggests that meaningful engagement of children and youth is best achieved through experiential activities [7]. These activities, including but not limited to: drawing, diagrams, community mapping, storytelling, video, games, story boards, photos/ photovoice, action groups, youth bill of rights, participatory video, timelines, performances, and social media. These activities can allow youth to demonstrate their expertise and take more ownership of the process. They also allow children to be creative and have fun, keeping them engaged. Youth can use these tools to share stories, assess risk and vulnerability, express ideas, plan for recovery, reflect, define priorities, and more.">
 			</text>
 		</textBlock>
-		<!--
-		<textBlock>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="Figure 3: ">
-			</text>
-			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Examples of Experiential Youth Engagement Activities">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="200.0"
-			height="79.0"
-			id="162">
-			</icon>
-		</textBlock>
-		-->
 		<textBlock>
 			<text
 			size="16.0"

@@ -92,9 +92,7 @@ public class FormController {
 	private String getEnlargedId(String id) {
 		if(id.contentEquals("155")){
 			return "99";
-		} else if(id.contentEquals("156")){
-			return "100";
-		}else if(id.contentEquals("157")){
+		} else if(id.contentEquals("157")){
 			return "147";
 		}else if(id.contentEquals("158")){
 			return "113";
@@ -104,9 +102,7 @@ public class FormController {
 			return "148";
 		}else if(id.contentEquals("161")){
 			return "149";
-		}else if(id.contentEquals("162")){
-			return "150";
-		} else if(id.contentEquals("163")){
+		}else if(id.contentEquals("163")){
 			return "154";
 		} else if(id.contentEquals("79")){
 			return "164";
@@ -114,8 +110,6 @@ public class FormController {
 			return "165";
 		} else if(id.contentEquals("81")){
 			return "166";
-		} else if (id.contentEquals("170")) {
-			return "169";
 		} else if (id.contentEquals("181")) {
 			return "182";
 		} else if (id.contentEquals("183")) {
