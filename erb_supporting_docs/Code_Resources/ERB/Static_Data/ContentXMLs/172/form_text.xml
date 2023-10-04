@@ -44,7 +44,15 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Hazards storytelling        Assess Section">
+			text="Hazards storytelling">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Equity discussion">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -60,7 +68,15 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Action workshop        Strategize Section">
+			text="Results to action workshop">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Storytelling on implementation">
 			</text>
 		</textBlock>
 	</container>

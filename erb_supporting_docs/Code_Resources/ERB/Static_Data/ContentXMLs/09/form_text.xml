@@ -221,7 +221,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" check out User Guide.">
+			text=" check out the User Guide.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="EPA. 2023. Equitable Resilience Builder User Guide. Washington, D.C.: U.S. Environmental Protection Agency">
 			</text>
 		</textBlock>
 	</container>

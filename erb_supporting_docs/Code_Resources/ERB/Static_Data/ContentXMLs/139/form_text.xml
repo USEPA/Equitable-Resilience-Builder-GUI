@@ -58,7 +58,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Assess your progress - Review the Key Takeaways from Strategizing Action and the Implementation Plan in My Portfolio">
+			text="Assess your progress - Review the Key Takeaways from Strategizing Action and the Implementation Worksheet">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -71,7 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Sustain relationships built - Continue to nurture trust and connections with community members (examples: reoccurring meetings, sharing progress at community events)">
+			text="Sustain relationships you have built - Continue to nurture trust and connections with community members (examples: reoccurring meetings, sharing progress at community events)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -168,9 +168,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="My Portfolio"
-			linkType="internal"
-			link="MyPortfolio">
+			text="Implementation Worksheet"
+			linkType="externalDOC"
+			link="Implementation_Worksheet.docx">
 			</text>
 			<text
 			size="16.0"

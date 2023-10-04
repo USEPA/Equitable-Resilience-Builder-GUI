@@ -282,8 +282,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="intersectional identities"
-			linkType=""
-			link="">
+			linkType="internal"
+			link="01">
 			</text>
 			<text
 			size="16.0"

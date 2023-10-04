@@ -5,7 +5,7 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Finding Funding to Support Taking Action">
+			text="Find Funding to Support Taking Action">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -63,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Include steps for pursuing these opportunities in your Implementation Plan.">
+			text="Include steps for pursuing these opportunities in your Implementation Worksheet.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -142,6 +142,7 @@
 			height="40.0"
 			id="63">
 			</icon>
+			<listBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -150,6 +151,15 @@
 			linkType="externalDOC"
 			link="Funding_and_Financing_Guide.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Implementation Worksheet"
+			linkType="externalDOC"
+			link="Implementation_Worksheet.docx">
+			</text>
+			</listBlock>
 		</textBlock>
 	</container>
 		<container id="bottomPanelVBox">

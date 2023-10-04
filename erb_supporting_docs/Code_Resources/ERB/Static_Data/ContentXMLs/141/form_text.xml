@@ -123,7 +123,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Work with your core team and other local experts to figure out how to carry out monitoring to evaluate outcomes and support implementation efforts. Identify a team member or local group as the 'Monitoring Lead' of each action. You may use the Monitoring Plan Worksheet as a guide.">
+			text="Work with your core team and other local experts to figure out how to carry out monitoring to evaluate outcomes and support implementation efforts. Identify a team member or local group as the 'Monitoring Lead' of each action. You may use the Monitoring Plan as a guide.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -194,7 +194,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Indicators List"
+			text="Indicator Cards"
 			linkType="externalDOC"
 			link="Indicators_List.xlsx">
 			</text>
@@ -202,17 +202,9 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Monitoring Plan Worksheet"
+			text="Monitoring Plan"
 			linkType="externalDOC"
 			link="Monitoring_Plan_Worksheet.docx">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Hyperlink"
-			text="Indicator Center"
-			linkType="internal"
-			link="85">
 			</text>
 			</listBlock>
 		</textBlock>

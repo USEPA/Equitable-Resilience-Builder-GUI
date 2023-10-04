@@ -108,9 +108,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
+			width="12.0"
+			height="12.0"
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -121,9 +121,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
+			width="12.0"
+			height="12.0"
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -134,9 +134,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
+			width="12.0"
+			height="12.0"
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -147,9 +147,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
+			width="12.0"
+			height="12.0"
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -184,9 +184,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
+			width="12.0"
+			height="12.0"
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -197,9 +197,9 @@
 		</textBlock>
 		<textBlock>
 			<icon
-			width="15.0"
-			height="15.0"
-			id="73">
+			width="12.0"
+			height="12.0"
+			id="74">
 			</icon>
 			<text
 			size="16.0"
@@ -255,8 +255,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Reflection Diary"
-			linkType="externalDOC"
-			link="Reflection_Diary.docx">
+			linkType="internal"
+			link="21">
 			</text>
 		</textBlock>
 	</container>

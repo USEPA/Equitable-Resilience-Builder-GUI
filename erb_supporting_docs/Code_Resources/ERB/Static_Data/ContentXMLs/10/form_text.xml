@@ -701,13 +701,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Child Youth, and Environments,">
+			text="Child Youth, and Environments, 18. ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text="18. https://www.jstor.org/stable/10.7721/chilyoutenvi.18.1.0001">
+			fontStyle="Hyperlink"
+			text="https://www.jstor.org/stable/10.7721/chilyoutenvi.18.1.0001"
+			linkType="URL"
+			link="https://www.jstor.org/stable/10.7721/chilyoutenvi.18.1.0001">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -721,13 +723,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="International Journal of Early Years Education">
+			text="International Journal of Early Years Education 20 (3). ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text=" 20(3). https://doi.org/10.1080/09669760.2012.716712">
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1080/09669760.2012.716712"
+			linkType="URL"
+			link="https://doi.org/10.1080/09669760.2012.716712">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -735,7 +739,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="[5]	Kousky. 2016. Impacts of Natural Disasters on Children. Future of Children, 26(1). https://futureofchildren.princeton.edu/sites/g/files/toruqf2411/files/media/children_and_climate_change_26_1_full_journal.pdf">
+			text="[5]	Kousky. 2016. Impacts of Natural Disasters on Children. Future of Children, 26(1). ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://futureofchildren.princeton.edu/sites/g/files/toruqf2411/files/media/children_and_climate_change_26_1_full_journal.pdf"
+			linkType="URL"
+			link="https://futureofchildren.princeton.edu/sites/g/files/toruqf2411/files/media/children_and_climate_change_26_1_full_journal.pdf">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -777,7 +789,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" 9(2). https://doi.org/10.1080/20008198.2018.1425577">
+			text="9(2). ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1080/20008198.2018.1425577"
+			linkType="URL"
+			link="https://doi.org/10.1080/20008198.2018.1425577">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -797,7 +817,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" 98: 213-227. https://doi.org/10.1007/s11069-018-3509-3">
+			text=" 98: 213-227. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1007/s11069-018-3509-3"
+			linkType="URL"
+			link="https://doi.org/10.1007/s11069-018-3509-3">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -811,13 +839,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Children and Young People’s Participation in Disaster Risk Reduction">
+			text="Children and Young People’s Participation in Disaster Risk Reduction. ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text=". https://doi.org/10.47674/9781447354437">
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.47674/9781447354437"
+			linkType="URL"
+			link="https://doi.org/10.47674/9781447354437">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -859,13 +889,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
-			text="Innocenti Essays">
+			text="Innocenti Essays 4. ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Regular"
-			text=" 4. https://www.unicef-irc.org/publications/100-childrens-participation-from-tokenism-to-citizenship.html">
+			fontStyle="Hyperlink"
+			text="https://www.unicef-irc.org/publications/100-childrens-participation-from-tokenism-to-citizenship.html"
+			linkType="URL"
+			link="https://www.unicef-irc.org/publications/100-childrens-participation-from-tokenism-to-citizenship.html">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -941,7 +973,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text=" 13(5): 357-371. https://doi.org/10.1080/14733285.2013.848599">
+			text=" 13(5): 357-371. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1080/14733285.2013.848599"
+			linkType="URL"
+			link="https://doi.org/10.1080/14733285.2013.848599">
 			</text>
 		</textBlock>
 	</container>
