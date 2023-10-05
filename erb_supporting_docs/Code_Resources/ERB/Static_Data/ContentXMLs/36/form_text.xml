@@ -8,12 +8,28 @@
 			text="Develop a Community Engagement Plan">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="How and in what ways will you engage community members in the ERB process? Write a plan that aligns with the core team's capacity, your planned goals and activities, and that targets the inclusion of marginalized groups in your community.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="Different types of engagement have different levels of involvement by community members. Expectations and goals for involvement may be different between groups. Engagement planning that is attentive to these issues is more successful.  ">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -41,29 +65,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Establish the baseline engagement processes you will use throughout the ERB process">
+			text="•	Establish the baseline engagement processes you will use throughout the ERB process">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identify:">
+			text="•	Identify:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -85,16 +99,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Write a plan using the Community Engagement Plan">
+			text="•	Write a plan using the Community Engagement Plan">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

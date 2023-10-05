@@ -8,12 +8,28 @@
 			text="Storytelling on Project Implementation">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Share stories about past experiences with implementing projects and plans - resilience related or not.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="Learn from successes and pitfalls as you transition from gathering critical insights to putting plans into action.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -41,55 +65,43 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Follow the instructions in the Implementation Storytelling Exercise">
+			text="•	Follow the instructions in the Implementation Storytelling Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share stories among the core team">
+			text="•	Share stories among the core team">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Discuss implications for implementing the resilience actions coming out of the ERB process">
+			text="•	Discuss implications for implementing the resilience actions coming out of the ERB process">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Compile principles and lessons learned from the breakout groups and record them in the Key Takeaways on Strategizing Actions">
+			text="•	Compile principles and lessons learned from the breakout groups and record them in the Key Takeaways on Strategizing Actions">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

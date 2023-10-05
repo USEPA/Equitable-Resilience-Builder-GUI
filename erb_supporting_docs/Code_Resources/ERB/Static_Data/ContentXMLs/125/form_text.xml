@@ -8,6 +8,14 @@
 			text="Put Results into Action">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -24,6 +32,14 @@
 			text="Get started with putting results into action by learning from previous experiences with implementing projects and deciding on which action areas to focus on in Workshop 3.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -33,29 +49,27 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share stories about successes and pitfalls from implementation of previous projects in your community">
+			text="•	Share stories about successes and pitfalls from implementation of previous projects in your community">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use assessment findings to figure out the specific problems you will tackle in your next workshop">
+			text="•	Use assessment findings to figure out the specific problems you will tackle in your next workshop">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

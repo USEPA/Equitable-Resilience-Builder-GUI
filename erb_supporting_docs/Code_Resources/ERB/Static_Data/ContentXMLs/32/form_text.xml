@@ -8,12 +8,28 @@
 			text="Complete the Project Plan">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Determine the who, what, when, and how of your ERB project. Scope out what you can do given the time, resources, goals, and mandate you have.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="The plan will help the core team make decisions, allocate resources, manage expectations, coordinate work, and demonstrate progress. It's designed to be a living document that you can revisit throughout the ERB process.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -41,29 +65,27 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Hold one or more team meetings to work through the Project Plan Template">
+			text="•	Hold one or more team meetings to work through the Project Plan Template">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Record your decisions in the template">
+			text="•	Record your decisions in the template">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

@@ -8,6 +8,14 @@
 			text="Reflection and Next Steps">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -68,6 +76,14 @@
 			text="Started to engage with different local groups">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -84,6 +100,14 @@
 			text="Take time to think about what you accomplished, challenges that arose, and new solutions you developed. Reflect upon and discuss the questions offered in the Reflection Diary.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -93,42 +117,27 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Make any adjustments to your community engagement plan or project plan that may be needed after reflection (Remember, it's okay to make changes!) ">
+			text="•	Make any adjustments to your community engagement plan or project plan that may be needed after reflection (Remember, it's okay to make changes!) ">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Continue to contact community members and set dates for any engagement sessions you planned">
+			text="•	Continue to contact community members and set dates for any engagement sessions you planned">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Move on to the next section to assess your community's hazards, equity, and resilience">
+			text="•	Move on to the next section to assess your community's hazards, equity, and resilience">
 			</text>
 		</textBlock>
 	</container>

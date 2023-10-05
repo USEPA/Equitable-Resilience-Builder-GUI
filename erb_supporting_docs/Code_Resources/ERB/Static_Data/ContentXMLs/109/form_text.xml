@@ -8,12 +8,28 @@
 			text="Participatory Mapping">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Workshop participants locate hazards and/or assets on a map of their community and discuss.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="Locating risks and assets on a map grounds discussions in a particular place and gets location-specific information about the hazards different people are experiencing and the assets that help.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -41,81 +65,59 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core team uses the Mapping Activity Preparation Guide to prepare mapping base layers">
+			text="•	Core team uses the Mapping Activity Preparation Guide to prepare mapping base layers">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Facilitators use Mapping Activity Instructions to lead the participatory mapping activity with workshop participants">
+			text="•	Facilitators use Mapping Activity Instructions to lead the participatory mapping activity with workshop participants">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Core team shares key hazards and equity data results">
+			text="•	Core team shares key hazards and equity data results">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Workshop participants divide into breakout groups of 4-6. Each group gets a map where they draw or label hazards, who is most impacted in specific places, and where assets that can help are">
+			text="•	Workshop participants divide into breakout groups of 4-6. Each group gets a map where they draw or label hazards, who is most impacted in specific places, and where assets that can help are">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Reconvene in the large group to discuss possible future changes to hazards, equity, and assets">
+			text="•	Reconvene in the large group to discuss possible future changes to hazards, equity, and assets">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="After the workshop, fill out the Key Takeaways form">
+			text="•	After the workshop, fill out the Key Takeaways form">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

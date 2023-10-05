@@ -13,7 +13,23 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
 			text="WHAT: ERB provides supporting materials for ERB activities in the form of Word documents and Excel spreadsheets. These contain instructions for carrying out activities, workshop facilitator guides, storytelling exercises, worksheets, key takeaways forms, and a reflection diary. You can edit, save, and download supporting materials.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -22,6 +38,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="WHY: Use them to plan and carry out ERB activities. As you fill them out, you generate information that can be used in later ERB sections and in your resilience plan.  They also serve as a record of what you have done.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -54,6 +78,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text=", click on the name of the supporting material you’re looking for.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

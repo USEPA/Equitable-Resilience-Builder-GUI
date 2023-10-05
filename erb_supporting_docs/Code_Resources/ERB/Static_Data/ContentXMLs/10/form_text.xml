@@ -8,6 +8,14 @@
 			text="A Guide to Engaging Youth in Hazard and Disaster Resilience Planning ">
 			</text>
 		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -266,81 +274,51 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Translating materials into other languages and/or having a translator on hand for youth with low proficiency in English. This includes providing materials in Braille and sign language when feasible and applicable.">
+			text="•	Translating materials into other languages and/or having a translator on hand for youth with low proficiency in English. This includes providing materials in Braille and sign language when feasible and applicable.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Making grade-level appropriate and easy-to-read materials.">
+			text="•	Making grade-level appropriate and easy-to-read materials.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Partnering with trusted community organizations such as, disability organizations, lesbian, gay, bisexual, transgender, queer or questioning, intersex, asexual, and more (LGBTQIA+) organizations, and youth groups for children of color.">
+			text="•	Partnering with trusted community organizations such as, disability organizations, lesbian, gay, bisexual, transgender, queer or questioning, intersex, asexual, and more (LGBTQIA+) organizations, and youth groups for children of color.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Staffing with local trusted facilitators.">
+			text="•	Staffing with local trusted facilitators.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Asking everyone to state their pronouns when introducing themselves for gender inclusivity.">
+			text="•	Asking everyone to state their pronouns when introducing themselves for gender inclusivity.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Eliminating barriers to participation by providing stipends, safe spaces, transportation, or other resources as needed.">
+			text="•	Eliminating barriers to participation by providing stipends, safe spaces, transportation, or other resources as needed.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -438,16 +416,11 @@
 			</icon>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Obtain informed consent from youth and legal guardians for activities such as:">
+			text="•	Obtain informed consent from youth and legal guardians for activities such as:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -507,68 +480,43 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Conduct comprehensive background checks when recruiting adult facilitators/staff/volunteers.">
+			text="•	Conduct comprehensive background checks when recruiting adult facilitators/staff/volunteers.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Develop a written agreement between all participants (children and adults) that establishes ground rules for participation.">
+			text="•	Develop a written agreement between all participants (children and adults) that establishes ground rules for participation.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Have mental health professional(s) present (e.g., social worker(s)) and/or provide mental health resources due the traumatic nature of hazards and disasters.">
+			text="•	Have mental health professional(s) present (e.g., social worker(s)) and/or provide mental health resources due the traumatic nature of hazards and disasters.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Ensure youth know their rights for protection, safety, survival, education and participation [1].">
+			text="•	Ensure youth know their rights for protection, safety, survival, education and participation [1].">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Consider engaging youth and adults in separate sessions initially, to ensure youth voices are heard, and then provide opportunities for youth and adults to interact.">
+			text="•	Consider engaging youth and adults in separate sessions initially, to ensure youth voices are heard, and then provide opportunities for youth and adults to interact.">
 			</text>
 		</textBlock>
 		<textBlock>

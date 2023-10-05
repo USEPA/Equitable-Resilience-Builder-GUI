@@ -8,6 +8,14 @@
 			text="Key Takeaways">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -16,12 +24,28 @@
 			text="WHAT: Summarize findings or highlights from the Assess and Strategize sections of ERB.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="WHY: Assess section key takeaways record results from the collaborative assessment of hazards, equity, and resilience in your community. Strategize section key takeaways document the actions for building equitable resilience that were agreed upon in the workshop and what next steps and commitments for implementing action are.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

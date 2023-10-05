@@ -8,12 +8,28 @@
 			text="Manage Data">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Organize the data you collected on hazards, equity, and resilient systems in your community for use in ERB activities and beyond.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -30,6 +46,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Data management helps you more easily put data to use in Workshop 2 and other products your team is generating.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -49,16 +73,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Community Hazard and Equity Base Layer Maps: ">
+			text="•	Community Hazard and Equity Base Layer Maps: ">
 			</text>
 			<text
 			size="16.0"
@@ -68,16 +87,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Indicator Cards: ">
+			text="•	Indicator Cards: ">
 			</text>
 			<text
 			size="16.0"
@@ -86,12 +100,28 @@
 			text="Prepare indicator cards for the upcoming workshop based on the instructions and template in the Indicator Card Template (if printing cards and doing activity in-person), or by populating them by filling out the Indicator List in the Indicator Center (if doing activity online).">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Add data to the Key Takeaways section on data gathering to keep track of the key hazard, equity, and resilience concerns in your community.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

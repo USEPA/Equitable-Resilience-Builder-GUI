@@ -8,12 +8,28 @@
 			text="Plan Workshop 2: Collaborative Assessment">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Take steps to reduce barriers to participation and empower participants as you prepare for the workshop.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -44,6 +60,14 @@
 			text=" for success. Workshops are a good way of bringing people from different parts of the community together but can also be difficult for people to attend. People need to feel included and comfortable to participate fully. Removing barriers and being intentional about practicing equity will go a long way towards productive workshops and building relationships.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -53,68 +77,51 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Work with a local partner, if you can, to co-plan this event">
+			text="•	Work with a local partner, if you can, to co-plan this event">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Take steps take to recruit a diverse group of attendees and offer a welcoming environment">
+			text="•	Take steps take to recruit a diverse group of attendees and offer a welcoming environment">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the Facilitators Guide for Workshops to prepare activities">
+			text="•	Use the Facilitators Guide for Workshops to prepare activities">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review your goals from your project plan and define objectives for the workshop to meet your goals.">
+			text="•	Review your goals from your project plan and define objectives for the workshop to meet your goals.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identify a facilitator to lead portions of the workshop">
+			text="•	Identify a facilitator to lead portions of the workshop">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

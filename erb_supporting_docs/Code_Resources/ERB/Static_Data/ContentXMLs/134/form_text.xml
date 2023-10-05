@@ -8,12 +8,28 @@
 			text="Workshop Wrap-Up">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Participants reflect on the workshop and discuss next steps to implement the resilience actions.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -30,6 +46,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="To identify tangible actions and immediate next steps that lay the groundwork for long-term implementation.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -49,68 +73,43 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="What makes you hopeful and what do you still have concerns about?">
+			text="•	What makes you hopeful and what do you still have concerns about?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="What is one thing people can do walking away from the workshop?">
+			text="•	What is one thing people can do walking away from the workshop?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Where is there interest in working together? How? Who else might need to be involved?">
+			text="•	Where is there interest in working together? How? Who else might need to be involved?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Are there any opportunities for taking action? What barriers might need to be addressed?">
+			text="•	Are there any opportunities for taking action? What barriers might need to be addressed?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="How should outputs from this workshop be shared more widely? Who needs to be updated?">
+			text="•	How should outputs from this workshop be shared more widely? Who needs to be updated?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -119,6 +118,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Record highlights and lessons learned from this activity in the Key Takeaways on Strategizing Actions.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

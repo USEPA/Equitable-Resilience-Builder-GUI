@@ -8,12 +8,28 @@
 			text="Warm Up Activity">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="At the beginning of the workshop, do a warmup activity to encourage openness and communication.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -30,6 +46,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Warm up activities help participants get engaged, bring up new ideas, help people get to know each other better, and set the tone for working together.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -49,29 +73,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Disaster scenario role play: Instructions are in the Disaster Scenario Exercise">
+			text="•	Disaster scenario role play: Instructions are in the Disaster Scenario Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Storytelling about equity: Instructions are in the Equity Storytelling Exercise">
+			text="•	Storytelling about equity: Instructions are in the Equity Storytelling Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -80,6 +94,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Assign a notetaker in each breakout group to record major themes and lessons learned. At the end of the activity, the notetaker will share their notes with the Facilitators who will compile and add the notes to the Key Takeaways Form on Strategizing Actions.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -96,6 +118,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="The disaster survival role play is a popular activity that gets people talking and thinking about how to work through competing beliefs, build consensus, and organize to complete a task. The storytelling activity is beneficial for sharing real-life examples of addressing equity to ground later workshop activities. ">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

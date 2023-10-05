@@ -10,6 +10,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
@@ -21,7 +29,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="1. Is inclusive and accessible. ">
+			text="&#009;1. Is inclusive and accessible. ">
 			</text>
 			<text
 			size="16.0"
@@ -35,7 +43,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="2. Is accountable. ">
+			text="&#009;2. Is accountable. ">
 			</text>
 			<text
 			size="16.0"
@@ -49,7 +57,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="3. Promotes justice. ">
+			text="&#009;3. Promotes justice. ">
 			</text>
 			<text
 			size="16.0"
@@ -63,7 +71,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="4. Builds relationships. ">
+			text="&#009;4. Builds relationships. ">
 			</text>
 			<text
 			size="16.0"
@@ -77,13 +85,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="5. Strengthens capacity of underserved communities.  ">
+			text="&#009;5. Strengthens capacity of underserved communities.  ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="The process should share financial, technical and social resources that strengthen the ability of underserved community members to participate fully, take leadership roles, and increase their self-determination. ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

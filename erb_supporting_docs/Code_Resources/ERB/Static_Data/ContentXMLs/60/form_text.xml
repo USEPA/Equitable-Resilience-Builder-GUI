@@ -8,12 +8,28 @@
 			text="Centering Equity in Engagement">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Work through several scenarios to empathize with different types of people in your community and their potential barriers to public participation. Brainstorm solutions that you can use in the ERB process.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="This activity will help the core team figure out which measures to include in the community engagement plan to address diverse needs and perspectives.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -46,6 +70,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Meet with your core team and work through the directions on the Equity and Engagement Exercise. The activity includes 3 breakout group scenarios and larger group discussion. ">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

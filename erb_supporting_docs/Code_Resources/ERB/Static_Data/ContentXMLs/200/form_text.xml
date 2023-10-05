@@ -8,12 +8,28 @@
 			text="Explore Equitable Resilience">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Core team members explore resources on equitable resilience and discuss how the project can center equity.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -33,29 +49,27 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Not everyone in the core team may initially be familiar or comfortable with how and why to center equity and that's ok – take time as a core team to discuss and address any questions and concerns.">
+			text="• Not everyone in the core team may initially be familiar or comfortable with how and why to center equity and that's ok – take time as a core team to discuss and address any questions and concerns.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Identify specific ways that your project will center equity so that you can refer back to these as needed to guide or communicate about your work.">
+			text="• Identify specific ways that your project will center equity so that you can refer back to these as needed to guide or communicate about your work.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -67,16 +81,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review the Equitable Resilience Handout, ">
+			text="•	Review the Equitable Resilience Handout, ">
 			</text>
 			<text
 			size="16.0"
@@ -116,29 +125,27 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Meet for a discussion and brainstorming using the Exploring Equity Exercise">
+			text="•	Meet for a discussion and brainstorming using the Exploring Equity Exercise">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Your team might decide that they want to use alternative terms instead of equity or vulnerability">
+			text="•	Your team might decide that they want to use alternative terms instead of equity or vulnerability">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

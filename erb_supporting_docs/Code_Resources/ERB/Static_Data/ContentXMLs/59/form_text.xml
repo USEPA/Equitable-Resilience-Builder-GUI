@@ -8,12 +8,28 @@
 			text="Set Goals for Using ERB">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Identify your team's goals for going through the ERB process. You might already have a specific charge. Your team can also generate a range of goals that address local issues of concern.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -30,6 +46,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="The goals you establish will shape your decisions about which activities to select and who to engage. They can be refined as you progress.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -65,42 +89,35 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Your team's specific charge (e.g. create watershed resilience plan, update land use plan)">
+			text="&#x9;• Your team's specific charge (e.g. create watershed resilience plan, update land use plan)">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Local disaster and climate risks (e.g. extreme heat, chemical release)">
+			text="&#x9;• Local disaster and climate risks (e.g. extreme heat, chemical release)">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Societal concerns (e.g. youth incarceration, empty storefronts)">
+			text="&#x9;• Societal concerns (e.g. youth incarceration, empty storefronts)">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

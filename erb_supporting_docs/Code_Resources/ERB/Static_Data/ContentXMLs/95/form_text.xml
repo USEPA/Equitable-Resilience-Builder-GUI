@@ -8,12 +8,28 @@
 			text="Explore Future Scenarios">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Workshop participants explore potential impacts from and solutions to possible disaster scenarios that might affect them in the near future or as the climate changes.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -30,6 +46,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Scenarios prompt us to think about risks we haven’t thought about yet. They spark insight into how hazards and vulnerability might change over time. They help us plan what do to in the next few years to create resilient systems in the long term.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -49,29 +73,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Select from the Future Scenarios Instructions">
+			text="•	Select from the Future Scenarios Instructions">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Alternatively, create one that speaks to local circumstances">
+			text="•	Alternatively, create one that speaks to local circumstances">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -83,55 +97,35 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Discuss what might happen to different people in the community should this incident occur">
+			text="•	Discuss what might happen to different people in the community should this incident occur">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Draw how cascading impacts might affect social, built, and natural environment systems">
+			text="•	Draw how cascading impacts might affect social, built, and natural environment systems">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Envision what ideal systems would look like that prevent some of these impacts for people who might be at greater risk">
+			text="•	Envision what ideal systems would look like that prevent some of these impacts for people who might be at greater risk">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Brainstorm about decisions that could be made in the near-term that would help lead to this envisioned positive future">
+			text="•	Brainstorm about decisions that could be made in the near-term that would help lead to this envisioned positive future">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -140,6 +134,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Afterwards, record highlights in the Key Takeaways Form.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

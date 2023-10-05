@@ -8,12 +8,28 @@
 			text="Select ERB Activities">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Look over the options for activities in the ERB tool, which include: storytelling; community engagement; hosting workshops to collaboratively assess hazards, equity, and resilience; gathering additional data for this assessment; and hosting a workshop to identify and prioritize equitable resilience action. Make initial selections for which activities best support your goals and can be accomplished in the time you have.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="The ERB tool contains several activities relevant to different planning goals. It's flexible and meant to be customized to fit your needs.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -41,16 +65,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Look through the sections of this tool and the menu of activities in the Project Plan Template. Note which ones you're most likely to do. Consider:">
+			text="•	Look through the sections of this tool and the menu of activities in the Project Plan Template. Note which ones you're most likely to do.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -58,7 +77,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;•	 Your goals for using ERB">
+			text="Consider:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#9;•  Your goals for using ERB">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -86,16 +113,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Look through the Activity Selection example to see what other communities have chosen">
+			text="•	Look through the Activity Selection example to see what other communities have chosen">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

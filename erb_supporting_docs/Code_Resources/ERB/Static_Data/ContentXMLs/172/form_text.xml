@@ -8,6 +8,14 @@
 			text="How to customize ERB">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -16,12 +24,28 @@
 			text="When you open up ERB there will be 5 sections each with multiple activities you can do. It may seem overwhelming at first, but you don’t need to do it all! We recognize that different users might have different amounts of time and resources, and be at different points in the resilience planning process. To help you get started choosing activities that best fit your needs and goals, we offer some suggestions below. You’ll be able to review ERB activities in more detail in the Plan section (the first section of ERB). Here are a few ways you could narrow down which ERB content is right for you:">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<icon
 			width="589.0"
 			height="447.0"
 			id="202">
 			</icon>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
 		</textBlock>
 		<textBlock>
 			<text

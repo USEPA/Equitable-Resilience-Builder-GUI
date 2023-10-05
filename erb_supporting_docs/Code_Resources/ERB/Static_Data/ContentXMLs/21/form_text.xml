@@ -8,6 +8,14 @@
 			text="Reflection Diary">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -16,12 +24,28 @@
 			text="WHAT: The core team takes time to think about what went well and what they can improve on next time when carrying out ERB activities and community engagement.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="WHY: Record lessons learned about what worked well, or not so well, and why. Use these insights as you plan activities for the next section of ERB or to help future ERB users in your community.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

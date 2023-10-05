@@ -8,12 +8,28 @@
 			text="Find Funding to Support Taking Action">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Finding the funding and resources to implement actions may mean creating new strategies or tactics and building new partnerships. ">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="Likely you have identified actions that will require additional funding to implement, or perhaps your community partners are looking for funding to support continued resilience work. Working together on new funding strategies such as alternative cost-benefit analysis may help increase available financial support.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -41,42 +65,35 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="With your core team, review the Funding and Finance Guide and identify strategies you can pursue to identify funding resources. ">
+			text="•	With your core team, review the Funding and Finance Guide and identify strategies you can pursue to identify funding resources. ">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Include steps for pursuing these opportunities in your Implementation Worksheet.">
+			text="•	Include steps for pursuing these opportunities in your Implementation Worksheet.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Include progress on identifying funding resources in updates that you share with community partners.">
+			text="•	Include progress on identifying funding resources in updates that you share with community partners.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

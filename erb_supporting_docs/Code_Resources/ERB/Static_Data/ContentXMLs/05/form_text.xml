@@ -8,6 +8,14 @@
 			text="Data Ethics Considerations">
 			</text>
 		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -16,11 +24,11 @@
 			text="Throughout the ERB process, the core team and workshop participants collaborate to gather information or data about their community. They visualize and analyze this information (e.g., using indicator card sorting) to assess hazards, equity, and resilience. This information is vital for understanding community needs and identifying actions to take. However, it is important that the core team approach this issue with care by observing data ethics.">
 			</text>
 		</textBlock>
-		<textBlock>
+			<textBlock>
 			<text
 			size="18.0"
 			fontFamily="System"
-			fontStyle="Bold"
+			fontStyle="Regular"
 			text="">
 			</text>
 		</textBlock>
@@ -41,11 +49,12 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#009;•	">
+			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -72,16 +81,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Provide short and long-term ">
+			text="&#009;•	Provide short and long-term ">
 			</text>
 			<text
 			size="16.0"
@@ -97,11 +101,12 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#009;•	">
+			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -116,16 +121,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Provide ">
+			text="&#009;•	Provide ">
 			</text>
 			<text
 			size="16.0"
@@ -147,16 +147,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Respect and uphold cultural worldviews and ">
+			text="&#009;•	Respect and uphold cultural worldviews and ">
 			</text>
 			<text
 			size="16.0"
@@ -166,11 +161,12 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="&#009;•	">
+			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -185,16 +181,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Be careful stewards of ">
+			text="&#009;•	Be careful stewards of ">
 			</text>
 			<text
 			size="16.0"
@@ -204,16 +195,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Acknowledge ">
+			text="&#009;•	Acknowledge ">
 			</text>
 			<text
 			size="16.0"
@@ -224,10 +210,26 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Data ethics are necessary because historically, Black, Indigenous, people of color, and other socially marginalized populations in the United States have experienced extractive science that provided no benefit to them and even caused direct harm. These legacies of unethical actions affect how even the most well-intentioned requests for information for resilience planning are viewed in some communities.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -300,6 +302,14 @@
 			height="129.0"
 			id="159">
 			</icon>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
 		</textBlock>
 		<textBlock>
 			<text

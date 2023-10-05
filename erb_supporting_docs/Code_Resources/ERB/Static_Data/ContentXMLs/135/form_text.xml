@@ -8,6 +8,14 @@
 			text="Reflection and Next Steps">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -81,6 +89,14 @@
 			text="Completed a strategy chart for key actions">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -90,42 +106,35 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Do you feel that actions identified and discussed in the workshop are the rights ones for moving forward with? Do they represent key community concerns and equitable resilience issues?">
+			text="•	Do you feel that actions identified and discussed in the workshop are the rights ones for moving forward with? Do they represent key community concerns and equitable resilience issues?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Were there any concerns or disagreements in the workshop that you need to follow up on?">
+			text="•	Were there any concerns or disagreements in the workshop that you need to follow up on?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="What did you learn in the workshop that you need to consider moving forward?">
+			text="•	What did you learn in the workshop that you need to consider moving forward?">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

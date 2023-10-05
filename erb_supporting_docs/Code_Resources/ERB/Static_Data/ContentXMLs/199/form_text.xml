@@ -8,12 +8,28 @@
 			text="Core team kickoff">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="The core team starts to get to know one another and figure out how they will work together to coordinate the ERB project.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -36,34 +52,32 @@
 			<text
 			size="18.0"
 			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
 			fontStyle="Bold"
 			text="How to do this">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Team lead prepares by reviewing the “Core Team Kickoff” section of the Project Plan Template and inviting the team to a virtual or in-person meeting. They could also ask team members to review materials in advance such as an existing Hazard Mitigation Plan.">
+			text="•	Team lead prepares by reviewing the “Core Team Kickoff” section of the Project Plan Template and inviting the team to a virtual or in-person meeting. They could also ask team members to review materials in advance such as an existing Hazard Mitigation Plan.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="At the meeting, discuss topics such as:">
+			text="•	At the meeting, discuss topics such as:">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -96,6 +110,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="&#9;•	Decide on a regular meeting schedule">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

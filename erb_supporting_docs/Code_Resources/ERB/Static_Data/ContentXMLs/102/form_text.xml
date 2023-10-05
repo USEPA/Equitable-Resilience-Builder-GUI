@@ -8,6 +8,14 @@
 			text="Hazards Data">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -17,146 +25,99 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Earthquakes">
+			text="•	Earthquakes">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Wildfires">
+			text="•	Wildfires">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Floods">
+			text="•	Floods">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Tornados">
+			text="•	Tornados">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Hurricanes">
+			text="•	Hurricanes">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Industrial accidents">
+			text="•	Industrial accidents">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Transportation accidents">
+			text="•	Transportation accidents">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Radiological release">
+			text="•	Radiological release">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Oil spill">
+			text="•	Oil spill">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Chemical spill">
+			text="•	Chemical spill">
 			</text>
 		</textBlock>
 		<textBlock>
-		<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Terrorist attack">
+			text="•	Terrorist attack">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -181,6 +142,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Data sources we suggest using in ERB are local and online.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -225,6 +194,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text=".">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

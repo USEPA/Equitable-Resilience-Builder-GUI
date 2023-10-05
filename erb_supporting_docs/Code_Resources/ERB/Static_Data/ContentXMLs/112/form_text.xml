@@ -8,6 +8,14 @@
 			text="Reflection and Next Steps">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -107,6 +115,14 @@
 			text="Discussed root causes of hazard inequities and considerations for resilience actions">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -123,6 +139,14 @@
 			text="Take time to think about what you accomplished, challenges that arose, and new solutions you developed. Reflect upon and discuss the questions offered in the Reflection Diary, either individually or with your core team, and take some notes.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -132,29 +156,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Carry out Engagement and Outreach about what you’ve done and learned">
+			text="•	Carry out Engagement and Outreach about what you’ve done and learned">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Head on to the final part of ERB where you’ll begin to Strategize Actions to build resilience">
+			text="•	Head on to the final part of ERB where you’ll begin to Strategize Actions to build resilience">
 			</text>
 		</textBlock>
 	</container>

@@ -8,12 +8,28 @@
 			text="Assess Resilience">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Host a second workshop where community members, organizations, and agencies come together to collaboratively assess resilience.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="It provides a greater variety of perspectives on what the data mean and about the state of equitable resilience in your community.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -48,6 +72,14 @@
 			text="Plan a workshop, selecting one or all of the following activities:">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -60,6 +92,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text=" – Participants use blank maps or baseline hazards and equity maps to mark the locations of hazards and assets and discuss who is most affected in different places.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -76,6 +116,14 @@
 			text=" – Participants sort cards to assess how resilient and equitable the social, built, and natural environment systems are in your community.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -88,6 +136,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text=" – Discuss considerations for how resilience-building actions might need to take root causes of inequities into account.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

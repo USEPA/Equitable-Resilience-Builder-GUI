@@ -10,6 +10,14 @@
 		</textBlock>
 		<textBlock>
 			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Italic"
@@ -20,6 +28,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text=" (Glossary) ">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -54,6 +70,14 @@
 			text="of such plans [2].">
 			</text>
 		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<icon
 			width="200.0"
@@ -67,6 +91,14 @@
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Figure 1. Factors that affect the achievement of equitable resilience for a community">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -85,12 +117,28 @@
 			text="The impacts of climate change and disasters are not experienced evenly within and across communities. Social vulnerabilities affect how distinct populations and social groups experience these hazards (e.g. elderly, youth; persons with disabilities; unhoused individuals; low-income households; Black, Indigenous, and other persons of color; LGBTQIA+). They also affect who bears disproportionate impacts and cascading social, financial, health, and cultural consequences [3, 4].">
 			</text>
 		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Resilience, hazard mitigation, and climate change adaptations run the risk of making social and environmental inequalities worse. This can occur if historically marginalized groups are not listened to in planning. It can also occur if resilience solutions do not specifically attempt to identify and rectify inequalities.">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -109,6 +157,14 @@
 			text="The Equitable Resilience Builder (ERB) offers a guided process to support local resilience practitioners in integrating equitable resilience into planning (Figure 2).">
 			</text>
 		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<icon
 			width="200.0"
@@ -122,6 +178,14 @@
 			fontFamily="System"
 			fontStyle="Bold"
 			text="Figure 2. The ERB Process">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -141,16 +205,11 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A stronger network of community organizations and agencies to share information and resources.">
+			text="•	A stronger network of community organizations and agencies to share information and resources.">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -162,42 +221,27 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Facilitation guides for holding workshops">
+			text="•	Facilitation guides for holding workshops">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Activity guides for soliciting community perspectives">
+			text="•	Activity guides for soliciting community perspectives">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Local knowledge is valued and utilized alongside scientific data">
+			text="•	Local knowledge is valued and utilized alongside scientific data">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -209,29 +253,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Data and maps on hazards, equity, and resilient community systems">
+			text="•	Data and maps on hazards, equity, and resilient community systems">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Locally meaningful and measurable indicators to measure change in social, built, and natural environment systems">
+			text="•	Locally meaningful and measurable indicators to measure change in social, built, and natural environment systems">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -243,29 +277,27 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="A set of actions and next steps">
+			text="•	A set of actions and next steps">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Ongoing monitoring for change">
+			text="•	Ongoing monitoring for change">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -414,6 +446,14 @@
 			text="https://www.nist.gov/system/files/documents/2019/04/03/nist_community_resilience_12_page_brochure.pdf"
 			linkType="URL"
 			link="https://www.nist.gov/system/files/documents/2019/04/03/nist_community_resilience_12_page_brochure.pdf">
+			</text>
+		</textBlock>
+			<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

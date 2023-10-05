@@ -8,12 +8,28 @@
 			text="Maintain Outreach and Engagement">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Review and maintain your engagement and continue to expand outreach networks within your community.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -30,6 +46,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Continuing engagement expands the value and reach of your work, helping you stay accountable to your community and maintain trust. Revisiting your engagement goals ensures commitments to equity remain central moving forward and can contribute to future resilience efforts.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -49,42 +73,35 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Assess your progress - Review the Key Takeaways from Strategizing Action and the Implementation Worksheet">
+			text="•	Assess your progress - Review the Key Takeaways from Strategizing Action and the Implementation Worksheet">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Sustain relationships you have built - Continue to nurture trust and connections with community members (examples: reoccurring meetings, sharing progress at community events)">
+			text="•	Sustain relationships you have built - Continue to nurture trust and connections with community members (examples: reoccurring meetings, sharing progress at community events)">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share outputs - Make data and information available and accessible to the community and decision-makers (examples: website, factsheet, newsletter, social media page)">
+			text="•	Share outputs - Make data and information available and accessible to the community and decision-makers (examples: website, factsheet, newsletter, social media page)">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

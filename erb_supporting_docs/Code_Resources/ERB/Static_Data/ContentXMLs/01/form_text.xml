@@ -4,8 +4,16 @@
 			<text
 			size="18.0"
 			fontFamily="System"
-			fontStyle="Italic"
+			fontStyle="Bold"
 			text="Glossary of Terms and Acronyms">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -22,6 +30,14 @@
 			text="Acronym stands for community-based organization.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -34,6 +50,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Acronym stands for chemical, biological, radiological, or nuclear agents. It refers to categories of contaminants harmful to human health and the environment that could be released during a homeland security incident or other disaster.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -50,6 +74,14 @@
 			text="A group of people that live in the same vicinity (e.g., county, city, neighborhood) or share a common defining characteristic [1]. The community members involved in the ERB process may vary with respect to the type of planning, hazards of concern, and social organization.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -64,6 +96,14 @@
 			text="The ability for a group of people or a place to withstand, recover, adapt, and transform in the face of a stressor or disruption such as an environmental hazard, disaster, or climate change. The capacity and resources that support community resilience are a product of social, built, and natural environment systems at different scales.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -76,6 +116,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="A disruption or extreme that overwhelms the capacity of local ecological, governance, social, and infrastructure systems to function, leading to negative short and long-term impacts on infrastructure and the built environment, health and well-being, economy and livelihoods, culture, society, and ecosystems. Disasters are commonly viewed as acute incidents (e.g., tornado, hurricane, chemical spill), but can also be slow-onset (e.g., drought, sea-level rise) or even chronic (e.g., pollution, poverty) [2]. This definition does not distinguish anthropogenic from so-called natural disasters, following anthropological understandings of all disasters as “unnatural,” that is, the generative forces that shape both the incident and its impacts stem from societal phenomena [3]. For example, in an earthquake, it is not only geophysical forces that cause damaged buildings and loss of lives; human and social factors such as the robustness and enforcement of building codes, education about risk reduction behaviors, social networks, and humanitarian assistance also affect loss and suffering.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -148,6 +196,14 @@
 			text=" - &quot;Provision of support to people and groups, based on social context, for participation in governance, agency for self-determination, and quality of life&quot; [1].">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -160,6 +216,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="The capacity for communities to withstand, adapt, transform in the face of climate change and disasters in ways that are culturally appropriate, participatory, and responsive to social vulnerabilities to disasters and climate change, and to the potentially unequal benefits and burdens of adaptation and resilience interventions.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -176,6 +240,14 @@
 			text="&quot;The consistent and systematic fair, just, and impartial treatment of all individuals, including individuals who belong to underserved communities that have been denied such treatment, such as Black, Latino, and Indigenous and Native American persons, Asian Americans and Pacific Islanders and other persons of color; members of religious minorities; lesbian, gay, bisexual, transgender, and queer (LGBTQ+) persons; persons with disabilities; persons who live in rural areas; and persons otherwise adversely affected by persistent poverty or inequality&quot; [4] ">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -188,6 +260,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Any type of danger that a community or population might experience now or in the future, such as a flood, drought, pandemic, chemical spill, air pollution, leaking underground storage tank, and a changing climate.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -204,6 +284,14 @@
 			text="&quot;a body of observations, oral and written knowledge, innovations, practices, and beliefs developed by Tribes and Indigenous Peoples through interaction and experience with the environment&quot; [5].">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -216,6 +304,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="&quot;Multiple social identities such as race, gender, sexual orientation, SES [socioeconomic status], and disability intersect at the micro level of individual experience to reflect interlocking systems of privilege and oppression (i.e., racism, sexism, heterosexism, classism) at the macro social-structural level&quot; [6].">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -232,6 +328,14 @@
 			text="Acronym stands for lesbian, gay, bisexual, transgender, queer or questioning, intersex, and asexual.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -244,6 +348,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Acronym stands for non-governmental organization.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -260,6 +372,14 @@
 			text="A process for making maps that uses techniques to solicit input from members of the public in representing spatial information, especially about the relationship of people to their local environment and community features.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -272,6 +392,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Summary measures that provide information on the state of or change in the built, social, and natural environment systems that support community resilience.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -288,12 +416,28 @@
 			text="The ways in which distinct populations, social groups, and communities are differentially made vulnerable to hazards, disasters, and climate change. These ways often reflect historic or contemporary social and environmental injustices. Socioeconomic, health, cultural, governance, environmental, and historical factors shape exposure and susceptibility to incidents. These factors affect disparities in knowledge, resources, and power to prepare for and recover from incidents. They also influence the degree to which individuals, families, neighborhoods, and communities face cascading consequences over time to mental and physical health, well-being, economic security, and social life [7, 8].">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="*Definitions are from the research team">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

@@ -8,6 +8,14 @@
 			text="Results to Action Workshop Agenda Builder">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -17,57 +25,43 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="How long should the workshop be? Consider the time constraints of your participants, and whether you will be able to offer food.">
+			text="•	How long should the workshop be? Consider the time constraints of your participants, and whether you will be able to offer food.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Do you have specific outcomes you need from the workshop? For example, do you need a longer list of potential actions with less detail, or a shorter list of actions with more detail? Do you need to have actions ranked in order of priority? Do you need a strategy plan or will you reconvene and develop that later?">
+			text="•	Do you have specific outcomes you need from the workshop? For example, do you need a longer list of potential actions with less detail, or a shorter list of actions with more detail? Do you need to have actions ranked in order of priority? Do you need a strategy plan or will you reconvene and develop that later?">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Use the Results to Action Workshop Agenda Builder to select the activities you want to include in your workshop.">
+			text="•	Use the Results to Action Workshop Agenda Builder to select the activities you want to include in your workshop.">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Part 1 – Warm up activity (pick one or both)">
+			text="•	Part 1 – Warm up activity (pick one or both)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -75,13 +69,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="o Emergency preparedness role playing (30 minutes)">
+			text="&#9;o Disaster Scenario Exercise (30 minutes)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -89,26 +77,15 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="o Storytelling equity implementation (30 minutes)">
+			text="&#9;o Equity Storytelling (30 minutes)">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Part 2 – Action Brainstorming (Do all 3)">
+			text="•	Part 2 – Action Identification (Do all 3)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -116,13 +93,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="o Action Area Vision Statements (30 minutes)">
+			text="&#9;o Action Area Vision Statements (30 minutes)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -130,13 +101,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="o Actions Brainstorming (45 minutes)">
+			text="&#9;o Actions Brainstorming (45 minutes)">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -144,115 +109,23 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="&#9;">
-			</text>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="o Action Evaluation">
+			text="&#9;o Actions Evaluation (1-2 hours)">
 			</text>
 		</textBlock>
 		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Option 1: A complete list of possible actions with an understanding of how they would increase equitable resilience. Complete parts 1 and 2A.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Option 2: A list of actions that is prioritized according to what the community participants feel is most important. Complete parts 1,2A and 3.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Option 3: A short list of actions with more detail. Complete parts 1, 2B, and 3.">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Part 1 (20 minutes)">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Part 2 Option A (30-45 minutes)">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Part 2 Option B (90 minutes)">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
-			<text
-			size="16.0"
-			fontFamily="System"
-			fontStyle="Regular"
-			text="Part 3 (40 minutes)">
-			</text>
-		</textBlock>
-		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Part 3 – Strategy planning (optional) (45 minutes)">
+			text="•	Part 3 – Strategy planning (optional) (45 minutes)">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Part 4 – Workshop Wrap-up (20 minutes)">
+			text="•	Part 4 – Workshop Wrap-up (20 minutes)">
 			</text>
 		</textBlock>
 	</container>

@@ -8,12 +8,28 @@
 			text="What is a Trauma-Informed Approach?">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="A trauma-informed approach to equitable resilience planning recognizes that individuals experience climate change and hazards differently and emphasizes trust, safety, history, and relationship building to avoid re-traumatization.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -44,6 +60,14 @@
 			text=" is an event or series of events experienced as harmful or life-threatening that has persistent adverse effects on individual functioning, and mental, physical, social, emotional, or spiritual well-being [1]. That trauma may include the emotional toll of disaster on survivors, as well as experiences of marginalization and discrimination.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -64,6 +88,14 @@
 			text=" when engaging with communities in resilience and recovery planning.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<icon
 			width="200.0"
@@ -77,6 +109,14 @@
 			fontFamily="System"
 			fontStyle="Italic"
 			text="Figure 1 Six principles to guide a trauma-informed approach, adapted from [2].">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -112,94 +152,67 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Understanding and avoiding potential triggers">
+			text="&#009;•	Understanding and avoiding potential triggers">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Prioritizing relationship building">
+			text="&#009;•	Prioritizing relationship building">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Creating safe environments where individuals can speak without judgement">
+			text="&#009;•	Creating safe environments where individuals can speak without judgement">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Providing the option of smaller-sized gatherings and private sessions">
+			text="&#009;•	Providing the option of smaller-sized gatherings and private sessions">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Maintaining confidentiality to ensure cultural safety">
+			text="&#009;•	Maintaining confidentiality to ensure cultural safety">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Spending time with the community to get to know the people and their culture">
+			text="&#009;•	Spending time with the community to get to know the people and their culture">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Establishing follow-up protocols so communities can access additional resources">
+			text="&#009;•	Establishing follow-up protocols so communities can access additional resources">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -208,6 +221,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="The Equitable Resilience Builder encourages a trauma-informed approach throughout the community planning process. For example, this means understanding historical context or working with an advisory board before engaging a community or ensuring a facilitator is trained in trauma-informed and justice approaches. Activities included in the ERB sections, such as storytelling, provide space and opportunity to build trust and empathy, and integrate these understandings into equitable resilience planning efforts.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

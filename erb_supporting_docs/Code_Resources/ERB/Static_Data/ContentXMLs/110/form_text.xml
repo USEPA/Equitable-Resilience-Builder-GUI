@@ -8,12 +8,28 @@
 			text="Sort Resilience Indicators">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
 			text="Workshop participants arrange indicator cards to assess the resilience and equity of their community’s built, natural, and social environment systems.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -32,6 +48,14 @@
 			text="Collaboratively evaluating how well local systems can deal with current and future hazards uplifts local voices in resilience planning.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -41,68 +65,51 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Share key results from resilient systems data gathering">
+			text="•	Share key results from resilient systems data gathering">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Divide into 3 breakout groups, one for each system, and follows the instructions and diagrams in the Indicator Activity Instructions to sort the indicator cards in-person, or use the Indicator Center to sort the cards within the tool">
+			text="•	Divide into 3 breakout groups, one for each system, and follows the instructions and diagrams in the Indicator Activity Instructions to sort the indicator cards in-person, or use the Indicator Center to sort the cards within the tool">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Review what the other groups have done">
+			text="•	Review what the other groups have done">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Hold a large group discussion on the most urgent issues to address to build more resilient systems">
+			text="•	Hold a large group discussion on the most urgent issues to address to build more resilient systems">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="10.0"
-			height="10.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="After the workshop, fill out the Key Takeaways form">
+			text="•	After the workshop, fill out the Key Takeaways form">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

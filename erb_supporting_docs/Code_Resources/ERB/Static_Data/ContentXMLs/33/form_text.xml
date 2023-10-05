@@ -8,6 +8,14 @@
 			text="Reflection and Next Steps">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="16.0"
@@ -68,6 +76,14 @@
 			text="Prepared your project plan">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -107,55 +123,35 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="12.0"
-			height="12.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Is the core team representative of the community?">
+			text="•	Is the core team representative of the community?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="12.0"
-			height="12.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="What can we do to enable everyone on the team to participate?">
+			text="•	What can we do to enable everyone on the team to participate?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="12.0"
-			height="12.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Do we want to modify our initial goals, or add new ones?">
+			text="•	Do we want to modify our initial goals, or add new ones?">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="12.0"
-			height="12.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Does anyone on the team have issues or concerns that they would like to be addressed?">
+			text="•	Does anyone on the team have issues or concerns that they would like to be addressed?">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -174,6 +170,14 @@
 			text="Take any actions needed to adjust your approach.">
 			</text>
 		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
 		<textBlock>
 			<text
 			size="18.0"
@@ -183,29 +187,19 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="12.0"
-			height="12.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Adjust your approach, as needed, based on this reflection">
+			text="•	Adjust your approach, as needed, based on this reflection">
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon
-			width="12.0"
-			height="12.0"
-			id="74">
-			</icon>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Go to the next section in the tool: Engage Your Community">
+			text="•	Go to the next section in the tool: Engage Your Community">
 			</text>
 		</textBlock>
 	</container>
