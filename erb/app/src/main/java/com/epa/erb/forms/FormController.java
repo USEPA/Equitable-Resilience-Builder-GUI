@@ -20,6 +20,7 @@ import com.epa.erb.utility.IdAssignments;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeItem;
@@ -29,6 +30,7 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -73,20 +75,47 @@ public class FormController {
 				}
 			});
 		} else {
-			Stage stage = new Stage();
-			ScrollPane scrollPane = new ScrollPane();
-			VBox vBox = new VBox();
-			ImageView imageView = new ImageView();
-			String enlargedId = getEnlargedId(id);
-			imageView.setImage(new Image(fileHandler.getStaticIconImageFile(enlargedId).getPath()));
-			vBox.getChildren().add(imageView);
-			scrollPane.setContent(vBox);
-			Scene scene = new Scene(scrollPane);
-			stage.setScene(scene);
-			stage.setWidth(constants.getPrefWidthForImages());
-			stage.setHeight(constants.getPrefHeightForImages());
-			stage.showAndWait();
+			loadImagePopUp(id);
+//			Stage stage = new Stage();
+//			VBox vBox = new VBox();
+//			vBox.setAlignment(Pos.CENTER);
+//			ImageView imageView = new ImageView();
+//			String enlargedId = getEnlargedId(id);
+//			Image imageToLoad = new Image(fileHandler.getStaticIconImageFile(enlargedId).getPath());
+//			double width = imageToLoad.getWidth();
+//			double height = imageToLoad.getHeight();
+//			imageView.setImage(imageToLoad);
+//			imageView.setFitWidth(width);
+//			imageView.setFitHeight(height);
+//
+//			vBox.getChildren().add(imageView);
+//			Scene scene = new Scene(vBox);
+//			stage.setScene(scene);
+//			imageView.fitWidthProperty().bind(vBox.widthProperty());
+//			imageView.fitHeightProperty().bind(vBox.heightProperty());
+//			stage.showAndWait();
 		}
+	}
+	
+	private void loadImagePopUp(String imageId) {
+		Stage stage = new Stage();
+		VBox vBox = new VBox();
+		vBox.setAlignment(Pos.CENTER);
+		ImageView imageView = new ImageView();
+		String enlargedId = getEnlargedId(imageId);
+		Image imageToLoad = new Image(fileHandler.getStaticIconImageFile(enlargedId).getPath());
+		double width = imageToLoad.getWidth();
+		double height = imageToLoad.getHeight();
+		imageView.setImage(imageToLoad);
+		imageView.setFitWidth(width);
+		imageView.setFitHeight(height);
+
+		vBox.getChildren().add(imageView);
+		Scene scene = new Scene(vBox);
+		stage.setScene(scene);
+		imageView.fitWidthProperty().bind(vBox.widthProperty());
+		imageView.fitHeightProperty().bind(vBox.heightProperty());
+		stage.showAndWait();
 	}
 	
 	private String getEnlargedId(String id) {
@@ -98,10 +127,6 @@ public class FormController {
 			return "113";
 		}else if(id.contentEquals("159")){
 			return "146";
-		}else if(id.contentEquals("160")){
-			return "148";
-		}else if(id.contentEquals("161")){
-			return "149";
 		}else if(id.contentEquals("163")){
 			return "154";
 		} else if(id.contentEquals("79")){
@@ -116,16 +141,6 @@ public class FormController {
 			return "184";
 		} else if (id.contentEquals("185")) {
 			return "186";
-		}else if (id.contentEquals("188")) {
-			return "194";
-		}else if (id.contentEquals("189")) {
-			return "195";
-		}else if (id.contentEquals("190")) {
-			return "196";
-		}else if (id.contentEquals("191")) {
-			return "197";
-		}else if (id.contentEquals("192")) {
-			return "198";
 		}
 		return id;
 	}
@@ -161,13 +176,15 @@ public class FormController {
 			}
 		} 
 //		else if (linkType.contentEquals("internalResource")) {
-//			internalPanelLinkClicked(link);
-//		} else if (linkType.contentEquals("internalStep")) {
-//			internalPanelLinkClicked(link);
-//		} else if (linkType.contentEquals("internalActivity")) {
-//			internalPanelLinkClicked(link);
-//		}
-		else if (linkType.contentEquals("externalDOC")) {
+//		internalPanelLinkClicked(link);
+//	} else if (linkType.contentEquals("internalStep")) {
+//		internalPanelLinkClicked(link);
+//	} else if (linkType.contentEquals("internalActivity")) {
+//		internalPanelLinkClicked(link);
+//	}
+		else if (linkType.contentEquals("image")) {
+			loadImagePopUp(link);
+		} else if (linkType.contentEquals("externalDOC")) {
 			externalDOCLinkClicked(link, project);
 		} else if (linkType.contentEquals("URL")) {
 			urlLinkClicked(link);

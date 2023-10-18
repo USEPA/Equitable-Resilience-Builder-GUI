@@ -258,8 +258,8 @@
 	<container id="topPanelVBox" expands="true">
 		<textBlock>
 			<icon
-			width="500.0"
-			height="391.0"
+			width="400.0"
+			height="312.0"
 			id="190">
 			</icon>
 		</textBlock>

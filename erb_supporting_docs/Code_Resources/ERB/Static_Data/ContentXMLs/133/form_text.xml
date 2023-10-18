@@ -213,8 +213,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Strategy Chart Example"
-			linkType="internal"
-			link="152">
+			linkType="image"
+			link="153">
 			</text>
 		</textBlock>
 	</container>

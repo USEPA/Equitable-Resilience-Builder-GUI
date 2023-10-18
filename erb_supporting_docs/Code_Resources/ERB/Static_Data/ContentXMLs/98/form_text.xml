@@ -213,8 +213,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Data Scoping Example"
-			linkType="internal"
-			link="114">
+			linkType="image"
+			link="115">
 			</text>
 		</textBlock>	
 	</container>

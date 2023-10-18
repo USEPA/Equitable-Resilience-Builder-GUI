@@ -253,8 +253,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Example Map with Stickies"
-			linkType="internal"
-			link="121">
+			linkType="image"
+			link="120">
 			</text>
 		</textBlock>			
 	</container>
