@@ -15,6 +15,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
+			wrap="250"
 			text="Community demographics and economics">
 			</text>
 		</textBlock>
@@ -23,6 +24,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Online Sources">
 			</text>
 		</textBlock>
@@ -32,6 +34,7 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="EPA EJ Screen"
+			wrap="200"
 			linkType="URL"
 			link="https://www.epa.gov/ejscreen">
 			</text>
@@ -41,6 +44,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="200"
 			text="State EJ tools">
 			</text>
 		</textBlock>
@@ -49,6 +53,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
+			wrap="200"
 			text="Neighborhoods at Risk"
 			linkType="URL"
 			link="https://headwaterseconomics.org/tools/neighborhoods-at-risk/tool-about/">
@@ -59,6 +64,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Local Sources">
 			</text>
 		</textBlock>
@@ -67,6 +73,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="200"
 			text="Planning department">
 			</text>
 		</textBlock>
@@ -77,6 +84,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
+			wrap="200"
 			text="Health issues">
 			</text>
 		</textBlock>
@@ -85,6 +93,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Online Sources">
 			</text>
 		</textBlock>
@@ -93,6 +102,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="200"
 			text="State health department">
 			</text>
 		</textBlock>
@@ -101,6 +111,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
+			wrap="200"
 			text="CDC Interactive Atlas"
 			linkType="URL"
 			link="https://www.cdc.gov/dhdsp/maps/atlas/index.htm">
@@ -111,6 +122,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Local Sources">
 			</text>
 		</textBlock>
@@ -119,6 +131,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="200"
 			text="Local health department">
 			</text>
 		</textBlock>
@@ -129,6 +142,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
+			wrap="200"
 			text="Local equity concerns">
 			</text>
 		</textBlock>
@@ -137,6 +151,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Online Sources">
 			</text>
 		</textBlock>
@@ -146,6 +161,7 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="EPA EJ Screen"
+			wrap="200"
 			linkType="URL"
 			link="https://www.epa.gov/ejscreen">
 			</text>
@@ -155,6 +171,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Local Sources">
 			</text>
 		</textBlock>
@@ -163,6 +180,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="200"
 			text="Community Based Organizations">
 			</text>
 		</textBlock>

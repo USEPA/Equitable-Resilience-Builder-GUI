@@ -15,6 +15,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
+			wrap="200"
 			text="Climate Change">
 			</text>
 		</textBlock>
@@ -23,6 +24,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Online Sources">
 			</text>
 		</textBlock>
@@ -32,6 +34,7 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Climate Mapping for Resilience and Adaptation CMRA"
+			wrap="200"
 			linkType="URL"
 			link="https://resilience.climate.gov/">
 			</text>
@@ -42,6 +45,7 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Neighborhoods at Risk"
+			wrap="200"
 			linkType="URL"
 			link="https://headwaterseconomics.org/tools/neighborhoods-at-risk/tool-about/">
 			</text>
@@ -51,6 +55,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Local Sources">
 			</text>
 		</textBlock>
@@ -59,6 +64,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="200"
 			text="Hazard Mitigation Plan, state climate adaptation plan">
 			</text>
 		</textBlock>
@@ -69,6 +75,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
+			wrap="200"
 			text="Contaminated Sites">
 			</text>
 		</textBlock>
@@ -77,6 +84,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Online Sources">
 			</text>
 		</textBlock>
@@ -85,6 +93,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
+			wrap="200"
 			text="EPA Cleanups in my community"
 			linkType="URL"
 			link="https://www.epa.gov/cleanups/cleanups-my-community">
@@ -95,6 +104,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Local Sources">
 			</text>
 		</textBlock>
@@ -103,6 +113,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="200"
 			text="Environmental Department">
 			</text>
 		</textBlock>
@@ -113,6 +124,7 @@
 			size="18.0"
 			fontFamily="System"
 			fontStyle="Bold"
+			wrap="200"
 			text="Earthquakes">
 			</text>
 		</textBlock>
@@ -121,6 +133,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Online Sources">
 			</text>
 		</textBlock>
@@ -129,6 +142,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
+			wrap="200"
 			text="FEMA National Risk Index"
 			linkType="URL"
 			link="https://www.fema.gov/flood-maps/products-tools/national-risk-index">
@@ -139,6 +153,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
+			wrap="200"
 			text="Possible Local Sources">
 			</text>
 		</textBlock>
@@ -147,6 +162,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="200"
 			text="Hazard Mitigation Plan">
 			</text>
 		</textBlock>

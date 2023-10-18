@@ -23,6 +23,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="300"
 			text="An EPA Regional staff member and a community organizer for environmental justice are working together to convene and activate a new group of community members in a rural county with EJ issues. ">
 			</text>
 		</textBlock>
@@ -45,6 +46,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="300"
 			text="A local environmental education and advocacy organization is leading the development of a watershed resilience plan and wants to incorporate equity into the plan. ">
 			</text>
 		</textBlock>
@@ -67,6 +69,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			wrap="300"
 			text="A county emergency manager is tasked with leading a committee to update the county's Hazard Mitigation Plan. The previous plan has plenty on natural hazards but hasn't incorporated lessons learned from the COVID-19 pandemic.">
 			</text>
 		</textBlock>

@@ -15,9 +15,9 @@
                   <VBox fx:id="titleVBox" />
                   <HBox fx:id="hBox" alignment="CENTER" spacing="20.0">
                      <children>
-                        <VBox fx:id="leftVBox" />
-                        <VBox fx:id="centerVBox" />
-                        <VBox fx:id="rightVBox" />
+                        <VBox fx:id="leftVBox" alignment="TOP_CENTER" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="centerVBox" alignment="TOP_CENTER" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="rightVBox" alignment="TOP_CENTER" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>

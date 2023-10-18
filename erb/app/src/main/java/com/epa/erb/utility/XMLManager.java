@@ -28,6 +28,7 @@ import com.epa.erb.noteboard.NoteBoardRowController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -38,6 +39,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class XMLManager {
@@ -502,6 +504,12 @@ public class XMLManager {
 											String fontFamily = textElement.getAttribute("fontFamily");
 											String fontStyle = textElement.getAttribute("fontStyle");
 											String text = textElement.getAttribute("text");
+											String wrap = textElement.getAttribute("wrap");
+										
+											double wrapLength = 0;
+											if(wrap != null && wrap.length() > 0) {
+												wrapLength = Double.parseDouble(wrap);
+											}
 											Text t = new Text(text);
 											if (fontStyle.contentEquals("Hyperlink")) {
 												String linkType = textElement.getAttribute("linkType");
@@ -521,7 +529,10 @@ public class XMLManager {
 													t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 												}
 											}
-											textFlow.getChildren().add(t);
+
+											if(wrapLength > 0) t.setWrappingWidth(wrapLength);
+											textFlowHBox.getChildren().add(t);										
+
 										} else if (nodeName.contentEquals("icon")) {
 											Node iconNode = childNode;
 											// Icon
@@ -572,13 +583,14 @@ public class XMLManager {
 													listVBox.getChildren().add(tflow);
 												}
 											}
+											
 											textFlowHBox.getChildren().add(listVBox);
 										}
 									}
 								}
 								textFlowHBox.setSpacing(10.0);
-								textFlowHBox.getChildren().add(textFlow);											
-								textFlowHBox.setAlignment(Pos.CENTER_LEFT);
+								textFlowHBox.getChildren().add(textFlow);
+//								textFlowHBox.setAlignment(Pos.CENTER_LEFT);
 								textBlocks.add(textFlowHBox);
 							}
 						}
@@ -588,6 +600,7 @@ public class XMLManager {
 				return contentHashMap;
 			} catch (Exception e) {
 				logger.error(e.getMessage());
+				e.printStackTrace();
 			}
 		} else {
 			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
