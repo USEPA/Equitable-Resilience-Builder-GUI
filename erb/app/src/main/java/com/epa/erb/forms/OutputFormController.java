@@ -174,7 +174,7 @@ public class OutputFormController extends FormController implements Initializabl
 	
 	private TextArea createTextArea(ArrayList<Text> textBlock) {
 		TextArea textArea = new TextArea();
-		
+		textArea.setWrapText(true);
 		String textString = "";
 		String textType = null;
 		for(Text text: textBlock) {
