@@ -75,25 +75,9 @@ public class FormController {
 				}
 			});
 		} else {
-			loadImagePopUp(id);
-//			Stage stage = new Stage();
-//			VBox vBox = new VBox();
-//			vBox.setAlignment(Pos.CENTER);
-//			ImageView imageView = new ImageView();
-//			String enlargedId = getEnlargedId(id);
-//			Image imageToLoad = new Image(fileHandler.getStaticIconImageFile(enlargedId).getPath());
-//			double width = imageToLoad.getWidth();
-//			double height = imageToLoad.getHeight();
-//			imageView.setImage(imageToLoad);
-//			imageView.setFitWidth(width);
-//			imageView.setFitHeight(height);
-//
-//			vBox.getChildren().add(imageView);
-//			Scene scene = new Scene(vBox);
-//			stage.setScene(scene);
-//			imageView.fitWidthProperty().bind(vBox.widthProperty());
-//			imageView.fitHeightProperty().bind(vBox.heightProperty());
-//			stage.showAndWait();
+			if(!idAssignments.getIconIdAssignments().contains(id)) {
+				loadImagePopUp(id);
+			}
 		}
 	}
 	
