@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.AlternativeFormController;
+import com.epa.erb.forms.FormController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.MainPanelHandler;
@@ -146,6 +147,11 @@ public class ERBContainerController implements Initializable{
 				faqMenu.getItems().add(menuItem);
 			}
 		}
+		MenuItem iconsMenuItem = new MenuItem ("Centering Equity Icons");
+		iconsMenuItem.setId("204");
+		FormController fController = new FormController(app,app.getEngagementActionController());
+		iconsMenuItem.setOnAction(e -> fController.loadImagePopUp("204"));
+		faqMenu.getItems().add(iconsMenuItem);
 	}
 	
 	private void populateAboutMenu() {

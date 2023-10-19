@@ -27,6 +27,7 @@ public class IdAssignments {
 		faqIdAssignments.add("22");
 		faqIdAssignments.add("23");
 		faqIdAssignments.add("26");
+		faqIdAssignments.add("204");
 	}
 	
 	public void fillIconIdAssignments() {

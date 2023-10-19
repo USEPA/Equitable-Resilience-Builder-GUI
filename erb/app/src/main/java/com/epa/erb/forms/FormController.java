@@ -81,7 +81,7 @@ public class FormController {
 		}
 	}
 	
-	private void loadImagePopUp(String imageId) {
+	public void loadImagePopUp(String imageId) {
 		Stage stage = new Stage();
 		VBox vBox = new VBox();
 		vBox.setAlignment(Pos.CENTER);
@@ -125,6 +125,8 @@ public class FormController {
 			return "184";
 		} else if (id.contentEquals("185")) {
 			return "186";
+		}else if (id.contentEquals("203")) {
+			return "119";
 		}
 		return id;
 	}
