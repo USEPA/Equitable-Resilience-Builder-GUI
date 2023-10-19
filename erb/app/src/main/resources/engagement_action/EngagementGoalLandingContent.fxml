@@ -1,10 +1,233 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<VBox fx:id="vBox" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" alignment="TOP_CENTER" prefHeight="352.0" prefWidth="1033.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
+   <children>
+      <HBox alignment="TOP_RIGHT" spacing="10.0">
+         <children>
+            <VBox prefHeight="206.0" prefWidth="636.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Welcome to your project! Here is some important information to know before you begin." wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <SVGPath content="M18.271,9.212H3.615l4.184-4.184c0.306-0.306,0.306-0.801,0-1.107c-0.306-0.306-0.801-0.306-1.107,0L1.21,9.403C1.194,9.417,1.174,9.421,1.158,9.437c-0.181,0.181-0.242,0.425-0.209,0.66c0.005,0.038,0.012,0.071,0.022,0.109c0.028,0.098,0.075,0.188,0.142,0.271c0.021,0.026,0.021,0.061,0.045,0.085c0.015,0.016,0.034,0.02,0.05,0.033l5.484,5.483c0.306,0.307,0.801,0.307,1.107,0c0.306-0.305,0.306-0.801,0-1.105l-4.184-4.185h14.656c0.436,0,0.788-0.353,0.788-0.788S18.707,9.212,18.271,9.212z" />
+                        <TextFlow style="-fx-border-color: orange;">
+                           <children>
+                              <Label text="Navigation:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Move through pages in the 5 sections of the tool using the Table of Contents or clicking Previous/Next.">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </TextFlow>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_RIGHT" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <SVGPath content="M18.271,9.212H3.615l4.184-4.184c0.306-0.306,0.306-0.801,0-1.107c-0.306-0.306-0.801-0.306-1.107,0L1.21,9.403C1.194,9.417,1.174,9.421,1.158,9.437c-0.181,0.181-0.242,0.425-0.209,0.66c0.005,0.038,0.012,0.071,0.022,0.109c0.028,0.098,0.075,0.188,0.142,0.271c0.021,0.026,0.021,0.061,0.045,0.085c0.015,0.016,0.034,0.02,0.05,0.033l5.484,5.483c0.306,0.307,0.801,0.307,1.107,0c0.306-0.305,0.306-0.801,0-1.105l-4.184-4.185h14.656c0.436,0,0.788-0.353,0.788-0.788S18.707,9.212,18.271,9.212z" rotate="123.7" />
+                     </children>
+                  </HBox>
+                  <VBox spacing="5.0" style="-fx-border-color: orange;">
+                     <children>
+                        <Label minWidth="102.0" text="Documents:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextFlow>
+                           <children>
+                              <Label text="My Portfolio:" underline="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Access saved files in your project.">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                        <TextFlow>
+                           <children>
+                              <Label text="Upload File:" underline="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Add image, text, or other files to My Portfolio.">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                        <TextFlow>
+                           <children>
+                              <Label text="Worksheet Index:" underline="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" See the entire list of supporting materials.">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <StackPane maxWidth="1010.0">
+         <children>
+            <HBox maxWidth="1010.0" spacing="20.0" style="-fx-border-color: orange;">
+               <children>
+                  <VBox spacing="10.0" HBox.hgrow="NEVER">
+                     <children>
+                        <ImageView fitHeight="271.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/t1.png" />
+                           </image>
+                        </ImageView>
+                        <TextFlow>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="See the ERB 1.0 ">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Label text="User Guide">
+                                 <font>
+                                    <Font name="System Bold Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" for detailed instructions">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <TextFlow>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activity page layout:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Each section contains pages with activities in the ERB process. The pages have:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                        <TextFlow>
+                           <children>
+                              <Label text="Main text box:" underline="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" An overview of the activity">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                        <TextFlow>
+                           <children>
+                              <Label text="What you will need:" underline="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Next to the clipboard are links to supporting materials. Clicking on the link opens up Word, PDF, or Excel documents that contain activity instructions or worksheets. Users can edit the files, which are saved to My Portfolio. Re-open files from My Portfolio, Worksheet Index, or activity pages.">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                        <TextFlow>
+                           <children>
+                              <Label text="Centering Equity:" underline="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Contains tips for how to apply equity principles when carrying out activities.">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <AnchorPane maxWidth="1010.0">
+               <children>
+                  <Line endX="91.0" endY="2.0" layoutX="321.0" layoutY="75.0" startX="-124.70709228515625" startY="18.4141845703125" />
+                  <Line endX="128.0" endY="-19.328369140625" layoutX="291.0" layoutY="257.0" startX="114.0" startY="-19.328369140625" />
+                  <Line endX="87.5" endY="14.5" layoutX="118.0" layoutY="74.0" startX="79.0" startY="18.70709228515625" />
+                  <Line endX="93.0" endY="-5.5" layoutX="112.0" layoutY="103.0" startX="84.29290771484375" startY="-9.5858154296875" />
+                  <Line endX="104.0" endY="21.0" layoutX="305.0" layoutY="222.0" startX="99.5" startY="16.171630859375" />
+                  <Line endX="87.79290771484375" endY="22.46453857421875" layoutX="316.0" layoutY="215.0" startX="94.0" startY="18.0" />
+                  <Line endX="128.0" endY="-19.328369140625" layoutX="289.0" layoutY="134.0" startX="114.0" startY="-19.328369140625" />
+                  <Line endX="87.79290771484375" endY="22.46453857421875" layoutX="314.0" layoutY="92.0" startX="94.0" startY="18.0" />
+                  <Line endX="104.0" endY="21.0" layoutX="303.0" layoutY="99.0" startX="99.5" startY="16.171630859375" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
 </VBox>
