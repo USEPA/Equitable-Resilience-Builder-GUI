@@ -123,6 +123,7 @@ public class OutputFormController extends FormController implements Initializabl
 			textHBox.getChildren().add(copyText);
 			textHBox.getChildren().add(textArea);
 			textHBox.setSpacing(20.0);
+			textArea.setWrapText(true);
 			dynamicAreaVBox.getChildren().add(textHBox);
 		}
 		dynamicAreaVBox.setStyle("-fx-border-color: gray");
@@ -132,6 +133,7 @@ public class OutputFormController extends FormController implements Initializabl
 		HBox buttonHBox = new HBox();
 		buttonHBox.setAlignment(Pos.CENTER_RIGHT);
 		Button addButton = new Button ("Add Action Area");
+		addButton.getStylesheets().add(getClass().getResource("/button.css").toString());
 		buttonHBox.getChildren().add(addButton);
 		dynamicAreaVBox.getChildren().add(buttonHBox);
 		dynamicAreaVBox.setId("dynamic area");
@@ -190,6 +192,7 @@ public class OutputFormController extends FormController implements Initializabl
 			}
 		}
 		textArea.setId("area");
+		textArea.setWrapText(true);
 		textArea.setMinHeight(100);
 		return textArea;
 	}
