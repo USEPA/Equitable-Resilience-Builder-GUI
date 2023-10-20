@@ -129,27 +129,31 @@ public class ERBContainerController implements Initializable{
 	}
 	
 	private void populateResourceMenu() {
-		for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
-			if(idAssignments.getResourceIdAssignments().contains(erbContentItem.getId())){
-				String name = erbContentItem.getLongName();
-				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-				resourcesMenu.getItems().add(menuItem);
+		for(String id: idAssignments.getResourceIdAssignments()) {
+			for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
+				if(id.equals(erbContentItem.getId())){
+					String name = erbContentItem.getLongName();
+					MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+					resourcesMenu.getItems().add(menuItem);
+				}
 			}
 		}
 	}
 	
 	
 	private void populateFAQMenu() {
-		for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
-			if(idAssignments.getFAQIdAssignments().contains(erbContentItem.getId())){
-				String name = erbContentItem.getLongName();
-				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-				faqMenu.getItems().add(menuItem);
+		for (String id : idAssignments.getFAQIdAssignments()) {
+			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
+				if (id.equals(erbContentItem.getId())) {
+					String name = erbContentItem.getLongName();
+					MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+					faqMenu.getItems().add(menuItem);
+				}
 			}
 		}
-		MenuItem iconsMenuItem = new MenuItem ("Centering Equity Icons");
+		MenuItem iconsMenuItem = new MenuItem("Centering Equity Icons");
 		iconsMenuItem.setId("204");
-		FormController fController = new FormController(app,app.getEngagementActionController());
+		FormController fController = new FormController(app, app.getEngagementActionController());
 		iconsMenuItem.setOnAction(e -> fController.loadImagePopUp("204"));
 		faqMenu.getItems().add(iconsMenuItem);
 	}

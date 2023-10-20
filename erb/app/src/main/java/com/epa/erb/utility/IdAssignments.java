@@ -21,13 +21,13 @@ public class IdAssignments {
 	}
 	
 	public void fillFAQIdAssignments() {
-		faqIdAssignments.add("11");
-		faqIdAssignments.add("13");
-		faqIdAssignments.add("21");
-		faqIdAssignments.add("22");
-		faqIdAssignments.add("23");
-		faqIdAssignments.add("26");
-		faqIdAssignments.add("204");
+		faqIdAssignments.add("26"); //FAQ
+		faqIdAssignments.add("23"); //My Portfolio
+		faqIdAssignments.add("22"); //Key Takeaways
+		faqIdAssignments.add("21"); //Reflection Diary
+		faqIdAssignments.add("11"); //Supporting Materials
+		faqIdAssignments.add("13"); //Indicator Card Sorting
+		faqIdAssignments.add("204"); //Centering Equity Icons
 	}
 	
 	public void fillIconIdAssignments() {
@@ -54,14 +54,14 @@ public class IdAssignments {
 	}
 	
 	public void fillResourceIdAssignments() {
-		resourceIdAssignments.add("01");
-		resourceIdAssignments.add("02");
-		resourceIdAssignments.add("03");
-		resourceIdAssignments.add("04");
-		resourceIdAssignments.add("05");
-		resourceIdAssignments.add("06");
-		resourceIdAssignments.add("10");
-		resourceIdAssignments.add("187");
+		resourceIdAssignments.add("01"); //Glossary
+		resourceIdAssignments.add("05"); //Data Ethics
+		resourceIdAssignments.add("02"); //Storytelling
+		resourceIdAssignments.add("04"); //Equitable Resilience
+		resourceIdAssignments.add("10"); //Youth Engagement Guide
+		resourceIdAssignments.add("03"); //Trauma-Informed Approach
+		resourceIdAssignments.add("06"); //Resilience Indicators Background
+		resourceIdAssignments.add("187"); //Equity Principles for Resilience Planning
 	}
 	
 	public void fillChapterIdAssignemnts() {
