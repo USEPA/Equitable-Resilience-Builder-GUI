@@ -353,3 +353,5 @@
 | ERROR | 2023-10-18 10:04:18 | XMLManager.java:604 | empty String
 | ERROR | 2023-10-18 13:25:38 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
 | ERROR | 2023-10-18 13:26:29 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
+| ERROR | 2023-10-19 15:45:31 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
+| ERROR | 2023-10-20 15:16:00 | FileHandler.java:239 | Cannot copyFile. C:\Users\awilke06\Documents\Eclipse_Repos\MetroCERI\metroceri_erb\erb_supporting_docs\Code_Resources\ERB\Static_Data\Supporting_DOC\OLD (Access is denied)
