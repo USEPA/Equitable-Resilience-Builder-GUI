@@ -345,11 +345,17 @@ public class XMLManager {
 											if (fontStyle.contentEquals("Hyperlink")) {
 												String linkType = textElement.getAttribute("linkType");
 												String link = textElement.getAttribute("link");
-												t.setStyle("-fx-fill:#4d90bc");
 												t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-												t.setOnMouseEntered(e -> t.setUnderline(true));
-												t.setOnMouseExited(e -> t.setUnderline(false));
-												t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+												if(linkType.contentEquals("email")) {
+													t.setStyle("-fx-fill: black");
+													Tooltip.install(t, new Tooltip("Click to copy to clipboard"));
+													t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+												}else {
+													t.setStyle("-fx-fill:#4d90bc");
+													t.setOnMouseEntered(e -> t.setUnderline(true));
+													t.setOnMouseExited(e -> t.setUnderline(false));
+													t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+												}
 											} else {
 												if (fontStyle.contentEquals("Bold")) {
 													t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
@@ -401,11 +407,17 @@ public class XMLManager {
 															if (fontStyle.contentEquals("Hyperlink")) {
 																String linkType = textElement.getAttribute("linkType");
 																String link = textElement.getAttribute("link");
-																t.setStyle("-fx-fill:#4d90bc");
 																t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-																t.setOnMouseEntered(e -> t.setUnderline(true));
-																t.setOnMouseExited(e -> t.setUnderline(false));
-																t.setOnMouseClicked(e -> formContentController.handleHyperlink(t,linkType, link, app.getSelectedProject()));
+																if(linkType.contentEquals("email")) {
+																	t.setStyle("-fx-fill: black");
+																	Tooltip.install(t, new Tooltip("Click to copy to clipboard"));
+																	t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+																}else {
+																	t.setStyle("-fx-fill:#4d90bc");
+																	t.setOnMouseEntered(e -> t.setUnderline(true));
+																	t.setOnMouseExited(e -> t.setUnderline(false));
+																	t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+																}
 															} else {
 																if (fontStyle.contentEquals("Bold")) {
 																	t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));

@@ -54,7 +54,7 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="CESER@epa.gov"
-			linkType="URL"
+			linkType="email"
 			link="">
 			</text>
 		</textBlock>	

@@ -26,6 +26,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -167,8 +169,10 @@ public class FormController {
 //		internalPanelLinkClicked(link);
 //	} else if (linkType.contentEquals("internalActivity")) {
 //		internalPanelLinkClicked(link);
-//	}
-		else if (linkType.contentEquals("image")) {
+//	}	
+		else if (linkType.contentEquals("email")) {
+			handleEmailLink(text, link);
+		} else if (linkType.contentEquals("image")) {
 			loadImagePopUp(link);
 		} else if (linkType.contentEquals("externalDOC")) {
 			externalDOCLinkClicked(link, project);
@@ -177,6 +181,13 @@ public class FormController {
 		} else if (linkType.length() == 0 || link.length() ==0) {
 			showLinkNotAvailable();
 		}
+	}
+	
+	private void handleEmailLink(Text text, String link) {
+		Clipboard clipboard = Clipboard.getSystemClipboard();
+		ClipboardContent content = new ClipboardContent();
+		content.putString(text.getText());
+		clipboard.setContent(content);
 	}
 	
 	public void showLinkNotAvailable() {
