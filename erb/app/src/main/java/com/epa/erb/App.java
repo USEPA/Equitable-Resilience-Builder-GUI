@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -148,6 +149,7 @@ public class App extends Application {
 	private void showERBContainer(Parent erbContainerRoot) {
 		if (erbContainerRoot != null) {
 			erbContainerStage = new Stage();
+			erbContainerStage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			Scene scene = new Scene(erbContainerRoot);
 			erbContainerStage.setScene(scene);
 			erbContainerStage.setOnCloseRequest(e -> erbCloseRequested());
