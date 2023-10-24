@@ -109,6 +109,14 @@
 			</text>
 		</textBlock>
 		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
 			<icon
 			width="200.0"
 			height="112.0"

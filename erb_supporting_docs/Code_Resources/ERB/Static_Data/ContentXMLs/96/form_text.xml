@@ -77,7 +77,23 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
 			text="Check in with local partners as to what is culturally appropriate and has worked, or not, in the past">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

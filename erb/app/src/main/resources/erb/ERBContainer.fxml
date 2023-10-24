@@ -30,26 +30,26 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                        <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
                            <children>
-                              <Label fx:id="titleLabel" text="Equitable Resilience Builder" textFill="#3a527d" wrapText="true">
+                              <Label fx:id="titleLabel" minWidth="415.0" text="Equitable Resilience Builder" textFill="#3a527d" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="32.0" />
                                  </font>
                               </Label>
-                              <Label text="Inclusive planning for disasters and climate change" textFill="#562c87" wrapText="true">
+                              <Label minWidth="600.0" text="Inclusive planning for disasters and climate change" textFill="#562c87" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="25.0" />
                                  </font>
                               </Label>
                            </children>
                            <padding>
-                              <Insets left="10.0" />
+                              <Insets bottom="25.0" left="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="BOTTOM_RIGHT" minWidth="215.0">
+                        <VBox alignment="BOTTOM_RIGHT" minWidth="215.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <MenuBar fx:id="menuBar" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #FFFFFF;">
+                              <MenuBar fx:id="menuBar" minWidth="275.0" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: transparent;">
                                 <menus>
                                     <Menu fx:id="faqMenu" mnemonicParsing="false" text="Instructions" />
                                   <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources" />

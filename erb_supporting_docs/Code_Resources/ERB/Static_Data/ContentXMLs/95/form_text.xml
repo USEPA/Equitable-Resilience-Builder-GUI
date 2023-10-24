@@ -93,6 +93,14 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
 			text="In the workshop, divide into groups of 5-8">
 			</text>
 		</textBlock>
@@ -126,6 +134,14 @@
 			fontFamily="System"
 			fontStyle="Regular"
 			text="•	Brainstorm about decisions that could be made in the near-term that would help lead to this envisioned positive future">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
 			</text>
 		</textBlock>
 		<textBlock>

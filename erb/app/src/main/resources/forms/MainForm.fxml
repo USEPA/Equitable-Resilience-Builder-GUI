@@ -19,7 +19,7 @@
                <content>
                   <HBox fx:id="hBox" alignment="CENTER" spacing="20.0" style="-fx-background-color: transparent;">
                      <children>
-                        <VBox fx:id="formVBox" spacing="5.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                        <VBox fx:id="formVBox" minWidth="150.0" spacing="5.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
