@@ -4,7 +4,7 @@ import java.util.HashMap;
 import com.epa.erb.App;
 import com.epa.erb.ERBLandingController;
 import com.epa.erb.engagement_action.EngagementActionController;
-import com.epa.erb.engagement_action.EngagementGoalLandingContentController;
+import com.epa.erb.engagement_action.ProjectCenterController;
 import com.epa.erb.project.Project;
 import com.epa.erb.project.ProjectCreationController;
 import com.epa.erb.project.ProjectSelectionController;
@@ -84,10 +84,10 @@ public class MainPanelHandler {
 		}
 	}
 	
-	public VBox loadERBDashboardRoot(App app) {
+	public VBox loadERBProjectCenterRoot(App app) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/EngagementGoalLandingContent.fxml"));
-			EngagementGoalLandingContentController chapterLandingController = new EngagementGoalLandingContentController(app.getEngagementActionController());
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ProjectCenter.fxml"));
+			ProjectCenterController chapterLandingController = new ProjectCenterController(app.getEngagementActionController());
 			fxmlLoader.setController(chapterLandingController);
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());

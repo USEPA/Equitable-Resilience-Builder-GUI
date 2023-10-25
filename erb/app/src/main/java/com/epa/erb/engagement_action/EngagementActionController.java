@@ -355,7 +355,7 @@ public class EngagementActionController implements Initializable {
 		File contentXMLFile = fileHandler.getStaticFormContentXML(erbContentItem.getId());
 		cleanContentVBox();
 		if (erbContentItem.getId().contentEquals("91")) {
-			Pane root = mainPanelHandler.loadERBDashboardRoot(app);
+			Pane root = mainPanelHandler.loadERBProjectCenterRoot(app);
 			addContentToContentVBox(root, true);
 		} else {
 			if (erbContentItem.getType().contentEquals("mainForm")) {
@@ -386,7 +386,7 @@ public class EngagementActionController implements Initializable {
 	private void erbPathwayTreeItemSelected() {
 		cleanContentVBox();
 		if (currentSelectedGoal != null) {
-			Pane root = mainPanelHandler.loadERBDashboardRoot(app);
+			Pane root = mainPanelHandler.loadERBProjectCenterRoot(app);
 			addContentToContentVBox(root, true);
 		}
 	}

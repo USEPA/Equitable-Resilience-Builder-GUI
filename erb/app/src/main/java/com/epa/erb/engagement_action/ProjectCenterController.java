@@ -6,14 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 
-public class EngagementGoalLandingContentController implements Initializable {
+public class ProjectCenterController implements Initializable {
 
 	@FXML
 	VBox vBox;
 	
 	
 	private EngagementActionController engagementActionController;
-	public EngagementGoalLandingContentController(EngagementActionController engagementActionController) {
+	public ProjectCenterController(EngagementActionController engagementActionController) {
 		this.engagementActionController = engagementActionController;
 	}
 
