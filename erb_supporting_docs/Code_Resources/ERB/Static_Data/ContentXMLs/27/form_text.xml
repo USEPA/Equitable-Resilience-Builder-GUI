@@ -28,8 +28,8 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon width="288.0"
-			height="192.0" id="79"> </icon>
+			<icon width="200.0"
+			height="133.0" id="79"> </icon>
 		</textBlock>
 	</container>
 	<container id="centerVBox">
@@ -51,8 +51,8 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon width="300.0"
-			height="200.0" id="80"> </icon>
+			<icon width="200.0"
+			height="133.0" id="80"> </icon>
 		</textBlock>
 	</container>
 	<container id="rightVBox">
@@ -74,8 +74,8 @@
 			</text>
 		</textBlock>
 		<textBlock>
-			<icon width="300.0"
-			height="200.0" id="81"> </icon>
+			<icon width="200.0"
+			height="133.0" id="81"> </icon>
 		</textBlock>
 	</container>
 </textBlocks>

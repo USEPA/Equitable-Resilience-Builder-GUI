@@ -42,6 +42,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -195,6 +196,8 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
+			stage.setTitle("My Portfolio");
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			stage.setWidth(app.getPopUpPrefWidth());
 			stage.setHeight(app.getPopUpPrefHeight());
 			stage.setScene(scene);
@@ -212,6 +215,8 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
+			stage.setTitle("Worksheet Index");
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			stage.setWidth(app.getPopUpPrefWidth());
 			stage.setHeight(app.getPopUpPrefHeight());
 			stage.setScene(scene);
@@ -254,6 +259,8 @@ public class EngagementActionController implements Initializable {
 			conteoller.launch();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
+			stage.setTitle("Upload File");
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			stage.setWidth(app.getPopUpPrefWidth());
 			stage.setHeight(app.getPopUpPrefHeight());
 			stage.setScene(scene);

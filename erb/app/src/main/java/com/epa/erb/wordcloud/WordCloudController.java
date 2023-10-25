@@ -47,6 +47,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
@@ -300,6 +301,7 @@ public class WordCloudController implements Initializable {
 			VBox root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			saveStage = new Stage();
+			saveStage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			saveStage.setScene(scene);
 			wordCloudSaveController.setStage(saveStage);
 			saveStage.showAndWait();

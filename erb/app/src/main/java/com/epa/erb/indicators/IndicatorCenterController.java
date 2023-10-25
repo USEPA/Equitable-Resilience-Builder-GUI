@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
@@ -45,6 +46,7 @@ public class IndicatorCenterController implements Initializable{
 			fxmlLoader.setController(iSIP);
 			VBox root = fxmlLoader.load();
 			inPersonIndicatorSelectionStage = new Stage();
+			inPersonIndicatorSelectionStage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			inPersonIndicatorSelectionStage.setWidth(eAC.getApp().getPopUpPrefWidth());
 			inPersonIndicatorSelectionStage.setHeight(eAC.getApp().getPopUpPrefHeight());
 			inPersonIndicatorSelectionStage.setTitle("Indicator Selection");
@@ -71,6 +73,7 @@ public class IndicatorCenterController implements Initializable{
 			fxmlLoader.setController(iSV);
 			VBox root = fxmlLoader.load();
 			virtualIndicatorSelectionStage = new Stage();
+			virtualIndicatorSelectionStage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			virtualIndicatorSelectionStage.setWidth(eAC.getApp().getPopUpPrefWidth());
 			virtualIndicatorSelectionStage.setHeight(eAC.getApp().getPopUpPrefHeight());
 			virtualIndicatorSelectionStage.setTitle("Indicator Selection");

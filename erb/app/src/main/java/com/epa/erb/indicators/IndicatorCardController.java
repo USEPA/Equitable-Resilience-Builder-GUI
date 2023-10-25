@@ -75,6 +75,7 @@ public class IndicatorCardController implements Initializable{
 			iCController.setColorAndImage();
 			iCController.addAllTextForPrinting();
 			Stage stage = new Stage();
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			stage.setWidth(app.getPopUpPrefWidth()-350);
 			stage.setHeight(app.getPopUpPrefHeight() + 100);
 			Scene scene = new Scene(cVBox);

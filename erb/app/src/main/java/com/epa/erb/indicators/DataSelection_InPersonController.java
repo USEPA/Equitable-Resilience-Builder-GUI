@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -156,6 +157,7 @@ public class DataSelection_InPersonController implements Initializable{
 			fxmlLoader.setController(printerSelectionController);
 			VBox root = fxmlLoader.load();
 			printerSelectionStage = new Stage();
+			printerSelectionStage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			printerSelectionStage.setWidth(app.getPopUpPrefWidth());
 			printerSelectionStage.setHeight(app.getPopUpPrefHeight());
 			printerSelectionStage.setTitle("Printer Selection");

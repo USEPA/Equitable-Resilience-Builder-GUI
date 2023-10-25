@@ -29,6 +29,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -184,6 +185,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			fxmlLoader.setController(iSV);
 			VBox root = fxmlLoader.load();
 			virtualIndicatorSortingStage = new Stage();
+			virtualIndicatorSortingStage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			virtualIndicatorSortingStage.setWidth(app.getPopUpPrefWidth());
 			virtualIndicatorSortingStage.setHeight(app.getPopUpPrefHeight());
 			virtualIndicatorSortingStage.setTitle("Indicator Sorting");

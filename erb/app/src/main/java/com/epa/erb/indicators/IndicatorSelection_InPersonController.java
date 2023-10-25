@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -118,6 +119,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 			fxmlLoader.setController(dSIP);
 			VBox root = fxmlLoader.load();
 			inPersonDataSelectionStage = new Stage();
+			inPersonDataSelectionStage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			inPersonDataSelectionStage.setWidth(app.getPopUpPrefWidth());
 			inPersonDataSelectionStage.setHeight(app.getPopUpPrefHeight());
 			inPersonDataSelectionStage.setTitle("Data Selection");

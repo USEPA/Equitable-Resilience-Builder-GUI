@@ -195,11 +195,12 @@ public class ERBContainerController implements Initializable{
 			File formContentXMLFile = getFormContentXML(menuItem.getId());
 			VBox root = loadMainFormContentController(formContentXMLFile);
 			Stage stage = new Stage();
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			Scene scene = new Scene(root);
 			stage.setWidth(app.getPrefWidth());
 			stage.setHeight(app.getPrefHeight());
 			stage.setScene(scene);
-			stage.setTitle(menuItem.getText());
+			stage.setTitle("ERBPedia: " + menuItem.getText());
 			stage.showAndWait();
 		}
 	}

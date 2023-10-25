@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -91,6 +92,7 @@ public class IndicatorSelection_VirtualController implements Initializable{
 			fxmlLoader.setController(iRV);
 			VBox root = fxmlLoader.load();
 			virtualIndicatorRankingStage = new Stage();
+			virtualIndicatorRankingStage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			virtualIndicatorRankingStage.setWidth(app.getPopUpPrefWidth());
 			virtualIndicatorRankingStage.setHeight(app.getPopUpPrefHeight());
 			virtualIndicatorRankingStage.setTitle("Indicator Ranking");

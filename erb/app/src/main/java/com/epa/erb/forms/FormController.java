@@ -85,6 +85,8 @@ public class FormController {
 	
 	public void loadImagePopUp(String imageId) {
 		Stage stage = new Stage();
+		stage.getIcons().add(new Image("/bridge_tool_logo.png"));
+		stage.setTitle("ERB: Equitable Resilience Builder");
 		VBox vBox = new VBox();
 		vBox.setAlignment(Pos.CENTER);
 		ImageView imageView = new ImageView();
@@ -150,6 +152,7 @@ public class FormController {
 					fxmlLoader.setController(indicatorCenterController);
 					Parent root = fxmlLoader.load();
 					Stage stage = new Stage();
+					stage.getIcons().add(new Image("/bridge_tool_logo.png"));
 					stage.setWidth(app.getPopUpPrefWidth());
 					stage.setHeight(app.getPopUpPrefHeight());
 					stage.setTitle("Indicator Center");
@@ -226,6 +229,8 @@ public class FormController {
 		}
 		if(root != null) {
 		Stage stage = new Stage();
+		stage.setTitle(erbContentItem.getLongName());
+		stage.getIcons().add(new Image("/bridge_tool_logo.png"));
 		Scene scene = new Scene(root);
 		stage.setWidth(app.getPrefWidth());
 		stage.setHeight(app.getPrefHeight());
