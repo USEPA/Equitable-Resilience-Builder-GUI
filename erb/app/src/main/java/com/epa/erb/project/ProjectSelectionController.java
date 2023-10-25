@@ -14,7 +14,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
@@ -22,8 +21,6 @@ public class ProjectSelectionController implements Initializable{
 
 	@FXML
 	VBox vBox;
-//	@FXML
-//	Rectangle rectangle1;
 	@FXML
 	TextField projectNameTextField;
 	@FXML
@@ -41,7 +38,6 @@ public class ProjectSelectionController implements Initializable{
 		setProjectsListViewCellFactory();
 		app.updateAvailableProjectsList();
 		fillProjectsListView();
-//        rectangle1.widthProperty().bind(vBox.widthProperty().subtract(5.0));
         descriptionTextArea.getStylesheets().add(getClass().getResource("/textArea.css").toString());		
 	}
 	

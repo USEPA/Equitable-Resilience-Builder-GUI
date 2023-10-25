@@ -58,22 +58,7 @@ public class PostItNoteEditsController implements Initializable{
 	
 	@FXML
 	public void saveButtonAction() {
-//		postItNoteController.setNoteBoardItemText(postItNoteTextArea.getText());
-//		postItNoteController.setPostItContentsColor(parseColorAsHex(colorPicker.getValue()));
-//		postItNoteController.closeEditsStage();
-//		postItNoteController.getNoteBoardContentController().getActivity().setSaved(false);
-	}
-	
-	private String parseColorAsHex(Color color) {
-		if (color != null) {
-			String colorAsString = color.toString();
-			String colorAsHexString = colorAsString.replaceAll("0x", "");
-			colorAsHexString = colorAsHexString.substring(0, colorAsHexString.length() - 2);
-			return colorAsHexString;
-		} else {
-			logger.error("Cannot parseColorAsHex. color is null.");
-			return null;
-		}
+
 	}
 
 	void setColorPickerColor(String color) {

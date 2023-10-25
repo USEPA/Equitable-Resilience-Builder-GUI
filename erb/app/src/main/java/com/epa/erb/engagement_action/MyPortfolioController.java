@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
 import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.App;
@@ -16,7 +15,6 @@ import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,7 +26,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import com.epa.erb.utility.XMLManager;

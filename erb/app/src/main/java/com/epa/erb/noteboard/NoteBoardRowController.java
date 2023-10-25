@@ -31,7 +31,6 @@ public class NoteBoardRowController implements Initializable {
 		if (numberOfColumns > 1) {
 			for(int i =0; i < numberOfColumns; i++) {
 				HBox columnHBox = new HBox();
-//				columnHBox.setStyle("-fx-border-color: #E4E4E4");
 				setDrag_Column(columnHBox);
 				HBox.setHgrow(columnHBox, Priority.ALWAYS);
 				columnHBox.setPrefHeight(225);

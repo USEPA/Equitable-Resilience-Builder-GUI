@@ -5,16 +5,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import javax.imageio.ImageIO;
-
 import com.epa.erb.App;
 import com.epa.erb.engagement_action.ExternalFileUploaderController;
 import com.epa.erb.utility.FileHandler;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.embed.swing.SwingFXUtils;

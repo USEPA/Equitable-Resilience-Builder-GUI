@@ -17,7 +17,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 
-//public class NoteBoardItem_Indicator extends NoteBoardItemController{
 public class NoteBoardItem_Indicator extends NoteBoardItemController{
 
 

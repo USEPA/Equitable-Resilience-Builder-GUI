@@ -15,7 +15,6 @@ import com.epa.erb.utility.FileHandler;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -359,107 +358,5 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		return virtualIndicatorSortingStage;
 	}
 	
-//	private ArrayList<String> getIndicatorCardIdsInBank(){
-//	ArrayList<String> indicatorIds = new ArrayList<String>();
-//	for(int i =0; i < indicatorCardVBox.getChildren().size();i++) {
-//		VBox indicatorVBox = (VBox) indicatorCardVBox.getChildren().get(i);
-//		if(indicatorVBox!= null) indicatorIds.add(indicatorVBox.getId());
-//	}
-//	return indicatorIds;
-//}
-//	public void writeRankedIndicatorIds(File file) {
-//	try {
-//		PrintWriter printWriter = new PrintWriter(file);
-//		for (String id : getIndicatorCardIdsInRanked()) {
-//			printWriter.println(id);
-//		}
-//		printWriter.close();
-//	} catch (FileNotFoundException e) {
-//		e.printStackTrace();
-//	}
-//}
 
-//public void writeBankedIndicatorIds(File file) {
-//	try {
-//		PrintWriter printWriter = new PrintWriter(file);
-//		for (String id : getIndicatorCardIdsInBank()) {
-//			printWriter.println(id);
-//		}
-//		printWriter.close();
-//	} catch (FileNotFoundException e) {
-//		e.printStackTrace();
-//	}
-//}
-//	
-//	public void loadDataFromPreviousSession(String guid) {
-//	indicatorCardVBox.getChildren().clear();
-//	rankingHBox.getChildren().clear();
-//	setLoadedGuid(guid);
-//	System.out.println("Loaded guid " + guid);
-//	
-//	IndicatorSaveDataParser iSDP = new IndicatorSaveDataParser(app);
-//	ArrayList<IndicatorCard> bankedCards = iSDP.getSavedBankedIndicatorCards_VirtualRanking(guid);
-//	ArrayList<IndicatorCard> rankedCards = iSDP.getSavedRankedIndicatorCards_VirtualRanking(guid);
-//
-//	for(IndicatorCard card: bankedCards) {
-//		try {
-//			Pane cVBox = loadIndicatorCard(card);
-//			indicatorCardVBox.getChildren().add(cVBox);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}	
-//	
-//	for(IndicatorCard card: rankedCards) {
-//		try {
-//			Pane cVBox = loadIndicatorCard(card);
-//			rankingHBox.getChildren().add(cVBox);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}	
-//}
-//	private File createIndicatorsRankingVirtualDir() {
-//	File indicatorsDir = fileHandler.getIndicatorsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
-//	if(!indicatorsDir.exists()) {
-//		indicatorsDir.mkdir();
-//	}
-//	File rankingVirtualDir = new File(indicatorsDir + "\\Ranking_Virtual");
-//	if(!rankingVirtualDir.exists()) {
-//		rankingVirtualDir.mkdir();
-//	}
-//	return rankingVirtualDir;
-//}
-//	@FXML
-//	public void saveButtonAction() {
-//		String guid = app.generateGUID();
-//		if(getLoadedGuid().length()>0) {
-//			guid = getLoadedGuid();
-//		}
-//		setLoadedGuid(guid);
-//		System.out.println("GUID for saving " + guid);
-//		File rankingVirtualDir = createIndicatorsRankingVirtualDir();
-//		File guidDir = new File(rankingVirtualDir + "\\" + guid);
-//		if(!guidDir.exists()) guidDir.mkdir();
-//		File virtualRankedCardsFile = new File(guidDir + "\\Ranking_CardsRanked_Virtual.txt");
-//		File virtualBankedCardsFile = new File(guidDir + "\\Ranking_CardsBanked_Virtual.txt");
-//		writeRankedIndicatorIds(virtualRankedCardsFile);
-//		writeBankedIndicatorIds(virtualBankedCardsFile);
-//	}
-//	@FXML
-//	public void loadPreviousDataButtonAction() {
-//		try {
-//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorRanking_Virtual_PreviousDataSelection.fxml"));
-//			IndicatorRanking_Virtual_PreviousDataSelectionController iRVPDC = new IndicatorRanking_Virtual_PreviousDataSelectionController(app, this);
-//			fxmlLoader.setController(iRVPDC);
-//			VBox root = fxmlLoader.load();
-//			Stage stage = new Stage();
-//			stage.setTitle("Load previous indicator ranking data");
-//			Scene scene = new Scene(root);
-//			stage.setScene(scene);
-//			stage.show();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
 }

@@ -2,8 +2,6 @@ package com.epa.erb.noteboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.epa.erb.utility.Constants;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +10,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
@@ -40,7 +37,6 @@ public class NoteBoardItemController implements Initializable{
 	
 	private Stage editsStage = null;
 	private Constants constants = new Constants();
-	private Logger logger = LogManager.getLogger(NoteBoardItemController.class);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

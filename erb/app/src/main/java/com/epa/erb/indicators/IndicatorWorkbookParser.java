@@ -62,7 +62,6 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 			int rawDataCollectionColumnIndex = -1;
 			int dataPointsColumnIndex = -1;
 			int thresholdColumnIndex = -1;
-			int dataCollection_y_nColumnIndex = -1;
 			
 			for(int i=0; i < getNumColumns(); i++) {
 				String headerVal =  headerValues.get(i);
@@ -95,7 +94,6 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 				} else if (headerVal.contains("threshold value")) {
 					thresholdColumnIndex=i;
 				} else if (headerVal.contentEquals("Data Collection (Y/N)")) {
-					dataCollection_y_nColumnIndex=i;
 				}
 			}
 						
@@ -117,7 +115,6 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 				String rdColl = rowValues.get(rawDataCollectionColumnIndex);
 				String dP = rowValues.get(dataPointsColumnIndex);
 				String t = rowValues.get(thresholdColumnIndex);
-//				String dCYN = rowValues.get(dataCollection_y_nColumnIndex);
 				IndicatorCard indicatorCard = new IndicatorCard(id, s, i, d, rV, eV, lC, q, qnDS, qnDC, qlDC, aI, rdColl, dP, t, "Y");
 				indicatorCards.add(indicatorCard);
 			}

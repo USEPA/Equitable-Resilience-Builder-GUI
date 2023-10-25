@@ -10,7 +10,6 @@ import com.epa.erb.project.ProjectCreationController;
 import com.epa.erb.project.ProjectSelectionController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 public class MainPanelHandler {

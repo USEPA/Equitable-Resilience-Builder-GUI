@@ -14,11 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.TextFlow;
 
 public class MainFormController extends FormController implements Initializable{
 	
@@ -138,6 +134,14 @@ public class MainFormController extends FormController implements Initializable{
 
 	public void setProject(Project project) {
 		this.project = project;
+	}
+
+	public EngagementActionController getEngagementActionController() {
+		return engagementActionController;
+	}
+
+	public void setEngagementActionController(EngagementActionController engagementActionController) {
+		this.engagementActionController = engagementActionController;
 	}
 
 }

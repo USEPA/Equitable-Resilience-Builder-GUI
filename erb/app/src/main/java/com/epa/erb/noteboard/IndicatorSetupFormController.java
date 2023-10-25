@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.ResourceBundle;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.engagement_action.EngagementActionController;
@@ -208,4 +207,12 @@ public class IndicatorSetupFormController implements Initializable{
 		return null;
 	}
 
+	public ERBContentItem getErbContentItem() {
+		return erbContentItem;
+	}
+
+	public void setErbContentItem(ERBContentItem erbContentItem) {
+		this.erbContentItem = erbContentItem;
+	}
+	
 }

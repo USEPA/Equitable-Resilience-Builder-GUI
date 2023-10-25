@@ -25,7 +25,6 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 public class ProjectCreationController implements Initializable {
 
 	@FXML
@@ -36,8 +35,6 @@ public class ProjectCreationController implements Initializable {
 	TextField projectNameTextField;
 	@FXML
 	TextArea projectDescriptionTextArea;
-//	@FXML
-//	Rectangle rectangle1;
 	@FXML
 	VBox vBox;
 
@@ -52,7 +49,6 @@ public class ProjectCreationController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//        rectangle1.widthProperty().bind(vBox.widthProperty().subtract(5.0));
 		goalModeHBox.setVisible(false);
 		modeToggleGroup.selectedToggleProperty().addListener((changed, oldVal, newVal) -> modeChanged(oldVal, newVal));
 	}

@@ -6,7 +6,6 @@ import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.indicators.IndicatorCard;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
@@ -16,7 +15,6 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 
 public class NoteBoard_QuadrantRanking extends NoteBoardContentController {
 

@@ -43,7 +43,6 @@ public class IndicatorsPrintViewController implements Initializable {
 				noteBoardIndicatorItem.removeFlipHBox();
 				noteBoardIndicatorItem.resizeImageView();
 				noteBoardIndicatorItem.setColorAndImage();
-//				noteBoardIndicatorItem.setTextForPrinting();
 				if(selectedData != null) {
 					for(String data: selectedData) {
 						noteBoardIndicatorItem.addTextForPrinting(data);

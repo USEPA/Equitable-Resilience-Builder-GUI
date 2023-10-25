@@ -14,23 +14,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.indicators.IndicatorCard;
-import com.epa.erb.indicators.IndicatorWorkbookParser;
 import com.epa.erb.project.Project;
-import com.epa.erb.utility.Constants;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
 import com.epa.erb.utility.XMLManager;
@@ -47,8 +41,6 @@ public class App extends Application {
 	private Logger logger = LogManager.getLogger(App.class);
 	private ERBContainerController erbContainerController;
 	private EngagementActionController engagementActionController;
-	private Constants constants = new Constants();
-
 	
 	private ArrayList<Project> projects;
 	private ArrayList<IndicatorCard> indicatorCards;
@@ -177,8 +169,7 @@ public class App extends Application {
 	}
 	
 	private void readAndStoreIndicatorCards() {
-//		IndicatorWorkbookParser workbookParser = new IndicatorWorkbookParser();
-//		indicatorCards = workbookParser.parseForIndicatorCards();
+
 	}
 	
 	private void readAndStoreAvailableContent() {
