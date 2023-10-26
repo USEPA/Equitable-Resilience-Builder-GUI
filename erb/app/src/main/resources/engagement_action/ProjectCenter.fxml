@@ -125,7 +125,7 @@
                      <children>
                         <ImageView fitHeight="271.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/t1.png" />
+                              <Image url="@../projectCenterImage.png" />
                            </image>
                         </ImageView>
                         <TextFlow>
