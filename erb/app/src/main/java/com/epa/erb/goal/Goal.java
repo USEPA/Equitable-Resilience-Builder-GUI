@@ -10,6 +10,9 @@ import com.epa.erb.utility.XMLManager;
 
 public class Goal {
 	
+	private FileHandler fileHandler;
+	private ArrayList<ERBContentItem> listOfContentItemsInGoal = new ArrayList<ERBContentItem>();
+	
 	private App app;
 	private String goalName;
 	private String goalCleanedName;
@@ -21,11 +24,10 @@ public class Goal {
 		this.goalCleanedName = goalCleanedName;
 		this.goalDescription = goalDescription;
 		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
+		
+		fileHandler = new FileHandler(app);
 	}
 	
-	private FileHandler fileHandler = new FileHandler();
-	
-	private ArrayList<ERBContentItem> listOfContentItemsInGoal = new ArrayList<ERBContentItem>();
 	public void setContentItems(Project project) {
 		XMLManager xmlManager= new XMLManager(app);
 		File goalMetaXML = fileHandler.getGoalMetaXMLFile(project, this);

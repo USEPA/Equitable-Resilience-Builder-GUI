@@ -16,29 +16,6 @@ import javafx.scene.layout.VBox;
 
 public class AlternativeFormController extends FormController implements Initializable{
 	
-	@FXML
-	VBox containerVBox;
-	@FXML
-	VBox titleVBox;
-	@FXML
-	VBox nodeVBox;
-	@FXML
-	HBox hBox;
-	@FXML
-	VBox leftVBox;
-	@FXML
-	VBox centerVBox;
-	@FXML
-	VBox rightVBox;
-	@FXML
-	Pane lP;
-	@FXML
-	Pane tP;
-	@FXML
-	Pane rP;
-	@FXML
-	Pane bP;
-	
 	private App app;
 	private File xmlContentFileToParse;
 	public AlternativeFormController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
@@ -46,7 +23,16 @@ public class AlternativeFormController extends FormController implements Initial
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
 	}
-
+	
+	@FXML
+	HBox hBox;
+	@FXML
+	Pane lP, tP, rP, bP;
+	@FXML
+	VBox leftVBox, centerVBox, rightVBox;
+	@FXML
+	VBox containerVBox, nodeVBox, titleVBox;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLManager xmlManager = new XMLManager(app);

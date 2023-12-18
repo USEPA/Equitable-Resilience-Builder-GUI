@@ -8,12 +8,12 @@ module com.epa.erb {
 	requires jdk.compiler;
 	requires org.apache.poi.ooxml;
 	requires org.apache.commons.io;
-	requires org.apache.logging.log4j;
 	requires transitive javafx.graphics;
 	requires transitive javafx.controls;
 	requires jdk.jsobject;
 	requires org.controlsfx.controls;
 	requires javafx.swing;
+	requires java.logging;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.goal to javafx.fxml;
 	opens com.epa.erb.print to javafx.fxml;

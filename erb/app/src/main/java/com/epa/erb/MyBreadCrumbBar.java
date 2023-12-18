@@ -9,17 +9,16 @@ import javafx.scene.control.TreeItem;
 
 public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 	
+	private Project project;
 	HashMap<TreeItem<String>, String> breadCrumbIdHashMap = new HashMap<TreeItem<String>, String>();
 	
 	private App app;
 	public MyBreadCrumbBar(App app) {
 		this.app = app;
-		 setOnCrumbAction(e->breadCrumbSelected(e.getSelectedCrumb()));
 	}
-	
-	private Project project;
-	
+		
 	public void initMyBreadCrumbBar(String crumb, String id) {
+		 setOnCrumbAction(e->breadCrumbSelected(e.getSelectedCrumb()));
 		TreeItem<String> breadCrumb = new TreeItem<String> (crumb.toUpperCase());
 		setSelectedCrumb(breadCrumb);
 		breadCrumbIdHashMap.put(breadCrumb, id);
@@ -33,23 +32,23 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 	}
 	
 	public void breadCrumbSelected(TreeItem<String> breadCrumb) {
-		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 		String mainPanelId = breadCrumbIdHashMap.get(breadCrumb);
 		//TODO: How to not make static
 		if(mainPanelId.contentEquals("86")) {
 			Parent root = mainPanelHandler.loadERBLanding(app);
-			app.loadNodeToERBContainer(root);
+			app.addNodeToERBContainer(root);
 		}else if(mainPanelId.contentEquals("87")) {
 			Parent root = mainPanelHandler.loadProjectSelectionRoot(app);
-			app.loadNodeToERBContainer(root);
+			app.addNodeToERBContainer(root);
 		}else if(mainPanelId.contentEquals("88")) {
 			//Don't allow right now
 		}else if(mainPanelId.contentEquals("89")) {
 			Parent root = mainPanelHandler.loadEngagementActionRoot(app, project);
-			app.loadNodeToERBContainer(root);
+			app.addNodeToERBContainer(root);
 		}else if(mainPanelId.contentEquals("90")){
 			Parent root = mainPanelHandler.loadProjectCreationRoot(app);
-			app.loadNodeToERBContainer(root);
+			app.addNodeToERBContainer(root);
 		} else {
 			
 		}

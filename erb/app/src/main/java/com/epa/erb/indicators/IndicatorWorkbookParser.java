@@ -3,50 +3,57 @@ package com.epa.erb.indicators;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
+import com.epa.erb.App;
 import com.epa.erb.excel.WorkbookParser;
 
-public class IndicatorWorkbookParser extends WorkbookParser{
+public class IndicatorWorkbookParser extends WorkbookParser {
 
-	private Sheet indicatorSheet;
+	private Logger logger;
 	
+	private App app;
 	private File workbookFile;
-	public IndicatorWorkbookParser(File workbookFile) {
+	private Sheet indicatorSheet;
+	public IndicatorWorkbookParser(App app, File workbookFile) {
+		super(app);
 		this.workbookFile = workbookFile;
+		
 		setIndicatorSheet();
+		logger = app.getLogger();
 	}
-	
+
 	public void setIndicatorSheet() {
 		try {
 			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(workbookFile);
 			indicatorSheet = getWorksheet(xssfWorkbook, "Indicator Menu");
 		} catch (InvalidFormatException | IOException e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to set indicator sheet.");
+			logger.log(Level.FINER, "Failed to set indicator sheet: " + e.getStackTrace());
 		}
 	}
-	
+
 	private int getNumColumns() {
 		ArrayList<String> rowValues = getRowValues(indicatorSheet, 0);
 		ArrayList<String> nonEmptyValues = new ArrayList<String>();
-		for(String rowVal: rowValues) {
-			if(rowVal != null && !rowVal.isBlank() && !rowVal.isEmpty() && rowVal.length()>0) {
+		for (String rowVal : rowValues) {
+			if (rowVal != null && !rowVal.isBlank() && !rowVal.isEmpty() && rowVal.length() > 0) {
 				nonEmptyValues.add(rowVal);
 			}
 		}
 		return nonEmptyValues.size();
 	}
-	
+
 	private int getNumRows() {
 		return getColumnValues(indicatorSheet, 0).size();
 	}
-	
+
 	public ArrayList<IndicatorCard> parseForIndicatorCards() {
 		ArrayList<IndicatorCard> indicatorCards = new ArrayList<IndicatorCard>();
-		if(indicatorSheet != null) {
+		if (indicatorSheet != null) {
 			ArrayList<String> headerValues = getRowValues(indicatorSheet, 0);
 			int systemColumnIndex = -1;
 			int indicatorColumnIndex = -1;
@@ -62,42 +69,42 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 			int rawDataCollectionColumnIndex = -1;
 			int dataPointsColumnIndex = -1;
 			int thresholdColumnIndex = -1;
-			
-			for(int i=0; i < getNumColumns(); i++) {
-				String headerVal =  headerValues.get(i);
-				if(headerVal.contentEquals("System")) {
+
+			for (int i = 0; i < getNumColumns(); i++) {
+				String headerVal = headerValues.get(i);
+				if (headerVal.contentEquals("System")) {
 					systemColumnIndex = i;
 				} else if (headerVal.contentEquals("Indicator")) {
-					indicatorColumnIndex=i;
+					indicatorColumnIndex = i;
 				} else if (headerVal.contains("Definition")) {
-					definitionColumnIndex =i;
+					definitionColumnIndex = i;
 				} else if (headerVal.contentEquals("Resilience Value")) {
-					resilienceValueColumnIndex =i;
+					resilienceValueColumnIndex = i;
 				} else if (headerVal.contentEquals("Equity Value")) {
-					equityValueColumnIndex =i;
+					equityValueColumnIndex = i;
 				} else if (headerVal.contains("Local Concern")) {
-					localConcernColumnIndex=i;
-				} else if (headerVal.contentEquals("Data Questions to Answer")){
-					dataQuestionsColumnIndex=i;
+					localConcernColumnIndex = i;
+				} else if (headerVal.contentEquals("Data Questions to Answer")) {
+					dataQuestionsColumnIndex = i;
 				} else if (headerVal.contentEquals("Data Sources")) {
-					quanDataSourcesColumnIndex=i;
+					quanDataSourcesColumnIndex = i;
 				} else if (headerVal.contentEquals("Quantitative Data Collection Process")) {
-					quanDataCollectionColumnIndex=i;
+					quanDataCollectionColumnIndex = i;
 				} else if (headerVal.contentEquals("Qualitative Data Collection Process")) {
-					qualDataCollectionColumnIndex=i;
+					qualDataCollectionColumnIndex = i;
 				} else if (headerVal.contains("Additional Details")) {
-					additionalInfoColumnIndex=i;
-				}  else if (headerVal.contains("data collection process")) {
-					rawDataCollectionColumnIndex=i;
+					additionalInfoColumnIndex = i;
+				} else if (headerVal.contains("data collection process")) {
+					rawDataCollectionColumnIndex = i;
 				} else if (headerVal.contains("Data Points")) {
-					dataPointsColumnIndex=i;
+					dataPointsColumnIndex = i;
 				} else if (headerVal.contains("threshold value")) {
-					thresholdColumnIndex=i;
+					thresholdColumnIndex = i;
 				} else if (headerVal.contentEquals("Data Collection (Y/N)")) {
 				}
 			}
-						
-			for(int j =1; j < getNumRows(); j++) {
+
+			for (int j = 1; j < getNumRows(); j++) {
 				ArrayList<String> rowValues = getRowValues(indicatorSheet, j);
 				String id = String.valueOf(j);
 				String s = rowValues.get(systemColumnIndex);
@@ -115,18 +122,19 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 				String rdColl = rowValues.get(rawDataCollectionColumnIndex);
 				String dP = rowValues.get(dataPointsColumnIndex);
 				String t = rowValues.get(thresholdColumnIndex);
-				IndicatorCard indicatorCard = new IndicatorCard(id, s, i, d, rV, eV, lC, q, qnDS, qnDC, qlDC, aI, rdColl, dP, t, "Y");
+				IndicatorCard indicatorCard = new IndicatorCard(id, s, i, d, rV, eV, lC, q, qnDS, qnDC, qlDC, aI,
+						rdColl, dP, t, "Y");
 				indicatorCards.add(indicatorCard);
 			}
 		}
 		return indicatorCards;
 	}
-	
-	private ArrayList<String> parseQString(String qString){
+
+	private ArrayList<String> parseQString(String qString) {
 		ArrayList<String> dataQuestions = new ArrayList<String>();
-		String [] split = qString.split("\n");
-		for(String s: split) {
-			if(s.length() > 0 && s.trim().length() > 0) {
+		String[] split = qString.split("\n");
+		for (String s : split) {
+			if (s.length() > 0 && s.trim().length() > 0) {
 				dataQuestions.add(s);
 			}
 		}
@@ -140,7 +148,5 @@ public class IndicatorWorkbookParser extends WorkbookParser{
 	public Sheet getIndicatorSheet() {
 		return indicatorSheet;
 	}
-	
-	
-	
+
 }

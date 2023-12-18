@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +23,21 @@ import com.epa.erb.utility.FileHandler;
 
 public class DataSelection_InPersonController implements Initializable{
 
+	private Logger logger;
+	private FileHandler fileHandler;
+	
+	private App app;
+	private ArrayList<String> dataOptions;
+	private IndicatorSelection_InPersonController iSINC;
+	public DataSelection_InPersonController(App app, ArrayList<String> dataOptions, IndicatorSelection_InPersonController iSINC) {
+		this.app = app;
+		this.iSINC = iSINC;
+		this.dataOptions = dataOptions;
+		
+		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
+	}
+	
 	@FXML
 	VBox vBox;
 	@FXML
@@ -29,18 +46,7 @@ public class DataSelection_InPersonController implements Initializable{
 	HBox printHBox;
 	@FXML
 	CheckBox defaultDataCheckBox;
-	
-	private FileHandler fileHandler = new FileHandler();
-	
-	private App app;
-	private ArrayList<String> dataOptions;
-	private IndicatorSelection_InPersonController iSINC;
-	public DataSelection_InPersonController(App app, ArrayList<String> dataOptions, IndicatorSelection_InPersonController iSINC) {
-		this.app = app;
-		this.dataOptions = dataOptions;
-		this.iSINC = iSINC;
-	}
-	
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillDataVBox();
@@ -83,8 +89,9 @@ public class DataSelection_InPersonController implements Initializable{
 				}
 				dataVBox.getChildren().add(root);
 			} catch (Exception e) {
-				e.printStackTrace();
-			}
+				logger.log(Level.FINE, "Failed to load IndicatorSelector_InPerson.fxml.");
+				logger.log(Level.FINER, "Failed to load IndicatorSelector_InPerson.fxml: " + e.getStackTrace());
+				}
 			}
 		}
 		if(selectedData != null && selectedData.contains(defaultDataCheckBox.getText())) {
@@ -121,7 +128,8 @@ public class DataSelection_InPersonController implements Initializable{
 			}
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to write selected data.");
+			logger.log(Level.FINER, "Failed to write selected data: " + e.getStackTrace());
 		}
 	}
 	
@@ -143,7 +151,8 @@ public class DataSelection_InPersonController implements Initializable{
 			fxmlLoader.load();
 			showPrinters(indicatorsPrintView);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load IndicatorsPrintView.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorsPrintView.fxml: " + e.getStackTrace());
 		}
 		iSINC.getInPersonDataSelectionStage().close();
 	}
@@ -165,7 +174,8 @@ public class DataSelection_InPersonController implements Initializable{
 			printerSelectionStage.setScene(scene);
 			printerSelectionStage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load PrinterSelection.fxml.");
+			logger.log(Level.FINER, "Failed to load PrinterSelection.fxml: " + e.getStackTrace());
 		}
 
 	}

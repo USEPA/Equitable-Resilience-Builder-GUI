@@ -16,16 +16,21 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class NoteBoardRowController implements Initializable {
-
-	@FXML
-	HBox mainHBox;
-	@FXML
-	HBox rowHBox;
 	
 	HBox rankedItemsHBox;
 	public NoteBoardRowController(HBox rankedItemsHBox) {
 		this.rankedItemsHBox = rankedItemsHBox;
 	}
+	
+	@FXML
+	HBox mainHBox;
+	@FXML
+	HBox rowHBox;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+	}	
 	
 	protected void createColumns(int numberOfColumns) {
 		if (numberOfColumns > 1) {
@@ -40,10 +45,6 @@ public class NoteBoardRowController implements Initializable {
 			}
 		}
 	}
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-	}	
 	
 	public void turnOnRowDrag() {
 		setDrag_Row(rowHBox);

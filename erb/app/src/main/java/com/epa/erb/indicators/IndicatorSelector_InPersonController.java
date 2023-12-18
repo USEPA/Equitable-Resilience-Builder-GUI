@@ -9,13 +9,14 @@ import javafx.scene.layout.HBox;
 
 public class IndicatorSelector_InPersonController implements Initializable{
 
+	public IndicatorSelector_InPersonController() {
+		
+	}
+	
 	@FXML
 	HBox indicatorHBox;
 	@FXML
 	CheckBox indicatorCheckBox;
-	
-	public IndicatorSelector_InPersonController() {
-	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

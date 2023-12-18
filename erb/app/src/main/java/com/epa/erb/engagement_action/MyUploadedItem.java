@@ -4,23 +4,23 @@ import javafx.scene.text.Text;
 
 public class MyUploadedItem {
 	
-	private int fileNumber;
 	private Text fileName;
+	private int fileNumber;
 	private String modifiedDate;
 	private String uploadedFrom;
 	public MyUploadedItem(int fileNumber, Text fileName,String modifiedDate, String uploadedFrom) {
-		this.fileNumber = fileNumber;
 		this.fileName = fileName;
+		this.fileNumber = fileNumber;
 		this.modifiedDate = modifiedDate;
 		this.uploadedFrom = uploadedFrom;
 	}
 	
 	private boolean selectedForExport;
 	public MyUploadedItem(boolean selectedForExport, int fileNumber, Text fileName,String modifiedDate) {
-		this.selectedForExport = selectedForExport;
-		this.fileNumber = fileNumber;
 		this.fileName = fileName;
+		this.fileNumber = fileNumber;
 		this.modifiedDate = modifiedDate;
+		this.selectedForExport = selectedForExport;
 	}
 	
 	public boolean isSelectedForExport() {

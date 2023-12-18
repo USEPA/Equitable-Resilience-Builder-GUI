@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
 import com.epa.erb.engagement_action.EngagementActionController;
-import com.epa.erb.project.Project;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,29 +17,6 @@ import javafx.scene.layout.VBox;
 
 public class MainFormController extends FormController implements Initializable{
 	
-	@FXML
-	VBox nodeVBox;
-	@FXML
-	HBox hBox;
-	@FXML
-	VBox formVBox;
-	@FXML
-	VBox rightPanelVBox;
-	@FXML
-	VBox topPanelVBox;
-	@FXML
-	VBox bottomPanelVBox;
-	@FXML
-	Pane lP;
-	@FXML
-	Pane tP;
-	@FXML
-	Pane rP;
-	@FXML
-	Pane bP;
-	@FXML
-	Separator separator;
-	
 	private App app;
 	private File xmlContentFileToParse;
 	private EngagementActionController engagementActionController;
@@ -50,9 +26,18 @@ public class MainFormController extends FormController implements Initializable{
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;
 	}
-		
-	private Project project;
 	
+	@FXML
+	HBox hBox;
+	@FXML
+	Pane lP, tP, rP, bP;
+	@FXML
+	Separator separator;
+	@FXML
+	VBox nodeVBox, formVBox;
+	@FXML
+	VBox rightPanelVBox, topPanelVBox, bottomPanelVBox;
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLManager xmlManager = new XMLManager(app);
@@ -126,14 +111,6 @@ public class MainFormController extends FormController implements Initializable{
 	
 	private void clearBottomVBox() {
 		bottomPanelVBox.getChildren().clear();
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
 	}
 
 	public EngagementActionController getEngagementActionController() {

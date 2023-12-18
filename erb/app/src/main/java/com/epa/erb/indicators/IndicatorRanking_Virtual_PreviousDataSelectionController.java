@@ -9,21 +9,18 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 public class IndicatorRanking_Virtual_PreviousDataSelectionController implements Initializable{
-
-	@FXML
-	ListView<Text> dataListView;
-		
-
-	public IndicatorRanking_Virtual_PreviousDataSelectionController(App app, IndicatorRanking_VirtualController iRVC) {
 	
+	public IndicatorRanking_Virtual_PreviousDataSelectionController(App app, IndicatorRanking_VirtualController iRVC) {
+		
 	}
 	
+	@FXML
+	ListView<Text> dataListView;		
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
-	
-	
 	
 	@FXML
 	public void loadButtonAction() {

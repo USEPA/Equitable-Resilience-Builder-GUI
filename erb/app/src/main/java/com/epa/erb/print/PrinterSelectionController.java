@@ -7,7 +7,6 @@ import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.epa.erb.indicators.DataSelection_InPersonController;
 import com.epa.erb.indicators.IndicatorsPrintViewController;
 import javafx.fxml.FXML;
@@ -22,11 +21,6 @@ import javafx.util.Callback;
 
 public class PrinterSelectionController implements Initializable{
 
-	@FXML
-	Label label;
-	@FXML
-	ListView<Printer> printerListView;
-		
 	private IndicatorsPrintViewController iPWC;
 	private DataSelection_InPersonController dSIPC;
 	public PrinterSelectionController(IndicatorsPrintViewController iPWC, DataSelection_InPersonController dSIPC) {
@@ -34,10 +28,14 @@ public class PrinterSelectionController implements Initializable{
 		this.dSIPC = dSIPC;
 	}
 	
+	@FXML
+	Label label;
+	@FXML
+	ListView<Printer> printerListView;
+			
 	public void fillPrinterListView() {
 		for(Printer printer: Printer.getAllPrinters()) {
 			printerListView.getItems().add(printer);
-
 		}
 	}
 	

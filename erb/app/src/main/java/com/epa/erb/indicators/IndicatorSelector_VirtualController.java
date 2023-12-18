@@ -9,14 +9,15 @@ import javafx.scene.layout.HBox;
 
 public class IndicatorSelector_VirtualController implements Initializable{
 
+	public IndicatorSelector_VirtualController() {
+		
+	}
+	
 	@FXML
 	HBox indicatorHBox;
 	@FXML
 	CheckBox indicatorCheckBox;
-	
-	public IndicatorSelector_VirtualController() {
-	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		

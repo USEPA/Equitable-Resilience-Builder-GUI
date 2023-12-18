@@ -3,7 +3,6 @@ package com.epa.erb;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.epa.erb.forms.FormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.project.Project;
@@ -27,38 +26,28 @@ import javafx.scene.shape.Rectangle;
 
 public class ERBLandingController implements Initializable{
 
-	@FXML
-	ImageView landingImageView1;
-	@FXML
-	VBox landingImageView1VBox;
-	@FXML
-	ImageView landingImageView2;
-	@FXML
-	VBox landingImageView2VBox;
-	@FXML
-	ImageView landingImageView3;
-	@FXML
-	VBox landingImageView3VBox;
-	@FXML
-	Rectangle rectangle2;
-	@FXML
-	VBox vBox;
-	@FXML
-	StackPane bottomStackPane;
-	@FXML
-	Hyperlink exploreHyperlink;
-	@FXML
-	Rectangle epaLogRectangle;
-	@FXML
-	ImageView epaLogoImageView;
-	@FXML
-	ImageView erbMiniImageView;
-	
 	private App app;
 	public ERBLandingController(App app) {
 		this.app = app;
 	}
-		
+	
+	@FXML
+	VBox vBox;
+	@FXML
+	Rectangle rectangle2;
+	@FXML
+	StackPane bottomStackPane;
+	@FXML
+	Rectangle epaLogRectangle;
+	@FXML
+	Hyperlink exploreHyperlink;
+	@FXML
+	ImageView epaLogoImageView, erbMiniImageView;
+	@FXML
+	ImageView landingImageView1, landingImageView2, landingImageView3;
+	@FXML
+	VBox landingImageView1VBox, landingImageView2VBox, landingImageView3VBox;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		app.getErbContainerController().removeHeaderHBox();
@@ -103,7 +92,7 @@ public class ERBLandingController implements Initializable{
 		
 	@FXML
 	public void exampleProjectsHyperlinkAction() {
-		FileHandler fileHandler = new FileHandler();
+		FileHandler fileHandler = new FileHandler(app);
 		File supportingDocDir = fileHandler.getStaticSupportingDOCDirectory();
 		File fileToOpen = new File(supportingDocDir + "\\Examples.pdf");
 		fileHandler.openFileOnDesktop(fileToOpen);
@@ -151,22 +140,22 @@ public class ERBLandingController implements Initializable{
 	
 	@FXML
 	public void projectContinueButtonAction() {
-		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 		Parent projectSelectionRoot = mainPanelHandler.loadProjectSelectionRoot(app);
 		String projectSelectionString = "Project Selection";
 		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(projectSelectionString, mainPanelHandler.getMainPanelIdHashMap().get(projectSelectionString));
-		app.loadNodeToERBContainer(projectSelectionRoot);	
+		app.addNodeToERBContainer(projectSelectionRoot);	
 		app.getErbContainerController().addHeaderHBox();
 		app.getErbContainerController().addERBAboutHBox();
 	}
 	
 	@FXML
 	public void projectCreationButtonAction() {
-		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 		Parent projectCreationRoot = mainPanelHandler.loadProjectCreationRoot(app);
 		String projectCreationString = "Project Creation";
 		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(projectCreationString, mainPanelHandler.getMainPanelIdHashMap().get(projectCreationString));
-		app.loadNodeToERBContainer(projectCreationRoot);	
+		app.addNodeToERBContainer(projectCreationRoot);	
 		app.getErbContainerController().addHeaderHBox();
 		app.getErbContainerController().addERBAboutHBox();
 	}

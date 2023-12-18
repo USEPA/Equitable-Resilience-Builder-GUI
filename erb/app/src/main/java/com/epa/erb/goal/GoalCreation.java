@@ -2,24 +2,25 @@ package com.epa.erb.goal;
 
 import java.io.File;
 import java.util.ArrayList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
+
 public class GoalCreation{
+	
+	private XMLManager xmlManager;
+	private FileHandler fileHandler;
 
 	private App app;
 	private Project project;
 	public GoalCreation(App app, Project project) {
 		this.app = app;
 		this.project = project;
+		
+		xmlManager = new XMLManager(app);
+		fileHandler = new FileHandler(app);
 	}
-	
-	private FileHandler fileHandler = new FileHandler();
-	private XMLManager xmlManager = new XMLManager(app);
-	private Logger logger = LogManager.getLogger(GoalCreation.class);
 	
 	public String cleanStringForWindows(String string) {
 		return string.replaceAll("[^A-Za-z0-9]", "_");
@@ -42,7 +43,6 @@ public class GoalCreation{
 				}
 			}
 		} else {
-			logger.error("Cannot writeGoalsMetaData. goals is null.");
 		}
 	}
 	
@@ -63,7 +63,6 @@ public class GoalCreation{
 				supportingDOCDirectory.mkdir();
 			}
 		} else {
-			logger.error("Cannot createSupportingDocDirectory. goal is null.");
 		}
 	}
 	
@@ -74,7 +73,6 @@ public class GoalCreation{
 				goalDirectory.mkdir();
 			}
 		} else {
-			logger.error("Cannot createGoalDirectory. goal is null.");
 		}
 	}
 	
@@ -93,10 +91,8 @@ public class GoalCreation{
 					return goalCategory;
 				}
 			}
-			logger.debug("Goal Category returned is null.");
 			return null;
 		} else {
-			logger.error("Cannot getGoalCategory. goalCategoryName is null.");
 			return null;
 		}
 	}

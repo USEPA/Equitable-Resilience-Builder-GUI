@@ -7,14 +7,13 @@ public class Constants {
 	
 	private int prefHeightForImages = 0;
 	private int prefWidthForImages = 0;
-	
 	//Activity
 	private String activityTypeColor = "";
-		//Status
+	//Status
 	private String readyStatusColor = "#E3E3E3"; 				//Gray
 	private String inProgressStatusColor = "#EDF7B2"; 			//Yellow
 	private String completeStatusColor = "#B2F7D1"; 			//Mint Green
-		//Attributes
+	//Attributes
 	private String shortNameColor = "";
 	private String longNameColor = "";
 	private String fileNameColor = "";
@@ -26,28 +25,21 @@ public class Constants {
 	private String whoColor = "#EB8787"; 						//Red
 	private String activityIDColor = "";
 	private String linksColor = "#E88AFF";						//Magenta
-
 	//Chapters
-	//private String allChaptersColor	= "#C3C3C3"; 		    //Grey
 	private String allChaptersColor	= "#A7BFE8";				//Blue
-	
 	private String chapter1Color = "#F1A858";					//Orange
 	private String chapter2Color = "#6FE658";					//Light Green
 	private String chapter3Color = "#35AF69";					//Green
 	private String chapter4Color = "#42C2D7";					//Light Blue
 	private String chapter5Color = "#427ED7";					//Blue
-
-
 	//Post It Note Stack
 	private String layer1ColorString = "#F7B2E0";				//Pink
 	private String layer2ColorString = "#B895EB";				//Purple
 	private String layer3ColorString = "#EB8787";				//Red
 	private String layer4ColorString = "#B2F7D1";				//Mint Green
 	private String layer5ColorString = "#B2C1F7";				//Light Blue
-	
 	//Post-It Note Single
 	private String postItNoteColor = "#FFFFFF"; 				//White
-			
 	//Paths
 	private String pathToERBFolder;
 	private String pathToERBProjectsFolder;

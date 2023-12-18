@@ -6,6 +6,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import com.epa.erb.App;
 import com.epa.erb.utility.FileHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,23 +29,29 @@ import java.util.*;
 
 public class ExternalFileUploaderController implements Initializable{
 
+	private Logger logger;
+	private FileHandler fileHandler;
+	
+	private App app;
+	private EngagementActionController engagementActionController;
+	public ExternalFileUploaderController(App app, EngagementActionController engagementActionController) {
+		this.app = app;
+		this.engagementActionController = engagementActionController;
+		
+		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
+	}
+	
 	@FXML
-	TableColumn<MyUploadedItem, Integer> numberColumn;
+	TableView<MyUploadedItem> tableView;
 	@FXML
 	TableColumn<MyUploadedItem, Text> nameColumn;
+	@FXML
+	TableColumn<MyUploadedItem, Integer> numberColumn;
 	@FXML
 	TableColumn<MyUploadedItem, String> modifiedColumn;
 	@FXML
 	TableColumn<MyUploadedItem, String> uploadSourceColumn;
-	@FXML
-	TableView<MyUploadedItem> tableView;
-	
-	private EngagementActionController engagementActionController;
-	public ExternalFileUploaderController(EngagementActionController engagementActionController) {
-		this.engagementActionController = engagementActionController;
-	}
-	
-	private FileHandler fileHandler = new FileHandler();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -78,6 +87,8 @@ public class ExternalFileUploaderController implements Initializable{
 								}
 								scanner.close();
 							} catch (FileNotFoundException e) {
+								logger.log(Level.FINE, "Failed to read upload info.");
+								logger.log(Level.FINER, "Failed to read upload info: " + e.getStackTrace());
 							}
 							
 						} else {
@@ -128,6 +139,8 @@ public class ExternalFileUploaderController implements Initializable{
 				printWriter.println("uploadSource : " + uploadSource);
 				printWriter.close();
 			} catch (FileNotFoundException e) {
+				logger.log(Level.FINE, "Failed to push upload.");
+				logger.log(Level.FINER, "Failed to push upload: " + e.getStackTrace());
 			}	
 		}
 	}
@@ -148,6 +161,8 @@ public class ExternalFileUploaderController implements Initializable{
 			printWriter.println("uploadSource : " + uploadSource);
 			printWriter.close();
 		} catch (FileNotFoundException e) {
+			logger.log(Level.FINE, "Failed to handle new file.");
+			logger.log(Level.FINER, "Failed to handle new file.: " + e.getStackTrace());
 		}	
 	}
 	
@@ -155,10 +170,10 @@ public class ExternalFileUploaderController implements Initializable{
 	public void uploadFileButtonAction() {
 		FileChooser choose = new FileChooser();
 		File sourceFile = choose.showOpenDialog(null);
-		if(sourceFile != null && sourceFile.exists()) {
-		String uploadedFrom = engagementActionController.getCurrentSelectedERBContentItem().getShortName();
-		handleNewFile(sourceFile, uploadedFrom);
-		addSingleUploadedDocumentToTableView(sourceFile,uploadedFrom);
+		if (sourceFile != null && sourceFile.exists()) {
+			String uploadedFrom = engagementActionController.getCurrentSelectedERBContentItem().getShortName();
+			handleNewFile(sourceFile, uploadedFrom);
+			addSingleUploadedDocumentToTableView(sourceFile, uploadedFrom);
 		}
 	}
 	

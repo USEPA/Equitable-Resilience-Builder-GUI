@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class ERBContentItem {
 	
+	ArrayList<ERBContentItem> childERBContentItems = new ArrayList<ERBContentItem>();
+	
 	String id;
 	String guid;
 	String type;
@@ -17,15 +19,12 @@ public class ERBContentItem {
 		this.status = status;
 		this.longName = longName;
 		this.shortName = shortName;
-		
 	}
 	
 	public ERBContentItem() {
 		
 	}
-	
-	ArrayList<ERBContentItem> childERBContentItems = new ArrayList<ERBContentItem>();
-	
+		
 	public void addChildERBContentItem(ERBContentItem erbContentItem) {
 		if(erbContentItem != null) {
 			childERBContentItems.add(erbContentItem);

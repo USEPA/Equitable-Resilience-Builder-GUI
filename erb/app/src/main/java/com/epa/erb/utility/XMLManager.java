@@ -4,14 +4,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,8 +23,6 @@ import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
-import com.epa.erb.indicators.IndicatorCard;
-import com.epa.erb.noteboard.NoteBoardRowController;
 import com.epa.erb.project.Project;
 import com.epa.erb.wordcloud.WordCloudItem;
 import javafx.geometry.Pos;
@@ -41,16 +39,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class XMLManager {
-
-	private App app;
-
-	public XMLManager(App app) {
-		this.app = app;
-	}
-
+	
+	private Logger logger;
 	private IdAssignments idAssignments = new IdAssignments();
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
-	private Logger logger = LogManager.getLogger(XMLManager.class);
+
+	private App app;
+	public XMLManager(App app) {
+		this.app = app;
+		
+		logger = app.getLogger();
+	}
 
 	public void writeWordCloudDataXML(File xmlFile, ArrayList<WordCloudItem> wordCloudItems) {
 		if (xmlFile != null && wordCloudItems != null) {
@@ -75,21 +74,10 @@ public class XMLManager {
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to write word cloud data.");
+				logger.log(Level.FINER, "Failed to write word cloud data: " + e.getStackTrace());
 			}
 		} else {
-			logger.error("Cannot writeWordCloudDataXML. xmlFile or categories is null.");
-		}
-	}
-
-	public void writeNoteboardDataXML(File xmlFile, ArrayList<NoteBoardRowController> categories) {
-		if (xmlFile != null && categories != null) {
-			try {
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error("Cannot writeNoteboardDataXML. xmlFile or categories is null.");
 		}
 	}
 
@@ -118,10 +106,10 @@ public class XMLManager {
 				}
 				return wordCloudItems;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse word cloud data.");
+				logger.log(Level.FINER, "Failed to parse word cloud data: " + e.getStackTrace());
 			}
 		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
 		return null;
 	}
@@ -168,14 +156,14 @@ public class XMLManager {
 				}
 				return listOfCategoryHashMaps;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse noteboard data.");
+				logger.log(Level.FINER, "Failed to parse noteboard data: " + e.getStackTrace());
 			}
 		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
 		return null;
 	}
-	
+
 	public ArrayList<String> parseWorksheetsXML(File xmlFile, String sectionName) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
@@ -206,32 +194,19 @@ public class XMLManager {
 				}
 				return worksheets;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse worksheets.");
+				logger.log(Level.FINER, "Failed to parse worksheets: " + e.getStackTrace());
 			}
 		} else {
-			logger.error("Cannot parseWorksheetsXML. xmlFile = " + xmlFile);
-		}
-		return null;
-	}
-	
-	public ArrayList<IndicatorCard> parseIndicatorCardsXML(File xmlFile){
-		if (xmlFile != null && xmlFile.exists()) {
-			try {
-				ArrayList<IndicatorCard> indicatorCards = new ArrayList<IndicatorCard>();
-				return indicatorCards;
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} else {
-			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
 		}
 		return null;
 	}
 
-	public HashMap<String, ArrayList<HBox>> parseMainFormContentXML(File xmlFile, MainFormController formContentController) {
+	public HashMap<String, ArrayList<HBox>> parseMainFormContentXML(File xmlFile,
+			MainFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
-				FileHandler fileHandler = new FileHandler();
+				FileHandler fileHandler = new FileHandler(app);
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -253,7 +228,7 @@ public class XMLManager {
 							// TextBlock
 							if (textBlockNode.getNodeType() == Node.ELEMENT_NODE) {
 								HBox textFlowHBox = new HBox();
-								
+
 								TextFlow textFlow = new TextFlow();
 								Element textBlockElement = (Element) textBlockNode;
 								NodeList textBlockChildrenNodeList = textBlockElement.getChildNodes();
@@ -274,15 +249,17 @@ public class XMLManager {
 												String linkType = textElement.getAttribute("linkType");
 												String link = textElement.getAttribute("link");
 												t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-												if(linkType.contentEquals("email")) {
+												if (linkType.contentEquals("email")) {
 													t.setStyle("-fx-fill: black");
 													Tooltip.install(t, new Tooltip("Click to copy to clipboard"));
-													t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
-												}else {
+													t.setOnMouseClicked(e -> formContentController.handleHyperlink(t,
+															linkType, link, app.getSelectedProject()));
+												} else {
 													t.setStyle("-fx-fill:#4d90bc");
 													t.setOnMouseEntered(e -> t.setUnderline(true));
 													t.setOnMouseExited(e -> t.setUnderline(false));
-													t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+													t.setOnMouseClicked(e -> formContentController.handleHyperlink(t,
+															linkType, link, app.getSelectedProject()));
 												}
 											} else {
 												if (fontStyle.contentEquals("Bold")) {
@@ -305,12 +282,14 @@ public class XMLManager {
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
-											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											imageView.setImage(
+													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
 											Tooltip toolTip = new Tooltip("Click image to expand");
 											Tooltip.install(imageView, toolTip);
-											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView, id));
+											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e,
+													fileHandler.getStaticIconImageFile(id), imageView, id));
 											textFlowHBox.getChildren().add(imageView);
 										} else if (nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;
@@ -326,7 +305,8 @@ public class XMLManager {
 														Node textNode = cNode;
 														if (textNode.getNodeType() == Node.ELEMENT_NODE) {
 															Element textElement = (Element) textNode;
-															double size = Double.parseDouble(textElement.getAttribute("size"));
+															double size = Double
+																	.parseDouble(textElement.getAttribute("size"));
 															String fontFamily = textElement.getAttribute("fontFamily");
 															String fontStyle = textElement.getAttribute("fontStyle");
 															TextFlow lTextFlow = new TextFlow();
@@ -335,25 +315,33 @@ public class XMLManager {
 															if (fontStyle.contentEquals("Hyperlink")) {
 																String linkType = textElement.getAttribute("linkType");
 																String link = textElement.getAttribute("link");
-																t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
-																if(linkType.contentEquals("email")) {
+																t.setFont(
+																		Font.font(fontFamily, FontWeight.NORMAL, size));
+																if (linkType.contentEquals("email")) {
 																	t.setStyle("-fx-fill: black");
-																	Tooltip.install(t, new Tooltip("Click to copy to clipboard"));
-																	t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
-																}else {
+																	Tooltip.install(t,
+																			new Tooltip("Click to copy to clipboard"));
+																	t.setOnMouseClicked(e -> formContentController
+																			.handleHyperlink(t, linkType, link,
+																					app.getSelectedProject()));
+																} else {
 																	t.setStyle("-fx-fill:#4d90bc");
 																	t.setOnMouseEntered(e -> t.setUnderline(true));
 																	t.setOnMouseExited(e -> t.setUnderline(false));
-																	t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+																	t.setOnMouseClicked(e -> formContentController
+																			.handleHyperlink(t, linkType, link,
+																					app.getSelectedProject()));
 																}
 															} else {
 																if (fontStyle.contentEquals("Bold")) {
-																	t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
+																	t.setFont(Font.font(fontFamily, FontWeight.BOLD,
+																			size));
 																} else if (fontStyle.contentEquals("Underlined")) {
 																	t.setUnderline(true);
 																	t.setFont(Font.font(fontFamily, size));
 																} else {
-																	t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
+																	t.setFont(Font.font(fontFamily, FontWeight.NORMAL,
+																			size));
 																}
 															}
 															lTextFlow.getChildren().add(t);
@@ -363,16 +351,22 @@ public class XMLManager {
 														Node iconNode = cNode;
 														// Icon
 														Element iconElement = (Element) iconNode;
-														double width = Double.parseDouble(iconElement.getAttribute("width"));
-														double height = Double.parseDouble(iconElement.getAttribute("height"));
+														double width = Double
+																.parseDouble(iconElement.getAttribute("width"));
+														double height = Double
+																.parseDouble(iconElement.getAttribute("height"));
 														String id = iconElement.getAttribute("id");
 														ImageView imageView = new ImageView();
-														imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+														imageView.setImage(new Image(
+																fileHandler.getStaticIconImageFile(id).getPath()));
 														imageView.setFitWidth(width);
 														imageView.setFitHeight(height);
 														Tooltip toolTip = new Tooltip("Please click image to view");
 														Tooltip.install(imageView, toolTip);
-														imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView, id));
+														imageView.setOnMouseClicked(
+																e -> formContentController.handleImageClicked(e,
+																		fileHandler.getStaticIconImageFile(id),
+																		imageView, id));
 														listVBox.getChildren().add(imageView);
 													}
 
@@ -395,10 +389,10 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse main form content.");
+				logger.log(Level.FINER, "Failed to parse main form content: " + e.getStackTrace());
 			}
 		} else {
-			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
 		}
 		return null;
 	}
@@ -407,7 +401,7 @@ public class XMLManager {
 			AlternativeFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
-				FileHandler fileHandler = new FileHandler();
+				FileHandler fileHandler = new FileHandler(app);
 
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -445,9 +439,9 @@ public class XMLManager {
 											String fontStyle = textElement.getAttribute("fontStyle");
 											String text = textElement.getAttribute("text");
 											String wrap = textElement.getAttribute("wrap");
-										
+
 											double wrapLength = 0;
-											if(wrap != null && wrap.length() > 0) {
+											if (wrap != null && wrap.length() > 0) {
 												wrapLength = Double.parseDouble(wrap);
 											}
 											Text t = new Text(text);
@@ -458,7 +452,8 @@ public class XMLManager {
 												t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 												t.setOnMouseEntered(e -> t.setUnderline(true));
 												t.setOnMouseExited(e -> t.setUnderline(false));
-												t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+												t.setOnMouseClicked(e -> formContentController.handleHyperlink(t,
+														linkType, link, app.getSelectedProject()));
 											} else {
 												if (fontStyle.contentEquals("Bold")) {
 													t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
@@ -470,8 +465,9 @@ public class XMLManager {
 												}
 											}
 
-											if(wrapLength > 0) t.setWrappingWidth(wrapLength);
-											textFlowHBox.getChildren().add(t);										
+											if (wrapLength > 0)
+												t.setWrappingWidth(wrapLength);
+											textFlowHBox.getChildren().add(t);
 
 										} else if (nodeName.contentEquals("icon")) {
 											Node iconNode = childNode;
@@ -481,19 +477,21 @@ public class XMLManager {
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
-											imageView.setImage(new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											imageView.setImage(
+													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
-											imageView.setOnMouseClicked(e-> formContentController.handleImageClicked(e, fileHandler.getStaticIconImageFile(id), imageView, id));
-											textFlowHBox.getChildren().add(imageView);											
-										} else if(nodeName.contentEquals("listBlock")) {
+											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e,
+													fileHandler.getStaticIconImageFile(id), imageView, id));
+											textFlowHBox.getChildren().add(imageView);
+										} else if (nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;
 											Element listBlockElement = (Element) listBlockNode;
 											NodeList textInListNodeList = listBlockElement.getElementsByTagName("text");
 											VBox listVBox = new VBox();
-											for(int m=0; m<textInListNodeList.getLength();m++) {
+											for (int m = 0; m < textInListNodeList.getLength(); m++) {
 												Node textNode = textInListNodeList.item(m);
-												if(textNode.getNodeType() == Node.ELEMENT_NODE) {
+												if (textNode.getNodeType() == Node.ELEMENT_NODE) {
 													Element textElement = (Element) textNode;
 													double size = Double.parseDouble(textElement.getAttribute("size"));
 													String fontFamily = textElement.getAttribute("fontFamily");
@@ -508,7 +506,8 @@ public class XMLManager {
 														t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 														t.setOnMouseEntered(e -> t.setUnderline(true));
 														t.setOnMouseExited(e -> t.setUnderline(false));
-														t.setOnMouseClicked(e -> formContentController.handleHyperlink(t, linkType, link, app.getSelectedProject()));
+														t.setOnMouseClicked(e -> formContentController.handleHyperlink(
+																t, linkType, link, app.getSelectedProject()));
 													} else {
 														if (fontStyle.contentEquals("Bold")) {
 															t.setFont(Font.font(fontFamily, FontWeight.BOLD, size));
@@ -523,7 +522,7 @@ public class XMLManager {
 													listVBox.getChildren().add(tflow);
 												}
 											}
-											
+
 											textFlowHBox.getChildren().add(listVBox);
 										}
 									}
@@ -538,11 +537,10 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
-				e.printStackTrace();
+				logger.log(Level.FINE, "Failed to parse alternative form content.");
+				logger.log(Level.FINER, "Failed to parse alternative form content: " + e.getStackTrace());
 			}
 		} else {
-			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
 		}
 		return null;
 	}
@@ -595,10 +593,10 @@ public class XMLManager {
 				}
 				return contentList;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse output form content.");
+				logger.log(Level.FINER, "Failed to parse output form content: " + e.getStackTrace());
 			}
 		} else {
-			logger.error("Cannot parseFormContentXML. xmlFile = " + xmlFile);
 		}
 		return null;
 	}
@@ -642,26 +640,27 @@ public class XMLManager {
 						textBlockElement.appendChild(textElement);
 					} else if (node.toString().contains("VBox")) {
 						VBox vBox = (VBox) node;
-						for(javafx.scene.Node child: vBox.getChildren()) {
-							if(child.toString().contains("HBox")) {
+						for (javafx.scene.Node child : vBox.getChildren()) {
+							if (child.toString().contains("HBox")) {
 								HBox hbox = (HBox) child;
-								if(hbox.getChildren().size() ==2) {
-								Text promptText = (Text) hbox.getChildren().get(0);
-								TextArea responseTextArea = (TextArea) hbox.getChildren().get(1);
-								Element textElement = document.createElement("text");
-								textElement.setAttribute("size", String.valueOf(promptText.getFont().getSize()));
-								textElement.setAttribute("fontFamily", promptText.getFont().getFamily());
-								textElement.setAttribute("fontStyle", promptText.getId());
-								if(responseTextArea.getText() != null) {
-									textElement.setAttribute("text", "[" + promptText.getText()+ "]" + responseTextArea.getText());
-								} else {
-									textElement.setAttribute("text", "[" + promptText.getText()+ "]");
-								}
-								textBlockElement.appendChild(textElement);
+								if (hbox.getChildren().size() == 2) {
+									Text promptText = (Text) hbox.getChildren().get(0);
+									TextArea responseTextArea = (TextArea) hbox.getChildren().get(1);
+									Element textElement = document.createElement("text");
+									textElement.setAttribute("size", String.valueOf(promptText.getFont().getSize()));
+									textElement.setAttribute("fontFamily", promptText.getFont().getFamily());
+									textElement.setAttribute("fontStyle", promptText.getId());
+									if (responseTextArea.getText() != null) {
+										textElement.setAttribute("text",
+												"[" + promptText.getText() + "]" + responseTextArea.getText());
+									} else {
+										textElement.setAttribute("text", "[" + promptText.getText() + "]");
+									}
+									textBlockElement.appendChild(textElement);
 								}
 							}
 						}
-						
+
 					}
 					containerElement.appendChild(textBlockElement);
 				}
@@ -674,10 +673,10 @@ public class XMLManager {
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to write output form content.");
+				logger.log(Level.FINER, "Failed to write output form content: " + e.getStackTrace());
 			}
 		} else {
-			logger.error("Cannot writeOutputFormDataXML. xmlFile or outputFormNodes is null.");
 		}
 	}
 
@@ -708,7 +707,8 @@ public class XMLManager {
 				}
 				return availableERBContentItems;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse content.");
+				logger.log(Level.FINER, "Failed to parse content: " + e.getStackTrace());
 			}
 		}
 		return null;
@@ -734,16 +734,17 @@ public class XMLManager {
 						Element goalCategoryElement = (Element) goalCategoryNode;
 						String goalCategoryName = goalCategoryElement.getAttribute("categoryName");
 						parseGoalCategoryNodes(goalCategoryNode, null);
-						GoalCategory goalCategory = new GoalCategory(goalCategoryName, nestedGoalCategoryERBContentItems);
+						GoalCategory goalCategory = new GoalCategory(goalCategoryName,
+								nestedGoalCategoryERBContentItems);
 						goalCategories.add(goalCategory);
 					}
 				}
 				return goalCategories;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse goal categories.");
+				logger.log(Level.FINER, "Failed to parse goal categories: " + e.getStackTrace());
 			}
 		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
 		return null;
 	}
@@ -754,14 +755,18 @@ public class XMLManager {
 			String id = nodeElement.getAttribute("id").trim();
 			ERBContentItem erbContentItem = app.findERBContentItemForId(id);
 			ERBContentItem clonedContentItem = erbContentItem;
-			if (erbContentItem != null) clonedContentItem = new ERBContentItem(erbContentItem.getId(), erbContentItem.getGuid(), erbContentItem.getType(), erbContentItem.getStatus(), erbContentItem.getLongName(), erbContentItem.getShortName());
+			if (erbContentItem != null)
+				clonedContentItem = new ERBContentItem(erbContentItem.getId(), erbContentItem.getGuid(),
+						erbContentItem.getType(), erbContentItem.getStatus(), erbContentItem.getLongName(),
+						erbContentItem.getShortName());
 			allGoalCategoryERBContentItems.add(clonedContentItem);
 			if (id != null && id.length() > 0) {
 				if (idAssignments.getChapterIdAssignments().contains(id)) {
 					nestedGoalCategoryERBContentItems.add(clonedContentItem);
 				} else {
 					Element parentElement = (Element) parent;
-					goalCategoryERBContentItem = findParentERBContentItem(parentElement.getAttribute("id"), allGoalCategoryERBContentItems);
+					goalCategoryERBContentItem = findParentERBContentItem(parentElement.getAttribute("id"),
+							allGoalCategoryERBContentItems);
 					goalCategoryERBContentItem.addChildERBContentItem(clonedContentItem);
 				}
 			}
@@ -790,7 +795,7 @@ public class XMLManager {
 		}
 		return projects;
 	}
-	
+
 	public Project parseProjectXML(File xmlFile) {
 		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
 			try {
@@ -827,15 +832,18 @@ public class XMLManager {
 									if (goalCategoryNode.getNodeType() == Node.ELEMENT_NODE) {
 										Element goalCategoryElement = (Element) goalCategoryNode;
 										String categoryName = goalCategoryElement.getAttribute("categoryName");
-										GoalCategory goalCategory = erbItemFinder.getGoalCategoryByName(app.getAvailableGoalCategories(), categoryName);
+										GoalCategory goalCategory = erbItemFinder
+												.getGoalCategoryByName(app.getAvailableGoalCategories(), categoryName);
 										listOfSelectedGoalCategories.add(goalCategory);
 									}
 								}
-								Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription, listOfSelectedGoalCategories);
+								Goal goal = new Goal(app, goalName, goalCleanedName, goalDescription,
+										listOfSelectedGoalCategories);
 								listOfGoals.add(goal);
 							}
 						}
-						Project project = new Project(projectName, projectType, projectCleanedName, projectDescription, listOfGoals);
+						Project project = new Project(projectName, projectType, projectCleanedName, projectDescription,
+								listOfGoals);
 						for (Goal goal : listOfGoals) {
 							goal.setContentItems(project);
 						}
@@ -843,10 +851,10 @@ public class XMLManager {
 					}
 				}
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse project.");
+				logger.log(Level.FINER, "Failed to parse project: " + e.getStackTrace());
 			}
 		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
 		return null;
 	}
@@ -886,10 +894,10 @@ public class XMLManager {
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to write project.");
+				logger.log(Level.FINER, "Failed to write project: " + e.getStackTrace());
 			}
 		} else {
-			logger.error("Cannot writeProjectMetaXML. xmlFile or project is null.");
 		}
 	}
 
@@ -910,17 +918,18 @@ public class XMLManager {
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to write goal.");
+				logger.log(Level.FINER, "Failed to write goal: " + e.getStackTrace());
 			}
 		} else {
-			logger.error("Cannot writeGoalMetaXML. xmlFile or erbContentItems is null.");
 		}
 	}
 
 	Element elementToTrack;
 	ArrayList<Element> listOfElements = new ArrayList<Element>();
 
-	public void writeGoalNodes(ERBContentItem erbContentItem, ERBContentItem erbContentItemParent, Element rootElement, Document document) {
+	public void writeGoalNodes(ERBContentItem erbContentItem, ERBContentItem erbContentItemParent, Element rootElement,
+			Document document) {
 		Element element = document.createElement("content");
 		element.setAttribute("id", erbContentItem.getId());
 		element.setAttribute("guid", erbContentItem.getGuid());
@@ -934,7 +943,8 @@ public class XMLManager {
 			elementToTrack = element;
 		} else {
 			Element parentElement = searchForGoalElementById(erbContentItemParent.getId());
-			if (parentElement != null) parentElement.appendChild(element);
+			if (parentElement != null)
+				parentElement.appendChild(element);
 		}
 		if (erbContentItem.getChildERBContentItems().size() > 0) {
 			for (ERBContentItem erbContentItemChild : erbContentItem.getChildERBContentItems()) {
@@ -951,7 +961,7 @@ public class XMLManager {
 		}
 		return null;
 	}
-	
+
 	ERBContentItem goalERBContentItem = new ERBContentItem();
 	ArrayList<ERBContentItem> nestedGoalERBContentItems = new ArrayList<ERBContentItem>();
 	ArrayList<ERBContentItem> allGoalERBContentItems = new ArrayList<ERBContentItem>();
@@ -973,10 +983,10 @@ public class XMLManager {
 				}
 				return nestedGoalERBContentItems;
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.log(Level.FINE, "Failed to parse goal.");
+				logger.log(Level.FINER, "Failed to parse goal: " + e.getStackTrace());
 			}
 		} else {
-			logger.error(xmlFile.getPath() + " either does not exist or cannot be read");
 		}
 		return null;
 	}
@@ -1000,7 +1010,8 @@ public class XMLManager {
 					Element parentElement = (Element) parent;
 					String pid = parentElement.getAttribute("id").trim();
 					goalERBContentItem = findParentERBContentItem(pid, allGoalERBContentItems);
-					if (goalERBContentItem != null) goalERBContentItem.addChildERBContentItem(erbContentItem);
+					if (goalERBContentItem != null)
+						goalERBContentItem.addChildERBContentItem(erbContentItem);
 				}
 			}
 			if (node.hasChildNodes()) {

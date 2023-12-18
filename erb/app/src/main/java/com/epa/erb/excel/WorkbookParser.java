@@ -2,15 +2,23 @@ package com.epa.erb.excel;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import com.epa.erb.App;
 
 public class WorkbookParser {
 	
-	public WorkbookParser() {
+	private Logger logger;
+	
+	private App app;
+	public WorkbookParser(App app) {
+		this.app = app;
 		
+		app.getLogger();
 	}
 	
 	public XSSFWorkbook getXSSFWorkbook(String excelWorkbookPath) {
@@ -18,6 +26,8 @@ public class WorkbookParser {
 			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(excelWorkbookPath);
 			return xssfWorkbook;
 		} catch (Exception e) {
+			logger.log(Level.FINE, "Failed to get XSSFWorkbook.");
+			logger.log(Level.FINER, "Failed to get XSSFWorkbook: " + e.getStackTrace());
 			e.printStackTrace();
 			return null;
 		}

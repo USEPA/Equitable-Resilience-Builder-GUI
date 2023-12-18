@@ -8,25 +8,29 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
+import com.epa.erb.App;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.FileHandler;
 
-
 public class WorksheetIndexController implements Initializable{
 
-	@FXML
-	ListView<Hyperlink> worksheetListView;
+	private FileHandler fileHandler;
 	
-	private FileHandler fileHandler = new FileHandler();
-	
-	private Project project;
+	private App app;
 	private Goal goal;
-	public WorksheetIndexController(Project project, Goal goal) {
-		this.project = project;
+	private Project project;
+	public WorksheetIndexController(App app, Project project, Goal goal) {
+		this.app = app;
 		this.goal = goal;
+		this.project = project;
+		
+		fileHandler = new FileHandler(app);
 	}
 	
+	@FXML
+	ListView<Hyperlink> worksheetListView;
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ArrayList<File> worksheets = getWorksheets();

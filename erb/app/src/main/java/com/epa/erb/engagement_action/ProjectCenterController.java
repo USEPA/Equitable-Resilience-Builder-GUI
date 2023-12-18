@@ -8,21 +8,16 @@ import javafx.scene.layout.VBox;
 
 public class ProjectCenterController implements Initializable {
 
-	@FXML
-	VBox vBox;
-	
-	
 	private EngagementActionController engagementActionController;
 	public ProjectCenterController(EngagementActionController engagementActionController) {
 		this.engagementActionController = engagementActionController;
 	}
-
+	
+	@FXML
+	VBox vBox;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		handleControls();
-	}
-
-	private void handleControls() {
 
 	}
 

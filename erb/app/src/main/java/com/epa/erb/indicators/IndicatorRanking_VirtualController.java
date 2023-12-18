@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import java.io.File;
 import com.epa.erb.App;
@@ -42,6 +44,19 @@ import javafx.util.Callback;
 
 public class IndicatorRanking_VirtualController implements Initializable {
 
+	private Logger logger;
+	private FileHandler fileHandler;
+	
+	private App app;
+	private IndicatorSelection_VirtualController iSVC;
+	public IndicatorRanking_VirtualController(App app, IndicatorSelection_VirtualController iSVC) {
+		this.app = app;
+		this.iSVC = iSVC;
+		
+		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
+	}
+	
 	@FXML
 	VBox vBox;
 	@FXML
@@ -58,15 +73,6 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	ScrollPane rankingScrollPane;
 	@FXML
 	ComboBox<String> indicatorChoiceBox;
-	
-	private FileHandler fileHandler = new FileHandler();
-	
-	private App app;
-	private IndicatorSelection_VirtualController iSVC;
-	public IndicatorRanking_VirtualController(App app, IndicatorSelection_VirtualController iSVC) {
-		this.app = app;
-		this.iSVC = iSVC;
-	}
 	
 	public void closeRequested(WindowEvent e) {
 		Optional<ButtonType> result = showNoSaveWarning();
@@ -104,8 +110,9 @@ public class IndicatorRanking_VirtualController implements Initializable {
 					Pane cVBox = loadIndicatorCard(card);
 					indicatorCardVBox.getChildren().add(cVBox);
 				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					logger.log(Level.FINE, "Failed to load data from indicator selection.");
+					logger.log(Level.FINER, "Failed to load data from indicator selection: " + e.getStackTrace());		
+					}
 			}
 		}
 	}
@@ -193,7 +200,8 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			virtualIndicatorSortingStage.setScene(scene);
 			virtualIndicatorSortingStage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load IndicatorSorting_Virtual.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorSorting_Virtual.fxml: " + e.getStackTrace());
 		}
 		iSVC.getVirtualIndicatorRankingStage().close();
 	}
@@ -210,10 +218,11 @@ public class IndicatorRanking_VirtualController implements Initializable {
 				File rankingVirtualDir = createIndicatorsRankingVirtualDir();
 				File virtualRankedSnapshotSave = new File(rankingVirtualDir + "\\RankingSnapshot_" + dtf.format(now) + ".png");
 				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", virtualRankedSnapshotSave);
-				ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app.getEngagementActionController());
+				ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app, app.getEngagementActionController());
 				exFileUploader.pushToUploaded(virtualRankedSnapshotSave, "Indicator Center");
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.log(Level.FINE, "Failed to save.");
+				logger.log(Level.FINER, "Failed to save: " + e.getStackTrace());
 			}
 		}
 	}
@@ -238,7 +247,8 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			iCController.addTextForRanking();
 			return cVBox;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load IndicatorCard.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorCard.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -256,7 +266,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	
 	private IndicatorCard [] getIndicatorCardsInRanked() {
 		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
-		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(indicatorWorkbookFile);
+		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(app,indicatorWorkbookFile);
 		ArrayList<IndicatorCard> allCards = iWP.parseForIndicatorCards();
 		ArrayList<String> indicatorIds = getIndicatorCardIdsInRanked();
 

@@ -19,19 +19,19 @@ import javafx.util.Callback;
 
 public class ProjectSelectionController implements Initializable{
 
-	@FXML
-	VBox vBox;
-	@FXML
-	TextField projectNameTextField;
-	@FXML
-	TextArea descriptionTextArea;
-	@FXML
-	ListView<Project> projectsListView;
-	
 	private App app;
 	public ProjectSelectionController(App app) {
 		this.app = app;
 	}
+	
+	@FXML
+	VBox vBox;
+	@FXML
+	TextArea descriptionTextArea;
+	@FXML
+	TextField projectNameTextField;
+	@FXML
+	ListView<Project> projectsListView;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -42,9 +42,9 @@ public class ProjectSelectionController implements Initializable{
 	}
 	
 	public void loadEngagementActionToContainer(Project project) {
-		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 		Parent engagementActionRoot = mainPanelHandler.loadEngagementActionRoot(app, project);
-		app.loadNodeToERBContainer(engagementActionRoot);
+		app.addNodeToERBContainer(engagementActionRoot);
 	}
 	
 	private void fillProjectsListView() {
@@ -88,7 +88,7 @@ public class ProjectSelectionController implements Initializable{
 	
 	public void loadProject(Project project) {
 		if (project != null) {
-			MainPanelHandler mainPanelHandler = new MainPanelHandler();
+			MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 			app.setSelectedProject(project);
 			app.getErbContainerController().getMyBreadCrumbBar().setProject(project);
 			app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(project.getProjectName() + " Project", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));

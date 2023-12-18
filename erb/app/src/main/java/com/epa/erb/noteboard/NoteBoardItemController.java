@@ -14,7 +14,15 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 public class NoteBoardItemController implements Initializable{
-
+	
+	private Stage editsStage = null;
+	private Constants constants = new Constants();
+	
+	protected NoteBoardContentController noteBoardContentController;
+	public NoteBoardItemController(NoteBoardContentController noteBoardContentController ) {
+		this.noteBoardContentController = noteBoardContentController;
+	}
+	
 	@FXML
 	VBox mainVBox;
 	@FXML
@@ -29,14 +37,6 @@ public class NoteBoardItemController implements Initializable{
 	ScrollPane scrollPane;
 	@FXML
 	VBox noteBoardItemVBox;
-
-	protected NoteBoardContentController noteBoardContentController;
-	public NoteBoardItemController(NoteBoardContentController noteBoardContentController ) {
-		this.noteBoardContentController = noteBoardContentController;
-	}
-	
-	private Stage editsStage = null;
-	private Constants constants = new Constants();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

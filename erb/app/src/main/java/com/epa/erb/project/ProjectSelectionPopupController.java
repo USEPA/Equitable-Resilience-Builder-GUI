@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import com.epa.erb.App;
 import com.epa.erb.forms.MainFormController;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -14,16 +13,16 @@ import javafx.util.Callback;
 
 public class ProjectSelectionPopupController implements Initializable{
 
-	@FXML
-	ComboBox<Project> projectComboBox;
-	
 	private App app;
 	private MainFormController formContentController;
 	public ProjectSelectionPopupController(App app, MainFormController formContentController) {
 		this.app = app;
 		this.formContentController = formContentController;
 	}
-
+	
+	@FXML
+	ComboBox<Project> projectComboBox;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillProjectChoiceBox();
@@ -39,7 +38,6 @@ public class ProjectSelectionPopupController implements Initializable{
 	@FXML
 	public void okButtonAction() {
 		Project selectedProject = projectComboBox.getSelectionModel().getSelectedItem();
-		formContentController.setProject(selectedProject);
 		formContentController.closeProjectPopupStage();
 	}
 	

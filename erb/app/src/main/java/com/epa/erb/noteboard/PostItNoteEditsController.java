@@ -2,8 +2,6 @@ package com.epa.erb.noteboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
@@ -14,17 +12,15 @@ import javafx.scene.text.Text;
 
 public class PostItNoteEditsController implements Initializable{
 
-	@FXML
-	ColorPicker colorPicker;
-	@FXML
-	TextArea postItNoteTextArea;
-
 	private NoteBoardItemController postItNoteController;
 	public PostItNoteEditsController(NoteBoardItemController postItNoteController) {
 		this.postItNoteController = postItNoteController;
 	}
 	
-	private Logger logger = LogManager.getLogger(PostItNoteEditsController.class);
+	@FXML
+	ColorPicker colorPicker;
+	@FXML
+	TextArea postItNoteTextArea;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -66,7 +62,6 @@ public class PostItNoteEditsController implements Initializable{
 			Color colorToSelect = Color.web(color, 1.0);
 			colorPicker.setValue(colorToSelect);
 		} else {
-			logger.error("Cannot setColorPickerColor. color is null");
 		}
 	}
 	

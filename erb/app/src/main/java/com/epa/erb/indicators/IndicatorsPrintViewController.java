@@ -3,6 +3,8 @@ package com.epa.erb.indicators;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import com.epa.erb.App;
 import com.epa.erb.noteboard.NoteBoardContentController;
 import com.epa.erb.noteboard.NoteBoardItem_Indicator;
@@ -14,16 +16,19 @@ import javafx.scene.layout.VBox;
 
 public class IndicatorsPrintViewController implements Initializable {
 
-	@FXML
-	VBox cardVBox;
-	
+	private Logger logger;
 	ArrayList<HBox> listOfCardHBoxes = new ArrayList<HBox>();
 	
 	private App app;
 	public IndicatorsPrintViewController(App app) {
 		this.app = app;
-	}	
 		
+		logger = app.getLogger();
+	}
+	
+	@FXML
+	VBox cardVBox;
+			
 	private void addCardsToHBox(ArrayList<IndicatorCard> cards) {
 		NoteBoardContentController noteBoardContentController = new NoteBoardContentController(app, app.getEngagementActionController().getCurrentGoal(), app.getEngagementActionController().getCurrentSelectedERBContentItem(), app.getIndicatorCards());
 		int count = 0;
@@ -59,8 +64,9 @@ public class IndicatorsPrintViewController implements Initializable {
 				}
 				cardHBox.getChildren().add(cVBox);
 			} catch (Exception e) {
-				e.printStackTrace();
-			}
+				logger.log(Level.FINE, "Failed to load NoteBoardItem.fxml.");
+				logger.log(Level.FINER, "Failed to load NoteBoardItem.fxml: " + e.getStackTrace());
+				}
 		}
 	}
 		

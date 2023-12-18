@@ -3,27 +3,30 @@ package com.epa.erb.wordcloud;
 import javafx.scene.control.Button;
 
 public class WordCloudItem {
-	
+
+	int size;
+	int count;
 	boolean merge;
 	String phrase;
 	Button plusButton;
 	Button minusButton;
-	int count;
-	int size;
 	public WordCloudItem(boolean merge, String phrase, Button plusButton, Button minusButton, int count, int size) {
+		this.size = size;
+		this.count = count;
 		this.merge = merge;
 		this.phrase = phrase;
 		this.plusButton = plusButton;
 		this.minusButton = minusButton;
-		this.count = count;
-		this.size = size;
 	}
+	
 	public boolean isMerge() {
 		return merge;
 	}
+	
 	public void setMerge(boolean merge) {
 		this.merge = merge;
 	}
+	
 	public String getPhrase() {
 		return phrase;
 	}

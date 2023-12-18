@@ -2,9 +2,9 @@ package com.epa.erb.indicators;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import com.epa.erb.App;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -29,27 +29,31 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 
 public class IndicatorCardController implements Initializable{
+	
+	private Logger logger;
+	
+	private App app;
+	private IndicatorCard indicatorCard;
+	public IndicatorCardController(IndicatorCard indicatorCard, App app) {
+		this.app = app;
+		this.indicatorCard = indicatorCard;
+		
+		logger = app.getLogger();
+	}
 
 	@FXML
-	VBox indicatorCardVBox;
-	@FXML
-	ScrollPane indicatorCardScrollPane;
-	@FXML
 	VBox contentVBox;
+	@FXML
+	TextFlow textFlow;
 	@FXML
 	HBox imageViewHBox;
 	@FXML
 	ImageView imageView;
 	@FXML
-	TextFlow textFlow;
-	
-	private App app;
-	private IndicatorCard indicatorCard;
-	public IndicatorCardController(IndicatorCard indicatorCard, App app) {
-		this.indicatorCard = indicatorCard;
-		this.app = app;
-	}
-	
+	VBox indicatorCardVBox;
+	@FXML
+	ScrollPane indicatorCardScrollPane;
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -82,7 +86,8 @@ public class IndicatorCardController implements Initializable{
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load IndicatorCard.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorCard.fxml: " + e.getStackTrace());	
 		}
 	}
 	

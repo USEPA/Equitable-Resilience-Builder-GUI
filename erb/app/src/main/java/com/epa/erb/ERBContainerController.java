@@ -3,6 +3,8 @@ package com.epa.erb;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.FormController;
@@ -25,44 +27,38 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class ERBContainerController implements Initializable{
-	
-	@FXML
-	VBox erbVBox;
-	@FXML
-	VBox erbContainer;
-	@FXML
-	Label titleLabel;
-	@FXML
-	Menu faqMenu;
-	@FXML
-	Menu resourcesMenu;
-	@FXML
-	Menu aboutMenu;
-	@FXML
-	MenuBar menuBar;
-	@FXML
-	HBox breadCrumbHBox;
-	@FXML
-	ImageView erbMiniImageView;
-	@FXML
-	HBox headerHBox;
-	@FXML
-	HBox erbAboutHBox;
-	@FXML
-	Rectangle rectangle2;
-	@FXML
-	StackPane erbAboutStackPane;
+public class ERBContainerController implements Initializable {
+
+	private Logger logger;
+	private FileHandler fileHandler;
+	private MyBreadCrumbBar myBreadCrumbBar;
+	private IdAssignments idAssignments = new IdAssignments();
 	
 	private App app;
 	public ERBContainerController(App app) {
 		this.app = app;
+		
+		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
 	}
-	
-	private IdAssignments idAssignments = new IdAssignments();
-	private MyBreadCrumbBar myBreadCrumbBar;
-	private FileHandler fileHandler = new FileHandler();
-	
+
+	@FXML
+	MenuBar menuBar;
+	@FXML
+	Label titleLabel;
+	@FXML
+	Rectangle rectangle2;
+	@FXML
+	VBox erbVBox, erbContainer;
+	@FXML
+	ImageView erbMiniImageView;
+	@FXML
+	StackPane erbAboutStackPane;
+	@FXML
+	Menu faqMenu, resourcesMenu, aboutMenu;
+	@FXML
+	HBox breadCrumbHBox,headerHBox, erbAboutHBox;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillImageViews();
@@ -70,20 +66,20 @@ public class ERBContainerController implements Initializable{
 		populateAboutMenu();
 		populateResourceMenu();
 		populateBreadCrumbBar();
-		
-        rectangle2.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
+		logger.log(Level.INFO, "TEST 1");
 
+		rectangle2.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
 		menuBar.getStylesheets().add(getClass().getResource("/menuBar.css").toString());
 	}
-	
-	private void fillImageViews() {		
+
+	private void fillImageViews() {
 		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/bridge_90_90.png")));
 	}
-	
+
 	private void populateResourceMenu() {
-		for(String id: idAssignments.getResourceIdAssignments()) {
-			for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
-				if(id.equals(erbContentItem.getId())){
+		for (String id : idAssignments.getResourceIdAssignments()) {
+			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
+				if (id.equals(erbContentItem.getId())) {
 					String name = erbContentItem.getLongName();
 					MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
 					resourcesMenu.getItems().add(menuItem);
@@ -91,8 +87,7 @@ public class ERBContainerController implements Initializable{
 			}
 		}
 	}
-	
-	
+
 	private void populateFAQMenu() {
 		for (String id : idAssignments.getFAQIdAssignments()) {
 			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
@@ -109,25 +104,25 @@ public class ERBContainerController implements Initializable{
 		iconsMenuItem.setOnAction(e -> fController.loadImagePopUp("204"));
 		faqMenu.getItems().add(iconsMenuItem);
 	}
-	
+
 	private void populateAboutMenu() {
-		for(ERBContentItem erbContentItem: app.getAvailableERBContentItems()) {
-			if(idAssignments.getAboutIdAssignments().contains(erbContentItem.getId())){
+		for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
+			if (idAssignments.getAboutIdAssignments().contains(erbContentItem.getId())) {
 				String name = erbContentItem.getLongName();
 				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
 				aboutMenu.getItems().add(menuItem);
 			}
 		}
 	}
-	
-	
+
 	private void populateBreadCrumbBar() {
-		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 		myBreadCrumbBar = new MyBreadCrumbBar(app);
 		myBreadCrumbBar.getStylesheets().add(getClass().getResource("/breadCrumb.css").toString());
 		myBreadCrumbBar.setStyle("-fx-padding: 3.5 0 0 0");
 		String erbLandingString = "ERB Home";
-		myBreadCrumbBar.initMyBreadCrumbBar(erbLandingString, mainPanelHandler.getMainPanelIdHashMap().get(erbLandingString));
+		myBreadCrumbBar.initMyBreadCrumbBar(erbLandingString,
+				mainPanelHandler.getMainPanelIdHashMap().get(erbLandingString));
 		breadCrumbHBox.getChildren().add(myBreadCrumbBar);
 	}
 
@@ -141,7 +136,7 @@ public class ERBContainerController implements Initializable{
 			return null;
 		}
 	}
-	
+
 	private void menuItemSelected(MenuItem menuItem) {
 		if (menuItem != null) {
 			File formContentXMLFile = getFormContentXML(menuItem.getId());
@@ -156,59 +151,63 @@ public class ERBContainerController implements Initializable{
 			stage.showAndWait();
 		}
 	}
-	
+
 	public VBox loadMainFormContentController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/MainForm.fxml"));
-			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse, app.getEngagementActionController());
+			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse,
+					app.getEngagementActionController());
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
+			logger.log(Level.FINE, "Failed to load MainForm.fxml.");
+			logger.log(Level.FINER, "Failed to load MainForm.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
-	
+
 	public VBox loadAlternativeFormContentController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/AlternativeForm.fxml"));
-			AlternativeFormController formContentController = new AlternativeFormController(app, xmlContentFileToParse, app.getEngagementActionController());
+			AlternativeFormController formContentController = new AlternativeFormController(app, xmlContentFileToParse,
+					app.getEngagementActionController());
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
+			logger.log(Level.FINE, "Failed to load AlternativeForm.fxml.");
+			logger.log(Level.FINER, "Failed to load AlternativeForm.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
-	
-	
+
 	public void removeHeaderHBox() {
-		if(erbVBox.getChildren().contains(headerHBox)) {
+		if (erbVBox.getChildren().contains(headerHBox)) {
 			erbVBox.getChildren().remove(headerHBox);
 		}
 	}
-	
+
 	public void removeERBAboutHBox() {
-		if(erbVBox.getChildren().contains(erbAboutStackPane)) {
+		if (erbVBox.getChildren().contains(erbAboutStackPane)) {
 			erbVBox.getChildren().remove(erbAboutStackPane);
 			erbVBox.getChildren().remove(rectangle2);
 		}
 	}
-	
+
 	public void addHeaderHBox() {
-		if(!erbVBox.getChildren().contains(headerHBox)) {
-			erbVBox.getChildren().add(0,headerHBox);
+		if (!erbVBox.getChildren().contains(headerHBox)) {
+			erbVBox.getChildren().add(0, headerHBox);
 		}
 	}
-	
+
 	public void addERBAboutHBox() {
-		if(!erbVBox.getChildren().contains(erbAboutStackPane)) {
+		if (!erbVBox.getChildren().contains(erbAboutStackPane)) {
 			erbVBox.getChildren().add(1, erbAboutStackPane);
 			erbVBox.getChildren().add(2, rectangle2);
 		}
 	}
-	
-	
+
 	public File getFormContentXML(String id) {
 		File xmlFile = fileHandler.getStaticFormContentXML(id);
 		return xmlFile;

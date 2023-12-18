@@ -2,6 +2,8 @@ package com.epa.erb.indicators;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,18 +12,24 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
+import com.epa.erb.App;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.forms.FormController;
 import com.epa.erb.utility.FileHandler;
 
-
 public class IndicatorCenterController implements Initializable{
 
-	private FileHandler fileHandler = new FileHandler();
+	private Logger logger;
+	private FileHandler fileHandler;
 	
+	private App app;
 	private EngagementActionController eAC;
-	public IndicatorCenterController(EngagementActionController eAC) {
+	public IndicatorCenterController(App app, EngagementActionController eAC) {
+		this.app = app;
 		this.eAC = eAC;
+		
+		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@Override
@@ -54,8 +62,9 @@ public class IndicatorCenterController implements Initializable{
 			inPersonIndicatorSelectionStage.setScene(scene);
 			inPersonIndicatorSelectionStage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			logger.log(Level.FINE, "Failed to load IndicatorSelection_InPerson.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorSelection_InPerson.fxml: " + e.getStackTrace());
+			}
 	}
 	
 	@FXML
@@ -81,8 +90,8 @@ public class IndicatorCenterController implements Initializable{
 			virtualIndicatorSelectionStage.setScene(scene);
 			virtualIndicatorSelectionStage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			logger.log(Level.FINE, "Failed to load IndicatorSelection_Virtual.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorSelection_Virtual.fxml: " + e.getStackTrace());		}
 	}
 
 	public Stage getInPersonIndicatorSelectionStage() {

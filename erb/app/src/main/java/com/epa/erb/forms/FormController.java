@@ -3,6 +3,8 @@ package com.epa.erb.forms;
 import java.awt.Desktop;
 import java.io.File;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Parent;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
@@ -36,31 +38,34 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 
 public class FormController {
+	
+	private Logger logger;
+	private FileHandler fileHandler;
+	private ERBItemFinder erbItemFinder = new ERBItemFinder();
+	private IdAssignments idAssignments = new IdAssignments();
 
 	private App app;
 	private File xmlContentFileToParse;
 	private EngagementActionController engagementActionController;
-
 	public FormController(App app, File xmlContentFileToParse, EngagementActionController engagementActionController) {
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;
+		
+		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
 	}
-	
+
 	public FormController(App app, EngagementActionController engagementActionController) {
 		this.app = app;
 		this.engagementActionController = engagementActionController;
 	}
 
-	private FileHandler fileHandler = new FileHandler();
-	private ERBItemFinder erbItemFinder = new ERBItemFinder();
-	private IdAssignments idAssignments = new IdAssignments();
-	
 	public void handleImageClicked(MouseEvent event, File imageFile, ImageView image, String id) {
-		if(event.getButton() == MouseButton.SECONDARY) {
+		if (event.getButton() == MouseButton.SECONDARY) {
 			ContextMenu contextMenu = new ContextMenu();
 			MenuItem menuItem = new MenuItem("Save As");
-			menuItem.setOnAction(e->saveImage(imageFile));
+			menuItem.setOnAction(e -> saveImage(imageFile));
 			contextMenu.getItems().add(menuItem);
 			image.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 				@Override
@@ -69,12 +74,12 @@ public class FormController {
 				}
 			});
 		} else {
-			if(!idAssignments.getIconIdAssignments().contains(id)) {
+			if (!idAssignments.getIconIdAssignments().contains(id)) {
 				loadImagePopUp(id);
 			}
 		}
 	}
-	
+
 	public void loadImagePopUp(String imageId) {
 		Stage stage = new Stage();
 		stage.getIcons().add(new Image("/bridge_tool_logo.png"));
@@ -97,23 +102,23 @@ public class FormController {
 		imageView.fitHeightProperty().bind(vBox.heightProperty());
 		stage.showAndWait();
 	}
-	
+
 	private String getEnlargedId(String id) {
-		if(id.contentEquals("155")){
+		if (id.contentEquals("155")) {
 			return "99";
-		} else if(id.contentEquals("157")){
+		} else if (id.contentEquals("157")) {
 			return "147";
-		}else if(id.contentEquals("158")){
+		} else if (id.contentEquals("158")) {
 			return "113";
-		}else if(id.contentEquals("159")){
+		} else if (id.contentEquals("159")) {
 			return "146";
-		}else if(id.contentEquals("163")){
+		} else if (id.contentEquals("163")) {
 			return "154";
-		} else if(id.contentEquals("79")){
+		} else if (id.contentEquals("79")) {
 			return "164";
-		} else if(id.contentEquals("80")){
+		} else if (id.contentEquals("80")) {
 			return "165";
-		} else if(id.contentEquals("81")){
+		} else if (id.contentEquals("81")) {
 			return "166";
 		} else if (id.contentEquals("181")) {
 			return "182";
@@ -121,26 +126,27 @@ public class FormController {
 			return "184";
 		} else if (id.contentEquals("185")) {
 			return "186";
-		}else if (id.contentEquals("203")) {
+		} else if (id.contentEquals("203")) {
 			return "119";
 		}
 		return id;
 	}
-	
+
 	private void saveImage(File origImageFile) {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-        fileChooser.getExtensionFilters().add(extFilter);
+		fileChooser.getExtensionFilters().add(extFilter);
 		File file = fileChooser.showSaveDialog(null);
 		fileHandler.copyFile(origImageFile, file);
 	}
-	
+
 	public void handleHyperlink(Text text, String linkType, String link, Project project) {
 		if (linkType.contentEquals("internal")) {
-			if(link.contentEquals("85")) {
+			if (link.contentEquals("85")) {
 				try {
 					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCenter.fxml"));
-					IndicatorCenterController indicatorCenterController = new IndicatorCenterController(engagementActionController);
+					IndicatorCenterController indicatorCenterController = new IndicatorCenterController(app,
+							engagementActionController);
 					fxmlLoader.setController(indicatorCenterController);
 					Parent root = fxmlLoader.load();
 					Stage stage = new Stage();
@@ -152,13 +158,13 @@ public class FormController {
 					stage.setScene(scene);
 					stage.show();
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.log(Level.FINE, "Failed to handle hyperlink.");
+					logger.log(Level.FINER, "Failed to handle hyperlink: " + e.getStackTrace());
 				}
-			}else {
+			} else {
 				internalPanelLinkClicked(link);
 			}
-		} 	
-		else if (linkType.contentEquals("email")) {
+		} else if (linkType.contentEquals("email")) {
 			handleEmailLink(text, link);
 		} else if (linkType.contentEquals("image")) {
 			loadImagePopUp(link);
@@ -166,18 +172,18 @@ public class FormController {
 			externalDOCLinkClicked(link, project);
 		} else if (linkType.contentEquals("URL")) {
 			urlLinkClicked(link);
-		} else if (linkType.length() == 0 || link.length() ==0) {
+		} else if (linkType.length() == 0 || link.length() == 0) {
 			showLinkNotAvailable();
 		}
 	}
-	
+
 	private void handleEmailLink(Text text, String link) {
 		Clipboard clipboard = Clipboard.getSystemClipboard();
 		ClipboardContent content = new ClipboardContent();
 		content.putString(text.getText());
 		clipboard.setContent(content);
 	}
-	
+
 	public void showLinkNotAvailable() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText(null);
@@ -206,21 +212,21 @@ public class FormController {
 		ERBContentItem erbContentItem = app.findERBContentItemForId(link);
 		File formContentXMLFile = app.getErbContainerController().getFormContentXML(link);
 		Pane root = null;
-		if(erbContentItem.getType().contentEquals("mainForm")) {
+		if (erbContentItem.getType().contentEquals("mainForm")) {
 			root = app.getErbContainerController().loadMainFormContentController(formContentXMLFile);
 		} else if (erbContentItem.getType().contentEquals("alternativeForm")) {
 			root = app.getErbContainerController().loadAlternativeFormContentController(formContentXMLFile);
 
 		}
-		if(root != null) {
-		Stage stage = new Stage();
-		stage.setTitle(erbContentItem.getLongName());
-		stage.getIcons().add(new Image("/bridge_tool_logo.png"));
-		Scene scene = new Scene(root);
-		stage.setWidth(app.getPrefWidth());
-		stage.setHeight(app.getPrefHeight());
-		stage.setScene(scene);
-		stage.showAndWait();
+		if (root != null) {
+			Stage stage = new Stage();
+			stage.setTitle(erbContentItem.getLongName());
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
+			Scene scene = new Scene(root);
+			stage.setWidth(app.getPrefWidth());
+			stage.setHeight(app.getPrefHeight());
+			stage.setScene(scene);
+			stage.showAndWait();
 		}
 	}
 
@@ -230,21 +236,25 @@ public class FormController {
 		if (idAssignments.getChapterIdAssignments().contains(link)) {
 			for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
 				if (erbItem.getId() != null && erbItem.getId().contentEquals(link)) {
-					TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+					TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap()
+							.get(erbItem);
 					engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
 					engagementActionController.treeViewClicked(erbTreeItem, erbTreeItem);
 				}
 			}
 		} else {
 			parentERBContentItem = null;
-			TreeItem<ERBContentItem> currentSelectedTreeItem = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+			TreeItem<ERBContentItem> currentSelectedTreeItem = engagementActionController.getTreeView()
+					.getSelectionModel().getSelectedItem();
 			if (currentSelectedTreeItem.getValue().getChildERBContentItems().size() > 0) {
-				ERBContentItem childItem = erbItemFinder.getERBContentItemById(currentSelectedTreeItem.getValue().getChildERBContentItems(), link);
+				ERBContentItem childItem = erbItemFinder
+						.getERBContentItemById(currentSelectedTreeItem.getValue().getChildERBContentItems(), link);
 				if (childItem != null) {
 					engagementActionController.ERBContentItemSelected(childItem);
 					for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
 						if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(childItem.getGuid())) {
-							TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+							TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap()
+									.get(erbItem);
 							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
 							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
 						}
@@ -255,24 +265,29 @@ public class FormController {
 			// Get parent chapter for current selected item
 			getSectionParent(currentSelectedTreeItem);
 			if (parentERBContentItem != null) {
-				ERBContentItem item = erbItemFinder.getERBContentItemById(parentERBContentItem.getChildERBContentItems(), link);
+				ERBContentItem item = erbItemFinder
+						.getERBContentItemById(parentERBContentItem.getChildERBContentItems(), link);
 				if (item != null) {
 					engagementActionController.ERBContentItemSelected(item);
 					for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
 						if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(item.getGuid())) {
-							TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+							TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap()
+									.get(erbItem);
 							engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
 							engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
 						}
 					}
 				} else {
-					for(TreeItem<ERBContentItem> erbContent: engagementActionController.getTreeView().getRoot().getChildren()) {
-						ERBContentItem item2 = erbItemFinder.getERBContentItemById(erbContent.getValue().getChildERBContentItems(), link);
-						if(item2 != null) {
+					for (TreeItem<ERBContentItem> erbContent : engagementActionController.getTreeView().getRoot()
+							.getChildren()) {
+						ERBContentItem item2 = erbItemFinder
+								.getERBContentItemById(erbContent.getValue().getChildERBContentItems(), link);
+						if (item2 != null) {
 							engagementActionController.ERBContentItemSelected(item2);
 							for (ERBContentItem erbItem : engagementActionController.getTreeItemIdTreeMap().keySet()) {
 								if (erbItem.getGuid() != null && erbItem.getGuid().contentEquals(item2.getGuid())) {
-									TreeItem<ERBContentItem> erbTreeItem = engagementActionController.getTreeItemIdTreeMap().get(erbItem);
+									TreeItem<ERBContentItem> erbTreeItem = engagementActionController
+											.getTreeItemIdTreeMap().get(erbItem);
 									engagementActionController.getTreeView().getSelectionModel().select(erbTreeItem);
 									engagementActionController.treeViewClicked(currentSelectedTreeItem, erbTreeItem);
 									return;
@@ -301,13 +316,12 @@ public class FormController {
 	private void externalDOCLinkClicked(String link, Project project) {
 		if (link != null && link.trim().length() > 0) {
 			if (engagementActionController != null) {
-				FileHandler fileHandler = new FileHandler();
+				FileHandler fileHandler = new FileHandler(app);
 				Project currentProject = app.getSelectedProject();
 				Goal currentGoal = engagementActionController.getCurrentGoal();
 				File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(currentProject, currentGoal);
 				File fileToOpen = new File(supportingDOCDirectory + "\\" + link);
 				fileHandler.openFileOnDesktop(fileToOpen);
-			} else {
 			}
 		}
 	}
@@ -324,6 +338,8 @@ public class FormController {
 		try {
 			Desktop.getDesktop().browse(new URL(link).toURI());
 		} catch (Exception e) {
+			logger.log(Level.FINE, "Failed to open URL.");
+			logger.log(Level.FINER, "Failed to open URL: " + e.getStackTrace());
 		}
 	}
 
@@ -334,17 +350,22 @@ public class FormController {
 			VBox root = fxmlLoader.load();
 			root.setPrefWidth(app.getPrefWidth());
 			root.setPrefHeight(app.getPrefHeight());
-			app.loadNodeToERBContainer(root);
+			app.addNodeToERBContainer(root);
 		} catch (Exception e) {
+			logger.log(Level.FINE, "Failed to load EngagementAction.fxml.");
+			logger.log(Level.FINER, "Failed to load EngagementAction.fxml: " + e.getStackTrace());
 		}
 	}
-	
+
 	protected void setColor(Pane tP) {
 		if (engagementActionController != null) {
 			try {
-				TreeItem<ERBContentItem> erbContentItemSelected = engagementActionController.getTreeView().getSelectionModel().getSelectedItem();
+				TreeItem<ERBContentItem> erbContentItemSelected = engagementActionController.getTreeView()
+						.getSelectionModel().getSelectedItem();
 				getSectionParent(erbContentItemSelected);
 			} catch (Exception e) {
+				logger.log(Level.FINE, "Failed to setColor.");
+				logger.log(Level.FINER, "Failed to setColor: " + e.getStackTrace());
 			}
 		}
 	}

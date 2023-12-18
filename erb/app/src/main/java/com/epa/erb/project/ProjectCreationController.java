@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -25,8 +23,21 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
 public class ProjectCreationController implements Initializable {
 
+	private FileHandler fileHandler;
+	private String mode = "Facilitator Mode";
+	
+	private App app;
+	public ProjectCreationController(App app) {
+		this.app = app;
+		
+		fileHandler = new FileHandler(app);
+	}
+	
+	@FXML
+	VBox vBox;
 	@FXML
 	HBox goalModeHBox;
 	@FXML
@@ -35,18 +46,7 @@ public class ProjectCreationController implements Initializable {
 	TextField projectNameTextField;
 	@FXML
 	TextArea projectDescriptionTextArea;
-	@FXML
-	VBox vBox;
 
-	private String mode = "Facilitator Mode";
-	private FileHandler fileHandler = new FileHandler();
-	private Logger logger = LogManager.getLogger(ProjectSelectionController.class);
-	
-	private App app;
-	public ProjectCreationController(App app) {
-		this.app = app;
-	}
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		goalModeHBox.setVisible(false);
@@ -114,7 +114,6 @@ public class ProjectCreationController implements Initializable {
 				newProjectDirectory.mkdir();
 			}
 		} else {
-			logger.error("Cannot createNewProjectDirectory. project is null.");
 		}
 	}
 	
@@ -161,15 +160,15 @@ public class ProjectCreationController implements Initializable {
 	}
 	
 	public void loadEngagementActionToContainer(Project project) {
-		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 		Parent engagementActionRoot = mainPanelHandler.loadEngagementActionRoot(app, project);
-		app.loadNodeToERBContainer(engagementActionRoot);
+		app.addNodeToERBContainer(engagementActionRoot);
 	}
 	
 	
 	private void launchProject(Project selectedProject) {
 		if (selectedProject != null) {
-			MainPanelHandler mainPanelHandler = new MainPanelHandler();
+			MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 			app.setSelectedProject(selectedProject);
 			if (isProjectNew(selectedProject)) {
 				if (mode.contentEquals("Goal Mode")) {

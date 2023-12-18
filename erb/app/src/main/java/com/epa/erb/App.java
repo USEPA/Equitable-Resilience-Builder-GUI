@@ -16,10 +16,21 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.awt.Dimension;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.IBodyElement;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -35,32 +46,131 @@ public class App extends Application {
 	private int prefHeight;
 	private int popUpPrefWidth;
 	private int popUpPrefHeight;
-	private XMLManager xmlManager;
 	private Project selectedProject;
-	private FileHandler fileHandler = new FileHandler();
-	private Logger logger = LogManager.getLogger(App.class);
-	private ERBContainerController erbContainerController;
-	private EngagementActionController engagementActionController;
-	
 	private ArrayList<Project> projects;
 	private ArrayList<IndicatorCard> indicatorCards;
+	private ERBContainerController erbContainerController;
 	private ArrayList<GoalCategory> availableGoalCategories;	
 	private ArrayList<ERBContentItem> availableERBContentItems;
-
+	private EngagementActionController engagementActionController;
+	private final static Logger logger = new MyLogger(App.class.getName());
+	
+	public static void main(String[] args) {
+		try {
+			Application.launch(args);
+			logger.log(Level.INFO, "Successfully launched application");
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "Application cannot launch: " + e.getStackTrace());
+		}
+	}
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		xmlManager = new XMLManager(this);
+//		readWordDocText();
+//		readWordDocTable();
+//		readWordParagraph();
 		sizeScreen(getScreenResolution(), getScreenSize());
 		readAndStoreData();
 		showERBToolMain();
 	}
+	
+	public void readWordDocText() {
+		System.out.println("----------------TEXT---------------------");
 
-	public static void main(String[] args) {
-		try {
-			Application.launch(args);
-		} catch (Exception e) {
-			e.printStackTrace();
+		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
+
+	        try (XWPFDocument doc = new XWPFDocument(
+	                Files.newInputStream(Paths.get(fileName)))) {
+
+	            XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
+	            String docText = xwpfWordExtractor.getText();
+	            System.out.println(docText);
+
+	            // find number of words in the document
+	            long count = Arrays.stream(docText.split("\\s+")).count();
+	            System.out.println("Total words: " + count);
+
+	        } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+	}
+	
+	public void readWordDocTable() {
+		System.out.println("----------------TABLE---------------------");
+		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
+
+	        try (XWPFDocument doc = new XWPFDocument(
+	                Files.newInputStream(Paths.get(fileName)))) {
+
+	            /*XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
+	            String docText = xwpfWordExtractor.getText();
+	            System.out.println(docText);*/
+
+	            Iterator<IBodyElement> docElementsIterator = doc.getBodyElementsIterator();
+
+	            //Iterate through the list and check for table element type
+	            while (docElementsIterator.hasNext()) {
+	                IBodyElement docElement = docElementsIterator.next();
+	                if ("TABLE".equalsIgnoreCase(docElement.getElementType().name())) {
+	                    //Get List of table and iterate it
+	                    List<XWPFTable> xwpfTableList = docElement.getBody().getTables();
+	                    for (XWPFTable xwpfTable : xwpfTableList) {
+	                        System.out.println("Total Rows : " + xwpfTable.getNumberOfRows());
+	                        for (int i = 0; i < xwpfTable.getRows().size(); i++) {
+	                            for (int j = 0; j < xwpfTable.getRow(i).getTableCells().size(); j++) {
+	                                System.out.println(xwpfTable.getRow(i).getCell(j).getText());
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+
+	        } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	public void readWordParagraph() {
+		System.out.println("----------------PARAGRAPH---------------------");
+		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
+
+	        try (XWPFDocument doc = new XWPFDocument(
+	                Files.newInputStream(Paths.get(fileName)))) {
+
+	            // output the same as 8.1
+	            List<XWPFParagraph> list = doc.getParagraphs();
+	            for (XWPFParagraph paragraph : list) {
+	                System.out.println(paragraph.getText());
+	            }
+
+	        } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	private File getTestLogDir() {
+		File erbSupportingDocsDir = new File(System.getProperty("user.dir") + "/.." + "/.." + "/erb_supporting_docs/");
+		if (erbSupportingDocsDir.exists()) {
+			File logsDir = new File(erbSupportingDocsDir + "/Logs");
+			if (!logsDir.exists()) logsDir.mkdir();
+			return logsDir;
 		}
+		return null;
+	}
+	
+	private File getPackagedLogFilePath() {
+		File erbDir = new File(System.getProperty("user.dir") + "/lib/ERB");
+		if (erbDir.exists()) {
+			File logsDir = new File(erbDir + "/Logs");
+			if (!logsDir.exists()) logsDir.mkdir();
+			return logsDir;
+		}
+		return null;
 	}
 
 	private void showERBToolMain() {
@@ -75,7 +185,6 @@ public class App extends Application {
 	
 	private Dimension getScreenSize() {
 		return java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-
 	}
 	
 	private void sizeScreen(int dpiValue, Dimension size) {
@@ -116,9 +225,9 @@ public class App extends Application {
 	
 
 	public void launchERBLanding() {
-		MainPanelHandler mainPanelHandler = new MainPanelHandler();
+		MainPanelHandler mainPanelHandler = new MainPanelHandler(this);
 		Parent erbLandingRoot = mainPanelHandler.loadERBLanding(this);
-		loadNodeToERBContainer(erbLandingRoot);
+		addNodeToERBContainer(erbLandingRoot);
 	}
 
 	private Parent loadERBContainer() {
@@ -131,8 +240,8 @@ public class App extends Application {
 			root.setPrefHeight(getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			e.printStackTrace();
+			logger.log(Level.FINE, "Exception error loading ERBContainer.fxml");
+			logger.log(Level.FINER, "Exception error loading ERBContainer.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -148,31 +257,33 @@ public class App extends Application {
 			erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
 			erbContainerStage.show();
 		} else {
-			logger.error("Cannot show ERBContainer. erbContainerRoot is null.");
+			logger.log(Level.FINE, "Cannot show ERBContainer. Root is null.");
 		}
 	}
 
 	private void erbCloseRequested() {
 		if (engagementActionController != null) {
+			FileHandler fileHandler = new FileHandler(this);
+			XMLManager xmlManager = new XMLManager(this);
 			Project project = engagementActionController.getProject();
 			Goal goal = engagementActionController.getCurrentGoal();
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal),engagementActionController.getListOfUniqueERBContentItems());
 			fileHandler.createGUIDDirectoriesForGoal2(project, goal, engagementActionController.getListOfUniqueERBContentItems());
+		} else {
+			logger.log(Level.FINE, "Cannot proccess close request. Controller is null.");
 		}
 	}
 
 	private void readAndStoreData() {
-		readAndStoreIndicatorCards();
 		readAndStoreAvailableContent();
 		readAndStoreAvailableGoalCategories();
 		readAndStoreProjects();
 	}
 	
-	private void readAndStoreIndicatorCards() {
-
-	}
-	
 	private void readAndStoreAvailableContent() {
+		System.out.println("THIS: " + this);
+		XMLManager xmlManager = new XMLManager(this);
+		FileHandler fileHandler = new FileHandler(this);
 		File contentFile = fileHandler.getStaticAvailableContentXMLFile();
 		availableERBContentItems = xmlManager.parseContentXML(contentFile);
 	}
@@ -185,6 +296,7 @@ public class App extends Application {
 				}
 			}
 		}
+		logger.log(Level.WARNING, "Null ERBContentItem. Check this.");
 		return null;
 	}
 	
@@ -196,15 +308,20 @@ public class App extends Application {
 				}
 			}
 		}
+		logger.log(Level.WARNING, "Null IndicatorItem. Check this.");
 		return null;
 	}
 
 	private void readAndStoreAvailableGoalCategories() {
+		XMLManager xmlManager = new XMLManager(this);
+		FileHandler fileHandler = new FileHandler(this);
 		File goalCategoriesFile = fileHandler.getStaticGoalCategoriesXMLFile();
 		availableGoalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
 	}
 
 	private void readAndStoreProjects() {
+		XMLManager xmlManager = new XMLManager(this);
+		FileHandler fileHandler = new FileHandler(this);
 		File projectsDirectory = fileHandler.getProjectsDirectory();
 		projects = xmlManager.parseAllProjects(projectsDirectory );
 	}
@@ -215,16 +332,17 @@ public class App extends Application {
 				return project;
 			}
 		}
+		logger.log(Level.WARNING, "Null Explore Project. Check this.");
 		return null;
 	}
 
-	public void loadNodeToERBContainer(Node node) {
+	public void addNodeToERBContainer(Node node) {
 		if (node != null) {
 			setNodeGrowPriority(node, Priority.ALWAYS);
 			erbContainerController.getErbContainer().getChildren().clear();
 			erbContainerController.getErbContainer().getChildren().add(node);
 		} else {
-			logger.error("Cannot load node to ERBContainer. node is null.");
+			logger.log(Level.FINE, "Cannot add node to ERBContainer. Node is null.");			
 		}
 	}
 
@@ -329,6 +447,10 @@ public class App extends Application {
 
 	public ArrayList<IndicatorCard> getIndicatorCards() {
 		return indicatorCards;
+	}
+
+	public Logger getLogger() {
+		return logger;
 	}
 	
 

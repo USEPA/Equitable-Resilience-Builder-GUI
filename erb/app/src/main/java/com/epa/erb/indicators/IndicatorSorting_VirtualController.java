@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import com.epa.erb.App;
 import com.epa.erb.engagement_action.ExternalFileUploaderController;
@@ -34,71 +36,70 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
 
-public class IndicatorSorting_VirtualController implements Initializable{
-
-	@FXML
-	GridPane majorGridPane;
+public class IndicatorSorting_VirtualController implements Initializable {
+	
+	private Logger logger;
+	int numRowsForSorting = 1;
+	int numColumnsForSorting = 1;
+	private FileHandler fileHandler;
+	
+	private App app;
+	private IndicatorCard[] cards;
+	private IndicatorRanking_VirtualController iRVC;
+	public IndicatorSorting_VirtualController(App app, IndicatorCard[] cards, IndicatorRanking_VirtualController iRVC) {
+		this.app = app;
+		this.iRVC = iRVC;
+		this.cards = cards;
+		
+		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
+	}
+	
 	@FXML
 	VBox vBox;
 	@FXML
 	Label titleLabel;
 	@FXML
-	ScrollPane rankedScrollPane;
-	@FXML
 	HBox rankedHBox;
 	@FXML
-	Pane bottomLeftPane;
-	@FXML
-	Pane topLeftPane;
-	@FXML
-	Pane topRightPane;
-	@FXML
-	Pane bottomRightPane;
-	@FXML
 	BorderPane borderPane;
-	
-	int numRowsForSorting = 1;
-	int numColumnsForSorting = 1;
-	private FileHandler fileHandler = new FileHandler();
-		
-	private App app;
-	private IndicatorCard [] cards;
-	private IndicatorRanking_VirtualController iRVC;
-	public IndicatorSorting_VirtualController(App app, IndicatorCard [] cards, IndicatorRanking_VirtualController iRVC) {
-		this.app = app;
-		this.cards = cards;
-		this.iRVC = iRVC;
-	}
-	
+	@FXML
+	GridPane majorGridPane;
+	@FXML
+	ScrollPane rankedScrollPane;
+	@FXML
+	Pane bottomLeftPane, topLeftPane, topRightPane, bottomRightPane;
+
 	public void closeRequested(WindowEvent e) {
 		Optional<ButtonType> result = showNoSaveWarning();
-		if(result.get() == ButtonType.OK) {
+		if (result.get() == ButtonType.OK) {
 			iRVC.getVirtualIndicatorSortingStage().close();
 		} else {
 			e.consume();
 		}
 	}
-	
+
 	private Optional<ButtonType> showNoSaveWarning() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Warning");
-		alert.setContentText("Closing this window will result in a reset of indicator quadrants. Please use the save button if you wish to save a snapshot of your indicator quadrants to My Portfolio.");
+		alert.setContentText(
+				"Closing this window will result in a reset of indicator quadrants. Please use the save button if you wish to save a snapshot of your indicator quadrants to My Portfolio.");
 		return alert.showAndWait();
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fillRankedHBox();
 		rankedScrollPane.widthProperty().addListener((obs, oldVal, newVal) -> {
-		    double newWidth = newVal.doubleValue()-10.0;
-		    rankedHBox.setMinWidth(newWidth);
+			double newWidth = newVal.doubleValue() - 10.0;
+			rankedHBox.setMinWidth(newWidth);
 		});
 		setDrag_RankingHBox(rankedHBox);
 		handleQuadrantPanes();
 		titleLabel.setText("Indicator Quadrant Sorting");
 	}
-	
+
 	private void handleQuadrantPanes() {
 		int numCards = cards.length;
 		int maxRows = 2;
@@ -119,41 +120,43 @@ public class IndicatorSorting_VirtualController implements Initializable{
 				}
 			}
 		}
-		if(numRowsForSorting < minRows) numRowsForSorting = minRows;
-		if(numColumnsForSorting < minColumns) numColumnsForSorting = minColumns;
-		
+		if (numRowsForSorting < minRows)
+			numRowsForSorting = minRows;
+		if (numColumnsForSorting < minColumns)
+			numColumnsForSorting = minColumns;
+
 		GridPane gridPane1 = createRankingGridPane(numRowsForSorting, numColumnsForSorting);
 		majorGridPane.add(gridPane1, 0, 0);
 		gridPane1.setStyle("-fx-border-color: #FFE400; -fx-background-color: #FFF6AD");
-		GridPane gridPane2 = createRankingGridPane( numRowsForSorting, numColumnsForSorting);
+		GridPane gridPane2 = createRankingGridPane(numRowsForSorting, numColumnsForSorting);
 		majorGridPane.add(gridPane2, 0, 1);
 		gridPane2.setStyle("-fx-border-color: #FF1A1A; -fx-background-color: #E3C6C6");
 		GridPane gridPane3 = createRankingGridPane(numRowsForSorting, numColumnsForSorting);
 		majorGridPane.add(gridPane3, 1, 0);
 		gridPane3.setStyle("-fx-border-color: #15CA15; -fx-background-color: #C2E9C2");
-		GridPane gridPane4 = createRankingGridPane( numRowsForSorting, numColumnsForSorting);
+		GridPane gridPane4 = createRankingGridPane(numRowsForSorting, numColumnsForSorting);
 		majorGridPane.add(gridPane4, 1, 1);
 		gridPane4.setStyle("-fx-border-color: #FFE400; -fx-background-color: #FFF6AD");
 	}
-	
-	private GridPane createRankingGridPane( int numberOfRows, int numberOfColumns) {
+
+	private GridPane createRankingGridPane(int numberOfRows, int numberOfColumns) {
 		GridPane gridPane = new GridPane();
-		for(int i = 0; i < numberOfRows; i++) {
-			for(int j =0; j< numberOfColumns;j++) {
+		for (int i = 0; i < numberOfRows; i++) {
+			for (int j = 0; j < numberOfColumns; j++) {
 				VBox gridVBox = new VBox();
 				gridVBox.setAlignment(Pos.CENTER);
 				gridPane.add(gridVBox, j, i);
 				gridPane.widthProperty().addListener((obs, oldVal, newVal) -> {
-					double newWidth = newVal.doubleValue()-5;
-					gridVBox.setPrefWidth(newWidth/(numberOfColumns));
-					gridVBox.setMinWidth(newWidth/(numberOfColumns));
+					double newWidth = newVal.doubleValue() - 5;
+					gridVBox.setPrefWidth(newWidth / (numberOfColumns));
+					gridVBox.setMinWidth(newWidth / (numberOfColumns));
 
 				});
-				
+
 				gridPane.heightProperty().addListener((obs, oldVal, newVal) -> {
-					double newHeight = newVal.doubleValue()-5;
-					gridVBox.setPrefHeight(newHeight/(numberOfRows));
-					gridVBox.setMinHeight(newHeight/(numberOfRows));
+					double newHeight = newVal.doubleValue() - 5;
+					gridVBox.setPrefHeight(newHeight / (numberOfRows));
+					gridVBox.setMinHeight(newHeight / (numberOfRows));
 
 				});
 				setDrag_GridVBox(gridVBox);
@@ -161,18 +164,19 @@ public class IndicatorSorting_VirtualController implements Initializable{
 		}
 		return gridPane;
 	}
-	
+
 	private void fillRankedHBox() {
-		for(IndicatorCard card: cards) {
+		for (IndicatorCard card : cards) {
 			try {
 				Pane cVBox = loadIndicatorCard(card);
 				rankedHBox.getChildren().add(cVBox);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.log(Level.FINE, "Failed to fill ranked hBox.");
+				logger.log(Level.FINER, "Failed to fill ranked hBox: " + e.getStackTrace());
 			}
-		}		
+		}
 	}
-	
+
 	private Pane loadIndicatorCard(IndicatorCard card) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCard.fxml"));
@@ -193,32 +197,37 @@ public class IndicatorSorting_VirtualController implements Initializable{
 			iCController.addTextForRanking();
 			return cVBox;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load IndicatorCard.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorCard.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
-	
+
 	@FXML
 	public void saveButtonAction() {
 		if (borderPane.getWidth() > 0 && borderPane.getHeight() > 0) {
 			WritableImage writableImage = new WritableImage((int) borderPane.getWidth(), (int) borderPane.getHeight());
 			borderPane.snapshot(null, writableImage);
 			try {
-				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM_dd_yyyy_HH.mm.ss");  
-				LocalDateTime now = LocalDateTime.now();  
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM_dd_yyyy_HH.mm.ss");
+				LocalDateTime now = LocalDateTime.now();
 				File sortingVirtualDir = createIndicatorsSortingVirtualDir();
-				File virtualSortingSnapshotSave = new File(sortingVirtualDir + "\\SortingSnapshot_" + dtf.format(now) + ".png");
+				File virtualSortingSnapshotSave = new File(
+						sortingVirtualDir + "\\SortingSnapshot_" + dtf.format(now) + ".png");
 				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", virtualSortingSnapshotSave);
-				ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app.getEngagementActionController());
+				ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app,
+						app.getEngagementActionController());
 				exFileUploader.pushToUploaded(virtualSortingSnapshotSave, "Indicator Center");
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.log(Level.FINE, "Failed to save.");
+				logger.log(Level.FINER, "Failed to save: " + e.getStackTrace());
 			}
 		}
 	}
-	
+
 	private File createIndicatorsSortingVirtualDir() {
-		File indicatorsDir = fileHandler.getIndicatorsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
+		File indicatorsDir = fileHandler.getIndicatorsDirectory(app.getSelectedProject(),
+				app.getEngagementActionController().getCurrentGoal());
 		if (!indicatorsDir.exists()) {
 			indicatorsDir.mkdir();
 		}
@@ -228,7 +237,7 @@ public class IndicatorSorting_VirtualController implements Initializable{
 		}
 		return sortingVirtualDir;
 	}
-	
+
 	protected void setDrag_RankingHBox(Pane p) {
 		p.setOnDragOver(event -> {
 			event.acceptTransferModes(TransferMode.MOVE);
@@ -242,8 +251,8 @@ public class IndicatorSorting_VirtualController implements Initializable{
 				Pane source = (Pane) event.getGestureSource();
 				VBox sourceVBox = (VBox) source;
 				HBox targetHBox = (HBox) target;
-				if(targetHBox.getChildren().contains(sourceVBox)) {
-					int targetIndex = targetHBox.getChildren().size() -1;
+				if (targetHBox.getChildren().contains(sourceVBox)) {
+					int targetIndex = targetHBox.getChildren().size() - 1;
 					targetHBox.getChildren().remove(sourceVBox);
 					targetHBox.getChildren().add(targetIndex, sourceVBox);
 				} else {
@@ -263,10 +272,10 @@ public class IndicatorSorting_VirtualController implements Initializable{
 			event.consume();
 		});
 	}
-	
-	
+
 	private static final String TAB_DRAG_KEY = "pane";
 	private ObjectProperty<Pane> draggingTab = new SimpleObjectProperty<Pane>();
+
 	protected void setDrag_GridVBox(Pane p) {
 		p.setOnDragOver(event -> {
 			event.acceptTransferModes(TransferMode.MOVE);
@@ -278,24 +287,25 @@ public class IndicatorSorting_VirtualController implements Initializable{
 			if (db.hasString()) {
 				Pane target = p;
 				Pane source = (Pane) event.getGestureSource();
-				if(target.getChildren().size() ==0) { 
+				if (target.getChildren().size() == 0) {
 					target.getChildren().add(source);
-				} else  {
+				} else {
 					GridPane gP = (GridPane) target.getParent();
 					int children = 0;
-					for(Object pa: gP.getChildren()) {
+					for (Object pa : gP.getChildren()) {
 						VBox child = (VBox) pa;
-						if(child.getChildren().size() > 0) {
+						if (child.getChildren().size() > 0) {
 							children++;
 						}
 					}
-					if(children == 6) {
+					if (children == 6) {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setHeaderText(null);
 						alert.setTitle("Quadrant Full");
-						alert.setContentText("This quadrant is full. Please remove an indicator card from this quadrant to add a new one.");
+						alert.setContentText(
+								"This quadrant is full. Please remove an indicator card from this quadrant to add a new one.");
 						alert.showAndWait();
-					}					
+					}
 				}
 				success = true;
 			}
@@ -311,6 +321,5 @@ public class IndicatorSorting_VirtualController implements Initializable{
 			event.consume();
 		});
 	}
-	
 
 }

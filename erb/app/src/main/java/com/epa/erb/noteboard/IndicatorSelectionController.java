@@ -12,20 +12,20 @@ import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
 public class IndicatorSelectionController implements Initializable{
-
+	
+	private App app;
+	private int number;
+	public IndicatorSelectionController(int number, App app) {
+		this.app = app;
+		this.number = number;
+	}
+	
 	@FXML
 	ComboBox<IndicatorCard> indicatorComboBox;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-	}
-
-	private int number;
-	private App app;
-	public IndicatorSelectionController(int number, App app) {
-		this.number = number;
-		this.app = app;
 	}
 	
 	public void fillIndicatorChoiceBox() {

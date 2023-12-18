@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.App;
@@ -31,36 +33,39 @@ import javafx.util.Callback;
 import com.epa.erb.utility.XMLManager;
 import javafx.stage.FileChooser;
 
-
 public class MyPortfolioController implements Initializable {
 
+	private Logger logger;
+	private XMLManager xmlManager;
+	private FileHandler fileHandler;
+	private HashMap<String, ArrayList<MyUploadedItem>> hash = new HashMap<String, ArrayList<MyUploadedItem>>();
+	
+	private App app;
+	private Goal goal;
+	private Project project;
+	public MyPortfolioController(App app, Project project, Goal goal) {
+		this.app = app;
+		this.goal = goal;
+		this.project = project;
+		
+		logger = app.getLogger();
+		xmlManager = new XMLManager(app);
+		fileHandler = new FileHandler(app);
+	}
+	
+	@FXML
+	TableView<MyUploadedItem> tableView;
 	@FXML
 	TreeView<String> myPortfolioTreeView;
 	@FXML
-	TableView<MyUploadedItem> tableView;
+	TableColumn<MyUploadedItem, Text> nameColumn;
 	@FXML
 	TableColumn<MyUploadedItem, Boolean> selectColumn;
 	@FXML
 	TableColumn<MyUploadedItem, Integer> numberColumn;
 	@FXML
-	TableColumn<MyUploadedItem, Text> nameColumn;
-	@FXML
 	TableColumn<MyUploadedItem, String> modifiedColumn;
-	
-	private HashMap<String, ArrayList<MyUploadedItem>> hash = new HashMap<String, ArrayList<MyUploadedItem>>();
-	
-	private App app;
-	private Project project;
-	private Goal goal;
-	public MyPortfolioController(App app, Project project, Goal goal) {
-		this.app = app;
-		this.project = project;
-		this.goal = goal;
-	}
-	
-	private FileHandler fileHandler = new FileHandler();
-	private XMLManager xmlManager = new XMLManager(app);
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initTableView();
@@ -176,6 +181,8 @@ public class MyPortfolioController implements Initializable {
 							}
 							scanner.close();
 						} catch (FileNotFoundException e) {
+							logger.log(Level.FINE, "Failed to read uploaded items.");
+							logger.log(Level.FINER, "Failed to read uploaded items: " + e.getStackTrace());
 						}
 						
 					} else {

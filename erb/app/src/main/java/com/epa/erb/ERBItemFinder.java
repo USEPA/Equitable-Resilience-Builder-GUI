@@ -1,13 +1,10 @@
 package com.epa.erb;
 
 import java.util.ArrayList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.epa.erb.goal.GoalCategory;
 
 public class ERBItemFinder {
 
-	private Logger logger = LogManager.getLogger(ERBItemFinder.class);
 
 	public ERBItemFinder() {
 
@@ -21,10 +18,8 @@ public class ERBItemFinder {
 				}
 			}
 		} else {
-			logger.error("Cannot getGoalCategoryByName. goalCategoryName is null.");
 			return null;
 		}
-		logger.debug("Cannot getGoalCategoryByName. GoalCategory returned is null");
 		return null;
 	}
 	

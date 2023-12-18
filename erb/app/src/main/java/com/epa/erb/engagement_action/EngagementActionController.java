@@ -8,9 +8,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.forms.AlternativeFormController;
@@ -44,52 +44,39 @@ import javafx.stage.Stage;
 
 public class EngagementActionController implements Initializable {
 
-	@FXML
-	VBox engagementVBox;
-	@FXML
-	HBox saveHBox;
-	@FXML
-	Label goalLabel;
-	@FXML
-	ComboBox<Goal> goalComboBox;
-	@FXML
-	Button previousButton;
-	@FXML
-	Button nextButton;
-	@FXML
-	VBox treeViewVBox;
-	@FXML
-	TreeView<ERBContentItem> treeView;
-	@FXML
-	VBox mainVBox;
-	@FXML
-	HBox body2HBox;
-	@FXML
-	VBox contentVBox;
-	@FXML
-	Label exploreModeLabel;
-	@FXML
-	Button worksheetIndexButton;
-	@FXML
-	Button myPortfolioButton;
-	@FXML
-	Button uploadFileButton;
-
-
+	private Logger logger;
+	private FileHandler fileHandler;
+	private MainPanelHandler mainPanelHandler;
+	private Goal currentSelectedGoal = null;
+	private ERBContentItem currentSelectedERBContentItem = null;
+	private ArrayList<ERBContentItem> listOfUniqueERBContentItems = new ArrayList<ERBContentItem>();
+	private LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>> treeItemGuidTreeMap = new LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>>();
+	
 	private App app;
 	private Project project;
 	public EngagementActionController(App app, Project project) {
 		this.app = app;
 		this.project = project;
+		
+		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
+		mainPanelHandler = new MainPanelHandler(app);
 	}
-	
-	private Goal currentSelectedGoal = null;
-	private FileHandler fileHandler = new FileHandler();
-	MainPanelHandler mainPanelHandler = new MainPanelHandler();
-	private ERBContentItem currentSelectedERBContentItem = null;
-	private Logger logger = LogManager.getLogger(EngagementActionController.class);
-	ArrayList<ERBContentItem> listOfUniqueERBContentItems = new ArrayList<ERBContentItem>();
-	private LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>> treeItemGuidTreeMap = new LinkedHashMap<ERBContentItem, TreeItem<ERBContentItem>>();
+
+	@FXML
+	HBox saveHBox, body2HBox;
+	@FXML
+	ComboBox<Goal> goalComboBox;
+	@FXML
+	Label goalLabel, exploreModeLabel;
+	@FXML
+	Button previousButton, nextButton;
+	@FXML
+	TreeView<ERBContentItem> treeView;
+	@FXML
+	VBox engagementVBox, treeViewVBox, mainVBox,contentVBox;
+	@FXML
+	Button worksheetIndexButton, myPortfolioButton, uploadFileButton;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -131,6 +118,8 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
+			logger.log(Level.FINE, "Failed to load MyPortfolio.fxml.");
+			logger.log(Level.FINER, "Failed to load MyPortfolio.fxml: " + e.getStackTrace());
 		}
 	}
 	
@@ -138,7 +127,7 @@ public class EngagementActionController implements Initializable {
 	public void worksheetIndexAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/WorksheetIndex.fxml"));
-			WorksheetIndexController controller = new WorksheetIndexController(project, currentSelectedGoal);
+			WorksheetIndexController controller = new WorksheetIndexController(app, project, currentSelectedGoal);
 			fxmlLoader.setController(controller);
 			VBox root = fxmlLoader.load();
 			Scene scene = new Scene(root);
@@ -150,7 +139,8 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.log(Level.FINE, "Failed to load WorksheetIndex.fxml.");
+			logger.log(Level.FINER, "Failed to load WorksheetIndex.fxml: " + e.getStackTrace());
 		}
 	}
 
@@ -163,7 +153,7 @@ public class EngagementActionController implements Initializable {
 			goalComboBox.getSelectionModel().select(0);
 			goalSelected(project.getProjectGoals().get(0));
 		} else {
-			logger.error("Cannot initializeGoalSelection. project = " + project);
+			logger.log(Level.WARNING, "Could not initialize goal selection. Project is null.");
 		}
 	}
 
@@ -181,7 +171,7 @@ public class EngagementActionController implements Initializable {
 	private void externalDocUploadButtonAction() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/engagement_action/ExternalFileUploader.fxml"));
-			ExternalFileUploaderController conteoller = new ExternalFileUploaderController(this);
+			ExternalFileUploaderController conteoller = new ExternalFileUploaderController(app, this);
 			fxmlLoader.setController(conteoller);
 			VBox root = fxmlLoader.load();
 			conteoller.launch();
@@ -194,20 +184,22 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.log(Level.FINE, "Failed to load ExternalFileUploader.fxml.");
+			logger.log(Level.FINER, "Failed to load ExternalFileUploader.fxml: " + e.getStackTrace());
 		}
 	}
 	
 	public Pane loadIndicatorSetupFormController(ERBContentItem erbContentItem) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/noteboard/IndicatorSetupForm.fxml"));
-			IndicatorSetupFormController indicatorSetupFormController = new IndicatorSetupFormController(this, erbContentItem);
+			IndicatorSetupFormController indicatorSetupFormController = new IndicatorSetupFormController(app,this, erbContentItem);
 			fxmlLoader.setController(indicatorSetupFormController);
 			VBox root = fxmlLoader.load();
 			indicatorSetupFormController.setUp();
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.log(Level.FINE, "Failed to load IndicatorSetupForm.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorSetupForm.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -220,7 +212,8 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.log(Level.FINE, "Failed to load WordCloud.fxml.");
+			logger.log(Level.FINER, "Failed to load WordCloud.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -228,11 +221,12 @@ public class EngagementActionController implements Initializable {
 	private ScrollPane loadIndicatorCenterController() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCenter.fxml"));
-			IndicatorCenterController indicatorCenterController = new IndicatorCenterController(this);
+			IndicatorCenterController indicatorCenterController = new IndicatorCenterController(app, this);
 			fxmlLoader.setController(indicatorCenterController);
 			return fxmlLoader.load();
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.log(Level.FINE, "Failed to load IndicatorCenter.fxml.");
+			logger.log(Level.FINER, "Failed to load IndicatorCenter.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -295,6 +289,7 @@ public class EngagementActionController implements Initializable {
 				}
 			}
 		}
+		logger.log(Level.WARNING, "Next TreeItem is null. Check this.");
 		return null;
 	}
 	
@@ -324,6 +319,7 @@ public class EngagementActionController implements Initializable {
 				}
 			}
 		}
+		logger.log(Level.WARNING, "Previous TreeItem. Check this.");
 		return null;
 	}
 
@@ -332,7 +328,6 @@ public class EngagementActionController implements Initializable {
 		XMLManager xmlManager = new XMLManager(app);
 		xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, currentSelectedGoal), listOfUniqueERBContentItems);
 		fileHandler.createGUIDDirectoriesForGoal2(project, currentSelectedGoal, listOfUniqueERBContentItems);
-
 	}
 	
 	public void treeViewClicked(TreeItem<ERBContentItem> oldItem, TreeItem<ERBContentItem> newItem) {
@@ -346,41 +341,42 @@ public class EngagementActionController implements Initializable {
 				erbPathwayTreeItemSelected();
 			}
 		} else {
-
+			logger.log(Level.FINE, "New TreeItem is null. Check this.");
 		}
 	}
 	
 	public void ERBContentItemSelected(ERBContentItem erbContentItem) {
-		if(erbContentItem!=null) {
-		File contentXMLFile = fileHandler.getStaticFormContentXML(erbContentItem.getId());
-		cleanContentVBox();
-		if (erbContentItem.getId().contentEquals("91")) {
-			Pane root = mainPanelHandler.loadERBProjectCenterRoot(app);
-			addContentToContentVBox(root, true);
-		} else {
-			if (erbContentItem.getType().contentEquals("mainForm")) {
-				Pane root = loadMainFormController(contentXMLFile);
+		if (erbContentItem != null) {
+			File contentXMLFile = fileHandler.getStaticFormContentXML(erbContentItem.getId());
+			cleanContentVBox();
+			if (erbContentItem.getId().contentEquals("91")) {
+				Pane root = mainPanelHandler.loadERBProjectCenterRoot(app);
 				addContentToContentVBox(root, true);
-			} else if (erbContentItem.getType().contentEquals("outputForm")) {
-				Pane root = loadOutputFormController2(contentXMLFile, erbContentItem);
-				addContentToContentVBox(root, true);
-			} else if (erbContentItem.getType().contentEquals("alternativeForm")) {
-				Pane root = loadAlternativeFormController(contentXMLFile);
-				addContentToContentVBox(root, true);
-			} else if (erbContentItem.getType().contentEquals("interactiveActivity")) {
-				if (erbContentItem.getLongName().contentEquals("Word Cloud")) {
-					Pane root = loadWordCloudController();
+			} else {
+				if (erbContentItem.getType().contentEquals("mainForm")) {
+					Pane root = loadMainFormController(contentXMLFile);
 					addContentToContentVBox(root, true);
-				} else if (erbContentItem.getLongName().contentEquals("Noteboard")) {
-					Pane root = loadIndicatorSetupFormController(erbContentItem);
+				} else if (erbContentItem.getType().contentEquals("outputForm")) {
+					Pane root = loadOutputFormController2(contentXMLFile, erbContentItem);
 					addContentToContentVBox(root, true);
-				} else if (erbContentItem.getLongName().contentEquals("Indicator Center")) {
-					ScrollPane root = loadIndicatorCenterController();
+				} else if (erbContentItem.getType().contentEquals("alternativeForm")) {
+					Pane root = loadAlternativeFormController(contentXMLFile);
 					addContentToContentVBox(root, true);
+				} else if (erbContentItem.getType().contentEquals("interactiveActivity")) {
+					if (erbContentItem.getLongName().contentEquals("Word Cloud")) {
+						Pane root = loadWordCloudController();
+						addContentToContentVBox(root, true);
+					} else if (erbContentItem.getLongName().contentEquals("Noteboard")) {
+						Pane root = loadIndicatorSetupFormController(erbContentItem);
+						addContentToContentVBox(root, true);
+					} else if (erbContentItem.getLongName().contentEquals("Indicator Center")) {
+						ScrollPane root = loadIndicatorCenterController();
+						addContentToContentVBox(root, true);
+					}
 				}
-			} 
+			}
 		}
-		}
+		logger.log(Level.FINE, "ERBContentItem is null. Check this.");
 	}
 
 	private void erbPathwayTreeItemSelected() {
@@ -399,8 +395,6 @@ public class EngagementActionController implements Initializable {
 			} else {
 				VBox.setVgrow(root, Priority.ALWAYS);
 			}
-		} else {
-			logger.error("Cannot addContentToContentVBox. root is null.");
 		}
 	}
 	
@@ -412,8 +406,6 @@ public class EngagementActionController implements Initializable {
 			} else {
 				VBox.setVgrow(root, Priority.ALWAYS);
 			}
-		} else {
-			logger.error("Cannot addContentToContentVBox. root is null.");
 		}
 	}
 	
@@ -433,8 +425,6 @@ public class EngagementActionController implements Initializable {
 			}
 			listOfUniqueERBContentItems = uniqueChapters;
 
-		} else {
-			logger.error("Cannot fillAndStoreTreeViewData. chapters = " + uniqueChapters);
 		}
 	}
 	
@@ -465,8 +455,6 @@ public class EngagementActionController implements Initializable {
 				
 				listOfUniqueERBContentItems = genericContentItems;
 
-			} else {
-				logger.error("Cannot fillAndStoreTreeViewData2. genericContentItems = " + genericContentItems);
 			}
 		}
 		
@@ -518,8 +506,6 @@ public class EngagementActionController implements Initializable {
 				}
 				initializeTreeViewSelection();
 			}
-		} else {
-			logger.error("Cannot execute goalSelected. goal = " + goal);
 		}
 	}
 	
@@ -531,7 +517,8 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.log(Level.FINE, "Failed to load AlternativeForm.fxml.");
+			logger.log(Level.FINER, "Failed to load AlternativeForm.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -544,7 +531,8 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.log(Level.FINE, "Failed to load OutputForm.fxml.");
+			logger.log(Level.FINER, "Failed to load OutputForm.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -557,7 +545,8 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.log(Level.FINE, "Failed to load MainForm.fxml.");
+			logger.log(Level.FINER, "Failed to load MainForm.fxml: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -570,8 +559,6 @@ public class EngagementActionController implements Initializable {
 				}
 			}
 			return null;
-		} else {
-			logger.error("Cannot findTreeItem. guid = " + guid);
 		}
 		return null;
 	}

@@ -1,7 +1,6 @@
 package com.epa.erb.noteboard;
 
 import com.epa.erb.indicators.IndicatorCard;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
@@ -16,9 +15,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-
 public class NoteBoardItem_Indicator extends NoteBoardItemController{
-
 
 	private IndicatorCard indicatorCard;
 	public NoteBoardItem_Indicator(NoteBoardContentController noteBoardContentController, IndicatorCard indicatorCard) {

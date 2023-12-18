@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.PrintWriter;
@@ -32,20 +34,9 @@ import javafx.scene.control.Separator;
 
 public class OutputFormController extends FormController implements Initializable {
 
-	@FXML
-	VBox vBox;
-	@FXML
-	VBox nodeVBox;
-	@FXML
-	VBox formVBox;
-	@FXML
-	Pane lP;
-	@FXML
-	Pane tP;
-	@FXML
-	Pane rP;
-	@FXML
-	Pane bP;
+	private Logger logger;
+	private XMLManager xmlManager;
+	private FileHandler fileHandler;
 	
 	private App app;
 	private File xmlContentFileToParse;
@@ -55,13 +46,21 @@ public class OutputFormController extends FormController implements Initializabl
 		this.app = app;
 		this.xmlContentFileToParse = xmlContentFileToParse;
 		this.engagementActionController = engagementActionController;
+		
+		logger = app.getLogger();
+		xmlManager = new XMLManager(app);
+		fileHandler = new FileHandler(app);
 	}
 	
-	FileHandler fileHandler = new FileHandler();
+	@FXML
+	VBox vBox;
+	@FXML
+	Pane lP, tP, rP, bP;
+	@FXML
+	VBox nodeVBox, formVBox;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		XMLManager xmlManager = new XMLManager(app);
 		boolean hasExistingContent = checkForExisitingContent();
 		if(!hasExistingContent) {
 			HashMap<ArrayList<Text>, String> contentHashMap = xmlManager.parseOutputFormContentXML(xmlContentFileToParse);
@@ -194,7 +193,6 @@ public class OutputFormController extends FormController implements Initializabl
 	
 	@FXML
 	public void saveButtonAction() {
-		XMLManager xmlManager = new XMLManager(app);
 		ArrayList<Node> listOfChildren = new ArrayList<Node>();
 		for(int i =0; i < formVBox.getChildren().size(); i++) {
 			listOfChildren.add(formVBox.getChildren().get(i));
@@ -209,7 +207,7 @@ public class OutputFormController extends FormController implements Initializabl
 		String fileName = engagementActionController.getCurrentSelectedERBContentItem().getShortName().replaceAll(" ", "_").replaceAll(":", "_");
 		File outputTextFile = new File(fileHandler.getGUIDDataDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal())+"\\" + engagementActionController.getCurrentSelectedERBContentItem().getGuid() + "\\" + fileName + ".txt");
 		writeOutputFormToTextFile(listOfChildren,outputTextFile);
-		ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(engagementActionController);
+		ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app,engagementActionController);
 		exFileUploader.pushToUploaded(outputTextFile, "Key Takeaways");
 	}
 	
@@ -253,6 +251,8 @@ public class OutputFormController extends FormController implements Initializabl
 			}
 			printWriter.close();
 		} catch (FileNotFoundException e) {
+			logger.log(Level.FINE, "Failed to write output form to text.");
+			logger.log(Level.FINER, "Failed to write output form to text: " + e.getStackTrace());
 		}
 	}
 	
