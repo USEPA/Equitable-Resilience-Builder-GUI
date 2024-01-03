@@ -228,6 +228,14 @@
 			linkType="externalDOC"
 			link="Equitable_Resilience_Handout.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Equity Principles for Resilience Planning"
+			linkType="internal"
+			link="187">
+			</text>
 			</listBlock>
 		</textBlock>
 	</container>

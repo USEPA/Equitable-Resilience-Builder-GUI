@@ -249,8 +249,8 @@
 			fontFamily="System"
 			fontStyle="Hyperlink"
 			text="Reflection Diary"
-			linkType="internal"
-			link="21">
+			linkType="externalDOC"
+			link="Reflection_Diary.docx">
 			</text>
 		</textBlock>
 	</container>

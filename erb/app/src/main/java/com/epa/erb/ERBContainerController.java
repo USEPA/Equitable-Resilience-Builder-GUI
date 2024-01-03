@@ -80,9 +80,16 @@ public class ERBContainerController implements Initializable {
 		for (String id : idAssignments.getResourceIdAssignments()) {
 			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
 				if (id.equals(erbContentItem.getId())) {
-					String name = erbContentItem.getLongName();
-					MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-					resourcesMenu.getItems().add(menuItem);
+					if (id.equals("201")) {
+						MenuItem menuItem = new MenuItem("Funding and Finance Guide");
+						resourcesMenu.getItems().add(menuItem);
+						File fileToOpen = new File(fileHandler.getStaticSupportingDOCDirectory() + "//Funding_and_Financing_Guide.docx");
+						menuItem.setOnAction(e -> fileHandler.openFileOnDesktop(fileToOpen));
+					} else {
+						String name = erbContentItem.getLongName();
+						MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+						resourcesMenu.getItems().add(menuItem);
+					}
 				}
 			}
 		}

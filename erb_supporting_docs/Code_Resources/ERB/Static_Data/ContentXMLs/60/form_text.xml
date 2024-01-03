@@ -156,6 +156,8 @@
 			height="40.0"
 			id="63">
 			</icon>
+		<listBlock>
+		
 			<text
 			size="16.0"
 			fontFamily="System"
@@ -164,6 +166,15 @@
 			linkType="externalDOC"
 			link="Equity_and_Engagement_Exercise.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Trauma-Informed Approach"
+			linkType="internal"
+			link="03">
+			</text>
+		</listBlock>
 		</textBlock>
 	</container>
 	<container id="bottomPanelVBox">

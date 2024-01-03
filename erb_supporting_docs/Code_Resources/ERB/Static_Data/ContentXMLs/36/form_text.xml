@@ -215,6 +215,14 @@
 			linkType="externalDOC"
 			link="Community_Engagement_Plan.docx">
 			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Youth Engagement Guide"
+			linkType="internal"
+			link="10">
+			</text>
 			</listBlock>
 		</textBlock>
 	</container>

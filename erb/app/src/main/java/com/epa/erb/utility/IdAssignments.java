@@ -59,6 +59,7 @@ public class IdAssignments {
 		resourceIdAssignments.add("02"); //Storytelling
 		resourceIdAssignments.add("04"); //Equitable Resilience
 		resourceIdAssignments.add("10"); //Youth Engagement Guide
+		resourceIdAssignments.add("201"); //Funding and Finance Guide
 		resourceIdAssignments.add("03"); //Trauma-Informed Approach
 		resourceIdAssignments.add("06"); //Resilience Indicators Background
 		resourceIdAssignments.add("187"); //Equity Principles for Resilience Planning

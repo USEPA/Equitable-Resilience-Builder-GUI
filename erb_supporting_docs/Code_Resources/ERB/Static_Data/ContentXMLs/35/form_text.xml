@@ -24,6 +24,13 @@
 			text="Diagram the connections among different people, groups, and organizations in your community.">
 			</text>
 		</textBlock>
+		<textBlock>
+			<icon
+			width="200.0"
+			height="103.0"
+			id="205">
+			</icon>
+		</textBlock>
 				<textBlock>
 			<text
 			size="18.0"
