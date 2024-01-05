@@ -78,9 +78,9 @@ public class IndicatorWorkbookParser extends WorkbookParser {
 					indicatorColumnIndex = i;
 				} else if (headerVal.contains("Definition")) {
 					definitionColumnIndex = i;
-				} else if (headerVal.contentEquals("Resilience Value")) {
+				} else if (headerVal.contentEquals("Resilience")) {
 					resilienceValueColumnIndex = i;
-				} else if (headerVal.contentEquals("Equity Value")) {
+				} else if (headerVal.contentEquals("Equity")) {
 					equityValueColumnIndex = i;
 				} else if (headerVal.contains("Local Concern")) {
 					localConcernColumnIndex = i;
@@ -100,7 +100,7 @@ public class IndicatorWorkbookParser extends WorkbookParser {
 					dataPointsColumnIndex = i;
 				} else if (headerVal.contains("threshold value")) {
 					thresholdColumnIndex = i;
-				} else if (headerVal.contentEquals("Data Collection (Y/N)")) {
+				} else if (headerVal.contentEquals("(Y/N)")) {
 				}
 			}
 
