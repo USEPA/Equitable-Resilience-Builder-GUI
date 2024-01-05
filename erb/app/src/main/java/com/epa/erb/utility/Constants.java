@@ -46,8 +46,8 @@ public class Constants {
 	private String pathToERBStaticDataFolder;
 	
 	public Constants() {
-		setFilePathsStatic(); //For running tool locally
-		//setFilePathsDynamic(); //For packaging tool 
+		//setFilePathsStatic(); //For running tool locally
+		setFilePathsDynamic(); //For packaging tool 
 		sizeScreen(getScreenResolution(), getScreenSize());
 	}
 	

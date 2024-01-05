@@ -58,15 +58,15 @@ public class App extends Application {
 	public static void main(String[] args) {
 		try {
 			Application.launch(args);
-			logger.log(Level.INFO, "Successfully launched application");
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.log(Level.SEVERE, "Application cannot launch: " + e.getStackTrace());
 		}
 	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		logger.log(Level.INFO, "Successfully launched application");
+
 //		readWordDocText();
 //		readWordDocTable();
 //		readWordParagraph();
@@ -281,7 +281,6 @@ public class App extends Application {
 	}
 	
 	private void readAndStoreAvailableContent() {
-		System.out.println("THIS: " + this);
 		XMLManager xmlManager = new XMLManager(this);
 		FileHandler fileHandler = new FileHandler(this);
 		File contentFile = fileHandler.getStaticAvailableContentXMLFile();

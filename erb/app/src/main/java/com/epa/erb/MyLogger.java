@@ -14,8 +14,8 @@ public class MyLogger extends Logger{
 	}
 	
 	private void initLogger() {
-		File pathToLogDir = getTestLogDir();
-		//File pathToLogDir = getPackagedLogDir();
+		//File pathToLogDir = getTestLogDir();
+		File pathToLogDir = getPackagedLogDir();
 		if (pathToLogDir != null) {
 			try {
 				addHandler(new LevelBasedFileHandler(pathToLogDir + "\\severe.log",true, Level.SEVERE));
