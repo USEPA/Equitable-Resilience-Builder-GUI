@@ -16,3 +16,5 @@ erb/.settings/*.prefs
 erb/app/.settings/*.prefs
 .gradle/
 .settings/
+erb/app/lib/ERB/Logs/*
+erb_supporting_docs/Logs/*
