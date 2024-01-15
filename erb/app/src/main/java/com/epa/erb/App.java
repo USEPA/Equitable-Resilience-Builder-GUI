@@ -31,6 +31,11 @@ import org.apache.poi.xwpf.usermodel.IBodyElement;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTbl;
+
+import java.io.*;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -55,20 +60,12 @@ public class App extends Application {
 	private EngagementActionController engagementActionController;
 	private final static Logger logger = new MyLogger(App.class.getName());
 	
-	public static void main(String[] args) {
-		try {
-			Application.launch(args);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		logger.log(Level.INFO, "Successfully launched application");
 
 //		readWordDocText();
-//		readWordDocTable();
+		readWordDocTable();
 //		readWordParagraph();
 		sizeScreen(getScreenResolution(), getScreenSize());
 		readAndStoreData();
@@ -78,7 +75,7 @@ public class App extends Application {
 	public void readWordDocText() {
 		System.out.println("----------------TEXT---------------------");
 
-		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
+		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\ERB\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
 
 	        try (XWPFDocument doc = new XWPFDocument(
 	                Files.newInputStream(Paths.get(fileName)))) {
@@ -99,44 +96,72 @@ public class App extends Application {
 	}
 	
 	public void readWordDocTable() {
-		System.out.println("----------------TABLE---------------------");
-		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
+		String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\ERB\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
 
-	        try (XWPFDocument doc = new XWPFDocument(
-	                Files.newInputStream(Paths.get(fileName)))) {
-
-	            /*XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
-	            String docText = xwpfWordExtractor.getText();
-	            System.out.println(docText);*/
-
-	            Iterator<IBodyElement> docElementsIterator = doc.getBodyElementsIterator();
-
-	            //Iterate through the list and check for table element type
-	            while (docElementsIterator.hasNext()) {
-	                IBodyElement docElement = docElementsIterator.next();
-	                if ("TABLE".equalsIgnoreCase(docElement.getElementType().name())) {
-	                    //Get List of table and iterate it
-	                    List<XWPFTable> xwpfTableList = docElement.getBody().getTables();
-	                    for (XWPFTable xwpfTable : xwpfTableList) {
-	                        System.out.println("Total Rows : " + xwpfTable.getNumberOfRows());
-	                        for (int i = 0; i < xwpfTable.getRows().size(); i++) {
-	                            for (int j = 0; j < xwpfTable.getRow(i).getTableCells().size(); j++) {
-	                                System.out.println(xwpfTable.getRow(i).getCell(j).getText());
-	                            }
-	                        }
-	                    }
-	                }
-	            }
-
-	        } catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		XWPFDocument doc;
+		try {
+			doc = new XWPFDocument(new FileInputStream(fileName));
+			for (XWPFTable table : doc.getTables()) {
+				CTTbl tableXML = table.getCTTbl();
+				String[] xml = tableXML.toString().split(System.lineSeparator());
+				String caption = null;
+				for (String x : xml)
+				{
+				    if (x.contains("w:tblCaption"))
+				    {
+				        caption = x.split("w:val=")[1].replace("/>", "");
+				        caption = caption.replace("\"", "");
+				    }
+				}
+				
+				System.out.println("----------------TABLE: " + caption + " -----------------");
+				for (XWPFTableRow row : table.getRows()) {
+					System.out.println("------------------ROW--------------");
+					for (XWPFTableCell cell : row.getTableCells()) {
+						System.out.println("cell text: " + cell.getText());
+					}
+				}
 			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//	        try (XWPFDocument doc = new XWPFDocument(
+//	                Files.newInputStream(Paths.get(fileName)))) {
+//
+//	            /*XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
+//	            String docText = xwpfWordExtractor.getText();
+//	            System.out.println(docText);*/
+//
+//	            Iterator<IBodyElement> docElementsIterator = doc.getBodyElementsIterator();
+//
+//	            //Iterate through the list and check for table element type
+//	            while (docElementsIterator.hasNext()) {
+//	                IBodyElement docElement = docElementsIterator.next();
+//	                if ("TABLE".equalsIgnoreCase(docElement.getElementType().name())) {
+//	                    //Get List of table and iterate it
+//	                    List<XWPFTable> xwpfTableList = docElement.getBody().getTables();
+//	                    for (XWPFTable xwpfTable : xwpfTableList) {
+//	                        System.out.println("Total Rows : " + xwpfTable.getNumberOfRows());
+//	                        for (int i = 0; i < xwpfTable.getRows().size(); i++) {
+//	                            for (int j = 0; j < xwpfTable.getRow(i).getTableCells().size(); j++) {
+//	                                System.out.println(xwpfTable.getRow(i).getCell(j).getText());
+//	                            }
+//	                        }
+//	                    }
+//	                }
+//	            }
+//
+//	        } catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 	}
 	
 	public void readWordParagraph() {
 		System.out.println("----------------PARAGRAPH---------------------");
-		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\MetroCERI\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
+		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\ERB\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
 
 	        try (XWPFDocument doc = new XWPFDocument(
 	                Files.newInputStream(Paths.get(fileName)))) {
