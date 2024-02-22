@@ -13,7 +13,8 @@ module com.epa.erb {
 	requires jdk.jsobject;
 	requires org.controlsfx.controls;
 	requires javafx.swing;
-	requires java.logging;
+	requires transitive java.logging;
+	requires org.apache.poi.poi;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.goal to javafx.fxml;
 	opens com.epa.erb.print to javafx.fxml;
@@ -22,6 +23,7 @@ module com.epa.erb {
 	opens com.epa.erb.indicators to javafx.fxml;
 	opens com.epa.erb.excel to javafx.fxml;
 	opens com.epa.erb.wordcloud to javafx.fxml, javafx.base;
+	opens com.epa.erb.finalReport to javafx.fxml;
 	opens com.epa.erb.engagement_action to javafx.fxml, javafx.base;
 	opens com.epa.erb.forms to javafx.fxml;
 	exports com.epa.erb;
