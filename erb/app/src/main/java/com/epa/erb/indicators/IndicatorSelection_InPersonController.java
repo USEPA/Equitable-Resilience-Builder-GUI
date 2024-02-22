@@ -51,7 +51,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 
 	private void initWBParser() {
 		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(),
-				app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
+				app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
 		iWP = new IndicatorWorkbookParser(app,indicatorWorkbookFile);
 	}
 
@@ -87,7 +87,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 
 	private void save() {
 		File indicatorsDir = createIndicatorsDir();
-		File inPersonCardSelectionFile = new File(indicatorsDir + "\\CardSelection_InPerson.txt");
+		File inPersonCardSelectionFile = new File(indicatorsDir + File.separator + "CardSelection_InPerson.txt");
 		writeSelectedIndicators(inPersonCardSelectionFile);
 	}
 

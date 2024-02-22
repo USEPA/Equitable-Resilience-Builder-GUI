@@ -23,7 +23,7 @@ public class IndicatorSaveDataParser {
 	}
 
 	public ArrayList<String> getSavedSelectedIndicatorIds_InPerson() {
-		File inPersonCardSelectionFile = new File(getIndicatorsDir() + "\\CardSelection_InPerson.txt");
+		File inPersonCardSelectionFile = new File(getIndicatorsDir() + File.separator + "CardSelection_InPerson.txt");
 		if (inPersonCardSelectionFile.exists()) {
 			ArrayList<String> indicatorIds = new ArrayList<String>();
 			try {
@@ -44,7 +44,7 @@ public class IndicatorSaveDataParser {
 
 	public ArrayList<IndicatorCard> getSavedSelectedIndicatorCards_InPerson() {
 		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(),
-				app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
+				app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
 		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(app,indicatorWorkbookFile);
 		ArrayList<IndicatorCard> cards = iWP.parseForIndicatorCards();
 
@@ -60,7 +60,7 @@ public class IndicatorSaveDataParser {
 	}
 
 	public ArrayList<String> getSavedSelectedData_InPerson() {
-		File inPersonDataSelectionFile = new File(getIndicatorsDir() + "\\DataSelection_InPerson.txt");
+		File inPersonDataSelectionFile = new File(getIndicatorsDir() + File.separator + "DataSelection_InPerson.txt");
 		if (inPersonDataSelectionFile.exists()) {
 			ArrayList<String> data = new ArrayList<String>();
 			try {
@@ -80,7 +80,7 @@ public class IndicatorSaveDataParser {
 	}
 
 	public ArrayList<String> getSavedSelectedIndicatorIds_Virtual() {
-		File virtualCardSelectionFile = new File(getIndicatorsDir() + "\\CardSelection_Virtual.txt");
+		File virtualCardSelectionFile = new File(getIndicatorsDir() + File.separator + "CardSelection_Virtual.txt");
 		if (virtualCardSelectionFile.exists()) {
 			ArrayList<String> indicatorIds = new ArrayList<String>();
 			try {
@@ -101,7 +101,7 @@ public class IndicatorSaveDataParser {
 
 	public ArrayList<IndicatorCard> getSavedSelectedIndicatorCards_Virtual() {
 		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(),
-				app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
+				app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
 		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(app,indicatorWorkbookFile);
 		ArrayList<IndicatorCard> cards = iWP.parseForIndicatorCards();
 

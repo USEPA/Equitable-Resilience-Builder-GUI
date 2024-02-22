@@ -50,7 +50,7 @@ public class GoalCreation{
 		if(goalSupportingDOCDirectory != null) {
 			File staticGlobalSupportingDOCDirectory = fileHandler.getStaticSupportingDOCDirectory();
 			for(File sourceFile: staticGlobalSupportingDOCDirectory.listFiles()) {
-				File destFile = new File(goalSupportingDOCDirectory + "\\" + sourceFile.getName());
+				File destFile = new File(goalSupportingDOCDirectory + File.separator + sourceFile.getName());
 				fileHandler.copyFile(sourceFile, destFile);
 			}
 		}

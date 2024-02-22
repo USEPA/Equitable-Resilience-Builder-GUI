@@ -18,11 +18,11 @@ public class MyLogger extends Logger{
 		//File pathToLogDir = getPackagedLogDir();
 		if (pathToLogDir != null) {
 			try {
-				addHandler(new LevelBasedFileHandler(pathToLogDir + "\\severe.log",true, Level.SEVERE));
-				addHandler(new LevelBasedFileHandler(pathToLogDir + "\\warn.log", true, Level.WARNING));
-				addHandler(new LevelBasedFileHandler(pathToLogDir + "\\info.log", true, Level.INFO));
-				addHandler(new LevelBasedFileHandler(pathToLogDir + "\\error.log", true, Level.FINE));
-				addHandler(new LevelBasedFileHandler(pathToLogDir + "\\error_details.log", true, Level.FINER));
+				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "severe.log",true, Level.SEVERE));
+				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "warn.log", true, Level.WARNING));
+				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "info.log", true, Level.INFO));
+				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "error.log", true, Level.FINE));
+				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "error_details.log", true, Level.FINER));
 			} catch (SecurityException | IOException e) {
 				System.out.println("Logger init exception. Cannot use logger.");
 				e.printStackTrace();
@@ -58,4 +58,5 @@ public class MyLogger extends Logger{
 		}
 	}
 
+	
 }

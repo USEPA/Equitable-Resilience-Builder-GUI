@@ -94,7 +94,7 @@ public class ERBLandingController implements Initializable{
 	public void exampleProjectsHyperlinkAction() {
 		FileHandler fileHandler = new FileHandler(app);
 		File supportingDocDir = fileHandler.getStaticSupportingDOCDirectory();
-		File fileToOpen = new File(supportingDocDir + "\\Examples.pdf");
+		File fileToOpen = new File(supportingDocDir + File.separator + "Examples.pdf");
 		fileHandler.openFileOnDesktop(fileToOpen);
 	}
 	

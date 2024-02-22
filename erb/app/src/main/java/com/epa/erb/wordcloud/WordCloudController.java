@@ -170,8 +170,8 @@ public class WordCloudController implements Initializable {
 			if (!wordCloudSelected.contentEquals("-")) {
 				XMLManager xmlManager = new XMLManager(app);
 				File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-				File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
-				File dataXML = new File(guidDirectory.getPath() + "\\" + wordCloudSelected + "\\data.xml");
+				File guidDirectory = new File(guidDataDirectory.getPath() + File.separator + erbContentItem.getGuid());
+				File dataXML = new File(guidDirectory.getPath() + File.separator + wordCloudSelected + File.separator + "data.xml");
 				ArrayList<WordCloudItem> parsedWordCloudItems = xmlManager.parseWordCloudDataXML(dataXML);
 				if (parsedWordCloudItems != null) {
 					for (WordCloudItem wordCloudItem : parsedWordCloudItems) {
@@ -193,7 +193,7 @@ public class WordCloudController implements Initializable {
 		wordCloudNames.add("-");
 		Pattern p = Pattern.compile("^[0-9]{4}$");
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
+		File guidDirectory = new File(guidDataDirectory.getPath() + File.separator + erbContentItem.getGuid());
 		for (File dir : guidDirectory.listFiles()) {
 			Matcher m = p.matcher(dir.getName());
 			if (!m.matches()) {
@@ -235,7 +235,7 @@ public class WordCloudController implements Initializable {
 
 	public boolean webViewIdExists(String newId) {
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
+		File guidDirectory = new File(guidDataDirectory.getPath() + File.separator + erbContentItem.getGuid());
 		for (File dir : guidDirectory.listFiles()) {
 			if (dir.isDirectory()) {
 				if (dir.getName().contentEquals(newId)) {
@@ -270,16 +270,16 @@ public class WordCloudController implements Initializable {
 				saveName = saveName.trim();
 				if (saveName.length() > 0) {
 					File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-					File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
-					File saveNameDirectory = new File(guidDirectory.getPath() + "\\" + saveName);
+					File guidDirectory = new File(guidDataDirectory.getPath() + File.separator + erbContentItem.getGuid());
+					File saveNameDirectory = new File(guidDirectory.getPath() + File.separator + saveName);
 					if (!saveNameDirectory.exists())
 						saveNameDirectory.mkdir();
-					File dataXML = new File(saveNameDirectory.getPath() + "\\data.xml");
+					File dataXML = new File(saveNameDirectory.getPath() + File.separator + "data.xml");
 					if (dataXML != null) {
 						XMLManager xmlManager = new XMLManager(app);
 						ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>(tableView.getItems());
 						xmlManager.writeWordCloudDataXML(dataXML, wordCloudItems);
-						File saveFile = new File(saveNameDirectory.getPath() + "\\wordCloudImage.png");
+						File saveFile = new File(saveNameDirectory.getPath() + File.separator + "wordCloudImage.png");
 						if (vBox.getChildren().size() > 0) {
 							snapshotWordCloud((WebView) vBox.getChildren().get(0), saveFile);
 							fillChoiceBox(getExistingSavedWordCloudNames());
@@ -641,8 +641,8 @@ public class WordCloudController implements Initializable {
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
-					File wordCloudHTMLFile = new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + "\\"
-							+ erbContentItem.getGuid() + "\\" + wordCloudWebView.getId() + "\\index.html");
+					File wordCloudHTMLFile = new File(fileHandler.getGUIDDataDirectory(project, goal).getPath() + File.separator
+							+ erbContentItem.getGuid() + File.separator + wordCloudWebView.getId() + File.separator + "index.html");
 					wordCloudWebView.getEngine().reload();
 					if (wordCloudHTMLFile.exists()) {
 						try {
@@ -655,9 +655,9 @@ public class WordCloudController implements Initializable {
 													@Override
 													public void run() {
 														File saveFile = new File(fileHandler
-																.getGUIDDataDirectory(project, goal).getPath() + "\\"
-																+ erbContentItem.getGuid() + "\\"
-																+ wordCloudWebView.getId() + "\\wordCloudImage.png");
+																.getGUIDDataDirectory(project, goal).getPath() + File.separator
+																+ erbContentItem.getGuid() + File.separator
+																+ wordCloudWebView.getId() + File.separator + "wordCloudImage.png");
 														snapshotWordCloud(wordCloudWebView, saveFile);
 													}
 												});
@@ -716,13 +716,13 @@ public class WordCloudController implements Initializable {
 		File staticWordCloudDirectory = fileHandler.getStaticWordCloudDirectory();
 
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + erbContentItem.getGuid());
-		File webViewDir = new File(guidDirectory + "\\" + id);
+		File guidDirectory = new File(guidDataDirectory.getPath() + File.separator + erbContentItem.getGuid());
+		File webViewDir = new File(guidDirectory + File.separator + id);
 		if (!webViewDir.exists())
 			webViewDir.mkdir();
 
 		for (File sourceFile : staticWordCloudDirectory.listFiles()) {
-			File destFile = new File(webViewDir.getPath() + "\\" + sourceFile.getName());
+			File destFile = new File(webViewDir.getPath() + File.separator + sourceFile.getName());
 
 			if (destFile != null)
 				fileHandler.copyFile(sourceFile, destFile);

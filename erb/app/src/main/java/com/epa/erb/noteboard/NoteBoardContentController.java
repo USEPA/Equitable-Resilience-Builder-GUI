@@ -76,10 +76,10 @@ public class NoteBoardContentController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		if (erbContentItem != null) {
-			guidDirectory = new File(fileHandler.getGUIDDataDirectory(app.getSelectedProject(), goal) + "\\" + erbContentItem.getGuid());
+			guidDirectory = new File(fileHandler.getGUIDDataDirectory(app.getSelectedProject(), goal) + File.separator + erbContentItem.getGuid());
 			if (!guidDirectory.exists()) guidDirectory.mkdir();
-			linearDirectory = new File(guidDirectory.getPath() + "\\linearRanking");
-			quadrantDirectory = new File(guidDirectory.getPath() + "\\quadrantRanking");
+			linearDirectory = new File(guidDirectory.getPath() + File.separator + "linearRanking");
+			quadrantDirectory = new File(guidDirectory.getPath() + File.separator + "quadrantRanking");
 		}
 		
 		if (indicatorCards.size() == 0) {
@@ -101,7 +101,7 @@ public class NoteBoardContentController implements Initializable {
 
 	private void setExistingLinearBankedData() {
 		if (linearDataExists()) {
-			File bankedIdsFile = new File(linearDirectory.getPath() + "\\bankedIds.txt");
+			File bankedIdsFile = new File(linearDirectory.getPath() + File.separator + "bankedIds.txt");
 			ArrayList<IndicatorCard> bankedCards = parseForIndicatorIds(bankedIdsFile);
 			indicatorCards.addAll(bankedCards);
 		} else {
@@ -171,7 +171,7 @@ public class NoteBoardContentController implements Initializable {
 	public void saveBoardButtonAction() {
 		if (previousButton.isVisible() && nextButton.isVisible()) {
 			linearSave();
-			File rankedCardsFile = new File(linearDirectory.getPath() + "\\Linear_Ranked_Cards.txt");
+			File rankedCardsFile = new File(linearDirectory.getPath() + File.separator + "Linear_Ranked_Cards.txt");
 			writeCardsFile(getIndicatorIdsInLinearRanked(), rankedCardsFile);
 			ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app,
 					app.getEngagementActionController());
@@ -179,7 +179,7 @@ public class NoteBoardContentController implements Initializable {
 
 		} else if (previousButton.isVisible() && !nextButton.isVisible()) {
 			quadrantSave();
-			File rankedCardsFile = new File(quadrantDirectory.getPath() + "\\Quadrant_Ranked_Cards.txt");
+			File rankedCardsFile = new File(quadrantDirectory.getPath() + File.separator + "Quadrant_Ranked_Cards.txt");
 			writeMultiRowCardsFile(getIndicatorIdsInQuadrantRanking(), rankedCardsFile);
 			ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app,
 					app.getEngagementActionController());
@@ -193,11 +193,11 @@ public class NoteBoardContentController implements Initializable {
 		}
 		// Get indicator cards in side
 		ArrayList<String> bankedIds = getIndicatorIdsInLinearCardBank();
-		File bankedIdsFile = new File(linearDirectory.getPath() + "\\bankedIds.txt");
+		File bankedIdsFile = new File(linearDirectory.getPath() + File.separator + "bankedIds.txt");
 		writeIdsFile(bankedIds, bankedIdsFile);
 		// Get indicator cards ranked
 		ArrayList<String> rankedIds = getIndicatorIdsInLinearRanked();
-		File rankedIdsFile = new File(linearDirectory.getPath() + "\\rankedIds.txt");
+		File rankedIdsFile = new File(linearDirectory.getPath() + File.separator + "rankedIds.txt");
 		writeIdsFile(rankedIds, rankedIdsFile);
 
 	}
@@ -208,11 +208,11 @@ public class NoteBoardContentController implements Initializable {
 		}
 		// Get banked cards
 		ArrayList<String> bankedIds = getIndicatorIdsInQuadrantCardBank();
-		File bankedIdsFile = new File(quadrantDirectory.getPath() + "\\bankedIds.txt");
+		File bankedIdsFile = new File(quadrantDirectory.getPath() + File.separator + "bankedIds.txt");
 		writeIdsFile(bankedIds, bankedIdsFile);
 		// Get ranked cards for each row
 		ArrayList<ArrayList<String>> rankedIds = getIndicatorIdsInQuadrantRanking();
-		File rankedIdsFile = new File(quadrantDirectory.getPath() + "\\rankedIds.txt");
+		File rankedIdsFile = new File(quadrantDirectory.getPath() + File.separator + "rankedIds.txt");
 		writeMultiRowIdsFile(rankedIds, rankedIdsFile);
 
 	}
@@ -455,7 +455,7 @@ public class NoteBoardContentController implements Initializable {
 			rankedCards.add(app.findIndicatorItemForId(id));
 		}
 
-		File rankedIdsFile = new File(linearDirectory.getPath() + "\\rankedIds.txt");
+		File rankedIdsFile = new File(linearDirectory.getPath() + File.separator + "rankedIds.txt");
 		ArrayList<IndicatorCard> savedCards = parseForIndicatorIds(rankedIdsFile);
 
 		if (rankedCards.size() == savedCards.size()) {
@@ -506,7 +506,7 @@ public class NoteBoardContentController implements Initializable {
 
 	private ArrayList<IndicatorCard> getExistingSelectedIndicators() {
 		ArrayList<IndicatorCard> cards = new ArrayList<IndicatorCard>();
-		File selectedIndicatorsFile = new File(guidDirectory.getPath() + "\\selectedIndicatorIds.txt");
+		File selectedIndicatorsFile = new File(guidDirectory.getPath() + File.separator + "selectedIndicatorIds.txt");
 		if (selectedIndicatorsFile.exists()) {
 			try {
 				Scanner scanner = new Scanner(selectedIndicatorsFile);

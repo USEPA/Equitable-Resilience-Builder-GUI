@@ -102,17 +102,17 @@ public class MyPortfolioController implements Initializable {
 				if(!saveFile.exists()) saveFile.mkdir();
 				for(String section: exportHash.keySet()) {
 					String sectionCleaned = section.replaceAll("\\/", " ");
-					File sectionDir = new File(saveFile.getPath() + "\\" + sectionCleaned);
+					File sectionDir = new File(saveFile.getPath() + File.separator + sectionCleaned);
 					if(!sectionDir.exists()) sectionDir.mkdir();
 					
 					for(MyUploadedItem ut: exportHash.get(section)) {
 						File sourceFile = null;
 						if(section.contentEquals("Completed Forms and Uploads")) {
-							sourceFile = new File(fileHandler.getMyUploadsDirectory(project, goal) + "\\" + ut.getFileNumber() + "\\" + ut.getFileName().getText());
+							sourceFile = new File(fileHandler.getMyUploadsDirectory(project, goal) + File.separator + ut.getFileNumber() + File.separator + ut.getFileName().getText());
 						}else {
-							sourceFile = new File(fileHandler.getSupportingDOCDirectory(project, goal) + "\\" + ut.getFileName().getText());
+							sourceFile = new File(fileHandler.getSupportingDOCDirectory(project, goal) + File.separator + ut.getFileName().getText());
 						}
-						File destFile = new File(sectionDir.getPath() + "\\" + ut.getFileName().getText());
+						File destFile = new File(sectionDir.getPath() + File.separator + ut.getFileName().getText());
 						fileHandler.copyFile(sourceFile, destFile);
 					}
 				}
@@ -210,7 +210,7 @@ public class MyPortfolioController implements Initializable {
 	}
 	
 	private MyUploadedItem createUploadedItem(String file, int count) {
-		File f = new File(fileHandler.getSupportingDOCDirectory(project, goal) + "\\" + file);
+		File f = new File(fileHandler.getSupportingDOCDirectory(project, goal) + File.separator + file);
 		Text fileName = new Text(file);
 		long modifiedLong = f.lastModified();
 		String lastModified = new SimpleDateFormat("MM-dd-yyyy HH-mm-ss").format(new Date(modifiedLong));

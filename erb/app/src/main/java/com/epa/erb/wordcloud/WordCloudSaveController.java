@@ -57,7 +57,7 @@ public class WordCloudSaveController implements Initializable {
 
 	public boolean nameAlreadyExists(String name) {
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
-		File guidDirectory = new File(guidDataDirectory.getPath() + "\\" + guid);
+		File guidDirectory = new File(guidDataDirectory.getPath() + File.separator + guid);
 		for (File dir : guidDirectory.listFiles()) {
 			if (dir.isDirectory()) {
 				if (dir.getName().contentEquals(name)) {

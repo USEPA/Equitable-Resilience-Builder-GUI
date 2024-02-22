@@ -322,7 +322,7 @@ public class FormController {
 				Project currentProject = app.getSelectedProject();
 				Goal currentGoal = engagementActionController.getCurrentGoal();
 				File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(currentProject, currentGoal);
-				File fileToOpen = new File(supportingDOCDirectory + "\\" + link);
+				File fileToOpen = new File(supportingDOCDirectory + File.separator + link);
 				fileHandler.openFileOnDesktop(fileToOpen);
 			}
 		}

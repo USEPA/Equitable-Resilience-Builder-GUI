@@ -127,13 +127,13 @@ public class ExternalFileUploaderController implements Initializable{
 			if(!uploadDir.exists()) uploadDir.mkdir();
 			int fileNumber = uploadDir.listFiles().length + 1;			
 			
-			File destDir = new File(uploadDir + "\\" + fileNumber);
+			File destDir = new File(uploadDir + File.separator + fileNumber);
 			if(!destDir.exists()) destDir.mkdir();
 			//Copy file
-			File destFile = new File(destDir + "\\" + sourceFile.getName());
+			File destFile = new File(destDir + File.separator + sourceFile.getName());
 			fileHandler.copyFile(sourceFile, destFile);
 			//Create about file
-			File aboutFile = new File(destDir + "\\" + "about.txt");
+			File aboutFile = new File(destDir + File.separator + "about.txt");
 			try {
 				PrintWriter printWriter = new PrintWriter(aboutFile);
 				printWriter.println("uploadSource : " + uploadSource);
@@ -149,13 +149,13 @@ public class ExternalFileUploaderController implements Initializable{
 		//Create dir
 		int fileNumber = tableView.getItems().size() + 1;
 		File uploadDir = fileHandler.getMyUploadsDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
-		File destDir = new File(uploadDir + "\\" + fileNumber);
+		File destDir = new File(uploadDir + File.separator + fileNumber);
 		if(!destDir.exists()) destDir.mkdir();
 		//Copy file
-		File destFile = new File(destDir + "\\" + sourceFile.getName());
+		File destFile = new File(destDir + File.separator + sourceFile.getName());
 		fileHandler.copyFile(sourceFile, destFile);
 		//Create about file
-		File aboutFile = new File(destDir + "\\" + "about.txt");
+		File aboutFile = new File(destDir + File.separator + "about.txt");
 		try {
 			PrintWriter printWriter = new PrintWriter(aboutFile);
 			printWriter.println("uploadSource : " + uploadSource);
@@ -189,7 +189,7 @@ public class ExternalFileUploaderController implements Initializable{
 	private void fileNameClicked(MouseEvent e, Text fileName) {
 		File uploadsDirectory = fileHandler.getMyUploadsDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
 		int fileNumber = tableView.getSelectionModel().getSelectedItem().getFileNumber();
-		File fileToOpen = new File(uploadsDirectory.getPath() + "\\" + fileNumber + "\\" + fileName.getText());
+		File fileToOpen = new File(uploadsDirectory.getPath() + File.separator + fileNumber + File.separator + fileName.getText());
 		if (e.getButton() == MouseButton.PRIMARY) {
 			if (fileToOpen.exists()) {
 				fileHandler.openFileOnDesktop(fileToOpen);
@@ -203,7 +203,7 @@ public class ExternalFileUploaderController implements Initializable{
 		if(uploadItem!=null) {
 			File uploadsDirectory = fileHandler.getMyUploadsDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal());
 			int fileNumber = tableView.getSelectionModel().getSelectedItem().getFileNumber();
-			File dirToDelete = new File(uploadsDirectory.getPath() + "\\" + fileNumber);
+			File dirToDelete = new File(uploadsDirectory.getPath() + File.separator + fileNumber);
 			fileHandler.deleteDirectory(dirToDelete);
 			tableView.getItems().remove(uploadItem);
 			tableView.refresh();

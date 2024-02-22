@@ -34,7 +34,7 @@ public class FileHandler {
 	public File getProjectDirectory(Project project) {
 		if (project != null) {
 			File projectDirectory = new File(
-					constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName());
+					constants.getPathToERBProjectsFolder() + File.separator + project.getProjectCleanedName());
 			return projectDirectory;
 		} else {
 			return null;
@@ -44,7 +44,7 @@ public class FileHandler {
 	public File getGoalsDirectory(Project project) {
 		if (project != null) {
 			File goalsDirectory = new File(
-					constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals");
+					constants.getPathToERBProjectsFolder() + File.separator + project.getProjectCleanedName() + File.separator + "Goals");
 			return goalsDirectory;
 		} else {
 			return null;
@@ -53,8 +53,8 @@ public class FileHandler {
 
 	public File getGoalDirectory(Project project, Goal goal) {
 		if (project != null && goal != null) {
-			File goalDirectory = new File(constants.getPathToERBProjectsFolder() + "\\"
-					+ project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName());
+			File goalDirectory = new File(constants.getPathToERBProjectsFolder() + File.separator
+					+ project.getProjectCleanedName() + File.separator + "Goals" + File.separator + goal.getGoalCleanedName());
 			return goalDirectory;
 		} else {
 			return null;
@@ -63,8 +63,8 @@ public class FileHandler {
 
 	public File getSupportingDOCDirectory(Project project, Goal goal) {
 		if (project != null && goal != null) {
-			File supportingDOCDirectory = new File(constants.getPathToERBProjectsFolder() + "\\"
-					+ project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Supporting_DOC");
+			File supportingDOCDirectory = new File(constants.getPathToERBProjectsFolder() + File.separator
+					+ project.getProjectCleanedName() + File.separator + "Goals" + File.separator + goal.getGoalCleanedName() + File.separator + "Supporting_DOC");
 			return supportingDOCDirectory;
 		} else {
 			return null;
@@ -73,8 +73,8 @@ public class FileHandler {
 
 	public File getGUIDDataDirectory(Project project, Goal goal) {
 		if (project != null && goal != null) {
-			File guidsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\"
-					+ project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\GUID_Data");
+			File guidsDirectory = new File(constants.getPathToERBProjectsFolder() + File.separator
+					+ project.getProjectCleanedName() + File.separator + "Goals" + File.separator + goal.getGoalCleanedName() +  File.separator + "GUID_Data");
 			return guidsDirectory;
 		} else {
 			return null;
@@ -83,8 +83,8 @@ public class FileHandler {
 
 	public File getIndicatorsDirectory(Project project, Goal goal) {
 		if (project != null && goal != null) {
-			File indicatorsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\"
-					+ project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Indicators");
+			File indicatorsDirectory = new File(constants.getPathToERBProjectsFolder() + File.separator
+					+ project.getProjectCleanedName() + File.separator + "Goals" + File.separator + goal.getGoalCleanedName() + File.separator + "Indicators");
 			return indicatorsDirectory;
 		} else {
 			return null;
@@ -93,18 +93,18 @@ public class FileHandler {
 
 	public File getMyUploadsDirectory(Project project, Goal goal) {
 		if (project != null && goal != null) {
-			File myUploadsDirectory = new File(constants.getPathToERBProjectsFolder() + "\\"
-					+ project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\MyUploads");
+			File myUploadsDirectory = new File(constants.getPathToERBProjectsFolder() + File.separator
+					+ project.getProjectCleanedName() + File.separator + "Goals" + File.separator + goal.getGoalCleanedName() +  File.separator + "MyUploads");
 			return myUploadsDirectory;
 		} else {
 			return null;
 		}
 	}
-
+	//TODO: Left off fixing file formatting for mac here
 	public File getMyPortfolioDirectory(Project project, Goal goal) {
 		if (project != null && goal != null) {
-			File myPortfolioDirectory = new File(constants.getPathToERBProjectsFolder() + "\\"
-					+ project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\MyPortfolio");
+			File myPortfolioDirectory = new File(constants.getPathToERBProjectsFolder() + File.separator
+					+ project.getProjectCleanedName() + File.separator + "Goals" + File.separator + goal.getGoalCleanedName() + File.separator + "MyPortfolio");
 			return myPortfolioDirectory;
 		} else {
 			return null;
@@ -116,7 +116,7 @@ public class FileHandler {
 	public File getProjectMetaXMLFile(Project project) {
 		if (project != null) {
 			File projectXMLMetaXMLFile = new File(
-					constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Meta.xml");
+					constants.getPathToERBProjectsFolder() + File.separator + project.getProjectCleanedName() + File.separator + "Meta.xml");
 			return projectXMLMetaXMLFile;
 		} else {
 			return null;
@@ -125,8 +125,8 @@ public class FileHandler {
 
 	public File getGoalMetaXMLFile(Project project, Goal goal) {
 		if (project != null && goal != null) {
-			File goalMetaXMLFile = new File(constants.getPathToERBProjectsFolder() + "\\"
-					+ project.getProjectCleanedName() + "\\Goals\\" + goal.getGoalCleanedName() + "\\Meta.xml");
+			File goalMetaXMLFile = new File(constants.getPathToERBProjectsFolder() + File.separator
+					+ project.getProjectCleanedName() + File.separator + "Goals" + File.separator + goal.getGoalCleanedName() + File.separator + "Meta.xml");
 			return goalMetaXMLFile;
 		} else {
 			return null;
@@ -136,8 +136,8 @@ public class FileHandler {
 	public File getDataXMLFile(Project project, Goal goal, ERBContentItem erbContentItem) {
 		if (project != null && goal != null && erbContentItem != null) {
 			File dataXMLFile = new File(
-					constants.getPathToERBProjectsFolder() + "\\" + project.getProjectCleanedName() + "\\Goals\\"
-							+ goal.getGoalCleanedName() + "\\GUID_Data\\" + erbContentItem.getGuid() + "\\Data.xml");
+					constants.getPathToERBProjectsFolder() + File.separator + project.getProjectCleanedName() + File.separator + "Goals" + File.separator
+							+ goal.getGoalCleanedName() + File.separator + "GUID_Data" + File.separator + erbContentItem.getGuid() + File.separator + "Data.xml");
 			return dataXMLFile;
 		} else {
 			return null;
@@ -146,42 +146,42 @@ public class FileHandler {
 
 	public File getJSONPWordCloudFileForInteractiveActivity(Project project, Goal goal, String guid, String webViewId) {
 		File jsonpFile = new File(
-				getGUIDDataDirectory(project, goal) + "\\" + guid + "\\" + webViewId + "\\wordcloud.jsonp");
+				getGUIDDataDirectory(project, goal) + File.separator + guid + File.separator + webViewId + File.separator + "wordcloud.jsonp");
 		return jsonpFile;
 	}
 
 	// --------------------------------------------------------------------------
 
 	public File getStaticSupportingDOCDirectory() {
-		File supportingDOCDirectory = new File(constants.getPathToERBStaticDataFolder() + "\\Supporting_DOC");
+		File supportingDOCDirectory = new File(constants.getPathToERBStaticDataFolder() + File.separator + "Supporting_DOC");
 		return supportingDOCDirectory;
 	}
 
 	public File getStaticAvailableContentXMLFile() {
 		File availableContentXMLFile = new File(
-				constants.getPathToERBFolder() + "\\Static_Data\\Available_Content.xml");
+				constants.getPathToERBFolder() + File.separator + "Static_Data" + File.separator + "Available_Content.xml");
 		return availableContentXMLFile;
 	}
 
 	public File getStaticWorksheetsXMLFile() {
-		File worksheetsXMLFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Worksheets.xml");
+		File worksheetsXMLFile = new File(constants.getPathToERBFolder() + File.separator + "Static_Data" + File.separator + "Worksheets.xml");
 		return worksheetsXMLFile;
 	}
 
 	public File getStaticIndicatorCardsXMLFile() {
-		File indicatorCardsXMLFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Indicator_Cards.xml");
+		File indicatorCardsXMLFile = new File(constants.getPathToERBFolder() + File.separator + "Static_Data" + File.separator + "Indicator_Cards.xml");
 		return indicatorCardsXMLFile;
 	}
 
 	public File getStaticGoalCategoriesXMLFile() {
-		File goalCategoriesFile = new File(constants.getPathToERBFolder() + "\\Static_Data\\Goal_Categories.xml");
+		File goalCategoriesFile = new File(constants.getPathToERBFolder() + File.separator + "Static_Data" + File.separator + "Goal_Categories.xml");
 		return goalCategoriesFile;
 	}
 
 	public File getStaticFormContentXML(String id) {
 		if (id != null) {
 			File formContentFile = new File(
-					constants.getPathToERBFolder() + "\\Static_Data\\ContentXMLs\\" + id + "\\form_text.xml");
+					constants.getPathToERBFolder() + File.separator + "Static_Data" + File.separator + "ContentXMLs" + File.separator + id + File.separator + "form_text.xml");
 			return formContentFile;
 		} else {
 			return null;
@@ -189,12 +189,12 @@ public class FileHandler {
 	}
 
 	public File getStaticWordCloudDirectory() {
-		File wordCloudDirectory = new File(constants.getPathToERBFolder() + "\\JavaScript\\WordCloud");
+		File wordCloudDirectory = new File(constants.getPathToERBFolder() + File.separator + "JavaScript" + File.separator + "WordCloud");
 		return wordCloudDirectory;
 	}
 
 	public File getStaticIconImageFile(String id) {
-		File iconFile = new File(constants.getPathToERBStaticDataFolder() + "\\ContentXMLs\\" + id + "\\icon.png");
+		File iconFile = new File(constants.getPathToERBStaticDataFolder() + File.separator + "ContentXMLs" + File.separator + id + File.separator + "icon.png");
 		return iconFile;
 	}
 
@@ -263,7 +263,7 @@ public class FileHandler {
 	}
 
 	private void createDirectory(Project p, Goal g, ERBContentItem e) {
-		File guidDir = new File(getGUIDDataDirectory(p, g) + "\\" + e.getGuid());
+		File guidDir = new File(getGUIDDataDirectory(p, g) + File.separator + e.getGuid());
 		if (!guidDir.exists())
 			guidDir.mkdir();
 

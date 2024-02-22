@@ -216,7 +216,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM_dd_yyyy_HH.mm.ss");  
 				LocalDateTime now = LocalDateTime.now();  
 				File rankingVirtualDir = createIndicatorsRankingVirtualDir();
-				File virtualRankedSnapshotSave = new File(rankingVirtualDir + "\\RankingSnapshot_" + dtf.format(now) + ".png");
+				File virtualRankedSnapshotSave = new File(rankingVirtualDir + File.separator + "RankingSnapshot_" + dtf.format(now) + ".png");
 				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", virtualRankedSnapshotSave);
 				ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app, app.getEngagementActionController());
 				exFileUploader.pushToUploaded(virtualRankedSnapshotSave, "Indicator Center");
@@ -265,7 +265,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 	}
 	
 	private IndicatorCard [] getIndicatorCardsInRanked() {
-		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + "\\Indicators_List.xlsx");
+		File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
 		IndicatorWorkbookParser iWP = new IndicatorWorkbookParser(app,indicatorWorkbookFile);
 		ArrayList<IndicatorCard> allCards = iWP.parseForIndicatorCards();
 		ArrayList<String> indicatorIds = getIndicatorCardIdsInRanked();
@@ -285,7 +285,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		if (!indicatorsDir.exists()) {
 			indicatorsDir.mkdir();
 		}
-		File rankingVirtualDir = new File(indicatorsDir + "\\Ranking_Virtual");
+		File rankingVirtualDir = new File(indicatorsDir + File.separator + "Ranking_Virtual");
 		if (!rankingVirtualDir.exists()) {
 			rankingVirtualDir.mkdir();
 		}

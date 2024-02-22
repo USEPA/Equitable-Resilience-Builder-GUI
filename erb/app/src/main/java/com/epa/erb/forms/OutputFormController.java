@@ -205,7 +205,7 @@ public class OutputFormController extends FormController implements Initializabl
 		}
 		xmlManager.writeOutputFormDataXML(saveLocation, listOfChildren);
 		String fileName = engagementActionController.getCurrentSelectedERBContentItem().getShortName().replaceAll(" ", "_").replaceAll(":", "_");
-		File outputTextFile = new File(fileHandler.getGUIDDataDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal())+"\\" + engagementActionController.getCurrentSelectedERBContentItem().getGuid() + "\\" + fileName + ".txt");
+		File outputTextFile = new File(fileHandler.getGUIDDataDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal())+File.separator + engagementActionController.getCurrentSelectedERBContentItem().getGuid() + File.separator + fileName + ".txt");
 		writeOutputFormToTextFile(listOfChildren,outputTextFile);
 		ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app,engagementActionController);
 		exFileUploader.pushToUploaded(outputTextFile, "Key Takeaways");
@@ -245,7 +245,6 @@ public class OutputFormController extends FormController implements Initializabl
 							}
 						}
 					}
-					printWriter.println("---");
 					printWriter.println();
 				}
 			}

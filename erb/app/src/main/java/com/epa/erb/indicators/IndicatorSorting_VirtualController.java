@@ -213,7 +213,7 @@ public class IndicatorSorting_VirtualController implements Initializable {
 				LocalDateTime now = LocalDateTime.now();
 				File sortingVirtualDir = createIndicatorsSortingVirtualDir();
 				File virtualSortingSnapshotSave = new File(
-						sortingVirtualDir + "\\SortingSnapshot_" + dtf.format(now) + ".png");
+						sortingVirtualDir + File.separator + "SortingSnapshot_" + dtf.format(now) + ".png");
 				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", virtualSortingSnapshotSave);
 				ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app,
 						app.getEngagementActionController());
@@ -231,7 +231,7 @@ public class IndicatorSorting_VirtualController implements Initializable {
 		if (!indicatorsDir.exists()) {
 			indicatorsDir.mkdir();
 		}
-		File sortingVirtualDir = new File(indicatorsDir + "\\Sorting_Virtual");
+		File sortingVirtualDir = new File(indicatorsDir + File.separator + "Sorting_Virtual");
 		if (!sortingVirtualDir.exists()) {
 			sortingVirtualDir.mkdir();
 		}

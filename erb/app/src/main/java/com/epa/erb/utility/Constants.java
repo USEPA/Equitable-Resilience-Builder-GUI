@@ -53,17 +53,17 @@ public class Constants {
 	
 	private void setFilePathsStatic() {
 		File userDir = new File(System.getProperty("user.dir"));
-		File codeResourcesFile = new File(userDir.getParentFile().getParentFile() + "//erb_supporting_docs//Code_Resources");
+		File codeResourcesFile = new File(userDir.getParentFile().getParentFile() + File.separator + "erb_supporting_docs" + File.separator + "Code_Resources");
 		
-		pathToERBFolder = codeResourcesFile.getPath() +  "\\ERB";
-		pathToERBProjectsFolder = codeResourcesFile.getPath() + "\\ERB\\Projects";
-		pathToERBStaticDataFolder = codeResourcesFile.getPath() +  "\\ERB\\Static_Data";
+		pathToERBFolder = codeResourcesFile.getPath() + File.separator + "ERB";
+		pathToERBProjectsFolder = codeResourcesFile.getPath() + File.separator + "ERB" + File.separator + "Projects";
+		pathToERBStaticDataFolder = codeResourcesFile.getPath() +  File.separator + "ERB" + File.separator + "Static_Data";
 	}
 	
 	private void setFilePathsDynamic() {
-		pathToERBFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\").replace("\\", "\\\\"); //Dynamic
-		pathToERBProjectsFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Projects\\").replace("\\", "\\\\"); //Dynamic
-		pathToERBStaticDataFolder = (System.getProperty("user.dir")+"\\lib\\ERB\\Static_Data\\").replace("\\", "\\\\"); //Dynamic
+		pathToERBFolder = (System.getProperty("user.dir")+ File.separator + "lib" + File.separator + "ERB" + File.separator); //Dynamic
+		pathToERBProjectsFolder = (System.getProperty("user.dir")+ File.separator + "lib" + File.separator + "ERB" + File.separator + "Projects" + File.separator); //Dynamic
+		pathToERBStaticDataFolder = (System.getProperty("user.dir")+ File.separator + "lib" + File.separator + "ERB" + File.separator + "Static_Data" + File.separator); //Dynamic
 	}
 
 	private int getScreenResolution() {

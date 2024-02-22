@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
+import com.epa.erb.finalReport.FinalReportSelectionController;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.OutputFormController;
@@ -27,6 +28,7 @@ import com.epa.erb.wordcloud.WordCloudController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -100,6 +102,28 @@ public class EngagementActionController implements Initializable {
 		addTreeViewListener();
 		hideGoalSelection();
 		removeSaveHBox();
+	}
+	
+	@FXML
+	public void finalReportButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/finalReport/FinalReportSelection.fxml"));
+			FinalReportSelectionController controller = new FinalReportSelectionController(app);
+			fxmlLoader.setController(controller);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setTitle("Final Report Generator");
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
+			stage.setWidth(app.getPopUpPrefWidth());
+			stage.setHeight(app.getPopUpPrefHeight());
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load FinalReportSelection.fxml.");
+			logger.log(Level.FINER, "Failed to load FinalReportSelection.fxml: " + e.getStackTrace());
+		}
 	}
 	
 	@FXML

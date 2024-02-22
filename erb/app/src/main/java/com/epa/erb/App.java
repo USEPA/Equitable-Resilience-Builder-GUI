@@ -16,26 +16,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.awt.Dimension;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import java.util.UUID;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
-import org.apache.poi.xwpf.usermodel.IBodyElement;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
-import org.apache.poi.xwpf.usermodel.XWPFTableCell;
-import org.apache.poi.xwpf.usermodel.XWPFTableRow;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTbl;
-
-import java.io.*;
 import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
@@ -63,139 +48,9 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		logger.log(Level.INFO, "Successfully launched application");
-
-//		readWordDocText();
-		readWordDocTable();
-//		readWordParagraph();
 		sizeScreen(getScreenResolution(), getScreenSize());
 		readAndStoreData();
 		showERBToolMain();
-	}
-	
-	public void readWordDocText() {
-		System.out.println("----------------TEXT---------------------");
-
-		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\ERB\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
-
-	        try (XWPFDocument doc = new XWPFDocument(
-	                Files.newInputStream(Paths.get(fileName)))) {
-
-	            XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
-	            String docText = xwpfWordExtractor.getText();
-	            System.out.println(docText);
-
-	            // find number of words in the document
-	            long count = Arrays.stream(docText.split("\\s+")).count();
-	            System.out.println("Total words: " + count);
-
-	        } catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-	}
-	
-	public void readWordDocTable() {
-		String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\ERB\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
-
-		XWPFDocument doc;
-		try {
-			doc = new XWPFDocument(new FileInputStream(fileName));
-			for (XWPFTable table : doc.getTables()) {
-				CTTbl tableXML = table.getCTTbl();
-				String[] xml = tableXML.toString().split(System.lineSeparator());
-				String caption = null;
-				for (String x : xml)
-				{
-				    if (x.contains("w:tblCaption"))
-				    {
-				        caption = x.split("w:val=")[1].replace("/>", "");
-				        caption = caption.replace("\"", "");
-				    }
-				}
-				
-				System.out.println("----------------TABLE: " + caption + " -----------------");
-				for (XWPFTableRow row : table.getRows()) {
-					System.out.println("------------------ROW--------------");
-					for (XWPFTableCell cell : row.getTableCells()) {
-						System.out.println("cell text: " + cell.getText());
-					}
-				}
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-//	        try (XWPFDocument doc = new XWPFDocument(
-//	                Files.newInputStream(Paths.get(fileName)))) {
-//
-//	            /*XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
-//	            String docText = xwpfWordExtractor.getText();
-//	            System.out.println(docText);*/
-//
-//	            Iterator<IBodyElement> docElementsIterator = doc.getBodyElementsIterator();
-//
-//	            //Iterate through the list and check for table element type
-//	            while (docElementsIterator.hasNext()) {
-//	                IBodyElement docElement = docElementsIterator.next();
-//	                if ("TABLE".equalsIgnoreCase(docElement.getElementType().name())) {
-//	                    //Get List of table and iterate it
-//	                    List<XWPFTable> xwpfTableList = docElement.getBody().getTables();
-//	                    for (XWPFTable xwpfTable : xwpfTableList) {
-//	                        System.out.println("Total Rows : " + xwpfTable.getNumberOfRows());
-//	                        for (int i = 0; i < xwpfTable.getRows().size(); i++) {
-//	                            for (int j = 0; j < xwpfTable.getRow(i).getTableCells().size(); j++) {
-//	                                System.out.println(xwpfTable.getRow(i).getCell(j).getText());
-//	                            }
-//	                        }
-//	                    }
-//	                }
-//	            }
-//
-//	        } catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-	}
-	
-	public void readWordParagraph() {
-		System.out.println("----------------PARAGRAPH---------------------");
-		  String fileName = "C:\\Users\\awilke06\\Documents\\Eclipse_Repos\\ERB\\metroceri_erb\\erb_supporting_docs\\Code_Resources\\ERB\\Static_Data\\Supporting_DOC\\Community_Engagement_Plan.docx";
-
-	        try (XWPFDocument doc = new XWPFDocument(
-	                Files.newInputStream(Paths.get(fileName)))) {
-
-	            // output the same as 8.1
-	            List<XWPFParagraph> list = doc.getParagraphs();
-	            for (XWPFParagraph paragraph : list) {
-	                System.out.println(paragraph.getText());
-	            }
-
-	        } catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	}
-	
-	private File getTestLogDir() {
-		File erbSupportingDocsDir = new File(System.getProperty("user.dir") + "/.." + "/.." + "/erb_supporting_docs/");
-		if (erbSupportingDocsDir.exists()) {
-			File logsDir = new File(erbSupportingDocsDir + "/Logs");
-			if (!logsDir.exists()) logsDir.mkdir();
-			return logsDir;
-		}
-		return null;
-	}
-	
-	private File getPackagedLogFilePath() {
-		File erbDir = new File(System.getProperty("user.dir") + "/lib/ERB");
-		if (erbDir.exists()) {
-			File logsDir = new File(erbDir + "/Logs");
-			if (!logsDir.exists()) logsDir.mkdir();
-			return logsDir;
-		}
-		return null;
 	}
 
 	private void showERBToolMain() {
@@ -265,6 +120,7 @@ public class App extends Application {
 			root.setPrefHeight(getPrefHeight());
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.log(Level.FINE, "Exception error loading ERBContainer.fxml");
 			logger.log(Level.FINER, "Exception error loading ERBContainer.fxml: " + e.getStackTrace());
 			return null;
@@ -294,8 +150,15 @@ public class App extends Application {
 			Goal goal = engagementActionController.getCurrentGoal();
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal),engagementActionController.getListOfUniqueERBContentItems());
 			fileHandler.createGUIDDirectoriesForGoal2(project, goal, engagementActionController.getListOfUniqueERBContentItems());
+			closeHandlers();
 		} else {
 			logger.log(Level.FINE, "Cannot proccess close request. Controller is null.");
+		}
+	}
+	
+	public void closeHandlers() {
+		for(Handler handler: logger.getHandlers()) {
+			handler.close();
 		}
 	}
 

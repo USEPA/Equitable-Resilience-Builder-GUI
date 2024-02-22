@@ -32,7 +32,7 @@ public class NoteBoard_LinearRanking extends NoteBoardContentController {
 	
 	protected void setExistingLinearRankedData() {
 		if(linearDirectory.exists()) {
-			File rankedIdsFile = new File(linearDirectory.getPath() + "\\rankedIds.txt");
+			File rankedIdsFile = new File(linearDirectory.getPath() + File.separator + "rankedIds.txt");
 			ArrayList<IndicatorCard> rankedCards = parseForIndicatorIds(rankedIdsFile);
 			addLinearRankedCards(rankedCards);
 		}

@@ -108,7 +108,7 @@ public class DataSelection_InPersonController implements Initializable{
 	
 	private void save() {
 		File indicatorsDir = createIndicatorsDir();
-		File inPersonDataSelectionFile = new File(indicatorsDir + "\\DataSelection_InPerson.txt");
+		File inPersonDataSelectionFile = new File(indicatorsDir + File.separator + "DataSelection_InPerson.txt");
 		writeSelectedData(inPersonDataSelectionFile);
 	}
 	

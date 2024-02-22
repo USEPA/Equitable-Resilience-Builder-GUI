@@ -35,7 +35,7 @@ public class NoteBoard_QuadrantRanking extends NoteBoardContentController {
 	
 	private void handleRankedCards() {
 		if(quadrantDirectory.exists()) {
-			File rankedIdsFile = new File(quadrantDirectory.getPath() + "\\rankedIds.txt");
+			File rankedIdsFile = new File(quadrantDirectory.getPath() + File.separator + "rankedIds.txt");
 			ArrayList<ArrayList<IndicatorCard>> cards = parseForMultiRowIndicatorIds(rankedIdsFile);
 			// ROW
 			for (int i = 0; i < rowControllers.size(); i++) {
@@ -73,7 +73,7 @@ public class NoteBoard_QuadrantRanking extends NoteBoardContentController {
 	
 	private void handleBankedCards() {
 		if(quadrantDirectory.exists()) {
-			File bankedIdsFile = new File(quadrantDirectory.getPath() + "\\bankedIds.txt");
+			File bankedIdsFile = new File(quadrantDirectory.getPath() + File.separator + "bankedIds.txt");
 			ArrayList<IndicatorCard> bankedCards = parseForIndicatorIds(bankedIdsFile);
 			HBox rowHBox = (HBox) rankedItemsHBox.getChildren().get(0);
 			rowHBox.getChildren().clear();

@@ -50,7 +50,7 @@ public class IndicatorSetupFormController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		guidDirectory = new File(fileHandler.getGUIDDataDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal()) + "\\" + erbContentItem.getGuid());
+		guidDirectory = new File(fileHandler.getGUIDDataDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal()) + File.separator + erbContentItem.getGuid());
 	}
 
 	public void setUp() {
@@ -97,7 +97,7 @@ public class IndicatorSetupFormController implements Initializable {
 
 	private ArrayList<IndicatorCard> getExistingSelectedIndicators() {
 		ArrayList<IndicatorCard> cards = new ArrayList<IndicatorCard>();
-		File selectedIndicatorsFile = new File(guidDirectory.getPath() + "\\selectedIndicatorIds.txt");
+		File selectedIndicatorsFile = new File(guidDirectory.getPath() + File.separator + "selectedIndicatorIds.txt");
 		if (selectedIndicatorsFile.exists()) {
 			try {
 				Scanner scanner = new Scanner(selectedIndicatorsFile);
@@ -127,7 +127,7 @@ public class IndicatorSetupFormController implements Initializable {
 	}
 
 	private boolean areExistingSelectedIndicators() {
-		File selectedIndicatorsFile = new File(guidDirectory.getPath() + "\\selectedIndicatorIds.txt");
+		File selectedIndicatorsFile = new File(guidDirectory.getPath() + File.separator + "selectedIndicatorIds.txt");
 		if (selectedIndicatorsFile.exists()) {
 			return true;
 		}
@@ -136,7 +136,7 @@ public class IndicatorSetupFormController implements Initializable {
 
 	private void writeSelectedIndicators(ArrayList<IndicatorCard> selectedIndicatorCards) {
 		if (selectedIndicatorCards != null && selectedIndicatorCards.size() > 0) {
-			File selectedIndicatorsFile = new File(guidDirectory.getPath() + "\\selectedIndicatorIds.txt");
+			File selectedIndicatorsFile = new File(guidDirectory.getPath() + File.separator + "selectedIndicatorIds.txt");
 			try {
 				PrintWriter printWriter = new PrintWriter(selectedIndicatorsFile);
 				for (IndicatorCard card : selectedIndicatorCards) {
