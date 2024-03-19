@@ -14,8 +14,10 @@ public class MyLogger extends Logger{
 	}
 	
 	private void initLogger() {
+		System.out.println("Initializing logger");
 		File pathToLogDir = getTestLogDir();
 		//File pathToLogDir = getPackagedLogDir();
+		System.out.println("Creating logs in: " + pathToLogDir);
 		if (pathToLogDir != null) {
 			try {
 				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "severe.log",true, Level.SEVERE));

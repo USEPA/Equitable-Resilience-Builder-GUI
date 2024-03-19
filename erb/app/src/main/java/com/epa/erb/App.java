@@ -16,6 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.awt.Dimension;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.logging.Handler;
@@ -47,10 +49,23 @@ public class App extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		logger.log(Level.INFO, "Successfully launched application");
+		createTestFile();
 		sizeScreen(getScreenResolution(), getScreenSize());
 		readAndStoreData();
 		showERBToolMain();
+		logger.log(Level.INFO, "Successfully launched application");		
+	}
+	
+	private void createTestFile() {
+		File file = new File(System.getProperty("user.dir") + File.separator + "erbTestFile.txt");
+		System.out.println("Creating test file: " + file);
+		try {
+			PrintWriter printWriter = new PrintWriter(file);
+			printWriter.println("Hello World");
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void showERBToolMain() {
@@ -172,6 +187,7 @@ public class App extends Application {
 		XMLManager xmlManager = new XMLManager(this);
 		FileHandler fileHandler = new FileHandler(this);
 		File contentFile = fileHandler.getStaticAvailableContentXMLFile();
+		System.out.println("Getting available content from: " + contentFile.getPath());
 		availableERBContentItems = xmlManager.parseContentXML(contentFile);
 	}
 	
