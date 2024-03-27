@@ -10,7 +10,6 @@ plugins {
     id 'application'
     id 'distribution'
     id 'org.beryx.jlink' version '2.25.0' 
-    id("com.github.johnrengelman.shadow") version "7.1.0"
 }
 
 group="erb"
@@ -47,11 +46,6 @@ dependencies {
 
 applicationDefaultJvmArgs = ["-Dprism.maxvram=2G"]
 
-tasks {
-    shadowJar {
-        exclude("module-info.class")
-    }
-}
 
 jlink {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--ignore-signing-information']
