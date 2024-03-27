@@ -1,0 +1,58 @@
+<html>
+<head>
+<title></title>
+<style>
+
+.bar--positive{
+	fill: #81D178;
+}
+
+.bar--negative{
+	fill: #D17878;
+}
+
+text{
+	font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.box{
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	margin-left: 9px;
+	z-index:99;
+}
+
+.title{
+	margin-left:90px;
+
+}
+
+</style>
+
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+<script  src="miniWebView1.jsonp"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+	<p id="popup" class="box" style="width:350.0px"></p>
+</div>
+
+<!-- Contains the js code -->
+<script type='text/javascript' src="miniWebView1.js"></script>
+
+</body>
+</html>

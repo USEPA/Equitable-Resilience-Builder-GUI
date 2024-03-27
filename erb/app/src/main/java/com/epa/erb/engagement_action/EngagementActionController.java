@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
+import com.epa.erb.MappingController;
 import com.epa.erb.finalReport.FinalReportSelectionController;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
@@ -102,6 +103,28 @@ public class EngagementActionController implements Initializable {
 		addTreeViewListener();
 		hideGoalSelection();
 		removeSaveHBox();
+	}
+	
+	@FXML
+	public void mappingButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Mapping.fxml"));
+			MappingController controller = new MappingController(app);
+			fxmlLoader.setController(controller);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setTitle("Mapping");
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
+			stage.setWidth(app.getPopUpPrefWidth());
+			stage.setHeight(app.getPopUpPrefHeight());
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load Mapping.fxml.");
+			logger.log(Level.FINER, "Failed to load Mapping.fxml: " + e.getStackTrace());
+		}
 	}
 	
 	@FXML

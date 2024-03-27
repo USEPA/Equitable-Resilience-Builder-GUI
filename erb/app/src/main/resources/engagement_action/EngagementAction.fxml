@@ -79,6 +79,11 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
+                  <Button minWidth="95.0" mnemonicParsing="false" onAction="#mappingButtonAction" style="-fx-background-color: #FFFFFF;" text="Mapping" textFill="#316188">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                   <Button fx:id="finalReportButton" minWidth="95.0" mnemonicParsing="false" onAction="#finalReportButtonAction" style="-fx-background-color: #FFFFFF;" text="Generate Final Report" textFill="#316188">
                      <font>
                         <Font size="14.0" />

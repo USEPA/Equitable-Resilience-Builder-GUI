@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<ScrollPane fx:id="root" fitToHeight="true" fitToWidth="true" prefHeight="750.0" prefWidth="1150.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox spacing="20.0">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Mapping">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Mapping options" underline="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <RadioButton mnemonicParsing="false" text="State">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="tractToggleGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" selected="true" text="County" toggleGroup="$tractToggleGroup">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Block" toggleGroup="$tractToggleGroup">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Block Group" toggleGroup="$tractToggleGroup">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                              <VBox>
+                                 <children>
+                                    <Accordion>
+                                      <panes>
+                                        <TitledPane animated="false" text="Climate Change">
+                                          <content>
+                                            <AnchorPane>
+                                                   <children>
+                                                      <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Flood Risk">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                        </TitledPane>
+                                        <TitledPane animated="false" text="Energy">
+                                          <content>
+                                            <AnchorPane>
+                                                   <children>
+                                                      <CheckBox layoutX="14.0" layoutY="21.0" mnemonicParsing="false" text="Energy Cost">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                        </TitledPane>
+                                        <TitledPane animated="false" text="Health">
+                                          <content>
+                                            <AnchorPane>
+                                                   <children>
+                                                      <CheckBox layoutX="14.0" layoutY="22.0" mnemonicParsing="false" text="Low Life Expectancy">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                        </TitledPane>
+                                          <TitledPane animated="false" text="Housing">
+                                             <content>
+                                                <AnchorPane>
+                                                   <children>
+                                                      <CheckBox layoutX="14.0" layoutY="19.0" mnemonicParsing="false" text="Lead Paint">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TitledPane>
+                                          <TitledPane animated="false" text="Pollution">
+                                             <content>
+                                                <AnchorPane>
+                                                   <children>
+                                                      <CheckBox layoutX="14.0" layoutY="19.0" mnemonicParsing="false" text="Proximity to Hazardous Waste Facilities">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TitledPane>
+                                      </panes>
+                                    </Accordion>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <WebView fx:id="webView" maxHeight="-1.0" maxWidth="-1.0" minHeight="600.0" minWidth="600.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </content>
+</ScrollPane>
