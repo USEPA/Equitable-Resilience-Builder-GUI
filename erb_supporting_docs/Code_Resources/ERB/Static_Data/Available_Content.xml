@@ -67,14 +67,14 @@
 	<content id="133" guid="" type="mainForm" status="ready" shortName="Strategy Planning" longName="Strategy Planning" />
 	<content id="134" guid="" type="mainForm" status="ready" shortName="Workshop Wrap-Up" longName="Workshop Wrap-Up" />
 	<content id="135" guid="" type="mainForm" status="ready" shortName="Reflection/Next Steps" longName="Reflection and Next Steps" />
-	<content id="136" guid="" type="outputForm" status="ready" shortName="Key Takeaways: Action" longName="Key Takeaways on Strategizing" />
+	<content id="136" guid="" type="outputForm" status="ready" shortName="Key Takeaways- Action" longName="Key Takeaways on Strategizing Actions" />
 	<content id="138" guid="" type="mainForm" status="ready" shortName="Document Your Project" longName="Document Your Project" />
 	<content id="139" guid="" type="mainForm" status="ready" shortName="Maintain Engagement" longName="Maintain Outreach and Engagement" />
 	<content id="140" guid="" type="mainForm" status="ready" shortName="Implement Actions" longName="Implement Actions" />
 	<content id="141" guid="" type="mainForm" status="ready" shortName="Monitor Change" longName="Use Monitoring to Support Future Action" />
 	<content id="142" guid="" type="mainForm" status="ready" shortName="Reflection and Celebrate" longName="Reflection and Celebrate" />
 	<content id="143" guid="" type="alternativeForm" status="ready" shortName="Example: Brainstorming" longName="Actions Brainstorming Example" />
-	<content id="144" guid="" type="outputForm" status="ready" shortName="Key Takeaways: Assess" longName="Key Takeaways from Assessment" />
+	<content id="144" guid="" type="outputForm" status="ready" shortName="Key Takeaways- Assess" longName="Key Takeaways on Assessment" />
 	<content id="151" guid="" type="mainForm" status="ready" shortName="Workshop Agenda Builder" longName="Results to Action Workshop Agenda Builder" />
 	<content id="152" guid="" type="mainForm" status="ready" shortName="Strategy Chart Example" longName="Strategy Chart Example" />
 	<content id="167" guid="" type="mainForm" status="ready" shortName="Disclaimer" longName="Disclaimer" />
@@ -87,4 +87,46 @@
 	<content id="199" guid="" type="mainForm" status="ready" shortName="Core Team Kickoff " longName="Core Team Kickoff" />
 	<content id="200" guid="" type="mainForm" status="ready" shortName="Explore Equitable Resilience" longName="Explore Equitable Resilience" />
 	<content id="201" guid="" type="mainForm" status="ready" shortName="Find Funding" longName="Find Funding to Support Taking Action" />
+	<content id="207" guid="" type="supportingDoc" status="ready" shortName="Reflection_Diary.docx" longName="Reflection Diary" />
+	<content id="208" guid="" type="supportingDoc" status="ready" shortName="Examples.docx" longName="Examples" />
+	<content id="209" guid="" type="supportingDoc" status="ready" shortName="Examples.pdf" longName="Examples" />
+	<content id="210" guid="" type="supportingDoc" status="ready" shortName="Project_Plan_Template.docx" longName="Project Plan Template" />
+	<content id="211" guid="" type="supportingDoc" status="ready" shortName="Recruitment_Guide.docx" longName="Recruitment Guide" />
+	<content id="212" guid="" type="supportingDoc" status="ready" shortName="Team_Storytelling_Exercise.docx" longName="Team Storytelling Exercise" />
+	<content id="213" guid="" type="supportingDoc" status="ready" shortName="Exploring_Equity_Exercise.docx" longName="Exploring Equity Exercise" />
+	<content id="214" guid="" type="supportingDoc" status="ready" shortName="Youth_Engagement_Guide.docx" longName="Youth Engagement Guide" />
+	<content id="215" guid="" type="supportingDoc" status="ready" shortName="How_to_Use_Storytelling.docx" longName="How to Use Storytelling" />
+	<content id="216" guid="" type="supportingDoc" status="ready" shortName="Equity_and_Engagement_Exercise.docx" longName="Equity and Engagement Exercise" />
+	<content id="217" guid="" type="supportingDoc" status="ready" shortName="Community_Connections_Table.docx" longName="Community Connections Table" />
+	<content id="218" guid="" type="supportingDoc" status="ready" shortName="Community_Engagement_Plan.docx" longName="Community Engagement Plan" />
+	<content id="219" guid="" type="supportingDoc" status="ready" shortName="Diagram_Community_Connections.docx" longName="Diagram Community Connections" />
+	<content id="220" guid="" type="supportingDoc" status="ready" shortName="Options_for_Connecting_People_in_Workshops.docx" longName="Options for Connecting People in Workshops" />
+	<content id="221" guid="" type="supportingDoc" status="ready" shortName="Equitable_Resilience_Handout.docx" longName="Equitable Resilience Handout" />
+	<content id="222" guid="" type="supportingDoc" status="ready" shortName="Collect_Equity_Data.docx" longName="Collect Equity Data" />
+	<content id="223" guid="" type="supportingDoc" status="ready" shortName="Equity_Discussion_Instructions.docx" longName="Equity Discussion Instructions" />
+	<content id="224" guid="" type="supportingDoc" status="ready" shortName="Future_Scenarios_Instructions.docx" longName="Future Scenarios Instructions" />
+	<content id="225" guid="" type="supportingDoc" status="ready" shortName="Collect_Hazards_Data.docx" longName="Collect Hazards Data" />
+	<content id="226" guid="" type="supportingDoc" status="ready" shortName="Hazards_Storytelling_Exercise.docx" longName="Hazards Storytelling Exercise" />
+	<content id="227" guid="" type="supportingDoc" status="ready" shortName="Indicator_Activity_Instructions.docx" longName="Indicator Activity Instructions" />
+	<content id="228" guid="" type="supportingDoc" status="ready" shortName="Indicator_Card_Template.pptx" longName="Indicator Card Template" />
+	<content id="229" guid="" type="supportingDoc" status="ready" shortName="Indicators_List.xlsx" longName="Indicators List" />
+	<content id="230" guid="" type="supportingDoc" status="ready" shortName="Mapping_Activity_Instructions.docx" longName="Mapping Activity Instructions" />
+	<content id="231" guid="" type="supportingDoc" status="ready" shortName="Mapping_Activity_Preparation_Guide.docx" longName="Mapping Activity Preparation Guide" />
+	<content id="232" guid="" type="supportingDoc" status="ready" shortName="Scoping_Information_Gathering.docx" longName="Scoping Information Gathering" />
+	<content id="233" guid="" type="supportingDoc" status="ready" shortName="Facilitators_Guide_for_Workshops.docx" longName="Facilitators Guide for Workshops" />
+	<content id="234" guid="" type="supportingDoc" status="ready" shortName="Actions_Brainstorming_Instructions.docx" longName="Actions Brainstorming Instructions" />
+	<content id="235" guid="" type="supportingDoc" status="ready" shortName="Disaster_Scenario_Exercise.docx" longName="Disaster Scenario Exercise" />
+	<content id="236" guid="" type="supportingDoc" status="ready" shortName="Equity_Storytelling_Exercise.docx" longName="Equity Storytelling Exercise" />
+	<content id="237" guid="" type="supportingDoc" status="ready" shortName="Evaluating_Equitable_Resilience_Building_Actions.docx" longName="Evaluating Equitable Resilience Building Actions" />
+	<content id="238" guid="" type="supportingDoc" status="ready" shortName="Results_to_Action_Workshop_Agenda_Builder.docx" longName="Results to Action Workshop Agenda Builder" />
+	<content id="239" guid="" type="supportingDoc" status="ready" shortName="Results_to_Action_Workshop_Sample_Agenda.docx" longName="Results to Action Workshop Sample Agenda" />
+	<content id="240" guid="" type="supportingDoc" status="ready" shortName="Implementation_Storytelling_Exercise.docx" longName="Implementation Storytelling Exercise" />
+	<content id="241" guid="" type="supportingDoc" status="ready" shortName="Strategy_Chart.docx" longName="Strategy Chart" />
+	<content id="242" guid="" type="supportingDoc" status="ready" shortName="Vision_Statement_Discussion.docx" longName="Vision Statement Discussion" />
+	<content id="243" guid="" type="supportingDoc" status="ready" shortName="Identify_Action_Areas.docx" longName="Identify Action Areas" />
+	<content id="244" guid="" type="supportingDoc" status="ready" shortName="Implementation_Worksheet.docx" longName="Implementation Worksheet" />
+	<content id="245" guid="" type="supportingDoc" status="ready" shortName="Monitoring_Plan.docx" longName="Monitoring Plan" />
+	<content id="246" guid="" type="supportingDoc" status="ready" shortName="Funding_and_Financing_Guide.docx" longName="Funding and Financing" />
+	<content id="247" guid="" type="supportingDoc" status="ready" shortName="Final_Report_Template.docx" longName="Final Report Template" />
+
 </content_xmls>

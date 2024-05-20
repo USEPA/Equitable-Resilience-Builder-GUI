@@ -191,6 +191,17 @@ public class App extends Application {
 		availableERBContentItems = xmlManager.parseContentXML(contentFile);
 	}
 	
+	public ERBContentItem getERBContentItemWorksheet(String id){
+		for(ERBContentItem content: availableERBContentItems) {
+			if(content.getType().contentEquals("supportDoc")) {
+				if(content.getId().contentEquals(id)) {
+					return content;
+				}
+			}
+		}
+		return null;
+	}
+	
 	public ERBContentItem findERBContentItemForId(String id) {
 		if (id != null) {
 			for (ERBContentItem erbContentItem : availableERBContentItems) {

@@ -19,6 +19,7 @@ import org.w3c.dom.NodeList;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.ERBItemFinder;
+import com.epa.erb.finalReport.FinalReportItem;
 import com.epa.erb.forms.AlternativeFormController;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.goal.Goal;
@@ -546,6 +547,7 @@ public class XMLManager {
 	}
 
 	public HashMap<ArrayList<Text>, String> parseOutputFormContentXML(File xmlFile) {
+		System.out.println("Parsing: " + xmlFile);
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -591,6 +593,7 @@ public class XMLManager {
 						}
 					}
 				}
+				System.out.println("Content list: " + contentList);
 				return contentList;
 			} catch (Exception e) {
 				logger.log(Level.FINE, "Failed to parse output form content.");
@@ -853,6 +856,59 @@ public class XMLManager {
 			} catch (Exception e) {
 				logger.log(Level.FINE, "Failed to parse project.");
 				logger.log(Level.FINER, "Failed to parse project: " + e.getStackTrace());
+			}
+		} else {
+		}
+		return null;
+	}
+	
+	public ArrayList<FinalReportItem> parseReportDataXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists() && xmlFile.canRead()) {
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+				ArrayList<String> reportDataItems = new ArrayList<String>();
+				ArrayList<FinalReportItem> reportItems = new ArrayList<FinalReportItem>();
+
+				NodeList sectionNodeList = doc.getElementsByTagName("section");
+				for (int h = 0; h < sectionNodeList.getLength(); h++) {
+					Node sectionNode = sectionNodeList.item(h);
+					if (sectionNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element sectionElement = (Element) sectionNode;
+						String sectionId = sectionElement.getAttribute("id").trim();
+						String sectionDisplayName = sectionElement.getAttribute("displayName").trim();
+						String sectionStart = sectionElement.getAttribute("start").trim();
+						String sectionStop = sectionElement.getAttribute("stop").trim();
+						String sectionTableName = sectionElement.getAttribute("tableName").trim();
+						FinalReportItem sectionReportItem = new FinalReportItem(sectionId, sectionDisplayName, sectionStart, sectionStop, sectionTableName);
+						reportItems.add(sectionReportItem);
+						reportDataItems.add(sectionId);
+						if (sectionNode.hasChildNodes()) {
+							NodeList contentNodeList = sectionElement.getElementsByTagName("content");
+							for (int i = 0; i < contentNodeList.getLength(); i++) {
+								Node contentNode = contentNodeList.item(i);
+								if (contentNode.getNodeType() == Node.ELEMENT_NODE) {
+									Element contentElement = (Element) contentNode;
+									String contentId = contentElement.getAttribute("id").trim();
+									String contentDisplayName = contentElement.getAttribute("displayName").trim();
+									String contentStart = contentElement.getAttribute("start").trim();
+									String contentStop = contentElement.getAttribute("stop").trim();
+									String contentTableName = contentElement.getAttribute("tableName").trim();
+									FinalReportItem contentReportItem = new FinalReportItem(contentId, contentDisplayName, contentStart, contentStop, contentTableName);
+									reportItems.add(contentReportItem);
+									reportDataItems.add(contentId);
+								}
+							}
+
+						}
+					}
+				}
+				return reportItems;
+			} catch (Exception e) {
+				logger.log(Level.FINE, "Failed to parse report data xml.");
+				logger.log(Level.FINER, "Failed to parse report data xml: " + e.getStackTrace());
 			}
 		} else {
 		}

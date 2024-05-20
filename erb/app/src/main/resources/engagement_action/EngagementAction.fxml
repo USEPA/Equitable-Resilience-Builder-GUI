@@ -84,7 +84,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="finalReportButton" minWidth="95.0" mnemonicParsing="false" onAction="#finalReportButtonAction" style="-fx-background-color: #FFFFFF;" text="Generate Final Report" textFill="#316188">
+                  <Button fx:id="finalReportButton" minWidth="95.0" mnemonicParsing="false" onAction="#finalReportButtonAction" style="-fx-background-color: #FFFFFF;" text="Generate Summary Report" textFill="#316188">
                      <font>
                         <Font size="14.0" />
                      </font>

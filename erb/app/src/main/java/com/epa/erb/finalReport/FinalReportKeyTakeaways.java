@@ -67,7 +67,11 @@ public class FinalReportKeyTakeaways {
 			}
 			keyNum++;
 		}
-		return stringBuilder.toString();
+		String keyTakeawaysText = stringBuilder.toString();
+		keyTakeawaysText = keyTakeawaysText.replaceAll("\\[(.*?)\\]", "");
+		keyTakeawaysText = keyTakeawaysText.replaceAll("\n", "\r\n");
+
+		return keyTakeawaysText;
 	}
 	
 	

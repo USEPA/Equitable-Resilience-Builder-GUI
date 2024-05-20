@@ -1,0 +1,34 @@
+.tree-cell > .tree-disclosure-node > .arrow  {
+    -fx-background-color: #D96727;
+}
+.tree-cell:expanded > .tree-disclosure-node > .arrow {
+    -fx-background-color: #D96727;
+}
+
+.tree-view {
+	-fx-focus-color:#D8D8D8;
+}
+
+.tree-view .tree-cell{
+    -fx-background-color: #FEEBDF;
+    -fx-text-fill: #25215C ;
+    -fx-font-weight: bold;
+}
+
+.tree-view .tree-cell:selected{
+    -fx-background-color: #FFFCED;
+     -fx-text-fill: #562C87 ;
+    -fx-font-weight: bold;
+}
+
+#custom-tree-cell {
+	 -fx-underline: false;
+}
+
+#custom-tree-cell:hover {
+	 -fx-underline: true;
+}
+
+.tree-cell{
+    -fx-font-size: 16;
+}

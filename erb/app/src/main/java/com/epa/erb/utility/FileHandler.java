@@ -100,7 +100,7 @@ public class FileHandler {
 			return null;
 		}
 	}
-	//TODO: Left off fixing file formatting for mac here
+
 	public File getMyPortfolioDirectory(Project project, Goal goal) {
 		if (project != null && goal != null) {
 			File myPortfolioDirectory = new File(constants.getPathToERBProjectsFolder() + File.separator
@@ -132,7 +132,7 @@ public class FileHandler {
 			return null;
 		}
 	}
-
+	
 	public File getDataXMLFile(Project project, Goal goal, ERBContentItem erbContentItem) {
 		if (project != null && goal != null && erbContentItem != null) {
 			File dataXMLFile = new File(
@@ -177,6 +177,12 @@ public class FileHandler {
 		File goalCategoriesFile = new File(constants.getPathToERBFolder() + File.separator + "Static_Data" + File.separator + "Goal_Categories.xml");
 		return goalCategoriesFile;
 	}
+	
+	public File getStaticReportDataXMLFile() {
+		File reportDataFile = new File(constants.getPathToERBFolder() + File.separator + "Static_Data" + File.separator + "Report_Data.xml");
+		return reportDataFile;
+	}
+
 
 	public File getStaticFormContentXML(String id) {
 		if (id != null) {

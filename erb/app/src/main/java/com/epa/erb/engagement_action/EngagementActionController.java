@@ -136,7 +136,7 @@ public class EngagementActionController implements Initializable {
 			Parent root = fxmlLoader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
-			stage.setTitle("Final Report Generator");
+			stage.setTitle("Summary Report Generator");
 			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
 			stage.setWidth(app.getPopUpPrefWidth());
 			stage.setHeight(app.getPopUpPrefHeight());
@@ -387,6 +387,7 @@ public class EngagementActionController implements Initializable {
 			} else {
 				erbPathwayTreeItemSelected();
 			}
+			System.out.println(currentSelectedERBContentItem.getId());
 		} else {
 			logger.log(Level.FINE, "New TreeItem is null. Check this.");
 		}
@@ -607,6 +608,19 @@ public class EngagementActionController implements Initializable {
 			}
 			return null;
 		}
+		return null;
+	}
+	
+	public ERBContentItem findUniqueERBContentItem(String id) {
+		if (id != null) {
+			for (ERBContentItem erbContentItem : listOfUniqueERBContentItems) {
+				System.out.println("UniqueERBContentItems: " + erbContentItem.getId());
+				if (erbContentItem.getId().contentEquals(id)) {
+					return erbContentItem;
+				}
+			}
+		}
+		logger.log(Level.WARNING, "Null ERBContentItem. Check this.");
 		return null;
 	}
 

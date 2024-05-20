@@ -80,6 +80,7 @@ public class OutputFormController extends FormController implements Initializabl
 	
 	private boolean checkForExisitingContent() {
 		File dataXMLFile = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedERBContentItem());
+		System.out.println("Checking for: " + dataXMLFile);
 		if(dataXMLFile != null && dataXMLFile.exists()) {
 			return true;
 		}
@@ -197,7 +198,9 @@ public class OutputFormController extends FormController implements Initializabl
 		for(int i =0; i < formVBox.getChildren().size(); i++) {
 			listOfChildren.add(formVBox.getChildren().get(i));
 		}
+		
 		File saveLocation = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedERBContentItem());
+		System.out.println("Save location: " + saveLocation);
 		if(!saveLocation.getParentFile().exists()) {
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal()), engagementActionController.getListOfUniqueERBContentItems());
 			fileHandler.createGUIDDirectoriesForGoal2(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getListOfUniqueERBContentItems());
