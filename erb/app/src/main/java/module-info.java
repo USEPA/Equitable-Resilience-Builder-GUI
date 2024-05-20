@@ -15,6 +15,11 @@ module com.epa.erb {
 	requires javafx.swing;
 	requires transitive java.logging;
 	requires org.apache.poi.poi;
+	requires org.apache.poi.ooxml.schemas;
+	requires org.apache.xmlbeans;
+	requires kernel;
+	requires layout;
+	requires itextpdf;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.goal to javafx.fxml;
 	opens com.epa.erb.print to javafx.fxml;
