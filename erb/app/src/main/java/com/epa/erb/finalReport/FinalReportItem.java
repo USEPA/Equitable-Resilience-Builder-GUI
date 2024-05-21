@@ -15,6 +15,9 @@ public class FinalReportItem {
 		this.stop = stop;
 		this.tableName = tableName;
 	}
+	
+	boolean isChecked = false;
+	boolean isShowing = true;
 
 	public FinalReportItem() {
 
@@ -58,6 +61,22 @@ public class FinalReportItem {
 
 	public void setTableName(String tableName) {
 		this.tableName = tableName;
+	}
+
+	public boolean isChecked() {
+		return isChecked;
+	}
+
+	public void setChecked(boolean isChecked) {
+		this.isChecked = isChecked;
+	}
+
+	public boolean isShowing() {
+		return isShowing;
+	}
+
+	public void setShowing(boolean isShowing) {
+		this.isShowing = isShowing;
 	}
 
 	public String toString() {

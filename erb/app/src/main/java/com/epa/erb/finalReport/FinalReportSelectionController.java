@@ -398,6 +398,7 @@ public class FinalReportSelectionController implements Initializable {
 		for (FinalReportItem finalReportItem : treeViewSelectedItems) {
 			treeViewCheckBoxMap.get(finalReportItem).setDisable(true);
 			treeViewCheckBoxMap.get(finalReportItem).setVisible(false);
+			finalReportItem.setShowing(false);
 		}
 		
 		treeViewSelectedItems.clear();
@@ -412,6 +413,9 @@ public class FinalReportSelectionController implements Initializable {
 			treeViewCheckBoxMap.get(finalReportItem).setDisable(false);
 			treeViewCheckBoxMap.get(finalReportItem).setVisible(true);
 			treeViewCheckBoxMap.get(finalReportItem).setSelected(false);
+			finalReportItem.setShowing(true);
+			finalReportItem.setChecked(false);
+			
 		}
 		listViewSelectedItems.clear();
 	}
@@ -428,13 +432,17 @@ public class FinalReportSelectionController implements Initializable {
 					ERBContentItem erbContentItem = finalReportItemMap.get(item);
 
 					if (this.getTreeItem().isLeaf() && !erbUniqueContentItems.contains(erbContentItem)) {
+						System.out.println("HERE 2: " + item.getDisplayName());
 						CheckBox checkBox = new CheckBox();
 						checkBox.setOnAction(e -> treeViewCheckBoxClicked(checkBox, this.getTreeItem()));
+						checkBox.setSelected(item.isChecked);
+						checkBox.setVisible(item.isShowing);
 						treeViewCheckBoxMap.put(item, checkBox);
 						setId("custom-tree-cell");
 						setGraphic(checkBox);
 						setText(item.getDisplayName());
 					} else {
+						System.out.println("HERE 3: " + item.getDisplayName());
 						setText(item.getDisplayName());
 						setGraphic(null);
 					}
@@ -512,8 +520,10 @@ public class FinalReportSelectionController implements Initializable {
 	private void treeViewCheckBoxClicked(CheckBox checkBox, TreeItem<FinalReportItem> treeItem) {
 		if (checkBox.isSelected()) {
 			treeViewSelectedItems.add(treeItem.getValue());
+			treeItem.getValue().setChecked(true);
 		} else {
 			treeViewSelectedItems.remove(treeItem.getValue());
+			treeItem.getValue().setChecked(false);
 		}
 	}
 
