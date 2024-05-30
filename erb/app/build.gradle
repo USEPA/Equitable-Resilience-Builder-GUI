@@ -10,6 +10,7 @@ plugins {
     id 'application'
     id 'distribution'
     id 'org.beryx.jlink' version '2.25.0' 
+    id 'com.github.jk1.dependency-license-report' version '2.8'
 }
 
 group="erb"
@@ -41,8 +42,6 @@ dependencies {
 	implementation 'com.itextpdf:itextpdf:5.5.13.3'
 	implementation 'com.itextpdf:kernel:8.0.3'
 	implementation 'com.itextpdf:layout:8.0.3'
-	
-	
 }
 
 
