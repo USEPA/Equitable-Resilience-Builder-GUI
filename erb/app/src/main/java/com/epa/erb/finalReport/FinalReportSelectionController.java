@@ -2,13 +2,16 @@ package com.epa.erb.finalReport;
 
 import java.io.*;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import org.apache.poi.xwpf.model.XWPFHeaderFooterPolicy;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -27,6 +30,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.STFldCharType;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STJc;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
+import com.epa.erb.engagement_action.MyUploadedItem;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.application.Platform;
@@ -46,6 +50,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import javafx.scene.text.Text;
 
 public class FinalReportSelectionController implements Initializable {
 
@@ -88,6 +93,7 @@ public class FinalReportSelectionController implements Initializable {
 		availableDataTreeView.getStylesheets().add(getClass().getResource("/reportTreeView.css").toString());
 
 		erbUniqueContentItems = app.getEngagementActionController().getListOfUniqueERBContentItems();
+		
 		erbWorksheetContentItems = getWorksheetsERBItems();
 		
 		File reportDataXML = fileHandler.getStaticReportDataXMLFile();
@@ -118,6 +124,70 @@ public class FinalReportSelectionController implements Initializable {
 				treeItems.add(finalReportItem);
 			}
 		}
+		
+		ERBContentItem erbUploadsERBContentItem = new ERBContentItem("002", null, "mainForm", null, "Uploads","Uploads");
+		FinalReportItem erbUploadsFinalReportItem = new FinalReportItem("002", "Uploads", null, null, null);
+		finalReportItemMap.put(erbUploadsFinalReportItem, erbUploadsERBContentItem);
+				
+		TreeItem<FinalReportItem> erbUploadsTreeItem = new TreeItem<FinalReportItem>(erbUploadsFinalReportItem);
+		erbUploadsTreeItem.setExpanded(true);
+		erbSectionsTreeItem.getChildren().add(erbUploadsTreeItem);
+		
+		addUploadsToTreeView(erbUploadsTreeItem);
+	}
+	
+	private void addUploadsToTreeView(TreeItem<FinalReportItem> erbUploadsTreeItem) {
+		ArrayList<MyUploadedItem> uploadedItems = getListOfUserUploadedItems();
+		
+		for(MyUploadedItem uploadedItem: uploadedItems) {
+			
+			String id = uploadedItem.getFileNumber() + "_upload";
+			String displayName = uploadedItem.getFileName().getText();
+			ERBContentItem erbContentItem = new ERBContentItem(id, uploadedItem.getFile().toString(), "uploadedItem", null, displayName, displayName);
+			FinalReportItem finalReportItem = new FinalReportItem(id, displayName, "0", "0", null);
+			finalReportItemMap.put(finalReportItem, erbContentItem);
+			treeItems.add(finalReportItem);
+			
+			TreeItem<FinalReportItem> uploadedTreeItem = new TreeItem<FinalReportItem>(finalReportItem);
+			erbUploadsTreeItem.getChildren().add(uploadedTreeItem);
+		}
+	}
+	
+	private ArrayList<MyUploadedItem> getListOfUserUploadedItems(){
+		ArrayList<MyUploadedItem> uploadedItems = new ArrayList<MyUploadedItem>();
+		File uploadsDirectory = fileHandler.getMyUploadsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
+		if (uploadsDirectory != null && uploadsDirectory.exists()) {
+			for(File uploadedDir: uploadsDirectory.listFiles()) {
+				int fileNumber = Integer.parseInt(uploadedDir.getName());
+				Text fileName = new Text("");
+				String lastModified = "";
+				String uploadedFrom = "";
+				
+				for(File uploadedFile : uploadedDir.listFiles()) {
+					if(uploadedFile.getName().contentEquals("about.txt")) {
+						try {
+							Scanner scanner = new Scanner(uploadedFile);
+							while(scanner.hasNextLine()) {
+								String line = scanner.nextLine();
+								String [] split = line.split(":");
+								uploadedFrom = split[1].trim();
+							}
+							scanner.close();
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}
+						
+					} else {
+						long modifiedLong = uploadedFile.lastModified();
+						lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
+						fileName = new Text(uploadedFile.getName());
+					}
+				}
+				MyUploadedItem myUploadedItem = new MyUploadedItem(fileNumber, fileName, lastModified, uploadedFrom, app);
+				uploadedItems.add(myUploadedItem);
+			}
+		}
+		return uploadedItems;
 	}
 	
 	public TreeItem<FinalReportItem> addChildrenToTreeView(FinalReportItem finalReportItem, TreeItem<FinalReportItem> parentTreeItem) {
@@ -151,6 +221,13 @@ public class FinalReportSelectionController implements Initializable {
 						fileHandler.openFileOnDesktop(fileToOpen);
 						return;
 					}				
+				} else if (erbType.contentEquals("uploadedItem")) {
+					String filePath = clickedERBContentItem.getGuid();
+					File fileToOpen = new File(filePath);
+					if(fileToOpen != null) {
+						fileHandler.openFileOnDesktop(fileToOpen);
+						return;
+					}
 				}
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setHeaderText(null);
@@ -231,6 +308,14 @@ public class FinalReportSelectionController implements Initializable {
 							formatTextForDocx(fRP.readWordParagraph(), contentRun);
 						}
 					}
+				} else if (erbContentItem.getType().contentEquals("uploadedItem")) {
+					File docFile = new File(erbContentItem.getGuid());
+					if(docFile != null && docFile.exists()) {
+						FinalReportUpload fRU = new FinalReportUpload(docFile, erbContentItem.getLongName());
+						XWPFParagraph contentParagraph = document.createParagraph();
+						fRU.createUploadRun(contentParagraph);
+					}
+					
 				}
 			}
 		    
@@ -357,17 +442,19 @@ public class FinalReportSelectionController implements Initializable {
 		//treeViewSelectedItems = items to add to the list view
 		//listViewItems = what is already in the list view
 		
+		//Add selected tree items into listViewItems
 		for (FinalReportItem finalReportItem : treeViewSelectedItems) {
 			listViewItems.add(finalReportItem);
 		}
-		
 		//listViewItems = items in list view after adding new
 		
 		ArrayList<FinalReportItem> tempList = new ArrayList<FinalReportItem>();
 		ArrayList<FinalReportItem> toRemove = new ArrayList<FinalReportItem>();
 		tempList.addAll(treeItems);
 		
-		//Remove all from temp list that arent in list view
+		//tempList = treeItems (correct ordering)
+		
+		//Remove all from tempList that aren't in list view
 		for(FinalReportItem finalReportItem: tempList) {
 			if(!listViewItems.contains(finalReportItem)) {
 				toRemove.add(finalReportItem);
@@ -377,14 +464,13 @@ public class FinalReportSelectionController implements Initializable {
 			tempList.remove(finalReportItem);
 		}
 		
-		//Order list view items
+		//Order listViewItems to match tempList
 		Collections.sort(listViewItems, 
 			    Comparator.comparing(item -> tempList.indexOf(item)));
 		
 		listView.getItems().clear();
 		
 		Platform.runLater(new Runnable() {
-
 			@Override
 			public void run() {
 				//Add items to list view
@@ -430,9 +516,7 @@ public class FinalReportSelectionController implements Initializable {
 					setGraphic(null);
 				} else {
 					ERBContentItem erbContentItem = finalReportItemMap.get(item);
-
-					if (this.getTreeItem().isLeaf() && !erbUniqueContentItems.contains(erbContentItem)) {
-						System.out.println("HERE 2: " + item.getDisplayName());
+					if (this.getTreeItem().isLeaf() && !erbUniqueContentItems.contains(erbContentItem) && !item.getId().contentEquals("002")) {
 						CheckBox checkBox = new CheckBox();
 						checkBox.setOnAction(e -> treeViewCheckBoxClicked(checkBox, this.getTreeItem()));
 						checkBox.setSelected(item.isChecked);
@@ -442,7 +526,6 @@ public class FinalReportSelectionController implements Initializable {
 						setGraphic(checkBox);
 						setText(item.getDisplayName());
 					} else {
-						System.out.println("HERE 3: " + item.getDisplayName());
 						setText(item.getDisplayName());
 						setGraphic(null);
 					}

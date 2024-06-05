@@ -191,7 +191,7 @@ public class MyPortfolioController implements Initializable {
 						fileName = new Text(uploadedFile.getName());
 					}
 				}
-				MyUploadedItem myUploadedItem = new MyUploadedItem(fileNumber, fileName, lastModified, uploadedFrom);
+				MyUploadedItem myUploadedItem = new MyUploadedItem(fileNumber, fileName, lastModified, uploadedFrom, app);
 				uploadedItems.add(myUploadedItem);
 			}
 		}
@@ -214,7 +214,7 @@ public class MyPortfolioController implements Initializable {
 		Text fileName = new Text(file);
 		long modifiedLong = f.lastModified();
 		String lastModified = new SimpleDateFormat("MM-dd-yyyy HH-mm-ss").format(new Date(modifiedLong));
-		MyUploadedItem uT = new MyUploadedItem(false, count, fileName, lastModified );
+		MyUploadedItem uT = new MyUploadedItem(false, count, fileName, lastModified, app);
 		return uT;
 	}
 

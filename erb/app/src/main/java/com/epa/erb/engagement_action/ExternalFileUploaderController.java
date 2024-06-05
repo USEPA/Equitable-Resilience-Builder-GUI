@@ -99,7 +99,7 @@ public class ExternalFileUploaderController implements Initializable{
 							fileName.setFill(Color.BLUE);
 						}
 					}
-					MyUploadedItem myPortfolioItem = new MyUploadedItem(fileNumber, fileName, lastModified, uploadedFrom);
+					MyUploadedItem myPortfolioItem = new MyUploadedItem(fileNumber, fileName, lastModified, uploadedFrom, app);
 					tableView.getItems().add(myPortfolioItem);
 					fileNumber = fileNumber+1;
 				}
@@ -115,7 +115,7 @@ public class ExternalFileUploaderController implements Initializable{
 			Text text = new Text(sourceFile.getName());
 			text.setUnderline(true);
 			text.setFill(Color.BLUE);
-			MyUploadedItem myUploadedItem = new MyUploadedItem(fileNumber, text, lastModified, uploadSource);
+			MyUploadedItem myUploadedItem = new MyUploadedItem(fileNumber, text, lastModified, uploadSource, app);
 			tableView.getItems().add(myUploadedItem);
 			fileNumber = fileNumber + 1;
 		}

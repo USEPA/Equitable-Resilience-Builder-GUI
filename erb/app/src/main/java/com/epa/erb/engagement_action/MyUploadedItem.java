@@ -1,26 +1,37 @@
 package com.epa.erb.engagement_action;
 
+import java.io.File;
+
+import com.epa.erb.App;
+import com.epa.erb.utility.FileHandler;
+
 import javafx.scene.text.Text;
 
 public class MyUploadedItem {
+	
+	private App app;
 	
 	private Text fileName;
 	private int fileNumber;
 	private String modifiedDate;
 	private String uploadedFrom;
-	public MyUploadedItem(int fileNumber, Text fileName,String modifiedDate, String uploadedFrom) {
+	public MyUploadedItem(int fileNumber, Text fileName,String modifiedDate, String uploadedFrom, App app) {
 		this.fileName = fileName;
 		this.fileNumber = fileNumber;
 		this.modifiedDate = modifiedDate;
 		this.uploadedFrom = uploadedFrom;
+		
+		this.app = app;
 	}
 	
 	private boolean selectedForExport;
-	public MyUploadedItem(boolean selectedForExport, int fileNumber, Text fileName,String modifiedDate) {
+	public MyUploadedItem(boolean selectedForExport, int fileNumber, Text fileName,String modifiedDate, App app) {
 		this.fileName = fileName;
 		this.fileNumber = fileNumber;
 		this.modifiedDate = modifiedDate;
 		this.selectedForExport = selectedForExport;
+		
+		this.app = app;
 	}
 	
 	public boolean isSelectedForExport() {
@@ -52,6 +63,11 @@ public class MyUploadedItem {
 	}
 	public void setUploadedFrom(String uploadedFrom) {
 		this.uploadedFrom = uploadedFrom;
+	}
+	
+	public File getFile() {
+		FileHandler fileHandler = new FileHandler(app);
+		return new File(fileHandler.getMyUploadsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + File.separator + getFileNumber() + File.separator + getFileName().getText());
 	}
 	
 }
