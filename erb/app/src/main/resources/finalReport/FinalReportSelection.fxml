@@ -64,7 +64,7 @@
                               <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY24/leftArrow.png" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" onAction="#createReportButtonAction" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Create Report" textFill="#562c87">
+                        <Button mnemonicParsing="false" onAction="#continueButtonAction" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Continue" textFill="#562c87">
                            <font>
                               <Font size="18.0" />
                            </font>

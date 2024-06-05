@@ -36,9 +36,13 @@ import com.epa.erb.utility.XMLManager;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListCell;
@@ -46,11 +50,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DataFormat;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class FinalReportSelectionController implements Initializable {
 
@@ -248,9 +249,8 @@ public class FinalReportSelectionController implements Initializable {
 		}
 		return null;
 	}
-
-	@FXML
-	public void createReportButtonAction() {
+	
+	public void createReport(ObservableList<FinalReportItem> orderedListViewItems) {
 		try {
 			File goalDir = fileHandler.getGoalDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
 
@@ -267,7 +267,7 @@ public class FinalReportSelectionController implements Initializable {
 		    paragraph.setPageBreak(true);
 		    
 			//Content Pages
-			for (FinalReportItem finalReportItem : listView.getItems()) {
+			for (FinalReportItem finalReportItem : orderedListViewItems) {
 				
 				ERBContentItem erbContentItem = finalReportItemMap.get(finalReportItem);
 				
@@ -326,6 +326,26 @@ public class FinalReportSelectionController implements Initializable {
 		    out.close();
 		    document.close();
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	public void continueButtonAction() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/finalReport/FinalReportOrdering.fxml"));
+			FinalReportOrdering controller = new FinalReportOrdering(listView, this);
+			fxmlLoader.setController(controller);
+			Parent root = fxmlLoader.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setTitle("Summary Report Ordering");
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
+			stage.setWidth(app.getPopUpPrefWidth());
+			stage.setHeight(app.getPopUpPrefHeight());
+			stage.setScene(scene);
+			stage.showAndWait();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -534,8 +554,6 @@ public class FinalReportSelectionController implements Initializable {
 		};
 	}
 
-	private static final DataFormat SERIALIZED_MIME_TYPE = new DataFormat("application/x-java-serialized-object");
-
 	private ListCell<FinalReportItem> createListCell() {
 		return new ListCell<FinalReportItem>() {
 			@Override
@@ -556,46 +574,6 @@ public class FinalReportSelectionController implements Initializable {
 						setText(item.getDisplayName());
 					}
 				}
-
-				setOnDragDetected(event -> {
-					if (!this.isEmpty()) {
-						Integer index = this.getIndex();
-						Dragboard db = this.startDragAndDrop(TransferMode.MOVE);
-						db.setDragView(this.snapshot(null, null));
-						ClipboardContent cc = new ClipboardContent();
-						cc.put(SERIALIZED_MIME_TYPE, index);
-						db.setContent(cc);
-						event.consume();
-					}
-				});
-
-				setOnDragOver(event -> {
-					Dragboard db = event.getDragboard();
-					if (db.hasContent(SERIALIZED_MIME_TYPE)) {
-						if (this.getIndex() != ((Integer) db.getContent(SERIALIZED_MIME_TYPE)).intValue()) {
-							event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-							event.consume();
-						}
-					}
-				});
-
-				setOnDragDropped(event -> {
-					Dragboard db = event.getDragboard();
-					if (db.hasContent(SERIALIZED_MIME_TYPE)) {
-						int draggedIndex = (Integer) db.getContent(SERIALIZED_MIME_TYPE);
-						FinalReportItem draggedHeatMapController = listView.getItems().remove(draggedIndex);
-						int dropIndex;
-						if (this.isEmpty()) {
-							dropIndex = listView.getItems().size();
-						} else {
-							dropIndex = this.getIndex();
-						}
-						listView.getItems().add(dropIndex, draggedHeatMapController);
-						event.setDropCompleted(true);
-						listView.getSelectionModel().select(dropIndex);
-						event.consume();
-					}
-				});
 			}
 		};
 	}
