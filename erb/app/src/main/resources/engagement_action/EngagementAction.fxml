@@ -79,7 +79,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <Button minWidth="95.0" mnemonicParsing="false" onAction="#mappingButtonAction" style="-fx-background-color: #FFFFFF;" text="Mapping" textFill="#316188">
+                  <Button minWidth="95.0" mnemonicParsing="false" onAction="#mappingButtonAction" style="-fx-background-color: #FFFFFF;" text="Mapping" textFill="#316188" visible="false">
                      <font>
                         <Font size="14.0" />
                      </font>
