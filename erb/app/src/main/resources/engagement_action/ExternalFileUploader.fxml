@@ -31,7 +31,7 @@
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy></TableView>
-            <VBox spacing="25.0" HBox.hgrow="ALWAYS">
+            <VBox maxWidth="115.0" spacing="25.0" HBox.hgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" onAction="#uploadFileButtonAction" stylesheets="@../button.css" text="Upload File">
                      <font>
@@ -42,6 +42,15 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
+                  <VBox alignment="BOTTOM_LEFT" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Note: Uploaded file names will be used in the Summary Report." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
          </children>
