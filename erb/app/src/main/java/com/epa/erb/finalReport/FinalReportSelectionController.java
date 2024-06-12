@@ -145,7 +145,7 @@ public class FinalReportSelectionController implements Initializable {
 			String id = uploadedItem.getFileNumber() + "_upload";
 			String displayName = uploadedItem.getFileName().getText();
 			ERBContentItem erbContentItem = new ERBContentItem(id, uploadedItem.getFile().toString(), "uploadedItem", null, displayName, displayName);
-			FinalReportItem finalReportItem = new FinalReportItem(id, displayName, "0", "0", null);
+			FinalReportItem finalReportItem = new FinalReportItem(id, displayName.replaceAll("\\.(.*)", ""), "0", "0", null);
 			finalReportItemMap.put(finalReportItem, erbContentItem);
 			treeItems.add(finalReportItem);
 			
