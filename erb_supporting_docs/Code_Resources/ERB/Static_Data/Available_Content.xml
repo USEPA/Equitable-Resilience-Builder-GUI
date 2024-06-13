@@ -113,7 +113,6 @@
 	<content id="230" guid="" type="supportingDoc" status="ready" shortName="Mapping_Activity_Instructions.docx" longName="Mapping Activity Instructions" />
 	<content id="231" guid="" type="supportingDoc" status="ready" shortName="Mapping_Activity_Preparation_Guide.docx" longName="Mapping Activity Preparation Guide" />
 	<content id="232" guid="" type="supportingDoc" status="ready" shortName="Scoping_Information_Gathering.docx" longName="Scoping Information Gathering" />
-	<content id="233" guid="" type="supportingDoc" status="ready" shortName="Facilitators_Guide_for_Workshops.docx" longName="Facilitators Guide for Workshops" />
 	<content id="234" guid="" type="supportingDoc" status="ready" shortName="Actions_Brainstorming_Instructions.docx" longName="Actions Brainstorming Instructions" />
 	<content id="235" guid="" type="supportingDoc" status="ready" shortName="Disaster_Scenario_Exercise.docx" longName="Disaster Scenario Exercise" />
 	<content id="236" guid="" type="supportingDoc" status="ready" shortName="Equity_Storytelling_Exercise.docx" longName="Equity Storytelling Exercise" />
@@ -128,5 +127,9 @@
 	<content id="245" guid="" type="supportingDoc" status="ready" shortName="Monitoring_Plan.docx" longName="Monitoring Plan" />
 	<content id="246" guid="" type="supportingDoc" status="ready" shortName="Funding_and_Financing_Guide.docx" longName="Funding and Financing" />
 	<content id="247" guid="" type="supportingDoc" status="ready" shortName="Final_Report_Template.docx" longName="Final Report Template" />
+	<content id="248" guid="" type="supportingDoc" status="ready" shortName="Workshop_1_Facilitators_Guide.docx" longName="Workshop 1 Facilitators Guide" />
+	<content id="249" guid="" type="supportingDoc" status="ready" shortName="Workshop_2_Facilitators_Guide.docx" longName="Workshop 2 Facilitators Guide" />
+	<content id="250" guid="" type="supportingDoc" status="ready" shortName="Workshop_3_Facilitators_Guide.docx" longName="Workshop 3 Facilitators Guide" />
+
 
 </content_xmls>

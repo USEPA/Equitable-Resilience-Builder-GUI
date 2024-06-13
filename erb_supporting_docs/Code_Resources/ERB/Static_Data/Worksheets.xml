@@ -32,7 +32,8 @@
 		<worksheet name="Mapping_Activity_Instructions.docx"/>
 		<worksheet name="Mapping_Activity_Preparation_Guide.docx"/>
 		<worksheet name="Scoping_Information_Gathering.docx"/>
-		<worksheet name="Facilitators_Guide_for_Workshops.docx"/>
+		<worksheet name="Workshop_1_Facilitators_Guide.docx"/>
+		<worksheet name="Workshop_2_Facilitators_Guide.docx"/>
 	</section>
 	<section name="Strategize">
 		<worksheet name="Actions_Brainstorming_Instructions.docx"/>
@@ -45,6 +46,7 @@
 		<worksheet name="Strategy_Chart.docx"/>
 		<worksheet name="Vision_Statement_Discussion.docx"/>
 		<worksheet name="Identify_Action_Areas.docx"/>
+		<worksheet name="Workshop_3_Facilitators_Guide.docx"/>
 	</section>
 	<section name="Move Forward">
 		<worksheet name="Implementation_Worksheet.docx"/>
