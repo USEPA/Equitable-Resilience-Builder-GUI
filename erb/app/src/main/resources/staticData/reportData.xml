@@ -1,0 +1,33 @@
+<reportData>
+		<contents>
+			<section id="15" displayName="Plan">
+				<content id="210" displayName="ERB Project Goals" start="Goals:" stop="Step 5. Reflect and refine your initial goals. At any point in the ERB process, think about:"/>
+				<content id="210" displayName="List of Core Team Members" tableName="Table 2. Example Roles and Responsibilities" start="0" stop="1"/>
+				<content id="213" displayName="Equity Principles for this Project" start="Equity Principles for Resilience Planning" stop="References"/>
+				<content id="207" displayName="Reflection Diary- Plan section" start="Plan Your Project Questions" stop="What to Do Next"/>
+			</section>
+			<section id="16" displayName="Engage">
+				<content id="217" displayName="Community Connections" tableName="Community Connections Table" start="0" stop="3"/>
+				<content id="207" displayName="Reflection Diary- Engage section" start="Engage Your Community Questions" stop="What to Do Next"/>
+			</section>
+			<section id="17" displayName="Assess">
+				<content id="225" displayName="Hazards Graphics" start="Uploads" stop="Uploads"/>
+				<content id="222" displayName="Equity Graphics" start="Uploads" stop="Uploads"/>
+				<content id="230" displayName="Participatory Mapping Results" start="Uploads" stop="Uploads"/>
+				<content id="227" displayName="Resilience-Equity Diagram" start="Uploads" stop="Uploads"/>
+				<content id="207" displayName="Reflection Diary- Assess section" start="Assess Hazards, Equity, and Resilience Questions" stop="What to do next"/>
+				<content id="144" displayName="Key Takeaways on Assessment"/>
+			</section>
+			<section id="18" displayName="Strategize">
+				<content id="243" displayName="List of Action Areas for Building Resilience" start="Action Area #1" stop="What to do next"/>
+				<content id="234" displayName="Solution Ideas" tableName="Actions Brainstorming" start="0" stop="1"/>
+				<content id="136" displayName="Key Takeaways on Strategizing Actions"/>
+				<content id="207" displayName="Reflection Diary- Strategize section" start="Strategize Actions Questions" stop="What to Do Next"/>
+			</section>
+			<section id="19" displayName="Move Forward">
+				<content id="244" displayName="Implementation Plan" tableName="Implementation Table" start="0" stop="6"/>
+				<content id="245" displayName="Monitoring Plan" tableName="Monitoring Plan Table" start="0" stop="8"/>
+				<content id="207" displayName="Reflection Diary- Move Forward section" start="Move Forward Questions" stop="What to Do Next"/>
+			</section>
+		</contents>
+</reportData>

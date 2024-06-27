@@ -25,7 +25,7 @@ public class WorksheetIndexController implements Initializable{
 		this.goal = goal;
 		this.project = project;
 		
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	@FXML
@@ -35,7 +35,6 @@ public class WorksheetIndexController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		ArrayList<File> worksheets = getWorksheets();
 		addWorksheetsToList(worksheets);
-		worksheetListView.getStylesheets().add(getClass().getResource("/listView.css").toString());
 
 	}
 	

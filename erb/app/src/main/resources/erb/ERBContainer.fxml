@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -29,6 +30,9 @@
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
+                           <image>
+                              <Image url="@../bridge_90_90.png" />
+                           </image>
                         </ImageView>
                         <VBox fx:id="welcomeVBox" alignment="CENTER_LEFT">
                            <children>
@@ -49,7 +53,7 @@
                         </VBox>
                         <VBox alignment="BOTTOM_RIGHT" minWidth="215.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <MenuBar fx:id="menuBar" minWidth="275.0" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: transparent;">
+                              <MenuBar fx:id="menuBar" minWidth="275.0" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: transparent;" stylesheets="@../menuBar.css">
                                 <menus>
                                     <Menu fx:id="faqMenu" mnemonicParsing="false" text="Instructions" />
                                   <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources" />

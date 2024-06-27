@@ -19,7 +19,7 @@ public class GoalCreation{
 		this.project = project;
 		
 		xmlManager = new XMLManager(app);
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	public String cleanStringForWindows(String string) {
@@ -48,7 +48,7 @@ public class GoalCreation{
 	
 	private void copyGlobalSupportingDocsToGoalSupportingDocs(File goalSupportingDOCDirectory) {
 		if(goalSupportingDOCDirectory != null) {
-			File staticGlobalSupportingDOCDirectory = fileHandler.getStaticSupportingDOCDirectory();
+			File staticGlobalSupportingDOCDirectory = fileHandler.getSupportingDocsDirFromResources();
 			for(File sourceFile: staticGlobalSupportingDOCDirectory.listFiles()) {
 				File destFile = new File(goalSupportingDOCDirectory + File.separator + sourceFile.getName());
 				fileHandler.copyFile(sourceFile, destFile);

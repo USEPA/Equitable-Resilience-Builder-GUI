@@ -19,7 +19,7 @@ public class FinalReportImage {
 	public FinalReportImage(String fileName, App app) {
 		this.fileName = fileName;
 		this.app = app;
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	private File getDiagram() {

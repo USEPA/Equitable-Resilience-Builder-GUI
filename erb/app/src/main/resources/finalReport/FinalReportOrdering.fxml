@@ -48,7 +48,7 @@
                            </font>
                         </Label>
                         <Separator />
-                        <ListView fx:id="listView" style="-fx-background-color: #FEEBDF; -fx-border-color: #D8D8D8;" VBox.vgrow="ALWAYS" />
+                        <ListView fx:id="listView" style="-fx-background-color: #FEEBDF; -fx-border-color: #D8D8D8;" stylesheets="@../listViewReport.css" VBox.vgrow="ALWAYS" />
                         <HBox alignment="CENTER">
                            <children>
                               <Button mnemonicParsing="false" onAction="#createReportButtonAction" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Create Report" textFill="#562c87">

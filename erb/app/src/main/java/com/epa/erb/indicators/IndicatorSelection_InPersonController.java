@@ -33,7 +33,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 		this.iCC = iCC;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	@FXML

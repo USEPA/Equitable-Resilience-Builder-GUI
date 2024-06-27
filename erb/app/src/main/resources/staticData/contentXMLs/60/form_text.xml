@@ -1,0 +1,210 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Centering Equity in Engagement">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Work through several scenarios to empathize with different types of people in your community and their potential barriers to public participation. Brainstorm solutions that you can use in the ERB process.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="This activity will help the core team figure out which measures to include in the community engagement plan to address diverse needs and perspectives.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Meet with your core team and work through the directions on the Equity and Engagement Exercise. The activity includes 3 breakout group scenarios and larger group discussion. ">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Outputs">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Recognition of differing needs and motivation for participation in community engagement">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Strategies for addressing obstacles to participation">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="1 hour">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+		<listBlock>
+		
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Equity and Engagement Exercise"
+			linkType="externalDOC"
+			link="Equity_and_Engagement_Exercise.docx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Trauma-Informed Approach"
+			linkType="internal"
+			link="03">
+			</text>
+		</listBlock>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Centering equity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<listBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="75">
+			</icon>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="65">
+			</icon>
+			</listBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Developing empathy for why people want to participate in public activities, and why it might be hard for them, can lead to a more inclusive engagement plan. Think about what engagement activities will reach different types of people, especially groups that might have significant barriers or under-representation.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

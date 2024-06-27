@@ -1,0 +1,142 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Equity Principles for Resilience Planning">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="An equitable process: ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#009;1. Is inclusive and accessible. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="“Inclusion is the act of creating environments in which any individual or group can be and feel welcomed, respected, supported, and valued to fully participate where differences are embraced. An inclusive and welcoming climate of the organization embraces differences and offers respect in words and actions for all people” [1]. Being inclusive also means ensuring the process is accessible, particularly for communities of color, low-income populations, and other often excluded groups.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#009;2. Is accountable. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The process should follow through on promises and communicates transparently about progress or setbacks towards goals. It should ensure that communities are benefitted and not harmed by the process.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#009;3. Promotes justice. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The process should acknowledge and attempt to reduce historical or current disparities to the extent possible.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#009;4. Builds relationships. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The process should build connections and relationships among people, organizations and communities. Relationships foster a sense of belonging, and they are critical ways that information, resources and opportunities are distributed, particularly in the aftermath of disasters.">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="&#009;5. Strengthens capacity of underserved communities.  ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The process should share financial, technical and social resources that strengthen the ability of underserved community members to participate fully, take leadership roles, and increase their self-determination. ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="References">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[1] Fang, Hench, Daniels, and Walton. 2022. Centering Equity in Climate Resilience Planning and Action: A Practitioner’s Guide. Climate-Smart Communities Series, 3. Antioch University New England. DOI: 10.25923/765q-zp33">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[2] NAACP. 2023. Core Principles of Equity and Emergency Management. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://naacp.org/resources/core-principles-equity-and-emergency-management"
+			linkType="URL"
+			link="https://naacp.org/resources/core-principles-equity-and-emergency-management">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

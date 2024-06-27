@@ -41,29 +41,16 @@ public class Constants {
 	//Post-It Note Single
 	private String postItNoteColor = "#FFFFFF"; 				//White
 	//Paths
-	private String pathToERBFolder;
-	private String pathToERBProjectsFolder;
-	private String pathToERBStaticDataFolder;
+	private String pathToERBDirectory;
+	private String pathToERBProjectsDirectory;
+	private String pathToERBLogsDirectory;
 	
 	public Constants() {
-		setFilePathsStatic(); //For running tool locally
-		//setFilePathsDynamic(); //For packaging tool 
-		sizeScreen(getScreenResolution(), getScreenSize());
-	}
-	
-	private void setFilePathsStatic() {
-		File userDir = new File(System.getProperty("user.dir"));
-		File codeResourcesFile = new File(userDir.getParentFile().getParentFile() + File.separator + "erb_supporting_docs" + File.separator + "Code_Resources");
+		pathToERBDirectory = System.getProperty("user.home") + File.separator + "EquitableResilienceBuilder";
+		pathToERBProjectsDirectory = pathToERBDirectory + File.separator + "Projects";
+		pathToERBLogsDirectory = pathToERBDirectory + File.separator + "Logs";
 		
-		pathToERBFolder = codeResourcesFile.getPath() + File.separator + "ERB";
-		pathToERBProjectsFolder = codeResourcesFile.getPath() + File.separator + "ERB" + File.separator + "Projects";
-		pathToERBStaticDataFolder = codeResourcesFile.getPath() +  File.separator + "ERB" + File.separator + "Static_Data";
-	}
-	
-	private void setFilePathsDynamic() {
-		pathToERBFolder = (System.getProperty("user.dir")+ File.separator + "lib" + File.separator + "ERB" + File.separator); //Dynamic
-		pathToERBProjectsFolder = (System.getProperty("user.dir")+ File.separator + "lib" + File.separator + "ERB" + File.separator + "Projects" + File.separator); //Dynamic
-		pathToERBStaticDataFolder = (System.getProperty("user.dir")+ File.separator + "lib" + File.separator + "ERB" + File.separator + "Static_Data" + File.separator); //Dynamic
+		sizeScreen(getScreenResolution(), getScreenSize());
 	}
 
 	private int getScreenResolution() {
@@ -197,14 +184,13 @@ public class Constants {
 	public String getPostItNoteColor() {
 		return postItNoteColor;
 	}
-	public String getPathToERBFolder() {
-		return pathToERBFolder;
+	public String getPathToERBDirectory() {
+		return pathToERBDirectory;
 	}
-	public String getPathToERBProjectsFolder() {
-		return pathToERBProjectsFolder;
+	public String getPathToERBProjectsDirectory() {
+		return pathToERBProjectsDirectory;
 	}
-	public String getPathToERBStaticDataFolder() {
-		return pathToERBStaticDataFolder;
+	public String getPathToERBLogsDirectory() {
+		return pathToERBLogsDirectory;
 	}
-
 }

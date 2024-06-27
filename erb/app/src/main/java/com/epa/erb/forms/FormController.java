@@ -53,7 +53,7 @@ public class FormController {
 		this.engagementActionController = engagementActionController;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 
 	public FormController(App app, EngagementActionController engagementActionController) {
@@ -88,7 +88,8 @@ public class FormController {
 		vBox.setAlignment(Pos.CENTER);
 		ImageView imageView = new ImageView();
 		String enlargedId = getEnlargedId(imageId);
-		Image imageToLoad = new Image(fileHandler.getStaticIconImageFile(enlargedId).getPath());
+		String resourcePath = fileHandler.getIconFilePathFromResources(enlargedId);
+		Image imageToLoad = new Image(getClass().getResource(resourcePath).toString(), true);
 		double width = imageToLoad.getWidth();
 		double height = imageToLoad.getHeight();
 		imageView.setImage(imageToLoad);
@@ -318,7 +319,7 @@ public class FormController {
 	private void externalDOCLinkClicked(String link, Project project) {
 		if (link != null && link.trim().length() > 0) {
 			if (engagementActionController != null) {
-				FileHandler fileHandler = new FileHandler(app);
+				FileHandler fileHandler = new FileHandler();
 				Project currentProject = app.getSelectedProject();
 				Goal currentGoal = engagementActionController.getCurrentGoal();
 				File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(currentProject, currentGoal);

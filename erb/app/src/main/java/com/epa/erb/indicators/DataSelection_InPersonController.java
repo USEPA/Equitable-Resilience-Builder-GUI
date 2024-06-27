@@ -35,7 +35,7 @@ public class DataSelection_InPersonController implements Initializable{
 		this.dataOptions = dataOptions;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	@FXML

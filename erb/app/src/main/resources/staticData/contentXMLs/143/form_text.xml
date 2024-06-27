@@ -1,0 +1,22 @@
+<textBlocks>
+	<container id="titleVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Actions Brainstorming Example">
+			</text>
+		</textBlock>
+	</container>
+	<container id="leftVBox">
+	</container>
+	<container id="centerVBox">
+	<textBlock>
+			<icon width="900.0"
+			height="442.0" id="168"> </icon>
+		</textBlock>
+	</container>
+	<container id="rightVBox">
+	</container>
+</textBlocks>

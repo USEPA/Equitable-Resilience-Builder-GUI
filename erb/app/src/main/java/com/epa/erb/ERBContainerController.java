@@ -39,7 +39,7 @@ public class ERBContainerController implements Initializable {
 		this.app = app;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 
 	@FXML
@@ -69,11 +69,9 @@ public class ERBContainerController implements Initializable {
 		logger.log(Level.INFO, "TEST 1");
 
 		rectangle2.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
-		menuBar.getStylesheets().add(getClass().getResource("/menuBar.css").toString());
 	}
 
 	private void fillImageViews() {
-		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/bridge_90_90.png")));
 	}
 
 	private void populateResourceMenu() {
@@ -83,7 +81,7 @@ public class ERBContainerController implements Initializable {
 					if (id.equals("201")) {
 						MenuItem menuItem = new MenuItem("Funding and Finance Guide");
 						resourcesMenu.getItems().add(menuItem);
-						File fileToOpen = new File(fileHandler.getStaticSupportingDOCDirectory() + File.separator + "Funding_and_Financing_Guide.docx");
+						File fileToOpen = new File(fileHandler.getSupportingDocsDirFromResources() + File.separator + "Funding_and_Financing_Guide.docx");
 						menuItem.setOnAction(e -> fileHandler.openFileOnDesktop(fileToOpen));
 					} else {
 						String name = erbContentItem.getLongName();
@@ -216,7 +214,7 @@ public class ERBContainerController implements Initializable {
 	}
 
 	public File getFormContentXML(String id) {
-		File xmlFile = fileHandler.getStaticFormContentXML(id);
+		File xmlFile = fileHandler.getFormContentFileFromResources(id);
 		return xmlFile;
 	}
 

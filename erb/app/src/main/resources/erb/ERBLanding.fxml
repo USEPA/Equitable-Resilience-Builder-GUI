@@ -20,7 +20,10 @@
                   <Insets />
                </StackPane.margin>
                <children>
-                  <ImageView fx:id="erbMiniImageView" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="erbMiniImageView" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../bridge_90_90.png" />
+                     </image></ImageView>
                   <VBox alignment="BOTTOM_LEFT" HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="Equitable Resilience Builder" textFill="#3a527d">
@@ -51,7 +54,10 @@
                      <children>
                         <VBox fx:id="landingImageView1VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0">
                            <children>
-                              <ImageView fx:id="landingImageView1" smooth="false" VBox.vgrow="ALWAYS" />
+                              <ImageView fx:id="landingImageView1" smooth="false" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../landing1.png" />
+                                 </image></ImageView>
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER">
@@ -104,7 +110,10 @@
                      <children>
                         <VBox fx:id="landingImageView2VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0">
                            <children>
-                              <ImageView fx:id="landingImageView2" VBox.vgrow="ALWAYS" />
+                              <ImageView fx:id="landingImageView2" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../landing2.png" />
+                                 </image></ImageView>
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER">
@@ -157,7 +166,10 @@
                      <children>
                         <VBox fx:id="landingImageView3VBox" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0">
                            <children>
-                              <ImageView fx:id="landingImageView3" VBox.vgrow="ALWAYS" />
+                              <ImageView fx:id="landingImageView3" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../landing3.png" />
+                                 </image></ImageView>
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER">

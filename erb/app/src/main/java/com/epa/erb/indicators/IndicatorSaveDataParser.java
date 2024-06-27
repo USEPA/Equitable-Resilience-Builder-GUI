@@ -19,7 +19,7 @@ public class IndicatorSaveDataParser {
 		this.app = app;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 
 	public ArrayList<String> getSavedSelectedIndicatorIds_InPerson() {

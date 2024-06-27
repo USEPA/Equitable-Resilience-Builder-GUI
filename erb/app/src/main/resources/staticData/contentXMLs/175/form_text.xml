@@ -1,0 +1,90 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+		</textBlock>
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How ERB centers equity">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="An equitable process is the foundation for equitable outcomes. The ERB centers equity by:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Guiding users through identifying and engaging disproportionately impacted members of the community">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Reducing barriers to attending workshops and participating in planning activities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Using a guided process and activities that are facilitated with equity principles including inclusivity, accessibility, accountability, justice, relationship building, and strengthening capacity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Illuminating who is made most vulnerable to disaster and climate change impacts, why, and how with attention to deeply rooted social and environmental inequalities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Grounding assessments in local knowledge, incorporating all perspectives from the community and building a stronger sense of community trust, while providing options and guidance for supplemental data collection depending on user interest and capacity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Using human-centered activities, such as Storytelling, that promote respect, relationship-building, and empower the voices of community members, particularly those who have been historically underrepresented, underserved, and disproportionately impacted">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Developing actions which see benefits equitably distributed across the community">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

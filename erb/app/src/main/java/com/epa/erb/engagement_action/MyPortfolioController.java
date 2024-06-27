@@ -50,7 +50,7 @@ public class MyPortfolioController implements Initializable {
 		
 		logger = app.getLogger();
 		xmlManager = new XMLManager(app);
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	@FXML
@@ -72,8 +72,6 @@ public class MyPortfolioController implements Initializable {
 		fillTreeView();
 		myPortfolioTreeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));
 		myPortfolioTreeView.getSelectionModel().clearAndSelect(0);
-		myPortfolioTreeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());
-		tableView.getStylesheets().add(getClass().getResource("/tableView.css").toString());
 	}
 	
 	public void treeViewClicked(TreeItem<String> oldItem, TreeItem<String> newItem) {
@@ -138,7 +136,7 @@ public class MyPortfolioController implements Initializable {
 	private void fillTreeView() {
 		IdAssignments id = new IdAssignments();
 		ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections", "ERB Sections");
-		ArrayList<String> rootFileNames = xmlManager.parseWorksheetsXML(fileHandler.getStaticWorksheetsXMLFile(), rootERBContentItem.getShortName());			
+		ArrayList<String> rootFileNames = xmlManager.parseWorksheetsXML(fileHandler.getWorksheetsFileFromResources(), rootERBContentItem.getShortName());			
 		hash.put(rootERBContentItem.getShortName(), createListOfUploadedItems(rootFileNames));
 		TreeItem<String> rootTreeItem = new TreeItem<String>(rootERBContentItem.getShortName());
 		rootTreeItem.setExpanded(true);
@@ -147,7 +145,7 @@ public class MyPortfolioController implements Initializable {
 		for (ERBContentItem contentItem : app.getAvailableERBContentItems()) {
 			if (id.getChapterIdAssignments().contains(contentItem.getId())) {
 				TreeItem<String> treeItem = new TreeItem<String>(contentItem.getShortName());
-				ArrayList<String> fileNames = xmlManager.parseWorksheetsXML(fileHandler.getStaticWorksheetsXMLFile(), contentItem.getShortName());			
+				ArrayList<String> fileNames = xmlManager.parseWorksheetsXML(fileHandler.getWorksheetsFileFromResources(), contentItem.getShortName());			
 				hash.put(contentItem.getShortName(), createListOfUploadedItems(fileNames));		
 				rootTreeItem.getChildren().add(treeItem);
 			}

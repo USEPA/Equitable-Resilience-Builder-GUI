@@ -1,0 +1,13 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<icon width="317.0"
+			height="423.0" id="120"> </icon>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	
+	</container>
+</textBlocks>

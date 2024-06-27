@@ -84,20 +84,18 @@ public class FinalReportSelectionController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 		xmlManager = new XMLManager(app);
 
 		listView.setCellFactory(lv -> createListCell());
-		listView.getStylesheets().add(getClass().getResource("/listViewReport.css").toString());
 
 		availableDataTreeView.setCellFactory(tv -> createTreeCell());
-		availableDataTreeView.getStylesheets().add(getClass().getResource("/reportTreeView.css").toString());
 
 		erbUniqueContentItems = app.getEngagementActionController().getListOfUniqueERBContentItems();
 		
 		erbWorksheetContentItems = getWorksheetsERBItems();
 		
-		File reportDataXML = fileHandler.getStaticReportDataXMLFile();
+		File reportDataXML = fileHandler.getReportDataFileFromResources();
 		ArrayList<FinalReportItem> finalReportItems = xmlManager.parseReportDataXML(reportDataXML);
 		fillTreeViewData(finalReportItems);
 		availableDataTreeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));

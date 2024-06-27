@@ -66,7 +66,7 @@ public class MyUploadedItem {
 	}
 	
 	public File getFile() {
-		FileHandler fileHandler = new FileHandler(app);
+		FileHandler fileHandler = new FileHandler();
 		return new File(fileHandler.getMyUploadsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + File.separator + getFileNumber() + File.separator + getFileName().getText());
 	}
 	

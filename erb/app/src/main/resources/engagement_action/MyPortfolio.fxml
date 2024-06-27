@@ -41,8 +41,8 @@
       </VBox>
       <HBox spacing="20.0" VBox.vgrow="ALWAYS">
          <children>
-            <TreeView fx:id="myPortfolioTreeView" HBox.hgrow="ALWAYS" />
-            <TableView fx:id="tableView" minWidth="500.0" HBox.hgrow="ALWAYS">
+            <TreeView fx:id="myPortfolioTreeView" stylesheets="@../treeView.css" HBox.hgrow="ALWAYS" />
+            <TableView fx:id="tableView" minWidth="500.0" stylesheets="@../tableView.css" HBox.hgrow="ALWAYS">
                <columns>
                   <TableColumn fx:id="selectColumn" prefWidth="75.0" text="Select" />
                   <TableColumn fx:id="numberColumn" editable="false" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="#" />

@@ -26,7 +26,6 @@ public class FinalReportOrdering implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		listView.setCellFactory(lv -> createListCell());
-		listView.getStylesheets().add(getClass().getResource("/listViewReport.css").toString());
 		fillListView();
 	}
 	

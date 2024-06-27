@@ -27,7 +27,7 @@ public class MappingController implements Initializable{
 	
 	private void loadHTMLFileToWebEngine() {
 		Constants constants = new Constants();
-		File mappingDirectory = new File(constants.getPathToERBFolder() + File.separator + "JavaScript" + File.separator + "Mapping");
+		File mappingDirectory = new File(constants.getPathToERBDirectory() + File.separator + "JavaScript" + File.separator + "Mapping");
 
 		File HTMLFile = new File(mappingDirectory + File.separator + "leaflet.html");
 		

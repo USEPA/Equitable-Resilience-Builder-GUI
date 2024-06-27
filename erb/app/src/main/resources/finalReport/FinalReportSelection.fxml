@@ -47,7 +47,7 @@
                         <Separator />
                         <VBox spacing="10.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <TreeView fx:id="availableDataTreeView" VBox.vgrow="ALWAYS" />
+                              <TreeView fx:id="availableDataTreeView" stylesheets="@../reportTreeView.css" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>
@@ -56,12 +56,12 @@
                      <children>
                         <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#rightArrowClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY24/rightArrow.png" />
+                              <Image url="@../rightArrow.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#leftArrowClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../../OneDrive%20-%20Environmental%20Protection%20Agency%20(EPA)/Documents/Projects/Metro-CERI/FY24/leftArrow.png" />
+                              <Image url="@../leftArrow.png" />
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" onAction="#continueButtonAction" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Continue" textFill="#562c87">
@@ -79,7 +79,7 @@
                            </font>
                         </Label>
                         <Separator />
-                        <ListView fx:id="listView" style="-fx-background-color: #FEEBDF; -fx-border-color: #D8D8D8;" VBox.vgrow="ALWAYS" />
+                        <ListView fx:id="listView" style="-fx-background-color: #FEEBDF; -fx-border-color: #D8D8D8;" stylesheets="@../listViewReport.css" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                </children>

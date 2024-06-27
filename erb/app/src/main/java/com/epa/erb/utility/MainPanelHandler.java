@@ -81,6 +81,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.log(Level.FINE, "Failed to load EngagementAction.fxml.");
 			logger.log(Level.FINER, "Failed to load EngagementAction.fxml: " + e.getStackTrace());
 			return null;

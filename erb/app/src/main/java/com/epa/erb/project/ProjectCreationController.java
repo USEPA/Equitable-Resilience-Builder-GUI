@@ -33,7 +33,7 @@ public class ProjectCreationController implements Initializable {
 	public ProjectCreationController(App app) {
 		this.app = app;
 		
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	@FXML
@@ -178,9 +178,7 @@ public class ProjectCreationController implements Initializable {
 					loadEngagementActionToContainer(selectedProject);
 				}
 				app.getErbContainerController().getMyBreadCrumbBar().setProject(selectedProject);
-				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(
-						selectedProject.getProjectName() + " Project",
-						mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
+				app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(selectedProject.getProjectName() + " Project", mainPanelHandler.getMainPanelIdHashMap().get("Engagement"));
 			}
 		}
 

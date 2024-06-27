@@ -1,0 +1,234 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Storytelling on Project Implementation">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Share stories about past experiences with implementing projects and plans - resilience related or not.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Learn from successes and pitfalls as you transition from gathering critical insights to putting plans into action.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Follow the instructions in the Implementation Storytelling Exercise">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Share stories among the core team">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Discuss implications for implementing the resilience actions coming out of the ERB process">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Compile principles and lessons learned from the breakout groups and record them in the Key Takeaways on Strategizing Actions">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Outputs">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Storytelling summaries">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Key Takeaways Form on Strategizing Actions">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team, activity lead, invited participants">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="1-1.5 hours">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+			<listBlock>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Implementation Storytelling Exercise"
+				linkType="externalDOC"
+				link="Implementation_Storytelling_Exercise.docx">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="How to Use Storytelling"
+				linkType="externalDOC"
+				link="How_to_Use_Storytelling.docx">
+				</text>
+				<text
+				size="16.0"
+				fontFamily="System"
+				fontStyle="Hyperlink"
+				text="Key Takeaways on Strategizing Actions"
+				linkType="internal"
+				link="136">
+				</text>
+			</listBlock>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Centering equity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="68">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Think about how past implementation of local projects and programs did or did not improve equity may provide lessons learned for this project. Gathering these lessons from community members can be informative.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

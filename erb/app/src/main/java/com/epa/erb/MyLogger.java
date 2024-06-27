@@ -6,6 +6,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.epa.erb.utility.FileHandler;
+
 public class MyLogger extends Logger{
 		
 	 public MyLogger(final String className) {
@@ -14,10 +16,8 @@ public class MyLogger extends Logger{
 	}
 	
 	private void initLogger() {
-		System.out.println("Initializing logger");
-		File pathToLogDir = getTestLogDir();
-		//File pathToLogDir = getPackagedLogDir();
-		System.out.println("Creating logs in: " + pathToLogDir);
+		FileHandler fileHandler = new FileHandler();
+		File pathToLogDir = fileHandler.getLogsDirectory();
 		if (pathToLogDir != null) {
 			try {
 				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "severe.log",true, Level.SEVERE));
@@ -32,26 +32,6 @@ public class MyLogger extends Logger{
 		} else {
 			System.out.println("Path to log dir is null. Cannot use logger");
 		}
-	}
-	
-	private File getTestLogDir() {
-		File vistooldstSupportingDocsDir = new File(System.getProperty("user.dir") + "/../.." + "/erb_supporting_docs/");
-		if (vistooldstSupportingDocsDir.exists()) {
-			File logsDir = new File(vistooldstSupportingDocsDir + "/Logs");
-			if (!logsDir.exists()) logsDir.mkdir();
-			return logsDir;
-		}
-		return null;
-	}
-	
-	private File getPackagedLogDir() {
-		File erbDir = new File(System.getProperty("user.dir") + "/lib/ERB");
-		if (erbDir.exists()) {
-			File logsDir = new File(erbDir + "/Logs");
-			if (!logsDir.exists()) logsDir.mkdir();
-			return logsDir;
-		}
-		return null;
 	}
 	
 	public void closeHandlers() {

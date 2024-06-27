@@ -1,0 +1,161 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Put Results into Action">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Get started with putting results into action by learning from previous experiences with implementing projects and deciding on which action areas to focus on in Workshop 3.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Share stories about successes and pitfalls from implementation of previous projects in your community">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Use assessment findings to figure out the specific problems you will tackle in your next workshop">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Outputs">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Key Takeaways on implementation successes and pitfalls">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Action Areas for use in the action workshop">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="2 hours">
+			</text>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="64">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Consider ways that resilience actions can start to correct past injustices and strengthen capacity by building off of existing community assets. ">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

@@ -62,7 +62,7 @@ public class EngagementActionController implements Initializable {
 		this.project = project;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 		mainPanelHandler = new MainPanelHandler(app);
 	}
 
@@ -92,10 +92,6 @@ public class EngagementActionController implements Initializable {
 		if(!project.getProjectName().contentEquals("Explore")) {
 			engagementVBox.getChildren().remove(exploreModeLabel);
 		}
-		treeView.getStylesheets().add(getClass().getResource("/treeView.css").toString());		
-		
-		previousButton.getStylesheets().add(getClass().getResource("/button.css").toString());
-		nextButton.getStylesheets().add(getClass().getResource("/button.css").toString());
 	}
 
 	private void initFacilitatorMode() {
@@ -387,7 +383,6 @@ public class EngagementActionController implements Initializable {
 			} else {
 				erbPathwayTreeItemSelected();
 			}
-			System.out.println(currentSelectedERBContentItem.getId());
 		} else {
 			logger.log(Level.FINE, "New TreeItem is null. Check this.");
 		}
@@ -395,19 +390,21 @@ public class EngagementActionController implements Initializable {
 	
 	public void ERBContentItemSelected(ERBContentItem erbContentItem) {
 		if (erbContentItem != null) {
-			File contentXMLFile = fileHandler.getStaticFormContentXML(erbContentItem.getId());
 			cleanContentVBox();
 			if (erbContentItem.getId().contentEquals("91")) {
 				Pane root = mainPanelHandler.loadERBProjectCenterRoot(app);
 				addContentToContentVBox(root, true);
 			} else {
 				if (erbContentItem.getType().contentEquals("mainForm")) {
+					File contentXMLFile = fileHandler.getFormContentFileFromResources(erbContentItem.getId());
 					Pane root = loadMainFormController(contentXMLFile);
 					addContentToContentVBox(root, true);
 				} else if (erbContentItem.getType().contentEquals("outputForm")) {
+					File contentXMLFile = fileHandler.getFormContentFileFromResources(erbContentItem.getId());
 					Pane root = loadOutputFormController2(contentXMLFile, erbContentItem);
 					addContentToContentVBox(root, true);
 				} else if (erbContentItem.getType().contentEquals("alternativeForm")) {
+					File contentXMLFile = fileHandler.getFormContentFileFromResources(erbContentItem.getId());
 					Pane root = loadAlternativeFormController(contentXMLFile);
 					addContentToContentVBox(root, true);
 				} else if (erbContentItem.getType().contentEquals("interactiveActivity")) {
@@ -593,6 +590,7 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.log(Level.FINE, "Failed to load MainForm.fxml.");
 			logger.log(Level.FINER, "Failed to load MainForm.fxml: " + e.getStackTrace());
 			return null;
@@ -614,7 +612,6 @@ public class EngagementActionController implements Initializable {
 	public ERBContentItem findUniqueERBContentItem(String id) {
 		if (id != null) {
 			for (ERBContentItem erbContentItem : listOfUniqueERBContentItems) {
-				System.out.println("UniqueERBContentItems: " + erbContentItem.getId());
 				if (erbContentItem.getId().contentEquals(id)) {
 					return erbContentItem;
 				}

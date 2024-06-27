@@ -38,7 +38,6 @@ public class ProjectSelectionController implements Initializable{
 		setProjectsListViewCellFactory();
 		app.updateAvailableProjectsList();
 		fillProjectsListView();
-        descriptionTextArea.getStylesheets().add(getClass().getResource("/textArea.css").toString());		
 	}
 	
 	public void loadEngagementActionToContainer(Project project) {

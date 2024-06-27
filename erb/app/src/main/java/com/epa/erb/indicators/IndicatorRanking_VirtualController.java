@@ -54,7 +54,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 		this.iSVC = iSVC;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	@FXML

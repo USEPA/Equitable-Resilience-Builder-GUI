@@ -49,7 +49,7 @@ public class OutputFormController extends FormController implements Initializabl
 		
 		logger = app.getLogger();
 		xmlManager = new XMLManager(app);
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	@FXML
@@ -80,7 +80,6 @@ public class OutputFormController extends FormController implements Initializabl
 	
 	private boolean checkForExisitingContent() {
 		File dataXMLFile = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedERBContentItem());
-		System.out.println("Checking for: " + dataXMLFile);
 		if(dataXMLFile != null && dataXMLFile.exists()) {
 			return true;
 		}
@@ -128,7 +127,6 @@ public class OutputFormController extends FormController implements Initializabl
 		HBox buttonHBox = new HBox();
 		buttonHBox.setAlignment(Pos.CENTER_RIGHT);
 		Button addButton = new Button ("Add Action Area");
-		addButton.getStylesheets().add(getClass().getResource("/button.css").toString());
 		buttonHBox.getChildren().add(addButton);
 		dynamicAreaVBox.getChildren().add(buttonHBox);
 		dynamicAreaVBox.setId("dynamic area");
@@ -200,7 +198,6 @@ public class OutputFormController extends FormController implements Initializabl
 		}
 		
 		File saveLocation = fileHandler.getDataXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getCurrentSelectedERBContentItem());
-		System.out.println("Save location: " + saveLocation);
 		if(!saveLocation.getParentFile().exists()) {
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(engagementActionController.getProject(), engagementActionController.getCurrentGoal()), engagementActionController.getListOfUniqueERBContentItems());
 			fileHandler.createGUIDDirectoriesForGoal2(engagementActionController.getProject(), engagementActionController.getCurrentGoal(), engagementActionController.getListOfUniqueERBContentItems());

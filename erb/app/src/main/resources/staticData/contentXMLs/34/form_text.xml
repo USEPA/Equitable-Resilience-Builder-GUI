@@ -1,0 +1,247 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Identify Community Connections">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Identify connections among different social and cultural groups, neighborhoods, government agencies, businesses, and civic organizations in your community.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this">
+		</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="It provides a foundation for a community engagement plan. It highlights who should be invited to community workshops, be added to the core team, or otherwise be involved in the ERB process.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Identify existing community groups and organizations">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Discuss and describe these different groups within your community">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Record potential connections in the Community Connections Table">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Outputs">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A list of people/groups you want to include in your community engagement plan">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="A sense of how organizations working on resilience and equity issues interrelate">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="2 hours">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Community Connections Table"
+			linkType="externalDOC"
+			link="Community_Connections_Table.docx">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="See the Community Connections Table">
+			</text>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Centering equity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="65">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="When thinking about the groups in your community, make sure you consider smaller minority groups that might get overlooked. Using EPA’s EJScreen Tool ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.epa.gov/ejscreen"
+			linkType="URL"
+			link="https://www.epa.gov/ejscreen">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="]">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" can help you learn more about your community.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

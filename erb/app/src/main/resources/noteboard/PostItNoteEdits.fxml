@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -21,7 +21,7 @@
          </children>
       </HBox>
       <TextArea fx:id="postItNoteTextArea" prefHeight="100.0" prefWidth="250.0" promptText="Post It content here" wrapText="true" />
-      <ColorPicker fx:id="colorPicker" prefHeight="26.0" prefWidth="50.0" />
+      <ColorPicker fx:id="colorPicker" prefHeight="26.0" prefWidth="50.0" stylesheets="@ColorPicker.css" />
       <HBox alignment="CENTER">
          <children>
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonAction" stylesheets="@../button.css" text="Save">

@@ -1,0 +1,262 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Use Monitoring to Support Future Action">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="As you implement actions, you can monitor how hazards, equity, and resilient systems are changing after your community has gone through the ERB process.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Why do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The benefits of monitoring ERB planning outcomes include:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Checking that actions align with stated priorities">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Evaluate outcomes of resilience actions">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Increase transparency of the implementation process">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Maintain shared understanding of equitable resilience">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Gauge how the relationships you've built are going">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	Increase support for future actions">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="How to do this">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Work with your core team and other local experts to figure out how to carry out monitoring to evaluate outcomes and support implementation efforts. Identify a team member or local group as the 'Monitoring Lead' of each action. You may use the Monitoring Plan as a guide.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Output">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="15.0"
+			height="15.0"
+			id="73">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Plan for tracking progress, assessing impact, and identifying areas for improvement">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What you will need">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="67">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Core team, university researchers, government agencies">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="62">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Ongoing">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="63">
+			</icon>
+			<listBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicator Cards"
+			linkType="externalDOC"
+			link="Indicators_List.xlsx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Monitoring Plan"
+			linkType="externalDOC"
+			link="Monitoring_Plan.docx">
+			</text>
+			</listBlock>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="70">
+			</icon>
+			<listBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="City of Denver COVID Recovery Funding Dashboard"
+			linkType="URL"
+			link="https://storymaps.arcgis.com/stories/6b885654359d41508a97bc8f8ea46ca6">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Ripple Effects Mapping in Richland County, Montana"
+			linkType="URL"
+			link="https://www.montana.edu/energycommunities/documents/Evaluation_CommunitiesInAction.pdf">
+			</text>
+			</listBlock>
+		</textBlock>
+	</container>
+	<container id="bottomPanelVBox">
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Centering equity">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="40.0"
+			height="40.0"
+			id="65">
+			</icon>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Monitoring and evaluation can ensure that actions and implementation efforts are aligned with equity and resilience needs and priorities.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -203,11 +205,10 @@ public class XMLManager {
 		return null;
 	}
 
-	public HashMap<String, ArrayList<HBox>> parseMainFormContentXML(File xmlFile,
-			MainFormController formContentController) {
+	public HashMap<String, ArrayList<HBox>> parseMainFormContentXML(File xmlFile,MainFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
-				FileHandler fileHandler = new FileHandler(app);
+				FileHandler fileHandler = new FileHandler();
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -283,14 +284,13 @@ public class XMLManager {
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
-											imageView.setImage(
-													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											String resourcePath = fileHandler.getIconFilePathFromResources(id);
+											imageView.setImage(new Image(getClass().getResource(resourcePath).toString(), true));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
 											Tooltip toolTip = new Tooltip("Click image to expand");
 											Tooltip.install(imageView, toolTip);
-											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e,
-													fileHandler.getStaticIconImageFile(id), imageView, id));
+											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e,fileHandler.getIconFileFromResources(id), imageView, id));
 											textFlowHBox.getChildren().add(imageView);
 										} else if (nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;
@@ -358,15 +358,15 @@ public class XMLManager {
 																.parseDouble(iconElement.getAttribute("height"));
 														String id = iconElement.getAttribute("id");
 														ImageView imageView = new ImageView();
-														imageView.setImage(new Image(
-																fileHandler.getStaticIconImageFile(id).getPath()));
+														String resourcePath = fileHandler.getIconFilePathFromResources(id);
+														imageView.setImage(new Image(getClass().getResource(resourcePath).toString(), true));														
 														imageView.setFitWidth(width);
 														imageView.setFitHeight(height);
 														Tooltip toolTip = new Tooltip("Please click image to view");
 														Tooltip.install(imageView, toolTip);
 														imageView.setOnMouseClicked(
 																e -> formContentController.handleImageClicked(e,
-																		fileHandler.getStaticIconImageFile(id),
+																		fileHandler.getIconFileFromResources(id),
 																		imageView, id));
 														listVBox.getChildren().add(imageView);
 													}
@@ -390,6 +390,7 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
+				e.printStackTrace();
 				logger.log(Level.FINE, "Failed to parse main form content.");
 				logger.log(Level.FINER, "Failed to parse main form content: " + e.getStackTrace());
 			}
@@ -402,7 +403,7 @@ public class XMLManager {
 			AlternativeFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
-				FileHandler fileHandler = new FileHandler(app);
+				FileHandler fileHandler = new FileHandler();
 
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -478,12 +479,12 @@ public class XMLManager {
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
 											ImageView imageView = new ImageView();
-											imageView.setImage(
-													new Image(fileHandler.getStaticIconImageFile(id).getPath()));
+											String resourcePath = fileHandler.getIconFilePathFromResources(id);
+											imageView.setImage(new Image(getClass().getResource(resourcePath).toString(), true));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
 											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e,
-													fileHandler.getStaticIconImageFile(id), imageView, id));
+													fileHandler.getIconFileFromResources(id), imageView, id));
 											textFlowHBox.getChildren().add(imageView);
 										} else if (nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;
@@ -547,7 +548,6 @@ public class XMLManager {
 	}
 
 	public HashMap<ArrayList<Text>, String> parseOutputFormContentXML(File xmlFile) {
-		System.out.println("Parsing: " + xmlFile);
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -593,7 +593,6 @@ public class XMLManager {
 						}
 					}
 				}
-				System.out.println("Content list: " + contentList);
 				return contentList;
 			} catch (Exception e) {
 				logger.log(Level.FINE, "Failed to parse output form content.");

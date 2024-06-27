@@ -55,7 +55,7 @@ public class NoteBoardContentController implements Initializable {
 		this.indicatorCards = indicatorCards;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 	
 	@FXML

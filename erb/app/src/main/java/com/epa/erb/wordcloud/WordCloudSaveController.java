@@ -29,7 +29,7 @@ public class WordCloudSaveController implements Initializable {
 		this.guid = guid;
 		this.project = project;
 		
-		fileHandler = new FileHandler(app);
+		fileHandler = new FileHandler();
 	}
 
 	@FXML

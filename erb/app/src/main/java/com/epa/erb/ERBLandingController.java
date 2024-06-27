@@ -62,9 +62,6 @@ public class ERBLandingController implements Initializable{
 	}
 	
 	private void fillImageViews() {
-		landingImageView1.setImage(new Image(getClass().getResourceAsStream("/landing1.png")));
-		landingImageView2.setImage(new Image(getClass().getResourceAsStream("/landing2.png")));
-		landingImageView3.setImage(new Image(getClass().getResourceAsStream("/landing3.png")));
 		landingImageView1VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView1.setFitWidth(newVal.doubleValue());
 		});
@@ -92,8 +89,8 @@ public class ERBLandingController implements Initializable{
 		
 	@FXML
 	public void exampleProjectsHyperlinkAction() {
-		FileHandler fileHandler = new FileHandler(app);
-		File supportingDocDir = fileHandler.getStaticSupportingDOCDirectory();
+		FileHandler fileHandler = new FileHandler();
+		File supportingDocDir = fileHandler.getSupportingDocsDirFromResources();
 		File fileToOpen = new File(supportingDocDir + File.separator + "Examples.pdf");
 		fileHandler.openFileOnDesktop(fileToOpen);
 	}

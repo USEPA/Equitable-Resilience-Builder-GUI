@@ -1,0 +1,22 @@
+<textBlocks>
+	<container id="titleVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Goal Setting Examples">
+			</text>
+		</textBlock>
+	</container>
+	<container id="leftVBox">
+	</container>
+	<container id="centerVBox">
+	<textBlock>
+			<icon width="800.0"
+			height="400.0" id="82"> </icon>
+		</textBlock>
+	</container>
+	<container id="rightVBox">
+	</container>
+</textBlocks>

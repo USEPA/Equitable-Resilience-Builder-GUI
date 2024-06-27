@@ -1,0 +1,284 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock type="block">
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Key Takeaways on Assessment">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="As you complete the activites in this section, add your key takeaways here.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Hazards and Equity Assessment (complete after the Expand your Knowledge section activities)">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="1. [Collect Hazards Data] What are the current top hazards, disasters, and threats of concern you identified in the data for your community?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Flooding">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Heat">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Mental health">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="2. [Collect Hazards Data] What are the future top hazards, disasters, and threats of concern projected for your community?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Flooding">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Heat">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Mental health">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="3. [Collect Equity Data] What are the key equity concerns you identified in the data?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Some neighborhoods experience more flooding than others">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Some communities do not have access to needed information to adequately prepare for emergencies">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Workshop Activities (complete after Listen &#38; Connect and Assess Resilience activities)">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="4. [Hazards Storytelling Exercise &#38; Future Scenarios Discussion] What were the top concerns that community members expressed through storytelling and the results from the future scenarios discussion?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Flooding">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Most vulnerable: over 65 community">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="5. [Participatory Mapping Activity] What were the top concerns that community members identified in the mapping, and what neighborhoods are most affected?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Flooding">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Mental health">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="6. [Participatory Mapping Activity] What are the key assets that support resilience in your community that were identified in the mapping?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Neighborhood community centers can distribute supplies and information">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Indicator Assessment and Equity Discussion (complete after Assess Resilience section)">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="7. [Indicators Diagram] What indicators were the least resilient and least equitable? Which of these should be priorities for action?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- There is a lot of flooding in certain neighborhoods that causes repeated damage.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="8. [Indicators Diagram] What indicators were the most resilient and equitable, and why? What can be replicated or learned from for potential actions?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Most households have broadband access because of a grant received by the county and targeted outreach through social service programs.">
+			</text>
+		</textBlock>
+		<textBlock type="block">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="9. [Equity Discussion] What are key systemic or structural issue affecting equity that should be addressed through action in the next section?">
+			</text>
+		</textBlock>
+		<textBlock type="area">
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="For example:">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Prompt"
+			text="&#xD;- Some neighborhoods have been disinvested for decades and are suffering worse flooding.">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

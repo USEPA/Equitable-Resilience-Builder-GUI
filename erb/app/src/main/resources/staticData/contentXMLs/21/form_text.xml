@@ -1,0 +1,64 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Reflection Diary">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="WHAT: The core team takes time to think about what went well and what they can improve on next time when carrying out ERB activities and community engagement.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="WHY: Record lessons learned about what worked well, or not so well, and why. Use these insights as you plan activities for the next section of ERB or to help future ERB users in your community.">
+			</text>
+		</textBlock>
+				<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="HOW: The last page of each section is a Reflection and Next Steps page. On this page, look for the link to the Reflection Diary next to the clipboard icon on the What you’ll need part of the page. Get together with the core team to respond to the questions and record your answers in the diary. You can download the diary using MyPortfolio.">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

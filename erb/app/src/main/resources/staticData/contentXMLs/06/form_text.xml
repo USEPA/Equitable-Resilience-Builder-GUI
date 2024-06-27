@@ -1,0 +1,281 @@
+<textBlocks>
+	<container id="formVBox">
+		<textBlock>
+			<text
+			size="22.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What are Resilience Indicators?">
+			</text>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Community resilience to extreme events, hazards, or changes in environmental conditions because of climate change can be improved with increased awareness of potential risks. Resilience indicators identify sources of potential vulnerability so that further assessment and targeted adaptation strategies can be taken.">
+			</text>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="What is a resilience indicator?">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Resilience indicators are summary measures that provide information on the state of or change in built, social, or natural systems that can help characterize their vulnerability and adaptive capacity. Indicators can help community leaders assess needs, prioritize goals, and establish baselines for monitoring progress and recognizing success [1].">
+			</text>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="However, community indicators are often based on national data sets and assumptions that do not make sense for every community. To be useful for community planning, indicators need to be developed with input from local leaders and community members and tailored to assess local context.">
+			</text>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Using the Equitable Resilience Builder (ERB) to assess hazards, equity, and resilience">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="The ERB tool offers an iterative process for integrating community data on hazards and equity to develop and identify indicators so that further assessment and targeted adaptation strategies can be undertaken in an equitable, resource-effective manner [2].">
+			</text>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+			width="200.0"
+			height="84.0"
+			id="157">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+			size="10.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Figure 1. Indicators in ERB">
+			</text>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="Resilience indicators can also help practitioners and policy makers understand costs and benefits of enhancing resilience at all scales. Importantly, resilience indicators can provide insight into the complexity, interdependence, and uncertainty that exists in communities and vulnerability to external events or stressors.">
+			</text>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="Resources to learn more:">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	FEMA. 2022. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Commonly Used Indicators from Peer-Reviewed Research. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://www.fema.gov/sites/default/files/documents/fema_2022-community-resilience-indicator-analysis.pdf"
+			linkType="URL"
+			link="https://www.fema.gov/sites/default/files/documents/fema_2022-community-resilience-indicator-analysis.pdf">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	FEMA. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Resilience Analysis and Planning Tool">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". Washington, D.C., Federal Emergency Management Agency. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://fema.maps.arcgis.com/apps/webappviewer/index.html?id=90c0c996a5e242a79345cdbc5f758fc6"
+			linkType="URL"
+			link="https://fema.maps.arcgis.com/apps/webappviewer/index.html?id=90c0c996a5e242a79345cdbc5f758fc6">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="•	U.S. EPA. 2017. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Evaluating Urban Resilience to Climate Change: A Multi-Sector Approach (Final Report)">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=". U.S. Environmental Protection Agency, Washington, D.C., EPA/600/R-16/365F.">
+			</text>
+		</textBlock>
+					<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="18.0"
+			fontFamily="System"
+			fontStyle="Bold"
+			text="References">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[1] Cutter. 2016. The landscape of disaster resilience indicators in the USA. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Italic"
+			text="Natural Hazards">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text=" 80, 741–758. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://doi.org/10.1007/s11069-015-1993-2"
+			linkType="URL"
+			link="https://doi.org/10.1007/s11069-015-1993-2">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Regular"
+			text="[2] Sinha, et al. 2022. Assessing Community Vulnerability to Extreme Events in the Presence of Contaminated Sites and Waste Management Facilities: An Indicator Approach. ">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4232780"
+			linkType="URL"
+			link="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4232780">
+			</text>
+		</textBlock>
+	</container>
+	<container id="topPanelVBox">
+	</container>
+	<container id="bottomPanelVBox">
+	</container>
+</textBlocks>

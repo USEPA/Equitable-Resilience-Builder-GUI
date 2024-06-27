@@ -16,8 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.awt.Dimension;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.logging.Handler;
@@ -41,30 +39,54 @@ public class App extends Application {
 	private Project selectedProject;
 	private ArrayList<Project> projects;
 	private ArrayList<IndicatorCard> indicatorCards;
+	private FileHandler fileHandler = new FileHandler();
 	private ERBContainerController erbContainerController;
 	private ArrayList<GoalCategory> availableGoalCategories;	
 	private ArrayList<ERBContentItem> availableERBContentItems;
 	private EngagementActionController engagementActionController;
-	private final static Logger logger = new MyLogger(App.class.getName());
+	private static Logger logger;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		createTestFile();
+		setupERBFileDirectory();
+		createExploreProject();
+		
+		logger = new MyLogger(App.class.getName());
+		
 		sizeScreen(getScreenResolution(), getScreenSize());
 		readAndStoreData();
 		showERBToolMain();
+
 		logger.log(Level.INFO, "Successfully launched application");		
 	}
 	
-	private void createTestFile() {
-		File file = new File(System.getProperty("user.dir") + File.separator + "erbTestFile.txt");
-		System.out.println("Creating test file: " + file);
-		try {
-			PrintWriter printWriter = new PrintWriter(file);
-			printWriter.println("Hello World");
-			printWriter.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+	private void setupERBFileDirectory() {
+		File erbDirectory = fileHandler.getEquitableResilienceBuilderDirectory();
+		if(!erbDirectory.exists()) {
+			erbDirectory.mkdir();
+		}
+		
+		File logsDirectory = fileHandler.getLogsDirectory();
+		if(!logsDirectory.exists()) {
+			logsDirectory.mkdir();
+		}
+		
+		File projectsDirectory = fileHandler.getProjectsDirectory();
+		if(!projectsDirectory.exists()) {
+			projectsDirectory.mkdir();
+		}
+	}
+	
+	private void createExploreProject() {
+		File projectsDirectory = fileHandler.getProjectsDirectory();
+		if(projectsDirectory.exists()) {
+			File exploreProjectDirectory = new File(projectsDirectory.getPath() + File.separator + "Explore");
+			if(!exploreProjectDirectory.exists()) {
+				exploreProjectDirectory.mkdir();
+				File sourceDir = fileHandler.getExploreProjectDirFromResources();
+				File destDir = exploreProjectDirectory;
+				fileHandler.copyDirectory(sourceDir, destDir);
+			}
 		}
 	}
 
@@ -159,7 +181,7 @@ public class App extends Application {
 
 	private void erbCloseRequested() {
 		if (engagementActionController != null) {
-			FileHandler fileHandler = new FileHandler(this);
+			FileHandler fileHandler = new FileHandler();
 			XMLManager xmlManager = new XMLManager(this);
 			Project project = engagementActionController.getProject();
 			Goal goal = engagementActionController.getCurrentGoal();
@@ -185,9 +207,8 @@ public class App extends Application {
 	
 	private void readAndStoreAvailableContent() {
 		XMLManager xmlManager = new XMLManager(this);
-		FileHandler fileHandler = new FileHandler(this);
-		File contentFile = fileHandler.getStaticAvailableContentXMLFile();
-		System.out.println("Getting available content from: " + contentFile.getPath());
+		FileHandler fileHandler = new FileHandler();
+		File contentFile = fileHandler.getAvailableContentFileFromResources();
 		availableERBContentItems = xmlManager.parseContentXML(contentFile);
 	}
 	
@@ -228,14 +249,14 @@ public class App extends Application {
 
 	private void readAndStoreAvailableGoalCategories() {
 		XMLManager xmlManager = new XMLManager(this);
-		FileHandler fileHandler = new FileHandler(this);
-		File goalCategoriesFile = fileHandler.getStaticGoalCategoriesXMLFile();
+		FileHandler fileHandler = new FileHandler();
+		File goalCategoriesFile = fileHandler.getGoalCategoriesFileFromResources();
 		availableGoalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
 	}
 
 	private void readAndStoreProjects() {
 		XMLManager xmlManager = new XMLManager(this);
-		FileHandler fileHandler = new FileHandler(this);
+		FileHandler fileHandler = new FileHandler();
 		File projectsDirectory = fileHandler.getProjectsDirectory();
 		projects = xmlManager.parseAllProjects(projectsDirectory );
 	}

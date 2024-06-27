@@ -30,7 +30,6 @@ public class PostItNoteEditsController implements Initializable{
 	}
 	
 	private void handleControls() {
-		colorPicker.getStylesheets().add(getClass().getResource("/noteboard/ColorPicker.css").toString());
 	}
 	
 	private void checkAndSetExistingText() {
