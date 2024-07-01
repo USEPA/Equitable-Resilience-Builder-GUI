@@ -26,6 +26,7 @@ import com.epa.erb.goal.Goal;
 import com.epa.erb.goal.GoalCategory;
 import com.epa.erb.indicators.IndicatorCard;
 import com.epa.erb.project.Project;
+import com.epa.erb.project.ProjectCreationController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.MainPanelHandler;
 import com.epa.erb.utility.XMLManager;
@@ -49,12 +50,12 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		setupERBFileDirectory();
-		createExploreProject();
 		
 		logger = new MyLogger(App.class.getName());
 		
 		sizeScreen(getScreenResolution(), getScreenSize());
 		readAndStoreData();
+		createExploreProject();
 		showERBToolMain();
 
 		logger.log(Level.INFO, "Successfully launched application");		
@@ -83,9 +84,13 @@ public class App extends Application {
 			File exploreProjectDirectory = new File(projectsDirectory.getPath() + File.separator + "Explore");
 			if(!exploreProjectDirectory.exists()) {
 				exploreProjectDirectory.mkdir();
-				File sourceDir = fileHandler.getExploreProjectDirFromResources();
-				File destDir = exploreProjectDirectory;
-				fileHandler.copyDirectory(sourceDir, destDir);
+				ProjectCreationController projectCreation = new ProjectCreationController(this);
+				projectCreation.createExploreProject();
+				
+				
+//				File sourceDir = fileHandler.getExploreProjectDirFromResources();
+//				File destDir = exploreProjectDirectory;
+//				fileHandler.copyDirectory(sourceDir, destDir);
 			}
 		}
 	}
@@ -262,6 +267,7 @@ public class App extends Application {
 	}
 	
 	public Project getExploreProject() {
+		updateAvailableProjectsList();
 		for(Project project: projects) {
 			if(project.getProjectName().contentEquals("Explore")) {
 				return project;

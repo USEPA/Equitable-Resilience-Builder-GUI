@@ -69,6 +69,14 @@ public class ProjectCreationController implements Initializable {
 			launchProject(project);
 		}
 	}
+	
+	public void createExploreProject() {
+		String newProjectName = "Explore";
+		String cleanedProjectName = cleanStringForWindows(newProjectName);
+		String projectDescription = "Explore Project";
+		Project project = new Project(newProjectName, mode, cleanedProjectName, projectDescription);
+		createFacilitatorProject(project);
+	}
 
 	private boolean isValidNewProjectName(String projectName) {
 		if (projectName != null && projectName.length() > 0) {

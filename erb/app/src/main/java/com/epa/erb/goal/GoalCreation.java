@@ -48,8 +48,9 @@ public class GoalCreation{
 	
 	private void copyGlobalSupportingDocsToGoalSupportingDocs(File goalSupportingDOCDirectory) {
 		if(goalSupportingDOCDirectory != null) {
-			File staticGlobalSupportingDOCDirectory = fileHandler.getSupportingDocsDirFromResources();
-			for(File sourceFile: staticGlobalSupportingDOCDirectory.listFiles()) {
+			ArrayList<String> worksheetNames = xmlManager.parseWorksheetsXML(fileHandler.getWorksheetsFileFromResources());			
+			for(String worksheetName: worksheetNames) {
+				File sourceFile = fileHandler.getSupportingDocFromResources(worksheetName);
 				File destFile = new File(goalSupportingDOCDirectory + File.separator + sourceFile.getName());
 				fileHandler.copyFile(sourceFile, destFile);
 			}

@@ -81,7 +81,7 @@ public class ERBContainerController implements Initializable {
 					if (id.equals("201")) {
 						MenuItem menuItem = new MenuItem("Funding and Finance Guide");
 						resourcesMenu.getItems().add(menuItem);
-						File fileToOpen = new File(fileHandler.getSupportingDocsDirFromResources() + File.separator + "Funding_and_Financing_Guide.docx");
+						File fileToOpen = new File(fileHandler.getTempDirectory() + File.separator + "Funding_and_Financing_Guide.docx");
 						menuItem.setOnAction(e -> fileHandler.openFileOnDesktop(fileToOpen));
 					} else {
 						String name = erbContentItem.getLongName();

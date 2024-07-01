@@ -136,7 +136,7 @@ public class MyPortfolioController implements Initializable {
 	private void fillTreeView() {
 		IdAssignments id = new IdAssignments();
 		ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections", "ERB Sections");
-		ArrayList<String> rootFileNames = xmlManager.parseWorksheetsXML(fileHandler.getWorksheetsFileFromResources(), rootERBContentItem.getShortName());			
+		ArrayList<String> rootFileNames = xmlManager.parseWorksheetsXMLForSection(fileHandler.getWorksheetsFileFromResources(), rootERBContentItem.getShortName());			
 		hash.put(rootERBContentItem.getShortName(), createListOfUploadedItems(rootFileNames));
 		TreeItem<String> rootTreeItem = new TreeItem<String>(rootERBContentItem.getShortName());
 		rootTreeItem.setExpanded(true);
@@ -145,7 +145,7 @@ public class MyPortfolioController implements Initializable {
 		for (ERBContentItem contentItem : app.getAvailableERBContentItems()) {
 			if (id.getChapterIdAssignments().contains(contentItem.getId())) {
 				TreeItem<String> treeItem = new TreeItem<String>(contentItem.getShortName());
-				ArrayList<String> fileNames = xmlManager.parseWorksheetsXML(fileHandler.getWorksheetsFileFromResources(), contentItem.getShortName());			
+				ArrayList<String> fileNames = xmlManager.parseWorksheetsXMLForSection(fileHandler.getWorksheetsFileFromResources(), contentItem.getShortName());			
 				hash.put(contentItem.getShortName(), createListOfUploadedItems(fileNames));		
 				rootTreeItem.getChildren().add(treeItem);
 			}

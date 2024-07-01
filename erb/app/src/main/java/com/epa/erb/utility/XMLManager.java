@@ -167,7 +167,7 @@ public class XMLManager {
 		return null;
 	}
 
-	public ArrayList<String> parseWorksheetsXML(File xmlFile, String sectionName) {
+	public ArrayList<String> parseWorksheetsXMLForSection(File xmlFile, String sectionName) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
 				ArrayList<String> worksheets = new ArrayList<String>();
@@ -192,6 +192,41 @@ public class XMLManager {
 									worksheets.add(worksheetName);
 								}
 							}
+						}
+					}
+				}
+				return worksheets;
+			} catch (Exception e) {
+				logger.log(Level.FINE, "Failed to parse worksheets.");
+				logger.log(Level.FINER, "Failed to parse worksheets: " + e.getStackTrace());
+			}
+		} else {
+		}
+		return null;
+	}
+	
+	public ArrayList<String> parseWorksheetsXML(File xmlFile) {
+		if (xmlFile != null && xmlFile.exists()) {
+			try {
+				ArrayList<String> worksheets = new ArrayList<String>();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(xmlFile);
+				doc.getDocumentElement().normalize();
+
+				NodeList sectionNodeList = doc.getElementsByTagName("section");
+				for (int i = 0; i < sectionNodeList.getLength(); i++) {
+					Node sectionNode = sectionNodeList.item(i);
+					if (sectionNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element sectionElement = (Element) sectionNode;
+							NodeList worksheetNodeList = sectionElement.getElementsByTagName("worksheet");
+							for (int j = 0; j < worksheetNodeList.getLength(); j++) {
+								Node worksheetNode = worksheetNodeList.item(j);
+								if (worksheetNode.getNodeType() == Node.ELEMENT_NODE) {
+									Element worksheetElement = (Element) worksheetNode;
+									String worksheetName = worksheetElement.getAttribute("name");
+									worksheets.add(worksheetName);
+								}
 						}
 					}
 				}

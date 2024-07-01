@@ -44,11 +44,14 @@ public class Constants {
 	private String pathToERBDirectory;
 	private String pathToERBProjectsDirectory;
 	private String pathToERBLogsDirectory;
+	private String pathToERBTempDirectory;
+
 	
 	public Constants() {
 		pathToERBDirectory = System.getProperty("user.home") + File.separator + "EquitableResilienceBuilder";
 		pathToERBProjectsDirectory = pathToERBDirectory + File.separator + "Projects";
 		pathToERBLogsDirectory = pathToERBDirectory + File.separator + "Logs";
+		pathToERBTempDirectory = pathToERBDirectory + File.separator + "Temp";
 		
 		sizeScreen(getScreenResolution(), getScreenSize());
 	}
@@ -192,5 +195,8 @@ public class Constants {
 	}
 	public String getPathToERBLogsDirectory() {
 		return pathToERBLogsDirectory;
+	}
+	public String getPathToERBTempDirectory() {
+		return pathToERBTempDirectory;
 	}
 }

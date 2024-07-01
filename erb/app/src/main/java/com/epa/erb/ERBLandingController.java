@@ -90,7 +90,7 @@ public class ERBLandingController implements Initializable{
 	@FXML
 	public void exampleProjectsHyperlinkAction() {
 		FileHandler fileHandler = new FileHandler();
-		File supportingDocDir = fileHandler.getSupportingDocsDirFromResources();
+		File supportingDocDir = fileHandler.getTempDirectory();
 		File fileToOpen = new File(supportingDocDir + File.separator + "Examples.pdf");
 		fileHandler.openFileOnDesktop(fileToOpen);
 	}

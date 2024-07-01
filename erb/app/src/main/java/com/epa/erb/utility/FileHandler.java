@@ -4,12 +4,12 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-
 import org.apache.commons.io.FileUtils;
-
+import org.apache.poi.util.IOUtils;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
@@ -37,6 +37,11 @@ public class FileHandler {
 	public File getProjectsDirectory() {
 		File projectsDirectory = new File(constants.getPathToERBProjectsDirectory());
 		return projectsDirectory;
+	}
+	
+	public File getTempDirectory() {
+		File tempDirectory = new File(constants.getPathToERBTempDirectory());
+		return tempDirectory;
 	}
 	
 	public File getGoalsDirectory(Project project) {
@@ -149,53 +154,48 @@ public class FileHandler {
 	}
 
 	// -------LOCATED IN RESOURCES
-
-	public File getExploreProjectDirFromResources() {
-		String resourcePath = "/staticData/exploreProject";
-		File exploreProjectDirectory = new File(getClass().getResource(resourcePath).getFile());
-		return exploreProjectDirectory;
-	}
 	
-	public File getSupportingDocsDirFromResources() {
-		String resourcePath = "/staticData/supportingDocs";
-		File supportingDOCDirectory = new File(getClass().getResource(resourcePath).getFile());
-		return supportingDOCDirectory;
+	public File getSupportingDocFromResources(String worksheetName) {
+		String resourcePath = "/staticData/supportingDocs/" + worksheetName;
+		File supportingDocFile = copyResourceFileToTempDir(resourcePath, worksheetName);
+		return supportingDocFile;
 	}
 
 	public File getAvailableContentFileFromResources() {
 		String resourcePath = "/staticData/availableContent.xml";
-		File availableContentXMLFile = new File(getClass().getResource(resourcePath).getFile());
+		File availableContentXMLFile = copyResourceFileToTempDir(resourcePath, "availableContent.xml");
 		return availableContentXMLFile;
 	}
 
 	public File getWorksheetsFileFromResources() {
 		String resourcePath = "/staticData/worksheets.xml";
-		File worksheetsXMLFile = new File(getClass().getResource(resourcePath).getFile());
+		File worksheetsXMLFile = copyResourceFileToTempDir(resourcePath, "worksheets.xml");
 		return worksheetsXMLFile;
 	}
 
 	public File getIndicatorCardsFileFromResources() {
 		String resourcePath = "/staticData/indicatorCards.xml";
-		File indicatorCardsXMLFile = new File(getClass().getResource(resourcePath).getFile());
+		File indicatorCardsXMLFile = copyResourceFileToTempDir(resourcePath, "indicatorCards.xml");
 		return indicatorCardsXMLFile;
 	}
 
 	public File getGoalCategoriesFileFromResources() {
 		String resourcePath = "/staticData/goalCategories.xml";
-		File goalCategoriesFile = new File(getClass().getResource(resourcePath).getFile());
+		File goalCategoriesFile = copyResourceFileToTempDir(resourcePath, "goalCategories.xml");
 		return goalCategoriesFile;
 	}
 	
 	public File getReportDataFileFromResources() {
 		String resourcePath = "/staticData/reportData.xml";
-		File reportDataFile = new File(getClass().getResource(resourcePath).getFile());
+		File reportDataFile = copyResourceFileToTempDir(resourcePath, "reportData.xml");
 		return reportDataFile;
 	}
 
 	public File getFormContentFileFromResources(String id) {
 		if (id != null) {
 			String resourcePath = "/staticData/contentXMLs/" + id + "/form_text.xml";
-			File formContentFile = new File(getClass().getResource(resourcePath).getFile());
+			String fileName = "form_text_" + id + ".xml";
+			File formContentFile = copyResourceFileToTempDir(resourcePath, fileName);
 			return formContentFile;
 		} else {
 			return null;
@@ -243,6 +243,26 @@ public class FileHandler {
 
 	// -------------------------------------------------------------------------
 
+	private File copyResourceFileToTempDir(String pathToResourceFile, String fileName) {
+		File tempDirectory = getTempDirectory();
+		if(!tempDirectory.exists()) {
+			tempDirectory.mkdir();
+		}
+		
+		try {
+			File outputFile = new File(constants.getPathToERBTempDirectory() + File.separator + fileName);
+			InputStream inputStream = getClass().getResourceAsStream(pathToResourceFile);
+			OutputStream outputStream = new FileOutputStream(outputFile);
+			IOUtils.copy(inputStream, outputStream);
+			return outputFile;
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	//---------------------------------------------------------------------------
+	
 	public void openFileOnDesktop(File fileToToOpen) {
 		try {
 			if (fileToToOpen != null && fileToToOpen.exists() && Desktop.isDesktopSupported()) {
