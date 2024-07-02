@@ -1,10 +1,8 @@
 package com.epa.erb.engagement_action;
 
 import java.io.File;
-
 import com.epa.erb.App;
 import com.epa.erb.utility.FileHandler;
-
 import javafx.scene.text.Text;
 
 public class MyUploadedItem {

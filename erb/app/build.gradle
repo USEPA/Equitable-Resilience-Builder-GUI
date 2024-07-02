@@ -6,10 +6,10 @@
 
 plugins {
     id 'java'
-    id 'org.openjfx.javafxplugin' version '0.0.11'
     id 'application'
     id 'distribution'
     id 'org.beryx.jlink' version '3.0.1' 
+    id 'org.openjfx.javafxplugin' version '0.0.11'
     id 'com.github.jk1.dependency-license-report' version '2.8'
 }
 
@@ -26,8 +26,8 @@ javafx{
 }
 
 application {
-    mainClass = 'com.epa.erb.Main'
     mainModule = 'com.epa.erb'
+    mainClass = 'com.epa.erb.Main'
 }
 
 repositories {
@@ -36,9 +36,8 @@ repositories {
 
 dependencies {
 	implementation 'commons-io:commons-io:2.11.0'
-	implementation 'org.controlsfx:controlsfx:11.1.2'	
 	implementation 'org.apache.poi:poi-ooxml:5.2.3'
-	implementation 'org.apache.poi:poi:5.2.3'
+	implementation 'org.controlsfx:controlsfx:11.1.2'	
 }
 
 
@@ -50,7 +49,6 @@ jlink {
     launcher {
         name = 'ERB'
     }
-    forceMerge('log4j-api')
     jpackage {
         imageName='ERB'
     }

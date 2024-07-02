@@ -7,7 +7,6 @@ module com.epa.erb {
 	requires java.desktop;
 	requires jdk.compiler;
 	requires org.apache.poi.ooxml;
-	requires org.apache.commons.io;
 	requires transitive javafx.graphics;
 	requires transitive javafx.controls;
 	requires jdk.jsobject;
@@ -17,6 +16,7 @@ module com.epa.erb {
 	requires org.apache.poi.poi;
 	requires org.apache.poi.ooxml.schemas;
 	requires org.apache.xmlbeans;
+	requires org.apache.commons.io;
 	opens com.epa.erb to javafx.fxml;
 	opens com.epa.erb.goal to javafx.fxml;
 	opens com.epa.erb.print to javafx.fxml;
