@@ -204,11 +204,11 @@ public class OutputFormController extends FormController implements Initializabl
 
 		}
 		xmlManager.writeOutputFormDataXML(saveLocation, listOfChildren);
-		String fileName = engagementActionController.getCurrentSelectedERBContentItem().getShortName().replaceAll(" ", "_").replaceAll(":", "_");
+		String fileName = engagementActionController.getCurrentSelectedERBContentItem().getShortName().replaceAll(" ", "_").replaceAll(":", "_").replaceAll("-", "");
 		File outputTextFile = new File(fileHandler.getGUIDDataDirectory(engagementActionController.getProject(), engagementActionController.getCurrentGoal())+File.separator + engagementActionController.getCurrentSelectedERBContentItem().getGuid() + File.separator + fileName + ".txt");
 		writeOutputFormToTextFile(listOfChildren,outputTextFile);
 		ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app,engagementActionController);
-		exFileUploader.pushToUploaded(outputTextFile, "Key Takeaways");
+		exFileUploader.pushToUploaded(outputTextFile, fileName);
 	}
 	
 	private void writeOutputFormToTextFile(ArrayList<javafx.scene.Node> outputFormNodes, File file) {

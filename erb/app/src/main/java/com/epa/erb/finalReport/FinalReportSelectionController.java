@@ -62,7 +62,8 @@ public class FinalReportSelectionController implements Initializable {
 	}
 
 	XMLManager xmlManager;
-	FileHandler fileHandler;
+	ArrayList<MyUploadedItem> uploadedItems;
+	FileHandler fileHandler = new FileHandler();
 	ArrayList<ERBContentItem> erbUniqueContentItems;
 	ArrayList<ERBContentItem> erbWorksheetContentItems;
 	ArrayList<FinalReportItem> treeItems = new ArrayList<FinalReportItem>();
@@ -71,9 +72,6 @@ public class FinalReportSelectionController implements Initializable {
 	HashMap<FinalReportItem, CheckBox> treeViewCheckBoxMap = new HashMap<FinalReportItem, CheckBox>();
 	HashMap<FinalReportItem, CheckBox> listViewCheckBoxMap = new HashMap<FinalReportItem, CheckBox>();
 	HashMap<FinalReportItem,ERBContentItem > finalReportItemMap = new HashMap<FinalReportItem, ERBContentItem>();
-
-
-	HashMap<ERBContentItem, Integer> pageNumMap = new HashMap<ERBContentItem, Integer>();
 
 	@FXML
 	Button infoButton;
@@ -84,71 +82,112 @@ public class FinalReportSelectionController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		fileHandler = new FileHandler();
 		xmlManager = new XMLManager(app);
 
+		//Handle custom check boxes and objects for tree view and list view
 		listView.setCellFactory(lv -> createListCell());
-
 		availableDataTreeView.setCellFactory(tv -> createTreeCell());
-
+		
+		//List of ERB sections with unique GUIDs
 		erbUniqueContentItems = app.getEngagementActionController().getListOfUniqueERBContentItems();
 		
+		//List of just worksheet ERB items
 		erbWorksheetContentItems = getWorksheetsERBItems();
+				
+		//List of items to include in final report
+		ArrayList<FinalReportItem> finalReportItems = xmlManager.parseReportDataXML(fileHandler.getReportDataFileFromResources());
 		
-		File reportDataXML = fileHandler.getReportDataFileFromResources();
-		ArrayList<FinalReportItem> finalReportItems = xmlManager.parseReportDataXML(reportDataXML);
-		fillTreeViewData(finalReportItems);
+		//List of all uploaded items
+		uploadedItems = getListOfUserUploadedItems();
+		
+		populateTreeView(finalReportItems);
+		
 		availableDataTreeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> treeViewClicked(oldValue, newValue));
 	}
 
-	private void fillTreeViewData(ArrayList<FinalReportItem> finalReportItems) {
-		ERBContentItem erbSectionsERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections","ERB Sections");
-		FinalReportItem erbSectionsFinalReportItem = new FinalReportItem("91", "ERB Sections", null, null, null);
-		finalReportItemMap.put(erbSectionsFinalReportItem, erbSectionsERBContentItem);
-		
-		TreeItem<FinalReportItem> erbSectionsTreeItem = new TreeItem<FinalReportItem>(erbSectionsFinalReportItem);
-		erbSectionsTreeItem.setExpanded(true);
-		availableDataTreeView.setRoot(erbSectionsTreeItem);
+	private void populateTreeView(ArrayList<FinalReportItem> finalReportItems) {		
+		TreeItem<FinalReportItem> rootTreeItem = createTreeViewRoot();
 
-		TreeItem<FinalReportItem> parentTreeItem = null;
+		TreeItem<FinalReportItem> sectionTreeItem = null;
 		for (FinalReportItem finalReportItem: finalReportItems) {			
-			ERBContentItem parentERBContentItem = findERBSectionItem(finalReportItem.getId());
-			if (parentERBContentItem != null) {
-				finalReportItemMap.put(finalReportItem, parentERBContentItem);
-				parentTreeItem = addChildrenToTreeView(finalReportItem, erbSectionsTreeItem);
+			ERBContentItem sectionERBContentItem = findERBSectionItem(finalReportItem.getId());
+			if (sectionERBContentItem != null) {
+				finalReportItemMap.put(finalReportItem, sectionERBContentItem);
+				sectionTreeItem = addChildrenToTreeView(finalReportItem, rootTreeItem);
 			} else {
-				ERBContentItem childERBContentItem = findContentItem(finalReportItem.getId());
-				finalReportItemMap.put(finalReportItem, childERBContentItem);
-				addChildrenToTreeView(finalReportItem, parentTreeItem);
-				treeItems.add(finalReportItem);
+				ERBContentItem contentERBContentItem = findContentItem(finalReportItem.getId());
+				finalReportItemMap.put(finalReportItem, contentERBContentItem);
+				addChildrenToTreeView(finalReportItem, sectionTreeItem);
+				
+				treeItems.add(finalReportItem); //Only add the actual content items
 			}
 		}
+	
+		TreeItem<FinalReportItem> erbUploadsTreeItem = createTreeViewUploads();
+		rootTreeItem.getChildren().add(erbUploadsTreeItem);
 		
+		addUploadsToTreeView(erbUploadsTreeItem);
+	}
+	
+	private TreeItem<FinalReportItem> createTreeViewRoot(){
+		ERBContentItem rootERBItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections","ERB Sections");
+		FinalReportItem rootFinalReportItem = new FinalReportItem("91", "ERB Sections", null, null, null);
+		finalReportItemMap.put(rootFinalReportItem, rootERBItem);
+		
+		TreeItem<FinalReportItem> rootTreeItem = new TreeItem<FinalReportItem>(rootFinalReportItem);
+		rootTreeItem.setExpanded(true);
+		availableDataTreeView.setRoot(rootTreeItem);
+		return rootTreeItem;
+	}
+	
+	private TreeItem<FinalReportItem> createTreeViewUploads() {
 		ERBContentItem erbUploadsERBContentItem = new ERBContentItem("002", null, "mainForm", null, "Uploads","Uploads");
 		FinalReportItem erbUploadsFinalReportItem = new FinalReportItem("002", "Uploads", null, null, null);
 		finalReportItemMap.put(erbUploadsFinalReportItem, erbUploadsERBContentItem);
 				
 		TreeItem<FinalReportItem> erbUploadsTreeItem = new TreeItem<FinalReportItem>(erbUploadsFinalReportItem);
 		erbUploadsTreeItem.setExpanded(true);
-		erbSectionsTreeItem.getChildren().add(erbUploadsTreeItem);
 		
-		addUploadsToTreeView(erbUploadsTreeItem);
+		return erbUploadsTreeItem;
 	}
 	
 	private void addUploadsToTreeView(TreeItem<FinalReportItem> erbUploadsTreeItem) {
-		ArrayList<MyUploadedItem> uploadedItems = getListOfUserUploadedItems();
-		
-		for(MyUploadedItem uploadedItem: uploadedItems) {
-			
+		HashMap<String, TreeItem<FinalReportItem>> mapOfUploadLocationTreeItems = new HashMap<String, TreeItem<FinalReportItem>>();
+
+		int uploadedFromId = 1111;
+		for (MyUploadedItem uploadedItem : uploadedItems) {
+			String uploadedFrom = uploadedItem.getUploadedFrom();
+			if (!mapOfUploadLocationTreeItems.keySet().contains(uploadedFrom) && !uploadedFrom.contains("Key Takeaways")) {
+
+				ERBContentItem uploadLocationERBItem = new ERBContentItem(String.valueOf(uploadedFromId), null, "mainForm", null, uploadedFrom, uploadedFrom);
+				FinalReportItem uploadLocationFinalReportItem = new FinalReportItem(String.valueOf(uploadedFromId), uploadedFrom, null, null, null);
+				finalReportItemMap.put(uploadLocationFinalReportItem, uploadLocationERBItem);
+
+				TreeItem<FinalReportItem> uploadLocationTreeItem = new TreeItem<FinalReportItem>(uploadLocationFinalReportItem);
+				uploadLocationTreeItem.setExpanded(true);
+
+				erbUploadsTreeItem.getChildren().add(uploadLocationTreeItem);
+				mapOfUploadLocationTreeItems.put(uploadedFrom, uploadLocationTreeItem);
+
+				uploadedFromId++;
+			}
+		}
+
+		for (MyUploadedItem uploadedItem : uploadedItems) {
 			String id = uploadedItem.getFileNumber() + "_upload";
 			String displayName = uploadedItem.getFileName().getText();
-			ERBContentItem erbContentItem = new ERBContentItem(id, uploadedItem.getFile().toString(), "uploadedItem", null, displayName, displayName);
+			String uploadedFrom = uploadedItem.getUploadedFrom();
+
+			ERBContentItem erbContentItem = new ERBContentItem(id, uploadedItem.getFile().toString(), "uploadedItem", uploadedItem.getUploadedFrom(), displayName, displayName);
 			FinalReportItem finalReportItem = new FinalReportItem(id, displayName.replaceAll("\\.(.*)", ""), "0", "0", null);
+
 			finalReportItemMap.put(finalReportItem, erbContentItem);
 			treeItems.add(finalReportItem);
-			
+
 			TreeItem<FinalReportItem> uploadedTreeItem = new TreeItem<FinalReportItem>(finalReportItem);
-			erbUploadsTreeItem.getChildren().add(uploadedTreeItem);
+
+			TreeItem<FinalReportItem> uploadLocationTreeItem = mapOfUploadLocationTreeItems.get(uploadedFrom);
+			if (uploadLocationTreeItem != null) uploadLocationTreeItem.getChildren().add(uploadedTreeItem);
 		}
 	}
 	
@@ -156,29 +195,18 @@ public class FinalReportSelectionController implements Initializable {
 		ArrayList<MyUploadedItem> uploadedItems = new ArrayList<MyUploadedItem>();
 		File uploadsDirectory = fileHandler.getMyUploadsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
 		if (uploadsDirectory != null && uploadsDirectory.exists()) {
-			for(File uploadedDir: uploadsDirectory.listFiles()) {
-				int fileNumber = Integer.parseInt(uploadedDir.getName());
+			for(File uploadDirectory: uploadsDirectory.listFiles()) {
+				int fileNumber = Integer.parseInt(uploadDirectory.getName());
 				Text fileName = new Text("");
 				String lastModified = "";
 				String uploadedFrom = "";
 				
-				for(File uploadedFile : uploadedDir.listFiles()) {
+				for(File uploadedFile : uploadDirectory.listFiles()) {
 					if(uploadedFile.getName().contentEquals("about.txt")) {
-						try {
-							Scanner scanner = new Scanner(uploadedFile);
-							while(scanner.hasNextLine()) {
-								String line = scanner.nextLine();
-								String [] split = line.split(":");
-								uploadedFrom = split[1].trim();
-							}
-							scanner.close();
-						} catch (FileNotFoundException e) {
-							e.printStackTrace();
-						}
-						
+						uploadedFrom = parseAboutUploadFile(uploadedFile);
 					} else {
 						long modifiedLong = uploadedFile.lastModified();
-						lastModified = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date(modifiedLong));
+						lastModified = new SimpleDateFormat("MM-dd-yyyy @ HH:mm:ss").format(new Date(modifiedLong));
 						fileName = new Text(uploadedFile.getName());
 					}
 				}
@@ -187,6 +215,22 @@ public class FinalReportSelectionController implements Initializable {
 			}
 		}
 		return uploadedItems;
+	}
+	
+	private String parseAboutUploadFile(File aboutFile) {
+		String uploadedFrom = null;
+		try {
+			Scanner scanner = new Scanner(aboutFile);
+			while(scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				String [] split = line.split(":");
+				uploadedFrom = split[1].trim().replaceAll("_", " ");
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return uploadedFrom;
 	}
 	
 	public TreeItem<FinalReportItem> addChildrenToTreeView(FinalReportItem finalReportItem, TreeItem<FinalReportItem> parentTreeItem) {
@@ -202,7 +246,13 @@ public class FinalReportSelectionController implements Initializable {
 			if (itemClicked != null) {
 				FinalReportItem clickedFinalReportItem = (FinalReportItem) itemClicked;
 				ERBContentItem clickedERBContentItem = finalReportItemMap.get(clickedFinalReportItem);
-				
+				if(clickedFinalReportItem.getId().contentEquals("193")) {
+					File fileToOpen = findIndicatorListFile();
+					if(fileToOpen != null) {
+						fileHandler.openFileOnDesktop(fileToOpen);
+					}
+					return;
+				}
 				String erbType = clickedERBContentItem.getType();
 				if (erbType.contentEquals("outputForm")) {
 					File guidDataDir = fileHandler.getGUIDDataDirectory(app.getEngagementActionController().getProject(), app.getEngagementActionController().getCurrentGoal());
@@ -236,6 +286,17 @@ public class FinalReportSelectionController implements Initializable {
 			}
 		}
 	}
+	
+	private File findIndicatorListFile() {
+		File indicatorsDirectory = fileHandler.getIndicatorsDirectory(app.getSelectedProject(),app.getEngagementActionController().getCurrentGoal());
+		File selectedIndicatorsListFile = new File(indicatorsDirectory + File.separator + "Indicators_List.xlsx");
+		if(selectedIndicatorsListFile.exists()) {
+			return selectedIndicatorsListFile;
+		} else {
+			File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
+			return indicatorWorkbookFile;
+		}
+	}
 
 	private File findOutputFormToOpen(File guidDir) {
 		if (guidDir.exists()) {
@@ -253,76 +314,85 @@ public class FinalReportSelectionController implements Initializable {
 			File goalDir = fileHandler.getGoalDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
 
 			String reportDocPath = goalDir + File.separator + app.getEngagementActionController().getProject().getProjectCleanedName() + "_SummaryReport.docx";
-			
-		    XWPFDocument document = new XWPFDocument();
-		    FileOutputStream out = new FileOutputStream(new File(reportDocPath));
-						
-			//Cover Page
-		    writeReportDocxCoverPage(document);
-		    
-		    //New Page
-		    XWPFParagraph paragraph = document.createParagraph();
-		    paragraph.setPageBreak(true);
-		    
-			//Content Pages
+
+			XWPFDocument document = new XWPFDocument();
+			FileOutputStream out = new FileOutputStream(new File(reportDocPath));
+
+			// Cover Page
+			writeReportDocxCoverPage(document);
+
+			// New Page
+			XWPFParagraph paragraph = document.createParagraph();
+			paragraph.setPageBreak(true);
+
+			// Content Pages
 			for (FinalReportItem finalReportItem : orderedListViewItems) {
-				
+
 				ERBContentItem erbContentItem = finalReportItemMap.get(finalReportItem);
-				
+
 				String paragraphHeaderString = finalReportItem.getDisplayName();
-				
+				if (finalReportItem.getId().contains("upload")) {
+					paragraphHeaderString = erbContentItem.getStatus();
+				}
+
 				XWPFParagraph paragraphHeader = document.createParagraph();
 				XWPFRun paragraphHeaderRun = paragraphHeader.createRun();
 				paragraphHeaderRun.setFontSize(16);
 				paragraphHeaderRun.setBold(true);
 				paragraphHeaderRun.setText(paragraphHeaderString);
-												
-				if (erbContentItem.getType().contentEquals("outputForm")) {
-					File guidDataDir = fileHandler.getGUIDDataDirectory(app.getEngagementActionController().getProject(), app.getEngagementActionController().getCurrentGoal());
-					File guidDir = new File(guidDataDir + File.separator + erbContentItem.getGuid());
-					File outputFormFile = findOutputFormToOpen(guidDir);
-					if (outputFormFile != null) {
-						FinalReportKeyTakeaways fRKT = new FinalReportKeyTakeaways(outputFormFile);
-						XWPFParagraph contentParagraph = document.createParagraph();
-						XWPFRun contentRun = contentParagraph.createRun();
-						contentRun.setFontSize(14);
-						formatTextForDocx(fRKT.getKeyTakeawaysFormattedText(), contentRun);
-					}
-				} else if (erbContentItem.getType().contentEquals("supportingDoc")) {
-					String docName = erbContentItem.getShortName();
-					File supportingDocDir = fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
-					File docFile = new File(supportingDocDir + File.separator + docName);
-					if (docFile != null) {
-						String start = finalReportItem.getStart();
-						String stop = finalReportItem.getStop();
-						if (finalReportItem.getTableName() != null && finalReportItem.getTableName().trim().length() > 0) {
-							FinalReportTable fRT = new FinalReportTable(docFile, finalReportItem.getTableName(), finalReportItem.getStart(), finalReportItem.getStop(), document);
-							fRT.writeTableToReportDoc();
-						} else {
-							FinalReportParagraph fRP = new FinalReportParagraph(docFile, start, stop);
+
+				if (erbContentItem != null && erbContentItem.getType() != null) {
+					if (erbContentItem.getType().contentEquals("outputForm")) {
+						File guidDataDir = fileHandler.getGUIDDataDirectory(app.getEngagementActionController().getProject(), app.getEngagementActionController().getCurrentGoal());
+						File guidDir = new File(guidDataDir + File.separator + erbContentItem.getGuid());
+						File outputFormFile = findOutputFormToOpen(guidDir);
+						if (outputFormFile != null) {
+							FinalReportKeyTakeaways fRKT = new FinalReportKeyTakeaways(outputFormFile);
 							XWPFParagraph contentParagraph = document.createParagraph();
 							XWPFRun contentRun = contentParagraph.createRun();
 							contentRun.setFontSize(14);
-							formatTextForDocx(fRP.readWordParagraph(), contentRun);
+							formatTextForDocx(fRKT.getKeyTakeawaysFormattedText(), contentRun);
+						}
+					} else if (erbContentItem.getType().contentEquals("supportingDoc")) {
+						String docName = erbContentItem.getShortName();
+						File supportingDocDir = fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
+						File docFile = new File(supportingDocDir + File.separator + docName);
+						if (docFile != null) {
+							String start = finalReportItem.getStart();
+							String stop = finalReportItem.getStop();
+							if (finalReportItem.getTableName() != null && finalReportItem.getTableName().trim().length() > 0) {
+								FinalReportTable fRT = new FinalReportTable(docFile, finalReportItem.getTableName(), finalReportItem.getStart(), finalReportItem.getStop(), document);
+								fRT.writeTableToReportDoc();
+							} else {
+								FinalReportParagraph fRP = new FinalReportParagraph(docFile, start, stop);
+								XWPFParagraph contentParagraph = document.createParagraph();
+								XWPFRun contentRun = contentParagraph.createRun();
+								contentRun.setFontSize(14);
+								formatTextForDocx(fRP.readWordParagraph(), contentRun);
+							}
+						}
+					} else if (erbContentItem.getType().contentEquals("uploadedItem")) {
+						File docFile = new File(erbContentItem.getGuid());
+						if (docFile != null && docFile.exists()) {
+							FinalReportUpload fRU = new FinalReportUpload(docFile, erbContentItem.getLongName());
+							XWPFParagraph contentParagraph = document.createParagraph();
+							fRU.createUploadRun(contentParagraph);
 						}
 					}
-				} else if (erbContentItem.getType().contentEquals("uploadedItem")) {
-					File docFile = new File(erbContentItem.getGuid());
-					if(docFile != null && docFile.exists()) {
-						FinalReportUpload fRU = new FinalReportUpload(docFile, erbContentItem.getLongName());
-						XWPFParagraph contentParagraph = document.createParagraph();
-						fRU.createUploadRun(contentParagraph);
+				} else {
+					if(finalReportItem.getId().contentEquals("193")) {
+						FinalReportExcel fRE = new FinalReportExcel(findIndicatorListFile(), document);
+						fRE.createTable();
 					}
-					
 				}
 			}
-		    
-			//Footer
-		    writeReportDocxFooter(document);
-		    
-		    document.write(out);
-		    out.close();
-		    document.close();
+
+			// Footer
+			writeReportDocxFooter(document);
+
+			document.write(out);
+			out.close();
+			document.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -534,7 +604,7 @@ public class FinalReportSelectionController implements Initializable {
 					setGraphic(null);
 				} else {
 					ERBContentItem erbContentItem = finalReportItemMap.get(item);
-					if (this.getTreeItem().isLeaf() && !erbUniqueContentItems.contains(erbContentItem) && !item.getId().contentEquals("002")) {
+					if (this.getTreeItem().isLeaf() && !erbUniqueContentItems.contains(erbContentItem) && !item.getId().contentEquals("002") && (item.getId().length() !=4)) {
 						CheckBox checkBox = new CheckBox();
 						checkBox.setOnAction(e -> treeViewCheckBoxClicked(checkBox, this.getTreeItem()));
 						checkBox.setSelected(item.isChecked);
@@ -546,6 +616,7 @@ public class FinalReportSelectionController implements Initializable {
 					} else {
 						setText(item.getDisplayName());
 						setGraphic(null);
+						setId(null);
 					}
 				}
 			}
@@ -632,256 +703,4 @@ public class FinalReportSelectionController implements Initializable {
 		}
 		return null;
 	}
-
-
-//	private void createFinalReport() {
-//		File goalDir = fileHandler.getGoalDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
-//		try {
-//			XWPFDocument reportDoc = new XWPFDocument();
-//			
-//			//1
-//			XWPFParagraph paragraph1 = reportDoc.createParagraph();
-//			String titleText1 = "Key Takeaways: Assess";
-//			createNewTitleRun(paragraph1,titleText1);
-//			XWPFRun contentRun1 = createNewContentRun(paragraph1, null);
-//			addNewLines(getAssessKeyTakeawaysText(), contentRun1);
-//			//2
-//			XWPFParagraph paragraph2 = reportDoc.createParagraph();
-//			String titleText2 = "Strategy Chart";
-//			createNewTitleRun(paragraph2, titleText2);
-//			createStrategyChart(reportDoc, goalDir);
-//
-//			//3
-//			XWPFParagraph paragraph3 = reportDoc.createParagraph();
-//			String titleText3 = "Reflection Diary";
-//			createNewTitleRun(paragraph3, titleText3);
-//			XWPFRun contentRun3 = createNewContentRun(paragraph3, null);
-//			addNewLines(getReflectionDiaryText(goalDir), contentRun3);
-//			
-//			//4
-//			XWPFParagraph paragraph4 = reportDoc.createParagraph();
-//			String titleText4 = "Quadrant Sorting";
-//			createNewTitleRun(paragraph4, titleText4);
-//			XWPFRun contentRun4 = createNewContentRun(paragraph4, null);
-//			addQuadrantDiagram(contentRun4);
-//			
-//			
-//			FileOutputStream out = new FileOutputStream(new File(goalDir + File.separator + "finalReport.docx"));
-//			reportDoc.write(out);
-//			reportDoc.close();
-//			out.close();
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//	
-	
-
-//	private String getReflectionDiaryText(File goalDir) {
-//		File fileToSearch = new File(goalDir.getPath() +  File.separator + "Supporting_DOC" + File.separator + "Reflection_Diary.docx");
-//		FinalReportParagraph fRP = new FinalReportParagraph(fileToSearch, "Plan Your Project Questions", "What to Do Next");
-//		String text = fRP.readWordParagraph();
-//		return text;
-//	}
-//	
-//	
-//	private void createStrategyChart(XWPFDocument reportDoc, File goalDir) {
-//		File fileToSearch = new File(goalDir.getPath() + File.separator + "Supporting_DOC" + File.separator +"Strategy_Chart.docx");
-//		FinalReportTable ft = new FinalReportTable(fileToSearch, "TableToRead", reportDoc);
-//		ft.createTableCopy();
-//	}
-//	
-//	
-//	private String getAssessKeyTakeawaysText() {
-//		File uploadsDirectory = fileHandler.getMyUploadsDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
-//		if (uploadsDirectory != null && uploadsDirectory.exists()) {
-//			for (File uploadedDir : uploadsDirectory.listFiles()) {
-//				for (File uploadFile : uploadedDir.listFiles()) {
-//					if (uploadFile.getName().contentEquals("Key_Takeaways__Assess.txt")) {
-//						FinalReportKeyTakeaways fRKT = new FinalReportKeyTakeaways(uploadFile);
-//						return fRKT.getKeyTakeawaysFormattedText();
-//					}
-//				}
-//			}
-//		}
-//		return null;
-//	}
-//	
-//	private void addQuadrantDiagram(XWPFRun contentRun) {
-//		FinalReportImage fRI = new FinalReportImage("SortingSnapshot", app);
-//		fRI.addImageToRun(contentRun);
-//	}
-	
-	
-	//////////PDF///////////////////////
-	
-//	@FXML
-//	public void createReportButtonAction() {
-//		try {
-//			File goalDir = fileHandler.getGoalDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal());
-//
-//			String reportDocPath = goalDir + File.separator + app.getEngagementActionController().getProject().getProjectCleanedName() + "_SummaryReport.pdf";
-//			PdfWriter writer = new PdfWriter(reportDocPath);
-//			PdfDocument pdfDoc = new PdfDocument(writer);
-//			pdfDoc.addNewPage();
-//			Document document = new Document(pdfDoc, PageSize.A4, false);
-//			AreaBreak pageAreaBreak = new AreaBreak();
-//
-//			
-//			//Cover Page
-//			writeReportPDFCoverPage(document);
-//			document.add(pageAreaBreak);
-//
-//			//Content Pages
-//			for (ERBContentItem erbContentItem : listView.getItems()) {
-//				String paragraphHeaderString = erbContentItem.getLongName();
-//				Paragraph paragraphHeader = new Paragraph(paragraphHeaderString);
-//				paragraphHeader.setFontSize(16);
-//				paragraphHeader.setBold();
-//				document.add(paragraphHeader);
-//				
-//				pageNumMap.put(erbContentItem, document.getRenderer().getCurrentArea().getPageNumber());
-//				
-//				if (erbContentItem.getType().contentEquals("outputForm")) {
-//					File guidDataDir = fileHandler.getGUIDDataDirectory(app.getEngagementActionController().getProject(), app.getEngagementActionController().getCurrentGoal());
-//					File guidDir = new File(guidDataDir + File.separator + erbContentItem.getGuid());
-//					File outputFormFile = findOutputFormToOpen(guidDir);
-//					if (outputFormFile != null) {
-//						FinalReportKeyTakeaways fRKT = new FinalReportKeyTakeaways(outputFormFile);
-//						Paragraph contentParagraph = new Paragraph(fRKT.getKeyTakeawaysFormattedText());
-//						contentParagraph.setFontSize(14);
-//						document.add(contentParagraph);
-//					}
-//				}
-//			}
-//			document.add(pageAreaBreak);
-//			
-//			//TOC
-//			writeReportPDFTableOfContents(pdfDoc, document);
-//			document.flush();
-//
-//			PdfPage page = pdfDoc.getPage(pdfDoc.getNumberOfPages());
-//			pdfDoc.movePage(page, 2);
-//		
-//			//Page numbers
-//			writeReportPDFFooter(pdfDoc, document);
-//						
-//			document.close();
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	private void writeReportPDFTableOfContents(PdfDocument pdfDoc, Document reportDoc) {
-//		
-//		Paragraph tocParagraph = new Paragraph("Table of Contents");
-//		tocParagraph.setFontSize(16);
-//		tocParagraph.setUnderline();
-//		tocParagraph.setTextAlignment(TextAlignment.CENTER);
-//		reportDoc.add(tocParagraph);
-//		
-//		Table table = new Table(2);
-//		table.useAllAvailableWidth();
-//
-//		for (ERBContentItem erbContentItem : listView.getItems()) {
-//			Cell headerCell = new Cell();
-//			headerCell.setBorder(null);
-//			Paragraph headerParagraph = new Paragraph(erbContentItem.getLongName());
-//			headerParagraph.setFontSize(14);
-//			headerParagraph.setBold();
-//			headerCell.add(headerParagraph);
-//			table.addCell(headerCell);			
-//
-//			Cell pageCell = new Cell();
-//			pageCell.setBorder(null);
-//			Paragraph pageParagraph = new Paragraph(String.valueOf(pageNumMap.get(erbContentItem) + 1));
-//			pageParagraph.setFontSize(14);
-//			pageParagraph.setBold();
-//			pageCell.add(pageParagraph);
-//			table.addCell(pageCell);
-//			
-//		}
-//		reportDoc.add(table);		
-//		
-//	}
-//
-//	private void writeReportPDFCoverPage(Document reportDoc) {
-//
-//		// Report Name
-//		String projectName = app.getEngagementActionController().getProject().getProjectName();
-//		String reportName = projectName + " Summary Report";
-//
-//		Paragraph reportNameParagraph = new Paragraph(reportName);
-//		reportNameParagraph.setTextAlignment(TextAlignment.CENTER);
-//		reportNameParagraph.setFontSize(22);
-//		reportDoc.add(reportNameParagraph);
-//
-//		Paragraph bP = new Paragraph("\n");
-//		reportDoc.add(bP);
-//
-//		// Date
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-//		LocalDate localDate = LocalDate.now();
-//		String date = dtf.format(localDate);
-//		String dateLabel = "Date:";
-//
-//		Paragraph dateLabelParagraph = new Paragraph(dateLabel);
-//		dateLabelParagraph.setTextAlignment(TextAlignment.CENTER);
-//		dateLabelParagraph.setFontSize(18);
-//		reportDoc.add(dateLabelParagraph);
-//
-//		Paragraph dateParagraph = new Paragraph(date);
-//		dateParagraph.setTextAlignment(TextAlignment.CENTER);
-//		dateParagraph.setFontSize(16);
-//		reportDoc.add(dateParagraph);
-//
-//		reportDoc.add(bP);
-//
-//		// Author
-//		String authorLabel = "Authors:";
-//
-//		Paragraph authorLabelParagraph = new Paragraph(authorLabel);
-//		authorLabelParagraph.setTextAlignment(TextAlignment.CENTER);
-//		authorLabelParagraph.setFontSize(18);
-//		reportDoc.add(authorLabelParagraph);
-//
-//	}
-//
-//	private void writeReportPDFFooter(PdfDocument pdfDoc, Document reportDoc) {
-//		int totalPages = reportDoc.getRenderer().getCurrentArea().getPageNumber();
-//		for (int i = 1; i <= totalPages; i++) {
-//			Paragraph footer = createFooter(totalPages);
-//			footer.setFixedPosition(i, 40, 40, 300);
-//			reportDoc.add(footer);
-//		}
-//	}
-//
-//	private Paragraph createFooter(int totalPages) {
-//		Paragraph p = new Paragraph();
-//		Text currentPage = new Text("");
-//		currentPage.setNextRenderer(new CurrentPageNumberRenderer(currentPage));
-//		p.add("Page ").add(currentPage).add(" of ").add(new Text(String.valueOf(totalPages)));
-//		return p;
-//	}
-//
-//	private static class CurrentPageNumberRenderer extends TextRenderer {
-//		public CurrentPageNumberRenderer(Text textElement) {
-//			super(textElement);
-//		}
-//
-//		@Override
-//		public LayoutResult layout(LayoutContext layoutContext) {
-//			int currentPageNumber = layoutContext.getArea().getPageNumber();
-//			setText(String.valueOf(currentPageNumber));
-//			return super.layout(layoutContext);
-//		}
-//
-//		@Override
-//		public IRenderer getNextRenderer() {
-//			return new CurrentPageNumberRenderer((Text) modelElement);
-//		}
-//	}
-
 }

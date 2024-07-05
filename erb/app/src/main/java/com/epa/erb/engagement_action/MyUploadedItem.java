@@ -62,6 +62,13 @@ public class MyUploadedItem {
 	public void setUploadedFrom(String uploadedFrom) {
 		this.uploadedFrom = uploadedFrom;
 	}
+	public String toString() {
+		return "File Name: " + fileName + "\n" + 
+				"File Number: " + fileNumber + "\n" +
+				"Modified Date: " + modifiedDate + "\n" + 
+				"Selected for Export: " + selectedForExport + "\n" +
+				"Uploaded From: " + uploadedFrom;
+	}
 	
 	public File getFile() {
 		FileHandler fileHandler = new FileHandler();

@@ -1,12 +1,26 @@
 package com.epa.erb.indicators;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import com.epa.erb.App;
 import com.epa.erb.utility.FileHandler;
 import javafx.fxml.FXML;
@@ -88,24 +102,125 @@ public class IndicatorSelection_InPersonController implements Initializable {
 	private void save() {
 		File indicatorsDir = createIndicatorsDir();
 		File inPersonCardSelectionFile = new File(indicatorsDir + File.separator + "CardSelection_InPerson.txt");
-		writeSelectedIndicators(inPersonCardSelectionFile);
+		ArrayList<String> ids = writeSelectedIndicators(inPersonCardSelectionFile);
+		if(ids != null) createSkimmedCopyOfIndicatorsListXLSX(ids);
+	}
+	
+	private void createSkimmedCopyOfIndicatorsListXLSX(ArrayList<String> ids) {
+		try {
+			
+			ids.add(0, "0");
+			String fileName = "Indicators_List.xlsx";
+			XSSFWorkbook newWorkbook = new XSSFWorkbook();
+			XSSFSheet newSheet = newWorkbook.createSheet("Indicators");
+			
+			File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
+			FileInputStream inputStream = new FileInputStream(indicatorWorkbookFile.getPath());
+			XSSFWorkbook workbook = (XSSFWorkbook) WorkbookFactory.create(inputStream);
+			Sheet sheet = workbook.getSheet("Indicator Menu");
+			int destId = 0;
+			for(String idString : ids) {
+				int id = Integer.parseInt(idString);
+				XSSFRow sourceRow= null;
+				if(id == 0) {
+					sourceRow = (XSSFRow) sheet.getRow(id);
+
+				}else {
+					sourceRow = (XSSFRow) sheet.getRow(id+1);
+
+				}
+				XSSFRow newRow = newSheet.createRow(destId);
+				
+				 for (int i = 0; i < sourceRow.getLastCellNum(); i++) {
+			            // Grab a copy of the old/new cell
+			            XSSFCell oldCell = sourceRow.getCell(i);
+			            XSSFCell newCell = newRow.createCell(i);
+			            // If the old cell is null jump to next cell
+			            if (oldCell == null) {
+			                continue;
+			            }
+
+			            // Copy style from old cell and apply to new cell
+			            XSSFCellStyle newCellStyle = newWorkbook.createCellStyle();
+			            newCellStyle.cloneStyleFrom(oldCell.getCellStyle());
+			            newCell.setCellStyle(newCellStyle);
+
+			            // If there is a cell comment, copy
+			            if (oldCell.getCellComment() != null) {
+			                newCell.setCellComment(oldCell.getCellComment());
+			            }
+
+			            // If there is a cell hyperlink, copy
+			            if (oldCell.getHyperlink() != null) {
+			            	newCell.setCellValue(oldCell.getHyperlink().toString());
+			                //newCell.setHyperlink(oldCell.getHyperlink());
+			            }
+
+			            // Set the cell data type
+			            newCell.setCellType(oldCell.getCellType());
+
+			            // Set the cell data value
+			            switch (oldCell.getCellType()) {
+			            case BLANK:// Cell.CELL_TYPE_BLANK:
+			                newCell.setCellValue(oldCell.getStringCellValue());
+			                break;
+			            case BOOLEAN:
+			                newCell.setCellValue(oldCell.getBooleanCellValue());
+			                break;
+			            case FORMULA:
+			                newCell.setCellFormula(oldCell.getCellFormula());
+			                break;
+			            case NUMERIC:
+			                newCell.setCellValue(oldCell.getNumericCellValue());
+			                break;
+			            case STRING:
+			                newCell.setCellValue(oldCell.getRichStringCellValue());
+			                break;
+			            default:
+			                break;
+			            }
+			        }
+				
+				destId++;
+			}
+			
+			OutputStream os = new FileOutputStream(getIndicatorsDir() + File.separator + fileName);
+			newWorkbook.write(os);
+			os.close();
+			newWorkbook.close();
+			inputStream.close();			
+			
+		} catch (IOException | EncryptedDocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	private File getIndicatorsDir() {
+		return fileHandler.getIndicatorsDirectory(app.getSelectedProject(),app.getEngagementActionController().getCurrentGoal());
 	}
 
-	public void writeSelectedIndicators(File inPersonCardSelectionFile) {
+	public ArrayList<String> writeSelectedIndicators(File inPersonCardSelectionFile) {
 		try {
+			ArrayList<String> selectedIds = new ArrayList<String>();
 			PrintWriter printWriter = new PrintWriter(inPersonCardSelectionFile);
 			for (int i = 0; i < indicatorVBox.getChildren().size(); i++) {
 				HBox child = (HBox) indicatorVBox.getChildren().get(i);
 				CheckBox cBox = (CheckBox) child.getChildren().get(0);
 				if (cBox != null && cBox.isSelected()) {
 					printWriter.println(cBox.getId());
+					selectedIds.add(cBox.getId());
 				}
 			}
 			printWriter.close();
+			return selectedIds;
 		} catch (FileNotFoundException e) {
 			logger.log(Level.FINE, "Failed to write selected indicators.");
 			logger.log(Level.FINER, "Failed to write selected indicators: " + e.getStackTrace());
 		}
+		return null;
 
 	}
 

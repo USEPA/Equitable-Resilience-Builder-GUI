@@ -60,6 +60,8 @@ public class FinalReportTable {
 
 		int startReading = Integer.parseInt(start);
 		int stopReading = Integer.parseInt(stop);
+		
+		int numColumns = stopReading - startReading;
 
 		XWPFTable newTable = reportDoc.createTable();
 		int originalNumRows = table.getRows().size();
@@ -81,16 +83,18 @@ public class FinalReportTable {
 					text = row.getCell(i).getText();
 					cellSize = row.getCell(i).getWidth();
 					if (text.trim().length() > 0) {
+						try {
 						cellBold = row.getCell(i).getParagraphs().get(0).getRuns().get(0).isBold();
 						cellCaps = row.getCell(i).getParagraphs().get(0).getRuns().get(0).isCapitalized();
 						font = row.getCell(i).getParagraphs().get(0).getRuns().get(0).getFontFamily();
 						if (row.getCell(i).getParagraphs().get(0).getRuns().get(0).getFontSizeAsDouble() != null) {
 							fontSize = row.getCell(i).getParagraphs().get(0).getRuns().get(0).getFontSizeAsDouble();
 						}
+						}catch(Exception e) {
+						}
 					}
 					newCell.setWidth(String.valueOf(cellSize));
 				}
-
 				XWPFParagraph paragraph = newRow.getCell(i).addParagraph();
 				XWPFRun run = paragraph.createRun();
 				run.setText(text);
@@ -104,6 +108,12 @@ public class FinalReportTable {
 
 		if (newTable.getRows().size() != originalNumRows) {
 			newTable.removeRow(0);
+		}
+		int newTableColumns = newTable.getRow(0).getTableCells().size();
+		if(newTableColumns != numColumns) {
+			for(XWPFTableRow row: newTable.getRows()) {
+				row.removeCell(numColumns);
+			}
 		}
 	}
 
