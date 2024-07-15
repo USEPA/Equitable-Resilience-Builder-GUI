@@ -246,12 +246,20 @@ public class FinalReportSelectionController implements Initializable {
 			if (itemClicked != null) {
 				FinalReportItem clickedFinalReportItem = (FinalReportItem) itemClicked;
 				ERBContentItem clickedERBContentItem = finalReportItemMap.get(clickedFinalReportItem);
+				//Indicator File
 				if(clickedFinalReportItem.getId().contentEquals("193")) {
 					File fileToOpen = findIndicatorListFile();
 					if(fileToOpen != null) {
 						fileHandler.openFileOnDesktop(fileToOpen);
+						return;
+					}else {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setHeaderText(null);
+						alert.setContentText("There is no saved data for this item yet.");
+						alert.setTitle("Summary Report Item");
+						alert.showAndWait();
+						return;
 					}
-					return;
 				}
 				String erbType = clickedERBContentItem.getType();
 				if (erbType.contentEquals("outputForm")) {
@@ -293,8 +301,8 @@ public class FinalReportSelectionController implements Initializable {
 		if(selectedIndicatorsListFile.exists()) {
 			return selectedIndicatorsListFile;
 		} else {
-			File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
-			return indicatorWorkbookFile;
+//			File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
+			return null;
 		}
 	}
 
