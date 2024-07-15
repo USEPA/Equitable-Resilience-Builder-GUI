@@ -1,6 +1,7 @@
 # Equitable Resilience Builder
 
 ## Introduction
+The Equitable Resilience Builder (ERB) is an application that supports communities in resilience planning with a focus on equity. It engages users in a guided process to inclusively assess local hazards, equity, and the resilience of built, natural, and social environment systems. It is intended to be used by a core team that could include local government and community organizations. The ERB is organized into five sections: plan, engage, assess, strategize action, and move forward. Results can be used to collaboratively prioritize actions to build community resilience to disasters and climate change in an equitable way. 
 
 ## Tool Guide
 US EPA Equitable Resilience Builder Website:
@@ -19,9 +20,7 @@ dev
 erb: Contains all project files and source code
 
 erb_supporting_docs: Contains supporting documents for the ERB code and tool.
-- Packaging_Resources: Contains information on how to package the ERB GUI from Eclipse IDE.
-- User_Guide: Contains past and current user guides for the ERB.
-- Test_Plan: Contains past and current test plans for the ERB.
+- Code_Resources/ERB/JavaScript: Contains sandbox code for JavaScript elements of the ERB.
   
 ### Cloning
 The most recently released version of the Equitable Resilience Builder will be available on the 'main' branch of the repository. Use the following command to clone the main branch.
@@ -34,7 +33,7 @@ git clone -b main https://github.com/USEPA/Equitable-Resilience-Builder-GUI.git
 Software developers interested in contributing to the project are encouraged to create a fork of the project and submit a pull request using GitHub. Pull requests will be reviewed by the core development team.
 
 ### Setting Expectations
-The Equitable Resilience Builder was built using Human Centered Design. We highly encourage any new code changes are tested with stakeholders of the ERB tool.
+The ERB was created using a human-centered design approach to make sure that the tool meets the needs of its target audience or user groups. The ERB team did discovery, ideation, prototyping, and usability testing research on the different components of the tool throughout its development. They are continuing to evaluate the tool as it is deployed. We encourage users of the code posted here to employ human-centered design or participatory design techniques as they modify the code to ensure that it meets the needs of the intended user groups.
 
 ## License Information
 ERB is released under the MIT license. See LICENSE.md for more details.
@@ -50,6 +49,25 @@ Use the above link to access the Equitable Resilience Builder User Guide.
 
 ### Contact
 
+For questions related to the ERB tool or GUI, please contact: CESER@epa.gov
+
 ### FAQS
 
+For more information about the tool, see: [https://www.epa.gov/emergency-response-research/equitable-resilience-builder](https://www.epa.gov/emergency-response-research/equitable-resilience-builder)
+
 ## Citing ERB
+
+The ERB tool and user guide: 
+
+Maxwell, K., B. Kiessling, M. Shacklette, E. Eisenhauer, M. Fry, S. Julius, M. Matsler, L. Oliver, AND I. Reilly. (2023). Equitable Resilience Builder (ERB 1.0) User Guide. U.S. Environmental Protection Agency, Washington, DC, EPA/600/R-23/355.
+
+Related research:
+
+Fry, M., K. Maxwell, E. Eisenhauer, S. Julius, B. Kiessling, M. Matsler, M. Ollove, S. Romanoski (2023). Centering equity in the development of a community resilience planning resource. Climate Risk Management 40:100520.
+
+Eisenhauer, E. and J. Finley. (2022). Equitable Resilience to Flooding: A resource for practitioners on understanding economic, health, and social vulnerabilities and inequities in response and recovery. U.S. Environmental Protection Agency, Washington DC, EPA/600/R-23/214.
+
+Maxwell, K. (2018). A coupled human-natural systems framework of community resilience. Journal of Natural Resources Policy Research 8 (1-2): 110-130. 
+EPA (2017). Evaluating Urban Resilience to Climate Change: A Multi-Sector Approach. Washington, D.C. EPA/600/R-16/365F.
+
+
