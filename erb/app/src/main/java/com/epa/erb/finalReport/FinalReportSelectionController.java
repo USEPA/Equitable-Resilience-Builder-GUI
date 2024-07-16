@@ -12,6 +12,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.apache.poi.xwpf.model.XWPFHeaderFooterPolicy;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -55,15 +58,18 @@ import javafx.stage.Stage;
 
 public class FinalReportSelectionController implements Initializable {
 
+	private Logger logger;
+	
 	private App app;
-
 	public FinalReportSelectionController(App app) {
 		this.app = app;
+		
+		logger = app.getLogger();
 	}
 
 	XMLManager xmlManager;
 	ArrayList<MyUploadedItem> uploadedItems;
-	FileHandler fileHandler = new FileHandler();
+	FileHandler fileHandler = new FileHandler(app);
 	ArrayList<ERBContentItem> erbUniqueContentItems;
 	ArrayList<ERBContentItem> erbWorksheetContentItems;
 	ArrayList<FinalReportItem> treeItems = new ArrayList<FinalReportItem>();
@@ -228,7 +234,8 @@ public class FinalReportSelectionController implements Initializable {
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to parse about upload file.");
+			logger.log(Level.FINER, "Failed to parse about upload file: " + e.getStackTrace());
 		}
 		return uploadedFrom;
 	}
@@ -301,7 +308,6 @@ public class FinalReportSelectionController implements Initializable {
 		if(selectedIndicatorsListFile.exists()) {
 			return selectedIndicatorsListFile;
 		} else {
-//			File indicatorWorkbookFile = new File(fileHandler.getSupportingDOCDirectory(app.getSelectedProject(), app.getEngagementActionController().getCurrentGoal()) + File.separator + "Indicators_List.xlsx");
 			return null;
 		}
 	}
@@ -355,7 +361,7 @@ public class FinalReportSelectionController implements Initializable {
 						File guidDir = new File(guidDataDir + File.separator + erbContentItem.getGuid());
 						File outputFormFile = findOutputFormToOpen(guidDir);
 						if (outputFormFile != null) {
-							FinalReportKeyTakeaways fRKT = new FinalReportKeyTakeaways(outputFormFile);
+							FinalReportKeyTakeaways fRKT = new FinalReportKeyTakeaways(outputFormFile, app);
 							XWPFParagraph contentParagraph = document.createParagraph();
 							XWPFRun contentRun = contentParagraph.createRun();
 							contentRun.setFontSize(14);
@@ -369,10 +375,10 @@ public class FinalReportSelectionController implements Initializable {
 							String start = finalReportItem.getStart();
 							String stop = finalReportItem.getStop();
 							if (finalReportItem.getTableName() != null && finalReportItem.getTableName().trim().length() > 0) {
-								FinalReportTable fRT = new FinalReportTable(docFile, finalReportItem.getTableName(), finalReportItem.getStart(), finalReportItem.getStop(), document);
+								FinalReportTable fRT = new FinalReportTable(docFile, finalReportItem.getTableName(), finalReportItem.getStart(), finalReportItem.getStop(), document, app);
 								fRT.writeTableToReportDoc();
 							} else {
-								FinalReportParagraph fRP = new FinalReportParagraph(docFile, start, stop);
+								FinalReportParagraph fRP = new FinalReportParagraph(docFile, start, stop, app);
 								XWPFParagraph contentParagraph = document.createParagraph();
 								XWPFRun contentRun = contentParagraph.createRun();
 								contentRun.setFontSize(14);
@@ -389,7 +395,7 @@ public class FinalReportSelectionController implements Initializable {
 					}
 				} else {
 					if(finalReportItem.getId().contentEquals("193")) {
-						FinalReportExcel fRE = new FinalReportExcel(findIndicatorListFile(), document);
+						FinalReportExcel fRE = new FinalReportExcel(findIndicatorListFile(), document, app);
 						fRE.createTable();
 					}
 				}
@@ -403,7 +409,8 @@ public class FinalReportSelectionController implements Initializable {
 			document.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to create summary report.");
+			logger.log(Level.FINER, "Failed to create summary report: " + e.getStackTrace());
 		}
 	}
 
@@ -423,7 +430,8 @@ public class FinalReportSelectionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to load FinalReportOrdering.fxml.");
+			logger.log(Level.FINER, "Failed to load FinalReportOrdering.fxml: " + e.getStackTrace());
 		}
 	}
 

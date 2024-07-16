@@ -25,7 +25,7 @@ public class WorksheetIndexController implements Initializable{
 		this.goal = goal;
 		this.project = project;
 		
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML
@@ -61,6 +61,10 @@ public class WorksheetIndexController implements Initializable{
 			}
 		}
 		return files;
+	}
+
+	public App getApp() {
+		return app;
 	}
 
 	public Project getProject() {

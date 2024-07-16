@@ -6,14 +6,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.epa.erb.App;
+
 public class FinalReportKeyTakeaways {
 
+	private Logger logger;
+	
+	private App app;
 	private File keyTakeawaysFile;
-	public FinalReportKeyTakeaways(File keyTakeawaysFile) {
+	public FinalReportKeyTakeaways(File keyTakeawaysFile, App app) {
+		this.app = app;
 		this.keyTakeawaysFile = keyTakeawaysFile;
+		
+		logger = app.getLogger();
 	}
 	
 	public LinkedHashMap<String, ArrayList<String>> getKeyTakeawaysQRMap() {
@@ -45,7 +55,8 @@ public class FinalReportKeyTakeaways {
 			scanner.close();
 			return qHashMap;
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to get KeyTakeaways QR Map.");
+			logger.log(Level.FINER, "Failed to get KeyTakeaways QR Map: " + e.getStackTrace());
 			return null;
 		}
 	}
@@ -73,6 +84,10 @@ public class FinalReportKeyTakeaways {
 
 		return keyTakeawaysText;
 	}
-	
+
+	public App getApp() {
+		return app;
+	}
+
 	
 }

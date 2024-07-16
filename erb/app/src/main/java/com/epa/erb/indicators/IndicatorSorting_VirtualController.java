@@ -52,7 +52,7 @@ public class IndicatorSorting_VirtualController implements Initializable {
 		this.cards = cards;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML

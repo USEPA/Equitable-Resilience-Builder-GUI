@@ -39,7 +39,7 @@ public class ERBContainerController implements Initializable {
 		this.app = app;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 
 	@FXML
@@ -61,17 +61,12 @@ public class ERBContainerController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		fillImageViews();
 		populateFAQMenu();
 		populateAboutMenu();
 		populateResourceMenu();
 		populateBreadCrumbBar();
-		logger.log(Level.INFO, "TEST 1");
 
 		rectangle2.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
-	}
-
-	private void fillImageViews() {
 	}
 
 	private void populateResourceMenu() {
@@ -160,8 +155,7 @@ public class ERBContainerController implements Initializable {
 	public VBox loadMainFormContentController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/MainForm.fxml"));
-			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse,
-					app.getEngagementActionController());
+			MainFormController formContentController = new MainFormController(app, xmlContentFileToParse, app.getEngagementActionController());
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;
@@ -175,8 +169,7 @@ public class ERBContainerController implements Initializable {
 	public VBox loadAlternativeFormContentController(File xmlContentFileToParse) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/AlternativeForm.fxml"));
-			AlternativeFormController formContentController = new AlternativeFormController(app, xmlContentFileToParse,
-					app.getEngagementActionController());
+			AlternativeFormController formContentController = new AlternativeFormController(app, xmlContentFileToParse, app.getEngagementActionController());
 			fxmlLoader.setController(formContentController);
 			VBox root = fxmlLoader.load();
 			return root;

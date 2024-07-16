@@ -25,7 +25,7 @@ public class Goal {
 		this.goalDescription = goalDescription;
 		this.listOfSelectedGoalCategories = listOfSelectedGoalCategories;
 		
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	public void setContentItems(Project project) {

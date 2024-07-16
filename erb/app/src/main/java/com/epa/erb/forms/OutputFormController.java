@@ -49,7 +49,7 @@ public class OutputFormController extends FormController implements Initializabl
 		
 		logger = app.getLogger();
 		xmlManager = new XMLManager(app);
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML

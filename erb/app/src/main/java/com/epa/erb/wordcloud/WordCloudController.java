@@ -82,7 +82,7 @@ public class WordCloudController implements Initializable {
 		this.erbContentItem = erbContentItem;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 
 	@FXML

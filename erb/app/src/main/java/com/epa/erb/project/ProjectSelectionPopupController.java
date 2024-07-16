@@ -37,7 +37,7 @@ public class ProjectSelectionPopupController implements Initializable{
 	
 	@FXML
 	public void okButtonAction() {
-		Project selectedProject = projectComboBox.getSelectionModel().getSelectedItem();
+		projectComboBox.getSelectionModel().getSelectedItem();
 		formContentController.closeProjectPopupStage();
 	}
 	

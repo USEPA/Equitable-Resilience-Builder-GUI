@@ -16,8 +16,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -52,16 +50,14 @@ public class ERBLandingController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		app.getErbContainerController().removeHeaderHBox();
 		app.getErbContainerController().removeERBAboutHBox();
-		fillImageViews();
+		
+		addImageViewSizeListeners();
 		
         rectangle2.widthProperty().bind(vBox.widthProperty());
         epaLogRectangle.widthProperty().bind(vBox.widthProperty().subtract(epaLogoImageView.getFitWidth() + 110));
-
-        exploreHyperlink.setTooltip(new Tooltip("\"Explore mode\" is a way of checking out the tool. You are not able to save any work."));
-
 	}
 	
-	private void fillImageViews() {
+	private void addImageViewSizeListeners() {
 		landingImageView1VBox.widthProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView1.setFitWidth(newVal.doubleValue());
 		});
@@ -82,14 +78,11 @@ public class ERBLandingController implements Initializable{
 		landingImageView3VBox.heightProperty().addListener((obs, oldVal, newVal) -> {
 			landingImageView3.setFitHeight(newVal.doubleValue());
 		});
-		
-		erbMiniImageView.setImage(new Image(getClass().getResourceAsStream("/bridge_90_90.png")));
-
 	}
 		
 	@FXML
 	public void exampleProjectsHyperlinkAction() {
-		FileHandler fileHandler = new FileHandler();
+		FileHandler fileHandler = new FileHandler(app);
 		File supportingDocDir = fileHandler.getTempDirectory();
 		File fileToOpen = new File(supportingDocDir + File.separator + "Examples.pdf");
 		fileHandler.openFileOnDesktop(fileToOpen);

@@ -50,7 +50,7 @@ public class ProjectSelectionController implements Initializable{
 		ArrayList<Project> projects = app.getProjects();
 		for (Project project : projects) {
 			if(!project.getProjectCleanedName().contentEquals("Explore")) {
-			projectsListView.getItems().add(project);
+				projectsListView.getItems().add(project);
 			}
 		}
 	}

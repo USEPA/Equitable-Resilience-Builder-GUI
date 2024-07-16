@@ -18,7 +18,7 @@ public class MyBreadCrumbBar extends BreadCrumbBar<String> {
 	}
 		
 	public void initMyBreadCrumbBar(String crumb, String id) {
-		 setOnCrumbAction(e->breadCrumbSelected(e.getSelectedCrumb()));
+		setOnCrumbAction(e->breadCrumbSelected(e.getSelectedCrumb()));
 		TreeItem<String> breadCrumb = new TreeItem<String> (crumb.toUpperCase());
 		setSelectedCrumb(breadCrumb);
 		breadCrumbIdHashMap.put(breadCrumb, id);

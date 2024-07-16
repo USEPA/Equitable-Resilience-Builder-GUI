@@ -149,4 +149,8 @@ public class IndicatorWorkbookParser extends WorkbookParser {
 		return indicatorSheet;
 	}
 
+	public App getApp() {
+		return app;
+	}
+
 }

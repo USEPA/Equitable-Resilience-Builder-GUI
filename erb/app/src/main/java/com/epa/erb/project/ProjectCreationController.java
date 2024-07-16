@@ -33,7 +33,7 @@ public class ProjectCreationController implements Initializable {
 	public ProjectCreationController(App app) {
 		this.app = app;
 		
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML

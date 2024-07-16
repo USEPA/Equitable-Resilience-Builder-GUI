@@ -40,11 +40,11 @@ public class App extends Application {
 	private Project selectedProject;
 	private ArrayList<Project> projects;
 	private ArrayList<IndicatorCard> indicatorCards;
-	private FileHandler fileHandler = new FileHandler();
 	private ERBContainerController erbContainerController;
 	private ArrayList<GoalCategory> availableGoalCategories;	
 	private ArrayList<ERBContentItem> availableERBContentItems;
 	private EngagementActionController engagementActionController;
+	
 	private static Logger logger;
 	
 	@Override
@@ -62,6 +62,7 @@ public class App extends Application {
 	}
 	
 	private void setupERBFileDirectory() {
+		FileHandler fileHandler = new FileHandler(this);
 		File erbDirectory = fileHandler.getEquitableResilienceBuilderDirectory();
 		if(!erbDirectory.exists()) {
 			erbDirectory.mkdir();
@@ -79,6 +80,7 @@ public class App extends Application {
 	}
 	
 	private void createExploreProject() {
+		FileHandler fileHandler = new FileHandler(this);
 		File projectsDirectory = fileHandler.getProjectsDirectory();
 		if(projectsDirectory.exists()) {
 			File exploreProjectDirectory = new File(projectsDirectory.getPath() + File.separator + "Explore");
@@ -86,11 +88,6 @@ public class App extends Application {
 				exploreProjectDirectory.mkdir();
 				ProjectCreationController projectCreation = new ProjectCreationController(this);
 				projectCreation.createExploreProject();
-				
-				
-//				File sourceDir = fileHandler.getExploreProjectDirFromResources();
-//				File destDir = exploreProjectDirectory;
-//				fileHandler.copyDirectory(sourceDir, destDir);
 			}
 		}
 	}
@@ -162,7 +159,6 @@ public class App extends Application {
 			root.setPrefHeight(getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.log(Level.FINE, "Exception error loading ERBContainer.fxml");
 			logger.log(Level.FINER, "Exception error loading ERBContainer.fxml: " + e.getStackTrace());
 			return null;
@@ -186,8 +182,8 @@ public class App extends Application {
 
 	private void erbCloseRequested() {
 		if (engagementActionController != null) {
-			FileHandler fileHandler = new FileHandler();
 			XMLManager xmlManager = new XMLManager(this);
+			FileHandler fileHandler = new FileHandler(this);
 			Project project = engagementActionController.getProject();
 			Goal goal = engagementActionController.getCurrentGoal();
 			xmlManager.writeGoalMetaXML(fileHandler.getGoalMetaXMLFile(project, goal),engagementActionController.getListOfUniqueERBContentItems());
@@ -205,16 +201,30 @@ public class App extends Application {
 	}
 
 	private void readAndStoreData() {
-		readAndStoreAvailableContent();
-		readAndStoreAvailableGoalCategories();
-		readAndStoreProjects();
+		availableERBContentItems = readAndStoreAvailableContent();
+		availableGoalCategories = readAndStoreAvailableGoalCategories();
+		projects = readAndStoreProjects();
 	}
 	
-	private void readAndStoreAvailableContent() {
+	private ArrayList<ERBContentItem> readAndStoreAvailableContent() {
 		XMLManager xmlManager = new XMLManager(this);
-		FileHandler fileHandler = new FileHandler();
+		FileHandler fileHandler = new FileHandler(this);
 		File contentFile = fileHandler.getAvailableContentFileFromResources();
-		availableERBContentItems = xmlManager.parseContentXML(contentFile);
+		return xmlManager.parseContentXML(contentFile);
+	}
+	
+	private ArrayList<GoalCategory> readAndStoreAvailableGoalCategories() {
+		XMLManager xmlManager = new XMLManager(this);
+		FileHandler fileHandler = new FileHandler(this);
+		File goalCategoriesFile = fileHandler.getGoalCategoriesFileFromResources();
+		return xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
+	}
+
+	private ArrayList<Project> readAndStoreProjects() {
+		XMLManager xmlManager = new XMLManager(this);
+		FileHandler fileHandler = new FileHandler(this);
+		File projectsDirectory = fileHandler.getProjectsDirectory();
+		return xmlManager.parseAllProjects(projectsDirectory );
 	}
 	
 	public ERBContentItem getERBContentItemWorksheet(String id){
@@ -225,6 +235,7 @@ public class App extends Application {
 				}
 			}
 		}
+		logger.log(Level.WARNING, "Null ERBContentItemWorksheet. Check this.");
 		return null;
 	}
 	
@@ -252,20 +263,6 @@ public class App extends Application {
 		return null;
 	}
 
-	private void readAndStoreAvailableGoalCategories() {
-		XMLManager xmlManager = new XMLManager(this);
-		FileHandler fileHandler = new FileHandler();
-		File goalCategoriesFile = fileHandler.getGoalCategoriesFileFromResources();
-		availableGoalCategories = xmlManager.parseGoalCategoriesXML(goalCategoriesFile);
-	}
-
-	private void readAndStoreProjects() {
-		XMLManager xmlManager = new XMLManager(this);
-		FileHandler fileHandler = new FileHandler();
-		File projectsDirectory = fileHandler.getProjectsDirectory();
-		projects = xmlManager.parseAllProjects(projectsDirectory );
-	}
-	
 	public Project getExploreProject() {
 		updateAvailableProjectsList();
 		for(Project project: projects) {

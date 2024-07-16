@@ -1,27 +1,11 @@
 package com.epa.erb.indicators;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import com.epa.erb.App;
 import com.epa.erb.utility.FileHandler;
 
@@ -35,7 +19,7 @@ public class IndicatorSaveDataParser {
 		this.app = app;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 
 	public ArrayList<String> getSavedSelectedIndicatorIds_InPerson() {
@@ -135,7 +119,4 @@ public class IndicatorSaveDataParser {
 	private File getIndicatorsDir() {
 		return fileHandler.getIndicatorsDirectory(app.getSelectedProject(),app.getEngagementActionController().getCurrentGoal());
 	}
-	
-	
-
 }

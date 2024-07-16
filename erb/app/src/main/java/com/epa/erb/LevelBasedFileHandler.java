@@ -44,8 +44,6 @@ public class LevelBasedFileHandler extends FileHandler {
 		throw new UnsupportedOperationException("Can't change after construction!");
 	}
 
-	// This is the important part that makes it work
-	// it also breaks the contract in the JavaDoc for FileHandler.setLevel()
 	@Override
 	public void publish(final LogRecord logRecord) {
 		if (logRecord.getLevel().equals(super.getLevel())) {

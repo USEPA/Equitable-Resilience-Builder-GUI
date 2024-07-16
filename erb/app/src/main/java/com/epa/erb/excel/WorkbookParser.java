@@ -28,7 +28,6 @@ public class WorkbookParser {
 		} catch (Exception e) {
 			logger.log(Level.FINE, "Failed to get XSSFWorkbook.");
 			logger.log(Level.FINER, "Failed to get XSSFWorkbook: " + e.getStackTrace());
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -131,6 +130,9 @@ public class WorkbookParser {
 			}
 		}
 		return columnValues;
-	} 
+	}
 
+	public App getApp() {
+		return app;
+	} 
 }

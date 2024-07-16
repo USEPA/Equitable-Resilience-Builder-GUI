@@ -3,6 +3,9 @@ package com.epa.erb.finalReport;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -12,6 +15,8 @@ import com.epa.erb.utility.FileHandler;
 
 public class FinalReportImage {
 	
+	private Logger logger;
+	
 	private App app;
 	private String fileName;
 	private FileHandler fileHandler;
@@ -19,7 +24,9 @@ public class FinalReportImage {
 	public FinalReportImage(String fileName, App app) {
 		this.fileName = fileName;
 		this.app = app;
-		fileHandler = new FileHandler();
+		
+		fileHandler = new FileHandler(app);
+		logger = app.getLogger();
 	}
 	
 	private File getDiagram() {
@@ -46,7 +53,8 @@ public class FinalReportImage {
 			int height = 250; 
 			contentRun.addPicture(imageData, imageType, imageFileName,Units.toEMU(width), Units.toEMU(height));
 		} catch (IOException | InvalidFormatException e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to add image to run.");
+			logger.log(Level.FINER, "Failed to add image to run: " + e.getStackTrace());
 		} 
 	}
 

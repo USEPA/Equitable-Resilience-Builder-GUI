@@ -50,7 +50,7 @@ public class MyPortfolioController implements Initializable {
 		
 		logger = app.getLogger();
 		xmlManager = new XMLManager(app);
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML
@@ -83,7 +83,6 @@ public class MyPortfolioController implements Initializable {
 				ArrayList<MyUploadedItem> items = hash.get(xmlSection);
 				for(MyUploadedItem uT:items) {
 					tableView.getItems().add(uT);
-
 				}		
 			}
 		}
@@ -155,7 +154,6 @@ public class MyPortfolioController implements Initializable {
 		hash.put(uploadedERBContentItem.getShortName(), getListOfUserUploadedItems());
 		TreeItem<String> uploadedTreeItem = new TreeItem<String>(uploadedERBContentItem.getShortName());
 		rootTreeItem.getChildren().add(uploadedTreeItem);
-		
 	}
 	
 	private ArrayList<MyUploadedItem> getListOfUserUploadedItems(){

@@ -241,7 +241,7 @@ public class XMLManager {
 	public HashMap<String, ArrayList<HBox>> parseMainFormContentXML(File xmlFile,MainFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
-				FileHandler fileHandler = new FileHandler();
+				FileHandler fileHandler = new FileHandler(app);
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -423,7 +423,6 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				e.printStackTrace();
 				logger.log(Level.FINE, "Failed to parse main form content.");
 				logger.log(Level.FINER, "Failed to parse main form content: " + e.getStackTrace());
 			}
@@ -436,7 +435,7 @@ public class XMLManager {
 			AlternativeFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
-				FileHandler fileHandler = new FileHandler();
+				FileHandler fileHandler = new FileHandler(app);
 
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -1129,9 +1128,5 @@ public class XMLManager {
 
 	public App getApp() {
 		return app;
-	}
-
-	public void setApp(App app) {
-		this.app = app;
 	}
 }

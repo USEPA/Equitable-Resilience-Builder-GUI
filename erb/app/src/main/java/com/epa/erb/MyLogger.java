@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.epa.erb.utility.FileHandler;
+import com.epa.erb.utility.Constants;
 
 public class MyLogger extends Logger{
 		
@@ -16,8 +15,8 @@ public class MyLogger extends Logger{
 	}
 	
 	private void initLogger() {
-		FileHandler fileHandler = new FileHandler();
-		File pathToLogDir = fileHandler.getLogsDirectory();
+		Constants constants = new Constants();
+		File pathToLogDir = new File(constants.getPathToERBLogsDirectory());
 		if (pathToLogDir != null) {
 			try {
 				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "severe.log",true, Level.SEVERE));
@@ -27,10 +26,7 @@ public class MyLogger extends Logger{
 				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "error_details.log", true, Level.FINER));
 			} catch (SecurityException | IOException e) {
 				System.out.println("Logger init exception. Cannot use logger.");
-				e.printStackTrace();
 			}
-		} else {
-			System.out.println("Path to log dir is null. Cannot use logger");
 		}
 	}
 	

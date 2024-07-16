@@ -48,7 +48,7 @@ public class IndicatorSelection_VirtualController implements Initializable {
 		this.iCC = iCC;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML
@@ -142,7 +142,6 @@ public class IndicatorSelection_VirtualController implements Initializable {
 		File virtualCardSelectionFile = new File(indicatorsDir + File.separator + "CardSelection_Virtual.txt");
 		ArrayList<String> ids = writeSelectedIndicators(virtualCardSelectionFile);
 		if(ids != null) createSkimmedCopyOfIndicatorsListXLSX(ids);
-
 	}
 	
 	private void createSkimmedCopyOfIndicatorsListXLSX(ArrayList<String> ids) {
@@ -230,8 +229,8 @@ public class IndicatorSelection_VirtualController implements Initializable {
 			inputStream.close();			
 			
 		} catch (IOException | EncryptedDocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to create skimmed copy of indicators list.");
+			logger.log(Level.FINER, "Failed to create skimmed copy of indicators list: " + e.getStackTrace());
 		}
 		
 	}

@@ -40,7 +40,7 @@ public class IndicatorSetupFormController implements Initializable {
 		this.erbContentItem = erbContentItem;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML
@@ -232,6 +232,10 @@ public class IndicatorSetupFormController implements Initializable {
 
 	public void setErbContentItem(ERBContentItem erbContentItem) {
 		this.erbContentItem = erbContentItem;
+	}
+
+	public App getApp() {
+		return app;
 	}
 
 }

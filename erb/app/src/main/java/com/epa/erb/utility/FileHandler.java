@@ -8,18 +8,25 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.util.IOUtils;
+import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.project.Project;
 
 public class FileHandler {
 
+	private Logger logger;
 	private Constants constants = new Constants();
 
-	public FileHandler() {
+	private App app;
+	public FileHandler(App app) {
+		this.app = app;
 		
+		logger = app.getLogger();
 	}
 	
 	//--------------LOCATED IN USER.HOME
@@ -49,6 +56,7 @@ public class FileHandler {
 			File goalsDirectory = new File(constants.getPathToERBProjectsDirectory() + File.separator + project.getProjectCleanedName() + File.separator + "Goals");
 			return goalsDirectory;
 		} else {
+			logger.log(Level.WARNING, "getGoalsDirectory returning null.");
 			return null;
 		}
 	}
@@ -58,6 +66,7 @@ public class FileHandler {
 			File projectDirectory = new File(constants.getPathToERBProjectsDirectory() + File.separator + project.getProjectCleanedName());
 			return projectDirectory;
 		} else {
+			logger.log(Level.WARNING, "getProjectDirectory returning null.");
 			return null;
 		}
 	}
@@ -67,6 +76,7 @@ public class FileHandler {
 			File goalDirectory = new File(constants.getPathToERBProjectsDirectory() + File.separator + project.getProjectCleanedName() + File.separator + "Goals" + File.separator + goal.getGoalCleanedName());
 			return goalDirectory;
 		} else {
+			logger.log(Level.WARNING, "getGoalDirectory returning null.");
 			return null;
 		}
 	}
@@ -76,6 +86,7 @@ public class FileHandler {
 			File supportingDOCDirectory = new File(getGoalDirectory(project,goal) + File.separator + "Supporting_DOC");
 			return supportingDOCDirectory;
 		} else {
+			logger.log(Level.WARNING, "getSupportingDOCDirectory returning null.");
 			return null;
 		}
 	}
@@ -85,6 +96,7 @@ public class FileHandler {
 			File guidsDirectory = new File(getGoalDirectory(project, goal) +  File.separator + "GUID_Data");
 			return guidsDirectory;
 		} else {
+			logger.log(Level.WARNING, "getGUIDDataDirectory returning null.");
 			return null;
 		}
 	}
@@ -94,6 +106,7 @@ public class FileHandler {
 			File indicatorsDirectory = new File(getGoalDirectory(project, goal) + File.separator + "Indicators");
 			return indicatorsDirectory;
 		} else {
+			logger.log(Level.WARNING, "getIndicatorsDirectory returning null.");
 			return null;
 		}
 	}
@@ -103,6 +116,7 @@ public class FileHandler {
 			File myUploadsDirectory = new File(getGoalDirectory(project, goal) +  File.separator + "MyUploads");
 			return myUploadsDirectory;
 		} else {
+			logger.log(Level.WARNING, "getMyUploadsDirectory returning null.");
 			return null;
 		}
 	}
@@ -112,6 +126,7 @@ public class FileHandler {
 			File myPortfolioDirectory = new File(getGoalDirectory(project, goal) + File.separator + "MyPortfolio");
 			return myPortfolioDirectory;
 		} else {
+			logger.log(Level.WARNING, "getMyPortfolioDirectory returning null.");
 			return null;
 		}
 	}
@@ -121,6 +136,7 @@ public class FileHandler {
 			File projectXMLMetaXMLFile = new File(getProjectDirectory(project) + File.separator + "Meta.xml");
 			return projectXMLMetaXMLFile;
 		} else {
+			logger.log(Level.WARNING, "getProjectMetaXMLFile returning null.");
 			return null;
 		}
 	}
@@ -130,6 +146,7 @@ public class FileHandler {
 			File goalMetaXMLFile = new File(getGoalDirectory(project, goal) + File.separator + "Meta.xml");
 			return goalMetaXMLFile;
 		} else {
+			logger.log(Level.WARNING, "getGoalMetaXMLFile returning null.");
 			return null;
 		}
 	}
@@ -139,6 +156,7 @@ public class FileHandler {
 			File dataXMLFile = new File(getGUIDDataDirectory(project, goal) + File.separator + erbContentItem.getGuid() + File.separator + "Data.xml");
 			return dataXMLFile;
 		} else {
+			logger.log(Level.WARNING, "getDataXMLFile returning null.");
 			return null;
 		}
 	}
@@ -198,6 +216,7 @@ public class FileHandler {
 			File formContentFile = copyResourceFileToTempDir(resourcePath, fileName);
 			return formContentFile;
 		} else {
+			logger.log(Level.WARNING, "getFormContentFileFromResources returning null.");
 			return null;
 		}
 	}
@@ -231,8 +250,7 @@ public class FileHandler {
 
 	private void createDirectory(Project p, Goal g, ERBContentItem e) {
 		File guidDir = new File(getGUIDDataDirectory(p, g) + File.separator + e.getGuid());
-		if (!guidDir.exists())
-			guidDir.mkdir();
+		if (!guidDir.exists()) guidDir.mkdir();
 
 		if (e.getChildERBContentItems().size() > 0) {
 			for (ERBContentItem child : e.getChildERBContentItems()) {
@@ -255,36 +273,40 @@ public class FileHandler {
 			OutputStream outputStream = new FileOutputStream(outputFile);
 			IOUtils.copy(inputStream, outputStream);
 			return outputFile;
-		}catch(IOException e) {
-			e.printStackTrace();
+		} catch(IOException e) {
+			logger.log(Level.FINE, "Failed to copy resource file to temp dir " + pathToResourceFile);
+			logger.log(Level.FINER, "Failed to copy resource file to temp dir: " + e.getStackTrace());
 		}
 		return null;
 	}
 	
 	//---------------------------------------------------------------------------
 	
-	public void openFileOnDesktop(File fileToToOpen) {
+	public void openFileOnDesktop(File fileToOpen) {
 		try {
-			if (fileToToOpen != null && fileToToOpen.exists() && Desktop.isDesktopSupported()) {
-				Desktop.getDesktop().open(fileToToOpen);
-			} else {
+			if (fileToOpen != null && fileToOpen.exists() && Desktop.isDesktopSupported()) {
+				Desktop.getDesktop().open(fileToOpen);
 			}
 		} catch (Exception e) {
-//			logger.log(Level.FINE, "Failed to open file on desktop.");
-//			logger.log(Level.FINER, "Failed to open file on desktop: " + e.getStackTrace());
+			logger.log(Level.FINE, "Failed to open file on desktop " + fileToOpen);
+			logger.log(Level.FINER, "Failed to open file on desktop: " + e.getStackTrace());
 		}
 	}
 
 	public void deleteDirectory(File directory) {
-		if (directory != null) {
-			File[] allContents = directory.listFiles();
-			if (allContents != null) {
-				for (File file : allContents) {
-					deleteDirectory(file);
+		try {
+			if (directory != null) {
+				File[] allContents = directory.listFiles();
+				if (allContents != null) {
+					for (File file : allContents) {
+						deleteDirectory(file);
+					}
 				}
+				directory.delete();
 			}
-			directory.delete();
-		} else {
+		} catch (Exception e) {
+			logger.log(Level.FINE, "Failed to delete directory " + directory);
+			logger.log(Level.FINER, "Failed to delete directory: " + e.getStackTrace());
 		}
 	}
 
@@ -301,10 +323,9 @@ public class FileHandler {
 				is.close();
 				os.close();
 			} catch (Exception e) {
-//				logger.log(Level.FINE, "Failed to copy file.");
-//				logger.log(Level.FINER, "Failed to copy file: " + e.getStackTrace());
+				logger.log(Level.FINE, "Failed to copy file " + source + " to " + dest);
+				logger.log(Level.FINER, "Failed to copy file: " + e.getStackTrace());
 			}
-		} else {
 		}
 	}
 	
@@ -313,11 +334,14 @@ public class FileHandler {
 			try {
 			    FileUtils.copyDirectory(source, dest);
 			} catch (Exception e) {
-//				logger.log(Level.FINE, "Failed to copy directory.");
-//				logger.log(Level.FINER, "Failed to copy directory: " + e.getStackTrace());
+				logger.log(Level.FINE, "Failed to copy directory " + source + " to " + dest);
+				logger.log(Level.FINER, "Failed to copy directory: " + e.getStackTrace());
 			}
-		} else {
 		}
+	}
+
+	public App getApp() {
+		return app;
 	}
 
 }

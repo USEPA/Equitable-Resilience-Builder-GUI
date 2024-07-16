@@ -19,7 +19,7 @@ public class GoalCreation{
 		this.project = project;
 		
 		xmlManager = new XMLManager(app);
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	public String cleanStringForWindows(String string) {

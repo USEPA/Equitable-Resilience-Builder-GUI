@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -20,7 +19,6 @@ import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import com.epa.erb.App;
 import com.epa.erb.utility.FileHandler;
 import javafx.fxml.FXML;
@@ -47,7 +45,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 		this.iCC = iCC;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML
@@ -191,12 +189,10 @@ public class IndicatorSelection_InPersonController implements Initializable {
 			inputStream.close();			
 			
 		} catch (IOException | EncryptedDocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to create skimmed copy of indicators list.");
+			logger.log(Level.FINER, "Failed to create skimmed copy of indicators list: " + e.getStackTrace());
 		}
-		
 	}
-	
 	
 	private File getIndicatorsDir() {
 		return fileHandler.getIndicatorsDirectory(app.getSelectedProject(),app.getEngagementActionController().getCurrentGoal());

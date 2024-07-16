@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.web.WebView;
 import com.epa.erb.utility.Constants;
 
-
 public class MappingController implements Initializable{
 
 	@FXML
@@ -22,7 +21,6 @@ public class MappingController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		loadHTMLFileToWebEngine();
-		
 	}
 	
 	private void loadHTMLFileToWebEngine() {
@@ -35,6 +33,10 @@ public class MappingController implements Initializable{
 			webView.getEngine().load(HTMLFile.toURI().toString());
 			webView.getEngine().reload();
 		}
+	}
+
+	public App getApp() {
+		return app;
 	}
 
 }

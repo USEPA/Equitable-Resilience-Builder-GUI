@@ -39,7 +39,7 @@ public class ExternalFileUploaderController implements Initializable{
 		this.engagementActionController = engagementActionController;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@FXML

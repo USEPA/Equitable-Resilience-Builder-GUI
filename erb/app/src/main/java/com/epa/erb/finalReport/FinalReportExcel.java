@@ -3,6 +3,8 @@ package com.epa.erb.finalReport;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -13,14 +15,22 @@ import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
+import com.epa.erb.App;
+
 public class FinalReportExcel {
 
+	private Logger logger;
+	
+	private App app;
 	private File excelFile;
 	private XWPFDocument document;
 
-	public FinalReportExcel(File excelFile, XWPFDocument document) {
+	public FinalReportExcel(File excelFile, XWPFDocument document, App app) {
+		this.app = app;
 		this.excelFile = excelFile;
 		this.document = document;
+		
+		logger = app.getLogger();
 	}
 
 	public void createTable() {
@@ -68,9 +78,14 @@ public class FinalReportExcel {
 				workbook.close();
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.log(Level.FINE, "Failed to create table.");
+				logger.log(Level.FINER, "Failed to create table: " + e.getStackTrace());
 			}
 		}
 	}
 
+	public App getApp() {
+		return app;
+	}
+	
 }

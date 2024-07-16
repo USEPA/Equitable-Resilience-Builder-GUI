@@ -29,7 +29,7 @@ public class IndicatorCenterController implements Initializable{
 		this.eAC = eAC;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 	}
 	
 	@Override
@@ -102,4 +102,7 @@ public class IndicatorCenterController implements Initializable{
 		return virtualIndicatorSelectionStage;
 	}
 
+	public App getApp() {
+		return app;
+	}
 }

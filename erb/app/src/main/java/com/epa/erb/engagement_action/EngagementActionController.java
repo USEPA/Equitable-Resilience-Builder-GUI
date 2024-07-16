@@ -62,7 +62,7 @@ public class EngagementActionController implements Initializable {
 		this.project = project;
 		
 		logger = app.getLogger();
-		fileHandler = new FileHandler();
+		fileHandler = new FileHandler(app);
 		mainPanelHandler = new MainPanelHandler(app);
 	}
 
@@ -117,7 +117,6 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.log(Level.FINE, "Failed to load Mapping.fxml.");
 			logger.log(Level.FINER, "Failed to load Mapping.fxml: " + e.getStackTrace());
 		}
@@ -139,7 +138,6 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.log(Level.FINE, "Failed to load FinalReportSelection.fxml.");
 			logger.log(Level.FINER, "Failed to load FinalReportSelection.fxml: " + e.getStackTrace());
 		}
@@ -590,7 +588,6 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.log(Level.FINE, "Failed to load MainForm.fxml.");
 			logger.log(Level.FINER, "Failed to load MainForm.fxml: " + e.getStackTrace());
 			return null;

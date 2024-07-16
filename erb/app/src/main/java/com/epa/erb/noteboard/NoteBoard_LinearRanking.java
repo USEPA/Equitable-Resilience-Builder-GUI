@@ -2,12 +2,10 @@ package com.epa.erb.noteboard;
 
 import java.io.File;
 import java.util.ArrayList;
-
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.goal.Goal;
 import com.epa.erb.indicators.IndicatorCard;
-
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 

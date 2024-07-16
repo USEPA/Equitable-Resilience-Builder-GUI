@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -152,6 +153,9 @@
                                        <graphic>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                        </graphic>
+                                       <tooltip>
+                                          <Tooltip text="&quot;Explore mode&quot; is a way of checking out the tool. You are not able to save any work." />
+                                       </tooltip>
                                     </Hyperlink>
                                  </children>
                                  <padding>

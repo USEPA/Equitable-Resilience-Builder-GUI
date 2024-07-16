@@ -3,6 +3,9 @@ package com.epa.erb.finalReport;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -11,20 +14,28 @@ import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTbl;
 
+import com.epa.erb.App;
+
 public class FinalReportTable {
 
+	private Logger logger;
+	
+	private App app;
 	private File file;
 	private String tableName;
 	private String start;
 	private String stop;
 	private XWPFDocument reportDoc;
 
-	public FinalReportTable(File file, String tableName, String start, String stop, XWPFDocument reportDoc) {
+	public FinalReportTable(File file, String tableName, String start, String stop, XWPFDocument reportDoc, App app) {
+		this.app = app;
 		this.file = file;
 		this.tableName = tableName;
 		this.start = start;
 		this.stop = stop;
 		this.reportDoc = reportDoc;
+		
+		logger = app.getLogger();
 	}
 
 	public void writeTableToReportDoc() {
@@ -37,7 +48,8 @@ public class FinalReportTable {
 				}
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Failed to write table to report doc.");
+			logger.log(Level.FINER, "Failed to write table to report doc: " + e.getStackTrace());
 		}
 	}
 
@@ -91,6 +103,8 @@ public class FinalReportTable {
 							fontSize = row.getCell(i).getParagraphs().get(0).getRuns().get(0).getFontSizeAsDouble();
 						}
 						}catch(Exception e) {
+							logger.log(Level.FINE, "Failed to copy table.");
+							logger.log(Level.FINER, "Failed to copy table: " + e.getStackTrace());
 						}
 					}
 					newCell.setWidth(String.valueOf(cellSize));
@@ -157,4 +171,7 @@ public class FinalReportTable {
 		this.reportDoc = reportDoc;
 	}
 
+	public App getApp() {
+		return app;
+	}
 }
