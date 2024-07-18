@@ -66,6 +66,7 @@ public class ProjectCreationController implements Initializable {
 			String projectDescription = projectDescriptionTextArea.getText().trim();
 			Project project = new Project(newProjectName, mode, cleanedProjectName, projectDescription);
 			createNewProjectDirectory(project);
+			app.updateAvailableProjectsList();
 			launchProject(project);
 		}
 	}
