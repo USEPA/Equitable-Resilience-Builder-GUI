@@ -64,6 +64,8 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.util.Callback;
 
 public class WordCloudController implements Initializable {
+	
+	private static String buttonResource = "/button.css";
 
 	private Logger logger;
 	private FileHandler fileHandler;
@@ -94,13 +96,13 @@ public class WordCloudController implements Initializable {
 	@FXML
 	Label numberOfWordsLabel;
 	@FXML
-	Button mergeButton,buildButton;
+	Button mergeButton, buildButton;
 	@FXML
 	CheckBox excludeCommonCheckBox;
 	@FXML
 	TableView<WordCloudItem> tableView;
 	@FXML
-	Button shortAddButton,longAddButton;
+	Button shortAddButton, longAddButton;
 	@FXML
 	ChoiceBox<String> wordCloudChoiceBox;
 	@FXML
@@ -119,12 +121,12 @@ public class WordCloudController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		mergeButton.getStylesheets().add(getClass().getResource("/button.css").toString());
-		shortAddButton.getStylesheets().add(getClass().getResource("/button.css").toString());
-		longAddButton.getStylesheets().add(getClass().getResource("/button.css").toString());
-		clearButton.getStylesheets().add(getClass().getResource("/button.css").toString());
-		buildButton.getStylesheets().add(getClass().getResource("/button.css").toString());
-		saveWordCloudButton.getStylesheets().add(getClass().getResource("/button.css").toString());
+		mergeButton.getStylesheets().add(getClass().getResource(buttonResource).toString());
+		shortAddButton.getStylesheets().add(getClass().getResource(buttonResource).toString());
+		longAddButton.getStylesheets().add(getClass().getResource(buttonResource).toString());
+		clearButton.getStylesheets().add(getClass().getResource(buttonResource).toString());
+		buildButton.getStylesheets().add(getClass().getResource(buttonResource).toString());
+		saveWordCloudButton.getStylesheets().add(getClass().getResource(buttonResource).toString());
 
 		updateNumberOfTableItemsLabel();
 		excludeCommonCheckBox.setSelected(true);
@@ -191,7 +193,7 @@ public class WordCloudController implements Initializable {
 	private ArrayList<String> getExistingSavedWordCloudNames() {
 		ArrayList<String> wordCloudNames = new ArrayList<String>();
 		wordCloudNames.add("-");
-		Pattern p = Pattern.compile("^[0-9]{4}$");
+		Pattern p = Pattern.compile("^\\d{4}$");
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
 		File guidDirectory = new File(guidDataDirectory.getPath() + File.separator + erbContentItem.getGuid());
 		for (File dir : guidDirectory.listFiles()) {
@@ -237,10 +239,8 @@ public class WordCloudController implements Initializable {
 		File guidDataDirectory = fileHandler.getGUIDDataDirectory(project, goal);
 		File guidDirectory = new File(guidDataDirectory.getPath() + File.separator + erbContentItem.getGuid());
 		for (File dir : guidDirectory.listFiles()) {
-			if (dir.isDirectory()) {
-				if (dir.getName().contentEquals(newId)) {
-					return true;
-				}
+			if (dir.isDirectory() && dir.getName().contentEquals(newId)) {
+				return true;
 			}
 		}
 		return false;
@@ -264,8 +264,7 @@ public class WordCloudController implements Initializable {
 		WordCloudSaveController controller = launchSave();
 		if (controller != null) {
 			String saveName = controller.getWordCloudSaveName();
-			if (saveStage.isShowing())
-				saveStage.close();
+			saveStage.close();
 			if (saveName != null) {
 				saveName = saveName.trim();
 				if (saveName.length() > 0) {
@@ -274,17 +273,17 @@ public class WordCloudController implements Initializable {
 					File saveNameDirectory = new File(guidDirectory.getPath() + File.separator + saveName);
 					if (!saveNameDirectory.exists())
 						saveNameDirectory.mkdir();
+					
+					// The file dataXML will always be present, since if the saveNameDirectory did not exist, one was created (see above)
 					File dataXML = new File(saveNameDirectory.getPath() + File.separator + "data.xml");
-					if (dataXML != null) {
-						XMLManager xmlManager = new XMLManager(app);
-						ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>(tableView.getItems());
-						xmlManager.writeWordCloudDataXML(dataXML, wordCloudItems);
-						File saveFile = new File(saveNameDirectory.getPath() + File.separator + "wordCloudImage.png");
-						if (vBox.getChildren().size() > 0) {
-							snapshotWordCloud((WebView) vBox.getChildren().get(0), saveFile);
-							fillChoiceBox(getExistingSavedWordCloudNames());
-							wordCloudChoiceBox.getSelectionModel().select(0);
-						}
+					XMLManager xmlManager = new XMLManager(app);
+					ArrayList<WordCloudItem> wordCloudItems = new ArrayList<WordCloudItem>(tableView.getItems());
+					xmlManager.writeWordCloudDataXML(dataXML, wordCloudItems);
+					File saveFile = new File(saveNameDirectory.getPath() + File.separator + "wordCloudImage.png");
+					if (!vBox.getChildren().isEmpty()) {
+						snapshotWordCloud((WebView) vBox.getChildren().get(0), saveFile);
+						fillChoiceBox(getExistingSavedWordCloudNames());
+						wordCloudChoiceBox.getSelectionModel().select(0);
 					}
 				}
 			}
@@ -309,7 +308,10 @@ public class WordCloudController implements Initializable {
 			return wordCloudSaveController;
 		} catch (Exception e) {
 			logger.log(Level.FINE, "Failed to load WordCloudSave.fxml.");
-			logger.log(Level.FINER, "Failed to load WordCloudSave.fxml: " + e.getStackTrace());
+			logger.log(
+				Level.FINER,
+				() -> String.format("Failed to load WordCloudSave.fxml: %s", Arrays.toString(e.getStackTrace()))
+			);
 		}
 		return null;
 	}
@@ -375,6 +377,7 @@ public class WordCloudController implements Initializable {
 				if (tableView.getItems().size() > 1) {
 
 					// int v = ((count -minCount)/(maxCount - minCount))*(newMax - newMin) + newMin;
+					// TODO: Determine necessity in keeping this line. Remove or document.
 
 					double r1 = wordCloudItem.getCount() - minCount;
 					double r2 = maxCount - minCount;
@@ -511,16 +514,14 @@ public class WordCloudController implements Initializable {
 	public HashMap<String, Integer> countWordOccurrences(boolean excludeCommonWords, String string) {
 		HashMap<String, Integer> countMap = new HashMap<String, Integer>();
 		if (string != null && string.length() > 0) {
-			String newLinesRemoved = string.replaceAll("\n", " ");
+			String newLinesRemoved = string.replaceAll("[\\s]+"," "); // Accounts for Unix and Windows returns, formatted as regex
 			String[] words = newLinesRemoved.split(" ");
 			for (String word : words) {
 				String cleanedWord = cleanWord(word);
 				if (excludeCommonWords) { // If check box to exclude is selected
-					if (excludedWordSet.contains(cleanedWord.toLowerCase().trim())) { // If is an excluded word
-						continue; // skip
-					} else { // If not an excluded word
+					if (!excludedWordSet.contains(cleanedWord.toLowerCase().trim())) { // If not an excluded word
 						increaseCountOfWord(countMap, cleanedWord);
-					}
+					} // If is an excluded word, skip this
 				} else { // If check box to exclude is NOT selected
 					increaseCountOfWord(countMap, cleanedWord);
 				}
@@ -582,9 +583,9 @@ public class WordCloudController implements Initializable {
 		}
 	}
 
-	public void writeWordCloudJSONPFile(File JSONPFile, WebView webView) {
+	public void writeWordCloudJSONPFile(File jsonPFile, WebView webView) {
 		try {
-			PrintWriter printWriter = new PrintWriter(JSONPFile);
+			PrintWriter printWriter = new PrintWriter(jsonPFile);
 			printWriter.println("wordclouddata = [");
 			for (WordCloudItem wordCloudItem : tableView.getItems()) {
 				printWriter.println("{");
@@ -614,7 +615,10 @@ public class WordCloudController implements Initializable {
 
 		} catch (FileNotFoundException e) {
 			logger.log(Level.FINE, "Failed to write jsonp.");
-			logger.log(Level.FINER, "Failed to write jsonp: " + e.getStackTrace());
+			logger.log(
+				Level.FINER,
+				() -> String.format("Failed to write jsonp: %s", Arrays.toString(e.getStackTrace()))
+			);
 		}
 	}
 
@@ -636,8 +640,7 @@ public class WordCloudController implements Initializable {
 				erbContentItem.getGuid(), wordCloudWebView.getId());
 		writeWordCloudJSONPFile(jsonpFile, wordCloudWebView);
 		String webEngineLocation = wordCloudWebView.getEngine().getLocation();
-		if (webEngineLocation != null) {
-		} else {
+		if (webEngineLocation == null) {
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
@@ -666,7 +669,10 @@ public class WordCloudController implements Initializable {
 									});
 						} catch (MalformedURLException e) {
 							logger.log(Level.FINE, "Failed to build word cloud.");
-							logger.log(Level.FINER, "Failed to build word cloud: " + e.getStackTrace());
+							logger.log(
+								Level.FINER,
+								() -> String.format("Failed to build word cloud: %s", Arrays.toString(e.getStackTrace()))
+							);
 						}
 					}
 				}
@@ -683,7 +689,10 @@ public class WordCloudController implements Initializable {
 				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
 			} catch (IOException e) {
 				logger.log(Level.FINE, "Failed to snapshot word cloud.");
-				logger.log(Level.FINER, "Failed to snapshot word cloud: " + e.getStackTrace());
+				logger.log(
+					Level.FINER,
+					() -> String.format("Failed to snapshot word cloud: %s", Arrays.toString(e.getStackTrace()))
+				);
 			}
 		}
 	}
@@ -723,9 +732,7 @@ public class WordCloudController implements Initializable {
 
 		for (File sourceFile : staticWordCloudDirectory.listFiles()) {
 			File destFile = new File(webViewDir.getPath() + File.separator + sourceFile.getName());
-
-			if (destFile != null)
-				fileHandler.copyFile(sourceFile, destFile);
+			fileHandler.copyFile(sourceFile, destFile);
 		}
 	}
 

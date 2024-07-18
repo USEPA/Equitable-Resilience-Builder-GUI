@@ -28,5 +28,7 @@ module com.epa.erb {
 	opens com.epa.erb.finalReport to javafx.fxml;
 	opens com.epa.erb.engagement_action to javafx.fxml, javafx.base;
 	opens com.epa.erb.forms to javafx.fxml;
+	exports com.epa.erb.project to com.epa.erb;
+	exports com.epa.erb.goal to com.epa.erb.project;
 	exports com.epa.erb;
 }
