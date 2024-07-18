@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ProjectCreationControllerTest {
 	private ProjectCreationController projectCreationController;
-	
+
 	@BeforeEach
 	public void setUp() throws Exception {
 		projectCreationController = new ProjectCreationController(new App());
@@ -18,12 +18,17 @@ public class ProjectCreationControllerTest {
 		assertFalse(projectCreationController.isValidNewProjectName(null));
 		assertFalse(projectCreationController.isValidNewProjectName(""));
 	}
-	
-	/*
-	 * @Test public void testValidNewProjectName() { //
-	 * assertFalse(projectCreationController.isValidNewProjectName(""));
-	 * assertTrue(projectCreationController.
-	 * isValidNewProjectName("A whole new project")); }
-	 */
 
+	
+	@Test
+	public void testValidNewProjectName() {
+		assertTrue(projectCreationController.
+			isValidNewProjectName("Name"));
+	}
+	
+	@Test
+	public void testCleanStringForWindows() {
+		assertEquals("_Name_Dog_123", projectCreationController.
+			cleanStringForWindows("+Name=Dog$123"));
+	}
 }
