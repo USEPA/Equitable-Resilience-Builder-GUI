@@ -1,9 +1,12 @@
 package com.epa.erb;
 
 import java.util.HashMap;
+
 import org.controlsfx.control.BreadCrumbBar;
+
 import com.epa.erb.project.Project;
 import com.epa.erb.utility.MainPanelHandler;
+
 import javafx.scene.Parent;
 import javafx.scene.control.TreeItem;
 

@@ -29,11 +29,20 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
 	implementation 'commons-io:commons-io:2.11.0'
 	implementation 'org.apache.poi:poi-ooxml:5.2.3'
 	implementation 'org.controlsfx:controlsfx:11.1.2'
 	implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
+	implementation 'com.itextpdf:itextpdf:5.5.13.3'
+	implementation 'com.itextpdf:kernel:8.0.3'
+	implementation 'com.itextpdf:layout:8.0.3'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 applicationDefaultJvmArgs = ["-Dprism.maxvram=2G"]

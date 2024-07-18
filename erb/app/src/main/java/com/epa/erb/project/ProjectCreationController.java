@@ -75,7 +75,7 @@ public class ProjectCreationController implements Initializable {
 		createFacilitatorProject(project);
 	}
 
-	private boolean isValidNewProjectName(String projectName) {
+	boolean isValidNewProjectName(String projectName) {
 		if (projectName != null && projectName.length() > 0) {
 			if (!isDuplicateProjectName(projectName)) {
 				return true;
