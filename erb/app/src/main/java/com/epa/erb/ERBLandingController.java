@@ -133,6 +133,7 @@ public class ERBLandingController implements Initializable{
 		MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 		Parent projectSelectionRoot = mainPanelHandler.loadProjectSelectionRoot(app);
 		String projectSelectionString = "Project Selection";
+		app.updateAvailableProjectsList();
 		app.getErbContainerController().getMyBreadCrumbBar().addBreadCrumb(projectSelectionString, mainPanelHandler.getMainPanelIdHashMap().get(projectSelectionString));
 		app.addNodeToERBContainer(projectSelectionRoot);	
 		app.getErbContainerController().addHeaderHBox();

@@ -139,7 +139,7 @@ public class App extends Application {
 				return i;
 			}
 		}
-		return 100; //Default
+		return lowestDPIScale; //Default
 	}
 	
 
@@ -223,7 +223,7 @@ public class App extends Application {
 		XMLManager xmlManager = new XMLManager(this);
 		FileHandler fileHandler = new FileHandler(this);
 		File projectsDirectory = fileHandler.getProjectsDirectory();
-		return xmlManager.parseAllProjects(projectsDirectory );
+		return xmlManager.parseAllProjects(projectsDirectory);
 	}
 	
 	public ERBContentItem getERBContentItemWorksheet(String id){
@@ -291,7 +291,7 @@ public class App extends Application {
 	}
 
 	public void updateAvailableProjectsList() {
-		readAndStoreProjects();
+		this.projects = readAndStoreProjects();
 	}
 
 	public String generateGUID() {

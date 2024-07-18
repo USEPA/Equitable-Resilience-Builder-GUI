@@ -86,22 +86,20 @@ public class ProjectCreationController implements Initializable {
 		return false;
 	}
 
-	private String cleanStringForWindows(String string) {
+	String cleanStringForWindows(String string) {
 		return string.replaceAll("[^A-Za-z0-9]", "_");
 	}
 
 	private boolean isDuplicateProjectName(String projectName) {
-		if (projectName != null) {
-			ArrayList<Project> existingProjects = app.getProjects();
+		ArrayList<Project> existingProjects = app.getProjects();
+		if (existingProjects != null) {
 			for (Project project : existingProjects) {
 				if (projectName.contentEquals(project.getProjectName())) {
 					return true;
 				}
 			}
-			return false;
-		} else {
-			return true;
 		}
+		return false;
 	}
 
 	private void showIsDuplicateProjectNameAlert() {
@@ -118,7 +116,6 @@ public class ProjectCreationController implements Initializable {
 			if (newProjectDirectory != null && !newProjectDirectory.exists()) {
 				newProjectDirectory.mkdir();
 			}
-		} else {
 		}
 	}
 	
@@ -176,9 +173,7 @@ public class ProjectCreationController implements Initializable {
 			MainPanelHandler mainPanelHandler = new MainPanelHandler(app);
 			app.setSelectedProject(selectedProject);
 			if (isProjectNew(selectedProject)) {
-				if (mode.contentEquals("Goal Mode")) {
-
-				} else {
+				if (!mode.contentEquals("Goal Mode")) {
 					createFacilitatorProject(selectedProject);
 					loadEngagementActionToContainer(selectedProject);
 				}
