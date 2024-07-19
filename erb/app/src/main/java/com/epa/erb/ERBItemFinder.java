@@ -24,7 +24,7 @@ public class ERBItemFinder {
 	}
 	
 	//-------------------------------------------------
-	private ERBContentItem found =null;
+	private ERBContentItem found = null;
 	public ERBContentItem getERBContentItemById(ArrayList<ERBContentItem> uniqueERBContentItems, String id) {
 		findERBContentItemById(uniqueERBContentItems, id);
 		return found;
@@ -41,7 +41,7 @@ public class ERBItemFinder {
 	public void searchERBContentItemChildrenById(ERBContentItem erbContentItem, String id) {
 		if(erbContentItem != null) {
 			if(!erbContentItem.getId().contentEquals(id)) {
-				if(erbContentItem.getChildERBContentItems().size()>0) {
+				if(erbContentItem.getChildERBContentItems().size() > 0) {
 					for(ERBContentItem c: erbContentItem.getChildERBContentItems()) {
 						searchERBContentItemChildrenById(c, id);
 					}

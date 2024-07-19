@@ -7,18 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ProjectCreationControllerTest {
 	private ProjectCreationController projectCreationController;
+	private App app;
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		projectCreationController = new ProjectCreationController(new App());
+		app = new App();
+		projectCreationController = new ProjectCreationController(app);
 	}
 
 	@Test
-	public void testInvalidProjectName() {
+	public void testInvalidProjectNameNull() {
 		assertFalse(projectCreationController.isValidNewProjectName(null));
-		assertFalse(projectCreationController.isValidNewProjectName(""));
 	}
 
+	@Test
+	public void testInvalidProjectNameEmpty() {
+		assertFalse(projectCreationController.isValidNewProjectName(""));
+	}
 	
 	@Test
 	public void testValidNewProjectName() {
