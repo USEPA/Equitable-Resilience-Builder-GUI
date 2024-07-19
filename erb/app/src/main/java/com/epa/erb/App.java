@@ -113,19 +113,19 @@ public class App extends Application {
 		int dpiScale = getScaleForDPIValue(dpiValue);
 		int maxWidthToSubtract = 650;
 		int maxHeightToSubtract = 250;
-		int widthToSubtract = maxWidthToSubtract-((maxWidthToSubtract*dpiScale/100)-maxWidthToSubtract);
-		int heightToSubtract = maxHeightToSubtract-((maxHeightToSubtract*dpiScale/100)-maxHeightToSubtract);
+		int widthToSubtract = maxWidthToSubtract - ((maxWidthToSubtract * dpiScale / 100) - maxWidthToSubtract);
+		int heightToSubtract = maxHeightToSubtract - ((maxHeightToSubtract * dpiScale / 100) - maxHeightToSubtract);
 		
-		prefWidth = (int) (width -widthToSubtract);
+		prefWidth = (int) (width - widthToSubtract);
 		prefHeight = (int) (height - heightToSubtract);
 		
 		int popUpMaxWidthToSubtract = 750;
 		int popUpMaxHeightToSubtract = 350;
-		int popUpWidthToSubtract = popUpMaxWidthToSubtract-((popUpMaxWidthToSubtract*dpiScale/100)-popUpMaxWidthToSubtract);
-		int popUpHeightToSubtract = popUpMaxHeightToSubtract-((popUpMaxHeightToSubtract*dpiScale/100)-popUpMaxHeightToSubtract);
+		int popUpWidthToSubtract = popUpMaxWidthToSubtract - ((popUpMaxWidthToSubtract * dpiScale / 100) - popUpMaxWidthToSubtract);
+		int popUpHeightToSubtract = popUpMaxHeightToSubtract - ((popUpMaxHeightToSubtract * dpiScale / 100) - popUpMaxHeightToSubtract);
 		
-		popUpPrefWidth = (int) (width -popUpWidthToSubtract);
-		popUpPrefHeight = (int) (height -popUpHeightToSubtract);
+		popUpPrefWidth = (int) (width - popUpWidthToSubtract);
+		popUpPrefHeight = (int) (height - popUpHeightToSubtract);
 	}
 	
 	public int getScaleForDPIValue(int dpiValue) {
@@ -133,8 +133,8 @@ public class App extends Application {
 		int lowestDPIScale = 100;
 		int highestDPIScale = 500;
 		
-		for (int i = lowestDPIScale; i <= highestDPIScale; i = i+25) {
-			int calculatedDPIValue = (lowestDPIValue * i)/100;
+		for (int i = lowestDPIScale; i <= highestDPIScale; i = i + 25) {
+			int calculatedDPIValue = (lowestDPIValue * i) / 100;
 			if(dpiValue == calculatedDPIValue) {
 				return i;
 			}
