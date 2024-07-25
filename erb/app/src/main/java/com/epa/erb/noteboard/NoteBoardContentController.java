@@ -161,8 +161,7 @@ public class NoteBoardContentController implements Initializable {
 			rowControllers.add(noteBoardRowController);
 			return rowHBox;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load NoteBoardRow.fxml.");
-			logger.log(Level.FINER, "Failed to load NoteBoardRow.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load NoteBoardRow.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -226,8 +225,7 @@ public class NoteBoardContentController implements Initializable {
 				}
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to write ids.");
-				logger.log(Level.FINER, "Failed to write ids: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write ids: " + e.getMessage());
 			}
 		} else if (ids != null && ids.size() == 0) {
 			file.delete();
@@ -245,8 +243,7 @@ public class NoteBoardContentController implements Initializable {
 				}
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to write cards.");
-				logger.log(Level.FINER, "Failed to write cards: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write cards: " + e.getMessage());
 			}
 		} else if (ids != null && ids.size() == 0) {
 			file.delete();
@@ -266,8 +263,7 @@ public class NoteBoardContentController implements Initializable {
 				}
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to write multi ids.");
-				logger.log(Level.FINER, "Failed to write multi ids: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write multi ids: " + e.getMessage());
 			}
 		} else if (ids != null && ids.size() == 0) {
 			file.delete();
@@ -292,8 +288,7 @@ public class NoteBoardContentController implements Initializable {
 				}
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to write multi cards.");
-				logger.log(Level.FINER, "Failed to write multi cards: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write multi cards: " + e.getMessage());
 			}
 		} else if (ids != null && ids.size() == 0) {
 			file.delete();
@@ -313,8 +308,7 @@ public class NoteBoardContentController implements Initializable {
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to parse for ids.");
-				logger.log(Level.FINER, "Failed to parse for ids: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse for ids: " + e.getMessage());
 			}
 		}
 		return cards;
@@ -342,8 +336,7 @@ public class NoteBoardContentController implements Initializable {
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to parse for multi ids.");
-				logger.log(Level.FINER, "Failed to parse for multi ids: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse for multi ids: " + e.getMessage());
 			}
 		}
 		return cards;
@@ -425,8 +418,7 @@ public class NoteBoardContentController implements Initializable {
 				app.getEngagementActionController().cleanContentVBox();
 				app.getEngagementActionController().addContentToContentVBox(root, true);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to load NoteBoardContent.fxml.");
-				logger.log(Level.FINER, "Failed to load NoteBoardContent.fxml: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to load NoteBoardContent.fxml: " + e.getMessage());
 			}
 		} else {
 			try {
@@ -442,8 +434,7 @@ public class NoteBoardContentController implements Initializable {
 				app.getEngagementActionController().cleanContentVBox();
 				app.getEngagementActionController().addContentToContentVBox(root, true);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to load NoteBoardContent.fxml.");
-				logger.log(Level.FINER, "Failed to load NoteBoardContent.fxml: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to load NoteBoardContent.fxml: " + e.getMessage());
 			}
 		}
 	}
@@ -490,8 +481,7 @@ public class NoteBoardContentController implements Initializable {
 				showPreviousAlert(
 						"If indicator cards are rearranged, your previously saved resilience and equity rankings will be reset.");
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to load NoteBoardContent.fxml.");
-				logger.log(Level.FINER, "Failed to load NoteBoardContent.fxml: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to load NoteBoardContent.fxml: " + e.getMessage());
 			}
 		}
 	}
@@ -517,8 +507,7 @@ public class NoteBoardContentController implements Initializable {
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to get selected indicators.");
-				logger.log(Level.FINER, "Failed to get selected indicators: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to get selected indicators: " + e.getMessage());
 			}
 		}
 		return cards;
@@ -537,8 +526,7 @@ public class NoteBoardContentController implements Initializable {
 			noteBoardIndicatorItem.setDrag_IndicatorCard(vBox);
 			return vBox;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load NoteBoardItem.fxml.");
-			logger.log(Level.FINER, "Failed to load NoteBoardItem.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load NoteBoardItem.fxml: " + e.getMessage());
 			return null;
 		}
 	}

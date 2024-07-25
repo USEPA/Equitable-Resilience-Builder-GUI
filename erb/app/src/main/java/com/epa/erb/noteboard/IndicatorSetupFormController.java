@@ -108,8 +108,7 @@ public class IndicatorSetupFormController implements Initializable {
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to get existing selected indicators.");
-				logger.log(Level.FINER, "Failed to get existing selected indicators: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to get existing selected indicators: " + e.getMessage());
 			}
 		}
 		return cards;
@@ -144,8 +143,7 @@ public class IndicatorSetupFormController implements Initializable {
 				}
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to write selected indicators.");
-				logger.log(Level.FINER, "Failed to write selected indicators: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write selected indicators: " + e.getMessage());
 			}
 		}
 	}
@@ -196,8 +194,7 @@ public class IndicatorSetupFormController implements Initializable {
 			}
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load NoteBoardContent.fxml.");
-			logger.log(Level.FINER, "Failed to load NoteBoardContent.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load NoteBoardContent.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -220,8 +217,7 @@ public class IndicatorSetupFormController implements Initializable {
 			indicatorSelectionController.fillIndicatorChoiceBox();
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorSelection.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorSelection.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorSelection.fxml: " + e.getMessage());
 		}
 		return null;
 	}

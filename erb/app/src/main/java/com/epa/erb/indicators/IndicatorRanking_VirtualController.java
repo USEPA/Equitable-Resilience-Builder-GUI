@@ -110,8 +110,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 					Pane cVBox = loadIndicatorCard(card);
 					indicatorCardVBox.getChildren().add(cVBox);
 				} catch (Exception e) {
-					logger.log(Level.FINE, "Failed to load data from indicator selection.");
-					logger.log(Level.FINER, "Failed to load data from indicator selection: " + e.getStackTrace());		
+					logger.log(Level.SEVERE, "Failed to load data from indicator selection: " + e.getMessage());		
 					}
 			}
 		}
@@ -200,8 +199,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			virtualIndicatorSortingStage.setScene(scene);
 			virtualIndicatorSortingStage.show();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorSorting_Virtual.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorSorting_Virtual.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorSorting_Virtual.fxml: " + e.getMessage());
 		}
 		iSVC.getVirtualIndicatorRankingStage().close();
 	}
@@ -221,8 +219,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 				ExternalFileUploaderController exFileUploader = new ExternalFileUploaderController(app, app.getEngagementActionController());
 				exFileUploader.pushToUploaded(virtualRankedSnapshotSave, "Indicator Center");
 			} catch (IOException e) {
-				logger.log(Level.FINE, "Failed to save.");
-				logger.log(Level.FINER, "Failed to save: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to save: " + e.getMessage());
 			}
 		}
 	}
@@ -247,8 +244,7 @@ public class IndicatorRanking_VirtualController implements Initializable {
 			iCController.addTextForRanking();
 			return cVBox;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorCard.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorCard.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorCard.fxml: " + e.getMessage());
 			return null;
 		}
 	}

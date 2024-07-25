@@ -234,8 +234,7 @@ public class FinalReportSelectionController implements Initializable {
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
-			logger.log(Level.FINE, "Failed to parse about upload file.");
-			logger.log(Level.FINER, "Failed to parse about upload file: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to parse about upload file: " + e.getMessage());
 		}
 		return uploadedFrom;
 	}
@@ -409,8 +408,7 @@ public class FinalReportSelectionController implements Initializable {
 			document.close();
 
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to create summary report.");
-			logger.log(Level.FINER, "Failed to create summary report: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to create summary report: " + e.getMessage());
 		}
 	}
 
@@ -430,8 +428,7 @@ public class FinalReportSelectionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load FinalReportOrdering.fxml.");
-			logger.log(Level.FINER, "Failed to load FinalReportOrdering.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load FinalReportOrdering.fxml: " + e.getMessage());
 		}
 	}
 

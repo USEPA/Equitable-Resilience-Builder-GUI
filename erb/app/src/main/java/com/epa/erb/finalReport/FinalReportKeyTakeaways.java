@@ -55,8 +55,7 @@ public class FinalReportKeyTakeaways {
 			scanner.close();
 			return qHashMap;
 		} catch (FileNotFoundException e) {
-			logger.log(Level.FINE, "Failed to get KeyTakeaways QR Map.");
-			logger.log(Level.FINER, "Failed to get KeyTakeaways QR Map: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to get KeyTakeaways QR Map: " + e.getMessage());
 			return null;
 		}
 	}

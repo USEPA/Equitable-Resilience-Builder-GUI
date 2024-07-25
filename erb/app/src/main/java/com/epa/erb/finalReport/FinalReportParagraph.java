@@ -50,8 +50,7 @@ public class FinalReportParagraph {
 			}
 			return stringBuilder.toString();
 		} catch (IOException e) {
-			logger.log(Level.FINE, "Failed to read word paragraph.");
-			logger.log(Level.FINER, "Failed to read word paragraph: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to read word paragraph: " + e.getMessage());
 		}
 		return null;
 	}

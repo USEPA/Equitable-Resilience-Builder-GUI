@@ -85,8 +85,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 				}
 				indicatorVBox.getChildren().add(root);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to load IndicatorSelector_InPerson.fxml.");
-				logger.log(Level.FINER, "Failed to load IndicatorSelector_InPerson.fxml: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to load IndicatorSelector_InPerson.fxml: " + e.getMessage());
 			}
 		}
 	}
@@ -189,8 +188,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 			inputStream.close();			
 			
 		} catch (IOException | EncryptedDocumentException e) {
-			logger.log(Level.FINE, "Failed to create skimmed copy of indicators list.");
-			logger.log(Level.FINER, "Failed to create skimmed copy of indicators list: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to create skimmed copy of indicators list: " + e.getMessage());
 		}
 	}
 	
@@ -213,8 +211,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 			printWriter.close();
 			return selectedIds;
 		} catch (FileNotFoundException e) {
-			logger.log(Level.FINE, "Failed to write selected indicators.");
-			logger.log(Level.FINER, "Failed to write selected indicators: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to write selected indicators: " + e.getMessage());
 		}
 		return null;
 
@@ -249,8 +246,7 @@ public class IndicatorSelection_InPersonController implements Initializable {
 			inPersonDataSelectionStage.setScene(scene);
 			inPersonDataSelectionStage.show();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load DataSelection_InPerson.fxml.");
-			logger.log(Level.FINER, "Failed to load DataSelection_InPerson.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load DataSelection_InPerson.fxml: " + e.getMessage());
 		}
 		iCC.getInPersonIndicatorSelectionStage().close();
 	}

@@ -35,8 +35,7 @@ public class IndicatorSaveDataParser {
 				scanner.close();
 				return indicatorIds;
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to save indicator ids.");
-				logger.log(Level.FINER, "Failed to save indicator ids: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to save indicator ids: " + e.getMessage());
 			}
 		}
 		return null;
@@ -72,8 +71,7 @@ public class IndicatorSaveDataParser {
 				scanner.close();
 				return data;
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to get saved data.");
-				logger.log(Level.FINER, "Failed to get saved data: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to get saved data: " + e.getMessage());
 			}
 		}
 		return null;
@@ -92,8 +90,7 @@ public class IndicatorSaveDataParser {
 				scanner.close();
 				return indicatorIds;
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to get saved indicator ids.");
-				logger.log(Level.FINER, "Failed to get saved indicator ids: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to get saved indicator ids: " + e.getMessage());
 			}
 		}
 		return null;

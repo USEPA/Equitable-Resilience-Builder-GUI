@@ -250,8 +250,7 @@ public class OutputFormController extends FormController implements Initializabl
 			}
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			logger.log(Level.FINE, "Failed to write output form to text.");
-			logger.log(Level.FINER, "Failed to write output form to text: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to write output form to text: " + e.getMessage());
 		}
 	}
 	

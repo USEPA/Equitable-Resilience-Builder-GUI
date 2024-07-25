@@ -159,8 +159,7 @@ public class App extends Application {
 			root.setPrefHeight(getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Exception error loading ERBContainer.fxml");
-			logger.log(Level.FINER, "Exception error loading ERBContainer.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Exception error loading ERBContainer.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -176,7 +175,7 @@ public class App extends Application {
 			erbContainerStage.setTitle("ERB: Equitable Resilience Builder");
 			erbContainerStage.show();
 		} else {
-			logger.log(Level.FINE, "Cannot show ERBContainer. Root is null.");
+			logger.log(Level.SEVERE, "Cannot show ERBContainer. Root is null.");
 		}
 	}
 
@@ -190,7 +189,7 @@ public class App extends Application {
 			fileHandler.createGUIDDirectoriesForGoal2(project, goal, engagementActionController.getListOfUniqueERBContentItems());
 			closeHandlers();
 		} else {
-			logger.log(Level.FINE, "Cannot proccess close request. Controller is null.");
+			logger.log(Level.WARNING, "Cannot proccess close request. Controller is null.");
 		}
 	}
 	
@@ -280,7 +279,7 @@ public class App extends Application {
 			erbContainerController.getErbContainer().getChildren().clear();
 			erbContainerController.getErbContainer().getChildren().add(node);
 		} else {
-			logger.log(Level.FINE, "Cannot add node to ERBContainer. Node is null.");			
+			logger.log(Level.SEVERE, "Cannot add node to ERBContainer. Node is null.");			
 		}
 	}
 

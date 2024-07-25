@@ -86,8 +86,7 @@ public class ExternalFileUploaderController implements Initializable{
 								}
 								scanner.close();
 							} catch (FileNotFoundException e) {
-								logger.log(Level.FINE, "Failed to read upload info.");
-								logger.log(Level.FINER, "Failed to read upload info: " + e.getStackTrace());
+								logger.log(Level.SEVERE, "Failed to read upload info: " + e.getMessage());
 							}
 							
 						} else {
@@ -138,8 +137,7 @@ public class ExternalFileUploaderController implements Initializable{
 				printWriter.println("uploadSource : " + uploadSource);
 				printWriter.close();
 			} catch (FileNotFoundException e) {
-				logger.log(Level.FINE, "Failed to push upload.");
-				logger.log(Level.FINER, "Failed to push upload: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to push upload: " + e.getMessage());
 			}	
 		}
 	}
@@ -160,8 +158,7 @@ public class ExternalFileUploaderController implements Initializable{
 			printWriter.println("uploadSource : " + uploadSource);
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			logger.log(Level.FINE, "Failed to handle new file.");
-			logger.log(Level.FINER, "Failed to handle new file.: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to handle new file.: " + e.getMessage());
 		}	
 	}
 	

@@ -171,8 +171,7 @@ public class IndicatorSorting_VirtualController implements Initializable {
 				Pane cVBox = loadIndicatorCard(card);
 				rankedHBox.getChildren().add(cVBox);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to fill ranked hBox.");
-				logger.log(Level.FINER, "Failed to fill ranked hBox: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to fill ranked hBox: " + e.getMessage());
 			}
 		}
 	}
@@ -197,8 +196,7 @@ public class IndicatorSorting_VirtualController implements Initializable {
 			iCController.addTextForRanking();
 			return cVBox;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorCard.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorCard.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorCard.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -219,8 +217,7 @@ public class IndicatorSorting_VirtualController implements Initializable {
 						app.getEngagementActionController());
 				exFileUploader.pushToUploaded(virtualSortingSnapshotSave, "Indicator Center");
 			} catch (IOException e) {
-				logger.log(Level.FINE, "Failed to save.");
-				logger.log(Level.FINER, "Failed to save: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to save: " + e.getMessage());
 			}
 		}
 	}

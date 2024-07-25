@@ -32,8 +32,7 @@ public class MainPanelHandler {
 			fxmlLoader.setController(erbLandingNew2Controller);
 			return fxmlLoader.load();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load ERBLanding.fxml.");
-			logger.log(Level.FINER, "Failed to load ERBLanding.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load ERBLanding.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -48,8 +47,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load ProjectSelection.fxml.");
-			logger.log(Level.FINER, "Failed to load ProjectSelection.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load ProjectSelection.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -64,8 +62,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load ProjectCreation.fxml.");
-			logger.log(Level.FINER, "Failed to load ProjectCreation.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load ProjectCreation.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -81,8 +78,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load EngagementAction.fxml.");
-			logger.log(Level.FINER, "Failed to load EngagementAction.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load EngagementAction.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -98,8 +94,7 @@ public class MainPanelHandler {
 			root.setPrefHeight(app.getPrefHeight());
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load ProjectCenter.fxml.");
-			logger.log(Level.FINER, "Failed to load ProjectCenter.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load ProjectCenter.fxml: " + e.getMessage());
 			return null;
 		}
 	}

@@ -31,8 +31,7 @@ public class IndicatorWorkbookParser extends WorkbookParser {
 			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(workbookFile);
 			indicatorSheet = getWorksheet(xssfWorkbook, "Indicator Menu");
 		} catch (InvalidFormatException | IOException e) {
-			logger.log(Level.FINE, "Failed to set indicator sheet.");
-			logger.log(Level.FINER, "Failed to set indicator sheet: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to set indicator sheet: " + e.getMessage());
 		}
 	}
 

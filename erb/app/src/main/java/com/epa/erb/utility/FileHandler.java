@@ -274,8 +274,7 @@ public class FileHandler {
 			IOUtils.copy(inputStream, outputStream);
 			return outputFile;
 		} catch(IOException e) {
-			logger.log(Level.FINE, "Failed to copy resource file to temp dir " + pathToResourceFile);
-			logger.log(Level.FINER, "Failed to copy resource file to temp dir: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to copy resource file to temp dir: " + e.getMessage());
 		}
 		return null;
 	}
@@ -288,8 +287,7 @@ public class FileHandler {
 				Desktop.getDesktop().open(fileToOpen);
 			}
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to open file on desktop " + fileToOpen);
-			logger.log(Level.FINER, "Failed to open file on desktop: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to open file on desktop: " + e.getMessage());
 		}
 	}
 
@@ -305,8 +303,7 @@ public class FileHandler {
 				directory.delete();
 			}
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to delete directory " + directory);
-			logger.log(Level.FINER, "Failed to delete directory: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to delete directory: " + e.getMessage());
 		}
 	}
 
@@ -323,8 +320,7 @@ public class FileHandler {
 				is.close();
 				os.close();
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to copy file " + source + " to " + dest);
-				logger.log(Level.FINER, "Failed to copy file: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to copy file: " + e.getMessage());
 			}
 		}
 	}
@@ -334,8 +330,7 @@ public class FileHandler {
 			try {
 			    FileUtils.copyDirectory(source, dest);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to copy directory " + source + " to " + dest);
-				logger.log(Level.FINER, "Failed to copy directory: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to copy directory: " + e.getMessage());
 			}
 		}
 	}

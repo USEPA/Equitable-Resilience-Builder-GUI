@@ -64,8 +64,7 @@ public class IndicatorsPrintViewController implements Initializable {
 				}
 				cardHBox.getChildren().add(cVBox);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to load NoteBoardItem.fxml.");
-				logger.log(Level.FINER, "Failed to load NoteBoardItem.fxml: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to load NoteBoardItem.fxml: " + e.getMessage());
 				}
 		}
 	}

@@ -160,8 +160,7 @@ public class ERBContainerController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load MainForm.fxml.");
-			logger.log(Level.FINER, "Failed to load MainForm.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load MainForm.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -174,8 +173,7 @@ public class ERBContainerController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load AlternativeForm.fxml.");
-			logger.log(Level.FINER, "Failed to load AlternativeForm.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load AlternativeForm.fxml: " + e.getMessage());
 			return null;
 		}
 	}

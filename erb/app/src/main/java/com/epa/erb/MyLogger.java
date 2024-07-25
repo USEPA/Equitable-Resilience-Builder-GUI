@@ -22,8 +22,6 @@ public class MyLogger extends Logger{
 				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "severe.log",true, Level.SEVERE));
 				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "warn.log", true, Level.WARNING));
 				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "info.log", true, Level.INFO));
-				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "error.log", true, Level.FINE));
-				addHandler(new LevelBasedFileHandler(pathToLogDir + File.separator + "error_details.log", true, Level.FINER));
 			} catch (SecurityException | IOException e) {
 				System.out.println("Logger init exception. Cannot use logger.");
 			}

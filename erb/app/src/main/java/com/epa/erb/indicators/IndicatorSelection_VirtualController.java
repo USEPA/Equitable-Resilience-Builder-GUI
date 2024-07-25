@@ -89,8 +89,7 @@ public class IndicatorSelection_VirtualController implements Initializable {
 				}
 				indicatorVBox.getChildren().add(root);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to load IndicatorSelector_Virtual.fxml.");
-				logger.log(Level.FINER, "Failed to load IndicatorSelector_Virtual.fxml: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to load IndicatorSelector_Virtual.fxml: " + e.getMessage());
 			}
 		}
 	}
@@ -125,8 +124,7 @@ public class IndicatorSelection_VirtualController implements Initializable {
 			virtualIndicatorRankingStage.setScene(scene);
 			virtualIndicatorRankingStage.show();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorRanking_Virtual.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorRanking_Virtual.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorRanking_Virtual.fxml: " + e.getMessage());
 		}
 		iCC.getVirtualIndicatorSelectionStage().close();
 	}
@@ -229,8 +227,7 @@ public class IndicatorSelection_VirtualController implements Initializable {
 			inputStream.close();			
 			
 		} catch (IOException | EncryptedDocumentException e) {
-			logger.log(Level.FINE, "Failed to create skimmed copy of indicators list.");
-			logger.log(Level.FINER, "Failed to create skimmed copy of indicators list: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to create skimmed copy of indicators list: " + e.getMessage());
 		}
 		
 	}
@@ -254,8 +251,7 @@ public class IndicatorSelection_VirtualController implements Initializable {
 			printWriter.close();
 			return selectedIds;
 		} catch (FileNotFoundException e) {
-			logger.log(Level.FINE, "Failed to write selected indicators.");
-			logger.log(Level.FINER, "Failed to write selected indicators: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to write selected indicators: " + e.getMessage());
 		}
 		return null;
 

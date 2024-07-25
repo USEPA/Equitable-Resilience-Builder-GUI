@@ -75,8 +75,7 @@ public class XMLManager {
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to write word cloud data.");
-				logger.log(Level.FINER, "Failed to write word cloud data: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write word cloud data: " + e.getMessage());
 			}
 		} else {
 		}
@@ -107,8 +106,7 @@ public class XMLManager {
 				}
 				return wordCloudItems;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse word cloud data.");
-				logger.log(Level.FINER, "Failed to parse word cloud data: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse word cloud data: " + e.getMessage());
 			}
 		} else {
 		}
@@ -157,8 +155,7 @@ public class XMLManager {
 				}
 				return listOfCategoryHashMaps;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse noteboard data.");
-				logger.log(Level.FINER, "Failed to parse noteboard data: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse noteboard data: " + e.getMessage());
 			}
 		} else {
 		}
@@ -195,8 +192,7 @@ public class XMLManager {
 				}
 				return worksheets;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse worksheets.");
-				logger.log(Level.FINER, "Failed to parse worksheets: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse worksheets: " + e.getMessage());
 			}
 		} else {
 		}
@@ -230,8 +226,7 @@ public class XMLManager {
 				}
 				return worksheets;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse worksheets.");
-				logger.log(Level.FINER, "Failed to parse worksheets: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse worksheets: " + e.getMessage());
 			}
 		} else {
 		}
@@ -423,8 +418,7 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse main form content.");
-				logger.log(Level.FINER, "Failed to parse main form content: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse main form content: " + e.getMessage());
 			}
 		} else {
 		}
@@ -571,8 +565,7 @@ public class XMLManager {
 				}
 				return contentHashMap;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse alternative form content.");
-				logger.log(Level.FINER, "Failed to parse alternative form content: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse alternative form content: " + e.getMessage());
 			}
 		} else {
 		}
@@ -627,8 +620,7 @@ public class XMLManager {
 				}
 				return contentList;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse output form content.");
-				logger.log(Level.FINER, "Failed to parse output form content: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse output form content: " + e.getMessage());
 			}
 		} else {
 		}
@@ -707,8 +699,7 @@ public class XMLManager {
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to write output form content.");
-				logger.log(Level.FINER, "Failed to write output form content: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write output form content: " + e.getMessage());
 			}
 		} else {
 		}
@@ -741,8 +732,7 @@ public class XMLManager {
 				}
 				return availableERBContentItems;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse content.");
-				logger.log(Level.FINER, "Failed to parse content: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse content: " + e.getMessage());
 			}
 		}
 		return null;
@@ -775,8 +765,7 @@ public class XMLManager {
 				}
 				return goalCategories;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse goal categories.");
-				logger.log(Level.FINER, "Failed to parse goal categories: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse goal categories: " + e.getMessage());
 			}
 		} else {
 		}
@@ -885,8 +874,7 @@ public class XMLManager {
 					}
 				}
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse project.");
-				logger.log(Level.FINER, "Failed to parse project: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse project: " + e.getMessage());
 			}
 		} else {
 		}
@@ -938,8 +926,7 @@ public class XMLManager {
 				}
 				return reportItems;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse report data xml.");
-				logger.log(Level.FINER, "Failed to parse report data xml: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse report data xml: " + e.getMessage());
 			}
 		} else {
 		}
@@ -981,8 +968,7 @@ public class XMLManager {
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to write project.");
-				logger.log(Level.FINER, "Failed to write project: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write project: " + e.getMessage());
 			}
 		} else {
 		}
@@ -1005,8 +991,7 @@ public class XMLManager {
 				StreamResult file = new StreamResult(xmlFile);
 				transformer.transform(domSource, file);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to write goal.");
-				logger.log(Level.FINER, "Failed to write goal: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to write goal: " + e.getMessage());
 			}
 		} else {
 		}
@@ -1070,8 +1055,7 @@ public class XMLManager {
 				}
 				return nestedGoalERBContentItems;
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to parse goal.");
-				logger.log(Level.FINER, "Failed to parse goal: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to parse goal: " + e.getMessage());
 			}
 		} else {
 		}

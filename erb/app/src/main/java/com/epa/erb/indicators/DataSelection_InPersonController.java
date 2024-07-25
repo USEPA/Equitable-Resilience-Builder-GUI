@@ -89,8 +89,7 @@ public class DataSelection_InPersonController implements Initializable{
 				}
 				dataVBox.getChildren().add(root);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to load IndicatorSelector_InPerson.fxml.");
-				logger.log(Level.FINER, "Failed to load IndicatorSelector_InPerson.fxml: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to load IndicatorSelector_InPerson.fxml: " + e.getMessage());
 				}
 			}
 		}
@@ -128,8 +127,7 @@ public class DataSelection_InPersonController implements Initializable{
 			}
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			logger.log(Level.FINE, "Failed to write selected data.");
-			logger.log(Level.FINER, "Failed to write selected data: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to write selected data: " + e.getMessage());
 		}
 	}
 	
@@ -151,8 +149,7 @@ public class DataSelection_InPersonController implements Initializable{
 			fxmlLoader.load();
 			showPrinters(indicatorsPrintView);
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorsPrintView.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorsPrintView.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorsPrintView.fxml: " + e.getMessage());
 		}
 		iSINC.getInPersonDataSelectionStage().close();
 	}
@@ -174,8 +171,7 @@ public class DataSelection_InPersonController implements Initializable{
 			printerSelectionStage.setScene(scene);
 			printerSelectionStage.show();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load PrinterSelection.fxml.");
-			logger.log(Level.FINER, "Failed to load PrinterSelection.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load PrinterSelection.fxml: " + e.getMessage());
 		}
 
 	}

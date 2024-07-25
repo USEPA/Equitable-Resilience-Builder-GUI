@@ -86,8 +86,7 @@ public class IndicatorCardController implements Initializable{
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorCard.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorCard.fxml: " + e.getStackTrace());	
+			logger.log(Level.SEVERE, "Failed to load IndicatorCard.fxml: " + e.getMessage());	
 		}
 	}
 	

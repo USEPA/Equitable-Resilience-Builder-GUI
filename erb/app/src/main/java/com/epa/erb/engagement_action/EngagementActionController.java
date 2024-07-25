@@ -117,8 +117,7 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load Mapping.fxml.");
-			logger.log(Level.FINER, "Failed to load Mapping.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load Mapping.fxml: " + e.getMessage());
 		}
 	}
 	
@@ -138,8 +137,9 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load FinalReportSelection.fxml.");
-			logger.log(Level.FINER, "Failed to load FinalReportSelection.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load FinalReportSelection.fxml: " + e.getMessage());
+			e.printStackTrace();
+
 		}
 	}
 	
@@ -159,8 +159,7 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load MyPortfolio.fxml.");
-			logger.log(Level.FINER, "Failed to load MyPortfolio.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load MyPortfolio.fxml: " + e.getMessage());
 		}
 	}
 	
@@ -180,8 +179,7 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load WorksheetIndex.fxml.");
-			logger.log(Level.FINER, "Failed to load WorksheetIndex.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load WorksheetIndex.fxml: " + e.getMessage());
 		}
 	}
 
@@ -225,8 +223,7 @@ public class EngagementActionController implements Initializable {
 			stage.setScene(scene);
 			stage.showAndWait();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load ExternalFileUploader.fxml.");
-			logger.log(Level.FINER, "Failed to load ExternalFileUploader.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load ExternalFileUploader.fxml: " + e.getMessage());
 		}
 	}
 	
@@ -239,8 +236,7 @@ public class EngagementActionController implements Initializable {
 			indicatorSetupFormController.setUp();
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorSetupForm.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorSetupForm.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorSetupForm.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -253,8 +249,7 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load WordCloud.fxml.");
-			logger.log(Level.FINER, "Failed to load WordCloud.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load WordCloud.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -266,8 +261,7 @@ public class EngagementActionController implements Initializable {
 			fxmlLoader.setController(indicatorCenterController);
 			return fxmlLoader.load();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorCenter.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorCenter.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorCenter.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -382,7 +376,7 @@ public class EngagementActionController implements Initializable {
 				erbPathwayTreeItemSelected();
 			}
 		} else {
-			logger.log(Level.FINE, "New TreeItem is null. Check this.");
+			logger.log(Level.WARNING, "New TreeItem is null. Check this.");
 		}
 	}
 	
@@ -419,7 +413,7 @@ public class EngagementActionController implements Initializable {
 				}
 			}
 		}
-		logger.log(Level.FINE, "ERBContentItem is null. Check this.");
+		logger.log(Level.WARNING, "ERBContentItem is null. Check this.");
 	}
 
 	private void erbPathwayTreeItemSelected() {
@@ -560,8 +554,7 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load AlternativeForm.fxml.");
-			logger.log(Level.FINER, "Failed to load AlternativeForm.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load AlternativeForm.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -574,8 +567,7 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load OutputForm.fxml.");
-			logger.log(Level.FINER, "Failed to load OutputForm.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load OutputForm.fxml: " + e.getMessage());
 			return null;
 		}
 	}
@@ -588,8 +580,7 @@ public class EngagementActionController implements Initializable {
 			VBox root = fxmlLoader.load();
 			return root;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load MainForm.fxml.");
-			logger.log(Level.FINER, "Failed to load MainForm.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load MainForm.fxml: " + e.getMessage());
 			return null;
 		}
 	}

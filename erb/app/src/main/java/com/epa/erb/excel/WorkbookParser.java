@@ -26,8 +26,7 @@ public class WorkbookParser {
 			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(excelWorkbookPath);
 			return xssfWorkbook;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to get XSSFWorkbook.");
-			logger.log(Level.FINER, "Failed to get XSSFWorkbook: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to get XSSFWorkbook: " + e.getMessage());
 			return null;
 		}
 	}

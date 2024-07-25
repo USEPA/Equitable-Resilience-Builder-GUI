@@ -78,8 +78,7 @@ public class FinalReportExcel {
 				workbook.close();
 
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to create table.");
-				logger.log(Level.FINER, "Failed to create table: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to create table: " + e.getMessage());
 			}
 		}
 	}

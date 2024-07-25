@@ -62,8 +62,7 @@ public class IndicatorCenterController implements Initializable{
 			inPersonIndicatorSelectionStage.setScene(scene);
 			inPersonIndicatorSelectionStage.show();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorSelection_InPerson.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorSelection_InPerson.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load IndicatorSelection_InPerson.fxml: " + e.getMessage());
 			}
 	}
 	
@@ -90,8 +89,7 @@ public class IndicatorCenterController implements Initializable{
 			virtualIndicatorSelectionStage.setScene(scene);
 			virtualIndicatorSelectionStage.show();
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load IndicatorSelection_Virtual.fxml.");
-			logger.log(Level.FINER, "Failed to load IndicatorSelection_Virtual.fxml: " + e.getStackTrace());		}
+			logger.log(Level.SEVERE, "Failed to load IndicatorSelection_Virtual.fxml: " + e.getMessage());		}
 	}
 
 	public Stage getInPersonIndicatorSelectionStage() {

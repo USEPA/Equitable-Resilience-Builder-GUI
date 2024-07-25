@@ -48,8 +48,7 @@ public class FinalReportTable {
 				}
 			}
 		} catch (IOException e) {
-			logger.log(Level.FINE, "Failed to write table to report doc.");
-			logger.log(Level.FINER, "Failed to write table to report doc: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to write table to report doc: " + e.getMessage());
 		}
 	}
 
@@ -103,8 +102,7 @@ public class FinalReportTable {
 							fontSize = row.getCell(i).getParagraphs().get(0).getRuns().get(0).getFontSizeAsDouble();
 						}
 						}catch(Exception e) {
-							logger.log(Level.FINE, "Failed to copy table.");
-							logger.log(Level.FINER, "Failed to copy table: " + e.getStackTrace());
+							logger.log(Level.SEVERE, "Failed to copy table: " + e.getMessage());
 						}
 					}
 					newCell.setWidth(String.valueOf(cellSize));

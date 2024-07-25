@@ -308,8 +308,7 @@ public class WordCloudController implements Initializable {
 			saveStage.showAndWait();
 			return wordCloudSaveController;
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load WordCloudSave.fxml.");
-			logger.log(Level.FINER, "Failed to load WordCloudSave.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load WordCloudSave.fxml: " + e.getMessage());
 		}
 		return null;
 	}
@@ -613,8 +612,7 @@ public class WordCloudController implements Initializable {
 			webView.setMinHeight(size + 40);
 
 		} catch (FileNotFoundException e) {
-			logger.log(Level.FINE, "Failed to write jsonp.");
-			logger.log(Level.FINER, "Failed to write jsonp: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to write jsonp: " + e.getMessage());
 		}
 	}
 
@@ -665,8 +663,7 @@ public class WordCloudController implements Initializable {
 										}
 									});
 						} catch (MalformedURLException e) {
-							logger.log(Level.FINE, "Failed to build word cloud.");
-							logger.log(Level.FINER, "Failed to build word cloud: " + e.getStackTrace());
+							logger.log(Level.SEVERE, "Failed to build word cloud: " + e.getMessage());
 						}
 					}
 				}
@@ -682,8 +679,7 @@ public class WordCloudController implements Initializable {
 			try {
 				ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", saveFile);
 			} catch (IOException e) {
-				logger.log(Level.FINE, "Failed to snapshot word cloud.");
-				logger.log(Level.FINER, "Failed to snapshot word cloud: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to snapshot word cloud: " + e.getMessage());
 			}
 		}
 	}

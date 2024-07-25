@@ -161,8 +161,7 @@ public class FormController {
 					stage.setScene(scene);
 					stage.show();
 				} catch (Exception e) {
-					logger.log(Level.FINE, "Failed to handle hyperlink.");
-					logger.log(Level.FINER, "Failed to handle hyperlink: " + e.getStackTrace());
+					logger.log(Level.SEVERE, "Failed to handle hyperlink: " + e.getMessage());
 				}
 			} else {
 				internalPanelLinkClicked(link);
@@ -341,8 +340,7 @@ public class FormController {
 		try {
 			Desktop.getDesktop().browse(new URL(link).toURI());
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to open URL.");
-			logger.log(Level.FINER, "Failed to open URL: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to open URL: " + e.getMessage());
 		}
 	}
 
@@ -355,8 +353,7 @@ public class FormController {
 			root.setPrefHeight(app.getPrefHeight());
 			app.addNodeToERBContainer(root);
 		} catch (Exception e) {
-			logger.log(Level.FINE, "Failed to load EngagementAction.fxml.");
-			logger.log(Level.FINER, "Failed to load EngagementAction.fxml: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to load EngagementAction.fxml: " + e.getMessage());
 		}
 	}
 
@@ -367,8 +364,7 @@ public class FormController {
 						.getSelectionModel().getSelectedItem();
 				getSectionParent(erbContentItemSelected);
 			} catch (Exception e) {
-				logger.log(Level.FINE, "Failed to setColor.");
-				logger.log(Level.FINER, "Failed to setColor: " + e.getStackTrace());
+				logger.log(Level.SEVERE, "Failed to setColor: " + e.getMessage());
 			}
 		}
 	}

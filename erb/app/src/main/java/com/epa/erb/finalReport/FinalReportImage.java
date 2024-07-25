@@ -53,8 +53,7 @@ public class FinalReportImage {
 			int height = 250; 
 			contentRun.addPicture(imageData, imageType, imageFileName,Units.toEMU(width), Units.toEMU(height));
 		} catch (IOException | InvalidFormatException e) {
-			logger.log(Level.FINE, "Failed to add image to run.");
-			logger.log(Level.FINER, "Failed to add image to run: " + e.getStackTrace());
+			logger.log(Level.SEVERE, "Failed to add image to run: " + e.getMessage());
 		} 
 	}
 
