@@ -69,7 +69,7 @@ public class FinalReportSelectionController implements Initializable {
 
 	XMLManager xmlManager;
 	ArrayList<MyUploadedItem> uploadedItems;
-	FileHandler fileHandler = new FileHandler(app);
+	FileHandler fileHandler;
 	ArrayList<ERBContentItem> erbUniqueContentItems;
 	ArrayList<ERBContentItem> erbWorksheetContentItems;
 	ArrayList<FinalReportItem> treeItems = new ArrayList<FinalReportItem>();
@@ -89,6 +89,7 @@ public class FinalReportSelectionController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		xmlManager = new XMLManager(app);
+		fileHandler = new FileHandler(app);
 
 		//Handle custom check boxes and objects for tree view and list view
 		listView.setCellFactory(lv -> createListCell());

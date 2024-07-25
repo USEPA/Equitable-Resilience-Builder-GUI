@@ -33,6 +33,5 @@ public class MyLogger extends Logger{
 			handler.close();
 		}
 	}
-
 	
 }

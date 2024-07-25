@@ -138,7 +138,6 @@ public class EngagementActionController implements Initializable {
 			stage.showAndWait();
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Failed to load FinalReportSelection.fxml: " + e.getMessage());
-			e.printStackTrace();
 
 		}
 	}

@@ -318,7 +318,6 @@ public class FormController {
 	private void externalDOCLinkClicked(String link, Project project) {
 		if (link != null && link.trim().length() > 0) {
 			if (engagementActionController != null) {
-				FileHandler fileHandler = new FileHandler(app);
 				Project currentProject = app.getSelectedProject();
 				Goal currentGoal = engagementActionController.getCurrentGoal();
 				File supportingDOCDirectory = fileHandler.getSupportingDOCDirectory(currentProject, currentGoal);

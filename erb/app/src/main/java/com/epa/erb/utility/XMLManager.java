@@ -42,6 +42,8 @@ import javafx.scene.layout.VBox;
 public class XMLManager {
 	
 	private Logger logger;
+	private FileHandler fileHandler;
+	
 	private IdAssignments idAssignments = new IdAssignments();
 	private ERBItemFinder erbItemFinder = new ERBItemFinder();
 
@@ -50,6 +52,7 @@ public class XMLManager {
 		this.app = app;
 		
 		logger = app.getLogger();
+		fileHandler = new FileHandler(app);
 	}
 
 	public void writeWordCloudDataXML(File xmlFile, ArrayList<WordCloudItem> wordCloudItems) {
@@ -236,7 +239,6 @@ public class XMLManager {
 	public HashMap<String, ArrayList<HBox>> parseMainFormContentXML(File xmlFile,MainFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
-				FileHandler fileHandler = new FileHandler(app);
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
@@ -429,8 +431,6 @@ public class XMLManager {
 			AlternativeFormController formContentController) {
 		if (xmlFile != null && xmlFile.exists()) {
 			try {
-				FileHandler fileHandler = new FileHandler(app);
-
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 				Document doc = dBuilder.parse(xmlFile);
