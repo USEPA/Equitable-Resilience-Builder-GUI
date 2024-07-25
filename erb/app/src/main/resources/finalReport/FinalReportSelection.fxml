@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="root" fitToHeight="true" fitToWidth="true" prefHeight="750.0" prefWidth="1150.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="root" fitToHeight="true" fitToWidth="true" prefHeight="750.0" prefWidth="1150.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox spacing="20.0">
          <children>
