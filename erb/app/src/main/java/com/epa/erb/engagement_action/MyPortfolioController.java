@@ -214,7 +214,7 @@ public class MyPortfolioController implements Initializable {
 	}
 
 	public void initTableView() {
-		selectColumn.setCellValueFactory(new PropertyValueFactory("selectedForExport"));
+		selectColumn.setCellValueFactory(new PropertyValueFactory<MyUploadedItem, Boolean>("selectedForExport"));
 		selectColumn
 				.setCellFactory(new Callback<TableColumn<MyUploadedItem, Boolean>, TableCell<MyUploadedItem, Boolean>>() {
 					@Override
@@ -230,7 +230,7 @@ public class MyPortfolioController implements Initializable {
 		        new PropertyValueFactory<MyUploadedItem,Text>("fileName")
 		    );
 		nameColumn.setCellFactory(new Callback<TableColumn<MyUploadedItem, Text>, TableCell<MyUploadedItem, Text>>() {
-		        public TableCell call(TableColumn param) {
+		        public TableCell<MyUploadedItem,Text> call(TableColumn<MyUploadedItem, Text> param) {
 		            return new TableCell<MyUploadedItem, Text>() {
 		                @Override
 		                public void updateItem(Text item, boolean empty) {

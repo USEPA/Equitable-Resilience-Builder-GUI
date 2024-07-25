@@ -221,7 +221,7 @@ public class ExternalFileUploaderController implements Initializable{
 		        new PropertyValueFactory<MyUploadedItem,Text>("fileName")
 		    );
 		nameColumn.setCellFactory(new Callback<TableColumn<MyUploadedItem, Text>, TableCell<MyUploadedItem, Text>>() {
-		        public TableCell call(TableColumn param) {
+		        public TableCell<MyUploadedItem, Text> call(TableColumn<MyUploadedItem, Text> param) {
 		            return new TableCell<MyUploadedItem, Text>() {
 		                @Override
 		                public void updateItem(Text item, boolean empty) {

@@ -114,6 +114,7 @@ public class IndicatorSetupFormController implements Initializable {
 		return cards;
 	}
 
+	@SuppressWarnings("unchecked")
 	private void loadExistingIndicators(ArrayList<IndicatorCard> cards) {
 		if (cards != null && cards.size() > 0) {
 			for (int i = 0; i < indicatorListVBox.getChildren().size(); i++) {
@@ -148,6 +149,7 @@ public class IndicatorSetupFormController implements Initializable {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private ArrayList<IndicatorCard> getSelectedIndicatorCards() {
 		ArrayList<IndicatorCard> cards = new ArrayList<IndicatorCard>();
 		for (int i = 0; i < indicatorListVBox.getChildren().size(); i++) {
@@ -161,6 +163,7 @@ public class IndicatorSetupFormController implements Initializable {
 		return cards;
 	}
 
+	@SuppressWarnings("unchecked")
 	private boolean areSelectedIndicatorsUnique() {
 		ArrayList<String> indicatorIds = new ArrayList<String>();
 		for (int i = 0; i < indicatorListVBox.getChildren().size(); i++) {
