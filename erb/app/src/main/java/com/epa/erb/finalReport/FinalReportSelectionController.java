@@ -407,10 +407,21 @@ public class FinalReportSelectionController implements Initializable {
 			document.write(out);
 			out.close();
 			document.close();
-
+			openSummaryReport(reportDocPath);
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Failed to create summary report: " + e.getMessage());
 		}
+	}
+	
+	private void openSummaryReport(String pathToReportDoc) {
+		File reportDoc = new File(pathToReportDoc);
+		fileHandler.openFileOnDesktop(reportDoc);
+		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Summary Report Saved");
+		alert.setContentText("Summary report saved successfully." + "\n" + pathToReportDoc);
+		alert.showAndWait();
 	}
 
 	@FXML
