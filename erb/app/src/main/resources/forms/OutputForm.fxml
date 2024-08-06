@@ -2,13 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="nodeVBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="nodeVBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane VBox.vgrow="ALWAYS">
          <center>
@@ -25,6 +27,15 @@
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#infoClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../info.png" />
+                           </image>
+                        </ImageView>
+                     </children>
                   </HBox>
                   <VBox fx:id="formVBox" spacing="10.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER_RIGHT">

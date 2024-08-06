@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<ScrollPane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox fx:id="root" style="-fx-background-color: white;">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../info.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label maxWidth="500.0" text="What are Key Takeaways" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Key Takeaways forms are found at the end of the Assess and Strategize sections. They provide a space for synthesizing findings from section activities to use when drafting the core team’s resilience plan or other product." wrappingWidth="500.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label maxWidth="500.0" text="How to synthesize findings" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gather the completed activity sheets and other materials for a specific activity. Look for reoccurring themes, novel ideas, or highlights. The rectangular boxes in the form contain examples for flooding and heat." wrappingWidth="500.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label maxWidth="500.0" text="Input information into the form" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="After completing an activity, go to the Key Takeaways and answer the relevant question(s). The questions correspond to activities within a section." wrappingWidth="500.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type text in the rectangular box below each question. If an activity was skipped, just leave that box blank." wrappingWidth="500.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextFlow maxWidth="500.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Before you leave the page">
+                           <font>
+                              <Font name="System Italic" size="20.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=", be sure to scroll down and click &quot;Save Form&quot; at the bottom.">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </TextFlow>
+               </children>
+            </VBox>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label maxWidth="500.0" text="Download and use the information from the form" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextFlow maxWidth="500.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Download contents of the entire key takeaways form(s) in a .txt file using">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Hyperlink onAction="#myPortfolioHyperlinkAction" text="MyPortfolio">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-Completed Forms and Updates.">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </TextFlow>
+                  <Label text="                       And/Or">
+                     <font>
+                        <Font name="System Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextFlow maxWidth="500.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Include select contents in a Summary Report using the">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Hyperlink onAction="#reportWidgetButtonAction" text="report widget.">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </TextFlow>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

@@ -5,23 +5,15 @@
 			size="22.0"
 			fontFamily="System"
 			fontStyle="Bold"
-			text="Key Takeaways on Strategizing Actions">
+			text="Key Takeaways on Strategizing Actions and Workshop 3 Findings">
 			</text>
 		</textBlock>
 		<textBlock type="block">
 			<text
-			size="14.0"
-			fontFamily="System"
-			fontStyle="Bold"
-			text="As you complete the activites in this section, add your key takeaways here.">
-			</text>
-		</textBlock>
-		<textBlock type="block">
-			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="1. [Implementation Storytelling] What lessons from the Implementation Storytelling activity will you incorporate in your ERB process? (Core team)">
+			text="1. What lessons from the Implementation Storytelling activity be incorporated into your resilience plan or other product?">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -40,24 +32,24 @@
 		</textBlock>
 		<textBlock type="block">
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="2. State which warm-up activity participants chose to complete in the workshop then answer the associate question:">
+			text="2. Highlights from the workshop 3 warm-up activity:">
 			</text>
 		</textBlock>
 		<textBlock type="block">
 			<text
 			size="16.0"
 			fontFamily="System"
-			fontStyle="Underlined"
+			fontStyle="Underline"
 			text="Disaster Scenario: ">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
-			text="What lessons or strategies learned from the Disaster Scenario activity will you incorporate in your ERB process?">
+			text="What lessons or strategies learned from the Disaster Scenario activity can be incorporated in your resilience plan or other product?">
 			</text>
 		</textBlock>
 		<textBlock type="block">
@@ -71,7 +63,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Underlined"
-			text="What key takeaways on integrating equity in implementation will be incorporated in your ERB process?">
+			text="What key takeaways on integrating equity in implementing storytelling can be incorporated in your resilience plan or other product?">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -85,21 +77,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;- Everyone reacts differently in a diaster, and that's ok.">
+			text="&#xD;- Everyone reacts differently in a diaster, and that's okay.">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;- Know who are your most vulnerable neighbors and check in on them.">
+			text="&#xD;- Sharing grant and funding opportunities in multiple languages has increased participation.">
 			</text>
 		</textBlock>
 		<textBlock type="block">
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="3. [Identify Action Areas] List each Action Area">
+			text="3. List the Action Areas that were identified">
 			</text>
 		</textBlock>
 		<textBlock type="block">
@@ -115,7 +107,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="Action Area: Flooding is severely impacting residents of Parkview neighborhood; Vision Statement: In 10 years the impacts of flooding should be reduced in Parkview neighborhood and residents should be better able to prepare for and recover from flooding.">
+			text="Action Area: Flooding is severely impacting residents of Parkview neighborhood; Vision Statement: In 10 years the impacts of flooding should be reduced in Parkview neighborhood and residents should be better able to prepare for and recover from flooding">
 			</text>
 		</textBlock>
 		<textBlock type="dynamic area">
@@ -152,10 +144,10 @@
 		</textBlock>
 		<textBlock type="block">
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="4. Workshop wrap-up: Where is there interest in working together, how, and who else needs to be involved?">
+			text="4. What came up in the workshop 3 wrap up activity: is there interest in working together, how, and who else needs to be involved?">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -169,21 +161,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;-To reduce impacts from flooding, government should work with community members to identify drainage systems that need maintenance, and where the community volunteers can remove debris.">
+			text="&#xD;- To reduce impacts from flooding in the Shady Acres and Greenview neighborhoods, the stormwater program should work with residents and the school bus provider to identify drainage systems to prioritize for maintenance and improvement.">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;-Households in areas of severe flooding should be informed.">
+			text="&#xD;- The city transportation department, urban forestry department, and electric company, with input from bus riders and drivers, should work to identify bus stops that have the greatest need for shade and seek grant funding for planting and maintaining street trees and shade canopies.">
 			</text>
 		</textBlock>
 		<textBlock type="block">
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="5. Workshop wrap-up: What are the opportunities for taking action, and what barriers need to be addressed?">
+			text="5. What came up in the workshop 3 wrap up activity: What are the greatest opportunities for taking action? What barriers to action need to be addressed?">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -197,21 +189,21 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;-Opportunities to reduce severity of flooding and increase green infrastructure.">
+			text="&#xD;- Seek grant for green infrastructure to benefit areas experiencing flooding after heavy rains.">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;- Barriers are funding available for disaster recovery.">
+			text="&#xD;- Barriers to action include limited resources for maintaining green infrastructure.">
 			</text>
 		</textBlock>
 		<textBlock type="block">
 			<text
-			size="16.0"
+			size="18.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="6. Workshop wrap-up: How should outputs from this workshop be shared more widely, and who needs to be updated?">
+			text="6. How should the final list of actions from workshop 3 be shared more widely, and who needs to be updated moving forward?">
 			</text>
 		</textBlock>
 		<textBlock type="area">
@@ -225,13 +217,13 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;- Community email, magazine, newsletter, or flyers in trusted locations.">
+			text="&#xD;- Present actions related to children’s health and well-being at upcoming parent- teacher association meeting.">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Prompt"
-			text="&#xD;- Neighbors in areas where actions are being taken need to be updated.">
+			text="&#xD;- Ask neighborhood listserv managers to share relevant updates for their area.">
 			</text>
 		</textBlock>
 	</container>

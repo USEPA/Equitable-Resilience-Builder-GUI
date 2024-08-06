@@ -17,19 +17,28 @@ import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import javafx.scene.control.Separator;
 
 public class OutputFormController extends FormController implements Initializable {
@@ -58,6 +67,29 @@ public class OutputFormController extends FormController implements Initializabl
 	Pane lP, tP, rP, bP;
 	@FXML
 	VBox nodeVBox, formVBox;
+	
+	
+	@FXML
+	public void infoClicked(MouseEvent event) {
+		showAboutKeyTakeaways();
+	}
+	
+	private void showAboutKeyTakeaways() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/forms/AboutKeyTakeaways.fxml"));
+			AboutKeyTakeawaysController controller = new AboutKeyTakeawaysController(app, app.getEngagementActionController().getProject(), logger);
+			fxmlLoader.setController(controller);
+			Parent root = fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.getIcons().add(new Image("/bridge_tool_logo.png"));
+			stage.setTitle("About Key Takeaways");
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Failed to load AboutKeyTakeaways.fxml: " + e.getMessage());
+		}
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -161,6 +193,16 @@ public class OutputFormController extends FormController implements Initializabl
 	private TextFlow createTextFlow(ArrayList<Text> textBlock) {
 		TextFlow textFlow = new TextFlow();
 		for(Text text: textBlock) {
+			String fontStyle = text.getId();
+			Font font = text.getFont();
+			if(fontStyle.contains("Bold") && fontStyle.contains("Underline")) {
+				Font newFont = Font.font(font.getFamily(), FontWeight.BOLD, FontPosture.REGULAR, font.getSize());
+				text.setFont(newFont);
+				text.setUnderline(true);
+			}else if (fontStyle.contains("Bold")) {
+				Font newFont = Font.font(font.getFamily(), FontWeight.BOLD, FontPosture.REGULAR, font.getSize());
+				text.setFont(newFont);
+			}
 			textFlow.getChildren().add(text);
 		}
 		textFlow.setId("block");
@@ -172,9 +214,11 @@ public class OutputFormController extends FormController implements Initializabl
 		textArea.setWrapText(true);
 		String textString = "";
 		String textType = null;
+		Font textFont = null;
 		for(Text text: textBlock) {
 			textString = textString + text.getText();
 			textType = text.getId();
+			textFont = text.getFont();
 		}
 		
 		if(textType != null) {
@@ -184,9 +228,11 @@ public class OutputFormController extends FormController implements Initializabl
 				textArea.setText(textString);
 			}
 		}
+		textArea.setFont(textFont);
 		textArea.setId("area");
 		textArea.setWrapText(true);
-		textArea.setMinHeight(100);
+		textArea.setMinHeight(150);
+		textArea.setStyle("-fx-prompt-text-fill:#767676;");
 		return textArea;
 	}
 	
