@@ -183,15 +183,12 @@ public class MyPortfolioController implements Initializable {
 							}
 							scanner.close();
 						} catch (FileNotFoundException e) {
-<<<<<<< HEAD
 							logger.log(Level.SEVERE, "Failed to read uploaded items: " + e.getMessage());
-=======
 							logger.log(Level.FINE, "Failed to read uploaded items.");
 							logger.log(
 								Level.FINER,
 								() -> String.format("Failed to read uploaded items: %s", Arrays.toString(e.getStackTrace()))
 							);
->>>>>>> 59405a29 (lint and add first test)
 						}
 						
 					} else {
