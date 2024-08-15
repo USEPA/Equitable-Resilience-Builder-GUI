@@ -45,7 +45,7 @@ public class App extends Application {
 	private ArrayList<ERBContentItem> availableERBContentItems;
 	private EngagementActionController engagementActionController;
 	
-	private static Logger logger;
+	static Logger logger;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -61,7 +61,7 @@ public class App extends Application {
 		logger.log(Level.INFO, "Successfully launched application");		
 	}
 	
-	private void setupERBFileDirectory() {
+	void setupERBFileDirectory() {
 		FileHandler fileHandler = new FileHandler(this);
 		File erbDirectory = fileHandler.getEquitableResilienceBuilderDirectory();
 		if(!erbDirectory.exists()) {
@@ -79,7 +79,7 @@ public class App extends Application {
 		}
 	}
 	
-	private void createExploreProject() {
+	void createExploreProject() {
 		FileHandler fileHandler = new FileHandler(this);
 		File projectsDirectory = fileHandler.getProjectsDirectory();
 		if(projectsDirectory.exists()) {
@@ -92,21 +92,21 @@ public class App extends Application {
 		}
 	}
 
-	private void showERBToolMain() {
+	void showERBToolMain() {
 		Parent erbContainerRoot = loadERBContainer();
 		launchERBLanding();
 		showERBContainer(erbContainerRoot);
 	}
 
-	private int getScreenResolution() {
+	int getScreenResolution() {
 		return java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
 	}
 	
-	private Dimension getScreenSize() {
+	Dimension getScreenSize() {
 		return java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
 	
-	private void sizeScreen(int dpiValue, Dimension size) {
+	void sizeScreen(int dpiValue, Dimension size) {
 		double width = size.getWidth();
 		double height = size.getHeight();
 		
@@ -128,7 +128,7 @@ public class App extends Application {
 		popUpPrefHeight = (int) (height - popUpHeightToSubtract);
 	}
 	
-	public int getScaleForDPIValue(int dpiValue) {
+	int getScaleForDPIValue(int dpiValue) {
 		int lowestDPIValue = 96;
 		int lowestDPIScale = 100;
 		int highestDPIScale = 500;
@@ -149,7 +149,7 @@ public class App extends Application {
 		addNodeToERBContainer(erbLandingRoot);
 	}
 
-	private Parent loadERBContainer() {
+	Parent loadERBContainer() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/erb/ERBContainer.fxml"));
 			erbContainerController = new ERBContainerController(this);
@@ -165,7 +165,7 @@ public class App extends Application {
 	}
 
 	private Stage erbContainerStage = null;
-	private void showERBContainer(Parent erbContainerRoot) {
+	void showERBContainer(Parent erbContainerRoot) {
 		if (erbContainerRoot != null) {
 			erbContainerStage = new Stage();
 			erbContainerStage.getIcons().add(new Image("/bridge_tool_logo.png"));
@@ -199,7 +199,7 @@ public class App extends Application {
 		}
 	}
 
-	private void readAndStoreData() {
+	void readAndStoreData() {
 		availableERBContentItems = readAndStoreAvailableContent();
 		availableGoalCategories = readAndStoreAvailableGoalCategories();
 		projects = readAndStoreProjects();
