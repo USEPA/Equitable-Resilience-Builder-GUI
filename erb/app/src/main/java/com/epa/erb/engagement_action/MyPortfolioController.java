@@ -3,8 +3,10 @@ package com.epa.erb.engagement_action;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -34,6 +36,8 @@ import com.epa.erb.utility.XMLManager;
 import javafx.stage.FileChooser;
 
 public class MyPortfolioController implements Initializable {
+	
+	private static String completed = "Completed Forms and Uploads";
 
 	private Logger logger;
 	private XMLManager xmlManager;
@@ -92,21 +96,22 @@ public class MyPortfolioController implements Initializable {
 	@FXML
 	public void exportButtonAction() {
 		HashMap<String, ArrayList<MyUploadedItem>> exportHash = getItemsReadyForExport();
-		if(exportHash != null && exportHash.size() > 0) {
+		if(exportHash.size() > 0) {
 			FileChooser fileChooser = new FileChooser();
 			File saveFile = fileChooser.showSaveDialog(null);
 			if(saveFile != null) {
 				if(!saveFile.exists()) saveFile.mkdir();
-				for(String section: exportHash.keySet()) {
-					String sectionCleaned = section.replaceAll("\\/", " ");
+				for(Map.Entry<String, ArrayList<MyUploadedItem>> entry : exportHash.entrySet()) {
+					String section = entry.getKey();
+					String sectionCleaned = section.replace("/", " ");
 					File sectionDir = new File(saveFile.getPath() + File.separator + sectionCleaned);
 					if(!sectionDir.exists()) sectionDir.mkdir();
 					
-					for(MyUploadedItem ut: exportHash.get(section)) {
+					for(MyUploadedItem ut: entry.getValue()) {
 						File sourceFile = null;
-						if(section.contentEquals("Completed Forms and Uploads")) {
+						if(section.contentEquals(completed)) {
 							sourceFile = new File(fileHandler.getMyUploadsDirectory(project, goal) + File.separator + ut.getFileNumber() + File.separator + ut.getFileName().getText());
-						}else {
+						} else {
 							sourceFile = new File(fileHandler.getSupportingDOCDirectory(project, goal) + File.separator + ut.getFileName().getText());
 						}
 						File destFile = new File(sectionDir.getPath() + File.separator + ut.getFileName().getText());
@@ -119,15 +124,16 @@ public class MyPortfolioController implements Initializable {
 	
 	private HashMap<String, ArrayList<MyUploadedItem>> getItemsReadyForExport(){
 		HashMap<String, ArrayList<MyUploadedItem>> exportHash = new HashMap<String, ArrayList<MyUploadedItem>>();
-		for(String section: hash.keySet()) {
-			ArrayList<MyUploadedItem> items = hash.get(section);
+		for(Map.Entry<String, ArrayList<MyUploadedItem>> entry : hash.entrySet()) {
+			String section = entry.getKey();
+			ArrayList<MyUploadedItem> items = entry.getValue();
 			ArrayList<MyUploadedItem> readyItems = new ArrayList<MyUploadedItem>();
 			for(MyUploadedItem item: items) {
 				if(item.isSelectedForExport()) {
 					readyItems.add(item);
 				}
 			}
-			if(readyItems.size() >0) exportHash.put(section, readyItems);
+			if(!readyItems.isEmpty()) exportHash.put(section, readyItems);
 		}
 		return exportHash;
 	}
@@ -150,7 +156,7 @@ public class MyPortfolioController implements Initializable {
 			}
 		}
 		
-		ERBContentItem uploadedERBContentItem = new ERBContentItem(null, null, "mainForm", null, "Completed Forms and Uploads", "Completed Forms and Uploads");
+		ERBContentItem uploadedERBContentItem = new ERBContentItem(null, null, "mainForm", null, completed, completed);
 		hash.put(uploadedERBContentItem.getShortName(), getListOfUserUploadedItems());
 		TreeItem<String> uploadedTreeItem = new TreeItem<String>(uploadedERBContentItem.getShortName());
 		rootTreeItem.getChildren().add(uploadedTreeItem);
@@ -159,7 +165,7 @@ public class MyPortfolioController implements Initializable {
 	private ArrayList<MyUploadedItem> getListOfUserUploadedItems(){
 		ArrayList<MyUploadedItem> uploadedItems = new ArrayList<MyUploadedItem>();
 		File uploadsDirectory = fileHandler.getMyUploadsDirectory(project, goal);
-		if (uploadsDirectory != null && uploadsDirectory.exists()) {
+		if (uploadsDirectory.exists()) {
 			for(File uploadedDir: uploadsDirectory.listFiles()) {
 				int fileNumber = Integer.parseInt(uploadedDir.getName());
 				Text fileName = new Text("");
@@ -178,6 +184,11 @@ public class MyPortfolioController implements Initializable {
 							scanner.close();
 						} catch (FileNotFoundException e) {
 							logger.log(Level.SEVERE, "Failed to read uploaded items: " + e.getMessage());
+							logger.log(Level.FINE, "Failed to read uploaded items.");
+							logger.log(
+								Level.FINER,
+								() -> String.format("Failed to read uploaded items: %s", Arrays.toString(e.getStackTrace()))
+							);
 						}
 						
 					} else {
@@ -209,8 +220,7 @@ public class MyPortfolioController implements Initializable {
 		Text fileName = new Text(file);
 		long modifiedLong = f.lastModified();
 		String lastModified = new SimpleDateFormat("MM-dd-yyyy HH-mm-ss").format(new Date(modifiedLong));
-		MyUploadedItem uT = new MyUploadedItem(false, count, fileName, lastModified, app);
-		return uT;
+		return new MyUploadedItem(false, count, fileName, lastModified, app);
 	}
 
 	public void initTableView() {
@@ -257,11 +267,7 @@ public class MyPortfolioController implements Initializable {
 				public void handle(ActionEvent t) {
 					int selectedIndex = getTableRow().getIndex();
 					MyUploadedItem myUploadedItem = tableView.getItems().get(selectedIndex);
-					if (checkBox.isSelected()) {
-						myUploadedItem.setSelectedForExport(true);
-					} else {
-						myUploadedItem.setSelectedForExport(false);
-					}
+					myUploadedItem.setSelectedForExport(checkBox.isSelected());
 				}
 			});
 		}

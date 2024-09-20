@@ -29,11 +29,30 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+    testLogging {
+        events('passed', 'skipped', 'failed')
+        showStackTraces = true
+        exceptionFormat = 'full'
+    }
+    enableAssertions = true
+}
+
 dependencies {
 	implementation 'commons-io:commons-io:2.11.0'
 	implementation 'org.apache.poi:poi-ooxml:5.2.3'
 	implementation 'org.controlsfx:controlsfx:11.1.2'
 	implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
+	implementation 'com.itextpdf:itextpdf:5.5.13.3'
+	implementation 'com.itextpdf:kernel:8.0.3'
+	implementation 'com.itextpdf:layout:8.0.3'
+	testImplementation 'org.hamcrest:hamcrest:2.1'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+	testImplementation 'org.testfx:testfx-junit5:4.0.18'
+	testImplementation 'org.assertj:assertj-core:3.13.2'
+	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.5.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
 }
 
 applicationDefaultJvmArgs = ["-Dprism.maxvram=2G"]

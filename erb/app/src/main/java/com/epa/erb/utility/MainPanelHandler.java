@@ -108,6 +108,26 @@ public class MainPanelHandler {
 		mainPanelIdHashMap.put("Project Creation", "90");
 		return mainPanelIdHashMap;
 	}
+	
+	// Although this does not remove the hard-coded IDs,
+	// it does make it simpler to reference the meaning of each ID.
+	public void loadPanel(String mainPanelId, Project project) {
+		if(mainPanelId.contentEquals("86")) {
+			Parent root = loadERBLanding(app);
+			app.addNodeToERBContainer(root);
+		} else if(mainPanelId.contentEquals("87")) {
+			Parent root = loadProjectSelectionRoot(app);
+			app.addNodeToERBContainer(root);
+		} else if(mainPanelId.contentEquals("88")) {
+			// Don't allow right now
+		} else if(mainPanelId.contentEquals("89")) {
+			Parent root = loadEngagementActionRoot(app, project);
+			app.addNodeToERBContainer(root);
+		} else if(mainPanelId.contentEquals("90")){
+			Parent root = loadProjectCreationRoot(app);
+			app.addNodeToERBContainer(root);
+		} else { }
+	}
 
 	public App getApp() {
 		return app;

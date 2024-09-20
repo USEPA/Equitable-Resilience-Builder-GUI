@@ -52,45 +52,6 @@ public class Constants {
 		pathToERBProjectsDirectory = pathToERBDirectory + File.separator + "Projects";
 		pathToERBLogsDirectory = pathToERBDirectory + File.separator + "Logs";
 		pathToERBTempDirectory = pathToERBDirectory + File.separator + "Temp";
-		
-		sizeScreen(getScreenResolution(), getScreenSize());
-	}
-
-	private int getScreenResolution() {
-		return java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
-	}
-	
-	private Dimension getScreenSize() {
-		return java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-
-	}
-	
-	private void sizeScreen(int dpiValue, Dimension size) {
-		double width = size.getWidth();
-		double height = size.getHeight();
-		
-		int dpiScale = getScaleForDPIValue(dpiValue);
-		int maxWidthToSubtract = 850;
-		int maxHeightToSubtract = 450;
-		int widthToSubtract = maxWidthToSubtract-((maxWidthToSubtract*dpiScale/100)-maxWidthToSubtract);
-		int heightToSubtract = maxHeightToSubtract-((maxHeightToSubtract*dpiScale/100)-maxHeightToSubtract);
-		
-		prefWidthForImages = (int) (width -widthToSubtract);
-		prefHeightForImages = (int) (height - heightToSubtract);
-	}
-	
-	public int getScaleForDPIValue(int dpiValue) {
-		int lowestDPIValue = 96;
-		int lowestDPIScale = 100;
-		int highestDPIScale = 500;
-		
-		for (int i = lowestDPIScale; i <= highestDPIScale; i = i+25) {
-			int calculatedDPIValue = (lowestDPIValue * i)/100;
-			if(dpiValue == calculatedDPIValue) {
-				return i;
-			}
-		}
-		return 100; //Default
 	}
 	
 	//-------------------------------------------------------------------------

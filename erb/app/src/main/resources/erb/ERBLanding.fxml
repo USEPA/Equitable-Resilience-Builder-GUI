@@ -27,7 +27,7 @@
                      </image></ImageView>
                   <VBox alignment="BOTTOM_LEFT" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Equitable Resilience Builder (ERB)" textFill="#3a527d">
+                        <Label fx:id="erbLandingLabel" text="Equitable Resilience Builder (ERB)" textFill="#3a527d">
                            <font>
                               <Font name="System Bold" size="32.0" />
                            </font>
