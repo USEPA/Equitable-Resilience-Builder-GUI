@@ -1,6 +1,7 @@
 <goalCategories>
 	<goalCategory categoryName="All activities">
 		<contents>
+			<content id="251"/>
 			<content id="15">
 				<content id="30"/>
 				<content id="199"/>
@@ -46,9 +47,7 @@
 				<content id="108">
 					<content id="37"/>
 					<content id="109"/>
-					<content id="110">
-						<content id="193"/>
-					</content>
+					<content id="110"/>
 					<content id="111"/>
 				</content>
 				<content id="112"/>

@@ -5,7 +5,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.Parent;
 import com.epa.erb.App;
 import com.epa.erb.ERBContentItem;
 import com.epa.erb.ERBItemFinder;
@@ -147,19 +146,33 @@ public class FormController {
 		if (linkType.contentEquals("internal")) {
 			if (link.contentEquals("85")) {
 				try {
-					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/indicators/IndicatorCenter.fxml"));
 					IndicatorCenterController indicatorCenterController = new IndicatorCenterController(app,
 							engagementActionController);
-					fxmlLoader.setController(indicatorCenterController);
-					Parent root = fxmlLoader.load();
-					Stage stage = new Stage();
-					stage.getIcons().add(new Image("/bridge_tool_logo.png"));
-					stage.setWidth(app.getPopUpPrefWidth());
-					stage.setHeight(app.getPopUpPrefHeight());
-					stage.setTitle("Indicator Center");
-					Scene scene = new Scene(root);
-					stage.setScene(scene);
-					stage.show();
+					indicatorCenterController.indicatorsVirtualHyperlinkAction();
+					/*
+					 * fxmlLoader.setController(indicatorCenterController); Parent root =
+					 * fxmlLoader.load(); Stage stage = new Stage(); stage.getIcons().add(new
+					 * Image("/bridge_tool_logo.png")); stage.setWidth(app.getPopUpPrefWidth());
+					 * stage.setHeight(app.getPopUpPrefHeight());
+					 * stage.setTitle("Indicator Center"); Scene scene = new Scene(root);
+					 * stage.setScene(scene); stage.show();
+					 */
+				} catch (Exception e) {
+					logger.log(Level.SEVERE, "Failed to handle hyperlink: " + e.getMessage());
+				}
+			} else if (link.contentEquals("86")) {
+				try {
+					IndicatorCenterController indicatorCenterController = new IndicatorCenterController(app,
+							engagementActionController);
+					indicatorCenterController.indicatorsInPersonHyperlinkAction();
+				} catch (Exception e) {
+					logger.log(Level.SEVERE, "Failed to handle hyperlink: " + e.getMessage());
+				}
+			} else if (link.contentEquals("87")) {
+				try {
+					IndicatorCenterController indicatorCenterController = new IndicatorCenterController(app,
+							engagementActionController);
+					indicatorCenterController.resilienceIndicatorsBackgroundHyperlinkAction();
 				} catch (Exception e) {
 					logger.log(Level.SEVERE, "Failed to handle hyperlink: " + e.getMessage());
 				}

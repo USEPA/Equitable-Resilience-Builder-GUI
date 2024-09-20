@@ -10,6 +10,7 @@ import com.epa.erb.engagement_action.EngagementActionController;
 import com.epa.erb.utility.XMLManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -29,7 +30,7 @@ public class AlternativeFormController extends FormController implements Initial
 	@FXML
 	Pane lP, tP, rP, bP;
 	@FXML
-	VBox leftVBox, centerVBox, rightVBox;
+	VBox leftHeaderVBox, leftVBox, centerVBox, rightVBox;
 	@FXML
 	VBox containerVBox, nodeVBox, titleVBox;
 	
@@ -46,6 +47,8 @@ public class AlternativeFormController extends FormController implements Initial
 		if(formContentHashMap != null) {
 			ArrayList<HBox> titleContentTextFlows = formContentHashMap.get("titleVBox");
 			addTextFlowsToVBox(titleVBox, titleContentTextFlows);
+			ArrayList<HBox> formHeaderTextFlows = formContentHashMap.get("leftHeaderVBox");
+			addTextFlowsToVBox(leftHeaderVBox, formHeaderTextFlows);
 			ArrayList<HBox> formContentTextFlows = formContentHashMap.get("leftVBox");
 			addTextFlowsToVBox(leftVBox, formContentTextFlows);
 			ArrayList<HBox> topPanelTextFlows = formContentHashMap.get("centerVBox");
@@ -59,6 +62,9 @@ public class AlternativeFormController extends FormController implements Initial
 		if (textFlows != null && vBox != null) {
 			for (HBox textFlow : textFlows) {
 				vBox.getChildren().add(textFlow);
+				if(xmlContentFileToParse.getName().contains("251")) {
+					vBox.setAlignment(Pos.TOP_CENTER);
+				}
 			}
 		}
 	}
@@ -72,6 +78,12 @@ public class AlternativeFormController extends FormController implements Initial
 		}
 		if(leftVBox.getChildren().size() ==0) {
 			hBox.getChildren().remove(leftVBox);
+		}
+		if(leftHeaderVBox.getChildren().size() ==0) {
+			hBox.getChildren().remove(leftHeaderVBox);
+		}
+		if(xmlContentFileToParse.getName().contains("251")) {
+			hBox.setAlignment(Pos.CENTER_LEFT);
 		}
 	}
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBox" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane>
          <children>
@@ -27,7 +27,7 @@
                      </image></ImageView>
                   <VBox alignment="BOTTOM_LEFT" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Equitable Resilience Builder" textFill="#3a527d">
+                        <Label text="Equitable Resilience Builder (ERB)" textFill="#3a527d">
                            <font>
                               <Font name="System Bold" size="32.0" />
                            </font>
@@ -146,7 +146,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40c0c0" height="15.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="5.0" />
                                        </graphic>
                                     </Hyperlink>
-                                    <Hyperlink fx:id="exploreHyperlink" onAction="#exploreHyperlinkAction" style="-fx-border-color: transparent;" text="Explore the tool" textFill="#5e5e5e">
+                                    <Hyperlink fx:id="exploreHyperlink" onAction="#exploreHyperlinkAction" style="-fx-border-color: transparent;" text="Explore ERB" textFill="#5e5e5e">
                                        <font>
                                           <Font size="20.0" />
                                        </font>

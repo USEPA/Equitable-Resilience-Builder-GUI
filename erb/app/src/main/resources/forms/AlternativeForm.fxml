@@ -15,6 +15,7 @@
                   <VBox fx:id="titleVBox" />
                   <HBox fx:id="hBox" alignment="CENTER" spacing="10.0">
                      <children>
+                     	<VBox fx:id="leftHeaderVBox" alignment="TOP_CENTER" />
                         <VBox fx:id="leftVBox" alignment="TOP_CENTER" />
                         <VBox fx:id="centerVBox" alignment="TOP_CENTER" />
                         <VBox fx:id="rightVBox" alignment="TOP_CENTER" />
