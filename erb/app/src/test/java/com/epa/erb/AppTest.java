@@ -39,6 +39,6 @@ public class AppTest extends ApplicationTest {
 	@Test
 	public void test() {
 		Assertions.assertThat((Label)namespace.get("erbLandingLabel"))
-			.hasText("Equitable Resilience Builder");
+			.hasText("Equitable Resilience Builder (ERB)");
 	}
 }
