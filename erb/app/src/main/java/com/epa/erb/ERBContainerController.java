@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.AlternativeFormController;
-import com.epa.erb.forms.FormController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.MainPanelHandler;
@@ -55,14 +54,12 @@ public class ERBContainerController implements Initializable {
 	@FXML
 	StackPane erbAboutStackPane;
 	@FXML
-	Menu faqMenu, resourcesMenu, aboutMenu;
+	Menu resourcesMenu;
 	@FXML
 	HBox breadCrumbHBox,headerHBox, erbAboutHBox;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		populateFAQMenu();
-		populateAboutMenu();
 		populateResourceMenu();
 		populateBreadCrumbBar();
 
@@ -70,50 +67,49 @@ public class ERBContainerController implements Initializable {
 	}
 
 	private void populateResourceMenu() {
-		for (String id : idAssignments.getResourceIdAssignments()) {
+		Menu toolInfoMenu = new Menu("Tool Info");
+		Menu erbApproachMenu = new Menu("ERB Approach");
+		for (String id : idAssignments.getToolInfoIdAssignments()) {
+			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
+				if (id.equals(erbContentItem.getId())) {
+					String name = erbContentItem.getLongName();
+					MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+					toolInfoMenu.getItems().add(menuItem);
+				}
+			}
+		}
+		for (String id : idAssignments.getErbApproachIdAssignments()) {
 			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
 				if (id.equals(erbContentItem.getId())) {
 					if (id.equals("201")) {
 						MenuItem menuItem = new MenuItem("Funding and Finance Guide");
-						resourcesMenu.getItems().add(menuItem);
+						erbApproachMenu.getItems().add(menuItem);
 						File fileToOpen = new File(fileHandler.getTempDirectory() + File.separator + "Funding_and_Financing_Guide.docx");
 						menuItem.setOnAction(e -> fileHandler.openFileOnDesktop(fileToOpen));
 					} else {
 						String name = erbContentItem.getLongName();
 						MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-						resourcesMenu.getItems().add(menuItem);
+						erbApproachMenu.getItems().add(menuItem);
 					}
 				}
 			}
 		}
+		resourcesMenu.getItems().addAll(toolInfoMenu, erbApproachMenu);
 	}
 
-	private void populateFAQMenu() {
-		for (String id : idAssignments.getFAQIdAssignments()) {
-			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
-				if (id.equals(erbContentItem.getId())) {
-					String name = erbContentItem.getLongName();
-					MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-					faqMenu.getItems().add(menuItem);
-				}
-			}
-		}
-		MenuItem iconsMenuItem = new MenuItem("Centering Equity Icons");
-		iconsMenuItem.setId("204");
-		FormController fController = new FormController(app, app.getEngagementActionController());
-		iconsMenuItem.setOnAction(e -> fController.loadImagePopUp("204"));
-		faqMenu.getItems().add(iconsMenuItem);
-	}
+	/*
+	 * private void populateFAQMenu() { for (String id :
+	 * idAssignments.getFAQIdAssignments()) { for (ERBContentItem erbContentItem :
+	 * app.getAvailableERBContentItems()) { if (id.equals(erbContentItem.getId())) {
+	 * String name = erbContentItem.getLongName(); MenuItem menuItem =
+	 * createMenuItem(erbContentItem.getId(), name, true);
+	 * faqMenu.getItems().add(menuItem); } } } MenuItem iconsMenuItem = new
+	 * MenuItem("Centering Equity Icons"); iconsMenuItem.setId("204");
+	 * FormController fController = new FormController(app,
+	 * app.getEngagementActionController()); iconsMenuItem.setOnAction(e ->
+	 * fController.loadImagePopUp("204")); faqMenu.getItems().add(iconsMenuItem); }
+	 */
 
-	private void populateAboutMenu() {
-		for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
-			if (idAssignments.getAboutIdAssignments().contains(erbContentItem.getId())) {
-				String name = erbContentItem.getLongName();
-				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-				aboutMenu.getItems().add(menuItem);
-			}
-		}
-	}
 
 	private void populateBreadCrumbBar() {
 		MainPanelHandler mainPanelHandler = new MainPanelHandler(app);

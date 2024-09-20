@@ -35,6 +35,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -467,7 +468,7 @@ public class XMLManager {
 											String fontStyle = textElement.getAttribute("fontStyle");
 											String text = textElement.getAttribute("text");
 											String wrap = textElement.getAttribute("wrap");
-
+											String alignment = textElement.getAttribute("alignment");
 											double wrapLength = 0;
 											if (wrap != null && wrap.length() > 0) {
 												wrapLength = Double.parseDouble(wrap);
@@ -492,6 +493,13 @@ public class XMLManager {
 													t.setFont(Font.font(fontFamily, FontWeight.NORMAL, size));
 												}
 											}
+											if (alignment != null) {
+												if (alignment.contentEquals("center")) {
+													t.setTextAlignment(TextAlignment.CENTER);
+												} else if (alignment.contentEquals("right")) {
+													t.setTextAlignment(TextAlignment.RIGHT);
+												}
+											}
 
 											if (wrapLength > 0)
 												t.setWrappingWidth(wrapLength);
@@ -501,6 +509,7 @@ public class XMLManager {
 											Node iconNode = childNode;
 											// Icon
 											Element iconElement = (Element) iconNode;
+											String iconType = iconElement.getAttribute("type");
 											double width = Double.parseDouble(iconElement.getAttribute("width"));
 											double height = Double.parseDouble(iconElement.getAttribute("height"));
 											String id = iconElement.getAttribute("id");
@@ -509,8 +518,10 @@ public class XMLManager {
 											imageView.setImage(new Image(getClass().getResource(resourcePath).toString(), true));
 											imageView.setFitWidth(width);
 											imageView.setFitHeight(height);
-											imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e,
-													fileHandler.getIconFileFromResources(id), imageView, id));
+											if (iconType == null || iconType.length() == 0) {
+												imageView.setOnMouseClicked(e -> formContentController.handleImageClicked(e,
+														fileHandler.getIconFileFromResources(id), imageView, id));
+											}
 											textFlowHBox.getChildren().add(imageView);
 										} else if (nodeName.contentEquals("listBlock")) {
 											Node listBlockNode = childNode;
@@ -554,6 +565,9 @@ public class XMLManager {
 											textFlowHBox.getChildren().add(listVBox);
 										}
 									}
+								}
+								if(xmlFile.getName().contains("251")) {
+									textFlowHBox.setAlignment(Pos.CENTER);
 								}
 								textFlowHBox.setSpacing(10.0);
 								textFlowHBox.getChildren().add(textFlow);

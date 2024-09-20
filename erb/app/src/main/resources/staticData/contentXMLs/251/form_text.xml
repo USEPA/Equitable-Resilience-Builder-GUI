@@ -1,0 +1,336 @@
+<textBlocks>
+	<container id="leftHeaderVBox">
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text="Get started in a project">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text="Return to your project">
+			</text>
+		</textBlock>
+	</container>
+	<container id="leftVBox">
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+				width="40.0"
+				height="40.0"
+				type="link"
+				id="252">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+				size="16.0"
+				fontFamily="System"
+				wrap="200"
+				alignment="center"
+				text="Customize your project">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock><textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+				width="40.0"
+				height="40.0"
+				type="link"
+				id="254">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+				size="16.0"
+				fontFamily="System"
+				wrap="200"
+				alignment="center"
+				text="Check your progress">
+			</text>
+		</textBlock>
+	</container>
+	<container id="centerVBox">
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+				width="40.0"
+				height="40.0"
+				type="link"
+				id="253">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+				size="16.0"
+				fontFamily="System"
+				wrap="200"
+				alignment="center"
+				text="Quickstart Guide">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock><textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+				width="40.0"
+				height="40.0"
+				type="link"
+				id="255">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+				size="16.0"
+				fontFamily="System"
+				wrap="200"
+				alignment="center"
+				text="View your project">
+			</text>
+		</textBlock>
+	</container>
+	<container id="rightVBox">
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<text
+				size="18.0"
+				fontFamily="System"
+				fontStyle="Bold"
+				wrap="200"
+				text=" ">
+			</text>
+		</textBlock>
+		<textBlock>
+			<icon
+				width="40.0"
+				height="40.0"
+				type="link"
+				id="256">
+			</icon>
+		</textBlock>
+		<textBlock>
+			<text
+				size="16.0"
+				fontFamily="System"
+				wrap="200"
+				alignment="center"
+				text="Resources">
+			</text>
+		</textBlock>
+	</container>
+</textBlocks>

@@ -34,6 +34,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
@@ -79,7 +82,9 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	VBox engagementVBox, treeViewVBox, mainVBox,contentVBox;
 	@FXML
-	Button worksheetIndexButton, myPortfolioButton, uploadFileButton;
+	MenuBar projectMenuBar;
+	@FXML
+	Menu projectFilesMenu, progressTrackerMenu;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -92,6 +97,7 @@ public class EngagementActionController implements Initializable {
 		if(!project.getProjectName().contentEquals("Explore")) {
 			engagementVBox.getChildren().remove(exploreModeLabel);
 		}
+		populateProjectMenuBar();
 	}
 
 	private void initFacilitatorMode() {
@@ -99,6 +105,19 @@ public class EngagementActionController implements Initializable {
 		addTreeViewListener();
 		hideGoalSelection();
 		removeSaveHBox();
+	}
+	
+	private void populateProjectMenuBar() {
+		MenuItem miMyPortfolio = new MenuItem("My Portfolio");
+		miMyPortfolio.setOnAction(e -> myPortfolioButtonAction());
+		
+		MenuItem miUploadFiles = new MenuItem("Upload Files");
+		miUploadFiles.setOnAction(e -> externalDocUploadButtonAction());
+		
+		MenuItem miReport = new MenuItem("Generate Summary Report");
+		miReport.setOnAction(e -> finalReportButtonAction());
+		
+		projectFilesMenu.getItems().addAll(miMyPortfolio, miUploadFiles, miReport);
 	}
 	
 	@FXML
@@ -408,6 +427,9 @@ public class EngagementActionController implements Initializable {
 					} else if (erbContentItem.getLongName().contentEquals("Indicator Center")) {
 						ScrollPane root = loadIndicatorCenterController();
 						addContentToContentVBox(root, true);
+					} else if (erbContentItem.getLongName().contentEquals("ERB Dashboard")) {
+						ScrollPane root = loadIndicatorCenterController();
+						addContentToContentVBox(root, true);
 					}
 				}
 			}
@@ -454,6 +476,7 @@ public class EngagementActionController implements Initializable {
 			TreeItem<ERBContentItem> rootTreeItem = new TreeItem<ERBContentItem>(rootERBContentItem);
 			rootTreeItem.setExpanded(true);
 			treeView.setRoot(rootTreeItem);
+			treeView.setShowRoot(false);
 			treeItemGuidTreeMap.put(rootERBContentItem, rootTreeItem);
 
 			for (ERBContentItem contentItem : uniqueChapters) {
@@ -481,8 +504,9 @@ public class EngagementActionController implements Initializable {
 				listOfUniqueERBContentItems.clear();
 				ERBContentItem rootERBContentItem = new ERBContentItem("91", null, "mainForm", null, "ERB Sections", "ERB Sections");
 				TreeItem<ERBContentItem> rootTreeItem = new TreeItem<ERBContentItem>(rootERBContentItem);
-				rootTreeItem.setExpanded(true);
+				rootTreeItem.setExpanded(false);
 				treeView.setRoot(rootTreeItem);
+				treeView.setShowRoot(false);
 				treeItemGuidTreeMap.put(rootERBContentItem, rootTreeItem);
 
 				for (ERBContentItem contentItem : genericContentItems) {

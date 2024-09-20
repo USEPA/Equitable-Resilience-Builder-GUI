@@ -166,7 +166,7 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Regular"
-			text="20-30 people + facilitators">
+			text="10-30 people + facilitators">
 			</text>
 		</textBlock>
 		<textBlock>
@@ -193,17 +193,41 @@
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Indicator Activity Instructions"
-			linkType="externalDOC"
-			link="Indicator_Activity_Instructions.docx">
+			text="Indicator Activity Preparation"
+			linkType="internal"
+			link="87">
 			</text>
 			<text
 			size="16.0"
 			fontFamily="System"
 			fontStyle="Hyperlink"
-			text="Indicator Center"
+			text="Indicator Spreadsheet"
+			linkType="externalDOC"
+			link="Indicators_List.xlsx">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Make indicator cards (printable)"
+			linkType="internal"
+			link="86">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Run virtual indicator activity"
 			linkType="internal"
 			link="85">
+			</text>
+			<text
+			size="16.0"
+			fontFamily="System"
+			fontStyle="Hyperlink"
+			text="Indicator Activity Instructions"
+			linkType="externalDOC"
+			link="Indicator_Activity_Instructions.docx">
 			</text>
 			<text
 			size="16.0"

@@ -1,10 +1,10 @@
 <content_xmls>
 	<content id="01" guid="" type="mainForm" status="ready" shortName="Glossary" longName="Glossary" />
 	<content id="02" guid="" type="mainForm" status="ready" shortName="Storytelling" longName="Storytelling" />
-	<content id="03" guid="" type="mainForm" status="ready" shortName="Trauma-informed Approach" longName="Trauma-informed Approach" />
+	<content id="03" guid="" type="mainForm" status="ready" shortName="Trauma-informed Engagement" longName="Trauma-informed Engagement" />
 	<content id="04" guid="" type="mainForm" status="ready" shortName="Equitable Resilience" longName="Equitable Resilience" />
 	<content id="05" guid="" type="mainForm" status="ready" shortName="Data Ethics" longName="Data Ethics" />
-	<content id="06" guid="" type="mainForm" status="ready" shortName="Resilience Indicators Background" longName="Resilience Indicators Background" />
+	<content id="06" guid="" type="mainForm" status="ready" shortName="Resilience Indicators" longName="Resilience Indicators" />
 	<content id="09" guid="" type="mainForm" status="ready" shortName="About ERB" longName="About ERB" />
 	<content id="10" guid="" type="mainForm" status="ready" shortName="Youth Engagement Guide" longName="Youth Engagement Guide" />
 	<content id="11" guid="" type="mainForm" status="ready" shortName="Supporting materials" longName="Supporting Materials" />
@@ -48,7 +48,7 @@
 	<content id="107" guid="" type="mainForm" status="ready" shortName="Manage Data" longName="Manage Data" />
 	<content id="108" guid="" type="mainForm" status="ready" shortName="Assess Resilience" longName="Assess Resilience" />
 	<content id="109" guid="" type="mainForm" status="ready" shortName="Participatory Mapping" longName="Participatory Mapping" />
-	<content id="110" guid="" type="mainForm" status="ready" shortName="Sort Indicator Cards" longName="Sort Resilience Indicators" />
+	<content id="110" guid="" type="mainForm" status="ready" shortName="Indicator Card Sorting" longName="Sort Resilience Indicators" />
 	<content id="111" guid="" type="mainForm" status="ready" shortName="Discuss Equity" longName="Discuss Equity" />
 	<content id="112" guid="" type="mainForm" status="ready" shortName="Reflection/Next Steps" longName="Reflection and Next Steps" />
 	<content id="114" guid="" type="mainForm" status="ready" shortName="Data Scoping Example" longName="Data Scoping Example" />
@@ -130,6 +130,6 @@
 	<content id="248" guid="" type="supportingDoc" status="ready" shortName="Workshop_1_Facilitators_Guide.docx" longName="Workshop 1 Facilitators Guide" />
 	<content id="249" guid="" type="supportingDoc" status="ready" shortName="Workshop_2_Facilitators_Guide.docx" longName="Workshop 2 Facilitators Guide" />
 	<content id="250" guid="" type="supportingDoc" status="ready" shortName="Workshop_3_Facilitators_Guide.docx" longName="Workshop 3 Facilitators Guide" />
-
+	<content id="251" guid="" type="alternativeForm" status="ready" shortName="ERB Dashboard" longName="ERB Dashboard" />
 
 </content_xmls>

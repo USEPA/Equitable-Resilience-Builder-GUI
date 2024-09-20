@@ -106,7 +106,6 @@ public class MainPanelHandler {
 		mainPanelIdHashMap.put("Goal Creation", "88");
 		mainPanelIdHashMap.put("Engagement", "89");
 		mainPanelIdHashMap.put("Project Creation", "90");
-		mainPanelIdHashMap.put("ERB Dashboard", "90");
 		return mainPanelIdHashMap;
 	}
 

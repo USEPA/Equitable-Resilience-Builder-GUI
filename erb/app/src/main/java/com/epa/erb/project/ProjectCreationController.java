@@ -17,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -44,8 +43,6 @@ public class ProjectCreationController implements Initializable {
 	ToggleGroup modeToggleGroup;
 	@FXML
 	TextField projectNameTextField;
-	@FXML
-	TextArea projectDescriptionTextArea;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -63,7 +60,7 @@ public class ProjectCreationController implements Initializable {
 		String newProjectName = projectNameTextField.getText().trim();
 		if (isValidNewProjectName(newProjectName)) {
 			String cleanedProjectName = cleanStringForWindows(newProjectName);
-			String projectDescription = projectDescriptionTextArea.getText().trim();
+			String projectDescription = "";
 			Project project = new Project(newProjectName, mode, cleanedProjectName, projectDescription);
 			createNewProjectDirectory(project);
 			launchProject(project);
