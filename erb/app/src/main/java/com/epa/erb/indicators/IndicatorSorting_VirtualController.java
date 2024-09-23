@@ -25,6 +25,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -42,6 +45,11 @@ public class IndicatorSorting_VirtualController implements Initializable {
 	int numRowsForSorting = 1;
 	int numColumnsForSorting = 1;
 	private FileHandler fileHandler;
+	private Image upArrow;
+	private ImageView upArrowImageView;
+	
+	private Image downArrow;
+	private ImageView downArrowImageView;
 	
 	private App app;
 	private IndicatorCard[] cards;
@@ -56,7 +64,7 @@ public class IndicatorSorting_VirtualController implements Initializable {
 	}
 	
 	@FXML
-	VBox vBox;
+	VBox vBox, rankedVBox;
 	@FXML
 	Label titleLabel;
 	@FXML
@@ -69,6 +77,10 @@ public class IndicatorSorting_VirtualController implements Initializable {
 	ScrollPane rankedScrollPane;
 	@FXML
 	Pane bottomLeftPane, topLeftPane, topRightPane, bottomRightPane;
+	@FXML
+	Button expandSortedCardsButton;
+	@FXML
+	ImageView expandSortedCardsGraphic;
 
 	public void closeRequested(WindowEvent e) {
 		Optional<ButtonType> result = showNoSaveWarning();
@@ -87,6 +99,22 @@ public class IndicatorSorting_VirtualController implements Initializable {
 				"Closing this window will result in a reset of indicator quadrants. Please use the save button if you wish to save a snapshot of your indicator quadrants to My Portfolio.");
 		return alert.showAndWait();
 	}
+	
+	private Image getImageResource(Boolean up) {
+		return up ? new Image(getClass().getResourceAsStream("/arrow-up.png")) : new Image(getClass().getResourceAsStream("/arrow-down.png"));
+	}
+	
+	private void setExpandCards(Boolean expand) {
+		expandSortedCardsGraphic.setImage(getImageResource(expand));
+		rankedScrollPane.setVisible(expand);
+		if (expand) {
+			rankedVBox.getChildren().add(rankedScrollPane);
+			rankedVBox.setPrefHeight(200.0);
+		} else {
+			rankedVBox.getChildren().remove(rankedScrollPane);
+			rankedVBox.setPrefHeight(25.0);
+		}
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -98,23 +126,26 @@ public class IndicatorSorting_VirtualController implements Initializable {
 		setDrag_RankingHBox(rankedHBox);
 		handleQuadrantPanes();
 		titleLabel.setText("Indicator Quadrant Sorting");
+		expandSortedCardsButton.setAlignment(Pos.TOP_LEFT);
+		expandSortedCardsButton.setText("Cards to sort");
+		expandSortedCardsButton.setOnAction(e -> setExpandCards(!rankedScrollPane.isVisible()));
 	}
 
 	private void handleQuadrantPanes() {
 		int numCards = cards.length;
 		int maxRows = 2;
 		int maxColumns = 4;
-		int minRows = 2;
+		int minRows = 1;
 		int minColumns = 3;
 		int numGrids = 4;
 
 		outerLoop: {
-			for (int i = 1; i <= maxRows; i++) {
-				for (int j = 1; j <= maxColumns; j++) {
+			for (int i = 1; i <= maxColumns; i++) {
+				for (int j = 1; j <= maxRows; j++) {
 					int numSlots = numGrids * i * j;
 					if (numSlots >= (numCards + 3)) {
-						numRowsForSorting = i;
-						numColumnsForSorting = j;
+						numRowsForSorting = j;
+						numColumnsForSorting = i;
 						break outerLoop;
 					}
 				}
