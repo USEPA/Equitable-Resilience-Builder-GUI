@@ -45,12 +45,6 @@ public class IndicatorSorting_VirtualController implements Initializable {
 	int numRowsForSorting = 1;
 	int numColumnsForSorting = 1;
 	private FileHandler fileHandler;
-	private Image upArrow;
-	private ImageView upArrowImageView;
-	
-	private Image downArrow;
-	private ImageView downArrowImageView;
-	
 	private App app;
 	private IndicatorCard[] cards;
 	private IndicatorRanking_VirtualController iRVC;
@@ -110,9 +104,11 @@ public class IndicatorSorting_VirtualController implements Initializable {
 		if (expand) {
 			rankedVBox.getChildren().add(rankedScrollPane);
 			rankedVBox.setPrefHeight(200.0);
+			expandSortedCardsButton.setText("Hide cards");
 		} else {
 			rankedVBox.getChildren().remove(rankedScrollPane);
 			rankedVBox.setPrefHeight(25.0);
+			expandSortedCardsButton.setText("Show cards");
 		}
 	}
 
@@ -127,7 +123,7 @@ public class IndicatorSorting_VirtualController implements Initializable {
 		handleQuadrantPanes();
 		titleLabel.setText("Indicator Quadrant Sorting");
 		expandSortedCardsButton.setAlignment(Pos.TOP_LEFT);
-		expandSortedCardsButton.setText("Cards to sort");
+		expandSortedCardsButton.setText("Hide cards");
 		expandSortedCardsButton.setOnAction(e -> setExpandCards(!rankedScrollPane.isVisible()));
 	}
 

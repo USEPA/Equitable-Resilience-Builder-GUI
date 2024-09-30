@@ -55,8 +55,9 @@
                            <children>
                               <MenuBar fx:id="menuBar" minWidth="275.0" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: transparent;" stylesheets="@../menuBar.css">
                                 <menus>
-                                  <Menu fx:id="activityDirectoryMenu" mnemonicParsing="false" text="Activity Directory" />
-                                  <Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources" />
+                                    <Menu fx:id="faqMenu" mnemonicParsing="false" text="Instructions" />
+                                  	<Menu fx:id="resourcesMenu" mnemonicParsing="false" text="Resources" />
+                                    <Menu fx:id="aboutMenu" mnemonicParsing="false" text="About" />
                                 </menus>
                               </MenuBar>
                            </children>

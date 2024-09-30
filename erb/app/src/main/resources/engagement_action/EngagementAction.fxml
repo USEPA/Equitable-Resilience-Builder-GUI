@@ -82,12 +82,34 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                 <MenuBar fx:id="projectMenuBar" minWidth="275.0" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: transparent;" stylesheets="@../menuBar.css">
-                    <menus>
-                      <Menu fx:id="progressTrackerMenu" mnemonicParsing="false" text="My Progress Tracker" />
-                      <Menu fx:id="projectFilesMenu" mnemonicParsing="false" text="My Project Files" />
-                    </menus>
-                 </MenuBar>
+                 <Button minWidth="95.0" mnemonicParsing="false" onAction="#mappingButtonAction" style="-fx-background-color: #FFFFFF;" text="Mapping" textFill="#316188" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="finalReportButton" minWidth="95.0" mnemonicParsing="false" onAction="#finalReportButtonAction" style="-fx-background-color: #FFFFFF;" text="Generate Summary Report" textFill="#316188">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="myPortfolioButton" minWidth="95.0" mnemonicParsing="false" onAction="#myPortfolioButtonAction" style="-fx-background-color: #FFFFFF;" text="My Portfolio" textFill="#316188">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="uploadFileButton" minWidth="88.0" mnemonicParsing="false" onAction="#externalDocUploadButtonAction" style="-fx-background-color: #FFFFFF;" text="Upload File" textFill="#316188">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="worksheetIndexButton1" minWidth="122.0" mnemonicParsing="false" onAction="#worksheetIndexAction" style="-fx-background-color: #FFFFFF;" text="Worksheet Index" textFill="#316188">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </children>

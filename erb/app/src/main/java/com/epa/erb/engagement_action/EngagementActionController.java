@@ -82,9 +82,13 @@ public class EngagementActionController implements Initializable {
 	@FXML
 	VBox engagementVBox, treeViewVBox, mainVBox,contentVBox;
 	@FXML
-	MenuBar projectMenuBar;
-	@FXML
-	Menu projectFilesMenu, progressTrackerMenu;
+	Button worksheetIndexButton, myPortfolioButton, uploadFileButton;
+	
+	
+	@FXML MenuBar projectMenuBar;
+	  
+	@FXML Menu projectFilesMenu, progressTrackerMenu;
+	 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -97,7 +101,7 @@ public class EngagementActionController implements Initializable {
 		if(!project.getProjectName().contentEquals("Explore")) {
 			engagementVBox.getChildren().remove(exploreModeLabel);
 		}
-		populateProjectMenuBar();
+		// populateProjectMenuBar();
 	}
 
 	private void initFacilitatorMode() {
@@ -107,18 +111,20 @@ public class EngagementActionController implements Initializable {
 		removeSaveHBox();
 	}
 	
-	private void populateProjectMenuBar() {
+	
+	void populateProjectMenuBar() {
 		MenuItem miMyPortfolio = new MenuItem("My Portfolio");
 		miMyPortfolio.setOnAction(e -> myPortfolioButtonAction());
-		
+		  
 		MenuItem miUploadFiles = new MenuItem("Upload Files");
 		miUploadFiles.setOnAction(e -> externalDocUploadButtonAction());
-		
+		  
 		MenuItem miReport = new MenuItem("Generate Summary Report");
 		miReport.setOnAction(e -> finalReportButtonAction());
-		
-		projectFilesMenu.getItems().addAll(miMyPortfolio, miUploadFiles, miReport);
+			  
+		// projectFilesMenu.getItems().addAll(miMyPortfolio, miUploadFiles, miReport);
 	}
+		 
 	
 	@FXML
 	public void mappingButtonAction() {
@@ -488,6 +494,9 @@ public class EngagementActionController implements Initializable {
 	}
 	
 	public void addChildrenToTreeView_hasGUIDS(ERBContentItem contentItem, ERBContentItem contentItemParent, TreeItem<ERBContentItem> rootTreeItem) {
+		if (contentItem.getId().contentEquals("251")) { // ERB Dashboard is currently under construction. This acts as a feature flag to exclude it from the treeview.
+			return;
+		}
 		TreeItem<ERBContentItem> treeItem = new TreeItem<ERBContentItem>(contentItem);
 		rootTreeItem.getChildren().add(treeItem);
 		treeItemGuidTreeMap.put(contentItem, treeItem);
@@ -519,6 +528,9 @@ public class EngagementActionController implements Initializable {
 		}
 		
 		public void addChildrenToTreeView_noGUIDS(ERBContentItem contentItem, ERBContentItem contentItemParent, TreeItem<ERBContentItem> rootTreeItem) {
+			if (contentItem.getId().contentEquals("251")) { // ERB Dashboard is currently under construction. This acts as a feature flag to exclude it from the treeview.
+				return;
+			}
 			String guid = app.generateGUID();
 			contentItem.setGuid(guid);
 			TreeItem<ERBContentItem> treeItem = new TreeItem<ERBContentItem>(contentItem);

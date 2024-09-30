@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.epa.erb.forms.MainFormController;
 import com.epa.erb.forms.AlternativeFormController;
+import com.epa.erb.forms.FormController;
 import com.epa.erb.utility.FileHandler;
 import com.epa.erb.utility.IdAssignments;
 import com.epa.erb.utility.MainPanelHandler;
@@ -54,61 +55,86 @@ public class ERBContainerController implements Initializable {
 	@FXML
 	StackPane erbAboutStackPane;
 	@FXML
-	Menu resourcesMenu;
+	Menu faqMenu, resourcesMenu, aboutMenu;
 	@FXML
 	HBox breadCrumbHBox,headerHBox, erbAboutHBox;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		populateResourceMenu();
+		populateFAQMenu();
+		populateAboutMenu();
 		populateBreadCrumbBar();
 
 		rectangle2.widthProperty().bind(erbVBox.widthProperty().subtract(5.0));
 	}
 
 	private void populateResourceMenu() {
-		Menu toolInfoMenu = new Menu("Tool Info");
-		Menu erbApproachMenu = new Menu("ERB Approach");
-		for (String id : idAssignments.getToolInfoIdAssignments()) {
-			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
-				if (id.equals(erbContentItem.getId())) {
-					String name = erbContentItem.getLongName();
-					MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-					toolInfoMenu.getItems().add(menuItem);
-				}
-			}
-		}
-		for (String id : idAssignments.getErbApproachIdAssignments()) {
+		for (String id : idAssignments.getResourceIdAssignments()) {
+			// FFLAG: Menu updates
+			/*
+			 * Menu toolInfoMenu = new Menu("Tool Info"); Menu erbApproachMenu = new
+			 * Menu("ERB Approach"); for (String id :
+			 * idAssignments.getToolInfoIdAssignments()) { for (ERBContentItem
+			 * erbContentItem : app.getAvailableERBContentItems()) { if
+			 * (id.equals(erbContentItem.getId())) { String name =
+			 * erbContentItem.getLongName(); MenuItem menuItem =
+			 * createMenuItem(erbContentItem.getId(), name, true);
+			 * toolInfoMenu.getItems().add(menuItem); } } } for (String id :
+			 * idAssignments.getErbApproachIdAssignments()) {
+			 */
 			for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
 				if (id.equals(erbContentItem.getId())) {
 					if (id.equals("201")) {
 						MenuItem menuItem = new MenuItem("Funding and Finance Guide");
-						erbApproachMenu.getItems().add(menuItem);
+						resourcesMenu.getItems().add(menuItem);
+						// erbApproachMenu.getItems().add(menuItem);
 						File fileToOpen = new File(fileHandler.getTempDirectory() + File.separator + "Funding_and_Financing_Guide.docx");
 						menuItem.setOnAction(e -> fileHandler.openFileOnDesktop(fileToOpen));
 					} else {
 						String name = erbContentItem.getLongName();
 						MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
-						erbApproachMenu.getItems().add(menuItem);
+						resourcesMenu.getItems().add(menuItem);
+						// erbApproachMenu.getItems().add(menuItem);
 					}
 				}
 			}
 		}
-		resourcesMenu.getItems().addAll(toolInfoMenu, erbApproachMenu);
+		/*
+		 * } resourcesMenu.getItems().addAll(toolInfoMenu, erbApproachMenu);
+		 */
 	}
 
-	/*
-	 * private void populateFAQMenu() { for (String id :
-	 * idAssignments.getFAQIdAssignments()) { for (ERBContentItem erbContentItem :
-	 * app.getAvailableERBContentItems()) { if (id.equals(erbContentItem.getId())) {
-	 * String name = erbContentItem.getLongName(); MenuItem menuItem =
-	 * createMenuItem(erbContentItem.getId(), name, true);
-	 * faqMenu.getItems().add(menuItem); } } } MenuItem iconsMenuItem = new
-	 * MenuItem("Centering Equity Icons"); iconsMenuItem.setId("204");
-	 * FormController fController = new FormController(app,
-	 * app.getEngagementActionController()); iconsMenuItem.setOnAction(e ->
-	 * fController.loadImagePopUp("204")); faqMenu.getItems().add(iconsMenuItem); }
-	 */
+
+	// FFLAG: Menu updates
+	// Remove once menus fully change appearance.
+	private void populateFAQMenu() {
+	  for (String id : idAssignments.getFAQIdAssignments()) {
+		  for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
+			  if (id.equals(erbContentItem.getId())) {
+				  String name = erbContentItem.getLongName();
+				  MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+				  faqMenu.getItems().add(menuItem);
+			  }
+		  }
+	  }
+	  MenuItem iconsMenuItem = new MenuItem("Centering Equity Icons");
+	  iconsMenuItem.setId("204");
+	  FormController fController = new FormController(app, app.getEngagementActionController());
+	  iconsMenuItem.setOnAction(e -> fController.loadImagePopUp("204")); 
+	}
+	
+	//FFLAG: Menu updates
+	// Remove once menus fully change appearance
+	private void populateAboutMenu() {
+		for (ERBContentItem erbContentItem : app.getAvailableERBContentItems()) {
+			if (idAssignments.getAboutIdAssignments().contains(erbContentItem.getId())) {
+				String name = erbContentItem.getLongName();
+				MenuItem menuItem = createMenuItem(erbContentItem.getId(), name, true);
+				aboutMenu.getItems().add(menuItem);
+			}
+		}
+	}
 
 
 	private void populateBreadCrumbBar() {
